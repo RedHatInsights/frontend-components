@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import { DownloadButtonWrapper, Section, Column, Table, Panel, PanelItem, Battery, Chart, DescriptionList } from '../../pdf-generator/src';
+import { DownloadButtonWrapper, Section, Column, Table, Panel, PanelItem, Battery, Chart, Dl, Dt, Dd } from '../../pdf-generator/src';
 
 class DemoApp extends Component {
     state = {
@@ -74,13 +74,14 @@ class DemoApp extends Component {
                         </Section>
                         <Section title="I am description list">
                             <Column>
-                                <DescriptionList
-                                    rows={[
-                                        [ 'Mercury', 'Mercury (0.4 AU from the Sun) is the closest planet to the Sun and the smallest planet.' ],
-                                        [ 'Venus', 'Venus (0.7 AU) is close in size to Earth, (0.815 Earth masses) and like Earth, has a thick silicate mantle around an iron core.' ],
-                                        [ 'Earth', 'Earth (1 AU) is the largest and densest of the inner planets, the only one known to have current geological activity.' ]
-                                    ]}
-                                />
+                                <Dl>
+                                    <Dt>Mercury</Dt>
+                                    <Dd>Mercury (0.4 AU from the Sun) is the closest planet to the Sun and the smallest planet.</Dd>
+                                    <Dt>Venus</Dt>
+                                    <Dd>Venus (0.7 AU) is close in size to Earth, (0.815 Earth masses) and like Earth, has a thick silicate mantle around an iron core.</Dd>
+                                    <Dt>Earth</Dt>
+                                    <Dd>Earth (1 AU) is the largest and densest of the inner planets, the only one known to have current geological activity.</Dd>
+                                </Dl>
                             </Column>
                             <Column/>
                         </Section>

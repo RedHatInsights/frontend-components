@@ -140,10 +140,19 @@ export default (style = {}) => StyleSheet.create({
         paddingBottom: c_table_m_compact_cell_PaddingBottom.value,
         paddingTop: c_table_m_compact_cell_PaddingTop.value
     },
+    dl: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexDirection: 'row'
+    },
     dt: {
-        flex: '1'
+        flexGrow: 1,
+        flexShrink: 1,
+        width: '30%'
     },
     dd: {
-        flex: '2'
+        flexGrow: 1,
+        flexShrink: 1,
+        width: '70%'
     }
 });
