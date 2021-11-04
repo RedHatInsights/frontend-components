@@ -20,7 +20,7 @@ This component allows multiple pages to be present in one report, just make sure
 ```JSX
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import { DownloadButton, Section, Column, Table, Panel, PanelItem, Battery, Chart } from '@redhat-cloud-services/frontend-components-pdf-generator';
+import { DownloadButton, Section, Column, Table, Panel, PanelItem, Battery, Chart, Dl, Dt, Dd } from '@redhat-cloud-services/frontend-components-pdf-generator';
 
 class DemoApp extends Component {
     state = {
@@ -89,6 +89,19 @@ class DemoApp extends Component {
                                         [ 'one', 'two' ]
                                     ]}
                                 />
+                            </Column>
+                            <Column/>
+                        </Section>
+                        <Section title="I am description list">
+                            <Column>
+                                <Dl>
+                                    <Dt>Mercury</Dt>
+                                    <Dd>Mercury (0.4 AU from the Sun) is the closest planet to the Sun and the smallest planet.</Dd>
+                                    <Dt>Venus</Dt>
+                                    <Dd>Venus (0.7 AU) is close in size to Earth, (0.815 Earth masses) and like Earth, has a thick silicate mantle around an iron core.</Dd>
+                                    <Dt>Earth</Dt>
+                                    <Dd>Earth (1 AU) is the largest and densest of the inner planets, the only one known to have current geological activity.</Dd>
+                                </Dl>
                             </Column>
                             <Column/>
                         </Section>
@@ -255,3 +268,18 @@ import { Section } from '@redhat-cloud-services/frontend-components-pdf-generato
 />
 ```
 ![Table example](./doc/table.png)
+#### 5) `Description List`
+All the elements (dl, dt, dd) can be styled individually
+```JSX
+import { Section } from '@redhat-cloud-services/frontend-components-pdf-generator';
+
+<Dl>
+    <Dt>Mercury</Dt>
+    <Dd>Mercury (0.4 AU from the Sun) is the closest planet to the Sun and the smallest planet.</Dd>
+    <Dt>Venus</Dt>
+    <Dd>Venus (0.7 AU) is close in size to Earth, (0.815 Earth masses) and like Earth, has a thick silicate mantle around an iron core.</Dd>
+    <Dt>Earth</Dt>
+    <Dd>Earth (1 AU) is the largest and densest of the inner planets, the only one known to have current geological activity.</Dd>
+</Dl>
+```
+![Table example](./doc/description-list.png)
