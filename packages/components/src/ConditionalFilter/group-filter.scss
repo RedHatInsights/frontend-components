@@ -1,0 +1,23 @@
+@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
+
+.ins-c-tree-view {
+    .pf-c-tree-view {
+        padding: 0;
+    }
+
+    .pf-c-menu__list-item {
+        background: none;
+
+        .pf-c-menu__item {
+            padding: 0;
+
+            .pf-c-tree-view__content {
+                background: none;
+            }
+            
+            .pf-c-tree-view__node {
+                background: none;
+            }
+        }
+    }
+}
