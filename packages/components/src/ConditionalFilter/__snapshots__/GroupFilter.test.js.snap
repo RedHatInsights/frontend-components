@@ -38,6 +38,69 @@ exports[`Group - component render should render correctly placeholder 1`] = `
       >
         <MenuContent>
           <MenuList>
+            <MenuGroup>
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item12",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item12",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item22",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item22",
+                                },
+                              ],
+                              "id": "secondLevel2",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel2",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel2",
+                          "key": "firstLevel2",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel2",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
             <MenuGroup
               label="First value"
             >
@@ -141,6 +204,71 @@ exports[`Group - component render should render correctly placeholder 1`] = `
               >
                 Second value
               </MenuItem>
+            </MenuGroup>
+            <MenuGroup
+              label="TreeView"
+            >
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item1",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item1",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item2",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item2",
+                                },
+                              ],
+                              "id": "secondLevel",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel",
+                          "key": "firstLevel",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
             </MenuGroup>
             <span
               hidden={true}
@@ -172,6 +300,69 @@ exports[`Group - component render should render correctly with items - isDisable
       >
         <MenuContent>
           <MenuList>
+            <MenuGroup>
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item12",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item12",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item22",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item22",
+                                },
+                              ],
+                              "id": "secondLevel2",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel2",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel2",
+                          "key": "firstLevel2",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel2",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
             <MenuGroup
               label="First value"
             >
@@ -275,6 +466,71 @@ exports[`Group - component render should render correctly with items - isDisable
               >
                 Second value
               </MenuItem>
+            </MenuGroup>
+            <MenuGroup
+              label="TreeView"
+            >
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item1",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item1",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item2",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item2",
+                                },
+                              ],
+                              "id": "secondLevel",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel",
+                          "key": "firstLevel",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
             </MenuGroup>
             <span
               hidden={true}
@@ -304,6 +560,69 @@ exports[`Group - component render should render correctly with items 1`] = `
       >
         <MenuContent>
           <MenuList>
+            <MenuGroup>
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item12",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item12",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item22",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item22",
+                                },
+                              ],
+                              "id": "secondLevel2",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel2",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel2",
+                          "key": "firstLevel2",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel2",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
             <MenuGroup
               label="First value"
             >
@@ -407,6 +726,71 @@ exports[`Group - component render should render correctly with items 1`] = `
               >
                 Second value
               </MenuItem>
+            </MenuGroup>
+            <MenuGroup
+              label="TreeView"
+            >
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item1",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item1",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item2",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item2",
+                                },
+                              ],
+                              "id": "secondLevel",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel",
+                          "key": "firstLevel",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
             </MenuGroup>
             <span
               hidden={true}
@@ -436,6 +820,69 @@ exports[`Group - component render should render correctly with items and default
       >
         <MenuContent>
           <MenuList>
+            <MenuGroup>
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item12",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item12",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item22",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item22",
+                                },
+                              ],
+                              "id": "secondLevel2",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel2",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel2",
+                          "key": "firstLevel2",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel2",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
             <MenuGroup
               label="First value"
             >
@@ -540,6 +987,71 @@ exports[`Group - component render should render correctly with items and default
                 Second value
               </MenuItem>
             </MenuGroup>
+            <MenuGroup
+              label="TreeView"
+            >
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item1",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item1",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item2",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item2",
+                                },
+                              ],
+                              "id": "secondLevel",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel",
+                          "key": "firstLevel",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
             <span
               hidden={true}
               value=""
@@ -568,6 +1080,69 @@ exports[`Group - component render should render correctly with items and selecte
       >
         <MenuContent>
           <MenuList>
+            <MenuGroup>
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item12",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item12",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item22",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item22",
+                                },
+                              ],
+                              "id": "secondLevel2",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel2",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel2",
+                          "key": "firstLevel2",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel2",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
             <MenuGroup
               label="First value"
             >
@@ -672,6 +1247,71 @@ exports[`Group - component render should render correctly with items and selecte
                 Second value
               </MenuItem>
             </MenuGroup>
+            <MenuGroup
+              label="TreeView"
+            >
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item1",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item1",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item2",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item2",
+                                },
+                              ],
+                              "id": "secondLevel",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel",
+                          "key": "firstLevel",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
             <span
               hidden={true}
               value=""
@@ -700,6 +1340,69 @@ exports[`Group - component render show more should render correctly with items a
       >
         <MenuContent>
           <MenuList>
+            <MenuGroup>
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item12",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item12",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item22",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item22",
+                                },
+                              ],
+                              "id": "secondLevel2",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel2",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel2",
+                          "key": "firstLevel2",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel2",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
             <MenuGroup
               label="First value"
             >
@@ -803,6 +1506,71 @@ exports[`Group - component render show more should render correctly with items a
               >
                 Second value
               </MenuItem>
+            </MenuGroup>
+            <MenuGroup
+              label="TreeView"
+            >
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item1",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item1",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item2",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item2",
+                                },
+                              ],
+                              "id": "secondLevel",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel",
+                          "key": "firstLevel",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
             </MenuGroup>
             <MenuItem
               className="ins-c-menu__show--more"
@@ -838,6 +1606,69 @@ exports[`Group - component render show more should render correctly with items a
       >
         <MenuContent>
           <MenuList>
+            <MenuGroup>
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item12",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item12",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item22",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item22",
+                                },
+                              ],
+                              "id": "secondLevel2",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel2",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel2",
+                          "key": "firstLevel2",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel2",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
             <MenuGroup
               label="First value"
             >
@@ -941,6 +1772,71 @@ exports[`Group - component render show more should render correctly with items a
               >
                 Second value
               </MenuItem>
+            </MenuGroup>
+            <MenuGroup
+              label="TreeView"
+            >
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item1",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item1",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item2",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item2",
+                                },
+                              ],
+                              "id": "secondLevel",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel",
+                          "key": "firstLevel",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
             </MenuGroup>
             <MenuItem
               className="ins-c-menu__show--more"
@@ -973,6 +1869,69 @@ exports[`Group - component render show more should render correctly with items a
       >
         <MenuContent>
           <MenuList>
+            <MenuGroup>
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item12",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item12",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item22",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item22",
+                                },
+                              ],
+                              "id": "secondLevel2",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel2",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel2",
+                          "key": "firstLevel2",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel2",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
             <MenuGroup
               label="First value"
             >
@@ -1076,6 +2035,71 @@ exports[`Group - component render show more should render correctly with items a
               >
                 Second value
               </MenuItem>
+            </MenuGroup>
+            <MenuGroup
+              label="TreeView"
+            >
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item1",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item1",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item2",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item2",
+                                },
+                              ],
+                              "id": "secondLevel",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel",
+                          "key": "firstLevel",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
             </MenuGroup>
             <MenuItem
               className="ins-c-menu__show--more"
@@ -1106,6 +2130,69 @@ exports[`Group - component render show more should render correctly with items a
       >
         <MenuContent>
           <MenuList>
+            <MenuGroup>
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item12",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item12",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item22",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item22",
+                                },
+                              ],
+                              "id": "secondLevel2",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel2",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel2",
+                          "key": "firstLevel2",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel2",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
             <MenuGroup
               label="First value"
             >
@@ -1209,6 +2296,71 @@ exports[`Group - component render show more should render correctly with items a
               >
                 Second value
               </MenuItem>
+            </MenuGroup>
+            <MenuGroup
+              label="TreeView"
+            >
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item1",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item1",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item2",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item2",
+                                },
+                              ],
+                              "id": "secondLevel",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel",
+                            },
+                          ],
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel",
+                          "key": "firstLevel",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
             </MenuGroup>
             <MenuItem
               className="ins-c-menu__show--more"

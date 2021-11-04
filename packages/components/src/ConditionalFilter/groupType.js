@@ -1,4 +1,5 @@
 const groupType = {
+    treeView: 'treeView',
     checkbox: 'checkbox',
     radio: 'radio',
     button: 'button',
