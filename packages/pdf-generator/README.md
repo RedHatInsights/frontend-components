@@ -270,7 +270,7 @@ import { Section } from '@redhat-cloud-services/frontend-components-pdf-generato
 #### 5) `Description List`
 All the elements (dl, dt, dd) can be styled individually
 ```JSX
-import { Section } from '@redhat-cloud-services/frontend-components-pdf-generator';
+import { Section, Dl, Dt, Dd } from '@redhat-cloud-services/frontend-components-pdf-generator';
 
 <Dl>
     <Dt>Mercury</Dt>
