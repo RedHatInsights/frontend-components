@@ -139,5 +139,20 @@ export default (style = {}) => StyleSheet.create({
         paddingLeft: c_table_m_compact_cell_PaddingLeft.value,
         paddingBottom: c_table_m_compact_cell_PaddingBottom.value,
         paddingTop: c_table_m_compact_cell_PaddingTop.value
+    },
+    dl: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexDirection: 'row'
+    },
+    dt: {
+        flexGrow: 1,
+        flexShrink: 1,
+        width: '30%'
+    },
+    dd: {
+        flexGrow: 1,
+        flexShrink: 1,
+        width: '70%'
     }
 });
