@@ -2,6 +2,7 @@
 const path = require('path');
 const proxy = require('@redhat-cloud-services/frontend-components-config-utilities/proxy');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
 
 module.exports = ({
     port,
@@ -31,7 +32,8 @@ module.exports = ({
     useCloud,
     target,
     registry,
-    client = {}
+    client = {},
+    bundlePfModules = false
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     if (betaEnv) {
@@ -143,9 +145,7 @@ module.exports = ({
         resolve: {
             extensions: [ '.ts', '.tsx', '.mjs', '.js', '.scss' ],
             alias: {
-                customReact: 'react',
-                PFReactCore: '@patternfly/react-core',
-                PFReactTable: '@patternfly/react-table'
+                ...(bundlePfModules ? {} : searchIgnoredStyles(rootFolder))
             },
             fallback: {
                 path: require.resolve('path-browserify'),
