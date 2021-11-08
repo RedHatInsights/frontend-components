@@ -21,7 +21,7 @@
         - [Writing services](#Writing-services)
         - [Customizing default services](#Customizing-default-services)
   - [fec node scripts](#fec-node-scripts)
-
+  - [include PF css modules in your bundle](#include-PF-css-modules-in-your-bundle)
 
 ## Webpack 5
 
@@ -406,4 +406,21 @@ index 73eb14c..31f6554 100644
 BETA=true npm run start:federated
 # in compliance frontend
 BETA=true npm run start:proxy
+```
+
+# include PF css modules in your bundle
+
+From version >= 4.5.0 the common config has been setup in a way, that PF styles will no longer be included in webpack build output.
+This decision has been made to remove multiple versions of PF styling from the platform and performance improvement. Patternfly styles are now hoste by chrome.
+If for some reason(bugs) you want to include PF CSS in your bundle, please use the following config:
+
+```js
+const config = require('@redhat-cloud-services/frontend-components-config');
+
+const { config: webpackConfig, plugins } = config({
+  rootFolder: resolve(__dirname, '../'),
+  bundlePfModules: true,
+  ...
+});
+
 ```
