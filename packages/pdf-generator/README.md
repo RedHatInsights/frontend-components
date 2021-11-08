@@ -103,7 +103,6 @@ class DemoApp extends Component {
                                     <Dd>Earth (1 AU) is the largest and densest of the inner planets, the only one known to have current geological activity.</Dd>
                                 </Dl>
                             </Column>
-                            <Column/>
                         </Section>
                         <Section title="Some title" withColumn={false}>
                             <Panel title="Some title" description="Nullam mauris massa, ullamcorper vitae magna non, laoreet facilisis orci. Maecenas fringilla neque velit, maximus lobortis ante mattis quis. Vestibulum interdum erat et dui lobortis, nec scelerisque leo ultricies. Maecenas vulputate urna in feugiat ornare. Donec nec bibendum metus">
