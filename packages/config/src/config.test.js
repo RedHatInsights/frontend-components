@@ -4,7 +4,9 @@
     appEntry,
     rootFolder,
     https*/
-import configBuilder from './config';
+import config from './config';
+
+const configBuilder = (c) => config({ rootFolder: '', ...c });
 
 describe('should create dummy config with no options', () => {
     const {
@@ -13,7 +15,7 @@ describe('should create dummy config with no options', () => {
         entry,
         output,
         devServer
-    } = configBuilder();
+    } = config({ rootFolder: '' });
 
     const { mode: prodMode } = configBuilder({ mode: 'production' });
     test('mode', () => {

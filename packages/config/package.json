@@ -20,7 +20,7 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/config#readme",
     "dependencies": {
-        "@redhat-cloud-services/frontend-components-config-utilities": "^1.4.17",
+        "@redhat-cloud-services/frontend-components-config-utilities": "^1.5.2",
         "assert": "^2.0.0",
         "babel-loader": "^8.2.2",
         "browserify-zlib": "^0.2.0",
