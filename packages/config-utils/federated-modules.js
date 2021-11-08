@@ -14,11 +14,9 @@ const include = {
     '@redhat-cloud-services/frontend-components-notifications': {},
     axios: {},
     lodash: {},
-    redux: {},
     'redux-promise-middleware': {},
     react: { singleton: true },
     'react-dom': { singleton: true },
-    'react-redux': {},
     'react-router-dom': {}
 };
 
