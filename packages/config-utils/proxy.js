@@ -31,7 +31,8 @@ module.exports = ({
     useCloud = false,
     target = '',
     keycloakUri = '',
-    registry = []
+    registry = [],
+    isChrome = false
 }) => {
     const proxy = [];
     const majorEnv = env.split('-')[0];
@@ -179,6 +180,19 @@ module.exports = ({
                 return false;
             },
             target,
+            ...(isChrome && {
+                bypass: (req) => {
+                    /**
+                     * Bypass any HTML requests if using chrome
+                     * Serves as a historyApiFallback when refreshing on any other URL than '/'
+                     */
+                    if (!req.url.match(/\/api\//) && !req.url.match(/\./) && req.headers.accept.includes('text/html')) {
+                        return '/';
+                    }
+
+                    return null;
+                }
+            }),
             router: router(target, useCloud),
             ...(agent && {
                 agent,
@@ -211,32 +225,38 @@ module.exports = ({
         },
         onBeforeSetupMiddleware({ app, compiler, options }) {
             app.enable('strict routing'); // trailing slashes are mean
-            let chromePath = localChrome;
-            if (standaloneConfig) {
-                if (standaloneConfig.chrome) {
-                    chromePath = resolvePath(reposDir, standaloneConfig.chrome.path);
-                    keycloakUri = standaloneConfig.chrome.keycloakUri;
-                }
-            } else if (!localChrome && useProxy) {
-                if (typeof defaultServices.chrome === 'function') {
-                    defaultServices.chrome = defaultServices.chrome({});
+            /**
+             * Allow serving chrome assets
+             * This will allow running chrome as a host application
+             */
+            if (!isChrome) {
+                let chromePath = localChrome;
+                if (standaloneConfig) {
+                    if (standaloneConfig.chrome) {
+                        chromePath = resolvePath(reposDir, standaloneConfig.chrome.path);
+                        keycloakUri = standaloneConfig.chrome.keycloakUri;
+                    }
+                } else if (!localChrome && useProxy) {
+                    if (typeof defaultServices.chrome === 'function') {
+                        defaultServices.chrome = defaultServices.chrome({});
+                    }
+
+                    chromePath = checkoutRepo({
+                        repo: `${defaultServices.chrome.path}#${env}`,
+                        reposDir,
+                        overwrite: true
+                    });
                 }
 
-                chromePath = checkoutRepo({
-                    repo: `${defaultServices.chrome.path}#${env}`,
-                    reposDir,
-                    overwrite: true
-                });
-            }
-
-            if (chromePath) {
-                registerChrome({
-                    app,
-                    chromePath,
-                    keycloakUri,
-                    https: Boolean(options.https),
-                    proxyVerbose
-                });
+                if (chromePath) {
+                    registerChrome({
+                        app,
+                        chromePath,
+                        keycloakUri,
+                        https: Boolean(options.https),
+                        proxyVerbose
+                    });
+                }
             }
 
             registry.forEach(cb => cb({
