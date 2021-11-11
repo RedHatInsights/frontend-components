@@ -169,6 +169,25 @@ describe('Group - component', () => {
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
+        it('should render correctly with selectable group', () => {
+            const { groups: [ first, ...groups ] } = config;
+            const [ firstItem, ...items ] = first.items;
+            const wrapper = shallow(<Group {...config} groups={[
+                {
+                    ...first,
+                    items: [
+                        {
+                            ...firstItem,
+                            isChecked: true
+                        },
+                        ...items
+                    ]
+                },
+                ...groups
+            ]} />);
+            expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
         it('should render correctly with items and selected value', () => {
             const currectConfig = { ...config };
             currectConfig.groups[1].items[1].isChecked = true;
