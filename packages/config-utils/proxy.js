@@ -51,12 +51,16 @@ module.exports = ({
     }
 
     let agent;
+
+    if (env.startsWith('prod') || env.startsWith('stage')) {
+        // PROD and stage are deployed with Akamai which requires a corporate proxy
+        agent = new HttpsProxyAgent(proxyURL);
+    }
+
     if (env.startsWith('stage')) {
         // stage-stable / stage-beta branches don't exist in build repos
         // Currently stage pulls from QA
         env = env.replace('stage', 'qa');
-        // QA and stage are deployed with Akamai which requires a corporate proxy
-        agent = new HttpsProxyAgent(proxyURL);
     }
 
     if (!Array.isArray(appUrl)) {
