@@ -1300,9 +1300,11 @@ exports[`SystemIssues DOM should render without any data 1`] = `
             className="pf-l-stack__item"
           >
             <div
-              className="ins-c-skeleton ins-c-skeleton__md"
+              className="pf-c-skeleton ins-c-skeleton ins-c-skeleton__md"
             >
-               
+              <span
+                className="pf-u-screen-reader"
+              />
             </div>
           </div>
         </div>
@@ -1320,9 +1322,11 @@ exports[`SystemIssues DOM should render without any data 1`] = `
             className="pf-l-stack__item"
           >
             <div
-              className="ins-c-skeleton ins-c-skeleton__md"
+              className="pf-c-skeleton ins-c-skeleton ins-c-skeleton__md"
             >
-               
+              <span
+                className="pf-u-screen-reader"
+              />
             </div>
           </div>
         </div>
@@ -1333,15 +1337,19 @@ exports[`SystemIssues DOM should render without any data 1`] = `
     className="pf-l-stack__item"
   >
     <div
-      className="ins-c-skeleton ins-c-skeleton__md"
+      className="pf-c-skeleton ins-c-skeleton ins-c-skeleton__md"
     >
-       
+      <span
+        className="pf-u-screen-reader"
+      />
     </div>
   </div>
   <div
-    className="ins-c-skeleton ins-c-skeleton__md"
+    className="pf-c-skeleton ins-c-skeleton ins-c-skeleton__md"
   >
-     
+    <span
+      className="pf-u-screen-reader"
+    />
   </div>
 </div>
 `;
