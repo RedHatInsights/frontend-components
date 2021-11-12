@@ -15,7 +15,11 @@ function federate(argv, cwd) {
 
     try {
         fs.statSync(configPath);
-        const config = require(configPath);
+        let config = require(configPath);
+        if (typeof config === 'function') {
+            config = config(process.env);
+        }
+
         const outputPath = config.output.path;
 
         concurrently([
