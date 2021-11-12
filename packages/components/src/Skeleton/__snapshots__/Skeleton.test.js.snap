@@ -1,49 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Skeleton component should render correctly - lg 1`] = `
-<div
+<Skeleton
   className="ins-c-skeleton ins-c-skeleton__lg"
->
-   
-</div>
+/>
 `;
 
 exports[`Skeleton component should render correctly - md 1`] = `
-<div
+<Skeleton
   className="ins-c-skeleton ins-c-skeleton__md"
->
-   
-</div>
+/>
 `;
 
 exports[`Skeleton component should render correctly - sm 1`] = `
-<div
+<Skeleton
   className="ins-c-skeleton ins-c-skeleton__sm"
->
-   
-</div>
+/>
 `;
 
 exports[`Skeleton component should render correctly - xs 1`] = `
-<div
+<Skeleton
   className="ins-c-skeleton ins-c-skeleton__xs"
->
-   
-</div>
+/>
 `;
 
 exports[`Skeleton component should render correctly as dark 1`] = `
-<div
+<Skeleton
   className="ins-c-skeleton ins-c-skeleton__md ins-m-dark"
->
-   
-</div>
+/>
 `;
 
 exports[`Skeleton component should render correctly without size 1`] = `
-<div
+<Skeleton
   className="ins-c-skeleton ins-c-skeleton__md"
->
-   
-</div>
+/>
 `;

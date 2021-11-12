@@ -1,24 +1,20 @@
 import React from 'react';
 import propTypes from 'prop-types';
-
+import { Skeleton as PFSkeleton } from '@patternfly/react-core';
 import classNames from 'classnames';
+
 export const SkeletonSize = { xs: 'xs', sm: 'sm', md: 'md', lg: 'lg' };
 
 import './skeleton.scss';
 
-const Skeleton = ({ size, isDark, className, ...props }) => {
-
-    const skeletonClasses = classNames(
+const Skeleton = ({ size, isDark, className, ...props }) => (
+    <PFSkeleton className={ classNames(
         'ins-c-skeleton',
         `ins-c-skeleton__${size}`,
         { [`ins-m-dark`]: isDark },
         className
-    );
-
-    return (
-        <div className={ skeletonClasses } { ...props }>&nbsp;</div>
-    );
-};
+    ) } { ...props } />
+);
 
 export default Skeleton;
 
