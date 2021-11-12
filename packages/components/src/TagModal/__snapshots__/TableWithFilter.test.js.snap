@@ -20,6 +20,7 @@ exports[`TableWithFilter should render loading and pagination 1`] = `
       ]
     }
     hasRadio={false}
+    isDark={false}
     isSelectable={false}
     paddingColumnSize={0}
     rowSize={10}
@@ -517,6 +518,7 @@ exports[`TableWithFilter should render without data 1`] = `
   <SkeletonTable
     canSelectAll={false}
     hasRadio={false}
+    isDark={false}
     isSelectable={false}
     paddingColumnSize={0}
     rowSize={10}

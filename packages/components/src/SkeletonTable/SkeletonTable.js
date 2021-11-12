@@ -1,14 +1,17 @@
 import React from 'react';
 import { RowSelectVariant, Table, TableHeader, TableBody } from '@patternfly/react-table';
 import { Skeleton, SkeletonSize } from '../Skeleton';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
+
+import './SkeletonTable.scss';
 
 class SkeletonTable extends React.Component {
     createColumns = () => {
-        const { colSize } = this.props;
+        const { colSize, isDark } = this.props;
         return [
             ...Array(colSize)
-        ].map(() => ({ title: <Skeleton size={ SkeletonSize.sm } /> }));
+        ].map(() => ({ title: <Skeleton isDark={isDark} size={ SkeletonSize.sm } /> }));
     };
 
     getColumns = () => {
@@ -17,10 +20,10 @@ class SkeletonTable extends React.Component {
     };
 
     createRows = () => {
-        const { colSize, rowSize, columns, paddingColumnSize } = this.props;
+        const { colSize, rowSize, columns, paddingColumnSize, isDark } = this.props;
         const numberOfCols = columns ? columns.length : colSize;
         return this.newArray(rowSize).map(() => ({ disableSelection: true, cells: this.newArray(paddingColumnSize).map(() => '').concat(
-            this.newArray(numberOfCols).map(() => ({ title: <Skeleton size={ SkeletonSize.md } /> }))
+            this.newArray(numberOfCols).map(() => ({ title: <Skeleton isDark={isDark} size={ SkeletonSize.md } /> }))
         ) }));
     };
 
@@ -33,9 +36,13 @@ class SkeletonTable extends React.Component {
     newArray = (size) => [ ...Array(size) ];
 
     render() {
-        const { canSelectAll, isSelectable, sortBy, variant } = this.props;
+        const { canSelectAll, isSelectable, sortBy, variant, isDark } = this.props;
         return (
-            <Table cells={ this.getColumns() }
+            <Table
+                className={classNames({
+                    'ins-c-skeleton-table__dark': isDark
+                })}
+                cells={ this.getColumns() }
                 rows={ this.createRows() }
                 sortBy={ sortBy }
                 aria-label="Loading"
@@ -62,7 +69,8 @@ SkeletonTable.propTypes = {
     isSelectable: PropTypes.bool,
     canSelectAll: PropTypes.bool,
     hasRadio: PropTypes.bool,
-    variant: PropTypes.string
+    variant: PropTypes.string,
+    isDark: PropTypes.bool
 };
 
 SkeletonTable.defaultProps = {
@@ -71,7 +79,8 @@ SkeletonTable.defaultProps = {
     canSelectAll: false,
     isSelectable: false,
     hasRadio: false,
-    variant: null
+    variant: null,
+    isDark: false
 };
 
 export default SkeletonTable;
