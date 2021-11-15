@@ -264,4 +264,24 @@ notificationsMiddleware({
 
 If you happen to have an error response that matches more paths, the first match will be chosen (order is equal to the order of items in array).
 
+3. More notification object customization.
+You can pass a function as a value to `notifications`. The function will receive dispatched action's payload and it's expected to return a notification object.
 
+```javascript
+// some async action
+export const asyncAction = data => ({
+  type: 'FOO',
+  payload: asyncHandler(data) // this function must return promise
+  meta: {
+    notifications: {
+      rejected: (payload) => ({ // transform payload to a notification object
+          variant: 'danger',
+          title: 'Custom title',
+          dismissDelay: 8000,
+          dismissable: false,
+          description: payload.error
+      }),
+    }
+  }
+})
+```

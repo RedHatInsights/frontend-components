@@ -222,6 +222,42 @@ describe('Notifications middleware', () => {
         });
     });
 
+    it('should dispatch error notification using a function', () => {
+        const expectedActions = [
+            expect.objectContaining({
+                type: 'FOO_PENDING'
+            }),
+            expect.objectContaining({
+                type: ADD_NOTIFICATION,
+                payload: expect.objectContaining({
+                    variant: 'danger',
+                    title: 'error',
+                    description: 'description'
+                })
+            }),
+            expect.objectContaining({
+                type: 'FOO_REJECTED',
+                payload: { title: 'error' }
+            })
+        ];
+
+        const action = {
+            ...requestMock(true, { title: 'error' }),
+            meta: {
+                notifications: {
+                    rejected: (payload) => ({
+                        variant: 'danger',
+                        title: payload.title,
+                        description: 'description'
+                    })
+                }
+            }
+        };
+        return initialProps.store.dispatch(action).catch(() => {
+            expect(initialProps.store.getActions()).toEqual(expectedActions);
+        });
+    });
+
     it('should dispatch error notification automatically', () => {
         const expectedActions = [
             expect.objectContaining({

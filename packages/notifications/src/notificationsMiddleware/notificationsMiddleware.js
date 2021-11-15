@@ -64,10 +64,22 @@ export const createNotificationsMiddleware = (options = {}) => {
         if (meta && meta.notifications) {
             const { notifications } = meta;
             if (matchPending(type) && notifications.pending) {
+                if (typeof notifications.pending === 'function') {
+                    notifications.pending = notifications.pending(action.payload);
+                }
+
                 dispatch(addNotification({ ...defaultNotificationOptions, ...notifications.pending }));
             } else if (matchFulfilled(type) && notifications.fulfilled) {
+                if (typeof notifications.fulfilled === 'function') {
+                    notifications.fulfilled = notifications.fulfilled(action.payload);
+                }
+
                 dispatch(addNotification({ ...defaultNotificationOptions, ...notifications.fulfilled }));
             } else if (matchRejected(type) && notifications.rejected) {
+                if (typeof notifications.rejected === 'function') {
+                    notifications.rejected = notifications.rejected(action.payload);
+                }
+
                 dispatch(addNotification({
                     ...defaultNotificationOptions,
                     ...notifications.rejected,
