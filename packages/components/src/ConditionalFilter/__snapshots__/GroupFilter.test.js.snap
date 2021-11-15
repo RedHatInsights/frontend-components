@@ -43,6 +43,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -83,6 +84,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
                               "value": "secondLevel2",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel2",
@@ -105,11 +107,13 @@ exports[`Group - component render should render correctly placeholder 1`] = `
               label="First value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 First value
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 Second value
@@ -119,11 +123,12 @@ exports[`Group - component render should render correctly placeholder 1`] = `
               label="Second value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -137,11 +142,12 @@ exports[`Group - component render should render correctly placeholder 1`] = `
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="some-value"
                   isChecked={false}
                   isDisabled={false}
@@ -159,10 +165,11 @@ exports[`Group - component render should render correctly placeholder 1`] = `
               label="Third value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -175,10 +182,11 @@ exports[`Group - component render should render correctly placeholder 1`] = `
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="1"
                   isChecked={false}
                   isDisabled={false}
@@ -191,16 +199,22 @@ exports[`Group - component render should render correctly placeholder 1`] = `
                 />
               </MenuItem>
             </MenuGroup>
-            <MenuGroup
-              label="Groupselectable value"
-            >
+            <MenuGroup>
               <MenuItem
+                className="pf-u-pl-xs"
                 itemId={0}
+              >
+                Groupselectable value
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
               >
                 First value
               </MenuItem>
               <MenuItem
-                itemId={1}
+                className="pf-u-pl-sm"
+                itemId={2}
               >
                 Second value
               </MenuItem>
@@ -212,6 +226,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -252,6 +267,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
                               "value": "secondLevel",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel",
@@ -305,6 +321,7 @@ exports[`Group - component render should render correctly with items - isDisable
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -345,6 +362,7 @@ exports[`Group - component render should render correctly with items - isDisable
                               "value": "secondLevel2",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel2",
@@ -367,11 +385,13 @@ exports[`Group - component render should render correctly with items - isDisable
               label="First value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 First value
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 Second value
@@ -381,11 +401,12 @@ exports[`Group - component render should render correctly with items - isDisable
               label="Second value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -399,11 +420,12 @@ exports[`Group - component render should render correctly with items - isDisable
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="some-value"
                   isChecked={false}
                   isDisabled={false}
@@ -421,10 +443,11 @@ exports[`Group - component render should render correctly with items - isDisable
               label="Third value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -437,10 +460,11 @@ exports[`Group - component render should render correctly with items - isDisable
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="1"
                   isChecked={false}
                   isDisabled={false}
@@ -453,16 +477,22 @@ exports[`Group - component render should render correctly with items - isDisable
                 />
               </MenuItem>
             </MenuGroup>
-            <MenuGroup
-              label="Groupselectable value"
-            >
+            <MenuGroup>
               <MenuItem
+                className="pf-u-pl-xs"
                 itemId={0}
+              >
+                Groupselectable value
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
               >
                 First value
               </MenuItem>
               <MenuItem
-                itemId={1}
+                className="pf-u-pl-sm"
+                itemId={2}
               >
                 Second value
               </MenuItem>
@@ -474,6 +504,7 @@ exports[`Group - component render should render correctly with items - isDisable
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -514,6 +545,7 @@ exports[`Group - component render should render correctly with items - isDisable
                               "value": "secondLevel",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel",
@@ -565,6 +597,7 @@ exports[`Group - component render should render correctly with items 1`] = `
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -605,6 +638,7 @@ exports[`Group - component render should render correctly with items 1`] = `
                               "value": "secondLevel2",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel2",
@@ -627,11 +661,13 @@ exports[`Group - component render should render correctly with items 1`] = `
               label="First value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 First value
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 Second value
@@ -641,11 +677,12 @@ exports[`Group - component render should render correctly with items 1`] = `
               label="Second value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -659,11 +696,12 @@ exports[`Group - component render should render correctly with items 1`] = `
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="some-value"
                   isChecked={false}
                   isDisabled={false}
@@ -681,10 +719,11 @@ exports[`Group - component render should render correctly with items 1`] = `
               label="Third value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -697,10 +736,11 @@ exports[`Group - component render should render correctly with items 1`] = `
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="1"
                   isChecked={false}
                   isDisabled={false}
@@ -713,16 +753,22 @@ exports[`Group - component render should render correctly with items 1`] = `
                 />
               </MenuItem>
             </MenuGroup>
-            <MenuGroup
-              label="Groupselectable value"
-            >
+            <MenuGroup>
               <MenuItem
+                className="pf-u-pl-xs"
                 itemId={0}
+              >
+                Groupselectable value
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
               >
                 First value
               </MenuItem>
               <MenuItem
-                itemId={1}
+                className="pf-u-pl-sm"
+                itemId={2}
               >
                 Second value
               </MenuItem>
@@ -734,6 +780,7 @@ exports[`Group - component render should render correctly with items 1`] = `
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -774,6 +821,7 @@ exports[`Group - component render should render correctly with items 1`] = `
                               "value": "secondLevel",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel",
@@ -825,6 +873,7 @@ exports[`Group - component render should render correctly with items and default
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -865,6 +914,7 @@ exports[`Group - component render should render correctly with items and default
                               "value": "secondLevel2",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel2",
@@ -887,11 +937,13 @@ exports[`Group - component render should render correctly with items and default
               label="First value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 First value
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 Second value
@@ -901,11 +953,12 @@ exports[`Group - component render should render correctly with items and default
               label="Second value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -919,11 +972,12 @@ exports[`Group - component render should render correctly with items and default
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="some-value"
                   isChecked={false}
                   isDisabled={false}
@@ -941,10 +995,11 @@ exports[`Group - component render should render correctly with items and default
               label="Third value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -957,10 +1012,11 @@ exports[`Group - component render should render correctly with items and default
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="1"
                   isChecked={false}
                   isDisabled={false}
@@ -973,16 +1029,22 @@ exports[`Group - component render should render correctly with items and default
                 />
               </MenuItem>
             </MenuGroup>
-            <MenuGroup
-              label="Groupselectable value"
-            >
+            <MenuGroup>
               <MenuItem
+                className="pf-u-pl-xs"
                 itemId={0}
+              >
+                Groupselectable value
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
               >
                 First value
               </MenuItem>
               <MenuItem
-                itemId={1}
+                className="pf-u-pl-sm"
+                itemId={2}
               >
                 Second value
               </MenuItem>
@@ -994,6 +1056,7 @@ exports[`Group - component render should render correctly with items and default
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -1034,6 +1097,7 @@ exports[`Group - component render should render correctly with items and default
                               "value": "secondLevel",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel",
@@ -1085,6 +1149,7 @@ exports[`Group - component render should render correctly with items and selecte
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -1125,6 +1190,7 @@ exports[`Group - component render should render correctly with items and selecte
                               "value": "secondLevel2",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel2",
@@ -1147,11 +1213,13 @@ exports[`Group - component render should render correctly with items and selecte
               label="First value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 First value
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 Second value
@@ -1161,11 +1229,12 @@ exports[`Group - component render should render correctly with items and selecte
               label="Second value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -1179,11 +1248,12 @@ exports[`Group - component render should render correctly with items and selecte
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="some-value"
                   isChecked={true}
                   isDisabled={false}
@@ -1201,10 +1271,11 @@ exports[`Group - component render should render correctly with items and selecte
               label="Third value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -1217,10 +1288,11 @@ exports[`Group - component render should render correctly with items and selecte
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="1"
                   isChecked={false}
                   isDisabled={false}
@@ -1233,16 +1305,22 @@ exports[`Group - component render should render correctly with items and selecte
                 />
               </MenuItem>
             </MenuGroup>
-            <MenuGroup
-              label="Groupselectable value"
-            >
+            <MenuGroup>
               <MenuItem
+                className="pf-u-pl-xs"
                 itemId={0}
+              >
+                Groupselectable value
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
               >
                 First value
               </MenuItem>
               <MenuItem
-                itemId={1}
+                className="pf-u-pl-sm"
+                itemId={2}
               >
                 Second value
               </MenuItem>
@@ -1254,6 +1332,7 @@ exports[`Group - component render should render correctly with items and selecte
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -1294,6 +1373,283 @@ exports[`Group - component render should render correctly with items and selecte
                               "value": "secondLevel",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel",
+                          "key": "firstLevel",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
+            <span
+              hidden={true}
+              value=""
+            />
+          </MenuList>
+        </MenuContent>
+      </Menu>
+    }
+    trigger={
+      <MenuToggle
+        isExpanded={false}
+        onClick={[Function]}
+      />
+    }
+  />
+</div>
+`;
+
+exports[`Group - component render should render correctly with selectable group 1`] = `
+<div>
+  <Popper
+    isVisible={false}
+    popper={
+      <Menu
+        className="ins-c-menu__scrollable"
+      >
+        <MenuContent>
+          <MenuList>
+            <MenuGroup>
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  className="pf-u-pl-sm"
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item12",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item12",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item22",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item22",
+                                },
+                              ],
+                              "id": "secondLevel2",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel2",
+                            },
+                          ],
+                          "className": "pf-u-pl-sm",
+                          "defaultExpanded": true,
+                          "hasCheck": false,
+                          "id": "firstLevel2",
+                          "key": "firstLevel2",
+                          "label": "First level",
+                          "name": "First level",
+                          "onClick": [Function],
+                          "type": "treeView",
+                          "value": "firstLevel2",
+                        },
+                      ]
+                    }
+                    hasChecks={true}
+                    onCheck={[Function]}
+                  />
+                </MenuItem>
+              </div>
+            </MenuGroup>
+            <MenuGroup
+              label="First value"
+            >
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={0}
+              >
+                First value
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
+              >
+                Second value
+              </MenuItem>
+            </MenuGroup>
+            <MenuGroup
+              label="Second value"
+            >
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={0}
+                onClick={[Function]}
+              >
+                <Checkbox
+                  className="pf-u-pl-sm"
+                  id="0"
+                  isChecked={false}
+                  isDisabled={false}
+                  isValid={true}
+                  label="First checkbox"
+                  name="0"
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  ouiaSafe={true}
+                  value="0"
+                />
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
+                onClick={[Function]}
+              >
+                <Checkbox
+                  className="pf-u-pl-sm"
+                  id="some-value"
+                  isChecked={false}
+                  isDisabled={false}
+                  isValid={true}
+                  label="Second checkbox"
+                  name="some-value"
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  ouiaSafe={true}
+                  value="some-value"
+                />
+              </MenuItem>
+            </MenuGroup>
+            <MenuGroup
+              label="Third value"
+            >
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={0}
+              >
+                <Radio
+                  className="pf-u-pl-sm"
+                  id="0"
+                  isChecked={false}
+                  isDisabled={false}
+                  isValid={true}
+                  label="First radio"
+                  name="0"
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  value="0"
+                />
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
+              >
+                <Radio
+                  className="pf-u-pl-sm"
+                  id="1"
+                  isChecked={false}
+                  isDisabled={false}
+                  isValid={true}
+                  label="Second radio"
+                  name="1"
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  value="1"
+                />
+              </MenuItem>
+            </MenuGroup>
+            <MenuGroup>
+              <MenuItem
+                className="pf-u-pl-xs"
+                itemId={0}
+              >
+                Groupselectable value
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
+              >
+                First value
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={2}
+              >
+                Second value
+              </MenuItem>
+            </MenuGroup>
+            <MenuGroup
+              label="TreeView"
+            >
+              <div
+                className="ins-c-tree-view"
+              >
+                <MenuItem
+                  className="pf-u-pl-sm"
+                  itemId={0}
+                >
+                  <TreeView
+                    data={
+                      Array [
+                        Object {
+                          "checkProps": Object {
+                            "checked": false,
+                          },
+                          "children": Array [
+                            Object {
+                              "checkProps": Object {
+                                "checked": false,
+                              },
+                              "children": Array [
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item1",
+                                  "label": "Item 1",
+                                  "name": "Item 1",
+                                  "value": "item1",
+                                },
+                                Object {
+                                  "checkProps": Object {
+                                    "checked": false,
+                                  },
+                                  "id": "item2",
+                                  "label": "Item 2",
+                                  "name": "Item 2",
+                                  "value": "item2",
+                                },
+                              ],
+                              "id": "secondLevel",
+                              "label": "Second level",
+                              "name": "Second level",
+                              "value": "secondLevel",
+                            },
+                          ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel",
@@ -1345,6 +1701,7 @@ exports[`Group - component render show more should render correctly with items a
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -1385,6 +1742,7 @@ exports[`Group - component render show more should render correctly with items a
                               "value": "secondLevel2",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel2",
@@ -1407,11 +1765,13 @@ exports[`Group - component render show more should render correctly with items a
               label="First value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 First value
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 Second value
@@ -1421,11 +1781,12 @@ exports[`Group - component render show more should render correctly with items a
               label="Second value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -1439,11 +1800,12 @@ exports[`Group - component render show more should render correctly with items a
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="some-value"
                   isChecked={false}
                   isDisabled={false}
@@ -1461,10 +1823,11 @@ exports[`Group - component render show more should render correctly with items a
               label="Third value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -1477,10 +1840,11 @@ exports[`Group - component render show more should render correctly with items a
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="1"
                   isChecked={false}
                   isDisabled={false}
@@ -1493,16 +1857,22 @@ exports[`Group - component render show more should render correctly with items a
                 />
               </MenuItem>
             </MenuGroup>
-            <MenuGroup
-              label="Groupselectable value"
-            >
+            <MenuGroup>
               <MenuItem
+                className="pf-u-pl-xs"
                 itemId={0}
+              >
+                Groupselectable value
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
               >
                 First value
               </MenuItem>
               <MenuItem
-                itemId={1}
+                className="pf-u-pl-sm"
+                itemId={2}
               >
                 Second value
               </MenuItem>
@@ -1514,6 +1884,7 @@ exports[`Group - component render show more should render correctly with items a
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -1554,6 +1925,7 @@ exports[`Group - component render show more should render correctly with items a
                               "value": "secondLevel",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel",
@@ -1611,6 +1983,7 @@ exports[`Group - component render show more should render correctly with items a
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -1651,6 +2024,7 @@ exports[`Group - component render show more should render correctly with items a
                               "value": "secondLevel2",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel2",
@@ -1673,11 +2047,13 @@ exports[`Group - component render show more should render correctly with items a
               label="First value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 First value
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 Second value
@@ -1687,11 +2063,12 @@ exports[`Group - component render show more should render correctly with items a
               label="Second value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -1705,11 +2082,12 @@ exports[`Group - component render show more should render correctly with items a
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="some-value"
                   isChecked={false}
                   isDisabled={false}
@@ -1727,10 +2105,11 @@ exports[`Group - component render show more should render correctly with items a
               label="Third value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -1743,10 +2122,11 @@ exports[`Group - component render show more should render correctly with items a
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="1"
                   isChecked={false}
                   isDisabled={false}
@@ -1759,16 +2139,22 @@ exports[`Group - component render show more should render correctly with items a
                 />
               </MenuItem>
             </MenuGroup>
-            <MenuGroup
-              label="Groupselectable value"
-            >
+            <MenuGroup>
               <MenuItem
+                className="pf-u-pl-xs"
                 itemId={0}
+              >
+                Groupselectable value
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
               >
                 First value
               </MenuItem>
               <MenuItem
-                itemId={1}
+                className="pf-u-pl-sm"
+                itemId={2}
               >
                 Second value
               </MenuItem>
@@ -1780,6 +2166,7 @@ exports[`Group - component render show more should render correctly with items a
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -1820,6 +2207,7 @@ exports[`Group - component render show more should render correctly with items a
                               "value": "secondLevel",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel",
@@ -1874,6 +2262,7 @@ exports[`Group - component render show more should render correctly with items a
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -1914,6 +2303,7 @@ exports[`Group - component render show more should render correctly with items a
                               "value": "secondLevel2",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel2",
@@ -1936,11 +2326,13 @@ exports[`Group - component render show more should render correctly with items a
               label="First value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 First value
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 Second value
@@ -1950,11 +2342,12 @@ exports[`Group - component render show more should render correctly with items a
               label="Second value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -1968,11 +2361,12 @@ exports[`Group - component render show more should render correctly with items a
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="some-value"
                   isChecked={false}
                   isDisabled={false}
@@ -1990,10 +2384,11 @@ exports[`Group - component render show more should render correctly with items a
               label="Third value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -2006,10 +2401,11 @@ exports[`Group - component render show more should render correctly with items a
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="1"
                   isChecked={false}
                   isDisabled={false}
@@ -2022,16 +2418,22 @@ exports[`Group - component render show more should render correctly with items a
                 />
               </MenuItem>
             </MenuGroup>
-            <MenuGroup
-              label="Groupselectable value"
-            >
+            <MenuGroup>
               <MenuItem
+                className="pf-u-pl-xs"
                 itemId={0}
+              >
+                Groupselectable value
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
               >
                 First value
               </MenuItem>
               <MenuItem
-                itemId={1}
+                className="pf-u-pl-sm"
+                itemId={2}
               >
                 Second value
               </MenuItem>
@@ -2043,6 +2445,7 @@ exports[`Group - component render show more should render correctly with items a
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -2083,6 +2486,7 @@ exports[`Group - component render show more should render correctly with items a
                               "value": "secondLevel",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel",
@@ -2135,6 +2539,7 @@ exports[`Group - component render show more should render correctly with items a
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -2175,6 +2580,7 @@ exports[`Group - component render show more should render correctly with items a
                               "value": "secondLevel2",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel2",
@@ -2197,11 +2603,13 @@ exports[`Group - component render show more should render correctly with items a
               label="First value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 First value
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 Second value
@@ -2211,11 +2619,12 @@ exports[`Group - component render show more should render correctly with items a
               label="Second value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -2229,11 +2638,12 @@ exports[`Group - component render show more should render correctly with items a
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
                 onClick={[Function]}
               >
                 <Checkbox
-                  className=""
+                  className="pf-u-pl-sm"
                   id="some-value"
                   isChecked={false}
                   isDisabled={false}
@@ -2251,10 +2661,11 @@ exports[`Group - component render show more should render correctly with items a
               label="Third value"
             >
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={0}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="0"
                   isChecked={false}
                   isDisabled={false}
@@ -2267,10 +2678,11 @@ exports[`Group - component render show more should render correctly with items a
                 />
               </MenuItem>
               <MenuItem
+                className="pf-u-pl-sm"
                 itemId={1}
               >
                 <Radio
-                  className=""
+                  className="pf-u-pl-sm"
                   id="1"
                   isChecked={false}
                   isDisabled={false}
@@ -2283,16 +2695,22 @@ exports[`Group - component render show more should render correctly with items a
                 />
               </MenuItem>
             </MenuGroup>
-            <MenuGroup
-              label="Groupselectable value"
-            >
+            <MenuGroup>
               <MenuItem
+                className="pf-u-pl-xs"
                 itemId={0}
+              >
+                Groupselectable value
+              </MenuItem>
+              <MenuItem
+                className="pf-u-pl-sm"
+                itemId={1}
               >
                 First value
               </MenuItem>
               <MenuItem
-                itemId={1}
+                className="pf-u-pl-sm"
+                itemId={2}
               >
                 Second value
               </MenuItem>
@@ -2304,6 +2722,7 @@ exports[`Group - component render show more should render correctly with items a
                 className="ins-c-tree-view"
               >
                 <MenuItem
+                  className="pf-u-pl-sm"
                   itemId={0}
                 >
                   <TreeView
@@ -2344,6 +2763,7 @@ exports[`Group - component render show more should render correctly with items a
                               "value": "secondLevel",
                             },
                           ],
+                          "className": "pf-u-pl-sm",
                           "defaultExpanded": true,
                           "hasCheck": false,
                           "id": "firstLevel",

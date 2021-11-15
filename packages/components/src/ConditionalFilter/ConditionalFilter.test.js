@@ -228,10 +228,11 @@ describe('ConditionalFilter', () => {
 
             expect(onChange).toHaveBeenCalledWith(
                 undefined,
-                { 7: { 2: true } },
+                { 7: { 1: true } },
                 {
-                    groupSelectable: true, id: undefined,
+                    id: undefined,
                     items: [
+                        { label: 'RHEL 7', value: '7', id: undefined, type: 'checkbox', className: 'pf-u-pl-xs' },
                         { label: 'RHEL 7.1', type: 'checkbox', value: '1' },
                         { label: 'RHEL 7.2', type: 'checkbox', value: '2' },
                         { label: 'RHEL 7.3', type: 'checkbox', value: '3' },
@@ -245,9 +246,9 @@ describe('ConditionalFilter', () => {
                     label: 'RHEL 7',
                     type: 'checkbox',
                     value: '7' },
-                { label: 'RHEL 7.2', type: 'checkbox', value: '2' },
+                { label: 'RHEL 7.1', type: 'checkbox', value: '1' },
                 '7',
-                '2'
+                '1'
             );
         });
     });

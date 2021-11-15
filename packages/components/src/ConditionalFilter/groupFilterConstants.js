@@ -28,6 +28,7 @@ export const isChecked = (groupValue, itemValue, id, tagValue, stateSelected, pr
 export const getMenuItems = (items, onChange, calculateSelected, groupType, groupValue = '', groupLabel, groupId, group) => {
     const result = items?.map((item, index) => ({
         ...item,
+        className: `${item?.className || 'pf-u-pl-sm'}`,
         key: item.id || item.value || index,
         value: String(item.value || item.id || index),
         onClick: (event, treeViewItem, checked) => {
@@ -73,13 +74,24 @@ export const convertTreeItem = (item) => {
 };
 
 export const getGroupMenuItems = (groups, onChange, calculateSelected) => {
-    const result = groups.map(({ value, label, id, type, items, ...group }) => {
+    const result = groups.map(({ value, label, groupSelectable, id, type, items, ...group }) => {
         const converted = type === groupTypes.treeView ? items.map(item => convertTreeItem(item)) : items;
         return ({
             label,
             value,
             type,
-            items: getMenuItems(converted, onChange, calculateSelected, type, value, label, id, group)
+            groupSelectable,
+            items: getMenuItems([
+                ...groupSelectable ? [{
+                    value,
+                    label,
+                    id,
+                    type,
+                    className: 'pf-u-pl-xs',
+                    ...group
+                }] : [],
+                ...converted
+            ], onChange, calculateSelected, type, value, label, id, group)
         });
     });
     return result.filter(({ noFilter, items = [] }) => !noFilter || items.length > 0);

@@ -113,15 +113,15 @@ const Group = ({
                         label={item?.label}
                         isChecked={
                             item?.isChecked ||
-            isChecked(
-                groupKey,
-                item?.value  || key,
-                item?.id,
-                item?.tagValue,
-                stateSelected,
-                selected
-            ) ||
-            false
+                            isChecked(
+                                groupKey,
+                                item?.value  || key,
+                                item?.id,
+                                item?.tagValue,
+                                stateSelected,
+                                selected
+                            ) ||
+                            false
                         }
                         onChange={(value, event) => {
                             item?.onChange?.(value, event);
@@ -215,7 +215,7 @@ const Group = ({
                             )}
                             {groupMenuItems.map((group, groupKey) => (
                                 <MenuGroup
-                                    label={group.label}
+                                    label={group.groupSelectable ? undefined : group.label}
                                     key={`${group.label}-${groupKey}-group`}
                                 >
                                     {renderItems(group.items, group.type, group.value, group)}
@@ -262,6 +262,7 @@ Group.propTypes = {
     onFilter: PropTypes.func,
     groups: PropTypes.arrayOf(
         PropTypes.shape({
+            groupSelectable: PropTypes.bool,
             type: PropTypes.oneOf(Object.keys(groupType)),
             value: PropTypes.string,
             label: PropTypes.node,
