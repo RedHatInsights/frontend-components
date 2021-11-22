@@ -27,35 +27,7 @@ describe('should create dummy config with no options', () => {
     });
 
     test('optimization', () => {
-        expect(optimization).toEqual({
-            splitChunks: {
-                chunks: 'all',
-                maxInitialRequests: Infinity,
-                minSize: 0,
-                cacheGroups: {
-                    reactVendor: {
-                        test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-                        name: 'reactVendor',
-                        priority: 10
-                    },
-                    pfVendor: {
-                        test: /[\\/]node_modules[\\/](@patternfly)[\\/]/,
-                        name: 'pfVendor',
-                        priority: 10
-                    },
-                    rhcsVendor: {
-                        test: /[\\/]node_modules[\\/](@redhat-cloud-services)[\\/]/,
-                        name: 'rhcsVendor',
-                        priority: 10
-                    },
-                    vendor: {
-                        test: /[\\/]node_modules[\\/]/,
-                        name: 'vendor',
-                        priority: 9
-                    }
-                }
-            }
-        });
+        expect(optimization).toEqual(undefined);
     });
 
     test('entry', () => {
