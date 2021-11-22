@@ -126,7 +126,7 @@ This packages exposes these federated shared dependencies
 
 ## Extensions plugin
 
-In order to share some code into extension points or to add new extrnsion point we can use `ExtensionsPlugin`
+In order to share some code into extension points or to add new extension point we can use `ExtensionsPlugin`
 
 Simply import it in your webpack config and add it to your plugins
 
