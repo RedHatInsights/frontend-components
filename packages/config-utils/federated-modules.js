@@ -27,6 +27,8 @@ module.exports = ({
     debug,
     moduleName,
     useFileHash = true,
+    libType = 'var',
+    libName,
     exclude = []
 }) => {
     const { dependencies, insights } = require(resolve(root, './package.json')) || {};
@@ -64,7 +66,7 @@ module.exports = ({
     return new ModuleFederationPlugin({
         name: appName,
         filename: `${appName}${useFileHash ? '.[chunkhash]' : ''}.js`,
-        library: { type: 'var', name: appName },
+        library: { type: libType, name: libName || appName },
         exposes: {
             ...exposes || {
                 './RootApp': resolve(root, './src/AppEntry')
