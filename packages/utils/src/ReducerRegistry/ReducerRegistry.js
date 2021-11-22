@@ -24,7 +24,7 @@ export function dispatchActionsToStore(actions, store) {
  */
 export class ReducerRegistry {
     constructor(initState = {}, middlewares = [], composeEnhancersDefault = compose) {
-        const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || composeEnhancersDefault;
+        const composeEnhancers = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || composeEnhancersDefault;
         this.store = createStore(
             (state = initState) => state,
             initState,
