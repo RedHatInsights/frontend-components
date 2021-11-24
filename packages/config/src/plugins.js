@@ -36,6 +36,7 @@ module.exports = ({
         title: 'My App',
         filename: 'index.html',
         template: `${rootFolder || ''}/src/index.html`,
+        inject: false,
         ...htmlPlugin || {}
     }),
     new HtmlReplaceWebpackPlugin([
