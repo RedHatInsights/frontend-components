@@ -123,3 +123,71 @@ This packages exposes these federated shared dependencies
 * `@redhat-cloud-services/frontend-components` - version taken from your `package.json`
 * `@redhat-cloud-services/frontend-components-utilities` - version taken from your `package.json`
 * `@redhat-cloud-services/frontend-components-notifications` - version taken from your `package.json`
+
+## Extensions plugin
+
+In order to share some code into extension points or to add new extension point we can use `ExtensionsPlugin`
+
+Simply import it in your webpack config and add it to your plugins
+
+```JS
+const { resolve } = require('path');
+const config = require('@redhat-cloud-services/frontend-components-config');
+const ExtensionsPlugin = require('@redhat-cloud-services/frontend-components-config/extensions-plugin');
+
+const { config: webpackConfig, plugins } = config({
+  rootFolder: resolve(__dirname, '../'),
+  ...(process.env.BETA && { deployment: 'beta/apps' }),
+});
+
+plugins.push(
+  require('@redhat-cloud-services/frontend-components-config/federated-modules')({
+    root: resolve(__dirname, '../'),
+  }),
+  new ExtensionsPlugin({})
+);
+
+module.exports = {
+  ...webpackConfig,
+  plugins
+}
+```
+
+### Arguments
+
+There are three arguments `ExtensionsPlugin` constructor accepts:
+* `pluginConfig`
+* `fedModuleConfig`
+* `options`
+
+### `pluginConfig`
+
+This config contains information about extensions, plugin requirements, its name and description. Most of it (name, description and version) is calculated from your root `package.json`. But you can override these values:
+
+* `name` - plugin name (pulled from `package.json`)
+* `version` - version of the plugin
+* `displayName` - display name of the plugin
+* `description` - description of the plugin (pulled from `package.json`)
+* `dependencies` - object of dependencies which will be passed down to module federation (no need to list general react dependencies)
+* `disableStaticPlugins` - list of static plugins this plugin disables on load
+* `extensions` - list of extension objects.
+
+#### extension object
+
+Each extension object requires a `type` and `properties`. The type can be either custom extension or one of predefined:
+
+* `console.navigation/section` - a section in navigation (identifies secondary nav)
+  * `properties`
+    * `id` - id of the section
+    * `name` - name of the section, this will be shown in the UI
+* `console.page/route` - route passed to react-router
+  * `properties` - in theory any react-router path prop can be used here
+    * `path` - (string, or array) path on which the component will be rendered
+    * `component`
+      * `$codeRef` - federated module used to render on the route
+* `console.navigation/href` - navigation href, used to render leafs of navigation
+  * `properties`
+    * `id` - id of the href
+    * `section` - (optional) used to group nav items under section (omit for flat nav)
+    * `name` - name of the href, thiw will be shown in the UI
+    * `href` - used to mutate the URL
