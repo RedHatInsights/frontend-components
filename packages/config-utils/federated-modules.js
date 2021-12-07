@@ -65,7 +65,7 @@ module.exports = ({
 
     return new ModuleFederationPlugin({
         name: appName,
-        filename: `${appName}${useFileHash ? '.[chunkhash]' : ''}.js`,
+        filename: `${appName}${useFileHash ? `.${Date.now()}.[fullhash]` : ''}.js`,
         library: { type: libType, name: libName || appName },
         exposes: {
             ...exposes || {
