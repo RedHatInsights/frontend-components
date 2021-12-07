@@ -35,7 +35,7 @@ module.exports = ({
     client = {},
     bundlePfModules = false
 } = {}) => {
-    const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
+    const filenameMask = `js/[name]${useFileHash ? `.${Date.now()}.[fullhash]` : ''}.js`;
     if (betaEnv) {
         env = `${betaEnv}-beta`;
         console.warn('betaEnv is deprecated in favor of env');
