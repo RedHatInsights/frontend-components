@@ -92,7 +92,6 @@ describe('Notification component', () => {
         act(() => {
             wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } description={ undefined }/>);
         });
-        // @ts-ignore
         wrapper?.find('.pf-c-alert').simulate('mouseEnter');
         expect(timeoutSpy).toHaveBeenCalledTimes(1);
         timeoutSpy.mockRestore();

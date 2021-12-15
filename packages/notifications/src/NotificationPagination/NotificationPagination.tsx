@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
     Card,
     CardBody,
@@ -11,7 +10,14 @@ import {
     PaginationVariant
 } from '@patternfly/react-core';
 
-export const NotificationPagination = ({ page, onSetPage, onClearAll, count }) => (
+interface NotificationPaginationProps {
+    page?: number,
+    onSetPage?: (event: React.MouseEvent | React.KeyboardEvent | MouseEvent, page: number) => void,
+    onClearAll?: () => void,
+    count?: number
+}
+
+export const NotificationPagination: React.ComponentType<NotificationPaginationProps> = ({ page = 1, onSetPage, onClearAll, count = 0 }) => (
     <Card className="notification-item">
         <CardBody>
             <Level>
@@ -38,18 +44,5 @@ export const NotificationPagination = ({ page, onSetPage, onClearAll, count }) =
         </CardBody>
     </Card>
 );
-
-NotificationPagination.propTypes = {
-    count: PropTypes.number,
-    page: PropTypes.number,
-    onSetPage: PropTypes.func,
-    onClearAll: PropTypes.func
-};
-NotificationPagination.defaultProps = {
-    count: 0,
-    page: 1,
-    onSetPage: Function,
-    onClearAll: Function
-};
 
 export default NotificationPagination;

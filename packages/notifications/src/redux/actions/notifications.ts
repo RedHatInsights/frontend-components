@@ -6,7 +6,7 @@ export const addNotification = (notification: NotificationProps) => ({
     payload: notification
 });
 
-export const removeNotification = (index: number) => ({
+export const removeNotification = (index: string | number) => ({
     type: REMOVE_NOTIFICATION,
     payload: index
 });
