@@ -42,9 +42,6 @@ demo:
 inventory:
   - packages/inventory/**/*
 
-inventory/compliance:
-  - packages/inventory-compliance/**/*
-
 inventory/general-info:
   - packages/inventory-general-info/**/*
 
