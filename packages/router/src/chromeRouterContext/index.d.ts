@@ -6,5 +6,5 @@ interface ChromeRouterContext {
         prependTo: (to?: string | { pathname: string }) => string | { pathname: string }
     };
   }
-  
-  export default RendererContext;
+
+export default RendererContext;

@@ -1,6 +1,6 @@
 export * from 'react-router-dom';
 
-export * from './ChromeRouter'
+export * from './ChromeRouter';
 export { default as ChromeRouter } from './ChromeRouter';
 
 export * from './Route';

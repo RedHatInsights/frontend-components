@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { Dispatch, ActionCreator } from 'redux'
+import { Dispatch, ActionCreator } from 'redux';
 import Portal, { PortalNotificationConfig } from '../Portal';
 import { removeNotification, clearNotifications } from '../redux/actions/notifications';
 
