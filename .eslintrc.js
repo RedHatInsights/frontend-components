@@ -8,7 +8,7 @@ module.exports = {
     ],
     extends: path.resolve(__dirname, './config/.eslintrc.yml'),
     overrides: [{
-        files: [ '*.ts', '*.tsx' ],
+        files: [ 'src/**/*.ts', 'src/**/*.tsx' ],
         parser: '@typescript-eslint/parser',
         plugins: [ '@typescript-eslint' ],
         extends: [

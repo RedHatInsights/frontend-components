@@ -1,11 +1,12 @@
+import { NotificationProps } from '../../Notification';
 import { ADD_NOTIFICATION, REMOVE_NOTIFICATION, CLEAR_NOTIFICATIONS } from './action-types';
 
-export const addNotification = notification => ({
+export const addNotification = (notification: NotificationProps) => ({
     type: ADD_NOTIFICATION,
     payload: notification
 });
 
-export const removeNotification = index => ({
+export const removeNotification = (index: number) => ({
     type: REMOVE_NOTIFICATION,
     payload: index
 });
