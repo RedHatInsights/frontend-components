@@ -17,7 +17,7 @@ async function copyTypings(files, dest) {
     return Promise.all(cmds);
 }
 
-async function createPackage(file) {
+async function createPackage(file, forceTypes) {
     const fileName = file.split('/').pop();
     const esmSource = glob.sync(`${root}/esm/${fileName}/**/index.js`)[0];
     /**
@@ -36,7 +36,10 @@ async function createPackage(file) {
     };
     const typings = glob.sync(`${root}/src/${fileName}/*.d.ts`);
     let cmds = [];
-    if (typings.length > 0) {
+    if (forceTypes) {
+        content.typings = 'index.d.ts';
+    }
+    else if (typings.length > 0) {
         const hasIndex = glob.sync(`${root}/src/${fileName}/index.d.ts`).length > 0;
         if (hasIndex) {
             content.typings = 'index.d.ts';
@@ -50,14 +53,14 @@ async function createPackage(file) {
     return Promise.all(cmds);
 }
 
-async function generatePackages(files) {
-    const cmds = files.map(createPackage);
+async function generatePackages(files, forceTypes) {
+    const cmds = files.map(file => createPackage(file, forceTypes));
     return Promise.all(cmds);
 }
 
-async function run(files) {
+async function run(files, forceTypes) {
     try {
-        await generatePackages(files);
+        await generatePackages(files, forceTypes);
         if (indexTypings.length === 1) {
             copyTypings(indexTypings, root);
         }
@@ -67,4 +70,6 @@ async function run(files) {
     }
 }
 
-run(sourceFiles);
+const forceTypes = !!process.argv.includes('--forceTypes');
+
+run(sourceFiles, forceTypes);
