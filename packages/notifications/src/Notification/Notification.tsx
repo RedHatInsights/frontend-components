@@ -57,7 +57,7 @@ const DEFAULT_DELAY = 8000;
  * But can be also used as a standalone component.
  */
 const Notification: React.ComponentType<NotificationProps> = ({ description, dismissable, onDismiss, dismissDelay, title, sentryId, requestId, autoDismiss, id, ...rest }) => {
-    const dismissTimeout = useRef<NodeJS.Timeout>();
+    const dismissTimeout = useRef<any>();
 
     const handleDismiss = () => {
         onDismiss(id);
