@@ -3,7 +3,16 @@ import get from 'lodash/get';
 import has from 'lodash/has';
 import { addNotification } from '../redux/actions/notifications';
 
-const prepareErrorMessage = (payload, errorTitleKey, errorDescriptionKey) => {
+import { Middleware } from 'redux';
+import { PortalNotificationConfig } from '../Portal';
+import { AlertVariant } from '@patternfly/react-core';
+
+type PrepareErrorMessagePayload = string | {
+    sentryId?: string,
+    requestId? :string,
+}
+
+const prepareErrorMessage = (payload: PrepareErrorMessagePayload, errorTitleKey?: string[] | string, errorDescriptionKey?: string[] | string) => {
     if (typeof payload === 'string') {
         return {
             title: 'Error',
@@ -22,10 +31,10 @@ const prepareErrorMessage = (payload, errorTitleKey, errorDescriptionKey) => {
     }
 
     return {
-        title: get(payload, titleKey) || 'Error',
-        description: get(payload, descriptionKey),
-        sentryId: payload && payload.sentryId,
-        requestId: payload && payload.requestId
+        title: get(payload, titleKey as string) || 'Error',
+        description: get(payload, descriptionKey as string),
+        sentryId: payload?.sentryId,
+        requestId: payload?.requestId
     };
 };
 
@@ -34,10 +43,28 @@ const shouldDispatchDefaultError = ({
     hasCustomNotification,
     noErrorOverride,
     dispatchDefaultFailure
+}: {
+    isRejected?: boolean,
+    hasCustomNotification?: boolean,
+    noErrorOverride?: boolean,
+    dispatchDefaultFailure?: boolean
 }) => isRejected && !hasCustomNotification && !noErrorOverride && dispatchDefaultFailure;
 
-export const createNotificationsMiddleware = (options = {}) => {
-    const defaultOptions = {
+interface CreateNotificationsMiddlewareOptions {
+    dispatchDefaultFailure?: boolean,
+    pendingSuffix?: string,
+    fulfilledSuffix?: string,
+    rejectedSuffix?: string
+    autoDismiss?: boolean,
+    dismissDelay?: number,
+    errorTitleKey?: string | string[],
+    errorDescriptionKey?: string | string[],
+    useStatusText?: boolean,
+    errorNamespaceKey?: string | string[]
+}
+
+export const createNotificationsMiddleware = (options: CreateNotificationsMiddlewareOptions) => {
+    const defaultOptions: CreateNotificationsMiddlewareOptions = {
         dispatchDefaultFailure: true,
         pendingSuffix: '_PENDING',
         fulfilledSuffix: '_FULFILLED',
@@ -50,16 +77,16 @@ export const createNotificationsMiddleware = (options = {}) => {
     };
     const middlewareOptions = { ...defaultOptions, ...options };
 
-    const matchPending = type => type.match(new RegExp(`^.*${middlewareOptions.pendingSuffix}$`));
-    const matchFulfilled = type => type.match(new RegExp(`^.*${middlewareOptions.fulfilledSuffix}$`));
-    const matchRejected = type => type.match(new RegExp(`^.*${middlewareOptions.rejectedSuffix}$`));
+    const matchPending = (type: string) => Boolean(type.match(new RegExp(`^.*${middlewareOptions.pendingSuffix}$`)));
+    const matchFulfilled = (type: string) => Boolean(type.match(new RegExp(`^.*${middlewareOptions.fulfilledSuffix}$`)));
+    const matchRejected = (type: string) => Boolean(type.match(new RegExp(`^.*${middlewareOptions.rejectedSuffix}$`)));
 
     const defaultNotificationOptions = {
         dismissable: !middlewareOptions.autoDismiss,
         dismissDelay: middlewareOptions.dismissDelay
     };
 
-    return ({ dispatch }) => next => action => {
+    const middleware: Middleware<Record<string, unknown>, PortalNotificationConfig[]> = ({ dispatch }) => next => action => {
         const { meta, type } = action;
         if (meta && meta.notifications) {
             const { notifications } = meta;
@@ -97,32 +124,32 @@ export const createNotificationsMiddleware = (options = {}) => {
         })) {
             if (middlewareOptions.useStatusText) {
                 dispatch(addNotification({
-                    variant: 'danger',
+                    variant: AlertVariant.danger,
                     dismissable: true,
                     ...prepareErrorMessage(action.payload, middlewareOptions.errorTitleKey, 'statusText')
                 }));
             } else {
                 const namespaceKey = Array.isArray(middlewareOptions.errorNamespaceKey) && middlewareOptions.errorNamespaceKey.find(key => has(action.payload, key));
                 if (namespaceKey) {
-                    get(action.payload, namespaceKey).map((item) => {
+                    get(action.payload, namespaceKey).map((item: PrepareErrorMessagePayload) => {
                         dispatch(addNotification({
-                            variant: 'danger',
+                            variant: AlertVariant.danger,
                             dismissable: true,
                             ...prepareErrorMessage(item, middlewareOptions.errorTitleKey, middlewareOptions.errorDescriptionKey)
                         }));
                     });
                 } else {
                     if (Array.isArray(action.payload)) {
-                        action.payload.map((item) => {
+                        action.payload.map((item: PrepareErrorMessagePayload) => {
                             dispatch(addNotification({
-                                variant: 'danger',
+                                variant: AlertVariant.danger,
                                 dismissable: true,
                                 ...prepareErrorMessage(item, middlewareOptions.errorTitleKey, middlewareOptions.errorDescriptionKey)
                             }));
                         });
                     } else {
                         dispatch(addNotification({
-                            variant: 'danger',
+                            variant: AlertVariant.danger,
                             dismissable: true,
                             ...prepareErrorMessage(action.payload, middlewareOptions.errorTitleKey, middlewareOptions.errorDescriptionKey)
                         }));
@@ -133,6 +160,8 @@ export const createNotificationsMiddleware = (options = {}) => {
 
         next(action);
     };
+
+    return middleware;
 
 };
 
