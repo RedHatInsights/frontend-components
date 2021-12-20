@@ -2,8 +2,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Notification from './Notification';
-import { NotificationProps } from './Notification';
+import Notification, { NotificationProps } from './Notification';
 import { AlertVariant } from '@patternfly/react-core';
 
 describe('Notification component', () => {
@@ -92,6 +91,7 @@ describe('Notification component', () => {
         act(() => {
             wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } description={ undefined }/>);
         });
+        // @ts-ignore
         wrapper?.find('.pf-c-alert').simulate('mouseEnter');
         expect(timeoutSpy).toHaveBeenCalledTimes(1);
         timeoutSpy.mockRestore();

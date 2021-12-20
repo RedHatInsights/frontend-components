@@ -69,10 +69,10 @@
       "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */,
     },
     "exclude": [
-      "../packages/**/*.test.ts",
-      "../packages/**/*.test.tsx",
-      "../packages/**/*.test.js",
-      "../packages/**/*.test.jsx",
+      "packages/**/*.test.ts",
+      "packages/**/*.test.tsx",
+      "packages/**/*.test.js",
+      "packages/**/*.test.jsx",
     ]
   }
   

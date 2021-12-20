@@ -17,7 +17,8 @@ module.exports = {
         rules: {
             'no-use-before-define': 'off',
             '@typescript-eslint/no-use-before-define': [ 'error' ],
-            'react/prop-types': 'off'
+            'react/prop-types': 'off',
+            '@typescript-eslint/ban-ts-comment': 'off'
         }
     }]
 };

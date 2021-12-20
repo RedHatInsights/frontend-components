@@ -56,7 +56,18 @@ const DEFAULT_DELAY = 8000;
  * Component is used with notification reducer, notification portal and notification middleware.
  * But can be also used as a standalone component.
  */
-const Notification: React.ComponentType<NotificationProps> = ({ description, dismissable, onDismiss, dismissDelay, title, sentryId, requestId, autoDismiss, id, ...rest }) => {
+const Notification: React.ComponentType<NotificationProps> = ({
+    description,
+    dismissable = true,
+    onDismiss,
+    dismissDelay = DEFAULT_DELAY,
+    title,
+    sentryId,
+    requestId,
+    autoDismiss = true,
+    id,
+    ...rest
+}) => {
     const dismissTimeout = useRef<any>();
 
     const handleDismiss = () => {
@@ -113,12 +124,6 @@ const Notification: React.ComponentType<NotificationProps> = ({ description, dis
         </Alert>
     );
 
-};
-
-Notification.defaultProps = {
-    dismissDelay: DEFAULT_DELAY,
-    autoDismiss: true,
-    dismissable: true
 };
 
 export default Notification;
