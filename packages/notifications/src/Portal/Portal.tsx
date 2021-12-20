@@ -8,7 +8,7 @@ import { AlertVariant } from '@patternfly/react-core';
 import './portal.scss';
 
 export type PortalNotificationConfig = {
-    id: string,
+    id: string| number,
     title: React.ReactNode,
     variant: AlertVariant,
     description?: React.ReactNode,
