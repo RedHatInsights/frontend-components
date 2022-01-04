@@ -22,8 +22,12 @@ export interface PortalProps {
     rootId?: string
 }
 
+type PortalState = {
+    page: number
+}
+
 const Portal: React.ComponentType<PortalProps> = ({ notifications = [], removeNotification, rootId, onClearAll }) => {
-    const [ state, setState ] = useState({ page: 1 });
+    const [ state, setState ] = useState<PortalState>({ page: 1 });
 
     const onSetPage = (_event: React.MouseEvent | React.KeyboardEvent | MouseEvent, page: number) => {
         setState(prev => ({ ...prev, page }));

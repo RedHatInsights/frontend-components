@@ -38,19 +38,21 @@ const prepareErrorMessage = (payload: PrepareErrorMessagePayload, errorTitleKey?
     };
 };
 
+type DispatchDefaultErrorConfig = {
+    isRejected?: boolean,
+    hasCustomNotification?: boolean,
+    noErrorOverride?: boolean,
+    dispatchDefaultFailure?: boolean
+}
+
 const shouldDispatchDefaultError = ({
     isRejected,
     hasCustomNotification,
     noErrorOverride,
     dispatchDefaultFailure
-}: {
-    isRejected?: boolean,
-    hasCustomNotification?: boolean,
-    noErrorOverride?: boolean,
-    dispatchDefaultFailure?: boolean
-}) => isRejected && !hasCustomNotification && !noErrorOverride && dispatchDefaultFailure;
+}: DispatchDefaultErrorConfig) => isRejected && !hasCustomNotification && !noErrorOverride && dispatchDefaultFailure;
 
-interface CreateNotificationsMiddlewareOptions {
+type CreateNotificationsMiddlewareOptions = {
     dispatchDefaultFailure?: boolean,
     pendingSuffix?: string,
     fulfilledSuffix?: string,

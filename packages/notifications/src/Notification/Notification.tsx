@@ -5,15 +5,15 @@ import './notification.scss';
 
 export interface NotificationProps {
         /**
-     * Flag to automatically call `onDismiss` after `dismissDelay` runs out.
-     */
+         * Flag to automatically call `onDismiss` after `dismissDelay` runs out.
+         */
          autoDismiss?: boolean,
          /**
           * Flag to show/hide notification close button.
           */
          dismissable?: boolean,
          /**
-          * Funcation called after dismiss action is triggered. (id) => void
+          * Function called after dismiss action is triggered. (id) => void
           */
          onDismiss: (id: number|string) => void,
          /**

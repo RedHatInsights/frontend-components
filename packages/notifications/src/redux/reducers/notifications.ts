@@ -13,10 +13,14 @@ export interface AddNotificationPayload extends Omit<PortalNotificationConfig, '
     id?: string | number;
 }
 
-const addNotification = (notifications: PortalNotificationConfig[], { payload }: { payload: AddNotificationPayload }): PortalNotificationConfig[] =>
+type AddNotification = (notifications: PortalNotificationConfig[], action: {payload: AddNotificationPayload}) => PortalNotificationConfig[]
+
+const addNotification: AddNotification = (notifications, { payload }) =>
     [ ...notifications, { id: generateID('notification'), ...payload }];
 
-const removeNotification = (notifications: PortalNotificationConfig[], { payload }: { payload: string | number }) => {
+type RemoveNotification = (notifications: PortalNotificationConfig[], { payload }: { payload: string | number }) => PortalNotificationConfig[]
+
+const removeNotification: RemoveNotification = (notifications, { payload }) => {
     const index = notifications.findIndex(({ id }) => id === payload);
     return [ ...notifications.slice(0, index), ...notifications.slice(index + 1) ];
 };
