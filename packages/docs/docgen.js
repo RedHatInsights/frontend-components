@@ -15,7 +15,10 @@ const DEFAULT_TS_BABEL_OPTIONS  = {
 
 const componentsSrc = path.resolve(__dirname, '../*/src');
 const files =
-    glob.sync(`${componentsSrc}/**/*.{js,ts,tsx}`).filter(file => !file.match(/((test|spec|index).js|(\/__mock__\/|\/__mocks__\/|\/test\/))/gmi));
+    glob
+    .sync(`${componentsSrc}/**/*.{js,ts,tsx}`)
+    .filter(file => !file.includes('.d.ts'))
+    .filter(file => !file.match(/((test|spec|index)\.(js|ts|tsx)|(\/__mock__\/|\/__mocks__\/|\/test\/))/gmi));
 
 const args = process.argv.slice(2);
 
@@ -26,7 +29,6 @@ async function parseFile(file, content) {
         const componentInfo = reactDocs.parse(src, undefined, undefined, file.match(/.*\.tsx?$/) ? { ...DEFAULT_TS_BABEL_OPTIONS, filename: file } : undefined);
         content[file] = componentInfo;
     } catch (error) {
-
         if (error.message.includes('No suitable component definition found')) {
             const jsdocContent = await createJsdocContent(file);
             if (jsdocContent) {
