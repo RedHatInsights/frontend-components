@@ -8,8 +8,14 @@ const createJsdocContent = require('./functions-generator');
 
 const COMPONENTS_JSON = 'component-docs.json';
 
+const DEFAULT_TS_BABEL_OPTIONS  = {
+    configFile: './.docgen.babelrc',
+    root: __dirname
+};
+
 const componentsSrc = path.resolve(__dirname, '../*/src');
-const files = glob.sync(`${componentsSrc}/**/*.js`).filter(file => !file.match(/((test|spec|index).js|(\/__mock__\/|\/__mocks__\/|\/test\/))/gmi));
+const files =
+    glob.sync(`${componentsSrc}/**/*.{js,ts,tsx}`).filter(file => !file.match(/((test|spec|index).js|(\/__mock__\/|\/__mocks__\/|\/test\/))/gmi));
 
 const args = process.argv.slice(2);
 
@@ -17,9 +23,10 @@ let content = {};
 async function parseFile(file, content) {
     const src = fse.readFileSync(file, { encoding: 'utf-8' });
     try {
-        const componentInfo = reactDocs.parse(src);
+        const componentInfo = reactDocs.parse(src, undefined, undefined, file.match(/.*\.tsx?$/) ? { ...DEFAULT_TS_BABEL_OPTIONS, filename: file } : undefined);
         content[file] = componentInfo;
     } catch (error) {
+
         if (error.message.includes('No suitable component definition found')) {
             const jsdocContent = await createJsdocContent(file);
             if (jsdocContent) {

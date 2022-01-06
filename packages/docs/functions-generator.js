@@ -1,6 +1,7 @@
 const jsdocParser = require('jsdoc3-parser');
 
 async function parseFile(file) {
+    console.log(file);
     return new Promise(resolve => {
         return jsdocParser(file, function(error, ast) {
             if (error) {

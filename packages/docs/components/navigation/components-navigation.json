@@ -461,9 +461,9 @@
 		"packageName": "notifications",
 		"groups": [
 			{
-				"group": "Portal",
+				"group": "Notification",
 				"items": [
-					"Portal"
+					"Notification"
 				]
 			}
 		]
@@ -477,6 +477,9 @@
 					"Battery",
 					"Chart",
 					"Column",
+					"Dd",
+					"Dl",
+					"Dt",
 					"InsightsLabel",
 					"Logo",
 					"Panel",

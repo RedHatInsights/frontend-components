@@ -2,7 +2,7 @@ const sortFile = require('./sort-files');
 
 function getComponentNav(path) {
     let fragments = path.split('/');
-    const navName = fragments.pop().replace('.js', '');
+    const navName = fragments.pop().replace(/\.(js|tsx?$)/, '');
     const groupName = fragments.pop();
     return {
         navName, groupName
