@@ -91,6 +91,7 @@
 			{
 				"group": "Dark",
 				"items": [
+					"Dark",
 					"DarkContext"
 				]
 			},
@@ -173,6 +174,12 @@
 				]
 			},
 			{
+				"group": "Main",
+				"items": [
+					"Main"
+				]
+			},
+			{
 				"group": "Maintenance",
 				"items": [
 					"Maintenance"
@@ -193,6 +200,7 @@
 			{
 				"group": "PageHeader",
 				"items": [
+					"PageHeader",
 					"PageHeader",
 					"PageHeaderTitle"
 				]
@@ -222,6 +230,7 @@
 			{
 				"group": "Section",
 				"items": [
+					"Section",
 					"Section"
 				]
 			},
@@ -240,6 +249,7 @@
 			{
 				"group": "Skeleton",
 				"items": [
+					"Skeleton",
 					"Skeleton"
 				]
 			},
@@ -252,6 +262,7 @@
 			{
 				"group": "Spinner",
 				"items": [
+					"Spinner",
 					"Spinner"
 				]
 			},
@@ -461,9 +472,40 @@
 		"packageName": "notifications",
 		"groups": [
 			{
+				"group": "actions",
+				"items": [
+					"action-types",
+					"notifications"
+				]
+			},
+			{
 				"group": "Notification",
 				"items": [
 					"Notification"
+				]
+			},
+			{
+				"group": "NotificationPortal",
+				"items": [
+					"NotificationPortal"
+				]
+			},
+			{
+				"group": "notificationsMiddleware",
+				"items": [
+					"notificationsMiddleware"
+				]
+			},
+			{
+				"group": "Portal",
+				"items": [
+					"Portal"
+				]
+			},
+			{
+				"group": "reducers",
+				"items": [
+					"notifications"
 				]
 			}
 		]

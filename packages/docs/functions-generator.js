@@ -13,12 +13,18 @@ async function parseTSFile(file) {
                 reject(err);
             }
 
-            const content = fse.readJSONSync(tempFile);
-            fse.removeSync(tempFile);
-            return resolve({
-                tsdoc: true,
-                content
-            });
+            try {
+                const content = fse.readJSONSync(tempFile);
+                fse.removeSync(tempFile);
+                return resolve({
+                    tsdoc: true,
+                    content
+                });
+            } catch (error) {
+                console.log(err);
+                return resolve();
+
+            }
         });
     });
 }
