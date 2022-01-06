@@ -2,10 +2,11 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Notification from './Notification';
+import Notification, { NotificationProps } from './Notification';
+import { AlertVariant } from '@patternfly/react-core';
 
 describe('Notification component', () => {
-    let initialProps;
+    let initialProps: NotificationProps;
     beforeEach(() => {
         initialProps = {
             id: 'Foo',
@@ -13,7 +14,7 @@ describe('Notification component', () => {
             description: 'description',
             dismissable: false,
             onDismiss: jest.fn(),
-            variant: 'success'
+            variant: AlertVariant.success
         };
     });
 
@@ -90,7 +91,8 @@ describe('Notification component', () => {
         act(() => {
             wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } description={ undefined }/>);
         });
-        wrapper.find('.pf-c-alert').simulate('mouseEnter');
+        // @ts-ignore
+        wrapper?.find('.pf-c-alert').simulate('mouseEnter');
         expect(timeoutSpy).toHaveBeenCalledTimes(1);
         timeoutSpy.mockRestore();
     });
@@ -102,7 +104,8 @@ describe('Notification component', () => {
             timeoutSpy.mockReset();
             wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } description={ undefined }/>);
         });
-        wrapper.find('.pf-c-alert').simulate('mouseLeave');
+        // @ts-ignore
+        wrapper?.find('.pf-c-alert').simulate('mouseLeave');
         expect(timeoutSpy).toHaveBeenCalledTimes(3);
         timeoutSpy.mockRestore();
     });

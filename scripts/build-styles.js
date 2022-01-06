@@ -15,38 +15,44 @@ const root = process.cwd();
 const files = glob.sync(`${root}/src/**/*.scss`);
 
 async function buildStyle(file) {
-    const outFile = path.resolve(file.split('/src/').pop(), './').replace(/scss$/, 'css');
-    let targetDir = outFile.split('/');
-    targetDir.pop();
-    targetDir = targetDir.join('/').replace(root, '').replace(/^\//, '');
+    const outFiles = [
+        path.resolve(file.split('/src/').pop(), './').replace(/scss$/, 'css'),
+        path.resolve(file.replace('/src/', '/esm/'), './').replace(/scss$/, 'css')
+    ];
+    const promises = outFiles.map((outFile) => {
+        let targetDir = outFile.split('/');
+        targetDir.pop();
+        targetDir = targetDir.join('/').replace(root, '').replace(/^\//, '');
 
-    if (!fs.existsSync(path.resolve(root, targetDir))) {
-        fs.mkdirSync(targetDir);
-    }
-
-    const render = sass.render({
-        file,
-        outFile,
-        importer: packageImporter()
-    }, function(err, result) {
-        if (err) {
-            console.error(file, outFile);
-            throw err;
+        if (!fs.existsSync(path.resolve(root, targetDir))) {
+            fs.mkdirSync(targetDir);
         }
 
-        return fs.writeFile(outFile, result.css, 'utf8', function(err) {
+        const render = sass.render({
+            file,
+            outFile,
+            importer: packageImporter()
+        }, function(err, result) {
+            if (err) {
+                console.error(file, outFile);
+                throw err;
+            }
+
+            return fs.writeFile(outFile, result.css, 'utf8', function(err) {
+                if (err) {
+                    throw err;
+                }
+            });
+
+        });
+        const copy = fs.copyFile(file, outFile.replace(/css$/, 'scss'), function(err) {
             if (err) {
                 throw err;
             }
         });
-
+        return Promise.all([ render, copy ]);
     });
-    const copy = fs.copyFile(file, outFile.replace(/css$/, 'scss'), function(err) {
-        if (err) {
-            throw err;
-        }
-    });
-    return Promise.all([ render, copy ]);
+    return Promise.all(promises);
 }
 
 async function buildStyles(files) {

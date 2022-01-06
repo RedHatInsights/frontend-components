@@ -9,7 +9,6 @@ exports[`Notification Pagination component should render correctly 1`] = `
       <LevelItem>
         <Button
           className="ins-c-pagination__clear-all"
-          onClick={[Function]}
           variant="link"
         >
           Clear all

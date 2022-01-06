@@ -9,7 +9,6 @@ const FECPackages = [
     '@redhat-cloud-services/frontend-components-config',
     '@redhat-cloud-services/frontend-components-demo',
     '@redhat-cloud-services/eslint-config-redhat-cloud-services',
-    '@redhat-cloud-services/frontend-components-inventory-compliance',
     '@redhat-cloud-services/frontend-components-inventory-general-info',
     '@redhat-cloud-services/frontend-components-inventory-insights',
     '@redhat-cloud-services/frontend-components-inventory',

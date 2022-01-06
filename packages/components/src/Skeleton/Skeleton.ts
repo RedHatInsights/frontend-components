@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SkeletonProps as PFSkeletonProps } from '@patternfly/react-core'
+import { SkeletonProps as PFSkeletonProps } from '@patternfly/react-core';
 
 export type SkeletonSize = 'xs' | 'sm' | 'md' | 'lg';
 
