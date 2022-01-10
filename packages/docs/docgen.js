@@ -17,8 +17,7 @@ const componentsSrc = path.resolve(__dirname, '../*/src');
 const files =
     glob
     .sync(`${componentsSrc}/**/*.{js,ts,tsx}`)
-    .filter(file => !file.includes('.d.ts'))
-    .filter(file => !file.match(/((test|spec|index)\.(js|ts|tsx)|(\/__mock__\/|\/__mocks__\/|\/test\/))/gmi));
+    .filter(file => !file.match(/((\.d\.ts)|(test|spec|index)\.(js|ts|tsx)|(\/__mock__\/|\/__mocks__\/|\/test\/))/gmi));
 
 const args = process.argv.slice(2);
 
