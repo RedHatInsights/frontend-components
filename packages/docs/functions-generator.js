@@ -1,6 +1,35 @@
 const jsdocParser = require('jsdoc3-parser');
+const path = require('path');
+const fse = require('fs-extra');
+const { exec } = require('child_process');
 
-async function parseFile(file) {
+async function parseTSFile(file) {
+    return new Promise((resolve, reject) => {
+        const tempFile = path.resolve(__dirname, `./temp${file}.json`);
+
+        const execString = `npm run typedoc -- --entryPoints ${file} --json ${tempFile}`;
+        exec(execString, (err) => {
+            if (err) {
+                reject(err);
+            }
+
+            try {
+                const content = fse.readJSONSync(tempFile);
+                fse.removeSync(tempFile);
+                return resolve({
+                    tsdoc: true,
+                    content
+                });
+            } catch (error) {
+                console.log(err);
+                return resolve();
+
+            }
+        });
+    });
+}
+
+async function parseJSFile(file) {
     return new Promise(resolve => {
         return jsdocParser(file, function(error, ast) {
             if (error) {
@@ -29,7 +58,13 @@ async function parseFile(file) {
 
 async function createJsdocContent(file) {
     try {
-        const fileContent = await(parseFile(file));
+        let fileContent;
+        if (file.match(/\.js$/)) {
+            fileContent = await(parseJSFile(file));
+        } else {
+            fileContent = await(parseTSFile(file));
+        }
+
         return fileContent;
     } catch (error) {
         console.log(error);

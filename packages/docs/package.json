@@ -10,7 +10,9 @@
     "generate:components": "node docgen.js",
     "generate:components:docs": "npm run generate:components && node docs-generator.js",
     "generate:watch": "concurrently \"npm run generate:components -- --watch\" \"npm run generate:components:docs -- --watch\"",
-    "serve": "npm run build && node server.js"
+    "serve": "npm run build && node server.js",
+    "typedoc": "echo FOO && typedoc",
+    "typedocTest": "typedoc --entryPoints /home/martin/insights/frontend-components/packages/notifications/src/redux/reducers/notifications.ts --json ./temp/out.json"
   },
   "dependencies": {
     "@patternfly/react-core": "^4.79.2",
@@ -41,6 +43,7 @@
     "next-transpile-modules": "^8.0.0",
     "raw-loader": "^4.0.2",
     "react-docgen": "^5.3.1",
+    "typedoc": "^0.22.10",
     "url-loader": "^4.1.1"
   }
 }

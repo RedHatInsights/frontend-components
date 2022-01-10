@@ -178,7 +178,7 @@ async function generateMD(file, API) {
 # ${API.displayName}${description.value ? `
 ${description.value}` : ''}${examples.length > 0 ? `
 ${examples.map(example => {
-        const fileName = example.split('/').pop().replace('.js', '');
+        const fileName = example.split('/').pop().replace(/\.(js|tsx?)&/, '');
         return `<ExampleComponent source="${name}/${fileName}" name="${fileName.replace('-', ' ')}" />`;
     }).join('')}` : ''}
 

@@ -7,6 +7,7 @@ const generateComponentsNavigation = require('./generate-components-nav');
 const generateReactMD = require('./generate-react-md');
 const generateFunctionsMd = require('./generate-functions-md');
 const generateChromeNav = require('./generate-chrome-nav');
+const generateTsFunctionsMd = require('./generate-ts-functions-md');
 
 const COMPONENTS_JSON = 'component-docs.json';
 const EXAMPLES_LOCATION = path.resolve(__dirname, './examples');
@@ -19,6 +20,8 @@ async function traverseComponents() {
     const cmds = foo.map(([ name, API ]) => {
         if (API.jsdoc) {
             return generateFunctionsMd(name, API.items);
+        } else if (API.tsdoc) {
+            return generateTsFunctionsMd(name, API.items);
         }
 
         return generateReactMD(name, API);
