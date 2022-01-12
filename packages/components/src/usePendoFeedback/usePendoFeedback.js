@@ -1,4 +1,4 @@
-import useChrome from '../../useChrome';
+import useChrome from '../useChrome';
 
 const usePendoFeedback = (...args) => {
     const { usePendoFeedback: usePendoFeedbackInternal } = useChrome();
