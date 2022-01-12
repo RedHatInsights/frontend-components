@@ -5,7 +5,6 @@ exports[`TableWithFilter should render loading and pagination 1`] = `
   <PrimaryToolbar
     pagination={
       <Skeleton
-        isDark={false}
         size="lg"
       />
     }
