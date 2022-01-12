@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import Dark from './Dark';
 import DarkContext from './DarkContext';
-import ThemeContext from './configContext';
 
 describe('DarkContext', () => {
     it('should render children', () => {
         const wrapper = shallow(
-            <DarkContext>
+            <Dark>
                 <div id='isPresent' />
-            </DarkContext>
+            </Dark>
         );
 
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -18,11 +18,11 @@ describe('DarkContext', () => {
 
     it('should pass props', () => {
         const wrapper = mount(
-            <DarkContext>
-                <ThemeContext.Consumer>
+            <Dark>
+                <DarkContext.Consumer>
                     { value => <div value={value} id='consumer'/> }
-                </ThemeContext.Consumer>
-            </DarkContext>
+                </DarkContext.Consumer>
+            </Dark>
         );
         expect(wrapper.find('#consumer').props()).toEqual(expect.objectContaining({ value: 'dark' }));
     });

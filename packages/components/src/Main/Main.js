@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
-import ThemeContext from '../Dark/configContext';
+import { DarkContext } from '../Dark';
 import './main.scss';
 
 const toKebab = text => text.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
@@ -39,7 +39,7 @@ export class Main extends Component {
         const { className, children, params, path, ...props } = this.props;
         const { dynamic, staticPart } = this.calculateLocation();
         return (
-            <ThemeContext.Consumer>
+            <DarkContext.Consumer>
                 { (theme = 'light') => {
 
                     let themeClasses = classNames(
@@ -69,7 +69,7 @@ export class Main extends Component {
                           </section>
                     } [theme];
                 } }
-            </ThemeContext.Consumer>
+            </DarkContext.Consumer>
         );
     }
 }

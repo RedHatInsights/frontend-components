@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
 
-import ThemeContext from '../Dark/configContext';
+import { DarkContext } from '../Dark';
 import './page-header.scss';
 
 /**
@@ -20,7 +20,7 @@ const PageHeader = ({ className, children, ...props }) => {
     );
 
     return (
-        <ThemeContext.Consumer>
+        <DarkContext.Consumer>
             { (theme = 'light') => {
 
                 let themeClasses = classNames(
@@ -34,7 +34,7 @@ const PageHeader = ({ className, children, ...props }) => {
                     </section>
                 );
             } }
-        </ThemeContext.Consumer>
+        </DarkContext.Consumer>
     );
 };
 
