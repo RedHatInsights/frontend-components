@@ -32,7 +32,8 @@ module.exports = ({
     target = '',
     keycloakUri = '',
     registry = [],
-    isChrome = false
+    isChrome = false,
+    onBeforeSetupMiddleware = () => {}
 }) => {
     const proxy = [];
     const majorEnv = env.split('-')[0];
@@ -251,6 +252,8 @@ module.exports = ({
                         overwrite: true
                     });
                 }
+
+                onBeforeSetupMiddleware({ chromePath });
 
                 if (chromePath) {
                     registerChrome({

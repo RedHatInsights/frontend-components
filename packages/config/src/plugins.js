@@ -15,7 +15,8 @@ module.exports = ({
     insights,
     modules,
     generateSourceMaps,
-    plugins
+    plugins,
+    useChromeTemplate = false
 } = {}) => [
     ...(generateSourceMaps
         ? [
@@ -31,20 +32,30 @@ module.exports = ({
         filename: 'css/[name].[contenthash].css',
         ignoreOrder: true
     }),
-    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
-    new HtmlWebpackPlugin({
-        title: 'My App',
-        filename: 'index.html',
-        template: `${rootFolder || ''}/src/index.html`,
-        inject: false,
-        ...htmlPlugin || {}
+    new CleanWebpackPlugin({
+        cleanStaleWebpackAssets: false,
+        cleanOnceBeforeBuildPatterns: useChromeTemplate ? [
+            '**/*',
+            '!index.html'
+        ] : [
+            '**/*'
+        ]
     }),
-    new HtmlReplaceWebpackPlugin([
-        {
-            pattern: '@@env',
-            replacement: appDeployment || ''
-        },
-        ...replacePlugin || []
+    ...(useChromeTemplate ? [] : [
+        new HtmlWebpackPlugin({
+            title: 'My App',
+            filename: 'index.html',
+            template: `${rootFolder || ''}/src/index.html`,
+            inject: false,
+            ...htmlPlugin || {}
+        }),
+        new HtmlReplaceWebpackPlugin([
+            {
+                pattern: '@@env',
+                replacement: appDeployment || ''
+            },
+            ...replacePlugin || []
+        ])
     ]),
     new ProvidePlugin({
         process: 'process/browser.js',
