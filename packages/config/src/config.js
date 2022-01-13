@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 const path = require('path');
+const fs = require('fs');
 const proxy = require('@redhat-cloud-services/frontend-components-config-utilities/proxy');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
@@ -33,13 +34,25 @@ module.exports = ({
     target,
     registry,
     client = {},
-    bundlePfModules = false
+    bundlePfModules = false,
+    useChromeTemplate = false
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? `.${Date.now()}.[fullhash]` : ''}.js`;
     if (betaEnv) {
         env = `${betaEnv}-beta`;
         console.warn('betaEnv is deprecated in favor of env');
     }
+
+    const outputPath = `${rootFolder || ''}/dist`;
+
+    const copyTemplate = (chromePath) => {
+        const template = fs.readFileSync(`${chromePath}/index.html`, { encoding: 'utf-8' });
+        if (!fs.existsSync(outputPath)) {
+            fs.mkdirSync(outputPath);
+        }
+
+        fs.writeFileSync(`${outputPath}/index.html`, template);
+    };
 
     const devServerPort = typeof port === 'number' ? port : useProxy || standalone ? 1337 : 8002;
     return {
@@ -50,7 +63,7 @@ module.exports = ({
         },
         output: {
             filename: filenameMask,
-            path: `${rootFolder || ''}/dist`,
+            path: outputPath,
             publicPath,
             chunkFilename: filenameMask
         },
@@ -172,7 +185,12 @@ module.exports = ({
                 publicPath,
                 proxyVerbose,
                 target,
-                registry
+                registry,
+                onBeforeSetupMiddleware: ({ chromePath }) => {
+                    if (useChromeTemplate && chromePath) {
+                        copyTemplate(chromePath);
+                    }
+                }
             })
         }
     };
