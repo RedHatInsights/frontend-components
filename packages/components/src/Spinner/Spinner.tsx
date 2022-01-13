@@ -1,12 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import './spinner.scss';
 
-const Spinner = ({ centered, className, ...props }) => {
+export interface SpinnerProps {
+    centered?: boolean
+    className?: string
+}
 
-    let spinnerClasses = classNames(
+const Spinner: React.FunctionComponent<SpinnerProps> = ({ centered, className, ...props }) => {
+    const spinnerClasses = classNames(
         'ins-c-spinner',
         { [`ins-m-center`]: centered },
         className
@@ -17,11 +20,6 @@ const Spinner = ({ centered, className, ...props }) => {
             <span className="pf-u-screen-reader">Loading...</span>
         </div>
     );
-};
-
-Spinner.propTypes = {
-    centered: PropTypes.bool,
-    className: PropTypes.string
 };
 
 export default Spinner;

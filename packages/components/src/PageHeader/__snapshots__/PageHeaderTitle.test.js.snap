@@ -17,9 +17,7 @@ exports[`PageHeader component should render 1`] = `
       data-ouia-safe={true}
       widget-type="InsightsPageHeaderTitle"
     >
-       
       Something
-       
     </h1>
   </Title>
 </PageHeaderTitle>

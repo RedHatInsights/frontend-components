@@ -1,12 +1,15 @@
 import React from 'react';
-import propTypes from 'prop-types';
 import classNames from 'classnames';
 
 import './section.scss';
 
-const Section = ({ type, children, className, ...props }) => {
+export interface SectionProps {
+    type?: string
+    className?: string
+}
 
-    let sectionClasses = classNames(
+const Section: React.FunctionComponent<SectionProps> = ({ type, children, className, ...props }) => {
+    const sectionClasses = classNames(
         className,
         { [`ins-l-${type}`]: type !== undefined }
     );
@@ -17,9 +20,3 @@ const Section = ({ type, children, className, ...props }) => {
 };
 
 export default Section;
-
-Section.propTypes = {
-    type: propTypes.string,
-    className: propTypes.string,
-    children: propTypes.any.isRequired
-};

@@ -102,7 +102,6 @@ exports[`EntityTableToolbar DOM should render correctly - no data 1`] = `
   filters={Array []}
   pagination={
     <Skeleton
-      isDark={false}
       size="lg"
     />
   }

@@ -10,12 +10,13 @@
         "access": "public"
     },
     "scripts": {
-        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
-        "build:js": "BABEL_ENV=cjs babel src --config-file ./babel.config.js --out-dir ./ --ignore '**/*.test.js'",
-        "build:esm": "BABEL_ENV=esm babel src --config-file ./babel.config.js --out-dir ./esm --ignore '**/*.test.js'",
+        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages && npm run transform:css",
         "build:css": "node ../../scripts/build-styles.js",
-        "build:packages": "node ../../scripts/build-packages.js",
-        "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
+        "build:packages": "node ../../scripts/build-packages.js --forceTypes",
+        "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\"",
+        "build:esm": "npx tsc --module es2015 --target es5",
+        "build:js": "npx tsc -p tsconfig.cjs.json",
+        "transform:css": "node ../../scripts/transform-scss.js"
     },
     "repository": {
         "type": "git",
