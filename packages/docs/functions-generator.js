@@ -4,13 +4,16 @@ const fse = require('fs-extra');
 const { exec } = require('child_process');
 
 async function parseTSFile(file) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const tempFile = path.resolve(__dirname, `./temp${file}.json`);
 
     const execString = `npm run typedoc -- --entryPoints ${file} --json ${tempFile}`;
     exec(execString, (err) => {
       if (err) {
-        reject(err);
+        /**
+         * TODO: Once everything relevant is migrated to TS reject the promise
+         */
+        return resolve();
       }
 
       try {

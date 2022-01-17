@@ -11,8 +11,7 @@
     "generate:components:docs": "npm run generate:components && node docs-generator.js",
     "generate:watch": "concurrently \"npm run generate:components -- --watch\" \"npm run generate:components:docs -- --watch\"",
     "serve": "npm run build && node server.js",
-    "typedoc": "echo FOO && typedoc",
-    "typedocTest": "typedoc --entryPoints /home/martin/insights/frontend-components/packages/notifications/src/redux/reducers/notifications.ts --json ./temp/out.json"
+    "typedoc": "typedoc"
   },
   "dependencies": {
     "@patternfly/react-core": "^4.79.2",
