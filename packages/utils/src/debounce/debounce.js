@@ -6,10 +6,7 @@ import awesomeDebouncePromise from 'awesome-debounce-promise';
  * @param {number} [time = 800] delay in ms
  * @param {Object} [config = {onlyResolvesLast: true}] <a target="_blank" href="https://github.com/slorber/awesome-debounce-promise#options">more details</a>
  */
-export const debounceFunction = (asyncFunction, time = 800, config = { onlyResolvesLast: true }) => awesomeDebouncePromise(
-    asyncFunction,
-    time,
-    config
-);
+export const debounceFunction = (asyncFunction, time = 800, config = { onlyResolvesLast: true }) =>
+  awesomeDebouncePromise(asyncFunction, time, config);
 
 export default debounceFunction;

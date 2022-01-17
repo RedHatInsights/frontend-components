@@ -10,72 +10,71 @@ pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui offi
 laborum.`;
 
 describe('Truncate component', () => {
-    describe('should render correctly', () => {
-        [ true, false ].forEach(isInline => {
-            describe(isInline ? 'inline' : 'block', () => {
-                it('without length specified', () => {
-                    const wrapper = shallow(<Truncate text={text} inline={isInline} />);
-                    expect(toJson(wrapper)).toMatchSnapshot();
-                });
-
-                it('with short length', () => {
-                    const wrapper = shallow(<Truncate text={text} length={2} />);
-                    expect(toJson(wrapper)).toMatchSnapshot();
-                });
-
-                it('clicking on expand toggles to collapse', () => {
-                    const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-                    wrapper.find('.ins-c-expand-button').first().simulate('click');
-                    expect(toJson(wrapper)).toMatchSnapshot();
-                });
-
-                it('custom expande button', () => {
-                    const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-                    expect(toJson(wrapper)).toMatchSnapshot();
-                });
-
-                it('custom button titles', () => {
-                    const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-                    wrapper.find('.ins-c-expand-button').first().simulate('click');
-                    expect(toJson(wrapper)).toMatchSnapshot();
-                });
-
-                it('clicking on expand toggles to collapse', () => {
-                    const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-                    wrapper.find('.ins-c-expand-button').first().simulate('click');
-                    expect(toJson(wrapper)).toMatchSnapshot();
-                });
-
-                it('custom expande button', () => {
-                    const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-                    expect(toJson(wrapper)).toMatchSnapshot();
-                });
-
-                it('custom button titles', () => {
-                    const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-                    wrapper.find('.ins-c-expand-button').first().simulate('click');
-                    expect(toJson(wrapper)).toMatchSnapshot();
-                });
-
-                it('when text length is less than user specified length', () => {
-                    const wrapper = shallow(<Truncate text={text} inline={isInline} length={1000} />);
-                    expect(toJson(wrapper)).toMatchSnapshot();
-                });
-
-                it('hovering over toggles to collapse', () => {
-                    const wrapper = shallow(<Truncate length={50} inline={isInline} text={text} expandOnMouseOver hideExpandText />);
-                    const eventElement = isInline ? wrapper.find('.ins-c-truncate').first() : wrapper.find('.ins-c-truncate').first().children().first();
-
-                    expect(toJson(wrapper)).toMatchSnapshot();
-
-                    eventElement.simulate('mouseenter');
-                    expect(toJson(wrapper)).toMatchSnapshot();
-
-                    eventElement.simulate('mouseleave');
-                    expect(toJson(wrapper)).toMatchSnapshot();
-                });
-
-            });
+  describe('should render correctly', () => {
+    [true, false].forEach((isInline) => {
+      describe(isInline ? 'inline' : 'block', () => {
+        it('without length specified', () => {
+          const wrapper = shallow(<Truncate text={text} inline={isInline} />);
+          expect(toJson(wrapper)).toMatchSnapshot();
         });
+
+        it('with short length', () => {
+          const wrapper = shallow(<Truncate text={text} length={2} />);
+          expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('clicking on expand toggles to collapse', () => {
+          const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
+          wrapper.find('.ins-c-expand-button').first().simulate('click');
+          expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('custom expande button', () => {
+          const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
+          expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('custom button titles', () => {
+          const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
+          wrapper.find('.ins-c-expand-button').first().simulate('click');
+          expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('clicking on expand toggles to collapse', () => {
+          const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
+          wrapper.find('.ins-c-expand-button').first().simulate('click');
+          expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('custom expande button', () => {
+          const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
+          expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('custom button titles', () => {
+          const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
+          wrapper.find('.ins-c-expand-button').first().simulate('click');
+          expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('when text length is less than user specified length', () => {
+          const wrapper = shallow(<Truncate text={text} inline={isInline} length={1000} />);
+          expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('hovering over toggles to collapse', () => {
+          const wrapper = shallow(<Truncate length={50} inline={isInline} text={text} expandOnMouseOver hideExpandText />);
+          const eventElement = isInline ? wrapper.find('.ins-c-truncate').first() : wrapper.find('.ins-c-truncate').first().children().first();
+
+          expect(toJson(wrapper)).toMatchSnapshot();
+
+          eventElement.simulate('mouseenter');
+          expect(toJson(wrapper)).toMatchSnapshot();
+
+          eventElement.simulate('mouseleave');
+          expect(toJson(wrapper)).toMatchSnapshot();
+        });
+      });
     });
+  });
 });

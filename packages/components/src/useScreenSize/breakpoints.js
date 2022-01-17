@@ -6,12 +6,12 @@ import xlBreakpoint from '@patternfly/react-tokens/dist/js/global_breakpoint_xl'
 import xxlBreakpoint from '@patternfly/react-tokens/dist/js/global_breakpoint_2xl';
 
 const breakPoints = {
-    xs: parseInt(xsBreakpoint.value.replace('px', '')),
-    sm: parseInt(smBreakpoint.value.replace('px', '')),
-    md: parseInt(mdBreakpoint.value.replace('px', '')),
-    lg: parseInt(lgBreakpoint.value.replace('px', '')),
-    xl: parseInt(xlBreakpoint.value.replace('px', '')),
-    '2xl': parseInt(xxlBreakpoint.value.replace('px', ''))
+  xs: parseInt(xsBreakpoint.value.replace('px', '')),
+  sm: parseInt(smBreakpoint.value.replace('px', '')),
+  md: parseInt(mdBreakpoint.value.replace('px', '')),
+  lg: parseInt(lgBreakpoint.value.replace('px', '')),
+  xl: parseInt(xlBreakpoint.value.replace('px', '')),
+  '2xl': parseInt(xxlBreakpoint.value.replace('px', '')),
 };
 
 export default breakPoints;

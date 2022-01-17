@@ -6,49 +6,58 @@ import styles from '../utils/styles';
 
 const appliedStyles = styles();
 
-const PanelItem = ({
-    style,
-    children,
-    title,
-    titleProps,
-    ...props
-}) => (<View { ...props } style={{
-    flex: 1,
-    ...style
-}}>
-    <Text { ...titleProps } style={{
+const PanelItem = ({ style, children, title, titleProps, ...props }) => (
+  <View
+    {...props}
+    style={{
+      flex: 1,
+      ...style,
+    }}
+  >
+    <Text
+      {...titleProps}
+      style={{
         ...appliedStyles.thirdTitle,
         ...appliedStyles.displayFont,
-        ...titleProps.style
-    }}>
-        {title}
+        ...titleProps.style,
+      }}
+    >
+      {title}
     </Text>
-    <View style={[ appliedStyles.flexRow, {
-        justifyContent: 'flex-start'
-    }]}>
+    <View
+      style={[
+        appliedStyles.flexRow,
         {
-            (typeof children === 'string' || children instanceof String) ?
-                <Text style={{
-                    fontSize: 20
-                }}>
-                    {children}
-                </Text> :
-                children
-        }
+          justifyContent: 'flex-start',
+        },
+      ]}
+    >
+      {typeof children === 'string' || children instanceof String ? (
+        <Text
+          style={{
+            fontSize: 20,
+          }}
+        >
+          {children}
+        </Text>
+      ) : (
+        children
+      )}
     </View>
-</View>);
+  </View>
+);
 
 PanelItem.propTypes = {
-    style: styleProps,
-    children: PropTypes.node,
-    titleProps: customProps,
-    title: PropTypes.node
+  style: styleProps,
+  children: PropTypes.node,
+  titleProps: customProps,
+  title: PropTypes.node,
 };
 
 PanelItem.defaultProps = {
-    style: {},
-    titleProps: {},
-    title: ' '
+  style: {},
+  titleProps: {},
+  title: ' ',
 };
 
 export default PanelItem;

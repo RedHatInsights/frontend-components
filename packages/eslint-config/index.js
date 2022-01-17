@@ -3,42 +3,28 @@ const path = require('path');
 rulesDirPlugin.RULES_DIR = path.resolve(__dirname, './lib/rules');
 
 module.exports = {
-    parser: '@babel/eslint-parser',
-    env: {
-        browser: true,
-        node: true,
-        es6: true,
-        jasmine: true,
-        jest: true
+  parser: '@babel/eslint-parser',
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+    jasmine: true,
+    jest: true,
+  },
+  settings: {
+    react: {
+      version: 'detect',
     },
-    settings: {
-        react: {
-            version: 'detect'
-        }
-    },
-    plugins: [
-        'prettier',
-        'rulesdir'
-    ],
-    extends: [
-        'eslint:recommended',
-        'prettier',
-        'plugin:prettier/recommended',
-        'plugin:react/recommended'
-    ],
-    rules: {
-        'no-unused-vars': [
-            'error',
-            { ignoreRestSiblings: true }
-        ],
-        'prettier/prettier': [
-            'error',
-            { singleQuote: true }
-        ],
-        'rulesdir/disallow-fec-relative-imports': 2
-    },
-    parserOptions: {
-        ecmaVersion: 7,
-        sourceType: 'module'
-    }
+  },
+  plugins: ['prettier', 'rulesdir'],
+  extends: ['eslint:recommended', 'prettier', 'plugin:prettier/recommended', 'plugin:react/recommended'],
+  rules: {
+    'no-unused-vars': ['error', { ignoreRestSiblings: true }],
+    'prettier/prettier': ['error', { singleQuote: true }],
+    'rulesdir/disallow-fec-relative-imports': 2,
+  },
+  parserOptions: {
+    ecmaVersion: 7,
+    sourceType: 'module',
+  },
 };

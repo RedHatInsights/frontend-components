@@ -8,40 +8,40 @@ import { notificationsReducer, notificationActions } from '@redhat-cloud-service
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 
 const App = () => {
-    const dispatch = useDispatch();
-    const handleClick = () => {
-        dispatch({ type: 'prd' });
-        dispatch(notificationActions.addNotification({
-            variant: 'success',
-            title: 'foo'
-        }));
-    };
-
-    return (
-        <button onClick={handleClick}>Click me</button>
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch({ type: 'prd' });
+    dispatch(
+      notificationActions.addNotification({
+        variant: 'success',
+        title: 'foo',
+      })
     );
+  };
+
+  return <button onClick={handleClick}>Click me</button>;
 };
 
 const registry = new ReducerRegistry({}, [
-    notificationsMiddleware({
-        errorTitleKey: [ 'message' ],
-        errorDescriptionKey: [ 'errors', 'stack' ]
-    })
+  notificationsMiddleware({
+    errorTitleKey: ['message'],
+    errorDescriptionKey: ['errors', 'stack'],
+  }),
 ]);
 
 registry.register({
-    notifications: notificationsReducer
+  notifications: notificationsReducer,
 });
 
 const store = registry.getStore();
 
 const MyCmp = () => {
-    return (
-        <Provider store={store}>
-            <NotificationPortal />
-            <App />
-        </Provider>
-    );
+  return (
+    <Provider store={store}>
+      <NotificationPortal />
+      <App />
+    </Provider>
+  );
 };
 
 ReactDOM.render(<MyCmp />, document.querySelector('.demo-app'));

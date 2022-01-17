@@ -7,11 +7,14 @@ const glob = require('glob');
  * @returns {Object}
  */
 const searchIgnoredStyles = (root) => {
-    const modulesPath = path.join(root, 'node_modules/@patternfly/react-styles');
-    return glob.sync(`${modulesPath}/**/*.css`).reduce((acc, curr) => ({
-        ...acc,
-        [curr]: false
-    }), {});
+  const modulesPath = path.join(root, 'node_modules/@patternfly/react-styles');
+  return glob.sync(`${modulesPath}/**/*.css`).reduce(
+    (acc, curr) => ({
+      ...acc,
+      [curr]: false,
+    }),
+    {}
+  );
 };
 
 module.exports = searchIgnoredStyles;

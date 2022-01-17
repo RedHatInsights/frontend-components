@@ -13,49 +13,41 @@ import InsightsDisconnected from '../../shared/InsightsDisconnected';
  * @param {*} props entity and if entity is loaded.
  */
 const FactsInfo = ({ entity, loaded, ...props }) => (
-    <Grid className="ins-entity-facts" { ...props }>
-        <GridItem md={ 6 }>
-            <div>
-                <span>
-                    UUID:
-                </span>
-                <span>
-                    {
-                        loaded ?
-                            getFact(`id`, entity) || ' ' :
-                            <Skeleton size={ SkeletonSize.md } />
-                    }
-                </span>
-            </div>
-            <div>
-                <span>
-                    Last seen:
-                </span>
-                <span>
-                    {
-                        loaded ?
-                            (
-                                CullingInformation ? <CullingInformation
-                                    culled={getFact('culled_timestamp', entity)}
-                                    staleWarning={getFact('stale_warning_timestamp', entity)}
-                                    stale={getFact('stale_timestamp', entity)}
-                                    currDate={new Date()}
-                                >
-                                    <DateFormat date={getFact('updated', entity)} type="exact" />
-                                </CullingInformation> : <DateFormat date={getFact('updated', entity)} type="exact" />
-                            ) :
-                            <Skeleton size={ SkeletonSize.sm } />
-                    }
-                </span>
-                {loaded && !getFact('insights_id', entity) && <InsightsDisconnected />}
-            </div>
-        </GridItem>
-    </Grid>
+  <Grid className="ins-entity-facts" {...props}>
+    <GridItem md={6}>
+      <div>
+        <span>UUID:</span>
+        <span>{loaded ? getFact(`id`, entity) || ' ' : <Skeleton size={SkeletonSize.md} />}</span>
+      </div>
+      <div>
+        <span>Last seen:</span>
+        <span>
+          {loaded ? (
+            CullingInformation ? (
+              <CullingInformation
+                culled={getFact('culled_timestamp', entity)}
+                staleWarning={getFact('stale_warning_timestamp', entity)}
+                stale={getFact('stale_timestamp', entity)}
+                currDate={new Date()}
+              >
+                <DateFormat date={getFact('updated', entity)} type="exact" />
+              </CullingInformation>
+            ) : (
+              <DateFormat date={getFact('updated', entity)} type="exact" />
+            )
+          ) : (
+            <Skeleton size={SkeletonSize.sm} />
+          )}
+        </span>
+        {loaded && !getFact('insights_id', entity) && <InsightsDisconnected />}
+      </div>
+    </GridItem>
+  </Grid>
 );
 
 FactsInfo.propTypes = {
-    loaded: PropTypes.bool,
-    entity: PropTypes.object
+  loaded: PropTypes.bool,
+  entity: PropTypes.object,
 };
 
 export default FactsInfo;

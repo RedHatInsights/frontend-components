@@ -6,59 +6,51 @@ import { usePermissions } from '@redhat-cloud-services/frontend-components-utili
 import { PencilAltIcon } from '@patternfly/react-icons';
 
 const InnerButton = ({ link, onClick }) => (
-    <a
-        className="ins-c-inventory__detail--action"
-        href={ `${window.location.href}/${link}` }
-        onClick={ onClick }
-    >
-        <PencilAltIcon />
-    </a>
+  <a className="ins-c-inventory__detail--action" href={`${window.location.href}/${link}`} onClick={onClick}>
+    <PencilAltIcon />
+  </a>
 );
 
 InnerButton.propTypes = {
-    link: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+  link: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 let permissionsCache = undefined;
 
 const EditButtonUnknownPermissions = (props) => {
-    const { hasAccess } = usePermissions('inventory', [
-        'inventory:*:*',
-        'inventory:hosts:write',
-        'inventory:*:write'
-    ]);
+  const { hasAccess } = usePermissions('inventory', ['inventory:*:*', 'inventory:hosts:write', 'inventory:*:write']);
 
-    if (hasAccess) {
-        permissionsCache = hasAccess;
-    }
+  if (hasAccess) {
+    permissionsCache = hasAccess;
+  }
 
-    if (!hasAccess) {
-        return null;
-    }
+  if (!hasAccess) {
+    return null;
+  }
 
-    return <InnerButton {...props}/>;
+  return <InnerButton {...props} />;
 };
 
 EditButtonUnknownPermissions.propTypes = {
-    link: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+  link: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 const EditButtonWrapper = ({ writePermissions, ...props }) => {
-    if (insights.chrome.isProd || writePermissions || permissionsCache) {
-        return <InnerButton {...props} />;
-    }
+  if (insights.chrome.isProd || writePermissions || permissionsCache) {
+    return <InnerButton {...props} />;
+  }
 
-    if (typeof writePermissions !== 'boolean') {
-        return <EditButtonUnknownPermissions {...props} />;
-    }
+  if (typeof writePermissions !== 'boolean') {
+    return <EditButtonUnknownPermissions {...props} />;
+  }
 
-    return null;
+  return null;
 };
 
 EditButtonWrapper.propTypes = {
-    writePermissions: PropTypes.bool
+  writePermissions: PropTypes.bool,
 };
 
 export default EditButtonWrapper;

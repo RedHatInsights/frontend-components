@@ -1,30 +1,28 @@
 const makeActions = (actions) => {
-    return actions?.reduce?.((acc, curr) => ({
-        ...acc,
-        [curr]: curr,
-        [`${curr}_PENDING`]: `${curr}_PENDING`,
-        [`${curr}_FULFILLED`]: `${curr}_FULFILLED`,
-        [`${curr}_REJECTED`]: `${curr}_REJECTED`
-    }), {});
+  return actions?.reduce?.(
+    (acc, curr) => ({
+      ...acc,
+      [curr]: curr,
+      [`${curr}_PENDING`]: `${curr}_PENDING`,
+      [`${curr}_FULFILLED`]: `${curr}_FULFILLED`,
+      [`${curr}_REJECTED`]: `${curr}_REJECTED`,
+    }),
+    {}
+  );
 };
 
 const asyncInventory = [
-    'LOAD_ENTITIES',
-    'LOAD_ENTITY',
-    'REMOVE_ENTITY',
-    'LOAD_SYSTEM_PROFILE',
-    'SET_DISPLAY_NAME',
-    'SET_ANSIBLE_HOST',
-    'LOAD_TAGS',
-    'ALL_TAGS'
+  'LOAD_ENTITIES',
+  'LOAD_ENTITY',
+  'REMOVE_ENTITY',
+  'LOAD_SYSTEM_PROFILE',
+  'SET_DISPLAY_NAME',
+  'SET_ANSIBLE_HOST',
+  'LOAD_TAGS',
+  'ALL_TAGS',
 ];
 
-const systemIssues = [
-    'LOAD_ADVISOR_RECOMMENDATIONS',
-    'LOAD_APPLICABLE_CVES',
-    'LOAD_APPLICABLE_ADVISORIES',
-    'LOAD_COMPLIANCE_POLICIES'
-];
+const systemIssues = ['LOAD_ADVISOR_RECOMMENDATIONS', 'LOAD_APPLICABLE_CVES', 'LOAD_APPLICABLE_ADVISORIES', 'LOAD_COMPLIANCE_POLICIES'];
 
 export const INVENTORY_ACTION_TYPES = makeActions(asyncInventory);
 export const ACTION_TYPES = INVENTORY_ACTION_TYPES;
