@@ -18,7 +18,7 @@ const Markdown = ({ template, definitions }) => {
   const sanitizeOptions = {
     allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, '*': ['style'] },
     transformTags: {
-      ul(tagName, attribs) {
+      ul() {
         return {
           tagName: 'ul',
           attribs: { class: 'pf-c-list' },

@@ -11,7 +11,7 @@ import {
   TimesCircleIcon,
 } from '@patternfly/react-icons';
 import { BASE_FETCH_URL, FILTER_CATEGORIES as FC, IMPACT_LABEL, LIKELIHOOD_LABEL } from '../Constants';
-import { Bullseye, Button, Card, CardBody, ClipboardCopy, Stack, StackItem, ToolbarItem, Tooltip, TooltipPosition } from '@patternfly/react-core';
+import { Bullseye, Button, Card, CardBody, ClipboardCopy, Stack, StackItem, Tooltip, TooltipPosition } from '@patternfly/react-core';
 import React, { Component, Fragment } from 'react';
 import { SortByDirection, Table, TableBody, TableHeader, cellWidth, fitContent, sortable } from '@patternfly/react-table';
 import { flatten, sortBy } from 'lodash';

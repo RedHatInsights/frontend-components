@@ -10,8 +10,6 @@ const minutes = seconds * 60;
 const hours = minutes * 60;
 const days = hours * 24;
 
-const exact = (value) => `${value.toUTCString().split(',')[1].slice(0, -4).trim()} UTC`;
-
 const calculateTooltip = (culled, warning, currDate) => {
   const culledDate = new Date(culled);
   const warningDate = new Date(warning);

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Title, Card, CardBody } from '@patternfly/react-core';
+import { Card, CardBody } from '@patternfly/react-core';
 import dynamic from 'next/dynamic';
 import classnames from 'classnames';
 import { createUseStyles } from 'react-jss';

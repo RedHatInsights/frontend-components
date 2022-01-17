@@ -3,19 +3,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Nav, NavItem, NavList } from '@patternfly/react-core';
 import classnames from 'classnames';
-import { createUseStyles } from 'react-jss';
-
-const useStyles = createUseStyles({
-  capitalize: {
-    textTransform: 'capitalize',
-    '& > button': {
-      textTransform: 'capitalize',
-    },
-  },
-  groupLink: {
-    'font-size': 14,
-  },
-});
 
 const NavLink = ({ href, title }) => {
   const { pathname } = useRouter();

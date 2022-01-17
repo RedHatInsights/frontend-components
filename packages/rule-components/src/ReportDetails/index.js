@@ -5,18 +5,8 @@ import RuleFeedback, { feedback } from './RuleFeedback';
 import Markdown from '../Markdown';
 import { totalRiskMeta } from './constants';
 import RiskDescription from './RiskDescription';
-import doT from 'dot';
 import { riskOfChangeMeta } from './RiskOfChangeIcon';
 import './index.scss';
-
-const templateProcessor = (template, definitions) =>
-  definitions
-    ? doT.template(template, {
-        ...doT.templateSettings,
-        varname: ['pydata'],
-        strip: false,
-      })(definitions)
-    : template;
 
 const ReportDetails = ({
   details,

@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { render, mount } from 'enzyme';
+import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import BiosCard from './BiosCard';
 import configureStore from 'redux-mock-store';

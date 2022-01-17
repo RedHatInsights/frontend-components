@@ -111,7 +111,7 @@ module.exports = ({
     const overwrite = reposDir === defaultReposDir;
 
     // Resolve config functions for cross-service references
-    for (const [_projName, proj] of Object.entries(standaloneConfig)) {
+    for (const [, proj] of Object.entries(standaloneConfig)) {
       const { services, path, assets, register } = proj;
       if (typeof register === 'function') {
         registry.push(register);

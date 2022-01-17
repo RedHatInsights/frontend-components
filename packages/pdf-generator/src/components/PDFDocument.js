@@ -7,7 +7,7 @@ import { DateFormat } from '@redhat-cloud-services/frontend-components/DateForma
 import { customTitle } from '../utils/text';
 import styles from '../utils/styles';
 
-const PDFDocument = ({ pages, type, style, title, reportName, groupName, size, orientation, allPagesHaveTitle, footer, ...props }) => {
+const PDFDocument = ({ pages, type, style, title, reportName, groupName, size, orientation, allPagesHaveTitle, footer }) => {
   const appliedStyles = styles(style);
 
   return (

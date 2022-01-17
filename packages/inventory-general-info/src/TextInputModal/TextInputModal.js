@@ -56,6 +56,7 @@ TextInputModal.propTypes = {
   onCancel: PropTypes.func,
   onSubmit: PropTypes.func,
   ariaLabel: PropTypes.string,
+  value: PropTypes.string,
 };
 
 TextInputModal.defaultProps = {

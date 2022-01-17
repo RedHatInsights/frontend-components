@@ -215,7 +215,7 @@ class Chart extends React.Component {
             }}
             rows={[
               [legendHeader],
-              ...(Array.isArray(data) ? data : [data]).map(({ x, y }, key) => [
+              ...(Array.isArray(data) ? data : [data]).map(({ x }, key) => [
                 <Canvas
                   key={`${key}-bullet`}
                   style={{

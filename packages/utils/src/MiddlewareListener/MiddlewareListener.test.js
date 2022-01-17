@@ -44,7 +44,7 @@ describe('bubble actions', () => {
   test('should NOT stop', () => {
     mwListener.addNew({
       on: 'something',
-      callback: ({ data, preventBubble }) => {
+      callback: ({ data }) => {
         expect(data).toEqual({ data: 'some data' });
       },
     });

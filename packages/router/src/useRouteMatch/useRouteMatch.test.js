@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Fragment, useEffect } from 'react';
 import { MemoryRouter, Route } from 'react-router-dom';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import ChromeRouter from '../ChromeRouter';
 import useRouteMatch from '../useRouteMatch';
 
