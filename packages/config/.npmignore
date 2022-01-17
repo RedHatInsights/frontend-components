@@ -6,3 +6,4 @@
 babel.config.js
 doc/
 config/
+.eslintrc

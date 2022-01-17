@@ -5,30 +5,23 @@ import { Button } from '@patternfly/react-core';
 import { SortAmountDownIcon, SortAmountUpIcon } from '@patternfly/react-icons';
 
 export function flipDirection(direction) {
-    return direction === SortByDirection.asc ? SortByDirection.desc : SortByDirection.asc;
+  return direction === SortByDirection.asc ? SortByDirection.desc : SortByDirection.asc;
 }
 
 const SortBy = ({ direction, onSortChange }) => (
-    <Button
-        variant="plain"
-        onClick={ e => onSortChange(e, flipDirection(direction)) }
-    >
-        {
-            direction === SortByDirection.asc ?
-                <SortAmountUpIcon size="sm" /> :
-                <SortAmountDownIcon size="sm" />
-        }
-    </Button>
+  <Button variant="plain" onClick={(e) => onSortChange(e, flipDirection(direction))}>
+    {direction === SortByDirection.asc ? <SortAmountUpIcon size="sm" /> : <SortAmountDownIcon size="sm" />}
+  </Button>
 );
 
 SortBy.propTypes = {
-    direction: PropTypes.oneOf(Object.values(SortByDirection)),
-    onSortChange: PropTypes.func
+  direction: PropTypes.oneOf(Object.values(SortByDirection)),
+  onSortChange: PropTypes.func,
 };
 
 SortBy.defaultProps = {
-    direction: SortByDirection.asc,
-    onSortChange: () => undefined
+  direction: SortByDirection.asc,
+  onSortChange: () => undefined,
 };
 
 export default SortBy;

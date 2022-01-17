@@ -1,19 +1,19 @@
 import breakpoints from './breakpoints';
 
 const getVariant = () => {
-    const width = window.innerWidth;
+  const width = window.innerWidth;
 
-    let result;
+  let result;
 
-    for (const [ variant, size ] of Object.entries(breakpoints)) {
-        if (size >= width) {
-            break;
-        }
-
-        result = variant;
+  for (const [variant, size] of Object.entries(breakpoints)) {
+    if (size >= width) {
+      break;
     }
 
-    return result;
+    result = variant;
+  }
+
+  return result;
 };
 
 export default getVariant;

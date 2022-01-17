@@ -192,7 +192,8 @@ exports[`SystemIssues DOM should render correctly with data - closed 1`] = `
         1
          critical
       </span>
-       recommendations in 
+       recommendations in
+       
       <a
         href="./insights/advisor/systems/test-id"
       >
@@ -201,7 +202,8 @@ exports[`SystemIssues DOM should render correctly with data - closed 1`] = `
     </span>
   </div>
   <span>
-    System above compliance threshold for 
+    System above compliance threshold for
+     
     <a
       href="./insights/compliance/reports/"
     >
@@ -405,7 +407,8 @@ exports[`SystemIssues DOM should render correctly with data - opened 1`] = `
         1
          critical
       </span>
-       recommendations in 
+       recommendations in
+       
       <a
         href="./insights/advisor/systems/test-id"
       >
@@ -414,7 +417,8 @@ exports[`SystemIssues DOM should render correctly with data - opened 1`] = `
     </span>
   </div>
   <span>
-    System above compliance threshold for 
+    System above compliance threshold for
+     
     <a
       href="./insights/compliance/reports/"
     >
@@ -618,7 +622,8 @@ exports[`SystemIssues DOM should render correctly with no advisor 1`] = `
         0
          critical
       </span>
-       recommendations in 
+       recommendations in
+       
       <a
         href="./insights/advisor/systems/test-id"
       >
@@ -627,7 +632,8 @@ exports[`SystemIssues DOM should render correctly with no advisor 1`] = `
     </span>
   </div>
   <span>
-    System above compliance threshold for 
+    System above compliance threshold for
+     
     <a
       href="./insights/compliance/reports/"
     >
@@ -831,7 +837,8 @@ exports[`SystemIssues DOM should render correctly with no compliance 1`] = `
         1
          critical
       </span>
-       recommendations in 
+       recommendations in
+       
       <a
         href="./insights/advisor/systems/test-id"
       >
@@ -1034,7 +1041,8 @@ exports[`SystemIssues DOM should render correctly with no cve 1`] = `
         1
          critical
       </span>
-       recommendations in 
+       recommendations in
+       
       <a
         href="./insights/advisor/systems/test-id"
       >
@@ -1043,7 +1051,8 @@ exports[`SystemIssues DOM should render correctly with no cve 1`] = `
     </span>
   </div>
   <span>
-    System above compliance threshold for 
+    System above compliance threshold for
+     
     <a
       href="./insights/compliance/reports/"
     >
@@ -1244,7 +1253,8 @@ exports[`SystemIssues DOM should render correctly with no patch 1`] = `
         1
          critical
       </span>
-       recommendations in 
+       recommendations in
+       
       <a
         href="./insights/advisor/systems/test-id"
       >
@@ -1253,7 +1263,8 @@ exports[`SystemIssues DOM should render correctly with no patch 1`] = `
     </span>
   </div>
   <span>
-    System above compliance threshold for 
+    System above compliance threshold for
+     
     <a
       href="./insights/compliance/reports/"
     >

@@ -8,10 +8,10 @@ import AppInfo from './AppInfo';
  * @param {*} props any parent props, just passed to InventoryDetail and AppInfo.
  */
 export const FullDetail = (props) => (
-    <Fragment>
-        <InventoryDetail { ...props } />
-        <AppInfo { ...props } />
-    </Fragment>
+  <Fragment>
+    <InventoryDetail {...props} />
+    <AppInfo {...props} />
+  </Fragment>
 );
 
 export default FullDetail;

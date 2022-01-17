@@ -8,34 +8,33 @@ import styles from '../utils/styles';
 
 const appliedStyles = styles();
 
-const Paragraph = ({
-    style,
-    children,
-    paragraphProps,
-    ...props
-}) => <View {...props}
+const Paragraph = ({ style, children, paragraphProps, ...props }) => (
+  <View
+    {...props}
     style={{
-        ...style
+      ...style,
     }}
->
-    <Text {...paragraphProps}
-        style = {{
-            ...appliedStyles.displayFont
-        }}
+  >
+    <Text
+      {...paragraphProps}
+      style={{
+        ...appliedStyles.displayFont,
+      }}
     >
-        {customTitle(children)}
+      {customTitle(children)}
     </Text>
-</View>;
+  </View>
+);
 
 Paragraph.propTypes = {
-    style: styleProps,
-    children: PropTypes.node,
-    paragraphProps: customProps
+  style: styleProps,
+  children: PropTypes.node,
+  paragraphProps: customProps,
 };
 
 Paragraph.defaultProps = {
-    style: {},
-    paragraphProps: {}
+  style: {},
+  paragraphProps: {},
 };
 
 export default Paragraph;

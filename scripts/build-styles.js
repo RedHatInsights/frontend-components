@@ -15,75 +15,76 @@ const root = process.cwd();
 const files = glob.sync(`${root}/src/**/*.scss`);
 
 async function buildStyle(file) {
-    const outFiles = [
-        path.resolve(file.split('/src/').pop(), './').replace(/scss$/, 'css'),
-        path.resolve(file.replace('/src/', '/esm/'), './').replace(/scss$/, 'css')
-    ];
-    const promises = outFiles.map((outFile) => {
-        let targetDir = outFile.split('/');
-        targetDir.pop();
-        targetDir = targetDir.join('/').replace(root, '').replace(/^\//, '');
+  const outFiles = [
+    path.resolve(file.split('/src/').pop(), './').replace(/scss$/, 'css'),
+    path.resolve(file.replace('/src/', '/esm/'), './').replace(/scss$/, 'css'),
+  ];
+  const promises = outFiles.map((outFile) => {
+    let targetDir = outFile.split('/');
+    targetDir.pop();
+    targetDir = targetDir.join('/').replace(root, '').replace(/^\//, '');
 
-        if (!fs.existsSync(path.resolve(root, targetDir))) {
-            fs.mkdirSync(targetDir);
+    if (!fs.existsSync(path.resolve(root, targetDir))) {
+      fs.mkdirSync(targetDir);
+    }
+
+    const render = sass.render(
+      {
+        file,
+        outFile,
+        importer: packageImporter(),
+      },
+      function (err, result) {
+        if (err) {
+          console.error(file, outFile);
+          throw err;
         }
 
-        const render = sass.render({
-            file,
-            outFile,
-            importer: packageImporter()
-        }, function(err, result) {
-            if (err) {
-                console.error(file, outFile);
-                throw err;
-            }
-
-            return fs.writeFile(outFile, result.css, 'utf8', function(err) {
-                if (err) {
-                    throw err;
-                }
-            });
-
+        return fs.writeFile(outFile, result.css, 'utf8', function (err) {
+          if (err) {
+            throw err;
+          }
         });
-        const copy = fs.copyFile(file, outFile.replace(/css$/, 'scss'), function(err) {
-            if (err) {
-                throw err;
-            }
-        });
-        return Promise.all([ render, copy ]);
+      }
+    );
+    const copy = fs.copyFile(file, outFile.replace(/css$/, 'scss'), function (err) {
+      if (err) {
+        throw err;
+      }
     });
-    return Promise.all(promises);
+    return Promise.all([render, copy]);
+  });
+  return Promise.all(promises);
 }
 
 async function buildStyles(files) {
-    const cmds = files.map(buildStyle);
-    return Promise.all(cmds);
+  const cmds = files.map(buildStyle);
+  return Promise.all(cmds);
 }
 
 async function run(files) {
-    try {
-        await buildStyles(files);
-    } catch (error) {
-        console.error(error);
-        process.exit(1);
-    }
+  try {
+    await buildStyles(files);
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
 }
 
 const args = process.argv.slice(2);
 
 if (args.includes('-w') || args.includes('--watch')) {
-    console.log(`Watching ${files.length} scss files in: ${root}`);
-    const watcher = chokidar.watch(files);
-    watcher
-    .on('add', path => {
-        console.log(`Compiling sass: ${path}`);
-        buildStyles([ path ]);
+  console.log(`Watching ${files.length} scss files in: ${root}`);
+  const watcher = chokidar.watch(files);
+  watcher
+    .on('add', (path) => {
+      console.log(`Compiling sass: ${path}`);
+      buildStyles([path]);
     })
-    .on('change', path => {
-        console.log(`Compiling sass: ${path}`);
-        buildStyles([ path ]);
+    .on('change', (path) => {
+      console.log(`Compiling sass: ${path}`);
+      buildStyles([path]);
     });
-
 } else {
-    run(files);
+  run(files);
 }

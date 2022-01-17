@@ -19,13 +19,15 @@ import { entitiesLoading } from '../../redux/actions';
  * being wrapped in callback.
  */
 const propsCache = () => {
-    let cache = {};
+  let cache = {};
 
-    const updateProps = (props) => { cache = props; };
+  const updateProps = (props) => {
+    cache = props;
+  };
 
-    const getProps = () => cache;
+  const getProps = () => cache;
 
-    return { updateProps, getProps };
+  return { updateProps, getProps };
 };
 
 /**
@@ -36,73 +38,66 @@ const propsCache = () => {
  * It also calculates pagination and sortBy from props or from store if consumer passed items or not.
  */
 
-const InventoryTable = forwardRef(({ // eslint-disable-line react/display-name
-    onRefresh,
-    children,
-    inventoryRef,
-    items,
-    total: propsTotal,
-    page: propsPage,
-    perPage: propsPerPage,
-    filters,
-    showTags,
-    sortBy: propsSortBy,
-    customFilters,
-    hasAccess = true,
-    isFullView = false,
-    getEntities,
-    hideFilters,
-    paginationProps,
-    errorState = <ErrorState />,
-    autoRefresh,
-    isLoaded,
-    initialLoading,
-    ignoreRefresh,
-    showTagModal,
-    ...props
-}, ref) => {
+const InventoryTable = forwardRef(
+  (
+    {
+      // eslint-disable-line react/display-name
+      onRefresh,
+      children,
+      inventoryRef,
+      items,
+      total: propsTotal,
+      page: propsPage,
+      perPage: propsPerPage,
+      filters,
+      showTags,
+      sortBy: propsSortBy,
+      customFilters,
+      hasAccess = true,
+      isFullView = false,
+      getEntities,
+      hideFilters,
+      paginationProps,
+      errorState = <ErrorState />,
+      autoRefresh,
+      isLoaded,
+      initialLoading,
+      ignoreRefresh,
+      showTagModal,
+      ...props
+    },
+    ref
+  ) => {
     const hasItems = Boolean(items);
-    const error = useSelector(({ entities }) => (
-        entities?.error
-    ));
-    const page = useSelector(({ entities: { page: invPage } }) => (
-        hasItems ? propsPage : (invPage || 1)
-    )
-    , shallowEqual);
-    const perPage = useSelector(({ entities: { perPage: invPerPage } }) => (
-        hasItems ? propsPerPage : (invPerPage || 50)
-    )
-    , shallowEqual);
+    const error = useSelector(({ entities }) => entities?.error);
+    const page = useSelector(({ entities: { page: invPage } }) => (hasItems ? propsPage : invPage || 1), shallowEqual);
+    const perPage = useSelector(({ entities: { perPage: invPerPage } }) => (hasItems ? propsPerPage : invPerPage || 50), shallowEqual);
     const total = useSelector(({ entities: { total: invTotal } }) => {
-        if (hasItems) {
-            return propsTotal !== undefined ? propsTotal : items?.length;
-        }
+      if (hasItems) {
+        return propsTotal !== undefined ? propsTotal : items?.length;
+      }
 
-        return invTotal;
+      return invTotal;
     }, shallowEqual);
     const pagination = {
-        page,
-        perPage,
-        total
+      page,
+      perPage,
+      total,
     };
-    const sortBy = useSelector(({ entities: { sortBy: invSortBy } }) => (
-        hasItems ? propsSortBy : invSortBy
-    ), shallowEqual);
+    const sortBy = useSelector(({ entities: { sortBy: invSortBy } }) => (hasItems ? propsSortBy : invSortBy), shallowEqual);
 
-    const reduxLoaded = useSelector(({ entities }) => (
-        hasItems && isLoaded !== undefined ? (isLoaded && entities?.loaded) : entities?.loaded
-    ));
+    const reduxLoaded = useSelector(({ entities }) => (hasItems && isLoaded !== undefined ? isLoaded && entities?.loaded : entities?.loaded));
 
     /**
      * If initialLoading is set to true, then the component should be in loading state until
      * entities.loaded is false (and then we can use the redux loading state and forget this one)
      */
-    const [ initialLoadingActive, disableInitialLoading ] = useState(initialLoading);
+    const [initialLoadingActive, disableInitialLoading] = useState(initialLoading);
     useEffect(() => {
-        if (!reduxLoaded) {
-            disableInitialLoading();
-        }
-    }, [ reduxLoaded ]);
+      if (!reduxLoaded) {
+        disableInitialLoading();
+      }
+    }, [reduxLoaded]);
     const loaded = reduxLoaded && !initialLoadingActive;
 
     const dispatch = useDispatch();
@@ -110,15 +105,15 @@ const InventoryTable = forwardRef(({ // eslint-disable-line react/display-name
 
     const cache = useRef(propsCache());
     cache.current.updateProps({
-        page,
-        perPage,
-        items,
-        sortBy,
-        hideFilters,
-        showTags,
-        getEntities,
-        customFilters,
-        hasItems
+      page,
+      perPage,
+      items,
+      sortBy,
+      hideFilters,
+      showTags,
+      getEntities,
+      customFilters,
+      hasItems,
     });
 
     /**
@@ -126,138 +121,129 @@ const InventoryTable = forwardRef(({ // eslint-disable-line react/display-name
      * @param {*} options new options to be applied, like pagination, filters, etc.
      */
     const onRefreshData = (options = {}, disableOnRefresh) => {
-        const { activeFilters } = store.getState().entities;
-        const cachedProps = cache.current?.getProps() || {};
+      const { activeFilters } = store.getState().entities;
+      const cachedProps = cache.current?.getProps() || {};
 
-        // eslint-disable-next-line camelcase
-        const currPerPage = options?.per_page || options?.perPage || cachedProps.perPage;
+      // eslint-disable-next-line camelcase
+      const currPerPage = options?.per_page || options?.perPage || cachedProps.perPage;
 
-        const params = {
-            page: cachedProps.page,
-            per_page: currPerPage,
-            items: cachedProps.items,
-            sortBy: cachedProps.sortBy,
-            hideFilters: cachedProps.hideFilters,
-            filters: activeFilters,
-            hasItems: cachedProps.hasItems,
-            ...cachedProps.customFilters,
-            ...options
-        };
+      const params = {
+        page: cachedProps.page,
+        per_page: currPerPage,
+        items: cachedProps.items,
+        sortBy: cachedProps.sortBy,
+        hideFilters: cachedProps.hideFilters,
+        filters: activeFilters,
+        hasItems: cachedProps.hasItems,
+        ...cachedProps.customFilters,
+        ...options,
+      };
 
-        if (onRefresh && !disableOnRefresh) {
-            dispatch(entitiesLoading());
-            onRefresh(params, (options) => {
-                dispatch(
-                    loadSystems(
-                        { ...params, ...options },
-                        cachedProps.showTags,
-                        cachedProps.getEntities
-                    )
-                );
-            });
-        } else {
-            dispatch(
-                loadSystems(
-                    params,
-                    cachedProps.showTags,
-                    cachedProps.getEntities
-                )
-            );
-        }
+      if (onRefresh && !disableOnRefresh) {
+        dispatch(entitiesLoading());
+        onRefresh(params, (options) => {
+          dispatch(loadSystems({ ...params, ...options }, cachedProps.showTags, cachedProps.getEntities));
+        });
+      } else {
+        dispatch(loadSystems(params, cachedProps.showTags, cachedProps.getEntities));
+      }
     };
 
     const prevFilters = useRef(customFilters);
     useEffect(() => {
-        if (autoRefresh && !isEqual(prevFilters.current, customFilters)) {
-            onRefreshData({ page: 1 });
-            prevFilters.current = customFilters;
-        }
+      if (autoRefresh && !isEqual(prevFilters.current, customFilters)) {
+        onRefreshData({ page: 1 });
+        prevFilters.current = customFilters;
+      }
     });
 
-    return (
-        (hasAccess === false && isFullView) ?
-            <AccessDenied
-                title="This application requires Inventory permissions"
-                description={<div>
-                    To view the content of this page, you must be granted a minimum of inventory permissions from your Organization Administrator.
-                </div>}
-            /> :
-            !error ? <Fragment>
-                <EntityTableToolbar
-                    { ...props }
-                    customFilters={customFilters}
-                    hasAccess={hasAccess}
-                    items={ items }
-                    filters={ filters }
-                    hasItems={ hasItems }
-                    total={ pagination.total }
-                    page={ pagination.page }
-                    perPage={ pagination.perPage }
-                    showTags={ showTags }
-                    onRefreshData={onRefreshData}
-                    sortBy={ sortBy }
-                    hideFilters={hideFilters}
-                    paginationProps={paginationProps}
-                    loaded={loaded}
-                    showTagModal={showTagModal}
-                >
-                    { children }
-                </EntityTableToolbar>
-                <InventoryList
-                    { ...props }
-                    customFilters={customFilters}
-                    hasAccess={hasAccess}
-                    ref={ref}
-                    hasItems={ hasItems }
-                    items={ items }
-                    page={ pagination.page }
-                    sortBy={ sortBy }
-                    perPage={ pagination.perPage }
-                    showTags={ showTags }
-                    onRefreshData={onRefreshData}
-                    loaded={loaded}
-                    ignoreRefresh={ignoreRefresh}
-                />
-                <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
-                    <Pagination
-                        hasAccess={hasAccess}
-                        isFull
-                        total={ pagination.total }
-                        page={ pagination.page }
-                        perPage={ pagination.perPage }
-                        hasItems={ hasItems }
-                        onRefreshData={onRefreshData}
-                        paginationProps={paginationProps}
-                        loaded={loaded}
-                    />
-                </TableToolbar>
-            </Fragment> : errorState
+    return hasAccess === false && isFullView ? (
+      <AccessDenied
+        title="This application requires Inventory permissions"
+        description={
+          <div>To view the content of this page, you must be granted a minimum of inventory permissions from your Organization Administrator.</div>
+        }
+      />
+    ) : !error ? (
+      <Fragment>
+        <EntityTableToolbar
+          {...props}
+          customFilters={customFilters}
+          hasAccess={hasAccess}
+          items={items}
+          filters={filters}
+          hasItems={hasItems}
+          total={pagination.total}
+          page={pagination.page}
+          perPage={pagination.perPage}
+          showTags={showTags}
+          onRefreshData={onRefreshData}
+          sortBy={sortBy}
+          hideFilters={hideFilters}
+          paginationProps={paginationProps}
+          loaded={loaded}
+          showTagModal={showTagModal}
+        >
+          {children}
+        </EntityTableToolbar>
+        <InventoryList
+          {...props}
+          customFilters={customFilters}
+          hasAccess={hasAccess}
+          ref={ref}
+          hasItems={hasItems}
+          items={items}
+          page={pagination.page}
+          sortBy={sortBy}
+          perPage={pagination.perPage}
+          showTags={showTags}
+          onRefreshData={onRefreshData}
+          loaded={loaded}
+          ignoreRefresh={ignoreRefresh}
+        />
+        <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
+          <Pagination
+            hasAccess={hasAccess}
+            isFull
+            total={pagination.total}
+            page={pagination.page}
+            perPage={pagination.perPage}
+            hasItems={hasItems}
+            onRefreshData={onRefreshData}
+            paginationProps={paginationProps}
+            loaded={loaded}
+          />
+        </TableToolbar>
+      </Fragment>
+    ) : (
+      errorState
     );
-});
+  }
+);
 
 InventoryTable.propTypes = {
-    autoRefresh: PropTypes.bool,
-    onRefresh: PropTypes.func,
-    children: PropTypes.node,
-    inventoryRef: PropTypes.object,
-    items: PropTypes.array,
-    total: PropTypes.number,
-    page: PropTypes.number,
-    perPage: PropTypes.number,
-    filters: PropTypes.any,
-    showTags: PropTypes.bool,
-    sortBy: PropTypes.object,
-    customFilters: PropTypes.any,
-    hasAccess: PropTypes.bool,
-    isFullView: PropTypes.bool,
-    getEntities: PropTypes.func,
-    hideFilters: PropTypes.object,
-    paginationProps: PropTypes.object,
-    errorState: PropTypes.node,
-    isLoaded: PropTypes.bool,
-    initialLoading: PropTypes.bool,
-    ignoreRefresh: PropTypes.bool,
-    showTagModal: PropTypes.bool
+  autoRefresh: PropTypes.bool,
+  onRefresh: PropTypes.func,
+  children: PropTypes.node,
+  inventoryRef: PropTypes.object,
+  items: PropTypes.array,
+  total: PropTypes.number,
+  page: PropTypes.number,
+  perPage: PropTypes.number,
+  filters: PropTypes.any,
+  showTags: PropTypes.bool,
+  sortBy: PropTypes.object,
+  customFilters: PropTypes.any,
+  hasAccess: PropTypes.bool,
+  isFullView: PropTypes.bool,
+  getEntities: PropTypes.func,
+  hideFilters: PropTypes.object,
+  paginationProps: PropTypes.object,
+  errorState: PropTypes.node,
+  isLoaded: PropTypes.bool,
+  initialLoading: PropTypes.bool,
+  ignoreRefresh: PropTypes.bool,
+  showTagModal: PropTypes.bool,
 };
 
 export default InventoryTable;

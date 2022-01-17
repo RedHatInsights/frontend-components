@@ -10,17 +10,17 @@ import React from 'react';
  * @param {*} props additional props from `EntityTable` - loaded, onRowClick and noDetail.
  */
 const onRowClick = (event, key, { loaded, onRowClick: rowClick, noDetail }) => {
-    if (loaded && !noDetail) {
-        const isMetaKey = (event.ctrlKey || event.metaKey || event.which === 2);
-        if (isMetaKey) {
-            return;
-        } else if (rowClick) {
-            rowClick(event, key, isMetaKey);
-        }
+  if (loaded && !noDetail) {
+    const isMetaKey = event.ctrlKey || event.metaKey || event.which === 2;
+    if (isMetaKey) {
+      return;
+    } else if (rowClick) {
+      rowClick(event, key, isMetaKey);
     }
+  }
 
-    event.preventDefault();
-    event.stopPropagation();
+  event.preventDefault();
+  event.stopPropagation();
 };
 
 /**
@@ -32,22 +32,24 @@ const onRowClick = (event, key, { loaded, onRowClick: rowClick, noDetail }) => {
  * @param {*} props additional props passed from `EntityTable` - holds any props passed to inventory table.
  */
 const TitleColumn = (data, id, item, props) => (
-    <div className="ins-composed-col">
-        <div key="os_release">{item?.os_release}</div>
-        <div key="data" className={props?.noDetail ? 'ins-m-nodetail' : ''}>
-            { props?.noDetail ?
-                data :
-                <a
-                    widget="col"
-                    href={ `${location.pathname}${location.pathname.substr(-1) === '/' ? '' : '/'}${id}` }
-                    onClick={ event => {
-                        onRowClick(event, id, props);
-                    }}
-                >
-                    { data }
-                </a> }
-        </div>
+  <div className="ins-composed-col">
+    <div key="os_release">{item?.os_release}</div>
+    <div key="data" className={props?.noDetail ? 'ins-m-nodetail' : ''}>
+      {props?.noDetail ? (
+        data
+      ) : (
+        <a
+          widget="col"
+          href={`${location.pathname}${location.pathname.substr(-1) === '/' ? '' : '/'}${id}`}
+          onClick={(event) => {
+            onRowClick(event, id, props);
+          }}
+        >
+          {data}
+        </a>
+      )}
     </div>
+  </div>
 );
 
 export default TitleColumn;

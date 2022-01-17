@@ -29,130 +29,131 @@ const { RedHatDisplay, RedHatText } = redhatFont();
 Font.register({ family: 'RedHatDisplay', fonts: Object.values(RedHatDisplay) });
 Font.register({ family: 'RedHatText', fonts: Object.values(RedHatText) });
 
-export default (style = {}) => StyleSheet.create({
+export default (style = {}) =>
+  StyleSheet.create({
     ...style,
     page: {
-        fontWeight: 500,
-        fontFamily: 'RedHatText',
-        height: '100%',
-        padding: '20 50',
-        lineHeight: 1.5
+      fontWeight: 500,
+      fontFamily: 'RedHatText',
+      height: '100%',
+      padding: '20 50',
+      lineHeight: 1.5,
     },
     displayFont: {
-        fontFamily: 'RedHatDisplay'
+      fontFamily: 'RedHatDisplay',
     },
     headerContainer: {
-        display: 'flex',
-        flexDirection: 'row'
+      display: 'flex',
+      flexDirection: 'row',
     },
     currDate: {
-        alignSelf: 'flex-end',
-        marginLeft: 'auto',
-        fontSize: 9,
-        fontStyle: 'italic',
-        color: '#6e6b6c'
+      alignSelf: 'flex-end',
+      marginLeft: 'auto',
+      fontSize: 9,
+      fontStyle: 'italic',
+      color: '#6e6b6c',
     },
     reportNameWrapper: {
-        margin: '30, 0, 15'
+      margin: '30, 0, 15',
     },
     reportName: {
-        fontSize: 28,
-        color: chart_color_red_100.value
+      fontSize: 28,
+      color: chart_color_red_100.value,
     },
     groupName: {
-        fontSize: 16,
-        color: chart_color_red_100.value
+      fontSize: 16,
+      color: chart_color_red_100.value,
     },
     largeSpacing: {
-        margin: '30 0'
+      margin: '30 0',
     },
     mediumSpacing: {
-        margin: '15 0'
+      margin: '15 0',
     },
     smallSpacing: {
-        margin: '7 0'
+      margin: '7 0',
     },
     text: {
-        fontSize: 9,
-        color: global_Color_dark_100.value
+      fontSize: 9,
+      color: global_Color_dark_100.value,
     },
     firstTitle: {
-        fontSize: 9,
-        fontWeight: 700,
-        color: chart_color_red_100.value
+      fontSize: 9,
+      fontWeight: 700,
+      color: chart_color_red_100.value,
     },
     secondTitle: {
-        fontWeight: 700,
-        fontSize: 9,
-        color: chart_global_Fill_Color_700.value
+      fontWeight: 700,
+      fontSize: 9,
+      color: chart_global_Fill_Color_700.value,
     },
     thirdTitle: {
-        fontSize: 9,
-        color: global_Color_dark_200.value
+      fontSize: 9,
+      color: global_Color_dark_200.value,
     },
     flexRow: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between'
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
     },
     flexColumn: {
-        display: 'flex',
-        flexDirection: 'column'
+      display: 'flex',
+      flexDirection: 'column',
     },
     panelLabels: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly'
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
     },
     colorCrit: {
-        color: chart_color_red_100.value
+      color: chart_color_red_100.value,
     },
     colorHigh: {
-        color: chart_global_warning_Color_100.value
+      color: chart_global_warning_Color_100.value,
     },
     colorMedium: {
-        color: chart_global_warning_Color_200.value
+      color: chart_global_warning_Color_200.value,
     },
     defaultColor: {
-        color: global_Color_light_300.value
+      color: global_Color_light_300.value,
     },
     labelColorsLow: {
-        bgColor: global_palette_blue_50.value,
-        textColor: global_palette_blue_600.value,
-        iconColor: global_primary_color_100.value
+      bgColor: global_palette_blue_50.value,
+      textColor: global_palette_blue_600.value,
+      iconColor: global_primary_color_100.value,
     },
     labelColorsModerate: {
-        bgColor: global_palette_gold_50.value,
-        textColor: global_palette_gold_700.value,
-        iconColor: chart_global_warning_Color_200.value
+      bgColor: global_palette_gold_50.value,
+      textColor: global_palette_gold_700.value,
+      iconColor: chart_global_warning_Color_200.value,
     },
     labelColorsImportant: {
-        bgColor: '#fff5ec',
-        textColor: global_palette_orange_600.value,
-        iconColor: chart_global_warning_Color_100.value
+      bgColor: '#fff5ec',
+      textColor: global_palette_orange_600.value,
+      iconColor: chart_global_warning_Color_100.value,
     },
     labelColorsCrit: {
-        bgColor: global_palette_red_50.value,
-        textColor: chart_color_red_300.value,
-        iconColor: chart_color_red_200.value
+      bgColor: global_palette_red_50.value,
+      textColor: chart_color_red_300.value,
+      iconColor: chart_color_red_200.value,
     },
     compactCellPadding: {
-        paddingLeft: c_table_m_compact_cell_PaddingLeft.value,
-        paddingBottom: c_table_m_compact_cell_PaddingBottom.value,
-        paddingTop: c_table_m_compact_cell_PaddingTop.value
+      paddingLeft: c_table_m_compact_cell_PaddingLeft.value,
+      paddingBottom: c_table_m_compact_cell_PaddingBottom.value,
+      paddingTop: c_table_m_compact_cell_PaddingTop.value,
     },
     dl: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        flexDirection: 'row'
+      display: 'flex',
+      flexWrap: 'wrap',
+      flexDirection: 'row',
     },
     dt: {
-        flexGrow: 1,
-        flexShrink: 1,
-        width: '30%'
+      flexGrow: 1,
+      flexShrink: 1,
+      width: '30%',
     },
     dd: {
-        flexGrow: 1,
-        flexShrink: 1,
-        width: '70%'
-    }
-});
+      flexGrow: 1,
+      flexShrink: 1,
+      width: '70%',
+    },
+  });

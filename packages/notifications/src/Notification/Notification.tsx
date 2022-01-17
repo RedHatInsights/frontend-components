@@ -4,46 +4,46 @@ import { CloseIcon } from '@patternfly/react-icons';
 import './notification.scss';
 
 export interface NotificationProps {
-        /**
-         * Flag to automatically call `onDismiss` after `dismissDelay` runs out.
-         */
-         autoDismiss?: boolean,
-         /**
-          * Flag to show/hide notification close button.
-          */
-         dismissable?: boolean,
-         /**
-          * Function called after dismiss action is triggered. (id) => void
-          */
-         onDismiss: (id: number|string) => void,
-         /**
-          * Unique ID
-          */
-         id: number | string,
-         /**
-          * Alert variant. <a href="https://www.patternfly.org/v4/components/alert#types" target="_blank">More info.</a>
-          */
-         variant: AlertVariant,
-         /**
-          * Alert title
-          */
-         title: React.ReactNode,
-         /**
-          * Alert description
-          */
-         description?: React.ReactNode,
-         /**
-          * Time period after which `onDismiss` is called.
-          */
-         dismissDelay?: number,
-         /**
-          * Unique request ID.
-          */
-         requestId?: string,
-         /**
-          * Unique sentry error ID.
-          */
-         sentryId?: string
+  /**
+   * Flag to automatically call `onDismiss` after `dismissDelay` runs out.
+   */
+  autoDismiss?: boolean;
+  /**
+   * Flag to show/hide notification close button.
+   */
+  dismissable?: boolean;
+  /**
+   * Function called after dismiss action is triggered. (id) => void
+   */
+  onDismiss: (id: number | string) => void;
+  /**
+   * Unique ID
+   */
+  id: number | string;
+  /**
+   * Alert variant. <a href="https://www.patternfly.org/v4/components/alert#types" target="_blank">More info.</a>
+   */
+  variant: AlertVariant;
+  /**
+   * Alert title
+   */
+  title: React.ReactNode;
+  /**
+   * Alert description
+   */
+  description?: React.ReactNode;
+  /**
+   * Time period after which `onDismiss` is called.
+   */
+  dismissDelay?: number;
+  /**
+   * Unique request ID.
+   */
+  requestId?: string;
+  /**
+   * Unique sentry error ID.
+   */
+  sentryId?: string;
 }
 
 /**
@@ -57,73 +57,70 @@ const DEFAULT_DELAY = 8000;
  * But can be also used as a standalone component.
  */
 const Notification: React.ComponentType<NotificationProps> = ({
-    description,
-    dismissable = true,
-    onDismiss,
-    dismissDelay = DEFAULT_DELAY,
-    title,
-    sentryId,
-    requestId,
-    autoDismiss = true,
-    id,
-    ...rest
+  description,
+  dismissable = true,
+  onDismiss,
+  dismissDelay = DEFAULT_DELAY,
+  title,
+  sentryId,
+  requestId,
+  autoDismiss = true,
+  id,
+  ...rest
 }) => {
-    const dismissTimeout = useRef<any>();
+  const dismissTimeout = useRef<any>();
 
-    const handleDismiss = () => {
-        onDismiss(id);
+  const handleDismiss = () => {
+    onDismiss(id);
+  };
+
+  const setDismissTimeout = () => {
+    if (autoDismiss) {
+      dismissTimeout.current = setTimeout(() => handleDismiss(), dismissDelay);
+    }
+  };
+
+  const clearDismissTimeout = () => {
+    if (dismissTimeout.current) {
+      clearTimeout(dismissTimeout.current);
+    }
+  };
+
+  useEffect(() => {
+    setDismissTimeout();
+    return () => {
+      clearDismissTimeout();
     };
-
-    const setDismissTimeout = () => {
-        if (autoDismiss) {
-            dismissTimeout.current = setTimeout(() => handleDismiss(), dismissDelay);
-        }
-    };
-
-    const clearDismissTimeout = () => {
-        if (dismissTimeout.current) {
-            clearTimeout(dismissTimeout.current);
-        }
-    };
-
-    useEffect(() => {
-        setDismissTimeout();
-        return () => {
-            clearDismissTimeout();
-        };
-    }, []);
-    return (
-        <Alert
-            className="notification-item"
-            id={`${id}`}
-            title={ typeof title === 'string' ? title.replace(/<\/?[^>]+(>|$)/g, '') : title }
-            { ...rest }
-            actionClose={ dismissable ?
-                <AlertActionCloseButton
-                    aria-label="close-notification"
-                    variant="plain"
-                    onClick={ handleDismiss }
-                >
-                    <CloseIcon/>
-                </AlertActionCloseButton> : null
-            }
-            onMouseEnter={clearDismissTimeout}
-            onMouseLeave={setDismissTimeout}
-        >
-            { (typeof description === 'string') ? description.replace(/<\/?[^>]+(>|$)/g, '') : description }
-            {
-                sentryId && <TextContent>
-                    <Text component={ TextVariants.small }>Tracking Id: { sentryId }</Text>
-                </TextContent>
-            }
-            {
-                requestId && <TextContent>
-                    <Text component={ TextVariants.small }>Request Id: { requestId }</Text>
-                </TextContent>
-            }
-        </Alert>
-    );
-
+  }, []);
+  return (
+    <Alert
+      className="notification-item"
+      id={`${id}`}
+      title={typeof title === 'string' ? title.replace(/<\/?[^>]+(>|$)/g, '') : title}
+      {...rest}
+      actionClose={
+        dismissable ? (
+          <AlertActionCloseButton aria-label="close-notification" variant="plain" onClick={handleDismiss}>
+            <CloseIcon />
+          </AlertActionCloseButton>
+        ) : null
+      }
+      onMouseEnter={clearDismissTimeout}
+      onMouseLeave={setDismissTimeout}
+    >
+      {typeof description === 'string' ? description.replace(/<\/?[^>]+(>|$)/g, '') : description}
+      {sentryId && (
+        <TextContent>
+          <Text component={TextVariants.small}>Tracking Id: {sentryId}</Text>
+        </TextContent>
+      )}
+      {requestId && (
+        <TextContent>
+          <Text component={TextVariants.small}>Request Id: {requestId}</Text>
+        </TextContent>
+      )}
+    </Alert>
+  );
 };
 
 export default Notification;
