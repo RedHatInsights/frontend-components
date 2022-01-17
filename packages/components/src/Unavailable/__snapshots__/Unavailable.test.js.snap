@@ -66,9 +66,11 @@ exports[`Unavailable component should render 1`] = `
               rel="noopener noreferrer"
               target="_blank"
             >
-               status page
+               
+              status page
             </a>
-             for known outages.
+             
+            for known outages.
           </div>
         </EmptyStateBody>
       </div>
