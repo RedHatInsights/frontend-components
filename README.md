@@ -186,3 +186,160 @@ If none package suits scope of new changes, we need to create new package by cre
 Webhooks are enabled to trigger releases on travis from comment on merged PR. If you are member of group responsible for releases you can add new commnent to merged PR `Release minor`, `Release bugfix` or `Release` in order to trigger new release.
 
 You can also draft a release by adding label `release` or `release minor` and once this PR is merged new release will be triggered.
+
+## Typescript guidelines
+
+Typescript build has been finally introduced to the repository. All modules will be eventually refactored into typescript. When refactoring, or creating new modules, please follow these instructions when creating types:
+
+### React components
+
+1. All component props must be an interface and must be exported. This is required for consuming apps to use features like `omit` or `extends` when developing with typescript. A nice example is generating JSX from array structure, but for some reason, extension/exclustion of the interface is required.
+
+```TS
+
+import React from 'react';
+import { AlertProps, AlertVariant } from '@patternfly/react-core';
+
+/**
+ * Custom component wrapper from FEC
+ * It has a description prop which is mapped to the PF Alert children prop
+ * */
+interface AlertWrapper extends AlertProps {
+  description?: string
+}
+
+/**
+ * Local type which builds on FEC defined type
+*/
+interface LocalAlertType extends AlertWrapper {
+  id: string
+}
+
+const CustomComponent: React.ComponentType = ({ data }) => {
+    const alertsStructure: LocalAlertType[] = data.map(({ uuid, status, title, message }) => ({
+        id: uuid,
+        variant: status === 500 ? AlertVariant.danger : AlertVariant.info,
+        title,
+        description: message
+    }));
+
+    return alertsStructure.map(({ id, ...props }) => <AlertWrapper key={id} {...props} />);
+};
+
+```
+
+2. When creating a wrapper around PF components, always extend original components props. This will ensure that all original props are accepted by your component wrapper. If you have to exclude some original prop, use `Omit` generic. Exclusion might be required because the wrapper is setting a prop by default.
+
+```TS
+import React from 'react';
+import { Alert, AlertProps, AlertVariant } from '@patternfly/react-core';
+
+export interface AlertWrapperProps extends Omit<AlertProps, 'variant'> {
+  specificRequiredProp: React.ReactNode
+}
+
+const AlertWrapper: React.FunctionComponent<AlertWrapperProps> = ({ specificRequiredProp, ...props }) => (
+    <div>
+        <span>{specificRequiredProp}</span>
+        <Alert {...props} variant={AlertVariant.danger} />
+    </div>
+);
+
+export default AlertWrapper;
+
+
+```
+
+3. Always export nested types. It can be required by a consumer app when constructing component props.
+
+```TS
+import React from 'react';
+import { Alert, AlertProps, AlertVariant } from '@patternfly/react-core';
+
+export type CustomType = 'A' | 'B' | 2 | 'something'
+export interface CustomInterface {
+  a: string,
+  b?: number
+}
+
+export interface AlertWrapperProps extends Omit<AlertProps, 'variant'> {
+  nestedNonPrimitiveType: CustomType
+  nestedNonPrimitiveInterface: CustomInterface
+  nestedNonPrimitiveArray: CustomType[]
+}
+
+const AlertWrapper: React.FunctionComponent<AlertWrapperProps> = ({ specificRequiredProp, ...props }) => (
+    <div>
+        <span>{specificRequiredProp}</span>
+        <Alert {...props} variant={AlertVariant.danger} />
+    </div>
+);
+
+export default AlertWrapper;
+
+```
+
+### General guidelines
+
+#### Names
+
+1. Use PascalCase for type names.
+2. Do not use I as a prefix for interface names.
+3. Use PascalCase for enum values.
+4. Use camelCase for function names.
+5. Use camelCase for property names and local variables.
+6. Do not use _ as a prefix for private properties.
+7. Use whole words in names when possible.
+
+#### Comments
+
+1. Always add a short description to exported types. The description is used for generating documentation
+2. Use JSDoc style comments for functions, interfaces, enums, and classes.
+
+```TS
+export interface AlertWrapperProps extends Omit<AlertProps, 'variant'> {
+  /**
+   * Alert id
+  */
+  id: string,
+  /**
+   * A content displayed as Patternfly Alert children
+  */
+  description: React.ReactNode
+}
+
+```
+
+#### Types
+
+1. Do not export types/functions unless you need to share it across multiple components.
+2. Do not introduce new types/values to the global namespace.
+3. Shared types should be defined in types.ts.
+4. Within a file, type definitions should come first.
+
+#### null and undefined
+
+1. Use undefined. Do not use null.
+
+#### General Constructs
+
+For a variety of reasons, we avoid certain constructs, and use some of our own. Among them:
+
+1. Do not use for..in statements; instead, use ts.forEach, ts.forEachKey and ts.forEachValue. Be aware of their slightly different semantics.
+2. Try to use ts.forEach, ts.map, and ts.filter instead of loops when it is not strongly inconvenient.
+
+#### Style
+
+1. Use arrow functions over anonymous function expressions.
+2. Open curly braces always go on the same line as whatever necessitates them.
+3. Parenthesized constructs should have no surrounding whitespace.
+4. A single space follows commas, colons, and semicolons in those constructs. For example:
+```ts
+for (var i = 0, n = str.length; i < 10; i++) { }
+if (x < 10) { }
+function f(x: number, y: string): void { }
+```
+5. Use a single declaration per variable statement
+```ts
+(i.e. use var x = 1; var y = 2; over var x = 1, y = 2;).
+```
