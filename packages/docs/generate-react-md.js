@@ -120,7 +120,7 @@ function generateDefaultValue(value) {
 
 function generateComponentDescription(description) {
   const result = { value: description };
-  if (description.includes('@deprecated')) {
+  if (description?.includes('@deprecated')) {
     result.deprecated = true;
     result.value = result.value.replace('@deprecated', '');
   }
