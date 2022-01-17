@@ -165,7 +165,8 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
           <Button
             onClick={[MockFunction]}
           >
-             Some action
+             
+            Some action
           </Button>,
           <Button
             onClick={[MockFunction]}

@@ -7,83 +7,83 @@ import breakpoints from './breakpoints';
 import isSmallScreen from './isSmallScreen';
 
 describe('useScreen', () => {
-    it('isSmallScreen', () => {
-        expect(isSmallScreen('2xl')).toEqual(false);
-        expect(isSmallScreen('lg')).toEqual(false);
-        expect(isSmallScreen('md')).toEqual(false);
-        expect(isSmallScreen('sm')).toEqual(true);
-        expect(isSmallScreen('xs')).toEqual(true);
+  it('isSmallScreen', () => {
+    expect(isSmallScreen('2xl')).toEqual(false);
+    expect(isSmallScreen('lg')).toEqual(false);
+    expect(isSmallScreen('md')).toEqual(false);
+    expect(isSmallScreen('sm')).toEqual(true);
+    expect(isSmallScreen('xs')).toEqual(true);
+  });
+
+  it('renders only on size change', async () => {
+    const tmpSize = global.innerWidth;
+
+    const renderSpy = jest.fn();
+
+    let wrapper;
+
+    const changeSize = async (size) => {
+      await act(async () => {
+        global.innerWidth = size;
+        global.dispatchEvent(new Event('resize'));
+      });
+      wrapper.update();
+    };
+
+    const Dummy = () => {
+      const screenSize = useScreen();
+
+      renderSpy(screenSize);
+
+      return null;
+    };
+
+    global.innerWidth = 540;
+
+    const variants = Object.keys(breakpoints);
+
+    await act(async () => {
+      wrapper = mount(<Dummy />);
     });
+    wrapper.update();
 
-    it('renders only on size change', async () => {
-        const tmpSize = global.innerWidth;
+    expect(renderSpy).toHaveBeenCalledWith(variants[0]);
+    renderSpy.mockClear();
 
-        const renderSpy = jest.fn();
+    await changeSize(541);
+    expect(renderSpy).not.toHaveBeenCalled();
 
-        let wrapper;
+    await changeSize(768);
+    expect(renderSpy).toHaveBeenCalledWith(variants[1]);
+    renderSpy.mockClear();
 
-        const changeSize = async (size) => {
-            await act(async () => {
-                global.innerWidth = size;
-                global.dispatchEvent(new Event('resize'));
-            });
-            wrapper.update();
-        };
+    await changeSize(992);
+    expect(renderSpy).toHaveBeenCalledWith(variants[2]);
+    renderSpy.mockClear();
 
-        const Dummy = () => {
-            const screenSize = useScreen();
+    await changeSize(993);
+    expect(renderSpy).toHaveBeenCalledWith(variants[3]);
+    renderSpy.mockClear();
 
-            renderSpy(screenSize);
+    await changeSize(1200);
+    expect(renderSpy).not.toHaveBeenCalled();
 
-            return null;
-        };
+    await changeSize(1201);
+    expect(renderSpy).toHaveBeenCalledWith(variants[4]);
+    renderSpy.mockClear();
 
-        global.innerWidth = 540;
+    await changeSize(1201);
+    expect(renderSpy).not.toHaveBeenCalled();
 
-        const variants = Object.keys(breakpoints);
+    await changeSize(992);
+    expect(renderSpy).toHaveBeenCalledWith(variants[2]);
+    renderSpy.mockClear();
 
-        await act(async () => {
-            wrapper = mount(<Dummy />);
-        });
-        wrapper.update();
+    global.innerWidth = tmpSize;
 
-        expect(renderSpy).toHaveBeenCalledWith(variants[0]);
-        renderSpy.mockClear();
-
-        await changeSize(541);
-        expect(renderSpy).not.toHaveBeenCalled();
-
-        await changeSize(768);
-        expect(renderSpy).toHaveBeenCalledWith(variants[1]);
-        renderSpy.mockClear();
-
-        await changeSize(992);
-        expect(renderSpy).toHaveBeenCalledWith(variants[2]);
-        renderSpy.mockClear();
-
-        await changeSize(993);
-        expect(renderSpy).toHaveBeenCalledWith(variants[3]);
-        renderSpy.mockClear();
-
-        await changeSize(1200);
-        expect(renderSpy).not.toHaveBeenCalled();
-
-        await changeSize(1201);
-        expect(renderSpy).toHaveBeenCalledWith(variants[4]);
-        renderSpy.mockClear();
-
-        await changeSize(1201);
-        expect(renderSpy).not.toHaveBeenCalled();
-
-        await changeSize(992);
-        expect(renderSpy).toHaveBeenCalledWith(variants[2]);
-        renderSpy.mockClear();
-
-        global.innerWidth = tmpSize;
-
-        await act(async () => {
-            wrapper.unmount();
-        });
-        wrapper.update();
+    await act(async () => {
+      wrapper.unmount();
     });
+    wrapper.update();
+  });
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ChromeRouterProps {
-    basename?: string
+  basename?: string;
 }
 
 declare const ChromeRouter: React.ComponentType<ChromeRouterProps>;

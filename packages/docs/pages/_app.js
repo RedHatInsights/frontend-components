@@ -9,20 +9,20 @@ import '../styles/globals.css';
 import NestedLayout from '../layouts/nested-layout';
 
 function MyApp({ Component, pageProps }) {
-    return (
-        <Layout>
-            <MDXProvider components={components}>
-                <NestedLayout>
-                    <Component {...pageProps} />
-                </NestedLayout>
-            </MDXProvider>
-        </Layout>
-    );
+  return (
+    <Layout>
+      <MDXProvider components={components}>
+        <NestedLayout>
+          <Component {...pageProps} />
+        </NestedLayout>
+      </MDXProvider>
+    </Layout>
+  );
 }
 
 MyApp.propTypes = {
-    Component: PropTypes.elementType.isRequired,
-    pageProps: PropTypes.object
+  Component: PropTypes.elementType.isRequired,
+  pageProps: PropTypes.object,
 };
 
 export default MyApp;

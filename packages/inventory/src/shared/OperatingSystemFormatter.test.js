@@ -5,65 +5,65 @@ import { mount } from 'enzyme';
 import OperatingSystemFormatter from './OperatingSystemFormatter';
 
 describe('OperatingSystemFormatter', () => {
-    let systemProfile;
+  let systemProfile;
 
-    it('should render correctly with RHEL and version', () => {
-        systemProfile = {
-            operating_system: {
-                name: 'RHEL',
-                major: 7,
-                minor: 4
-            }
-        };
+  it('should render correctly with RHEL and version', () => {
+    systemProfile = {
+      operating_system: {
+        name: 'RHEL',
+        major: 7,
+        minor: 4,
+      },
+    };
 
-        const wrapper = mount(<OperatingSystemFormatter systemProfile={systemProfile}/>);
+    const wrapper = mount(<OperatingSystemFormatter systemProfile={systemProfile} />);
 
-        expect(wrapper.text()).toEqual('RHEL 7.4');
-    });
+    expect(wrapper.text()).toEqual('RHEL 7.4');
+  });
 
-    it('should render correctly with RHEL and no version', () => {
-        systemProfile = {
-            operating_system: {
-                name: 'RHEL',
-                major: 7,
-                minor: null
-            }
-        };
+  it('should render correctly with RHEL and no version', () => {
+    systemProfile = {
+      operating_system: {
+        name: 'RHEL',
+        major: 7,
+        minor: null,
+      },
+    };
 
-        const wrapper = mount(<OperatingSystemFormatter systemProfile={systemProfile}/>);
+    const wrapper = mount(<OperatingSystemFormatter systemProfile={systemProfile} />);
 
-        expect(wrapper.text()).toEqual('RHEL ');
-    });
+    expect(wrapper.text()).toEqual('RHEL ');
+  });
 
-    it('should render with different system', () => {
-        systemProfile = {
-            operating_system: {
-                name: 'Windows'
-            }
-        };
+  it('should render with different system', () => {
+    systemProfile = {
+      operating_system: {
+        name: 'Windows',
+      },
+    };
 
-        const wrapper = mount(<OperatingSystemFormatter systemProfile={systemProfile}/>);
+    const wrapper = mount(<OperatingSystemFormatter systemProfile={systemProfile} />);
 
-        expect(wrapper.text()).toEqual('Windows');
-    });
+    expect(wrapper.text()).toEqual('Windows');
+  });
 
-    it('missing name', () => {
-        systemProfile = {
-            operating_system: {
-                name: null
-            }
-        };
+  it('missing name', () => {
+    systemProfile = {
+      operating_system: {
+        name: null,
+      },
+    };
 
-        const wrapper = mount(<OperatingSystemFormatter systemProfile={systemProfile}/>);
+    const wrapper = mount(<OperatingSystemFormatter systemProfile={systemProfile} />);
 
-        expect(wrapper.text()).toEqual('Not available');
-    });
+    expect(wrapper.text()).toEqual('Not available');
+  });
 
-    it('missing operating system', () => {
-        systemProfile = {};
+  it('missing operating system', () => {
+    systemProfile = {};
 
-        const wrapper = mount(<OperatingSystemFormatter systemProfile={systemProfile}/>);
+    const wrapper = mount(<OperatingSystemFormatter systemProfile={systemProfile} />);
 
-        expect(wrapper.text()).toEqual('Not available');
-    });
+    expect(wrapper.text()).toEqual('Not available');
+  });
 });

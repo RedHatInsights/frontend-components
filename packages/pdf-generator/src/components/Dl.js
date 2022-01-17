@@ -7,28 +7,27 @@ import styles from '../utils/styles';
 
 const appliedStyles = styles();
 
-const Dl = ({
-    style,
-    children
-}) => {
-    return (
-        <View style={{
-            ...appliedStyles.dl,
-            ...style
-        }}>
-            { children }
-        </View>
-    );
+const Dl = ({ style, children }) => {
+  return (
+    <View
+      style={{
+        ...appliedStyles.dl,
+        ...style,
+      }}
+    >
+      {children}
+    </View>
+  );
 };
 
 Dl.propTypes = {
-    style: styleProps,
-    children: PropTypes.node,
-    rows: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.node))
+  style: styleProps,
+  children: PropTypes.node,
+  rows: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.node)),
 };
 
 Dl.defaultProps = {
-    style: {}
+  style: {},
 };
 
 export default Dl;

@@ -11,45 +11,41 @@ import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-componen
  * @param {*} props `componentsMapper` if you want to pass different components list.
  */
 const AppInfo = ({ componentMapper, appList }) => {
-    const store = useStore();
-    const { search } = useLocation();
-    const searchParams = new URLSearchParams(search);
-    const loaded = useSelector(({ entityDetails: { loaded } }) => loaded);
-    const entity = useSelector(({ entityDetails: { entity } }) => entity);
-    const activeApp = useSelector(({ entityDetails: { activeApps, activeApp, loaded } }) => {
-        if (loaded) {
-            return (appList || activeApps)?.find?.(item => item?.name === (
-                searchParams.get('appName') || activeApp?.appName
-            )) || activeApps?.[0];
-        }
-    });
-    const Cmp = componentMapper || activeApp?.component;
-    return (
-        <Fragment>
-            {
-                loaded ? activeApp && (
-                    <div className={ `ins-active-app-${activeApp?.name}` }>
-                        { Cmp ?
-                            <Cmp
-                                store={store}
-                                inventoryId={entity?.id}
-                                appName={activeApp?.name}
-                            /> :
-                            'missing component'}
-                    </div>
-                ) : <Skeleton size={ SkeletonSize.md } />
-            }
-        </Fragment>
-    );
+  const store = useStore();
+  const { search } = useLocation();
+  const searchParams = new URLSearchParams(search);
+  const loaded = useSelector(({ entityDetails: { loaded } }) => loaded);
+  const entity = useSelector(({ entityDetails: { entity } }) => entity);
+  const activeApp = useSelector(({ entityDetails: { activeApps, activeApp, loaded } }) => {
+    if (loaded) {
+      return (appList || activeApps)?.find?.((item) => item?.name === (searchParams.get('appName') || activeApp?.appName)) || activeApps?.[0];
+    }
+  });
+  const Cmp = componentMapper || activeApp?.component;
+  return (
+    <Fragment>
+      {loaded ? (
+        activeApp && (
+          <div className={`ins-active-app-${activeApp?.name}`}>
+            {Cmp ? <Cmp store={store} inventoryId={entity?.id} appName={activeApp?.name} /> : 'missing component'}
+          </div>
+        )
+      ) : (
+        <Skeleton size={SkeletonSize.md} />
+      )}
+    </Fragment>
+  );
 };
 
 AppInfo.propTypes = {
-    componentMapper: PropTypes.element,
-    appList: PropTypes.arrayOf(PropTypes.shape({
-        title: PropTypes.node,
-        name: PropTypes.string,
-        pageId: PropTypes.string
-    }))
+  componentMapper: PropTypes.element,
+  appList: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.node,
+      name: PropTypes.string,
+      pageId: PropTypes.string,
+    })
+  ),
 };
 
 export default AppInfo;

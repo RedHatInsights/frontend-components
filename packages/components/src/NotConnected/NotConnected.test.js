@@ -4,8 +4,8 @@ import toJson from 'enzyme-to-json';
 import NotConnected from './NotConnected';
 
 describe('Not connected component', () => {
-    it('should render', () => {
-        const wrapper = mount(<NotConnected/>);
-        expect(toJson(wrapper)).toMatchSnapshot();
-    });
+  it('should render', () => {
+    const wrapper = mount(<NotConnected />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 });

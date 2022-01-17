@@ -17,258 +17,238 @@ import globalPaletteBlack700 from '@patternfly/react-tokens/dist/js/global_palet
 
 const appliedStyles = styles();
 const chartMapper = {
-    pie: {
-        component: ChartPie,
-        chartProps: {
-            allowTooltip: false,
-            labelRadius: 45,
-            labels: ({ datum }) => `${datum.y}%`,
-            style: { labels: { fill: '#FFFFFF' } }
-        },
-        showLabels: true,
-        width: 80,
-        translate: {
-            x: 100,
-            y: 100
-        }
+  pie: {
+    component: ChartPie,
+    chartProps: {
+      allowTooltip: false,
+      labelRadius: 45,
+      labels: ({ datum }) => `${datum.y}%`,
+      style: { labels: { fill: '#FFFFFF' } },
     },
-    bar: {
-        component: ChartBar,
-        width: 200,
-        height: 100,
-        scale: 0.34,
-        lineChart: true,
-        translate: {
-            x: 100,
-            y: 0
-        }
+    showLabels: true,
+    width: 80,
+    translate: {
+      x: 100,
+      y: 100,
     },
-    donut: {
-        component: ChartDonut,
-        width: 80,
-        translate: {
-            x: 100,
-            y: 100
-        }
+  },
+  bar: {
+    component: ChartBar,
+    width: 200,
+    height: 100,
+    scale: 0.34,
+    lineChart: true,
+    translate: {
+      x: 100,
+      y: 0,
     },
-    donutUtilization: {
-        component: ChartDonutUtilization,
-        width: 80,
-        colorScale: ([ color ]) => [ color, ...getLightThemeColors('gray').voronoi.colorScale ],
-        translate: {
-            x: 100,
-            y: 100
-        }
-    }
+  },
+  donut: {
+    component: ChartDonut,
+    width: 80,
+    translate: {
+      x: 100,
+      y: 100,
+    },
+  },
+  donutUtilization: {
+    component: ChartDonutUtilization,
+    width: 80,
+    colorScale: ([color]) => [color, ...getLightThemeColors('gray').voronoi.colorScale],
+    translate: {
+      x: 100,
+      y: 100,
+    },
+  },
 };
 
 const calcRoundPerc = (data) => {
-    const sum = data.reduce((sum, val) => val.y + sum, 0);
-    const percData = data.map(x => ({ ...x, y: x.y / sum * 100 }));
-    // round down percentage, calculate error margin, sort by error
-    const roundedPerc = percData.map(({ y, ...rest }) => (
-        { y: Math.floor(y), err: Math.sqrt(y) * Math.abs(y - Math.floor(y)), ...rest })
-    ).sort((a, b) => a.err < b.err ? 1 : -1);
-    const percSum = roundedPerc.reduce((sum, a) => a.y + sum, 0);
-    // distribute reminder % points to make 100%
-    const hundredPerc = roundedPerc.map((val, i) => i < 100 - percSum ? { ...val, y: val.y + 1 } : val);
-    return hundredPerc;
+  const sum = data.reduce((sum, val) => val.y + sum, 0);
+  const percData = data.map((x) => ({ ...x, y: (x.y / sum) * 100 }));
+  // round down percentage, calculate error margin, sort by error
+  const roundedPerc = percData
+    .map(({ y, ...rest }) => ({ y: Math.floor(y), err: Math.sqrt(y) * Math.abs(y - Math.floor(y)), ...rest }))
+    .sort((a, b) => (a.err < b.err ? 1 : -1));
+  const percSum = roundedPerc.reduce((sum, a) => a.y + sum, 0);
+  // distribute reminder % points to make 100%
+  const hundredPerc = roundedPerc.map((val, i) => (i < 100 - percSum ? { ...val, y: val.y + 1 } : val));
+  return hundredPerc;
 };
 
 class Chart extends React.Component {
-    getChartData = (currChart) => {
-        let { data } = this.props;
-        const { chartType, colorSchema, ...props } = this.props;
+  getChartData = (currChart) => {
+    let { data } = this.props;
+    const { chartType, colorSchema, ...props } = this.props;
 
-        if (chartType !== 'bar') {
-            let roundPercData = calcRoundPerc(data);
-            // fix sorting caused by rounding function, revert to the initial order
-            data = data.map(({ x, y, ...rest }) => ({ x, y: roundPercData.find(item => item.x === x).y, ...rest }));
-        }
-
-        const Chart = currChart.component;
-        const el = document.createElement('div');
-        document.body.appendChild(el);
-        el.style.display = 'none';
-        ReactDOM.render(
-            <Chart data={data} {...currChart.chartProps} { ...props } />,
-            el
-        );
-
-        const paths = Array.from(el.querySelectorAll('path')).map((path) => path.getAttribute('d'));
-        const texts = flatten(Array.from(el.querySelectorAll('text')).map((textEl, key) => (
-            Array.from(textEl.querySelectorAll('tspan')).map((text) => ({
-                text: text.innerHTML,
-                ...currChart.showLabels && {
-                    coords: [ textEl.getAttribute('x'), textEl.getAttribute('y') ],
-                    shift: data[key]?.y < 20 ? 0.65 : 0
-                },
-                style: text.getAttribute('style').split(';').reduce((acc, curr) => {
-                    const [ key, val ] = curr.split(':');
-                    return {
-                        ...acc,
-                        ...key && { [key.trim()]: val.trim() }
-                    };
-                }, {})
-            }))
-        )));
-
-        // let's clean up the placeholder chart
-        ReactDOM.unmountComponentAtNode(el);
-        el.remove();
-
-        return [ paths, texts ];
+    if (chartType !== 'bar') {
+      let roundPercData = calcRoundPerc(data);
+      // fix sorting caused by rounding function, revert to the initial order
+      data = data.map(({ x, y, ...rest }) => ({ x, y: roundPercData.find((item) => item.x === x).y, ...rest }));
     }
 
-    render() {
-        const { data, chartType, colorSchema, legendHeader, ...props } = this.props;
-        const currChart = chartMapper[chartType] || chartMapper.pie;
+    const Chart = currChart.component;
+    const el = document.createElement('div');
+    document.body.appendChild(el);
+    el.style.display = 'none';
+    ReactDOM.render(<Chart data={data} {...currChart.chartProps} {...props} />, el);
 
-        const colors = currChart.colorScale
-            ? currChart.colorScale(getLightThemeColors(colorSchema).voronoi.colorScale)
-            : getLightThemeColors(colorSchema).voronoi.colorScale;
+    const paths = Array.from(el.querySelectorAll('path')).map((path) => path.getAttribute('d'));
+    const texts = flatten(
+      Array.from(el.querySelectorAll('text')).map((textEl, key) =>
+        Array.from(textEl.querySelectorAll('tspan')).map((text) => ({
+          text: text.innerHTML,
+          ...(currChart.showLabels && {
+            coords: [textEl.getAttribute('x'), textEl.getAttribute('y')],
+            shift: data[key]?.y < 20 ? 0.65 : 0,
+          }),
+          style: text
+            .getAttribute('style')
+            .split(';')
+            .reduce((acc, curr) => {
+              const [key, val] = curr.split(':');
+              return {
+                ...acc,
+                ...(key && { [key.trim()]: val.trim() }),
+              };
+            }, {}),
+        }))
+      )
+    );
 
-        const [ paths, texts ] = this.getChartData(currChart);
+    // let's clean up the placeholder chart
+    ReactDOM.unmountComponentAtNode(el);
+    el.remove();
 
-        return <View style={[
-            appliedStyles.flexRow,
-            {
-                paddingLeft: 30,
-                paddinRight: 10,
-                justifyContent: 'flex-start'
+    return [paths, texts];
+  };
+
+  render() {
+    const { data, chartType, colorSchema, legendHeader, ...props } = this.props;
+    const currChart = chartMapper[chartType] || chartMapper.pie;
+
+    const colors = currChart.colorScale
+      ? currChart.colorScale(getLightThemeColors(colorSchema).voronoi.colorScale)
+      : getLightThemeColors(colorSchema).voronoi.colorScale;
+
+    const [paths, texts] = this.getChartData(currChart);
+
+    return (
+      <View
+        style={[
+          appliedStyles.flexRow,
+          {
+            paddingLeft: 30,
+            paddinRight: 10,
+            justifyContent: 'flex-start',
+          },
+        ]}
+      >
+        <Canvas
+          {...props}
+          style={{
+            width: currChart.width,
+            height: currChart.height || 67,
+          }}
+          paint={({ path, text, moveTo, lineTo, stroke, fill, scale, translate, fontSize, fillColor }) => {
+            paths.map((onePath, key) => {
+              scale(key === 0 ? 0.34 : 1);
+              translate(key === 0 ? currChart.translate.x : 0, key === 0 ? currChart.translate.y : 0);
+              path(onePath).fill(colors[key]);
+              const currText = texts[key];
+              if (currText) {
+                const fontSize = parseInt(currText.style['font-size'].replace('px', '')) * 2;
+                const coords = currText.coords;
+                const color = rgbHex(
+                  ...currText.style.fill
+                    .replace(/rgb\(|\)/g, '')
+                    .split(',')
+                    .map((item) => parseInt(item, 10))
+                );
+                fill(`#${color}`).fontSize(fontSize);
+                if (coords) {
+                  const [xshift, yshift] = [
+                    coords?.[0] > fontSize + currChart.width ? 0.5 : -2 + (currText?.shift || 0),
+                    coords?.[1] > 100 ? (coords?.[0] < fontSize + currChart.width ? 0.5 : 1) : -2 - (currText?.shift || 0),
+                  ];
+                  text(currText.text, xshift * fontSize, yshift * fontSize);
+                } else {
+                  text(currText.text, -(currText.text.length * (fontSize / 4)), 24 * key - fontSize);
+                }
+              }
+            });
+
+            if (currChart.lineChart) {
+              let xshift = 35;
+              let yshift = -35;
+              const total = data.length;
+              const [maxY] = [...data].sort((a, b) => b.y - a.y);
+              let stepper = maxY.y < total ? parseFloat(maxY.y / total).toFixed(1) : Math.ceil(maxY.y / total);
+              stepper = stepper === 0 ? total : stepper;
+
+              moveTo(0, 0);
+              lineTo(0, 250);
+              lineTo(500, 250);
+              stroke(globalPaletteBlack300.value);
+              fontSize(18);
+              fillColor(globalPaletteBlack700.value);
+
+              for (let i = 0; i < total; i++) {
+                let valueY = String(Number.isInteger(i * stepper) ? i * stepper : (i * stepper).toFixed(1));
+                let valueX = String(data[i].name);
+
+                xshift += i === 0 ? 0 : 120;
+                // y-axis labels
+                text(valueY, yshift - valueY.length, 240 - Math.ceil(240 / total) * i);
+                // x-axis labels
+                text(valueX, xshift, 260);
+              }
             }
-        ]}>
-            <Canvas
-                {...props}
-                style={{
-                    width: currChart.width,
-                    height: currChart.height || 67
-                }}
-                paint={({ path, text, moveTo, lineTo, stroke, fill, scale, translate, fontSize, fillColor }) => {
-                    paths.map((onePath, key) => {
-                        scale(key === 0 ? 0.34 : 1);
-                        translate(
-                            key === 0 ? currChart.translate.x : 0,
-                            key === 0 ? currChart.translate.y : 0
-                        );
-                        path(onePath)
-                        .fill(colors[key]);
-                        const currText = texts[key];
-                        if (currText) {
-                            const fontSize = parseInt(currText.style['font-size'].replace('px', '')) * 2;
-                            const coords = currText.coords;
-                            const color = rgbHex(
-                                ...currText
-                                .style
-                                .fill
-                                .replace(/rgb\(|\)/g, '')
-                                .split(',')
-                                .map(item => parseInt(item, 10))
-                            );
-                            fill(`#${color}`).fontSize(fontSize);
-                            if (coords) {
-                                const [ xshift, yshift ] = [
-                                    coords?.[0] > (fontSize + currChart.width) ?
-                                        0.5 :
-                                        -2 + (currText?.shift || 0),
-                                    coords?.[1] > 100 ?
-                                        coords?.[0] < (fontSize + currChart.width) ? 0.5 : 1
-                                        : -2 - (currText?.shift || 0)
-                                ];
-                                text(currText.text, xshift * fontSize, yshift * fontSize);
-                            } else {
-                                text(currText.text, -(currText.text.length * (fontSize / 4)), (24 * key) - fontSize);
-                            }
-                        }
-                    });
-
-                    if (currChart.lineChart) {
-                        let xshift = 35;
-                        let yshift = -35;
-                        const total = data.length;
-                        const [ maxY ] = [ ...data ].sort((a, b) => b.y - a.y);
-                        let stepper = maxY.y < total ? parseFloat(maxY.y / total).toFixed(1) : Math.ceil(maxY.y / total);
-                        stepper = stepper === 0 ? total : stepper;
-
-                        moveTo(0, 0);
-                        lineTo(0, 250);
-                        lineTo(500, 250);
-                        stroke(globalPaletteBlack300.value);
-                        fontSize(18);
-                        fillColor(globalPaletteBlack700.value);
-
-                        for (let i = 0; i < total; i++) {
-                            let valueY = String(Number.isInteger(i * stepper) ? i * stepper : (i * stepper).toFixed(1));
-                            let valueX = String(data[i].name);
-
-                            xshift += i === 0 ? 0 : 120;
-                            // y-axis labels
-                            text(valueY, yshift - valueY.length, 240 - (Math.ceil(240 / total) * i));
-                            // x-axis labels
-                            text(valueX, xshift, 260);
-                        }
-                    }
-                }}
-            />
-            { props.legend &&
-                <Table
-                    withHeader
-                    style={
-                        { width: 'auto', flex: 1 }
-                    }
-                    rowsStyle={{
-                        justifyContent: 'flex-start',
-                        ...appliedStyles.compactCellPadding
-                    }}
-                    rows={[
-                        [ legendHeader ],
-                        ...(Array.isArray(data) ? data : [ data ]).map(({ x, y }, key) => [
-                            <Canvas
-                                key={`${key}-bullet`}
-                                style={{
-                                    padding: 3,
-                                    width: 15,
-                                    height: 10
-                                }}
-                                paint={({ path, scale }) => {
-                                    scale(0.014);
-                                    path(CircleIconConfig.svgPath).fill(colors[key]);
-                                }}
-                            />,
-                            <Text key={`${key}-text`}>
-                                {x}
-                            </Text>
-                        ])
-                    ]}
-                />
-            }
-        </View>;
-    }
+          }}
+        />
+        {props.legend && (
+          <Table
+            withHeader
+            style={{ width: 'auto', flex: 1 }}
+            rowsStyle={{
+              justifyContent: 'flex-start',
+              ...appliedStyles.compactCellPadding,
+            }}
+            rows={[
+              [legendHeader],
+              ...(Array.isArray(data) ? data : [data]).map(({ x }, key) => [
+                <Canvas
+                  key={`${key}-bullet`}
+                  style={{
+                    padding: 3,
+                    width: 15,
+                    height: 10,
+                  }}
+                  paint={({ path, scale }) => {
+                    scale(0.014);
+                    path(CircleIconConfig.svgPath).fill(colors[key]);
+                  }}
+                />,
+                <Text key={`${key}-text`}>{x}</Text>,
+              ]),
+            ]}
+          />
+        )}
+      </View>
+    );
+  }
 }
 
 Chart.propTypes = {
-    colorSchema: PropTypes.oneOf([
-        'blue',
-        'cyan',
-        'default',
-        'gold',
-        'gray',
-        'green',
-        'multi',
-        'multiOrdered',
-        'multiUnordered',
-        'orange',
-        'purple'
-    ]),
-    legend: PropTypes.bool,
-    legendHeader: PropTypes.string,
-    data: PropTypes.array,
-    chartType: PropTypes.string
+  colorSchema: PropTypes.oneOf(['blue', 'cyan', 'default', 'gold', 'gray', 'green', 'multi', 'multiOrdered', 'multiUnordered', 'orange', 'purple']),
+  legend: PropTypes.bool,
+  legendHeader: PropTypes.string,
+  data: PropTypes.array,
+  chartType: PropTypes.string,
 };
 Chart.defaultProps = {
-    colorSchema: 'multiOrdered',
-    legend: true,
-    legendHeader: 'Legend'
+  colorSchema: 'multiOrdered',
+  legend: true,
+  legendHeader: 'Legend',
 };
 
 export default Chart;
