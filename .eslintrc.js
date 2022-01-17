@@ -6,7 +6,7 @@ module.exports = {
     plugins: [
         'rulesdir'
     ],
-    extends: path.resolve(__dirname, './config/.eslintrc.yml'),
+    extends: path.resolve(__dirname, './packages/eslint-config/index.js'),
     overrides: [{
         files: [ 'packages/**/src/**/*.ts', 'packages/**/src/**/*.tsx' ],
         parser: '@typescript-eslint/parser',
