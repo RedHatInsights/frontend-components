@@ -8,6 +8,9 @@ module.exports = {
   globals: {
     insights: 'readonly',
   },
+  rules: {
+    'no-prototype-builtins': 'off',
+  },
   overrides: [
     {
       files: ['packages/**/src/**/*.ts', 'packages/**/src/**/*.tsx'],
