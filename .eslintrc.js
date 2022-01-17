@@ -5,6 +5,9 @@ rulesDirPlugin.RULES_DIR = path.resolve(__dirname, './packages/eslint-config/lib
 module.exports = {
   plugins: ['rulesdir'],
   extends: path.resolve(__dirname, './packages/eslint-config/index.js'),
+  globals: {
+    insights: 'readonly',
+  },
   overrides: [
     {
       files: ['packages/**/src/**/*.ts', 'packages/**/src/**/*.tsx'],
