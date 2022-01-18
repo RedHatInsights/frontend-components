@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './icon-404.scss';
-const Icon404 = () => (
+const Icon404: React.FunctionComponent = () => (
   // eslint-disable-next-line max-len
   <svg
     className="Icon404"
