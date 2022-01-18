@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 
-const InventoryLoadError = ({ component, ...props }) => {
+export interface InventoryLoadErrorProps {
+  component?: string;
+}
+
+const InventoryLoadError: React.FunctionComponent<InventoryLoadErrorProps> = ({ component, ...props }) => {
   useEffect(() => {
     console.error(`Unable to load inventory component. Failed to load ${component}.`, props);
   }, []);
@@ -12,10 +15,6 @@ const InventoryLoadError = ({ component, ...props }) => {
       <code>More info can be found in browser console output.</code>
     </div>
   );
-};
-
-InventoryLoadError.propTypes = {
-  component: PropTypes.string,
 };
 
 export default InventoryLoadError;

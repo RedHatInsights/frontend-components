@@ -8,7 +8,7 @@ const isBeta = () => {
   return window.location.pathname.split('/')[1] === 'beta' ? '/beta' : '';
 };
 
-const InvalidObject = ({ ...props }) => {
+const InvalidObject: React.FunctionComponent = ({ ...props }) => {
   return (
     <section {...props} className="pf-l-page__main-section pf-c-page__main-section ins-c-component_invalid-componet">
       <Title headingLevel="h1" size="3xl">
