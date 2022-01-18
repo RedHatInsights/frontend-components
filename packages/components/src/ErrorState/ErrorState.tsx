@@ -6,7 +6,7 @@ import propTypes from 'prop-types';
 import { Title, EmptyState, EmptyStateVariant, EmptyStateIcon, EmptyStateBody, Button } from '@patternfly/react-core';
 import './error-state.scss';
 
-const ErrorState = ({ errorTitle, errorDescription, ...props }) => {
+const ErrorState = (errorTitle: string, errorDescription: string, ...props: any[]) => {
   return (
     <EmptyState variant={EmptyStateVariant.large} {...props} className="ins-c-error-state">
       <EmptyStateIcon icon={ExclamationCircleIcon} />
