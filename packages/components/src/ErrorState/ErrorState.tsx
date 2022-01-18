@@ -1,12 +1,21 @@
 import React from 'react';
-import { Stack, StackItem } from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons/';
 import DefaultErrorMessage from './DefaultErrorMessage';
 import propTypes from 'prop-types';
-import { Title, EmptyState, EmptyStateVariant, EmptyStateIcon, EmptyStateBody, Button } from '@patternfly/react-core';
+import {
+  Title,
+  EmptyState,
+  EmptyStateVariant,
+  EmptyStateIcon,
+  EmptyStateBody,
+  Button,
+  EmptyStateProps,
+  Stack,
+  StackItem,
+} from '@patternfly/react-core';
 import './error-state.scss';
 
-const ErrorState = (errorTitle: string, errorDescription: string, ...props: any[]) => {
+const ErrorState = (errorTitle: string, errorDescription: string, ...props: EmptyStateProps[]) => {
   return (
     <EmptyState variant={EmptyStateVariant.large} {...props} className="ins-c-error-state">
       <EmptyStateIcon icon={ExclamationCircleIcon} />
