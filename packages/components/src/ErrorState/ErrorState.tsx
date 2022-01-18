@@ -1,7 +1,6 @@
 import React from 'react';
 import { ExclamationCircleIcon } from '@patternfly/react-icons/';
 import DefaultErrorMessage from './DefaultErrorMessage';
-import propTypes from 'prop-types';
 import {
   Title,
   EmptyState,
@@ -39,11 +38,6 @@ const ErrorState = (errorTitle: string, errorDescription: string, ...props: Empt
       )}
     </EmptyState>
   );
-};
-
-ErrorState.propTypes = {
-  errorTitle: propTypes.string,
-  errorDescription: propTypes.string,
 };
 
 ErrorState.defaultProps = {

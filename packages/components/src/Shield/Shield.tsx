@@ -1,7 +1,6 @@
 import { Tooltip } from '@patternfly/react-core';
 import { QuestionIcon, SecurityIcon, IconSize } from '@patternfly/react-icons';
 import { SVGIconProps } from '@patternfly/react-icons/dist/js/createIcon';
-import propTypes from 'prop-types';
 import React from 'react';
 import { impactList } from './consts';
 
@@ -40,13 +39,6 @@ Shield.defaultProps = {
   hasLabel: false,
   size: 'sm',
   hasTooltip: true,
-};
-
-Shield.propTypes = {
-  impact: propTypes.oneOfType([propTypes.string, propTypes.number]),
-  hasLabel: propTypes.bool,
-  size: propTypes.string, // sm, md, lg and xl,
-  hasTooltip: propTypes.bool,
 };
 
 export default Shield;
