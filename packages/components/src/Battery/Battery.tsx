@@ -12,6 +12,7 @@ import NullBattery from './NullBattery';
 
 import './battery.scss';
 
+
 /**
  * This is the battery component that generates a 'battery'
  * which corresponds to a level 1-4
@@ -21,8 +22,11 @@ import './battery.scss';
  * 4 - critical, red - worst case scenario
  * Also accepts a label which can be made invisible
  */
+ 
+ 
 
-const Battery = ({ severity, label, labelHidden, className, ...props }) => {
+
+const Battery = ( severity: (1 | 2 | 3 | 4 | 'info' | 'low' | 'warn'| 'medium' | 'error' | 'high' | 'critical'), label: string, labelHidden?: boolean, className?: string, ...props: any[] ) => {
   let batteryClasses = classNames(className, 'ins-battery', { [`ins-battery-${severity}`]: severity !== undefined });
 
   let ariaLabels = {};
@@ -30,7 +34,7 @@ const Battery = ({ severity, label, labelHidden, className, ...props }) => {
     ariaLabels = { ['aria-label']: severity + ' ' + label };
   }
 
-  function batteryLevels(severity) {
+  function batteryLevels(severity: string | number) {
     switch (severity) {
       case 'critical':
       case 4:
@@ -63,7 +67,7 @@ const Battery = ({ severity, label, labelHidden, className, ...props }) => {
           x="0px"
           y="0px"
           viewBox="0 0 448 512"
-          style={{ enableBackground: 'new 0 0 448 512' }}
+          enableBackground="new 0 0 448 512"
           shapeRendering="geometricpresision"
         >
           <path
@@ -89,13 +93,6 @@ const Battery = ({ severity, label, labelHidden, className, ...props }) => {
 };
 
 export default Battery;
-
-Battery.propTypes = {
-  severity: propTypes.oneOf([1, 2, 3, 4, 'info', 'low', 'warn', 'medium', 'error', 'high', 'critical']),
-  label: propTypes.string.isRequired,
-  labelHidden: propTypes.bool,
-  className: propTypes.string,
-};
 
 Battery.defaultProps = {
   severity: 'null',
