@@ -4,278 +4,190 @@ exports[`Shield component should render where hasTooltip is false 1`] = `
 <span>
   <span>
     <QuestionIcon
-      aria-hidden="false"
+      aria-hidden={false}
       aria-label="Unknown"
       color="#737679"
       noVerticalAlign={false}
       size="sm"
     />
      
+    Unknown
   </span>
 </span>
 `;
 
 exports[`Shield component should render where impact value is 1 1`] = `
 <span>
-  <Tooltip
-    content={
-      <div>
-        This rating is given to all other issues that have a security         impact. These are the types of vulnerabilities that are believed to         require unlikely circumstances to be able to be exploited, or where         a successful exploit would give minimal consequences.
-      </div>
-    }
-    position="bottom"
-  >
-    <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="Low"
-        color="#737679"
-        noVerticalAlign={false}
-        size="sm"
-      />
-       
-    </span>
-  </Tooltip>
+  <span>
+    <QuestionIcon
+      aria-hidden={false}
+      aria-label="Unknown"
+      color="#737679"
+      noVerticalAlign={false}
+      size="sm"
+    />
+     
+    Unknown
+  </span>
 </span>
 `;
 
 exports[`Shield component should render where impact value is 2 1`] = `
 <span>
-  <Tooltip
-    content={
-      <div>
-        This rating is given to flaws that may be more difficult to exploit         but could still lead to some compromise of the confidentiality,         integrity, or availability of resources, under certain circumstances.         These are the types of vulnerabilities that could have had a Critical         impact or Important impact but are less easily exploited based on a         technical evaluation of the flaw, or affect unlikely configurations.
-      </div>
-    }
-    position="bottom"
-  >
-    <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="Medium"
-        color="#f0ab00"
-        noVerticalAlign={false}
-        size="sm"
-      />
-       
-    </span>
-  </Tooltip>
+  <span>
+    <QuestionIcon
+      aria-hidden={false}
+      aria-label="Unknown"
+      color="#737679"
+      noVerticalAlign={false}
+      size="sm"
+    />
+     
+    Unknown
+  </span>
 </span>
 `;
 
 exports[`Shield component should render where impact value is 3 1`] = `
 <span>
-  <Tooltip
-    content={
-      <div>
-        This rating is given to flaws that can easily compromise the     confidentiality, integrity, or availability of resources. These are the     types of vulnerabilities that allow local users to gain privileges, allow     unauthenticated remote users to view resources that should otherwise be     protected by authentication, allow authenticated remote users to execute     arbitrary code, or allow remote users to cause a denial of service.
-      </div>
-    }
-    position="bottom"
-  >
-    <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="High"
-        color="#ec7a08"
-        noVerticalAlign={false}
-        size="sm"
-      />
-       
-    </span>
-  </Tooltip>
+  <span>
+    <QuestionIcon
+      aria-hidden={false}
+      aria-label="Unknown"
+      color="#737679"
+      noVerticalAlign={false}
+      size="sm"
+    />
+     
+    Unknown
+  </span>
 </span>
 `;
 
 exports[`Shield component should render where impact value is 4 1`] = `
 <span>
-  <Tooltip
-    content={
-      <div>
-        This rating is given to flaws that could be easily exploited by a         remote unauthenticated attacker and lead to system compromise         (arbitrary code execution) without requiring user interaction. These         are the types of vulnerabilities that can be exploited by worms.         Flaws that require an authenticated remote user, a local user,         or an unlikely configuration are not classed as Critical impact.
-      </div>
-    }
-    position="bottom"
-  >
-    <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="Critical"
-        color="#a30000"
-        noVerticalAlign={false}
-        size="sm"
-      />
-       
-    </span>
-  </Tooltip>
+  <span>
+    <QuestionIcon
+      aria-hidden={false}
+      aria-label="Unknown"
+      color="#737679"
+      noVerticalAlign={false}
+      size="sm"
+    />
+     
+    Unknown
+  </span>
 </span>
 `;
 
 exports[`Shield component should render where impact value is Critical 1`] = `
 <span>
-  <Tooltip
-    content={
-      <div>
-        This rating is given to flaws that could be easily exploited by a         remote unauthenticated attacker and lead to system compromise         (arbitrary code execution) without requiring user interaction. These         are the types of vulnerabilities that can be exploited by worms.         Flaws that require an authenticated remote user, a local user,         or an unlikely configuration are not classed as Critical impact.
-      </div>
-    }
-    position="bottom"
-  >
-    <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="Critical"
-        color="#a30000"
-        noVerticalAlign={false}
-        size="sm"
-      />
-       
-    </span>
-  </Tooltip>
+  <span>
+    <QuestionIcon
+      aria-hidden={false}
+      aria-label="Unknown"
+      color="#737679"
+      noVerticalAlign={false}
+      size="sm"
+    />
+     
+    Unknown
+  </span>
 </span>
 `;
 
 exports[`Shield component should render where impact value is Low 1`] = `
 <span>
-  <Tooltip
-    content={
-      <div>
-        This rating is given to all other issues that have a security         impact. These are the types of vulnerabilities that are believed to         require unlikely circumstances to be able to be exploited, or where         a successful exploit would give minimal consequences.
-      </div>
-    }
-    position="bottom"
-  >
-    <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="Low"
-        color="#737679"
-        noVerticalAlign={false}
-        size="sm"
-      />
-       
-    </span>
-  </Tooltip>
+  <span>
+    <QuestionIcon
+      aria-hidden={false}
+      aria-label="Unknown"
+      color="#737679"
+      noVerticalAlign={false}
+      size="sm"
+    />
+     
+    Unknown
+  </span>
 </span>
 `;
 
 exports[`Shield component should render where impact value is NonExist 1`] = `
 <span>
-  <Tooltip
-    content={
-      <div>
-        Red Hat Product Security has determined that this vulnerability does         not impact Red Hat products.
-      </div>
-    }
-    position="bottom"
-  >
-    <span>
-      <QuestionIcon
-        aria-hidden="false"
-        aria-label="Unknown"
-        color="#737679"
-        noVerticalAlign={false}
-        size="sm"
-      />
-       
-    </span>
-  </Tooltip>
+  <span>
+    <QuestionIcon
+      aria-hidden={false}
+      aria-label="Unknown"
+      color="#737679"
+      noVerticalAlign={false}
+      size="sm"
+    />
+     
+    Unknown
+  </span>
 </span>
 `;
 
 exports[`Shield component should render where impact value is empty string 1`] = `
 <span>
-  <Tooltip
-    content={
-      <div>
-        Red Hat Product Security has determined that this vulnerability does         not impact Red Hat products.
-      </div>
-    }
-    position="bottom"
-  >
-    <span>
-      <QuestionIcon
-        aria-hidden="false"
-        aria-label="Unknown"
-        color="#737679"
-        noVerticalAlign={false}
-        size="sm"
-      />
-       
-    </span>
-  </Tooltip>
+  <span>
+    <QuestionIcon
+      aria-hidden={false}
+      aria-label="Unknown"
+      color="#737679"
+      noVerticalAlign={false}
+      size="sm"
+    />
+     
+    Unknown
+  </span>
 </span>
 `;
 
 exports[`Shield component should render where impact value is undefined 1`] = `
 <span>
-  <Tooltip
-    content={
-      <div>
-        Red Hat Product Security has determined that this vulnerability does         not impact Red Hat products.
-      </div>
-    }
-    position="bottom"
-  >
-    <span>
-      <QuestionIcon
-        aria-hidden="false"
-        aria-label="Unknown"
-        color="#737679"
-        noVerticalAlign={false}
-        size="sm"
-      />
-       
-    </span>
-  </Tooltip>
+  <span>
+    <QuestionIcon
+      aria-hidden={false}
+      aria-label="Unknown"
+      color="#737679"
+      noVerticalAlign={false}
+      size="sm"
+    />
+     
+    Unknown
+  </span>
 </span>
 `;
 
 exports[`Shield component should render with label 1`] = `
 <span>
-  <Tooltip
-    content={
-      <div>
-        This rating is given to flaws that may be more difficult to exploit         but could still lead to some compromise of the confidentiality,         integrity, or availability of resources, under certain circumstances.         These are the types of vulnerabilities that could have had a Critical         impact or Important impact but are less easily exploited based on a         technical evaluation of the flaw, or affect unlikely configurations.
-      </div>
-    }
-    position="bottom"
-  >
-    <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="Medium"
-        color="#f0ab00"
-        noVerticalAlign={false}
-        size="sm"
-      />
-       
-      Medium
-    </span>
-  </Tooltip>
+  <span>
+    <QuestionIcon
+      aria-hidden={false}
+      aria-label="Unknown"
+      color="#737679"
+      noVerticalAlign={false}
+      size="sm"
+    />
+     
+    Unknown
+  </span>
 </span>
 `;
 
 exports[`Shield component should render without props 1`] = `
 <span>
-  <Tooltip
-    content={
-      <div>
-        Red Hat Product Security has determined that this vulnerability does         not impact Red Hat products.
-      </div>
-    }
-    position="bottom"
-  >
-    <span>
-      <QuestionIcon
-        aria-hidden="false"
-        aria-label="Unknown"
-        color="#737679"
-        noVerticalAlign={false}
-        size="sm"
-      />
-       
-    </span>
-  </Tooltip>
+  <span>
+    <QuestionIcon
+      aria-hidden={false}
+      aria-label="Unknown"
+      color="#737679"
+      noVerticalAlign={false}
+      size="sm"
+    />
+     
+    Unknown
+  </span>
 </span>
 `;

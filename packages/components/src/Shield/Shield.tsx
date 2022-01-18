@@ -1,13 +1,14 @@
 import { Tooltip } from '@patternfly/react-core';
-import { QuestionIcon, SecurityIcon } from '@patternfly/react-icons';
+import { QuestionIcon, SecurityIcon, IconSize } from '@patternfly/react-icons';
+import { SVGIconProps } from '@patternfly/react-icons/dist/js/createIcon';
 import propTypes from 'prop-types';
 import React from 'react';
 import { impactList } from './consts';
 
-const Shield = ({ impact, hasLabel, hasTooltip, size }) => {
+const Shield = (impact: keyof typeof impactList, hasLabel: boolean, hasTooltip: boolean, size: IconSize | keyof typeof IconSize) => {
   const attributes = impactList?.[impact] ?? impactList.Unknown;
-  const badgeProps = {
-    'aria-hidden': 'false',
+  const badgeProps: SVGIconProps = {
+    'aria-hidden': false,
     'aria-label': attributes.title,
     color: attributes.color,
     size,
@@ -45,7 +46,6 @@ Shield.propTypes = {
   impact: propTypes.oneOfType([propTypes.string, propTypes.number]),
   hasLabel: propTypes.bool,
   size: propTypes.string, // sm, md, lg and xl,
-  label: propTypes.bool,
   hasTooltip: propTypes.bool,
 };
 
