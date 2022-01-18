@@ -343,3 +343,18 @@ function f(x: number, y: string): void { }
 ```ts
 (i.e. use var x = 1; var y = 2; over var x = 1, y = 2;).
 ```
+
+### Typescript Refactoring
+
+1. Pick a TO DO card from: https://github.com/RedHatInsights/frontend-components/projects/1 and move it to in-progress column. Only modules from the components package should be migrated at the moment.
+2. Make sure that all local module dependencies and already migrated to TS. If some of the local dependencies have not been migrated, migrate them first and move the related cards to the in-progress column
+```
+import A from './a' // <- not migrated to TS, has to be migrated first
+```
+3. Make sure that the `index` file in the appropriate folder is migrated to TS. If not, do it.
+```diff
+- index.js
++ index.ts
+```
+4. Follow typescript guidelines when refactoring
+5. Create PR and link it to the project card
