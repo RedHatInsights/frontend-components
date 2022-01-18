@@ -14,7 +14,7 @@ import {
 } from '@patternfly/react-core';
 import './error-state.scss';
 
-const ErrorState = (errorTitle: string, errorDescription: string, ...props: EmptyStateProps[]) => {
+const ErrorState = (errorTitle: string, errorDescription?: string, ...props: EmptyStateProps[]) => {
   return (
     <EmptyState variant={EmptyStateVariant.large} {...props} className="ins-c-error-state">
       <EmptyStateIcon icon={ExclamationCircleIcon} />

@@ -7,7 +7,7 @@ import { impactList } from './consts';
 const Shield = (impact: keyof typeof impactList, hasLabel: boolean, hasTooltip: boolean, size: IconSize | keyof typeof IconSize) => {
   const attributes = impactList?.[impact] ?? impactList.Unknown;
   const badgeProps: SVGIconProps = {
-    'aria-hidden': false,
+    'aria-hidden': 'false',
     'aria-label': attributes.title,
     color: attributes.color,
     size,
