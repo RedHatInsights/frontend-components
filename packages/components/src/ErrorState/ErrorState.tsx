@@ -15,8 +15,8 @@ import {
 import './error-state.scss';
 
 export interface ErrorStateProps extends EmptyStateProps {
-  errorTitle: string,
-  errorDescription?: string;
+  errorTitle?: string,
+  errorDescription?: React.ReactNode;
 }
 
 const ErrorState: React.FunctionComponent<ErrorStateProps> = ({ errorTitle = 'Something went wrong', errorDescription, ...props }) => {

@@ -5,14 +5,14 @@ import React from 'react';
 import { impactList } from './consts';
 
 export interface ShieldProps {
-  impact: keyof typeof impactList;
-  hasLabel: boolean;
-  hasTooltip: boolean;
-  size: IconSize | keyof typeof IconSize;
+  impact: keyof typeof impactList | 'N/A';
+  hasLabel?: boolean;
+  hasTooltip?: boolean;
+  size?: IconSize | keyof typeof IconSize;
 }
 
-const Shield: React.FunctionComponent<ShieldProps> = ({ impact, hasLabel = false, size = 'sm', hasTooltip = true }) => {
-  const attributes = impactList?.[impact] ?? impactList.Unknown;
+const Shield: React.FunctionComponent<ShieldProps> = ({ impact = 'N/A', hasLabel = false, size = 'sm', hasTooltip = true }) => {
+  const attributes = impactList?.[impact as keyof typeof impactList] ?? impactList.Unknown;
   const badgeProps: SVGIconProps = {
     'aria-hidden': 'false',
     'aria-label': attributes.title,
