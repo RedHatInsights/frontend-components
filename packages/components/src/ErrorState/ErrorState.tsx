@@ -14,7 +14,12 @@ import {
 } from '@patternfly/react-core';
 import './error-state.scss';
 
-const ErrorState = (errorTitle: string, errorDescription?: string, ...props: EmptyStateProps[]) => {
+export interface ErrorStateProps extends EmptyStateProps {
+  errorTitle: string,
+  errorDescription?: string;
+}
+
+const ErrorState: React.FunctionComponent<ErrorStateProps> = ({ errorTitle = 'Something went wrong', errorDescription, ...props }) => {
   return (
     <EmptyState variant={EmptyStateVariant.large} {...props} className="ins-c-error-state">
       <EmptyStateIcon icon={ExclamationCircleIcon} />
@@ -38,10 +43,6 @@ const ErrorState = (errorTitle: string, errorDescription?: string, ...props: Emp
       )}
     </EmptyState>
   );
-};
-
-ErrorState.defaultProps = {
-  errorTitle: 'Something went wrong',
 };
 
 export default ErrorState;

@@ -7,6 +7,9 @@ const config = {
     collectCoverage: true,
     transformIgnorePatterns: [
         "node_modules/(?!@patternfly|@data-driven-forms)",
+
+        // Uncomment the below line if you face any errors with jest
+        "/node_modules/(?!@redhat-cloud-services)"
     ],
     collectCoverageFrom: [
         "<rootDir>/packages/**/src/**/*.js",
