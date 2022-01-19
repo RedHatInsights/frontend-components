@@ -197,7 +197,7 @@ exports[`InventoryTable should render correctly with custom error 1`] = `
 exports[`InventoryTable should render correctly with error 1`] = `
 <ForwardRef>
   <ErrorState
-    errorTitle="Loading error"
+    errorTitle="Something went wrong"
   />
 </ForwardRef>
 `;
