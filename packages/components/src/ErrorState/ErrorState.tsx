@@ -15,7 +15,7 @@ import {
 import './error-state.scss';
 
 export interface ErrorStateProps extends EmptyStateProps {
-  errorTitle?: string,
+  errorTitle?: string;
   errorDescription?: React.ReactNode;
 }
 
