@@ -1,12 +1,19 @@
 import { Tooltip } from '@patternfly/react-core';
-import { QuestionIcon, SecurityIcon } from '@patternfly/react-icons';
-import propTypes from 'prop-types';
+import { QuestionIcon, SecurityIcon, IconSize } from '@patternfly/react-icons';
+import { SVGIconProps } from '@patternfly/react-icons/dist/js/createIcon';
 import React from 'react';
 import { impactList } from './consts';
 
-const Shield = ({ impact, hasLabel, hasTooltip, size }) => {
-  const attributes = impactList?.[impact] ?? impactList.Unknown;
-  const badgeProps = {
+export interface ShieldProps {
+  impact: keyof typeof impactList | 'N/A';
+  hasLabel?: boolean;
+  hasTooltip?: boolean;
+  size?: IconSize | keyof typeof IconSize;
+}
+
+const Shield: React.FunctionComponent<ShieldProps> = ({ impact = 'N/A', hasLabel = false, size = 'sm', hasTooltip = true }) => {
+  const attributes = impactList?.[impact as keyof typeof impactList] ?? impactList.Unknown;
+  const badgeProps: SVGIconProps = {
     'aria-hidden': 'false',
     'aria-label': attributes.title,
     color: attributes.color,
@@ -32,21 +39,6 @@ const Shield = ({ impact, hasLabel, hasTooltip, size }) => {
       )}
     </span>
   );
-};
-
-Shield.defaultProps = {
-  impact: 'N/A',
-  hasLabel: false,
-  size: 'sm',
-  hasTooltip: true,
-};
-
-Shield.propTypes = {
-  impact: propTypes.oneOfType([propTypes.string, propTypes.number]),
-  hasLabel: propTypes.bool,
-  size: propTypes.string, // sm, md, lg and xl,
-  label: propTypes.bool,
-  hasTooltip: propTypes.bool,
 };
 
 export default Shield;
