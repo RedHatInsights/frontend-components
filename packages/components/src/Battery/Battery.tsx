@@ -1,16 +1,23 @@
-/* eslint max-len: 0 */
 import React from 'react';
-import propTypes from 'prop-types';
-
 import classNames from 'classnames';
-
 import CriticalBattery from './CriticalBattery';
 import HighBattery from './HighBattery';
 import MediumBattery from './MediumBattery';
 import LowBattery from './LowBattery';
 import NullBattery from './NullBattery';
-
 import './battery.scss';
+
+/**
+ * Allowed values for severity which determines a variant of displayed Battery component.
+ */
+export type BatterySeverity = 1 | 2 | 3 | 4 | 'info' | 'low' | 'warn' | 'medium' | 'error' | 'high' | 'critical';
+
+export interface BatteryProps {
+  severity: BatterySeverity;
+  label: string;
+  labelHidden?: boolean;
+  className?: string;
+}
 
 /**
  * This is the battery component that generates a 'battery'
@@ -22,15 +29,15 @@ import './battery.scss';
  * Also accepts a label which can be made invisible
  */
 
-const Battery = ({ severity, label, labelHidden, className, ...props }) => {
-  let batteryClasses = classNames(className, 'ins-battery', { [`ins-battery-${severity}`]: severity !== undefined });
+const Battery: React.FunctionComponent<BatteryProps> = ({ severity, label, labelHidden, className, ...props }) => {
+  const batteryClasses = classNames(className, 'ins-battery', { [`ins-battery-${severity}`]: severity !== undefined });
 
   let ariaLabels = {};
   if (labelHidden) {
     ariaLabels = { ['aria-label']: severity + ' ' + label };
   }
 
-  function batteryLevels(severity) {
+  const batteryLevels = (severity: BatterySeverity) => {
     switch (severity) {
       case 'critical':
       case 4:
@@ -49,10 +56,10 @@ const Battery = ({ severity, label, labelHidden, className, ...props }) => {
         return <LowBattery />;
       default:
         // eslint-disable-next-line
-                console.error('Warning: Unsupported value presented to battery component');
+        console.error('Warning: Unsupported value presented to battery component');
         return <NullBattery />;
     }
-  }
+  };
 
   return (
     <React.Fragment>
@@ -63,7 +70,7 @@ const Battery = ({ severity, label, labelHidden, className, ...props }) => {
           x="0px"
           y="0px"
           viewBox="0 0 448 512"
-          style={{ enableBackground: 'new 0 0 448 512' }}
+          style={{ enableBackground: 'new 0 0 448 512' } as React.CSSProperties}
           shapeRendering="geometricpresision"
         >
           <path
@@ -89,14 +96,3 @@ const Battery = ({ severity, label, labelHidden, className, ...props }) => {
 };
 
 export default Battery;
-
-Battery.propTypes = {
-  severity: propTypes.oneOf([1, 2, 3, 4, 'info', 'low', 'warn', 'medium', 'error', 'high', 'critical']),
-  label: propTypes.string.isRequired,
-  labelHidden: propTypes.bool,
-  className: propTypes.string,
-};
-
-Battery.defaultProps = {
-  severity: 'null',
-};
