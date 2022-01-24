@@ -1,6 +1,6 @@
 import useChrome from '../useChrome';
 
-const usePendoFeedback = (...args) => {
+const usePendoFeedback = (...args: any[]) => {
   const { usePendoFeedback: usePendoFeedbackInternal } = useChrome();
   /**
    * Return no-op in case the chrome changes are not avaiable in current env.
