@@ -22,3 +22,5 @@ export const totalRiskMeta = [
     IconComponent: InsightsLabel,
   },
 ];
+
+export default totalRiskMeta;
