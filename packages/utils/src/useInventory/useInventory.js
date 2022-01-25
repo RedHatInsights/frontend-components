@@ -103,3 +103,5 @@ export const useInventory = ({ store, tableReducer, detailReducer, getRegistry }
     ...inventoryComponents,
   };
 };
+
+export default useInventory;

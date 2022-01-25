@@ -17,3 +17,5 @@ export function usePermissions(appName, permissionsList) {
   }, [appName]);
   return permissions;
 }
+
+export default usePermissions;
