@@ -1,7 +1,22 @@
 #!/usr/bin/env node
-
+const { execSync } = require('child_process');
 const static = require('@redhat-cloud-services/frontend-components-config-utilities/serve-federated');
 const yargs = require('yargs');
+
+function patchHosts() {
+    const command = `
+    for host in prod.foo.redhat.com stage.foo.redhat.com qa.foo.redhat.com ci.foo.redhat.com
+do
+    grep -q $host /etc/hosts 2>/dev/null
+    if [ $? -ne 0 ]
+    then
+        echo "Adding $host to /etc/hosts"
+        echo "127.0.0.1 $host" >>/etc/hosts
+    fi
+done
+`
+    execSync(command)
+}
 
 const cwd = process.cwd();
 
@@ -19,11 +34,13 @@ const argv = yargs
         default: 8003
     });
 })
+.command('patch-etc-hosts', 'You may have to run this as \'sudo\'. Setup your etc/hosts allow development hosts in your browser')
 .help()
 .argv;
 
 const scripts = {
-    static
+    static,
+    'patch-etc-hosts': patchHosts
 };
 
 const args = [ argv, cwd ];
