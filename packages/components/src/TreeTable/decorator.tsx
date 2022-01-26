@@ -2,9 +2,13 @@ import React from 'react';
 import { Button } from '@patternfly/react-core';
 import { AngleRightIcon } from '@patternfly/react-icons';
 import './styles.scss';
+import { TreeTableRowProps } from '.';
 
-export default (onCollapse) =>
-  (value = '', { rowData, ...props } = { rowData: {} }) => ({
+export type TreeTableDecoratorCollapse = (event: React.MouseEvent<HTMLButtonElement>, value: any, row: TreeTableRowProps) => void;
+
+const treeTableDecorator =
+  (onCollapse: TreeTableDecoratorCollapse) =>
+  (value: { title: React.ReactNode } | string = '', { rowData, ...props }: TreeTableRowProps = { rowData: {} }) => ({
     value,
     children:
       rowData.level !== undefined ? (
@@ -16,10 +20,14 @@ export default (onCollapse) =>
               </Button>
             </div>
           )}
-          <div className="pf-c-treeview__control-text">{value.title || value}</div>
+          <div className="pf-c-treeview__control-text">{typeof value === 'object' ? value.title : value}</div>
         </div>
+      ) : typeof value === 'object' ? (
+        value.title
       ) : (
-        value.title || value
+        value
       ),
     className: rowData.level !== undefined ? 'pf-c-treeview__title-cell' : '',
   });
+
+export default treeTableDecorator;
