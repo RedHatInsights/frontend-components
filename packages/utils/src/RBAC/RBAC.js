@@ -17,3 +17,5 @@ export function doesHavePermissions(userPermissions, permissionList) {
     return permissionList.includes(access?.permission || access);
   });
 }
+
+export default getRBAC;
