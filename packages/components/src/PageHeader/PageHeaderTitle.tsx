@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Title, TitleProps } from '@patternfly/react-core';
 
-export interface PageHeaderTitleProps extends Omit<TitleProps, 'title'> {
+export interface PageHeaderTitleProps extends Omit<Omit<TitleProps, 'title'>, 'headingLevel'> {
   title: React.ReactNode;
 }
 
