@@ -4,7 +4,7 @@ import { EmptyState, EmptyStateBody, Title, Stack, StackItem, EmptyStateIcon, Em
 import { HourglassHalfIcon } from '@patternfly/react-icons';
 import './maintenance.scss';
 
-export interface MaintenanceProps extends Omit<Omit<EmptyStateProps, 'children'>, 'title'> {
+export interface MaintenanceProps extends Omit<EmptyStateProps, 'children' | 'title'> {
   utcStartTime?: string;
   utcEndTime?: string;
   startTime?: string;
