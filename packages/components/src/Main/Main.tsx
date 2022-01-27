@@ -7,10 +7,11 @@ import './main.scss';
 
 const toKebab = (text: string) => text.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 
-export interface MainProps {
+export interface InternalMainProps {
   params?: { [key: string]: string };
   path?: string;
   className?: string;
+  children?: React.ReactNode;
 }
 
 /**
@@ -33,7 +34,7 @@ type FcalculateLocation = () => { staticPart: string[]; dynamic: undefined | { [
 /**
  * This is a component that wraps the page
  */
-export const Main: React.FunctionComponent<MainProps> = ({ path, params = {}, children, className, ...props }) => {
+export const InternalMain: React.FunctionComponent<InternalMainProps> = ({ path, params = {}, children, className, ...props }) => {
   const calculateLocation: FcalculateLocation = () => {
     if (window?.insights?.chrome?.$internal?.store) {
       const chromeState = window.insights.chrome.$internal.store.getState();
@@ -111,6 +112,6 @@ const mapStateToProps = ({ routerData }: IRootState) => ({
   path: routerData && routerData.path,
 });
 
-const connector = connect(mapStateToProps, () => ({}))(Main);
+const Main = connect(mapStateToProps, () => ({}))(InternalMain);
 
-export default connector;
+export default Main;
