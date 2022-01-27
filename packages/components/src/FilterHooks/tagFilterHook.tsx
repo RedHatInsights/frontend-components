@@ -2,16 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { constructGroups, mapGroups } from './constants';
 import { Spinner } from '@patternfly/react-core';
 import './tagFilterHook.scss';
+import { AllTag, GroupItem, GroupValue } from './constants';
 
 export const tagsFilterState = { tagsFilter: {} };
 export const TAGS_FILTER = 'TAGS_FILTER';
-export const tagsFilterReducer = (_state, { type, payload }) => ({
+/**TODO: figure our full payload type */
+export const tagsFilterReducer = (_state: any, { type, payload }: { type: typeof TAGS_FILTER | string; payload: any }) => ({
   ...(type === TAGS_FILTER && {
     tagsFilter: payload,
   }),
 });
 
-export const useTagsFilter = (
+type UseTagsFilter = (
+  allTags?: AllTag[],
+  loaded?: boolean,
+  additionalTagsCount?: number,
+  /** TODO: figure out full type for the callback */
+  onShowMoreClick?: (...args: any[]) => void,
+  reducer?: [Record<string, { [key: string]: GroupValue }>, (...args: any[]) => any] | [Record<string, { [key: string]: GroupValue }>],
+  itemText?: string,
+  showMoreTitle?: React.ReactNode
+) => void;
+
+export const useTagsFilter: UseTagsFilter = (
   allTags = [],
   loaded = false,
   additionalTagsCount = 0,
@@ -20,7 +33,11 @@ export const useTagsFilter = (
   itemText = 'item',
   showMoreTitle
 ) => {
-  const [state, setState] = useState({
+  const [state, setState] = useState<{
+    allTags: AllTag[];
+    loaded: boolean;
+    additionalTagsCount: number;
+  }>({
     allTags: [],
     loaded: false,
     additionalTagsCount: 0,
@@ -33,17 +50,24 @@ export const useTagsFilter = (
     }));
   }, [loaded]);
   const [selectedStateTags, setStateValue] = useState({});
-  const selectedTags = dispatch ? globalState.tagsFilter : selectedStateTags;
-  const setValue = dispatch ? (newValue) => dispatch({ type: TAGS_FILTER, payload: newValue }) : setStateValue;
+  const selectedTags: { [key: string]: GroupValue } = dispatch ? globalState.tagsFilter : selectedStateTags;
+  const setValue = dispatch ? (newValue: unknown) => dispatch({ type: TAGS_FILTER, payload: newValue }) : setStateValue;
 
   const [filterTagsBy, seFilterTagsBy] = useState('');
   const filter = {
     className: 'ins-c-tagfilter',
-    onFilter: (value) => seFilterTagsBy(value),
+    onFilter: (value: string) => seFilterTagsBy(value),
     filterBy: filterTagsBy,
-    onChange: (_e, newSelection, group, item, groupKey, itemKey) => {
+    onChange: (
+      _e: any,
+      newSelection: { [key: string]: GroupValue },
+      group: Record<string, unknown>,
+      item: GroupItem,
+      groupKey: string,
+      itemKey: string
+    ) => {
       if (item.meta) {
-        const isSelected = newSelection[groupKey][itemKey];
+        const isSelected = !!newSelection[groupKey][itemKey];
         newSelection[groupKey][itemKey] = {
           isSelected,
           group,
@@ -54,7 +78,7 @@ export const useTagsFilter = (
     },
     selected: selectedTags,
     ...(additionalTagsCount && {
-      onShowMore: (...props) => onShowMoreClick && onShowMoreClick(...props),
+      onShowMore: (...props: any[]) => onShowMoreClick && onShowMoreClick(...props),
       showMoreTitle: showMoreTitle || `${state.additionalTagsCount} more tags available`,
     }),
     ...(loaded && allTags.length > 0

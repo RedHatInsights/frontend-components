@@ -9,7 +9,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
       />,
     ]
   }
-  onSelect={[Function]}
 >
   <Dropdown
     dropdownItems={

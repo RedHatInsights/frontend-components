@@ -1,14 +1,34 @@
-export const sizeCalculator = (rows) => {
-  let points = {};
+import { TreeTableRow } from './rowWrapper';
+
+export interface RowData {
+  level?: number;
+  isTreeOpen?: boolean;
+  id: number;
+}
+
+export interface TreeTableRowProps {
+  rowData: Partial<RowData>;
+}
+
+export type Point = {
+  size: number;
+};
+
+type Points = {
+  [key: string | number]: Point;
+};
+
+export const sizeCalculator = (rows: TreeTableRow[]) => {
+  const points: Points = {};
 
   for (let key = 0; key < rows.length; key++) {
     if (!rows[key].cells) {
-      rows[key] = {
+      (rows[key] as Partial<TreeTableRow>) = {
         cells: rows[key],
       };
     }
 
-    let currRow = rows[key];
+    const currRow = rows[key];
     currRow.level = rows[currRow.treeParent] ? rows[currRow.treeParent].level + 1 : 0;
     const pointKey = typeof currRow.treeParent === 'undefined' ? 0 : currRow.treeParent + 1;
     if (!points[pointKey]) {
@@ -26,7 +46,7 @@ export const sizeCalculator = (rows) => {
 
 export const collapseBuilder =
   (parentKey = 'treeParent') =>
-  (rows, _e, _val, { rowData }) => {
+  (rows: TreeTableRow[], _e: any, _val: any, { rowData }: { rowData: RowData }) => {
     const currRow = rows[rowData.id];
     const isTreeOpen = !currRow.isTreeOpen;
     const rowsToChange = [rows[rowData.id], ...(isTreeOpen === false ? rows.filter((row) => row[parentKey] === rowData.id) : [])];

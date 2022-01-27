@@ -1,27 +1,52 @@
 import React from 'react';
 import { Badge, Tooltip } from '@patternfly/react-core';
 
-export function mapGroups(currSelection, valuesKey = 'values') {
-  return Object.entries(currSelection || {}).reduce((acc, [groupKey, groupValue]) => {
-    const values = constructValues(groupValue, groupKey);
-    if (values.length > 0) {
-      return [
-        ...acc,
-        {
-          type: 'tags',
-          key: groupKey,
-          category: values[0]?.group?.value || values[0]?.group?.label,
-          [valuesKey]: values,
-        },
-      ];
-    }
+export type Tag = {
+  key: string;
+  value: string;
+};
 
-    return acc;
-  }, []);
-}
+type TagGroup = {
+  count: number;
+  tag: Tag;
+};
 
-export function constructValues(groupValue, groupKey) {
-  return Object.entries(groupValue || {}).reduce((acc, [key, { isSelected, group, value, item }]) => {
+export type GroupItem = {
+  tagKey: string;
+  tagValue: string;
+  meta?: {
+    tag: Tag;
+  };
+};
+
+type Group = {
+  isSelected: boolean;
+  group: Record<string, unknown>;
+  value?: string;
+  item?: GroupItem;
+};
+
+export type GroupValue = {
+  [key: string]: Group;
+};
+
+type ConstructValuesItem = {
+  key: string;
+  tagKey: string;
+  value?: string;
+  name: string;
+  group: Record<string, unknown>;
+};
+
+export type AllTag = {
+  name: React.ReactNode;
+  type?: 'checkbox';
+  tags: TagGroup[];
+};
+
+export function constructValues(groupValue: GroupValue, groupKey: string) {
+  return Object.entries(groupValue || {}).reduce<ConstructValuesItem[]>((acc, curr) => {
+    const [key, { isSelected, group, value, item }] = curr;
     if (isSelected) {
       const { key: tagKey, value: tagValue } = item?.meta?.tag || {
         key: item?.tagKey || groupKey,
@@ -43,7 +68,33 @@ export function constructValues(groupValue, groupKey) {
   }, []);
 }
 
-export function constructGroups(allTags, item = 'item') {
+interface MapGroupsItem {
+  type: 'tags';
+  key: string;
+  category: any;
+  [key: string]: ConstructValuesItem[] | 'tags' | string | any;
+}
+
+export function mapGroups(currSelection: { [key: string]: GroupValue }, valuesKey = 'values') {
+  return Object.entries(currSelection || {}).reduce<MapGroupsItem[]>((acc, [groupKey, groupValue]) => {
+    const values = constructValues(groupValue, groupKey);
+    if (values.length > 0) {
+      return [
+        ...acc,
+        {
+          type: 'tags',
+          key: groupKey,
+          category: values[0]?.group?.value || values[0]?.group?.label,
+          [valuesKey]: values,
+        },
+      ];
+    }
+
+    return acc;
+  }, []);
+}
+
+export function constructGroups(allTags: AllTag[], item = 'item') {
   return allTags.map(({ name, tags, type = 'checkbox', ...rest }) => ({
     ...rest,
     label: name,
