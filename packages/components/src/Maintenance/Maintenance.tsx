@@ -1,11 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { EmptyState, EmptyStateBody, Title, Stack, StackItem, EmptyStateIcon } from '@patternfly/react-core';
+import { EmptyState, EmptyStateBody, Title, Stack, StackItem, EmptyStateIcon, EmptyStateProps } from '@patternfly/react-core';
 import { HourglassHalfIcon } from '@patternfly/react-icons';
 import './maintenance.scss';
 
-const Maintenance = ({ title, utcStartTime, utcEndTime, startTime, endTime, timeZone, description, redirectLink, className, ...props }) => {
+export interface MaintenanceProps extends Omit<Omit<EmptyStateProps, 'children'>, 'title'> {
+  utcStartTime?: string;
+  utcEndTime?: string;
+  startTime?: string;
+  endTime?: string;
+  timeZone?: string;
+  description?: React.ReactNode;
+  redirectLink?: string;
+  className?: string;
+}
+
+const Maintenance: React.FunctionComponent<MaintenanceProps> = ({
+  utcStartTime = '10am',
+  utcEndTime = '12am',
+  startTime = '6am',
+  endTime = '8am',
+  timeZone = 'EST',
+  description,
+  redirectLink = 'https://status.redhat.com/incidents',
+  className,
+  ...props
+}) => {
   const emptyStateClassName = classNames(className, 'ins-c-empty-state__maintenance');
 
   return (
@@ -31,28 +51,6 @@ const Maintenance = ({ title, utcStartTime, utcEndTime, startTime, endTime, time
       </EmptyStateBody>
     </EmptyState>
   );
-};
-
-Maintenance.propTypes = {
-  utcStartTime: PropTypes.string,
-  utcEndTime: PropTypes.string,
-  startTime: PropTypes.string,
-  endTime: PropTypes.string,
-  timeZone: PropTypes.string,
-  description: PropTypes.node,
-  redirectLink: PropTypes.string,
-  title: PropTypes.node,
-  className: PropTypes.string,
-};
-
-Maintenance.defaultProps = {
-  utcStartTime: '10am',
-  utcEndTime: '12am',
-  startTime: '6am',
-  endTime: '8am',
-  timeZone: 'EST',
-  redirectLink: 'https://status.redhat.com/incidents',
-  title: 'Maintenance in progress',
 };
 
 export default Maintenance;
