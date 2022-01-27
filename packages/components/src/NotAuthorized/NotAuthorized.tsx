@@ -1,11 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import { Title, Button, EmptyState, EmptyStateVariant, EmptyStateIcon, EmptyStateBody } from '@patternfly/react-core';
+import { Title, Button, EmptyState, EmptyStateVariant, EmptyStateIcon, EmptyStateBody, EmptyStateProps } from '@patternfly/react-core';
 
 import { LockIcon } from '@patternfly/react-icons';
 
 import './NotAuthorized.scss';
+
+export interface NotAuthorizedProps extends Omit<EmptyStateProps, 'children' | 'title'> {
+  serviceName?: string;
+  icon?: React.ComponentType<any>;
+  description?: React.ReactNode;
+  showReturnButton?: boolean;
+  className?: string;
+  title?: React.ReactNode;
+  actions?: React.ReactNode;
+  prevPageButtonText?: React.ReactNode;
+  toLandingPageText?: React.ReactNode;
+}
 
 const ContactBody = () => (
   <React.Fragment>
@@ -14,15 +25,15 @@ const ContactBody = () => (
   </React.Fragment>
 );
 
-const NotAuthorized = ({
-  prevPageButtonText,
-  toLandingPageText,
+const NotAuthorized: React.FunctionComponent<NotAuthorizedProps> = ({
+  prevPageButtonText = 'Return to previous page',
+  toLandingPageText = 'Go to landing page',
   title,
-  actions,
+  actions = null,
   serviceName,
-  icon: Icon,
-  description,
-  showReturnButton,
+  icon: Icon = LockIcon,
+  description = <ContactBody />,
+  showReturnButton = true,
   className,
   ...props
 }) => {
@@ -47,33 +58,6 @@ const NotAuthorized = ({
         ))}
     </EmptyState>
   );
-};
-
-const serviceNamePropType = (props, propName, componentName, ...args) => {
-  if (typeof props.title === 'undefined') {
-    return PropTypes.node.isRequired(props, propName, componentName, ...args);
-  }
-};
-
-NotAuthorized.propTypes = {
-  serviceName: serviceNamePropType,
-  icon: PropTypes.func,
-  description: PropTypes.node,
-  showReturnButton: PropTypes.bool,
-  className: PropTypes.string,
-  title: PropTypes.node,
-  actions: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
-  prevPageButtonText: PropTypes.node,
-  toLandingPageText: PropTypes.node,
-};
-
-NotAuthorized.defaultProps = {
-  icon: LockIcon,
-  showReturnButton: true,
-  description: <ContactBody />,
-  actions: null,
-  prevPageButtonText: 'Return to previous page',
-  toLandingPageText: 'Go to landing page',
 };
 
 export default NotAuthorized;
