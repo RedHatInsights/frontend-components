@@ -2,6 +2,12 @@
 const { execSync } = require('child_process');
 const static = require('@redhat-cloud-services/frontend-components-config-utilities/serve-federated');
 const yargs = require('yargs');
+const chalk = require('chalk');
+const devScript = require('../src/scripts/dev-script');
+
+function logError(message) {
+    console.log(chalk.blue('[fec]') + chalk.red(' ERROR: ') + message)
+}
 
 function patchHosts() {
     const command = `
@@ -15,7 +21,11 @@ do
     fi
 done
 `
-    execSync(command)
+    try {
+        execSync(command)    
+    } catch (error) {
+        logError('Unable to patch /etc/hosts! Please to run the script as sudo.')
+    }
 }
 
 const cwd = process.cwd();
@@ -35,12 +45,14 @@ const argv = yargs
     });
 })
 .command('patch-etc-hosts', 'You may have to run this as \'sudo\'. Setup your etc/hosts allow development hosts in your browser')
+.command('dev', 'Start development server')
 .help()
 .argv;
 
 const scripts = {
     static,
-    'patch-etc-hosts': patchHosts
+    'patch-etc-hosts': patchHosts,
+    dev: devScript
 };
 
 const args = [ argv, cwd ];
