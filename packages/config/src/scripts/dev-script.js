@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 const inquirer = require('inquirer');
 const { resolve } = require('path');
+const { statSync } = require('fs');
 const { spawn } = require('child_process');
+const { logError } = require('./common');
 
 async function setEnv() {
   return inquirer
@@ -39,17 +41,42 @@ async function setEnv() {
     });
 }
 
-async function run() {
-  await setEnv();
-  spawn('npm', ['run', 'start'], {
-    stdio: [process.stdout, process.stdout, process.stdout],
-    cwd: resolve(__dirname, '../'),
-  });
+function getWebpackConfigPath(path, cwd) {
+  let configPath;
+  try {
+    configPath = resolve(cwd, path);
+    statSync(configPath);
+    let config = require(configPath);
+    if (typeof config === 'function') {
+      config = config(process.env);
+    }
+    return configPath;
+  } catch (error) {
+    if (configPath) {
+      logError(`Unable to open webpack config at: "${configPath}"`);
+    } else {
+      logError(error);
+      throw 'FEC binary failed';
+    }
+  }
 }
 
-try {
-  run();
-} catch (error) {
-  console.error(error);
-  process.exit(1);
+async function devScript(argv, cwd) {
+  try {
+    const processArgs = [];
+    if (typeof argv.webpackConfig !== 'undefined') {
+      const configPath = getWebpackConfigPath(argv.webpackConfig, cwd);
+      processArgs.push(`node_modules/.bin/webpack serve -c ${configPath}`);
+    }
+    await setEnv();
+    spawn('node', processArgs, {
+      stdio: [process.stdout, process.stdout, process.stdout],
+      cwd,
+      shell: true,
+    });
+  } catch (error) {
+    process.exit(1);
+  }
 }
+
+module.exports = devScript;

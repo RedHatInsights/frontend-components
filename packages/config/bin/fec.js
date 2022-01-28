@@ -2,12 +2,11 @@
 const { execSync } = require('child_process');
 const static = require('@redhat-cloud-services/frontend-components-config-utilities/serve-federated');
 const yargs = require('yargs');
-const chalk = require('chalk');
-const devScript = require('../src/scripts/dev-script');
 
-function logError(message) {
-    console.log(chalk.blue('[fec]') + chalk.red(' ERROR: ') + message)
-}
+const devScript = require('../src/scripts/dev-script');
+const { logError } = require('../src/scripts/common')
+
+
 
 function patchHosts() {
     const command = `
@@ -45,7 +44,12 @@ const argv = yargs
     });
 })
 .command('patch-etc-hosts', 'You may have to run this as \'sudo\'. Setup your etc/hosts allow development hosts in your browser')
-.command('dev', 'Start development server')
+.command('dev', 'Start development server', (yargs) => {
+    yargs.positional('webpack-config', {
+        type: 'string',
+        describe: 'Path to webpack config',
+    })
+})
 .help()
 .argv;
 
