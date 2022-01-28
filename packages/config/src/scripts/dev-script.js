@@ -5,7 +5,7 @@ const { statSync } = require('fs');
 const { spawn } = require('child_process');
 const { logError } = require('./common');
 
-async function setEnv() {
+async function setEnv(cwd) {
   return inquirer
     .prompt([
       {
@@ -37,7 +37,8 @@ async function setEnv() {
       const { uiEnv, clouddotEnv, routesPath } = answers;
       process.env.BETA = uiEnv === 'beta' ? 'true' : 'false';
       process.env.CLOUDOT_ENV = clouddotEnv ? clouddotEnv : 'stage';
-      process.env.ROUTES_PATH = routesPath;
+      process.env.ROUTES_PATH = typeof routesPath !== 'undefined' ? routesPath : '';
+      process.env.FEC_ROOT_DIR = cwd;
     });
 }
 
@@ -64,11 +65,14 @@ function getWebpackConfigPath(path, cwd) {
 async function devScript(argv, cwd) {
   try {
     const processArgs = [];
+    let configPath;
     if (typeof argv.webpackConfig !== 'undefined') {
-      const configPath = getWebpackConfigPath(argv.webpackConfig, cwd);
-      processArgs.push(`node_modules/.bin/webpack serve -c ${configPath}`);
+      configPath = getWebpackConfigPath(argv.webpackConfig, cwd);
+    } else {
+      configPath = resolve(__dirname, './dev.webpack.config.js');
     }
-    await setEnv();
+    processArgs.push(`node_modules/.bin/webpack serve -c ${configPath}`);
+    await setEnv(cwd);
     spawn('node', processArgs, {
       stdio: [process.stdout, process.stdout, process.stdout],
       cwd,
