@@ -158,7 +158,10 @@ getBundle() // => 'prod'
 A **promise** that returns an array of all user permissions of the current user.
 
 ```tsx
-function getUserPermissions(): Promise<{permissions: string; resourceDefinitions: object[]}[]>
+function getUserPermissions(
+  app?: string /* Only permissions belonging to app will be returned, pass empty string to return all permissions */,
+  bypassCache?: bool /* If true, results of this function will not be cached, defaults to false */
+): Promise<{permissions: string; resourceDefinitions: object[]}[]>
 
 getUserPermissions().then(console.log) // => [{permissions: 'foo:bar:baz', resourceDefinitions: []}, ...]
 ```
