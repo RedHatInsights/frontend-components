@@ -30,15 +30,29 @@ function createAppUrl(appUrl) {
 
 const appUrl = createAppUrl(fecConfig.appUrl);
 
-const { plugins: externalPlugins, ...externalConfig } = fecConfig;
+const { plugins: externalPlugins, interceptChromeConfig, routes, ...externalConfig } = fecConfig;
+
+const internalProxyRoutes = {
+  ...routes,
+  ...(interceptChromeConfig === true
+    ? {
+        '/beta/config': {
+          host: 'http://localhost:9999',
+        },
+        '/config': {
+          host: 'http://localhost:9999',
+        },
+      }
+    : {}),
+};
 
 const { config: webpackConfig, plugins } = config({
   ...externalConfig,
+  routes: internalProxyRoutes,
   appUrl,
   deployment: isBeta ? 'beta/apps' : 'apps',
   env: `${process.env.CLOUDOT_ENV}-${isBeta === 'true' ? 'beta' : 'stable'}`,
   rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
-  routesPath: process.env.ROUTES_PATH || fecConfig.routesPath,
 });
 plugins.push(...commonPlugins, ...externalPlugins);
 
