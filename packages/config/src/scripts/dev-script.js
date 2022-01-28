@@ -62,8 +62,26 @@ function getWebpackConfigPath(path, cwd) {
   }
 }
 
+function validateFECConfig(cwd) {
+  const configPath = resolve(cwd, './fec.config.js');
+  try {
+    statSync(configPath);
+  } catch (error) {
+    logError(`Unable to locate "fec.config.js" at ${configPath}`);
+    throw 'fec.config.js validation failed, file does not exist';
+  }
+
+  const config = require(configPath);
+  if (!config.appUrl) {
+    logError('Missing config "appUrl" in fec.config.js');
+    throw 'fec.config.js validation failed, missing "appUrl" config';
+  }
+  process.env.FEC_CONFIG_PATH = configPath;
+}
+
 async function devScript(argv, cwd) {
   try {
+    validateFECConfig(cwd);
     const processArgs = [];
     let configPath;
     if (typeof argv.webpackConfig !== 'undefined') {
