@@ -268,6 +268,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
             "ofWord": "of",
             "optionsToggle": "Items per page",
             "page": "",
+            "pages": "",
             "paginationTitle": "Pagination",
             "perPageSuffix": "per page",
             "toFirstPage": "Go to first page",
@@ -276,7 +277,6 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
             "toPreviousPage": "Go to previous page",
           }
         }
-        toggleTemplate={[Function]}
         variant="top"
         widgetId="pagination-options-menu"
       />
@@ -552,6 +552,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
             "ofWord": "of",
             "optionsToggle": "Items per page",
             "page": "",
+            "pages": "",
             "paginationTitle": "Pagination",
             "perPageSuffix": "per page",
             "toFirstPage": "Go to first page",
@@ -560,7 +561,6 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
             "toPreviousPage": "Go to previous page",
           }
         }
-        toggleTemplate={[Function]}
         variant="top"
         widgetId="pagination-options-menu"
       />

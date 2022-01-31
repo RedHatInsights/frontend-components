@@ -242,7 +242,7 @@ exports[`Notification portal should render notifications given as direct props 1
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
-              <Component
+              <AlertIcon
                 variant="success"
               >
                 <div
@@ -273,7 +273,7 @@ exports[`Notification portal should render notifications given as direct props 1
                     </svg>
                   </CheckCircleIcon>
                 </div>
-              </Component>
+              </AlertIcon>
               <h4
                 className="pf-c-alert__title"
               >
@@ -672,7 +672,7 @@ exports[`Notification portal should render notifications given as direct props o
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
-              <Component
+              <AlertIcon
                 variant="success"
               >
                 <div
@@ -703,7 +703,7 @@ exports[`Notification portal should render notifications given as direct props o
                     </svg>
                   </CheckCircleIcon>
                 </div>
-              </Component>
+              </AlertIcon>
               <h4
                 className="pf-c-alert__title"
               >
@@ -947,7 +947,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
-              <Component
+              <AlertIcon
                 variant="success"
               >
                 <div
@@ -978,7 +978,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
                     </svg>
                   </CheckCircleIcon>
                 </div>
-              </Component>
+              </AlertIcon>
               <h4
                 className="pf-c-alert__title"
               >

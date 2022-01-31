@@ -135,6 +135,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "ofWord": "of",
                         "optionsToggle": "Items per page",
                         "page": "",
+                        "pages": "",
                         "paginationTitle": "Pagination",
                         "perPageSuffix": "per page",
                         "toFirstPage": "Go to first page",
@@ -143,7 +144,6 @@ exports[`InfoTable api expandable should open 1`] = `
                         "toPreviousPage": "Go to previous page",
                       }
                     }
-                    toggleTemplate={[Function]}
                     variant="top"
                     widgetId="pagination-options-menu"
                   >
@@ -189,6 +189,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         itemsTitle=""
                         lastIndex={4}
                         lastPage={1}
+                        ofWord="of"
                         onPerPageSelect={[Function]}
                         optionsToggle="Items per page"
                         page={1}
@@ -273,6 +274,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           isGrouped={false}
                           isOpen={false}
                           isPlain={true}
+                          isText={false}
                           menuAppendTo="inline"
                           onSelect={[Function]}
                           position="left"
@@ -285,6 +287,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               itemsPerPageTitle="Items per page"
                               itemsTitle=""
                               lastIndex={4}
+                              ofWord="of"
                               onToggle={[Function]}
                               optionsToggle="Items per page"
                               parentRef={null}
@@ -307,11 +310,13 @@ exports[`InfoTable api expandable should open 1`] = `
                               isDisabled={false}
                               isOpen={false}
                               isPlain={true}
+                              isText={false}
                               itemCount={4}
                               itemsPerPageTitle="Items per page"
                               itemsTitle=""
                               key=".0"
                               lastIndex={4}
+                              ofWord="of"
                               onEnter={[Function]}
                               onToggle={[Function]}
                               optionsToggle="Items per page"
@@ -389,6 +394,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                     itemCount={4}
                                     itemsTitle=""
                                     lastIndex={4}
+                                    ofWord="of"
                                   >
                                     <b>
                                       1
@@ -487,6 +493,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                     isPlain={false}
                                     isPrimary={false}
                                     isSplitButton={false}
+                                    isText={false}
                                     onEnter={[Function]}
                                     onToggle={[Function]}
                                     parentRef={
@@ -548,6 +555,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                         </div>,
                                       }
                                     }
+                                    toggleVariant="default"
                                   >
                                     <button
                                       aria-expanded={false}
@@ -604,6 +612,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         firstPage={1}
                         isCompact={true}
                         isDisabled={false}
+                        itemCount={4}
                         lastPage={1}
                         ofWord="of"
                         onFirstClick={[Function]}
@@ -614,6 +623,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         onSetPage={[Function]}
                         page={1}
                         pagesTitle=""
+                        pagesTitlePlural=""
                         paginationTitle="Pagination"
                         perPage={10}
                         toFirstPage="Go to first page"
@@ -809,6 +819,7 @@ exports[`InfoTable api expandable should open 1`] = `
           collapseListedFiltersBreakpoint="lg"
           isExpanded={false}
           numberOfFilters={0}
+          numberOfFiltersText={[Function]}
           showClearFiltersButton={false}
         >
           <div
@@ -6252,6 +6263,7 @@ exports[`InfoTable api expandable should open 1`] = `
                 "ofWord": "of",
                 "optionsToggle": "Items per page",
                 "page": "",
+                "pages": "",
                 "paginationTitle": "Pagination",
                 "perPageSuffix": "per page",
                 "toFirstPage": "Go to first page",
@@ -6260,7 +6272,6 @@ exports[`InfoTable api expandable should open 1`] = `
                 "toPreviousPage": "Go to previous page",
               }
             }
-            toggleTemplate={[Function]}
             variant="bottom"
             widgetId="pagination-options-menu"
           >
@@ -6282,6 +6293,7 @@ exports[`InfoTable api expandable should open 1`] = `
                 itemsTitle=""
                 lastIndex={4}
                 lastPage={1}
+                ofWord="of"
                 onPerPageSelect={[Function]}
                 optionsToggle="Items per page"
                 page={1}
@@ -6366,6 +6378,7 @@ exports[`InfoTable api expandable should open 1`] = `
                   isGrouped={false}
                   isOpen={false}
                   isPlain={true}
+                  isText={false}
                   menuAppendTo="inline"
                   onSelect={[Function]}
                   position="left"
@@ -6378,6 +6391,7 @@ exports[`InfoTable api expandable should open 1`] = `
                       itemsPerPageTitle="Items per page"
                       itemsTitle=""
                       lastIndex={4}
+                      ofWord="of"
                       onToggle={[Function]}
                       optionsToggle="Items per page"
                       parentRef={null}
@@ -6400,11 +6414,13 @@ exports[`InfoTable api expandable should open 1`] = `
                       isDisabled={false}
                       isOpen={false}
                       isPlain={true}
+                      isText={false}
                       itemCount={4}
                       itemsPerPageTitle="Items per page"
                       itemsTitle=""
                       key=".0"
                       lastIndex={4}
+                      ofWord="of"
                       onEnter={[Function]}
                       onToggle={[Function]}
                       optionsToggle="Items per page"
@@ -6482,6 +6498,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             itemCount={4}
                             itemsTitle=""
                             lastIndex={4}
+                            ofWord="of"
                           >
                             <b>
                               1
@@ -6580,6 +6597,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             isPlain={false}
                             isPrimary={false}
                             isSplitButton={false}
+                            isText={false}
                             onEnter={[Function]}
                             onToggle={[Function]}
                             parentRef={
@@ -6641,6 +6659,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                 </div>,
                               }
                             }
+                            toggleVariant="default"
                           >
                             <button
                               aria-expanded={false}
@@ -6697,6 +6716,7 @@ exports[`InfoTable api expandable should open 1`] = `
                 firstPage={1}
                 isCompact={false}
                 isDisabled={false}
+                itemCount={4}
                 lastPage={1}
                 ofWord="of"
                 onFirstClick={[Function]}
@@ -6707,6 +6727,7 @@ exports[`InfoTable api expandable should open 1`] = `
                 onSetPage={[Function]}
                 page={1}
                 pagesTitle=""
+                pagesTitlePlural=""
                 paginationTitle="Pagination"
                 perPage={10}
                 toFirstPage="Go to first page"
@@ -7001,6 +7022,7 @@ exports[`InfoTable api expandable should open 1`] = `
             collapseListedFiltersBreakpoint="lg"
             isExpanded={false}
             numberOfFilters={0}
+            numberOfFiltersText={[Function]}
             showClearFiltersButton={false}
           >
             <div
@@ -7501,6 +7523,7 @@ exports[`InfoTable should render expandable set to true 1`] = `
           "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
+          "pages": "",
           "paginationTitle": "Pagination",
           "perPageSuffix": "per page",
           "toFirstPage": "Go to first page",
@@ -7509,7 +7532,6 @@ exports[`InfoTable should render expandable set to true 1`] = `
           "toPreviousPage": "Go to previous page",
         }
       }
-      toggleTemplate={[Function]}
       variant="bottom"
       widgetId="pagination-options-menu"
     />
@@ -7642,6 +7664,7 @@ exports[`InfoTable should render multiple cells 1`] = `
           "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
+          "pages": "",
           "paginationTitle": "Pagination",
           "perPageSuffix": "per page",
           "toFirstPage": "Go to first page",
@@ -7650,7 +7673,6 @@ exports[`InfoTable should render multiple cells 1`] = `
           "toPreviousPage": "Go to previous page",
         }
       }
-      toggleTemplate={[Function]}
       variant="bottom"
       widgetId="pagination-options-menu"
     />
@@ -7761,6 +7783,7 @@ exports[`InfoTable should render no data 1`] = `
           "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
+          "pages": "",
           "paginationTitle": "Pagination",
           "perPageSuffix": "per page",
           "toFirstPage": "Go to first page",
@@ -7769,7 +7792,6 @@ exports[`InfoTable should render no data 1`] = `
           "toPreviousPage": "Go to previous page",
         }
       }
-      toggleTemplate={[Function]}
       variant="bottom"
       widgetId="pagination-options-menu"
     />
@@ -7907,6 +7929,7 @@ exports[`InfoTable should render onSort set 1`] = `
           "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
+          "pages": "",
           "paginationTitle": "Pagination",
           "perPageSuffix": "per page",
           "toFirstPage": "Go to first page",
@@ -7915,7 +7938,6 @@ exports[`InfoTable should render onSort set 1`] = `
           "toPreviousPage": "Go to previous page",
         }
       }
-      toggleTemplate={[Function]}
       variant="bottom"
       widgetId="pagination-options-menu"
     />
@@ -8016,6 +8038,7 @@ exports[`InfoTable should render one cell 1`] = `
           "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
+          "pages": "",
           "paginationTitle": "Pagination",
           "perPageSuffix": "per page",
           "toFirstPage": "Go to first page",
@@ -8024,7 +8047,6 @@ exports[`InfoTable should render one cell 1`] = `
           "toPreviousPage": "Go to previous page",
         }
       }
-      toggleTemplate={[Function]}
       variant="bottom"
       widgetId="pagination-options-menu"
     />

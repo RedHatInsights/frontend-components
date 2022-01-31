@@ -262,7 +262,6 @@ exports[`Pagination render should render correctly with data 1`] = `
         data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
         data-ouia-component-type="PF4/DropdownToggle"
         data-ouia-safe="true"
-        disabled=""
         id="pagination-options-menu-toggle-0"
         type="button"
       >

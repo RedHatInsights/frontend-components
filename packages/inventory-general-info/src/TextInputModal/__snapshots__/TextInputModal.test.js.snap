@@ -67,7 +67,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                   aria-disabled="false"
                   aria-label="Close"
                   class="pf-c-button pf-m-plain"
-                  data-ouia-component-id="OUIA-Generated-Button-plain-4"
+                  data-ouia-component-id="OUIA-Generated-Modal-small-4-ModalBoxCloseButton"
                   data-ouia-component-type="PF4/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -216,11 +216,13 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                   >
                     <ModalBoxCloseButton
                       onClose={[Function]}
+                      ouiaId="OUIA-Generated-Modal-small-4"
                     >
                       <Button
                         aria-label="Close"
                         className=""
                         onClick={[Function]}
+                        ouiaId="OUIA-Generated-Modal-small-4-ModalBoxCloseButton"
                         variant="plain"
                       >
                         <ButtonBase
@@ -228,13 +230,14 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                           className=""
                           innerRef={null}
                           onClick={[Function]}
+                          ouiaId="OUIA-Generated-Modal-small-4-ModalBoxCloseButton"
                           variant="plain"
                         >
                           <button
                             aria-disabled={false}
                             aria-label="Close"
                             className="pf-c-button pf-m-plain"
-                            data-ouia-component-id="OUIA-Generated-Button-plain-4"
+                            data-ouia-component-id="OUIA-Generated-Modal-small-4-ModalBoxCloseButton"
                             data-ouia-component-type="PF4/Button"
                             data-ouia-safe={true}
                             disabled={false}
