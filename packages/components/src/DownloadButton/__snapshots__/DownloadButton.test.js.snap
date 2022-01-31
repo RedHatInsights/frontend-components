@@ -78,6 +78,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
       isGrouped={false}
       isOpen={true}
       isPlain={true}
+      isText={false}
       menuAppendTo="inline"
       onSelect={[Function]}
       position="left"
@@ -107,6 +108,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
           id="pf-dropdown-toggle-id-1"
           isOpen={true}
           isPlain={true}
+          isText={false}
           key=".0"
           onEnter={[Function]}
           onToggle={[Function]}
@@ -214,6 +216,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             isPlain={true}
             isPrimary={false}
             isSplitButton={false}
+            isText={false}
             onEnter={[Function]}
             onToggle={[Function]}
             parentRef={
@@ -302,6 +305,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                 </div>,
               }
             }
+            toggleVariant="default"
           >
             <button
               aria-expanded={true}

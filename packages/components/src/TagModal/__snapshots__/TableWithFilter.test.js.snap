@@ -187,6 +187,7 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
           "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
+          "pages": "",
           "paginationTitle": "Pagination",
           "perPageSuffix": "per page",
           "toFirstPage": "Go to first page",
@@ -195,7 +196,6 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
           "toPreviousPage": "Go to previous page",
         }
       }
-      toggleTemplate={[Function]}
       variant="bottom"
       widgetId="pagination-options-menu"
     />
@@ -321,6 +321,7 @@ exports[`TableWithFilter should render with data and bulk select without calcula
           "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
+          "pages": "",
           "paginationTitle": "Pagination",
           "perPageSuffix": "per page",
           "toFirstPage": "Go to first page",
@@ -329,7 +330,6 @@ exports[`TableWithFilter should render with data and bulk select without calcula
           "toPreviousPage": "Go to previous page",
         }
       }
-      toggleTemplate={[Function]}
       variant="bottom"
       widgetId="pagination-options-menu"
     />
@@ -496,6 +496,7 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
           "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
+          "pages": "",
           "paginationTitle": "Pagination",
           "perPageSuffix": "per page",
           "toFirstPage": "Go to first page",
@@ -504,7 +505,6 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
           "toPreviousPage": "Go to previous page",
         }
       }
-      toggleTemplate={[Function]}
       variant="bottom"
       widgetId="pagination-options-menu"
     />

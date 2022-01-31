@@ -49,7 +49,6 @@ exports[`Notification Pagination component should render correctly 1`] = `
               "items": "Notifications",
             }
           }
-          toggleTemplate={[Function]}
           variant="bottom"
           widgetId="pagination-options-menu"
         />
