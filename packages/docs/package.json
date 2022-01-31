@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "build:next": "next build",
     "build": "npm run generate:components:docs && next build",
     "start": "npm run build && next start -H 0.0.0.0 -p ${PORT:-8080}",
     "watch": "concurrently \"npm run generate:components -- --watch\" \"npm run generate:components:docs -- --watch\" \"npm run dev\"",
@@ -14,7 +15,7 @@
     "typedoc": "typedoc"
   },
   "dependencies": {
-    "@patternfly/react-core": "^4.79.2",
+    "@patternfly/react-core": "4.192.0",
     "@patternfly/react-icons": "^4.7.18",
     "@patternfly/react-table": "^4.19.24",
     "@redhat-cloud-services/frontend-components": "^3.0.10",
