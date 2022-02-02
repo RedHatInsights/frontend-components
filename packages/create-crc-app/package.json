@@ -1,6 +1,5 @@
 {
     "name": "create-crc-app",
-    "private": true,
     "version": "0.0.1",
     "description": "A CLI tool to create new CRC frontend application. Based on the frontend starter app",
     "main": "./bin/create-crc-app.js",

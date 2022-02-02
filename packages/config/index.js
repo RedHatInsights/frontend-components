@@ -33,7 +33,13 @@ module.exports = (configurations) => {
   configurations.isProd = configurations.isProd || process.env.NODE_ENV === 'production';
   const isProd = configurations.isProd;
   const { insights } = require(`${configurations.rootFolder}/package.json`);
-  const gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH || gitRevisionPlugin.branch();
+  let gitBranch;
+  try {
+    gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH || gitRevisionPlugin.branch();
+  } catch (error) {
+    console.log('[fec] no git branch detected, using main for webpack "main" config.');
+    gitBranch = 'main';
+  }
   const appDeployment = configurations.deployment || (isProd && betaBranches.includes(gitBranch) ? 'beta/apps' : 'apps');
 
   const publicPath = `/${appDeployment}/${insights.appname}/`;

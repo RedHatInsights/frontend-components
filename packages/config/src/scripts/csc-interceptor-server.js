@@ -2,7 +2,8 @@ const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const jsVarName = require('@redhat-cloud-services/frontend-components-config-utilities/jsVarName');
-const { set, get } = require('lodash');
+const fs = require('fs');
+const jsyaml = require('js-yaml');
 
 const cwd = process.cwd();
 const pgk = require(path.resolve(cwd, './package.json'));
@@ -10,12 +11,28 @@ const pgk = require(path.resolve(cwd, './package.json'));
 const appname = jsVarName(pgk.insights.appname);
 const moduleName = jsVarName(appname);
 
-const frontendDeployConfig = require(path.resolve(cwd, './deploy/frontend.json'));
+const frontendDeployConfig = jsyaml.load(fs.readFileSync(path.resolve(cwd, './deploy/frontend.yaml')));
+const frontendSpec = frontendDeployConfig.objects[0];
+const navItems = frontendSpec.spec.navItems;
+const fecModules = frontendSpec.spec.module;
+const bundles = Array.from(
+  new Set(
+    fecModules.modules
+      .map(({ routes }) => routes)
+      .flat()
+      .map(({ pathname }) => pathname.split('/')[1])
+  )
+);
 
 const app = express();
 const port = 9999;
 
 const BASE_URL = 'https://raw.githubusercontent.com/RedHatInsights/cloud-services-config/ci-beta/';
+
+function getRequestBundle(requestUrl) {
+  const bundle = requestUrl.split('/').pop().split('-').shift();
+  return bundle === 'rhel' ? 'insights' : bundle;
+}
 
 app.get('*', async (req, res, next) => {
   let requestUrl = `${BASE_URL}${req.url.replace(/(\/beta)?\/config/gm, '')}`;
@@ -24,18 +41,18 @@ app.get('*', async (req, res, next) => {
   }
   try {
     const schema = await axios.get(requestUrl);
-    if (req.url.includes('-navigation.json') && frontendDeployConfig.bundles.some((bundle) => req.url.includes(bundle))) {
+    if (req.url.includes('-navigation.json') && bundles.some((bundle) => req.url.includes(bundle))) {
+      const requestBundle = getRequestBundle(requestUrl);
       /** handle nav json */
       const payload = schema.data;
-      const originalData = get(payload, frontendDeployConfig.navigation.placement);
-      set(payload, `${frontendDeployConfig.navigation.placement}[${originalData.length}]`, frontendDeployConfig.navigation.spec);
+      payload.navItems = [...payload.navItems, ...navItems.filter(({ href }) => href.includes(requestBundle))];
       res.json(payload);
       res.end();
       return;
     } else if (req.url.includes('fed-modules.json')) {
       /** handle fed-modules */
       const payload = schema.data;
-      payload[moduleName] = frontendDeployConfig.module;
+      payload[moduleName] = fecModules;
       res.json(payload);
       res.end();
       return;
