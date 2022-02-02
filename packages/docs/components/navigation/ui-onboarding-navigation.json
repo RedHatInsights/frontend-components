@@ -1,0 +1,16 @@
+{
+	"index": {
+		"title": "UI Onboarding",
+		"href": "/ui-onboarding"
+	},
+	"items": [
+		{
+			"title": "Create new application",
+			"href": "/ui-onboarding/create-crc-app"
+		},
+		{
+			"title": "FEC binary",
+			"href": "/ui-onboarding/fec-binary"
+		}
+	]
+}
