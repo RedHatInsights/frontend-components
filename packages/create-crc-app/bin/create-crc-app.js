@@ -6,12 +6,11 @@ const glob = require('glob');
 const path = require('path');
 const inquirer = require('inquirer');
 const child_process = require('child_process')
+const chalk = require('chalk')
 
 const templates = [...glob.sync(path.resolve(__dirname, '../templates/**/.*')), ...glob.sync(path.resolve(__dirname, '../templates/**/*.*'))];
 
 const cwd = process.cwd();
-
-const target = path.resolve(cwd, './test')
 
 function parseFrontendYaml(template, values) {
   let internalTemplate = template;
@@ -33,7 +32,8 @@ function parseFecConfig(template, values) {
   return template.replace('@@appUrl', appUrl)
 }
 
-function createCRCApp(values) {
+function createCRCApp(values, targetFolder) {
+  const target = path.resolve(cwd, targetFolder)
     try {
         fs.mkdirSync(target)
         templates.forEach(file => {
@@ -116,7 +116,6 @@ async function setEnv(cwd) {
           default: false,
           message: 'Disable cloud services config dev server interception. If disable, dev environment will not work unless application was already registered in chrome configuration files. This usually happens after application was deployed to stage environment.'
         }
-
       ])
       .then(({disableCSCIntercept, ...answers}) => {
         return {...answers, interceptChromeConfig: !disableCSCIntercept, bundle: answers.bundle.length === 0 ? ['staging'] : answers.bundle}
@@ -126,11 +125,17 @@ async function setEnv(cwd) {
 
 
 async function run() {
+  const args = process.argv.slice(2)
+  if(typeof args[0] === 'undefined') {
+    console.log(chalk.blue('[fec]') + chalk.red(' ERROR: ') + 'Missing destination folder. example "create-crc-app new-app"');
+    process.exit(1)
+  }
     try {
         const values = await setEnv()
-        createCRCApp(values);
+        createCRCApp(values, args[0]);
     } catch (error) {
         console.log(error)
+        process.exit(1)
     }
 }
 

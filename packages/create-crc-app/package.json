@@ -1,5 +1,18 @@
 {
     "name": "create-crc-app",
+    "private": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+    },
+    "author": "Martin Maroši<marvusm.mmi@gmail.com>",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/RedHatInsights/frontend-components/issues"
+    },
     "version": "0.0.1",
     "description": "A CLI tool to create new CRC frontend application. Based on the frontend starter app",
     "main": "./bin/create-crc-app.js",
@@ -7,6 +20,7 @@
         "create-crc-app": "./bin/create-crc-app.js"
     },
     "dependencies": {
+        "chalk": "^5.0.0",
         "fs-extra": "^10.0.0",
         "glob": "^7.2.0",
         "inquirer": "^8.2.0",
