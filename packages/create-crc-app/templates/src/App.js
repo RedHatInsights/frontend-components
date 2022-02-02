@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { Routes } from './Routes';
 import './App.scss';
 
-
 const App = () => {
   const history = useHistory();
 
@@ -11,15 +10,13 @@ const App = () => {
     insights.chrome.init();
 
     insights.chrome.identifyApp('{{appname}}');
-    const unregister = insights.chrome.on('APP_NAVIGATION', (event) =>
-      history.push(`/${event.navId}`)
-    );
+    const unregister = insights.chrome.on('APP_NAVIGATION', (event) => history.push(`/${event.navId}`));
     return () => {
       unregister();
     };
   }, []);
 
-  return <Routes/>
+  return <Routes />;
 };
 
 export default App;

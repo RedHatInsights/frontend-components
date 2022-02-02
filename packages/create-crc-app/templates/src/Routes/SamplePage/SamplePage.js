@@ -1,22 +1,11 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import {
-  Button,
-  StackItem,
-  Stack,
-  Title,
-  Spinner,
-} from '@patternfly/react-core';
+import { StackItem, Stack, Title, Spinner } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import {
-  PageHeader,
-  PageHeaderTitle,
-} from '@redhat-cloud-services/frontend-components/PageHeader';
+import { PageHeader, PageHeaderTitle } from '@redhat-cloud-services/frontend-components/PageHeader';
 
-const SampleComponent = lazy(() =>
-  import('../../Components/SampleComponent/sample-component')
-);
+const SampleComponent = lazy(() => import('../../Components/SampleComponent/sample-component'));
 
 const SamplePage = () => {
   useEffect(() => {

@@ -8,5 +8,8 @@ packages/*/**/*.js
 !packages/config/*.js
 !packages/docs/**/*.js
 !packages/*/src/**/*.js
+!packages/create-crc-app/bin/**/*.js
+!packages/create-crc-app/templates/**/*.js
+packages/create-crc-app/templates/fec.config.js
 
 src/SmartComponents/SamplePage/

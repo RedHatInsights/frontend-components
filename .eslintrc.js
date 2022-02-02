@@ -32,6 +32,7 @@ module.exports = {
         'packages/pdf-generator/src/**/*.js',
         'packages/**/src/**/*__mock__*/**/*.js',
         'packages/**/src/**/*__mocks__*/**/*.js',
+        'packages/create-crc-app/**/*.js',
       ],
       rules: {
         'import/prefer-default-export': 'off',
