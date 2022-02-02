@@ -6,7 +6,7 @@ module.exports = {
 	/**
 	 * Change to false after your app is registered in configuration files
 	 */
-	interceptChromeConfig: true,
+	interceptChromeConfig: {{interceptChromeConfig}},
 	/**
 	 * Add additional webpack plugins
 	 */

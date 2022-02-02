@@ -9,7 +9,7 @@ objects:
       name: {{appname}}
     spec:
       envName: ${ENV_NAME}
-      title: {{name}}
+      title: {{title}}
       deploymentRepo: TBD
       frontend:
         paths:

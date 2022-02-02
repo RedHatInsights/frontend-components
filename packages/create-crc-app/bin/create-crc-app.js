@@ -18,7 +18,7 @@ function parseFrontendYaml(template, values) {
   const bundles = Array.isArray(values.bundle) ? values.bundle : [value.bundle]
   const navItem = `
       - appId: {{appname}}
-        title: {{name}}
+        title: {{title}}
         href: "/@@bundle/{{appname}}"`
   const route = `
             - pathname: "/@@bundle/{{appname}}"`
@@ -89,22 +89,37 @@ async function setEnv(cwd) {
         {
           name: 'name',
           type: 'input',
-          message: 'Enter custom application name',
+          message: 'Enter application name. This value is the package.json "name" entry.',
+          default: 'starter',
         },
         {
           name: 'appname',
           type: 'input',
           message: 'Enter unique console.redhat.com identifier',
+          default: 'starter'
         },
         {
           name: 'bundle',
           type: 'checkbox',
           message: 'To which bundle(s) is this application assiged? (defaults to "staging")',
           choices: ['insights', 'ansible', 'openshift', 'application-services', 'settings', 'edge']
+        },
+        {
+          name: 'title',
+          type: 'input',
+          message: 'Enter application title. This should be human friendly string. It will be used as navigation link text.',
+          default: 'Starter app'
+        },
+        {
+          name: 'disableCSCIntercept',
+          type: 'confirm',
+          default: false,
+          message: 'Disable cloud services config dev server interception. If disable, dev environment will not work unless application was already registered in chrome configuration files. This usually happens after application was deployed to stage environment.'
         }
+
       ])
-      .then((answers) => {
-        return {...answers, bundle: answers.bundle.length === 0 ? ['staging'] : answers.bundle}
+      .then(({disableCSCIntercept, ...answers}) => {
+        return {...answers, interceptChromeConfig: !disableCSCIntercept, bundle: answers.bundle.length === 0 ? ['staging'] : answers.bundle}
       });
   }
 
