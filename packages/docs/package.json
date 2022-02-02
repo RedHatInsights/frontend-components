@@ -11,7 +11,7 @@
     "generate:components": "node docgen.js",
     "generate:components:docs": "npm run generate:components && node docs-generator.js",
     "generate:watch": "concurrently \"npm run generate:components -- --watch\" \"npm run generate:components:docs -- --watch\"",
-    "serve": "npm run build && node server.js",
+    "serve": "node server.js",
     "typedoc": "typedoc"
   },
   "dependencies": {

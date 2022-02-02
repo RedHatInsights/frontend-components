@@ -11,6 +11,7 @@
         "packages/components",
         "packages/config",
         "packages/config-utils",
+        "packages/create-crc-app",
         "packages/demo",
         "packages/docs",
         "packages/eslint-config",

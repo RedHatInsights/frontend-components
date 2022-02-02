@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: {{name}}
+objects:
+  - apiVersion: cloud.redhat.com/v1alpha1
+    kind: Frontend
+    metadata:
+      name: {{appname}}
+    spec:
+      envName: ${ENV_NAME}
+      title: {{title}}
+      deploymentRepo: TBD
+      frontend:
+        paths:
+          - /apps/{{appname}}
+      image: ${IMAGE}:${IMAGE_TAG}
+      navItems: {{{yamlNavItems}}}
+      module:
+        manifestLocation: "/apps/{{appname}}/fed-mods.json"
+        modules:
+          - id: "{{appname}}"
+            module: "./RootApp"
+            routes: {{{ymlRoutes}}}
+
+parameters:
+  - name: ENV_NAME
+    required: true
+  - name: IMAGE_TAG
+    required: true
+  - name: IMAGE
+    value: TBD
