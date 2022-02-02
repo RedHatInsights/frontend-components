@@ -6,8 +6,6 @@ const yargs = require('yargs');
 const devScript = require('../src/scripts/dev-script');
 const { logError } = require('../src/scripts/common')
 
-
-
 function patchHosts() {
     const command = `
     for host in prod.foo.redhat.com stage.foo.redhat.com qa.foo.redhat.com ci.foo.redhat.com

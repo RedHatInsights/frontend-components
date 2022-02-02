@@ -36,7 +36,6 @@
         "eslint": "^8.7.0",
         "eslint-loader": "^4.0.2",
         "identity-obj-proxy": "^3.0.0",
-        "inquirer": "^8.2.0",
         "jest": "^27.4.7",
         "webpack": "^5.67.0"
     },

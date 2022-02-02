@@ -12,7 +12,7 @@ async function setEnv(cwd) {
         type: 'list',
         name: 'clouddotEnv',
         message: 'Which platform environment you want to use?',
-        choices: ['stage', 'prod', 'qa', 'ci'],
+        choices: ['stage', 'prod', { value: 'qa', name: 'qa (deprecated)' }, { value: 'ci', name: 'ci (deprecated)' }],
       },
       {
         type: 'list',

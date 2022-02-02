@@ -15,13 +15,13 @@ objects:
         paths:
           - /apps/{{appname}}
       image: ${IMAGE}:${IMAGE_TAG}
-      navItems: @@navItems
+      navItems: {{{yamlNavItems}}}
       module:
         manifestLocation: "/apps/{{appname}}/fed-mods.json"
         modules:
           - id: "{{appname}}"
             module: "./RootApp"
-            routes: @@moduleRoutes
+            routes: {{{ymlRoutes}}}
 
 parameters:
   - name: ENV_NAME

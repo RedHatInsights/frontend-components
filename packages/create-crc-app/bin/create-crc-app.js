@@ -12,8 +12,7 @@ const templates = [...glob.sync(path.resolve(__dirname, '../templates/**/.*')), 
 
 const cwd = process.cwd();
 
-function parseFrontendYaml(template, values) {
-  let internalTemplate = template;
+function parseFrontendYaml(values) {
   const bundles = Array.isArray(values.bundle) ? values.bundle : [values.bundle];
   const navItem = `
       - appId: {{appname}}
@@ -21,33 +20,32 @@ function parseFrontendYaml(template, values) {
         href: "/@@bundle/{{appname}}"`;
   const route = `
             - pathname: "/@@bundle/{{appname}}"`;
-  const navItems = bundles.map((bundle) => navItem.replace('@@bundle', bundle)).join('');
-  const routes = bundles.map((bundle) => route.replace('@@bundle', bundle)).join('');
+  const navItems = Mustache.render(bundles.map((bundle) => navItem.replace('@@bundle', bundle)).join(''), values);
+  const routes = Mustache.render(bundles.map((bundle) => route.replace('@@bundle', bundle)).join(''), values);
 
-  return internalTemplate.replace('@@navItems', navItems).replace('@@moduleRoutes', routes);
+  return { yamlNavItems: navItems, ymlRoutes: routes };
 }
 
-function parseFecConfig(template, values) {
+function parseFecConfig(values) {
   const appUrl = Array.isArray(values.bundle)
     ? `[${values.bundle.map((bundle) => `'/${bundle}/${values.appname}'`)}]`
     : `/${values.bundle}/${values.appname}`;
-  return template.replace('@@appUrl', appUrl);
+  return appUrl;
 }
 
 function createCRCApp(values, targetFolder) {
   const target = path.resolve(cwd, targetFolder);
+  const internalValues = {
+    ...values,
+    ...parseFrontendYaml(values),
+    parsedAppUrl: parseFecConfig(values),
+  };
   try {
     fs.mkdirSync(target);
     templates.forEach((file) => {
       const fileName = file.split('/templates/').pop();
-      let template = fs.readFileSync(file, { encoding: 'utf-8' });
-      if (fileName.includes('fec.config.js')) {
-        template = parseFecConfig(template, values);
-      }
-      if (fileName.includes('frontend.yaml')) {
-        template = parseFrontendYaml(template, values);
-      }
-      const content = Mustache.render(template, values);
+      const template = fs.readFileSync(file, { encoding: 'utf-8' });
+      const content = Mustache.render(template, internalValues);
       const fileTarget = path.resolve(target, './', fileName);
       fs.outputFileSync(fileTarget, content, { recursive: true });
     });
