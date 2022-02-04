@@ -163,7 +163,7 @@ const Group = ({
       <Popper
         appendTo={containerRef.current}
         trigger={
-          <MenuToggle ref={toggleRef} onClick={onToggleClick} isExpanded={isOpen} className={className}>
+          <MenuToggle aria-label="Group filter" ref={toggleRef} onClick={onToggleClick} isExpanded={isOpen} className={className}>
             {isFilterable || onFilter ? (
               <TextInput
                 aria-label="input with dropdown and clear button"
@@ -184,7 +184,7 @@ const Group = ({
         popper={
           <Menu ref={menuRef} className={classNames('ins-c-menu__scrollable', className, { 'pf-m-expanded': isOpen })}>
             <MenuContent>
-              <MenuList>
+              <MenuList aria-label="Group filter">
                 {menuItems.length > 0 && <MenuGroup>{renderItems(menuItems)}</MenuGroup>}
                 {groupMenuItems.map((group, groupKey) => (
                   <MenuGroup label={group.groupSelectable ? undefined : group.label} key={`${group.label}-${groupKey}-group`}>

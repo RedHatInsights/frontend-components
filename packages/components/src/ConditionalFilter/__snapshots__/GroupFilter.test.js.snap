@@ -2,2802 +2,420 @@
 
 exports[`Group - component render should render correctly 1`] = `
 <div>
-  <Popper
-    isVisible={false}
-    popper={
-      <Menu
-        className="ins-c-menu__scrollable"
-      >
-        <MenuContent>
-          <MenuList>
-            <span
-              hidden={true}
-              value=""
-            />
-          </MenuList>
-        </MenuContent>
-      </Menu>
-    }
-    trigger={
-      <MenuToggle
-        isExpanded={false}
-        onClick={[Function]}
+  <div>
+    <button
+      aria-expanded="false"
+      aria-label="Group filter"
+      class="pf-c-menu-toggle"
+      type="button"
+    >
+      <span
+        class="pf-c-menu-toggle__text"
       />
-    }
-  />
+      <span
+        class="pf-c-menu-toggle__controls"
+      >
+        <span
+          class="pf-c-menu-toggle__toggle-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            style="vertical-align: -0.125em;"
+            viewBox="0 0 320 512"
+            width="1em"
+          >
+            <path
+              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+            />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`Group - component render should render correctly placeholder 1`] = `
 <div>
-  <Popper
-    isVisible={false}
-    popper={
-      <Menu
-        className="ins-c-menu__scrollable"
-      >
-        <MenuContent>
-          <MenuList>
-            <MenuGroup>
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item12",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item12",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item22",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item22",
-                                },
-                              ],
-                              "id": "secondLevel2",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel2",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel2",
-                          "key": "firstLevel2",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel2",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuGroup
-              label="First value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Second value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First checkbox"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="some-value"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second checkbox"
-                  name="some-value"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="some-value"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Third value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First radio"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="1"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second radio"
-                  name="1"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="1"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup>
-              <MenuItem
-                className="pf-u-pl-xs"
-                itemId={0}
-              >
-                Groupselectable value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={2}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="TreeView"
-            >
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item1",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item1",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item2",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item2",
-                                },
-                              ],
-                              "id": "secondLevel",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel",
-                          "key": "firstLevel",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <span
-              hidden={true}
-              value=""
-            />
-          </MenuList>
-        </MenuContent>
-      </Menu>
-    }
-    trigger={
-      <MenuToggle
-        isExpanded={false}
-        onClick={[Function]}
+  <div>
+    <button
+      aria-expanded="false"
+      aria-label="Group filter"
+      class="pf-c-menu-toggle"
+      type="button"
+    >
+      <span
+        class="pf-c-menu-toggle__text"
       >
         some placeholder
-      </MenuToggle>
-    }
-  />
+      </span>
+      <span
+        class="pf-c-menu-toggle__controls"
+      >
+        <span
+          class="pf-c-menu-toggle__toggle-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            style="vertical-align: -0.125em;"
+            viewBox="0 0 320 512"
+            width="1em"
+          >
+            <path
+              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+            />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`Group - component render should render correctly with items - isDisabled 1`] = `
 <div>
-  <Popper
-    isVisible={false}
-    popper={
-      <Menu
-        className="ins-c-menu__scrollable"
-      >
-        <MenuContent>
-          <MenuList>
-            <MenuGroup>
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item12",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item12",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item22",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item22",
-                                },
-                              ],
-                              "id": "secondLevel2",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel2",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel2",
-                          "key": "firstLevel2",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel2",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuGroup
-              label="First value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Second value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First checkbox"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="some-value"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second checkbox"
-                  name="some-value"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="some-value"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Third value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First radio"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="1"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second radio"
-                  name="1"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="1"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup>
-              <MenuItem
-                className="pf-u-pl-xs"
-                itemId={0}
-              >
-                Groupselectable value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={2}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="TreeView"
-            >
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item1",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item1",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item2",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item2",
-                                },
-                              ],
-                              "id": "secondLevel",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel",
-                          "key": "firstLevel",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <span
-              hidden={true}
-              value=""
-            />
-          </MenuList>
-        </MenuContent>
-      </Menu>
-    }
-    trigger={
-      <MenuToggle
-        isExpanded={false}
-        onClick={[Function]}
+  <div>
+    <button
+      aria-expanded="false"
+      aria-label="Group filter"
+      class="pf-c-menu-toggle"
+      type="button"
+    >
+      <span
+        class="pf-c-menu-toggle__text"
       />
-    }
-  />
+      <span
+        class="pf-c-menu-toggle__controls"
+      >
+        <span
+          class="pf-c-menu-toggle__toggle-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            style="vertical-align: -0.125em;"
+            viewBox="0 0 320 512"
+            width="1em"
+          >
+            <path
+              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+            />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`Group - component render should render correctly with items 1`] = `
 <div>
-  <Popper
-    isVisible={false}
-    popper={
-      <Menu
-        className="ins-c-menu__scrollable"
-      >
-        <MenuContent>
-          <MenuList>
-            <MenuGroup>
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item12",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item12",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item22",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item22",
-                                },
-                              ],
-                              "id": "secondLevel2",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel2",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel2",
-                          "key": "firstLevel2",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel2",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuGroup
-              label="First value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Second value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First checkbox"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="some-value"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second checkbox"
-                  name="some-value"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="some-value"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Third value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First radio"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="1"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second radio"
-                  name="1"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="1"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup>
-              <MenuItem
-                className="pf-u-pl-xs"
-                itemId={0}
-              >
-                Groupselectable value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={2}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="TreeView"
-            >
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item1",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item1",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item2",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item2",
-                                },
-                              ],
-                              "id": "secondLevel",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel",
-                          "key": "firstLevel",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <span
-              hidden={true}
-              value=""
-            />
-          </MenuList>
-        </MenuContent>
-      </Menu>
-    }
-    trigger={
-      <MenuToggle
-        isExpanded={false}
-        onClick={[Function]}
+  <div>
+    <button
+      aria-expanded="false"
+      aria-label="Group filter"
+      class="pf-c-menu-toggle"
+      type="button"
+    >
+      <span
+        class="pf-c-menu-toggle__text"
       />
-    }
-  />
+      <span
+        class="pf-c-menu-toggle__controls"
+      >
+        <span
+          class="pf-c-menu-toggle__toggle-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            style="vertical-align: -0.125em;"
+            viewBox="0 0 320 512"
+            width="1em"
+          >
+            <path
+              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+            />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`Group - component render should render correctly with items and default value 1`] = `
 <div>
-  <Popper
-    isVisible={false}
-    popper={
-      <Menu
-        className="ins-c-menu__scrollable"
-      >
-        <MenuContent>
-          <MenuList>
-            <MenuGroup>
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item12",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item12",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item22",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item22",
-                                },
-                              ],
-                              "id": "secondLevel2",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel2",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel2",
-                          "key": "firstLevel2",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel2",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuGroup
-              label="First value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Second value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First checkbox"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="some-value"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second checkbox"
-                  name="some-value"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="some-value"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Third value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First radio"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="1"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second radio"
-                  name="1"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="1"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup>
-              <MenuItem
-                className="pf-u-pl-xs"
-                itemId={0}
-              >
-                Groupselectable value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={2}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="TreeView"
-            >
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item1",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item1",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item2",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item2",
-                                },
-                              ],
-                              "id": "secondLevel",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel",
-                          "key": "firstLevel",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <span
-              hidden={true}
-              value=""
-            />
-          </MenuList>
-        </MenuContent>
-      </Menu>
-    }
-    trigger={
-      <MenuToggle
-        isExpanded={false}
-        onClick={[Function]}
+  <div>
+    <button
+      aria-expanded="false"
+      aria-label="Group filter"
+      class="pf-c-menu-toggle"
+      type="button"
+    >
+      <span
+        class="pf-c-menu-toggle__text"
       />
-    }
-  />
+      <span
+        class="pf-c-menu-toggle__controls"
+      >
+        <span
+          class="pf-c-menu-toggle__toggle-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            style="vertical-align: -0.125em;"
+            viewBox="0 0 320 512"
+            width="1em"
+          >
+            <path
+              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+            />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`Group - component render should render correctly with items and selected value 1`] = `
 <div>
-  <Popper
-    isVisible={false}
-    popper={
-      <Menu
-        className="ins-c-menu__scrollable"
-      >
-        <MenuContent>
-          <MenuList>
-            <MenuGroup>
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item12",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item12",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item22",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item22",
-                                },
-                              ],
-                              "id": "secondLevel2",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel2",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel2",
-                          "key": "firstLevel2",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel2",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuGroup
-              label="First value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Second value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First checkbox"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="some-value"
-                  isChecked={true}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second checkbox"
-                  name="some-value"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="some-value"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Third value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First radio"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="1"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second radio"
-                  name="1"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="1"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup>
-              <MenuItem
-                className="pf-u-pl-xs"
-                itemId={0}
-              >
-                Groupselectable value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={2}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="TreeView"
-            >
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item1",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item1",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item2",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item2",
-                                },
-                              ],
-                              "id": "secondLevel",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel",
-                          "key": "firstLevel",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <span
-              hidden={true}
-              value=""
-            />
-          </MenuList>
-        </MenuContent>
-      </Menu>
-    }
-    trigger={
-      <MenuToggle
-        isExpanded={false}
-        onClick={[Function]}
+  <div>
+    <button
+      aria-expanded="false"
+      aria-label="Group filter"
+      class="pf-c-menu-toggle"
+      type="button"
+    >
+      <span
+        class="pf-c-menu-toggle__text"
       />
-    }
-  />
+      <span
+        class="pf-c-menu-toggle__controls"
+      >
+        <span
+          class="pf-c-menu-toggle__toggle-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            style="vertical-align: -0.125em;"
+            viewBox="0 0 320 512"
+            width="1em"
+          >
+            <path
+              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+            />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`Group - component render should render correctly with selectable group 1`] = `
 <div>
-  <Popper
-    isVisible={false}
-    popper={
-      <Menu
-        className="ins-c-menu__scrollable"
-      >
-        <MenuContent>
-          <MenuList>
-            <MenuGroup>
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item12",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item12",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item22",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item22",
-                                },
-                              ],
-                              "id": "secondLevel2",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel2",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel2",
-                          "key": "firstLevel2",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel2",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuGroup
-              label="First value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Second value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First checkbox"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="some-value"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second checkbox"
-                  name="some-value"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="some-value"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Third value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First radio"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="1"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second radio"
-                  name="1"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="1"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup>
-              <MenuItem
-                className="pf-u-pl-xs"
-                itemId={0}
-              >
-                Groupselectable value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={2}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="TreeView"
-            >
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item1",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item1",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item2",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item2",
-                                },
-                              ],
-                              "id": "secondLevel",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel",
-                          "key": "firstLevel",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <span
-              hidden={true}
-              value=""
-            />
-          </MenuList>
-        </MenuContent>
-      </Menu>
-    }
-    trigger={
-      <MenuToggle
-        isExpanded={false}
-        onClick={[Function]}
+  <div>
+    <button
+      aria-expanded="false"
+      aria-label="Group filter"
+      class="pf-c-menu-toggle"
+      type="button"
+    >
+      <span
+        class="pf-c-menu-toggle__text"
       />
-    }
-  />
+      <span
+        class="pf-c-menu-toggle__controls"
+      >
+        <span
+          class="pf-c-menu-toggle__toggle-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            style="vertical-align: -0.125em;"
+            viewBox="0 0 320 512"
+            width="1em"
+          >
+            <path
+              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+            />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`Group - component render show more should render correctly with items and custom props 1`] = `
 <div>
-  <Popper
-    isVisible={false}
-    popper={
-      <Menu
-        className="ins-c-menu__scrollable"
-      >
-        <MenuContent>
-          <MenuList>
-            <MenuGroup>
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item12",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item12",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item22",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item22",
-                                },
-                              ],
-                              "id": "secondLevel2",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel2",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel2",
-                          "key": "firstLevel2",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel2",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuGroup
-              label="First value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Second value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First checkbox"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="some-value"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second checkbox"
-                  name="some-value"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="some-value"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Third value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First radio"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="1"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second radio"
-                  name="1"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="1"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup>
-              <MenuItem
-                className="pf-u-pl-xs"
-                itemId={0}
-              >
-                Groupselectable value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={2}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="TreeView"
-            >
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item1",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item1",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item2",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item2",
-                                },
-                              ],
-                              "id": "secondLevel",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel",
-                          "key": "firstLevel",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuItem
-              className="ins-c-menu__show--more"
-              itemId="loader"
-              onClick={[Function]}
-              props={
-                Object {
-                  "className": "some-test-class",
-                }
-              }
-            />
-          </MenuList>
-        </MenuContent>
-      </Menu>
-    }
-    trigger={
-      <MenuToggle
-        isExpanded={false}
-        onClick={[Function]}
+  <div>
+    <button
+      aria-expanded="false"
+      aria-label="Group filter"
+      class="pf-c-menu-toggle"
+      type="button"
+    >
+      <span
+        class="pf-c-menu-toggle__text"
       />
-    }
-  />
+      <span
+        class="pf-c-menu-toggle__controls"
+      >
+        <span
+          class="pf-c-menu-toggle__toggle-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            style="vertical-align: -0.125em;"
+            viewBox="0 0 320 512"
+            width="1em"
+          >
+            <path
+              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+            />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`Group - component render show more should render correctly with items and custom text 1`] = `
 <div>
-  <Popper
-    isVisible={false}
-    popper={
-      <Menu
-        className="ins-c-menu__scrollable"
-      >
-        <MenuContent>
-          <MenuList>
-            <MenuGroup>
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item12",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item12",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item22",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item22",
-                                },
-                              ],
-                              "id": "secondLevel2",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel2",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel2",
-                          "key": "firstLevel2",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel2",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuGroup
-              label="First value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Second value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First checkbox"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="some-value"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second checkbox"
-                  name="some-value"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="some-value"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Third value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First radio"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="1"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second radio"
-                  name="1"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="1"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup>
-              <MenuItem
-                className="pf-u-pl-xs"
-                itemId={0}
-              >
-                Groupselectable value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={2}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="TreeView"
-            >
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item1",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item1",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item2",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item2",
-                                },
-                              ],
-                              "id": "secondLevel",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel",
-                          "key": "firstLevel",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuItem
-              className="ins-c-menu__show--more"
-              itemId="loader"
-              onClick={[Function]}
-            >
-              some title
-            </MenuItem>
-          </MenuList>
-        </MenuContent>
-      </Menu>
-    }
-    trigger={
-      <MenuToggle
-        isExpanded={false}
-        onClick={[Function]}
+  <div>
+    <button
+      aria-expanded="false"
+      aria-label="Group filter"
+      class="pf-c-menu-toggle"
+      type="button"
+    >
+      <span
+        class="pf-c-menu-toggle__text"
       />
-    }
-  />
+      <span
+        class="pf-c-menu-toggle__controls"
+      >
+        <span
+          class="pf-c-menu-toggle__toggle-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            style="vertical-align: -0.125em;"
+            viewBox="0 0 320 512"
+            width="1em"
+          >
+            <path
+              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+            />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`Group - component render show more should render correctly with items and default text 1`] = `
 <div>
-  <Popper
-    isVisible={false}
-    popper={
-      <Menu
-        className="ins-c-menu__scrollable"
-      >
-        <MenuContent>
-          <MenuList>
-            <MenuGroup>
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item12",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item12",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item22",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item22",
-                                },
-                              ],
-                              "id": "secondLevel2",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel2",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel2",
-                          "key": "firstLevel2",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel2",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuGroup
-              label="First value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Second value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First checkbox"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="some-value"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second checkbox"
-                  name="some-value"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="some-value"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Third value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First radio"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="1"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second radio"
-                  name="1"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="1"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup>
-              <MenuItem
-                className="pf-u-pl-xs"
-                itemId={0}
-              >
-                Groupselectable value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={2}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="TreeView"
-            >
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item1",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item1",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item2",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item2",
-                                },
-                              ],
-                              "id": "secondLevel",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel",
-                          "key": "firstLevel",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuItem
-              className="ins-c-menu__show--more"
-              itemId="loader"
-              onClick={[Function]}
-            />
-          </MenuList>
-        </MenuContent>
-      </Menu>
-    }
-    trigger={
-      <MenuToggle
-        isExpanded={false}
-        onClick={[Function]}
+  <div>
+    <button
+      aria-expanded="false"
+      aria-label="Group filter"
+      class="pf-c-menu-toggle"
+      type="button"
+    >
+      <span
+        class="pf-c-menu-toggle__text"
       />
-    }
-  />
+      <span
+        class="pf-c-menu-toggle__controls"
+      >
+        <span
+          class="pf-c-menu-toggle__toggle-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            style="vertical-align: -0.125em;"
+            viewBox="0 0 320 512"
+            width="1em"
+          >
+            <path
+              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+            />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`Group - component render show more should render correctly with items and different variant 1`] = `
 <div>
-  <Popper
-    isVisible={false}
-    popper={
-      <Menu
-        className="ins-c-menu__scrollable"
-      >
-        <MenuContent>
-          <MenuList>
-            <MenuGroup>
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item12",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item12",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item22",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item22",
-                                },
-                              ],
-                              "id": "secondLevel2",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel2",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel2",
-                          "key": "firstLevel2",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel2",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuGroup
-              label="First value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Second value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First checkbox"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-                onClick={[Function]}
-              >
-                <Checkbox
-                  className="pf-u-pl-sm"
-                  id="some-value"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second checkbox"
-                  name="some-value"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  ouiaSafe={true}
-                  value="some-value"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="Third value"
-            >
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={0}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="0"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="First radio"
-                  name="0"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="0"
-                />
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                <Radio
-                  className="pf-u-pl-sm"
-                  id="1"
-                  isChecked={false}
-                  isDisabled={false}
-                  isValid={true}
-                  label="Second radio"
-                  name="1"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  value="1"
-                />
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup>
-              <MenuItem
-                className="pf-u-pl-xs"
-                itemId={0}
-              >
-                Groupselectable value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={1}
-              >
-                First value
-              </MenuItem>
-              <MenuItem
-                className="pf-u-pl-sm"
-                itemId={2}
-              >
-                Second value
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup
-              label="TreeView"
-            >
-              <div
-                className="ins-c-tree-view"
-              >
-                <MenuItem
-                  className="pf-u-pl-sm"
-                  itemId={0}
-                >
-                  <TreeView
-                    data={
-                      Array [
-                        Object {
-                          "checkProps": Object {
-                            "checked": false,
-                          },
-                          "children": Array [
-                            Object {
-                              "checkProps": Object {
-                                "checked": false,
-                              },
-                              "children": Array [
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item1",
-                                  "label": "Item 1",
-                                  "name": "Item 1",
-                                  "value": "item1",
-                                },
-                                Object {
-                                  "checkProps": Object {
-                                    "checked": false,
-                                  },
-                                  "id": "item2",
-                                  "label": "Item 2",
-                                  "name": "Item 2",
-                                  "value": "item2",
-                                },
-                              ],
-                              "id": "secondLevel",
-                              "label": "Second level",
-                              "name": "Second level",
-                              "value": "secondLevel",
-                            },
-                          ],
-                          "className": "pf-u-pl-sm",
-                          "defaultExpanded": true,
-                          "hasCheck": false,
-                          "id": "firstLevel",
-                          "key": "firstLevel",
-                          "label": "First level",
-                          "name": "First level",
-                          "onClick": [Function],
-                          "type": "treeView",
-                          "value": "firstLevel",
-                        },
-                      ]
-                    }
-                    hasChecks={true}
-                    onCheck={[Function]}
-                  />
-                </MenuItem>
-              </div>
-            </MenuGroup>
-            <MenuItem
-              className="ins-c-menu__show--more"
-              itemId="loader"
-              onClick={[Function]}
-              variant="default"
-            />
-          </MenuList>
-        </MenuContent>
-      </Menu>
-    }
-    trigger={
-      <MenuToggle
-        isExpanded={false}
-        onClick={[Function]}
+  <div>
+    <button
+      aria-expanded="false"
+      aria-label="Group filter"
+      class="pf-c-menu-toggle"
+      type="button"
+    >
+      <span
+        class="pf-c-menu-toggle__text"
       />
-    }
-  />
+      <span
+        class="pf-c-menu-toggle__controls"
+      >
+        <span
+          class="pf-c-menu-toggle__toggle-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            style="vertical-align: -0.125em;"
+            viewBox="0 0 320 512"
+            width="1em"
+          >
+            <path
+              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+            />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
 </div>
 `;

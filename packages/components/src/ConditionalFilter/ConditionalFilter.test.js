@@ -1,8 +1,7 @@
 import React from 'react';
 import ConditionalFilter from './ConditionalFilter';
-import { shallow, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import { act } from 'react-dom/test-utils';
+import { render, screen, act } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const config = [
   {
@@ -68,98 +67,88 @@ const initialProps = {
 describe('ConditionalFilter', () => {
   describe('render', () => {
     it('should render correctly', () => {
-      const wrappper = shallow(<ConditionalFilter {...initialProps} />);
-      expect(toJson(wrappper)).toMatchSnapshot();
+      const { container } = render(<ConditionalFilter {...initialProps} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly - isDisabled', () => {
-      const wrappper = shallow(<ConditionalFilter {...initialProps} items={config} isDisabled />);
-      expect(toJson(wrappper)).toMatchSnapshot();
+      const { container } = render(<ConditionalFilter {...initialProps} items={config} isDisabled />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly with config', () => {
-      const wrappper = shallow(<ConditionalFilter {...initialProps} items={config} />);
-      expect(toJson(wrappper)).toMatchSnapshot();
+      const { container } = render(<ConditionalFilter {...initialProps} items={config} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly with config - each item as disabled', () => {
-      const wrappper = shallow(
+      const { container } = render(
         <ConditionalFilter {...initialProps} items={config.map((item) => ({ ...item, filterValues: { ...item.filterValues, isDisabled: true } }))} />
       );
-      expect(toJson(wrappper)).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     });
 
     config.map(({ value, label }) => {
       it(`should render correctly ${label} with value ${value}`, () => {
         const onChange = jest.fn();
-        const wrappper = shallow(<ConditionalFilter {...initialProps} items={config} value={value} onChange={onChange} />);
-        expect(toJson(wrappper)).toMatchSnapshot();
+        const { container } = render(<ConditionalFilter {...initialProps} items={config} value={value} onChange={onChange} />);
+        expect(container).toMatchSnapshot();
       });
     });
 
     it('should render correctly with one filter', () => {
-      const wrappper = shallow(<ConditionalFilter {...initialProps} items={[config[0]]} />);
-      expect(toJson(wrappper)).toMatchSnapshot();
+      const { container } = render(<ConditionalFilter {...initialProps} items={[config[0]]} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly with with the active label hidden', () => {
-      const wrappper = shallow(<ConditionalFilter {...initialProps} hideLabel={true} items={config} />);
-      expect(toJson(wrappper)).toMatchSnapshot();
+      const { container } = render(<ConditionalFilter {...initialProps} hideLabel={true} items={config} />);
+      expect(container).toMatchSnapshot();
     });
   });
 
   describe('API', () => {
     it('should not call onChange', () => {
       const onChange = jest.fn();
-      const wrappper = mount(<ConditionalFilter {...initialProps} />);
-      wrappper
-        .find('input')
-        .first()
-        .simulate('change', { target: { value: 'new-value' } });
+      render(<ConditionalFilter {...initialProps} />);
+      userEvent.type(screen.getByRole('textbox', { name: 'text input' }), 'new-value');
       expect(onChange).not.toHaveBeenCalled();
     });
 
     it('should call onChange', () => {
       const onChange = jest.fn();
-      const wrappper = mount(<ConditionalFilter {...initialProps} onChange={onChange} />);
-      wrappper
-        .find('input')
-        .first()
-        .simulate('change', { target: { value: 'new-value' } });
+      render(<ConditionalFilter {...initialProps} onChange={onChange} />);
+      userEvent.type(screen.getByRole('textbox', { name: 'text input' }), 'new-value');
       expect(onChange).toHaveBeenCalled();
     });
 
     it('should open dropdown', () => {
-      const wrappper = mount(<ConditionalFilter {...initialProps} items={config} />);
-      wrappper.find('button.pf-c-dropdown__toggle').first().simulate('click');
-      wrappper.update();
-      expect(wrappper.instance().state.isOpen).toBe(true);
+      render(<ConditionalFilter {...initialProps} items={config} />);
+      userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+      expect(screen.getByRole('menu', { name: 'Conditional filter' })).toBeDefined();
     });
 
     it('should call NOT call onChange when clicked on dropdown', () => {
       const onChange = jest.fn();
-      const wrappper = mount(<ConditionalFilter {...initialProps} items={config} />);
-      wrappper.find('button.pf-c-dropdown__toggle').first().simulate('click');
-      wrappper.update();
-      wrappper.find('ul.pf-c-dropdown__menu button.pf-c-dropdown__menu-item').first().simulate('click');
+      render(<ConditionalFilter {...initialProps} items={config} />);
+      userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+      userEvent.click(screen.getByRole('menuitem', { name: 'Simple text 1' }));
       expect(onChange).not.toHaveBeenCalled();
     });
 
     it('should call call onChange when clicked on dropdown', () => {
       const onChange = jest.fn();
-      const wrappper = mount(<ConditionalFilter {...initialProps} items={config} onChange={onChange} />);
-      wrappper.find('button.pf-c-dropdown__toggle').first().simulate('click');
-      wrappper.update();
-      wrappper.find('ul.pf-c-dropdown__menu button.pf-c-dropdown__menu-item').first().simulate('click');
+      render(<ConditionalFilter {...initialProps} items={config} onChange={onChange} />);
+      userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+      userEvent.click(screen.getByRole('menuitem', { name: 'Simple text 1' }));
       expect(onChange).toHaveBeenCalled();
     });
 
     it('should update state on select', () => {
-      const wrappper = mount(<ConditionalFilter {...initialProps} items={config} />);
-      wrappper.find('button.pf-c-dropdown__toggle').first().simulate('click');
-      wrappper.update();
-      wrappper.find('ul.pf-c-dropdown__menu button.pf-c-dropdown__menu-item').at(2).simulate('click');
-      expect(wrappper.instance().state.stateValue).toBe('checkbox-filter');
+      render(<ConditionalFilter {...initialProps} items={config} />);
+      userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+      userEvent.click(screen.getByRole('menuitem', { name: 'Checkbox' }));
+      expect(screen.getByRole('button', { name: 'Options menu' })).toBeDefined();
     });
 
     it('should select group - RHEL case', async () => {
@@ -176,7 +165,7 @@ describe('ConditionalFilter', () => {
             groups: [
               {
                 label: 'RHEL 7',
-                value: '7',
+                value: 'rhel-7',
                 groupSelectable: true,
                 items: [
                   {
@@ -232,25 +221,19 @@ describe('ConditionalFilter', () => {
         },
       ];
 
-      const wrapper = mount(<ConditionalFilter {...initialProps} items={items} />);
+      render(<ConditionalFilter {...initialProps} items={items} />);
 
-      await act(async () => {
-        wrapper.find('button.pf-c-menu-toggle').simulate('click');
+      await act(() => {
+        userEvent.click(screen.getByRole('button', { name: 'Group filter' }));
       });
-      wrapper.update();
-
-      await act(async () => {
-        wrapper.find('button[role="menuitem"]').at(1).simulate('click');
-      });
-      wrapper.update();
-
+      userEvent.click(screen.getByRole('checkbox', { name: 'RHEL 7' }));
       expect(onChange).toHaveBeenCalledWith(
         undefined,
-        { 7: { 1: true } },
+        { 'rhel-7': { 'rhel-7': true } },
         {
           id: undefined,
           items: [
-            { label: 'RHEL 7', value: '7', id: undefined, type: 'checkbox', className: 'pf-u-pl-xs' },
+            { label: 'RHEL 7', value: 'rhel-7', id: undefined, type: 'checkbox', className: 'pf-u-pl-xs' },
             { label: 'RHEL 7.1', type: 'checkbox', value: '1' },
             { label: 'RHEL 7.2', type: 'checkbox', value: '2' },
             { label: 'RHEL 7.3', type: 'checkbox', value: '3' },
@@ -263,11 +246,11 @@ describe('ConditionalFilter', () => {
           ],
           label: 'RHEL 7',
           type: 'checkbox',
-          value: '7',
+          value: 'rhel-7',
         },
-        { label: 'RHEL 7.1', type: 'checkbox', value: '1' },
-        '7',
-        '1'
+        { label: 'RHEL 7', value: 'rhel-7', id: undefined, type: 'checkbox', className: 'pf-u-pl-xs' },
+        'rhel-7',
+        'rhel-7'
       );
     });
   });
