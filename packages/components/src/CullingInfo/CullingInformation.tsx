@@ -1,17 +1,18 @@
 import React from 'react';
 import { ExclamationCircleIcon, ExclamationTriangleIcon } from '@patternfly/react-icons';
-import { Tooltip } from '@patternfly/react-core';
+import { Tooltip, TooltipProps } from '@patternfly/react-core';
 import classnames from 'classnames';
 import './CullingInformation.scss';
 import { CullingDate, calculateTooltip, CullingInfo } from './utils';
 export type Render = (config: { msg: string }) => React.ReactElement<any, any> | null;
-export interface CullingInformation {
+
+export interface CullingInformation extends TooltipProps {
   className: string;
   staleWarning: CullingDate;
   culled: CullingDate;
   stale: CullingDate;
   currDate: CullingDate;
-  children?: React.ReactElement<any, any> | null;
+  children?: React.ReactElement<any, string | React.JSXElementConstructor<any>> | undefined;
   render?: Render;
 }
 
