@@ -16,6 +16,8 @@ export interface AsyncComponentProps {
   className: string;
   /** Optional wrapper component */
   component: keyof JSX.IntrinsicElements;
+  /** Other props passed to the AsyncComponent */
+  [key: string]: any;
 }
 
 interface BaseAsyncComponentProps extends AsyncComponentProps {
