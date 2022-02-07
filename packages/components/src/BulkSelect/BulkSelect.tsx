@@ -127,7 +127,14 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
           ]}
         />
       ) : (
-        <Checkbox {...props} className={classnames(className, 'ins-c-bulk-select')} id={`${id}-checkbox`} isChecked={checked} onChange={onSelect} />
+        <Checkbox
+          {...props}
+          aria-label="Select all"
+          className={classnames(className, 'ins-c-bulk-select')}
+          id={`${id}-checkbox`}
+          isChecked={checked}
+          onChange={onSelect}
+        />
       )}
     </Fragment>
   );

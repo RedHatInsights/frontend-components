@@ -1,21 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Battery component API should hide label 1`] = `
-<Fragment>
+<div>
   <i
     aria-label="high high"
-    className="ins-battery ins-battery-high"
+    class="ins-battery ins-battery-high"
     widget-id="high"
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -23,71 +19,67 @@ exports[`Battery component API should hide label 1`] = `
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <HighBattery />
+      <path
+        d="M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
-</Fragment>
+</div>
 `;
 
 exports[`Battery component CriticalBattery 1`] = `
-<path
-  d="M 99.168858,143.38516 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698858,11.2 z M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
-/>
+<div>
+  <path
+    d="M 99.168858,143.38516 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698858,11.2 z M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+  />
+</div>
 `;
 
 exports[`Battery component HighBattery 1`] = `
-<path
-  d="M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
-/>
+<div>
+  <path
+    d="M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+  />
+</div>
 `;
 
 exports[`Battery component LowBattery 1`] = `
-<path
-  d="M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
-/>
+<div>
+  <path
+    d="M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+  />
+</div>
 `;
 
 exports[`Battery component MediumBattery 1`] = `
-<path
-  d="M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
-/>
+<div>
+  <path
+    d="M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+  />
+</div>
 `;
 
 exports[`Battery component NullBattery 1`] = `
-<path
-  d="M 99.168858,143.38516 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698858,11.2 z M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
-/>
+<div>
+  <path
+    d="M 99.168858,143.38516 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698858,11.2 z M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+  />
+</div>
 `;
 
 exports[`Battery component should render correctly CriticalBattery - 4 1`] = `
-<Fragment>
+<div>
   <i
-    className="ins-battery ins-battery-4"
+    class="ins-battery ins-battery-4"
     widget-id="4"
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -95,48 +87,34 @@ exports[`Battery component should render correctly CriticalBattery - 4 1`] = `
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <CriticalBattery />
+      <path
+        d="M 99.168858,143.38516 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698858,11.2 z M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
   <span
-    className="label"
+    class="label"
   >
      
     4
      
   </span>
-</Fragment>
+</div>
 `;
 
 exports[`Battery component should render correctly CriticalBattery - critical 1`] = `
-<Fragment>
+<div>
   <i
-    className="ins-battery ins-battery-critical"
+    class="ins-battery ins-battery-critical"
     widget-id="critical"
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -144,48 +122,34 @@ exports[`Battery component should render correctly CriticalBattery - critical 1`
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <CriticalBattery />
+      <path
+        d="M 99.168858,143.38516 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698858,11.2 z M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
   <span
-    className="label"
+    class="label"
   >
      
     critical
      
   </span>
-</Fragment>
+</div>
 `;
 
 exports[`Battery component should render correctly HighBattery - 3 1`] = `
-<Fragment>
+<div>
   <i
-    className="ins-battery ins-battery-3"
+    class="ins-battery ins-battery-3"
     widget-id="3"
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -193,48 +157,34 @@ exports[`Battery component should render correctly HighBattery - 3 1`] = `
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <HighBattery />
+      <path
+        d="M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
   <span
-    className="label"
+    class="label"
   >
      
     3
      
   </span>
-</Fragment>
+</div>
 `;
 
 exports[`Battery component should render correctly HighBattery - error 1`] = `
-<Fragment>
+<div>
   <i
-    className="ins-battery ins-battery-error"
+    class="ins-battery ins-battery-error"
     widget-id="error"
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -242,48 +192,34 @@ exports[`Battery component should render correctly HighBattery - error 1`] = `
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <HighBattery />
+      <path
+        d="M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
   <span
-    className="label"
+    class="label"
   >
      
     error
      
   </span>
-</Fragment>
+</div>
 `;
 
 exports[`Battery component should render correctly HighBattery - high 1`] = `
-<Fragment>
+<div>
   <i
-    className="ins-battery ins-battery-high"
+    class="ins-battery ins-battery-high"
     widget-id="high"
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -291,48 +227,34 @@ exports[`Battery component should render correctly HighBattery - high 1`] = `
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <HighBattery />
+      <path
+        d="M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
   <span
-    className="label"
+    class="label"
   >
      
     high
      
   </span>
-</Fragment>
+</div>
 `;
 
 exports[`Battery component should render correctly LowBattery - 1 1`] = `
-<Fragment>
+<div>
   <i
-    className="ins-battery ins-battery-1"
+    class="ins-battery ins-battery-1"
     widget-id="1"
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -340,48 +262,34 @@ exports[`Battery component should render correctly LowBattery - 1 1`] = `
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <LowBattery />
+      <path
+        d="M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
   <span
-    className="label"
+    class="label"
   >
      
     1
      
   </span>
-</Fragment>
+</div>
 `;
 
 exports[`Battery component should render correctly LowBattery - info 1`] = `
-<Fragment>
+<div>
   <i
-    className="ins-battery ins-battery-info"
+    class="ins-battery ins-battery-info"
     widget-id="info"
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -389,48 +297,34 @@ exports[`Battery component should render correctly LowBattery - info 1`] = `
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <LowBattery />
+      <path
+        d="M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
   <span
-    className="label"
+    class="label"
   >
      
     info
      
   </span>
-</Fragment>
+</div>
 `;
 
 exports[`Battery component should render correctly LowBattery - low 1`] = `
-<Fragment>
+<div>
   <i
-    className="ins-battery ins-battery-low"
+    class="ins-battery ins-battery-low"
     widget-id="low"
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -438,48 +332,34 @@ exports[`Battery component should render correctly LowBattery - low 1`] = `
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <LowBattery />
+      <path
+        d="M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
   <span
-    className="label"
+    class="label"
   >
      
     low
      
   </span>
-</Fragment>
+</div>
 `;
 
 exports[`Battery component should render correctly MediumBattery - 2 1`] = `
-<Fragment>
+<div>
   <i
-    className="ins-battery ins-battery-2"
+    class="ins-battery ins-battery-2"
     widget-id="2"
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -487,48 +367,34 @@ exports[`Battery component should render correctly MediumBattery - 2 1`] = `
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <MediumBattery />
+      <path
+        d="M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
   <span
-    className="label"
+    class="label"
   >
      
     2
      
   </span>
-</Fragment>
+</div>
 `;
 
 exports[`Battery component should render correctly MediumBattery - medium 1`] = `
-<Fragment>
+<div>
   <i
-    className="ins-battery ins-battery-medium"
+    class="ins-battery ins-battery-medium"
     widget-id="medium"
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -536,48 +402,34 @@ exports[`Battery component should render correctly MediumBattery - medium 1`] = 
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <MediumBattery />
+      <path
+        d="M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
   <span
-    className="label"
+    class="label"
   >
      
     medium
      
   </span>
-</Fragment>
+</div>
 `;
 
 exports[`Battery component should render correctly MediumBattery - warn 1`] = `
-<Fragment>
+<div>
   <i
-    className="ins-battery ins-battery-warn"
+    class="ins-battery ins-battery-warn"
     widget-id="warn"
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -585,48 +437,34 @@ exports[`Battery component should render correctly MediumBattery - warn 1`] = `
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <MediumBattery />
+      <path
+        d="M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
   <span
-    className="label"
+    class="label"
   >
      
     warn
      
   </span>
-</Fragment>
+</div>
 `;
 
 exports[`Battery component should render correctly NullBatery, default 1`] = `
-<Fragment>
+<div>
   <i
-    className="ins-battery ins-battery-"
+    class="ins-battery ins-battery-"
     widget-id=""
     widget-type="InsightsBattery"
   >
     <svg
       id="battery_svg"
-      shapeRendering="geometricpresision"
-      style={
-        Object {
-          "enableBackground": "new 0 0 448 512",
-        }
-      }
+      shape-rendering="geometricpresision"
+      style="enable-background: new 0 0 448 512;"
       version="1.1"
       viewBox="0 0 448 512"
       x="0px"
@@ -634,28 +472,19 @@ exports[`Battery component should render correctly NullBatery, default 1`] = `
     >
       <path
         d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z"
-        style={
-          Object {
-            "fill": "none",
-            "fillOpacity": 1,
-            "stroke": "#969696",
-            "strokeDasharray": "none",
-            "strokeDashoffset": 0,
-            "strokeLinejoin": "round",
-            "strokeMiterlimit": 4,
-            "strokeOpacity": 1,
-            "strokeWidth": 41.96378708,
-          }
-        }
+        style="fill: none; fill-opacity: 1; stroke: #969696; stroke-width: 41.96378708; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1;"
       />
-      <NullBattery />
+      <path
+        d="M 99.168858,143.38516 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698858,11.2 z M 99.168857,235.25069 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z M 99.168857,327.14542 H 351.33914 c 5.33437,0 9.69886,-5.04 9.69886,-11.19999 v -28 c 0,-6.16001 -4.36449,-11.2 -9.69886,-11.2 H 99.168857 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.19999 9.698857,11.19999 z M 99.168993,419.0375 H 351.33927 c 5.33437,0 9.69886,-5.04 9.69886,-11.2 v -28 c 0,-6.16 -4.36449,-11.2 -9.69886,-11.2 H 99.168993 c -5.334371,0 -9.698857,5.04 -9.698857,11.2 v 28 c 0,6.16 4.364486,11.2 9.698857,11.2 z"
+      />
     </svg>
   </i>
   <span
-    className="label"
+    class="label"
   >
      
+    
      
   </span>
-</Fragment>
+</div>
 `;

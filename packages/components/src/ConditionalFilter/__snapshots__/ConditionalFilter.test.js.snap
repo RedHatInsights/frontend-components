@@ -1,886 +1,1017 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
-<Fragment>
-  <Split
-    className="ins-c-conditional-filter desktop"
+<div>
+  <div
+    class="pf-l-split ins-c-conditional-filter desktop"
   >
-    <SplitItem>
-      <Dropdown
-        className="ins-c-conditional-filter__group"
-        dropdownItems={
-          Array [
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 1"
-            >
-              Simple text 1
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 2"
-            >
-              Simple text 2
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="checkbox"
-            >
-              Checkbox
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="radio filter"
-            >
-              Radio filter
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={true}
-              onClick={[Function]}
-              ouiaId="no value"
-            >
-              No value
-            </DropdownItem>,
-          ]
-        }
-        isOpen={false}
-        onSelect={[Function]}
-        ouiaId="ConditionalFilter"
-        toggle={
-          <DropdownToggle
-            className=""
-            isDisabled={true}
-            onToggle={[Function]}
-            ouiaId="ConditionalFilter"
+    <div
+      class="pf-l-split__item"
+    >
+      <div
+        class="pf-c-dropdown ins-c-conditional-filter__group"
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/Dropdown"
+        data-ouia-safe="true"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Conditional filter"
+          class="pf-c-dropdown__toggle"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF4/DropdownToggle"
+          data-ouia-safe="true"
+          disabled=""
+          id="pf-dropdown-toggle-id-0"
+          type="button"
+        >
+          <span
+            class="pf-c-dropdown__toggle-text"
           >
-            <FilterIcon
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 512 512"
+              width="1em"
+            >
+              <path
+                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+              />
+            </svg>
             <span
-              className="ins-c-conditional-filter__value-selector"
+              class="ins-c-conditional-filter__value-selector"
             >
               No value
             </span>
-          </DropdownToggle>
-        }
-      />
-    </SplitItem>
-    <SplitItem
-      isFilled={true}
+          </span>
+          <span
+            class="pf-c-dropdown__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="pf-l-split__item pf-m-fill"
     >
-      <Text
+      <input
+        aria-invalid="false"
         aria-label="text input"
-        isDisabled={false}
-        onSubmit={[Function]}
+        class="pf-c-form-control ins-c-conditional-filter "
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/TextInput"
+        data-ouia-safe="true"
         placeholder="Filter by no value"
+        type="text"
         value=""
+        widget-type="InsightsInput"
       />
-    </SplitItem>
-  </Split>
-</Fragment>
+      <svg
+        aria-hidden="true"
+        class="ins-c-search-icon"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        style="vertical-align: -0.125em;"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`ConditionalFilter render should render correctly 1`] = `
-<Fragment>
+<div>
   <div
-    className="ins-c-conditional-filter desktop"
+    class="ins-c-conditional-filter desktop"
   >
-    <Text
+    <input
+      aria-invalid="false"
       aria-label="text input"
+      class="pf-c-form-control ins-c-conditional-filter "
+      data-ouia-component-id="ConditionalFilter"
+      data-ouia-component-type="PF4/TextInput"
+      data-ouia-safe="true"
       id="default-input"
-      isDisabled={false}
-      onChange={[Function]}
-      onSubmit={[Function]}
+      type="text"
       value=""
       widget-type="InsightsInput"
     />
+    <svg
+      aria-hidden="true"
+      class="ins-c-search-icon"
+      fill="currentColor"
+      height="1em"
+      role="img"
+      style="vertical-align: -0.125em;"
+      viewBox="0 0 512 512"
+      width="1em"
+    >
+      <path
+        d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+      />
+    </svg>
   </div>
-</Fragment>
+</div>
 `;
 
 exports[`ConditionalFilter render should render correctly checkbox with value checkbox-filter 1`] = `
-<Fragment>
-  <Split
-    className="ins-c-conditional-filter desktop"
+<div>
+  <div
+    class="pf-l-split ins-c-conditional-filter desktop"
   >
-    <SplitItem>
-      <Dropdown
-        className="ins-c-conditional-filter__group"
-        dropdownItems={
-          Array [
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 1"
-            >
-              Simple text 1
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 2"
-            >
-              Simple text 2
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={true}
-              onClick={[Function]}
-              ouiaId="checkbox"
-            >
-              Checkbox
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="radio filter"
-            >
-              Radio filter
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="no value"
-            >
-              No value
-            </DropdownItem>,
-          ]
-        }
-        isOpen={false}
-        onSelect={[Function]}
-        ouiaId="ConditionalFilter"
-        toggle={
-          <DropdownToggle
-            className=""
-            isDisabled={false}
-            onToggle={[Function]}
-            ouiaId="ConditionalFilter"
+    <div
+      class="pf-l-split__item"
+    >
+      <div
+        class="pf-c-dropdown ins-c-conditional-filter__group"
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/Dropdown"
+        data-ouia-safe="true"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Conditional filter"
+          class="pf-c-dropdown__toggle"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF4/DropdownToggle"
+          data-ouia-safe="true"
+          id="pf-dropdown-toggle-id-5"
+          type="button"
+        >
+          <span
+            class="pf-c-dropdown__toggle-text"
           >
-            <FilterIcon
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 512 512"
+              width="1em"
+            >
+              <path
+                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+              />
+            </svg>
             <span
-              className="ins-c-conditional-filter__value-selector"
+              class="ins-c-conditional-filter__value-selector"
             >
               Checkbox
             </span>
-          </DropdownToggle>
-        }
-      />
-    </SplitItem>
-    <SplitItem
-      isFilled={true}
+          </span>
+          <span
+            class="pf-c-dropdown__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="pf-l-split__item pf-m-fill"
     >
-      <CheckboxFilter
-        id="checkbox-filter"
-        isDisabled={false}
-        items={
-          Array [
-            Object {
-              "label": <div>
-                custom value
-              </div>,
-              "value": "some-value",
-            },
-            Object {
-              "label": "another",
-              "value": "another-value",
-            },
-            Object {
-              "label": "no value",
-            },
-          ]
-        }
-        onChange={[Function]}
-        placeholder="Filter by checkbox"
-        value={Array []}
-      />
-    </SplitItem>
-  </Split>
-</Fragment>
+      <div
+        class="pf-c-select"
+        data-ouia-component-id="Filter by checkbox"
+        data-ouia-component-type="PF4/Select"
+        data-ouia-safe="true"
+      >
+        <button
+          aria-expanded="false"
+          aria-label="Options menu"
+          aria-labelledby=" pf-select-toggle-id-0"
+          class="pf-c-select__toggle"
+          id="pf-select-toggle-id-0"
+          type="button"
+        >
+          <div
+            class="pf-c-select__toggle-wrapper"
+          >
+            <span
+              class="pf-c-select__toggle-text"
+            >
+              Filter by checkbox
+            </span>
+          </div>
+          <span
+            class="pf-c-select__toggle-arrow"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`ConditionalFilter render should render correctly no value with value undefined 1`] = `
-<Fragment>
-  <Split
-    className="ins-c-conditional-filter desktop"
+<div>
+  <div
+    class="pf-l-split ins-c-conditional-filter desktop"
   >
-    <SplitItem>
-      <Dropdown
-        className="ins-c-conditional-filter__group"
-        dropdownItems={
-          Array [
-            <DropdownItem
-              component="button"
-              isHovered={true}
-              onClick={[Function]}
-              ouiaId="simple text 1"
-            >
-              Simple text 1
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 2"
-            >
-              Simple text 2
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="checkbox"
-            >
-              Checkbox
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="radio filter"
-            >
-              Radio filter
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="no value"
-            >
-              No value
-            </DropdownItem>,
-          ]
-        }
-        isOpen={false}
-        onSelect={[Function]}
-        ouiaId="ConditionalFilter"
-        toggle={
-          <DropdownToggle
-            className=""
-            isDisabled={false}
-            onToggle={[Function]}
-            ouiaId="ConditionalFilter"
+    <div
+      class="pf-l-split__item"
+    >
+      <div
+        class="pf-c-dropdown ins-c-conditional-filter__group"
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/Dropdown"
+        data-ouia-safe="true"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Conditional filter"
+          class="pf-c-dropdown__toggle"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF4/DropdownToggle"
+          data-ouia-safe="true"
+          id="pf-dropdown-toggle-id-7"
+          type="button"
+        >
+          <span
+            class="pf-c-dropdown__toggle-text"
           >
-            <FilterIcon
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 512 512"
+              width="1em"
+            >
+              <path
+                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+              />
+            </svg>
             <span
-              className="ins-c-conditional-filter__value-selector"
+              class="ins-c-conditional-filter__value-selector"
             >
               Simple text 1
             </span>
-          </DropdownToggle>
-        }
-      />
-    </SplitItem>
-    <SplitItem
-      isFilled={true}
+          </span>
+          <span
+            class="pf-c-dropdown__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="pf-l-split__item pf-m-fill"
     >
-      <Text
+      <input
+        aria-invalid="false"
         aria-label="text input"
+        class="pf-c-form-control ins-c-conditional-filter "
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/TextInput"
+        data-ouia-safe="true"
         id=""
-        isDisabled={false}
-        onSubmit={[Function]}
         placeholder="Filter by simple text 1"
+        type="text"
         value=""
+        widget-type="InsightsInput"
       />
-    </SplitItem>
-  </Split>
-</Fragment>
+      <svg
+        aria-hidden="true"
+        class="ins-c-search-icon"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        style="vertical-align: -0.125em;"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`ConditionalFilter render should render correctly radio filter with value radio-filter 1`] = `
-<Fragment>
-  <Split
-    className="ins-c-conditional-filter desktop"
+<div>
+  <div
+    class="pf-l-split ins-c-conditional-filter desktop"
   >
-    <SplitItem>
-      <Dropdown
-        className="ins-c-conditional-filter__group"
-        dropdownItems={
-          Array [
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 1"
-            >
-              Simple text 1
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 2"
-            >
-              Simple text 2
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="checkbox"
-            >
-              Checkbox
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={true}
-              onClick={[Function]}
-              ouiaId="radio filter"
-            >
-              Radio filter
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="no value"
-            >
-              No value
-            </DropdownItem>,
-          ]
-        }
-        isOpen={false}
-        onSelect={[Function]}
-        ouiaId="ConditionalFilter"
-        toggle={
-          <DropdownToggle
-            className=""
-            isDisabled={false}
-            onToggle={[Function]}
-            ouiaId="ConditionalFilter"
+    <div
+      class="pf-l-split__item"
+    >
+      <div
+        class="pf-c-dropdown ins-c-conditional-filter__group"
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/Dropdown"
+        data-ouia-safe="true"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Conditional filter"
+          class="pf-c-dropdown__toggle"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF4/DropdownToggle"
+          data-ouia-safe="true"
+          id="pf-dropdown-toggle-id-6"
+          type="button"
+        >
+          <span
+            class="pf-c-dropdown__toggle-text"
           >
-            <FilterIcon
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 512 512"
+              width="1em"
+            >
+              <path
+                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+              />
+            </svg>
             <span
-              className="ins-c-conditional-filter__value-selector"
+              class="ins-c-conditional-filter__value-selector"
             >
               Radio filter
             </span>
-          </DropdownToggle>
-        }
-      />
-    </SplitItem>
-    <SplitItem
-      isFilled={true}
+          </span>
+          <span
+            class="pf-c-dropdown__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="pf-l-split__item pf-m-fill"
     >
-      <Radio
-        id="radio-filter"
-        isDisabled={false}
-        items={
-          Array [
-            Object {
-              "label": <div>
-                custom value
-              </div>,
-              "value": "some-value",
-            },
-            Object {
-              "label": "another",
-              "value": "another-value",
-            },
-          ]
-        }
-        onChange={[Function]}
-        placeholder="Filter by radio filter"
-      />
-    </SplitItem>
-  </Split>
-</Fragment>
+      <div
+        class="pf-c-select"
+        data-ouia-component-id="Filter by radio filter"
+        data-ouia-component-type="PF4/Select"
+        data-ouia-safe="true"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Options menu"
+          aria-labelledby=" pf-select-toggle-id-1"
+          class="pf-c-select__toggle"
+          id="pf-select-toggle-id-1"
+          type="button"
+        >
+          <div
+            class="pf-c-select__toggle-wrapper"
+          >
+            <span
+              class="pf-c-select__toggle-text"
+            >
+              Filter by radio filter
+            </span>
+          </div>
+          <span
+            class="pf-c-select__toggle-arrow"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`ConditionalFilter render should render correctly simple text 1 with value simple-text-1 1`] = `
-<Fragment>
-  <Split
-    className="ins-c-conditional-filter desktop"
+<div>
+  <div
+    class="pf-l-split ins-c-conditional-filter desktop"
   >
-    <SplitItem>
-      <Dropdown
-        className="ins-c-conditional-filter__group"
-        dropdownItems={
-          Array [
-            <DropdownItem
-              component="button"
-              isHovered={true}
-              onClick={[Function]}
-              ouiaId="simple text 1"
-            >
-              Simple text 1
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 2"
-            >
-              Simple text 2
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="checkbox"
-            >
-              Checkbox
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="radio filter"
-            >
-              Radio filter
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="no value"
-            >
-              No value
-            </DropdownItem>,
-          ]
-        }
-        isOpen={false}
-        onSelect={[Function]}
-        ouiaId="ConditionalFilter"
-        toggle={
-          <DropdownToggle
-            className=""
-            isDisabled={false}
-            onToggle={[Function]}
-            ouiaId="ConditionalFilter"
+    <div
+      class="pf-l-split__item"
+    >
+      <div
+        class="pf-c-dropdown ins-c-conditional-filter__group"
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/Dropdown"
+        data-ouia-safe="true"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Conditional filter"
+          class="pf-c-dropdown__toggle"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF4/DropdownToggle"
+          data-ouia-safe="true"
+          id="pf-dropdown-toggle-id-3"
+          type="button"
+        >
+          <span
+            class="pf-c-dropdown__toggle-text"
           >
-            <FilterIcon
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 512 512"
+              width="1em"
+            >
+              <path
+                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+              />
+            </svg>
             <span
-              className="ins-c-conditional-filter__value-selector"
+              class="ins-c-conditional-filter__value-selector"
             >
               Simple text 1
             </span>
-          </DropdownToggle>
-        }
-      />
-    </SplitItem>
-    <SplitItem
-      isFilled={true}
+          </span>
+          <span
+            class="pf-c-dropdown__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="pf-l-split__item pf-m-fill"
     >
-      <Text
+      <input
+        aria-invalid="false"
         aria-label="text input"
+        class="pf-c-form-control ins-c-conditional-filter "
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/TextInput"
+        data-ouia-safe="true"
         id="simple-text-1"
-        isDisabled={false}
-        onSubmit={[Function]}
         placeholder="Filter by simple text 1"
+        type="text"
         value=""
+        widget-type="InsightsInput"
       />
-    </SplitItem>
-  </Split>
-</Fragment>
+      <svg
+        aria-hidden="true"
+        class="ins-c-search-icon"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        style="vertical-align: -0.125em;"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`ConditionalFilter render should render correctly simple text 2 with value simple-text-2 1`] = `
-<Fragment>
-  <Split
-    className="ins-c-conditional-filter desktop"
+<div>
+  <div
+    class="pf-l-split ins-c-conditional-filter desktop"
   >
-    <SplitItem>
-      <Dropdown
-        className="ins-c-conditional-filter__group"
-        dropdownItems={
-          Array [
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 1"
-            >
-              Simple text 1
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={true}
-              onClick={[Function]}
-              ouiaId="simple text 2"
-            >
-              Simple text 2
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="checkbox"
-            >
-              Checkbox
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="radio filter"
-            >
-              Radio filter
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="no value"
-            >
-              No value
-            </DropdownItem>,
-          ]
-        }
-        isOpen={false}
-        onSelect={[Function]}
-        ouiaId="ConditionalFilter"
-        toggle={
-          <DropdownToggle
-            className=""
-            isDisabled={false}
-            onToggle={[Function]}
-            ouiaId="ConditionalFilter"
+    <div
+      class="pf-l-split__item"
+    >
+      <div
+        class="pf-c-dropdown ins-c-conditional-filter__group"
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/Dropdown"
+        data-ouia-safe="true"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Conditional filter"
+          class="pf-c-dropdown__toggle"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF4/DropdownToggle"
+          data-ouia-safe="true"
+          id="pf-dropdown-toggle-id-4"
+          type="button"
+        >
+          <span
+            class="pf-c-dropdown__toggle-text"
           >
-            <FilterIcon
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 512 512"
+              width="1em"
+            >
+              <path
+                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+              />
+            </svg>
             <span
-              className="ins-c-conditional-filter__value-selector"
+              class="ins-c-conditional-filter__value-selector"
             >
               Simple text 2
             </span>
-          </DropdownToggle>
-        }
-      />
-    </SplitItem>
-    <SplitItem
-      isFilled={true}
+          </span>
+          <span
+            class="pf-c-dropdown__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="pf-l-split__item pf-m-fill"
     >
-      <Text
+      <input
+        aria-invalid="false"
         aria-label="text input"
+        class="pf-c-form-control ins-c-conditional-filter "
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/TextInput"
+        data-ouia-safe="true"
         id="simple-text-2"
-        isDisabled={false}
-        onSubmit={[Function]}
         placeholder="Filter by simple text 2"
-        value="some-value blaa"
+        type="text"
+        value=""
+        widget-type="InsightsInput"
       />
-    </SplitItem>
-  </Split>
-</Fragment>
+      <svg
+        aria-hidden="true"
+        class="ins-c-search-icon"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        style="vertical-align: -0.125em;"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`ConditionalFilter render should render correctly with config - each item as disabled 1`] = `
-<Fragment>
-  <Split
-    className="ins-c-conditional-filter desktop"
+<div>
+  <div
+    class="pf-l-split ins-c-conditional-filter desktop"
   >
-    <SplitItem>
-      <Dropdown
-        className="ins-c-conditional-filter__group"
-        dropdownItems={
-          Array [
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 1"
-            >
-              Simple text 1
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 2"
-            >
-              Simple text 2
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="checkbox"
-            >
-              Checkbox
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="radio filter"
-            >
-              Radio filter
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={true}
-              onClick={[Function]}
-              ouiaId="no value"
-            >
-              No value
-            </DropdownItem>,
-          ]
-        }
-        isOpen={false}
-        onSelect={[Function]}
-        ouiaId="ConditionalFilter"
-        toggle={
-          <DropdownToggle
-            className=""
-            isDisabled={false}
-            onToggle={[Function]}
-            ouiaId="ConditionalFilter"
+    <div
+      class="pf-l-split__item"
+    >
+      <div
+        class="pf-c-dropdown ins-c-conditional-filter__group"
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/Dropdown"
+        data-ouia-safe="true"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Conditional filter"
+          class="pf-c-dropdown__toggle"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF4/DropdownToggle"
+          data-ouia-safe="true"
+          id="pf-dropdown-toggle-id-2"
+          type="button"
+        >
+          <span
+            class="pf-c-dropdown__toggle-text"
           >
-            <FilterIcon
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 512 512"
+              width="1em"
+            >
+              <path
+                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+              />
+            </svg>
             <span
-              className="ins-c-conditional-filter__value-selector"
+              class="ins-c-conditional-filter__value-selector"
             >
               No value
             </span>
-          </DropdownToggle>
-        }
-      />
-    </SplitItem>
-    <SplitItem
-      isFilled={true}
+          </span>
+          <span
+            class="pf-c-dropdown__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="pf-l-split__item pf-m-fill"
     >
-      <Text
+      <input
+        aria-invalid="false"
         aria-label="text input"
-        isDisabled={true}
-        onSubmit={[Function]}
+        class="pf-c-form-control ins-c-conditional-filter "
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/TextInput"
+        data-ouia-safe="true"
+        disabled=""
         placeholder="Filter by no value"
+        type="text"
         value=""
+        widget-type="InsightsInput"
       />
-    </SplitItem>
-  </Split>
-</Fragment>
+      <svg
+        aria-hidden="true"
+        class="ins-c-search-icon"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        style="vertical-align: -0.125em;"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`ConditionalFilter render should render correctly with config 1`] = `
-<Fragment>
-  <Split
-    className="ins-c-conditional-filter desktop"
+<div>
+  <div
+    class="pf-l-split ins-c-conditional-filter desktop"
   >
-    <SplitItem>
-      <Dropdown
-        className="ins-c-conditional-filter__group"
-        dropdownItems={
-          Array [
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 1"
-            >
-              Simple text 1
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 2"
-            >
-              Simple text 2
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="checkbox"
-            >
-              Checkbox
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="radio filter"
-            >
-              Radio filter
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={true}
-              onClick={[Function]}
-              ouiaId="no value"
-            >
-              No value
-            </DropdownItem>,
-          ]
-        }
-        isOpen={false}
-        onSelect={[Function]}
-        ouiaId="ConditionalFilter"
-        toggle={
-          <DropdownToggle
-            className=""
-            isDisabled={false}
-            onToggle={[Function]}
-            ouiaId="ConditionalFilter"
+    <div
+      class="pf-l-split__item"
+    >
+      <div
+        class="pf-c-dropdown ins-c-conditional-filter__group"
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/Dropdown"
+        data-ouia-safe="true"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Conditional filter"
+          class="pf-c-dropdown__toggle"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF4/DropdownToggle"
+          data-ouia-safe="true"
+          id="pf-dropdown-toggle-id-1"
+          type="button"
+        >
+          <span
+            class="pf-c-dropdown__toggle-text"
           >
-            <FilterIcon
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 512 512"
+              width="1em"
+            >
+              <path
+                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+              />
+            </svg>
             <span
-              className="ins-c-conditional-filter__value-selector"
+              class="ins-c-conditional-filter__value-selector"
             >
               No value
             </span>
-          </DropdownToggle>
-        }
-      />
-    </SplitItem>
-    <SplitItem
-      isFilled={true}
+          </span>
+          <span
+            class="pf-c-dropdown__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="pf-l-split__item pf-m-fill"
     >
-      <Text
+      <input
+        aria-invalid="false"
         aria-label="text input"
-        isDisabled={false}
-        onSubmit={[Function]}
+        class="pf-c-form-control ins-c-conditional-filter "
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/TextInput"
+        data-ouia-safe="true"
         placeholder="Filter by no value"
+        type="text"
         value=""
+        widget-type="InsightsInput"
       />
-    </SplitItem>
-  </Split>
-</Fragment>
+      <svg
+        aria-hidden="true"
+        class="ins-c-search-icon"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        style="vertical-align: -0.125em;"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`ConditionalFilter render should render correctly with one filter 1`] = `
-<Fragment>
-  <Split
-    className="ins-c-conditional-filter desktop"
+<div>
+  <div
+    class="pf-l-split ins-c-conditional-filter desktop"
   >
-    <SplitItem
-      isFilled={true}
+    <div
+      class="pf-l-split__item pf-m-fill"
     >
-      <Text
+      <input
+        aria-invalid="false"
         aria-label="text input"
-        isDisabled={false}
-        onSubmit={[Function]}
+        class="pf-c-form-control ins-c-conditional-filter "
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/TextInput"
+        data-ouia-safe="true"
         placeholder="Filter by simple text 1"
+        type="text"
         value=""
+        widget-type="InsightsInput"
       />
-    </SplitItem>
-  </Split>
-</Fragment>
+      <svg
+        aria-hidden="true"
+        class="ins-c-search-icon"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        style="vertical-align: -0.125em;"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`ConditionalFilter render should render correctly with with the active label hidden 1`] = `
-<Fragment>
-  <Split
-    className="ins-c-conditional-filter desktop"
+<div>
+  <div
+    class="pf-l-split ins-c-conditional-filter desktop"
   >
-    <SplitItem>
-      <Dropdown
-        className="ins-c-conditional-filter__group"
-        dropdownItems={
-          Array [
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 1"
-            >
-              Simple text 1
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="simple text 2"
-            >
-              Simple text 2
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="checkbox"
-            >
-              Checkbox
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={false}
-              onClick={[Function]}
-              ouiaId="radio filter"
-            >
-              Radio filter
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-              isHovered={true}
-              onClick={[Function]}
-              ouiaId="no value"
-            >
-              No value
-            </DropdownItem>,
-          ]
-        }
-        isOpen={false}
-        onSelect={[Function]}
-        ouiaId="ConditionalFilter"
-        toggle={
-          <DropdownToggle
-            className="ins-c-conditional-filter__no-label"
-            isDisabled={false}
-            onToggle={[Function]}
-            ouiaId="ConditionalFilter"
-          >
-            <FilterIcon
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
-          </DropdownToggle>
-        }
-      />
-    </SplitItem>
-    <SplitItem
-      isFilled={true}
+    <div
+      class="pf-l-split__item"
     >
-      <Text
+      <div
+        class="pf-c-dropdown ins-c-conditional-filter__group"
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/Dropdown"
+        data-ouia-safe="true"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Conditional filter"
+          class="pf-c-dropdown__toggle ins-c-conditional-filter__no-label"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF4/DropdownToggle"
+          data-ouia-safe="true"
+          id="pf-dropdown-toggle-id-8"
+          type="button"
+        >
+          <span
+            class="pf-c-dropdown__toggle-text"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 512 512"
+              width="1em"
+            >
+              <path
+                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+              />
+            </svg>
+          </span>
+          <span
+            class="pf-c-dropdown__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="pf-l-split__item pf-m-fill"
+    >
+      <input
+        aria-invalid="false"
         aria-label="text input"
-        isDisabled={false}
-        onSubmit={[Function]}
+        class="pf-c-form-control ins-c-conditional-filter "
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF4/TextInput"
+        data-ouia-safe="true"
         placeholder="Filter by no value"
+        type="text"
         value=""
+        widget-type="InsightsInput"
       />
-    </SplitItem>
-  </Split>
-</Fragment>
+      <svg
+        aria-hidden="true"
+        class="ins-c-search-icon"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        style="vertical-align: -0.125em;"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
 `;

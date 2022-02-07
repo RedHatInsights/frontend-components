@@ -119,6 +119,7 @@ class ConditionalFilter extends Component {
                       ouiaId="ConditionalFilter"
                       toggle={
                         <DropdownToggle
+                          aria-label="Conditional filter"
                           onToggle={this.dropdownToggle}
                           isDisabled={isDisabled}
                           className={hideLabel ? 'ins-c-conditional-filter__no-label' : ''}

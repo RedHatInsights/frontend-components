@@ -1,7 +1,7 @@
 import React from 'react';
 import Checkbox from './CheckboxFilter';
-import { shallow, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const config = {
   items: [
@@ -23,102 +23,86 @@ const config = {
 describe('Checkbox', () => {
   describe('render', () => {
     it('should render correctly', () => {
-      const wrapper = shallow(<Checkbox />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Checkbox />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly - disabled', () => {
-      const wrapper = shallow(<Checkbox {...config} isDisabled />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Checkbox {...config} isDisabled />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly with items', () => {
-      const wrapper = shallow(<Checkbox {...config} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Checkbox {...config} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly with items and default value', () => {
-      const wrapper = shallow(<Checkbox {...config} value={['some-value']} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Checkbox {...config} value={['some-value']} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly with items and default object value', () => {
-      const wrapper = shallow(<Checkbox {...config} value={[{ value: 'some-value' }]} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Checkbox {...config} value={[{ value: 'some-value' }]} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly with items and selected value', () => {
       const currectConfig = { ...config };
       currectConfig.items[1].isChecked = true;
-      const wrapper = shallow(<Checkbox {...currectConfig} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Checkbox {...currectConfig} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly placeholder', () => {
-      const wrapper = shallow(<Checkbox {...config} placeholder="some placeholder" />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Checkbox {...config} placeholder="some placeholder" />);
+      expect(container).toMatchSnapshot();
     });
   });
 
   describe('API', () => {
     it('should open', () => {
-      const wrapper = mount(<Checkbox {...config} placeholder="some placeholder" />);
-      wrapper.find('button.pf-c-select__toggle').first().simulate('click');
-      wrapper.update();
-      expect(wrapper.instance().state.isExpanded).toBe(true);
+      render(<Checkbox {...config} placeholder="some placeholder" />);
+      userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
+      expect(screen.getByRole('listbox', { name: 'Select Input' })).toBeDefined();
     });
 
     it('should NOT call onChange', () => {
       const onChange = jest.fn();
-      const wrapper = mount(<Checkbox {...config} placeholder="some placeholder" />);
-      wrapper.find('button.pf-c-select__toggle').first().simulate('click');
-      wrapper.update();
-      wrapper.find('input.pf-c-check__input').first().simulate('change');
+      render(<Checkbox {...config} placeholder="some placeholder" />);
+      userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
+      userEvent.click(screen.getByRole('checkbox', { name: 'Custom value' }));
       expect(onChange).not.toHaveBeenCalled();
     });
 
-    it('should NOT call onChange', () => {
+    it('should call onChange', () => {
       const onChange = jest.fn();
-      const wrapper = mount(<Checkbox {...config} onChange={onChange} placeholder="some placeholder" />);
-      wrapper.find('button.pf-c-select__toggle').first().simulate('click');
-      wrapper.update();
-      wrapper.find('input.pf-c-check__input').first().simulate('change');
+      render(<Checkbox {...config} onChange={onChange} placeholder="some placeholder" />);
+      userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
+      userEvent.click(screen.getByRole('checkbox', { name: 'Custom value' }));
       expect(onChange).toHaveBeenCalled();
     });
 
     it('should call onClick on item', () => {
-      const wrapper = mount(<Checkbox {...config} placeholder="some placeholder" />);
-      wrapper.find('button.pf-c-select__toggle').first().simulate('click');
-      wrapper.update();
-      wrapper.find('input.pf-c-check__input').first().simulate('change');
+      render(<Checkbox {...config} placeholder="some placeholder" />);
+      userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
+      userEvent.click(screen.getByRole('checkbox', { name: 'Custom value' }));
       expect(config.items[0].onClick).toHaveBeenCalled();
     });
 
     it('should update selected', () => {
-      const wrapper = mount(<Checkbox {...config} placeholder="some placeholder" />);
-      wrapper.find('button.pf-c-select__toggle').first().simulate('click');
-      wrapper.update();
-      wrapper.find('input.pf-c-check__input').first().simulate('change');
-      wrapper.update();
-      expect(wrapper.instance().state.selected.length).toBe(1);
-    });
-
-    it('should update remove selected', () => {
-      const wrapper = mount(<Checkbox {...config} value={[{ value: 'some-value' }]} placeholder="some placeholder" />);
-      wrapper.find('button.pf-c-select__toggle').first().simulate('click');
-      wrapper.update();
-      wrapper.find('input.pf-c-check__input').first().simulate('change');
-      wrapper.update();
-      expect(wrapper.instance().state.selected.length).toBe(0);
+      render(<Checkbox {...config} placeholder="some placeholder" />);
+      userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
+      userEvent.click(screen.getByRole('checkbox', { name: 'Custom value' }));
+      expect(screen.getByRole('checkbox', { name: 'Custom value' }).checked).toBe(true);
     });
 
     it('should update selected with default value', () => {
-      const wrapper = mount(<Checkbox {...config} value={[{ value: 'another-value' }]} placeholder="some placeholder" />);
-      wrapper.find('button.pf-c-select__toggle').first().simulate('click');
-      wrapper.update();
-      wrapper.find('input.pf-c-check__input').first().simulate('change');
-      wrapper.update();
-      expect(wrapper.instance().state.selected.length).toBe(2);
+      render(<Checkbox {...config} value={[{ value: 'another-value' }]} placeholder="some placeholder" />);
+      userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
+      userEvent.click(screen.getByRole('checkbox', { name: 'Custom value' }));
+      expect(screen.getByRole('checkbox', { name: 'Custom value' }).checked).toBe(true);
+      expect(screen.getByRole('checkbox', { name: 'Another' }).checked).toBe(true);
     });
   });
 });

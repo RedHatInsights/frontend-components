@@ -1,8 +1,7 @@
 import React from 'react';
 import Group from './GroupFilter';
-import { shallow, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import { act } from 'react-dom/test-utils';
+import { render, screen, act } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const config = {
   onChange: jest.fn(),
@@ -119,28 +118,28 @@ const config = {
 describe('Group - component', () => {
   describe('render', () => {
     it('should render correctly', () => {
-      const wrapper = shallow(<Group onChange={jest.fn()} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Group onChange={jest.fn()} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly with items', () => {
-      const wrapper = shallow(<Group {...config} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Group {...config} />);
+      expect(container).toMatchSnapshot();
     });
 
     describe('show more', () => {
       it('should render correctly with items and default text', () => {
-        const wrapper = shallow(<Group {...config} onShowMore={() => undefined} />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { container } = render(<Group {...config} onShowMore={() => undefined} />);
+        expect(container).toMatchSnapshot();
       });
 
       it('should render correctly with items and custom text', () => {
-        const wrapper = shallow(<Group {...config} onShowMore={() => undefined} showMoreTitle="some title" />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { container } = render(<Group {...config} onShowMore={() => undefined} showMoreTitle="some title" />);
+        expect(container).toMatchSnapshot();
       });
 
       it('should render correctly with items and different variant', () => {
-        const wrapper = shallow(
+        const { container } = render(
           <Group
             {...config}
             onShowMore={() => undefined}
@@ -149,11 +148,11 @@ describe('Group - component', () => {
             }}
           />
         );
-        expect(toJson(wrapper)).toMatchSnapshot();
+        expect(container).toMatchSnapshot();
       });
 
       it('should render correctly with items and custom props', () => {
-        const wrapper = shallow(
+        const { container } = render(
           <Group
             {...config}
             onShowMore={() => undefined}
@@ -164,23 +163,23 @@ describe('Group - component', () => {
             }}
           />
         );
-        expect(toJson(wrapper)).toMatchSnapshot();
+        expect(container).toMatchSnapshot();
       });
     });
 
     it('should render correctly with items - isDisabled', () => {
-      const wrapper = shallow(<Group {...config} isDisabled />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Group {...config} isDisabled />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly with items and default value', () => {
-      const wrapper = shallow(<Group {...config} value={[{ value: 'some-value' }]} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Group {...config} value={[{ value: 'some-value' }]} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly placeholder', () => {
-      const wrapper = shallow(<Group {...config} placeholder="some placeholder" />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Group {...config} placeholder="some placeholder" />);
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly with selectable group', () => {
@@ -188,7 +187,7 @@ describe('Group - component', () => {
         groups: [first, ...groups],
       } = config;
       const [firstItem, ...items] = first.items;
-      const wrapper = shallow(
+      const { container } = render(
         <Group
           {...config}
           groups={[
@@ -206,25 +205,24 @@ describe('Group - component', () => {
           ]}
         />
       );
-      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     });
 
     it('should render correctly with items and selected value', () => {
       const currectConfig = { ...config };
       currectConfig.groups[1].items[1].isChecked = true;
-      const wrapper = shallow(<Group {...currectConfig} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Group {...currectConfig} />);
+      expect(container).toMatchSnapshot();
     });
   });
 
   describe('API', () => {
     it('should open', async () => {
-      const wrapper = mount(<Group {...config} />);
-      await act(async () => {
-        wrapper.find('button.pf-c-menu-toggle').simulate('click');
+      render(<Group {...config} />);
+      act(() => {
+        userEvent.click(screen.getByRole('button', { name: 'Group filter' }));
       });
-      wrapper.update();
-      expect(wrapper.find('.pf-c-menu').length > 0).toBe(true);
+      expect(screen.getByRole('menubar', { name: 'Group filter' })).toBeDefined();
     });
   });
 });

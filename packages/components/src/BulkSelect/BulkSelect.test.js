@@ -1,17 +1,16 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import BulkSelect from './BulkSelect';
-import { Dropdown } from '@patternfly/react-core';
 
 describe('BulkSelect', () => {
   it('should render correctly - no data', () => {
-    const wrapper = shallow(<BulkSelect />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<BulkSelect />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <BulkSelect
         count={30}
         items={[
@@ -23,11 +22,11 @@ describe('BulkSelect', () => {
         id="some-id"
       />
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <BulkSelect
         items={[
           {
@@ -37,11 +36,11 @@ describe('BulkSelect', () => {
         ]}
       />
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly - null checked', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <BulkSelect
         items={[
           {
@@ -52,11 +51,11 @@ describe('BulkSelect', () => {
         checked={null}
       />
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render custom props', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <BulkSelect
         items={[
           {
@@ -73,20 +72,20 @@ describe('BulkSelect', () => {
         ]}
       />
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   describe('API', () => {
     it('should call on select with no items', () => {
       const onSelect = jest.fn();
-      const wrapper = mount(<BulkSelect onSelect={onSelect} />);
-      wrapper.find('input[type="checkbox"]').first().simulate('change');
+      render(<BulkSelect onSelect={onSelect} />);
+      userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
       expect(onSelect).toHaveBeenCalled();
     });
 
     it('should call on select', () => {
       const onSelect = jest.fn();
-      const wrapper = mount(
+      render(
         <BulkSelect
           items={[
             {
@@ -97,13 +96,13 @@ describe('BulkSelect', () => {
           onSelect={onSelect}
         />
       );
-      wrapper.find('.pf-c-dropdown__toggle-check input[type="checkbox"]').first().simulate('change');
+      userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
       expect(onSelect).toHaveBeenCalled();
     });
 
     it('should NOT call on select', () => {
       const onSelect = jest.fn();
-      const wrapper = mount(
+      render(
         <BulkSelect
           items={[
             {
@@ -113,14 +112,14 @@ describe('BulkSelect', () => {
           ]}
         />
       );
-      wrapper.find('.pf-c-dropdown__toggle-check input[type="checkbox"]').first().simulate('change');
+      userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
       expect(onSelect).not.toHaveBeenCalled();
     });
 
     it('should call first action', () => {
       const onSelect = jest.fn();
       const otherAction = jest.fn();
-      const wrapper = mount(
+      render(
         <BulkSelect
           items={[
             {
@@ -134,15 +133,14 @@ describe('BulkSelect', () => {
           ]}
         />
       );
-      wrapper.find('.pf-c-dropdown__toggle-button').first().simulate('click');
-      wrapper.update();
-      wrapper.find('.pf-c-dropdown__menu li .pf-c-dropdown__menu-item').first().simulate('click');
+      userEvent.click(screen.getByRole('button', { name: 'Select' }));
+      userEvent.click(screen.getByRole('button', { name: 'Select all' }));
       expect(onSelect).toHaveBeenCalled();
       expect(otherAction).not.toHaveBeenCalled();
     });
 
     it('should disable dropdown', () => {
-      const wrapper = shallow(
+      render(
         <BulkSelect
           items={[
             {
@@ -153,7 +151,7 @@ describe('BulkSelect', () => {
           isDisabled={true}
         />
       );
-      expect(wrapper.find(Dropdown).prop('toggle').props.isDisabled).toBe(true);
+      expect(screen.getByRole('button', { name: 'Select' })).toBeDisabled();
     });
   });
 });
