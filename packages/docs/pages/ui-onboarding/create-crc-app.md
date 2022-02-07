@@ -5,7 +5,7 @@ This script will create and set up a new development environment for console.red
 ## Instalation
 
 ```sh
-npm i -g @redhat-cloud-services/create-crc-app
+npm i -g create-crc-app
 ```
 
 ## Usage
