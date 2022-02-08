@@ -151,7 +151,10 @@ PrimaryToolbar.propTypes = {
     PropTypes.shape({
       onClick: PropTypes.func,
       isAllExpanded: PropTypes.bool,
-      isDisabled: PropTypes.bool
+      isDisabled: PropTypes.bool,
+      buttonProps: PropTypes.shape({
+        [PropTypes.string]: PropTypes.object
+       })
     }),
   ]),
   /** Use PF [toolbar toggle component for conditional filter](https://www.patternfly.org/v4/components/toolbar/react/component-managed-toggle-groups/) */
