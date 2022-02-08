@@ -1,11 +1,49 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Badge, Chip, ChipGroup, Button } from '@patternfly/react-core';
 import classNames from 'classnames';
 import './filter-chips.scss';
 
-const FilterChips = ({ className, filters, onDelete, deleteTitle, showDeleteButton, onDeleteGroup }) => {
-  const groups = filters.filter((group) => Object.prototype.hasOwnProperty.call(group, 'category'));
+export type FilterChip = {
+  id?: string;
+  name: string;
+  isRead?: boolean;
+  count?: number;
+};
+
+export type FilterChipGroup = {
+  category: string;
+  chips: FilterChip[];
+};
+
+export type FilterChipsFilter = FilterChip | FilterChipGroup;
+
+export interface FilterChipsProps {
+  className?: string;
+  filters?: FilterChipsFilter[];
+  // TODO: What is the name of the thrid argument?
+  onDelete?: (event: React.MouseEvent<Element, MouseEvent>, group: FilterChipsFilter[], flag?: boolean) => void;
+  onDeleteGroup?: (event: React.MouseEvent<Element, MouseEvent>, group: FilterChipsFilter[], groups: FilterChipGroup[]) => void;
+  deleteTitle?: React.ReactNode;
+  showDeleteButton?: boolean;
+}
+
+function isFilterChipGroup(group: FilterChipsFilter): group is FilterChipGroup {
+  return Object.prototype.hasOwnProperty.call(group, 'category');
+}
+
+function isPlainFilterChip(group: FilterChipsFilter): group is FilterChip {
+  return !isFilterChipGroup(group);
+}
+
+const FilterChips: React.FunctionComponent<FilterChipsProps> = ({
+  className,
+  filters = [],
+  onDelete = () => undefined,
+  deleteTitle = 'Clear filters',
+  showDeleteButton,
+  onDeleteGroup,
+}) => {
+  const groups: FilterChipGroup[] = filters.filter(isFilterChipGroup);
   const groupedFilters = groups.map((group, groupKey) => (
     <ChipGroup
       key={`group_${group.category}`}
@@ -41,7 +79,7 @@ const FilterChips = ({ className, filters, onDelete, deleteTitle, showDeleteButt
     </ChipGroup>
   ));
 
-  const plainFilters = filters.filter((group) => !Object.prototype.hasOwnProperty.call(group, 'category'));
+  const plainFilters = filters.filter(isPlainFilterChip);
 
   return (
     <span className={classNames(className, 'ins-c-chip-filters')}>
@@ -71,39 +109,6 @@ const FilterChips = ({ className, filters, onDelete, deleteTitle, showDeleteButt
       )}
     </span>
   );
-};
-
-FilterChips.propTypes = {
-  className: PropTypes.string,
-  filters: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.shape({
-        category: PropTypes.string.isRequired,
-        chips: PropTypes.arrayOf(
-          PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            isRead: PropTypes.bool,
-            count: PropTypes.number,
-          })
-        ).isRequired,
-      }),
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        isRead: PropTypes.bool,
-        count: PropTypes.number,
-      }),
-    ])
-  ),
-  onDelete: PropTypes.func,
-  onDeleteGroup: PropTypes.func,
-  deleteTitle: PropTypes.node,
-  showDeleteButton: PropTypes.bool,
-};
-
-FilterChips.defaultProps = {
-  filters: [],
-  onDelete: () => undefined,
-  deleteTitle: 'Clear filters',
 };
 
 export default FilterChips;
