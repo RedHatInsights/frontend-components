@@ -68,6 +68,8 @@ class PrimaryToolbar extends Component {
                       aria-label={`${expandAll.isAllExpanded ? 'Collapse' : 'Expand'} all`}
                       onClick={(e) => expandAll.onClick(e, !expandAll.isAllExpanded)}
                       ouiaId="ExpandCollapseAll"
+                      isDisabled={expandAll.isDisabled}
+                      {...expandAll.buttonProps}
                     >
                       <ToolbarExpandIconWrapper>{expandAll.isAllExpanded ? <AngleDownIcon /> : <AngleRightIcon />}</ToolbarExpandIconWrapper>
                     </Button>
@@ -149,6 +151,7 @@ PrimaryToolbar.propTypes = {
     PropTypes.shape({
       onClick: PropTypes.func,
       isAllExpanded: PropTypes.bool,
+      isDisabled: PropTypes.bool
     }),
   ]),
   /** Use PF [toolbar toggle component for conditional filter](https://www.patternfly.org/v4/components/toolbar/react/component-managed-toggle-groups/) */
