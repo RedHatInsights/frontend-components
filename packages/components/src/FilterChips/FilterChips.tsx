@@ -20,8 +20,7 @@ export type FilterChipsFilter = FilterChip | FilterChipGroup;
 export interface FilterChipsProps {
   className?: string;
   filters?: FilterChipsFilter[];
-  // TODO: What is the name of the thrid argument?
-  onDelete?: (event: React.MouseEvent<Element, MouseEvent>, group: FilterChipsFilter[], flag?: boolean) => void;
+  onDelete?: (event: React.MouseEvent<Element, MouseEvent>, group: FilterChipsFilter[], deleteAll?: boolean) => void;
   onDeleteGroup?: (event: React.MouseEvent<Element, MouseEvent>, group: FilterChipsFilter[], groups: FilterChipGroup[]) => void;
   deleteTitle?: React.ReactNode;
   showDeleteButton?: boolean;

@@ -9,7 +9,7 @@ export function flipDirection(direction: SortByDirection) {
 
 export interface SortByProps {
   direction?: SortByDirection;
-  onSortChange?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent> | undefined, direction: SortByDirection) => void;
+  onSortChange?: (event: React.MouseEvent<Element, MouseEvent> | undefined, direction: SortByDirection) => void;
 }
 
 const SortBy: React.FunctionComponent<SortByProps> = ({ direction = SortByDirection.asc, onSortChange = () => undefined }) => (
