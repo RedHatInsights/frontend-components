@@ -35,7 +35,7 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
           isPlain
           onSelect={internalOnSelect}
           toggle={
-            <DropdownToggle toggleIndicator={null} onToggle={onToggle} isDisabled={isDisabled} ouiaId="Export">
+            <DropdownToggle aria-label="Export" toggleIndicator={null} onToggle={onToggle} isDisabled={isDisabled} ouiaId="Export">
               <ExportIcon size="sm" />
             </DropdownToggle>
           }
