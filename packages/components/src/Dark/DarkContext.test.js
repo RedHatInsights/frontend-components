@@ -1,27 +1,26 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import Dark from './Dark';
 import DarkContext from './DarkContext';
 
 describe('DarkContext', () => {
   it('should render children', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <Dark>
         <div id="isPresent" />
       </Dark>
     );
 
-    expect(toJson(wrapper)).toMatchSnapshot();
-    expect(wrapper.exists('#isPresent')).toBeTruthy();
+    expect(container).toMatchSnapshot();
+    expect(container.querySelector('#isPresent')).toBeDefined();
   });
 
   it('should pass props', () => {
-    const wrapper = mount(
+    const { container } = render(
       <Dark>
         <DarkContext.Consumer>{(value) => <div value={value} id="consumer" />}</DarkContext.Consumer>
       </Dark>
     );
-    expect(wrapper.find('#consumer').props()).toEqual(expect.objectContaining({ value: 'dark' }));
+    expect(container).toMatchSnapshot();
   });
 });
