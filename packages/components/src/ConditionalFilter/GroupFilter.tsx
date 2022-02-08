@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {
   TextInput,
@@ -19,26 +18,62 @@ import { isChecked, calculateSelected, getGroupMenuItems, getMenuItems, convertT
 import groupType from './groupType';
 import './group-filter.scss';
 
-const Group = ({
+interface GroupFilterItem {
+  id?: string;
+  value?: string;
+  type?: 'treeView' | 'checkbox' | 'radio' | 'button' | 'plain';
+  label?: React.ReactNode;
+}
+
+interface GroupFilterGroupItem {
+  id?: string;
+  tagKey?: string;
+}
+
+export interface GroupFilterGroup {
+  groupSelectable?: boolean;
+  type?: 'treeView' | 'checkbox' | 'radio' | 'button' | 'plain';
+  value?: string;
+  label?: React.ReactNode;
+  items?: Array<GroupFilterGroupItem>;
+}
+
+export interface GroupProps {
+  placeholder?: string;
+  onShowMore?: (event: React.MouseEvent | React.KeyboardEvent | MouseEvent) => void;
+  showMoreTitle?: React.ReactNode;
+  showMoreOptions?: Record<string, unknown>;
+  items?: Array<GroupFilterItem>;
+  className?: string;
+  selected?: Record<string, Record<string, Record<string, unknown>>>;
+  isFilterable?: boolean;
+  filterBy?: string;
+  onFilter?: () => void;
+  groups?: Array<GroupFilterGroup>;
+  onChange: () => void;
+  selectedTags?: Record<string, unknown>;
+}
+
+const Group: React.FunctionComponent<GroupProps> = ({
   placeholder,
   onShowMore,
   showMoreTitle,
   showMoreOptions,
   items,
-  filterBy,
+  filterBy = '',
   onFilter,
   className,
   groups = [],
   onChange,
-  selected,
+  selected = {},
   isFilterable,
 }) => {
-  const [stateSelected, setStateSelected] = useState({});
-  const [searchString, setSearchString] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleRef = useRef();
-  const containerRef = useRef();
-  const menuRef = useRef();
+  const [stateSelected, setStateSelected] = useState<Record<string, unknown>>({});
+  const [searchString, setSearchString] = useState<string>('');
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setStateSelected(selected);
@@ -48,21 +83,21 @@ const Group = ({
     setSearchString(filterBy);
   }, [filterBy]);
 
-  const handleMenuKeys = (event) => {
+  const handleMenuKeys = (event: KeyboardEvent) => {
     if (!isOpen) {
       return;
     }
 
-    if (menuRef.current.contains(event.target) || toggleRef.current.contains(event.target)) {
+    if (menuRef.current?.contains(event.target as Node) || toggleRef.current?.contains(event.target as Node)) {
       if (event.key === 'Escape' || event.key === 'Enter') {
         setIsOpen(!isOpen);
-        toggleRef.current.focus();
+        toggleRef.current?.focus();
       }
     }
   };
 
-  const handleClickOutside = (event) => {
-    if (isOpen && !menuRef.current.contains(event.target)) {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (isOpen && !menuRef.current?.contains(event.target as Node)) {
       setIsOpen(false);
     }
   };
@@ -76,7 +111,7 @@ const Group = ({
     };
   }, [isOpen, menuRef]);
 
-  const onToggleClick = (ev) => {
+  const onToggleClick = (ev: { stopPropagation: () => void; persist: () => void }) => {
     ev.stopPropagation(); // Stop handleClickOutside from handling
     ev.persist();
     setIsOpen(!isOpen);
@@ -148,7 +183,11 @@ const Group = ({
     </MenuItem>
   );
 
-  const renderItems = (items, type, groupKey = '') =>
+  const renderItems = (
+    items: GroupFilterGroupItem[] | GroupFilterItem[],
+    type?: 'treeView' | 'checkbox' | 'radio' | 'button' | 'plain',
+    groupKey = ''
+  ) =>
     items.map((item, key) =>
       (type || item.type) === groupType.treeView ? (
         <div key={`${item.value}-${key}-item`} className="ins-c-tree-view">
@@ -196,7 +235,7 @@ const Group = ({
                     {showMoreTitle}
                   </MenuItem>
                 ) : (
-                  <span hidden value=""></span>
+                  <span hidden></span>
                 )}
               </MenuList>
             </MenuContent>
@@ -206,48 +245,6 @@ const Group = ({
       />
     </div>
   );
-};
-
-Group.propTypes = {
-  placeholder: PropTypes.string,
-  onShowMore: PropTypes.func,
-  showMoreTitle: PropTypes.node,
-  onShowMoreTitle: PropTypes.func,
-  showMoreOptions: PropTypes.any,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      value: PropTypes.string,
-      label: PropTypes.node,
-    })
-  ),
-  className: PropTypes.string,
-  selected: PropTypes.shape({
-    [PropTypes.string]: PropTypes.shape({
-      [PropTypes.string]: PropTypes.shape({
-        [PropTypes.string]: PropTypes.any,
-      }),
-    }),
-  }),
-  isFilterable: PropTypes.bool,
-  filterBy: PropTypes.string,
-  onFilter: PropTypes.func,
-  groups: PropTypes.arrayOf(
-    PropTypes.shape({
-      groupSelectable: PropTypes.bool,
-      type: PropTypes.oneOf(Object.keys(groupType)),
-      value: PropTypes.string,
-      label: PropTypes.node,
-      items: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string,
-          tagKey: PropTypes.string,
-        })
-      ),
-    })
-  ),
-  onChange: PropTypes.func.isRequired,
-  selectedTags: PropTypes.shape({}),
 };
 
 export default Group;
