@@ -18,7 +18,9 @@ laborum.",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem>
+  <StackItem
+    className=""
+  >
     <Button
       className="ins-c-collapse-button"
       onClick={[Function]}
@@ -48,7 +50,9 @@ laborum.",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem>
+  <StackItem
+    className=""
+  >
     <Button
       className="ins-c-collapse-button"
       onClick={[Function]}
@@ -78,7 +82,9 @@ laborum.",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem>
+  <StackItem
+    className=""
+  >
     <Button
       className="ins-c-collapse-button"
       onClick={[Function]}
@@ -108,7 +114,9 @@ laborum.",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem>
+  <StackItem
+    className=""
+  >
     <Button
       className="ins-c-collapse-button"
       onClick={[Function]}
@@ -135,7 +143,9 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem>
+  <StackItem
+    className=""
+  >
     <Button
       className="ins-c-expand-button"
       onClick={[Function]}
@@ -162,7 +172,9 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem>
+  <StackItem
+    className=""
+  >
     <Button
       className="ins-c-expand-button"
       onClick={[Function]}
@@ -273,7 +285,9 @@ exports[`Truncate component should render correctly block with short length 1`] 
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem>
+  <StackItem
+    className=""
+  >
     <Button
       className="ins-c-expand-button"
       onClick={[Function]}
@@ -300,7 +314,9 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem>
+  <StackItem
+    className=""
+  >
     <Button
       className="ins-c-expand-button"
       onClick={[Function]}
@@ -540,7 +556,9 @@ exports[`Truncate component should render correctly inline with short length 1`]
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem>
+  <StackItem
+    className=""
+  >
     <Button
       className="ins-c-expand-button"
       onClick={[Function]}
