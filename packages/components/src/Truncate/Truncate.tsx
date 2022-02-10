@@ -11,8 +11,8 @@ export interface TruncateProps {
   className?: string;
   text?: string;
   length?: number;
-  expandText?: string;
-  collapseText?: string;
+  expandText?: React.ReactNode;
+  collapseText?: React.ReactNode;
   inline?: boolean;
   spaceBetween?: boolean;
   hideExpandText?: boolean;
