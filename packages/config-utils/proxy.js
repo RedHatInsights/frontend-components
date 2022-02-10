@@ -220,7 +220,12 @@ module.exports = ({
 
         console.log('\u001b[34m'); // Use same webpack-dev-server blue
         if (appUrl.length > 0) {
-          appUrl.forEach((url) => console.log(`  - ${origin}${url}`));
+          appUrl.slice(0, appUrl.length - 1).forEach((url) => console.log(`  - ${origin}${url}`));
+
+          console.log('\x1b[0m');
+          console.log('Static assets are available at:');
+          console.log('\u001b[34m'); // Use same webpack-dev-server blue
+          console.log(`  - ${origin}${appUrl[appUrl.length - 1]}`);
         } else {
           console.log(`  - ${origin}`);
         }
