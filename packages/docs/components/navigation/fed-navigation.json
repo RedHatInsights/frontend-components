@@ -1,0 +1,20 @@
+{
+	"index": {
+		"title": "Fed",
+		"href": "/fed"
+	},
+	"items": [
+		{
+			"title": "Consuming module",
+			"href": "/fed/consuming-module"
+		},
+		{
+			"title": "Sharing module",
+			"href": "/fed/sharing-module"
+		},
+		{
+			"title": "Versioning",
+			"href": "/fed/versioning"
+		}
+	]
+}
