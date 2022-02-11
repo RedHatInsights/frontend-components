@@ -10,9 +10,9 @@ const generateChromeNav = require('./generate-chrome-nav');
 const generateTsFunctionsMd = require('./generate-ts-functions-md');
 
 const COMPONENTS_JSON = 'component-docs.json';
-const EXAMPLES_LOCATION = path.resolve(__dirname, './examples');
+const EXAMPLES_LOCATION = path.resolve(__dirname, '../examples');
 
-const navDest = path.resolve(__dirname, './components/navigation');
+const navDest = path.resolve(__dirname, '../components/navigation');
 
 async function traverseComponents() {
   const components = fse.readJSONSync(path.resolve(__dirname, COMPONENTS_JSON));

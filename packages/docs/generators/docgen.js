@@ -9,11 +9,11 @@ const createJsdocContent = require('./functions-generator');
 const COMPONENTS_JSON = 'component-docs.json';
 
 const DEFAULT_TS_BABEL_OPTIONS = {
-  configFile: './.docgen.babelrc',
+  configFile: '../.docgen.babelrc',
   root: __dirname,
 };
 
-const componentsSrc = path.resolve(__dirname, '../*/src');
+const componentsSrc = path.resolve(__dirname, '../../*/src');
 const files = glob
   .sync(`${componentsSrc}/**/*.{js,ts,tsx}`)
   .filter((file) => !file.match(/((\.d\.ts)|(test|spec|index)\.(js|ts|tsx)|(\/__mock__\/|\/__mocks__\/|\/test\/))/gim));
@@ -56,7 +56,7 @@ async function run(files) {
 
 console.log('Generating react-docgen JSON\n');
 if (args.includes('-w') || args.includes('--watch')) {
-  console.log(`Watching ${files.length} JS files in: ${path.resolve(__dirname)}`);
+  console.log(`Watching ${files.length} JS files in: ${path.resolve(__dirname, '../')}`);
   const watcher = chokidar.watch(files);
   watcher.on('change', async (path) => {
     console.log(`Compiling file: ${path}`);

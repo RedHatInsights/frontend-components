@@ -33,5 +33,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-/component-docs.json
+generators/component-docs.json
 /pages/fec/modules

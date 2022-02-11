@@ -8,8 +8,8 @@
     "build": "npm run generate:components:docs && next build",
     "start": "npm run build && next start -H 0.0.0.0 -p ${PORT:-8080}",
     "watch": "concurrently \"npm run generate:components -- --watch\" \"npm run generate:components:docs -- --watch\" \"npm run dev\"",
-    "generate:components": "node docgen.js",
-    "generate:components:docs": "npm run generate:components && node docs-generator.js",
+    "generate:components": "node generators/docgen.js",
+    "generate:components:docs": "npm run generate:components && node generators/docs-generator.js",
     "generate:watch": "concurrently \"npm run generate:components -- --watch\" \"npm run generate:components:docs -- --watch\"",
     "serve": "node server.js",
     "typedoc": "typedoc"

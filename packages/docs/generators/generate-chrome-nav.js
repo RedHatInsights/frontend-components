@@ -2,8 +2,8 @@ const glob = require('glob');
 const path = require('path');
 const fse = require('fs-extra');
 
-const source = path.resolve(__dirname, 'pages', 'chrome');
-const target = path.resolve(__dirname, 'components/navigation/chrome-navigation.json');
+const source = path.resolve(__dirname, '../pages', 'chrome');
+const target = path.resolve(__dirname, '../components/navigation/chrome-navigation.json');
 
 const kebabToCamel = (str) =>
   str
