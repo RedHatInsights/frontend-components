@@ -1,0 +1,34 @@
+{
+    "name": "@redhat-cloud-services/testing",
+    "version": "3.7.0",
+    "description": "Testing utilities for RedHat Cloud Services project.",
+    "main": "index.js",
+    "module": "esm/index.js",
+    "types": "index.d.ts",
+    "sideEffects": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages && npm run transform:css",
+        "build:packages": "node ../../scripts/build-packages.js --forceTypes",
+        "build:esm": "npx tsc --module es2015 --target es5",
+        "build:js": "npx tsc -p tsconfig.cjs.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+    },
+    "author": "",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/RedHatInsights/frontend-components/issues"
+    },
+    "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/testing#readme",
+    "peerDependencies": {
+    },
+    "dependencies": {
+    },
+    "devDependencies": {
+    }
+}
