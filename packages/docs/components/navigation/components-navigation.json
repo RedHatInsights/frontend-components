@@ -49,10 +49,27 @@
 				]
 			},
 			{
+				"group": "Battery",
+				"items": [
+					"Battery",
+					"CriticalBattery",
+					"HighBattery",
+					"LowBattery",
+					"MediumBattery",
+					"NullBattery"
+				]
+			},
+			{
 				"group": "Breadcrumbs",
 				"items": [
 					"Breadcrumbs",
 					"ConnectedBreadcrumbs"
+				]
+			},
+			{
+				"group": "BulkSelect",
+				"items": [
+					"BulkSelect"
 				]
 			},
 			{
@@ -66,9 +83,41 @@
 				]
 			},
 			{
+				"group": "CullingInfo",
+				"items": [
+					"CullingInformation"
+				]
+			},
+			{
+				"group": "Dark",
+				"items": [
+					"Dark"
+				]
+			},
+			{
+				"group": "DateFormat",
+				"items": [
+					"DateFormat",
+					"helper"
+				]
+			},
+			{
+				"group": "DownloadButton",
+				"items": [
+					"DownloadButton"
+				]
+			},
+			{
 				"group": "EmptyTable",
 				"items": [
 					"EmptyTable"
+				]
+			},
+			{
+				"group": "ErrorState",
+				"items": [
+					"DefaultErrorMessage",
+					"ErrorState"
 				]
 			},
 			{
@@ -92,14 +141,23 @@
 				]
 			},
 			{
+				"group": "InsightsLabel",
+				"items": [
+					"CriticalIcon",
+					"InsightsLabel"
+				]
+			},
+			{
+				"group": "InvalidObject",
+				"items": [
+					"icon-404",
+					"InvalidObject"
+				]
+			},
+			{
 				"group": "Inventory",
 				"items": [
-					"AppInfo",
-					"DetailWrapper",
-					"InventoryDetail",
-					"InventoryDetailHead",
-					"InventoryTable",
-					"TagWithDialog"
+					"InventoryLoadError"
 				]
 			},
 			{
@@ -109,9 +167,28 @@
 				]
 			},
 			{
+				"group": "Maintenance",
+				"items": [
+					"Maintenance"
+				]
+			},
+			{
+				"group": "NotAuthorized",
+				"items": [
+					"NotAuthorized"
+				]
+			},
+			{
 				"group": "NotConnected",
 				"items": [
 					"NotConnected"
+				]
+			},
+			{
+				"group": "PageHeader",
+				"items": [
+					"PageHeader",
+					"PageHeaderTitle"
 				]
 			},
 			{
@@ -137,15 +214,39 @@
 				]
 			},
 			{
+				"group": "Section",
+				"items": [
+					"Section"
+				]
+			},
+			{
+				"group": "Shield",
+				"items": [
+					"Shield"
+				]
+			},
+			{
 				"group": "SimpleTableFilter",
 				"items": [
 					"SimpleTableFilter"
 				]
 			},
 			{
+				"group": "Skeleton",
+				"items": [
+					"Skeleton"
+				]
+			},
+			{
 				"group": "SkeletonTable",
 				"items": [
 					"SkeletonTable"
+				]
+			},
+			{
+				"group": "Spinner",
+				"items": [
+					"Spinner"
 				]
 			},
 			{
@@ -161,10 +262,28 @@
 				]
 			},
 			{
+				"group": "TagCount",
+				"items": [
+					"TagCount"
+				]
+			},
+			{
 				"group": "TagModal",
 				"items": [
 					"TableWithFilter",
 					"TagModal"
+				]
+			},
+			{
+				"group": "TreeTable",
+				"items": [
+					"rowWrapper"
+				]
+			},
+			{
+				"group": "Truncate",
+				"items": [
+					"Truncate"
 				]
 			},
 			{
@@ -235,8 +354,6 @@
 				"items": [
 					"EntityTable",
 					"EntityTableToolbar",
-					"InventoryList",
-					"InventoryTable",
 					"NoSystemsTable",
 					"Pagination",
 					"TitleColumn"
@@ -333,6 +450,17 @@
 		]
 	},
 	{
+		"packageName": "notifications",
+		"groups": [
+			{
+				"group": "Notification",
+				"items": [
+					"Notification"
+				]
+			}
+		]
+	},
+	{
 		"packageName": "pdf-generator",
 		"groups": [
 			{
@@ -411,12 +539,6 @@
 	{
 		"packageName": "rule-components",
 		"groups": [
-			{
-				"group": "Markdown",
-				"items": [
-					"Markdown"
-				]
-			},
 			{
 				"group": "ReportDetails",
 				"items": [

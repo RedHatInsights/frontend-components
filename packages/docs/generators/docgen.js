@@ -5,11 +5,12 @@ const glob = require('glob');
 const fse = require('fs-extra');
 const chokidar = require('chokidar');
 const createJsdocContent = require('./functions-generator');
+const fcHandler = require('./react-docgen-fc-handler');
 
 const COMPONENTS_JSON = 'component-docs.json';
 
 const DEFAULT_TS_BABEL_OPTIONS = {
-  configFile: '../.docgen.babelrc',
+  configFile: path.resolve(__dirname, 'docgen.babelrc'),
   root: __dirname,
 };
 
@@ -27,7 +28,7 @@ async function parseFile(file, content) {
     const componentInfo = reactDocs.parse(
       src,
       undefined,
-      undefined,
+      [fcHandler, ...reactDocs.defaultHandlers],
       file.match(/.*\.tsx?$/) ? { ...DEFAULT_TS_BABEL_OPTIONS, filename: file } : undefined
     );
     content[file] = componentInfo;
