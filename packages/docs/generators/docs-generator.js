@@ -6,7 +6,6 @@ const chokidar = require('chokidar');
 const generateComponentsNavigation = require('./generate-components-nav');
 const generateReactMD = require('./generate-react-md');
 const generateFunctionsMd = require('./generate-functions-md');
-const generateChromeNav = require('./generate-chrome-nav');
 const generateTsFunctionsMd = require('./generate-ts-functions-md');
 
 const COMPONENTS_JSON = 'component-docs.json';
@@ -34,7 +33,6 @@ async function traverseComponents() {
 async function run() {
   try {
     await traverseComponents();
-    await generateChromeNav();
   } catch (error) {
     console.log(error);
     process.exit(1);

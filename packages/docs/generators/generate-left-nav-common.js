@@ -1,6 +1,7 @@
 const fse = require('fs-extra');
 const path = require('path');
 const glob = require('glob');
+const chokidar = require('chokidar');
 
 const PAGES_PATH = path.resolve(__dirname, '../pages');
 
@@ -45,4 +46,24 @@ function run() {
   });
 }
 
-run();
+const args = process.argv.slice(2);
+
+function runSingleBucket(src) {
+  try {
+    const bucket = path.resolve(PAGES_PATH, src.split('/pages/')[1].split('/')[0]);
+    generateNav(bucket);
+    console.log(`Updating navigation definition: ${bucket}-navigation.json`);
+  } catch (error) {
+    console.log(error);
+    run();
+  }
+}
+
+if (args.includes('-w') || args.includes('--watch')) {
+  console.log(`Watching navigation files`);
+  const watcher = chokidar.watch(folders);
+  watcher.on('add', runSingleBucket);
+  watcher.on('unlink', runSingleBucket);
+} else {
+  run();
+}
