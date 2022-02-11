@@ -3,7 +3,7 @@ const path = require('path');
 const fse = require('fs-extra');
 const sortFile = require('./sort-files');
 
-const mdDest = path.resolve(__dirname, './pages/fec/modules');
+const mdDest = path.resolve(__dirname, '../pages/fec/modules');
 
 function getDescription(item) {
   if (item.kind === 'class' && item.classdesc.length > 0) {
@@ -56,7 +56,7 @@ function createParams(item) {
 }
 
 async function createItemMd(pathname, item, exampleName) {
-  const examples = glob.sync(path.resolve(__dirname, `./examples/${exampleName}/*.js`));
+  const examples = glob.sync(path.resolve(__dirname, `../examples/${exampleName}/*.js`));
   const description = getDescription(item);
   const params = createParams(item);
   let content = `# ${item.name}\n`;

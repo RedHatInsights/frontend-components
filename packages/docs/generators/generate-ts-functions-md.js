@@ -2,7 +2,7 @@ const path = require('path');
 const fse = require('fs-extra');
 const sortFile = require('./sort-files');
 
-const mdDest = path.resolve(__dirname, './pages/fec/modules');
+const mdDest = path.resolve(__dirname, '../pages/fec/modules');
 
 async function generateTsFunctionsMd(file) {
   const packageName = sortFile(file);

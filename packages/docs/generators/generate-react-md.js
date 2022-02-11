@@ -5,7 +5,7 @@ const glob = require('glob');
 const fse = require('fs-extra');
 const sortFile = require('./sort-files');
 
-const componentsDest = path.resolve(__dirname, './pages/fec/modules');
+const componentsDest = path.resolve(__dirname, '../pages/fec/modules');
 
 function newLineReplacer(str) {
   return str.replace(/<br \/>\s+/gm, (str) => {
@@ -181,7 +181,7 @@ function getExtensiveProps(props) {
 async function generateMD(file, API) {
   const packageName = sortFile(file);
   const name = file.split('/').pop().replace('.js', '');
-  const examples = glob.sync(path.resolve(__dirname, `./examples/${name}/*.js`));
+  const examples = glob.sync(path.resolve(__dirname, `../examples/${name}/*.js`));
   const description = generateComponentDescription(API.description);
   const extensiveProps = getExtensiveProps(API.props, file);
   const imports = generateMDImports({ examples, description, extensiveProps });

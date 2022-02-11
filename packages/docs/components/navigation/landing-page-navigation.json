@@ -1,0 +1,12 @@
+{
+	"index": {
+		"title": "Landing page",
+		"href": "/landing-page"
+	},
+	"items": [
+		{
+			"title": "Updating content",
+			"href": "/landing-page/updating-content"
+		}
+	]
+}
