@@ -44,21 +44,25 @@ const useStyles = createUseStyles({
 function useNavigationElement(navId) {
   const [NavComponent, setNavComponent] = useState(undefined);
   useEffect(() => {
-    let NavComponent = navigationMapper[navId];
-    if (!NavComponent) {
-      try {
-        const data = require(`../navigation/${navId}-navigation.json`);
-        NavComponent = () =>
-          function CommonNav() {
-            return <Navigation {...data} />;
-          };
-        setNavComponent(NavComponent);
-      } catch (err) {
-        console.log('Could not retrieve navigation data for: ', navId);
-        NavComponent = undefined;
-      }
+    if (navId === '') {
+      setNavComponent(undefined);
     } else {
-      setNavComponent(() => NavComponent);
+      let NavComponent = navigationMapper[navId];
+      if (!NavComponent) {
+        try {
+          const data = require(`../navigation/${navId}-navigation.json`);
+          NavComponent = () =>
+            function CommonNav() {
+              return <Navigation {...data} />;
+            };
+          setNavComponent(NavComponent);
+        } catch (err) {
+          console.log('Could not retrieve navigation data for: ', navId);
+          NavComponent = undefined;
+        }
+      } else {
+        setNavComponent(() => NavComponent);
+      }
     }
   }, [navId]);
 
@@ -83,7 +87,7 @@ const Layout = ({ children }) => {
       onNavToggle={() => setIsOpen((prev) => !prev)}
     />
   );
-  const Sidebar = <PageSidebar nav={NavComponent && <NavComponent />} isNavOpen={isOpen} />;
+  const Sidebar = <PageSidebar nav={navId?.length > 0 && NavComponent && <NavComponent />} isNavOpen={isOpen} />;
   return (
     <Page className={classes.page} header={Header} sidebar={NavComponent && Sidebar}>
       <Split hasGutter>
