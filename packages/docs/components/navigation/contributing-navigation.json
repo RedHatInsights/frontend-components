@@ -1,0 +1,16 @@
+{
+	"index": {
+		"title": "Contributing",
+		"href": "/contributing"
+	},
+	"items": [
+		{
+			"title": "Frontend components",
+			"href": "/contributing/frontend-components"
+		},
+		{
+			"title": "Static content",
+			"href": "/contributing/static-content"
+		}
+	]
+}
