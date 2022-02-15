@@ -99,6 +99,7 @@ exports[`TableToolsTable expect to have filters properly rendered 1`] = `
                 <button
                   aria-expanded="false"
                   aria-haspopup="true"
+                  aria-label="Conditional filter"
                   class="pf-c-dropdown__toggle"
                   data-ouia-component-id="ConditionalFilter"
                   data-ouia-component-type="PF4/DropdownToggle"
