@@ -1,4 +1,4 @@
-FROM registry.redhat.io/ubi8/nodejs-14
+FROM registry.access.redhat.com/ubi8/nodejs-14
 USER root
 WORKDIR /docs
 COPY . .
@@ -9,4 +9,4 @@ RUN npm run build
 
 EXPOSE 3000
 USER 1001
-CMD npm run serve
+CMD node server.js
