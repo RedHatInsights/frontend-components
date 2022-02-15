@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useSelectionManager returns an object with function to manage selections 1`] = `
+Object {
+  "all": Array [
+    Object {
+      "clear": [Function],
+      "deselect": [Function],
+      "reset": [Function],
+      "select": [Function],
+      "selection": Array [],
+      "set": [Function],
+      "toggle": [Function],
+    },
+  ],
+  "current": Object {
+    "clear": [Function],
+    "deselect": [Function],
+    "reset": [Function],
+    "select": [Function],
+    "selection": Array [],
+    "set": [Function],
+    "toggle": [Function],
+  },
+  "error": undefined,
+}
+`;
+
+exports[`useSelectionManager withGroups true adds an item from the selection when calling select 1`] = `
+Object {
+  "clear": [Function],
+  "deselect": [Function],
+  "reset": [Function],
+  "select": [Function],
+  "selection": Object {
+    "group1": Array [
+      1,
+      2,
+      3,
+      4,
+    ],
+    "group2": Array [
+      42,
+      12,
+      23,
+      34,
+      45,
+    ],
+  },
+  "set": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`useSelectionManager withGroups true removes an item from the selection when calling deselect 1`] = `
+Object {
+  "clear": [Function],
+  "deselect": [Function],
+  "reset": [Function],
+  "select": [Function],
+  "selection": Object {
+    "group1": Array [
+      1,
+      3,
+      4,
+    ],
+    "group2": Array [
+      12,
+      23,
+      34,
+      45,
+    ],
+  },
+  "set": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`useSelectionManager withGroups true returns an object with function to manage selections with groups 1`] = `
+Object {
+  "clear": [Function],
+  "deselect": [Function],
+  "reset": [Function],
+  "select": [Function],
+  "selection": Object {
+    "group1": Array [
+      1,
+      2,
+      3,
+      4,
+    ],
+    "group2": Array [
+      12,
+      23,
+      34,
+      45,
+    ],
+  },
+  "set": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`useSelectionManager withGroups true sets items for a selection when calling set 1`] = `
+Object {
+  "clear": [Function],
+  "deselect": [Function],
+  "reset": [Function],
+  "select": [Function],
+  "selection": Object {
+    "group1": Array [
+      0,
+      9,
+      8,
+      45,
+      3,
+    ],
+    "group2": Array [
+      12,
+      23,
+      34,
+      45,
+    ],
+  },
+  "set": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`useSelectionManager withGroups: false adds an item from the selection when calling select 1`] = `
+Object {
+  "clear": [Function],
+  "deselect": [Function],
+  "reset": [Function],
+  "select": [Function],
+  "selection": Array [
+    42,
+    1,
+    2,
+    3,
+    4,
+  ],
+  "set": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`useSelectionManager withGroups: false removes an item from the selection when calling deselect 1`] = `
+Object {
+  "clear": [Function],
+  "deselect": [Function],
+  "reset": [Function],
+  "select": [Function],
+  "selection": Array [
+    1,
+    2,
+    4,
+  ],
+  "set": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`useSelectionManager withGroups: false returns an object with function to manage selections wihtout groups 1`] = `
+Object {
+  "clear": [Function],
+  "deselect": [Function],
+  "reset": [Function],
+  "select": [Function],
+  "selection": Array [
+    1,
+    2,
+    3,
+    4,
+  ],
+  "set": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`useSelectionManager withGroups: false sets items for a selection when calling set 1`] = `
+Object {
+  "clear": [Function],
+  "deselect": [Function],
+  "reset": [Function],
+  "select": [Function],
+  "selection": Array [
+    0,
+    9,
+    8,
+    45,
+    3,
+  ],
+  "set": [Function],
+  "toggle": [Function],
+}
+`;

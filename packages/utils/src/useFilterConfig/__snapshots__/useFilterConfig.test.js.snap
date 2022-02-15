@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useFilterConfig returns a filter config configuration 1`] = `
+Object {
+  "activeFilters": Object {},
+  "toolbarProps": Object {
+    "activeFiltersConfig": Object {
+      "filters": Array [],
+      "onDelete": [Function],
+    },
+    "filterConfig": Object {
+      "items": Array [
+        Object {
+          "className": undefined,
+          "filterValues": Object {
+            "onChange": [Function],
+            "value": undefined,
+          },
+          "id": "name",
+          "label": "Name",
+          "placeholder": "Filter by name",
+          "type": "text",
+        },
+        Object {
+          "className": undefined,
+          "filterValues": Object {
+            "items": Array [
+              Object {
+                "label": "OPTION 1",
+                "value": "OPTION 1-value",
+              },
+              Object {
+                "label": "OPTION 2",
+                "value": "OPTION 2-value",
+              },
+              Object {
+                "label": "OPTION 3",
+                "value": "OPTION 3-value",
+              },
+            ],
+            "onChange": [Function],
+            "value": undefined,
+          },
+          "id": "checkbox-filter",
+          "label": "Checkbox Filter",
+          "placeholder": "Filter by checkbox filter",
+          "type": "checkbox",
+        },
+        Object {
+          "className": undefined,
+          "filterValues": Object {
+            "items": Array [
+              Object {
+                "label": "OPTION 1",
+                "value": "OPTION 1-value",
+              },
+              Object {
+                "label": "OPTION 2",
+                "value": "OPTION 2-value",
+              },
+              Object {
+                "label": "OPTION 3",
+                "value": "OPTION 3-value",
+              },
+            ],
+            "onChange": [Function],
+            "value": undefined,
+          },
+          "id": "radio-filter",
+          "label": "Radio Filter",
+          "placeholder": "Filter by radio filter",
+          "type": "radio",
+        },
+        Object {
+          "className": undefined,
+          "filterValues": Object {
+            "groups": Array [
+              Object {
+                "items": Array [
+                  Object {
+                    "label": "Child 1",
+                    "type": "checkbox",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "Child 2",
+                    "type": "checkbox",
+                    "value": 2,
+                  },
+                ],
+                "label": "Parent 1",
+                "type": "checkbox",
+                "value": 1,
+              },
+              Object {
+                "items": Array [
+                  Object {
+                    "label": "Parent 2 Child 1",
+                    "type": "checkbox",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "Parent 2 Child 2",
+                    "type": "checkbox",
+                    "value": 2,
+                  },
+                ],
+                "label": "Parent 2",
+                "type": "checkbox",
+                "value": 2,
+              },
+            ],
+            "onChange": [Function],
+            "selected": undefined,
+          },
+          "id": "filter-group",
+          "label": "Filter group",
+          "placeholder": "Filter by filter group",
+          "type": "group",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`useFilterConfig works concurrently 1`] = `
+<div>
+  3
+  4
+</div>
+`;
