@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Page, PageHeader, PageSidebar, Split, SplitItem, Stack, StackItem } from '@patternfly/react-core';
 import { createUseStyles } from 'react-jss';
@@ -9,6 +9,7 @@ import useNavigation from './use-navigation';
 import navigationMapper from '../navigation/navigation-mapper';
 import Breadcrumbs from './breadcrumbs';
 import TableOfContents from '../table-of-contents';
+import Navigation from '../navigation/common-navigation';
 
 const useStyles = createUseStyles({
   page: {
@@ -40,11 +41,39 @@ const useStyles = createUseStyles({
   },
 });
 
+function useNavigationElement(navId) {
+  const [NavComponent, setNavComponent] = useState(undefined);
+  useEffect(() => {
+    if (navId === '') {
+      setNavComponent(undefined);
+    } else {
+      let NavComponent = navigationMapper[navId];
+      if (!NavComponent) {
+        try {
+          const data = require(`../navigation/${navId}-navigation.json`);
+          NavComponent = () =>
+            function CommonNav() {
+              return <Navigation {...data} />;
+            };
+          setNavComponent(NavComponent);
+        } catch (err) {
+          console.log('Could not retrieve navigation data for: ', navId);
+          NavComponent = undefined;
+        }
+      } else {
+        setNavComponent(() => NavComponent);
+      }
+    }
+  }, [navId]);
+
+  return NavComponent;
+}
+
 const Layout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const navId = useNavigation();
   const classes = useStyles();
-  const NavComponent = navigationMapper[navId];
+  const NavComponent = useNavigationElement(navId);
   const Header = (
     <PageHeader
       logo={
@@ -58,7 +87,7 @@ const Layout = ({ children }) => {
       onNavToggle={() => setIsOpen((prev) => !prev)}
     />
   );
-  const Sidebar = <PageSidebar nav={NavComponent && <NavComponent />} isNavOpen={isOpen} />;
+  const Sidebar = <PageSidebar nav={navId?.length > 0 && NavComponent && <NavComponent />} isNavOpen={isOpen} />;
   return (
     <Page className={classes.page} header={Header} sidebar={NavComponent && Sidebar}>
       <Split hasGutter>

@@ -17,15 +17,9 @@ Monorepo of Red Hat Cloud services Components for applications in a React.js env
   * [inventory-compliance](https://github.com/RedHatInsights/compliance-frontend) - This component was moved to the compliance repository
   * [inventory-insights](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-insights#readme) - directly imported component to show insights data
 * [sources](https://github.com/RedHatInsights/sources-ui/) - Sources Wizard component was moved to Sources UI repository (it's also stored here in `sources_backup` branch)
-## Generating docs and dev run
+## Contributing to documentation
 
-First you have to generate MD files from `/packages/components` folder (it takes every JS file and generated MD files from JSDOCs) by running `npm run generate:components:docs`.
-
-To run docs server locally simply run `npm run docs` in root directory.
-
-### Adding an example
-
-Add new JS file to `/packages/docs/examples/<component name>/<example-name>.js`. The **component name** must be the same as the component MD file.
+To contribute to docs and run the docs developemnt environment, please follow these [guides](https://github.com/RedHatInsights/frontend-components/tree/master/packages/docs/pages/contributing).
 
 ## Treeshaking PF with babel plugin
 

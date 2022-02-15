@@ -157,13 +157,7 @@
 			{
 				"group": "Inventory",
 				"items": [
-					"AppInfo",
-					"DetailWrapper",
-					"InventoryDetail",
-					"InventoryDetailHead",
-					"InventoryLoadError",
-					"InventoryTable",
-					"TagWithDialog"
+					"InventoryLoadError"
 				]
 			},
 			{
@@ -360,8 +354,6 @@
 				"items": [
 					"EntityTable",
 					"EntityTableToolbar",
-					"InventoryList",
-					"InventoryTable",
 					"NoSystemsTable",
 					"Pagination",
 					"TitleColumn"
@@ -547,12 +539,6 @@
 	{
 		"packageName": "rule-components",
 		"groups": [
-			{
-				"group": "Markdown",
-				"items": [
-					"Markdown"
-				]
-			},
 			{
 				"group": "ReportDetails",
 				"items": [

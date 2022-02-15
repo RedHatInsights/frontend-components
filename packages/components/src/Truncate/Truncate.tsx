@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
-import propTypes from 'prop-types';
 import classNames from 'classnames';
 import { Button, Stack, StackItem } from '@patternfly/react-core';
 import sanitizeHtml from 'sanitize-html';
 
 import './truncate.scss';
 
-const dangerousHtml = (html) => ({ __html: sanitizeHtml(html) });
+const dangerousHtml = (html: string) => ({ __html: sanitizeHtml(html) });
 
-const Truncate = ({
+export interface TruncateProps {
+  className?: string;
+  text?: string;
+  length?: number;
+  expandText?: React.ReactNode;
+  collapseText?: React.ReactNode;
+  inline?: boolean;
+  spaceBetween?: boolean;
+  hideExpandText?: boolean;
+  expandOnMouseOver?: boolean;
+}
+
+const Truncate: React.FunctionComponent<TruncateProps> = ({
   text = '',
   length = 150,
   expandText = 'Read more',
@@ -23,7 +34,7 @@ const Truncate = ({
   const trimmedText = text.substring(0, length);
   const textOverflow = text.length > length;
   const [showText, setShowText] = useState(false);
-  const toggleText = (event) => {
+  const toggleText = (event: React.MouseEvent<HTMLButtonElement>) => {
     event && event.preventDefault();
     setShowText(!showText);
   };
@@ -56,22 +67,16 @@ const Truncate = ({
         <span widget-type="InsightsTruncateBlock" dangerouslySetInnerHTML={html} />
       </StackItem>
       {!hideExpandText && textOverflow && (
-        <StackItem className={spaceBetween && 'pf-u-mt-sm'}>{showText === false ? expandButton : collapseButton}</StackItem>
+        <StackItem
+          className={classNames({
+            'pf-u-mt-sm': spaceBetween,
+          })}
+        >
+          {showText === false ? expandButton : collapseButton}
+        </StackItem>
       )}
     </Stack>
   );
-};
-
-Truncate.propTypes = {
-  className: propTypes.string,
-  text: propTypes.string,
-  length: propTypes.number,
-  expandText: propTypes.string,
-  collapseText: propTypes.string,
-  inline: propTypes.bool,
-  spaceBetween: propTypes.bool,
-  hideExpandText: propTypes.bool,
-  expandOnMouseOver: propTypes.bool,
 };
 
 export default Truncate;

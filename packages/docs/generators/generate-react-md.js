@@ -5,7 +5,7 @@ const glob = require('glob');
 const fse = require('fs-extra');
 const sortFile = require('./sort-files');
 
-const componentsDest = path.resolve(__dirname, './pages/fec/modules');
+const componentsDest = path.resolve(__dirname, '../pages/fec/modules');
 
 function newLineReplacer(str) {
   return str.replace(/<br \/>\s+/gm, (str) => {
@@ -41,13 +41,23 @@ function primitiveGenerator({ name }) {
   return `\`${name}\``;
 }
 
+function escapeMDCharacters(value) {
+  return value
+    .replace(/\|/gm, '&#124;')
+    .replace(/\{/gm, '&#123;')
+    .replace(/\}/gm, '&#125;')
+    .replace(/\s/gm, '')
+    .replace(/</gm, '&lt;')
+    .replace(/>/gm, '&gt;');
+}
+
 function enumGenerator({ value }) {
   if (Array.isArray(value)) {
     return value.map(({ value }) => value).join(' &#124; ');
   }
 
   if (typeof value === 'string') {
-    return value.replace(/\|/gm, '&#124;').replace(/\{/gm, '&#123;').replace(/\}/gm, '&#125;').replace(/\s/gm, '');
+    return escapeMDCharacters(value);
   }
 
   return value;
@@ -78,9 +88,15 @@ function shapeGenerator({ value }) {
   )}</code>`;
 }
 
-function getPropType(propType, file, { description, name }) {
+function getPropType(props, file, { description, name }) {
+  const isTs = file.match(/\.tsx$/);
+  const propType = props.tsType || props.type;
   if (description && description.includes('@extensive')) {
     return `Check the full prop type definition [here](#${name}).`;
+  }
+
+  if (isTs && propType?.raw) {
+    return escapeMDCharacters(propType.raw);
   }
 
   if (description && description.includes('@reference')) {
@@ -180,8 +196,11 @@ function getExtensiveProps(props) {
 
 async function generateMD(file, API) {
   const packageName = sortFile(file);
-  const name = file.split('/').pop().replace('.js', '');
-  const examples = glob.sync(path.resolve(__dirname, `./examples/${name}/*.js`));
+  const name = file
+    .split('/')
+    .pop()
+    .replace(/\.(js|tsx?)/, '');
+  const examples = glob.sync(path.resolve(__dirname, `../examples/${name}/*.js`));
   const description = generateComponentDescription(API.description);
   const extensiveProps = getExtensiveProps(API.props, file);
   const imports = generateMDImports({ examples, description, extensiveProps });
@@ -215,7 +234,7 @@ ${
 |----|----|-------|-----------|
 ${Object.entries(API.props)
   .map(
-    ([name, value]) => `|${name}${value.required ? `&#42;` : ''}|${getPropType(value.type, file, { name, ...value }).replace(
+    ([name, value]) => `|${name}${value.required ? `&#42;` : ''}|${getPropType(value, file, { name, ...value }).replace(
       /@@spacerPlaceholder/gm,
       '"default-prop-spacer"'
     )}|${generateDefaultValue(value)}|${generatePropDescription(value)}|

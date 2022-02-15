@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Menu, MenuContent, MenuList, MenuItem } from '@patternfly/react-core';
-import StickyBox from 'react-sticky-box';
 
 const useStyles = createUseStyles({
   tableOfContent: {},
@@ -102,21 +101,19 @@ const TableOfContents = () => {
   }, [pathname]);
 
   return links.length > 0 ? (
-    <StickyBox offsetTop={0} offsetBottom={0}>
-      <div className={classes.tableOfContent}>
-        <Menu className={classes.list}>
-          <MenuContent>
-            <MenuList>
-              {/* eslint-disable react/prop-types */}
-              {links.map((props) => (
-                <ContentLink setActive={setActive} key={props.targetId} isActive={props.targetId === activeItem} {...props} />
-              ))}
-              {/* eslint-enable react/prop-types */}
-            </MenuList>
-          </MenuContent>
-        </Menu>
-      </div>
-    </StickyBox>
+    <div className={classes.tableOfContent}>
+      <Menu className={classes.list}>
+        <MenuContent>
+          <MenuList>
+            {/* eslint-disable react/prop-types */}
+            {links.map((props) => (
+              <ContentLink setActive={setActive} key={props.targetId} isActive={props.targetId === activeItem} {...props} />
+            ))}
+            {/* eslint-enable react/prop-types */}
+          </MenuList>
+        </MenuContent>
+      </Menu>
+    </div>
   ) : null;
 };
 

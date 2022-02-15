@@ -5,15 +5,16 @@ const glob = require('glob');
 const fse = require('fs-extra');
 const chokidar = require('chokidar');
 const createJsdocContent = require('./functions-generator');
+const fcHandler = require('./react-docgen-fc-handler');
 
 const COMPONENTS_JSON = 'component-docs.json';
 
 const DEFAULT_TS_BABEL_OPTIONS = {
-  configFile: './.docgen.babelrc',
+  configFile: path.resolve(__dirname, 'docgen.babelrc'),
   root: __dirname,
 };
 
-const componentsSrc = path.resolve(__dirname, '../*/src');
+const componentsSrc = path.resolve(__dirname, '../../*/src');
 const files = glob
   .sync(`${componentsSrc}/**/*.{js,ts,tsx}`)
   .filter((file) => !file.match(/((\.d\.ts)|(test|spec|index)\.(js|ts|tsx)|(\/__mock__\/|\/__mocks__\/|\/test\/))/gim));
@@ -27,7 +28,7 @@ async function parseFile(file, content) {
     const componentInfo = reactDocs.parse(
       src,
       undefined,
-      undefined,
+      [fcHandler, ...reactDocs.defaultHandlers],
       file.match(/.*\.tsx?$/) ? { ...DEFAULT_TS_BABEL_OPTIONS, filename: file } : undefined
     );
     content[file] = componentInfo;
@@ -56,7 +57,7 @@ async function run(files) {
 
 console.log('Generating react-docgen JSON\n');
 if (args.includes('-w') || args.includes('--watch')) {
-  console.log(`Watching ${files.length} JS files in: ${path.resolve(__dirname)}`);
+  console.log(`Watching ${files.length} JS files in: ${path.resolve(__dirname, '../')}`);
   const watcher = chokidar.watch(files);
   watcher.on('change', async (path) => {
     console.log(`Compiling file: ${path}`);

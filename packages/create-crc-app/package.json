@@ -13,7 +13,7 @@
     "bugs": {
         "url": "https://github.com/RedHatInsights/frontend-components/issues"
     },
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "A CLI tool to create new CRC frontend application. Based on the frontend starter app",
     "main": "./bin/create-crc-app.js",
     "bin": {

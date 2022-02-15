@@ -1,0 +1,16 @@
+{
+	"index": {
+		"title": "Proxies",
+		"href": "/proxies"
+	},
+	"items": [
+		{
+			"title": "Insights proxy",
+			"href": "/proxies/insights-proxy"
+		},
+		{
+			"title": "Webpack proxy",
+			"href": "/proxies/webpack-proxy"
+		}
+	]
+}

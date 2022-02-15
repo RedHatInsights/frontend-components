@@ -1,0 +1,12 @@
+{
+	"index": {
+		"title": "Inventory components",
+		"href": "/inventory-components"
+	},
+	"items": [
+		{
+			"title": "Examples",
+			"href": "/inventory-components/examples"
+		}
+	]
+}

@@ -6,13 +6,12 @@ const chokidar = require('chokidar');
 const generateComponentsNavigation = require('./generate-components-nav');
 const generateReactMD = require('./generate-react-md');
 const generateFunctionsMd = require('./generate-functions-md');
-const generateChromeNav = require('./generate-chrome-nav');
 const generateTsFunctionsMd = require('./generate-ts-functions-md');
 
 const COMPONENTS_JSON = 'component-docs.json';
-const EXAMPLES_LOCATION = path.resolve(__dirname, './examples');
+const EXAMPLES_LOCATION = path.resolve(__dirname, '../examples');
 
-const navDest = path.resolve(__dirname, './components/navigation');
+const navDest = path.resolve(__dirname, '../components/navigation');
 
 async function traverseComponents() {
   const components = fse.readJSONSync(path.resolve(__dirname, COMPONENTS_JSON));
@@ -34,7 +33,6 @@ async function traverseComponents() {
 async function run() {
   try {
     await traverseComponents();
-    await generateChromeNav();
   } catch (error) {
     console.log(error);
     process.exit(1);
