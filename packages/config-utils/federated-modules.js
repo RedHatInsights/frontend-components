@@ -42,6 +42,13 @@ module.exports = ({ root, exposes, shared = [], debug, moduleName, useFileHash =
     sharedDeps.push({ '@scalprum/react-core': { requiredVersion: '*', singleton: true } });
   }
 
+  /**
+   * Make sure the unleash proxy client is a singleton
+   */
+  if (dependencies['@unleash/proxy-client-react']) {
+    sharedDeps.push({ '@unleash/proxy-client-react': { singleton: true, requiredVersion: dependencies['@unleash/proxy-client-react'] } });
+  }
+
   if (debug) {
     console.log('Using package at path: ', resolve(root, './package.json'));
     console.log('Using appName: ', appName);
