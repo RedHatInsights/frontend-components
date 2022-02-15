@@ -1,0 +1,383 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableToolsTable expect to have filters properly rendered 1`] = `
+<div
+  class="pf-c-toolbar  ins-c-primary-toolbar"
+  data-ouia-component-id="PrimaryToolbar"
+  data-ouia-component-type="PF4/Toolbar"
+  data-ouia-safe="true"
+  id="ins-primary-data-toolbar"
+>
+  <div
+    class="pf-c-toolbar__content"
+  >
+    <div
+      class="pf-c-toolbar__content-section"
+    >
+      <div
+        class="pf-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
+      >
+        <div
+          class="pf-c-toolbar__item"
+        >
+          <div
+            class="pf-c-dropdown ins-c-bulk-select"
+            data-ouia-component-id="BulkSelect"
+            data-ouia-component-type="PF4/Dropdown"
+            data-ouia-safe="true"
+          >
+            <div
+              class="pf-c-dropdown__toggle pf-m-split-button"
+            >
+              <label
+                class="pf-c-dropdown__toggle-check"
+                for="toggle-checkbox"
+              >
+                <input
+                  aria-invalid="false"
+                  aria-label="Select all"
+                  data-ouia-component-id="BulkSelect"
+                  data-ouia-component-type="PF4/DropdownToggleCheckbox"
+                  data-ouia-safe="true"
+                  id="toggle-checkbox"
+                  type="checkbox"
+                />
+                
+              </label>
+              <button
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-label="Select"
+                class="pf-c-dropdown__toggle-button"
+                data-ouia-component-id="BulkSelect"
+                data-ouia-component-type="PF4/DropdownToggle"
+                data-ouia-safe="true"
+                id="pf-dropdown-toggle-id-64"
+                type="button"
+              >
+                <span
+                  class="pf-c-dropdown__toggle-text"
+                >
+                  1 selected
+                </span>
+                <span
+                  class=""
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 0 320 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pf-c-toolbar__item ins-c-primary-toolbar__filter"
+        >
+          <div
+            class="pf-l-split ins-c-conditional-filter"
+          >
+            <div
+              class="pf-l-split__item"
+            >
+              <div
+                class="pf-c-dropdown ins-c-conditional-filter__group"
+                data-ouia-component-id="ConditionalFilter"
+                data-ouia-component-type="PF4/Dropdown"
+                data-ouia-safe="true"
+              >
+                <button
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  class="pf-c-dropdown__toggle"
+                  data-ouia-component-id="ConditionalFilter"
+                  data-ouia-component-type="PF4/DropdownToggle"
+                  data-ouia-safe="true"
+                  id="pf-dropdown-toggle-id-65"
+                  type="button"
+                >
+                  <span
+                    class="pf-c-dropdown__toggle-text"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      style="vertical-align: -0.125em;"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                      />
+                    </svg>
+                    <span
+                      class="ins-c-conditional-filter__value-selector"
+                    >
+                      Name
+                    </span>
+                  </span>
+                  <span
+                    class="pf-c-dropdown__toggle-icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      style="vertical-align: -0.125em;"
+                      viewBox="0 0 320 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div
+              class="pf-l-split__item pf-m-fill"
+            >
+              <input
+                aria-invalid="false"
+                aria-label="text input"
+                class="pf-c-form-control ins-c-conditional-filter "
+                data-ouia-component-id="ConditionalFilter"
+                data-ouia-component-type="PF4/TextInput"
+                data-ouia-safe="true"
+                placeholder="Filter by name"
+                type="text"
+                value=""
+                widget-type="InsightsInput"
+              />
+              <svg
+                aria-hidden="true"
+                class="ins-c-search-icon"
+                fill="currentColor"
+                height="1em"
+                role="img"
+                style="vertical-align: -0.125em;"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="pf-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+      >
+        <div
+          class="pf-c-dropdown"
+          data-ouia-component-id="Actions"
+          data-ouia-component-type="PF4/Dropdown"
+          data-ouia-safe="true"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="false"
+            aria-label="Actions"
+            class="pf-c-dropdown__toggle pf-m-plain"
+            id="pf-dropdown-toggle-id-66"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 192 512"
+              width="1em"
+            >
+              <path
+                d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        class="pf-c-toolbar__item ins-c-primary-toolbar__pagination"
+      >
+        <div
+          class="pf-c-pagination pf-m-compact"
+          data-ouia-component-id="CompactPagination"
+          data-ouia-component-type="PF4/Pagination"
+          data-ouia-safe="true"
+          id="pagination-options-menu-26"
+          style="--pf-c-pagination__nav-page-select--c-form-control--width-chars: 2;"
+        >
+          <div
+            class="pf-c-pagination__total-items"
+          >
+            <b>
+              1
+               - 
+              10
+            </b>
+             
+            of
+             
+            <b>
+              30
+            </b>
+             
+            
+          </div>
+          <div
+            class="pf-c-options-menu"
+            data-ouia-component-type="PF4/PaginationOptionsMenu"
+            data-ouia-safe="true"
+          >
+            <div
+              class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+            >
+              <span
+                class="pf-c-options-menu__toggle-text"
+              >
+                <b>
+                  1
+                   - 
+                  10
+                </b>
+                 
+                of
+                 
+                <b>
+                  30
+                </b>
+                 
+                
+              </span>
+              <button
+                aria-expanded="false"
+                aria-label="Items per page"
+                class="  pf-c-options-menu__toggle-button"
+                data-ouia-component-id="OUIA-Generated-DropdownToggle-13"
+                data-ouia-component-type="PF4/DropdownToggle"
+                data-ouia-safe="true"
+                id="pagination-options-menu-toggle-26"
+                type="button"
+              >
+                <span
+                  class="pf-c-options-menu__toggle-button-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 0 320 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+          <nav
+            aria-label="Pagination"
+            class="pf-c-pagination__nav"
+          >
+            <div
+              class="pf-c-pagination__nav-control"
+            >
+              <button
+                aria-disabled="true"
+                aria-label="Go to previous page"
+                class="pf-c-button pf-m-plain pf-m-disabled"
+                data-action="previous"
+                data-ouia-component-id="OUIA-Generated-Button-plain-37"
+                data-ouia-component-type="PF4/Button"
+                data-ouia-safe="true"
+                disabled=""
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  style="vertical-align: -0.125em;"
+                  viewBox="0 0 256 512"
+                  width="1em"
+                >
+                  <path
+                    d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div
+              class="pf-c-pagination__nav-control"
+            >
+              <button
+                aria-disabled="false"
+                aria-label="Go to next page"
+                class="pf-c-button pf-m-plain"
+                data-action="next"
+                data-ouia-component-id="OUIA-Generated-Button-plain-38"
+                data-ouia-component-type="PF4/Button"
+                data-ouia-safe="true"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  style="vertical-align: -0.125em;"
+                  viewBox="0 0 256 512"
+                  width="1em"
+                >
+                  <path
+                    d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div
+      class="pf-c-toolbar__expandable-content"
+      id="ins-primary-data-toolbar-expandable-content-13"
+    >
+      <div
+        class="pf-c-toolbar__group"
+      />
+    </div>
+  </div>
+  <div
+    class="pf-c-toolbar__content pf-m-hidden"
+    hidden=""
+  >
+    <div
+      class="pf-c-toolbar__group"
+    />
+  </div>
+</div>
+`;

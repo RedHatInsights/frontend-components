@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoResultsTable expect to render without error 1`] = `
+<EmptyTable>
+  <Bullseye>
+    <EmptyState
+      variant="full"
+    >
+      <Title
+        headingLevel="h5"
+        size="lg"
+      >
+        No matching 
+        results
+         found
+      </Title>
+      <EmptyStateBody>
+        This filter criteria matches no 
+        results
+        .
+        <br />
+        Try changing your filter settings.
+      </EmptyStateBody>
+    </EmptyState>
+  </Bullseye>
+</EmptyTable>
+`;
