@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`usePaginate returns a paginate configuration 1`] = `
+Object {
+  "all": Array [
+    Object {
+      "pagination": Object {
+        "page": 1,
+        "perPage": 10,
+      },
+      "setPage": [Function],
+      "toolbarProps": Object {
+        "pagination": Object {
+          "onPerPageSelect": [Function],
+          "onSetPage": [Function],
+          "page": 1,
+          "perPage": 10,
+        },
+      },
+    },
+  ],
+  "current": Object {
+    "pagination": Object {
+      "page": 1,
+      "perPage": 10,
+    },
+    "setPage": [Function],
+    "toolbarProps": Object {
+      "pagination": Object {
+        "onPerPageSelect": [Function],
+        "onSetPage": [Function],
+        "page": 1,
+        "perPage": 10,
+      },
+    },
+  },
+  "error": undefined,
+}
+`;
