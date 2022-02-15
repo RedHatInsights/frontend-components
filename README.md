@@ -21,10 +21,6 @@ Monorepo of Red Hat Cloud services Components for applications in a React.js env
 
 To contribute to docs and run the docs developemnt environment, please follow these [guides](https://github.com/RedHatInsights/frontend-components/tree/master/packages/docs/pages/contributing).
 
-### Adding an example
-
-Add new JS file to `/packages/docs/examples/<component name>/<example-name>.js`. The **component name** must be the same as the component MD file.
-
 ## Treeshaking PF with babel plugin
 
 Patternfly packages require some ehancements to be done in order to properly treeshake your bundles. You can either use direct imports or plugin that does that for you, there are actually 2 plugins to do this
