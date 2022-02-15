@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem expect to render without error 1`] = `
+<DataListItem
+  aria-labelledby=""
+  className=""
+  id=""
+  isExpanded={false}
+>
+  <DataListItemRow>
+    <DataListControl>
+      <DataListCheck
+        id="undefined-id"
+        name="undefined-id"
+        otherControls={true}
+      />
+    </DataListControl>
+    <DataListItemCells
+      dataListCells={
+        Array [
+          <DataListCell>
+            <label
+              htmlFor="undefined-id"
+            >
+              ID
+            </label>
+          </DataListCell>,
+        ]
+      }
+    />
+  </DataListItemRow>
+</DataListItem>
+`;

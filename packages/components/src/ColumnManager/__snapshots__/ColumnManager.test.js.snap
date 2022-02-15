@@ -1,0 +1,516 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColumnManager expect to render with all column checkboxes disabled 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        onClick={[Function]}
+        variant="primary"
+      >
+        Save
+      </Button>,
+      <Button
+        onClick={[Function]}
+        variant="secondary"
+      >
+        Cancel
+      </Button>,
+    ]
+  }
+  appendTo={[Function]}
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
+  className=""
+  description={
+    <ModalDescription
+      selectAllColumns={[Function]}
+      selectAllLabel="Select All"
+    />
+  }
+  hasNoBodyWrapper={false}
+  isOpen={false}
+  onClose={[Function]}
+  ouiaSafe={true}
+  showClose={true}
+  title="Manage columns"
+  titleIconVariant={null}
+  titleLabel=""
+  variant="small"
+>
+  <DataList
+    aria-label="Table column management"
+    className=""
+    gridBreakpoint="md"
+    id="table-column-management"
+    isCompact={true}
+    selectedDataListItemId=""
+    wrapModifier={null}
+  >
+    <ListItem
+      column={
+        Object {
+          "isRequired": true,
+          "key": "id",
+          "title": "ID",
+        }
+      }
+      id="column-0"
+      isDisabled={true}
+      isSelected={false}
+      key="column-0"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "isRequired": true,
+          "key": "name",
+          "title": "Another col",
+        }
+      }
+      id="column-1"
+      isDisabled={true}
+      isSelected={false}
+      key="column-1"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "isRequired": true,
+          "key": "name1",
+          "title": "Name",
+        }
+      }
+      id="column-2"
+      isDisabled={true}
+      isSelected={false}
+      key="column-2"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "isRequired": true,
+          "title": "Another Name column without key",
+        }
+      }
+      id="column-3"
+      isDisabled={true}
+      isSelected={false}
+      key="column-3"
+      onChange={[Function]}
+    />
+  </DataList>
+</Modal>
+`;
+
+exports[`ColumnManager expect to render with custom action labels 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        onClick={[Function]}
+        variant="primary"
+      >
+        SAVE
+      </Button>,
+      <Button
+        onClick={[Function]}
+        variant="secondary"
+      >
+        CLOSING
+      </Button>,
+    ]
+  }
+  appendTo={[Function]}
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
+  className=""
+  description={
+    <ModalDescription
+      selectAllColumns={[Function]}
+      selectAllLabel="SELECT EM ALL"
+    />
+  }
+  hasNoBodyWrapper={false}
+  isOpen={false}
+  onClose={[Function]}
+  ouiaSafe={true}
+  showClose={true}
+  title="Manage columns"
+  titleIconVariant={null}
+  titleLabel=""
+  variant="small"
+>
+  <DataList
+    aria-label="Table column management"
+    className=""
+    gridBreakpoint="md"
+    id="table-column-management"
+    isCompact={true}
+    selectedDataListItemId=""
+    wrapModifier={null}
+  >
+    <ListItem
+      column={
+        Object {
+          "key": "id",
+          "title": "ID",
+        }
+      }
+      id="column-0"
+      isDisabled={true}
+      isSelected={false}
+      key="column-0"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "isRequired": true,
+          "key": "name",
+          "title": "Another col",
+        }
+      }
+      id="column-1"
+      isDisabled={true}
+      isSelected={false}
+      key="column-1"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "key": "name1",
+          "title": "Name",
+        }
+      }
+      id="column-2"
+      isSelected={false}
+      key="column-2"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "title": "Another Name column without key",
+        }
+      }
+      id="column-3"
+      isSelected={false}
+      key="column-3"
+      onChange={[Function]}
+    />
+  </DataList>
+</Modal>
+`;
+
+exports[`ColumnManager expect to render with custom title 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        onClick={[Function]}
+        variant="primary"
+      >
+        Save
+      </Button>,
+      <Button
+        onClick={[Function]}
+        variant="secondary"
+      >
+        Cancel
+      </Button>,
+    ]
+  }
+  appendTo={[Function]}
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
+  className=""
+  description={
+    <ModalDescription
+      selectAllColumns={[Function]}
+      selectAllLabel="Select All"
+    />
+  }
+  hasNoBodyWrapper={false}
+  isOpen={false}
+  onClose={[Function]}
+  ouiaSafe={true}
+  showClose={true}
+  title="TEST TITLE"
+  titleIconVariant={null}
+  titleLabel=""
+  variant="small"
+>
+  <DataList
+    aria-label="Table column management"
+    className=""
+    gridBreakpoint="md"
+    id="table-column-management"
+    isCompact={true}
+    selectedDataListItemId=""
+    wrapModifier={null}
+  >
+    <ListItem
+      column={
+        Object {
+          "key": "id",
+          "title": "ID",
+        }
+      }
+      id="column-0"
+      isDisabled={true}
+      isSelected={false}
+      key="column-0"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "isRequired": true,
+          "key": "name",
+          "title": "Another col",
+        }
+      }
+      id="column-1"
+      isDisabled={true}
+      isSelected={false}
+      key="column-1"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "key": "name1",
+          "title": "Name",
+        }
+      }
+      id="column-2"
+      isSelected={false}
+      key="column-2"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "title": "Another Name column without key",
+        }
+      }
+      id="column-3"
+      isSelected={false}
+      key="column-3"
+      onChange={[Function]}
+    />
+  </DataList>
+</Modal>
+`;
+
+exports[`ColumnManager expect to render without error and all columns 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        onClick={[Function]}
+        variant="primary"
+      >
+        Save
+      </Button>,
+      <Button
+        onClick={[Function]}
+        variant="secondary"
+      >
+        Cancel
+      </Button>,
+    ]
+  }
+  appendTo={[Function]}
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
+  className=""
+  description={
+    <ModalDescription
+      selectAllColumns={[Function]}
+      selectAllLabel="Select All"
+    />
+  }
+  hasNoBodyWrapper={false}
+  isOpen={false}
+  onClose={[Function]}
+  ouiaSafe={true}
+  showClose={true}
+  title="Manage columns"
+  titleIconVariant={null}
+  titleLabel=""
+  variant="small"
+>
+  <DataList
+    aria-label="Table column management"
+    className=""
+    gridBreakpoint="md"
+    id="table-column-management"
+    isCompact={true}
+    selectedDataListItemId=""
+    wrapModifier={null}
+  >
+    <ListItem
+      column={
+        Object {
+          "key": "id",
+          "title": "ID",
+        }
+      }
+      id="column-0"
+      isDisabled={true}
+      isSelected={false}
+      key="column-0"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "isRequired": true,
+          "key": "name",
+          "title": "Another col",
+        }
+      }
+      id="column-1"
+      isDisabled={true}
+      isSelected={false}
+      key="column-1"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "key": "name1",
+          "title": "Name",
+        }
+      }
+      id="column-2"
+      isSelected={false}
+      key="column-2"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "title": "Another Name column without key",
+        }
+      }
+      id="column-3"
+      isSelected={false}
+      key="column-3"
+      onChange={[Function]}
+    />
+  </DataList>
+</Modal>
+`;
+
+exports[`ColumnManager expect to render without error and only columns with key 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        onClick={[Function]}
+        variant="primary"
+      >
+        Save
+      </Button>,
+      <Button
+        onClick={[Function]}
+        variant="secondary"
+      >
+        Cancel
+      </Button>,
+    ]
+  }
+  appendTo={[Function]}
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
+  className=""
+  description={
+    <ModalDescription
+      selectAllColumns={[Function]}
+      selectAllLabel="Select All"
+    />
+  }
+  hasNoBodyWrapper={false}
+  isOpen={false}
+  onClose={[Function]}
+  ouiaSafe={true}
+  showClose={true}
+  title="Manage columns"
+  titleIconVariant={null}
+  titleLabel=""
+  variant="small"
+>
+  <DataList
+    aria-label="Table column management"
+    className=""
+    gridBreakpoint="md"
+    id="table-column-management"
+    isCompact={true}
+    selectedDataListItemId=""
+    wrapModifier={null}
+  >
+    <ListItem
+      column={
+        Object {
+          "key": "id",
+          "title": "ID",
+        }
+      }
+      id="column-0"
+      isDisabled={true}
+      isSelected={false}
+      key="column-0"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "isRequired": true,
+          "key": "name",
+          "title": "Another col",
+        }
+      }
+      id="column-1"
+      isDisabled={true}
+      isSelected={false}
+      key="column-1"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "key": "name1",
+          "title": "Name",
+        }
+      }
+      id="column-2"
+      isSelected={false}
+      key="column-2"
+      onChange={[Function]}
+    />
+    <ListItem
+      column={
+        Object {
+          "title": "Another Name column without key",
+        }
+      }
+      id="column-3"
+      isSelected={false}
+      key="column-3"
+      onChange={[Function]}
+    />
+  </DataList>
+</Modal>
+`;

@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useColumnManager returns just columns if not enabled 1`] = `
+Object {
+  "all": Array [
+    Object {
+      "columns": Array [
+        Object {
+          "exportKey": "id",
+          "key": "id",
+          "managable": false,
+          "sortByProperty": "id",
+          "title": "ID",
+        },
+        Object {
+          "exportKey": "name",
+          "key": "id",
+          "renderFunc": [Function],
+          "sortByProperty": "name",
+          "title": "Name",
+        },
+        Object {
+          "exportKey": "name",
+          "key": "another_name_column",
+          "renderExport": [Function],
+          "sortByProperty": "name",
+          "title": "Another Name column",
+        },
+        Object {
+          "key": "desc",
+          "renderExport": [Function],
+          "sortByProperty": "description",
+          "title": "Description",
+        },
+        Object {
+          "exportKey": "severity",
+          "renderFunc": [Function],
+          "sortByFunction": [Function],
+          "title": "Severity sorted by function",
+        },
+        Object {
+          "exportKey": "severity",
+          "renderFunc": [Function],
+          "sortByArray": Array [
+            "high",
+            "medium",
+            "low",
+            "unknown",
+          ],
+          "sortByProperty": "severity",
+          "title": "Severity by Array",
+        },
+      ],
+    },
+  ],
+  "current": Object {
+    "columns": Array [
+      Object {
+        "exportKey": "id",
+        "key": "id",
+        "managable": false,
+        "sortByProperty": "id",
+        "title": "ID",
+      },
+      Object {
+        "exportKey": "name",
+        "key": "id",
+        "renderFunc": [Function],
+        "sortByProperty": "name",
+        "title": "Name",
+      },
+      Object {
+        "exportKey": "name",
+        "key": "another_name_column",
+        "renderExport": [Function],
+        "sortByProperty": "name",
+        "title": "Another Name column",
+      },
+      Object {
+        "key": "desc",
+        "renderExport": [Function],
+        "sortByProperty": "description",
+        "title": "Description",
+      },
+      Object {
+        "exportKey": "severity",
+        "renderFunc": [Function],
+        "sortByFunction": [Function],
+        "title": "Severity sorted by function",
+      },
+      Object {
+        "exportKey": "severity",
+        "renderFunc": [Function],
+        "sortByArray": Array [
+          "high",
+          "medium",
+          "low",
+          "unknown",
+        ],
+        "sortByProperty": "severity",
+        "title": "Severity by Array",
+      },
+    ],
+  },
+  "error": undefined,
+}
+`;
+
+exports[`useColumnManager returns just columns if not enabled 2`] = `
+Object {
+  "all": Array [
+    Object {
+      "ColumnManager": [Function],
+      "columnManagerAction": Object {
+        "label": "Manage columns",
+        "onClick": [Function],
+      },
+      "columns": Array [
+        Object {
+          "exportKey": "name",
+          "key": "id",
+          "managable": true,
+          "renderFunc": [Function],
+          "sortByProperty": "name",
+          "title": "Name",
+        },
+        Object {
+          "exportKey": "name",
+          "key": "another_name_column",
+          "managable": true,
+          "renderExport": [Function],
+          "sortByProperty": "name",
+          "title": "Another Name column",
+        },
+        Object {
+          "key": "desc",
+          "managable": true,
+          "renderExport": [Function],
+          "sortByProperty": "description",
+          "title": "Description",
+        },
+      ],
+    },
+  ],
+  "current": Object {
+    "ColumnManager": [Function],
+    "columnManagerAction": Object {
+      "label": "Manage columns",
+      "onClick": [Function],
+    },
+    "columns": Array [
+      Object {
+        "exportKey": "name",
+        "key": "id",
+        "managable": true,
+        "renderFunc": [Function],
+        "sortByProperty": "name",
+        "title": "Name",
+      },
+      Object {
+        "exportKey": "name",
+        "key": "another_name_column",
+        "managable": true,
+        "renderExport": [Function],
+        "sortByProperty": "name",
+        "title": "Another Name column",
+      },
+      Object {
+        "key": "desc",
+        "managable": true,
+        "renderExport": [Function],
+        "sortByProperty": "description",
+        "title": "Description",
+      },
+    ],
+  },
+  "error": undefined,
+}
+`;

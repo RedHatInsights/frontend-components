@@ -37,6 +37,7 @@ export * from './ErrorState';
 export * from './Maintenance';
 export * from './FilterHooks';
 export * from './AsyncComponent';
+export * from './ColumnManager';
 export * from './Ouia';
 export * from './ErrorBoundary';
 export * from './RBACProvider';
