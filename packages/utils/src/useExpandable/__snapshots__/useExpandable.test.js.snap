@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useExpandable returns an expandable configuration 1`] = `
+Object {
+  "all": Array [
+    Object {
+      "openItems": Array [],
+      "tableProps": Object {
+        "onCollapse": [Function],
+      },
+    },
+  ],
+  "current": Object {
+    "openItems": Array [],
+    "tableProps": Object {
+      "onCollapse": [Function],
+    },
+  },
+  "error": undefined,
+}
+`;

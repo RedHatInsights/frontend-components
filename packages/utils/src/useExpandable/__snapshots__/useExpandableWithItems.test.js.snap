@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useExpandableWithItems returns a transformer to open items 1`] = `
+Array [
+  Object {
+    "description": "DESCRIPTION",
+    "id": 1,
+    "isOpen": false,
+    "name": "TEST ITEM #1",
+    "severity": "medium",
+  },
+  Object {
+    "cells": Array [
+      Object {
+        "title": <ExampleDetailsRow
+          item={
+            Object {
+              "description": "DESCRIPTION",
+              "id": 1,
+              "itemId": 1,
+              "name": "TEST ITEM #1",
+              "severity": "medium",
+            }
+          }
+        />,
+      },
+    ],
+    "fullWidth": true,
+    "parent": 2,
+  },
+]
+`;
+
+exports[`useExpandableWithItems returns an expandable configuration 1`] = `
+Object {
+  "all": Array [
+    Object {
+      "openItems": Array [],
+      "tableProps": Object {
+        "onCollapse": [Function],
+      },
+      "transformer": [Function],
+    },
+  ],
+  "current": Object {
+    "openItems": Array [],
+    "tableProps": Object {
+      "onCollapse": [Function],
+    },
+    "transformer": [Function],
+  },
+  "error": undefined,
+}
+`;
+
+exports[`useExpandableWithItems sets an item as open onCollapse 1`] = `
+Array [
+  Object {
+    "description": "DESCRIPTION",
+    "id": 1,
+    "isOpen": true,
+    "name": "TEST ITEM #1",
+    "severity": "medium",
+  },
+  Object {
+    "cells": Array [
+      Object {
+        "title": <ExampleDetailsRow
+          item={
+            Object {
+              "description": "DESCRIPTION",
+              "id": 1,
+              "itemId": 1,
+              "name": "TEST ITEM #1",
+              "severity": "medium",
+            }
+          }
+        />,
+      },
+    ],
+    "fullWidth": true,
+    "parent": 2,
+  },
+]
+`;
