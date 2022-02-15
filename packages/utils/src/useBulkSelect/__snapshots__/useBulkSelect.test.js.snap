@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useBulkSelect returns a bulk select configuration 1`] = `
+Object {
+  "all": Array [
+    Object {
+      "selectNone": [Function],
+      "selectedIds": undefined,
+      "tableProps": Object {
+        "canSelectAll": false,
+        "onSelect": undefined,
+      },
+      "toolbarProps": Object {
+        "bulkSelect": Object {
+          "checked": false,
+          "isDisabled": true,
+          "items": Array [
+            Object {
+              "onClick": [Function],
+              "props": Object {
+                "isDisabled": true,
+              },
+              "title": "Select none",
+            },
+            Object {
+              "onClick": [Function],
+              "title": "Select page (0 items)",
+            },
+            Object {
+              "onClick": [Function],
+              "title": "Unselect all (0 items)",
+            },
+          ],
+          "onSelect": undefined,
+          "toggleProps": Object {
+            "children": Array [
+              "0 selected",
+            ],
+          },
+        },
+      },
+    },
+  ],
+  "current": Object {
+    "selectNone": [Function],
+    "selectedIds": undefined,
+    "tableProps": Object {
+      "canSelectAll": false,
+      "onSelect": undefined,
+    },
+    "toolbarProps": Object {
+      "bulkSelect": Object {
+        "checked": false,
+        "isDisabled": true,
+        "items": Array [
+          Object {
+            "onClick": [Function],
+            "props": Object {
+              "isDisabled": true,
+            },
+            "title": "Select none",
+          },
+          Object {
+            "onClick": [Function],
+            "title": "Select page (0 items)",
+          },
+          Object {
+            "onClick": [Function],
+            "title": "Unselect all (0 items)",
+          },
+        ],
+        "onSelect": undefined,
+        "toggleProps": Object {
+          "children": Array [
+            "0 selected",
+          ],
+        },
+      },
+    },
+  },
+  "error": undefined,
+}
+`;
+
+exports[`useBulkSelect returns a bulk select configuration with the correct options 1`] = `
+Object {
+  "selectNone": [Function],
+  "selectedIds": Array [
+    "ID",
+  ],
+  "tableProps": Object {
+    "canSelectAll": false,
+    "onSelect": [Function],
+  },
+  "toolbarProps": Object {
+    "bulkSelect": Object {
+      "checked": true,
+      "isDisabled": false,
+      "items": Array [
+        Object {
+          "onClick": [Function],
+          "props": Object {
+            "isDisabled": false,
+          },
+          "title": "Select none",
+        },
+        Object {
+          "onClick": [Function],
+          "title": "Unselect page (1 items)",
+        },
+        Object {
+          "onClick": [Function],
+          "title": "Unselect all (1 items)",
+        },
+      ],
+      "onSelect": [Function],
+      "toggleProps": Object {
+        "children": Array [
+          "1 selected",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`useBulkSelect returns a bulk select configuration with the correct options 2`] = `
+Object {
+  "selectNone": [Function],
+  "selectedIds": Array [
+    "ID",
+  ],
+  "tableProps": Object {
+    "canSelectAll": false,
+    "onSelect": [Function],
+  },
+  "toolbarProps": Object {
+    "bulkSelect": Object {
+      "checked": null,
+      "isDisabled": false,
+      "items": Array [
+        Object {
+          "onClick": [Function],
+          "props": Object {
+            "isDisabled": false,
+          },
+          "title": "Select none",
+        },
+        Object {
+          "onClick": [Function],
+          "title": "Select page (2 items)",
+        },
+        Object {
+          "onClick": [Function],
+          "title": "Select all (2 items)",
+        },
+      ],
+      "onSelect": [Function],
+      "toggleProps": Object {
+        "children": Array [
+          "1 selected",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`useBulkSelect returns a bulk select configuration with the correct options 3`] = `
+Object {
+  "selectNone": [Function],
+  "selectedIds": Array [
+    "ID",
+  ],
+  "tableProps": Object {
+    "canSelectAll": false,
+    "onSelect": [Function],
+  },
+  "toolbarProps": Object {
+    "bulkSelect": Object {
+      "checked": null,
+      "isDisabled": false,
+      "items": Array [
+        Object {
+          "onClick": [Function],
+          "props": Object {
+            "isDisabled": false,
+          },
+          "title": "Select none",
+        },
+        Object {
+          "onClick": [Function],
+          "title": "Unselect page (1 items)",
+        },
+        Object {
+          "onClick": [Function],
+          "title": "Select all (2 items)",
+        },
+      ],
+      "onSelect": [Function],
+      "toggleProps": Object {
+        "children": Array [
+          "1 selected",
+        ],
+      },
+    },
+  },
+}
+`;
