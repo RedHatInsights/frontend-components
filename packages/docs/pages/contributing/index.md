@@ -6,7 +6,7 @@ import { Alert } from '@patternfly/react-core'
 
 1. Have [Docker installed](https://docs.docker.com/get-docker/)
 2. Have [docker-compose installed](https://docs.docker.com/compose/install/)
-3. Login to redhat docker registry. Use your console.redhat.com credentials.
+3. Login to redhat docker registry. Use your console.redhat.com credentials (to find out your username go to https://www.redhat.com/wapps/ugc/protected/password.html and use `Red Hat login:`).
 ```sh
 docker login https://registry.redhat.io
 # Username: myrhusername
