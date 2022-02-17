@@ -10,7 +10,7 @@
         "access": "public"
     },
     "scripts": {
-        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages && npm run transform:css",
+        "build": "npm run build:js && npm run build:esm && npm run build:packages",
         "build:packages": "node ../../scripts/build-packages.js --forceTypes",
         "build:esm": "npx tsc --module es2015 --target es5",
         "build:js": "npx tsc -p tsconfig.cjs.json"

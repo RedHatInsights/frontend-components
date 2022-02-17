@@ -24,6 +24,7 @@
         "packages/router",
         "packages/rule-components",
         "packages/translations",
+        "packages/testing",
         "packages/utils"
     ],
     "files": [
