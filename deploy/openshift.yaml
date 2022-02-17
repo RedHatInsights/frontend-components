@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: frontend-docs
+  name: frontend-docs
+  namespace: insights
+spec:
+  ports:
+  - name: 3000-tcp
+    port: 3000
+  - name: 8080-tcp
+    port: 8080
+  selector:
+    app: frontend-docs
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-docs
+  namespace: insights
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: frontend-docs
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: frontend-docs
+    spec:
+      containers:
+      - image: quay.io/lphiri/frontend-docs:latest
+        imagePullPolicy: Always
+        name: frontend-docs
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        - containerPort: 8080
+          protocol: TCP
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: frontend-docs
+  name: frontend-docs
+  namespace: insights
+spec:
+  host: front-end-docs-insights.apps.ocp4.prod.psi.redhat.com
+  port:
+    targetPort: 3000-tcp
+  to:
+    kind: Service
+    name: frontend-docs
+    weight: 100
+  wildcardPolicy: None
