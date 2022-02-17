@@ -1,7 +1,7 @@
 version: '3'
 services:
   docs:
-    build: 
+    build:
       context: ./
       dockerfile: Dockerfile.dev
     command: sh -c "npm i && npm run generate:components && npm run watch"
@@ -9,4 +9,4 @@ services:
       - '3000:3000'
     volumes:
       - .:/docs
-  
+      - /docs/packages/docs/node_modules
