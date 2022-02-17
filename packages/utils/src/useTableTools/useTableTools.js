@@ -11,6 +11,18 @@ import useDedicatedAction from '../useDedicatedAction';
 import useColumnManager from '../useColumnManager';
 import rowsBuilder from './rowsBuilder';
 
+/**
+ * `useTableTools` is a hook combining several hooks to built a PatternFly `Table` with the platform `PrimaryToolbar` component.
+ * Each hook can also be used on their own to only leverage a specific functionality.
+ *
+ * There is also a `TableToolsTable` component that is already setup with a table and invokes the `useTableTools` hook.
+ *
+ * Both the hook and the component take at least an `items` and `columns` argument/prop.
+ *
+ * @param {Array} items array of items for the table
+ * @param {Array} columns array of (Patternfly) table columns
+ * @param {Object} [options]
+ */
 const useTableTools = (items = [], columns = [], options = {}) => {
   const { toolbarProps: toolbarPropsOption, tableProps: tablePropsOption } = options;
 

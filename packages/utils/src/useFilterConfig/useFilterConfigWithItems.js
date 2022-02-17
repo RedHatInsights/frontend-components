@@ -1,6 +1,11 @@
 import useFilterConfig from './useFilterConfig';
 import { getFilterConfigItem } from './filterConfigHelpers';
 
+/**
+ * Provides `PrimaryToolbar` props for the `ConditionalFilter` component filter configuration and returns a `filter` function to filter items.
+ *
+ * @param {Object} [options]
+ */
 const useFilterConfigWithItems = (options = {}) => {
   const { filterConfig = [] } = options.filters || {};
   const filterConfigBase = useFilterConfig(options);

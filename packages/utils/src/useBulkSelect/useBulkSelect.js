@@ -2,7 +2,17 @@ import { useEffect, useState } from 'react';
 import { mergeArraysUniqly } from '../helpers/';
 import { compileTitle, checkboxState, selectOrUnselect, checkCurrentPageSelected } from './helpers';
 
-// Provides properties for a Pattternfly (based) Table and Toolbar component to implement bulk selection
+/**
+ * Provides properties for a Pattternfly (based) Table and Toolbar component to implement bulk selection
+ *
+ * @param {number} total Number to show as total count
+ * @param {Function} onSelect function to call when a selection is made
+ * @param {Array} preselected Array of itemIds selected when initialising
+ * @param {Function} itemIdsInTable async function that returns an array of all item ids
+ * @param {Function} itemIdsOnPage async function that returns an array of item ids visible on the page
+ * @param {string} [identifies] Prop of the row containing the item ID
+ * @return {{ selectedIds: array, selectNone: Function }}
+ */
 const useBulkSelect = ({ total, onSelect, preselected, itemIdsInTable, itemIdsOnPage, identifier = 'id' }) => {
   const enableBulkSelect = !!onSelect;
   // TODO use SelectionManager here.

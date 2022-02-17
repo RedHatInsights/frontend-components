@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { columnOffset, addSortableTransform } from './helpers';
 
+/**
+ * Provides columns with the `sortable` transform mixed in for a Patternfly table.
+ *
+ * @param {Array} columns Columns for a table
+ * @param {Object} [options]
+ */
 const useTableSort = (columns, options = {}) => {
   const [sortBy, setSortBy] = useState(
     options.sortBy || {

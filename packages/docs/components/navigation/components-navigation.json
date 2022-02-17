@@ -150,6 +150,14 @@
 				]
 			},
 			{
+				"group": "ColumnManager",
+				"items": [
+					"ColumnManager",
+					"ListItem",
+					"ModalDescrption"
+				]
+			},
+			{
 				"group": "ConditionalFilter",
 				"items": [
 					"CheckboxFilter",
@@ -361,6 +369,12 @@
 				"group": "TableToolbar",
 				"items": [
 					"TableToolbar"
+				]
+			},
+			{
+				"group": "TableToolsTable",
+				"items": [
+					"TableToolsTable"
 				]
 			},
 			{
@@ -672,6 +686,95 @@
 				"group": "RowLoader",
 				"items": [
 					"RowLoader"
+				]
+			},
+			{
+				"group": "useBulkSelect",
+				"items": [
+					{
+						"title": "useBulkSelect",
+						"name": "useBulkSelect-useBulkSelect"
+					}
+				]
+			},
+			{
+				"group": "useColumnManager",
+				"items": [
+					{
+						"title": "useColumnManager",
+						"name": "useColumnManager-useColumnManager"
+					}
+				]
+			},
+			{
+				"group": "useExpandable",
+				"items": [
+					{
+						"title": "useExpandable",
+						"name": "useExpandable-useExpandable"
+					}
+				]
+			},
+			{
+				"group": "useExport",
+				"items": [
+					{
+						"title": "useExport",
+						"name": "useExport-useExport"
+					}
+				]
+			},
+			{
+				"group": "useFilterConfig",
+				"items": [
+					{
+						"title": "useFilterConfig",
+						"name": "useFilterConfig-useFilterConfig"
+					},
+					{
+						"title": "useFilterConfigWithItems",
+						"name": "useFilterConfigWithItems-useFilterConfigWithItems"
+					}
+				]
+			},
+			{
+				"group": "usePaginate",
+				"items": [
+					{
+						"title": "usePaginate",
+						"name": "usePaginate-usePaginate"
+					}
+				]
+			},
+			{
+				"group": "useSelectionManager",
+				"items": [
+					{
+						"title": "useSelectionManager",
+						"name": "useSelectionManager-useSelectionManager"
+					}
+				]
+			},
+			{
+				"group": "useTableSort",
+				"items": [
+					{
+						"title": "useTableSort",
+						"name": "useTableSort-useTableSort"
+					},
+					{
+						"title": "useTableSortWithItems",
+						"name": "useTableSortWithItems-useTableSortWithItems"
+					}
+				]
+			},
+			{
+				"group": "useTableTools",
+				"items": [
+					{
+						"title": "useTableTools",
+						"name": "useTableTools-useTableTools"
+					}
 				]
 			}
 		]

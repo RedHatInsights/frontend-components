@@ -2,6 +2,11 @@ import useSelectionManager from '../useSelectionManager';
 import { toFilterConfig, toSelectValue } from './filterConfigHelpers';
 import { toFilterChips, toDeselectValue } from './filterChipHelpers';
 
+/**
+ * Provides `PrimaryToolbar` props for the `ConditionalFilter` component filter configuration.
+ *
+ * @param {Object} [options]
+ */
 const useFilterConfig = (options = {}) => {
   const { filters, onDeleteFilter, resetOnClear } = options;
   const enableFilters = !!filters;

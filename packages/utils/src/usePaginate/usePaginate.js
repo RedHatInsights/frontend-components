@@ -1,5 +1,10 @@
 import { useState } from 'react';
 
+/**
+ * Provides `pagination` props and functionality for a (Primary)Toolbar
+ *
+ * @param {Object} [options]
+ */
 const usePaginate = (options = {}) => {
   const { perPage = 10 } = options;
   const enablePagination = options?.pagination !== false;
