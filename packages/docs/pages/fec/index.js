@@ -15,7 +15,7 @@ export default function Fec() {
       <TextContent>
         <Text>
           This is an early preview of new Frontend components documentaion. Component examples are not complete. Visit{' '}
-          <Link href="/fec/components/Ansible">Ansible icon</Link> to get a taste of waht is to come.
+          <Link href="/fec/modules/components/Ansible">Ansible icon</Link> to get a taste of what is to come.
         </Text>
         <Text>Start by picking a component from the navigation.</Text>
       </TextContent>

@@ -20,6 +20,9 @@
   "title": "Module federation",
   "href": "/fed"
 },{
+  "title": "Feature flags",
+  "href": "/feature-flags"
+},{
   "title": "Inventory components",
   "href": "/inventory-components"
 },{
