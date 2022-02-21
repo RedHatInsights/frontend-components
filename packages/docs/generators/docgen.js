@@ -17,12 +17,9 @@ const DEFAULT_TS_BABEL_OPTIONS = {
 const componentsSrc = path.resolve(__dirname, '../../*/src');
 const files = glob
   .sync(`${componentsSrc}/**/*.{js,ts,tsx}`)
-  .filter((file) => !file.match(/((\.d\.ts)|(test|spec|index)\.(js|ts|tsx)|(\/__mock__\/|\/__mocks__\/|\/test\/))/gim))
-  .filter((file) => file.includes('useChrome.ts'));
+  .filter((file) => !file.match(/((\.d\.ts)|(test|spec|index)\.(js|ts|tsx)|(\/__mock__\/|\/__mocks__\/|\/test\/))/gim));
 
 const args = process.argv.slice(2);
-
-console.log(files);
 
 let content = {};
 async function parseFile(file, content) {
