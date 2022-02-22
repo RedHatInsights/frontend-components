@@ -1,6 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import DateFormat from './DateFormat';
 
 describe('DateFormat component', () => {
@@ -28,42 +27,42 @@ describe('DateFormat component', () => {
   });
 
   it('DateFormat renders with date integer', () => {
-    const wrapper = shallow(<DateFormat date={10} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<DateFormat date={10} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('DateFormat renders with date string', () => {
-    const wrapper = shallow(<DateFormat date="Dec 31 2019 00:00:00 UTC" />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<DateFormat date="Dec 31 2019 00:00:00 UTC" />);
+    expect(container).toMatchSnapshot();
   });
 
   it('DateFormat renders with date object', () => {
-    const wrapper = shallow(<DateFormat date={new Date('Dec 31 2019 00:00:00 UTC')} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<DateFormat date={new Date('Dec 31 2019 00:00:00 UTC')} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('DateFormat renders exact with date integer', () => {
-    const wrapper = shallow(<DateFormat date={10} type="exact" />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<DateFormat date={10} type="exact" />);
+    expect(container).toMatchSnapshot();
   });
 
   it('DateFormat renders onlyDate with date integer', () => {
-    const wrapper = shallow(<DateFormat date={10} type="onlyDate" />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<DateFormat date={10} type="onlyDate" />);
+    expect(container).toMatchSnapshot();
   });
 
   it('DateFormat treats date undefined as invalid', () => {
-    const wrapper = shallow(<DateFormat date={undefined} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<DateFormat date={undefined} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('DateFormat treats date null as invalid', () => {
-    const wrapper = shallow(<DateFormat date={null} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<DateFormat date={null} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('DateFormat treats date bogus string as invalid', () => {
-    const wrapper = shallow(<DateFormat date={'x'} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<DateFormat date={'x'} />);
+    expect(container).toMatchSnapshot();
   });
 });

@@ -1,11 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DarkContext should pass props 1`] = `
+<div>
+  <div
+    id="consumer"
+    value="dark"
+  />
+</div>
+`;
+
 exports[`DarkContext should render children 1`] = `
-<ContextProvider
-  value="dark"
->
+<div>
   <div
     id="isPresent"
   />
-</ContextProvider>
+</div>
 `;
