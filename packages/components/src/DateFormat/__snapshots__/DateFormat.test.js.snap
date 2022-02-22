@@ -1,82 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DateFormat component DateFormat renders exact with date integer 1`] = `
-<Fragment>
+<div>
   01 Jan 1970 00:00 UTC
-</Fragment>
+</div>
 `;
 
 exports[`DateFormat component DateFormat renders onlyDate with date integer 1`] = `
-<Fragment>
+<div>
   01 Jan 1970
-</Fragment>
+</div>
 `;
 
 exports[`DateFormat component DateFormat renders with date integer 1`] = `
-<Fragment>
-  <Tooltip
-    content={
-      <div>
-        
-        01 Jan 1970 00:00 UTC
-      </div>
-    }
-  >
-    <span>
-      Just now
-    </span>
-  </Tooltip>
-</Fragment>
+<div>
+  <span>
+    Just now
+  </span>
+</div>
 `;
 
 exports[`DateFormat component DateFormat renders with date object 1`] = `
-<Fragment>
-  <Tooltip
-    content={
-      <div>
-        
-        31 Dec 2019 00:00 UTC
-      </div>
-    }
-  >
-    <span>
-      Just now
-    </span>
-  </Tooltip>
-</Fragment>
+<div>
+  <span>
+    Just now
+  </span>
+</div>
 `;
 
 exports[`DateFormat component DateFormat renders with date string 1`] = `
-<Fragment>
-  <Tooltip
-    content={
-      <div>
-        
-        31 Dec 2019 00:00 UTC
-      </div>
-    }
-  >
-    <span>
-      Just now
-    </span>
-  </Tooltip>
-</Fragment>
+<div>
+  <span>
+    Just now
+  </span>
+</div>
 `;
 
 exports[`DateFormat component DateFormat treats date bogus string as invalid 1`] = `
-<Fragment>
+<div>
   Invalid date
-</Fragment>
+</div>
 `;
 
 exports[`DateFormat component DateFormat treats date null as invalid 1`] = `
-<Fragment>
+<div>
   Invalid date
-</Fragment>
+</div>
 `;
 
 exports[`DateFormat component DateFormat treats date undefined as invalid 1`] = `
-<Fragment>
+<div>
   Invalid date
-</Fragment>
+</div>
 `;
