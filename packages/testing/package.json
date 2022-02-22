@@ -24,11 +24,5 @@
     "bugs": {
         "url": "https://github.com/RedHatInsights/frontend-components/issues"
     },
-    "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/testing#readme",
-    "peerDependencies": {
-    },
-    "dependencies": {
-    },
-    "devDependencies": {
-    }
+    "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/testing#readme"
 }
