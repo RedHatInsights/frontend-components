@@ -3,7 +3,7 @@
 exports[`InvalidObject component should render 1`] = `
 <InvalidObject>
   <section
-    className="pf-l-page__main-section pf-c-page__main-section ins-c-component_invalid-componet"
+    className="pf-l-page__main-section pf-c-page__main-section ins-c-component_invalid-component"
   >
     <Title
       headingLevel="h1"
