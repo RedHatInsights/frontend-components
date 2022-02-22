@@ -6,5 +6,5 @@ src/
 babel.config.js
 doc/
 config/
-tsconfig.json
+tsconfig.*
 pre-publish.js

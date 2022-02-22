@@ -8,12 +8,12 @@ This package exports utilities to use in tests.
 ## Installation
 With NPM
 ```bash
-npm i -S @redhat-cloud-services/frontend-components-testing
+npm i --save-dev @redhat-cloud-services/frontend-components-testing
 ```
 
 With yarn
 ```bash
-yarn add @redhat-cloud-services/frontend-components-testing
+yarn add --dev @redhat-cloud-services/frontend-components-testing
 ```
 
 ## Documentation Links

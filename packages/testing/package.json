@@ -12,8 +12,8 @@
     "scripts": {
         "build": "npm run build:js && npm run build:esm && npm run build:packages",
         "build:packages": "node ../../scripts/build-packages.js --forceTypes",
-        "build:esm": "npx tsc --module es2015 --target es5",
-        "build:js": "npx tsc -p tsconfig.cjs.json"
+        "build:esm": "tsc --module es2015 --target es5",
+        "build:js": "tsc -p tsconfig.cjs.json"
     },
     "repository": {
         "type": "git",
