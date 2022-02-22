@@ -32,7 +32,7 @@ function addLinkAnchor(Component) {
       /**
        * We know the title is always either a string or a element with a string child.
        */
-      const text = typeof props?.children === 'string' ? props.children : props?.children.props.children;
+      const text = typeof props?.children === 'string' ? props.children : props?.children?.props?.children || '';
       const anchor = text.replace(/\s/gm, '');
       return (
         <Component className={classnames(className, 'docs-content-link')} {...props}>

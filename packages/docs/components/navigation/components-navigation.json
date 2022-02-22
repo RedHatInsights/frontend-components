@@ -277,6 +277,7 @@
 			{
 				"group": "TreeTable",
 				"items": [
+					"decorator",
 					"rowWrapper"
 				]
 			},
@@ -290,6 +291,26 @@
 				"group": "Unavailable",
 				"items": [
 					"Unavailable"
+				]
+			},
+			{
+				"group": "useChrome",
+				"items": [
+					"useChrome"
+				]
+			},
+			{
+				"group": "usePendoFeedback",
+				"items": [
+					"usePendoFeedback"
+				]
+			},
+			{
+				"group": "useScreenSize",
+				"items": [
+					"getVariant",
+					"isSmallScreen",
+					"useScreenSize"
 				]
 			},
 			{
