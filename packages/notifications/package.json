@@ -12,8 +12,8 @@
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js --forceTypes",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\"",
-        "build:esm": "npx tsc --module es2015 --target es5",
-        "build:js": "npx tsc -p tsconfig.cjs.json",
+        "build:esm": "tsc --module es2015 --target es5",
+        "build:js": "tsc -p tsconfig.cjs.json",
         "transform:css": "node ../../scripts/transform-scss.js"
     },
     "repository": {
