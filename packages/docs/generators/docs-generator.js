@@ -20,7 +20,7 @@ async function traverseComponents() {
     if (API.jsdoc) {
       return generateFunctionsMd(name, API.items);
     } else if (API.tsdoc) {
-      return generateTsFunctionsMd(name, API.items);
+      return generateTsFunctionsMd(name, API);
     }
 
     return generateReactMD(name, API);

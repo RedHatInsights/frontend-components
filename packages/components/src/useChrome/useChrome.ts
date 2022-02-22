@@ -60,6 +60,7 @@ export interface ChromeAPI {
   $internal: any;
   initialized: boolean;
   experimentalApi: boolean;
+  /** Return true if current environment is fedramp */
   isFedramp: () => boolean;
   usePendoFeedback: () => void;
   toggleFeedbackModal: (isOpen: boolean) => void;
