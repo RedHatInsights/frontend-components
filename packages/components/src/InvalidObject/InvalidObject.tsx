@@ -10,7 +10,7 @@ const isBeta = () => {
 
 const InvalidObject: React.FunctionComponent = ({ ...props }) => {
   return (
-    <section {...props} className="pf-l-page__main-section pf-c-page__main-section ins-c-component_invalid-componet">
+    <section {...props} className="pf-l-page__main-section pf-c-page__main-section ins-c-component_invalid-component">
       <Title headingLevel="h1" size="3xl">
         We lost that page
       </Title>
