@@ -1,9 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Button, ButtonVariant, TextInput } from '@patternfly/react-core';
 import { AngleDoubleLeftIcon, AngleLeftIcon, AngleDoubleRightIcon, AngleRightIcon } from '@patternfly/react-icons';
 
-const PaginationNav = ({ lastPage, setPage, pageTitle, amountOfPages, page, onFirstPage, onLastPage, onPreviousPage, onNextPage, ...props }) => {
+export interface PaginationNavProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+  lastPage?: number;
+  page?: number;
+  pageTitle?: string;
+  setPage: (event: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLInputElement>, pageNumber: number) => void;
+  amountOfPages?: number;
+  onFirstPage?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onLastPage?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onPreviousPage?: (event: React.MouseEvent<HTMLButtonElement>, prevPage: number) => void;
+  onNextPage?: (event: React.MouseEvent<HTMLButtonElement>, nextPage: number) => void;
+}
+
+const PaginationNav: React.FunctionComponent<PaginationNavProps> = ({
+  lastPage = 0,
+  setPage,
+  pageTitle = 'pages',
+  amountOfPages,
+  page = 0,
+  onFirstPage = () => undefined,
+  onLastPage = () => undefined,
+  onPreviousPage = () => undefined,
+  onNextPage = () => undefined,
+  ...props
+}) => {
   return (
     <nav className="pf-c-pagination__nav" aria-label="Pagination" {...props}>
       <Button
@@ -75,26 +97,6 @@ const PaginationNav = ({ lastPage, setPage, pageTitle, amountOfPages, page, onFi
       </Button>
     </nav>
   );
-};
-
-PaginationNav.propTypes = {
-  lastPage: PropTypes.number,
-  page: PropTypes.number,
-  pageTitle: PropTypes.string,
-  setPage: PropTypes.func,
-  amountOfPages: PropTypes.number,
-  onFirstPage: PropTypes.func,
-  onLastPage: PropTypes.func,
-  onPreviousPage: PropTypes.func,
-  onNextPage: PropTypes.func,
-};
-
-PaginationNav.defaultProps = {
-  pageTitle: 'pages',
-  onFirstPage: () => undefined,
-  onLastPage: () => undefined,
-  onPreviousPage: () => undefined,
-  onNextPage: () => undefined,
 };
 
 export default PaginationNav;

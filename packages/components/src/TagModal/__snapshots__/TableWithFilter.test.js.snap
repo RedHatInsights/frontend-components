@@ -10,7 +10,6 @@ exports[`TableWithFilter should render loading and pagination 1`] = `
     }
   />
   <SkeletonTable
-    canSelectAll={false}
     columns={
       Array [
         Object {
@@ -18,12 +17,7 @@ exports[`TableWithFilter should render loading and pagination 1`] = `
         },
       ]
     }
-    hasRadio={false}
-    isDark={false}
-    isSelectable={false}
-    paddingColumnSize={0}
     rowSize={10}
-    variant={null}
   />
 </Fragment>
 `;
@@ -515,13 +509,7 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
 exports[`TableWithFilter should render without data 1`] = `
 <Fragment>
   <SkeletonTable
-    canSelectAll={false}
-    hasRadio={false}
-    isDark={false}
-    isSelectable={false}
-    paddingColumnSize={0}
     rowSize={10}
-    variant={null}
   />
 </Fragment>
 `;

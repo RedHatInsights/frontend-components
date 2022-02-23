@@ -1,9 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './tab-layout.scss';
 
-const TabLayout = ({ children, items, classNames, active, onTabClick, ...props }) => (
+export type TabLayoutItem = { name?: string; title?: React.ReactNode };
+
+export interface TabLayoutProps {
+  items?: TabLayoutItem[];
+  classNames?: string;
+  /**
+   * Active tab item
+   */
+  active?: string;
+  onTabClick?: (event: React.MouseEvent<HTMLDivElement>, oneItem: TabLayoutItem) => void;
+}
+
+/**
+ * @deprecated
+ *
+ * Please use PF tabs component instead
+ *
+ */
+const TabLayout: React.FunctionComponent<TabLayoutProps> = ({ children, items = [], classNames, active, onTabClick = () => undefined, ...props }) => (
   <section {...props} className={classnames(classNames, 'ins-tab-layout')} widget-type="InsightsTabs">
     <div className="ins-tabs">
       {items.map((oneItem) => (
@@ -21,23 +38,5 @@ const TabLayout = ({ children, items, classNames, active, onTabClick, ...props }
     <div className="ins-tab-content">{children}</div>
   </section>
 );
-
-TabLayout.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      title: PropTypes.node,
-    })
-  ),
-  children: PropTypes.node,
-  classNames: PropTypes.string,
-  active: PropTypes.string,
-  onTabClick: PropTypes.func,
-};
-
-TabLayout.defaultProps = {
-  items: [],
-  onTabClick: () => undefined,
-};
 
 export default TabLayout;

@@ -4,10 +4,11 @@ import classNames from 'classnames';
 
 import './skeleton.scss';
 
-export const SkeletonSize = { xs: 'xs', sm: 'sm', md: 'md', lg: 'lg' };
+type SkeletonSizeType = { xs: 'xs'; sm: 'sm'; md: 'md'; lg: 'lg' };
+export const SkeletonSize: SkeletonSizeType = { xs: 'xs', sm: 'sm', md: 'md', lg: 'lg' };
 
 export interface SkeletonProps extends Omit<PFSkeletonProps, 'size'> {
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: keyof SkeletonSizeType;
   isDark?: boolean;
 }
 

@@ -3,7 +3,6 @@
 exports[`Pagination component should render direction up 1`] = `
 <PaginationNext
   className="ins-c-pagination-next"
-  direction="up"
   dropDirection="up"
   itemCount={10}
   itemsEnd={10}

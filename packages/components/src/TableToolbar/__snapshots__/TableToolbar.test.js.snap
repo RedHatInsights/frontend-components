@@ -10,6 +10,24 @@ exports[`TableToolbar component should render 1`] = `
   >
     Some
   </Toolbar>
+  <div
+    className="ins-c-table__toolbar-results"
+  >
+    <span
+      className="ins-c-table__toolbar-results-count"
+    >
+       
+      0 Results
+       
+    </span>
+    <span
+      className="ins-c-table__toolbar-results-selected"
+    >
+       
+      0
+       Selected 
+    </span>
+  </div>
 </Fragment>
 `;
 
@@ -23,6 +41,24 @@ exports[`TableToolbar component should render a footer 1`] = `
   >
     Footer
   </Toolbar>
+  <div
+    className="ins-c-table__toolbar-results"
+  >
+    <span
+      className="ins-c-table__toolbar-results-count"
+    >
+       
+      0 Results
+       
+    </span>
+    <span
+      className="ins-c-table__toolbar-results-selected"
+    >
+       
+      0
+       Selected 
+    </span>
+  </div>
 </Fragment>
 `;
 
@@ -77,6 +113,13 @@ exports[`TableToolbar component should render with results greater than 1 1`] = 
       2 Results
        
     </span>
+    <span
+      className="ins-c-table__toolbar-results-selected"
+    >
+       
+      0
+       Selected 
+    </span>
   </div>
 </Fragment>
 `;
@@ -100,6 +143,13 @@ exports[`TableToolbar component should render with results of 0 1`] = `
        
       0 Results
        
+    </span>
+    <span
+      className="ins-c-table__toolbar-results-selected"
+    >
+       
+      0
+       Selected 
     </span>
   </div>
 </Fragment>
@@ -125,6 +175,13 @@ exports[`TableToolbar component should render with results of 1 1`] = `
       1 Result
        
     </span>
+    <span
+      className="ins-c-table__toolbar-results-selected"
+    >
+       
+      0
+       Selected 
+    </span>
   </div>
 </Fragment>
 `;
@@ -142,6 +199,13 @@ exports[`TableToolbar component should render with selection of 0 1`] = `
   <div
     className="ins-c-table__toolbar-results"
   >
+    <span
+      className="ins-c-table__toolbar-results-count"
+    >
+       
+      0 Results
+       
+    </span>
     <span
       className="ins-c-table__toolbar-results-selected"
     >
@@ -166,6 +230,13 @@ exports[`TableToolbar component should render with selection of 1 1`] = `
   <div
     className="ins-c-table__toolbar-results"
   >
+    <span
+      className="ins-c-table__toolbar-results-count"
+    >
+       
+      0 Results
+       
+    </span>
     <span
       className="ins-c-table__toolbar-results-selected"
     >
