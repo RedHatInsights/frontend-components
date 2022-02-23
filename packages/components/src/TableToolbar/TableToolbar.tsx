@@ -1,12 +1,20 @@
 import React, { Fragment } from 'react';
-import { Toolbar } from '@patternfly/react-core';
+import { Toolbar, ToolbarProps } from '@patternfly/react-core';
 import { useOUIAId } from '@patternfly/react-core/';
 import classNames from 'classnames';
-import propTypes from 'prop-types';
 
 import './TableToolbar.scss';
 
-function generateCount(results) {
+export interface TableToolbarProps extends Omit<Omit<ToolbarProps, 'selected'>, 'ref'> {
+  isFooter?: boolean;
+  results?: number;
+  className?: string;
+  selected?: number;
+  ouiaId?: string;
+  ouiaSafe?: boolean;
+}
+
+function generateCount(results: number) {
   if (results > 1 || results < 1) {
     return `${results} Results`;
   } else {
@@ -14,10 +22,19 @@ function generateCount(results) {
   }
 }
 
-const TableToolbar = ({ isFooter, results, className, selected, children, ouiaId, ouiaSafe = true, ...props }) => {
+const TableToolbar: React.FunctionComponent<TableToolbarProps> = ({
+  isFooter = false,
+  results = 0,
+  className,
+  selected = 0,
+  children,
+  ouiaId,
+  ouiaSafe = true,
+  ...props
+}) => {
   const tableToolbarClasses = classNames('ins-c-table__toolbar', { [`ins-m-footer`]: isFooter }, className);
   const ouiaComponentType = 'RHI/TableToolbar';
-  const ouiaFinalId = useOUIAId(ouiaComponentType, ouiaId, ouiaSafe);
+  const ouiaFinalId = useOUIAId(ouiaComponentType, ouiaId, ouiaSafe as unknown as string);
 
   return (
     <Fragment>
@@ -41,17 +58,3 @@ const TableToolbar = ({ isFooter, results, className, selected, children, ouiaId
 };
 
 export default TableToolbar;
-
-TableToolbar.propTypes = {
-  isFooter: propTypes.bool,
-  results: propTypes.number,
-  children: propTypes.any,
-  className: propTypes.string,
-  selected: propTypes.number,
-  ouiaId: propTypes.string,
-  ouiaSafe: propTypes.bool,
-};
-
-TableToolbar.defaultProps = {
-  isFooter: false,
-};
