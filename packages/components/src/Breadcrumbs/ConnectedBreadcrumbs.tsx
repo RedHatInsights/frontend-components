@@ -2,7 +2,11 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
-import Breadcrumbs from './Breadcrumbs';
+import Breadcrumbs, { BreadcrumbItem, BreadcrumbsProps } from './Breadcrumbs';
+
+export interface ConnectedBreadcrumbsProps extends BreadcrumbsProps {
+  mappings?: { [key: string]: string };
+}
 
 /**
  * @deprecated
@@ -11,7 +15,7 @@ import Breadcrumbs from './Breadcrumbs';
  *
  * Use <a href="https://www.patternfly.org/v4/components/breadcrumb" target="_blank">Breadcrumbs</a> from PF repository.
  */
-const ConnectedBreadcrumbs = (props) => {
+const ConnectedBreadcrumbs: React.FunctionComponent<ConnectedBreadcrumbsProps> = (props) => {
   const history = useHistory();
   const location = useLocation();
   const match = useRouteMatch();
@@ -19,11 +23,11 @@ const ConnectedBreadcrumbs = (props) => {
     console.warn('This component will be removed in future release (next month March), do not use it anymore!');
   }, []);
 
-  const onNavigate = (_event, _item, key) => {
+  const onNavigate = (_event: React.MouseEvent, _item: string, key: number) => {
     history.go(-key);
   };
 
-  const calculateBreadcrumbs = () => {
+  const calculateBreadcrumbs = (): (string | React.ReactNode)[] => {
     const { current, mappings } = props;
     if (!current && mappings) {
       const root = match.path.split('/').slice(2);
@@ -38,7 +42,7 @@ const ConnectedBreadcrumbs = (props) => {
   return (
     <Breadcrumbs
       {...props}
-      items={mappedBreadcrumbs.slice(0, -1).map((item) => ({ title: item, navigate: item }))}
+      items={mappedBreadcrumbs.slice(0, -1).map((item) => ({ title: item, navigate: item } as unknown as BreadcrumbItem))}
       onNavigate={onNavigate}
       current={mappedBreadcrumbs.slice(-1)[0]}
     />
