@@ -7,7 +7,7 @@ export type PageOption = {
   value: number;
 };
 
-export interface PaginationNavProps {
+export interface PaginationMenuProps {
   itemsTitle?: string;
   itemsStart?: number;
   itemsEnd?: number;
@@ -20,7 +20,7 @@ export interface PaginationNavProps {
   className?: string;
 }
 
-const PaginationNav: React.FunctionComponent<PaginationNavProps> = ({
+const PaginationMenu: React.FunctionComponent<PaginationMenuProps> = ({
   itemsTitle = 'items',
   itemsStart,
   itemsEnd,
@@ -70,4 +70,4 @@ const PaginationNav: React.FunctionComponent<PaginationNavProps> = ({
   );
 };
 
-export default PaginationNav;
+export default PaginationMenu;
