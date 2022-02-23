@@ -14,7 +14,7 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-35"
+      data-ouia-component-id="OUIA-Generated-TableRow-20"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -76,7 +76,7 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-36"
+      data-ouia-component-id="OUIA-Generated-TableRow-21"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -324,7 +324,7 @@ exports[`EntityTable DOM should render correctly - no rows 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-17"
+      data-ouia-component-id="OUIA-Generated-TableRow-2"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -344,7 +344,7 @@ exports[`EntityTable DOM should render correctly - no rows 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-18"
+      data-ouia-component-id="OUIA-Generated-TableRow-3"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -482,7 +482,7 @@ exports[`EntityTable DOM should render correctly - with customNoSystemsTable 1`]
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-19"
+      data-ouia-component-id="OUIA-Generated-TableRow-4"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -502,7 +502,7 @@ exports[`EntityTable DOM should render correctly - with customNoSystemsTable 1`]
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-20"
+      data-ouia-component-id="OUIA-Generated-TableRow-5"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -609,7 +609,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-39"
+      data-ouia-component-id="OUIA-Generated-TableRow-24"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -671,7 +671,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-40"
+      data-ouia-component-id="OUIA-Generated-TableRow-25"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >

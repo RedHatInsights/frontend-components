@@ -7046,6 +7046,24 @@ exports[`InfoTable api expandable should open 1`] = `
         </div>
       </GenerateId>
     </Toolbar>
+    <div
+      className="ins-c-table__toolbar-results"
+    >
+      <span
+        className="ins-c-table__toolbar-results-count"
+      >
+         
+        0 Results
+         
+      </span>
+      <span
+        className="ins-c-table__toolbar-results-selected"
+      >
+         
+        0
+         Selected 
+      </span>
+    </div>
   </TableToolbar>
 </InfoTable>
 `;

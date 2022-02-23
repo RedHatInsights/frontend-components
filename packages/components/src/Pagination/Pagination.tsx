@@ -43,9 +43,9 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({
   const setPage = (nextPage: number, debounce: boolean) => {
     const perPage = itemsPerPage || pager[0];
     const maxPage = Math.ceil(numberOfItems / perPage);
-    nextPage = isNaN(nextPage) ? page : nextPage;
-    nextPage = nextPage > maxPage ? maxPage : page < 0 ? 0 : page;
-    onSetPage && onSetPage(nextPage, debounce);
+    let result = isNaN(nextPage) ? page : nextPage;
+    result = result > maxPage ? maxPage : result < 0 ? 0 : result;
+    onSetPage && onSetPage(result, debounce);
   };
   const pagerOptions = perPageOptions || pager;
   const perPage: number = itemsPerPage || pagerOptions[0];

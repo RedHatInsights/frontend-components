@@ -15,11 +15,11 @@ export interface PaginationNavProps extends React.DetailedHTMLProps<React.HTMLAt
 }
 
 const PaginationNav: React.FunctionComponent<PaginationNavProps> = ({
-  lastPage = 1,
+  lastPage = 0,
   setPage,
   pageTitle = 'pages',
   amountOfPages,
-  page = 1,
+  page = 0,
   onFirstPage = () => undefined,
   onLastPage = () => undefined,
   onPreviousPage = () => undefined,
