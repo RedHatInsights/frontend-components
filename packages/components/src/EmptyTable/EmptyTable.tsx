@@ -1,11 +1,15 @@
 import React from 'react';
-import propTypes from 'prop-types';
 
 import classNames from 'classnames';
 
 import './EmptyTable.scss';
 
-const EmptyTable = ({ centered, className, children, ...props }) => {
+export interface EmptyTableProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  centered?: boolean;
+  className?: string;
+}
+
+const EmptyTable: React.FunctionComponent<EmptyTableProps> = ({ centered, className, children, ...props }) => {
   const emptyTableClasses = classNames('ins-c-table__empty', { [`is-centered`]: centered }, className);
 
   return (
@@ -17,9 +21,3 @@ const EmptyTable = ({ centered, className, children, ...props }) => {
 };
 
 export default EmptyTable;
-
-EmptyTable.propTypes = {
-  centered: propTypes.bool,
-  children: propTypes.any,
-  className: propTypes.string,
-};
