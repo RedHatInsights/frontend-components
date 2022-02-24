@@ -4,7 +4,7 @@
     "description": "Components to be used when showing rule information",
     "main": "index.js",
     "module": "esm/index.js",
-    "sideEffects": false,
+    "sideEffects": ["./**/*.css", "./**/*.scss"],
     "publishConfig": {
         "access": "public"
     },

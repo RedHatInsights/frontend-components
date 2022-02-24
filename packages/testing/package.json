@@ -5,7 +5,7 @@
     "main": "index.js",
     "module": "esm/index.js",
     "types": "index.d.ts",
-    "sideEffects": false,
+    "sideEffects": ["./**/*.css", "./**/*.scss"],
     "publishConfig": {
         "access": "public"
     },
