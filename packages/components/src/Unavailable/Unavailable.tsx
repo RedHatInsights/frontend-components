@@ -3,7 +3,7 @@ import { EmptyState, EmptyStateIcon, EmptyStateVariant, EmptyStateBody, Title } 
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import './Unavailable.scss';
 
-const Unavailable = () => {
+const Unavailable: React.FC = () => {
   return (
     <EmptyState variant={EmptyStateVariant.large} className="ins-c-empty-state__unavailable pf-m-redhat-font">
       <EmptyStateIcon icon={ExclamationCircleIcon} />
