@@ -4,16 +4,14 @@ If you are an onboarding application, please contact the platform experience tea
 
 1. Clone the source repo
 2. Remove existing key (in the source repo)
-    * Remove the deploy_key.enc from the .travis folder in the source repo.
-    * [Example](https://github.com/RedHatInsights/insights-remediations-frontend/tree/master/.travis)
+    * Remove the deploy_key.enc from the .travis folder in the source repo. [Example](https://github.com/RedHatInsights/insights-remediations-frontend/tree/master/.travis)
 3. Generate the new key (in the source repo)
     * `ssh-keygen -t rsa -b 4096`
     * Save the key without a passphrase
     * Save the key as `deploy_key` in `{source-repo}/.travis/deploy_key`
         * You should get a deploy_key and deploy_key.pub
 4. Add the new deploy key to the build repo (build repo)
-    * Copy the contents of the public key generated in step 2 (deploy_key.pub) to the build repo under Settings → Deploy Keys and check the box for allowing write access. You can name this “Travis CI”.
-    * [Example](https://github.com/RedHatInsights/insights-remediations-frontend-build/settings/keys)
+    * Copy the contents of the public key generated in step 2 (deploy_key.pub) to the build repo under Settings → Deploy Keys and check the box for allowing write access. You can name this “Travis CI”. [Example](https://github.com/RedHatInsights/insights-remediations-frontend-build/settings/keys)
 5. Encrypt the deploy key with Travis CLI (source repo)
     * Make sure you have [Travis CI CLI tools](https://github.com/travis-ci/travis.rb)
         * [Installation](https://github.com/travis-ci/travis.rb#installation)

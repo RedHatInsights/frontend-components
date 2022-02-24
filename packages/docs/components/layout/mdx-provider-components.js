@@ -1,6 +1,18 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-import { Button, Title, Card, CardBody } from '@patternfly/react-core';
+import {
+  Button,
+  Title,
+  Card,
+  CardBody,
+  Text,
+  TextContent,
+  TextVariants,
+  TextList,
+  TextListVariants,
+  TextListItem,
+  TextListItemVariants,
+} from '@patternfly/react-core';
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';
 import { LinkIcon } from '@patternfly/react-icons';
@@ -61,7 +73,9 @@ const A = ({ children, target, ...props }) => (
     <a target={target}>{children}</a>
   </Link>
 );
+
 export const H1 = addLinkAnchor(({ className, ...props }) => <Title className={classnames(className, 'pf-u-mb-lg')} headingLevel="h1" {...props} />);
+
 export const H2 = addLinkAnchor(({ className, ...props }) => (
   <Title className={classnames(className, 'pf-u-mb-md pf-u-mt-md')} headingLevel="h2" {...props} />
 ));
@@ -72,7 +86,7 @@ export const H3 = addLinkAnchor(({ className, ...props }) => (
 export const H4 = addLinkAnchor(({ className, ...props }) => (
   <Title className={classnames(className, 'pf-u-mb-md pf-u-mt-md')} headingLevel="h4" {...props} />
 ));
-const Table = (props) => {
+export const Table = (props) => {
   const classes = useTableStyles();
   return (
     <Card className={classnames('pf-u-mb-lg', classes.card)}>
@@ -85,6 +99,26 @@ const Table = (props) => {
 
 const Code = ({ children, className }) => <CodeHighlight language={className ? className.split('-').pop() : ''} sourceCode={children} />;
 
+const Li = ({ children }) => <TextListItem component={TextListItemVariants.li}>{children}</TextListItem>;
+
+const OrderedList = ({ children }) => (
+  <TextContent>
+    <TextList component={TextListVariants.ol}>{children}</TextList>
+  </TextContent>
+);
+
+const UnorderedList = ({ children }) => (
+  <TextContent>
+    <TextList component={TextListVariants.ul}>{children}</TextList>
+  </TextContent>
+);
+
+const Paragraph = ({ children }) => (
+  <TextContent>
+    <Text component={TextVariants.p}>{children}</Text>
+  </TextContent>
+);
+
 const components = {
   a: A,
   h1: H1,
@@ -93,6 +127,10 @@ const components = {
   h4: H4,
   table: Table,
   code: Code,
+  li: Li,
+  ol: OrderedList,
+  ul: UnorderedList,
+  p: Paragraph,
 };
 
 export default components;
