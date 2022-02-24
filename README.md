@@ -17,6 +17,7 @@ Monorepo of Red Hat Cloud services Components for applications in a React.js env
   * [inventory-compliance](https://github.com/RedHatInsights/compliance-frontend) - This component was moved to the compliance repository
   * [inventory-insights](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-insights#readme) - directly imported component to show insights data
 * [sources](https://github.com/RedHatInsights/sources-ui/) - Sources Wizard component was moved to Sources UI repository (it's also stored here in `sources_backup` branch)
+* [testing](https://github.com/RedHatInsights/frontend-components/tree/master/packages/testing) - Testing utilities.
 ## Contributing to documentation
 
 To contribute to docs and run the docs developemnt environment, please follow these [guides](https://github.com/RedHatInsights/frontend-components/tree/master/packages/docs/pages/contributing).
