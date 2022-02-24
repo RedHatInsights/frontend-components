@@ -1,10 +1,13 @@
 {
     "name": "@redhat-cloud-services/rule-components",
-    "version": "3.2.4",
+    "version": "3.2.5",
     "description": "Components to be used when showing rule information",
     "main": "index.js",
     "module": "esm/index.js",
-    "sideEffects": ["./**/*.css", "./**/*.scss"],
+    "sideEffects": [
+        "./**/*.css",
+        "./**/*.scss"
+    ],
     "publishConfig": {
         "access": "public"
     },
