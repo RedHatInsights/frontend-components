@@ -1,11 +1,14 @@
 {
     "name": "@redhat-cloud-services/frontend-components",
-    "version": "3.7.2",
+    "version": "3.7.3",
     "description": "Common components for RedHat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
     "types": "index.d.ts",
-    "sideEffects": ["./**/*.css", "./**/*.scss"],
+    "sideEffects": [
+        "./**/*.css",
+        "./**/*.scss"
+    ],
     "publishConfig": {
         "access": "public"
     },
