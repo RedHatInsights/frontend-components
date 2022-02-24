@@ -4,7 +4,7 @@
     "description": "Common components for RedHat Cloud Services project to generate PDF from JS.",
     "browser": "dist/js/index.js",
     "module": "dist/esm/index.js",
-    "sideEffects": false,
+    "sideEffects": ["./**/*.css", "./**/*.scss"],
     "publishConfig": {
         "access": "public"
     },
