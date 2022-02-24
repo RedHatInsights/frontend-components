@@ -49,7 +49,7 @@ function createCRCApp(values, targetFolder) {
       const fileTarget = path.resolve(target, './', fileName);
       fs.outputFileSync(fileTarget, content, { recursive: true });
     });
-    const install = child_process.spawn('npm', ['i --force'], {
+    const install = child_process.spawn('npm', ['i'], {
       shell: true,
       stdio: [process.stdout, process.stdout, process.stdout],
       cwd: target,
