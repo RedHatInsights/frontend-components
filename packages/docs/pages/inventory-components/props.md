@@ -46,7 +46,7 @@ An array of columns definitions. They are merged with default columns by their k
 
 You can use a function as `columns` prop. This function receives the default columns array as the first attribute, so you can do any modification you need.
 
-**note: this function is called only 1x to keep a good performance. If you need to call it after the initial render (for example, some outside variable is changing the results) change `columnsCounter`<number> prop.**
+**note: this function is called only 1x to keep a good performance. If you need to call it after the initial render (for example, some outside variable is changing the results) change `columnsCounter` `number` prop.**
 
 ## disableDefaultColumns
 

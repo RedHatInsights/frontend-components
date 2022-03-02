@@ -6,7 +6,7 @@ If you want to learn how to comunicate with inventory check out [Inventory](doc/
 
 Since we are going to use different layout than the one automatically provided you need to import `InventoryDetailHead` for basic information and `AppInfo` for application detail.
 
-```JSX
+```jsx
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -106,7 +106,7 @@ export default routerParams(connect(mapStateToProps, null)(Inventory));
         
 2) Add actions dropdown
 If you want to add some custom actions to inventory header you can do so by passing actions prop to inventory detail
-```JSX
+```jsx
 // ...
 // imports same as above example
 

@@ -8,7 +8,7 @@ This component is hot loaded via chrome, so any changes made to it will be autom
 **When using system detail do not use `Route` set to `exact`. It is designed as partial component and app details of inventory is loaded in same view so it will break if not used in non-exact mode.**
 
 You will need to register two routes (one for inventory table the other one for inventory detail) in this way
-```JSX
+```jsx
 <Route exact path={'some/path/:itemId'} component={ItemPage} />
 <Route path={'some/path/:itemId/:inventoryId'} component={InventoryPage} />
 ```
@@ -35,7 +35,7 @@ Expected dependencies is object with shape:
 
 To load inventory table use like this:
 
-```JSX
+```jsx
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
@@ -85,7 +85,7 @@ class SomeCmp extends React.Component {
 ```
 
 To show inventory detail use it like this:
-```JSX
+```jsx
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
@@ -135,7 +135,7 @@ You'll have to also register inventory reducers so the data are fetched correctl
 `this.getRegistry().register` with `mergeWithEntities` and `mergeWithDetail`.
 
 * react-redux with hooks
-```JSX
+```jsx
 import React, { useState, useEffect } from 'react';
 import { useStore } from 'react-redux'
 import * as reactCore from '@patternfly/react-core';
@@ -176,7 +176,7 @@ With inventory component loaded same as in previous step we have couple of varia
 
 1) Passing array of prefetched items from different data source - if you want to fetch inventory information from another source and help inventory to fetch facts for only those items you can pass either array of (string) IDs or objects with ID and additional props.
 
-```JSX
+```jsx
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
@@ -230,7 +230,7 @@ class SomeCmp extends React.Component {
 ```
 
 2) Calling some action when all entities are loaded - if you want to do something with fetched data, callback function will receive argument with shape `{data: data, stopBubble: () => boolean}`, where data is Promise with fetched data and stopBubble prevents from bubling to store.
-```JSX
+```jsx
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
@@ -272,7 +272,7 @@ class SomeCmp extends React.Component {
 ```
 
 3) Calling some action when entity detail is loaded - if you want to get the ID of entity callback function will receive argument with promise with shape `{data: data, stopBubble: () => boolean}`, where data is Promise with ID of selected item and fetched data, stopBubble prevents from bubling to store.
-```JSX
+```jsx
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
@@ -319,7 +319,7 @@ Since inventory table is regular table you can pass additional data to it to be 
 To show some collapsed information you can pass children prop for each item. This children can be either string or function with React children in it.
 
 Once user clicks on expand button you will be notified over `onExpandClick` callback. 
-```JSX
+```jsx
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
@@ -387,7 +387,7 @@ export default connect((dispatch) => ({
 
 ### Compact table
 If you want to include inventory table in smaller area you can pass attribute `variant` it is the same as in [PF4 table](http://patternfly-react.surge.sh/patternfly-4/components/table#Table)
-```JSX
+```jsx
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
@@ -409,7 +409,7 @@ class SomeCmp extends React.Component {
 ### Refresh on change (for example on filter)
 When user wants to update table, filter data (both trough filter select and textual filter) or you want to update visible items you can either update data in redux or use inventory ref and `onRefreshData` function.
 
-```JSX
+```jsx
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
@@ -448,7 +448,7 @@ class SomeCmp extends React.Component {
 ```
 
 ### Application pagination
-```JSX
+```jsx
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
@@ -501,7 +501,7 @@ class SomeCmp extends React.Component {
 Inventory has some basic filters over name, system type and OS version. However if you want to add your own filters you can do that by passing filters. Also if you want to show some extra content in header just pass children and inventory will show them next to filters and refresh.
 
 You will be notified in `onRefresh` function about filter changes.
-```JSX
+```jsx
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
@@ -568,7 +568,7 @@ export const listReducer = applyReducerHash({
 ```
 
 * `src/SomeComponent.js` - this is our example component
-```JSX
+```jsx
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
@@ -635,7 +635,7 @@ export function entityDetailReducer(INVENTORY_ACTIONS) {
 ```
 
 * `src/SomeComponent.js` - this is our example component
-```JSX
+```jsx
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
