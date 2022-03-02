@@ -20,10 +20,6 @@
     "dependencies": {
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-charts": "*",
-        "@redhat-cloud-services/frontend-components-inventory": "*",
-        "@redhat-cloud-services/frontend-components-inventory-general-info": "*",
-        "@redhat-cloud-services/frontend-components-inventory-insights": "*",
-        "@redhat-cloud-services/frontend-components-inventory-vulnerabilities": "*",
         "@redhat-cloud-services/frontend-components-notifications": "*",
         "@redhat-cloud-services/frontend-components-remediations": "*",
         "@redhat-cloud-services/frontend-components-utilities": "*",
