@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getRBAC, doesHavePermissions } from '../RBAC';
 
-export function usePermissions(appName, permissionsList) {
+export function usePermissions(appName, permissionsList, disableCache) {
   const [permissions, setPermissions] = useState({ isLoading: true });
   useEffect(() => {
     setPermissions({ isLoading: true });
     (async () => {
-      const { isOrgAdmin, permissions: userPermissions } = await getRBAC(appName);
+      const { isOrgAdmin, permissions: userPermissions } = await getRBAC(appName, disableCache);
       setPermissions({
         isLoading: false,
         isOrgAdmin,
@@ -14,7 +14,7 @@ export function usePermissions(appName, permissionsList) {
         hasAccess: doesHavePermissions(userPermissions, permissionsList),
       });
     })();
-  }, [appName]);
+  }, [appName, disableCache]);
   return permissions;
 }
 

@@ -1,10 +1,10 @@
-export async function getRBAC(applicationName = '') {
+export async function getRBAC(applicationName = '', disableCache = false) {
   const insights = window.insights;
   const user = await insights?.chrome?.auth?.getUser();
   return {
     // eslint-disable-next-line camelcase
     isOrgAdmin: user?.identity?.user?.is_org_admin || false,
-    permissions: (await insights?.chrome?.getUserPermissions(applicationName)) || null,
+    permissions: (await insights?.chrome?.getUserPermissions(applicationName, disableCache)) || null,
   };
 }
 
