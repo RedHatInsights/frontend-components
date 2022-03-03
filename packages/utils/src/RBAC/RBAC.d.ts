@@ -5,5 +5,5 @@ export interface RBAC {
   permissions: Access[];
 }
 
-export function getRBAC(applicationName: string): Promise<RBAC>;
+export function getRBAC(applicationName: string, disableCache?: boolean): Promise<RBAC>;
 export function doesHavePermissions(RBACResults: RBAC, permissionList: string[]): boolean;
