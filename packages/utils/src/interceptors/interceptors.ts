@@ -2,18 +2,21 @@ import axios from 'axios';
 import { configureScope, captureException } from '@sentry/browser';
 
 export class HttpError extends Error {
-  constructor(description) {
+  description: string;
+  constructor(description: string) {
     super('Error communicating with the server');
     this.description = description;
   }
 }
 
-export async function authInterceptor(config) {
+export async function authInterceptor(config: any) {
+  // TODO: Provide commone types package with global declarations
+  //@ts-ignore
   await window.insights.chrome.auth.getUser();
   return config;
 }
 
-export function responseDataInterceptor(response) {
+export function responseDataInterceptor(response: any) {
   if (response.data) {
     return response.data;
   }
@@ -21,8 +24,9 @@ export function responseDataInterceptor(response) {
   return response;
 }
 
-export function interceptor401(error) {
+export function interceptor401(error: any) {
   if (error.response && error.response.status === 401) {
+    //@ts-ignore
     window.insights.chrome.auth.logout();
     return false;
   }
@@ -30,7 +34,7 @@ export function interceptor401(error) {
   throw error;
 }
 
-export function interceptor500(error) {
+export function interceptor500(error: any) {
   if (error.response && error.response.status >= 500 && error.response.status < 600) {
     configureScope((scope) => {
       scope.setTag('request_id', error.response.req_id);
@@ -40,7 +44,7 @@ export function interceptor500(error) {
   throw error;
 }
 
-export function errorInterceptor(err) {
+export function errorInterceptor(err: any) {
   if (!axios.isCancel(err)) {
     let requestId;
     try {
@@ -51,7 +55,7 @@ export function errorInterceptor(err) {
       }
 
       throw err;
-    } catch (customError) {
+    } catch (customError: any) {
       if (!requestId) {
         customError.sentryId = captureException(customError);
       }
@@ -65,8 +69,8 @@ export function errorInterceptor(err) {
 export const instance = axios.create();
 instance.interceptors.request.use(authInterceptor);
 instance.interceptors.response.use(responseDataInterceptor);
-instance.interceptors.response.use(null, interceptor401);
-instance.interceptors.response.use(null, interceptor500);
-instance.interceptors.response.use(null, errorInterceptor);
+instance.interceptors.response.use(undefined, interceptor401);
+instance.interceptors.response.use(undefined, interceptor500);
+instance.interceptors.response.use(undefined, errorInterceptor);
 
 export default instance;
