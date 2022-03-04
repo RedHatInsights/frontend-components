@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const concurrently = require('concurrently');
 
-function federate(argv, cwd) {
+async function federate(argv, cwd) {
   let configPath = argv.config;
   const WEBPACK_PATH = path.resolve(cwd, './node_modules/.bin/webpack');
   const HTTP_SERVER_PATH = path.resolve(cwd, './node_modules/.bin/http-server');
@@ -17,7 +17,7 @@ function federate(argv, cwd) {
     fs.statSync(configPath);
     let config = require(configPath);
     if (typeof config === 'function') {
-      config = config(process.env);
+      config = await Promise.resolve(config(process.env));
     }
 
     const outputPath = config.output.path;
