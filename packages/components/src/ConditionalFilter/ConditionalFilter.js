@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Dropdown, DropdownItem, DropdownToggle, SplitItem, Split, ToolbarItem, ToolbarGroup, ToolbarToggleGroup } from '@patternfly/react-core';
 import { FilterIcon } from '@patternfly/react-icons';
 import globalBreakpointMd from '@patternfly/react-tokens/dist/js/global_breakpoint_md';
-import Text from './TextFilter';
+import TextFilter from './TextFilter';
 import { conditionalFilterType, typeMapper } from './conditionalFilterConstants';
 import PropTypes from 'prop-types';
 import './conditional-filter.scss';
@@ -96,7 +96,7 @@ class ConditionalFilter extends Component {
                   desktop: useMobileLayout,
                 })}
               >
-                <Text
+                <TextFilter
                   {...props}
                   value={currentValue}
                   onChange={(e) => onChangeCallback(e, e.target.value)}
