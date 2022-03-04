@@ -27,8 +27,6 @@ module.exports = {
     },
     {
       files: [
-        'packages/inventory/src/**/*.js',
-        'packages/inventory-general-info/src/**/*.js',
         'packages/pdf-generator/src/**/*.js',
         'packages/**/src/**/*__mock__*/**/*.js',
         'packages/**/src/**/*__mocks__*/**/*.js',
