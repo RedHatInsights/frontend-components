@@ -39,7 +39,7 @@ module.exports = ({ root, exposes, shared = [], debug, moduleName, useFileHash =
    * No application should be installing/interacting with scalprum directly.
    */
   if (dependencies['@redhat-cloud-services/frontend-components']) {
-    sharedDeps.push({ '@scalprum/react-core': { requiredVersion: '*', singleton: true } });
+    sharedDeps.push({ '@scalprum/react-core': { requiredVersion: '*', singleton: true, eager: true } });
   }
 
   /**
