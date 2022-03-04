@@ -24,9 +24,9 @@ function generateCount(results: number) {
 
 const TableToolbar: React.FunctionComponent<TableToolbarProps> = ({
   isFooter = false,
-  results = 0,
+  results,
   className,
-  selected = 0,
+  selected,
   children,
   ouiaId,
   ouiaSafe = true,
@@ -47,10 +47,10 @@ const TableToolbar: React.FunctionComponent<TableToolbarProps> = ({
       >
         {children}
       </Toolbar>
-      {(results >= 0 || selected >= 0) && (
+      {((results && results >= 0) || (selected && selected >= 0)) && (
         <div className="ins-c-table__toolbar-results">
-          {results >= 0 && <span className="ins-c-table__toolbar-results-count"> {generateCount(results)} </span>}
-          {selected >= 0 && <span className="ins-c-table__toolbar-results-selected"> {selected} Selected </span>}
+          {results && results >= 0 && <span className="ins-c-table__toolbar-results-count"> {generateCount(results)} </span>}
+          {selected && selected >= 0 && <span className="ins-c-table__toolbar-results-selected"> {selected} Selected </span>}
         </div>
       )}
     </Fragment>
