@@ -1,12 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LongTextTooltip component should render 1`] = `
-<LongTextTooltip
-  content=""
-  maxLength={Infinity}
-  tooltipMaxWidth="50vw"
-  tooltipPosition="top"
->
+<LongTextTooltip>
   <span />
 </LongTextTooltip>
 `;
@@ -14,9 +9,6 @@ exports[`LongTextTooltip component should render 1`] = `
 exports[`LongTextTooltip component should render content 1`] = `
 <LongTextTooltip
   content="Lorem Impsum"
-  maxLength={Infinity}
-  tooltipMaxWidth="50vw"
-  tooltipPosition="top"
 >
   <span>
     Lorem Impsum
@@ -27,7 +19,6 @@ exports[`LongTextTooltip component should render content 1`] = `
 exports[`LongTextTooltip component should render content tooltip in a different spot with different width 1`] = `
 <LongTextTooltip
   content="Lorem Impsum"
-  maxLength={Infinity}
   tooltipMaxWidth="10vw"
   tooltipPosition="left"
 >
@@ -41,8 +32,6 @@ exports[`LongTextTooltip component should render content with maxLength 1`] = `
 <LongTextTooltip
   content="Lorem Impsum"
   maxLength={50}
-  tooltipMaxWidth="50vw"
-  tooltipPosition="top"
 >
   <span>
     Lorem Impsum
@@ -54,8 +43,6 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
 <LongTextTooltip
   content="Lorem Impsum"
   maxLength={1}
-  tooltipMaxWidth="50vw"
-  tooltipPosition="top"
 >
   <Tooltip
     content={
@@ -144,8 +131,6 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
 exports[`LongTextTooltip component should render tooltip in a different spot 1`] = `
 <LongTextTooltip
   content="Lorem Impsum"
-  maxLength={Infinity}
-  tooltipMaxWidth="50vw"
   tooltipPosition="bottom"
 >
   <span>
@@ -157,8 +142,6 @@ exports[`LongTextTooltip component should render tooltip in a different spot 1`]
 exports[`LongTextTooltip component should render tooltip in a different spot 2`] = `
 <LongTextTooltip
   content="Lorem Impsum"
-  maxLength={Infinity}
-  tooltipMaxWidth="50vw"
   tooltipPosition="left"
 >
   <span>
@@ -170,8 +153,6 @@ exports[`LongTextTooltip component should render tooltip in a different spot 2`]
 exports[`LongTextTooltip component should render tooltip in a different spot 3`] = `
 <LongTextTooltip
   content="Lorem Impsum"
-  maxLength={Infinity}
-  tooltipMaxWidth="50vw"
   tooltipPosition="right"
 >
   <span>
