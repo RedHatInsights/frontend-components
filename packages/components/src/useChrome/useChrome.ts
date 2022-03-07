@@ -1,6 +1,7 @@
 import { useScalprum } from '@scalprum/react-core';
 import { QuickStartCatalogPage } from '@patternfly/quickstarts';
 import { History } from 'history';
+import { Access } from '@redhat-cloud-services/rbac-client';
 
 declare type ChromeUser = {
   entitlements: {
@@ -110,18 +111,7 @@ export interface ChromeAPI {
     sso: string;
     portal: string;
   };
-  getUserPermissions: () => Promise<
-    {
-      permissions: string;
-      resourceDefinitions: {
-        attributeFilter: {
-          key: string;
-          scope: string;
-          operation: string;
-        };
-      }[];
-    }[]
-  >;
+  getUserPermissions: (applicationName?: string, disableCache?: boolean) => Promise<Access[]>;
   globalFilterScope: (scope?: string) => void;
   hideGlobalFilter: (hide?: boolean) => void;
   /** @deprecated This function server no purpse. For document title update use "updateDocumentTitle" function instead. */
