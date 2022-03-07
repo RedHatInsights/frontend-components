@@ -1,14 +1,24 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import { useOUIAId } from '@patternfly/react-core/';
 
+export interface InputProps extends Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'capture'> {
+  type?: string;
+  className?: string;
+  ariaLabel?: string;
+  ouiaId?: string;
+  ouiaSafe?: boolean;
+  'data-ouia-component-type': string;
+  'data-ouia-component-id': string;
+  'data-ouia-safe': boolean;
+}
+
 const checkTypes = ['checkbox', 'radio'];
 
-const Input = ({ type = 'text', ariaLabel = type, className, ouiaId, ouiaSafe, ...props }) => {
+const Input: React.FC<InputProps> = ({ type = 'text', ariaLabel = type, className, ouiaId, ouiaSafe = true, ...props }) => {
   const classes = checkTypes.indexOf(type) !== -1 ? 'pf-c-check' : 'pf-c-form-control';
   const ouiaComponentType = 'RHI/Input';
-  const ouiaFinalId = useOUIAId(ouiaComponentType, ouiaId, ouiaSafe);
+  const ouiaFinalId = useOUIAId(ouiaComponentType, ouiaId, ouiaSafe as unknown as string);
   return (
     <input
       {...props}
@@ -20,18 +30,6 @@ const Input = ({ type = 'text', ariaLabel = type, className, ouiaId, ouiaSafe, .
       className={classnames(classes, className)}
     />
   );
-};
-
-Input.propTypes = {
-  type: PropTypes.string,
-  className: PropTypes.string,
-  ariaLabel: PropTypes.string,
-  ouiaId: PropTypes.string,
-  ouiaSafe: PropTypes.bool,
-};
-
-Input.defaultProps = {
-  ouiaSafe: true,
 };
 
 export default Input;
