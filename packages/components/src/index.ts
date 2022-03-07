@@ -1,3 +1,11 @@
+import { ChromeAPI } from './useChrome';
+
+declare global {
+  interface Window {
+    insights: { chrome: ChromeAPI };
+  }
+}
+
 export * from './LongTextTooltip';
 export * from './Section';
 export * from './Ansible';
