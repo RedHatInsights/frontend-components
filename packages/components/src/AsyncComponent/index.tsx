@@ -3,6 +3,8 @@ import { ScalprumComponent } from '@scalprum/react-core';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 import classNames from 'classnames';
 
+export type ExcludeModulesKeys = 'appName' | 'module' | 'scope';
+
 export interface AsyncComponentProps {
   /** Name of the app from which module will be loaded. */
   appName: string;
