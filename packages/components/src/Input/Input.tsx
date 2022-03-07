@@ -8,9 +8,10 @@ export interface InputProps extends Omit<React.DetailedHTMLProps<React.InputHTML
   ariaLabel?: string;
   ouiaId?: string;
   ouiaSafe?: boolean;
-  'data-ouia-component-type': string;
-  'data-ouia-component-id': string;
-  'data-ouia-safe': boolean;
+  'data-ouia-component-type'?: string;
+  'data-ouia-component-id'?: string;
+  'data-ouia-safe'?: boolean;
+  'widget-id'?: string;
 }
 
 const checkTypes = ['checkbox', 'radio'];
