@@ -1,11 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Not connected component should render 1`] = `
-<NotConnected
-  bodyText="To get started, activate the Insights client for this system."
-  buttonText="Learn how to activate the Insights client"
-  titleText="This system isn’t connected to Insights yet"
->
+<NotConnected>
   <EmptyState>
     <div
       className="pf-c-empty-state"
