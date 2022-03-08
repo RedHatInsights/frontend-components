@@ -13,6 +13,10 @@
 			"href": "/fed/sharing-module"
 		},
 		{
+			"title": "Testing",
+			"href": "/fed/testing"
+		},
+		{
 			"title": "Versioning",
 			"href": "/fed/versioning"
 		}
