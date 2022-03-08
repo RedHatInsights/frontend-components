@@ -2,7 +2,7 @@
 
 exports[`FilterInput component should render a checkbox input 1`] = `
 <Checkbox
-  aria-label="param"
+  aria-label="label"
   className=""
   id="id"
   isChecked={false}
@@ -10,7 +10,7 @@ exports[`FilterInput component should render a checkbox input 1`] = `
   isValid={true}
   label="label"
   onChange={[Function]}
-  ouiaId="id"
+  ouiaId="label"
   ouiaSafe={true}
   value="value"
 />
