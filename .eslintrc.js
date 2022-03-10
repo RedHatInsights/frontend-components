@@ -14,7 +14,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['packages/**/src/**/*.ts', 'packages/**/src/**/*.tsx'],
+      files: ['packages/**/src/**/*.ts', 'packages/**/src/**/*.tsx', 'packages/types/*.ts'],
       parser: '@typescript-eslint/parser',
       plugins: ['@typescript-eslint'],
       extends: ['plugin:@typescript-eslint/recommended'],

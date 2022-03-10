@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { Store } from 'redux';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { DarkContext } from '../Dark';
@@ -12,21 +11,6 @@ export interface InternalMainProps {
   path?: string;
   className?: string;
   children?: React.ReactNode;
-}
-
-/**
- * TODO: Create a global TS file with chrome global variables
- */
-declare global {
-  interface Window {
-    insights: {
-      chrome: {
-        $internal: {
-          store: Store;
-        };
-      };
-    };
-  }
 }
 
 type FcalculateLocation = () => { staticPart: string[]; dynamic: undefined | { [key: string]: any } };
