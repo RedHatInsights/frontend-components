@@ -1,5 +1,5 @@
 import { Access } from '@redhat-cloud-services/rbac-client';
-import { ChromeAPI } from '@redhat-cloud-services/frontend-components/useChrome';
+import { ChromeAPI } from '@redhat-cloud-services/types';
 
 declare global {
   interface Window {

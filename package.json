@@ -22,7 +22,8 @@
         "packages/rule-components",
         "packages/translations",
         "packages/testing",
-        "packages/utils"
+        "packages/utils",
+        "packages/types"
     ],
     "files": [
         "index.js",

@@ -1,4 +1,4 @@
-import { ChromeAPI } from './useChrome';
+import { ChromeAPI } from '@redhat-cloud-services/types';
 
 declare global {
   interface Window {
