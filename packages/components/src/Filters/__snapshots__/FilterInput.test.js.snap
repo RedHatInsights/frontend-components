@@ -12,7 +12,6 @@ exports[`FilterInput component should render a checkbox input 1`] = `
   onChange={[Function]}
   ouiaId="label"
   ouiaSafe={true}
-  param="param"
   value="value"
 />
 `;
@@ -29,7 +28,6 @@ exports[`FilterInput component should render a radio input 1`] = `
   name="param"
   onChange={[Function]}
   ouiaId="label"
-  param="param"
   value="value"
 />
 `;

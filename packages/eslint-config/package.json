@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/eslint-config-redhat-cloud-services",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "Recommended eslint configuration used in cloud.redhat.com frontend apps.",
     "keywords": [
         "eslint",
@@ -12,13 +12,13 @@
         "@babel/eslint-parser": "^7.13.14",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-prettier": "^3.1.4",
-        "eslint-plugin-react": "^7.23.2",
+        "eslint-plugin-react": "^7.28.0",
         "eslint-plugin-rulesdir": "^0.1.0",
         "prettier": "^2.1.2"
     },
     "peerDependencies": {
         "@babel/core": "^7.14.0",
-        "eslint": "^7.19.0"
+        "eslint": "^8.9.0"
     },
     "license": "Apache",
     "publishConfig": {

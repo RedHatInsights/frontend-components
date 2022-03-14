@@ -1,3 +1,11 @@
+import { ChromeAPI } from '@redhat-cloud-services/types';
+
+declare global {
+  interface Window {
+    insights: { chrome: ChromeAPI };
+  }
+}
+
 export * from './LongTextTooltip';
 export * from './Section';
 export * from './Ansible';

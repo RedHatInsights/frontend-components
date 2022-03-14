@@ -11,9 +11,7 @@ exports[`FilterDropdown component should render 1`] = `
       onToggle={[Function]}
       ouiaId="OUIA-Generated-RHI/FilterDropdown-1"
       ouiaSafe={true}
-    >
-      Filters
-    </DropdownToggle>
+    />
   }
 >
   <div
@@ -25,8 +23,6 @@ exports[`FilterDropdown component should render 1`] = `
       <FilterInput
         addRemoveFilters={[Function]}
         aria-label=""
-        className={null}
-        currentPage={null}
         filters={Object {}}
         id="0"
         key="check00"
@@ -44,12 +40,12 @@ exports[`FilterDropdown component should render with a component as label 1`] = 
 <Dropdown
   className="ins-c-filter__dropdown"
   isOpen={false}
-  ouiaId="OUIA-Generated-RHI/FilterDropdown-2"
+  ouiaId="OUIA-Generated-RHI/FilterDropdown-1"
   ouiaSafe={true}
   toggle={
     <DropdownToggle
       onToggle={[Function]}
-      ouiaId="OUIA-Generated-RHI/FilterDropdown-2"
+      ouiaId="OUIA-Generated-RHI/FilterDropdown-1"
       ouiaSafe={true}
     >
       <React.Fragment />
@@ -65,8 +61,6 @@ exports[`FilterDropdown component should render with a component as label 1`] = 
       <FilterInput
         addRemoveFilters={[Function]}
         aria-label=""
-        className={null}
-        currentPage={null}
         filters={Object {}}
         id="0"
         key="check00"
