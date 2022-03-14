@@ -1,9 +1,18 @@
 import React from 'react';
-import propTypes from 'prop-types';
 import { EmptyState, EmptyStateIcon, EmptyStateBody, Title, Button } from '@patternfly/react-core';
 import { DisconnectedIcon } from '@patternfly/react-icons';
 
-const NotConnected = ({ titleText, bodyText, buttonText }) => (
+export interface NotConnectedProps {
+  titleText?: React.ReactNode;
+  bodyText?: React.ReactNode;
+  buttonText?: React.ReactNode;
+}
+
+const NotConnected: React.FC<NotConnectedProps> = ({
+  titleText = 'This system isn’t connected to Insights yet',
+  bodyText = 'To get started, activate the Insights client for this system.',
+  buttonText = 'Learn how to activate the Insights client',
+}) => (
   <EmptyState>
     <EmptyStateIcon icon={DisconnectedIcon} />
     <Title headingLevel="h5" size="lg">
@@ -22,17 +31,5 @@ const NotConnected = ({ titleText, bodyText, buttonText }) => (
     </Button>
   </EmptyState>
 );
-
-NotConnected.propTypes = {
-  titleText: propTypes.node,
-  bodyText: propTypes.node,
-  buttonText: propTypes.node,
-};
-
-NotConnected.defaultProps = {
-  titleText: 'This system isn’t connected to Insights yet',
-  bodyText: 'To get started, activate the Insights client for this system.',
-  buttonText: 'Learn how to activate the Insights client',
-};
 
 export default NotConnected;

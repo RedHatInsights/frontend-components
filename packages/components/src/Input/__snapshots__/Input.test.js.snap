@@ -20,7 +20,6 @@ exports[`Input component should render labeled input 1`] = `
   <Input
     id="some-name"
     name="some-name"
-    ouiaSafe={true}
     type="text"
     widget-id="some-id"
   />
