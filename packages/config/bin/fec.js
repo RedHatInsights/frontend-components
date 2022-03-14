@@ -4,7 +4,8 @@ const static = require('@redhat-cloud-services/frontend-components-config-utilit
 const yargs = require('yargs');
 
 const devScript = require('../src/scripts/dev-script');
-const { logError } = require('../src/scripts/common')
+const buildScript = require('../src/scripts/build-script');
+const { logError } = require('../src/scripts/common');
 
 function patchHosts() {
     const command = `
@@ -48,13 +49,20 @@ const argv = yargs
         describe: 'Path to webpack config',
     })
 })
+.command('build', 'Build production bundle', (yargs) => {
+    yargs.positional('webpack-config', {
+        type: 'string',
+        describe: 'Path to webpack config',
+    })
+})
 .help()
 .argv;
 
 const scripts = {
     static,
     'patch-etc-hosts': patchHosts,
-    dev: devScript
+    dev: devScript,
+    build: buildScript
 };
 
 const args = [ argv, cwd ];
