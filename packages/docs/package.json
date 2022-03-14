@@ -12,8 +12,7 @@
     "generate:components": "node generators/docgen.js",
     "generate:components:docs": "npm run generate:components && node generators/docs-generator.js && npm run generate:navigation",
     "generate:watch": "concurrently \"npm run generate:components -- --watch\" \"node generators/docs-generator.js --watch\" \"npm run generate:navigation -- --watch\"",
-    "serve": "node server.js",
-    "typedoc": "typedoc"
+    "serve": "node server.js"
   },
   "dependencies": {
     "@patternfly/react-core": "4.192.0",

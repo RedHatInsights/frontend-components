@@ -85,13 +85,15 @@
 			{
 				"group": "CullingInfo",
 				"items": [
-					"CullingInformation"
+					"CullingInformation",
+					"utils"
 				]
 			},
 			{
 				"group": "Dark",
 				"items": [
-					"Dark"
+					"Dark",
+					"DarkContext"
 				]
 			},
 			{
@@ -124,6 +126,13 @@
 				"group": "FilterChips",
 				"items": [
 					"FilterChips"
+				]
+			},
+			{
+				"group": "FilterHooks",
+				"items": [
+					"constants",
+					"tagFilterHook"
 				]
 			},
 			{
@@ -222,6 +231,7 @@
 			{
 				"group": "Shield",
 				"items": [
+					"consts",
 					"Shield"
 				]
 			},
@@ -278,6 +288,7 @@
 				"group": "TreeTable",
 				"items": [
 					"decorator",
+					"helpers",
 					"rowWrapper"
 				]
 			},
@@ -308,6 +319,7 @@
 			{
 				"group": "useScreenSize",
 				"items": [
+					"breakpoints",
 					"getVariant",
 					"isSmallScreen",
 					"useScreenSize"
@@ -339,9 +351,33 @@
 		"packageName": "notifications",
 		"groups": [
 			{
+				"group": "actions",
+				"items": [
+					"action-types"
+				]
+			},
+			{
 				"group": "Notification",
 				"items": [
 					"Notification"
+				]
+			},
+			{
+				"group": "NotificationPortal",
+				"items": [
+					"NotificationPortal"
+				]
+			},
+			{
+				"group": "notificationsMiddleware",
+				"items": [
+					"notificationsMiddleware"
+				]
+			},
+			{
+				"group": "Portal",
+				"items": [
+					"Portal"
 				]
 			}
 		]
@@ -442,6 +478,17 @@
 		]
 	},
 	{
+		"packageName": "testing",
+		"groups": [
+			{
+				"group": "OuiaSelectors",
+				"items": [
+					"OuiaSelectors"
+				]
+			}
+		]
+	},
+	{
 		"packageName": "translations",
 		"groups": [
 			{
@@ -471,9 +518,27 @@
 				]
 			},
 			{
+				"group": "interceptors",
+				"items": [
+					"interceptors"
+				]
+			},
+			{
 				"group": "parseCvssScore",
 				"items": [
 					"parseCvssScore"
+				]
+			},
+			{
+				"group": "RBAC",
+				"items": [
+					"RBAC"
+				]
+			},
+			{
+				"group": "RBACHook",
+				"items": [
+					"RBACHook"
 				]
 			},
 			{
