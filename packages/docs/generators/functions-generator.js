@@ -1,7 +1,7 @@
 const jsdocParser = require('jsdoc3-parser');
 const path = require('path');
 const fse = require('fs-extra');
-const { exec } = require('child_process');
+const typedoc = require('typedoc');
 
 const tempTsConfigPath = path.resolve(__dirname, 'temp/@@name.config.json');
 const tsConfigPath = path.resolve(__dirname, 'temp/@@name.tsconfig.json');
@@ -84,12 +84,6 @@ async function parseTSFile(file) {
   const tempFile = path.resolve(__dirname, `./temp/${tempName}.json`);
   const fileTsConfigPath = tsConfigPath.replace('@@name', tempName);
   const fileTypedocConfigPath = tempTsConfigPath.replace('@@name', tempName);
-  fse.outputJSONSync(fileTypedocConfigPath, {
-    entryPoints: file,
-    json: tempFile,
-    tsconfig: fileTsConfigPath,
-    excludeExternals: true,
-  });
   fse.outputJSONSync(fileTsConfigPath, {
     extends: path.resolve(__dirname, '../../../tsconfig.json'),
     compilerOptions: {
@@ -99,34 +93,33 @@ async function parseTSFile(file) {
     },
     include: [file],
   });
-
-  return new Promise((resolve) => {
-    const execString = `npm run typedoc -- --options ${fileTypedocConfigPath}`;
-    exec(execString, (err) => {
-      if (err) {
-        console.log(err);
-        /**
-         * TODO: Once everything relevant is migrated to TS reject the promise
-         */
-        return resolve();
-      }
-
-      try {
-        const content = fse.readJSONSync(tempFile);
-        fse.removeSync(tempFile);
-        fse.removeSync(fileTsConfigPath);
-        fse.removeSync(fileTypedocConfigPath);
-        return resolve({
-          tsdoc: true,
-          items: createTsItems(content, tempName),
-          filename: tempName,
-        });
-      } catch (error) {
-        console.log(err);
-        return resolve();
-      }
-    });
+  const typedocApp = new typedoc.Application();
+  typedocApp.options.addReader(new typedoc.TSConfigReader());
+  typedocApp.options.addReader(new typedoc.TypeDocReader());
+  typedocApp.bootstrap({
+    entryPoints: file,
+    json: tempFile,
+    tsconfig: fileTsConfigPath,
+    excludeExternals: true,
   });
+  const project = typedocApp.convert();
+  try {
+    await typedocApp.generateJson(project, tempFile);
+    const content = fse.readJSONSync(tempFile);
+    fse.removeSync(tempFile);
+    fse.removeSync(fileTsConfigPath);
+    fse.removeSync(fileTypedocConfigPath);
+    return new Promise((resolve) =>
+      resolve({
+        tsdoc: true,
+        items: createTsItems(content, tempName),
+        filename: tempName,
+      })
+    );
+  } catch (error) {
+    console.log(error);
+    return new Promise((resolve) => resolve());
+  }
 }
 
 async function parseJSFile(file) {
