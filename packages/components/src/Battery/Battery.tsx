@@ -12,7 +12,7 @@ import './battery.scss';
  */
 export type BatterySeverity = 1 | 2 | 3 | 4 | 'info' | 'low' | 'warn' | 'medium' | 'error' | 'high' | 'critical';
 
-export interface BatteryProps {
+export interface BatteryProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
   severity: BatterySeverity;
   label: string;
   labelHidden?: boolean;

@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 export type ExcludeModulesKeys = 'appName' | 'module' | 'scope';
 
-export interface AsyncComponentProps {
+export interface AsyncComponentProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
   /** Name of the app from which module will be loaded. */
   appName: string;
   /** Loaded module, it has to start with `./`. */
@@ -14,8 +14,6 @@ export interface AsyncComponentProps {
   scope?: string;
   /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
   fallback: React.ReactNode;
-  /** Optional classname applied to wrapper component */
-  className: string;
   /** Optional wrapper component */
   component: keyof JSX.IntrinsicElements;
   /** Other props passed to the AsyncComponent */

@@ -3,9 +3,8 @@ import classNames from 'classnames';
 
 import './section.scss';
 
-export interface SectionProps {
+export interface SectionProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
   type?: string;
-  className?: string;
 }
 
 const Section: React.FunctionComponent<SectionProps> = ({ type, children, className, ...props }) => {
