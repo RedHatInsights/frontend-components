@@ -14,7 +14,10 @@
   "title": "Cloud services config",
   "href": "/csc"
 },{
-  "title": "Frontend component documentation",
+  "title": "Frontend components config",
+  "href": "/frontend-components-config"
+},{
+  "title": "Frontend components documentation",
   "href": "/fec"
 },{
   "title": "Module federation",
