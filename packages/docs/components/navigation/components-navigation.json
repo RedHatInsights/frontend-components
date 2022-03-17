@@ -194,6 +194,14 @@
 				]
 			},
 			{
+				"group": "Ouia",
+				"items": [
+					"Ouia",
+					"useOuia",
+					"WithOuia"
+				]
+			},
+			{
 				"group": "PageHeader",
 				"items": [
 					"PageHeader",
