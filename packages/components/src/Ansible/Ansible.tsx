@@ -4,12 +4,11 @@ import classNames from 'classnames';
 
 import './ansible.scss';
 
-export interface AnsibleProps {
+export interface AnsibleProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
   /**
    * Description that will generate MD docs file
    */
   unsupported?: boolean | number;
-  className?: string;
 }
 
 /**
