@@ -3,11 +3,11 @@ const fs = require('fs');
 const concurrently = require('concurrently');
 
 function federate(argv, cwd) {
-  let configPath = argv.config;
+  let configPath = argv.config || './node_modules/@redhat-cloud-services/frontend-components-config/src/scripts/prod.webpack.config.js';
   const WEBPACK_PATH = path.resolve(cwd, './node_modules/.bin/webpack');
   const HTTP_SERVER_PATH = path.resolve(cwd, './node_modules/.bin/http-server');
   if (typeof configPath !== 'string') {
-    console.error('Missing webpack config path');
+    console.error('Invalid webpack config path!');
     process.exit(1);
   }
 
