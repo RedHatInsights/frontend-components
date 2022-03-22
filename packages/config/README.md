@@ -374,7 +374,7 @@ index f7513bb..d8c9008 100644
      "prod": "NODE_ENV=production webpack serve --config config/dev.webpack.config.js",
      "server:ctr": "node src/server/generateServerKey.js",
      "start": "NODE_ENV=development webpack serve --config config/dev.webpack.config.js",
-+    "start:federated": "fec static --config config/dev.webpack.config.js",
++    "start:federated": "fec static",
      "start:proxy": "PROXY=true NODE_ENV=development webpack serve --config config/dev.webpack.config.js",
      "travis:build": "NODE_ENV=production webpack --config config/prod.webpack.config.js",
      "travis:verify": "npm-run-all travis:build lint test",
