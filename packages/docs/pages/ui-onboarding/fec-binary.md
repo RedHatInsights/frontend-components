@@ -6,8 +6,8 @@ The frontend components config package comes with tools to help you run and mane
 
 - dev
 - patch-etc-hosts
-- static (beta)
-- build (in the future)
+- static
+- build
 
 ## Configuration
 
@@ -15,7 +15,6 @@ FEC binary is configured via a configuration file. Make sure the root of your pr
 
 ```hs
 project
-  |
   |- fec.config.js
 ```
 
@@ -35,7 +34,7 @@ module.exports = {
 
 This binary configures your `/etc/hosts` file with new addresses for your localhost. You have to run this script only once on your machine.
 
-<Alert variant="info" title="You may have to run this script as sudo" />
+<Alert className="pf-u-mt-md" variant="info" title="You may have to run this script as sudo" />
 
 ### Via terminal in your project
 
@@ -46,7 +45,7 @@ This binary configures your `/etc/hosts` file with new addresses for your localh
 
 ### Via npm script in project package.json
 
-```JSON
+```js
 {
     "patch-hosts": "fec patch-etc-hosts"
 }
@@ -55,33 +54,58 @@ This binary configures your `/etc/hosts` file with new addresses for your localh
 ## `dev`
 The dev command is used to run the development server. In your `package.json` add the following script.
 
-```JSON
+```js
 {
     "scripts": "fec dev"
 }
 ```
 
-If you want to use custom webpack config, pass the `--webpackConfig` flag.
+If you want to use a custom webpack config, pass the `--webpackConfig` flag.
 
-```JSON
+```js
 {
     "scripts": "fec dev --webpack-config /path/to/config"
 }
 
 ```
 
-## `static(beta)`
+## `build`
 
-A script to host the build assets. This can be used as a replacement for webpack-dev-server if you only need the assets but not the proxy or other webpack-dev-server features. Its useful when you need to run more than one applications locally.
+A build command to produce production output.
 
-It has two require parameters:
-
-* -c: path to webpack config
-* -p: port on which the assets will be hosted
-
-```JSON
+```js
 {
-    "serve-asstes": "fec static -c /path/to/webpack-config -p 8003"
+    "script": "fec build"
+}
+```
+
+If you want to use a custom webpack config, pass the `--webpackConfig` flag.
+
+```js
+{
+    "scripts": "fec build --webpack-config /path/to/config"
+}
+
+```
+
+## `static`
+
+A script to host the build assets. It can be used as a replacement for webpack-dev-server if you only need the static assets but not the proxy or other webpack-dev-server features. It's useful when you need to run more than one application locally.
+
+It has two optional parameters:
+
+### `-c, --config`
+
+Path to webpack config. Defaults to FEC default production config
+
+### `-p, --port`
+
+The port of the asset server. Defaults to `8003`.
+
+```js
+{
+    "serve-asstes": "fec static", // use default production webpack config
+    "serve-asstes": "fec static -c /path/to/webpack-config -p 8888" // with parameters
 }
 
 ```
