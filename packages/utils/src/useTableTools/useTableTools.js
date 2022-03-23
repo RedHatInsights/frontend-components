@@ -8,7 +8,7 @@ import { useFilterConfigWithItems } from '../useFilterConfig';
 import { usePaginateWithItems } from '../usePaginate';
 import { useTableSortWithItems } from '../useTableSort';
 import useColumnManager from '../useColumnManager';
-import { withDedidicatedAction } from '../helpers';
+import { withDedidicatedAction } from './helpers';
 import rowsBuilder from './rowsBuilder';
 
 /**
