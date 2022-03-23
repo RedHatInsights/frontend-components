@@ -24,7 +24,7 @@ const useColumnManager = (columns = [], options = {}) => {
     setIsManagerOpen(false);
   };
 
-  return enableColumnManager && managableColumns.length !== 0
+  return managableColumns?.length !== 0
     ? {
         columns: filterColumnsBySelected(managableColumns, selectedColumns, selectProp),
         columnManagerAction: {
