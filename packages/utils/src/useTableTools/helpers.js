@@ -1,3 +1,4 @@
+import React from 'react';
 import { uniq } from '../helpers/';
 
 export const filterSelected = (items, selectedIds = []) => items.filter((item) => selectedIds.includes(item.itemId));
@@ -33,4 +34,22 @@ export const toToolbarActions = ({ actions: actionsOption = [] }) => {
       },
     },
   };
+};
+
+export const withDedidicatedAction = (options) => {
+  const enableDedicatedAction = !!options.dedicatedAction;
+  const { dedicatedAction: DedicatedActionOption, AdditionalDedicatedActions, selected } = options;
+
+  return enableDedicatedAction
+    ? {
+        toolbarProps: {
+          dedicatedAction: (
+            <div>
+              {DedicatedActionOption && <DedicatedActionOption {...(selected && { selected })} />}
+              {AdditionalDedicatedActions && <AdditionalDedicatedActions {...(selected && { selected })} />}
+            </div>
+          ),
+        },
+      }
+    : {};
 };

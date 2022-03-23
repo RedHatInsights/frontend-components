@@ -7,8 +7,8 @@ import { useExportWithItems } from '../useExport';
 import { useFilterConfigWithItems } from '../useFilterConfig';
 import { usePaginateWithItems } from '../usePaginate';
 import { useTableSortWithItems } from '../useTableSort';
-import useDedicatedAction from '../useDedicatedAction';
 import useColumnManager from '../useColumnManager';
+import { withDedidicatedAction } from '../helpers';
 import rowsBuilder from './rowsBuilder';
 
 /**
@@ -56,7 +56,7 @@ const useTableTools = (items = [], columns = [], options = {}) => {
     setPage,
   });
 
-  const { toolbarProps: dedicatedActionToolbarProps } = useDedicatedAction({
+  const { toolbarProps: dedicatedActionToolbarProps } = withDedidicatedAction({
     ...options,
     selected: selectedItems,
   });
