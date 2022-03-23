@@ -31,7 +31,7 @@ const checkboxType = {
       name: configItem.items.find((item) => item.value === chipValue).label,
     })),
   }),
-  toSelectValue: (configItem, _, selectedValue) => [selectedValue, stringToId(configItem.label)],
+  toSelectValue: (configItem, selectedValues) => [selectedValues, stringToId(configItem.label), true],
   toDeselectValue: (configItem, chip) => [configItemItemByLabel(configItem, chip.chips[0].name).value, stringToId(configItem.label)],
 };
 
