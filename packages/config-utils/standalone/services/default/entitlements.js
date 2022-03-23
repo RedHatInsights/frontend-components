@@ -20,6 +20,7 @@ module.exports = ({ env }) => ({
     },
     register({ app, config }) {
       app.get('/api/entitlements/v1/services', (_req, res) => {
+        try {
           const configPath = path.join(config.entitlements.assets['entitlements-config'], '/configs/stage/bundles.yml');
           // Use { json: true } in case of duplicate keys
           const outerYaml = yaml.load(fs.readFileSync(configPath, 'utf8'), { json: true });
@@ -31,6 +32,9 @@ module.exports = ({ env }) => ({
               return acc;
           }, {});
           res.json(entitlements);
+        } catch (error) {
+          res.status(500).json({ error });
+        }
       });
     }
 });
