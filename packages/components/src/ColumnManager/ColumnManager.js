@@ -5,9 +5,11 @@ import { Button, DataList, Modal } from '@patternfly/react-core';
 import { isSelectedColumn, columnShape } from './helpers';
 import ListItem from './ListItem';
 import ModalDescription from './ModalDescrption';
+import { DEFAULT_MODAL_TITLE, DEFAULT_MODAL_DESCRIPTION } from './constants';
 
 const ColumnManager = ({
-  title = 'Manage columns',
+  title = DEFAULT_MODAL_TITLE,
+  description = DEFAULT_MODAL_DESCRIPTION,
   isOpen,
   columns,
   saveLabel = 'Save',
@@ -47,7 +49,7 @@ const ColumnManager = ({
       isOpen={isOpen}
       variant="small"
       onClose={onClose}
-      description={<ModalDescription selectAllColumns={selectAllColumns} selectAllLabel={selectAllLabel} />}
+      description={<ModalDescription description={description} selectAllColumns={selectAllColumns} selectAllLabel={selectAllLabel} />}
       actions={[
         <Button key="save" variant="primary" onClick={onSave}>
           {saveLabel}
@@ -76,6 +78,7 @@ const ColumnManager = ({
 
 ColumnManager.propTypes = {
   title: propTypes.string,
+  description: propTypes.node,
   columns: propTypes.arrayOf(columnShape),
   selectedColumns: propTypes.array,
   isOpen: propTypes.bool,

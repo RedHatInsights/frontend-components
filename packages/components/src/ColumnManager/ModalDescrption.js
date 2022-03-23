@@ -2,9 +2,9 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { Button, Text, TextContent, TextVariants } from '@patternfly/react-core';
 
-const ModalDescription = ({ selectAllColumns, selectAllLabel }) => (
+const ModalDescription = ({ description, selectAllColumns, selectAllLabel }) => (
   <TextContent>
-    <Text component={TextVariants.p}>Selected categories will be displayed in the table.</Text>
+    {description}
     <Button isInline onClick={selectAllColumns} variant="link">
       {selectAllLabel}
     </Button>

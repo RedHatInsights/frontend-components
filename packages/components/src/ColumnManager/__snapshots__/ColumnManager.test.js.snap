@@ -25,6 +25,13 @@ exports[`ColumnManager expect to render with all column checkboxes disabled 1`] 
   className=""
   description={
     <ModalDescription
+      description={
+        <Text
+          component="p"
+        >
+          Selected categories will be displayed in the table.
+        </Text>
+      }
       selectAllColumns={[Function]}
       selectAllLabel="Select All"
     />
@@ -132,6 +139,13 @@ exports[`ColumnManager expect to render with custom action labels 1`] = `
   className=""
   description={
     <ModalDescription
+      description={
+        <Text
+          component="p"
+        >
+          Selected categories will be displayed in the table.
+        </Text>
+      }
       selectAllColumns={[Function]}
       selectAllLabel="SELECT EM ALL"
     />
@@ -234,6 +248,13 @@ exports[`ColumnManager expect to render with custom title 1`] = `
   className=""
   description={
     <ModalDescription
+      description={
+        <Text
+          component="p"
+        >
+          Selected categories will be displayed in the table.
+        </Text>
+      }
       selectAllColumns={[Function]}
       selectAllLabel="Select All"
     />
@@ -336,6 +357,13 @@ exports[`ColumnManager expect to render without error and all columns 1`] = `
   className=""
   description={
     <ModalDescription
+      description={
+        <Text
+          component="p"
+        >
+          Selected categories will be displayed in the table.
+        </Text>
+      }
       selectAllColumns={[Function]}
       selectAllLabel="Select All"
     />
@@ -438,6 +466,13 @@ exports[`ColumnManager expect to render without error and only columns with key 
   className=""
   description={
     <ModalDescription
+      description={
+        <Text
+          component="p"
+        >
+          Selected categories will be displayed in the table.
+        </Text>
+      }
       selectAllColumns={[Function]}
       selectAllLabel="Select All"
     />
