@@ -1,4 +1,5 @@
-import { callCallback, filename, linkAndDownload, csvForItems, jsonForItems, exportableColumns } from './helpers';
+import { downloadFile } from '../helpers';
+import { filename, csvForItems, jsonForItems, exportableColumns } from './helpers';
 
 /**
  * Provides an `exportConfig` prop for a (Primary)Toolbar action
@@ -14,18 +15,18 @@ import { callCallback, filename, linkAndDownload, csvForItems, jsonForItems, exp
 const useExport = ({ exporter, columns = [], isDisabled = false, onStart, onComplete, onError }) => {
   const exportColumns = exportableColumns(columns);
   const exportWithFormat = async (format) => {
-    callCallback(onStart);
+    onStart?.();
     const items = await exporter()
       .then((items) => {
-        callCallback(onComplete, items);
+        onComplete?.(items);
         return items;
       })
-      .catch((error) => callCallback(onError, error));
+      .catch((error) => onError?.(error));
 
     const formater = format === 'csv' ? csvForItems : jsonForItems;
 
     if (items) {
-      return linkAndDownload(
+      return downloadFile(
         formater({
           items,
           columns: exportColumns,

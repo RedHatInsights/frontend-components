@@ -1,6 +1,5 @@
 import get from 'lodash/get';
 import camelCase from 'lodash/camelCase';
-
 const CSV_FILE_PREFIX = 'compliance-export';
 const CSV_DELIMITER = ',';
 const ENCODINGS = {
@@ -11,13 +10,6 @@ const ENCODINGS = {
 export const filename = (format) => CSV_FILE_PREFIX + '-' + new Date().toISOString() + '.' + format;
 
 const encoding = (format) => `data:${ENCODINGS[format]};charset=utf-8`;
-
-export const linkAndDownload = (data, filename) => {
-  const link = document.createElement('a');
-  link.href = data;
-  link.download = filename;
-  link.click();
-};
 
 const textForCell = (row, column) => {
   const { exportKey, renderExport } = column;
@@ -49,7 +41,5 @@ export const jsonForItems = ({ items, columns }) => {
 
   return encodeURI(`${encoding('json')},${JSON.stringify(result)}`);
 };
-
-export const callCallback = (callback, ...args) => callback && callback(...args);
 
 export const exportableColumns = (columns) => columns.filter((column) => column.export !== false && (column.exportKey || column.renderExport));
