@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-config",
-    "version": "4.6.5",
+    "version": "4.6.6",
     "description": "Config plugins and settings for RedHat Cloud Services project.",
     "main": "index.js",
     "bin": {
@@ -20,7 +20,7 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/config#readme",
     "dependencies": {
-        "@redhat-cloud-services/frontend-components-config-utilities": "^1.5.16",
+        "@redhat-cloud-services/frontend-components-config-utilities": "^1.5.17",
         "assert": "^2.0.0",
         "axios": "^0.25.0",
         "babel-loader": "^8.2.2",
