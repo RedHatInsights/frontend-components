@@ -17,7 +17,7 @@ const useFilterConfig = (options = {}) => {
 
   const onFilterDelete = async (_event, chips, clearAll = false) => {
     clearAll ? (resetOnClear ? reset() : clear()) : deselect(...toDeselectValue(filterConfig, chips[0], activeFilters));
-    onDeleteFilter && onDeleteFilter(chips, clearAll);
+    onDeleteFilter?.(chips, clearAll);
   };
 
   return enableFilters
