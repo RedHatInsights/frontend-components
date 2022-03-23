@@ -20,9 +20,10 @@ module.exports = ({ env }) => ({
     },
     register({ app, config }) {
       app.get('/api/entitlements/v1/services', (_req, res) => {
-          const configPath = path.join(config.entitlements.assets['entitlements-config'], '/configs/bundles.yml');
+          const configPath = path.join(config.entitlements.assets['entitlements-config'], '/configs/stage/bundles.yml');
           // Use { json: true } in case of duplicate keys
-          const serviceSKUs = yaml.load(fs.readFileSync(configPath, 'utf8'), { json: true });
+          const outerYaml = yaml.load(fs.readFileSync(configPath, 'utf8'), { json: true });
+          const serviceSKUs = yaml.load(outerYaml.objects[0].data['bundles.yml'], { json: true });
           const services = serviceSKUs.map(serviceSKU => serviceSKU.name);
           // Grant access to all services
           const entitlements = services.reduce((acc, cur) => {
