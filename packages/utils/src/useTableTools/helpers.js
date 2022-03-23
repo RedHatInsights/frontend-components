@@ -1,5 +1,5 @@
 import React from 'react';
-import { uniq } from '../helpers/';
+import uniq from 'lodash/uniq';
 
 export const filterSelected = (items, selectedIds = []) => items.filter((item) => selectedIds.includes(item.itemId));
 

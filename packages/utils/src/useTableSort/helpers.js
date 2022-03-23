@@ -1,5 +1,5 @@
 import { sortable } from '@patternfly/react-table';
-import { uniq } from '../helpers';
+import uniq from 'lodash/uniq';
 
 const isSortable = (column) => column.sortByProp || column.sortByFunction;
 

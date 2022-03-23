@@ -72,10 +72,6 @@ export const generateFilter = (data: FilterData, path = 'filter', options?: { ar
 
 export const toUpperCase = (text = '') => `${text.charAt(0).toUpperCase()}${text.slice(1)}`;
 
-export const uniq = (collection) => [...new Set(collection)];
-
-export const mergeArraysUniqly = (arrayA, arrayB) => uniq([...arrayA, ...arrayB]);
-
 const getIdProp = (item, idProp = 'id') => item[idProp];
 
 const identify = (item, identifier) => {

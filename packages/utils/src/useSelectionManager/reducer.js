@@ -1,5 +1,5 @@
 import isObject from 'lodash/isObject';
-import { mergeArraysUniqly } from '../helpers';
+import uniq from 'lodash/uniq';
 
 const selectionGroup = (action) => action.group || 'default';
 
@@ -7,8 +7,8 @@ export const init = (withGroups) => (preselected) => withGroups ? preselected ||
 
 const cleanEmpty = (state) => {
   const newState = state;
-  Object.keys(state).forEach((key) => {
-    if (newState[key] === undefined) {
+  Object.entries(state).forEach(([key, value]) => {
+    if (value === undefined) {
       delete newState[key];
     }
   });
@@ -26,10 +26,9 @@ const set = (state = {}, action) => {
 
 const select = (state = {}, action) => {
   const group = selectionGroup(action);
-
   return cleanEmpty({
     ...state,
-    [group]: action.reset ? action?.items : mergeArraysUniqly([action?.item], state[group] || []),
+    [group]: action.reset ? action?.items : uniq([action?.item, ...(state[group] || [])]),
   });
 };
 

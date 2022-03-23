@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { mergeArraysUniqly } from '../helpers/';
+import uniq from 'lodash/uniq';
 import { compileTitle, checkboxState, selectOrUnselect, checkCurrentPageSelected } from './helpers';
 
 /**
@@ -33,7 +33,7 @@ const useBulkSelect = ({ total, onSelect, preselected, itemIdsInTable, itemIdsOn
     onSelect?.(newSelectedItemsIds);
   };
 
-  const selectItems = (itemIds) => mergeArraysUniqly(selectedIds, itemIds);
+  const selectItems = (itemIds) => uniq([...selectedIds, ...itemIds]);
 
   const unselectItems = (itemIds) => selectedIds.filter((itemId) => !itemIds.includes(itemId));
 
@@ -45,7 +45,7 @@ const useBulkSelect = ({ total, onSelect, preselected, itemIdsInTable, itemIdsOn
   const selectPage = () =>
     onSelectCallback(() => {
       const currentPageIds = itemIdsOnPage();
-      const currentPageSelected = mergeArraysUniqly(selectedIds, currentPageIds).length === selectedIds.length;
+      const currentPageSelected = uniq([...selectedIds, ...currentPageIds]).length === selectedIds.length;
 
       return currentPageSelected ? unselectItems(currentPageIds) : selectItems(currentPageIds);
     });
