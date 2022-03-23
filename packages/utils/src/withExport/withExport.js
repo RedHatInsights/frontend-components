@@ -12,7 +12,7 @@ import { filename, csvForItems, jsonForItems, exportableColumns } from './helper
  * @param {Function} [onError] Function to call when there was an error exporting
  *
  */
-const useExport = ({ exporter, columns = [], isDisabled = false, onStart, onComplete, onError }) => {
+const withExport = ({ exporter, columns = [], isDisabled = false, onStart, onComplete, onError }) => {
   const exportColumns = exportableColumns(columns);
   const exportWithFormat = async (format) => {
     onStart?.();
@@ -49,4 +49,4 @@ const useExport = ({ exporter, columns = [], isDisabled = false, onStart, onComp
   };
 };
 
-export default useExport;
+export default withExport;

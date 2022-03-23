@@ -1,10 +1,10 @@
-import useExport from './useExport';
+import withExport from './withExport';
 
-export const useExportWithItems = (items, columns, options = {}) => {
+export const withExportWithItems = (items, columns, options = {}) => {
   const exportEnabled = options?.exportable;
   const { columns: exportColumns, onStart, onComplete } = typeof options.exportable === 'object' ? options.exportable : {};
 
-  const exportProps = useExport({
+  const exportProps = withExport({
     exporter: () => Promise.resolve(items),
     isDisabled: items.length === 0,
     columns: exportColumns,
@@ -15,4 +15,4 @@ export const useExportWithItems = (items, columns, options = {}) => {
   return exportEnabled ? exportProps : {};
 };
 
-export default useExportWithItems;
+export default withExportWithItems;

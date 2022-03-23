@@ -1,11 +1,11 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import columns from '../__fixtures__/columns';
 import items from '../__fixtures__/items';
-import useExport from './useExport';
+import withExport from './withExport';
 
 const exampleItems = items(25);
 
-describe('useExport', () => {
+describe('withExport', () => {
   const exporter = jest.fn(() => Promise.resolve(exampleItems));
   const defaultOptions = {
     exporter,
@@ -13,14 +13,14 @@ describe('useExport', () => {
   };
 
   it('returns an export config toolbar config', () => {
-    const { result } = renderHook(() => useExport(defaultOptions));
+    const { result } = renderHook(() => withExport(defaultOptions));
     expect(result.current.toolbarProps.exportConfig).toBeDefined();
     expect(result).toMatchSnapshot();
   });
 
   it('returns an export config toolbar config', () => {
     const { result } = renderHook(() =>
-      useExport({
+      withExport({
         ...defaultOptions,
         isDisabled: true,
       })
@@ -29,7 +29,7 @@ describe('useExport', () => {
   });
 
   it('calls the exporter via onSelect', () => {
-    const { result } = renderHook(() => useExport(defaultOptions));
+    const { result } = renderHook(() => withExport(defaultOptions));
 
     act(() => {
       result.current.toolbarProps.exportConfig.onSelect(null, 'csv');

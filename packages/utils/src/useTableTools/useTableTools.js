@@ -3,7 +3,7 @@ import { identifyItems } from '../helpers';
 import { toToolbarActions } from './helpers';
 import { useBulkSelectWithItems } from '../useBulkSelect';
 import { useExpandableWithItems } from '../useExpandable';
-import { useExportWithItems } from '../useExport';
+import { withExportWithItems } from '../withExport';
 import { useFilterConfigWithItems } from '../useFilterConfig';
 import { usePaginateWithItems } from '../usePaginate';
 import { useTableSortWithItems } from '../useTableSort';
@@ -66,7 +66,7 @@ const useTableTools = (items = [], columns = [], options = {}) => {
     return sorter ? sorter(filtered) : filtered;
   };
 
-  const { toolbarProps: exportToolbarProps } = useExportWithItems(
+  const { toolbarProps: exportToolbarProps } = withExporwiththItems(
     filteredAndSortedItems(selectedItems?.length > 0 ? selectedItems : items, filter, sorter),
     managedColumns,
     options

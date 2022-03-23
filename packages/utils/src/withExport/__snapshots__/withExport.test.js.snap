@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`useExport returns an export config toolbar config 1`] = `
+exports[`withExport returns an export config toolbar config 1`] = `
 Object {
   "all": Array [
     Object {
