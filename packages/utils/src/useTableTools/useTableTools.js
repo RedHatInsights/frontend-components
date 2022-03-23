@@ -66,7 +66,7 @@ const useTableTools = (items = [], columns = [], options = {}) => {
     return sorter ? sorter(filtered) : filtered;
   };
 
-  const { toolbarProps: exportToolbarProps } = withExporwiththItems(
+  const { toolbarProps: exportToolbarProps } = withExportWithItems(
     filteredAndSortedItems(selectedItems?.length > 0 ? selectedItems : items, filter, sorter),
     managedColumns,
     options
