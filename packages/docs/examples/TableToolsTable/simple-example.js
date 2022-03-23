@@ -1,7 +1,5 @@
 import React from 'react';
-import useTableTools from '@redhat-cloud-services/frontend-components-utilities/useTableTools';
-import { Table, TableBody, TableHeader } from '@patternfly/react-table';
-import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import TableToolsTable from '@redhat-cloud-services/frontend-components/TableToolsTable';
 
 const TableToolsExample = () => {
   const items = [
@@ -33,18 +31,8 @@ const TableToolsExample = () => {
       },
     ],
   };
-  const { toolbarProps, tableProps } = useTableTools(items, columns, { filters });
 
-  return (
-    <>
-      <PrimaryToolbar {...toolbarProps} />
-
-      <Table {...tableProps}>
-        <TableHeader />
-        <TableBody />
-      </Table>
-    </>
-  );
+  return <TableToolsTable items={items} columns={columns} filters={filters} />;
 };
 
 export default TableToolsExample;

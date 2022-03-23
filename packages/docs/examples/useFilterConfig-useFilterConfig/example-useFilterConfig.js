@@ -1,8 +1,6 @@
 import React from 'react';
-// import useFilterConfig from '@redhat-cloud-services/frontend-components-utilities/useFilterConfig';
-// import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
-const PrimaryToolbar = () => '';
-const useFilterConfig = () => ({ toolbarProps: {}, tableProps: {} });
+import useFilterConfig from '@redhat-cloud-services/frontend-components-utilities/useFilterConfig';
+import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 
 const exampleFilters = [
   {
