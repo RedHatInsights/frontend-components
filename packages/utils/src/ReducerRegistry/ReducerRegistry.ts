@@ -36,7 +36,7 @@ declare global {
 export class ReducerRegistry {
   store: any;
   reducers: Record<string, never>;
-  constructor(initState = {}, middlewares = [], composeEnhancersDefault = compose) {
+  constructor(initState = {} as unknown as any, middlewares = [], composeEnhancersDefault = compose) {
     const composeEnhancers =
       (typeof window !== 'undefined' && (window.REDUX_DEVTOOLS_EXTENSION_COMPOSE as typeof compose)) || composeEnhancersDefault;
     this.store = createStore((state = initState) => state, initState, composeEnhancers(applyMiddleware(...middlewares)));
@@ -57,7 +57,7 @@ export class ReducerRegistry {
     this.store.replaceReducer(combineReducers({ ...this.reducers }));
     return () => {
       this.reducers = Object.entries(this.reducers)
-        .filter((reducer) => !Object.keys(newReducers).includes(reducer))
+        .filter((reducer) => !Object.keys(newReducers).includes(reducer as unknown as any))
         .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
       this.store.replaceReducer(combineReducers({ ...this.reducers }));
     };
