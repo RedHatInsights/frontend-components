@@ -19,10 +19,12 @@ describe('useBulkSelect', () => {
     const { result } = renderHook(() =>
       useBulkSelect({
         ...defaultOptions,
-        total: 1,
+        total: 2,
         preselected: ['ID'],
-        itemIdsInTable: () => ['ID'],
-        itemIdsOnPage: () => ['ID'],
+        itemIdsInTable: () => {
+          return ['ID', 'ID1'];
+        },
+        itemIdsOnPage: () => ['ID', 'ID1'],
       })
     );
 

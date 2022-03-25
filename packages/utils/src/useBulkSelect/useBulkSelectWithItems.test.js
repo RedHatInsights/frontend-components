@@ -24,12 +24,12 @@ describe('useBulkSelectWithItems', () => {
 
   it('returns a allows to select one', async () => {
     const item = exampleItems[5];
-    const { result, waitForNextUpdate } = renderHook(() => useBulkSelectWithItems(defaultOptions));
+    const { result } = renderHook(() => useBulkSelectWithItems(defaultOptions));
 
     act(() => {
-      result.current.tableProps.onSelect(undefined, true, 'key', item);
+      result.current.tableProps.onSelect(undefined, true, 'itemId', item);
     });
-    await waitForNextUpdate();
+
     expect(result.current.transformer(item)).toMatchSnapshot();
   });
 
@@ -52,40 +52,19 @@ describe('useBulkSelectWithItems', () => {
   });
 
   it('returns a allows to select/deselect page', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useBulkSelectWithItems(defaultOptions));
+    const { result } = renderHook(() => useBulkSelectWithItems(defaultOptions));
     expect(getBulkSelect(result)).toMatchSnapshot();
 
     act(() => {
       getSelectPage(result).onClick();
     });
 
-    await waitForNextUpdate();
     expect(getBulkSelect(result)).toMatchSnapshot();
 
     act(() => {
       getSelectPage(result).onClick();
     });
 
-    await waitForNextUpdate();
-    expect(getBulkSelect(result)).toMatchSnapshot();
-  });
-
-  it('returns to select none after all selected', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useBulkSelectWithItems(defaultOptions));
-    expect(getBulkSelect(result)).toMatchSnapshot();
-
-    act(() => {
-      getSelectAll(result).onClick();
-    });
-
-    await waitForNextUpdate();
-    expect(getBulkSelect(result)).toMatchSnapshot();
-
-    act(() => {
-      getSelectNone(result).onClick();
-    });
-
-    await waitForNextUpdate();
     expect(getBulkSelect(result)).toMatchSnapshot();
   });
 

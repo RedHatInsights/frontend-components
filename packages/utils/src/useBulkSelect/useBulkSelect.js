@@ -1,66 +1,51 @@
-import { useEffect, useState } from 'react';
-import uniq from 'lodash/uniq';
+import { useEffect } from 'react';
+import useSelectionManager from '../useSelectionManager';
 import { compileTitle, checkboxState, selectOrUnselect, checkCurrentPageSelected } from './helpers';
 
 /**
  * Provides properties for a Pattternfly (based) Table and Toolbar component to implement bulk selection
  *
- * @param {number} total Number to show as total count
- * @param {Function} onSelect function to call when a selection is made
- * @param {Array} preselected Array of itemIds selected when initialising
- * @param {Function} itemIdsInTable async function that returns an array of all item ids
- * @param {Function} itemIdsOnPage async function that returns an array of item ids visible on the page
+ * @param {number} [total] Number to show as total count
+ * @param {Function} [onSelect] function to call when a selection is made
+ * @param {Array} [preselected] Array of itemIds selected when initialising
+ * @param {Function} [itemIdsInTable] async function that returns an array of all item ids
+ * @param {Function} [itemIdsOnPage] async function that returns an array of item ids visible on the page
  * @param {string} [identifies] Prop of the row containing the item ID
- * @return {{ selectedIds: array, selectNone: Function }}
+ * @returns {{ selectedIds , selectNone, tableProps }}
  */
-const useBulkSelect = ({ total, onSelect, preselected, itemIdsInTable, itemIdsOnPage, identifier = 'id' }) => {
+const useBulkSelect = ({ total = 0, onSelect, preselected, itemIdsInTable, itemIdsOnPage, identifier = 'id' }) => {
   const enableBulkSelect = !!onSelect;
-  // TODO use SelectionManager here.
-  const [selectedIds, setSelectedItemIds] = useState(preselected || []);
+  const { selection: selectedIds, set, select, deselect, clear } = useSelectionManager(preselected);
   const selectedIdsTotal = (selectedIds || []).length;
-  const paginatedTotal = itemIdsOnPage().length;
+  const idsOnPage = itemIdsOnPage();
+  const paginatedTotal = idsOnPage.length || total;
   const allSelected = selectedIdsTotal === total;
   const noneSelected = selectedIdsTotal === 0;
-  const currentPageSelected = checkCurrentPageSelected(itemIdsOnPage(), selectedIds || []);
+  const currentPageSelected = checkCurrentPageSelected(idsOnPage, selectedIds);
 
   const isDisabled = total === 0;
   const checked = checkboxState(selectedIdsTotal, total);
   const title = compileTitle(selectedIdsTotal);
 
-  const onSelectCallback = async (func) => {
-    const newSelectedItemsIds = await func();
-    setSelectedItemIds(newSelectedItemsIds);
-    onSelect?.(newSelectedItemsIds);
+  const selectOne = (_, selected, _key, row) => (selected ? select(row[identifier]) : deselect(row[identifier]));
+  const selectPage = () => (currentPageSelected ? select(idsOnPage) : deselect(idsOnPage));
+  const selectAll = async () => {
+    const items = await itemIdsInTable();
+    if (allSelected) {
+      clear();
+    } else {
+      set(items);
+    }
   };
 
-  const selectItems = (itemIds) => uniq([...selectedIds, ...itemIds]);
-
-  const unselectItems = (itemIds) => selectedIds.filter((itemId) => !itemIds.includes(itemId));
-
-  const unselectAll = () => [];
-  const selectNone = () => onSelectCallback(unselectAll);
-  const selectOne = (_, selected, key, row) =>
-    onSelectCallback(() => (selected ? selectItems([row?.[identifier]]) : unselectItems([row?.[identifier]])));
-
-  const selectPage = () =>
-    onSelectCallback(() => {
-      const currentPageIds = itemIdsOnPage();
-      const currentPageSelected = uniq([...selectedIds, ...currentPageIds]).length === selectedIds.length;
-
-      return currentPageSelected ? unselectItems(currentPageIds) : selectItems(currentPageIds);
-    });
-
-  const selectAll = () => onSelectCallback(async () => (allSelected ? unselectAll() : selectItems(await itemIdsInTable())));
-
-  // TODO This useEffect to update the selected items should not be necessary
   useEffect(() => {
-    setSelectedItemIds(preselected);
-  }, [preselected]);
+    set(preselected);
+  }, [JSON.stringify(preselected)]);
 
   return enableBulkSelect
     ? {
         selectedIds,
-        selectNone,
+        selectNone: () => clear(),
         tableProps: {
           onSelect: total > 0 ? selectOne : undefined,
           canSelectAll: false,
@@ -72,19 +57,27 @@ const useBulkSelect = ({ total, onSelect, preselected, itemIdsInTable, itemIdsOn
             items: [
               {
                 title: 'Select none',
-                onClick: selectNone,
+                onClick: () => clear(),
                 props: {
                   isDisabled: noneSelected,
                 },
               },
-              {
-                title: `${selectOrUnselect(currentPageSelected)} page (${paginatedTotal} items)`,
-                onClick: selectPage,
-              },
-              {
-                title: `${selectOrUnselect(allSelected)} all (${total} items)`,
-                onClick: selectAll,
-              },
+              ...(itemIdsOnPage
+                ? [
+                    {
+                      title: `${selectOrUnselect(currentPageSelected)} page (${paginatedTotal} items)`,
+                      onClick: selectPage,
+                    },
+                  ]
+                : []),
+              ...(itemIdsInTable
+                ? [
+                    {
+                      title: `${selectOrUnselect(allSelected)} all (${total} items)`,
+                      onClick: selectAll,
+                    },
+                  ]
+                : []),
             ],
             checked,
             onSelect: !isDisabled ? selectPage : undefined,

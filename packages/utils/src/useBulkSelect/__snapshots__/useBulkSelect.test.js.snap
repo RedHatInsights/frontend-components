@@ -131,7 +131,7 @@ Object {
   },
   "toolbarProps": Object {
     "bulkSelect": Object {
-      "checked": true,
+      "checked": null,
       "isDisabled": false,
       "items": Array [
         Object {
@@ -143,11 +143,11 @@ Object {
         },
         Object {
           "onClick": [Function],
-          "title": "Unselect page (1 items)",
+          "title": "Select page (2 items)",
         },
         Object {
           "onClick": [Function],
-          "title": "Unselect all (1 items)",
+          "title": "Select all (2 items)",
         },
       ],
       "onSelect": [Function],

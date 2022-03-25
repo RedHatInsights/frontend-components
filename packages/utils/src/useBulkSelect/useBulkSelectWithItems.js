@@ -3,6 +3,13 @@ import { filterSelected } from '../useTableTools/helpers';
 import { selectItemTransformer, itemIds } from './helpers';
 import useBulkSelect from './useBulkSelect';
 
+/**
+ * Provides properties for a Pattternfly (based) Table and Toolbar component to implement bulk selection
+ *
+ * @param {Function} [onSelect] function to call when a selection is made
+ * @param {Array} [items] Array of items selected when initialising
+ *
+ */
 const useBulkSelectWithItems = ({ onSelect, items: propItems, filter, paginator, preselected, setPage }) => {
   const enableBulkSelect = !!onSelect;
   const items = propItems.map((item) => selectItemTransformer(item, preselected));
@@ -29,7 +36,7 @@ const useBulkSelectWithItems = ({ onSelect, items: propItems, filter, paginator,
     total: allCount,
     onSelect,
     preselected,
-    itemIdsInTable: () => (filtered ? itemIds(filteredItems) : itemIds(items)),
+    itemIdsInTable: async () => (filtered ? itemIds(filteredItems) : itemIds(items)),
     itemIdsOnPage: () => itemIds(paginatedItems),
     identifier: 'itemId',
   });
