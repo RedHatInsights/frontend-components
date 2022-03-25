@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 
-export function applyReducerHash(reducerHash: any, initialState: Record<string, unknown>) {
+export function applyReducerHash(reducerHash: any, initialState?: Record<string, unknown>) {
   return function (state = initialState, action: { type: PropertyKey }) {
     if (Object.prototype.hasOwnProperty.call(reducerHash, action.type)) {
       return reducerHash[action.type](state, action);
@@ -35,7 +35,7 @@ declare global {
 
 export class ReducerRegistry {
   store: any;
-  reducers: Record<string, never>;
+  reducers: Record<string, any>;
   constructor(initState = {} as unknown as any, middlewares = [], composeEnhancersDefault = compose) {
     const composeEnhancers =
       (typeof window !== 'undefined' && (window.REDUX_DEVTOOLS_EXTENSION_COMPOSE as typeof compose)) || composeEnhancersDefault;
@@ -52,7 +52,7 @@ export class ReducerRegistry {
    *
    * @param newReducers the object of new reducers.
    */
-  register(newReducers: Record<string, never>) {
+  register(newReducers: Record<string, any>) {
     this.reducers = { ...this.reducers, ...newReducers };
     this.store.replaceReducer(combineReducers({ ...this.reducers }));
     return () => {
