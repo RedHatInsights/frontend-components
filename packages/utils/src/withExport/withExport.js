@@ -16,13 +16,12 @@ const withExport = ({ exporter, columns = [], isDisabled = false, onStart, onCom
   const exportColumns = exportableColumns(columns);
   const exportWithFormat = async (format) => {
     onStart?.();
-    const items = await exporter()
-      .then((items) => {
-        onComplete?.(items);
-        return items;
-      })
-      .catch((error) => onError?.(error));
-
+    try {
+      const items = await exporter();
+      onComplete?.(items);
+    } catch (error) {
+      onError?.(error);
+    }
     const formater = format === 'csv' ? csvForItems : jsonForItems;
 
     if (items) {
