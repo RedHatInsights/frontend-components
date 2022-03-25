@@ -4,7 +4,7 @@ import { Alert } from '@patternfly/react-core'
 
 **Make sure you have done the [setup](/quickstarts/setup).**
 
-you can directly use the `@patternfly/quickstarts` module to manage the help topics feature. Please follow the [official readme](https://github.com/patternfly/patternfly-quickstarts/tree/main/packages/module#in-app--in-context-help-panel).
+You can directly use the `@patternfly/quickstarts` module to manage the help topics feature. Please follow the [official readme](https://github.com/patternfly/patternfly-quickstarts/tree/main/packages/module#in-app--in-context-help-panel).
 
 ## Adding a topic to the list
 
@@ -34,3 +34,10 @@ const SomeComponent = () => {
   )
 }
 ```
+## Adding help topics content to the quickstarts API
+
+Please follow [this guide](https://github.com/RedHatInsights/quickstarts/blob/main/docs/help-topics/README.md).
+
+## Getting help topics content from the quickstarts API
+
+Please follow [this guide](https://github.com/RedHatInsights/quickstarts/blob/main/docs/help-topics/README.md#querying-help-topics).
