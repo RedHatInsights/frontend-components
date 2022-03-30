@@ -124,6 +124,8 @@ There are two ways to test changes from packages in this repository in other app
 
 ### Using `npm link`
 
+Make sure you are using Node.js of the >=16 version.
+
 1. Run `npm install` in the root of the `frontend-components` working copy
 2. Remove `react` and `react-dom` from `node_modules`
   ```
