@@ -1,15 +1,13 @@
 import get from 'lodash/get';
 import camelCase from 'lodash/camelCase';
+import { downloadFile } from '../helpers';
+
 const CSV_FILE_PREFIX = 'compliance-export';
 const CSV_DELIMITER = ',';
 const ENCODINGS = {
   csv: 'text/csv',
   json: 'application/json',
 };
-
-export const filename = (format) => CSV_FILE_PREFIX + '-' + new Date().toISOString() + '.' + format;
-
-const encoding = (format) => `data:${ENCODINGS[format]};charset=utf-8`;
 
 const textForCell = (row, column) => {
   const { exportKey, renderExport } = column;
@@ -25,7 +23,7 @@ export const csvForItems = ({ items, columns }) => {
   const header = columns.map((column) => column.original || column.title).join(CSV_DELIMITER);
   const csvRows = [header, ...items.map((row) => columns.map((column) => `"${textForCell(row, column)}"`).join(CSV_DELIMITER))];
 
-  return encodeURI(`${encoding('csv')},${csvRows.join('\n')}`);
+  return csvRows.join('\n');
 };
 
 export const jsonForItems = ({ items, columns }) => {
@@ -39,7 +37,24 @@ export const jsonForItems = ({ items, columns }) => {
     }, {})
   );
 
-  return encodeURI(`${encoding('json')},${JSON.stringify(result)}`);
+  return JSON.stringify(result);
 };
 
 export const exportableColumns = (columns) => columns.filter((column) => column.export !== false && (column.exportKey || column.renderExport));
+
+export const downloadItems = (columns, items, format) => {
+  const formater = format === 'csv' ? csvForItems : jsonForItems;
+
+  if (items) {
+    downloadFile(
+      formater({
+        items,
+        columns,
+      }),
+      CSV_FILE_PREFIX + '-' + new Date().toISOString(),
+      format
+    );
+  } else {
+    console.info('No items returned for export');
+  }
+};

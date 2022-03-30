@@ -1,5 +1,4 @@
-import { downloadFile } from '../helpers';
-import { filename, csvForItems, jsonForItems, exportableColumns } from './helpers';
+import { exportableColumns, downloadItems } from './helpers';
 
 /**
  * Provides an `exportConfig` prop for a (Primary)Toolbar action
@@ -18,23 +17,10 @@ const withExport = ({ exporter, columns = [], isDisabled = false, onStart, onCom
     onStart?.();
     try {
       const items = await exporter();
+      downloadItems(exportColumns, items, format);
       onComplete?.(items);
     } catch (error) {
       onError?.(error);
-    }
-    const formater = format === 'csv' ? csvForItems : jsonForItems;
-
-    if (items) {
-      return downloadFile(
-        formater({
-          items,
-          columns: exportColumns,
-        }),
-        filename(format)
-      );
-    } else {
-      console.info('No items returned for export');
-      return;
     }
   };
 
