@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { Button, Text, TextContent, TextVariants } from '@patternfly/react-core';
+import { Button, TextContent } from '@patternfly/react-core';
 
 const ModalDescription = ({ description, selectAllColumns, selectAllLabel }) => (
   <TextContent>
@@ -12,6 +12,7 @@ const ModalDescription = ({ description, selectAllColumns, selectAllLabel }) => 
 );
 
 ModalDescription.propTypes = {
+  description: propTypes.string,
   selectAllColumns: propTypes.func,
   selectAllLabel: propTypes.node,
 };

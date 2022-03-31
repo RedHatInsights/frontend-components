@@ -12,7 +12,6 @@ describe('useBulkSelectWithItems', () => {
     preselected: [],
   };
   const getBulkSelect = (result) => result.current.toolbarProps.bulkSelect;
-  const getSelectNone = (result) => result.current.toolbarProps.bulkSelect.items[0];
   const getSelectPage = (result) => result.current.toolbarProps.bulkSelect.items[1];
   const getSelectAll = (result) => result.current.toolbarProps.bulkSelect.items[2];
 

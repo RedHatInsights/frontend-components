@@ -4,10 +4,6 @@ import { downloadFile } from '../helpers';
 
 const CSV_FILE_PREFIX = 'compliance-export';
 const CSV_DELIMITER = ',';
-const ENCODINGS = {
-  csv: 'text/csv',
-  json: 'application/json',
-};
 
 const textForCell = (row, column) => {
   const { exportKey, renderExport } = column;
