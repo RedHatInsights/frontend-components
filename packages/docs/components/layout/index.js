@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Page, PageHeader, PageSidebar, Split, SplitItem, Stack, StackItem } from '@patternfly/react-core';
+import { Page, PageHeader, PageSidebar, PageSection, PageSectionVariants, Split, SplitItem, Stack, StackItem } from '@patternfly/react-core';
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';
 import Link from 'next/link';
@@ -10,6 +10,7 @@ import navigationMapper from '../navigation/navigation-mapper';
 import Breadcrumbs from './breadcrumbs';
 import TableOfContents from '../table-of-contents';
 import Navigation from '../navigation/common-navigation';
+import { Footer } from '../../pages';
 
 const useStyles = createUseStyles({
   page: {
@@ -38,6 +39,9 @@ const useStyles = createUseStyles({
     tableOfContents: {
       display: 'block',
     },
+  },
+  footer: {
+    height: 100,
   },
 });
 
@@ -90,21 +94,31 @@ const Layout = ({ children }) => {
   const Sidebar = <PageSidebar nav={navId?.length > 0 && NavComponent && <NavComponent />} isNavOpen={isOpen} />;
   return (
     <Page className={classes.page} header={Header} sidebar={NavComponent && Sidebar}>
-      <Split hasGutter>
-        <SplitItem isFilled>
-          <div className={classnames('pf-u-p-md', classes.content)}>
-            <Stack hasGutter>
-              <StackItem>
-                <Breadcrumbs />
-              </StackItem>
-              <StackItem id="docs-content">{children}</StackItem>
-            </Stack>
-          </div>
-        </SplitItem>
-        <SplitItem className={classes.tableOfContents}>
-          <TableOfContents />
-        </SplitItem>
-      </Split>
+      <div>
+        <Split style={{ minHeight: '81vh' }} hasGutter>
+          <SplitItem isFilled>
+            <div className={classnames('pf-u-p-md', classes.content)}>
+              <Stack hasGutter>
+                <StackItem>
+                  <Breadcrumbs />
+                </StackItem>
+                <StackItem id="docs-content">{children}</StackItem>
+              </Stack>
+            </div>
+          </SplitItem>
+          <SplitItem className={classes.tableOfContents}>
+            <TableOfContents />
+          </SplitItem>
+        </Split>
+      </div>
+
+      <PageSection className={classes.footer} variant={PageSectionVariants.light} isFilled={false}>
+        <Footer>
+          <Link href="https://console.redhat.com/">
+            <a>console.redhat.com</a>
+          </Link>
+        </Footer>
+      </PageSection>
     </Page>
   );
 };
