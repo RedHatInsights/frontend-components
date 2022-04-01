@@ -53,8 +53,8 @@ module.exports = ({
 
   let agent;
 
-  if (env.startsWith('prod') || env.startsWith('stage')) {
-    // PROD and stage are deployed with Akamai which requires a corporate proxy
+  if (env.startsWith('stage')) {
+    // stage is deployed with Akamai which requires a corporate proxy
     agent = new HttpsProxyAgent(proxyURL);
   }
 
