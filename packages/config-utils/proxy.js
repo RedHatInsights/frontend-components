@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 // Webpack proxy and express config for `useProxy: true` or `standalone: true`
 const { execSync } = require('child_process');
+const fetch = require('node-fetch');
+var express = require('express');
 const path = require('path');
 const HttpsProxyAgent = require('https-proxy-agent');
 const cookieTransform = require('./cookieTransform');
@@ -52,6 +54,8 @@ module.exports = ({
   }
 
   let agent;
+
+  const isProd = env.startsWith('prod');
 
   if (env.startsWith('stage')) {
     // stage is deployed with Akamai which requires a corporate proxy
@@ -185,19 +189,37 @@ module.exports = ({
         return false;
       },
       target,
-      ...(isChrome && {
-        bypass: (req) => {
-          /**
-           * Bypass any HTML requests if using chrome
-           * Serves as a historyApiFallback when refreshing on any other URL than '/'
-           */
-          if (!req.url.match(/\/api\//) && !req.url.match(/\./) && req.headers.accept.includes('text/html')) {
-            return '/';
-          }
+      bypass: async (req, res) => {
+        /**
+         * Bypass any HTML requests if using chrome
+         * Serves as a historyApiFallback when refreshing on any other URL than '/'
+         */
+        if (isChrome && !req.url.match(/\/api\//) && !req.url.match(/\./) && req.headers.accept.includes('text/html')) {
+          return '/';
+        }
 
-          return null;
-        },
-      }),
+        /**
+         * Use node-fetch to proxy all non-GET requests (this avoids all origin/host akamai policy)
+         * This enables using PROD proxy without VPN and agent
+         */
+        if (isProd && req.method !== 'GET') {
+          const result = await fetch((target + req.url).replace(/\/\//g, '/'), {
+            method: req.method,
+            body: JSON.stringify(req.body),
+            headers: { cookie: req.headers.cookie, 'Content-Type': 'application/json' },
+          });
+
+          const text = await result.text();
+          try {
+            const data = JSON.parse(text);
+            res.status(result.status).json(data);
+          } catch (err) {
+            res.status(result.status).send(text);
+          }
+        }
+
+        return null;
+      },
       router: router(target, useCloud),
       ...(agent && {
         agent,
@@ -235,6 +257,10 @@ module.exports = ({
     },
     onBeforeSetupMiddleware({ app, compiler, options }) {
       app.enable('strict routing'); // trailing slashes are mean
+
+      app.use(express.json());
+      app.use(express.urlencoded({ extended: true }));
+
       /**
        * Allow serving chrome assets
        * This will allow running chrome as a host application
