@@ -7,22 +7,35 @@
     - [Removed features with webpack 5](#removed-features-with-webpack-5)
   - [useProxy](#useproxy)
     - [Attributes](#attributes)
-      - [useChromeTemplate](#useChromeTemplate)
+      - [useChromeTemplate](#usechrometemplate)
       - [localChrome](#localchrome)
-      - [registry](#registry)
+      - [keycloakUri](#keycloakuri)
+      - [Registry](#registry)
       - [Custom routes](#custom-routes)
         - [routes](#routes)
         - [routesPath](#routespath)
-    - [Custom proxy settings](#custom-proxy-settings)
+      - [Custom proxy settings](#custom-proxy-settings)
+      - [Env](#env)
+      - [Use cloud](#use-cloud)
+      - [Target](#target)
+      - [useAgent](#useagent)
+      - [bounceProd](#bounceprod)
   - [standalone](#standalone)
     - [Usage](#usage)
       - [Simple](#simple)
       - [Advanced](#advanced)
-        - [Using provided services](#Using-provided-services)
-        - [Writing services](#Writing-services)
-        - [Customizing default services](#Customizing-default-services)
-  - [fec node scripts](#fec-node-scripts)
-  - [include PF css modules in your bundle](#include-PF-css-modules-in-your-bundle)
+        - [Using provided services](#using-provided-services)
+        - [Writing services](#writing-services)
+        - [Customizing default services](#customizing-default-services)
+- [fec node scripts](#fec-node-scripts)
+  - [Usage](#usage-1)
+  - [Patch etc hosts](#patch-etc-hosts)
+  - [Static](#static)
+    - [Inventory example](#inventory-example)
+    - [In inventory UI repository changes](#in-inventory-ui-repository-changes)
+    - [Compliance frontend setup](#compliance-frontend-setup)
+    - [Run servers](#run-servers)
+- [include PF css modules in your bundle](#include-pf-css-modules-in-your-bundle)
 
 ## Webpack 5
 
@@ -65,6 +78,8 @@ const { config: webpackConfig, plugins } = config({
 |[env](#env)|`string`|Environment to proxy against such as ci-beta.|
 |[useCloud](#use-cloud)|`boolean`|Toggle to use old fallback to cloud.redhat.com paths instead of console.redhat.com.|
 |[target](#target)|`string`|Override `env` and `useCloud` to use a custom URI.|
+|[useAgent](#useAgent)|`boolean`|Enforce using the agent to proxy requests via `proxyUrl`.|
+|[bounceProd](#bounceProd)|`boolean` = `true`|Bounce all non-GET requests via server requests.|
 
 
 #### useChromeTemplate
@@ -206,6 +221,18 @@ If you want to run in legacy mode pass `useCloud: true` in your config, this way
 
 #### Target
 Override for the target `env` and `useCloud` build. Useful for cross-environment testing.
+
+#### useAgent
+
+`boolean`
+
+Enforces using the agent to proxy requests via `proxyUrl`. Setting this to `true` will enforce using agent for PROD environemnt too (use when you are using Red Hat VPN and you do not want to bounce PROD requests). STAGE is using the agent automatically and it cannot be turned off.
+
+#### bounceProd
+
+`boolean` = `true`
+
+Bounce all non-GET PROD requests via server. This option removes all headers except `cookie` and `body` so Akamai won't have issues with different origins/hosts. This behavior allows to access PROD environment without using Red Hat VPN.
 
 ## standalone
 A way to run cloud.redhat.com apps from `localhost` offline.

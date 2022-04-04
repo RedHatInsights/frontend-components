@@ -36,6 +36,8 @@ module.exports = ({
   client = {},
   bundlePfModules = false,
   useChromeTemplate = false,
+  bounceProd,
+  useAgent,
 } = {}) => {
   const filenameMask = `js/[name]${useFileHash ? `.${Date.now()}.[fullhash]` : ''}.js`;
   if (betaEnv) {
@@ -197,6 +199,8 @@ module.exports = ({
             copyTemplate(chromePath);
           }
         },
+        bounceProd,
+        useAgent,
       }),
     },
   };
