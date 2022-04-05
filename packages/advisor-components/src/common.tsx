@@ -1,0 +1,28 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import compact from 'lodash/compact';
+import intersection from 'lodash/intersection';
+import { RuleContentRhel, TopicRhel } from './types';
+
+// eslint-disable-next-line no-undef
+export const barDividedList = (list: JSX.Element[]) =>
+  list.map((element, index) => (
+    <React.Fragment key={index}>
+      {element}
+      {index + 1 !== list.length && <strong className="verticalDivider">&nbsp;&#124;&nbsp;</strong>}
+    </React.Fragment>
+  ));
+
+export const topicLinks = (rule: RuleContentRhel, topics: TopicRhel[]) =>
+  topics
+    ? compact(
+        topics.map(
+          (topic) =>
+            intersection(topic.tag.split(' '), rule.tags.split(' ')).length && (
+              <React.Fragment key={topic.slug}>
+                <Link to={`/topics/${topic.slug}`}>{`${topic.name}`}</Link>
+              </React.Fragment>
+            )
+        )
+      )
+    : [];

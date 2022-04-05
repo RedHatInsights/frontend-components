@@ -8,12 +8,15 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
+    "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages && npm run translations",
     "build:js": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc --module es2015 --target es5",
     "build:css": "node ../../scripts/build-styles.js",
     "build:packages": "node ../../scripts/build-packages.js --forceTypes",
-    "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
+    "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\"",
+    "translations": "npm run translations:extract && npm run translations:compile",
+    "translations:extract": "formatjs extract 'src/**/*.ts*' --out-file lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
+    "translations:compile": "formatjs compile lang/en.json --out-file compiled-lang/en.json"
   },
   "repository": {
     "type": "git",
@@ -36,6 +39,7 @@
   "dependencies": {
     "@redhat-cloud-services/frontend-components": ">=3.0.0",
     "lodash": "^4.17.21",
+    "react-intl": "^5.24.8",
     "react-markdown": "^8.0.1",
     "rehype-raw": "^6.1.1",
     "rehype-sanitize": "^5.0.1"
