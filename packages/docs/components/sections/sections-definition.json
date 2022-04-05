@@ -38,6 +38,9 @@
   "title": "Landing page",
   "href": "/landing-page"
 },{
+  "title": "Quickstarts",
+  "href": "/quickstarts"
+},{
   "title": "Common issues",
   "href": "/common-issues"
 }]
