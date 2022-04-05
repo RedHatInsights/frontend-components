@@ -2,7 +2,7 @@
 
 If you decide you want to have your application visible to other people (outside of your machine), you will have to deploy your application.
 
-The deployment process for the applications on the Cloud Services Platform uses Akamai NetStorage (production) or Fakamai (pre-production) to store and serve files that are used to render the pages.
+The deployment process for the applications on the Cloud Services Platform uses Akamai NetStorage (production and pre-production) to store and serve files that are used to render the pages.
 
 To push files to each of the environments, we use Travis CI to build the code and then deploy the compiled/minified files to a build repo on the Red Hat Insights GitHub org.
 
@@ -17,7 +17,7 @@ Prerequisites
 
 1. Update your package.json with your app id
   a. [Package name](https://github.com/RedHatInsights/frontend-starter-app/blob/7e5d528393d1d1a27d2dc391ab885d03accf441c/package.json#L2)
-  b. [App name](https://github.com/RedHatInsights/frontend-starter-app/blob/7e5d528393d1d1a27d2dc391ab885d03accf441c/package.json#L64)
+  b. [App name](https://github.com/RedHatInsights/frontend-starter-app/blob/7e5d528393d1d1a27d2dc391ab885d03accf441c/package.json#L64) (Note: app and package names need not match.)
 2. [Update your App.js with your app id](https://github.com/RedHatInsights/frontend-starter-app/blob/7e5d528393d1d1a27d2dc391ab885d03accf441c/src/App.js#L19)
 3. Update the .travis.yml file
   a. [REPO](https://github.com/RedHatInsights/frontend-starter-app/blob/30ceb00dbff93ab7bd33707a6674345ab6b41213/.travis.yml#L23)
@@ -80,7 +80,38 @@ The naming convention follows env-{beta/stable}
 
 Many teams want alignment between environments on the platform, so we allow a .custom\_release.sh file inside of your .travis directory in your dev repo.
 
-You can set up any push logic you&#39;d like to in this repo. Many times, teams will align ci/qa together, so an example of that would be: ![](RackMultipart20220401-4-1ogbjj7_html_3d8d7472659d9099.png)
+You can set up any push logic you&#39;d like to in this repo. Many times, teams will align ci/qa together, so an example of that would be: 
+
+  #!/bin/bash
+  set -e
+  set -x
+
+  if [ "${TRAVIS_BRANCH}" = "master" ]
+  then 
+    for env in ci qa
+    do
+      echo "PUSHING ${env}-beta" 
+      rm -rf ./dist/.git
+      .travis/release.sh "${env}-beta"
+    done
+  fi
+
+  if [ "${TRAVIS_BRANCH}" = "master-stable" ]
+  then
+    for env in ci qa
+    do 
+      echo "PUSHING ${env}-stable"
+      rm -rf ./dist/.git
+      .travis/release.sh "${env}-stable"
+    done
+  fi
+
+  if [[ "${TRAVIS_BRANCH}" = "prod-beta" || 
+  "${TRAVIS_BRANCH}" = "prod-stable" ]]; then
+    echo "PUSHING ${TRAVIS_BRANCH}"
+    rm -rf ./build/.git
+    .travis/release.sh "${TRAVIS_BRANCH}"
+  fi
   
   - master pushes to ci-beta and qa-beta
 
