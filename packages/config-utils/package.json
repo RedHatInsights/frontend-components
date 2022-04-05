@@ -18,5 +18,8 @@
     "homepage": "https://github.com/RedHatInsights/frontend-components#readme",
     "peerDependencies": {
         "webpack": "^5.0.0"
+    },
+    "dependencies": {
+        "node-fetch": "2.6.7"
     }
 }
