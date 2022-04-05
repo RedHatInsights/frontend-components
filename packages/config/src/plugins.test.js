@@ -2,17 +2,18 @@ import plugins from './plugins';
 
 const HTML_WEBPACK = 2;
 const REPLACE = 3;
+const DEFINE_PLUGIN = 4;
 
 describe('plugins generations, no option', () => {
   const enabledPlugins = plugins();
 
   it('should generate plugins', () => {
-    expect(enabledPlugins.length).toBe(6);
+    expect(enabledPlugins.length).toBe(7);
   });
 
   it('should generate plugins with sourceMaps', () => {
     const enabledPlugins = plugins({ generateSourceMaps: true });
-    expect(enabledPlugins.length).toBe(7);
+    expect(enabledPlugins.length).toBe(8);
   });
 
   it('should generate correct template path for HtmlWebpackPlugin', () => {
@@ -51,4 +52,21 @@ it('replacePlugin should update', () => {
     ],
   });
   enabledPlugins[REPLACE].replace({ html: '@@another string @@env' }, (_, { html }) => expect(html).toBe('test-string string '));
+});
+
+it('definePlugin should have default replace of CRC_APP_NAME', () => {
+  const enabledPlugins = plugins({
+    insights: { appname: 'test_app' },
+  });
+  console.log(enabledPlugins[DEFINE_PLUGIN]);
+  expect(enabledPlugins[DEFINE_PLUGIN].definitions.CRC_APP_NAME).toBe('"test_app"');
+});
+
+it('definePlugin should update', () => {
+  const enabledPlugins = plugins({
+    definePlugin: {
+      SOME_VAR: JSON.stringify('test_val'),
+    },
+  });
+  expect(enabledPlugins[DEFINE_PLUGIN].definitions.SOME_VAR).toBe('"test_val"');
 });
