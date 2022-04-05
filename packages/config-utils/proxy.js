@@ -36,8 +36,8 @@ module.exports = ({
   registry = [],
   isChrome = false,
   onBeforeSetupMiddleware = () => {},
-  bounceProd = true,
-  useAgent,
+  bounceProd = false,
+  useAgent = true,
 }) => {
   const proxy = [];
   const majorEnv = env.split('-')[0];
@@ -58,13 +58,14 @@ module.exports = ({
   let agent;
 
   const isProd = env.startsWith('prod');
+  const isStage = env.startsWith('stage');
 
-  if (env.startsWith('stage') || useAgent) {
+  if (isStage || (isProd && useAgent)) {
     // stage is deployed with Akamai which requires a corporate proxy
     agent = new HttpsProxyAgent(proxyURL);
   }
 
-  if (env.startsWith('stage')) {
+  if (isStage) {
     // stage-stable / stage-beta branches don't exist in build repos
     // Currently stage pulls from QA
     env = env.replace('stage', 'qa');

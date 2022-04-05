@@ -20,6 +20,7 @@
       - [Target](#target)
       - [useAgent](#useagent)
       - [bounceProd](#bounceprod)
+        - [Running PROD proxy without VPN](#running-prod-proxy-without-vpn)
   - [standalone](#standalone)
     - [Usage](#usage)
       - [Simple](#simple)
@@ -78,8 +79,8 @@ const { config: webpackConfig, plugins } = config({
 |[env](#env)|`string`|Environment to proxy against such as ci-beta.|
 |[useCloud](#use-cloud)|`boolean`|Toggle to use old fallback to cloud.redhat.com paths instead of console.redhat.com.|
 |[target](#target)|`string`|Override `env` and `useCloud` to use a custom URI.|
-|[useAgent](#useAgent)|`boolean`|Enforce using the agent to proxy requests via `proxyUrl`.|
-|[bounceProd](#bounceProd)|`boolean` = `true`|Bounce all non-GET requests via server requests.|
+|[useAgent](#useAgent)|`boolean` = `true`|Enforce using the agent to proxy requests via `proxyUrl`.|
+|[bounceProd](#bounceProd)|`boolean` = `false`|Bounce all non-GET requests via server requests.|
 
 
 #### useChromeTemplate
@@ -224,15 +225,30 @@ Override for the target `env` and `useCloud` build. Useful for cross-environment
 
 #### useAgent
 
-`boolean`
+`boolean` = `true`
 
 Enforces using the agent to proxy requests via `proxyUrl`. Setting this to `true` will enforce using agent for PROD environemnt too (use when you are using Red Hat VPN and you do not want to bounce PROD requests). STAGE is using the agent automatically and it cannot be turned off.
 
 #### bounceProd
 
-`boolean` = `true`
+`boolean` = `false`
 
 Bounce all non-GET PROD requests via server. This option removes all headers except `cookie` and `body` so Akamai won't have issues with different origins/hosts. This behavior allows to access PROD environment without using Red Hat VPN.
+
+##### Running PROD proxy without VPN
+
+Set following attributes in your dev webpack proxy:
+
+```jsx
+const config = {
+  ...options,
+  env: 'prod-stable', // or 'prod-beta'
+  useAgent: false,
+  bounceProd: true
+}
+```
+
+Now, you can access PROD env without being connected to Red Hat VPN.
 
 ## standalone
 A way to run cloud.redhat.com apps from `localhost` offline.
