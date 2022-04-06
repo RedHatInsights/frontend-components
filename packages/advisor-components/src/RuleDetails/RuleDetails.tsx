@@ -1,13 +1,13 @@
 import './RuleDetails.scss';
 
-import React, { MouseEventHandler, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 
-import { Split, SplitItem, Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
+import { Flex, FlexItem, Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
 import ExternalLinkAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
 
 import InsightsLabel from '@redhat-cloud-services/frontend-components/InsightsLabel';
@@ -26,7 +26,6 @@ import { Rating } from '../types';
 import { RuleContentOcp } from '../types';
 import { RuleContentRhel } from '../types';
 import { AdvisorProduct } from '../types';
-import { string } from 'prop-types';
 
 interface RuleDetailsBaseProps {
   rule: RuleContentOcp | RuleContentRhel;
@@ -132,8 +131,8 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
   };
 
   return (
-    <Split className="ins-c-rule-details__split" hasGutter>
-      <SplitItem>
+    <Flex flexWrap={{ default: 'nowrap' }}>
+      <FlexItem>
         <Stack hasGutter>
           {header && <StackItem>{header}</StackItem>}
           <StackItem>{renderDescription()}</StackItem>
@@ -155,8 +154,8 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
           {isDetailsPage && onVoteClick && <RuleRating {...{ ruleId: rule.rule_id, ruleRating: rule.rating, onVoteClick }} />}
           {!isDetailsPage && onViewAffectedClick && renderViewAffected()}
         </Stack>
-      </SplitItem>
-      <SplitItem>
+      </FlexItem>
+      <FlexItem align={{ default: 'alignRight' }}>
         <Stack>
           {children && <StackItem>{children}</StackItem>}
           <StackItem>
@@ -233,8 +232,8 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
             </Stack>
           </StackItem>
         </Stack>
-      </SplitItem>
-    </Split>
+      </FlexItem>
+    </Flex>
   );
 };
 
