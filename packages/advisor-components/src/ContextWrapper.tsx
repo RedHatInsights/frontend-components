@@ -4,9 +4,10 @@ import { Router } from 'react-router-dom';
 import { History } from 'history';
 
 import { AdvisorProduct } from './types';
+import en_translation from './compiled-lang/en.json';
 
 export const translations: Record<string, Record<string, string>> = {
-  en: require('../../compiled-lang/en.json'),
+  en: en_translation,
 };
 
 export interface ContextWrapperProps {
