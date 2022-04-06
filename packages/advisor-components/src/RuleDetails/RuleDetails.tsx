@@ -98,38 +98,6 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
     }
   };
 
-  const renderImpactSeverityLine = () => {
-    switch (product) {
-      case AdvisorProduct.ocp:
-        return (
-          <SeverityLine
-            className="severity-line"
-            title={intl.formatMessage(messages.impactLevel, {
-              level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentOcp).impact]]),
-            })}
-            value={(rule as RuleContentOcp).impact}
-            tooltipMessage={intl.formatMessage(messages.impactDescription, {
-              level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentOcp).impact]]).toLowerCase(),
-            })}
-          />
-        );
-        break;
-      case AdvisorProduct.rhel:
-        return (
-          <SeverityLine
-            className="severity-line"
-            title={intl.formatMessage(messages.impactLevel, {
-              level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentRhel).impact.impact]]),
-            })}
-            value={(rule as RuleContentRhel).impact.impact}
-            tooltipMessage={intl.formatMessage(messages.impactDescription, {
-              level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentRhel).impact.impact]]).toLowerCase(),
-            })}
-          />
-        );
-    }
-  };
-
   return (
     <Flex flexWrap={{ default: 'nowrap' }}>
       <FlexItem>
@@ -192,7 +160,18 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
                           })}
                         />
                       </StackItem>
-                      <StackItem>{renderImpactSeverityLine()}</StackItem>
+                      <StackItem>
+                        <SeverityLine
+                          className="severity-line"
+                          title={intl.formatMessage(messages.impactLevel, {
+                            level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentRhel).impact.impact]]),
+                          })}
+                          value={(rule as RuleContentRhel).impact.impact}
+                          tooltipMessage={intl.formatMessage(messages.impactDescription, {
+                            level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentRhel).impact.impact]]).toLowerCase(),
+                          })}
+                        />
+                      </StackItem>
                     </Stack>
                   </Stack>
                 </span>

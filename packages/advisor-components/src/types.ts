@@ -20,6 +20,10 @@ export interface RuleContent {
   more_info: string;
   hosts_acked_count: number;
   rating: Rating;
+  impact: {
+    impact: Impact;
+    name?: string;
+  };
 }
 
 export interface RhelResolution {
@@ -42,10 +46,6 @@ export interface RuleContentRhel extends RuleContent {
     id: number;
     name: string;
   };
-  impact: {
-    impact: Impact;
-    name: string;
-  };
   playbook_count: number;
   reboot_required: boolean;
   reports_shown: boolean;
@@ -60,7 +60,6 @@ export interface RuleContentOcp extends RuleContent {
   resolution: string;
   risk_of_change: RiskOfChange;
   impacted_clusters_count: number;
-  impact: Impact;
   disabled: boolean;
   tags: string[];
 }
