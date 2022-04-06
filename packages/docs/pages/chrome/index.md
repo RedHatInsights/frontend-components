@@ -50,11 +50,34 @@ ReactDOM.render(
 Insights Chrome comes with a Javacript API that allows applications to control navigation, global filters, etc.
 
 ```js
-    // initialize chrome
-    insights.chrome.init();
+    import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+    import pckg from '../package.json';
 
-    // identify yourself (the application). This tells Chrome which global navigation element should be active
-    insights.chrome.identifyApp('advisor');
+    const App = (props) => {
+    const history = useHistory();
+    const chrome = useChrome();
+
+    useEffect(() => {
+      let unregister;
+      if (chrome) {
+        const registry = getRegistry();
+        registry.register({ notifications: notificationsReducer });
+        const { identifyApp, on: onChromeEvent } = chrome.init();
+
+        // You can use directly the name of your app to identify yourself, telling chrome which navigation element to be active. 
+        identifyApp(pckg.insights.appname);
+        unregister = onChromeEvent('APP_NAVIGATION', (event) =>
+          history.push(`/${event.navId}`)
+        );
+      }
+      return () => {
+        unregister();
+      };
+    }, [chrome]);
+    
+    ...
+    
+    }
 ```
 
 ## Running the build
@@ -126,33 +149,7 @@ If you want to watch file changes for each build just pass `-- -w` to specific t
     > npm run dev
     ```
 
-3. Open browser at `https://stage.foo.redhat.com:1337/`.
-
-Where `SPANDX_CONFIG` can be any config for your application (here is an example for [insights-frontend-starter-app](https://github.com/RedHatInsights/insights-frontend-starter-app)), just make sure your application is running `npm start` in said application.
-
-After permorming these tasks you can access `ci.foo.redhat.com:1337/{bundle}/{app}`, where bundle and app are defined in your `local-frontend.js` and observe changes as you save them.
-
-### Shape of SPANDX_CONFIG
-
-You can have custom spandx config with all frontend apps specified if you want to, the `.js` file just have to export `routes` object with at least 2 paths
-
-`Example local-frontend.js file` (aka spandx config)
-
-```js
-/*global module*/
-
-const SECTION = 'insights';
-const APP_ID = 'starter';
-const FRONTEND_PORT = 8002;
-const routes = {};
-
-routes[`/beta/${SECTION}/${APP_ID}`] = { host: `https://localhost:${FRONTEND_PORT}` };
-routes[`/${SECTION}/${APP_ID}`]      = { host: `https://localhost:${FRONTEND_PORT}` };
-routes[`/beta/apps/${APP_ID}`]       = { host: `https://localhost:${FRONTEND_PORT}` };
-routes[`/apps/${APP_ID}`]            = { host: `https://localhost:${FRONTEND_PORT}` };
-
-module.exports = { routes };
-```
+3. Open browser at `https://stage.foo.redhat.com:1337/`
 
 ## LocalStorage Debugging
 
