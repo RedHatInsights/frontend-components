@@ -1,6 +1,6 @@
 import './RuleDetails.scss';
 
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import Markdown from 'react-markdown';
@@ -16,7 +16,7 @@ import { SeverityLine } from '@redhat-cloud-services/frontend-components-charts/
 import { IMPACT_LABEL_KEY, LIKELIHOOD_LABEL_KEY, RISK_OF_CHANGE_LABEL_KEY, TOTAL_RISK_LABEL_KEY } from '../constants';
 import RebootRequired from '../RebootRequired/RebootRequired';
 import RuleRating from '../RuleRating/RuleRating';
-import ContextWrapper, { ContextWrapperProps, ProductContext } from '../ContextWrapper';
+import ContextWrapper, { ContextWrapperProps } from '../ContextWrapper';
 import messages from '../messages';
 import { barDividedList, topicLinks } from '../common';
 import { RiskOfChange } from '../types';
@@ -28,6 +28,7 @@ import { RuleContentRhel } from '../types';
 import { AdvisorProduct } from '../types';
 
 interface RuleDetailsBaseProps {
+  product: AdvisorProduct;
   rule: RuleContentOcp | RuleContentRhel;
   resolutionRisk?: number;
   resolutionRiskDesc?: string;
@@ -47,8 +48,7 @@ interface RuleDetailsProps extends RuleDetailsBaseProps, ContextWrapperProps {}
 
 const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
   const intl = useIntl();
-  const product = useContext(ProductContext);
-  const { header, rule, isDetailsPage, topics, onVoteClick, onViewAffectedClick, resolutionRisk, resolutionRiskDesc, children } = props;
+  const { product, header, rule, isDetailsPage, topics, onVoteClick, onViewAffectedClick, resolutionRisk, resolutionRiskDesc, children } = props;
 
   const renderDescription = () => {
     const ruleDescription = (data: string, isGeneric = false) =>
@@ -216,8 +216,8 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
   );
 };
 
-const RuleDetails: React.FC<RuleDetailsProps> = ({ routerProps, env, ...props }) => (
-  <ContextWrapper {...{ routerProps, env }}>
+const RuleDetails: React.FC<RuleDetailsProps> = ({ routerProps, ...props }) => (
+  <ContextWrapper {...{ routerProps }}>
     <RuleDetailsBase {...props} />
   </ContextWrapper>
 );
