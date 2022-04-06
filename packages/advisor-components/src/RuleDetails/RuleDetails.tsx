@@ -19,13 +19,7 @@ import RuleRating from '../RuleRating/RuleRating';
 import ContextWrapper, { ContextWrapperProps } from '../ContextWrapper';
 import messages from '../messages';
 import { barDividedList, topicLinks } from '../common';
-import { RiskOfChange } from '../types';
-import { Likelihood } from '../types';
-import { TopicRhel } from '../types';
-import { Rating } from '../types';
-import { RuleContentOcp } from '../types';
-import { RuleContentRhel } from '../types';
-import { AdvisorProduct } from '../types';
+import { AdvisorProduct, Likelihood, Rating, RiskOfChange, RuleContentOcp, RuleContentRhel, TopicRhel } from '../types';
 
 interface RuleDetailsBaseProps {
   product: AdvisorProduct;
@@ -119,7 +113,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
               {barDividedList(topicLinks(rule as RuleContentRhel, topics))}
             </StackItem>
           )}
-          {isDetailsPage && onVoteClick && <RuleRating {...{ ruleId: rule.rule_id, ruleRating: rule.rating, onVoteClick }} />}
+          {isDetailsPage && onVoteClick && <RuleRating ruleId={rule.rule_id} ruleRating={rule.rating} onVoteClick={onVoteClick} />}
           {!isDetailsPage && onViewAffectedClick && renderViewAffected()}
         </Stack>
       </FlexItem>

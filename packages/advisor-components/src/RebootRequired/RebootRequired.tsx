@@ -11,7 +11,7 @@ interface RebootRequiredProps {
   rebootRequired: boolean;
 }
 
-const RebootRequired: React.FC<RebootRequiredProps> = (rebootRequired) => {
+const RebootRequired: React.FC<RebootRequiredProps> = ({ rebootRequired }) => {
   const intl = useIntl();
 
   return (
