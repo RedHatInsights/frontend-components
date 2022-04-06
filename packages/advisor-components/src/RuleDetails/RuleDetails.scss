@@ -17,10 +17,10 @@ hr {
       font-size: var(--pf-global--FontSize--sm);
     }
 
-    .description-stack-override {
+    .ins-c-description-stack-override {
       width: 452px;
 
-      .severity-line {
+      .ins-c-severity-line {
         .ins-l-title {
           width: 150px;
           span {
@@ -67,7 +67,7 @@ hr {
             .pf-c-label {
               margin-bottom: var(--pf-global--spacer--sm);
             }
-            .pf-l-stack.description-stack-override {
+            .pf-l-stack.ins-c-description-stack-override {
               width: auto;
               .pf-l-stack__item {
                 .ins-c-severity-line {

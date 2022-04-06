@@ -136,7 +136,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
                   <span>
                     <InsightsLabel value={rule.total_risk} rest={{}} />
                   </span>
-                  <Stack hasGutter className="description-stack-override">
+                  <Stack hasGutter className="ins-c-description-stack-override">
                     <StackItem>
                       <TextContent>
                         <Text component={TextVariants.p}>
@@ -150,7 +150,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
                     <Stack>
                       <StackItem>
                         <SeverityLine
-                          className="severity-line"
+                          className="ins-c-severity-line"
                           title={intl.formatMessage(messages.likelihoodLevel, {
                             level: intl.formatMessage(messages[LIKELIHOOD_LABEL_KEY[rule.likelihood as Likelihood]]),
                           })}
@@ -162,7 +162,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
                       </StackItem>
                       <StackItem>
                         <SeverityLine
-                          className="severity-line"
+                          className="ins-c-severity-line"
                           title={intl.formatMessage(messages.impactLevel, {
                             level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentRhel).impact.impact]]),
                           })}
@@ -192,7 +192,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
                           rest={{}}
                         />
                       </span>
-                      <Stack hasGutter className="description-stack-override">
+                      <Stack hasGutter className="ins-c-description-stack-override">
                         <StackItem>
                           <TextContent>
                             <Text component={TextVariants.p}>{resolutionRiskDesc}</Text>
