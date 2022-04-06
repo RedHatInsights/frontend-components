@@ -15,8 +15,8 @@
     "build:packages": "node ../../scripts/build-packages.js --forceTypes",
     "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\"",
     "translations": "npm run translations:extract && npm run translations:compile",
-    "translations:extract": "formatjs extract 'src/**/*.ts*' --out-file lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
-    "translations:compile": "formatjs compile lang/en.json --out-file compiled-lang/en.json"
+    "translations:extract": "formatjs extract 'src/**/!(*.d)*.{ts,tsx}' --out-file lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
+    "translations:compile": "formatjs compile lang/en.json --out-file src/compiled-lang/en.json"
   },
   "repository": {
     "type": "git",

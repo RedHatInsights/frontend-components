@@ -20,7 +20,6 @@
 !tsconfig.json
 !pre-publish.js
 !tsconfig.*
-!compiled-lang
 
 # Incremental ts info
 tsconfig.tsbuildinfo
