@@ -12,7 +12,7 @@ For more detailed information about chrome and what it provides, [look through t
 
 ## Beta usage
 
-You can include/use chrome in your development project by running the [insights-proxy](https://github.com/RedHatInsights/insights-proxy) in front of your application and using the following HTML template.
+You can include/use chrome in your development project by running the [insights-proxy](http://front-end-docs-insights.apps.ocp4.prod.psi.redhat.com/frontend-components-config) in front of your application and using the following HTML template.
 
 ```html
 <!doctype html>
@@ -167,4 +167,4 @@ Available function:
 
 ## Futher reading
 
-More detailed documentation can be found in the [docs section](https://github.com/redhatinsights/insights-chrome/tree/master/docs)
+More detailed documentation can be found in the different sections of the chrome docs navigation.
