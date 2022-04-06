@@ -200,7 +200,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
                         </StackItem>
                         {product === AdvisorProduct.rhel && (
                           <StackItem>
-                            <RebootRequired reboot_required={(rule as RuleContentRhel).reboot_required} />
+                            <RebootRequired rebootRequired={(rule as RuleContentRhel).reboot_required} />
                           </StackItem>
                         )}
                       </Stack>
