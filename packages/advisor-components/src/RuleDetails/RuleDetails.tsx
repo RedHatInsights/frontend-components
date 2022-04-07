@@ -53,42 +53,40 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
         </span>
       );
 
-    switch (product) {
-      case AdvisorProduct.ocp:
-        return ruleDescription(rule.generic, true);
-        break;
-      case AdvisorProduct.rhel:
-        return isDetailsPage ? ruleDescription(rule.generic, true) : ruleDescription(rule.summary);
+    if (product === AdvisorProduct.ocp) {
+      return ruleDescription(rule.generic, true);
+    } else {
+      // RHEL rule
+      return isDetailsPage ? ruleDescription(rule.generic, true) : ruleDescription(rule.summary);
     }
   };
 
   const renderViewAffected = () => {
-    switch (product) {
-      case AdvisorProduct.ocp:
-        if ((rule as RuleContentOcp).impacted_clusters_count > 0) {
-          return (
-            <StackItem>
-              <Link key={`${rule.rule_id}-link`} onClick={() => onViewAffectedClick && onViewAffectedClick(rule.rule_id)} to="#">
-                {intl.formatMessage(messages.viewAffectedClusters, {
-                  clusters: (rule as RuleContentOcp).impacted_clusters_count,
-                })}
-              </Link>
-            </StackItem>
-          );
-        }
-        break;
-      case AdvisorProduct.rhel:
-        if ((rule as RuleContentRhel).impacted_systems_count > 0) {
-          return (
-            <StackItem>
-              <Link key={`${rule.rule_id}-link`} onClick={() => onViewAffectedClick && onViewAffectedClick(rule.rule_id)} to="#">
-                {intl.formatMessage(messages.viewAffectedSystems, {
-                  systems: (rule as RuleContentRhel).impacted_systems_count,
-                })}
-              </Link>
-            </StackItem>
-          );
-        }
+    if (product === AdvisorProduct.ocp) {
+      if ((rule as RuleContentOcp).impacted_clusters_count > 0) {
+        return (
+          <StackItem>
+            <Link key={`${rule.rule_id}-link`} onClick={() => onViewAffectedClick && onViewAffectedClick(rule.rule_id)} to="#">
+              {intl.formatMessage(messages.viewAffectedClusters, {
+                clusters: (rule as RuleContentOcp).impacted_clusters_count,
+              })}
+            </Link>
+          </StackItem>
+        );
+      }
+    } else {
+      // RHEL rule
+      if ((rule as RuleContentRhel).impacted_systems_count > 0) {
+        return (
+          <StackItem>
+            <Link key={`${rule.rule_id}-link`} onClick={() => onViewAffectedClick && onViewAffectedClick(rule.rule_id)} to="#">
+              {intl.formatMessage(messages.viewAffectedSystems, {
+                systems: (rule as RuleContentRhel).impacted_systems_count,
+              })}
+            </Link>
+          </StackItem>
+        );
+      }
     }
   };
 
