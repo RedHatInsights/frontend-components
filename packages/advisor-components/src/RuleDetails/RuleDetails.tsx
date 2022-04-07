@@ -1,7 +1,6 @@
 import './RuleDetails.scss';
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
@@ -35,14 +34,27 @@ interface RuleDetailsBaseProps {
    * @param {number} newRating rating (-1, 0, 1)
    */
   onVoteClick?: (ruleId: string, calculatedRating: Rating) => unknown;
-  onViewAffectedClick?: (ruleId: string) => unknown;
+  showViewAffected?: boolean;
+  linkComponent?: any;
 }
 
 interface RuleDetailsProps extends RuleDetailsBaseProps, ContextWrapperProps {}
 
 const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
   const intl = useIntl();
-  const { product, header, rule, isDetailsPage, topics, onVoteClick, onViewAffectedClick, resolutionRisk, resolutionRiskDesc, children } = props;
+  const {
+    product,
+    header,
+    rule,
+    isDetailsPage,
+    topics,
+    onVoteClick,
+    showViewAffected,
+    resolutionRisk,
+    resolutionRiskDesc,
+    children,
+    linkComponent: Link,
+  } = props;
 
   const renderDescription = () => {
     const ruleDescription = (data: string, isGeneric = false) =>
@@ -66,7 +78,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
       if ((rule as RuleContentOcp).impacted_clusters_count > 0) {
         return (
           <StackItem>
-            <Link key={`${rule.rule_id}-link`} onClick={() => onViewAffectedClick && onViewAffectedClick(rule.rule_id)} to="#">
+            <Link key={`${rule.rule_id}-link`} to={`/recommendations/${rule.rule_id}`}>
               {intl.formatMessage(messages.viewAffectedClusters, {
                 clusters: (rule as RuleContentOcp).impacted_clusters_count,
               })}
@@ -79,7 +91,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
       if ((rule as RuleContentRhel).impacted_systems_count > 0) {
         return (
           <StackItem>
-            <Link key={`${rule.rule_id}-link`} onClick={() => onViewAffectedClick && onViewAffectedClick(rule.rule_id)} to="#">
+            <Link key={`${rule.rule_id}-link`} to={`/recommendations/${rule.rule_id}`}>
               {intl.formatMessage(messages.viewAffectedSystems, {
                 systems: (rule as RuleContentRhel).impacted_systems_count,
               })}
@@ -104,15 +116,15 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
               </a>
             </StackItem>
           )}
-          {topics && rule.tags && topicLinks(rule as RuleContentRhel, topics).length > 0 && (
+          {topics && rule.tags && topicLinks(rule as RuleContentRhel, topics, Link).length > 0 && (
             <StackItem>
               <strong>{intl.formatMessage(messages.topicRelatedToRule)}</strong>
               <br />
-              {barDividedList(topicLinks(rule as RuleContentRhel, topics))}
+              {barDividedList(topicLinks(rule as RuleContentRhel, topics, Link))}
             </StackItem>
           )}
           {isDetailsPage && onVoteClick && <RuleRating ruleId={rule.rule_id} ruleRating={rule.rating} onVoteClick={onVoteClick} />}
-          {!isDetailsPage && onViewAffectedClick && renderViewAffected()}
+          {!isDetailsPage && showViewAffected && Link && renderViewAffected()}
         </Stack>
       </FlexItem>
       <FlexItem align={{ default: 'alignRight' }}>
@@ -208,8 +220,8 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
   );
 };
 
-const RuleDetails: React.FC<RuleDetailsProps> = ({ routerProps, ...props }) => (
-  <ContextWrapper {...{ routerProps }}>
+const RuleDetails: React.FC<RuleDetailsProps> = ({ ...props }) => (
+  <ContextWrapper>
     <RuleDetailsBase {...props} />
   </ContextWrapper>
 );

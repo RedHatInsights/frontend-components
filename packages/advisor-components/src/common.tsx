@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import compact from 'lodash/compact';
 import intersection from 'lodash/intersection';
+
 import { RuleContentRhel, TopicRhel } from './types';
 
 // eslint-disable-next-line no-undef
@@ -13,15 +13,13 @@ export const barDividedList = (list: JSX.Element[]) =>
     </React.Fragment>
   ));
 
-export const topicLinks = (rule: RuleContentRhel, topics: TopicRhel[]) =>
+export const topicLinks = (rule: RuleContentRhel, topics: TopicRhel[], Link: any) =>
   topics
     ? compact(
         topics.map(
           (topic) =>
             intersection(topic.tag.split(' '), rule.tags.split(' ')).length && (
-              <React.Fragment key={topic.slug}>
-                <Link to={`/topics/${topic.slug}`}>{`${topic.name}`}</Link>
-              </React.Fragment>
+              <Link key={topic.slug} to={`/topics/${topic.slug}`}>{`${topic.name}`}</Link>
             )
         )
       )
