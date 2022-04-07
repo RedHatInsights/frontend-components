@@ -231,9 +231,12 @@ describe('ConditionalFilter', () => {
         undefined,
         { 'rhel-7': { 'rhel-7': true } },
         {
-          id: undefined,
+          groupSelectable: true,
+          id: '',
+          label: 'RHEL 7',
+          type: 'checkbox',
+          value: 'rhel-7',
           items: [
-            { label: 'RHEL 7', value: 'rhel-7', id: undefined, type: 'checkbox', className: 'pf-u-pl-xs' },
             { label: 'RHEL 7.1', type: 'checkbox', value: '1' },
             { label: 'RHEL 7.2', type: 'checkbox', value: '2' },
             { label: 'RHEL 7.3', type: 'checkbox', value: '3' },
@@ -244,11 +247,26 @@ describe('ConditionalFilter', () => {
             { label: 'RHEL 7.8', type: 'checkbox', value: '8' },
             { label: 'RHEL 7.9', type: 'checkbox', value: '9' },
           ],
+        },
+        {
+          className: 'pf-u-pl-xs',
+          groupSelectable: true,
+          id: '',
           label: 'RHEL 7',
           type: 'checkbox',
           value: 'rhel-7',
+          items: [
+            { label: 'RHEL 7.1', type: 'checkbox', value: '1' },
+            { label: 'RHEL 7.2', type: 'checkbox', value: '2' },
+            { label: 'RHEL 7.3', type: 'checkbox', value: '3' },
+            { label: 'RHEL 7.4', type: 'checkbox', value: '4' },
+            { label: 'RHEL 7.5', type: 'checkbox', value: '5' },
+            { label: 'RHEL 7.6', type: 'checkbox', value: '6' },
+            { label: 'RHEL 7.7', type: 'checkbox', value: '7' },
+            { label: 'RHEL 7.8', type: 'checkbox', value: '8' },
+            { label: 'RHEL 7.9', type: 'checkbox', value: '9' },
+          ],
         },
-        { label: 'RHEL 7', value: 'rhel-7', id: undefined, type: 'checkbox', className: 'pf-u-pl-xs' },
         'rhel-7',
         'rhel-7'
       );
