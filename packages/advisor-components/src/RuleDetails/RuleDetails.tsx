@@ -36,6 +36,7 @@ interface RuleDetailsBaseProps {
   onVoteClick?: (ruleId: string, calculatedRating: Rating) => unknown;
   showViewAffected?: boolean;
   linkComponent?: any;
+  knowledgebaseUrl?: string;
 }
 
 interface RuleDetailsProps extends RuleDetailsBaseProps, ContextWrapperProps {}
@@ -54,6 +55,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
     resolutionRiskDesc,
     children,
     linkComponent: Link,
+    knowledgebaseUrl,
   } = props;
 
   const renderDescription = () => {
@@ -108,9 +110,9 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
         <Stack hasGutter>
           {header && <StackItem>{header}</StackItem>}
           <StackItem>{renderDescription()}</StackItem>
-          {(rule as RuleContentRhel).node_id && (
+          {knowledgebaseUrl && (
             <StackItem>
-              <a rel="noopener noreferrer" target="_blank" href={`https://access.redhat.com/node/${(rule as RuleContentRhel).node_id}`}>
+              <a rel="noopener noreferrer" target="_blank" href={knowledgebaseUrl}>
                 {intl.formatMessage(messages.knowledgebaseArticle)}&nbsp;
                 <ExternalLinkAltIcon size="sm" />
               </a>
