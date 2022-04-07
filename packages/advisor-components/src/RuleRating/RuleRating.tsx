@@ -1,6 +1,6 @@
 import './RuleRating.scss';
 
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useIntl } from 'react-intl';
 
 import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
@@ -8,6 +8,8 @@ import OutlinedThumbsDownIcon from '@patternfly/react-icons/dist/js/icons/outlin
 import OutlinedThumbsUpIcon from '@patternfly/react-icons/dist/js/icons/outlined-thumbs-up-icon';
 import ThumbsDownIcon from '@patternfly/react-icons/dist/js/icons/thumbs-down-icon';
 import ThumbsUpIcon from '@patternfly/react-icons/dist/js/icons/thumbs-up-icon';
+import debounce from 'lodash/debounce';
+
 import messages from '../messages';
 import { Rating } from '../types';
 
@@ -21,15 +23,22 @@ const RuleRating: React.FC<RuleRatingProps> = ({ ruleId, ruleRating, onVoteClick
   const intl = useIntl();
   const [rating, setRating] = useState(ruleRating);
   const [submitted, setSubmitted] = useState(false);
-  const [thankYou, setThankYou] = useState(intl.formatMessage(messages.feedbackThankYou));
 
-  const updateRuleRating = async (newRating: Rating) => {
+  const triggerCallback = useCallback(
+    debounce((calculatedRating) => {
+      onVoteClick(ruleId, calculatedRating);
+      setSubmitted(false);
+    }, 2000),
+    []
+  );
+
+  const updateRuleRating = (newRating: Rating) => {
     const calculatedRating = rating === newRating ? 0 : newRating;
+
     try {
-      await onVoteClick(ruleId, calculatedRating);
-      setRating(calculatedRating);
       setSubmitted(true);
-      setTimeout(() => setThankYou(''), 3000);
+      triggerCallback(calculatedRating);
+      setRating(calculatedRating);
     } catch (error) {
       console.error(error); // eslint-disable-line no-console
     }
@@ -44,7 +53,7 @@ const RuleRating: React.FC<RuleRatingProps> = ({ ruleId, ruleRating, onVoteClick
       <Button variant="plain" aria-label="thumbs-down" onClick={() => updateRuleRating(-1)} ouiaId="thumbsDown">
         {rating === -1 ? <ThumbsDownIcon className="ins-c-dislike" size="sm" /> : <OutlinedThumbsDownIcon size="sm" />}
       </Button>
-      {submitted && thankYou}
+      {submitted && intl.formatMessage(messages.feedbackThankYou)}
     </span>
   );
 };

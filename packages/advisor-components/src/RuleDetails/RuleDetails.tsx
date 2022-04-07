@@ -140,7 +140,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
                   <FlexItem>
                     <InsightsLabel value={rule.total_risk} rest={{}} />
                   </FlexItem>
-                  <FlexItem hasGutter className="ins-c-description-stack-override">
+                  <FlexItem className="ins-c-description-stack-override">
                     <Stack hasGutter>
                       <StackItem>
                         <TextContent>
