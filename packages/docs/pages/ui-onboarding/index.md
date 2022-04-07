@@ -82,6 +82,7 @@ Many teams want alignment between environments on the platform, so we allow a .c
 
 You can set up any push logic you&#39;d like to in this repo. Many times, teams will align ci/qa together, so an example of that would be: 
 
+```
   #!/bin/bash
   set -e
   set -x
@@ -112,7 +113,8 @@ You can set up any push logic you&#39;d like to in this repo. Many times, teams 
     rm -rf ./build/.git
     .travis/release.sh "${TRAVIS_BRANCH}"
   fi
-  
+```
+
   - master pushes to ci-beta and qa-beta
 
 
