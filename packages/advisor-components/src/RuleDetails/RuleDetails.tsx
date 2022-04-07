@@ -140,7 +140,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
               <FlexItem>
                 <Flex flexWrap={{ default: 'nowrap' }}>
                   <FlexItem>
-                    <InsightsLabel value={rule.total_risk} rest={{}} />
+                    <InsightsLabel value={rule.total_risk} isCompact rest={{}} />
                   </FlexItem>
                   <FlexItem className="ins-c-description-stack-override">
                     <Stack hasGutter>
@@ -187,32 +187,35 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
               {resolutionRisk && resolutionRiskDesc && (
                 <React.Fragment>
                   <hr></hr>
-                  <FlexItem>
+                  <FlexItem spacer={{ default: 'spacerSm' }}>
                     <strong>{intl.formatMessage(messages.riskOfChange)}</strong>
                   </FlexItem>
                   <FlexItem className={`pf-u-display-inline-flex alignCenterOverride pf-u-pb-sm pf-u-pt-sm`}>
-                    <span className="ins-c-rule-details__stackitem">
-                      <span>
+                    <Flex flexWrap={{ default: 'nowrap' }}>
+                      <FlexItem>
                         <InsightsLabel
                           text={intl.formatMessage(messages[RISK_OF_CHANGE_LABEL_KEY[resolutionRisk as RiskOfChange]])}
                           value={resolutionRisk}
                           hideIcon
+                          isCompact
                           rest={{}}
                         />
-                      </span>
-                      <Stack hasGutter className="ins-c-description-stack-override">
-                        <StackItem>
-                          <TextContent>
-                            <Text component={TextVariants.p}>{resolutionRiskDesc}</Text>
-                          </TextContent>
-                        </StackItem>
-                        {product === AdvisorProduct.rhel && (
+                      </FlexItem>
+                      <FlexItem className="ins-c-description-stack-override">
+                        <Stack hasGutter>
                           <StackItem>
-                            <RebootRequired rebootRequired={(rule as RuleContentRhel).reboot_required} />
+                            <TextContent>
+                              <Text component={TextVariants.p}>{resolutionRiskDesc}</Text>
+                            </TextContent>
                           </StackItem>
-                        )}
-                      </Stack>
-                    </span>
+                          {product === AdvisorProduct.rhel && (
+                            <StackItem>
+                              <RebootRequired rebootRequired={(rule as RuleContentRhel).reboot_required} />
+                            </StackItem>
+                          )}
+                        </Stack>
+                      </FlexItem>
+                    </Flex>
                   </FlexItem>
                 </React.Fragment>
               )}
