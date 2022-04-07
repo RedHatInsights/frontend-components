@@ -103,7 +103,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
   };
 
   return (
-    <Flex flexWrap={{ default: 'nowrap' }}>
+    <Flex flexWrap={{ default: 'nowrap' }} direction={{ default: isDetailsPage ? 'column' : 'columnReverse', lg: 'row' }}>
       <FlexItem>
         <Stack hasGutter>
           {header && <StackItem>{header}</StackItem>}
@@ -127,66 +127,68 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
           {!isDetailsPage && showViewAffected && Link && renderViewAffected()}
         </Stack>
       </FlexItem>
-      <FlexItem align={{ default: 'alignRight' }}>
+      <FlexItem align={{ lg: 'alignRight' }}>
         <Stack>
           {children && <StackItem>{children}</StackItem>}
           <StackItem>
-            <Stack className="ins-c-rule-details__stack">
-              <StackItem>
+            <Flex className="ins-c-rule-details__stack" direction={{ default: 'column' }}>
+              <FlexItem spacer={{ default: 'spacerSm' }}>
                 <strong>{intl.formatMessage(messages.totalRisk)}</strong>
-              </StackItem>
-              <StackItem className="pf-u-display-inline-flex alignCenterOverride pf-u-pb-sm pf-u-pt-sm">
-                <span className="ins-c-rule-details__stackitem">
-                  <span>
+              </FlexItem>
+              <FlexItem>
+                <Flex flexWrap={{ default: 'nowrap' }}>
+                  <FlexItem>
                     <InsightsLabel value={rule.total_risk} rest={{}} />
-                  </span>
-                  <Stack hasGutter className="ins-c-description-stack-override">
-                    <StackItem>
-                      <TextContent>
-                        <Text component={TextVariants.p}>
-                          {intl.formatMessage(messages.rulesDetailsTotalRiskBody, {
-                            risk: intl.formatMessage(messages[TOTAL_RISK_LABEL_KEY[rule.total_risk]] || messages.undefined).toLowerCase(),
-                            strong: (str) => <strong>{str}</strong>,
-                          })}
-                        </Text>
-                      </TextContent>
-                    </StackItem>
-                    <Stack>
+                  </FlexItem>
+                  <FlexItem hasGutter className="ins-c-description-stack-override">
+                    <Stack hasGutter>
                       <StackItem>
-                        <SeverityLine
-                          className="ins-c-severity-line"
-                          title={intl.formatMessage(messages.likelihoodLevel, {
-                            level: intl.formatMessage(messages[LIKELIHOOD_LABEL_KEY[rule.likelihood as Likelihood]]),
-                          })}
-                          value={rule.likelihood}
-                          tooltipMessage={intl.formatMessage(messages.likelihoodDescription, {
-                            level: intl.formatMessage(messages[LIKELIHOOD_LABEL_KEY[rule.likelihood as Likelihood]]).toLowerCase(),
-                          })}
-                        />
+                        <TextContent>
+                          <Text component={TextVariants.p}>
+                            {intl.formatMessage(messages.rulesDetailsTotalRiskBody, {
+                              risk: intl.formatMessage(messages[TOTAL_RISK_LABEL_KEY[rule.total_risk]] || messages.undefined).toLowerCase(),
+                              strong: (str) => <strong>{str}</strong>,
+                            })}
+                          </Text>
+                        </TextContent>
                       </StackItem>
-                      <StackItem>
-                        <SeverityLine
-                          className="ins-c-severity-line"
-                          title={intl.formatMessage(messages.impactLevel, {
-                            level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentRhel).impact.impact]]),
-                          })}
-                          value={(rule as RuleContentRhel).impact.impact}
-                          tooltipMessage={intl.formatMessage(messages.impactDescription, {
-                            level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentRhel).impact.impact]]).toLowerCase(),
-                          })}
-                        />
-                      </StackItem>
+                      <Stack>
+                        <StackItem>
+                          <SeverityLine
+                            className="ins-c-severity-line"
+                            title={intl.formatMessage(messages.likelihoodLevel, {
+                              level: intl.formatMessage(messages[LIKELIHOOD_LABEL_KEY[rule.likelihood as Likelihood]]),
+                            })}
+                            value={rule.likelihood}
+                            tooltipMessage={intl.formatMessage(messages.likelihoodDescription, {
+                              level: intl.formatMessage(messages[LIKELIHOOD_LABEL_KEY[rule.likelihood as Likelihood]]).toLowerCase(),
+                            })}
+                          />
+                        </StackItem>
+                        <StackItem>
+                          <SeverityLine
+                            className="ins-c-severity-line"
+                            title={intl.formatMessage(messages.impactLevel, {
+                              level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentRhel).impact.impact]]),
+                            })}
+                            value={(rule as RuleContentRhel).impact.impact}
+                            tooltipMessage={intl.formatMessage(messages.impactDescription, {
+                              level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentRhel).impact.impact]]).toLowerCase(),
+                            })}
+                          />
+                        </StackItem>
+                      </Stack>
                     </Stack>
-                  </Stack>
-                </span>
-              </StackItem>
+                  </FlexItem>
+                </Flex>
+              </FlexItem>
               {resolutionRisk && resolutionRiskDesc && (
                 <React.Fragment>
                   <hr></hr>
-                  <StackItem>
+                  <FlexItem>
                     <strong>{intl.formatMessage(messages.riskOfChange)}</strong>
-                  </StackItem>
-                  <StackItem className={`pf-u-display-inline-flex alignCenterOverride pf-u-pb-sm pf-u-pt-sm`}>
+                  </FlexItem>
+                  <FlexItem className={`pf-u-display-inline-flex alignCenterOverride pf-u-pb-sm pf-u-pt-sm`}>
                     <span className="ins-c-rule-details__stackitem">
                       <span>
                         <InsightsLabel
@@ -209,10 +211,10 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
                         )}
                       </Stack>
                     </span>
-                  </StackItem>
+                  </FlexItem>
                 </React.Fragment>
               )}
-            </Stack>
+            </Flex>
           </StackItem>
         </Stack>
       </FlexItem>
