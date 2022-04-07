@@ -9,7 +9,6 @@ exports[`Radio render should render correctly 1`] = `
     data-ouia-component-id="ConditionalFilter"
     data-ouia-component-type="PF4/TextInput"
     data-ouia-safe="true"
-    items=""
     type="text"
     value="undefined"
     widget-type="InsightsInput"
