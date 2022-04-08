@@ -60,6 +60,8 @@ module.exports = ({
   const isProd = env.startsWith('prod');
   const isStage = env.startsWith('stage');
 
+  const shouldBounceProdRequests = isProd && bounceProd && !useAgent;
+
   if (isStage || (isProd && useAgent)) {
     // stage is deployed with Akamai which requires a corporate proxy
     agent = new HttpsProxyAgent(proxyURL);
@@ -205,7 +207,7 @@ module.exports = ({
          * Use node-fetch to proxy all non-GET requests (this avoids all origin/host akamai policy)
          * This enables using PROD proxy without VPN and agent
          */
-        if (isProd && bounceProd && !useAgent && req.method !== 'GET') {
+        if (shouldBounceProdRequests && req.method !== 'GET') {
           const result = await fetch((target + req.url).replace(/\/\//g, '/'), {
             method: req.method,
             body: JSON.stringify(req.body),
@@ -261,8 +263,10 @@ module.exports = ({
     onBeforeSetupMiddleware({ app, compiler, options }) {
       app.enable('strict routing'); // trailing slashes are mean
 
-      app.use(express.json());
-      app.use(express.urlencoded({ extended: true }));
+      if (shouldBounceProdRequests) {
+        app.use(express.json());
+        app.use(express.urlencoded({ extended: true }));
+      }
 
       /**
        * Allow serving chrome assets
