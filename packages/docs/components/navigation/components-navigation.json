@@ -77,7 +77,10 @@
 				"items": [
 					"CheckboxFilter",
 					"ConditionalFilter",
+					"conditionalFilterConstants",
 					"GroupFilter",
+					"groupFilterConstants",
+					"groupType",
 					"RadioFilter",
 					"TextFilter"
 				]
@@ -386,12 +389,6 @@
 				"group": "Portal",
 				"items": [
 					"Portal"
-				]
-			},
-			{
-				"group": "reducers",
-				"items": [
-					"notifications"
 				]
 			}
 		]
