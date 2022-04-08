@@ -173,7 +173,8 @@ const RuleDetails: React.FC<RuleDetailsProps> = (props) => {
               <FlexItem>
                 <Flex flexWrap={{ default: 'nowrap' }}>
                   <FlexItem>
-                    <InsightsLabel value={rule.total_risk} isCompact rest={{}} />
+                    {/* remove pf-m-compact class name once https://github.com/patternfly/patternfly-react/issues/7196 is resolved */}
+                    <InsightsLabel value={rule.total_risk} isCompact className="pf-m-compact" rest={{}} />
                   </FlexItem>
                   <FlexItem className="ins-c-description-stack-override">
                     <Stack hasGutter>
@@ -213,7 +214,8 @@ const RuleDetails: React.FC<RuleDetailsProps> = (props) => {
                   <FlexItem className={`pf-u-display-inline-flex alignCenterOverride pf-u-pb-sm pf-u-pt-sm`}>
                     <Flex flexWrap={{ default: 'nowrap' }}>
                       <FlexItem>
-                        <InsightsLabel text={messages.riskOfChangeLabel} value={resolutionRisk} hideIcon isCompact rest={{}} />
+                        {/* remove pf-m-compact class name once https://github.com/patternfly/patternfly-react/issues/7196 is resolved */}
+                        <InsightsLabel text={messages.riskOfChangeLabel} value={resolutionRisk} hideIcon className="pf-m-compact" rest={{}} />
                       </FlexItem>
                       <FlexItem className="ins-c-description-stack-override">
                         <Stack hasGutter>
