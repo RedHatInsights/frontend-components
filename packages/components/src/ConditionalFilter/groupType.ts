@@ -1,3 +1,5 @@
+export type GroupType = 'treeView' | 'checkbox' | 'radio' | 'button' | 'plain';
+
 const groupType = {
   treeView: 'treeView',
   checkbox: 'checkbox',

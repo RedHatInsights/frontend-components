@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-config-utilities",
-    "version": "1.5.17",
+    "version": "1.5.19",
     "description": "Utilities for shared config used in RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
@@ -18,5 +18,8 @@
     "homepage": "https://github.com/RedHatInsights/frontend-components#readme",
     "peerDependencies": {
         "webpack": "^5.0.0"
+    },
+    "dependencies": {
+        "node-fetch": "2.6.7"
     }
 }

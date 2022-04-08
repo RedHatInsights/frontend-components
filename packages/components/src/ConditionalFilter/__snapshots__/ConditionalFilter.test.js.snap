@@ -331,7 +331,6 @@ exports[`ConditionalFilter render should render correctly no value with value un
         data-ouia-component-id="ConditionalFilter"
         data-ouia-component-type="PF4/TextInput"
         data-ouia-safe="true"
-        id=""
         placeholder="Filter by simple text 1"
         type="text"
         value=""

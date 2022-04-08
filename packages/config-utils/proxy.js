@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 // Webpack proxy and express config for `useProxy: true` or `standalone: true`
 const { execSync } = require('child_process');
+const fetch = require('node-fetch');
+var express = require('express');
 const path = require('path');
 const HttpsProxyAgent = require('https-proxy-agent');
 const cookieTransform = require('./cookieTransform');
@@ -34,6 +36,8 @@ module.exports = ({
   registry = [],
   isChrome = false,
   onBeforeSetupMiddleware = () => {},
+  bounceProd = false,
+  useAgent = true,
 }) => {
   const proxy = [];
   const majorEnv = env.split('-')[0];
@@ -53,12 +57,17 @@ module.exports = ({
 
   let agent;
 
-  if (env.startsWith('prod') || env.startsWith('stage')) {
-    // PROD and stage are deployed with Akamai which requires a corporate proxy
+  const isProd = env.startsWith('prod');
+  const isStage = env.startsWith('stage');
+
+  const shouldBounceProdRequests = isProd && bounceProd && !useAgent;
+
+  if (isStage || (isProd && useAgent)) {
+    // stage is deployed with Akamai which requires a corporate proxy
     agent = new HttpsProxyAgent(proxyURL);
   }
 
-  if (env.startsWith('stage')) {
+  if (isStage) {
     // stage-stable / stage-beta branches don't exist in build repos
     // Currently stage pulls from QA
     env = env.replace('stage', 'qa');
@@ -185,19 +194,37 @@ module.exports = ({
         return false;
       },
       target,
-      ...(isChrome && {
-        bypass: (req) => {
-          /**
-           * Bypass any HTML requests if using chrome
-           * Serves as a historyApiFallback when refreshing on any other URL than '/'
-           */
-          if (!req.url.match(/\/api\//) && !req.url.match(/\./) && req.headers.accept.includes('text/html')) {
-            return '/';
-          }
+      bypass: async (req, res) => {
+        /**
+         * Bypass any HTML requests if using chrome
+         * Serves as a historyApiFallback when refreshing on any other URL than '/'
+         */
+        if (isChrome && !req.url.match(/\/api\//) && !req.url.match(/\./) && req.headers.accept.includes('text/html')) {
+          return '/';
+        }
 
-          return null;
-        },
-      }),
+        /**
+         * Use node-fetch to proxy all non-GET requests (this avoids all origin/host akamai policy)
+         * This enables using PROD proxy without VPN and agent
+         */
+        if (shouldBounceProdRequests && req.method !== 'GET') {
+          const result = await fetch((target + req.url).replace(/\/\//g, '/'), {
+            method: req.method,
+            body: JSON.stringify(req.body),
+            headers: { cookie: req.headers.cookie, 'Content-Type': 'application/json' },
+          });
+
+          const text = await result.text();
+          try {
+            const data = JSON.parse(text);
+            res.status(result.status).json(data);
+          } catch (err) {
+            res.status(result.status).send(text);
+          }
+        }
+
+        return null;
+      },
       router: router(target, useCloud),
       ...(agent && {
         agent,
@@ -235,6 +262,12 @@ module.exports = ({
     },
     onBeforeSetupMiddleware({ app, compiler, options }) {
       app.enable('strict routing'); // trailing slashes are mean
+
+      if (shouldBounceProdRequests) {
+        app.use(express.json());
+        app.use(express.urlencoded({ extended: true }));
+      }
+
       /**
        * Allow serving chrome assets
        * This will allow running chrome as a host application

@@ -28,7 +28,7 @@ const SkeletonTable: React.FunctionComponent<SkeletonTableProps> = ({
   variant,
   isDark = false,
   colSize = 0,
-  columns = [],
+  columns,
   paddingColumnSize = 0,
   hasRadio = false,
   rowSize = 0,

@@ -55,7 +55,6 @@ exports[`Checkbox render should render correctly 1`] = `
     data-ouia-component-id="ConditionalFilter"
     data-ouia-component-type="PF4/TextInput"
     data-ouia-safe="true"
-    items=""
     type="text"
     value=""
     widget-type="InsightsInput"
@@ -88,9 +87,9 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
     <button
       aria-expanded="false"
       aria-label="Options menu"
-      aria-labelledby=" pf-select-toggle-id-5"
+      aria-labelledby=" pf-select-toggle-id-7"
       class="pf-c-select__toggle"
-      id="pf-select-toggle-id-5"
+      id="pf-select-toggle-id-7"
       type="button"
     >
       <div
@@ -180,9 +179,9 @@ exports[`Checkbox render should render correctly with items and default object v
     <button
       aria-expanded="false"
       aria-label="Options menu"
-      aria-labelledby=" pf-select-toggle-id-3"
+      aria-labelledby=" pf-select-toggle-id-5"
       class="pf-c-select__toggle"
-      id="pf-select-toggle-id-3"
+      id="pf-select-toggle-id-5"
       type="button"
     >
       <div
@@ -197,7 +196,7 @@ exports[`Checkbox render should render correctly with items and default object v
           <span
             class="pf-c-badge pf-m-read"
           >
-            1
+            2
           </span>
         </div>
       </div>
@@ -234,9 +233,9 @@ exports[`Checkbox render should render correctly with items and default value 1`
     <button
       aria-expanded="false"
       aria-label="Options menu"
-      aria-labelledby=" pf-select-toggle-id-2"
+      aria-labelledby=" pf-select-toggle-id-3"
       class="pf-c-select__toggle"
-      id="pf-select-toggle-id-2"
+      id="pf-select-toggle-id-3"
       type="button"
     >
       <div
@@ -288,9 +287,9 @@ exports[`Checkbox render should render correctly with items and selected value 1
     <button
       aria-expanded="false"
       aria-label="Options menu"
-      aria-labelledby=" pf-select-toggle-id-4"
+      aria-labelledby=" pf-select-toggle-id-6"
       class="pf-c-select__toggle"
-      id="pf-select-toggle-id-4"
+      id="pf-select-toggle-id-6"
       type="button"
     >
       <div
