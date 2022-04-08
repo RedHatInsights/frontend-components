@@ -186,7 +186,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
               </FlexItem>
               {resolutionRisk && resolutionRiskDesc && (
                 <React.Fragment>
-                  <hr></hr>
+                  <span className="ins-c-line" />
                   <FlexItem spacer={{ default: 'spacerSm' }}>
                     <strong>{intl.formatMessage(messages.riskOfChange)}</strong>
                   </FlexItem>

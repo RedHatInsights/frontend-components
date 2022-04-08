@@ -1,8 +1,7 @@
 @import '~@patternfly/patternfly/sass-utilities/_all';
 
-hr {
-  border: 0.01rem solid #ccc;
-  margin: var(--pf-global--spacer--md) 0 var(--pf-global--spacer--md) 0;
+.ins-c-line {
+  border: 0.01rem solid var(--pf-global--BorderColor--100);
 }
 
 .ins-c-rule-details__stack {
