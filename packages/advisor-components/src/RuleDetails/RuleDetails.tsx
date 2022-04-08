@@ -1,7 +1,6 @@
 import './RuleDetails.scss';
 
 import React from 'react';
-import { useIntl } from 'react-intl';
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
@@ -12,15 +11,53 @@ import ExternalLinkAltIcon from '@patternfly/react-icons/dist/js/icons/external-
 import InsightsLabel from '@redhat-cloud-services/frontend-components/InsightsLabel';
 import { SeverityLine } from '@redhat-cloud-services/frontend-components-charts/SeverityLine';
 
-import { IMPACT_LABEL_KEY, LIKELIHOOD_LABEL_KEY, RISK_OF_CHANGE_LABEL_KEY, TOTAL_RISK_LABEL_KEY } from '../constants';
 import RebootRequired from '../RebootRequired/RebootRequired';
 import RuleRating from '../RuleRating/RuleRating';
-import ContextWrapper, { ContextWrapperProps } from '../ContextWrapper';
-import messages from '../messages';
 import { barDividedList, topicLinks } from '../common';
-import { AdvisorProduct, Likelihood, Rating, RiskOfChange, RuleContentOcp, RuleContentRhel, TopicRhel } from '../types';
+import { AdvisorProduct, Rating, RuleContentOcp, RuleContentRhel, TopicRhel } from '../types';
 
-interface RuleDetailsBaseProps {
+export const RuleDetailsMessagesKeys = [
+  'systemReboot',
+  'viewAffectedSystems',
+  'viewAffectedClusters',
+  'knowledgebaseArticle',
+  'topicRelatedToRule',
+  'totalRisk',
+  'rulesDetailsTotalRiskBody',
+  'likelihoodLevel',
+  'likelihoodDescription',
+  'impactLevel',
+  'impactDescription',
+  'ruleHelpful',
+  'feedbackThankYou',
+  'riskOfChange',
+  'riskOfChangeText',
+  'riskOfChangeLabel',
+];
+
+export type RuleDetailsMessages = {
+  systemReboot: string;
+  // RHEL
+  viewAffectedSystems?: string;
+  // OCP
+  viewAffectedClusters?: string;
+  knowledgebaseArticle: string;
+  topicRelatedToRule: string;
+  totalRisk: string;
+  rulesDetailsTotalRiskBody: string;
+  likelihoodLevel: string;
+  likelihoodDescription: string;
+  impactLevel: string;
+  impactDescription: string;
+  riskOfChange: string;
+  riskOfChangeText: string;
+  riskOfChangeLabel: string;
+  ruleHelpful: string;
+  feedbackThankYou: string;
+};
+
+interface RuleDetailsProps {
+  messages: RuleDetailsMessages;
   product: AdvisorProduct;
   rule: RuleContentOcp | RuleContentRhel;
   resolutionRisk?: number;
@@ -39,11 +76,9 @@ interface RuleDetailsBaseProps {
   knowledgebaseUrl?: string;
 }
 
-interface RuleDetailsProps extends RuleDetailsBaseProps, ContextWrapperProps {}
-
-const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
-  const intl = useIntl();
+const RuleDetails: React.FC<RuleDetailsProps> = (props) => {
   const {
+    messages,
     product,
     header,
     rule,
@@ -81,9 +116,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
         return (
           <StackItem>
             <Link key={`${rule.rule_id}-link`} to={`/recommendations/${rule.rule_id}`}>
-              {intl.formatMessage(messages.viewAffectedClusters, {
-                clusters: (rule as RuleContentOcp).impacted_clusters_count,
-              })}
+              {messages.viewAffectedClusters}
             </Link>
           </StackItem>
         );
@@ -94,9 +127,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
         return (
           <StackItem>
             <Link key={`${rule.rule_id}-link`} to={`/recommendations/${rule.rule_id}`}>
-              {intl.formatMessage(messages.viewAffectedSystems, {
-                systems: (rule as RuleContentRhel).impacted_systems_count,
-              })}
+              {messages.viewAffectedSystems}
             </Link>
           </StackItem>
         );
@@ -113,19 +144,21 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
           {knowledgebaseUrl && (
             <StackItem>
               <a rel="noopener noreferrer" target="_blank" href={knowledgebaseUrl}>
-                {intl.formatMessage(messages.knowledgebaseArticle)}&nbsp;
+                {messages.knowledgebaseArticle}&nbsp;
                 <ExternalLinkAltIcon size="sm" />
               </a>
             </StackItem>
           )}
           {topics && rule.tags && topicLinks(rule as RuleContentRhel, topics, Link).length > 0 && (
             <StackItem>
-              <strong>{intl.formatMessage(messages.topicRelatedToRule)}</strong>
+              <strong>{messages.topicRelatedToRule}</strong>
               <br />
               {barDividedList(topicLinks(rule as RuleContentRhel, topics, Link))}
             </StackItem>
           )}
-          {isDetailsPage && onVoteClick && <RuleRating ruleId={rule.rule_id} ruleRating={rule.rating} onVoteClick={onVoteClick} />}
+          {isDetailsPage && onVoteClick && (
+            <RuleRating messages={messages} ruleId={rule.rule_id} ruleRating={rule.rating} onVoteClick={onVoteClick} />
+          )}
           {!isDetailsPage && showViewAffected && Link && renderViewAffected()}
         </Stack>
       </FlexItem>
@@ -135,7 +168,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
           <StackItem>
             <Flex className="ins-c-rule-details__stack" direction={{ default: 'column' }}>
               <FlexItem spacer={{ default: 'spacerSm' }}>
-                <strong>{intl.formatMessage(messages.totalRisk)}</strong>
+                <strong>{messages.totalRisk}</strong>
               </FlexItem>
               <FlexItem>
                 <Flex flexWrap={{ default: 'nowrap' }}>
@@ -146,37 +179,24 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
                     <Stack hasGutter>
                       <StackItem>
                         <TextContent>
-                          <Text component={TextVariants.p}>
-                            {intl.formatMessage(messages.rulesDetailsTotalRiskBody, {
-                              risk: intl.formatMessage(messages[TOTAL_RISK_LABEL_KEY[rule.total_risk]] || messages.undefined).toLowerCase(),
-                              strong: (str) => <strong>{str}</strong>,
-                            })}
-                          </Text>
+                          <Text component={TextVariants.p}>{messages.rulesDetailsTotalRiskBody}</Text>
                         </TextContent>
                       </StackItem>
                       <Stack>
                         <StackItem>
                           <SeverityLine
                             className="ins-c-severity-line"
-                            title={intl.formatMessage(messages.likelihoodLevel, {
-                              level: intl.formatMessage(messages[LIKELIHOOD_LABEL_KEY[rule.likelihood as Likelihood]]),
-                            })}
+                            title={messages.likelihoodLevel}
                             value={rule.likelihood}
-                            tooltipMessage={intl.formatMessage(messages.likelihoodDescription, {
-                              level: intl.formatMessage(messages[LIKELIHOOD_LABEL_KEY[rule.likelihood as Likelihood]]).toLowerCase(),
-                            })}
+                            tooltipMessage={messages.likelihoodDescription}
                           />
                         </StackItem>
                         <StackItem>
                           <SeverityLine
                             className="ins-c-severity-line"
-                            title={intl.formatMessage(messages.impactLevel, {
-                              level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentRhel).impact.impact]]),
-                            })}
+                            title={messages.impactLevel}
                             value={(rule as RuleContentRhel).impact.impact}
-                            tooltipMessage={intl.formatMessage(messages.impactDescription, {
-                              level: intl.formatMessage(messages[IMPACT_LABEL_KEY[(rule as RuleContentRhel).impact.impact]]).toLowerCase(),
-                            })}
+                            tooltipMessage={messages.impactDescription}
                           />
                         </StackItem>
                       </Stack>
@@ -188,18 +208,12 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
                 <React.Fragment>
                   <span className="ins-c-line" />
                   <FlexItem spacer={{ default: 'spacerSm' }}>
-                    <strong>{intl.formatMessage(messages.riskOfChange)}</strong>
+                    <strong>{messages.riskOfChange}</strong>
                   </FlexItem>
                   <FlexItem className={`pf-u-display-inline-flex alignCenterOverride pf-u-pb-sm pf-u-pt-sm`}>
                     <Flex flexWrap={{ default: 'nowrap' }}>
                       <FlexItem>
-                        <InsightsLabel
-                          text={intl.formatMessage(messages[RISK_OF_CHANGE_LABEL_KEY[resolutionRisk as RiskOfChange]])}
-                          value={resolutionRisk}
-                          hideIcon
-                          isCompact
-                          rest={{}}
-                        />
+                        <InsightsLabel text={messages.riskOfChangeLabel} value={resolutionRisk} hideIcon isCompact rest={{}} />
                       </FlexItem>
                       <FlexItem className="ins-c-description-stack-override">
                         <Stack hasGutter>
@@ -210,7 +224,7 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
                           </StackItem>
                           {product === AdvisorProduct.rhel && (
                             <StackItem>
-                              <RebootRequired rebootRequired={(rule as RuleContentRhel).reboot_required} />
+                              <RebootRequired messages={messages} rebootRequired={(rule as RuleContentRhel).reboot_required} />
                             </StackItem>
                           )}
                         </Stack>
@@ -226,11 +240,5 @@ const RuleDetailsBase: React.FC<RuleDetailsBaseProps> = (props) => {
     </Flex>
   );
 };
-
-const RuleDetails: React.FC<RuleDetailsProps> = ({ ...props }) => (
-  <ContextWrapper>
-    <RuleDetailsBase {...props} />
-  </ContextWrapper>
-);
 
 export default RuleDetails;

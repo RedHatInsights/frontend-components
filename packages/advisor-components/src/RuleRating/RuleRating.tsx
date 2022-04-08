@@ -1,26 +1,25 @@
 import './RuleRating.scss';
 
 import React, { useCallback, useState } from 'react';
-import { useIntl } from 'react-intl';
+import debounce from 'lodash/debounce';
 
 import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
 import OutlinedThumbsDownIcon from '@patternfly/react-icons/dist/js/icons/outlined-thumbs-down-icon';
 import OutlinedThumbsUpIcon from '@patternfly/react-icons/dist/js/icons/outlined-thumbs-up-icon';
 import ThumbsDownIcon from '@patternfly/react-icons/dist/js/icons/thumbs-down-icon';
 import ThumbsUpIcon from '@patternfly/react-icons/dist/js/icons/thumbs-up-icon';
-import debounce from 'lodash/debounce';
 
-import messages from '../messages';
 import { Rating } from '../types';
+import { RuleDetailsMessages } from '../RuleDetails/RuleDetails';
 
 interface RuleRatingProps {
   ruleId: string;
   ruleRating: Rating;
   onVoteClick: (ruleId: string, calculatedRating: Rating) => unknown;
+  messages: RuleDetailsMessages;
 }
 
-const RuleRating: React.FC<RuleRatingProps> = ({ ruleId, ruleRating, onVoteClick }) => {
-  const intl = useIntl();
+const RuleRating: React.FC<RuleRatingProps> = ({ messages, ruleId, ruleRating, onVoteClick }) => {
   const [rating, setRating] = useState(ruleRating);
   const [submitted, setSubmitted] = useState(false);
 
@@ -46,14 +45,14 @@ const RuleRating: React.FC<RuleRatingProps> = ({ ruleId, ruleRating, onVoteClick
 
   return (
     <span className="ratingSpanOverride">
-      {intl.formatMessage(messages.ruleHelpful)}
+      {messages.ruleHelpful}
       <Button variant="plain" aria-label="thumbs-up" onClick={() => updateRuleRating(1)} ouiaId="thumbsUp">
         {rating === 1 ? <ThumbsUpIcon className="ins-c-like" size="sm" /> : <OutlinedThumbsUpIcon size="sm" />}
       </Button>
       <Button variant="plain" aria-label="thumbs-down" onClick={() => updateRuleRating(-1)} ouiaId="thumbsDown">
         {rating === -1 ? <ThumbsDownIcon className="ins-c-dislike" size="sm" /> : <OutlinedThumbsDownIcon size="sm" />}
       </Button>
-      {submitted && intl.formatMessage(messages.feedbackThankYou)}
+      {submitted && messages.feedbackThankYou}
     </span>
   );
 };
