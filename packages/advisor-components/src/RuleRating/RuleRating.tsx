@@ -3,11 +3,8 @@ import './RuleRating.scss';
 import React, { useCallback, useState } from 'react';
 import debounce from 'lodash/debounce';
 
-import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
-import OutlinedThumbsDownIcon from '@patternfly/react-icons/dist/js/icons/outlined-thumbs-down-icon';
-import OutlinedThumbsUpIcon from '@patternfly/react-icons/dist/js/icons/outlined-thumbs-up-icon';
-import ThumbsDownIcon from '@patternfly/react-icons/dist/js/icons/thumbs-down-icon';
-import ThumbsUpIcon from '@patternfly/react-icons/dist/js/icons/thumbs-up-icon';
+import { Button } from '@patternfly/react-core';
+import { OutlinedThumbsDownIcon, OutlinedThumbsUpIcon, ThumbsDownIcon, ThumbsUpIcon } from '@patternfly/react-icons';
 
 import { Rating } from '../types';
 import { RuleDetailsMessages } from '../RuleDetails/RuleDetails';

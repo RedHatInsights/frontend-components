@@ -2,7 +2,7 @@ import './RebootRequired.scss';
 
 import React from 'react';
 import { Text, TextContent, TextVariants } from '@patternfly/react-core';
-import { PowerOffIcon } from '@patternfly/react-icons'; // TODO: change PF imports
+import { PowerOffIcon } from '@patternfly/react-icons';
 
 import { RuleDetailsMessages } from '../RuleDetails/RuleDetails';
 

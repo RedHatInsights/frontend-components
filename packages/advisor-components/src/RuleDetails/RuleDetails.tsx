@@ -6,7 +6,7 @@ import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 
 import { Flex, FlexItem, Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
-import ExternalLinkAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
+import { ExternalLinkAltIcon } from '@patternfly/react-icons';
 
 import InsightsLabel from '@redhat-cloud-services/frontend-components/InsightsLabel';
 import { SeverityLine } from '@redhat-cloud-services/frontend-components-charts/SeverityLine';
