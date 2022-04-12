@@ -2,13 +2,17 @@
 
 [![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-config-utilities.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-config-utilities)
 
-- [RedHat Cloud Services frontend components - webpack config](#redhat-cloud-services-frontend-components---webpack-config-utilities)
-  - [Chrome render loader](#chrome-render-loaded)
+- [RedHat Cloud Services frontend components - webpack config utilities](#redhat-cloud-services-frontend-components---webpack-config-utilities)
+  - [Chrome render loader](#chrome-render-loader)
     - [Disable chrome 2](#disable-chrome-2)
   - [Chunk mapper](#chunk-mapper)
   - [Federated modules](#federated-modules)
-  - [Override container ports](#Override container ports)
-    - [List of shared deps](#list-of-shared-deps)
+    - [Override container ports](#override-container-ports)
+      - [List of shared deps](#list-of-shared-deps)
+  - [Extensions plugin](#extensions-plugin)
+    - [Arguments](#arguments)
+    - [`pluginConfig`](#pluginconfig)
+      - [extension object](#extension-object)
 
 ## Chrome render loader
 
@@ -95,6 +99,7 @@ We've aimed for easy plug and play, but feel free to override any fed mods parti
 * `moduleName` - used to generate the file under this name (generally your `insights.appname` - if you have dashes in your name replace them with cammel case)
 * `useFileHash` - in order to prevent caching we are using file hashes, you might want to turn this off in your dev env
 * `exclude` - if you want to exclude any shared module you can do it trough here (even for general dependencies added by us)
+* `eager` - if set to `true`, turns eager fetch for shared modules on
 
 ### Override container ports
 The default ports for the RBAC server(**4012**) and/or the Keycloak server(**4001**) can be overridden using a corresponding variable in the environment. 
