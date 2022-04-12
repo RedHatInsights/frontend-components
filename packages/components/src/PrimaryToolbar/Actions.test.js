@@ -1,4 +1,5 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { Button } from '@patternfly/react-core';
 import Actions, { actionPropsGenerator, overflowActionsMapper } from './Actions';
 import { shallow, mount } from 'enzyme';
@@ -106,7 +107,7 @@ describe('Actions - component', () => {
       const wrapper = mount(<Actions actions={actions} />);
       wrapper.find('button.pf-c-dropdown__toggle').first().simulate('click');
       wrapper.update();
-      expect(wrapper.instance().state.isOpen).toBe(true);
+      expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     it('should NOT call onSelect', () => {
@@ -121,7 +122,9 @@ describe('Actions - component', () => {
     it('should call onSelect', () => {
       const onSelect = jest.fn();
       const wrapper = mount(<Actions actions={actions} onSelect={onSelect} />);
-      wrapper.find('button.pf-c-dropdown__toggle').first().simulate('click');
+      act(() => {
+        wrapper.find('button.pf-c-dropdown__toggle').first().simulate('click');
+      });
       wrapper.update();
       wrapper.find('button.pf-c-dropdown__menu-item').first().simulate('click');
       expect(onSelect).toHaveBeenCalled();

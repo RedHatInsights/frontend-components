@@ -284,7 +284,6 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
   >
     <ToolbarItem>
       <FilterChips
-        deleteTitle="Clear filters"
         filters={
           Array [
             Object {
@@ -451,14 +450,11 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
       </ToolbarItem>
     </ForwardRef>
     <Actions
-      actions={Array []}
-      dropdownProps={Object {}}
       exportConfig={
         Object {
           "onSelect": [MockFunction],
         }
       }
-      onSelect={[Function]}
       overflowActions={
         Array [
           Object {
@@ -559,7 +555,6 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
   >
     <ToolbarItem>
       <FilterChips
-        deleteTitle="Clear filters"
         filters={
           Array [
             Object {
