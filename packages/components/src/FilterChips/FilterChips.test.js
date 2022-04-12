@@ -48,12 +48,6 @@ describe('FilterChips component', () => {
   });
 
   describe('API', () => {
-    it('should have default onDelete handle', () => {
-      const onDelete = FilterChips.defaultProps.onDelete;
-      expect(onDelete).toBeDefined();
-      expect(onDelete()).toEqual(undefined);
-    });
-
     it('should call onDelete when deleting a single chip', () => {
       const onDelete = jest.fn();
       const wrapper = mount(<FilterChips filters={filters} onDelete={onDelete} />);
@@ -94,11 +88,6 @@ describe('FilterChips component', () => {
 
       wrapper.find(ChipGroup).forEach((group) => group.simulate('click'));
       expect(onDelete).not.toHaveBeenCalled();
-    });
-
-    it('should have default onDeleteGroup handle', () => {
-      const onDelete = FilterChips.defaultProps.onDeleteGroup;
-      expect(onDelete).not.toBeDefined();
     });
 
     it('should call onDelete when deleting a single chip', () => {

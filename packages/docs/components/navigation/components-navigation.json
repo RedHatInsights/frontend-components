@@ -390,6 +390,12 @@
 				"items": [
 					"Portal"
 				]
+			},
+			{
+				"group": "reducers",
+				"items": [
+					"notifications"
+				]
 			}
 		]
 	},
