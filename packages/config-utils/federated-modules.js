@@ -4,20 +4,20 @@ const { ModuleFederationPlugin } = require('webpack').container;
 const jsVarName = require('./jsVarName');
 
 const include = {
-  '@patternfly/react-core': { eager: true },
-  '@patternfly/react-table': { eager: true },
+  '@patternfly/react-core': {},
+  '@patternfly/react-table': {},
   '@patternfly/react-tokens': {},
   '@patternfly/react-icons': {},
-  '@patternfly/quickstarts': { singleton: true, eager: true },
+  '@patternfly/quickstarts': { singleton: true },
   '@redhat-cloud-services/frontend-components': {},
   '@redhat-cloud-services/frontend-components-utilities': {},
   '@redhat-cloud-services/frontend-components-notifications': {},
   axios: {},
   lodash: {},
   'redux-promise-middleware': {},
-  react: { singleton: true, eager: true },
-  'react-dom': { singleton: true, eager: true },
-  'react-router-dom': { eager: true },
+  react: { singleton: true },
+  'react-dom': { singleton: true },
+  'react-router-dom': {},
 };
 
 module.exports = ({ root, exposes, shared = [], debug, moduleName, useFileHash = true, libType = 'var', libName, exclude = [] }) => {
