@@ -53,7 +53,7 @@
         "util": "^0.12.4",
         "webpack": "^5.55.1",
         "webpack-cli": "^4.8.0",
-        "webpack-dev-server": "4.3.1",
+        "webpack-dev-server": "4.8.1",
         "write-file-webpack-plugin": "^4.5.1",
         "yargs": "^17.2.1"
     }
