@@ -1,5 +1,5 @@
 const { SourceMapDevToolPlugin } = require('webpack');
-const { ProvidePlugin } = require('webpack');
+const { ProvidePlugin, DefinePlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -17,6 +17,7 @@ module.exports = ({
   generateSourceMaps,
   plugins,
   useChromeTemplate = false,
+  definePlugin = {},
 } = {}) => [
   ...(generateSourceMaps
     ? [
@@ -53,6 +54,11 @@ module.exports = ({
           },
           ...(replacePlugin || []),
         ]),
+        new DefinePlugin({
+          // we have to wrap the appname string in another string because of how define plugin explodes strings
+          CRC_APP_NAME: JSON.stringify(insights?.appname),
+          ...(definePlugin || {}),
+        }),
       ]),
   new ProvidePlugin({
     process: 'process/browser.js',

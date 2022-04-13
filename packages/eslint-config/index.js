@@ -23,6 +23,9 @@ module.exports = {
     'prettier/prettier': ['error', { singleQuote: true }],
     'rulesdir/disallow-fec-relative-imports': 2,
   },
+  globals: {
+    CRC_APP_NAME: 'readonly',
+  },
   parserOptions: {
     ecmaVersion: 7,
     sourceType: 'module',
