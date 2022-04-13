@@ -58,7 +58,6 @@ it('definePlugin should have default replace of CRC_APP_NAME', () => {
   const enabledPlugins = plugins({
     insights: { appname: 'test_app' },
   });
-  console.log(enabledPlugins[DEFINE_PLUGIN]);
   expect(enabledPlugins[DEFINE_PLUGIN].definitions.CRC_APP_NAME).toBe('"test_app"');
 });
 
