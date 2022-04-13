@@ -17,7 +17,7 @@ const RuleDescription: React.FC<RuleDescriptionProps> = ({ product, rule, isDeta
   const ruleDescription = (data: string, isGeneric = false) => (
     <React.Fragment>
       {data && (
-        <span className={isGeneric ? 'genericOverride' : ''}>
+        <span className={isGeneric ? 'ins-c-generic__override' : ''}>
           <Markdown rehypePlugins={[rehypeRaw, rehypeSanitize]}>{data}</Markdown>
         </span>
       )}
