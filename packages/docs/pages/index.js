@@ -1,4 +1,4 @@
-import { Title, Text, PageSection, PageSectionVariants } from '@patternfly/react-core';
+import { Title } from '@patternfly/react-core';
 import Head from 'next/head';
 import Sections from '../components/sections';
 import { Paragraph } from '../components/layout/mdx-provider-components';
@@ -10,18 +10,11 @@ const useStyles = createUseStyles({
     textAlign: 'justify',
   },
   footer: {
-    height: 200,
+    height: 'auto',
   },
 });
 
-const camelToKebab = (str) =>
-  str
-    .split(/(?=[A-Z])/)
-    .map((s) => s.toLowerCase())
-    .join(' ');
-
 export const Footer = (props) => {
-  const classes = useStyles();
   return <footer {...props}></footer>;
 };
 

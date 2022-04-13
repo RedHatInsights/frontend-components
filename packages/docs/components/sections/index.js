@@ -1,35 +1,10 @@
 import React from 'react';
-import {
-  Gallery,
-  GalleryItem,
-  Card,
-  Flex,
-  Bullseye,
-  CardFooter,
-  CardTitle,
-  Title,
-  ContextSelector,
-  ContextSelectorItem,
-  FlexItem,
-  CardBody,
-  Text,
-  TextVariants,
-} from '@patternfly/react-core';
+import { Gallery, GalleryItem, Card, Bullseye, CardTitle, Title, CardBody, Text, TextVariants } from '@patternfly/react-core';
 import Link from 'next/link';
 import { createUseStyles } from 'react-jss';
 import sections from './sections-definition.json';
 import classnames from 'classnames';
 import truncate from 'lodash/truncate';
-import { Paragraph } from '../layout/mdx-provider-components';
-//import { H4 } from '../layout/mdx-provider-components';
-
-// const fse = require('fs-extra');
-// const glob = require('glob');
-// const path = require('path');
-// const NAV_PATH = path.resolve(__dirname, '../../navigation');
-// const sections_json = glob.sync(`${NAV_PATH}/*`).filter((name) => name.match(/(\.json$)/));
-// console.log(sections_json);
-//http://localhost:3000/contributing
 
 const useStyles = createUseStyles({
   description: {
@@ -44,19 +19,21 @@ const useStyles = createUseStyles({
     textDecoration: 'none',
   },
   card: {
-    //width: '100%',
     height: 210,
     textDecoration: 'none',
     letterSpacing: 2,
-    // textAlign: 'center',
-    //backgroundColor: 'var(--pf-global--info-color--200)',
-  },
-  cardTitle: {
-    height: 80,
+    '& .pf-c-card__title': {
+      background: 'var(--pf-global--BackgroundColor--dark-400)',
+      color: 'var(--pf-global--Color--light-200)',
+      height: 80,
+    },
+    '&:hover': {
+      '& .pf-c-card__title': {
+        background: 'var(--pf-global--BackgroundColor--dark-200)',
+      },
+    },
   },
 });
-
-// const H3 = <Title className={'pf-u-mb-md pf-u-mt-md'} headingLevel="h3" />;
 
 const Sections = () => {
   const classes = useStyles();
@@ -68,11 +45,9 @@ const Sections = () => {
           <Link href={href}>
             <a className={classes.link}>
               <Card id={title} className={classes.card} isSelectable>
-                <CardTitle className={classnames('pf-u-background-color-dark-400', 'pf-u-pb-lg', classes.cardTitle)}>
+                <CardTitle className={classnames('pf-u-pb-lg')}>
                   <Bullseye>
-                    <Title className="pf-u-color-light-200" headingLevel="h3">
-                      {title}
-                    </Title>
+                    <Title headingLevel="h3">{title}</Title>
                   </Bullseye>
                 </CardTitle>
                 <CardBody className={classes.cardBody}>
