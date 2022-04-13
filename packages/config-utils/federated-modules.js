@@ -3,24 +3,26 @@ const { resolve } = require('path');
 const { ModuleFederationPlugin } = require('webpack').container;
 const jsVarName = require('./jsVarName');
 
-const include = {
-  '@patternfly/react-core': { eager: true },
-  '@patternfly/react-table': { eager: true },
+const createIncludes = (eager = false) => ({
+  '@patternfly/react-core': { eager },
+  '@patternfly/react-table': { eager },
   '@patternfly/react-tokens': {},
   '@patternfly/react-icons': {},
-  '@patternfly/quickstarts': { singleton: true, eager: true },
+  '@patternfly/quickstarts': { singleton: true, eager },
   '@redhat-cloud-services/frontend-components': {},
   '@redhat-cloud-services/frontend-components-utilities': {},
   '@redhat-cloud-services/frontend-components-notifications': {},
   axios: {},
   lodash: {},
   'redux-promise-middleware': {},
-  react: { singleton: true, eager: true },
-  'react-dom': { singleton: true, eager: true },
-  'react-router-dom': { eager: true },
-};
+  react: { singleton: true, eager },
+  'react-dom': { singleton: true, eager },
+  'react-router-dom': { eager },
+});
 
-module.exports = ({ root, exposes, shared = [], debug, moduleName, useFileHash = true, libType = 'var', libName, exclude = [] }) => {
+module.exports = ({ root, exposes, shared = [], debug, moduleName, useFileHash = true, libType = 'var', libName, exclude = [], eager = false }) => {
+  const include = createIncludes(eager);
+
   const { dependencies, insights } = require(resolve(root, './package.json')) || {};
   const appName = moduleName || (insights && jsVarName(insights.appname));
 
@@ -39,7 +41,7 @@ module.exports = ({ root, exposes, shared = [], debug, moduleName, useFileHash =
    * No application should be installing/interacting with scalprum directly.
    */
   if (dependencies['@redhat-cloud-services/frontend-components']) {
-    sharedDeps.push({ '@scalprum/react-core': { requiredVersion: '*', singleton: true, eager: true } });
+    sharedDeps.push({ '@scalprum/react-core': { requiredVersion: '*', singleton: true, eager } });
   }
 
   /**
