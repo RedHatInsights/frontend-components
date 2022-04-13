@@ -11,15 +11,13 @@ interface RebootRequiredProps {
   messages: RuleDetailsMessages;
 }
 
-const RebootRequired: React.FC<RebootRequiredProps> = ({ messages, rebootRequired }) => {
-  return (
-    <span className="system-reboot-message">
-      <PowerOffIcon className={rebootRequired ? 'reboot-required-icon' : 'no-reboot-required-icon'} />
-      <TextContent className="system-reboot-message__content">
-        <Text component={TextVariants.p}>{messages.systemReboot}</Text>
-      </TextContent>
-    </span>
-  );
-};
+const RebootRequired: React.FC<RebootRequiredProps> = ({ messages, rebootRequired }) => (
+  <span className="system-reboot-message">
+    <PowerOffIcon className={rebootRequired ? 'reboot-required-icon' : 'no-reboot-required-icon'} />
+    <TextContent className="system-reboot-message__content">
+      <Text component={TextVariants.p}>{messages.systemReboot}</Text>
+    </TextContent>
+  </span>
+);
 
 export default RebootRequired;

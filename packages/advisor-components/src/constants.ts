@@ -26,4 +26,23 @@ const RISK_OF_CHANGE_LABEL_KEY = {
   4: 'high',
 };
 
-export { TOTAL_RISK_LABEL_KEY, LIKELIHOOD_LABEL_KEY, IMPACT_LABEL_KEY, RISK_OF_CHANGE_LABEL_KEY };
+const RuleDetailsMessagesKeys = [
+  'systemReboot',
+  'viewAffectedSystems',
+  'viewAffectedClusters',
+  'knowledgebaseArticle',
+  'topicRelatedToRule',
+  'totalRisk',
+  'rulesDetailsTotalRiskBody',
+  'likelihoodLevel',
+  'likelihoodDescription',
+  'impactLevel',
+  'impactDescription',
+  'ruleHelpful',
+  'feedbackThankYou',
+  'riskOfChange',
+  'riskOfChangeText',
+  'riskOfChangeLabel',
+];
+
+export { TOTAL_RISK_LABEL_KEY, LIKELIHOOD_LABEL_KEY, IMPACT_LABEL_KEY, RISK_OF_CHANGE_LABEL_KEY, RuleDetailsMessagesKeys };
