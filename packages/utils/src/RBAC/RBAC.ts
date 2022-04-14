@@ -38,4 +38,26 @@ export function doesHavePermissions(userPermissions: (Access | string)[], permis
   });
 }
 
+export function hasAllPermissions(userPermissions: (Access | string)[], permissionList: string[]): boolean {
+  if (!userPermissions) {
+    return false;
+  }
+
+  return permissionList.every((permission) => {
+    return userPermissions.some((access) => {
+      const accessArray = (isAccessType(access) ? access?.permission : access)?.split(':') || [];
+      const permissionArray = permission.split(':');
+      const hasAccess = accessArray.slice(0).reduce((acc, curr, index, array) => {
+        if (acc === false) {
+          array.splice(index);
+          return acc;
+        }
+
+        return curr === '*' || curr === permissionArray?.[index];
+      }, true);
+      return hasAccess || accessArray.join(':') === permission;
+    });
+  });
+}
+
 export default getRBAC;
