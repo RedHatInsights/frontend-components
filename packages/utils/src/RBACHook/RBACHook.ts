@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { getRBAC, doesHavePermissions, RBAC } from '../RBAC';
+import { getRBAC, doesHavePermissions, RBAC, hasAllPermissions } from '../RBAC';
 
 export interface UsePermissionsState extends RBAC {
   hasAccess: boolean;
   isLoading: boolean;
 }
 
-export function usePermissions(appName: string, permissionsList: string[], disableCache?: boolean): UsePermissionsState {
+export function usePermissions(appName: string, permissionsList: string[], disableCache?: boolean, checkAll?: boolean): UsePermissionsState {
   const [permissions, setPermissions] = useState<UsePermissionsState>({
     isLoading: true,
     hasAccess: false,
@@ -21,7 +21,7 @@ export function usePermissions(appName: string, permissionsList: string[], disab
         isLoading: false,
         isOrgAdmin,
         permissions: userPermissions,
-        hasAccess: doesHavePermissions(userPermissions, permissionsList),
+        hasAccess: checkAll ? hasAllPermissions(userPermissions, permissionsList) : doesHavePermissions(userPermissions, permissionsList),
       });
     })();
   }, [appName, disableCache]);
