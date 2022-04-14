@@ -47,7 +47,7 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({
 
   useEffect(() => {
     !isEqual(prevSelected.current, value) && value && changeSelected(value);
-  }, [selected]);
+  }, [selected, value]);
 
   const calculateSelected = () =>
     Array.from(
