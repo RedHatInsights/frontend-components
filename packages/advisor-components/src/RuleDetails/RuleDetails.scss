@@ -1,0 +1,16 @@
+.ins-c-line {
+  border: 0.01rem solid var(--pf-global--BorderColor--100);
+}
+
+.ins-c-rule-details__stack {
+  width: 600px;
+  .pf-c-content {
+    font-size: var(--pf-global--FontSize--sm);
+  }
+}
+
+.topicsCard {
+  background-color: var(--pf-global--BackgroundColor--150);
+  box-shadow: none;
+  word-break: break-word;
+}

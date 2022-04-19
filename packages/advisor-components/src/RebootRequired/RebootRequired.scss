@@ -1,0 +1,19 @@
+.system-reboot-message {
+  display: inline-flex;
+
+  .system-reboot-message__content {
+    position: relative;
+  }
+
+  .reboot-required-icon {
+    margin-top: 5px;
+    margin-right: var(--pf-global--spacer--sm);
+    color: var(--pf-global--palette--red-100);
+  }
+
+  .no-reboot-required-icon {
+    margin-top: 5px;
+    margin-right: var(--pf-global--spacer--sm);
+    color: var(--pf-global--palette--black-400);
+  }
+}
