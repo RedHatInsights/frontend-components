@@ -1,10 +1,9 @@
 import React, { FormEvent, Fragment, useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
 import globalBreakpointMd from '@patternfly/react-tokens/dist/js/global_breakpoint_md';
-import { omit } from 'lodash';
 import { Dropdown, DropdownItem, DropdownToggle, SplitItem, Split, ToolbarItem, ToolbarGroup, ToolbarToggleGroup } from '@patternfly/react-core';
 import { FilterIcon } from '@patternfly/react-icons';
-import TextFilter from './TextFilter';
+import TextFilter, { FilterValue } from './TextFilter';
 import { conditionalFilterType, typeMapper } from './conditionalFilterConstants';
 import { RadioFilterProps } from './RadioFilter';
 import { CheckboxFilterProps } from './CheckboxFilter';
@@ -16,9 +15,9 @@ type FilterValues = TextInputProps &
   CheckboxFilterProps &
   GroupFilterProps & {
     /** Optional items. */
-    items?: Value[];
+    items?: FilterValue[];
     /** Optional value. */
-    value?: string | (string | Value)[] | Record<string, unknown>;
+    value?: string | (string | FilterValue)[] | Record<string, unknown>;
   };
 interface TextInputProps {
   /** Optional id. */
@@ -27,13 +26,6 @@ interface TextInputProps {
   onChange?: () => void;
   /** Optional text input placeholder. */
   placeholder?: string;
-  /** Optional value. */
-  value?: string;
-}
-
-interface Value {
-  /** Optional label. */
-  label?: Node;
   /** Optional value. */
   value?: string;
 }
@@ -48,7 +40,7 @@ export interface ConditionalFilterItem {
   label?: Node;
   value?: string;
   type: 'text' | 'checkbox' | 'radio' | 'custom' | 'group';
-  filterValues?: TextInputProps | FilterValues;
+  filterValues?: FilterValues;
   placeholder?: string;
 }
 
@@ -119,7 +111,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                     placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
                     id: activeItem.filterValues ? activeItem.filterValues.id : currentValue ? String(currentValue) : undefined,
                   })}
-                  {...omit(activeItem.filterValues, 'value')}
+                  {...activeItem.filterValues}
                 />
               </ToolbarItem>
             );
@@ -191,7 +183,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                       placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
                       id: (activeItem.filterValues && activeItem.filterValues.id) || currentValue ? String(currentValue) : undefined,
                     })}
-                    {...omit(activeItem.filterValues, 'value')}
+                    {...activeItem.filterValues}
                   />
                 </SplitItem>
               )}
