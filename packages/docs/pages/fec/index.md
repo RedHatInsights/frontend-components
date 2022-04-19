@@ -51,31 +51,6 @@ module.exports = {
         // your other plugins
         [
             'transform-imports',
-<<<<<<< HEAD
-=======
-            {
-              '@patternfly/react-core': {
-                transform: (importName) => {
-                  const files = glob.sync(
-                    path.resolve(
-                      __dirname,
-                      // you can use `js` or `esm`
-                      `./node_modules/@patternfly/react-core/dist/js/**/${mapper[
-                      importName
-                      ] || importName}.js`
-                    )
-                  );
-                  if (files.length > 0) {
-                    return files[0].replace(/.*(?=@patternfly)/, '');
-                  } else {
-                    throw `File with importName ${importName} does not exist`;
-                  }
-                },
-                preventFullImport: false,
-                skipDefaultConversion: true
-              }
-            },
->>>>>>> 466603fd (Adding fec documents)
             'react-core'
           ],
           [
