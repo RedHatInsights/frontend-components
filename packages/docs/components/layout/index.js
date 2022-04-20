@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Page, PageHeader, PageSidebar, Split, SplitItem, Stack, StackItem } from '@patternfly/react-core';
+import { Page, PageHeader, PageSidebar, PageSection, Split, SplitItem, Stack, StackItem, Flex, FlexItem } from '@patternfly/react-core';
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';
 import Link from 'next/link';
@@ -22,8 +22,8 @@ const useStyles = createUseStyles({
     maxHeight: '100%',
   },
   content: {
-    marginLeft: 'initial',
-    marginRight: 'initial',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     width: 'calc(100% - 16px * 2)',
   },
   tableOfContents: {
@@ -32,14 +32,29 @@ const useStyles = createUseStyles({
   '@media (min-width: 1200px)': {
     content: {
       width: 900,
-      marginLeft: 'auto',
-      marginRight: 'auto',
     },
     tableOfContents: {
       display: 'block',
     },
   },
+  link: {
+    textDecoration: 'none',
+    color: 'var(--pf-global--BackgroundColor--100)',
+  },
+  footer: {
+    height: 'auto',
+    background: 'var(--pf-global--BackgroundColor--dark-100)',
+  },
 });
+
+const Footer = (props) => <footer {...props}></footer>;
+
+const footerItems = [
+  { title: 'console.redhat.com', href: 'https://console.redhat.com/' },
+  { title: 'Consoledot Platform Documentation', href: 'https://consoledot.pages.redhat.com/docs/dev/index.html' },
+  { title: 'PatternFly', href: 'https://www.patternfly.org/v4/' },
+  { title: 'GitHub', href: 'https://github.com/RedHatInsights/frontend-components' },
+];
 
 function useNavigationElement(navId) {
   const [NavComponent, setNavComponent] = useState(undefined);
@@ -87,24 +102,61 @@ const Layout = ({ children }) => {
       onNavToggle={() => setIsOpen((prev) => !prev)}
     />
   );
+
   const Sidebar = <PageSidebar nav={navId?.length > 0 && NavComponent && <NavComponent />} isNavOpen={isOpen} />;
+
   return (
     <Page className={classes.page} header={Header} sidebar={NavComponent && Sidebar}>
-      <Split hasGutter>
-        <SplitItem isFilled>
-          <div className={classnames('pf-u-p-md', classes.content)}>
-            <Stack hasGutter>
-              <StackItem>
-                <Breadcrumbs />
-              </StackItem>
-              <StackItem id="docs-content">{children}</StackItem>
-            </Stack>
-          </div>
-        </SplitItem>
-        <SplitItem className={classes.tableOfContents}>
-          <TableOfContents />
-        </SplitItem>
-      </Split>
+      <div>
+        <Split style={{ minHeight: '76.9vh' }} hasGutter>
+          <SplitItem isFilled>
+            <div className={classnames('pf-u-p-md', classes.content)}>
+              <Stack hasGutter>
+                <StackItem>
+                  <Breadcrumbs />
+                </StackItem>
+                <StackItem id="docs-content">{children}</StackItem>
+              </Stack>
+            </div>
+          </SplitItem>
+          <SplitItem className={classes.tableOfContents}>
+            <TableOfContents />
+          </SplitItem>
+        </Split>
+      </div>
+
+      <PageSection className={classes.footer} isFilled={false}>
+        <Footer className="pf-u-my-xl pf-u-mx-md">
+          <Flex
+            direction={{ default: 'column', md: 'row' }}
+            justifyContent={{ md: 'justifyContentFlexEnd' }}
+            alignContent={{ default: 'alignContentCenter' }}
+          >
+            <Flex
+              alignSelf={{ default: 'alignSelfStretch' }}
+              alignItems={{ default: 'alignItemsCenter' }}
+              justifyContent={{ default: 'justifyContentCenter' }}
+            >
+              <FlexItem style={{ display: 'flex' }}>
+                <Link href="/">
+                  <a>
+                    <img className={classes.logo} src="/logo.svg" alt="logo" />
+                  </a>
+                </Link>
+              </FlexItem>
+            </Flex>
+            <Flex direction={{ default: 'column', md: 'row' }} alignItems={{ default: 'alignItemsCenter' }}>
+              {footerItems.map(({ href, title }) => (
+                <FlexItem key={title}>
+                  <Link href={href}>
+                    <a className={classes.link}>{title}</a>
+                  </Link>
+                </FlexItem>
+              ))}
+            </Flex>
+          </Flex>
+        </Footer>
+      </PageSection>
     </Page>
   );
 };
