@@ -10,7 +10,6 @@ import navigationMapper from '../navigation/navigation-mapper';
 import Breadcrumbs from './breadcrumbs';
 import TableOfContents from '../table-of-contents';
 import Navigation from '../navigation/common-navigation';
-import { Footer } from '../../pages';
 
 const useStyles = createUseStyles({
   page: {
@@ -40,9 +39,15 @@ const useStyles = createUseStyles({
   },
   link: {
     textDecoration: 'none',
-    color: 'white',
+    color: 'var(--pf-global--BackgroundColor--100)',
+  },
+  footer: {
+    height: 'auto',
+    background: 'var(--pf-global--BackgroundColor--dark-100)',
   },
 });
+
+const Footer = (props) => <footer {...props}></footer>;
 
 const footerItems = [
   { title: 'console.redhat.com', href: 'https://console.redhat.com/' },
@@ -97,12 +102,13 @@ const Layout = ({ children }) => {
       onNavToggle={() => setIsOpen((prev) => !prev)}
     />
   );
+
   const Sidebar = <PageSidebar nav={navId?.length > 0 && NavComponent && <NavComponent />} isNavOpen={isOpen} />;
 
   return (
     <Page className={classes.page} header={Header} sidebar={NavComponent && Sidebar}>
       <div>
-        <Split style={{ minHeight: '81.4vh' }} hasGutter>
+        <Split style={{ minHeight: '76.9vh' }} hasGutter>
           <SplitItem isFilled>
             <div className={classnames('pf-u-p-md', classes.content)}>
               <Stack hasGutter>
@@ -119,8 +125,8 @@ const Layout = ({ children }) => {
         </Split>
       </div>
 
-      <PageSection style={{ background: 'var(--pf-global--BackgroundColor--dark-100)' }} isFilled={false}>
-        <Footer className={classnames(classes.footer, 'pf-u-my-xl', 'pf-u-mx-md')}>
+      <PageSection className={classes.footer} isFilled={false}>
+        <Footer className="pf-u-my-xl pf-u-mx-md">
           <Flex
             direction={{ default: 'column', md: 'row' }}
             justifyContent={{ md: 'justifyContentFlexEnd' }}

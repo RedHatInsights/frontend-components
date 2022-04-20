@@ -2,9 +2,9 @@ import React from 'react';
 import { Gallery, GalleryItem, Card, Bullseye, CardTitle, Title, CardBody, Text, TextVariants } from '@patternfly/react-core';
 import Link from 'next/link';
 import { createUseStyles } from 'react-jss';
-import sections from './sections-definition.json';
 import classnames from 'classnames';
 import truncate from 'lodash/truncate';
+import sections from './sections-definition.json';
 
 const useStyles = createUseStyles({
   description: {
