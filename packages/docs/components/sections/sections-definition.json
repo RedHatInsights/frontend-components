@@ -1,6 +1,7 @@
 [{
   "title": "Contributing to docs",
-  "href": "/contributing"
+  "href": "/contributing",
+  "description": "Contribute to docs. Etiam neque. Duis risus. Aliquam erat volutpat. Fusce wisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos."
 },{
   "title": "UI onboarding",
   "href": "/ui-onboarding"
