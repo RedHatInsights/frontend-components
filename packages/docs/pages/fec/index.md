@@ -48,11 +48,6 @@ module.exports = {
         // list of your presets goes here
     ],
     plugins: [
-        // your other plugins
-        [
-            'transform-imports',
-            'react-core'
-          ],
           [
             'transform-imports',
             {
@@ -67,7 +62,6 @@ module.exports = {
               }
             },
             'react-icons'
-          
     ]
 }
 
