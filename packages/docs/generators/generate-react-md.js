@@ -234,10 +234,10 @@ ${
 |----|----|-------|-----------|
 ${Object.entries(API.props)
   .map(
-    ([name, value]) => `|${name}${value.required ? `&#42;` : ''}|${getPropType(value, file, { name, ...value }).replace(
-      /@@spacerPlaceholder/gm,
-      '"default-prop-spacer"'
-    )}|${generateDefaultValue(value)}|${generatePropDescription(value)}|
+    ([name, value]) => `|${name}${value.required ? `&#42;` : ''}|${getPropType(value, file, { name, ...value })
+      .replace(/@@spacerPlaceholder/gm, '"default-prop-spacer"')
+      .replace(/\{/gm, '&#123;')
+      .replace(/\}/gm, '&#125;')}|${generateDefaultValue(value)}|${generatePropDescription(value)}|
 `
   )
   .join('')}`
@@ -258,7 +258,7 @@ ${extensiveProps.map((data) => {
     fse.mkdirSync(`${componentsDest}/${packageName}`);
   }
 
-  return fse.writeFile(`${componentsDest}/${packageName}/${name}.md`, content);
+  return fse.writeFile(`${componentsDest}/${packageName}/${name}.mdx`, content);
 }
 
 module.exports = generateMD;

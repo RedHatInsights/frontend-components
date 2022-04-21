@@ -24,7 +24,10 @@ function generateNav(bucket) {
     items: [],
   };
   files.forEach((file) => {
-    const name = file.replace(/\.md$/, '').split('/').pop();
+    const name = file
+      .replace(/\.mdx?$/, '')
+      .split('/')
+      .pop();
     if (name === 'index') {
       result.index = {
         title: kebabToCamel(prefix),
