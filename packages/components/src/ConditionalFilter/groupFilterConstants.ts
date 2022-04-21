@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { Group, GroupItem, TreeViewItem } from './GroupFilter';
+import { Group, GroupFilterItem, TreeViewItem } from './GroupFilter';
 import groupTypes, { GroupType } from './groupType';
 
 function isGroup(item: boolean | Group): item is Group {
@@ -40,7 +40,7 @@ export const isChecked = (
 };
 
 export const getMenuItems = (
-  items: GroupItem[],
+  items: GroupFilterItem[],
   onChange: ((...args: unknown[]) => void) | undefined,
   calculateSelected: (
     type?: GroupType,
@@ -55,7 +55,7 @@ export const getMenuItems = (
   group?: Group
 ) => {
   const result =
-    items?.map((item: GroupItem, index: number) => ({
+    items?.map((item: GroupFilterItem, index: number) => ({
       ...item,
       className: `${item?.className || 'pf-u-pl-sm'}`,
       key: item.id || item.value || index,
@@ -115,7 +115,7 @@ export const getGroupMenuItems = (
 ) => {
   const result = groups.map((group) => {
     const { value, label, groupSelectable, id, type, items, noFilter } = group;
-    const converted = type === groupTypes.treeView ? items.map((item: GroupItem) => convertTreeItem(item as TreeViewItem)) : items;
+    const converted = type === groupTypes.treeView ? items.map((item: GroupFilterItem) => convertTreeItem(item as TreeViewItem)) : items;
     return {
       label,
       noFilter,
