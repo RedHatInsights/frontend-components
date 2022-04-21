@@ -35,7 +35,7 @@ module.exports = ({
   registry,
   client = {},
   bundlePfModules = false,
-  useChromeTemplate = false,
+  useChromeTemplate = true,
   bounceProd,
   useAgent,
 } = {}) => {
