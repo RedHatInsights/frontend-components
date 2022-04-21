@@ -16,7 +16,7 @@ module.exports = ({
   modules,
   generateSourceMaps,
   plugins,
-  useChromeTemplate = false,
+  useChromeTemplate = true,
   definePlugin = {},
 } = {}) => [
   ...(generateSourceMaps
