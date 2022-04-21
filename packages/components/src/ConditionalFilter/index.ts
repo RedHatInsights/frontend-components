@@ -1,8 +1,10 @@
 export { default } from './ConditionalFilter';
-export { default as ConditionalFilter } from './ConditionalFilter';
-export { default as GroupFilter } from './GroupFilter';
-export { default as RadioFilter } from './RadioFilter';
-export { default as CheckboxFilter } from './CheckboxFilter';
-export { default as TextFilter } from './TextFilter';
+export { default as ConditionalFilter, ConditionalFilterProps, ConditionalFilterItem, TextInputProps } from './ConditionalFilter';
+export type { FilterValues } from './ConditionalFilter';
+export { default as GroupFilter, GroupFilterProps, Group, GroupFilterItem, TreeViewItem } from './GroupFilter';
+export { default as CheckboxFilter, CheckboxFilterProps } from './CheckboxFilter';
+export { default as RadioFilter, RadioFilterProps } from './RadioFilter';
+export { default as TextFilter, TextFilterProps, FilterItem, FilterValue } from './TextFilter';
 export { default as groupType } from './groupType';
+export type { GroupType } from './groupType';
 export * from './conditionalFilterConstants';
