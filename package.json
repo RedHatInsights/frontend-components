@@ -23,7 +23,8 @@
         "packages/translations",
         "packages/testing",
         "packages/utils",
-        "packages/types"
+        "packages/types",
+        "packages/advisor-components"
     ],
     "files": [
         "index.js",

@@ -107,14 +107,14 @@ const OrderedList = ({ children }) => (
   </TextContent>
 );
 
-const UnorderedList = ({ children }) => (
+export const UnorderedList = ({ children }) => (
   <TextContent>
     <TextList component={TextListVariants.ul}>{children}</TextList>
   </TextContent>
 );
 
-const Paragraph = ({ children }) => (
-  <TextContent>
+export const Paragraph = ({ children, className }) => (
+  <TextContent className={className}>
     <Text component={TextVariants.p}>{children}</Text>
   </TextContent>
 );

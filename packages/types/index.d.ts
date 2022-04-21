@@ -116,7 +116,7 @@ export interface ChromeAPI {
   /** @deprecated This function server no purpse. For document title update use "updateDocumentTitle" function instead. */
   identifyApp: (data: any, appTitle?: string) => Promise<undefined>;
   init: () => void;
-  isbeta: () => boolean;
+  isBeta: () => boolean;
   isChrome2: boolean;
   isDemo: () => boolean;
   isPenTest: () => boolean;
