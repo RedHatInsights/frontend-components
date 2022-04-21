@@ -2,7 +2,7 @@ import './labels.scss';
 
 import { AngleDoubleDownIcon } from '@patternfly/react-icons';
 import { AngleDoubleUpIcon } from '@patternfly/react-icons';
-import CriticalIcon from './CriticalIcon';
+import { CriticalRiskIcon } from '@patternfly/react-icons';
 import { EqualsIcon } from '@patternfly/react-icons';
 import { Label, LabelProps } from '@patternfly/react-core';
 import React from 'react';
@@ -18,7 +18,7 @@ const VALUE_TO_STATE: InsightsLabelValueMapping = {
   1: { icon: <AngleDoubleDownIcon />, text: 'Low' },
   2: { icon: <EqualsIcon />, text: 'Moderate' },
   3: { icon: <AngleDoubleUpIcon />, text: 'Important' },
-  4: { icon: <CriticalIcon />, text: 'Critical' },
+  4: { icon: <CriticalRiskIcon />, text: 'Critical' },
 };
 
 export interface InsightsLabelProps extends LabelProps {
