@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/nodejs-14
+FROM registry.access.redhat.com/ubi8/nodejs-16
 USER root
 WORKDIR /docs
 COPY . .
