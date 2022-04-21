@@ -10,7 +10,7 @@ import { CheckboxFilterProps } from './CheckboxFilter';
 import { GroupFilterProps } from './GroupFilter';
 import './conditional-filter.scss';
 
-type FilterValues = TextInputProps &
+export type FilterValues = TextInputProps &
   RadioFilterProps &
   CheckboxFilterProps &
   GroupFilterProps & {
@@ -19,7 +19,7 @@ type FilterValues = TextInputProps &
     /** Optional value. */
     value?: string | (string | FilterValue)[] | Record<string, unknown>;
   };
-interface TextInputProps {
+export interface TextInputProps {
   /** Optional id. */
   id?: string;
   /** Optional onChange callback. */

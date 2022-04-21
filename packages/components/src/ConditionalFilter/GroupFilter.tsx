@@ -20,7 +20,7 @@ import { isChecked, calculateSelected, getGroupMenuItems, getMenuItems, convertT
 import groupType, { GroupType } from './groupType';
 import './group-filter.scss';
 
-export interface GroupItem {
+export interface GroupFilterItem {
   /** Optional className. */
   className?: string;
   /** Optional identifier. */
@@ -36,7 +36,7 @@ export interface GroupItem {
   /** Optional onChange event called on input change. */
   onChange?: (value: boolean, event: FormEvent<HTMLInputElement>) => void;
   /** onClick event callback. */
-  onClick?: (e?: FormEvent | MouseEventHandler<HTMLInputElement>, item?: GroupItem, key?: number, checked?: boolean) => void;
+  onClick?: (e?: FormEvent | MouseEventHandler<HTMLInputElement>, item?: GroupFilterItem, key?: number, checked?: boolean) => void;
   /** Optional tagKey. */
   tagKey?: string;
   /** Optional tagValue. */
@@ -49,7 +49,7 @@ export interface GroupItem {
   value?: string;
 }
 
-export interface TreeViewItem extends GroupItem {
+export interface TreeViewItem extends GroupFilterItem {
   /** Optional hasCheck flag. */
   hasCheck?: boolean;
   /** Additional properties of the tree view item checkbox */
@@ -70,9 +70,9 @@ export interface Group {
   /** Optional isSelected flag. */
   isSelected?: boolean;
   /** Optional item. */
-  item?: GroupItem;
+  item?: GroupFilterItem;
   /** Group item array. */
-  items: GroupItem[];
+  items: GroupFilterItem[];
   /** Optional label. */
   label?: string;
   /** Optional noFilter flag. */
@@ -93,7 +93,7 @@ export interface GroupFilterProps {
   /** Optional isFilterable flag. */
   isFilterable?: boolean;
   /** Optional groupFilter items. */
-  items?: GroupItem[];
+  items?: GroupFilterItem[];
   /** Optional onFilter callback. */
   onFilter?: (value: string) => void;
   /** onChange event called on input change. */
@@ -185,7 +185,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
   );
   const groupMenuItems = getGroupMenuItems(groups, onChange, calculateSelected(selected || {}));
 
-  const renderItem = (item: GroupItem, key: string | number, type?: GroupType, groupKey = '') => (
+  const renderItem = (item: GroupFilterItem, key: string | number, type?: GroupType, groupKey = '') => (
     <MenuItem
       itemId={key}
       key={`${item.value}-${key}-item`}
@@ -246,7 +246,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
     </MenuItem>
   );
 
-  const renderItems = (items: GroupItem[], type?: GroupType, groupKey = '') =>
+  const renderItems = (items: GroupFilterItem[], type?: GroupType, groupKey = '') =>
     items.map((item, key) =>
       (type || item.type) === groupType.treeView ? (
         <div key={`${item.value}-${key}-item`} className="ins-c-tree-view">
@@ -283,8 +283,8 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
           <Menu ref={menuRef} className={classNames('ins-c-menu__scrollable', className, { 'pf-m-expanded': isOpen })}>
             <MenuContent>
               <MenuList aria-label="Group filter">
-                {menuItems.length > 0 && <MenuGroup>{renderItems(menuItems as GroupItem[])}</MenuGroup>}
-                {groupMenuItems.map((group: GroupItem | Group, groupKey: number) => (
+                {menuItems.length > 0 && <MenuGroup>{renderItems(menuItems as GroupFilterItem[])}</MenuGroup>}
+                {groupMenuItems.map((group: GroupFilterItem | Group, groupKey: number) => (
                   <MenuGroup
                     label={(group as Group).groupSelectable && typeof group.label === 'string' ? group.label : undefined}
                     key={`${group.label}-${groupKey}-group`}
