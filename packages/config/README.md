@@ -118,6 +118,9 @@ You can also easily run you application with a local build of Chrome by adding `
 INSIGHTS_CHROME=/Users/rvsiansk/insights-project/insights-chrome/build/
 ```
 
+**The path must end with a slash character / !!**
+
+
 To check what the proxy is doing with your local chrome settings you can set `proxyVerbose: true`.
 
 #### keycloakUri
