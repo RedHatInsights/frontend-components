@@ -89,7 +89,7 @@ async function generateMd(file, items) {
 
   const cmds = items.map((item) => {
     const exampleName = `${name}-${item.name}`;
-    return createItemMd(`${mdDest}/${packageName}/${exampleName}.md`, item, exampleName);
+    return createItemMd(`${mdDest}/${packageName}/${exampleName}.mdx`, item, exampleName);
   });
   return Promise.all(cmds);
 }

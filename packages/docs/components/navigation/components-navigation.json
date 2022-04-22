@@ -1,5 +1,40 @@
 [
 	{
+		"packageName": "advisor-components",
+		"groups": [
+			{
+				"group": "RebootRequired",
+				"items": [
+					"RebootRequired"
+				]
+			},
+			{
+				"group": "RuleDescription",
+				"items": [
+					"RuleDescription"
+				]
+			},
+			{
+				"group": "RuleDetails",
+				"items": [
+					"RuleDetails"
+				]
+			},
+			{
+				"group": "RuleRating",
+				"items": [
+					"RuleRating"
+				]
+			},
+			{
+				"group": "ViewAffectedLink",
+				"items": [
+					"ViewAffectedLink"
+				]
+			}
+		]
+	},
+	{
 		"packageName": "charts",
 		"groups": [
 			{
@@ -77,7 +112,6 @@
 				"items": [
 					"CheckboxFilter",
 					"ConditionalFilter",
-					"conditionalFilterConstants",
 					"GroupFilter",
 					"groupFilterConstants",
 					"groupType",
@@ -200,8 +234,7 @@
 				"group": "Ouia",
 				"items": [
 					"Ouia",
-					"useOuia",
-					"WithOuia"
+					"useOuia"
 				]
 			},
 			{
@@ -298,7 +331,6 @@
 			{
 				"group": "TreeTable",
 				"items": [
-					"decorator",
 					"helpers",
 					"rowWrapper"
 				]
@@ -371,30 +403,6 @@
 				"group": "Notification",
 				"items": [
 					"Notification"
-				]
-			},
-			{
-				"group": "NotificationPortal",
-				"items": [
-					"NotificationPortal"
-				]
-			},
-			{
-				"group": "notificationsMiddleware",
-				"items": [
-					"notificationsMiddleware"
-				]
-			},
-			{
-				"group": "Portal",
-				"items": [
-					"Portal"
-				]
-			},
-			{
-				"group": "reducers",
-				"items": [
-					"notifications"
 				]
 			}
 		]

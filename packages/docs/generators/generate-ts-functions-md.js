@@ -77,7 +77,7 @@ async function generateTsFunctionsMd(file, API) {
 
   let content = `# ${title}\n`;
   content = content.concat(`\n${API.items.map((item) => generateItem(item)).join('\n')}`);
-  const cmds = [fse.writeFile(`${mdDest}/${packageName}/${name}.md`, content)];
+  const cmds = [fse.writeFile(`${mdDest}/${packageName}/${name}.mdx`, content)];
   return Promise.all(cmds);
 }
 

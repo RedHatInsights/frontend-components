@@ -97,7 +97,12 @@ export const Table = (props) => {
   );
 };
 
-const Code = ({ children, className }) => <CodeHighlight language={className ? className.split('-').pop() : ''} sourceCode={children} />;
+const Code = ({ children, className }) =>
+  /language-(\w+)/.exec(className || '') ? (
+    <CodeHighlight language={className ? className.split('-').pop() : ''} sourceCode={children} />
+  ) : (
+    <code>{children}</code>
+  );
 
 const Li = ({ children }) => <TextListItem component={TextListItemVariants.li}>{children}</TextListItem>;
 

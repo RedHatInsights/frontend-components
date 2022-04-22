@@ -1,15 +1,29 @@
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-});
-const path = require('path');
-const glob = require('glob');
-const withTM = require('next-transpile-modules')([
+import remarkGfm from 'remark-gfm';
+import withMDXConfig from '@next/mdx';
+
+import path from 'path';
+import glob from 'glob';
+import withTMConfig from 'next-transpile-modules';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const withTM = withTMConfig([
   '@patternfly/react-core',
   '@patternfly/react-styles',
   '@patternfly/react-table',
   '@patternfly/react-icons',
   '@redhat-cloud-services/frontend-components',
 ]);
+
+const withMDX = withMDXConfig({
+  extension: /\.(md|mdx)$/,
+  options: {
+    providerImportSource: '@mdx-js/react',
+    remarkPlugins: [remarkGfm],
+  },
+});
 
 /**
  * Function that searches for all patternfly styles in node_modules and outputs an webpack alias object to ignore found modules.
@@ -44,7 +58,7 @@ const searchIgnoredStyles = (root) => {
   return result;
 };
 
-module.exports = withMDX(
+export default withMDX(
   withTM({
     pageExtensions: ['js', 'jsx', 'md', 'mdx'],
     webpack: (config) => {
