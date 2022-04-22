@@ -54,12 +54,12 @@ module.exports = ({
           },
           ...(replacePlugin || []),
         ]),
-        new DefinePlugin({
-          // we have to wrap the appname string in another string because of how define plugin explodes strings
-          CRC_APP_NAME: JSON.stringify(insights?.appname),
-          ...(definePlugin || {}),
-        }),
       ]),
+  new DefinePlugin({
+    // we have to wrap the appname string in another string because of how define plugin explodes strings
+    CRC_APP_NAME: JSON.stringify(insights?.appname),
+    ...(definePlugin || {}),
+  }),
   new ProvidePlugin({
     process: 'process/browser.js',
     Buffer: ['buffer', 'Buffer'],
