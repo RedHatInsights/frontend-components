@@ -14,7 +14,7 @@ import {
 } from '@patternfly/react-core';
 import './error-state.scss';
 
-export interface ErrorStateProps extends EmptyStateProps {
+export interface ErrorStateProps extends Omit<EmptyStateProps, 'children'> {
   errorTitle?: string;
   errorDescription?: React.ReactNode;
 }
