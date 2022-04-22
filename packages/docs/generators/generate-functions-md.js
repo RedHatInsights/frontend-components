@@ -48,7 +48,9 @@ function createParams(item) {
   let content = '';
   if (item.params) {
     item.params.forEach((param) => {
-      content = `${content}\n|${getParamName(param)}|${getParamType(param)}|${getParamDefaultValue(param)}|${getParamDescription(param)}`;
+      content = `${content}\n|${getParamName(param)}|${getParamType(param)
+        .replace(/\{/gm, '&#123;')
+        .replace(/\}/gm, '&#125;')}|${getParamDefaultValue(param).replace(/\{/gm, '&#123;').replace(/\}/gm, '&#125;')}|${getParamDescription(param)}`;
     });
   }
 

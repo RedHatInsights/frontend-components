@@ -237,7 +237,9 @@ ${Object.entries(API.props)
     ([name, value]) => `|${name}${value.required ? `&#42;` : ''}|${getPropType(value, file, { name, ...value })
       .replace(/@@spacerPlaceholder/gm, '"default-prop-spacer"')
       .replace(/\{/gm, '&#123;')
-      .replace(/\}/gm, '&#125;')}|${generateDefaultValue(value)}|${generatePropDescription(value)}|
+      .replace(/\}/gm, '&#125;')}|${generateDefaultValue(value).replace(/\{/gm, '&#123;').replace(/\}/gm, '&#125;')}|${generatePropDescription(value)
+      .replace(/\{/gm, '&#123;')
+      .replace(/\}/gm, '&#125;')}|
 `
   )
   .join('')}`
