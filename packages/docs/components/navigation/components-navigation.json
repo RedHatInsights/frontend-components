@@ -189,7 +189,6 @@
 			{
 				"group": "InsightsLabel",
 				"items": [
-					"CriticalIcon",
 					"InsightsLabel"
 				]
 			},
