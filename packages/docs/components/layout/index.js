@@ -25,6 +25,8 @@ const useStyles = createUseStyles({
     marginLeft: 'auto',
     marginRight: 'auto',
     width: 'calc(100% - 16px * 2)',
+    display: 'flex',
+    flexDirection: 'column',
   },
   tableOfContents: {
     display: 'none',
@@ -44,6 +46,9 @@ const useStyles = createUseStyles({
   footer: {
     height: 'auto',
     background: 'var(--pf-global--BackgroundColor--dark-100)',
+  },
+  contentWrapper: {
+    flex: 1,
   },
 });
 
@@ -107,7 +112,7 @@ const Layout = ({ children }) => {
 
   return (
     <Page className={classes.page} header={Header} sidebar={NavComponent && Sidebar}>
-      <div>
+      <div className={classes.contentWrapper}>
         <Split style={{ minHeight: '76.9vh' }} hasGutter>
           <SplitItem isFilled>
             <div className={classnames('pf-u-p-md', classes.content)}>
