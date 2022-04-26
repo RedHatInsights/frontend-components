@@ -1,36 +1,7 @@
 .pf-c-label {
-    --ins-c-label--red-bg:              #faeae8;
-    --inc-c-label--content-red:         var(--pf-global--palette--red-300);
-    --inc-c-label--icon-red:            var(--pf-global--palette--red-200);
-    --ins-c-label--orange-bg:           #FFF5EC;
-    --inc-c-label--content-orange:      #773D00;
-    --inc-c-label--icon-orange:         var(--pf-global--palette--orange-300);
     --ins-c-label--gold-bg:             #fdf7e7;
     --inc-c-label--content-gold:        var(--pf-global--palette--gold-700);
     --inc-c-label--icon-gold:           #F4C145;
-    --ins-c-label--blue-bg:             var(--pf-global--palette--blue-50);
-    --inc-c-label--content-blue:        var(--pf-global--palette--blue-600);
-    --inc-c-label--icon-blue:           var(--pf-global--palette--blue-300);
-}
-
-.ins-c-label-4.pf-c-label {
-    background-color: var(--ins-c-label--red-bg);
-    .pf-c-label__content {
-        color: var(--inc-c-label--content-red);
-        .pf-c-label__icon {
-            color: var(--inc-c-label--icon-red);
-        }
-    }
-}
-
-.ins-c-label-3.pf-c-label {
-    background-color: var(--ins-c-label--orange-bg);
-    .pf-c-label__content {
-        color: var(--inc-c-label--content-orange);
-        .pf-c-label__icon {
-            color: var(--inc-c-label--icon-orange);
-        }
-    }
 }
 
 .ins-c-label-2.pf-c-label {
@@ -39,16 +10,6 @@
         color: var(--inc-c-label--content-gold);
         .pf-c-label__icon {
             color: var(--inc-c-label--icon-gold);
-        }
-    }
-}
-
-.ins-c-label-1.pf-c-label {
-    background-color: var(--ins-c-label--blue-bg);
-    .pf-c-label__content {
-        color: var(--inc-c-label--content-blue);
-        .pf-c-label__icon {
-            color: var(--inc-c-label--icon-blue);
         }
     }
 }
