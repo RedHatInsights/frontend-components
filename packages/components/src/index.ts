@@ -21,7 +21,6 @@ export * from './TabLayout';
 export * from './Dark';
 export * from './PageHeader';
 export * from './Truncate';
-export * from './Wizard';
 export * from './DownloadButton';
 export * from './Reboot';
 export * from './Skeleton';
