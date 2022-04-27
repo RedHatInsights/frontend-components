@@ -58,7 +58,10 @@ describe('mergeArraysByKey', () => {
 describe('downloadFile', () => {
   const createObjectURL = jest.fn();
   const Blob = jest.fn();
+  // Create object signature will not match the original interface because its a jest mock function
+  // @ts-ignore
   global.URL = {
+    ...global.URL,
     createObjectURL,
   };
   global.Blob = Blob;
