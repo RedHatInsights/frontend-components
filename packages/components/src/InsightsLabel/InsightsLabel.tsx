@@ -11,14 +11,14 @@ type InsightsLabelValueMapping = {
   [key: number]: {
     icon: React.ReactNode;
     text: string;
-    class: string;
+    color: string;
   };
 };
 const VALUE_TO_STATE: InsightsLabelValueMapping = {
-  1: { icon: <AngleDoubleDownIcon />, text: 'Low', class: 'pf-c-label pf-m-blue' },
-  2: { icon: <EqualsIcon />, text: 'Moderate', class: 'ins-c-label-2' },
-  3: { icon: <AngleDoubleUpIcon />, text: 'Important', class: 'pf-c-label pf-m-orange' },
-  4: { icon: <CriticalRiskIcon />, text: 'Critical', class: 'pf-c-label pf-m-red' },
+  1: { icon: <AngleDoubleDownIcon />, text: 'Low', color: 'pf-c-label pf-m-blue' },
+  2: { icon: <EqualsIcon />, text: 'Moderate', color: 'ins-c-label-2' },
+  3: { icon: <AngleDoubleUpIcon />, text: 'Important', color: 'pf-c-label pf-m-orange' },
+  4: { icon: <CriticalRiskIcon />, text: 'Critical', color: 'pf-c-label pf-m-red' },
 };
 
 export interface InsightsLabelProps extends LabelProps {
@@ -34,7 +34,7 @@ export interface InsightsLabelProps extends LabelProps {
 
 const InsightsLabel: React.FunctionComponent<InsightsLabelProps> = ({ value = 1, text, hideIcon, className, rest, ...props }) => {
   return (
-    <Label {...rest} {...props} className={VALUE_TO_STATE[value].class} icon={!hideIcon && VALUE_TO_STATE[value].icon}>
+    <Label {...rest} {...props} className={VALUE_TO_STATE[value].color} icon={!hideIcon && VALUE_TO_STATE[value].icon}>
       {text || VALUE_TO_STATE[value].text}
     </Label>
   );
