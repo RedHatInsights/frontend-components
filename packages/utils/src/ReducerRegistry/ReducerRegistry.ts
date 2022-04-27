@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
+import { applyMiddleware, combineReducers, createStore, compose, ActionCreator } from 'redux';
 
-export function applyReducerHash(reducerHash: any, initialState?: Record<string, unknown>) {
+export function applyReducerHash(reducerHash: any, initialState: Record<string, unknown> = {}) {
   return function (state = initialState, action: { type: PropertyKey }) {
     if (Object.prototype.hasOwnProperty.call(reducerHash, action.type)) {
       return reducerHash[action.type](state, action);
@@ -11,7 +11,7 @@ export function applyReducerHash(reducerHash: any, initialState?: Record<string,
   };
 }
 
-export function dispatchActionsToStore(actions: any, store: any) {
+export function dispatchActionsToStore(actions: Record<string, ActionCreator<any>>, store: any): Record<string, ActionCreator<any>> {
   return Object.keys(actions).reduce(
     (acc, curr) => ({
       ...acc,
