@@ -15,10 +15,10 @@ type InsightsLabelValueMapping = {
   };
 };
 const VALUE_TO_STATE: InsightsLabelValueMapping = {
-  1: { icon: <AngleDoubleDownIcon />, text: 'Low', color: 'pf-c-label pf-m-blue' },
+  1: { icon: <AngleDoubleDownIcon />, text: 'Low', color: 'pf-m-blue' },
   2: { icon: <EqualsIcon />, text: 'Moderate', color: 'ins-c-label-2' },
-  3: { icon: <AngleDoubleUpIcon />, text: 'Important', color: 'pf-c-label pf-m-orange' },
-  4: { icon: <CriticalRiskIcon />, text: 'Critical', color: 'pf-c-label pf-m-red' },
+  3: { icon: <AngleDoubleUpIcon />, text: 'Important', color: 'pf-m-orange' },
+  4: { icon: <CriticalRiskIcon />, text: 'Critical', color: 'pf-m-red' },
 };
 
 export interface InsightsLabelProps extends LabelProps {
