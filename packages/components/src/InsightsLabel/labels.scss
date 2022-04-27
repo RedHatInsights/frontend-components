@@ -2,6 +2,7 @@
     --ins-c-label--gold-bg:             #fdf7e7;
     --inc-c-label--content-gold:        var(--pf-global--palette--gold-700);
     --inc-c-label--icon-gold:           #F4C145;
+    --inc-c-label--border-gold:         #F9E0A2;
 }
 
 .ins-c-label-2.pf-c-label {
@@ -14,5 +15,5 @@
     }
 }
 .ins-c-label-2.pf-c-label {.pf-c-label__content::before {
-    border: 1px solid var(--inc-c-label--icon-gold);
+    border: 1px solid var(--inc-c-label--border-gold);
         }}
