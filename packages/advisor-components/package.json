@@ -29,8 +29,8 @@
         "@patternfly/react-core": ">=4.162.16",
         "@patternfly/react-icons": ">=4.3.5",
         "prop-types": ">=15.6.2",
-        "react": ">=16.14.0 || >=17.0.0",
-        "react-dom": ">=16.14.0 || >=17.0.0",
+        "react": "^16.14.0",
+        "react-dom": "^16.14.0",
         "react-router-dom": "^5.0.0"
     },
     "dependencies": {
@@ -39,5 +39,14 @@
         "react-markdown": "^8.0.1",
         "rehype-raw": "^6.1.1",
         "rehype-sanitize": "^5.0.1"
+    },
+    "devDependencies": {
+        "@cypress/react": "^5.12.4",
+        "@cypress/webpack-dev-server": "^1.8.4",
+        "css-loader": "^6.7.1",
+        "cypress": "^9.6.0",
+        "eslint-plugin-cypress": "^2.12.1",
+        "sass-loader": "^12.6.0",
+        "style-loader": "^3.3.1"
     }
 }
