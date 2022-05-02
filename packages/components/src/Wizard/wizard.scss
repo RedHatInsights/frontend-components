@@ -1,7 +1,0 @@
-.pf-c-modal-box.ins-c-wizard {
-    min-height: 75vh;
-    min-width: 75vw;
-    
-    // Style override, this max-height is actually set above by the overall wizard height
-    .pf-c-modal-box__body { max-height: none; }
-}
