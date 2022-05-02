@@ -6,19 +6,19 @@ import { CriticalRiskIcon } from '@patternfly/react-icons';
 import { EqualsIcon } from '@patternfly/react-icons';
 import { Label, LabelProps } from '@patternfly/react-core';
 import React from 'react';
-import classNames from 'classnames';
 
 type InsightsLabelValueMapping = {
   [key: number]: {
     icon: React.ReactNode;
     text: string;
+    color: 'blue' | 'orange' | 'red' | undefined;
   };
 };
 const VALUE_TO_STATE: InsightsLabelValueMapping = {
-  1: { icon: <AngleDoubleDownIcon />, text: 'Low' },
-  2: { icon: <EqualsIcon />, text: 'Moderate' },
-  3: { icon: <AngleDoubleUpIcon />, text: 'Important' },
-  4: { icon: <CriticalRiskIcon />, text: 'Critical' },
+  1: { icon: <AngleDoubleDownIcon />, text: 'Low', color: 'blue' },
+  2: { icon: <EqualsIcon />, text: 'Moderate', color: undefined },
+  3: { icon: <AngleDoubleUpIcon />, text: 'Important', color: 'orange' },
+  4: { icon: <CriticalRiskIcon />, text: 'Critical', color: 'red' },
 };
 
 export interface InsightsLabelProps extends LabelProps {
@@ -34,7 +34,13 @@ export interface InsightsLabelProps extends LabelProps {
 
 const InsightsLabel: React.FunctionComponent<InsightsLabelProps> = ({ value = 1, text, hideIcon, className, rest, ...props }) => {
   return (
-    <Label {...rest} {...props} className={classNames(className, `ins-c-label-${value}`)} icon={!hideIcon && VALUE_TO_STATE[value].icon}>
+    <Label
+      {...rest}
+      {...props}
+      className={value === 2 ? 'ins-c-label-2' : ''}
+      color={VALUE_TO_STATE[value].color}
+      icon={!hideIcon && VALUE_TO_STATE[value].icon}
+    >
       {text || VALUE_TO_STATE[value].text}
     </Label>
   );
