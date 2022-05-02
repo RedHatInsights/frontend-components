@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "./src",
+    "rootDirs": ["./src", "./cypress"],
     "outDir": "./esm",
     "declarationDir": "./",
     "allowJs": true,
