@@ -15,28 +15,29 @@ import { AdvisorProduct, Rating, RuleContentOcp, RuleContentRhel, TopicRhel } fr
 import { ViewAffectedLink } from '../ViewAffectedLink';
 import { RuleDescription } from '../RuleDescription';
 
+export type Message = React.ReactNode;
 export type RuleDetailsMessages = {
-  systemReboot: string;
+  systemReboot: Message;
   // RHEL
-  viewAffectedSystems?: string;
+  viewAffectedSystems?: Message;
   // OCP
-  viewAffectedClusters?: string;
-  knowledgebaseArticle: string;
-  topicRelatedToRule: string;
-  totalRisk: string;
-  rulesDetailsTotalRiskBody: string;
-  likelihoodLevel: string;
-  likelihoodDescription: string;
-  impactLevel: string;
-  impactDescription: string;
-  riskOfChange: string;
-  riskOfChangeText: string;
-  riskOfChangeLabel: string;
-  ruleHelpful: string;
-  feedbackThankYou: string;
+  viewAffectedClusters?: Message;
+  knowledgebaseArticle: Message;
+  topicRelatedToRule: Message;
+  totalRisk: Message;
+  rulesDetailsTotalRiskBody: Message;
+  likelihoodLevel: Message;
+  likelihoodDescription: Message;
+  impactLevel: Message;
+  impactDescription: Message;
+  riskOfChange: Message;
+  riskOfChangeText: Message;
+  riskOfChangeLabel: Message;
+  ruleHelpful: Message;
+  feedbackThankYou: Message;
 };
 
-interface RuleDetailsProps {
+export interface RuleDetailsProps {
   messages: RuleDetailsMessages;
   product: AdvisorProduct;
   rule: RuleContentOcp | RuleContentRhel;
@@ -44,7 +45,7 @@ interface RuleDetailsProps {
   resolutionRiskDesc?: string;
   header?: React.ReactNode;
   isDetailsPage: boolean;
-  topics: TopicRhel[];
+  topics?: TopicRhel[];
   /**
    * onVoteClick - a callback used to update the rating of a particular rule
    * @param {string} ruleId - ID (usually in plugin|error_key format) of the rule that needs to be updated
@@ -71,15 +72,19 @@ const RuleDetails: React.FC<RuleDetailsProps> = ({
   linkComponent: Link,
   knowledgebaseUrl,
 }) => (
-  <Flex flexWrap={{ default: 'nowrap' }} direction={{ default: isDetailsPage ? 'column' : 'columnReverse', lg: 'row' }}>
+  <Flex
+    className="ins-c-rule-details"
+    flexWrap={{ default: 'nowrap' }}
+    direction={{ default: isDetailsPage ? 'column' : 'columnReverse', lg: 'row' }}
+  >
     <FlexItem>
       <Stack hasGutter>
-        {header && <StackItem>{header}</StackItem>}
-        <StackItem>
+        {header && <StackItem className="ins-c-rule-details__header">{header}</StackItem>}
+        <StackItem className="ins-c-rule-details__description">
           <RuleDescription product={product} rule={rule} isDetailsPage={isDetailsPage} />
         </StackItem>
         {knowledgebaseUrl && (
-          <StackItem>
+          <StackItem className="ins-c-rule-details__kbs">
             <a rel="noopener noreferrer" target="_blank" href={knowledgebaseUrl}>
               {messages.knowledgebaseArticle}&nbsp;
               <ExternalLinkAltIcon size="sm" />
@@ -87,15 +92,19 @@ const RuleDetails: React.FC<RuleDetailsProps> = ({
           </StackItem>
         )}
         {topics && rule.tags && topicLinks(rule as RuleContentRhel, topics, Link).length > 0 && (
-          <StackItem>
+          <StackItem className="ins-c-rule-details__topics">
             <strong>{messages.topicRelatedToRule}</strong>
             <br />
             {barDividedList(topicLinks(rule as RuleContentRhel, topics, Link))}
           </StackItem>
         )}
-        {isDetailsPage && onVoteClick && <RuleRating messages={messages} ruleId={rule.rule_id} ruleRating={rule.rating} onVoteClick={onVoteClick} />}
+        {isDetailsPage && onVoteClick && (
+          <StackItem className="ins-c-rule-details__vote">
+            <RuleRating messages={messages} ruleId={rule.rule_id} ruleRating={rule.rating} onVoteClick={onVoteClick} />
+          </StackItem>
+        )}
         {!isDetailsPage && showViewAffected && Link && (
-          <StackItem>
+          <StackItem className="ins-c-rule-details__view-affected">
             <ViewAffectedLink messages={messages} rule={rule} product={product} linkComponent={Link} />
           </StackItem>
         )}
@@ -111,13 +120,13 @@ const RuleDetails: React.FC<RuleDetailsProps> = ({
             </FlexItem>
             <FlexItem>
               <Flex flexWrap={{ default: 'nowrap' }}>
-                <FlexItem>
+                <FlexItem className="ins-c-rule-details__total-risk">
                   {/* remove pf-m-compact class name once https://github.com/patternfly/patternfly-react/issues/7196 is resolved */}
                   <InsightsLabel value={rule.total_risk} isCompact className="pf-m-compact" rest={{}} />
                 </FlexItem>
-                <FlexItem className="ins-c-description-stack-override">
+                <FlexItem>
                   <Stack hasGutter>
-                    <StackItem>
+                    <StackItem className="ins-c-rule-details__total-risk-body">
                       <TextContent>
                         <Text component={TextVariants.p}>{messages.rulesDetailsTotalRiskBody}</Text>
                       </TextContent>
@@ -154,9 +163,15 @@ const RuleDetails: React.FC<RuleDetailsProps> = ({
                   <Flex flexWrap={{ default: 'nowrap' }}>
                     <FlexItem>
                       {/* remove pf-m-compact class name once https://github.com/patternfly/patternfly-react/issues/7196 is resolved */}
-                      <InsightsLabel text={messages.riskOfChangeLabel} value={resolutionRisk} hideIcon className="pf-m-compact" rest={{}} />
+                      <InsightsLabel
+                        text={messages.riskOfChangeLabel}
+                        value={resolutionRisk}
+                        hideIcon
+                        className="ins-c-rule-details__risk-of-ch-label pf-m-compact"
+                        rest={{}}
+                      />
                     </FlexItem>
-                    <FlexItem className="ins-c-description-stack-override">
+                    <FlexItem className="ins-c-rule-details__risk-of-ch-desc">
                       <Stack hasGutter>
                         <StackItem>
                           <TextContent>
@@ -164,7 +179,7 @@ const RuleDetails: React.FC<RuleDetailsProps> = ({
                           </TextContent>
                         </StackItem>
                         {product === AdvisorProduct.rhel && (
-                          <StackItem>
+                          <StackItem className="ins-c-rule-details__reboot">
                             <RebootRequired messages={messages} rebootRequired={(rule as RuleContentRhel).reboot_required} />
                           </StackItem>
                         )}

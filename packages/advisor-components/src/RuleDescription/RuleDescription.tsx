@@ -15,10 +15,10 @@ interface RuleDescriptionProps {
 
 const RuleDescription: React.FC<RuleDescriptionProps> = ({ product, rule, isDetailsPage }) => (
   <React.Fragment>
-    {(rule.generic || rule.summary) && (
+    {(rule.generic || (rule as RuleContentRhel).summary) && (
       <span className={product === AdvisorProduct.ocp || isDetailsPage ? 'ins-c-generic__override' : ''}>
         <Markdown rehypePlugins={[rehypeRaw, rehypeSanitize]}>
-          {product === AdvisorProduct.ocp || isDetailsPage ? rule.generic : rule.summary}
+          {product === AdvisorProduct.ocp || isDetailsPage ? rule.generic : (rule as RuleContentRhel).summary}
         </Markdown>
       </span>
     )}
