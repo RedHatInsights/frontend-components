@@ -2,16 +2,16 @@ import React from 'react';
 import { mount } from '@cypress/react';
 
 import rule from '../../cypress/fixtures/rule.json';
-import messages from '../../cypress/fixtures/messages';
-import { AdvisorProduct, RuleContentOcp } from '../types';
+import messages from '../../cypress/fixtures/messages.json';
+import { AdvisorProduct } from '../types';
 import { RuleDetails } from '..';
 import { DEBOUNCE_TIMEOUT } from '../RuleRating';
 
 const fixtures = {
   messages,
   product: AdvisorProduct.ocp,
-  header: <span>Test header</span>,
-  rule: rule as RuleContentOcp,
+  header: 'Test header',
+  rule: rule,
   isDetailsPage: true,
   onVoteClick: () => undefined,
   resolutionRisk: 1,
@@ -19,6 +19,9 @@ const fixtures = {
 };
 
 // TODO: Implement selectors using OUIA attributes https://ouia.readthedocs.io/en/latest/README.html
+
+// TODO: Add tests for the RHEL context
+
 describe('RuleDetails: details page', () => {
   const ROOT = '.ins-c-rule-details';
 
@@ -34,7 +37,9 @@ describe('RuleDetails: details page', () => {
     cy.get('.ins-c-rule-details__header').should('have.text', 'Test header');
   });
 
-  it('renders description', () => cy.get('.ins-c-rule-details__description').should('have.text', rule.description));
+  it('renders description', () => {
+    cy.get('.ins-c-rule-details__description').should('have.text', rule.description);
+  });
 
   it('does not render view affected button', () => {
     cy.get(ROOT).find('.ins-c-rule-details__view-affected').should('have.length', 0);
@@ -57,16 +62,13 @@ describe('RuleDetails: details page', () => {
     cy.get(ROOT).find('.ins-c-severity-line').should('have.length', 2);
   });
 
-  it('renders correct risk of change block', () => {
-    cy.get('.ins-c-rule-details__risk-of-ch-label').should('contain', 'Low');
-    cy.get('.ins-c-rule-details__risk-of-ch-desc').should('contain', 'Risk of change description');
-  });
-
   it('on vote callback fired', () => {
     const onVoteClick = cy.stub().as('abc');
     mount(<RuleDetails {...fixtures} onVoteClick={onVoteClick} />);
     cy.get('.ins-c-rule-details__vote').find('[data-ouia-component-id="thumbsDown"]').click();
 
-    cy.wait(DEBOUNCE_TIMEOUT).then(() => expect(onVoteClick).to.have.been.called);
+    cy.wait(DEBOUNCE_TIMEOUT).then(() => {
+      expect(onVoteClick).to.be.called;
+    });
   });
 });
