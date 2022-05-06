@@ -10,6 +10,10 @@ export interface DownloadButtonProps extends Omit<DropdownProps, 'onSelect'> {
   isDisabled?: boolean;
 }
 
+/**
+ * Download Button is a button component specifically made to be used for any download logic
+ */
+
 const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
   extraItems = [],
   onSelect = () => undefined,
