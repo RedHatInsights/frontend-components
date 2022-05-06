@@ -7,9 +7,9 @@ const extraItems = [<DropdownItem key="extra-1" component="button"></DropdownIte
 const Example = () => {
   return (
     <div>
-        <DownloadButton extraItems={extraItems} />
+      <DownloadButton extraItems={extraItems} />
     </div>
-   );
+  );
 };
 
 export default Example;
