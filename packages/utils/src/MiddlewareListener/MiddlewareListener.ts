@@ -1,4 +1,6 @@
 export class MiddlewareListener {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  listeners: any;
   constructor() {
     this.listeners = new Set();
   }
@@ -8,7 +10,7 @@ export class MiddlewareListener {
   }
 
   getMiddleware() {
-    return () => (next) => (action) => {
+    return () => (next: (arg0: { type: string; payload: any }) => void) => (action) => {
       const preventBubble = this.callOnAction(action.type, action.payload);
       if (preventBubble) {
         next({ type: '@@config/action-stopped', payload: action });
