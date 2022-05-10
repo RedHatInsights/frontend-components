@@ -171,6 +171,7 @@ module.exports = ({
           { from: /^(\/beta)?\/config/, to: '/404.html' },
         ],
         verbose: Boolean(proxyVerbose),
+        disableDotRule: true,
       },
       devMiddleware: {
         writeToDisk: true,
