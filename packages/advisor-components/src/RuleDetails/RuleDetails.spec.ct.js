@@ -5,7 +5,6 @@ import rule from '../../cypress/fixtures/rule.json';
 import messages from '../../cypress/fixtures/messages.json';
 import { AdvisorProduct } from '../types';
 import { RuleDetails } from '..';
-import { DEBOUNCE_TIMEOUT } from '../RuleRating';
 
 const fixtures = {
   messages,
@@ -63,12 +62,11 @@ describe('RuleDetails: details page', () => {
   });
 
   it('on vote callback fired', () => {
-    const onVoteClick = cy.stub().as('abc');
+    const onVoteClick = () => fetch('https://foo.bar/rating');
+    cy.intercept('https://foo.bar/rating', 'ok').as('voteRequest');
+
     mount(<RuleDetails {...fixtures} onVoteClick={onVoteClick} />);
     cy.get('.ins-c-rule-details__vote').find('[data-ouia-component-id="thumbsDown"]').click();
-
-    cy.wait(DEBOUNCE_TIMEOUT).then(() => {
-      expect(onVoteClick).to.be.called;
-    });
+    cy.wait('@voteRequest');
   });
 });
