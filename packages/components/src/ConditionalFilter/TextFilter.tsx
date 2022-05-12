@@ -84,7 +84,7 @@ const TextFilter: React.FunctionComponent<TextFilterProps> = ({
         data-ouia-component-type="PF4/TextInput"
         id={id}
         isDisabled={isDisabled}
-        value={onChange ? (typeof value === 'string' ? value : value.value) : stateValue}
+        value={onChange ? (typeof value === 'string' ? value : value?.value || '') : stateValue}
         onChange={(_inputValue, e) => changeCallback(e, (e.target as HTMLInputElement).value)}
         onKeyDown={(e) => e.key === 'Enter' && onSubmit?.(e, (typeof value === 'string' ? value : value.value) || stateValue)}
         ouiaId="ConditionalFilter"
