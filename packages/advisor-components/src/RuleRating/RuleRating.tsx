@@ -9,6 +9,8 @@ import { OutlinedThumbsDownIcon, OutlinedThumbsUpIcon, ThumbsDownIcon, ThumbsUpI
 import { Rating } from '../types';
 import { RuleDetailsMessages } from '../RuleDetails/RuleDetails';
 
+export const DEBOUNCE_TIMEOUT = 2000;
+
 interface RuleRatingProps {
   ruleId: string;
   ruleRating: Rating;
@@ -24,7 +26,7 @@ const RuleRating: React.FC<RuleRatingProps> = ({ messages, ruleId, ruleRating, o
     debounce((calculatedRating) => {
       onVoteClick(ruleId, calculatedRating);
       setSubmitted(false);
-    }, 2000),
+    }, DEBOUNCE_TIMEOUT),
     []
   );
 

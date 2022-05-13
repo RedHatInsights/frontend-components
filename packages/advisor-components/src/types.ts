@@ -12,13 +12,11 @@ export type Likelihood = 1 | 2 | 3 | 4;
 export interface RuleContent {
   rule_id: string;
   generic: string;
-  summary: string;
   total_risk: TotalRisk;
   likelihood: number;
   description: string;
   publish_date: string;
   more_info: string;
-  hosts_acked_count: number;
   rating: Rating;
   impact: {
     impact: Impact;
@@ -53,6 +51,8 @@ export interface RuleContentRhel extends RuleContent {
   resolution_set: RhelResolution[];
   node_id: string;
   tags: string;
+  summary: string;
+  hosts_acked_count: number;
 }
 
 export interface RuleContentOcp extends RuleContent {
