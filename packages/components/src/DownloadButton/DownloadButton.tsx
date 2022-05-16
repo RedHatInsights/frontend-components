@@ -5,8 +5,17 @@ import { ExportIcon } from '@patternfly/react-icons';
 
 export interface DownloadButtonProps extends Omit<DropdownProps, 'onSelect'> {
   extraItems?: any[];
+   /**
+   * Text to appear in the tooltip
+   */
   tooltipText?: React.ReactNode;
+   /**
+   * Action the button will take when selected
+   */
   onSelect?: (event: MouseEvent | React.MouseEvent<any, MouseEvent> | React.KeyboardEvent<Element>, format: 'csv' | 'json') => void;
+   /**
+   * Determines if the button is disabled or not
+   */
   isDisabled?: boolean;
 }
 
