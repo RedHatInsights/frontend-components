@@ -1,0 +1,11 @@
+@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
+
+.ins-error-boundary-stack {
+  font-family: 'monospace';
+  font-size: var(--pf-global--icon--FontSize--md);
+  text-align: left;
+  background-color: white;
+  border-style: solid;
+  border-color: var(--pf-global--BackgroundColor--dark-300);
+  padding: var(--pf-global--spacer--sm);
+}
