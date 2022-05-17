@@ -44,9 +44,9 @@ export interface PrimaryToolbarProps {
   pagination?: Omit<PaginationProps, 'ref'>;
 
   /** @reference [SortBy props](/components/SortBy) */
-  sortByConfig: SortByProps;
+  sortByConfig?: SortByProps;
   /** @reference [DownloadButton props](/components/DownloadButton) */
-  exportConfig: DownloadButtonProps;
+  exportConfig?: DownloadButtonProps;
 
   /** @reference [FilterChips props](/components/FilterChips)
    */
@@ -55,7 +55,7 @@ export interface PrimaryToolbarProps {
   expandAll?: React.ReactNode | PrimaryToolbarExpandAllObject;
 
   /** Use PF [toolbar toggle component for conditional filter](https://www.patternfly.org/v4/components/toolbar/react/component-managed-toggle-groups/) */
-  useMobileLayout: boolean;
+  useMobileLayout?: boolean;
 }
 
 function isPrimaryToolbarExpandAllObject(node: React.ReactNode | PrimaryToolbarExpandAllObject): node is PrimaryToolbarExpandAllObject {
