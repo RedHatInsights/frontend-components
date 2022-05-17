@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import { ExportIcon } from '@patternfly/react-icons';
 
-export interface DownloadButtonProps extends Omit<DropdownProps, 'onSelect'> {
+export interface DownloadButtonProps extends Omit<DropdownProps, 'onSelect' | 'toggle' | 'dropdownItems'> {
   /**
    * Additional JSX elements rendered as dropdown options
    */
@@ -48,7 +48,7 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
       {conditionallyTooltip(
         <Dropdown
           {...props}
-          isPlain
+          isPlain={props.isPlain ?? true}
           onSelect={internalOnSelect}
           toggle={
             <DropdownToggle aria-label="Export" toggleIndicator={null} onToggle={onToggle} isDisabled={isDisabled} ouiaId="Export">
