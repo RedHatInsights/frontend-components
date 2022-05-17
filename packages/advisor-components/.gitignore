@@ -20,6 +20,10 @@
 !tsconfig.json
 !pre-publish.js
 !tsconfig.*
+!cypress.json
+!cypress
+!cypress/*
+!.eslintrc
 
 # Incremental ts info
 tsconfig.tsbuildinfo

@@ -55,6 +55,7 @@ describe('should create dummy config with no options', () => {
           { from: /^(\/beta)?\/config/, to: '/404.html' },
         ],
         verbose: false,
+        disableDotRule: true,
       },
       client: {},
       devMiddleware: {
