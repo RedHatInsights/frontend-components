@@ -1,6 +1,8 @@
+import { Dispatch, AnyAction } from 'redux';
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export class MiddlewareListener {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  listeners: any;
+  [x: string]: any;
   constructor() {
     this.listeners = new Set();
   }
@@ -10,7 +12,7 @@ export class MiddlewareListener {
   }
 
   getMiddleware() {
-    return () => (next: (arg0: { type: string; payload: any }) => void) => (action) => {
+    return () => (next: Dispatch<AnyAction>) => (action: { type: any; payload: any }) => {
       const preventBubble = this.callOnAction(action.type, action.payload);
       if (preventBubble) {
         next({ type: '@@config/action-stopped', payload: action });
@@ -20,12 +22,12 @@ export class MiddlewareListener {
     };
   }
 
-  addNew(listener) {
+  addNew(listener: Record<string, never>) {
     this.listeners.add(listener);
     return () => this.listeners.delete(listener);
   }
 
-  callOnAction(action, data) {
+  callOnAction(action: any, data: any) {
     let stopBubble = false;
     const preventBubble = () => (stopBubble = true);
     const listeners = Array.from(this.listeners);
