@@ -4,11 +4,27 @@ import React, { useState } from 'react';
 import { ExportIcon } from '@patternfly/react-icons';
 
 export interface DownloadButtonProps extends Omit<DropdownProps, 'onSelect'> {
-  extraItems?: any[];
+  /**
+   * Additional JSX elements rendered as dropdown options
+   */
+  extraItems?: React.ReactElement[];
+  /**
+   * Text to appear in the tooltip
+   */
   tooltipText?: React.ReactNode;
+  /**
+   * Action the button will take when selected
+   */
   onSelect?: (event: MouseEvent | React.MouseEvent<any, MouseEvent> | React.KeyboardEvent<Element>, format: 'csv' | 'json') => void;
+  /**
+   * Determines if the button is disabled or not
+   */
   isDisabled?: boolean;
 }
+
+/**
+ * Download Button is a button component specifically made to be used for any download logic
+ */
 
 const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
   extraItems = [],

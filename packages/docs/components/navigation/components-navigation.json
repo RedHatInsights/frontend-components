@@ -112,9 +112,7 @@
 				"items": [
 					"CheckboxFilter",
 					"ConditionalFilter",
-					"conditionalFilterConstants",
 					"GroupFilter",
-					"groupFilterConstants",
 					"groupType",
 					"RadioFilter",
 					"TextFilter"
@@ -130,8 +128,7 @@
 			{
 				"group": "Dark",
 				"items": [
-					"Dark",
-					"DarkContext"
+					"Dark"
 				]
 			},
 			{
@@ -164,13 +161,6 @@
 				"group": "FilterChips",
 				"items": [
 					"FilterChips"
-				]
-			},
-			{
-				"group": "FilterHooks",
-				"items": [
-					"constants",
-					"tagFilterHook"
 				]
 			},
 			{
@@ -234,8 +224,7 @@
 				"group": "Ouia",
 				"items": [
 					"Ouia",
-					"useOuia",
-					"WithOuia"
+					"useOuia"
 				]
 			},
 			{
@@ -332,8 +321,6 @@
 			{
 				"group": "TreeTable",
 				"items": [
-					"decorator",
-					"helpers",
 					"rowWrapper"
 				]
 			},
@@ -347,27 +334,6 @@
 				"group": "Unavailable",
 				"items": [
 					"Unavailable"
-				]
-			},
-			{
-				"group": "useChrome",
-				"items": [
-					"useChrome"
-				]
-			},
-			{
-				"group": "usePendoFeedback",
-				"items": [
-					"usePendoFeedback"
-				]
-			},
-			{
-				"group": "useScreenSize",
-				"items": [
-					"breakpoints",
-					"getVariant",
-					"isSmallScreen",
-					"useScreenSize"
 				]
 			}
 		]
@@ -399,24 +365,6 @@
 				"group": "Notification",
 				"items": [
 					"Notification"
-				]
-			},
-			{
-				"group": "NotificationPortal",
-				"items": [
-					"NotificationPortal"
-				]
-			},
-			{
-				"group": "notificationsMiddleware",
-				"items": [
-					"notificationsMiddleware"
-				]
-			},
-			{
-				"group": "Portal",
-				"items": [
-					"Portal"
 				]
 			}
 		]
@@ -548,45 +496,9 @@
 		"packageName": "utils",
 		"groups": [
 			{
-				"group": "debounce",
-				"items": [
-					{
-						"title": "debounceFunction",
-						"name": "debounce-debounceFunction"
-					}
-				]
-			},
-			{
-				"group": "interceptors",
-				"items": [
-					"interceptors"
-				]
-			},
-			{
 				"group": "parseCvssScore",
 				"items": [
 					"parseCvssScore"
-				]
-			},
-			{
-				"group": "RBAC",
-				"items": [
-					"RBAC"
-				]
-			},
-			{
-				"group": "RBACHook",
-				"items": [
-					"RBACHook"
-				]
-			},
-			{
-				"group": "ReducerRegistry",
-				"items": [
-					{
-						"title": "ReducerRegistry",
-						"name": "ReducerRegistry-ReducerRegistry"
-					}
 				]
 			},
 			{
