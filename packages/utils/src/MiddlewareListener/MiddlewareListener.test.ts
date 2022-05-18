@@ -7,10 +7,10 @@ test('should create empty listeners', () => {
 
 describe('basic functions', () => {
   const mwListener = new MiddlewareListener();
-  let listener;
+  let listener: any;
 
   test('should add new listener', () => {
-    listener = mwListener.addNew(() => undefined);
+    listener = mwListener.addNew(listener);
     expect(mwListener.listeners.size).toBe(1);
   });
 
@@ -21,7 +21,7 @@ describe('basic functions', () => {
 });
 
 describe('bubble actions', () => {
-  let mwListener;
+  let mwListener: any;
   const mockedNext = jest.fn();
   const mockedAction = { type: 'something', payload: { data: 'some data' } };
 
@@ -32,7 +32,7 @@ describe('bubble actions', () => {
   test('should stop', () => {
     mwListener.addNew({
       on: 'something',
-      callback: ({ data, preventBubble }) => {
+      callback: ({ data, preventBubble }: { data: any; preventBubble: any }) => {
         expect(data).toEqual({ data: 'some data' });
         preventBubble();
       },
@@ -44,7 +44,7 @@ describe('bubble actions', () => {
   test('should NOT stop', () => {
     mwListener.addNew({
       on: 'something',
-      callback: ({ data }) => {
+      callback: ({ data }: { data: any }) => {
         expect(data).toEqual({ data: 'some data' });
       },
     });

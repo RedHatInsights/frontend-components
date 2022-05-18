@@ -1,6 +1,13 @@
+import { Dispatch, AnyAction } from 'redux';
+
+export type Listener = {
+  callback: (...args: unknown[]) => void;
+  on: string;
+};
 export class MiddlewareListener {
+  listeners: Set<Listener>;
   constructor() {
-    this.listeners = new Set();
+    this.listeners = new Set<Listener>();
   }
 
   getListeners() {
@@ -8,7 +15,7 @@ export class MiddlewareListener {
   }
 
   getMiddleware() {
-    return () => (next) => (action) => {
+    return () => (next: Dispatch<AnyAction>) => (action: AnyAction) => {
       const preventBubble = this.callOnAction(action.type, action.payload);
       if (preventBubble) {
         next({ type: '@@config/action-stopped', payload: action });
@@ -18,12 +25,12 @@ export class MiddlewareListener {
     };
   }
 
-  addNew(listener) {
+  addNew(listener: Listener) {
     this.listeners.add(listener);
     return () => this.listeners.delete(listener);
   }
 
-  callOnAction(action, data) {
+  callOnAction(action: string, data: unknown) {
     let stopBubble = false;
     const preventBubble = () => (stopBubble = true);
     const listeners = Array.from(this.listeners);
