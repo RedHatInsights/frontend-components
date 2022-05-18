@@ -7,10 +7,10 @@ test('should create empty listeners', () => {
 
 describe('basic functions', () => {
   const mwListener = new MiddlewareListener();
-  let listener;
+  let listener: any;
 
   test('should add new listener', () => {
-    listener = mwListener.addNew(() => undefined);
+    listener = mwListener.addNew(listener);
     expect(mwListener.listeners.size).toBe(1);
   });
 
@@ -21,7 +21,7 @@ describe('basic functions', () => {
 });
 
 describe('bubble actions', () => {
-  let mwListener;
+  let mwListener: any;
   const mockedNext = jest.fn();
   const mockedAction = { type: 'something', payload: { data: 'some data' } };
 
