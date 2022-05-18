@@ -1,7 +1,5 @@
 import { Dispatch, AnyAction } from 'redux';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 export type Listener = {
   callback: (...args: unknown[]) => void;
   on: string;
