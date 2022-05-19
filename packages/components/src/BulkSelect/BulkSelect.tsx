@@ -28,7 +28,7 @@ export interface BulkSelectProps {
   count?: number;
   className?: string;
   items?: BulkSelectItem[];
-  checked?: boolean;
+  checked?: boolean | null;
   id?: string;
   onSelect?: DropdownToggleCheckboxProps['onChange'];
   toggleProps?: DropdownToggleProps;

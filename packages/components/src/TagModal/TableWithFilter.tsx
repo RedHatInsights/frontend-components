@@ -1,16 +1,43 @@
 import React, { Fragment } from 'react';
 import { Pagination, Bullseye, EmptyState, EmptyStateVariant, Title, EmptyStateBody } from '@patternfly/react-core';
-import { PropTypes } from 'prop-types';
-import { Table, TableHeader, TableBody } from '@patternfly/react-table';
+import { ICell, IRow, Table, TableHeader, TableBody, TableProps } from '@patternfly/react-table';
 import { EmptyTable } from '../EmptyTable';
 import { TableToolbar } from '../TableToolbar';
-import { PrimaryToolbar } from '../PrimaryToolbar';
+import { PrimaryToolbar, PrimaryToolbarProps } from '../PrimaryToolbar';
 import { Skeleton } from '../Skeleton';
 import { SkeletonTable } from '../SkeletonTable';
-const TableWithFilter = ({
-  rows,
+import { BulkSelectProps } from '../BulkSelect';
+import { ConditionalFilterItem } from '../ConditionalFilter';
+
+export type TableWithFilterPagination = {
+  count: number;
+  page: number;
+  perPage: number;
+};
+
+export interface TableWithFilterProps {
+  rows?: IRow[];
+  onSelect?: (selected?: IRow[]) => void;
+  selected?: IRow[];
+  onUpdateData: (pagination: TableWithFilterPagination) => number | undefined;
+  pagination: TableWithFilterPagination;
+  loaded?: boolean;
+  calculateChecked?: (rows: IRow[], selected: IRow[]) => boolean | null;
+  unique?: (rows: IRow[]) => IRow[];
+  filters?: ConditionalFilterItem[];
+  primaryToolbarProps: PrimaryToolbarProps;
+  title?: string;
+  systemName?: string;
+  columns?: (string | ICell)[];
+  tableProps?: TableProps;
+  entityName?: string;
+  bulkSelect?: BulkSelectProps;
+}
+
+const TableWithFilter: React.FC<TableWithFilterProps> = ({
+  rows = [],
   onSelect,
-  selected,
+  selected = [],
   onUpdateData,
   pagination,
   loaded,
@@ -21,14 +48,14 @@ const TableWithFilter = ({
   children,
   title,
   systemName,
-  columns,
+  columns = [],
   tableProps,
-  entityName,
+  entityName = 'tags',
   bulkSelect,
 }) => {
-  const onRowSelect = ({ isSelected, rowId }) => {
+  const onRowSelect = ({ isSelected, rowId }: { isSelected?: boolean; rowId: number }) => {
     const currRow = rows?.[rowId];
-    if (currRow) {
+    if (currRow && onSelect) {
       onSelect(isSelected ? [...selected, currRow] : selected.filter(({ id }) => id !== currRow.id));
     }
   };
@@ -58,7 +85,7 @@ const TableWithFilter = ({
                     ...(loaded && rows?.length > 0
                       ? {
                           title: `Select page (${rows.length})`,
-                          onClick: () => onSelect(unique([...rows, ...selected])),
+                          onClick: () => onSelect(unique?.([...rows, ...selected])),
                         }
                       : {}),
                   },
@@ -148,34 +175,6 @@ const TableWithFilter = ({
       )}
     </Fragment>
   );
-};
-
-TableWithFilter.propTypes = {
-  entityName: PropTypes.string,
-  loaded: PropTypes.bool,
-  systemName: PropTypes.string,
-  rows: PropTypes.array,
-  selected: PropTypes.array,
-  columns: PropTypes.array,
-  filters: PropTypes.array,
-  pagination: PropTypes.shape({
-    count: PropTypes.number,
-    page: PropTypes.number,
-    perPage: PropTypes.number,
-  }),
-  primaryToolbarProps: PropTypes.object,
-  tableProps: PropTypes.object,
-  children: PropTypes.node,
-  title: PropTypes.node,
-  calculateChecked: PropTypes.func,
-  unique: PropTypes.func,
-  onSelect: PropTypes.func,
-  onUpdateData: PropTypes.func,
-  bulkSelect: PropTypes.any,
-};
-
-TableWithFilter.defaultProps = {
-  entityName: 'tags',
 };
 
 export default TableWithFilter;

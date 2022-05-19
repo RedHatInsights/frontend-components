@@ -30,7 +30,6 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
         },
       ]
     }
-    entityName="tags"
     isOpen={true}
     loaded={true}
     onUpdateData={[Function]}
@@ -52,8 +51,6 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
       ]
     }
     systemName="paul.localhost.com"
-    tableProps={Object {}}
-    toggleModal={[Function]}
     unique={[Function]}
   />
 </Modal>
@@ -89,7 +86,6 @@ exports[`TagCount component Render the modal with a child component 1`] = `
         },
       ]
     }
-    entityName="tags"
     isOpen={true}
     loaded={true}
     onUpdateData={[Function]}
@@ -100,8 +96,6 @@ exports[`TagCount component Render the modal with a child component 1`] = `
     }
     rows={Array []}
     systemName="paul.localhost.com"
-    tableProps={Object {}}
-    toggleModal={[Function]}
     unique={[Function]}
   >
     <h1>
@@ -158,7 +152,6 @@ exports[`TagCount component Should render modal with disabled button 1`] = `
         },
       ]
     }
-    entityName="tags"
     isOpen={true}
     loaded={true}
     onApply={[MockFunction]}
@@ -181,8 +174,6 @@ exports[`TagCount component Should render modal with disabled button 1`] = `
       ]
     }
     systemName="paul.localhost.com"
-    tableProps={Object {}}
-    toggleModal={[Function]}
     unique={[Function]}
   />
 </Modal>
@@ -235,7 +226,6 @@ exports[`TagCount component should render modal with enabled button 1`] = `
         },
       ]
     }
-    entityName="tags"
     isOpen={true}
     loaded={true}
     onApply={[MockFunction]}
@@ -263,8 +253,6 @@ exports[`TagCount component should render modal with enabled button 1`] = `
       ]
     }
     systemName="paul.localhost.com"
-    tableProps={Object {}}
-    toggleModal={[Function]}
     unique={[Function]}
   />
 </Modal>
@@ -340,10 +328,10 @@ exports[`Two tables Should render modal with disabled button 1`] = `
             },
           ]
         }
-        entityName="tags"
         isOpen={true}
         loaded={true}
         onApply={[MockFunction]}
+        onUpdateData={[Function]}
         rows={
           Array [
             Array [
@@ -358,8 +346,6 @@ exports[`Two tables Should render modal with disabled button 1`] = `
             "another",
           ]
         }
-        tableProps={Object {}}
-        toggleModal={[Function]}
         unique={[Function]}
       />
     </Tab>
@@ -382,10 +368,10 @@ exports[`Two tables Should render modal with disabled button 1`] = `
             },
           ]
         }
-        entityName="tags"
         isOpen={true}
         loaded={true}
         onApply={[MockFunction]}
+        onUpdateData={[Function]}
         rows={
           Array [
             Array [
@@ -400,8 +386,6 @@ exports[`Two tables Should render modal with disabled button 1`] = `
             "another",
           ]
         }
-        tableProps={Object {}}
-        toggleModal={[Function]}
         unique={[Function]}
       />
     </Tab>
@@ -479,10 +463,10 @@ exports[`Two tables should render modal with enabled button 1`] = `
             },
           ]
         }
-        entityName="tags"
         isOpen={true}
         loaded={true}
         onApply={[MockFunction]}
+        onUpdateData={[Function]}
         rows={
           Array [
             Array [
@@ -502,8 +486,6 @@ exports[`Two tables should render modal with enabled button 1`] = `
             "another",
           ]
         }
-        tableProps={Object {}}
-        toggleModal={[Function]}
         unique={[Function]}
       />
     </Tab>
@@ -526,10 +508,10 @@ exports[`Two tables should render modal with enabled button 1`] = `
             },
           ]
         }
-        entityName="tags"
         isOpen={true}
         loaded={true}
         onApply={[MockFunction]}
+        onUpdateData={[Function]}
         rows={
           Array [
             Array [
@@ -544,8 +526,6 @@ exports[`Two tables should render modal with enabled button 1`] = `
             "another",
           ]
         }
-        tableProps={Object {}}
-        toggleModal={[Function]}
         unique={[Function]}
       />
     </Tab>
@@ -606,9 +586,9 @@ exports[`Two tables should render two tables 1`] = `
             },
           ]
         }
-        entityName="tags"
         isOpen={true}
         loaded={true}
+        onUpdateData={[Function]}
         rows={
           Array [
             Array [
@@ -623,8 +603,6 @@ exports[`Two tables should render two tables 1`] = `
             "another",
           ]
         }
-        tableProps={Object {}}
-        toggleModal={[Function]}
         unique={[Function]}
       />
     </Tab>
@@ -647,9 +625,9 @@ exports[`Two tables should render two tables 1`] = `
             },
           ]
         }
-        entityName="tags"
         isOpen={true}
         loaded={true}
+        onUpdateData={[Function]}
         rows={
           Array [
             Array [
@@ -664,8 +642,6 @@ exports[`Two tables should render two tables 1`] = `
             "another",
           ]
         }
-        tableProps={Object {}}
-        toggleModal={[Function]}
         unique={[Function]}
       />
     </Tab>
@@ -726,8 +702,8 @@ exports[`Two tables should render two tables in loading state 1`] = `
             },
           ]
         }
-        entityName="tags"
         isOpen={true}
+        onUpdateData={[Function]}
         rows={
           Array [
             Array [
@@ -742,8 +718,6 @@ exports[`Two tables should render two tables in loading state 1`] = `
             "another",
           ]
         }
-        tableProps={Object {}}
-        toggleModal={[Function]}
         unique={[Function]}
       />
     </Tab>
@@ -766,8 +740,8 @@ exports[`Two tables should render two tables in loading state 1`] = `
             },
           ]
         }
-        entityName="tags"
         isOpen={true}
+        onUpdateData={[Function]}
         rows={
           Array [
             Array [
@@ -782,8 +756,6 @@ exports[`Two tables should render two tables in loading state 1`] = `
             "another",
           ]
         }
-        tableProps={Object {}}
-        toggleModal={[Function]}
         unique={[Function]}
       />
     </Tab>

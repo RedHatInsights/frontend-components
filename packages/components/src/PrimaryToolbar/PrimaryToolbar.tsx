@@ -15,7 +15,7 @@ import { SortByDirection } from '@patternfly/react-table';
 
 import Actions, { ActionsProps } from './Actions';
 import { BulkSelect, BulkSelectProps } from '../BulkSelect';
-import { ConditionalFilter } from '../ConditionalFilter';
+import { ConditionalFilter, ConditionalFilterProps } from '../ConditionalFilter';
 import { DownloadButtonProps } from '../DownloadButton';
 import { FilterChips, FilterChipsProps } from '../FilterChips';
 import SortBy, { SortByProps } from './SortBy';
@@ -38,7 +38,7 @@ export interface PrimaryToolbarProps {
   /** @reference [ConditionalFilter props](/components/ConditionalFilter)
    * TODO: use ConditionalFilterProps: https://github.com/RedHatInsights/frontend-components/pull/1379
    */
-  filterConfig?: any;
+  filterConfig?: ConditionalFilterProps;
   dedicatedAction?: React.ReactNode;
   /** @reference [PF pagination props](https://www.patternfly.org/v4/components/pagination#pagination) */
   pagination?: Omit<PaginationProps, 'ref'>;

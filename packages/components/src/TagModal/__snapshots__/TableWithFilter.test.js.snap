@@ -509,6 +509,7 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
 exports[`TableWithFilter should render without data 1`] = `
 <Fragment>
   <SkeletonTable
+    columns={Array []}
     rowSize={10}
   />
 </Fragment>
