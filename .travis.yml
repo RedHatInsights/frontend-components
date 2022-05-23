@@ -13,4 +13,4 @@ before_script:
   - npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
 script:
   - npm run lint
-  - npm test
+  - npm run test:ci

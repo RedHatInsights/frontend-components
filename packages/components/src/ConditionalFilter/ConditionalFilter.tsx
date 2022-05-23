@@ -45,11 +45,11 @@ export interface ConditionalFilterItem {
 }
 
 export interface ConditionalFilterProps extends TextInputProps {
-  hideLabel: boolean;
+  hideLabel?: boolean;
   items: ConditionalFilterItem[];
-  id: string;
-  isDisabled: boolean;
-  useMobileLayout: boolean;
+  id?: string;
+  isDisabled?: boolean;
+  useMobileLayout?: boolean;
 }
 
 const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
