@@ -1,33 +1,36 @@
 import React from 'react';
 import doT from 'dot';
 import { marked } from 'marked';
-import sanitize from 'sanitize-html';
+import sanitize, { simpleTransform } from 'sanitize-html';
 
 interface TemplateProcessorProps {
   template: string;
   definitions: Record<string, string | number>;
 }
 
-const TemplateProcessor: React.FC<TemplateProcessorProps> = ({ template, definitions }) => {
-  const DOT_SETTINGS = {
-    ...doT.templateSettings,
-    varname: 'pydata',
-    strip: false,
-  };
-  const externalLinkIcon = '';
+const DOT_SETTINGS = {
+  ...doT.templateSettings,
+  varname: 'pydata',
+  strip: false,
+};
 
+const TemplateProcessor: React.FC<TemplateProcessorProps> = ({ template, definitions }) => {
   try {
     const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
     const compiledMd = marked(compiledDot);
-    const sanitized = sanitize(compiledMd);
+    const sanitized = sanitize(compiledMd, {
+      allowedAttributes: { '*': ['href', 'target', 'class', 'style', 'rel'] },
+      allowedSchemes: ['https'],
+      transformTags: {
+        ul: simpleTransform('ul', { class: 'pf-c-list', style: 'font-size: inherit' }),
+        a: simpleTransform('a', { rel: 'noopener noreferrer', target: '_blank' }),
+      },
+    });
 
     return (
       <div
         dangerouslySetInnerHTML={{
-          __html: sanitized
-            .replace(/<ul>/gim, `<ul class="pf-c-list" style="font-size: inherit">`)
-            .replace(/<a>/gim, `<a> rel="noopener noreferrer" target="_blank"`)
-            .replace(/<\/a>/gim, ` ${externalLinkIcon}</a>`),
+          __html: sanitized.replace(/<\/a>/gim, ` <i class="fas fa-external-link-alt"></i></a>`),
         }}
       />
     );
