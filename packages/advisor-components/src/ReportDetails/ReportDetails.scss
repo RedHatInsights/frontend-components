@@ -1,44 +1,13 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins';
 
-.ins-c-inventory-insights__report-details__override {
-  .ins-c-rules-card {
-    .pf-c-card__header .pf-l-split__item:first-of-type {
-      white-space: nowrap;
-      @include rem('margin-right', 5px);
-    }
-    .ins-l-icon-group__with-major {
-      display: inline;
-    }
-    .space-between {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-
-  .ins-c-rules-card .pf-c-card__header div {
-    font-weight: 600;
-  }
-
-  .ins-c-rules-card + .ins-c-rules-card {
-    margin-top: var(--pf-global--spacer--xl);
-  }
-
-  .ins-c-rules-card a[disabled] {
-    cursor: not-allowed;
-    color: var(--pf-global--disabled-color--200);
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
-  .ins-c-inventory-advisor__card {
-    .ins-m-card__flat {
-      box-shadow: none;
-      border: 0px;
-    }
-
-    .pf-c-card__body svg {
-      @include rem('margin-right', 5px);
+.ins-c-report-details {
+  &__cards-stack {
+    a[disabled] {
+      cursor: not-allowed;
+      color: var(--pf-global--disabled-color--200);
+      &:hover {
+        text-decoration: none;
+      }
     }
 
     pre {
@@ -68,8 +37,6 @@
 
     .pf-c-list {
       @include rem('margin', 5px 0);
-      list-style: disc;
-      padding-left: var(--pf-global--spacer--lg);
     }
 
     table {
@@ -96,7 +63,7 @@
     }
   }
 
-  .ins-c-report-details-icon {
+  &__icon {
     margin-right: var(--pf-global--spacer--sm);
   }
 }

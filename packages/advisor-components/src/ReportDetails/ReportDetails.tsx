@@ -30,7 +30,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
   const [error, setError] = useState<Error | null>(null);
 
   return (
-    <Card className="ins-c-inventory-insights__report-details__override" style={{ boxShadow: 'none' }}>
+    <Card className="ins-c-report-details" style={{ boxShadow: 'none' }}>
       <CardBody>
         {error && (
           <React.Fragment>
@@ -38,11 +38,11 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
             <br />
           </React.Fragment>
         )}
-        <Stack className="ins-c-inventory-advisor__card ins-c-rules-card" widget-type="InsightsRulesCard" hasGutter>
+        <Stack className="ins-c-report-details__cards-stack" widget-type="InsightsRulesCard" hasGutter>
           <StackItem>
-            <Card className="ins-m-card__flat" isCompact>
+            <Card isCompact isPlain>
               <CardHeader>
-                <BullseyeIcon className="ins-c-report-details-icon" />
+                <BullseyeIcon className="ins-c-report-details__icon" />
                 <strong>Detected issues</strong>
               </CardHeader>
               <CardBody>
@@ -52,9 +52,9 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
           </StackItem>
           <Divider />
           <StackItem>
-            <Card className="ins-m-card__flat" isCompact>
+            <Card isCompact isPlain>
               <CardHeader>
-                <ThumbsUpIcon className="ins-c-report-details-icon" />
+                <ThumbsUpIcon className="ins-c-report-details__icon" />
                 <strong>Steps to resolve</strong>
               </CardHeader>
               <CardBody>
@@ -66,19 +66,22 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
             <React.Fragment>
               <Divider />
               <StackItem>
-                <Card className="ins-m-card__flat" isCompact>
+                <Card isCompact isPlain>
                   <CardHeader>
-                    <LightbulbIcon className="ins-c-report-details-icon" />
+                    <LightbulbIcon className="ins-c-report-details__icon" />
                     <strong>Related Knowledgebase article</strong>
                   </CardHeader>
                   <CardBody>
                     {kbaLoading ? (
                       <Skeleton size={SkeletonSize.sm} />
                     ) : (
-                      <ExternalLink
-                        href={`${kbaDetail.view_uri}`}
-                        content={kbaDetail.publishedTitle ? kbaDetail.publishedTitle : `Knowledgebase article`}
-                      />
+                      <React.Fragment>
+                        <ExternalLink
+                          href={`${kbaDetail.view_uri}`}
+                          content={kbaDetail.publishedTitle ? kbaDetail.publishedTitle : `Knowledgebase article`}
+                        />
+                        .
+                      </React.Fragment>
                     )}
                   </CardBody>
                 </Card>
@@ -89,9 +92,9 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
             <React.Fragment>
               <Divider />
               <StackItem>
-                <Card className="ins-m-card__flat" isCompact>
+                <Card isCompact isPlain>
                   <CardHeader>
-                    <InfoCircleIcon className="ins-c-report-details-icon" />
+                    <InfoCircleIcon className="ins-c-report-details__icon" />
                     <strong>Additional info</strong>
                   </CardHeader>
                   <CardBody>{<TemplateProcessor template={rule.more_info} definitions={details} onError={(e: Error) => setError(e)} />}</CardBody>
