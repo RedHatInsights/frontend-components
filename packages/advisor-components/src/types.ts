@@ -22,6 +22,7 @@ export interface RuleContent {
     impact: Impact;
     name?: string;
   };
+  reason: string;
 }
 
 export interface RhelResolution {
@@ -56,7 +57,6 @@ export interface RuleContentRhel extends RuleContent {
 }
 
 export interface RuleContentOcp extends RuleContent {
-  reason: string;
   resolution: string;
   risk_of_change: RiskOfChange;
   impacted_clusters_count: number;

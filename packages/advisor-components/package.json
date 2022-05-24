@@ -29,13 +29,15 @@
         "@patternfly/react-core": ">=4.162.16",
         "@patternfly/react-icons": ">=4.3.5",
         "prop-types": ">=15.6.2",
-        "react": ">=16.14.0 || >=17.0.0",
-        "react-dom": ">=16.14.0 || >=17.0.0",
+        "react": "^17.0.0",
+        "react-dom": "^17.0.0",
         "react-router-dom": "^5.0.0"
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components": ">=3.0.0",
+        "dot": "^1.1.3",
         "lodash": "^4.17.21",
+        "marked": "^4.0.16",
         "react-markdown": "^8.0.1",
         "rehype-raw": "^6.1.1",
         "rehype-sanitize": "^5.0.1"
@@ -43,6 +45,8 @@
     "devDependencies": {
         "@cypress/react": "^5.12.4",
         "@cypress/webpack-dev-server": "^1.8.4",
+        "@types/dot": "^1.1.5",
+        "@types/marked": "^4.0.3",
         "css-loader": "^6.7.1",
         "cypress": "^9.6.0",
         "eslint-plugin-cypress": "^2.12.1",

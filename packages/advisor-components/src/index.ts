@@ -4,3 +4,4 @@ export * from './RuleRating';
 export * from './types';
 export * from './common';
 export * from './constants';
+export * from './ReportDetails';
