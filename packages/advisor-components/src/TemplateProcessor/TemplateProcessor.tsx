@@ -1,6 +1,7 @@
 import React from 'react';
 import doT from 'dot';
 import { marked } from 'marked';
+import sanitize from 'sanitize-html';
 
 interface TemplateProcessorProps {
   template: string;
@@ -18,11 +19,12 @@ const TemplateProcessor: React.FC<TemplateProcessorProps> = ({ template, definit
   try {
     const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
     const compiledMd = marked(compiledDot);
+    const sanitized = sanitize(compiledMd);
 
     return (
       <div
         dangerouslySetInnerHTML={{
-          __html: compiledMd
+          __html: sanitized
             .replace(/<ul>/gim, `<ul class="pf-c-list" style="font-size: inherit">`)
             .replace(/<a>/gim, `<a> rel="noopener noreferrer" target="_blank"`)
             .replace(/<\/a>/gim, ` ${externalLinkIcon}</a>`),
