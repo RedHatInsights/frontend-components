@@ -1,13 +1,13 @@
 import './ReportDetails.scss';
 
 import React from 'react';
-import doT from 'dot';
-import { marked } from 'marked';
+
 import { Card, CardBody, CardHeader, Divider, Stack, StackItem } from '@patternfly/react-core';
 import { BullseyeIcon, ExternalLinkAltIcon, InfoCircleIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 
 import { RuleContentOcp, RuleContentRhel } from '../types';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
+import { TemplateProcessor } from '../TemplateProcessor';
 
 interface Report {
   rule: RuleContentRhel | RuleContentOcp;
@@ -27,42 +27,6 @@ interface ReportDetailsProps {
 const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoading }) => {
   const { rule, details, resolution } = report;
 
-  const templateProcessor = (template: string, definitions: Record<string, string | number>) => {
-    const DOT_SETTINGS = {
-      ...doT.templateSettings,
-      varname: 'pydata',
-      strip: false,
-    };
-    const externalLinkIcon = '';
-
-    try {
-      const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
-      const compiledMd = marked(compiledDot);
-
-      return (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: compiledMd
-              .replace(/<ul>/gim, `<ul class="pf-c-list" style="font-size: inherit">`)
-              .replace(/<a>/gim, `<a> rel="noopener noreferrer" target="_blank"`)
-              .replace(/<\/a>/gim, ` ${externalLinkIcon}</a>`),
-          }}
-        />
-      );
-    } catch (error) {
-      console.warn(error, definitions, template); // eslint-disable-line no-console
-      return (
-        <React.Fragment>
-          {' '}
-          Ouch. We were unable to correctly render this text, instead please enjoy the raw data.
-          <pre>
-            <code>{template}</code>
-          </pre>
-        </React.Fragment>
-      );
-    }
-  };
-
   return (
     <Card className="ins-c-inventory-insights__report-details__override" style={{ boxShadow: 'none' }}>
       <CardBody>
@@ -73,7 +37,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
                 <BullseyeIcon className="ins-c-report-details-icon" />
                 <strong>Detected issues</strong>
               </CardHeader>
-              <CardBody>{rule.reason && templateProcessor(rule.reason, details)}</CardBody>
+              <CardBody>{rule.reason && <TemplateProcessor template={rule.reason} definitions={details} />}</CardBody>
             </Card>
           </StackItem>
           <Divider />
@@ -83,7 +47,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
                 <ThumbsUpIcon className="ins-c-report-details-icon" />
                 <strong>Steps to resolve</strong>
               </CardHeader>
-              <CardBody>{resolution && templateProcessor(resolution, details)}</CardBody>
+              <CardBody>{resolution && <TemplateProcessor template={resolution} definitions={details} />}</CardBody>
             </Card>
           </StackItem>
           {(rule as RuleContentRhel).node_id && (
@@ -117,7 +81,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
                     <InfoCircleIcon className="ins-c-report-details-icon" />
                     <strong>Additional info</strong>
                   </CardHeader>
-                  <CardBody>{templateProcessor(rule.more_info, details)}</CardBody>
+                  <CardBody>{<TemplateProcessor template={rule.more_info} definitions={details} />}</CardBody>
                 </Card>
               </StackItem>
             </React.Fragment>
