@@ -1,8 +1,8 @@
 import './ReportDetails.scss';
 
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Card, CardBody, CardHeader, Divider, Stack, StackItem } from '@patternfly/react-core';
+import { Alert, Card, CardBody, CardHeader, Divider, Stack, StackItem } from '@patternfly/react-core';
 import { BullseyeIcon, InfoCircleIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 
@@ -27,10 +27,17 @@ interface ReportDetailsProps {
 
 const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoading }) => {
   const { rule, details, resolution } = report;
+  const [error, setError] = useState<Error | null>(null);
 
   return (
     <Card className="ins-c-inventory-insights__report-details__override" style={{ boxShadow: 'none' }}>
       <CardBody>
+        {error && (
+          <React.Fragment>
+            <Alert variant="danger" title="Sorry, there was an error rendering the content correctly." isInline />
+            <br />
+          </React.Fragment>
+        )}
         <Stack className="ins-c-inventory-advisor__card ins-c-rules-card" widget-type="InsightsRulesCard" hasGutter>
           <StackItem>
             <Card className="ins-m-card__flat" isCompact>
@@ -38,7 +45,9 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
                 <BullseyeIcon className="ins-c-report-details-icon" />
                 <strong>Detected issues</strong>
               </CardHeader>
-              <CardBody>{rule.reason && <TemplateProcessor template={rule.reason} definitions={details} />}</CardBody>
+              <CardBody>
+                {rule.reason && <TemplateProcessor template={rule.reason} definitions={details} onError={(e: Error) => setError(e)} />}
+              </CardBody>
             </Card>
           </StackItem>
           <Divider />
@@ -48,7 +57,9 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
                 <ThumbsUpIcon className="ins-c-report-details-icon" />
                 <strong>Steps to resolve</strong>
               </CardHeader>
-              <CardBody>{resolution && <TemplateProcessor template={resolution} definitions={details} />}</CardBody>
+              <CardBody>
+                {resolution && <TemplateProcessor template={resolution} definitions={details} onError={(e: Error) => setError(e)} />}
+              </CardBody>
             </Card>
           </StackItem>
           {(rule as RuleContentRhel).node_id && (
@@ -83,7 +94,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
                     <InfoCircleIcon className="ins-c-report-details-icon" />
                     <strong>Additional info</strong>
                   </CardHeader>
-                  <CardBody>{<TemplateProcessor template={rule.more_info} definitions={details} />}</CardBody>
+                  <CardBody>{<TemplateProcessor template={rule.more_info} definitions={details} onError={(e: Error) => setError(e)} />}</CardBody>
                 </Card>
               </StackItem>
             </React.Fragment>
