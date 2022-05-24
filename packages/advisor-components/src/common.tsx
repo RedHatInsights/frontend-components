@@ -3,6 +3,7 @@ import compact from 'lodash/compact';
 import intersection from 'lodash/intersection';
 
 import { RuleContentRhel, TopicRhel } from './types';
+import { ExternalLinkAltIcon } from '@patternfly/react-icons';
 
 // eslint-disable-next-line no-undef
 export const barDividedList = (list: JSX.Element[]) =>
@@ -24,3 +25,9 @@ export const topicLinks = (rule: RuleContentRhel, topics: TopicRhel[], Link: any
         )
       )
     : [];
+
+export const ExternalLink = ({ href, content }: { href: string; content: string }) => (
+  <a rel="noopener noreferrer" target="_blank" href={href}>
+    {content} <ExternalLinkAltIcon />
+  </a>
+);

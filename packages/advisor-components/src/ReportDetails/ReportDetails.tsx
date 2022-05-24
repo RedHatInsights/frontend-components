@@ -3,11 +3,12 @@ import './ReportDetails.scss';
 import React from 'react';
 
 import { Card, CardBody, CardHeader, Divider, Stack, StackItem } from '@patternfly/react-core';
-import { BullseyeIcon, ExternalLinkAltIcon, InfoCircleIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
+import { BullseyeIcon, InfoCircleIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 
 import { RuleContentOcp, RuleContentRhel } from '../types';
 import { TemplateProcessor } from '../TemplateProcessor';
+import { ExternalLink } from '../common';
 
 interface Report {
   rule: RuleContentRhel | RuleContentOcp;
@@ -63,9 +64,10 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
                     {kbaLoading ? (
                       <Skeleton size={SkeletonSize.sm} />
                     ) : (
-                      <a rel="noopener noreferrer" target="_blank" href={`${kbaDetail.view_uri}`}>
-                        {kbaDetail.publishedTitle ? kbaDetail.publishedTitle : `Knowledgebase article`} <ExternalLinkAltIcon />
-                      </a>
+                      <ExternalLink
+                        href={`${kbaDetail.view_uri}`}
+                        content={kbaDetail.publishedTitle ? kbaDetail.publishedTitle : `Knowledgebase article`}
+                      />
                     )}
                   </CardBody>
                 </Card>
