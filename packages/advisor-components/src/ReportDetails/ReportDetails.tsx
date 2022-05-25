@@ -68,7 +68,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
             <React.Fragment>
               <Divider />
               <StackItem>
-                <Card isCompact isPlain>
+                <Card className="ins-c-report-details__kba" isCompact isPlain>
                   <CardHeader>
                     <LightbulbIcon className="ins-c-report-details__icon" />
                     <strong>Related Knowledgebase article</strong>
