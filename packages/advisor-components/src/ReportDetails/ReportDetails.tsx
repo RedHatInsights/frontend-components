@@ -29,6 +29,12 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
   const { rule, details, resolution } = report;
   const [error, setError] = useState<Error | null>(null);
 
+  const handleError = (e: Error) => {
+    if (error === null) {
+      setError(e);
+    }
+  };
+
   return (
     <Card className="ins-c-report-details" style={{ boxShadow: 'none' }}>
       <CardBody>
@@ -45,9 +51,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
                 <BullseyeIcon className="ins-c-report-details__icon" />
                 <strong>Detected issues</strong>
               </CardHeader>
-              <CardBody>
-                {rule.reason && <TemplateProcessor template={rule.reason} definitions={details} onError={(e: Error) => setError(e)} />}
-              </CardBody>
+              <CardBody>{rule.reason && <TemplateProcessor template={rule.reason} definitions={details} onError={handleError} />}</CardBody>
             </Card>
           </StackItem>
           <Divider />
@@ -57,9 +61,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
                 <ThumbsUpIcon className="ins-c-report-details__icon" />
                 <strong>Steps to resolve</strong>
               </CardHeader>
-              <CardBody>
-                {resolution && <TemplateProcessor template={resolution} definitions={details} onError={(e: Error) => setError(e)} />}
-              </CardBody>
+              <CardBody>{resolution && <TemplateProcessor template={resolution} definitions={details} onError={handleError} />}</CardBody>
             </Card>
           </StackItem>
           {(rule as RuleContentRhel).node_id && (
@@ -97,7 +99,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
                     <InfoCircleIcon className="ins-c-report-details__icon" />
                     <strong>Additional info</strong>
                   </CardHeader>
-                  <CardBody>{<TemplateProcessor template={rule.more_info} definitions={details} onError={(e: Error) => setError(e)} />}</CardBody>
+                  <CardBody>{<TemplateProcessor template={rule.more_info} definitions={details} onError={handleError} />}</CardBody>
                 </Card>
               </StackItem>
             </React.Fragment>
