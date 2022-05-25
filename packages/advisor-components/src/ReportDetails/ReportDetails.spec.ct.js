@@ -7,29 +7,11 @@ it('render report details', () => {
     <ReportDetails
       report={{
         rule: {
-          rule_id: 'ansible_deprecated_repo|ANSIBLE_DEPRECATED_REPO',
-          created_at: '2020-04-27T14:37:24.298648Z',
-          updated_at: '2022-05-24T05:45:39.928009Z',
-          description: 'New Ansible Engine packages are inaccessible when dedicated Ansible repo is not enabled',
-          active: true,
-          category: {
-            id: 1,
-            name: 'Availability',
-          },
-          impact: {
-            name: 'Compatibility Error',
-            impact: 2,
-          },
-          likelihood: 2,
-          node_id: '3359651',
-          tags: 'ansible sbr_services',
-          reboot_required: false,
-          publish_date: '2018-04-16T10:03:16Z',
+          rule_id: 'foobar_deprecated_something|FOOBAR_DEPRECATED_SOMETHING',
+          node_id: '12345678',
           summary: 'New Ansible Engine packages are inaccessible when dedicated Ansible repo is not enabled.\n',
-          generic:
-            'Since the release of Ansible Engine 2.4, Red Hat will no longer provide future errata from the Extras repo but from a dedicated Ansible repo instead. New Ansible Engine packages are inaccessible when dedicated Ansible repo is not enabled.\n',
           reason:
-            'This host has `{{=pydata.package}}` installed and the dedicated Ansible repo `rhel-7-server-ansible-2-rpms` is not enabled. Since the release of Ansible Engine 2.4, Red Hat will no longer provide future errata from the Extras repo but from a dedicated Ansible repo instead. On this host, the new versions of `ansible` package will not be available.\n',
+            'This system is running Red Hat Enterprise Linux with the following SAP\napplication{{?Object.keys(pydata.inst).length>=2}}s{{?}} but the `/etc/hosts`\nis not configured correctly, which results in some functions of SAP system failure.\n\n1. SAP applications running on this host.\n    {{~pydata.inst: e}}\n    * {{=e}}{{~}}\n1. Issues in the `/etc/hosts`:\n  {{?pydata.no_hn}}* The hostname of this host **{{=pydata.hostname}}** is not found.\n  {{?}}{{?pydata.line_127}}* The hostname of this host **{{=pydata.hostname}}** is associated with the IP address **127.0.0.1**\n    ~~~\n    {{~pydata.line_127: e}}{{=e}}\n    {{~}}\n    ~~~\n  {{?}}{{?pydata.line_hn}}* The FQDN is not in the second column or hostname is not followed\n    ~~~\n    {{~pydata.line_hn: e}}{{=e}}\n    {{~}}\n    ~~~\n  {{?}}{{?pydata.line_ip}}* The hostname of this host **{{=pydata.hostname}}** is associated with the IP address that does not belong to this host\n    ~~~\n    {{~pydata.line_ip: e}}{{=e}}\n    {{~}}\n    ~~~\n  {{?}}{{?pydata.before_local}}* The following {{?Object.keys(pydata.before_local).length>=2}}lines are{{??}}line is{{?}} before the line of **127.0.0.1** or the line of **{{=pydata.hostname}}**\n    ~~~\n    {{~pydata.before_local: e}}{{=e}}\n    {{~}}\n    ~~~{{?}}\n  {{?pydata.long_before_local}}\n  **Note:** There are more than 10 lines in the `/etc/hosts` impacted and only the first 10 are displayed here. Please check the full list of them manually in the `/etc/hosts`.\n  {{?}}\n \nThis host is running **kernel-{{=pydata.kernel}}** and {{?Object.keys(pydata.ipv6_dev_routes).length>1}}`IPv6` routes are added for IPv6 addresses, associated with the interfaces.{{??}}`IPv6` route is added for IPv6 address, associated with the interface.{{?}} Due to a known bug in the `kernel`, when `ip6_route_dev_notify` function receives a **NULL** pointer from `snmp6_alloc_dev` while unregistering the network device, kernel panic occurs. The `snmp6_alloc_dev` returns **NULL** when CPU allocation fails.\n\nThe following IPv6 enabled {{?Object.keys(pydata.ipv6_dev_routes).length>1}}interfaces are{{??}}interface is{{?}} present on this host:\n<table>\n  <tr>\n    <th>Interface</th>\n    <th>IPv6 Address</th>\n  </tr>\n{{ for (var key in pydata.ipv6_dev_routes) { }}\n<tr>\n    <td>{{=key}} </td>\n    <td>{{=pydata.ipv6_dev_routes[key]}} </td>\n</tr>\n{{ } }}\n</table>\n',
           more_info:
             '* For more information regarding the dedicated Ansible Engine channel, please refer to [Ansible deprecated in the Extras channel](https://access.redhat.com/articles/3359651). \n* For how to use the dedicated Ansible Engine channel, please refer to [How do I Download and Install Red Hat Ansible Engine?](https://access.redhat.com/articles/3174981).\n',
           resolution_set: [
@@ -48,13 +30,25 @@ it('render report details', () => {
         },
         details: {
           type: 'rule',
-          package: 'ansible-2.8.18-1.el7ae',
-          error_key: 'ANSIBLE_DEPRECATED_REPO',
+          package: 'ansible-1.8.42-5.elre',
+          kernel: '3.9.0-862.2.3.el1.x86_64',
+          error_key: 'FOOBAR_DEPRECATED_SOMETHING',
+          rhsm_rset: null,
+          ipv6_dev_routes: {
+            eth0: 'fe81::c547:c849:ee14:2bdc',
+          },
+          fqdn: 'iqe-patch-rhel-75-7c99fe69-eaca-2144-a7db-69c9c792ae',
+          inst: ['D00', 'D01', 'D02'],
+          rhel: '7.1',
+          no_hn: true,
+          hostname: 'iqe-patch-rhel-42-7c22fe69-eaca-4242-a7db-69c913c792ae',
+          subs: ['Applications'],
+          mis_repos: ['rhel-sap-for-rhel-42-server-rpms'],
         },
         resolution:
-          'Red Hat recommends that you enable the dedicated Ansible repo and update `ansible` package to the latest version.\n  ~~~\n  # subscription-manager repos --enable rhel-7-server-ansible-2-rpms\n  # yum update ansible\n  ~~~\n',
+          "Red Hat recommends that you enable the dedicated Ansible repo and update `ansible` package to the latest version.\n  ~~~\n  # subscription-manager repos --enable rhel-7-server-ansible-2-rpms\n  # yum update ansible\n  ~~~\n \n {{?pydata.subs&&pydata.subs.indexOf('Solutions') != -1}}\nWhen running SAP HANA on RHEL it must be ensured that only OS packages provided\nfor the specific RHEL minor release are installed. For supportability it is\ntherefore required that only either the EUS or E4S repos are active on the\nsystem.\n{{?}}\nThe following {{?pydata.mis_repos.length>1}}repositories{{??}}repository{{?}} should be enabled on this host:\n{{~pydata.mis_repos: e}}* {{=e}}\n{{~}}\nRed Hat recommends that you perform the following steps to enable {{?pydata.mis_repos.length>1}}these repos{{??}}this repo{{?}}:\n1. Find the serial number for current subscription:\n  ~~~\n  # subscription-manager list --consumed\n  ~~~\n1. Remove the system from the current subscription:\n  ~~~\n  # subscription-manager remove --serial='SERIAL NUMBER'\n  ~~~\n1. Find the pool ID for the **RHEL for SAP** subscription:\n  ~~~\n  # subscription-manager list --available\n  ~~~\n1. Subscribe to **RHEL for SAP** using the pool ID:\n  ~~~\n  # subscription-manager attach --pool='XXXX'\n  ~~~\n1. Enable the recommended yum repositories:\n  ~~~\n  # subscription-manager repos{{~pydata.mis_repos: e}} --enable={{=e}}{{~}}\n  ~~~\n1. Review the yum repolist and ensure that **RHEL for SAP** is enabled:\n  ~~~\n  # yum repolist\n  ~~~\n",
       }}
-      kbaDetail={{ view_uri: 'https://access.redhat.com/solutions/1186753' }}
+      kbaDetail={{ view_uri: 'https://access.redhat.com/solutions/12345678', publishedTitle: 'Lorem ipsum article' }}
       kbaLoading={false}
     />
   );
