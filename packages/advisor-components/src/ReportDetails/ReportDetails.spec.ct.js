@@ -22,13 +22,13 @@ describe('report details: kba loaded', () => {
     cy.get(ROOT);
   });
 
-  it('renders four headers', () => {
-    cy.get('.pf-c-card__header').should('have.length', 4);
+  it('renders correct number of headers', () => {
+    cy.get('.pf-c-card__header').should('have.length', HEADERS.length);
     HEADERS.forEach((h) => cy.get('.pf-c-card__header').contains(h).should('have.length', 1));
   });
 
   it('each header has an icon', () => {
-    cy.get('.pf-c-card__header > .ins-c-report-details__icon').should('have.length', 4);
+    cy.get('.pf-c-card__header > .ins-c-report-details__icon').should('have.length', HEADERS.length);
   });
 
   it('links have an icon', () => {
