@@ -22,7 +22,7 @@ interface ReportDetailsProps {
     publishedTitle: string;
     view_uri: string;
   };
-  kbaLoading: boolean;
+  kbaLoading: boolean; // if true, renders skeleton instead of kba link
 }
 
 const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoading }) => {

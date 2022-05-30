@@ -25,8 +25,9 @@ const Component = () => (
     resolutionRisk={2}
     resolutionRiskDesc={resolutionRiskLowDescription}
     linkComponent={Link}
-    knowledgebaseUrl={`https://access.redhat.com/node/${rule.node_id}`} />
-    showViewAffected
+    knowledgebaseUrl={`https://access.redhat.com/node/${rule.node_id}`} 
+    showViewAffected 
+  />
 );
 
 ```
