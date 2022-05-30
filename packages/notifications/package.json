@@ -4,6 +4,7 @@
     "description": "Notifications portal to show toast notifications for RedHat Cloud Services project.",
     "browser": "index.js",
     "module": "esm/index.js",
+    "types": "index.d.ts",
     "publishConfig": {
         "access": "public"
     },
