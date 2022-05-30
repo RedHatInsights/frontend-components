@@ -18,6 +18,7 @@ Monorepo of Red Hat Cloud services Components for applications in a React.js env
   * [inventory-insights](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-insights#readme) - directly imported component to show insights data
 * [sources](https://github.com/RedHatInsights/sources-ui/) - Sources Wizard component was moved to Sources UI repository (it's also stored here in `sources_backup` branch)
 * [testing](https://github.com/RedHatInsights/frontend-components/tree/master/packages/testing) - Testing utilities.
+* [advisor-components](https://github.com/RedHatInsights/frontend-components/tree/master/packages/advisor-components#readme) - a library of Advisor components (rule content, report details, charts, etc.).
 ## Contributing to documentation
 
 To contribute to docs and run the docs developemnt environment, please follow these [guides](https://github.com/RedHatInsights/frontend-components/tree/master/packages/docs/pages/contributing).

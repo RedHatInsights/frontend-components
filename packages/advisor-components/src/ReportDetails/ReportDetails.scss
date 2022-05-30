@@ -1,0 +1,53 @@
+@import '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins';
+
+.ins-c-report-details {
+  &__cards-stack {
+    pre {
+      display: block;
+      color: var(--pf-global--Color--100);
+      word-break: break-all;
+      word-wrap: break-word;
+      background-color: var(--pf-global--BackgroundColor--light-200);
+      border: 1px solid var(--pf-global--BorderColor--100);
+      border-radius: 4px;
+      @include rem('padding', 10px);
+      @include rem('margin', (10px, 0));
+
+      code {
+        white-space: pre-wrap;
+      }
+    }
+
+    ol {
+      @include rem('margin-top', 10px);
+      @include rem('margin-left', 15px);
+    }
+
+    pre + p,
+    pre + ul {
+      @include rem('margin-top', 10px);
+    }
+
+    .pf-c-list {
+      @include rem('margin', 5px 0);
+    }
+
+    table {
+      width: 100%;
+      @include rem('margin-top', 10px);
+
+      tr {
+        border-bottom: 1px solid var(--pf-global--BorderColor--300);
+      }
+
+      th,
+      td {
+        @include rem('padding', 8px);
+      }
+    }
+  }
+
+  &__icon {
+    margin-right: var(--pf-global--spacer--sm);
+  }
+}

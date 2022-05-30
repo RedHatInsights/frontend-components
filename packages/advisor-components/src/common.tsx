@@ -24,3 +24,9 @@ export const topicLinks = (rule: RuleContentRhel, topics: TopicRhel[], Link: any
         )
       )
     : [];
+
+export const ExternalLink = ({ href, content }: { href: string; content: string }) => (
+  <a rel="noopener noreferrer" target="_blank" href={href}>
+    {content} <i className="fas fa-external-link-alt" />
+  </a>
+);
