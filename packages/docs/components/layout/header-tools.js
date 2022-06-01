@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ApplicationLauncher, ApplicationLauncherItem, PageHeaderTools } from '@patternfly/react-core';
-import sections from '../sections/sections-definition.json';
+import sections from '../sections/sections-definition';
 import Link from 'next/link';
 
 const HeaderTools = () => {
