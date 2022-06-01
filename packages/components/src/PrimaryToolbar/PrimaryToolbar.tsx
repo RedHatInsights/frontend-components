@@ -32,24 +32,21 @@ export type PrimaryToolbarExpandAllObject = {
 export interface PrimaryToolbarProps {
   id?: string | number;
   className?: string;
-  toggleIsExpanded?: () => 'bla';
-  /** @reference [BulkSelect props](/components/BulkSelect) */
+  toggleIsExpanded?: () => void;
+  /** @reference [BulkSelect props](/fec/modules/components/BulkSelect) */
   bulkSelect?: BulkSelectProps;
-  /** @reference [ConditionalFilter props](/components/ConditionalFilter)
-   * TODO: use ConditionalFilterProps: https://github.com/RedHatInsights/frontend-components/pull/1379
-   */
+  /** @reference [ConditionalFilter props](/fec/modules/components/ConditionalFilter)*/
   filterConfig?: ConditionalFilterProps;
   dedicatedAction?: React.ReactNode;
   /** @reference [PF pagination props](https://www.patternfly.org/v4/components/pagination#pagination) */
   pagination?: Omit<PaginationProps, 'ref'>;
 
-  /** @reference [SortBy props](/components/SortBy) */
+  /** @reference [SortBy props](/fec/modules/components/SortBy) */
   sortByConfig?: SortByProps;
-  /** @reference [DownloadButton props](/components/DownloadButton) */
+  /** @reference [DownloadButton props](/fec/modules/components/DownloadButton) */
   exportConfig?: DownloadButtonProps;
 
-  /** @reference [FilterChips props](/components/FilterChips)
-   */
+  /** @reference [FilterChips props](/fec/modules/components/FilterChips) */
   activeFiltersConfig?: FilterChipsProps;
   actionsConfig?: ActionsProps;
   expandAll?: React.ReactNode | PrimaryToolbarExpandAllObject;
@@ -65,7 +62,7 @@ function isPrimaryToolbarExpandAllObject(node: React.ReactNode | PrimaryToolbarE
 const PrimaryToolbar: React.FunctionComponent<PrimaryToolbarProps> = ({
   id,
   className,
-  toggleIsExpanded,
+  toggleIsExpanded = () => undefined,
   bulkSelect,
   filterConfig,
   dedicatedAction,

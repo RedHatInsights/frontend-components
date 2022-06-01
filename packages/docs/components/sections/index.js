@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';
 import truncate from 'lodash/truncate';
-import sections from './sections-definition.json';
+import sections from './sections-definition';
 
 const useStyles = createUseStyles({
   description: {
@@ -52,7 +52,7 @@ const Sections = () => {
                 </CardTitle>
                 <CardBody className={classes.cardBody}>
                   <Text className={classnames('pf-u-py-md', classes.description)} component={TextVariants.p}>
-                    {truncate(description, { length: '135' })}
+                    {typeof description === 'object' ? description : truncate(description, { length: '135' })}
                   </Text>
                 </CardBody>
               </Card>
