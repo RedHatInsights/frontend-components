@@ -47,8 +47,8 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
     <React.Fragment>
       {conditionallyTooltip(
         <Dropdown
+          isPlain
           {...props}
-          isPlain={props.isPlain ?? true}
           onSelect={internalOnSelect}
           toggle={
             <DropdownToggle aria-label="Export" toggleIndicator={null} onToggle={onToggle} isDisabled={isDisabled} ouiaId="Export">
