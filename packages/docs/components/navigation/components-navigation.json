@@ -9,6 +9,12 @@
 				]
 			},
 			{
+				"group": "ReportDetails",
+				"items": [
+					"ReportDetails"
+				]
+			},
+			{
 				"group": "RuleDescription",
 				"items": [
 					"RuleDescription"
@@ -24,6 +30,18 @@
 				"group": "RuleRating",
 				"items": [
 					"RuleRating"
+				]
+			},
+			{
+				"group": "src",
+				"items": [
+					"common"
+				]
+			},
+			{
+				"group": "TemplateProcessor",
+				"items": [
+					"TemplateProcessor"
 				]
 			},
 			{
@@ -113,6 +131,7 @@
 					"CheckboxFilter",
 					"ConditionalFilter",
 					"GroupFilter",
+					"groupFilterConstants",
 					"groupType",
 					"RadioFilter",
 					"TextFilter"
@@ -128,7 +147,8 @@
 			{
 				"group": "Dark",
 				"items": [
-					"Dark"
+					"Dark",
+					"DarkContext"
 				]
 			},
 			{
@@ -151,6 +171,13 @@
 				]
 			},
 			{
+				"group": "ErrorBoundary",
+				"items": [
+					"ErrorBoundary",
+					"ErrorStack"
+				]
+			},
+			{
 				"group": "ErrorState",
 				"items": [
 					"DefaultErrorMessage",
@@ -161,6 +188,13 @@
 				"group": "FilterChips",
 				"items": [
 					"FilterChips"
+				]
+			},
+			{
+				"group": "FilterHooks",
+				"items": [
+					"constants",
+					"tagFilterHook"
 				]
 			},
 			{
@@ -321,6 +355,7 @@
 			{
 				"group": "TreeTable",
 				"items": [
+					"helpers",
 					"rowWrapper"
 				]
 			},
@@ -334,6 +369,27 @@
 				"group": "Unavailable",
 				"items": [
 					"Unavailable"
+				]
+			},
+			{
+				"group": "useChrome",
+				"items": [
+					"useChrome"
+				]
+			},
+			{
+				"group": "usePendoFeedback",
+				"items": [
+					"usePendoFeedback"
+				]
+			},
+			{
+				"group": "useScreenSize",
+				"items": [
+					"breakpoints",
+					"getVariant",
+					"isSmallScreen",
+					"useScreenSize"
 				]
 			}
 		]
@@ -496,9 +552,45 @@
 		"packageName": "utils",
 		"groups": [
 			{
+				"group": "debounce",
+				"items": [
+					"debounce"
+				]
+			},
+			{
+				"group": "interceptors",
+				"items": [
+					"interceptors"
+				]
+			},
+			{
+				"group": "MiddlewareListener",
+				"items": [
+					"MiddlewareListener"
+				]
+			},
+			{
 				"group": "parseCvssScore",
 				"items": [
 					"parseCvssScore"
+				]
+			},
+			{
+				"group": "RBAC",
+				"items": [
+					"RBAC"
+				]
+			},
+			{
+				"group": "RBACHook",
+				"items": [
+					"RBACHook"
+				]
+			},
+			{
+				"group": "ReducerRegistry",
+				"items": [
+					"ReducerRegistry"
 				]
 			},
 			{
