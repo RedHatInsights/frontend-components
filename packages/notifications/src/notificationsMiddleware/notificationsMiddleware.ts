@@ -62,7 +62,7 @@ type CreateNotificationsMiddlewareOptions = {
   errorNamespaceKey?: string | string[];
 };
 
-export const createNotificationsMiddleware = (options: CreateNotificationsMiddlewareOptions) => {
+export const createNotificationsMiddleware = (options?: CreateNotificationsMiddlewareOptions) => {
   const defaultOptions: CreateNotificationsMiddlewareOptions = {
     dispatchDefaultFailure: true,
     pendingSuffix: '_PENDING',

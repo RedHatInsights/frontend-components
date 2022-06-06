@@ -17,7 +17,7 @@ export type PortalNotificationConfig = {
 
 export interface PortalProps {
   notifications?: PortalNotificationConfig[];
-  removeNotification: (id: number | string) => void;
+  removeNotification?: (id: number | string) => void;
   onClearAll?: () => void;
   rootId?: string;
 }
@@ -26,7 +26,7 @@ type PortalState = {
   page: number;
 };
 
-const Portal: React.ComponentType<PortalProps> = ({ notifications = [], removeNotification, rootId, onClearAll }) => {
+const Portal: React.ComponentType<PortalProps> = ({ notifications = [], removeNotification = () => undefined, rootId, onClearAll }) => {
   const [state, setState] = useState<PortalState>({ page: 1 });
 
   const onSetPage = (_event: React.MouseEvent | React.KeyboardEvent | MouseEvent, page: number) => {
