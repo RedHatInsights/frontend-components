@@ -11,6 +11,14 @@
 		{
 			"title": "Examples",
 			"href": "/csc/examples"
+		},
+		{
+			"title": "Local development",
+			"href": "/csc/local-development"
+		},
+		{
+			"title": "New application",
+			"href": "/csc/new-application"
 		}
 	]
 }

@@ -1,6 +1,10 @@
 # About
 
-This repo deals with the high-level configuration of Cloud Services. `main.yml` contains the source of truth for CS apps, and the `akamai` folder deals with updating our Akamai configuration.
+The <a href="https://github.com/RedHatInsights/cloud-services-config" target="__blank">cloud services config</a> repo deals with the high-level configuration of Cloud Services. `main.yml` contains the build assets source of truth apps. The `akamai` folder deals with updating our Akamai configuration. The `chrome` folder hosts UI specific configuration files.
+
+## Build Process
+
+This repository has a webhook that automatically builds a [Jenkins job](https://jenkins-jenkins.5a9f.insights-dev.openshiftapps.com/job/akamai-config-deployer/) on every push. To configure this webhook, check the project's [webhook settings](https://github.com/RedHatInsights/cloud-services-config/settings/hooks)
 
 ## Akamai API Access
 
@@ -10,60 +14,12 @@ If you're able to run the sample call at the end of the doc, you should be able 
 
 For more information on the Akamai API, read the [property manager docs](https://developer.akamai.com/api/core_features/property_manager/v1.html).
 
-## Build Process
+## Making changes to main.yml
 
-This repository has a webhook that automatically builds a [Jenkins job](https://jenkins-jenkins.5a9f.insights-dev.openshiftapps.com/job/akamai-config-deployer/) on every push. To configure this webhook, check the project's [webhook settings](https://github.com/RedHatInsights/cloud-services-config/settings/hooks)
+Most of the config in `main.yml` is deprecated. The only required application attribute is the `deployment_repo` 
 
-## Testing your changes locally
+## Read next
 
-Testing local changes is straightforward. First, add a line like this to your insights-proxy spandx config:
-
-```diff
---- a/profiles/local-frontend.js
-+++ b/profiles/local-frontend.js
-@@ -9,5 +9,6 @@ routes[`/beta/${SECTION}/${APP_ID}`] = { host: `http://localhost:${FRONTEND_PORT
- routes[`/${SECTION}/${APP_ID}`]      = { host: `http://localhost:${FRONTEND_PORT}` };
- routes[`/beta/apps/${APP_ID}`]       = { host: `http://localhost:${FRONTEND_PORT}` };
- routes[`/apps/${APP_ID}`]            = { host: `http://localhost:${FRONTEND_PORT}` };
-+routes[`/beta/config`]            = { host: `http://localhost:8889` };
-
- module.exports = { routes };
-```
-
-Restart your insights-proxy to pick up the change.
-
-Create a `beta/config` directory inside of `cloud-services-config` and crate a sym link (or copy) to `/chrome` directory in it. Then, from the `cloud-services-config` dir, run `npx http-server -p 8889`. In your browser, go to `https://ci.foo.redhat.com:1337/beta/rhel/dashboard`. You should see something logged like this from npx:
-
-```text
-$ npx http-server -p 8889
-npx: installed 25 in 2.484s
-Starting up http-server, serving ./
-Available on:
-  http://127.0.0.1:8889
-  http://192.168.0.25:8889
-  http://10.10.122.158:8889
-Hit CTRL-C to stop the server
-[Tue Nov 05 2019 09:50:55 GMT-0500 (Eastern Standard Time)] "GET /beta/config/main.yml" "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:69.0) Gecko/20100
-101 Firefox/69.0"
-```
-
-Before you go developing, make sure you can make a simple change and see it in the web UI. Try renaming "Dashboard" link title to "XDashboardX" in `/chrome/rhel-navigation.json`.
-
-```diff
-diff --git a/chrome/rhel-navigation.json b/chrome/rhel-navigation.json
-index 67237cc..4485daa 100644
---- a/chrome/rhel-navigation.json
-+++ b/chrome/rhel-navigation.json
-@@ -4,7 +4,7 @@
-     "navItems": [
-         {
-             "appId": "dashboard",
--            "title": "Dashboard",
-+            "title": "XDashboardX",
-             "filterable": false,
-             "href": "/insights/dashboard",
-             "product": "Red Hat Insights"
-
-```
-
-Now go to `/insights/dashboard`. You may not see your navigation change at this point! Try clearing your local storage in your browser. To do this in Firefox, hit Shift-F9 and click "Local Storage", then right click on `https://ci.foo.redhat.com:1337` and delete all. Refresh the page and you should then see your changes. You'll notice too that SimpleHTTPServer logged another request.
+- [Local development](/csc/local-development)
+- [Environments](/csc/environments)
+- [Examples](/csc/examples)
