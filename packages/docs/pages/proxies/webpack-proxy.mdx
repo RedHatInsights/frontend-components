@@ -10,6 +10,7 @@
   - [useProxy](#useproxy)
     - [Attributes](#attributes)
       - [useChromeTemplate](#useChromeTemplate)
+      - [useDevBuild](#useDevBuild)
       - [localChrome](#localchrome)
       - [registry](#registry)
       - [Custom routes](#custom-routes)
@@ -58,6 +59,7 @@ const { config: webpackConfig, plugins } = config({
 |[useProxy](#useproxy)|`boolean`|Enables webpack proxy.|
 |[proxyURL](#proxyURL)|`string`|URL to proxy Akamai environment requests to.|
 |[useChromeTemplate](#useChromeTemplate)|`boolean`|Load chrome HTMl template.|
+|[useDevBuild](#useDevBuild)|`boolean`|Use chrome development build.|
 |[localChrome](#localChrome)|`string`|Path to your local chrome build folder.|
 |[keycloakUri](#keycloakUri)|`string`|Uri to inject into proxied chrome assets.|
 |[registry](#registry)|`(({ app, server, compiler, standaloneConfig }) => void)[]`|Express middleware to register.|
@@ -86,11 +88,33 @@ const { config: webpackConfig, plugins } = config({
 });
 ```
 
+#### useDevBuild
+
+*boolean*
+
+Defaults to **true**. Flag to disable loading of development version of chrome. Has effect only in production environment.
+
+Pass this option to the shared config or directly to the proxy function.
+
+```js
+const config = require('@redhat-cloud-services/frontend-components-config');
+
+const { config: webpackConfig, plugins } = config({
+  rootFolder: resolve(__dirname, '../'),
+  useProxy: true,
+  useDevBuild: false
+  ...
+});
+```
+
 #### localChrome
 
 You can also easily run you application with a local build of Chrome by adding `localChrome: <absolute_path_to_chrome_build_folder>`.
 
 ```jsx
+const config = require('@redhat-cloud-services/frontend-components-config');
+
+const { config: webpackConfig, plugins } = config({
   rootFolder: resolve(__dirname, '../'),
   debug: true,
   useFileHash: false,
