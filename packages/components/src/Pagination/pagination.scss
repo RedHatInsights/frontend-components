@@ -3,13 +3,12 @@
 @import '~@patternfly/patternfly/components/OptionsMenu/options-menu.scss';
 
 .ins-c-pagination-next .pf-c-options-menu {
-    .pf-c-dropdown__menu .pf-c-dropdown__menu-item {
-        display: flex;
-
-        .pf-c-options-menu__menu-item-icon {
-            padding-left: 0;
-        }
+  .pf-c-dropdown__menu .pf-c-dropdown__menu-item {
+    display: flex;
+    .pf-c-options-menu__menu-item-icon {
+      padding-left: 0;
     }
+  }
 }
 
 .pf-c-pagination .pf-c-pagination__nav .pf-c-pagination__nav-page-select input { width: 75px; } 

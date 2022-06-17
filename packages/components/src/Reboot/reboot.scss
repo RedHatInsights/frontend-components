@@ -1,12 +1,12 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
 
 .ins-c-reboot {
-    span {
-        // 4px because the battery icon is 1px bigger than the reboot icon
-        @include rem('margin-left', 4px);
-    }
+  span {
+    // 4px because the battery icon is 1px bigger than the reboot icon
+    @include rem('margin-left', 4px);
+  }
 
-    &.ins-m-red {
-        span, svg { color: var(--pf-global--danger-color--100); }
-    }
+  &.ins-m-red {
+    span, svg { color: var(--pf-global--danger-color--100); }
+  }
 }

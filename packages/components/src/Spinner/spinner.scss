@@ -1,24 +1,22 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
 
 @keyframes spinner {
-    to { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
    
 .ins-c-spinner {
-    display: inline-flex;
-    
-    &.ins-m-center {
-        display: flex;
-        justify-content: center;
-    }
-
-    &:before {
-        content: '';
-        @include rem('width', 30px);
-        @include rem('height', 30px);
-        border-radius: 50%;
-        border: 3px solid var(--pf-global--active-color--200);
-        border-top-color: var(--pf-global--active-color--100);
-        animation: spinner 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
+  display: inline-flex;
+  &.ins-m-center {
+    display: flex;
+    justify-content: center;
+  }
+  &:before {
+    content: '';
+    @include rem('width', 30px);
+    @include rem('height', 30px);
+    border-radius: 50%;
+    border: 3px solid var(--pf-global--active-color--200);
+    border-top-color: var(--pf-global--active-color--100);
+    animation: spinner 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
 }

@@ -1,18 +1,18 @@
 .ins-c-skeleton {
-    &__xs { width: 16% !important; }
-    &__sm { width: 33% !important; }
-    &__md { width: 66% !important; }
-    &__lg { width: 100% !important; }
-    &.ins-m-dark {
-        --pf-c-skeleton--BackgroundColor: var(--pf-global--palette--black-600);
-        --pf-c-skeleton--after--LinearGradientColorStop1: var(
-          --pf-global--palette--black-600
-        );
-        --pf-c-skeleton--after--LinearGradientColorStop2: var(
-          --pf-global--palette--black-500
-        );
-        --pf-c-skeleton--after--LinearGradientColorStop3: var(
-          --pf-global--palette--black-600
-        );
-    }
+  &__xs { width: 16% !important; }
+  &__sm { width: 33% !important; }
+  &__md { width: 66% !important; }
+  &__lg { width: 100% !important; }
+  &.ins-m-dark {
+    --pf-c-skeleton--BackgroundColor: var(--pf-global--palette--black-600);
+    --pf-c-skeleton--after--LinearGradientColorStop1: var(
+      --pf-global--palette--black-600
+    );
+    --pf-c-skeleton--after--LinearGradientColorStop2: var(
+      --pf-global--palette--black-500
+    );
+    --pf-c-skeleton--after--LinearGradientColorStop3: var(
+      --pf-global--palette--black-600
+    );
+  }
 }

@@ -1,12 +1,12 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
 
 .pf-l-page__main-section.pf-l-page-header.pf-m-dark-200 {
-    h1.pf-c-title.pf-m-2xl, * { color: #fff; }
+  h1.pf-c-title.pf-m-2xl, * { color: #fff; }
 }
 
 .pf-l-page__main-section.pf-l-page-header {
-    .pf-c-breadcrumb {
-        display: block;
-        @include rem('margin-bottom', 15px);
-    }
+  .pf-c-breadcrumb {
+    display: block;
+    @include rem('margin-bottom', 15px);
+  }
 }

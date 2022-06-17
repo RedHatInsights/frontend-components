@@ -3,8 +3,8 @@
 .ins-c-inventory__culling-danger { color: var(--pf-global--danger-color--100); }
 
 .ins-c-inventory__culling-danger, .ins-c-inventory__culling-warning {
-    font-weight: var(--pf-global--FontWeight--bold);
-    svg {
-        margin-right: var(--pf-global--spacer--sm);
-    }
+  font-weight: var(--pf-global--FontWeight--bold);
+  svg {
+    margin-right: var(--pf-global--spacer--sm);
+  }
 }

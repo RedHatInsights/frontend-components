@@ -1,15 +1,14 @@
 .ins-c-chip-filters .ins-c-chip-group__plain.pf-m-toolbar > li:not(.pf-m-overflow) {
-    background: none;
-    padding: 0;
-    background-color: initial;
-
-    h4 {
-        display: none;
-    }
+  background: none;
+  padding: 0;
+  background-color: initial;
+  h4 {
+    display: none;
+  }
 }
 
 .ins-c-chip-filters {
-    .pf-c-chip-group:not(:last-child) {
-        margin-right: var(--pf-global--spacer--sm);
-    }
+  .pf-c-chip-group:not(:last-child) {
+    margin-right: var(--pf-global--spacer--sm);
+  }
 }

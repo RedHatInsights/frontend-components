@@ -6,9 +6,9 @@
 }
 
 .ins-c-table__toolbar, .ins-c-table__toolbar-results {
-    background: var(--pf-global--Color--light-100);
-    border-bottom: 1px solid var(--pf-global--BorderColor--light-200);
-    padding: var(--ins-c-table-toolbar--PaddingVertical) var(--ins-c-table-toolbar--PaddingHorizontal);
+  background: var(--pf-global--Color--light-100);
+  border-bottom: 1px solid var(--pf-global--BorderColor--light-200);
+  padding: var(--ins-c-table-toolbar--PaddingVertical) var(--ins-c-table-toolbar--PaddingHorizontal);
 }
 
 .ins-c-table__toolbar.ins-m-footer { border-top: 1px solid var(--pf-global--BorderColor--light-200); }
@@ -16,13 +16,13 @@
 .ins-c-table__toolbar-results { color: var(--pf-global--Color--200); }
 
 .ins-c-table__toolbar-results-count + .ins-c-table__toolbar-results-selected {
-    @include rem('margin-left', 15px);
-    @include rem('padding-left', 15px);
-    border-left: 2px solid var(--pf-global--BorderColor--light);
+  @include rem('margin-left', 15px);
+  @include rem('padding-left', 15px);
+  border-left: 2px solid var(--pf-global--BorderColor--light);
 }
 
 @media only screen and (max-width: 768px) {
-    .ins-c-table__toolbar, .ins-c-table__toolbar-results {
-        padding: 0 0;
-    }
+  .ins-c-table__toolbar, .ins-c-table__toolbar-results {
+    padding: 0 0;
+  }
 }
