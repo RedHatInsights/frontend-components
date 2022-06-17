@@ -85,7 +85,6 @@ Additionaly it exports these utilities
 * helpers - custom helper functions
 * MiddlewareListener - redux listener on actions, they can fire additional action or be cancelled
 * Registry - reducer registry
-* Deffered - deffered helper function
 * RouterParams - maps route to props
 * interceptors - to be used with axios clients
 * Styles - custom style functions in sass

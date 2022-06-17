@@ -38,6 +38,7 @@ module.exports = ({
   onBeforeSetupMiddleware = () => {},
   bounceProd = false,
   useAgent = true,
+  useDevBuild = true,
 }) => {
   const proxy = [];
   const majorEnv = env.split('-')[0];
@@ -284,8 +285,9 @@ module.exports = ({
             defaultServices.chrome = defaultServices.chrome({});
           }
 
+          const chromeEnv = useDevBuild ? (env.includes('-beta') ? 'dev-beta' : 'dev-stable') : env;
           chromePath = checkoutRepo({
-            repo: `${defaultServices.chrome.path}#${env}`,
+            repo: `${defaultServices.chrome.path}#${chromeEnv}`,
             reposDir,
             overwrite: true,
           });

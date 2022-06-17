@@ -8,19 +8,19 @@
   .pf-c-select__toggle-wrapper .pf-c-select__toggle-text {
     @include rem('max-width', 150px);
   }
-
   .ins-c-conditional-filter__group {
     .pf-c-dropdown__toggle-text {
-      width: 102px;
+      width: auto;
       text-align: left;
-      & > svg {
-        margin-right: var(--pf-global--spacer--xs);
+        & > svg {
+          margin-right: var(--pf-global--spacer--xs);
+        }
       }
-    }
     .ins-c-conditional-filter__no-label .pf-c-dropdown__toggle-text  {
       width: auto;
     }
   }
+
   .pf-l-split__item {
     .pf-c-select__menu-group {
       .pf-c-select__menu-group-title:empty {
@@ -35,7 +35,6 @@
       display: none;
     }
   }
-
   input.ins-c-conditional-filter[type="text"] {
     @include rem('padding-right', 35px);
     @include rem('margin-right', -23px);
@@ -46,7 +45,6 @@
       @include rem('top', 2px);
     }
   }
-
   .pf-c-select__toggle-text {
     margin-right: 0;
   }

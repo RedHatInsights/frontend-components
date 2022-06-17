@@ -1,5 +1,4 @@
 export { default as debounceFunction } from './debounce';
-export { default as Deferred } from './Deffered';
 export * as helpers from './helpers';
 export { default as axiosInstance } from './interceptors';
 export * as interceptors from './interceptors';
