@@ -19,6 +19,7 @@
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\" \"npm run build:packages\"",
         "build:esm": "tsc --module es2015 --target es5",
         "build:js": "tsc -p tsconfig.cjs.json",
+        "test:ct": "cypress run-ct",
         "transform:css": "node ../../scripts/transform-scss.js"
     },
     "repository": {

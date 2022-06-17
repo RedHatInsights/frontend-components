@@ -116,7 +116,7 @@
         "start": "lerna run --parallel start --ignore=docs",
         "build": "lerna run build --stream --no-private --ignore=@redhat-cloud-services/frontend-components-config*",
         "generate-translations": "npm run build && node packages/utils/src/mergeMessages.js",
-        "test:ct": "npx -w ./packages/advisor-components cypress run-ct",
+        "test:ct": "lerna run --stream test:ct",
         "test": "jest",
         "test:ci": "npm run test && npm run test:ct",
         "docs": "lerna run --parallel dev",
