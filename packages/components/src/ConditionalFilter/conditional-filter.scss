@@ -1,110 +1,101 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
 
 .ins-c-conditional-filter {
-    &.mobile {
-        display: none !important;
-        visibility: hidden !important;
-    }
-    .pf-c-select__toggle-wrapper .pf-c-select__toggle-text {
-        @include rem('max-width', 150px);
-    }
-
-    .ins-c-conditional-filter__group {
-        .pf-c-dropdown__toggle-text {
-            width: auto;
-            text-align: left;
-
-            & > svg {
-                margin-right: var(--pf-global--spacer--xs);
-            }
+  &.mobile {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  .pf-c-select__toggle-wrapper .pf-c-select__toggle-text {
+    @include rem('max-width', 150px);
+  }
+  .ins-c-conditional-filter__group {
+    .pf-c-dropdown__toggle-text {
+      width: auto;
+      text-align: left;
+        & > svg {
+          margin-right: var(--pf-global--spacer--xs);
         }
-
-        .ins-c-conditional-filter__no-label .pf-c-dropdown__toggle-text  {
-            width: auto;
-        }
+      }
+    .ins-c-conditional-filter__no-label .pf-c-dropdown__toggle-text  {
+      width: auto;
     }
+  }
 
-    .pf-l-split__item {
-        .pf-c-select__menu-group {
-            .pf-c-select__menu-group-title:empty {
-                display: none;
-            }
-
-            padding: 0;
-        }
-        
-        .pf-c-select__option-button {
-            padding: 0;
-        }
-
-        .pf-c-select__menu-item-icon {
-            display: none;
-        }
-    }
-
-    input.ins-c-conditional-filter[type="text"] {
-        @include rem('padding-right', 35px);
-        @include rem('margin-right', -23px);
-
-        & + svg {
-            position: relative;
-            @include rem('left', -5px);
-            @include rem('top', 2px);
-        }
-    }
-
-    .pf-c-select__toggle-text {
-        margin-right: 0;
-    }
-    .pf-c-select__toggle-badge {
+  .pf-l-split__item {
+    .pf-c-select__menu-group {
+      .pf-c-select__menu-group-title:empty {
         display: none;
+      }
+      padding: 0;
     }
+    .pf-c-select__option-button {
+      padding: 0;
+    }
+    .pf-c-select__menu-item-icon {
+      display: none;
+    }
+  }
+  input.ins-c-conditional-filter[type="text"] {
+    @include rem('padding-right', 35px);
+    @include rem('margin-right', -23px);
 
-    .pf-c-menu-toggle {
-        .pf-c-menu-toggle__text {
-            flex: 1;
-            input { border: none; }
-        }
+    & + svg {
+      position: relative;
+      @include rem('left', -5px);
+      @include rem('top', 2px);
     }
+  }
+  .pf-c-select__toggle-text {
+    margin-right: 0;
+  }
+  .pf-c-select__toggle-badge {
+    display: none;
+  }
+  .pf-c-menu-toggle {
+    .pf-c-menu-toggle__text {
+      flex: 1;
+      input { border: none; }
+    }
+  }
 }
 
 .pf-c-menu {
-    &.ins-c-menu__scrollable {
-        max-height: 416px;
-        overflow-y: auto;
-        min-width: initial;
-    }
-    .ins-c-menu__show--more {
-        background: none;
-        .pf-c-menu__item-text{ color: var(--pf-global--active-color--100); }
-    }
+  &.ins-c-menu__scrollable {
+    max-height: 416px;
+    overflow-y: auto;
+    min-width: initial;
+  }
+  .ins-c-menu__show--more {
+    background: none;
+    .pf-c-menu__item-text{ color: var(--pf-global--active-color--100); }
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .ins-c-conditional-filter {
-        &.mobile {
-            visibility: visible !important;
-            display: grid !important;
-        }
-        &.desktop {
-            visibility: hidden;
-            display: none;
-        }
+  .ins-c-conditional-filter {
+    &.mobile {
+      visibility: visible !important;
+      display: grid !important;
     }
+    &.desktop {
+      visibility: hidden;
+      display: none;
+    }
+  }
 }
 
 @media only screen and (max-width: 884px) {
-    .ins-c-conditional-filter {
-        .ins-c-conditional-filter__group {
-            .pf-c-dropdown__toggle-text {
-                width: auto;
-            }
-            .ins-c-conditional-filter__value-selector {
-                display: none;
-            }
-            .ins-c-conditional-filter__group {
-                width: initial;
-            }
-        }
+  .ins-c-conditional-filter {
+    .ins-c-conditional-filter__group {
+      .pf-c-dropdown__toggle-text {
+        width: auto;
+      }
+      .ins-c-conditional-filter__value-selector {
+        display: none;
+      }
+      .ins-c-conditional-filter__group {
+        width: initial;
+      }
     }
+  }
 }

@@ -1,21 +1,20 @@
 .ins-c-tagfilter {
-    .ins-c-tagfilter__option label {
-        display: flex;
-        width: 100%;
-
-        .ins-c-tagfilter__option-value {
-            max-width: 12.5rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .pf-c-badge {
-            margin-left: auto;
-            padding-top: 0.2;
-        }
+  .ins-c-tagfilter__option label {
+    display: flex;
+    width: 100%;
+    .ins-c-tagfilter__option-value {
+      max-width: 12.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .pf-c-select__menu-group-title:empty { display: none; }
+    .pf-c-badge {
+      margin-left: auto;
+      padding-top: 0.2;
+    }
+  }
+  .pf-c-select__menu-group-title:empty { display: none; }
 
-    .pf-c-select__menu > div { padding-top: 0; }
+  .pf-c-select__menu > div { padding-top: 0; }
 
-    &.pf-m-expanded { width: 18.75rem !important; }
+  &.pf-m-expanded { width: 18.75rem !important; }
 }

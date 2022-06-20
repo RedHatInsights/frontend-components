@@ -1,19 +1,21 @@
 .pf-c-label {
-    --ins-c-label--gold-bg:             #fdf7e7;
-    --inc-c-label--content-gold:        var(--pf-global--palette--gold-700);
-    --inc-c-label--icon-gold:           #F4C145;
-    --inc-c-label--border-gold:         var(--pf-global--palette--gold-100)
+  --ins-c-label--gold-bg: #fdf7e7;
+  --inc-c-label--content-gold: var(--pf-global--palette--gold-700);
+  --inc-c-label--icon-gold: #F4C145;
+  --inc-c-label--border-gold: var(--pf-global--palette--gold-100)
 }
 
 .ins-c-label-2.pf-c-label {
-    background-color: var(--ins-c-label--gold-bg);
-    .pf-c-label__content {
-        color: var(--inc-c-label--content-gold);
-        .pf-c-label__icon {
-            color: var(--inc-c-label--icon-gold);
-        }
+  background-color: var(--ins-c-label--gold-bg);
+  .pf-c-label__content {
+    color: var(--inc-c-label--content-gold);
+    .pf-c-label__icon {
+      color: var(--inc-c-label--icon-gold);
     }
+  }
 }
-.ins-c-label-2.pf-c-label {.pf-c-label__content::before {
+.ins-c-label-2.pf-c-label {
+  .pf-c-label__content::before {
     border: 1px solid var(--inc-c-label--border-gold);
-        }}
+  }
+}

@@ -1,64 +1,53 @@
 .ins-c-primary-toolbar {
-    .pf-c-toolbar__item.ins-c-primary-toolbar__first-action {
-        display: initial;
+  .pf-c-toolbar__item.ins-c-primary-toolbar__first-action {
+    display: initial;
+  }
+  .ins-c-primary-toolbar__first-action {
+    display: none;
+  }
+  .ins-c-primary-toolbar__pagination {
+    margin-left: auto;
+  }
+  .ins-c-primary-toolbar__sort-by {
+    display: initial
+  }
+  .ins-c-primary-toolbar__overflow-actions, .ins-c-primary-toolbar__overflow-actions-separator {
+    display: none;
+  }
+  .ins-m-actions--empty {
+    display: none;
+  }
+  .ins-c-primary-toolbar__group-filter {
+    flex-grow: initial;
+    .ins-c-primary-toolbar__filter {
+      flex: initial;
     }
-
-    .ins-c-primary-toolbar__first-action {
-        display: none;
-    }
-
-    .ins-c-primary-toolbar__pagination {
-        margin-left: auto;
-    }
-
-    .ins-c-primary-toolbar__sort-by {
-        display: initial
-    }
-
-    .ins-c-primary-toolbar__overflow-actions, .ins-c-primary-toolbar__overflow-actions-separator {
-        display: none;
-    }
-
-    .ins-m-actions--empty {
-        display: none;
-    }
-
-    .ins-c-primary-toolbar__group-filter {
-        flex-grow: initial;
-        .ins-c-primary-toolbar__filter {
-            flex: initial;
-        }
-    }
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .ins-c-primary-toolbar {
-        .pf-c-toolbar__item.ins-c-primary-toolbar__first-action {
-            display: none;
-        }
-
-        .ins-c-primary-toolbar__first-action {
-            display: block;
-        }
-
-        .ins-c-primary-toolbar__sort-by {
-            display: none
-        }
-
-        .ins-c-primary-toolbar__overflow-actions, .ins-c-primary-toolbar__overflow-actions-separator {
-            display: block;
-        }
-
-        .ins-c-primary-toolbar__group-filter {
-            margin-right: 0;
-            flex-grow: 1;
-            .ins-c-primary-toolbar__filter {
-                flex: 1;
-            }
-        }
-
-        .ins-m-actions--empty {
-            display: block;
-        }
+  .ins-c-primary-toolbar {
+    .pf-c-toolbar__item.ins-c-primary-toolbar__first-action {
+      display: none;
     }
+    .ins-c-primary-toolbar__first-action {
+      display: block;
+    }
+    .ins-c-primary-toolbar__sort-by {
+      display: none
+    }
+    .ins-c-primary-toolbar__overflow-actions, .ins-c-primary-toolbar__overflow-actions-separator {
+      display: block;
+    }
+    .ins-c-primary-toolbar__group-filter {
+      margin-right: 0;
+      flex-grow: 1;
+      .ins-c-primary-toolbar__filter {
+        flex: 1;
+      }
+    }
+    .ins-m-actions--empty {
+      display: block;
+    }
+  }
 }
