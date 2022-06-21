@@ -1,4 +1,5 @@
 import ReducerRegistry, { applyReducerHash, dispatchActionsToStore } from './ReducerRegistry';
+import { Store } from 'redux';
 
 it('should create empty store', () => {
   const reducerRegistry = new ReducerRegistry();
@@ -74,7 +75,7 @@ describe('dispatchActionsToStore', () => {
       {
         one: () => ({ type: 'test' }),
       },
-      { dispatch }
+      { dispatch } as unknown as Store
     );
     actions.one();
     expect(dispatch).toHaveBeenLastCalledWith({ type: 'test' });
@@ -86,7 +87,7 @@ describe('dispatchActionsToStore', () => {
         one: () => ({ type: 'test' }),
         two: (data) => ({ type: 'another', payload: data }),
       },
-      { dispatch }
+      { dispatch } as unknown as Store
     );
     actions.two({ rows: [] });
     expect(dispatch).toHaveBeenLastCalledWith({
