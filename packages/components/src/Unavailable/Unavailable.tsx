@@ -1,5 +1,6 @@
 import React from 'react';
-import { EmptyState, EmptyStateIcon, EmptyStateVariant, EmptyStateBody, Title } from '@patternfly/react-core';
+import { 
+  EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateVariant, Title, } from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import './Unavailable.scss';
 

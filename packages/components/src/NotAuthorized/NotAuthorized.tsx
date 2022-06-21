@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Title, Button, EmptyState, EmptyStateVariant, EmptyStateIcon, EmptyStateBody, EmptyStateProps } from '@patternfly/react-core';
+import { Button, EmptyState, EmptyStateIcon, EmptyStateBody, EmptyStateProps, EmptyStateVariant, Title } from '@patternfly/react-core';
 
 import { LockIcon } from '@patternfly/react-icons';
 

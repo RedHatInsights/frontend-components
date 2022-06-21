@@ -1,5 +1,5 @@
 import React from 'react';
-import { EmptyState, EmptyStateIcon, EmptyStateBody, Title, Button } from '@patternfly/react-core';
+import { Button, EmptyState, EmptyStateBody, EmptyStateIcon, Title } from '@patternfly/react-core';
 import { DisconnectedIcon } from '@patternfly/react-icons';
 
 export interface NotConnectedProps {

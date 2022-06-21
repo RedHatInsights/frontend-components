@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, Chip, ChipGroup, Button } from '@patternfly/react-core';
+import { Badge, Button, Chip, ChipGroup } from '@patternfly/react-core';
 import classNames from 'classnames';
 import './filter-chips.scss';
 

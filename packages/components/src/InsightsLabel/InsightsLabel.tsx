@@ -1,9 +1,6 @@
 import './labels.scss';
 
-import { AngleDoubleDownIcon } from '@patternfly/react-icons';
-import { AngleDoubleUpIcon } from '@patternfly/react-icons';
-import { CriticalRiskIcon } from '@patternfly/react-icons';
-import { EqualsIcon } from '@patternfly/react-icons';
+import { AngleDoubleDownIcon, AngleDoubleUpIcon, CriticalRiskIcon, EqualsIcon } from '@patternfly/react-icons';
 import { Label, LabelProps } from '@patternfly/react-core';
 import React from 'react';
 

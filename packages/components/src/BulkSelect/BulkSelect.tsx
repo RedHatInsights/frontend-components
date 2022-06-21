@@ -1,6 +1,7 @@
 import React, { useState, useRef, Fragment } from 'react';
 import classnames from 'classnames';
 import {
+  Checkbox,
   Dropdown,
   DropdownItem,
   DropdownItemProps,
@@ -8,7 +9,6 @@ import {
   DropdownToggleProps,
   DropdownToggleCheckbox,
   DropdownToggleCheckboxProps,
-  Checkbox,
 } from '@patternfly/react-core';
 import { getDefaultOUIAId } from '@patternfly/react-core/';
 import './bulk-select.scss';
