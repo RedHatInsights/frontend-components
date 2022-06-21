@@ -3,14 +3,14 @@ import { createPortal } from 'react-dom';
 
 import Notification from '../Notification';
 import NotificationPagination from '../NotificationPagination';
-import { AlertVariant } from '@patternfly/react-core';
+import { AlertProps } from '@patternfly/react-core';
 
 import './portal.scss';
 
 export type PortalNotificationConfig = {
   id: string | number;
   title: React.ReactNode;
-  variant: AlertVariant;
+  variant: AlertProps['variant'];
   description?: React.ReactNode;
   dismissable?: boolean;
 };

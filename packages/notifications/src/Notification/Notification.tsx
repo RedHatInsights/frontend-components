@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Alert, TextContent, Text, TextVariants, AlertActionCloseButton, AlertVariant } from '@patternfly/react-core';
+import { Alert, TextContent, Text, TextVariants, AlertActionCloseButton, AlertProps } from '@patternfly/react-core';
 import { CloseIcon } from '@patternfly/react-icons';
 import './notification.scss';
 
@@ -23,7 +23,7 @@ export interface NotificationProps {
   /**
    * Alert variant. <a href="https://www.patternfly.org/v4/components/alert#types" target="_blank">More info.</a>
    */
-  variant: AlertVariant;
+  variant: AlertProps['variant'];
   /**
    * Alert title
    */
