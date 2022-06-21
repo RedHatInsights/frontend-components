@@ -1,7 +1,7 @@
 import { Dispatch, AnyAction } from 'redux';
 
-export type Listener = {
-  callback: (...args: unknown[]) => void;
+export type Listener<T = any> = {
+  callback: (data: { data: T; preventBubble: () => boolean }) => void;
   on: string;
 };
 export class MiddlewareListener {
