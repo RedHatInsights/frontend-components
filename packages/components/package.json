@@ -50,7 +50,7 @@
         "sanitize-html": "^2.3.2",
         "@scalprum/core": "^0.1.1",
         "@scalprum/react-core": "^0.1.7",
-        "@redhat-cloud-services/types": "0.0.1"
+        "@redhat-cloud-services/types": "^0.0.5"
     },
     "devDependencies": {
         "@patternfly/patternfly": ">=4.102.2",
