@@ -111,11 +111,14 @@ export interface ChromeAPI {
     portal: string;
   };
   getUserPermissions: (applicationName?: string, disableCache?: boolean) => Promise<Access[]>;
-  globalFilterScope: (scope?: string) => void;
-  hideGlobalFilter: (hide?: boolean) => void;
+  globalFilterScope: (scope: string) => {
+    type: string;
+    payload: string;
+  };
+  hideGlobalFilter: (isHidden: boolean) => void;
   /** @deprecated This function server no purpse. For document title update use "updateDocumentTitle" function instead. */
-  identifyApp: (data: any, appTitle?: string) => Promise<undefined>;
-  init: () => void;
+  identifyApp: (data: any, appTitle?: string, noSuffix?: boolean) => Promise<any>;
+  init: () => ChromeAPI;
   isBeta: () => boolean;
   isChrome2: boolean;
   isDemo: () => boolean;
@@ -128,7 +131,12 @@ export interface ChromeAPI {
   on: (...args: any[]) => any;
   registerModule: (module: string, manifest: string) => void;
   /** @duplicate of "hideGlobalFilter" TODO: deprecate this function */
-  removeGlobalFilter: (isHidden?: boolean) => void;
-  updateDocumentTitle: (title: string) => void;
+  removeGlobalFilter: (isHidden: boolean) => {
+    type: string;
+    payload: {
+      isHidden: boolean;
+    };
+  };
+  updateDocumentTitle: (title: string, noSuffix?: boolean) => void;
   visibilityFunctions: VisibilityFunctions;
 }
