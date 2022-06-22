@@ -55,6 +55,28 @@ declare type VisibilityFunctions = {
 /**
  * TODO: Once chrome is migrated to TS, sychronize with chrome typings
  */
+export type NavDOMEvent = {
+  href: string;
+  id: string;
+  navId: string;
+  type: string;
+  target?: HTMLAnchorElement | null;
+};
+
+export type AppNavigationCB = (navEvent: { navId?: string; domEvent: NavDOMEvent }) => void;
+export type GenericCB = (...args: unknown[]) => void;
+
+export type OnEventCallbacks = {
+  APP_NAVIGATION: AppNavigationCB;
+  NAVIGATION_TOGGLE: GenericCB;
+  GLOBAL_FILTER_UPDATE: GenericCB;
+};
+
+declare function OnChromeEvent<K extends 'APP_NAVIGATION' | 'NAVIGATION_TOGGLE' | 'GLOBAL_FILTER_UPDATE'>(
+  event: K,
+  callback: OnEventCallbacks[K]
+): () => void;
+
 export interface ChromeAPI {
   /** @deprecated will be removed from useChrome hook */
   $internal: any;
@@ -127,8 +149,14 @@ export interface ChromeAPI {
   mapGlobalFilter: (...args: any[]) => any;
   /** @deprecated this function has no effect. */
   navigation: () => void;
-  /** TODO: Deprecate this function */
-  on: (...args: any[]) => any;
+  /**
+   * Example usage
+   * on<'APP_NAVIGATION'>('APP_NAVIGATION', (navEvent) => {
+   * navEvent.domEvent.href;
+   * navEvent.navId;
+   * });
+   */
+  on: typeof OnChromeEvent;
   registerModule: (module: string, manifest: string) => void;
   /** @duplicate of "hideGlobalFilter" TODO: deprecate this function */
   removeGlobalFilter: (isHidden: boolean) => {
