@@ -37,7 +37,7 @@
     },
     "dependencies": {
         "@sentry/browser": "^5.4.0",
-        "@redhat-cloud-services/types": "0.0.1",
+        "@redhat-cloud-services/types": "^0.0.5",
         "awesome-debounce-promise": "^2.1.0",
         "axios": "^0.25.0",
         "commander": ">=2.20.0",

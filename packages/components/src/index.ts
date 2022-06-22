@@ -1,11 +1,4 @@
-import { ChromeAPI } from '@redhat-cloud-services/types';
-
-declare global {
-  interface Window {
-    insights: { chrome: ChromeAPI };
-  }
-}
-
+import * as t from '@redhat-cloud-services/types'; // required to get the API. We can't use simple import due to tree shaking
 export * from './LongTextTooltip';
 export * from './Section';
 export * from './Ansible';
