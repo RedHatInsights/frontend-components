@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Select, SelectOption, SelectVariant, Radio } from '@patternfly/react-core';
+import { Radio, Select, SelectOption, SelectVariant } from '@patternfly/react-core';
 import TextFilter, { FilterItem, FilterValue, isFilterValue } from './TextFilter';
 
 export interface RadioFilterProps {

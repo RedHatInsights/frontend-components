@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, ButtonVariant, TextInput } from '@patternfly/react-core';
-import { AngleDoubleLeftIcon, AngleLeftIcon, AngleDoubleRightIcon, AngleRightIcon } from '@patternfly/react-icons';
+import { AngleDoubleLeftIcon, AngleDoubleRightIcon, AngleLeftIcon, AngleRightIcon } from '@patternfly/react-icons';
 
 export interface PaginationNavProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
   lastPage?: number;

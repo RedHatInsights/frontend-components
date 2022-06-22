@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Dropdown, DropdownProps, DropdownItem, KebabToggle, KebabToggleProps, Button, DropdownSeparator, ToolbarItem } from '@patternfly/react-core';
+import { Button, Dropdown, DropdownItem, DropdownProps, DropdownSeparator, KebabToggle, KebabToggleProps, ToolbarItem } from '@patternfly/react-core';
 import { DownloadButton, DownloadButtonProps } from '../DownloadButton';
 import classNames from 'classnames';
 

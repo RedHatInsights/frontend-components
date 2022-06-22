@@ -1,7 +1,7 @@
-import React, { FormEvent, Fragment, useEffect, useState, useRef } from 'react';
+import React, { FormEvent, Fragment, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import globalBreakpointMd from '@patternfly/react-tokens/dist/js/global_breakpoint_md';
-import { Dropdown, DropdownItem, DropdownToggle, SplitItem, Split, ToolbarItem, ToolbarGroup, ToolbarToggleGroup } from '@patternfly/react-core';
+import { Dropdown, DropdownItem, DropdownToggle, Split, SplitItem, ToolbarGroup, ToolbarItem, ToolbarToggleGroup } from '@patternfly/react-core';
 import { FilterIcon } from '@patternfly/react-icons';
 import TextFilter, { FilterValue } from './TextFilter';
 import { conditionalFilterType, typeMapper } from './conditionalFilterConstants';

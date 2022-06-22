@@ -1,6 +1,6 @@
 import React from 'react';
 import ConditionalFilter from './ConditionalFilter';
-import { render, screen, act } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 const config = [

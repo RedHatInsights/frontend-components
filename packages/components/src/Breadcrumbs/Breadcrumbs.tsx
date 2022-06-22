@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Breadcrumb, BreadcrumbItem as PFBreadcrumbItem, BreadcrumbProps } from '@patternfly/react-core';
+import { Breadcrumb, BreadcrumbProps, BreadcrumbItem as PFBreadcrumbItem } from '@patternfly/react-core';
 
 export type BreadcrumbItem = {
   navigate: string;

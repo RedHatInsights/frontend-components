@@ -2,7 +2,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { Button } from '@patternfly/react-core';
 import Actions, { actionPropsGenerator, overflowActionsMapper } from './Actions';
-import { shallow, mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 const onButtonClick = jest.fn();

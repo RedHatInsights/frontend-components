@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { mapGroups, constructValues, constructGroups } from './constants';
+import { constructGroups, constructValues, mapGroups } from './constants';
 
 describe('mapGroups', () => {
   it('should build correctly empty', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { OuiaProps, OuiaDataAttributes, makeOuiaAttributes } from './Ouia';
+import { OuiaDataAttributes, OuiaProps, makeOuiaAttributes } from './Ouia';
 
 /**
  * Parameters to configure the attributes of the Ouia component.

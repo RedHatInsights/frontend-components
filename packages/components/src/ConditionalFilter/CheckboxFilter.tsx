@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useRef } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { Select, SelectOption, SelectVariant } from '@patternfly/react-core';
 import isEqual from 'lodash/isEqual';
 import omit from 'lodash/omit';

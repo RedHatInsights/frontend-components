@@ -1,5 +1,5 @@
 import React from 'react';
-import { RowSelectVariant, Table, TableHeader, TableBody, IRow, ICell, TableVariant } from '@patternfly/react-table';
+import { ICell, IRow, RowSelectVariant, Table, TableBody, TableHeader, TableVariant } from '@patternfly/react-table';
 import { Skeleton, SkeletonSize } from '../Skeleton';
 import classNames from 'classnames';
 
