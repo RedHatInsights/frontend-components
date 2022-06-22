@@ -96,6 +96,7 @@ const Layout = ({ children }) => {
   const NavComponent = useNavigationElement(navId);
   const Header = (
     <PageHeader
+      id="foo-bar"
       logo={
         <Link href="/">
           <img className={classes.logo} src="/logo.svg" alt="logo" />
