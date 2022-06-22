@@ -168,3 +168,11 @@ export interface ChromeAPI {
   updateDocumentTitle: (title: string, noSuffix?: boolean) => void;
   visibilityFunctions: VisibilityFunctions;
 }
+
+declare global {
+  interface Window {
+    insights: {
+      chrome: ChromeAPI;
+    };
+  }
+}

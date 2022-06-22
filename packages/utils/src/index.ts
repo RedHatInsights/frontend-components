@@ -1,3 +1,4 @@
+import * as t from '@redhat-cloud-services/types'; // required to get the API. We can't use simple import due to tree shaking
 export { default as debounceFunction } from './debounce';
 export * as helpers from './helpers';
 export { default as axiosInstance } from './interceptors';
