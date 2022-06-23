@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { StyleSheet, Font } from '@react-pdf/renderer';
+import { Font, StyleSheet } from '@react-pdf/renderer';
 import c_table_m_compact_cell_PaddingTop from '@patternfly/react-tokens/dist/js/c_table_m_compact_cell_PaddingTop';
 import c_table_m_compact_cell_PaddingBottom from '@patternfly/react-tokens/dist/js/c_table_m_compact_cell_PaddingBottom';
 import c_table_m_compact_cell_PaddingLeft from '@patternfly/react-tokens/dist/js/c_table_m_compact_cell_PaddingLeft';

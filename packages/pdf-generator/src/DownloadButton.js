@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PDFDownloadLink, PDFViewer, BlobProvider } from '@react-pdf/renderer';
+import { BlobProvider, PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 import { Button } from '@patternfly/react-core';
 import PDFDocument from './components/PDFDocument';
 import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';

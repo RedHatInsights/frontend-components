@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import React, { Fragment } from 'react';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
-import { SheetsRegistry, JssProvider, createGenerateId } from 'react-jss';
+import { JssProvider, SheetsRegistry, createGenerateId } from 'react-jss';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {

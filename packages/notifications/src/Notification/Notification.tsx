@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Alert, TextContent, Text, TextVariants, AlertActionCloseButton, AlertProps } from '@patternfly/react-core';
+import { Alert, AlertActionCloseButton, AlertProps, Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { CloseIcon } from '@patternfly/react-icons';
 import './notification.scss';
 

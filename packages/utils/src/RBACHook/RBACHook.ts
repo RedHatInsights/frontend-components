@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { getRBAC, doesHavePermissions, RBAC, hasAllPermissions } from '../RBAC';
+import { useEffect, useState } from 'react';
+import { RBAC, doesHavePermissions, getRBAC, hasAllPermissions } from '../RBAC';
 
 export interface UsePermissionsState extends RBAC {
   hasAccess: boolean;

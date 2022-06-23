@@ -1,4 +1,4 @@
-import { Dispatch, AnyAction } from 'redux';
+import { AnyAction, Dispatch } from 'redux';
 
 export type Listener<T = any> = {
   callback: (data: { data: T; preventBubble: () => boolean }) => void;

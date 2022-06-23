@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter, matchPath } from 'react-router-dom';
+import { matchPath, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
 

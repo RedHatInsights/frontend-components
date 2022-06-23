@@ -1,4 +1,4 @@
-import { authInterceptor, responseDataInterceptor, interceptor401, errorInterceptor } from './interceptors';
+import { authInterceptor, errorInterceptor, interceptor401, responseDataInterceptor } from './interceptors';
 
 global.insights = {
   chrome: {

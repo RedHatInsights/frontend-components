@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardBody, Button, ButtonVariant, Pagination, Level, LevelItem, PaginationVariant } from '@patternfly/react-core';
+import { Button, ButtonVariant, Card, CardBody, Level, LevelItem, Pagination, PaginationVariant } from '@patternfly/react-core';
 
 interface NotificationPaginationProps {
   page?: number;

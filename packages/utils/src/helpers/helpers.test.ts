@@ -1,4 +1,4 @@
-import { processDate, downloadFile, mergeArraysByKey, getBaseName, generateFilter } from './helpers';
+import { downloadFile, generateFilter, getBaseName, mergeArraysByKey, processDate } from './helpers';
 
 describe('mergeArraysByKey', () => {
   it('should join two arrays by ID', () => {

@@ -1,4 +1,4 @@
-import { Middleware, compose, AnyAction } from 'redux';
+import { AnyAction, Middleware, compose } from 'redux';
 
 import ReducerRegistry from '../ReducerRegistry';
 

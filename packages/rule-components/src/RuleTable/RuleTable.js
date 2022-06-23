@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Table, TableBody, TableHeader, sortable } from '@patternfly/react-table';
-import { Bullseye, EmptyState, EmptyStateIcon, Title, EmptyStateBody, EmptyStateVariant } from '@patternfly/react-core';
+import { Bullseye, EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateVariant, Title } from '@patternfly/react-core';
 import { SearchIcon } from '@patternfly/react-icons';
 import { Skeleton } from '@redhat-cloud-services/frontend-components/Skeleton';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
@@ -10,7 +10,7 @@ import { Pagination, PaginationVariant } from '@patternfly/react-core';
 import flatten from 'lodash/flatten';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
-import { calculateMeta, calculateActiveFilters, createRows } from './helpers';
+import { calculateActiveFilters, calculateMeta, createRows } from './helpers';
 import './index.scss';
 
 class RuleTable extends Component {

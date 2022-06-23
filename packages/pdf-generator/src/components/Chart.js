@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { CircleIconConfig } from '@patternfly/react-icons/dist/js/icons/circle-icon';
 import PropTypes from 'prop-types';
-import { View, Canvas, Text } from '@react-pdf/renderer';
+import { Canvas, Text, View } from '@react-pdf/renderer';
 import { ChartBar } from '@patternfly/react-charts/dist/js/components/ChartBar';
 import { ChartPie } from '@patternfly/react-charts/dist/js/components/ChartPie';
 import { ChartDonut } from '@patternfly/react-charts/dist/js/components/ChartDonut';

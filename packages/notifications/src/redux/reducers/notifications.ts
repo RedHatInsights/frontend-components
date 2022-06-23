@@ -1,5 +1,5 @@
 import { PortalNotificationConfig } from '../../Portal';
-import { ADD_NOTIFICATION, REMOVE_NOTIFICATION, CLEAR_NOTIFICATIONS } from '../actions/action-types';
+import { ADD_NOTIFICATION, CLEAR_NOTIFICATIONS, REMOVE_NOTIFICATION } from '../actions/action-types';
 
 function generateID(type: string): string {
   return 'cloud-services' + type + '-' + new Date().getTime() + Math.random().toString(36).slice(2);

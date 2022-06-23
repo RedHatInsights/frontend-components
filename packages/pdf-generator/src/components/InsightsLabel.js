@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { View, Canvas, Text } from '@react-pdf/renderer';
+import { Canvas, Text, View } from '@react-pdf/renderer';
 import styles from '../utils/styles';
 
 const appliedStyles = styles();
