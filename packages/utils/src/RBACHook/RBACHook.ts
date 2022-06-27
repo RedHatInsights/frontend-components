@@ -14,17 +14,24 @@ export function usePermissions(appName: string, permissionsList: string[], disab
     permissions: [],
   });
   useEffect(() => {
+    let ignore = false;
     setPermissions((prev) => ({ ...prev, isLoading: true }));
     (async () => {
       const { isOrgAdmin, permissions: userPermissions } = await getRBAC(appName, disableCache);
-      setPermissions({
-        isLoading: false,
-        isOrgAdmin,
-        permissions: userPermissions,
-        hasAccess: checkAll ? hasAllPermissions(userPermissions, permissionsList) : doesHavePermissions(userPermissions, permissionsList),
-      });
+      !ignore &&
+        setPermissions({
+          isLoading: false,
+          isOrgAdmin,
+          permissions: userPermissions,
+          hasAccess: checkAll ? hasAllPermissions(userPermissions, permissionsList) : doesHavePermissions(userPermissions, permissionsList),
+        });
     })();
+
+    return () => {
+      ignore = true;
+    };
   }, [appName, disableCache]);
+
   return permissions;
 }
 
