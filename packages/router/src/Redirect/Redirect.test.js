@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Fragment, useEffect } from 'react';
-import { MemoryRouter, useLocation, Route } from 'react-router-dom';
+import { MemoryRouter, Route, useLocation } from 'react-router-dom';
 import { mount } from 'enzyme';
 import ChromeRouter from '../ChromeRouter';
 import Redirect from './Redirect';

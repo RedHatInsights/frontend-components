@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from '@react-pdf/renderer';
+import { Text, View } from '@react-pdf/renderer';
 import global_BorderColor_300 from '@patternfly/react-tokens/dist/js/global_BorderColor_300';
 import global_BorderColor_200 from '@patternfly/react-tokens/dist/js/global_BorderColor_200';
 import { styleProps } from '../utils/propTypes';

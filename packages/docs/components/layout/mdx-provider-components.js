@@ -2,16 +2,16 @@
 /* eslint-disable react/prop-types */
 import {
   Button,
-  Title,
   Card,
   CardBody,
   Text,
   TextContent,
-  TextVariants,
   TextList,
-  TextListVariants,
   TextListItem,
   TextListItemVariants,
+  TextListVariants,
+  TextVariants,
+  Title,
 } from '@patternfly/react-core';
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';

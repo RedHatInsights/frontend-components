@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Page, Text, View, Document } from '@react-pdf/renderer';
+import { Document, Page, Text, View } from '@react-pdf/renderer';
 import RHLogo from './Logo';
 // eslint-disable-next-line rulesdir/disallow-fec-relative-imports
 import { DateFormat } from '@redhat-cloud-services/frontend-components/DateFormat';

@@ -1,4 +1,4 @@
-import { shallow, mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import decorator from './decorator';
 import { Button } from '@patternfly/react-core';

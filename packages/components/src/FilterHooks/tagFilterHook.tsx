@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { constructGroups, mapGroups } from './constants';
 import { Spinner } from '@patternfly/react-core';
 import './tagFilterHook.scss';

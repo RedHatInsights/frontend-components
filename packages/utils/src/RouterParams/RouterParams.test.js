@@ -1,8 +1,8 @@
 import React from 'react';
-import { MemoryRouter, Route, Link } from 'react-router-dom';
+import { Link, MemoryRouter, Route } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { shallow, mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import RouterParams from './RouterParams';
 

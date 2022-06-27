@@ -2,15 +2,15 @@ import React from 'react';
 import { ExclamationCircleIcon } from '@patternfly/react-icons/';
 import DefaultErrorMessage from './DefaultErrorMessage';
 import {
-  Title,
-  EmptyState,
-  EmptyStateVariant,
-  EmptyStateIcon,
-  EmptyStateBody,
   Button,
+  EmptyState,
+  EmptyStateBody,
+  EmptyStateIcon,
   EmptyStateProps,
+  EmptyStateVariant,
   Stack,
   StackItem,
+  Title,
 } from '@patternfly/react-core';
 import './error-state.scss';
 

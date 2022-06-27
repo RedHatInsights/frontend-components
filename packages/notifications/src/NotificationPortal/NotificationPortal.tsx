@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { Dispatch, ActionCreator } from 'redux';
+import { ActionCreator, Dispatch } from 'redux';
 import Portal, { PortalNotificationConfig } from '../Portal';
-import { removeNotification, clearNotifications } from '../redux/actions/notifications';
+import { clearNotifications, removeNotification } from '../redux/actions/notifications';
 
 export interface NotificationsState {
   [key: string]: any;

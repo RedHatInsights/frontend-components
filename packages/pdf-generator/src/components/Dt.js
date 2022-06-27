@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from '@react-pdf/renderer';
+import { Text, View } from '@react-pdf/renderer';
 import { styleProps } from '../utils/propTypes';
 import styles from '../utils/styles';
 

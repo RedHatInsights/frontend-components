@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon404 from './icon-404';
-import { Title, Button } from '@patternfly/react-core';
+import { Button, Title } from '@patternfly/react-core';
 import './invalidObject.scss';
 
 // Don't use chrome here because the 404 page on landing does not use chrome

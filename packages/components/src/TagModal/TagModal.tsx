@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './tagModal.scss';
-import { Modal, Button, Tabs, Tab, TabTitleText } from '@patternfly/react-core';
+import { Button, Modal, Tab, TabTitleText, Tabs } from '@patternfly/react-core';
 import classNames from 'classnames';
 import TableWithFilter, { TableWithFilterPagination, TableWithFilterProps } from './TableWithFilter';
 import { ICell, IRow } from '@patternfly/react-table';

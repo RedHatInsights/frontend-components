@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gallery, GalleryItem, Card, Bullseye, CardTitle, Title, CardBody, Text, TextVariants } from '@patternfly/react-core';
+import { Bullseye, Card, CardBody, CardTitle, Gallery, GalleryItem, Text, TextVariants, Title } from '@patternfly/react-core';
 import Link from 'next/link';
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';

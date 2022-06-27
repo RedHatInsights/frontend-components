@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { configureScope, captureException } from '@sentry/browser';
+import { captureException, configureScope } from '@sentry/browser';
 
 export class HttpError extends Error {
   description: string;

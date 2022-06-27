@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Switch as RouterSwitch, useRouteMatch, useLocation, matchPath } from 'react-router-dom';
+import { Switch as RouterSwitch, matchPath, useLocation, useRouteMatch } from 'react-router-dom';
 import chromeRouterContext from '../chromeRouterContext/chromeRouterContext';
 
 const Switch = ({ children, location: propsLocation }) => {

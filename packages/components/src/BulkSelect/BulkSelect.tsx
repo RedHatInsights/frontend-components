@@ -1,14 +1,14 @@
-import React, { useState, useRef, Fragment } from 'react';
+import React, { Fragment, useRef, useState } from 'react';
 import classnames from 'classnames';
 import {
+  Checkbox,
   Dropdown,
   DropdownItem,
   DropdownItemProps,
   DropdownToggle,
-  DropdownToggleProps,
   DropdownToggleCheckbox,
   DropdownToggleCheckboxProps,
-  Checkbox,
+  DropdownToggleProps,
 } from '@patternfly/react-core';
 import { getDefaultOUIAId } from '@patternfly/react-core/';
 import './bulk-select.scss';

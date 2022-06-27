@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { StackItem, Stack, Title, Spinner } from '@patternfly/react-core';
+import { Spinner, Stack, StackItem, Title } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { PageHeader, PageHeaderTitle } from '@redhat-cloud-services/frontend-components/PageHeader';
 

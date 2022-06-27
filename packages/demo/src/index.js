@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider, useDispatch } from 'react-redux';
 import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
 import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/notificationsMiddleware';
-import { notificationsReducer, notificationActions } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { notificationActions, notificationsReducer } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 
 const App = () => {

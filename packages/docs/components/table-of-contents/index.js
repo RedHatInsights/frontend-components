@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Menu, MenuContent, MenuList, MenuItem } from '@patternfly/react-core';
+import { Menu, MenuContent, MenuItem, MenuList } from '@patternfly/react-core';
 
 const useStyles = createUseStyles({
   tableOfContent: {},

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from '@react-pdf/renderer';
-import { styleProps, customProps } from '../utils/propTypes';
+import { Text, View } from '@react-pdf/renderer';
+import { customProps, styleProps } from '../utils/propTypes';
 import { customTitle } from '../utils/text';
 import styles from '../utils/styles';
 

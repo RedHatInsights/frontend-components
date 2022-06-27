@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, GridItem, Stack, StackItem, Title, Text } from '@patternfly/react-core';
+import { Grid, GridItem, Stack, StackItem, Text, Title } from '@patternfly/react-core';
 import RuleFeedback, { feedback } from './RuleFeedback';
 import Markdown from '../Markdown';
 import { totalRiskMeta } from './constants';

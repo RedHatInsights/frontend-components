@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import { Pagination, Bullseye, EmptyState, EmptyStateVariant, Title, EmptyStateBody } from '@patternfly/react-core';
-import { ICell, IRow, Table, TableHeader, TableBody, TableProps } from '@patternfly/react-table';
+import { Bullseye, EmptyState, EmptyStateBody, EmptyStateVariant, Pagination, Title } from '@patternfly/react-core';
+import { ICell, IRow, Table, TableBody, TableHeader, TableProps } from '@patternfly/react-table';
 import { EmptyTable } from '../EmptyTable';
 import { TableToolbar } from '../TableToolbar';
 import { PrimaryToolbar, PrimaryToolbarProps } from '../PrimaryToolbar';

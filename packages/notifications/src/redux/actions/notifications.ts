@@ -1,5 +1,5 @@
 import { AddNotificationPayload } from '../reducers/notifications';
-import { ADD_NOTIFICATION, REMOVE_NOTIFICATION, CLEAR_NOTIFICATIONS } from './action-types';
+import { ADD_NOTIFICATION, CLEAR_NOTIFICATIONS, REMOVE_NOTIFICATION } from './action-types';
 
 export const addNotification = (notification: AddNotificationPayload) => ({
   type: ADD_NOTIFICATION,

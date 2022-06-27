@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Page, PageHeader, PageSidebar, PageSection, Split, SplitItem, Stack, StackItem, Flex, FlexItem } from '@patternfly/react-core';
+import { Flex, FlexItem, Page, PageHeader, PageSection, PageSidebar, Split, SplitItem, Stack, StackItem } from '@patternfly/react-core';
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';
 import Link from 'next/link';

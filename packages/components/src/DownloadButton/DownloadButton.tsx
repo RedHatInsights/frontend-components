@@ -1,4 +1,4 @@
-import { Dropdown, DropdownItem, DropdownToggle, Tooltip, DropdownProps } from '@patternfly/react-core';
+import { Dropdown, DropdownItem, DropdownProps, DropdownToggle, Tooltip } from '@patternfly/react-core';
 import React, { useState } from 'react';
 
 import { ExportIcon } from '@patternfly/react-icons';

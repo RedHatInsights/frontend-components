@@ -1,4 +1,4 @@
-import { sizeCalculator, collapseBuilder } from './helpers';
+import { collapseBuilder, sizeCalculator } from './helpers';
 
 const tree = [
   { isTreeOpen: false, cells: [] },

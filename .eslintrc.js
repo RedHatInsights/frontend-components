@@ -11,6 +11,9 @@ module.exports = {
   rules: {
     'no-prototype-builtins': 'off',
     'import/prefer-default-export': ['error'],
+    'sort-imports': [2, {
+      'ignoreDeclarationSort': true,
+    }]
   },
   overrides: [
     {

@@ -1,5 +1,5 @@
 import { Tooltip } from '@patternfly/react-core';
-import { QuestionIcon, SecurityIcon, IconSize } from '@patternfly/react-icons';
+import { IconSize, QuestionIcon, SecurityIcon } from '@patternfly/react-icons';
 import { SVGIconProps } from '@patternfly/react-icons/dist/js/createIcon';
 import React from 'react';
 import { impactList } from './consts';

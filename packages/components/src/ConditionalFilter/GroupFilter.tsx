@@ -1,22 +1,22 @@
-import React, { FormEvent, MouseEventHandler, useState, useRef, useEffect } from 'react';
+import React, { FormEvent, MouseEventHandler, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import {
-  TextInput,
-  MenuList,
-  MenuItem,
-  MenuGroup,
-  Checkbox,
   Button,
-  MenuToggle,
+  ButtonVariant,
+  Checkbox,
   Menu,
   MenuContent,
+  MenuGroup,
+  MenuItem,
+  MenuList,
+  MenuToggle,
   Popper,
   Radio,
+  TextInput,
   TreeView,
-  ButtonVariant,
   TreeViewDataItem,
 } from '@patternfly/react-core';
-import { isChecked, calculateSelected, getGroupMenuItems, getMenuItems, convertTreeItem, mapTree, onTreeCheck } from './groupFilterConstants';
+import { calculateSelected, convertTreeItem, getGroupMenuItems, getMenuItems, isChecked, mapTree, onTreeCheck } from './groupFilterConstants';
 import groupType, { GroupType } from './groupType';
 import './group-filter.scss';
 

@@ -1,4 +1,4 @@
-import { applyMiddleware, combineReducers, createStore, compose, ActionCreator, Store, Reducer, Middleware } from 'redux';
+import { ActionCreator, Middleware, Reducer, Store, applyMiddleware, combineReducers, compose, createStore } from 'redux';
 
 export function applyReducerHash(reducerHash: any, initialState: Record<string, unknown> = {}) {
   return function (state = initialState, action: { type: PropertyKey }) {

@@ -1,14 +1,14 @@
 import React from 'react';
 import {
+  Button,
+  ButtonProps,
+  Pagination,
+  PaginationProps,
   Toolbar,
   ToolbarContent,
+  ToolbarExpandIconWrapper,
   ToolbarGroup,
   ToolbarItem,
-  Pagination,
-  Button,
-  ToolbarExpandIconWrapper,
-  PaginationProps,
-  ButtonProps,
 } from '@patternfly/react-core';
 import { AngleDownIcon, AngleRightIcon } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table';

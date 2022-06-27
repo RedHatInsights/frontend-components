@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
+import { ReactWrapper, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import { NotificationsPortal } from '..';

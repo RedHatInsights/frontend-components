@@ -1,4 +1,4 @@
-import { Title, Divider } from '@patternfly/react-core';
+import { Divider, Title } from '@patternfly/react-core';
 import Head from 'next/head';
 import Sections from '../components/sections';
 

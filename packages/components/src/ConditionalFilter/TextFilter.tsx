@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, Fragment, MouseEventHandler } from 'react';
+import React, { FormEvent, Fragment, MouseEventHandler, useState } from 'react';
 import { TextInput } from '@patternfly/react-core';
 import { SearchIcon } from '@patternfly/react-icons';
 import './conditional-filter.scss';

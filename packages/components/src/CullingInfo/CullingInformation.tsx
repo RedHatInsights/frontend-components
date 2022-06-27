@@ -3,7 +3,7 @@ import { ExclamationCircleIcon, ExclamationTriangleIcon } from '@patternfly/reac
 import { Tooltip, TooltipProps } from '@patternfly/react-core';
 import classnames from 'classnames';
 import './CullingInformation.scss';
-import { CullingDate, calculateTooltip, CullingInfo } from './utils';
+import { CullingDate, CullingInfo, calculateTooltip } from './utils';
 export type Render = (config: { msg: string }) => React.ReactElement<any, any> | null;
 
 export interface CullingInformation extends TooltipProps {

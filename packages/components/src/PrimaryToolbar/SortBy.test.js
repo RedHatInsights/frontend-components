@@ -1,6 +1,6 @@
 import React from 'react';
 import SortBy from './SortBy';
-import { shallow, mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 describe('PrimaryToolbar', () => {

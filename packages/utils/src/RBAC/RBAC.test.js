@@ -1,4 +1,4 @@
-import { getRBAC, doesHavePermissions, hasAllPermissions } from './RBAC';
+import { doesHavePermissions, getRBAC, hasAllPermissions } from './RBAC';
 
 describe('RBAC utilities', () => {
   describe('does have permissions', () => {
