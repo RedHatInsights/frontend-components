@@ -25,6 +25,7 @@ function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlemen
         type: 'User',
         auth_type: 'basic-auth',
         account_number: payload.account_number + '',
+        org_id: payload.org_id,
         ...customIdentity,
         user: {
           username: payload.username,
