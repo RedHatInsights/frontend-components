@@ -11,6 +11,7 @@ declare type ChromeUser = {
   };
   identity: {
     account_number: string;
+    org_id: string;
     internal?: {
       org_id: string;
       account_id: string;
