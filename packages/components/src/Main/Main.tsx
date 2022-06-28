@@ -3,6 +3,15 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { DarkContext } from '../Dark';
 import './main.scss';
+import type { ChromeAPI } from '@redhat-cloud-services/types';
+
+declare global {
+  interface Window {
+    insights: {
+      chrome: ChromeAPI;
+    };
+  }
+}
 
 const toKebab = (text: string) => text.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 
