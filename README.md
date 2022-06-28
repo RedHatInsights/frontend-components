@@ -11,11 +11,7 @@ Monorepo of Red Hat Cloud services Components for applications in a React.js env
 * [components](https://github.com/RedHatInsights/frontend-components/tree/master/packages/components#readme) - series of common components
 * [notifications](https://github.com/RedHatInsights/frontend-components/tree/master/packages/notifications#readme) - common component to display toast notifications
 * [remediations](https://github.com/RedHatInsights/frontend-components/tree/master/packages/remediations#readme) - hot loaded component that shows remediations buton and wizard
-* [inventory](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory#readme) - hot loaded inventory component (table and detail)
-  * [inventory-general-info](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-general-info#readme) - directly imported component with redux store  to show system information
-  * [inventory-vulnerabilities](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-vulnerabilities#readme) - directly imported component with redux store to show vulnerability data
-  * [inventory-compliance](https://github.com/RedHatInsights/compliance-frontend) - This component was moved to the compliance repository
-  * [inventory-insights](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-insights#readme) - directly imported component to show insights data
+* [inventory](https://github.com/RedHatInsights/insights-inventory-frontend) - Inventory packages moved to Inventory UI repository
 * [sources](https://github.com/RedHatInsights/sources-ui/) - Sources Wizard component was moved to Sources UI repository (it's also stored here in `sources_backup` branch)
 * [testing](https://github.com/RedHatInsights/frontend-components/tree/master/packages/testing) - Testing utilities.
 * [advisor-components](https://github.com/RedHatInsights/frontend-components/tree/master/packages/advisor-components#readme) - a library of Advisor components (rule content, report details, charts, etc.).
