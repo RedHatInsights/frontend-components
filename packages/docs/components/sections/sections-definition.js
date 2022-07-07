@@ -54,6 +54,11 @@ export default [
     description: 'Proxy configuration for local development',
   },
   {
+    title: 'Analytics',
+    href: '/analytics',
+    description: 'Analytics tool API',
+  },
+  {
     title: 'Insights standalone',
     href: '/insights-standalone',
   },
