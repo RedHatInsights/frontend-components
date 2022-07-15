@@ -241,6 +241,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         ouiaSafe={true}
         page={1}
         perPage={10}
+        perPageComponent="div"
         perPageOptions={
           Array [
             Object {
@@ -267,7 +268,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
             "items": "",
             "itemsPerPage": "Items per page",
             "ofWord": "of",
-            "optionsToggle": "Items per page",
+            "optionsToggle": "",
             "page": "",
             "pages": "",
             "paginationTitle": "Pagination",
@@ -515,6 +516,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
         ouiaSafe={true}
         page={1}
         perPage={10}
+        perPageComponent="div"
         perPageOptions={
           Array [
             Object {
@@ -541,7 +543,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
             "items": "",
             "itemsPerPage": "Items per page",
             "ofWord": "of",
-            "optionsToggle": "Items per page",
+            "optionsToggle": "",
             "page": "",
             "pages": "",
             "paginationTitle": "Pagination",

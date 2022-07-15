@@ -106,6 +106,7 @@ exports[`Actions - component API should update open 1`] = `
               </DropdownItem>,
             ]
           }
+          isFlipEnabled={false}
           isGrouped={false}
           isOpen={true}
           isPlain={true}
@@ -171,18 +172,19 @@ exports[`Actions - component API should update open 1`] = `
                       role="menu"
                     >
                       <li
-                        role="menuitem"
+                        role="none"
                       >
                         <div
                           class="ins-c-primary-toolbar__first-action pf-c-dropdown__menu-item"
                           data-ouia-component-id="OUIA-Generated-DropdownItem-1"
                           data-ouia-component-type="PF4/DropdownItem"
                           data-ouia-safe="true"
+                          role="menuitem"
                           tabindex="-1"
                         />
                       </li>
                       <li
-                        role="menuitem"
+                        role="none"
                       >
                         <button
                           aria-disabled="false"
@@ -190,6 +192,7 @@ exports[`Actions - component API should update open 1`] = `
                           data-ouia-component-id="OUIA-Generated-DropdownItem-2"
                           data-ouia-component-type="PF4/DropdownItem"
                           data-ouia-safe="true"
+                          role="menuitem"
                           tabindex="-1"
                           type="button"
                         >
@@ -197,7 +200,7 @@ exports[`Actions - component API should update open 1`] = `
                         </button>
                       </li>
                       <li
-                        role="menuitem"
+                        role="none"
                       >
                         <button
                           aria-disabled="false"
@@ -205,6 +208,7 @@ exports[`Actions - component API should update open 1`] = `
                           data-ouia-component-id="OUIA-Generated-DropdownItem-3"
                           data-ouia-component-type="PF4/DropdownItem"
                           data-ouia-safe="true"
+                          role="menuitem"
                           tabindex="-1"
                           type="button"
                         >
@@ -212,7 +216,7 @@ exports[`Actions - component API should update open 1`] = `
                         </button>
                       </li>
                       <li
-                        role="menuitem"
+                        role="none"
                       >
                         <button
                           aria-disabled="false"
@@ -220,6 +224,7 @@ exports[`Actions - component API should update open 1`] = `
                           data-ouia-component-id="OUIA-Generated-DropdownItem-4"
                           data-ouia-component-type="PF4/DropdownItem"
                           data-ouia-safe="true"
+                          role="menuitem"
                           tabindex="-1"
                           type="button"
                         >
@@ -283,18 +288,19 @@ exports[`Actions - component API should update open 1`] = `
                         role="menu"
                       >
                         <li
-                          role="menuitem"
+                          role="none"
                         >
                           <div
                             class="ins-c-primary-toolbar__first-action pf-c-dropdown__menu-item"
                             data-ouia-component-id="OUIA-Generated-DropdownItem-1"
                             data-ouia-component-type="PF4/DropdownItem"
                             data-ouia-safe="true"
+                            role="menuitem"
                             tabindex="-1"
                           />
                         </li>
                         <li
-                          role="menuitem"
+                          role="none"
                         >
                           <button
                             aria-disabled="false"
@@ -302,6 +308,7 @@ exports[`Actions - component API should update open 1`] = `
                             data-ouia-component-id="OUIA-Generated-DropdownItem-2"
                             data-ouia-component-type="PF4/DropdownItem"
                             data-ouia-safe="true"
+                            role="menuitem"
                             tabindex="-1"
                             type="button"
                           >
@@ -309,7 +316,7 @@ exports[`Actions - component API should update open 1`] = `
                           </button>
                         </li>
                         <li
-                          role="menuitem"
+                          role="none"
                         >
                           <button
                             aria-disabled="false"
@@ -317,6 +324,7 @@ exports[`Actions - component API should update open 1`] = `
                             data-ouia-component-id="OUIA-Generated-DropdownItem-3"
                             data-ouia-component-type="PF4/DropdownItem"
                             data-ouia-safe="true"
+                            role="menuitem"
                             tabindex="-1"
                             type="button"
                           >
@@ -324,7 +332,7 @@ exports[`Actions - component API should update open 1`] = `
                           </button>
                         </li>
                         <li
-                          role="menuitem"
+                          role="none"
                         >
                           <button
                             aria-disabled="false"
@@ -332,6 +340,7 @@ exports[`Actions - component API should update open 1`] = `
                             data-ouia-component-id="OUIA-Generated-DropdownItem-4"
                             data-ouia-component-type="PF4/DropdownItem"
                             data-ouia-safe="true"
+                            role="menuitem"
                             tabindex="-1"
                             type="button"
                           >
@@ -441,13 +450,14 @@ exports[`Actions - component API should update open 1`] = `
                       className={null}
                       onClick={[Function]}
                       onKeyDown={[Function]}
-                      role="menuitem"
+                      role="none"
                     >
                       <div
                         className="ins-c-primary-toolbar__first-action pf-c-dropdown__menu-item"
                         data-ouia-component-id="OUIA-Generated-DropdownItem-1"
                         data-ouia-component-type="PF4/DropdownItem"
                         data-ouia-safe={true}
+                        role="menuitem"
                         tabIndex={-1}
                       />
                     </li>
@@ -495,7 +505,7 @@ exports[`Actions - component API should update open 1`] = `
                       className={null}
                       onClick={[Function]}
                       onKeyDown={[Function]}
-                      role="menuitem"
+                      role="none"
                     >
                       <button
                         aria-disabled={false}
@@ -503,6 +513,7 @@ exports[`Actions - component API should update open 1`] = `
                         data-ouia-component-id="OUIA-Generated-DropdownItem-2"
                         data-ouia-component-type="PF4/DropdownItem"
                         data-ouia-safe={true}
+                        role="menuitem"
                         tabIndex={-1}
                         type="button"
                       >
@@ -552,7 +563,7 @@ exports[`Actions - component API should update open 1`] = `
                       className={null}
                       onClick={[Function]}
                       onKeyDown={[Function]}
-                      role="menuitem"
+                      role="none"
                     >
                       <button
                         aria-disabled={false}
@@ -560,6 +571,7 @@ exports[`Actions - component API should update open 1`] = `
                         data-ouia-component-id="OUIA-Generated-DropdownItem-3"
                         data-ouia-component-type="PF4/DropdownItem"
                         data-ouia-safe={true}
+                        role="menuitem"
                         tabIndex={-1}
                         type="button"
                       >
@@ -609,7 +621,7 @@ exports[`Actions - component API should update open 1`] = `
                       className={null}
                       onClick={[Function]}
                       onKeyDown={[Function]}
-                      role="menuitem"
+                      role="none"
                     >
                       <button
                         aria-disabled={false}
@@ -617,6 +629,7 @@ exports[`Actions - component API should update open 1`] = `
                         data-ouia-component-id="OUIA-Generated-DropdownItem-4"
                         data-ouia-component-type="PF4/DropdownItem"
                         data-ouia-safe={true}
+                        role="menuitem"
                         tabIndex={-1}
                         type="button"
                       >

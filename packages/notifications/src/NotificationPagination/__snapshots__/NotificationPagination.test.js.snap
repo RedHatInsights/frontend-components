@@ -36,6 +36,7 @@ exports[`Notification Pagination component should render correctly 1`] = `
           ouiaSafe={true}
           page={1}
           perPage={5}
+          perPageComponent="div"
           perPageOptions={
             Array [
               Object {
