@@ -1,5 +1,3 @@
-import './labels.scss';
-
 import { AngleDoubleDownIcon } from '@patternfly/react-icons';
 import { AngleDoubleUpIcon } from '@patternfly/react-icons';
 import { CriticalRiskIcon } from '@patternfly/react-icons';
@@ -34,12 +32,7 @@ export interface InsightsLabelProps extends LabelProps {
 
 const InsightsLabel: React.FunctionComponent<InsightsLabelProps> = ({ value = 1, text, hideIcon, className, rest, ...props }) => {
   return (
-    <Label
-      {...rest}
-      {...props}
-      color={VALUE_TO_STATE[value].color}
-      icon={!hideIcon && VALUE_TO_STATE[value].icon}
-    >
+    <Label {...rest} {...props} color={VALUE_TO_STATE[value].color} icon={!hideIcon && VALUE_TO_STATE[value].icon}>
       {text || VALUE_TO_STATE[value].text}
     </Label>
   );
