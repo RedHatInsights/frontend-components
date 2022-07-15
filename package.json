@@ -59,7 +59,7 @@
         "@babel/runtime": "^7.9.2",
         "@octokit/rest": "^16.34.0",
         "@patternfly/quickstarts": "^1.4.1-rc.1",
-        "@patternfly/react-core": "^4.147.0",
+        "@patternfly/react-core": "^4.224.1",
         "@patternfly/react-icons": "^4.53.16",
         "@patternfly/react-table": "^4.26.7",
         "@testing-library/dom": "^8.11.3",
