@@ -594,6 +594,12 @@
 				]
 			},
 			{
+				"group": "Registry",
+				"items": [
+					"Registry"
+				]
+			},
+			{
 				"group": "RowLoader",
 				"items": [
 					"RowLoader"

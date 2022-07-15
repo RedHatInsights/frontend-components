@@ -91,7 +91,7 @@ export type OnEventCallbacks = {
 declare function OnChromeEvent<K extends 'APP_NAVIGATION' | 'NAVIGATION_TOGGLE' | 'GLOBAL_FILTER_UPDATE'>(
   event: K,
   callback: OnEventCallbacks[K]
-): () => void;
+): undefined | (() => void) | (() => undefined) | (() => boolean);
 
 export interface ChromeAPI {
   /** @deprecated will be removed from useChrome hook */
