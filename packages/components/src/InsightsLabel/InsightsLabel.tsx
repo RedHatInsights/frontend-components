@@ -30,7 +30,7 @@ export interface InsightsLabelProps extends LabelProps {
   rest: { [key: string]: any };
 }
 
-const InsightsLabel: React.FunctionComponent<InsightsLabelProps> = ({ value = 1, text, hideIcon, className, rest, ...props }) => {
+const InsightsLabel: React.FunctionComponent<InsightsLabelProps> = ({ value = 1, text, hideIcon, rest, ...props }) => {
   return (
     <Label {...rest} {...props} color={VALUE_TO_STATE[value].color} icon={!hideIcon && VALUE_TO_STATE[value].icon}>
       {text || VALUE_TO_STATE[value].text}
