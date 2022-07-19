@@ -2,6 +2,21 @@ import { QuickStartCatalogPage } from '@patternfly/quickstarts';
 import { History } from 'history';
 import { Access } from '@redhat-cloud-services/rbac-client';
 
+export declare type HelpTopicLink = {
+  href: string;
+  text?: string;
+  newTab?: boolean;
+  isExternal?: boolean;
+};
+
+export declare type HelpTopic = {
+  name: string;
+  title: string;
+  tags: string[];
+  content: string;
+  links?: HelpTopicLink[];
+};
+
 declare type ChromeUser = {
   entitlements: {
     [key: string]: {
@@ -137,6 +152,13 @@ export interface ChromeAPI {
   globalFilterScope: (scope: string) => {
     type: string;
     payload: string;
+  };
+  helpTopics: {
+    addHelpTopics: (topics: HelpTopic[], enabled?: boolean) => void;
+    enableTopics: (...topicsNames: string[]) => Promise<void>;
+    disableTopics: (...topicsNames: string[]) => void;
+    setActiveTopic: (name: string) => void;
+    closeHelpTopic: () => void;
   };
   hideGlobalFilter: (isHidden: boolean) => void;
   /** @deprecated This function server no purpse. For document title update use "updateDocumentTitle" function instead. */
