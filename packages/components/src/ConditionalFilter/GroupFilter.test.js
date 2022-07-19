@@ -222,7 +222,7 @@ describe('Group - component', () => {
       act(() => {
         userEvent.click(screen.getByRole('button', { name: 'Group filter' }));
       });
-      expect(screen.getByRole('menubar', { name: 'Group filter' })).toBeDefined();
+      expect(screen.getByRole('menu', { name: 'Group filter' })).toBeDefined();
     });
   });
 });

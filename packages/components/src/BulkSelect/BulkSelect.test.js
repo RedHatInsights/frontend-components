@@ -124,17 +124,17 @@ describe('BulkSelect', () => {
           items={[
             {
               title: 'Select all',
-              onClick: onSelect,
             },
             {
               title: 'Some action',
               onClick: otherAction,
             },
           ]}
+          onSelect={onSelect}
         />
       );
+      userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
       userEvent.click(screen.getByRole('button', { name: 'Select' }));
-      userEvent.click(screen.getByRole('button', { name: 'Select all' }));
       expect(onSelect).toHaveBeenCalled();
       expect(otherAction).not.toHaveBeenCalled();
     });
