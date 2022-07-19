@@ -41,7 +41,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
       role="menu"
     >
       <li
-        role="menuitem"
+        role="none"
       >
         <button
           aria-disabled="false"
@@ -49,6 +49,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
           data-ouia-component-id="DownloadCSV"
           data-ouia-component-type="PF4/DropdownItem"
           data-ouia-safe="true"
+          role="menuitem"
           tabindex="-1"
           type="button"
         >
@@ -56,7 +57,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
         </button>
       </li>
       <li
-        role="menuitem"
+        role="none"
       >
         <button
           aria-disabled="false"
@@ -64,6 +65,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
           data-ouia-component-id="DownloadJSON"
           data-ouia-component-type="PF4/DropdownItem"
           data-ouia-safe="true"
+          role="menuitem"
           tabindex="-1"
           type="button"
         >
@@ -71,7 +73,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
         </button>
       </li>
       <li
-        role="menuitem"
+        role="none"
       >
         <button
           aria-disabled="false"
@@ -79,6 +81,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
           data-ouia-component-id="OUIA-Generated-DropdownItem-1"
           data-ouia-component-type="PF4/DropdownItem"
           data-ouia-safe="true"
+          role="menuitem"
           tabindex="-1"
           type="button"
         />

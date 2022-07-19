@@ -4,6 +4,7 @@ exports[`FilterInput component should render a checkbox input 1`] = `
 <Checkbox
   aria-label="label"
   className=""
+  component="div"
   id="id"
   isChecked={false}
   isDisabled={false}

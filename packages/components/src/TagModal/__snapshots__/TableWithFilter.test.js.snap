@@ -153,6 +153,7 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
       ouiaSafe={true}
       page={1}
       perPage={10}
+      perPageComponent="div"
       perPageOptions={
         Array [
           Object {
@@ -179,7 +180,7 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
           "items": "",
           "itemsPerPage": "Items per page",
           "ofWord": "of",
-          "optionsToggle": "Items per page",
+          "optionsToggle": "",
           "page": "",
           "pages": "",
           "paginationTitle": "Pagination",
@@ -287,6 +288,7 @@ exports[`TableWithFilter should render with data and bulk select without calcula
       ouiaSafe={true}
       page={1}
       perPage={10}
+      perPageComponent="div"
       perPageOptions={
         Array [
           Object {
@@ -313,7 +315,7 @@ exports[`TableWithFilter should render with data and bulk select without calcula
           "items": "",
           "itemsPerPage": "Items per page",
           "ofWord": "of",
-          "optionsToggle": "Items per page",
+          "optionsToggle": "",
           "page": "",
           "pages": "",
           "paginationTitle": "Pagination",
@@ -462,6 +464,7 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
       ouiaSafe={true}
       page={1}
       perPage={10}
+      perPageComponent="div"
       perPageOptions={
         Array [
           Object {
@@ -488,7 +491,7 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
           "items": "",
           "itemsPerPage": "Items per page",
           "ofWord": "of",
-          "optionsToggle": "Items per page",
+          "optionsToggle": "",
           "page": "",
           "pages": "",
           "paginationTitle": "Pagination",
