@@ -1,9 +1,10 @@
-const { logError, getWebpackConfigPath } = require('./common');
+const { logError, getWebpackConfigPath, validateFECConfig } = require('./common');
 const { resolve } = require('path');
 const { spawn } = require('child_process');
 
 function buildScript(argv, cwd) {
   try {
+    validateFECConfig(cwd);
     const processArgs = [];
     let configPath;
     if (typeof argv.webpackConfig !== 'undefined') {
