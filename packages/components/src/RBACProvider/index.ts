@@ -1,1 +1,1 @@
-export { default as RBACProvider } from './RBACProvider';
+export * from './RBACProvider';

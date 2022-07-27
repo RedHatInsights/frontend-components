@@ -60,5 +60,3 @@ export const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appNa
     </RBACContext.Provider>
   );
 };
-
-export default RBACProvider;
