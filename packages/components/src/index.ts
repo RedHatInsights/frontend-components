@@ -39,3 +39,4 @@ export * from './FilterHooks';
 export * from './AsyncComponent';
 export * from './Ouia';
 export * from './ErrorBoundary';
+export * from './RBACProvider';

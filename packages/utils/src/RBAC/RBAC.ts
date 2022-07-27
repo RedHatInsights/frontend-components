@@ -1,3 +1,4 @@
+import { createContext } from 'react';
 import { Access } from '@redhat-cloud-services/rbac-client';
 import type { ChromeAPI } from '@redhat-cloud-services/types';
 
@@ -58,6 +59,22 @@ export function hasAllPermissions(userPermissions: (Access | string)[], permissi
       return hasAccess || accessArray.join(':') === permission;
     });
   });
+}
+
+export const initialPermissions = {
+  isLoading: true,
+  isOrgAdmin: false,
+  permissions: [],
+  hasAccess: (_?: any) => {
+    return;
+  },
+};
+
+export const RBACContext = createContext(initialPermissions);
+
+export interface UsePermissionsState extends RBAC {
+  isLoading: boolean;
+  hasAccess?: boolean;
 }
 
 export default getRBAC;

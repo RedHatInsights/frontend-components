@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { RBACContext, UsePermissionsState } from './constants';
-import { doesHavePermissions, getRBAC, hasAllPermissions } from '../RBAC';
+import { RBACContext, UsePermissionsState, doesHavePermissions, getRBAC, hasAllPermissions } from '../RBAC';
 
 export function usePermissions(appName: string, permissionsList: string[], disableCache?: boolean, checkAll?: boolean): UsePermissionsState {
   const [permissions, setPermissions] = useState<UsePermissionsState>({

@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Access } from '@redhat-cloud-services/rbac-client';
-import { doesHavePermissions, getRBAC, hasAllPermissions } from '../RBAC';
-import { RBACContext, initialPermissions } from './constants';
+import { Bullseye, Spinner } from '@patternfly/react-core';
+
+import {
+  RBACContext,
+  doesHavePermissions,
+  getRBAC,
+  hasAllPermissions,
+  initialPermissions,
+} from '@redhat-cloud-services/frontend-components-utilities/RBAC';
 
 const hasAccessWithUserPermissions = (userPermissions: Access[]) => {
   return (requiredPermissions: any, checkAll = true) => {
@@ -13,7 +20,7 @@ export interface RBACProviderProps {
   appName: string;
 }
 
-const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appName, children }) => {
+export const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appName, children }) => {
   const [permissionState, setPermissionState] = useState(initialPermissions);
   let loading = false;
 
@@ -31,7 +38,6 @@ const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appName, chi
   };
 
   useEffect(() => {
-    console.log('SADASD', appName, permissionState, loading);
     if (!loading && permissionState.permissions.length == 0) {
       fetchPermissions();
     }
@@ -41,10 +47,16 @@ const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appName, chi
     <RBACContext.Provider
       value={{
         ...permissionState,
-        hasAccess: hasAccessWithUserPermissions(permissionState?.permissions),
+        hasAccess: hasAccessWithUserPermissions(permissionState?.permissions || []),
       }}
     >
-      {!permissionState.isLoading && children}
+      {!permissionState.isLoading ? (
+        children
+      ) : (
+        <Bullseye>
+          <Spinner size="xl" />
+        </Bullseye>
+      )}
     </RBACContext.Provider>
   );
 };
