@@ -65,7 +65,7 @@ export const initialPermissions = {
   isLoading: true,
   isOrgAdmin: false,
   permissions: [],
-  hasAccess: (_?: any) => {
+  hasAccess: (_?: (Access | string)[]) => {
     return;
   },
 };

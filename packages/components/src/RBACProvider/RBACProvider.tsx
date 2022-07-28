@@ -10,8 +10,8 @@ import {
   initialPermissions,
 } from '@redhat-cloud-services/frontend-components-utilities/RBAC';
 
-const hasAccessWithUserPermissions = (userPermissions: Access[]) => {
-  return (requiredPermissions: any, checkAll = true) => {
+const hasAccessWithUserPermissions = (userPermissions: (Access | string)[]) => {
+  return (requiredPermissions: string[], checkAll = true): boolean => {
     return checkAll ? hasAllPermissions(userPermissions, requiredPermissions) : doesHavePermissions(userPermissions, requiredPermissions);
   };
 };
