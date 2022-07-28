@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Access } from '@redhat-cloud-services/rbac-client';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 
@@ -21,11 +21,11 @@ export interface RBACProviderProps {
 }
 
 export const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appName, children }) => {
+  const loading = useRef(false);
   const [permissionState, setPermissionState] = useState(initialPermissions);
-  let loading = false;
 
   const fetchPermissions = async () => {
-    loading = true;
+    loading.current = true;
     const { isOrgAdmin, permissions: userPermissions } = await getRBAC(appName, true);
 
     setPermissionState((currentPerms: any) => ({
@@ -34,11 +34,11 @@ export const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appNa
       isOrgAdmin,
       permissions: userPermissions,
     }));
-    loading = false;
+    loading.current = false;
   };
 
   useEffect(() => {
-    if (!loading && permissionState.permissions.length == 0) {
+    if (!loading.current && permissionState.permissions.length == 0) {
       fetchPermissions();
     }
   }, [appName]);
