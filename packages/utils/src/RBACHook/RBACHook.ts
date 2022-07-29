@@ -35,7 +35,7 @@ export const usePermissionsWithContext = (requiredPermissions: string[]) => {
 
   return {
     ...permissionState,
-    hasAccess: hasAccess(requiredPermissions),
+    hasAccess: hasAccess?.(requiredPermissions) || false,
   };
 };
 

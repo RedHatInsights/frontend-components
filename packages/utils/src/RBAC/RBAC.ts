@@ -29,7 +29,7 @@ function isAccessType(permission: Access | string): permission is Access {
   return typeof permission === 'object';
 }
 
-export function doesHavePermissions(userPermissions: (Access | string)[], permissionList: string[]): boolean {
+export function doesHavePermissions(userPermissions: (Access | string)[], permissionList: (Access | string)[]): boolean {
   if (!userPermissions) {
     return false;
   }
@@ -39,7 +39,7 @@ export function doesHavePermissions(userPermissions: (Access | string)[], permis
   });
 }
 
-export function hasAllPermissions(userPermissions: (Access | string)[], permissionList: string[]): boolean {
+export function hasAllPermissions(userPermissions: (Access | string)[], permissionList: (Access | string)[]): boolean {
   if (!userPermissions) {
     return false;
   }
@@ -47,7 +47,7 @@ export function hasAllPermissions(userPermissions: (Access | string)[], permissi
   return permissionList.every((permission) => {
     return userPermissions.some((access) => {
       const accessArray = (isAccessType(access) ? access?.permission : access)?.split(':') || [];
-      const permissionArray = permission.split(':');
+      const permissionArray = (permission as string).split(':');
       const hasAccess = accessArray.slice(0).reduce((acc, curr, index, array) => {
         if (acc === false) {
           array.splice(index);
@@ -61,20 +61,24 @@ export function hasAllPermissions(userPermissions: (Access | string)[], permissi
   });
 }
 
-export const initialPermissions = {
-  isLoading: true,
-  isOrgAdmin: false,
-  permissions: [],
-  hasAccess: (_?: (Access | string)[]) => {
-    return;
-  },
-};
-
-export const RBACContext = createContext(initialPermissions);
-
 export interface UsePermissionsState extends RBAC {
   isLoading: boolean;
   hasAccess?: boolean;
 }
+
+export interface UsePermissionsContextState {
+  isLoading?: boolean;
+  isOrgAdmin: boolean;
+  permissions: (string | Access)[];
+  hasAccess?: (requiredPermissions: string[], checkAll?: boolean) => boolean;
+}
+
+export const initialPermissions: UsePermissionsContextState = {
+  isLoading: true,
+  isOrgAdmin: false,
+  permissions: [],
+};
+
+export const RBACContext = createContext(initialPermissions);
 
 export default getRBAC;

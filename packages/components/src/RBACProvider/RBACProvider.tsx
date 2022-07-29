@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Access } from '@redhat-cloud-services/rbac-client';
 import { Bullseye, Spinner } from '@patternfly/react-core';
+import { Access } from '@redhat-cloud-services/rbac-client';
 
 import {
   RBACContext,
@@ -11,7 +11,7 @@ import {
 } from '@redhat-cloud-services/frontend-components-utilities/RBAC';
 
 const hasAccessWithUserPermissions = (userPermissions: (Access | string)[]) => {
-  return (requiredPermissions: string[], checkAll = true): boolean => {
+  return (requiredPermissions: (Access | string)[], checkAll = true): boolean => {
     return checkAll ? hasAllPermissions(userPermissions, requiredPermissions) : doesHavePermissions(userPermissions, requiredPermissions);
   };
 };
@@ -26,7 +26,7 @@ export const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appNa
   const fetchPermissions = async () => {
     const { isOrgAdmin, permissions: userPermissions } = await getRBAC(appName, true);
 
-    setPermissionState((currentPerms: any) => ({
+    setPermissionState((currentPerms) => ({
       ...currentPerms,
       isLoading: false,
       isOrgAdmin,
