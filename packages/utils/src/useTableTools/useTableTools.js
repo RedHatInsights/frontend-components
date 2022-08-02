@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { identifyItems } from '../helpers';
 import { toToolbarActions } from './helpers';
 import { useBulkSelectWithItems } from '../useBulkSelect';
@@ -37,11 +36,18 @@ const useTableTools = (items = [], columns = [], options = {}) => {
 
   const { toolbarProps: pagintionToolbarProps, setPage, paginator } = usePaginateWithItems(options);
 
-  const { toolbarProps: conditionalFilterProps, filter, activeFilters } = useFilterConfigWithItems(options);
+  const { toolbarProps: conditionalFilterProps, filter } = useFilterConfigWithItems({
+    ...options,
+    onFilterUpdate: () => setPage(1),
+    onDeleteFilter: () => setPage(1),
+  });
 
   const { transformer: openItem, tableProps: expandableProps } = useExpandableWithItems(options);
 
-  const { tableProps: sortableTableProps, sorter, sortBy } = useTableSortWithItems(items, managedColumns, options);
+  const { tableProps: sortableTableProps, sorter } = useTableSortWithItems(items, managedColumns, {
+    ...options,
+    onSort: () => setPage(1),
+  });
 
   const {
     transformer: selectItem,
@@ -81,10 +87,6 @@ const useTableTools = (items = [], columns = [], options = {}) => {
     filter,
     sorter,
   });
-
-  useEffect(() => {
-    setPage?.(1);
-  }, [JSON.stringify(activeFilters), JSON.stringify(sortBy)]);
 
   return {
     toolbarProps: {

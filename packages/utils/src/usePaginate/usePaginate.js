@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 /**
  * Provides `pagination` props and functionality for a (Primary)Toolbar
@@ -13,15 +13,14 @@ const usePaginate = (options = {}) => {
     perPage,
     page: 1,
   });
-  const setPagination = (newState) =>
-    setPaginationState({
-      ...paginationState,
-      ...newState,
-    });
-
-  const onSetPage = (_, page) => setPagination({ ...paginationState, page });
-
-  const onPerPageSelect = (_, perPage) => setPagination({ page: 1, perPage });
+  const setPagination = useCallback(
+    (newState) =>
+      setPaginationState({
+        ...paginationState,
+        ...newState,
+      }),
+    [setPaginationState]
+  );
 
   const setPage = (page) => {
     const nextPage = page < 0 ? paginationState.page + page : page;
@@ -37,8 +36,8 @@ const usePaginate = (options = {}) => {
         toolbarProps: {
           pagination: {
             ...paginationState,
-            onSetPage,
-            onPerPageSelect,
+            onSetPage: (_, page) => setPagination({ ...paginationState, page }),
+            onPerPageSelect: (_, perPage) => setPagination({ page: 1, perPage }),
           },
         },
       }
