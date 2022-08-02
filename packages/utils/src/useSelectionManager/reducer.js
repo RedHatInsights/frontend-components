@@ -26,15 +26,20 @@ const set = (state = {}, action) => {
 
 const select = (state = {}, action) => {
   const group = selectionGroup(action);
+  const items = action.reset ? action?.items : [...(Array.isArray(action.item) ? action.item : [action.item])];
+
   return cleanEmpty({
     ...state,
-    [group]: action.reset ? action?.items : uniq([action?.item, ...(state[group] || [])]),
+    [group]: uniq([...items, ...(state[group] || [])]),
   });
 };
 
 const deselect = (state = {}, action) => {
   const group = selectionGroup(action);
-  const items = (state[group] || []).filter((selectedItem) => selectedItem !== action?.item);
+  const items = (state[group] || []).filter((selectedItem) => {
+    const deselectItems = Array.isArray(action?.item) ? action?.item : [action?.item];
+    return !deselectItems.includes(selectedItem);
+  });
 
   return cleanEmpty({
     ...state,
