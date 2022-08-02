@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { filterSelected } from '../useTableTools/helpers';
-import { selectItemTransformer, itemIds } from './helpers';
+import { itemIds, selectItemTransformer } from './helpers';
 import useBulkSelect from './useBulkSelect';
 
 /**
@@ -37,7 +37,7 @@ const useBulkSelectWithItems = ({ onSelect, items: propItems, filter, paginator,
     onSelect,
     preselected,
     itemIdsInTable: async () => (filtered ? itemIds(filteredItems) : itemIds(items)),
-    itemIdsOnPage: () => itemIds(paginatedItems),
+    itemIdsOnPage: paginatedItems.map(({ itemId }) => itemId),
     identifier: 'itemId',
   });
 
