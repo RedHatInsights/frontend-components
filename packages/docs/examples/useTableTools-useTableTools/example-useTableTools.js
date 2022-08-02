@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import useTableTools from '@redhat-cloud-services/frontend-components-utilities/useTableTools';
 import { Table, TableBody, TableHeader } from '@patternfly/react-table';
 import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
@@ -36,14 +36,14 @@ const TableToolsExample = () => {
   const { toolbarProps, tableProps } = useTableTools(items, columns, { filters });
 
   return (
-    <>
+    <Fragment>
       <PrimaryToolbar {...toolbarProps} />
 
       <Table {...tableProps}>
         <TableHeader />
         <TableBody />
       </Table>
-    </>
+    </Fragment>
   );
 };
 

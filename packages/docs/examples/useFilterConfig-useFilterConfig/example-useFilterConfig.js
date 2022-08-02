@@ -66,11 +66,7 @@ const TableToolsExample = () => {
     filters: { filterConfig: exampleFilters },
   });
 
-  return (
-    <>
-      <PrimaryToolbar {...toolbarProps} />
-    </>
-  );
+  return <PrimaryToolbar {...toolbarProps} />;
 };
 
 export default TableToolsExample;
