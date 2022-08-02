@@ -1,4 +1,4 @@
-import { stringToId, defaultPlaceholder } from './helpers';
+import { defaultPlaceholder, stringToId } from './helpers';
 import filterTypeHelpers from './filterTypeHelpers';
 
 const getActiveFilters = (configItem, activeFilters) =>

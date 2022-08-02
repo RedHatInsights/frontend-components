@@ -1,4 +1,4 @@
-import { orderArrayByProp, orderByArray, columnOffset } from './helpers';
+import { columnOffset, orderArrayByProp, orderByArray } from './helpers';
 import useTableSort from './useTableSort';
 
 /**

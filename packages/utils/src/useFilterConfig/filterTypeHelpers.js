@@ -1,5 +1,5 @@
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
-import { defaultOnChange, stringToId, configItemItemByLabel, itemForValueInGroups, itemForLabelInGroups } from './helpers';
+import { configItemItemByLabel, defaultOnChange, itemForLabelInGroups, itemForValueInGroups, stringToId } from './helpers';
 
 const textType = {
   // Creates the filterValues prop for the filterConfig passed to the toolbar/table provided the current value/state

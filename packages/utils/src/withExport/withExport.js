@@ -1,4 +1,4 @@
-import { exportableColumns, downloadItems } from './helpers';
+import { downloadItems, exportableColumns } from './helpers';
 
 /**
  * Provides an `exportConfig` prop for a (Primary)Toolbar action

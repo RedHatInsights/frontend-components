@@ -1,6 +1,6 @@
 import columns from '../__fixtures__/columns';
 import items from '../__fixtures__/items';
-import { jsonForItems, csvForItems } from './helpers';
+import { csvForItems, jsonForItems } from './helpers';
 
 const exampleItems = items(25);
 

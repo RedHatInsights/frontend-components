@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { DataListCheck, DataListControl, DataListItem, DataListItemRow, DataListCell, DataListItemCells } from '@patternfly/react-core';
+import { DataListCell, DataListCheck, DataListControl, DataListItem, DataListItemCells, DataListItemRow } from '@patternfly/react-core';
 
 const ListItem = ({ column: { title }, onChange, isSelected, isDisabled, id, dataListCheckProps, dataListCellProps, children, ...props }) => (
   <DataListItem {...props}>

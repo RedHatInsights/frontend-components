@@ -1,4 +1,4 @@
-import { stringToId, isNotEmpty } from './helpers';
+import { isNotEmpty, stringToId } from './helpers';
 import { getFilterConfigItem } from './filterConfigHelpers';
 import filterTypeHelpers from './filterTypeHelpers';
 

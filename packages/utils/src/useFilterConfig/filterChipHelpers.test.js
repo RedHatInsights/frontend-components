@@ -1,5 +1,5 @@
 import filters from '../__fixtures__/filters';
-import { toFilterChips, toDeselectValue } from './filterChipHelpers';
+import { toDeselectValue, toFilterChips } from './filterChipHelpers';
 
 describe('toFilterChips', () => {
   it('returns filterchips for active filters', () => {

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import get from 'lodash/get';
 import { Button, DataList, Modal } from '@patternfly/react-core';
-import { isSelectedColumn, columnShape } from './helpers';
+import { columnShape, isSelectedColumn } from './helpers';
 import ListItem from './ListItem';
 import ModalDescription from './ModalDescrption';
-import { DEFAULT_MODAL_TITLE, DEFAULT_MODAL_DESCRIPTION } from './constants';
+import { DEFAULT_MODAL_DESCRIPTION, DEFAULT_MODAL_TITLE } from './constants';
 
 const ColumnManager = ({
   title = DEFAULT_MODAL_TITLE,

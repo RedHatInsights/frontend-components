@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 import { identifyItems } from '../helpers';
 import items from '../__fixtures__/items';
 import useBulkSelectWithItems from './useBulkSelectWithItems';
