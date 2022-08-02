@@ -3,17 +3,23 @@ import propTypes from 'prop-types';
 import { Bullseye, EmptyState, EmptyStateBody, EmptyStateVariant, Title } from '@patternfly/react-core';
 import EmptyTable from '../EmptyTable';
 
-export const NoResultsTable = ({ kind = 'results' }) => (
+export const NoResultsTable = ({
+  title = 'No matching results found',
+  body = (
+    <>
+      This filter criteria matches no {kind}.<br />
+      Try changing your filter settings.
+    </>
+  ),
+  kind = 'results',
+}) => (
   <EmptyTable>
     <Bullseye>
       <EmptyState variant={EmptyStateVariant.full}>
         <Title headingLevel="h5" size="lg">
-          No matching {kind} found
+          {title}
         </Title>
-        <EmptyStateBody>
-          This filter criteria matches no {kind}.<br />
-          Try changing your filter settings.
-        </EmptyStateBody>
+        <EmptyStateBody>{body}</EmptyStateBody>
       </EmptyState>
     </Bullseye>
   </EmptyTable>
@@ -21,6 +27,8 @@ export const NoResultsTable = ({ kind = 'results' }) => (
 
 NoResultsTable.propTypes = {
   kind: propTypes.string,
+  body: propTypes.node,
+  title: propTypes.node,
 };
 
 export default NoResultsTable;
