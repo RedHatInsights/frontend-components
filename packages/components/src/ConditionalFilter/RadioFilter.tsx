@@ -24,7 +24,7 @@ export interface RadioFilterProps {
 /**
  * Component that works as a radio filter for ConditionalFilter component.
  *
- * It was not designed to be used as a standalone component.
+ * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
 const RadioFilter: React.FunctionComponent<RadioFilterProps> = ({ items = [], onChange = () => undefined, isDisabled = false, ...props }) => {
   const { placeholder, className, value: selectedValue } = props;

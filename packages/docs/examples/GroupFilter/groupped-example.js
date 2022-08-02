@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ConditionalFilter from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 import { Title } from '@patternfly/react-core';
 
-const groups = [
+export const groups = [
   {
     label: 'First group',
     value: 1,

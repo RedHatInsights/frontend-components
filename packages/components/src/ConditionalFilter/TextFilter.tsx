@@ -60,6 +60,8 @@ export interface TextFilterProps {
  *
  * This component accepts onChange event called on input change
  * and onSubmit event called on Enter press.
+ *
+ * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
 const TextFilter: React.FunctionComponent<TextFilterProps> = ({
   icon,
