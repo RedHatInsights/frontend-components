@@ -52,7 +52,7 @@ exports[`TableToolsTable expect to have filters properly rendered 1`] = `
                 data-ouia-component-id="BulkSelect"
                 data-ouia-component-type="PF4/DropdownToggle"
                 data-ouia-safe="true"
-                id="pf-dropdown-toggle-id-64"
+                id="pf-dropdown-toggle-id-35"
                 type="button"
               >
                 <span
@@ -104,7 +104,7 @@ exports[`TableToolsTable expect to have filters properly rendered 1`] = `
                   data-ouia-component-id="ConditionalFilter"
                   data-ouia-component-type="PF4/DropdownToggle"
                   data-ouia-safe="true"
-                  id="pf-dropdown-toggle-id-65"
+                  id="pf-dropdown-toggle-id-36"
                   type="button"
                 >
                   <span
@@ -196,7 +196,7 @@ exports[`TableToolsTable expect to have filters properly rendered 1`] = `
             aria-haspopup="false"
             aria-label="Actions"
             class="pf-c-dropdown__toggle pf-m-plain"
-            id="pf-dropdown-toggle-id-66"
+            id="pf-dropdown-toggle-id-37"
             type="button"
           >
             <svg
@@ -223,7 +223,7 @@ exports[`TableToolsTable expect to have filters properly rendered 1`] = `
           data-ouia-component-id="CompactPagination"
           data-ouia-component-type="PF4/Pagination"
           data-ouia-safe="true"
-          id="pagination-options-menu-26"
+          id="pagination-options-menu-12"
           style="--pf-c-pagination__nav-page-select--c-form-control--width-chars: 2;"
         >
           <div
@@ -276,7 +276,7 @@ exports[`TableToolsTable expect to have filters properly rendered 1`] = `
                 data-ouia-component-id="OUIA-Generated-DropdownToggle-13"
                 data-ouia-component-type="PF4/DropdownToggle"
                 data-ouia-safe="true"
-                id="pagination-options-menu-toggle-26"
+                id="pagination-options-menu-toggle-12"
                 type="button"
               >
                 <span
@@ -366,7 +366,7 @@ exports[`TableToolsTable expect to have filters properly rendered 1`] = `
     </div>
     <div
       class="pf-c-toolbar__expandable-content"
-      id="ins-primary-data-toolbar-expandable-content-13"
+      id="ins-primary-data-toolbar-expandable-content-6"
     >
       <div
         class="pf-c-toolbar__group"
