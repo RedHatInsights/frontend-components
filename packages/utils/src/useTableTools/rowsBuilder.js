@@ -1,13 +1,13 @@
 import React from 'react';
 import { NoResultsTable } from '@redhat-cloud-services/frontend-components/TableToolsTable/NoResultsTable';
 
-const emptyRows = [
+const emptyRows = (colSpan) => [
   {
     cells: [
       {
         title: () => <NoResultsTable />, // eslint-disable-line react/display-name
         props: {
-          colSpan: 3,
+          colSpan,
         },
       },
     ],
@@ -46,7 +46,7 @@ const buildRow = (item, columns, rowTransformer, idx) =>
 
 const rowsBuilder = (items, columns, options = {}) => {
   const { transformer = [], rowTransformer = [] } = options;
-  const EmptyRowsComponent = options.emptyRows || emptyRows;
+  const EmptyRowsComponent = options.emptyRows || emptyRows(columns.length);
   const transformedItems = transformer ? applyTransformers(items, transformer) : items;
 
   const filteredItems = options?.filter?.(transformedItems) || transformedItems;
