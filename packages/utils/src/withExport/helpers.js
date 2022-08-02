@@ -2,7 +2,7 @@ import get from 'lodash/get';
 import camelCase from 'lodash/camelCase';
 import { downloadFile } from '../helpers';
 
-const CSV_FILE_PREFIX = 'compliance-export';
+const CSV_FILE_PREFIX = 'CRC';
 const CSV_DELIMITER = ',';
 
 const textForCell = (row, column) => {

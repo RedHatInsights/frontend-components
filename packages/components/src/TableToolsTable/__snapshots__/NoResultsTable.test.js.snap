@@ -10,13 +10,10 @@ exports[`NoResultsTable expect to render without error 1`] = `
         headingLevel="h5"
         size="lg"
       >
-        No matching 
-        results
-         found
+        No matching results found
       </Title>
       <EmptyStateBody>
         This filter criteria matches no 
-        results
         .
         <br />
         Try changing your filter settings.

@@ -20,7 +20,7 @@ export const checkboxState = (selectedItemsTotal, itemsTotal) => {
 
 export const selectOrUnselect = (selected) => (selected ? 'Unselect' : 'Select');
 
-const allItemsIncluded = (items = [], selection = []) => items?.filter((item) => selection.includes(item)).length === items.length;
+const allItemsIncluded = (items = [], selection = []) => items.filter((item) => selection.includes(item)).length === items.length;
 
 export const checkCurrentPageSelected = (items = [], selectedItems = []) => {
   if (selectedItems.length === 0) {

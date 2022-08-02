@@ -135,29 +135,29 @@ Object {
 
 exports[`useBulkSelectWithItems returns a allows to select/deselect page 2`] = `
 Object {
-  "checked": false,
+  "checked": true,
   "isDisabled": false,
   "items": Array [
     Object {
       "onClick": [Function],
       "props": Object {
-        "isDisabled": true,
+        "isDisabled": false,
       },
       "title": "Select none",
     },
     Object {
       "onClick": [Function],
-      "title": "Select page (20 items)",
+      "title": "Unselect page (20 items)",
     },
     Object {
       "onClick": [Function],
-      "title": "Select all (20 items)",
+      "title": "Unselect all (20 items)",
     },
   ],
   "onSelect": [Function],
   "toggleProps": Object {
     "children": Array [
-      "0 selected",
+      "20 selected",
     ],
   },
 }

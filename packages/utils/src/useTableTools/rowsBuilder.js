@@ -49,11 +49,9 @@ const rowsBuilder = (items, columns, options = {}) => {
   const EmptyRowsComponent = options.emptyRows || emptyRows;
   const transformedItems = transformer ? applyTransformers(items, transformer) : items;
 
-  const filteredItems = options?.filter ? options.filter(transformedItems) : transformedItems;
-
-  const sortedItems = options?.sorter ? options.sorter(filteredItems) : filteredItems;
-
-  const paginatedItems = options?.paginator ? options?.paginator(sortedItems) : sortedItems;
+  const filteredItems = options?.filter?.(transformedItems) || transformedItems;
+  const sortedItems = options?.sorter?.(filteredItems) || filteredItems;
+  const paginatedItems = options?.paginator?.(sortedItems) || sortedItems;
 
   const rows =
     paginatedItems.length > 0

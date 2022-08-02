@@ -6,7 +6,7 @@ describe('useBulkSelect', () => {
     total: 0,
     onSelect: () => ({}),
     itemIdsInTable: () => [],
-    itemIdsOnPage: () => [],
+    itemIdsOnPage: [],
   };
 
   it('returns a bulk select configuration', () => {
@@ -24,7 +24,7 @@ describe('useBulkSelect', () => {
         itemIdsInTable: () => {
           return ['ID', 'ID1'];
         },
-        itemIdsOnPage: () => ['ID', 'ID1'],
+        itemIdsOnPage: ['ID', 'ID1'],
       })
     );
 
@@ -38,7 +38,7 @@ describe('useBulkSelect', () => {
         total: 2,
         preselected: ['ID'],
         itemIdsInTable: () => ['ID', 'ID2'],
-        itemIdsOnPage: () => ['ID', 'ID2'],
+        itemIdsOnPage: ['ID', 'ID2'],
       })
     );
 
@@ -52,7 +52,7 @@ describe('useBulkSelect', () => {
         total: 2,
         preselected: ['ID'],
         itemIdsInTable: () => ['ID', 'ID2'],
-        itemIdsOnPage: () => ['ID'],
+        itemIdsOnPage: ['ID'],
       })
     );
 
