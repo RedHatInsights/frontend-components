@@ -23,10 +23,12 @@ const useFilterConfigWithItems = (options = {}) => {
       }
     }, objects);
 
-  return {
-    ...filterConfigBase,
-    filter: filter(filterConfig, filterConfigBase.activeFilters || {}),
-  };
+  return options?.filters
+    ? {
+        ...filterConfigBase,
+        filter: filter(filterConfig, filterConfigBase.activeFilters || {}),
+      }
+    : {};
 };
 
 export default useFilterConfigWithItems;
