@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import useSelectionManager from '../useSelectionManager';
 import { checkCurrentPageSelected, checkboxState, compileTitle, selectOrUnselect } from './helpers';
 
@@ -39,10 +39,6 @@ const useBulkSelect = ({ total = 0, onSelect, preselected, itemIdsInTable, itemI
       set(items);
     }
   };
-
-  useEffect(() => {
-    set(preselected);
-  }, [JSON.stringify(preselected)]);
 
   return enableBulkSelect
     ? {

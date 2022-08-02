@@ -40,47 +40,10 @@ Object {
         },
       },
     },
-    Object {
-      "selectNone": [Function],
-      "selectedIds": undefined,
-      "tableProps": Object {
-        "canSelectAll": false,
-        "onSelect": undefined,
-      },
-      "toolbarProps": Object {
-        "bulkSelect": Object {
-          "checked": false,
-          "isDisabled": true,
-          "items": Array [
-            Object {
-              "onClick": [Function],
-              "props": Object {
-                "isDisabled": true,
-              },
-              "title": "Select none",
-            },
-            Object {
-              "onClick": [Function],
-              "title": "Select page (0 items)",
-            },
-            Object {
-              "onClick": [Function],
-              "title": "Unselect all (0 items)",
-            },
-          ],
-          "onSelect": undefined,
-          "toggleProps": Object {
-            "children": Array [
-              "0 selected",
-            ],
-          },
-        },
-      },
-    },
   ],
   "current": Object {
     "selectNone": [Function],
-    "selectedIds": undefined,
+    "selectedIds": Array [],
     "tableProps": Object {
       "canSelectAll": false,
       "onSelect": undefined,

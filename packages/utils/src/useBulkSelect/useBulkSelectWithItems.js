@@ -1,4 +1,3 @@
-import { useEffect, useMemo } from 'react';
 import { filterSelected } from '../useTableTools/helpers';
 import { itemIds, selectItemTransformer } from './helpers';
 import useBulkSelect from './useBulkSelect';
@@ -10,7 +9,7 @@ import useBulkSelect from './useBulkSelect';
  * @param {Array} [items] Array of items selected when initialising
  *
  */
-const useBulkSelectWithItems = ({ onSelect, items: propItems, filter, paginator, preselected, setPage }) => {
+const useBulkSelectWithItems = ({ onSelect, items: propItems, filter, paginator, preselected }) => {
   const enableBulkSelect = !!onSelect;
   const items = propItems.map((item) => selectItemTransformer(item, preselected));
   const total = items.length;
@@ -18,19 +17,8 @@ const useBulkSelectWithItems = ({ onSelect, items: propItems, filter, paginator,
   const filteredItems = filter?.(items) ?? items;
   const filteredTotal = filteredItems.length;
   const filtered = filteredTotal !== total;
-
   const paginatedItems = paginator?.(filteredItems) ?? filteredItems;
-  const paginatedTotal = paginatedItems.length;
-
   const allCount = filteredTotal ?? total;
-
-  const setPageMemo = useMemo(() => setPage, []);
-
-  useEffect(() => {
-    if (paginatedTotal === 0) {
-      setPageMemo(-1);
-    }
-  }, [paginatedTotal, setPageMemo]);
 
   const { selectNone, selectedIds, ...bulkSelect } = useBulkSelect({
     total: allCount,

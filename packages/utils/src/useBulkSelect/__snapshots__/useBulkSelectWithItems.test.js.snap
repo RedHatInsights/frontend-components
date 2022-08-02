@@ -235,45 +235,6 @@ Object {
       },
       "transformer": [Function],
     },
-    Object {
-      "clearSelection": [Function],
-      "selected": Array [],
-      "selectedItems": Array [],
-      "tableProps": Object {
-        "canSelectAll": false,
-        "onSelect": [Function],
-      },
-      "toolbarProps": Object {
-        "bulkSelect": Object {
-          "checked": false,
-          "isDisabled": false,
-          "items": Array [
-            Object {
-              "onClick": [Function],
-              "props": Object {
-                "isDisabled": true,
-              },
-              "title": "Select none",
-            },
-            Object {
-              "onClick": [Function],
-              "title": "Select page (20 items)",
-            },
-            Object {
-              "onClick": [Function],
-              "title": "Select all (20 items)",
-            },
-          ],
-          "onSelect": [Function],
-          "toggleProps": Object {
-            "children": Array [
-              "0 selected",
-            ],
-          },
-        },
-      },
-      "transformer": [Function],
-    },
   ],
   "current": Object {
     "clearSelection": [Function],
