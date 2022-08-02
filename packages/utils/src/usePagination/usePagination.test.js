@@ -1,14 +1,14 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import usePaginate from './usePaginate';
+import usePagination from './usePagination';
 
-describe('usePaginate', () => {
+describe('usePagination', () => {
   it('returns a paginate configuration', () => {
-    const { result } = renderHook(() => usePaginate());
+    const { result } = renderHook(() => usePagination());
     expect(result).toMatchSnapshot();
   });
 
   it('returns a paginate configuration', () => {
-    const { result } = renderHook(() => usePaginate());
+    const { result } = renderHook(() => usePagination());
 
     act(() => {
       result.current.setPage(2);

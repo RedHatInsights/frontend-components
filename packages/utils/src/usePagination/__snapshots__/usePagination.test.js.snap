@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`usePaginate returns a paginate configuration 1`] = `
+exports[`usePagination returns a paginate configuration 1`] = `
 Object {
   "all": Array [
     Object {

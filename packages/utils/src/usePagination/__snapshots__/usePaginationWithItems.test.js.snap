@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`usePaginateWithItems returns a paginate configuration 1`] = `
+exports[`usePaginationWithItems returns a paginate configuration 1`] = `
 Object {
   "all": Array [
     Object {
@@ -40,7 +40,7 @@ Object {
 }
 `;
 
-exports[`usePaginateWithItems returns a paginate configuration 2`] = `
+exports[`usePaginationWithItems returns a paginate configuration 2`] = `
 Array [
   Object {
     "description": "DESCRIPTION",

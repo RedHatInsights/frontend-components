@@ -1,8 +1,8 @@
-import usePaginate from './usePaginate';
+import usePagination from './usePagination';
 
-const usePaginateWithItems = (options) => {
+const usePaginationWithItems = (options) => {
   const enablePagination = options?.pagination !== false;
-  const paginate = usePaginate(options);
+  const paginate = usePagination(options);
 
   const paginator = (items) => {
     const { page, perPage } = paginate.pagination;
@@ -20,4 +20,4 @@ const usePaginateWithItems = (options) => {
     : {};
 };
 
-export default usePaginateWithItems;
+export default usePaginationWithItems;

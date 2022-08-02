@@ -5,7 +5,7 @@ import { useCallback, useState } from 'react';
  *
  * @param {Object} [options]
  */
-const usePaginate = (options = {}) => {
+const usePagination = (options = {}) => {
   const { perPage = 10 } = options;
   const enablePagination = options?.pagination !== false;
 
@@ -44,4 +44,4 @@ const usePaginate = (options = {}) => {
     : {};
 };
 
-export default usePaginate;
+export default usePagination;

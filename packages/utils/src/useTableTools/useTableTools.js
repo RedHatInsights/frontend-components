@@ -4,7 +4,7 @@ import { useBulkSelectWithItems } from '../useBulkSelect';
 import { useExpandableWithItems } from '../useExpandable';
 import { withExportWithItems } from '../withExport';
 import { useFilterConfigWithItems } from '../useFilterConfig';
-import { usePaginateWithItems } from '../usePaginate';
+import { usePaginationWithItems } from '../usePagination';
 import { useTableSortWithItems } from '../useTableSort';
 import useColumnManager from '../useColumnManager';
 import { withDedidicatedAction } from './helpers';
@@ -34,7 +34,7 @@ const useTableTools = (items = [], columns = [], options = {}) => {
     actions: [...(options?.actions || []), ...((columnManagerAction && [columnManagerAction]) || [])],
   });
 
-  const { toolbarProps: pagintionToolbarProps, setPage, paginator } = usePaginateWithItems(options);
+  const { toolbarProps: pagintionToolbarProps, setPage, paginator } = usePaginationWithItems(options);
 
   const { toolbarProps: conditionalFilterProps, filter } = useFilterConfigWithItems({
     ...options,
