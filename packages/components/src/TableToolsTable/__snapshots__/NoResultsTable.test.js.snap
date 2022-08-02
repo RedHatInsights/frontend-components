@@ -14,6 +14,7 @@ exports[`NoResultsTable expect to render without error 1`] = `
       </Title>
       <EmptyStateBody>
         This filter criteria matches no 
+        results
         .
         <br />
         Try changing your filter settings.
