@@ -113,6 +113,10 @@ export interface GroupFilterProps {
 /**
  * Component that works as a group filter for ConditionalFilter component.
  *
+ * You can either pass flat config using `items` to it. Or supply `groups` array to show groups with titles.
+ *
+ * You can even mix match them (items will be rendered before groups).
+ *
  * It was not designed to be used as a standalone component.
  */
 const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
@@ -120,7 +124,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
   filterBy = '',
   groups = [],
   items,
-  isFilterable,
+  isFilterable = false,
   onFilter,
   onChange,
   onShowMore,
@@ -280,7 +284,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
           </MenuToggle>
         }
         popper={
-          <Menu ref={menuRef} className={classNames('ins-c-menu__scrollable', className, { 'pf-m-expanded': isOpen })}>
+          <Menu ref={menuRef} style={{ background: 'red' }} className={classNames('ins-c-menu__scrollable', className, { 'pf-m-expanded': isOpen })}>
             <MenuContent>
               <MenuList aria-label="Group filter">
                 {menuItems.length > 0 && <MenuGroup>{renderItems(menuItems as GroupFilterItem[])}</MenuGroup>}
