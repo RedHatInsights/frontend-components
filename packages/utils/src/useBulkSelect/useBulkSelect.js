@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import useSelectionManager from '../useSelectionManager';
-import { compileTitle, checkboxState, selectOrUnselect, checkCurrentPageSelected } from './helpers';
+import { checkCurrentPageSelected, checkboxState, compileTitle, selectOrUnselect } from './helpers';
 
 /**
  * Provides properties for a Pattternfly (based) Table and Toolbar component to implement bulk selection
@@ -26,8 +26,11 @@ const useBulkSelect = ({ total = 0, onSelect, preselected, itemIdsInTable, itemI
   const checked = checkboxState(selectedIdsTotal, total);
   const title = compileTitle(selectedIdsTotal);
 
-  const selectOne = (_, selected, _key, row) => (selected ? select(row[identifier]) : deselect(row[identifier]));
-  const selectPage = () => (currentPageSelected ? select(idsOnPage) : deselect(idsOnPage));
+  const selectOne = useCallback((_, selected, _key, row) => (selected ? select(row[identifier]) : deselect(row[identifier])), [select, deselect]);
+  const selectPage = useCallback(() => {
+    !currentPageSelected ? select(itemIdsOnPage) : deselect(itemIdsOnPage);
+  }, [select, deselect]);
+
   const selectAll = async () => {
     const items = await itemIdsInTable();
     if (allSelected) {
