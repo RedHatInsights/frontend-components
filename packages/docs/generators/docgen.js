@@ -70,9 +70,10 @@ if (args.includes('-w') || args.includes('--watch')) {
   const watcher = chokidar.watch(files);
   watcher.on('change', async (path) => {
     console.log(`Compiling file: ${path}`);
-    const currentContent = fse.readJSONSync(componentsTarget);
-    await parseFile(path, currentContent);
-    fse.writeJSONSync(componentsTarget, currentContent, { spaces: '\t' });
+    const contents = await parseFile(path);
+    await appendToJSON(componentsTarget, {
+      [path]: contents,
+    });
   });
 } else {
   run(files);
