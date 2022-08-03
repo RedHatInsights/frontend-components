@@ -113,14 +113,18 @@ export interface GroupFilterProps {
 /**
  * Component that works as a group filter for ConditionalFilter component.
  *
- * It was not designed to be used as a standalone component.
+ * You can either pass flat config using `items` to it. Or supply `groups` array to show groups with titles.
+ *
+ * You can even mix match them (items will be rendered before groups).
+ *
+ * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
 const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
   className,
   filterBy = '',
   groups = [],
   items,
-  isFilterable,
+  isFilterable = false,
   onFilter,
   onChange,
   onShowMore,

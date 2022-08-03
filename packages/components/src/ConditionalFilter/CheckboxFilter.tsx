@@ -26,7 +26,7 @@ export interface CheckboxFilterProps {
 /**
  * Component that works as a checkbox filter for ConditionalFilter component.
  *
- * It was not designed to be used as a standalone component.
+ * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
 const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({
   items = [],

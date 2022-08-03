@@ -23,7 +23,7 @@ export interface TextInputProps {
   /** Optional id. */
   id?: string;
   /** Optional onChange callback. */
-  onChange?: () => void;
+  onChange?: (e: React.MouseEvent | React.ChangeEvent | React.FormEvent<HTMLInputElement>, selection?: number | string) => void;
   /** Optional text input placeholder. */
   placeholder?: string;
   /** Optional value. */

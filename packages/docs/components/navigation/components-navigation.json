@@ -130,6 +130,7 @@
 				"items": [
 					"CheckboxFilter",
 					"ConditionalFilter",
+					"conditionalFilterConstants",
 					"GroupFilter",
 					"groupFilterConstants",
 					"groupType",
@@ -258,7 +259,8 @@
 				"group": "Ouia",
 				"items": [
 					"Ouia",
-					"useOuia"
+					"useOuia",
+					"WithOuia"
 				]
 			},
 			{
@@ -361,7 +363,7 @@
 			{
 				"group": "TreeTable",
 				"items": [
-					"helpers",
+					"decorator",
 					"rowWrapper"
 				]
 			},
@@ -427,6 +429,24 @@
 				"group": "Notification",
 				"items": [
 					"Notification"
+				]
+			},
+			{
+				"group": "NotificationPortal",
+				"items": [
+					"NotificationPortal"
+				]
+			},
+			{
+				"group": "notificationsMiddleware",
+				"items": [
+					"notificationsMiddleware"
+				]
+			},
+			{
+				"group": "Portal",
+				"items": [
+					"Portal"
 				]
 			}
 		]
@@ -561,6 +581,12 @@
 				"group": "debounce",
 				"items": [
 					"debounce"
+				]
+			},
+			{
+				"group": "helpers",
+				"items": [
+					"helpers"
 				]
 			},
 			{
