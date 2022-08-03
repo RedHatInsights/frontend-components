@@ -3,5 +3,10 @@
 		"title": "Feature flags",
 		"href": "/feature-flags"
 	},
-	"items": []
+	"items": [
+		{
+			"title": "Managing feature flags",
+			"href": "/feature-flags/managing-feature-flags"
+		}
+	]
 }
