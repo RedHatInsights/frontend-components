@@ -106,61 +106,54 @@ async function parseTSFile(file) {
   try {
     await typedocApp.generateJson(project, tempFile);
     const content = fse.readJSONSync(tempFile);
-    fse.removeSync(tempFile);
-    fse.removeSync(fileTsConfigPath);
-    fse.removeSync(fileTypedocConfigPath);
-    return new Promise((resolve) =>
-      resolve({
-        tsdoc: true,
-        items: createTsItems(content, tempName),
-        filename: tempName,
-      })
-    );
+    fse.remove(tempFile);
+    fse.remove(fileTsConfigPath);
+    fse.remove(fileTypedocConfigPath);
+
+    return {
+      tsdoc: true,
+      items: createTsItems(content, tempName),
+      filename: tempName,
+    };
   } catch (error) {
     console.log(error);
-    return new Promise((resolve) => resolve());
+    return;
   }
 }
 
-async function parseJSFile(file) {
-  return new Promise((resolve) => {
-    return jsdocParser(file, function (error, ast) {
-      if (error) {
-        console.log(error);
-      }
+const parseJSFile = async (file) =>
+  jsdocParser(file, (error, ast) => {
+    if (error) {
+      console.log(error);
+      return;
+    }
 
-      if (!ast) {
-        return resolve();
-      }
+    if (!ast) {
+      return;
+    }
 
-      try {
-        const documented = ast.filter(({ undocumented, comment = '', scope }) => !undocumented && comment.length > 0 && scope === 'global');
-        if (documented.length > 0) {
-          return resolve({ jsdoc: true, items: documented });
-        }
-
-        return resolve();
-      } catch (error) {
-        console.log(error, file);
-        return resolve();
+    try {
+      const documented = ast.filter(({ undocumented, comment = '', scope }) => !undocumented && comment.length > 0 && scope === 'global');
+      if (documented.length > 0) {
+        return { jsdoc: true, items: documented };
       }
-    });
+    } catch (error) {
+      console.log(error, file);
+    }
+
+    return;
   });
-}
 
 async function createJsdocContent(file) {
   try {
-    let fileContent;
     if (file.match(/\.js$/)) {
-      fileContent = await parseJSFile(file);
+      return await parseJSFile(file);
     } else {
-      fileContent = await parseTSFile(file);
+      return await parseTSFile(file);
     }
-
-    return fileContent;
   } catch (error) {
     console.log(error);
-    return {};
+    return;
   }
 }
 
