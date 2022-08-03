@@ -21,8 +21,7 @@ const files = glob
 
 const args = process.argv.slice(2);
 
-let content = {};
-async function parseFile(file, content) {
+async function parseFile(file) {
   const src = fse.readFileSync(file, { encoding: 'utf-8' });
   try {
     const componentInfo = reactDocs.parse(
@@ -31,12 +30,12 @@ async function parseFile(file, content) {
       [fcHandler, ...reactDocs.defaultHandlers],
       file.match(/.*\.tsx?$/) ? { ...DEFAULT_TS_BABEL_OPTIONS, filename: file } : undefined
     );
-    content[file] = componentInfo;
+    return componentInfo;
   } catch (error) {
     if (error.message.includes('No suitable component definition found')) {
       const jsdocContent = await createJsdocContent(file);
       if (jsdocContent) {
-        content[file] = jsdocContent;
+        return jsdocContent;
       }
     } else {
       console.log('\x1b[33m%s\x1b[0m', error.message, `File: ${file}`);
@@ -46,13 +45,23 @@ async function parseFile(file, content) {
 
 const componentsTarget = path.resolve(__dirname, `./${COMPONENTS_JSON}`);
 
+const appendToJSON = async (file, contentToAppend) => {
+  const fileJSON = fse.readJSONSync(file);
+  if (typeof fileJSON === typeof contentToAppend) {
+    const newFileJSON = Array.isArray(fileJSON) ? [...fileJSON, ...contentToAppend] : { ...fileJSON, ...contentToAppend };
+    fse.writeJSONSync(componentsTarget, newFileJSON, { spaces: '\t' });
+  }
+};
+
 async function run(files) {
-  content = {};
-  const cmds = files.map((file) => {
-    return parseFile(file, content);
-  });
-  await Promise.all(cmds);
-  fse.writeJSONSync(componentsTarget, content, { spaces: '\t' });
+  fse.writeJSONSync(componentsTarget, {}, { spaces: '\t' });
+
+  for (const file of files) {
+    const contents = await parseFile(file);
+    await appendToJSON(componentsTarget, {
+      [file]: contents,
+    });
+  }
 }
 
 console.log('Generating react-docgen JSON\n');
