@@ -36,8 +36,8 @@
         "react-router-dom": ">=4.2.2"
     },
     "dependencies": {
-        "@sentry/browser": "^5.4.0",
         "@redhat-cloud-services/types": "^0.0.5",
+        "@sentry/browser": "^5.4.0",
         "awesome-debounce-promise": "^2.1.0",
         "axios": "^0.25.0",
         "commander": ">=2.20.0",
@@ -45,6 +45,7 @@
         "react-content-loader": ">=3.4.1"
     },
     "devDependencies": {
+        "@types/mkdirp": "^1.0.2",
         "@types/react": "^16.9.34"
     },
     "sideEffects": false

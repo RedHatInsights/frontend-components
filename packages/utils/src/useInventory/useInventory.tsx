@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import {
@@ -13,17 +14,27 @@ import {
 } from '@patternfly/react-table';
 
 console.error('"useInventory" hook is deprecated and will be removed in v4. Please use Chrome 2.0 compatible Inventory version.');
-export const useInventory = ({ store, tableReducer, detailReducer, getRegistry }) => {
-  let cleenupCallback;
+export const useInventory = ({
+  store,
+  tableReducer,
+  detailReducer,
+  getRegistry,
+}: {
+  store: any;
+  tableReducer: any;
+  detailReducer: any;
+  getRegistry: any;
+}) => {
+  let cleanupCallback: () => void;
   const [inventory, setInventory] = useState({
-    newReducers: null,
-    rawReducers: null,
+    newReducers: null as any,
+    rawReducers: null as any,
   });
 
   const [inventoryComponents, setInventoryComponents] = useState({
-    InventoryTable: null,
-    InventoryDetail: null,
-    TagWithDialog: null,
+    InventoryTable: null as any,
+    InventoryDetail: null as any,
+    TagWithDialog: null as any,
   });
 
   useEffect(() => {
@@ -78,7 +89,7 @@ export const useInventory = ({ store, tableReducer, detailReducer, getRegistry }
       }));
 
       if (registry) {
-        cleenupCallback = registry?.register?.(newReducers);
+        cleanupCallback = registry?.register?.(newReducers);
       }
 
       setInventoryComponents(() => ({
@@ -93,8 +104,8 @@ export const useInventory = ({ store, tableReducer, detailReducer, getRegistry }
     })();
 
     return () => {
-      if (cleenupCallback && typeof cleenupCallback === 'function') {
-        cleenupCallback();
+      if (cleanupCallback && typeof cleanupCallback === 'function') {
+        cleanupCallback();
       }
     };
   }, []);

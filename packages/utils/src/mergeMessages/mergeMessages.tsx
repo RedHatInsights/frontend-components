@@ -1,8 +1,8 @@
-const program = require('commander');
-const fs = require('fs');
-const { sync: globSync } = require('glob');
-const { sync: mkdirpSync } = require('mkdirp');
-const last = require('lodash/last');
+import program from 'commander';
+import fs from 'fs';
+import { sync as globSync } from 'glob';
+import { sync as mkdirpSync } from 'mkdirp';
+import last from 'lodash/last';
 
 let MESSAGES_PATTERN = 'build/messages/**/*.json';
 let LANG_DIR = 'locales/';
@@ -41,7 +41,8 @@ if (program.langPattern) {
 
 const mergedTranslations = globSync(`${rootFolder}${LANG_PATTERN}`)
   .map((filename) => {
-    const locale = last(filename.split('/')).split('.json')[0];
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const locale = last(filename.split('/'))!.split('.json')[0];
     if (!IGNORED.includes(locale)) {
       return { [locale]: JSON.parse(fs.readFileSync(filename, 'utf8')) };
     }
@@ -59,7 +60,7 @@ const defaultMessages = globSync(`${rootFolder}${MESSAGES_PATTERN}`)
   .map((filename) => fs.readFileSync(filename, 'utf8'))
   .map((file) => JSON.parse(file))
   .reduce((collection, descriptors) => {
-    descriptors.forEach(({ id, defaultMessage }) => {
+    descriptors.forEach(({ id, defaultMessage }: { id: never; defaultMessage: never }) => {
       if (collection.hasOwnProperty(id)) {
         throw new Error(`Duplicate message id: ${id}`);
       }
