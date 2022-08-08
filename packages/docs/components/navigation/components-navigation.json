@@ -244,6 +244,12 @@
 				]
 			},
 			{
+				"group": "NoRegisteredSystems",
+				"items": [
+					"NoRegisteredSystems"
+				]
+			},
+			{
 				"group": "NotAuthorized",
 				"items": [
 					"NotAuthorized"
