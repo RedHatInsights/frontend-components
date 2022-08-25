@@ -1,5 +1,6 @@
 import { Divider, Title } from '@patternfly/react-core';
 import Head from 'next/head';
+import SearchInput from '../components/search/search-input';
 import Sections from '../components/sections';
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       <Title headingLevel="h1" size="3xl" className="pf-u-mb-xl pf-u-text-align-center">
         Welcome to Platform experience documentation
       </Title>
+      <SearchInput />
       <Divider />
       <Sections />
     </div>
