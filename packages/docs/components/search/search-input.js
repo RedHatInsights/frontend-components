@@ -71,11 +71,20 @@ const DocSearch = ({ className }) => {
   const [value, setValue] = useState('');
   const [autocompleteOptions, setAutocompleteOptions] = useState([]);
   const router = useRouter();
+  const resultCache = useRef({});
 
   const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(false);
 
   const searchInputRef = useRef(null);
   const autocompleteRef = useRef(null);
+
+  const searchCache = (query) => {
+    return resultCache.current[query];
+  };
+
+  const updateCache = (query, result) => {
+    resultCache.current[query] = result;
+  };
 
   const onClear = (e) => {
     e.preventDefault();
@@ -90,14 +99,17 @@ const DocSearch = ({ className }) => {
       if (autocompleteOptions.length === 0) {
         setAutocompleteOptions([LoadingItem]);
       }
-      let trimmedData;
+      let trimmedData = searchCache(newValue);
 
-      try {
-        const searchResults = await fetchSearchResults(newValue);
-        trimmedData = processResults(searchResults);
-      } catch (error) {
-        trimmedData = [];
-        console.error(error);
+      if (!trimmedData) {
+        try {
+          const searchResults = await fetchSearchResults(newValue);
+          trimmedData = processResults(searchResults);
+          updateCache(newValue, trimmedData);
+        } catch (error) {
+          trimmedData = [];
+          console.error(error);
+        }
       }
 
       if (trimmedData.length === 0) {
