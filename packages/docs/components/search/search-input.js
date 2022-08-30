@@ -26,6 +26,11 @@ const fetchSearchResults = async (term) => {
   return data;
 };
 
+const adjustResultURL = (url) => {
+  const resultUrl = new URL(url);
+  return `${document.location.origin}${resultUrl.pathname}${resultUrl.search}${resultUrl.hash}`;
+};
+
 const processResults = (searchResults) =>
   Object.entries(searchResults)
     .reduce((acc, [tagName, meta]) => [...acc, ...meta.map((meta) => ({ ...meta, tagName }))], [])
@@ -85,8 +90,15 @@ const DocSearch = ({ className }) => {
       if (autocompleteOptions.length === 0) {
         setAutocompleteOptions([LoadingItem]);
       }
-      const searchResults = await fetchSearchResults(newValue);
-      const trimmedData = processResults(searchResults);
+      let trimmedData;
+
+      try {
+        const searchResults = await fetchSearchResults(newValue);
+        trimmedData = processResults(searchResults);
+      } catch (error) {
+        trimmedData = [];
+        console.error(error);
+      }
 
       if (trimmedData.length === 0) {
         setAutocompleteOptions([
@@ -110,7 +122,7 @@ const DocSearch = ({ className }) => {
               </Title>
               <TextContent>
                 <Text className={classes.ellipsis} component="small">
-                  {option.url}
+                  {adjustResultURL(option.url)}
                 </Text>
               </TextContent>
             </a>
