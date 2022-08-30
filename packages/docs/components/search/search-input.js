@@ -125,22 +125,25 @@ const DocSearch = ({ className }) => {
         return;
       }
 
-      let options = trimmedData.map((option, index) => (
-        <MenuItem onClick={() => router.push(option.url)} itemId={option.value} key={index}>
-          <Link href={option.url}>
-            <a>
-              <Title className={classes.ellipsis} headingLevel="h2" size="md">
-                {processLinkOption(newValue, option.value, classes)}
-              </Title>
-              <TextContent>
-                <Text className={classes.ellipsis} component="small">
-                  {adjustResultURL(option.url)}
-                </Text>
-              </TextContent>
-            </a>
-          </Link>
-        </MenuItem>
-      ));
+      let options = trimmedData.map((option, index) => {
+        const adjustedUrl = adjustResultURL(option.url);
+        return (
+          <MenuItem onClick={() => router.push(adjustedUrl)} itemId={option.value} key={index}>
+            <Link href={adjustedUrl}>
+              <a>
+                <Title className={classes.ellipsis} headingLevel="h2" size="md">
+                  {processLinkOption(newValue, option.value, classes)}
+                </Title>
+                <TextContent>
+                  <Text className={classes.ellipsis} component="small">
+                    {adjustResultURL(adjustedUrl)}
+                  </Text>
+                </TextContent>
+              </a>
+            </Link>
+          </MenuItem>
+        );
+      });
       setAutocompleteOptions(options);
     } else {
       setIsAutocompleteOpen(false);

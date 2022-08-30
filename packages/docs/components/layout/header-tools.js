@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { ApplicationLauncher, ApplicationLauncherItem, PageHeaderTools } from '@patternfly/react-core';
 import { createUseStyles } from 'react-jss';
 import SearchInput from '../search/search-input';
