@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Bullseye, Menu, MenuContent, MenuItem, MenuList, Popper, SearchInput, Spinner, Text, TextContent, Title } from '@patternfly/react-core';
 import Link from 'next/link';
 import { createUseStyles } from 'react-jss';
@@ -60,7 +61,7 @@ const LoadingItem = (
   </MenuItem>
 );
 
-const DocSearch = () => {
+const DocSearch = ({ className }) => {
   const classes = useStyles();
   const [value, setValue] = useState('');
   const [autocompleteOptions, setAutocompleteOptions] = useState([]);
@@ -129,7 +130,17 @@ const DocSearch = () => {
     searchInputRef.current.focus();
   };
 
-  const searchInput = <SearchInput value={value} onChange={onChange} onClear={onClear} ref={searchInputRef} id="autocomplete-search" />;
+  const searchInput = (
+    <SearchInput
+      placeholder="Search for docs"
+      className={className}
+      value={value}
+      onChange={onChange}
+      onClear={onClear}
+      ref={searchInputRef}
+      id="autocomplete-search"
+    />
+  );
 
   const autocomplete = (
     <Menu ref={autocompleteRef} onSelect={onSelect}>
@@ -148,6 +159,10 @@ const DocSearch = () => {
       appendTo={() => document.querySelector('#autocomplete-search')}
     />
   );
+};
+
+DocSearch.propTypes = {
+  className: PropTypes.string,
 };
 
 export default DocSearch;
