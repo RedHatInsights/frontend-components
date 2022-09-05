@@ -1,17 +1,9 @@
 import { PortalNotificationConfig } from '../../Portal';
 import { ADD_NOTIFICATION, CLEAR_NOTIFICATIONS, REMOVE_NOTIFICATION } from '../actions/action-types';
 
-function generateID(type: string): string {
-  return 'cloud-services' + type + '-' + new Date().getTime() + Math.random().toString(36).slice(2);
-}
+type AddNotification = (notifications: PortalNotificationConfig[], action: { payload: PortalNotificationConfig }) => PortalNotificationConfig[];
 
-export interface AddNotificationPayload extends Omit<PortalNotificationConfig, 'id'> {
-  id?: string | number;
-}
-
-type AddNotification = (notifications: PortalNotificationConfig[], action: { payload: AddNotificationPayload }) => PortalNotificationConfig[];
-
-const addNotification: AddNotification = (notifications, { payload }) => [...notifications, { id: generateID('notification'), ...payload }];
+const addNotification: AddNotification = (notifications, { payload }) => [...notifications, payload];
 
 type RemoveNotification = (notifications: PortalNotificationConfig[], { payload }: { payload: string | number }) => PortalNotificationConfig[];
 
@@ -26,7 +18,7 @@ export const defaultState: PortalNotificationConfig[] = [];
 
 interface AddNotificationAction {
   type: typeof ADD_NOTIFICATION;
-  payload: AddNotificationPayload;
+  payload: PortalNotificationConfig;
 }
 
 interface RemoveNotificationAction {
