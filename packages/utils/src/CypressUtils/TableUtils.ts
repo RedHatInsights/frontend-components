@@ -1,12 +1,11 @@
 //need the following line to explain typescript that cy is = to cypress
 /// <reference types="cypress" />
-// @ts-nocheck
 import _ from 'lodash';
 
 import { CHIP, CHIP_GROUP, ROW, TABLE, TBODY, TITLE } from './UIConstants';
 import { applyFilters, removeAllChips } from './UIFilters';
 
-export function checkTableHeaders(expectedHeaders) {
+export function checkTableHeaders(expectedHeaders: string[]) {
   /* patternfly/react-table-4.71.16, for some reason, renders extra empty `th` container;
        thus, it is necessary to look at the additional `scope` attr to distinguish between visible columns
     */
@@ -18,21 +17,23 @@ export function checkTableHeaders(expectedHeaders) {
     .should('deep.equal', expectedHeaders);
 }
 
-export function checkRowCounts(n, isSelectableTable = false) {
+export function checkRowCounts(n: number, isSelectableTable = false) {
   return isSelectableTable ? cy.get('table').find(TBODY).should('have.length', n) : cy.get('table').find(TBODY).find(ROW).should('have.length', n);
 }
 
-export function columnName2UrlParam(name) {
+export function columnName2UrlParam(name: string) {
   return name.toLowerCase().replace(/ /g, '_');
 }
 
-export function tableIsSortedBy(columnTitle) {
+export function tableIsSortedBy(columnTitle: string) {
   return cy.get('table').find(`th[data-label="${columnTitle}"]`).should('have.class', 'pf-c-table__sort pf-m-selected');
 }
 
-export function checkEmptyState(title, checkIcon = false) {
+export function checkEmptyState(title: string, checkIcon = false) {
   checkRowCounts(1);
   cy.get(TABLE)
+    // @ts-ignore
+    // NEED TO FIX type error here
     .ouiaId('empty-state')
     .should('have.length', 1)
     .within(() => {
@@ -48,19 +49,6 @@ export function checkNoMatchingClusters() {
 export function checkNoMatchingRecs() {
   return checkEmptyState('No matching recommendations found');
 }
-
-/**
- * Check filtering works by removing all existing chips, adding some filters,
- * validating the data, and the chips.
- *
- * @param {*} filters - object with filters and their config
- * @param {@FiltersConf} filtersConf
- * @param {*} values - array of values to compare
- * @param {string} columnName - identifier of the column to be used to validate data
- * @param {*} tableHeaders - header of the table
- * @param {string} emptyStateTitle - title to check on empty state
- * @param {boolean} validateURL - whether to validate URL parameters
- */
 
 interface FiltersValue {
   name: string;
@@ -85,15 +73,17 @@ interface FiltersConfValue {
   version: FiltersConfValueVersion;
 }
 
+//Check filtering works by removing all existing chips, adding some filters,
+//validating the data, and the chips.
 export function checkFiltering(
-  filters: FiltersValue,
+  filters: FiltersValue, // - object with filters and their config
   filtersConf: FiltersConfValue,
-  values: string[],
-  columnName: string,
-  tableHeaders: string[],
-  emptyStateTitle: string,
-  validateURL: boolean,
-  hasDefaultFilters: boolean
+  values: string[], // - array of values to compare
+  columnName: string, // - identifier of the column to be used to validate data
+  tableHeaders: string[], // - - header of the table
+  emptyStateTitle: string, // - title to check on empty state
+  validateURL: boolean, //- whether to validate URL parameters
+  hasDefaultFilters: boolean //- whether default filters exist or not
 ) {
   if (hasDefaultFilters) {
     removeAllChips();
@@ -118,6 +108,8 @@ export function checkFiltering(
       if (validateURL) {
         for (const [k, v] of Object.entries(filtersConf)) {
           if (k in filters) {
+            // @ts-ignore
+            // NEED TO FIX type error here
             const urlValue = v.urlValue(filters[k]);
             expect(window.location.search).to.contain(`${v.urlParam}=${urlValue}`);
           } else {
@@ -129,7 +121,10 @@ export function checkFiltering(
 
   // check chips
   for (const [k, v] of Object.entries(filters)) {
+    // NEED TO FIX type error here
+    // @ts-ignore
     const groupName = filtersConf[k].selectorText;
+    // @ts-ignore
     const nExpectedItems = filtersConf[k].type === 'checkbox' ? v.length : 1;
     cy.get(CHIP_GROUP)
       .contains(groupName)
@@ -141,12 +136,21 @@ export function checkFiltering(
   cy.get('button').contains('Reset filters').should('exist');
 }
 
+//- following order from API response and complemented with any
+//modification needed
+interface ClusterData {
+  cluster: string;
+  cluster_name: string;
+  last_checked: string;
+  meta: {
+    cluster_version: string;
+  };
+  impacted: string;
+  name: string;
+}
+//A column is sorted and then data and a reference column (which can be different than the
+//sorting one) are compared to see if order matches
 /**
- * A column is sorted and then data and a reference column (which can be different than the
- * sorting one) are compared to see if order matches
- *
- * @param {Object} data - following order from API response and complemented with any
- * modification needed
  * @param {*} sortingField - key in the data to sort by, or function
  * @param {string} label - identifier of the column
  * @param {string} order - ascending or descending
@@ -155,7 +159,16 @@ export function checkFiltering(
  * @param {integer} nExpectedRows - number of expected rows to be displayed in the table
  * @param {string} validateURL - string expected as sort value in URL. If not provided, it is not checked
  */
-export function checkSorting(data, sortingField, label, order, columnField, dataField, nExpectedRows, validateURL) {
+export function checkSorting(
+  data: ClusterData,
+  sortingField: () => void | number,
+  label: string,
+  order: string,
+  columnField: string,
+  dataField: string,
+  nExpectedRows: number,
+  validateURL?: string
+) {
   // get appropriate locators
   const col = `td[data-label="${label}"]`;
   const header = `th[data-label="${label}"]`;
