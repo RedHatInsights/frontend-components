@@ -84,7 +84,6 @@ const TableOfContents = () => {
 
   useEffect(() => {
     if (tocRef.current) {
-      console.log('DEBICN');
       tocRef.current.style.position = 'sticky';
       tocRef.current.style.right = '20px';
       tocRef.current.style.top = '0px';
