@@ -244,12 +244,6 @@
 				]
 			},
 			{
-				"group": "NoRegisteredSystems",
-				"items": [
-					"NoRegisteredSystems"
-				]
-			},
-			{
 				"group": "NotAuthorized",
 				"items": [
 					"NotAuthorized"
@@ -290,12 +284,6 @@
 				"items": [
 					"PrimaryToolbar",
 					"SortBy"
-				]
-			},
-			{
-				"group": "RBACProvider",
-				"items": [
-					"RBACProvider"
 				]
 			},
 			{
@@ -370,6 +358,7 @@
 				"group": "TreeTable",
 				"items": [
 					"decorator",
+					"helpers",
 					"rowWrapper"
 				]
 			},
@@ -590,12 +579,6 @@
 				]
 			},
 			{
-				"group": "helpers",
-				"items": [
-					"helpers"
-				]
-			},
-			{
 				"group": "interceptors",
 				"items": [
 					"interceptors"
@@ -629,12 +612,6 @@
 				"group": "ReducerRegistry",
 				"items": [
 					"ReducerRegistry"
-				]
-			},
-			{
-				"group": "Registry",
-				"items": [
-					"Registry"
 				]
 			},
 			{
