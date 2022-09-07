@@ -100,7 +100,7 @@
         "identity-obj-proxy": "^3.0.0",
         "jest": "^26.6.3",
         "jest-canvas-mock": "^2.1.1",
-        "lerna": "^4.0.0",
+        "lerna": "^5.5.0",
         "node-sass-package-importer": "^5.3.2",
         "prettier": "^2.5.1",
         "react-hooks-testing-library": "^0.6.0",
