@@ -3,12 +3,12 @@ This component tries to unify look and feel of data toolbar accross all appliaca
 
 ## Usage
 This component serves as proxy for other components so to understand fully what config you have to send you can check corresponding docs
-* `pagination` - [PF4 pagination](https://www.patternfly.org/v4/documentation/react/components/pagination/)
+* `pagination` - [PF4 pagination](https://www.patternfly.org/v4/components/pagination)
 * `exportConfig` - download button from cloud services frontend components (missing doc)
 * `actionsConfig` - custom component, check example
 * `sortByConfig` - custom component, check example
 * `bulkSelect` - [FE component bulk select](https://github.com/RedHatInsights/frontend-components/blob/master/packages/components/doc/bulkd_select.md)
-* `filterConfig` - [FE component conditional filter](https://github.com/RedHatInsights/frontend-components/blob/master/packages/components/doc/conditional_filter.md)
+* `filterConfig` - [FE component conditional filter](https://github.com/RedHatInsights/frontend-components/blob/master/packages/components/doc/conditionalFilter.md)
 * `activeFiltersConfig` - filter chips component from cloud services frontend components (missing doc)
 
 **example**

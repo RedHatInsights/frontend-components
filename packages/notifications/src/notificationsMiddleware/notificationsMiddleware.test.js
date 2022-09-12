@@ -43,6 +43,7 @@ describe('Notifications middleware', () => {
           dismissable: true,
           title: 'Error',
           variant: 'danger',
+          id: expect.stringContaining('notification'),
         },
       },
       expect.objectContaining({
@@ -77,6 +78,7 @@ describe('Notifications middleware', () => {
           dismissable: true,
           title: 'Error',
           variant: 'danger',
+          id: expect.stringContaining('notification'),
         },
       },
       expect.objectContaining({
@@ -111,6 +113,7 @@ describe('Notifications middleware', () => {
           dismissable: true,
           title: 'Error',
           variant: 'danger',
+          id: expect.stringContaining('notification'),
         },
       },
       expect.objectContaining({
@@ -290,6 +293,7 @@ describe('Notifications middleware', () => {
           dismissable: true,
           title: 'Error title',
           variant: 'danger',
+          id: expect.stringContaining('notification'),
         },
       },
       expect.objectContaining({
@@ -344,6 +348,7 @@ describe('Notifications middleware', () => {
           dismissable: true,
           title: 'Custom error title path',
           variant: 'danger',
+          id: expect.stringContaining('notification'),
         },
       },
       expect.objectContaining({
@@ -441,6 +446,7 @@ describe('Notifications middleware', () => {
           variant: 'warning',
           dismissDelay: 5000,
           dismissable: false,
+          id: expect.stringContaining('notification'),
         },
       },
       expect.objectContaining({
@@ -479,6 +485,7 @@ describe('Notifications middleware', () => {
           dismissDelay: 5000,
           dismissable: false,
           sentryId: 'some-sentry-UUID',
+          id: expect.stringContaining('notification'),
         },
       },
       expect.objectContaining({
@@ -509,6 +516,7 @@ describe('Notifications middleware', () => {
           dismissable: true,
           title: 'Second title option',
           description: 'Second description option',
+          id: expect.stringContaining('notification'),
         },
       }),
       expect.any(Object),
@@ -545,6 +553,7 @@ describe('Notifications middleware', () => {
           title: 'Title',
           description: 'Description',
           sentryId: 'some-sentry-UUID',
+          id: expect.stringContaining('notification'),
         },
       }),
       expect.any(Object),

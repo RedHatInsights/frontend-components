@@ -1,9 +1,18 @@
-import { AddNotificationPayload } from '../reducers/notifications';
+import { PortalNotificationConfig } from '../../Portal';
 import { ADD_NOTIFICATION, CLEAR_NOTIFICATIONS, REMOVE_NOTIFICATION } from './action-types';
+
+function generateID(type: string): string {
+  return 'cloud-services' + type + '-' + new Date().getTime() + Math.random().toString(36).slice(2);
+}
+
+export type AddNotificationPayload = Omit<PortalNotificationConfig, 'id'> & { id?: string | number };
 
 export const addNotification = (notification: AddNotificationPayload) => ({
   type: ADD_NOTIFICATION,
-  payload: notification,
+  payload: {
+    id: generateID('notification'),
+    ...notification,
+  },
 });
 
 export const removeNotification = (index: string | number) => ({
