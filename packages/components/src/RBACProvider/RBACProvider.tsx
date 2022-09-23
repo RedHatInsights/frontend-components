@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 import { Access } from '@redhat-cloud-services/rbac-client';
 
@@ -34,11 +34,9 @@ export const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appNa
     }));
   };
 
-  useEffect(() => {
-    if (appName) {
-      fetchPermissions();
-    }
-  }, [appName]);
+  useLayoutEffect(() => {
+    fetchPermissions();
+  }, []);
 
   return (
     <RBACContext.Provider
