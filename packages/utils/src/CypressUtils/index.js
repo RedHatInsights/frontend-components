@@ -1,4 +1,4 @@
-export * from './UIConstants';
+export * from './selectors';
 export * from './UIFilters';
 export * from './TableUtils';
 export * from './PaginationUtils';

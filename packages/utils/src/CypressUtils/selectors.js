@@ -16,10 +16,9 @@ const TABLE = 'table';
 const TABLE_HEADER = 'thead';
 const ROWS_TOGGLER = `${TABLE_HEADER} .pf-c-table__toggle`;
 const TITLE = '[data-ouia-component-type="PF4/Title"]';
-const ouiaId = (id: string) => `[data-ouia-component-id="${id}"]`;
-const DEFAULT_ROW_COUNT = 20;
-const PAGINATION_VALUES = [10, 20, 50, 100];
-const SORTING_ORDERS = ['ascending', 'descending'];
+const ouiaId = (id) => `[data-ouia-component-id="${id}"]`;
+const FILTERS_DROPDOWN = 'ul[class=pf-c-dropdown__menu]';
+const FILTER_TOGGLE = 'button[class=pf-c-select__toggle]';
 
 export {
   ouiaId,
@@ -41,7 +40,6 @@ export {
   TABLE_HEADER,
   ROWS_TOGGLER,
   TITLE,
-  DEFAULT_ROW_COUNT,
-  PAGINATION_VALUES,
-  SORTING_ORDERS,
+  FILTERS_DROPDOWN,
+  FILTER_TOGGLE,
 };

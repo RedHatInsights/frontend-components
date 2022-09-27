@@ -1,17 +1,11 @@
-//need the following line to explain typescript that cy is = to cypress
-/// <reference types="cypress" />
-// @ts-nocheck
+import { cy } from 'cypress';
 /*
 Utilities related to URL parameters passed for table filtering
 */
 
 import _ from 'lodash';
 
-import { CHIP, CHIP_GROUP } from './UIConstants';
-
-const FILTERS_DROPDOWN = 'ul[class=pf-c-dropdown__menu]';
-const FILTER_TOGGLE = 'button[class=pf-c-select__toggle]';
-const VERSION_COMBINATIONS = [['4.18.12'], ['4.17.9'], ['3.0.3'], ['4.18.12', '4.17.9']];
+import { CHIP, CHIP_GROUP, FILTERS_DROPDOWN, FILTER_TOGGLE } from './selectors';
 
 /**
  * A filter configuration
@@ -96,7 +90,7 @@ function filter(conf, data, filters) {
 }
 
 function removeAllChips() {
-  // FIXME does not work: CCXDEV-8090
+  // FIXME does not work: OCPADVISOR-22
   // cy.get(CHIP_GROUP)
   //   .find(CHIP)
   //   .ouiaId('close', 'button')
@@ -109,4 +103,4 @@ function removeAllChips() {
     });
 }
 
-export { applyFilters, urlParamConvert, hasChip, filter, removeAllChips, VERSION_COMBINATIONS };
+export { applyFilters, urlParamConvert, hasChip, filter, removeAllChips };

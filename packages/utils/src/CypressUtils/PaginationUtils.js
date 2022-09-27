@@ -1,9 +1,10 @@
-//need the following line to explain typescript that cy is = to cypress
-/// <reference types="cypress" />
-// @ts-nocheck
-import { DEFAULT_ROW_COUNT, DROPDOWN_ITEM, DROPDOWN_TOGGLE, PAGINATION_MENU, TOOLBAR } from './UIConstants';
+import { cy } from 'cypress';
+import { DROPDOWN_ITEM, DROPDOWN_TOGGLE, PAGINATION_MENU, TOOLBAR } from './selectors';
 
-// FIXME improve syntax
+const DEFAULT_ROW_COUNT = 20;
+const PAGINATION_VALUES = [10, 20, 50, 100];
+const SORTING_ORDERS = ['ascending', 'descending'];
+
 export function itemsPerPage(totalLength, pageSize = DEFAULT_ROW_COUNT) {
   let items = totalLength;
   const array = [];
@@ -31,7 +32,9 @@ export function checkPaginationValues(expectedValues) {
     });
 }
 
-export function changePagination(textInItem) {
+export function changePagination(paginationValue) {
   cy.get(TOOLBAR).find(PAGINATION_MENU).find(DROPDOWN_TOGGLE).click();
-  return cy.get(TOOLBAR).find(PAGINATION_MENU).find('ul[class=pf-c-options-menu__menu]').find(DROPDOWN_ITEM).contains(`${textInItem}`).click();
+  return cy.get(TOOLBAR).find(PAGINATION_MENU).find('ul[class=pf-c-options-menu__menu]').find(DROPDOWN_ITEM).contains(`${paginationValue}`).click();
 }
+
+export { DEFAULT_ROW_COUNT, PAGINATION_VALUES, SORTING_ORDERS };
