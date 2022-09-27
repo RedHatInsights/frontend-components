@@ -2,11 +2,14 @@ import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu, MenuContent, MenuItem, MenuList } from '@patternfly/react-core';
 
 const useStyles = createUseStyles({
-  tableOfContent: {},
+  tableOfContent: {
+    maxHeight: '100vh',
+    overflowY: 'auto',
+  },
   list: {
     minWidth: 250,
     boxShadow: 'none !important',
@@ -58,6 +61,7 @@ ContentLink.propTypes = {
 };
 
 const TableOfContents = () => {
+  const tocRef = useRef(null);
   const classes = useStyles();
   const { pathname } = useRouter();
   const [links, setLinks] = useState([]);
@@ -79,9 +83,18 @@ const TableOfContents = () => {
   };
 
   useEffect(() => {
+    if (tocRef.current) {
+      tocRef.current.style.position = 'sticky';
+      tocRef.current.style.right = '20px';
+      tocRef.current.style.top = '0px';
+    }
+  }, [tocRef.current]);
+
+  useEffect(() => {
     isMounted = true;
     document.querySelector('.pf-c-page__main').addEventListener('scroll', () => scrollListener(setActive));
     scrollListener(setActive);
+
     return () => {
       isMounted = false;
       document.removeEventListener('scroll', scrollListener);
@@ -101,10 +114,10 @@ const TableOfContents = () => {
   }, [pathname]);
 
   return links.length > 0 ? (
-    <div className={classes.tableOfContent}>
+    <div ref={tocRef}>
       <Menu className={classes.list}>
         <MenuContent>
-          <MenuList>
+          <MenuList className={classes.tableOfContent}>
             {/* eslint-disable react/prop-types */}
             {links.map((props) => (
               <ContentLink setActive={setActive} key={props.targetId} isActive={props.targetId === activeItem} {...props} />

@@ -1,4 +1,4 @@
-import React, { FormEvent, Fragment, useEffect, useRef, useState } from 'react';
+import React, { FormEvent, Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import globalBreakpointMd from '@patternfly/react-tokens/dist/js/global_breakpoint_md';
 import { Dropdown, DropdownItem, DropdownToggle, Split, SplitItem, ToolbarGroup, ToolbarItem, ToolbarToggleGroup } from '@patternfly/react-core';
@@ -37,7 +37,7 @@ export interface TextInputProps {
  */
 export interface ConditionalFilterItem {
   id?: string;
-  label?: Node;
+  label?: ReactNode;
   value?: string;
   type: 'text' | 'checkbox' | 'radio' | 'custom' | 'group';
   filterValues?: FilterValues;

@@ -22,7 +22,7 @@
     "dependencies": {
         "@redhat-cloud-services/frontend-components-config-utilities": "^1.5.23",
         "assert": "^2.0.0",
-        "axios": "^0.25.0",
+        "axios": "^0.21.4",
         "babel-loader": "^8.2.2",
         "browserify-zlib": "^0.2.0",
         "buffer": "^6.0.3",
