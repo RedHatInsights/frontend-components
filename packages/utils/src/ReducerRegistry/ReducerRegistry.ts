@@ -32,13 +32,13 @@ declare global {
   }
 }
 
-export class ReducerRegistry<T extends Record<string, unknown>> {
+export class ReducerRegistry<T extends Record<string, any>> {
   store: Store;
   reducers: Record<string, Reducer>;
   constructor(initState: T = {} as T, middlewares: Middleware[] = [], composeEnhancersDefault = compose) {
     const composeEnhancers =
       (typeof window !== 'undefined' && (window.REDUX_DEVTOOLS_EXTENSION_COMPOSE as typeof compose)) || composeEnhancersDefault;
-    this.store = createStore((state = initState) => state, initState, composeEnhancers(applyMiddleware(...middlewares)));
+    this.store = createStore((state = initState) => state, initState as any, composeEnhancers(applyMiddleware(...middlewares)));
     this.reducers = {};
   }
 
