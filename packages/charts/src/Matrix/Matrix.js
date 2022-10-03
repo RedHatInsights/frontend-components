@@ -78,7 +78,7 @@ class Matrix extends Component {
       labels,
     } = this.props;
     return (
-      <div identifier={this.props.identifier} className="ins-matrix-chart" widget-type="InsightsMatrix" widget-id={this.props.identifier}>
+      <div className="ins-matrix-chart" widget-type="InsightsMatrix" widget-id={this.props.identifier}>
         <svg width={size} height={size} ref={(ref) => (this.ref = ref)}>
           <Axis size={gridSize} pad={pad} shift={shift}>
             {Object.values(data).map((oneSegment, key) => (

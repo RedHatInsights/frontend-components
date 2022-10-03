@@ -11,9 +11,13 @@ module.exports = {
   rules: {
     'no-prototype-builtins': 'off',
     'import/prefer-default-export': ['error'],
-    'sort-imports': [2, {
-      'ignoreDeclarationSort': true,
-    }]
+    'sort-imports': [
+      2,
+      {
+        ignoreDeclarationSort: true,
+      },
+    ],
+    'react/no-unknown-property': ['error', { ignore: ['widget-type', 'widget-id', 'page-type', 'ouiaId'] }],
   },
   overrides: [
     {
