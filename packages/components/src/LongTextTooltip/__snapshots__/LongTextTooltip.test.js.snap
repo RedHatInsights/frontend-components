@@ -120,6 +120,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           "top-start": "pf-m-top-left",
         }
       }
+      removeFindDomNode={false}
       trigger={
         <div>
           …

@@ -114,6 +114,7 @@ exports[`Actions - component API should update open 1`] = `
           menuAppendTo="inline"
           onSelect={[Function]}
           position="left"
+          removeFindDomNode={false}
           toggle={
             <KebabToggle
               onToggle={[Function]}
@@ -438,7 +439,6 @@ exports[`Actions - component API should update open 1`] = `
                     }
                     isAriaDisabled={false}
                     isDisabled={false}
-                    isHovered={false}
                     isPlainText={false}
                     onClick={[Function]}
                     role="menuitem"
@@ -447,7 +447,6 @@ exports[`Actions - component API should update open 1`] = `
                     tooltipProps={Object {}}
                   >
                     <li
-                      className={null}
                       onClick={[Function]}
                       onKeyDown={[Function]}
                       role="none"
@@ -493,7 +492,6 @@ exports[`Actions - component API should update open 1`] = `
                     }
                     isAriaDisabled={false}
                     isDisabled={false}
-                    isHovered={false}
                     isPlainText={false}
                     onClick={[Function]}
                     role="menuitem"
@@ -502,7 +500,6 @@ exports[`Actions - component API should update open 1`] = `
                     tooltipProps={Object {}}
                   >
                     <li
-                      className={null}
                       onClick={[Function]}
                       onKeyDown={[Function]}
                       role="none"
@@ -551,7 +548,6 @@ exports[`Actions - component API should update open 1`] = `
                     }
                     isAriaDisabled={false}
                     isDisabled={false}
-                    isHovered={false}
                     isPlainText={false}
                     onClick={[Function]}
                     role="menuitem"
@@ -560,7 +556,6 @@ exports[`Actions - component API should update open 1`] = `
                     tooltipProps={Object {}}
                   >
                     <li
-                      className={null}
                       onClick={[Function]}
                       onKeyDown={[Function]}
                       role="none"
@@ -609,7 +604,6 @@ exports[`Actions - component API should update open 1`] = `
                     }
                     isAriaDisabled={false}
                     isDisabled={false}
-                    isHovered={false}
                     isPlainText={false}
                     onClick={[Function]}
                     role="menuitem"
@@ -618,7 +612,6 @@ exports[`Actions - component API should update open 1`] = `
                     tooltipProps={Object {}}
                   >
                     <li
-                      className={null}
                       onClick={[Function]}
                       onKeyDown={[Function]}
                       role="none"
