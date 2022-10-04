@@ -27,6 +27,7 @@ exports[`TableWithFilter should render with data 1`] = `
   <Table
     aria-label="undefined tags"
     borders={true}
+    canCollapseAll={false}
     canSelectAll={true}
     canSortFavorites={true}
     cells={
@@ -37,11 +38,14 @@ exports[`TableWithFilter should render with data 1`] = `
       ]
     }
     className="ins-c-tag-modal__table"
+    collapseAllAriaLabel=""
     contentId="expanded-content"
     dropdownDirection="down"
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isHeaderSelectDisabled={false}
+    isNested={false}
     isStickyHeader={false}
     isTreeTable={false}
     ouiaSafe={true}
@@ -58,7 +62,7 @@ exports[`TableWithFilter should render with data 1`] = `
     variant="compact"
   >
     <TableHeader />
-    <Component />
+    <TableBody />
   </Table>
 </Fragment>
 `;
@@ -95,6 +99,7 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
   <Table
     aria-label="undefined tags"
     borders={true}
+    canCollapseAll={false}
     canSelectAll={true}
     canSortFavorites={true}
     cells={
@@ -105,11 +110,14 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
       ]
     }
     className="ins-c-tag-modal__table"
+    collapseAllAriaLabel=""
     contentId="expanded-content"
     dropdownDirection="down"
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isHeaderSelectDisabled={false}
+    isNested={false}
     isStickyHeader={false}
     isTreeTable={false}
     onSelect={[Function]}
@@ -127,7 +135,7 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
     variant="compact"
   >
     <TableHeader />
-    <Component />
+    <TableBody />
   </Table>
   <TableToolbar
     className="ins-c-inventory__table--toolbar"
@@ -230,6 +238,7 @@ exports[`TableWithFilter should render with data and bulk select without calcula
   <Table
     aria-label="undefined tags"
     borders={true}
+    canCollapseAll={false}
     canSelectAll={true}
     canSortFavorites={true}
     cells={
@@ -240,11 +249,14 @@ exports[`TableWithFilter should render with data and bulk select without calcula
       ]
     }
     className="ins-c-tag-modal__table"
+    collapseAllAriaLabel=""
     contentId="expanded-content"
     dropdownDirection="down"
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isHeaderSelectDisabled={false}
+    isNested={false}
     isStickyHeader={false}
     isTreeTable={false}
     onSelect={[Function]}
@@ -262,7 +274,7 @@ exports[`TableWithFilter should render with data and bulk select without calcula
     variant="compact"
   >
     <TableHeader />
-    <Component />
+    <TableBody />
   </Table>
   <TableToolbar
     className="ins-c-inventory__table--toolbar"
@@ -356,6 +368,7 @@ exports[`TableWithFilter should render with data and filters 1`] = `
   <Table
     aria-label="undefined tags"
     borders={true}
+    canCollapseAll={false}
     canSelectAll={true}
     canSortFavorites={true}
     cells={
@@ -366,11 +379,14 @@ exports[`TableWithFilter should render with data and filters 1`] = `
       ]
     }
     className="ins-c-tag-modal__table"
+    collapseAllAriaLabel=""
     contentId="expanded-content"
     dropdownDirection="down"
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isHeaderSelectDisabled={false}
+    isNested={false}
     isStickyHeader={false}
     isTreeTable={false}
     ouiaSafe={true}
@@ -387,7 +403,7 @@ exports[`TableWithFilter should render with data and filters 1`] = `
     variant="compact"
   >
     <TableHeader />
-    <Component />
+    <TableBody />
   </Table>
 </Fragment>
 `;
@@ -407,6 +423,7 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
   <Table
     aria-label="undefined tags"
     borders={true}
+    canCollapseAll={false}
     canSelectAll={true}
     canSortFavorites={true}
     cells={
@@ -417,11 +434,14 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
       ]
     }
     className="ins-c-tag-modal__table"
+    collapseAllAriaLabel=""
     contentId="expanded-content"
     dropdownDirection="down"
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isHeaderSelectDisabled={false}
+    isNested={false}
     isStickyHeader={false}
     isTreeTable={false}
     ouiaSafe={true}
@@ -438,7 +458,7 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
     variant="compact"
   >
     <TableHeader />
-    <Component />
+    <TableBody />
   </Table>
   <TableToolbar
     className="ins-c-inventory__table--toolbar"

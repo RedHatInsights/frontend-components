@@ -190,6 +190,9 @@ export interface ChromeAPI {
   };
   updateDocumentTitle: (title: string, noSuffix?: boolean) => void;
   visibilityFunctions: VisibilityFunctions;
+  isAnsibleTrialFlagActive: () => boolean | undefined;
+  setAnsibleTrialFlag: () => void;
+  clearAnsibleTrialFlag: () => void;
 }
 
 declare global {

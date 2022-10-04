@@ -1,7 +1,8 @@
 import React from 'react';
-import { ScalprumComponent } from '@scalprum/react-core';
+import { ScalprumComponent, ScalprumComponentProps } from '@scalprum/react-core';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 import classNames from 'classnames';
+import { ChromeAPI } from '@redhat-cloud-services/types';
 
 export type ExcludeModulesKeys = 'appName' | 'module' | 'scope';
 
@@ -13,7 +14,7 @@ export interface AsyncComponentProps extends React.DetailedHTMLProps<React.HTMLA
   /** Optional scope, if not passed appName is used. */
   scope?: string;
   /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
-  fallback: React.ReactNode;
+  fallback: React.ReactElement;
   /** Optional wrapper component */
   component: keyof JSX.IntrinsicElements;
   /** Other props passed to the AsyncComponent */
@@ -38,18 +39,19 @@ const BaseAsyncComponent: React.FunctionComponent<BaseAsyncComponentProps> = ({
   component: Cmp = 'section',
   ...props
 }) => {
+  const SCProps: ScalprumComponentProps<ChromeAPI, Omit<AsyncComponentProps, 'component'>> = {
+    className,
+    appName,
+    module,
+    scope: scope ?? appName,
+    ErrorComponent: fallback,
+    ref: innerRef,
+    fallback,
+    ...props,
+  };
   return (
     <Cmp className={classNames(className, appName)}>
-      <ScalprumComponent
-        className={className}
-        appName={appName}
-        module={module}
-        scope={scope ?? appName}
-        ErrorComponent={fallback}
-        ref={innerRef}
-        fallback={fallback}
-        {...props}
-      />
+      <ScalprumComponent {...SCProps} />
     </Cmp>
   );
 };

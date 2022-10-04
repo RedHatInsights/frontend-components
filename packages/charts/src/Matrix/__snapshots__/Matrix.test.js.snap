@@ -3,7 +3,6 @@
 exports[`Pie component should render correctly 1`] = `
 <div
   className="ins-matrix-chart"
-  identifier="test-matrix"
   widget-id="test-matrix"
   widget-type="InsightsMatrix"
 >
@@ -219,7 +218,6 @@ exports[`Pie component should render correctly 1`] = `
 exports[`Pie component should render with config 1`] = `
 <div
   className="ins-matrix-chart"
-  identifier="test-matrix"
   widget-id="test-matrix"
   widget-type="InsightsMatrix"
 >
@@ -435,7 +433,6 @@ exports[`Pie component should render with config 1`] = `
 exports[`Pie component should render with labels 1`] = `
 <div
   className="ins-matrix-chart"
-  identifier="test-matrix"
   widget-id="test-matrix"
   widget-type="InsightsMatrix"
 >
