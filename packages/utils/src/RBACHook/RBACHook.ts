@@ -30,12 +30,12 @@ export function usePermissions(appName: string, permissionsList: string[], disab
   return permissions;
 }
 
-export const usePermissionsWithContext = (requiredPermissions: string[]) => {
+export const usePermissionsWithContext = (requiredPermissions: string[], checkAll?: boolean) => {
   const { hasAccess, ...permissionState } = useContext(RBACContext);
 
   return {
     ...permissionState,
-    hasAccess: hasAccess?.(requiredPermissions) || false,
+    hasAccess: hasAccess?.(requiredPermissions, checkAll) || false,
   };
 };
 
