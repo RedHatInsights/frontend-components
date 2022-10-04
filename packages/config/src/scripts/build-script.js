@@ -22,6 +22,15 @@ function buildScript(argv, cwd) {
     logError(err);
     process.exit(1);
   });
+  subprocess.on('exit', (code, signal) => {
+    if (code) {
+      logError('Exited with code', code);
+    } else if (signal) {
+      logError('Exited with signal', signal);
+    } else {
+      console.log('Exited Okay');
+    }
+  });
 }
 
 module.exports = buildScript;
