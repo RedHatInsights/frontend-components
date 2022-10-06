@@ -27,6 +27,14 @@ module.exports = {
     appUrl: '/insights/advisor',
 	useProxy: true,
     plugins: []
+    moduleFederation: {
+        // federated modules options
+        ...
+        exposes: {
+            './RootApp': '/path/to/root',
+            './AnotherModule': '/path/to/another/module'
+        }
+    }
 }
 ```
 
