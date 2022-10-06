@@ -88,9 +88,10 @@ const TableOfContents = () => {
       tocRef.current.style.right = '20px';
       tocRef.current.style.top = '0px';
     }
-  }, [tocRef.current]);
+  }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     isMounted = true;
     document.querySelector('.pf-c-page__main').addEventListener('scroll', () => scrollListener(setActive));
     scrollListener(setActive);

@@ -1,5 +1,4 @@
 import remarkGfm from 'remark-gfm';
-import withMDXConfig from '@next/mdx';
 
 import path from 'path';
 import glob from 'glob';
@@ -16,14 +15,6 @@ const withTM = withTMConfig([
   '@patternfly/react-icons',
   '@redhat-cloud-services/frontend-components',
 ]);
-
-const withMDX = withMDXConfig({
-  extension: /\.(md|mdx)$/,
-  options: {
-    providerImportSource: '@mdx-js/react',
-    remarkPlugins: [remarkGfm],
-  },
-});
 
 /**
  * Function that searches for all patternfly styles in node_modules and outputs an webpack alias object to ignore found modules.
@@ -58,9 +49,11 @@ const searchIgnoredStyles = (root) => {
   return result;
 };
 
-export default withMDX(
-  withTM({
+export default withTM({
     pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+    experimental: {
+      esmExternals:true
+    },
     webpack: (config) => {
       config.resolve.alias = {
         ...config.resolve.alias,
@@ -72,7 +65,21 @@ export default withMDX(
         react: path.resolve(__dirname, '../../node_modules/react'),
         'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
       };
+      config.module.rules.push({
+        test: /\.mdx?$/,
+      use: [
+        {
+          loader: '@mdx-js/loader',
+          options: {
+            providerImportSource: '@mdx-js/react',
+            remarkPlugins: [
+              remarkGfm,
+            ]
+          }
+        }
+      ]
+      })
       return config;
     },
   })
-);
+
