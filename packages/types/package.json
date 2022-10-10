@@ -16,7 +16,8 @@
     "devDependencies": {
         "@patternfly/quickstarts": "^2.3.1",
         "@redhat-cloud-services/rbac-client": "^1.0.111",
-        "history": "^4.10.1"
+        "history": "^4.10.1",
+        "@segment/analytics-next": "^1.43.2"
     },
     "author": "",
     "license": "Apache-2.0"
