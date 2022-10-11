@@ -12,7 +12,7 @@ export interface CheckboxFilterProps {
     selection?: string | FilterValue
   ) => void;
   /** Optional list of selected values. */
-  value?: (string | FilterValue)[];
+  value?: string | FilterValue | (string | FilterValue)[] | Record<string, unknown>;
   /** Optional select value placeholder. */
   placeholder?: string;
   /** Optional list of available options. */
@@ -46,13 +46,13 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({
   };
 
   useEffect(() => {
-    !isEqual(prevSelected.current, value) && value && changeSelected(value);
+    !isEqual(prevSelected.current, value) && value && changeSelected(value as (string | FilterValue)[]);
   }, [selected, value]);
 
   const calculateSelected = () =>
     Array.from(
       new Set([
-        ...(value && value.length > 0 && value.constructor === Array
+        ...(value && (value as (string | FilterValue)[]).length > 0 && value.constructor === Array
           ? value.map((item) => {
               return isFilterValue(item) ? item.value : item;
             })

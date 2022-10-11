@@ -32,7 +32,7 @@ export interface FilterValue {
 
 export interface TextFilterProps {
   /** Optional text filter value. */
-  value?: string | FilterValue;
+  value?: string | FilterValue | (string | FilterValue)[] | Record<string, unknown>;
   /** Optional text filter placeholder. */
   placeholder?: string;
   /** Optional onChange event called on input change. */
@@ -74,6 +74,7 @@ const TextFilter: React.FunctionComponent<TextFilterProps> = ({
   placeholder,
   ...props
 }) => {
+  const filterValue = value as string | FilterValue;
   const [stateValue, setStateValue] = useState('');
   const Icon = icon || SearchIcon;
   const changeCallback = (e: React.FormEvent<HTMLInputElement>, value: string) => (onChange ? onChange(e, value) : setStateValue(value));
@@ -86,9 +87,11 @@ const TextFilter: React.FunctionComponent<TextFilterProps> = ({
         data-ouia-component-type="PF4/TextInput"
         id={id}
         isDisabled={isDisabled}
-        value={onChange ? (typeof value === 'string' ? value : value.value) : stateValue}
+        value={(onChange ? (typeof value === 'string' ? filterValue : (filterValue as FilterValue).value) : stateValue) as string}
         onChange={(_inputValue, e) => changeCallback(e, (e.target as HTMLInputElement).value)}
-        onKeyDown={(e) => e.key === 'Enter' && onSubmit?.(e, (typeof value === 'string' ? value : value.value) || stateValue)}
+        onKeyDown={(e) =>
+          e.key === 'Enter' && onSubmit?.(e, ((typeof value === 'string' ? filterValue : (filterValue as FilterValue).value) as string) || stateValue)
+        }
         ouiaId="ConditionalFilter"
         placeholder={placeholder}
         widget-type="InsightsInput"

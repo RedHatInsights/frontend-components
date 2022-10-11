@@ -18,7 +18,7 @@ export interface RadioFilterProps {
   /** Optional select value placeholder. */
   placeholder?: string;
   /** Optional list of selected values. */
-  value?: string | FilterValue;
+  value?: string | FilterValue | (string | FilterValue)[] | Record<string, unknown>;
 }
 
 /**
@@ -27,13 +27,14 @@ export interface RadioFilterProps {
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
 const RadioFilter: React.FunctionComponent<RadioFilterProps> = ({ items = [], onChange = () => undefined, isDisabled = false, ...props }) => {
-  const { placeholder, className, value: selectedValue } = props;
+  const { placeholder, className, value } = props;
+  const selectedValue = value as string | FilterValue;
   const [isExpanded, setExpanded] = useState(false);
   const [checked, setChecked] = useState<string | FilterValue>();
 
   const calculateSelected = () => {
     if (selectedValue) {
-      return isFilterValue(selectedValue) ? selectedValue.value : selectedValue;
+      return isFilterValue(selectedValue) ? (selectedValue as FilterValue).value : selectedValue;
     } else if (checked) {
       return isFilterValue(checked) ? checked.value : checked;
     }
