@@ -108,6 +108,8 @@ export interface GroupFilterProps {
   showMoreTitle?: React.ReactNode;
   /** Optional object containing properties for showMore element. */
   showMoreOptions?: Record<string, unknown>;
+  /** Optional boolean to disable the dropdown and text filter. */
+  isDisabled?: boolean;
 }
 
 /**
@@ -132,6 +134,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
   selected,
   showMoreTitle,
   showMoreOptions,
+  isDisabled,
 }) => {
   const [stateSelected, setStateSelected] = useState({});
   const [searchString, setSearchString] = useState('');
@@ -265,9 +268,17 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
       <Popper
         appendTo={containerRef.current as HTMLElement}
         trigger={
-          <MenuToggle aria-label="Group filter" ref={toggleRef} onClick={onToggleClick} isExpanded={isOpen} className={className}>
+          <MenuToggle
+            aria-label="Group filter"
+            ref={toggleRef}
+            onClick={onToggleClick}
+            isExpanded={isOpen}
+            className={className}
+            isDisabled={isDisabled}
+          >
             {isFilterable || onFilter ? (
               <TextInput
+                isDisabled={isDisabled}
                 aria-label="input with dropdown and clear button"
                 placeholder={placeholder}
                 value={searchString}
