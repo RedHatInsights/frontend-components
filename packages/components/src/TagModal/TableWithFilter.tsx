@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Bullseye, EmptyState, EmptyStateBody, EmptyStateVariant, Pagination, Title } from '@patternfly/react-core';
+import { Bullseye, EmptyState, EmptyStateBody, EmptyStateVariant, ModalProps, Pagination, Title } from '@patternfly/react-core';
 import { ICell, IRow, Table, TableBody, TableHeader, TableProps } from '@patternfly/react-table';
 import { EmptyTable } from '../EmptyTable';
 import { TableToolbar } from '../TableToolbar';
@@ -15,7 +15,7 @@ export type TableWithFilterPagination = {
   perPage: number;
 };
 
-export interface TableWithFilterProps {
+export interface TableWithFilterProps extends Omit<Partial<ModalProps>, 'rows' | 'onSelect' | 'selected' | 'ref'> {
   rows?: IRow[];
   onSelect?: (selected?: IRow[]) => void;
   selected?: IRow[];
@@ -25,11 +25,11 @@ export interface TableWithFilterProps {
   calculateChecked?: (rows: IRow[], selected: IRow[]) => boolean | null;
   unique?: (rows: IRow[]) => IRow[];
   filters?: ConditionalFilterItem[];
-  primaryToolbarProps: PrimaryToolbarProps;
+  primaryToolbarProps?: PrimaryToolbarProps;
   title?: string;
   systemName?: string;
   columns?: (string | ICell)[];
-  tableProps?: TableProps;
+  tableProps?: Omit<TableProps, 'rows' | 'cells'>;
   entityName?: string;
   bulkSelect?: BulkSelectProps;
 }
