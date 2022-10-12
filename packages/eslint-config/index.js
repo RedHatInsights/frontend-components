@@ -17,7 +17,7 @@ module.exports = {
     },
   },
   plugins: ['prettier', 'rulesdir'],
-  extends: ['eslint:recommended', 'prettier', 'plugin:prettier/recommended', 'plugin:react/recommended'],
+  extends: ['eslint:recommended', 'prettier', 'plugin:prettier/recommended', 'plugin:react/recommended', 'plugin:cypress/recommended'],
   rules: {
     'no-unused-vars': ['error', { ignoreRestSiblings: true }],
     'prettier/prettier': ['error', { singleQuote: true }],
