@@ -1,4 +1,3 @@
-import { cy } from 'cypress';
 /*
 Utilities related to URL parameters passed for table filtering
 */
