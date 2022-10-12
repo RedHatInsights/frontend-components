@@ -1,9 +1,9 @@
 import React, { ChangeEvent } from 'react';
-import { Group, GroupFilterItem, TreeViewItem } from './GroupFilter';
+import { Group, GroupFilterItem, GroupItem, TreeViewItem } from './GroupFilter';
 import groupTypes, { GroupType } from './groupType';
 
-function isGroup(item: boolean | Group): item is Group {
-  return (item as Group)?.items !== undefined;
+function isGroup(item: boolean | GroupItem): item is GroupItem {
+  return (item as GroupItem)?.group !== undefined;
 }
 
 export const isChecked = (
@@ -11,8 +11,8 @@ export const isChecked = (
   itemValue: string | number,
   id: string | undefined,
   tagValue: string | undefined,
-  stateSelected: Record<string, Record<string, boolean | Group>>,
-  propSelected: Record<string, Record<string, boolean | Group>>
+  stateSelected: Record<string, Record<string, boolean | GroupItem>>,
+  propSelected: Record<string, Record<string, boolean | GroupItem>>
 ) => {
   const selected = {
     ...propSelected,
@@ -24,7 +24,7 @@ export const isChecked = (
   }
 
   if (isGroup(selected[groupValue][itemValue])) {
-    const group = selected[groupValue][itemValue] as Group;
+    const group = selected[groupValue][itemValue] as GroupItem;
     if (group.isSelected) {
       if (group?.item?.id) {
         return id === group?.item?.id;
@@ -65,7 +65,7 @@ export const getMenuItems = (
     groupKey?: string,
     value?: TreeViewItem | string,
     checked?: boolean
-  ) => Record<string, Record<string, Group | boolean>>,
+  ) => Record<string, Record<string, boolean | GroupItem>>,
   groupType?: GroupType,
   groupValue = '',
   groupLabel?: string,
@@ -145,7 +145,7 @@ export const getGroupMenuItems = (
     groupKey?: string,
     value?: TreeViewItem | string,
     checked?: boolean
-  ) => Record<string, Record<string, Group | boolean>>
+  ) => Record<string, Record<string, boolean | GroupItem>>
 ) => {
   const result = groups.map((group) => {
     const { value, label, groupSelectable, id, type, items, noFilter } = group;
@@ -186,7 +186,7 @@ export const getGroupMenuItems = (
 };
 
 export const calculateSelected =
-  (selectedTags: Record<string, Record<string, Group | boolean>>) =>
+  (selectedTags: Record<string, Record<string, GroupItem | boolean>>) =>
   (type = groupTypes.button, groupKey = '', value: TreeViewItem | string = '', checked = false) => {
     const activeGroup = selectedTags?.[groupKey];
     const children =
@@ -209,7 +209,7 @@ export const calculateSelected =
         const activeGroup = result[groupKey];
         if (
           type !== groupTypes.radio &&
-          (activeGroup[itemKey] instanceof Object ? (activeGroup[itemKey] as Group).isSelected : Boolean(activeGroup[itemKey]))
+          (activeGroup[itemKey] instanceof Object ? (activeGroup[itemKey] as GroupItem).isSelected : Boolean(activeGroup[itemKey]))
         ) {
           result = {
             ...result,
@@ -246,8 +246,8 @@ export const calculateSelected =
 const areAllChildrenChecked = (
   dataItem: TreeViewItem,
   groupKey: string,
-  stateSelected: Record<string, Record<string, boolean | Group>>,
-  selected: Record<string, Record<string, boolean | Group>>
+  stateSelected: Record<string, Record<string, boolean | GroupItem>>,
+  selected: Record<string, Record<string, boolean | GroupItem>>
 ): boolean =>
   dataItem.children
     ? dataItem.children.every((child: TreeViewItem) => areAllChildrenChecked(child, groupKey, stateSelected, selected))
@@ -256,8 +256,8 @@ const areAllChildrenChecked = (
 const areSomeChildrenChecked = (
   dataItem: TreeViewItem,
   groupKey: string,
-  stateSelected: Record<string, Record<string, boolean | Group>>,
-  selected: Record<string, Record<string, boolean | Group>>
+  stateSelected: Record<string, Record<string, boolean | GroupItem>>,
+  selected: Record<string, Record<string, boolean | GroupItem>>
 ): boolean =>
   dataItem.children
     ? dataItem.children.some((child: TreeViewItem) => areSomeChildrenChecked(child, groupKey, stateSelected, selected))
@@ -266,8 +266,8 @@ const areSomeChildrenChecked = (
 export const mapTree = (
   item: TreeViewItem,
   groupKey: string,
-  stateSelected: Record<string, Record<string, boolean | Group>>,
-  selected: Record<string, Record<string, boolean | Group>>
+  stateSelected: Record<string, Record<string, boolean | GroupItem>>,
+  selected: Record<string, Record<string, boolean | GroupItem>>
 ): TreeViewItem => {
   const hasCheck = areAllChildrenChecked(item, groupKey, stateSelected, selected);
   item.checkProps = { checked: false };
