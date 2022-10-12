@@ -16,7 +16,16 @@ import {
   TreeView,
   TreeViewDataItem,
 } from '@patternfly/react-core';
-import { calculateSelected, convertTreeItem, getGroupMenuItems, getMenuItems, isChecked, mapTree, onTreeCheck } from './groupFilterConstants';
+import {
+  FilterMenuItemOnChange,
+  calculateSelected,
+  convertTreeItem,
+  getGroupMenuItems,
+  getMenuItems,
+  isChecked,
+  mapTree,
+  onTreeCheck,
+} from './groupFilterConstants';
 import groupType, { GroupType } from './groupType';
 import './group-filter.scss';
 
@@ -36,7 +45,14 @@ export interface GroupFilterItem {
   /** Optional onChange event called on input change. */
   onChange?: (value: boolean, event: FormEvent<HTMLInputElement>) => void;
   /** onClick event callback. */
-  onClick?: (e?: FormEvent | MouseEventHandler<HTMLInputElement>, item?: GroupFilterItem, key?: number, checked?: boolean) => void;
+  onClick?: (
+    e?: FormEvent | MouseEventHandler<HTMLInputElement>,
+    item?: GroupFilterItem,
+    key?: number,
+    checked?: boolean,
+    groupName?: string,
+    itemName?: string
+  ) => void;
   /** Optional tagKey. */
   tagKey?: string;
   /** Optional tagValue. */
@@ -97,17 +113,19 @@ export interface GroupFilterProps {
   /** Optional onFilter callback. */
   onFilter?: (value: string) => void;
   /** onChange event called on input change. */
-  onChange?: () => void;
+  onChange?: FilterMenuItemOnChange;
   /** Optional callback on showMore button click. */
   onShowMore?: (event: React.MouseEvent | React.KeyboardEvent | MouseEvent) => void;
   /** Optional text filter placeholder. */
   placeholder?: string;
   /** Selected filters object. */
-  selected?: Record<string, Record<string, boolean>>;
+  selected?: Record<string, Record<string, Group | boolean>>;
   /** Optional showMore button title element. */
   showMoreTitle?: React.ReactNode;
   /** Optional object containing properties for showMore element. */
   showMoreOptions?: Record<string, unknown>;
+  /** Optional boolean to disable the dropdown and text filter. */
+  isDisabled?: boolean;
 }
 
 /**
@@ -132,6 +150,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
   selected,
   showMoreTitle,
   showMoreOptions,
+  isDisabled,
 }) => {
   const [stateSelected, setStateSelected] = useState({});
   const [searchString, setSearchString] = useState('');
@@ -265,9 +284,17 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
       <Popper
         appendTo={containerRef.current as HTMLElement}
         trigger={
-          <MenuToggle aria-label="Group filter" ref={toggleRef} onClick={onToggleClick} isExpanded={isOpen} className={className}>
+          <MenuToggle
+            aria-label="Group filter"
+            ref={toggleRef}
+            onClick={onToggleClick}
+            isExpanded={isOpen}
+            className={className}
+            isDisabled={isDisabled}
+          >
             {isFilterable || onFilter ? (
               <TextInput
+                isDisabled={isDisabled}
                 aria-label="input with dropdown and clear button"
                 placeholder={placeholder}
                 value={searchString}

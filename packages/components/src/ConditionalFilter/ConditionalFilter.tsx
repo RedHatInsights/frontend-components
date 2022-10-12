@@ -16,8 +16,6 @@ export type FilterValues = TextInputProps &
   GroupFilterProps & {
     /** Optional items. */
     items?: FilterValue[];
-    /** Optional value. */
-    value?: string | (string | FilterValue)[] | Record<string, unknown>;
   };
 export interface TextInputProps {
   /** Optional id. */
@@ -40,7 +38,7 @@ export interface ConditionalFilterItem {
   label?: ReactNode;
   value?: string;
   type: 'text' | 'checkbox' | 'radio' | 'custom' | 'group';
-  filterValues?: FilterValues;
+  filterValues?: Omit<FilterValues, 'value'> & { value?: string | string[] | FilterValue | FilterValue[] | Record<string, unknown> };
   placeholder?: string;
 }
 

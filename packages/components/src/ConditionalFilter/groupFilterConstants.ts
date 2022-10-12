@@ -39,9 +39,27 @@ export const isChecked = (
   return Boolean(selected[groupValue][itemValue]);
 };
 
+export type FilterMenuItemOnChange = (
+  event: React.FormEvent | React.MouseEventHandler,
+  selected: unknown,
+  selectedItem: {
+    value: string;
+    label: string | Node;
+    id: string;
+    type: unknown;
+    items: GroupFilterItem[];
+  },
+  item: {
+    id?: string;
+    value?: string;
+  },
+  value: string,
+  itemValue: string
+) => void;
+
 export const getMenuItems = (
   items: GroupFilterItem[],
-  onChange: ((...args: unknown[]) => void) | undefined,
+  onChange: FilterMenuItemOnChange | undefined,
   calculateSelected: (
     type?: GroupType,
     groupKey?: string,
@@ -60,8 +78,24 @@ export const getMenuItems = (
       className: `${item?.className || 'pf-u-pl-sm'}`,
       key: item.id || item.value || index,
       value: String(item.value || item.id || index),
-      onClick: (event?: React.FormEvent | React.MouseEventHandler, treeViewItem?: TreeViewItem, checked?: boolean) => {
-        const params = [
+      onClick: (event: React.FormEvent | React.MouseEventHandler, treeViewItem?: TreeViewItem, checked?: boolean) => {
+        const params: [
+          React.FormEvent | React.MouseEventHandler,
+          unknown,
+          {
+            value: string;
+            label: string | Node;
+            id: string;
+            type: unknown;
+            items: GroupFilterItem[];
+          },
+          {
+            id?: string;
+            value?: string;
+          },
+          string,
+          string
+        ] = [
           event,
           calculateSelected(
             groupType || item.type,
@@ -71,15 +105,15 @@ export const getMenuItems = (
           ),
           {
             value: groupValue,
-            label: groupLabel || item.label,
-            id: groupId || item.id,
+            label: (groupLabel || item.label) as string,
+            id: (groupId || item.id) as string,
             type: groupType || item.type,
             items,
             ...(group || item),
           },
           item,
           groupValue,
-          item.value,
+          item.value as string,
         ];
         onChange?.(...params);
         item?.onClick?.(event, { ...item, label: typeof item.label === 'string' ? item.label : '' }, undefined, checked);
@@ -105,7 +139,7 @@ export const convertTreeItem = (item: TreeViewItem): TreeViewItem => {
 
 export const getGroupMenuItems = (
   groups: Group[],
-  onChange: (() => void) | undefined,
+  onChange: FilterMenuItemOnChange | undefined,
   calculateSelected: (
     type?: GroupType,
     groupKey?: string,
@@ -213,7 +247,7 @@ const areAllChildrenChecked = (
   dataItem: TreeViewItem,
   groupKey: string,
   stateSelected: Record<string, Record<string, boolean | Group>>,
-  selected: Record<string, Record<string, boolean>>
+  selected: Record<string, Record<string, boolean | Group>>
 ): boolean =>
   dataItem.children
     ? dataItem.children.every((child: TreeViewItem) => areAllChildrenChecked(child, groupKey, stateSelected, selected))
@@ -223,7 +257,7 @@ const areSomeChildrenChecked = (
   dataItem: TreeViewItem,
   groupKey: string,
   stateSelected: Record<string, Record<string, boolean | Group>>,
-  selected: Record<string, Record<string, boolean>>
+  selected: Record<string, Record<string, boolean | Group>>
 ): boolean =>
   dataItem.children
     ? dataItem.children.some((child: TreeViewItem) => areSomeChildrenChecked(child, groupKey, stateSelected, selected))
@@ -233,7 +267,7 @@ export const mapTree = (
   item: TreeViewItem,
   groupKey: string,
   stateSelected: Record<string, Record<string, boolean | Group>>,
-  selected: Record<string, Record<string, boolean>>
+  selected: Record<string, Record<string, boolean | Group>>
 ): TreeViewItem => {
   const hasCheck = areAllChildrenChecked(item, groupKey, stateSelected, selected);
   item.checkProps = { checked: false };

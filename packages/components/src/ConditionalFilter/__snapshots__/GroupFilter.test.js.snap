@@ -84,7 +84,8 @@ exports[`Group - component render should render correctly with items - isDisable
     <button
       aria-expanded="false"
       aria-label="Group filter"
-      class="pf-c-menu-toggle"
+      class="pf-c-menu-toggle pf-m-disabled"
+      disabled=""
       type="button"
     >
       <span
