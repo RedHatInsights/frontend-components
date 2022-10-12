@@ -33,7 +33,8 @@
         "react": "^16.14.0 || ^17.0.0",
         "react-dom": "^16.14.0 || ^17.0.0",
         "react-redux": ">=7.0.0",
-        "react-router-dom": "^5.0.0"
+        "react-router-dom": "^5.0.0",
+        "cypress": "^10.9.0"
     },
     "dependencies": {
         "@redhat-cloud-services/types": "^0.0.10",
@@ -46,9 +47,6 @@
     },
     "devDependencies": {
         "@types/react": "^16.14.32"
-    },
-    "optionalDependencies": {
-        "cypress": "^10.9.0"
     },
     "sideEffects": false
 }

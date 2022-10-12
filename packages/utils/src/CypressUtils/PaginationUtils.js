@@ -1,4 +1,3 @@
-import { cy } from 'cypress';
 import { DROPDOWN_ITEM, DROPDOWN_TOGGLE, PAGINATION_MENU, TOOLBAR } from './selectors';
 
 const DEFAULT_ROW_COUNT = 20;
