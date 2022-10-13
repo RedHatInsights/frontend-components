@@ -5,6 +5,7 @@ import glob from 'glob';
 import withTMConfig from 'next-transpile-modules';
 import { fileURLToPath } from 'url';
 
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -62,8 +63,8 @@ export default withTM({
         '@docs/examples': path.resolve(__dirname, './examples'),
         '@docs/deprecation-warn': path.resolve(__dirname, './components/deprecation-warn'),
         '@docs/extensive-prop': path.resolve(__dirname, './components/extensive-prop'),
-        react: path.resolve(__dirname, '../../node_modules/react'),
-        'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
+        // react: path.resolve(__dirname, '../../node_modules/react'),
+        // 'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
       };
       config.module.rules.push({
         test: /\.mdx?$/,
