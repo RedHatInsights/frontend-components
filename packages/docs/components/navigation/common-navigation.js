@@ -11,7 +11,7 @@ const NavLink = ({ href, title }) => {
       id={href}
       to={href}
       ouiaId={href}
-      component={({ children, ...props }) => (
+      component={(props) => (
         <Link {...props}>
           <a
             className={classnames('pf-c-nav__link', {

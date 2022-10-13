@@ -3,8 +3,15 @@ const { resolve } = require('path');
 const fedModulePlugin = require('@redhat-cloud-services/frontend-components-config/federated-modules');
 
 const rootDir = process.env.FEC_ROOT_DIR || process.cwd();
+const fecConfig = require(process.env.FEC_CONFIG_PATH);
 
-const plugins = [fedModulePlugin({ root: rootDir })];
+const plugins = [
+  fedModulePlugin({
+    root: rootDir,
+    /** Load optional config for federated modules */
+    ...fecConfig.moduleFederation,
+  }),
+];
 
 // Save 20kb of bundle size in prod
 if (process.env.NODE_ENV === 'production') {
