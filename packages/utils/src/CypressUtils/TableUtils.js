@@ -1,4 +1,3 @@
-import { Cypress, cy } from 'cypress';
 import _ from 'lodash';
 
 import { ROW, TABLE, TBODY, TITLE } from './selectors';
