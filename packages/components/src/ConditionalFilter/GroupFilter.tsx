@@ -78,6 +78,15 @@ export interface TreeViewItem extends GroupFilterItem {
   name?: string;
 }
 
+export interface GroupItem {
+  /** Optional isSelected flag */
+  isSelected?: boolean;
+  /** Reference back to the group */
+  group: Group;
+  /** Current group filter item */
+  item: GroupFilterItem;
+}
+
 export interface Group {
   /** Optional groupSelectable flag. */
   groupSelectable?: boolean;
@@ -119,7 +128,7 @@ export interface GroupFilterProps {
   /** Optional text filter placeholder. */
   placeholder?: string;
   /** Selected filters object. */
-  selected?: Record<string, Record<string, Group | boolean>>;
+  selected?: Record<string, Record<string, GroupItem | boolean>>;
   /** Optional showMore button title element. */
   showMoreTitle?: React.ReactNode;
   /** Optional object containing properties for showMore element. */
@@ -317,7 +326,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
                 {menuItems.length > 0 && <MenuGroup>{renderItems(menuItems as GroupFilterItem[])}</MenuGroup>}
                 {groupMenuItems.map((group: GroupFilterItem | Group, groupKey: number) => (
                   <MenuGroup
-                    label={(group as Group).groupSelectable && typeof group.label === 'string' ? group.label : undefined}
+                    label={!(group as Group).groupSelectable && typeof group.label === 'string' ? group.label : undefined}
                     key={`${group.label}-${groupKey}-group`}
                   >
                     {renderItems((group as Group).items, group.type, group.value)}
