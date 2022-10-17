@@ -4,6 +4,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
 <Table
   aria-label="Loading"
   borders={true}
+  canCollapseAll={false}
   canSelectAll={false}
   canSortFavorites={true}
   cells={
@@ -41,11 +42,14 @@ exports[`SkeletonTable component should render correctly 1`] = `
     ]
   }
   className=""
+  collapseAllAriaLabel=""
   contentId="expanded-content"
   dropdownDirection="down"
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
+  isHeaderSelectDisabled={false}
+  isNested={false}
   isStickyHeader={false}
   isTreeTable={false}
   ouiaSafe={true}
@@ -584,7 +588,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
   variant={null}
 >
   <TableHeader />
-  <Component />
+  <TableBody />
 </Table>
 `;
 
@@ -592,6 +596,7 @@ exports[`SkeletonTable component should render correctly with checkboxes 1`] = `
 <Table
   aria-label="Loading"
   borders={true}
+  canCollapseAll={false}
   canSelectAll={false}
   canSortFavorites={true}
   cells={
@@ -601,11 +606,14 @@ exports[`SkeletonTable component should render correctly with checkboxes 1`] = `
     ]
   }
   className=""
+  collapseAllAriaLabel=""
   contentId="expanded-content"
   dropdownDirection="down"
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
+  isHeaderSelectDisabled={false}
+  isNested={false}
   isStickyHeader={false}
   isTreeTable={false}
   onSelect={[Function]}
@@ -875,7 +883,7 @@ exports[`SkeletonTable component should render correctly with checkboxes 1`] = `
   variant={null}
 >
   <TableHeader />
-  <Component />
+  <TableBody />
 </Table>
 `;
 
@@ -883,6 +891,7 @@ exports[`SkeletonTable component should render correctly with radio buttons 1`] 
 <Table
   aria-label="Loading"
   borders={true}
+  canCollapseAll={false}
   canSelectAll={false}
   canSortFavorites={true}
   cells={
@@ -892,11 +901,14 @@ exports[`SkeletonTable component should render correctly with radio buttons 1`] 
     ]
   }
   className=""
+  collapseAllAriaLabel=""
   contentId="expanded-content"
   dropdownDirection="down"
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
+  isHeaderSelectDisabled={false}
+  isNested={false}
   isStickyHeader={false}
   isTreeTable={false}
   onSelect={[Function]}
@@ -1166,7 +1178,7 @@ exports[`SkeletonTable component should render correctly with radio buttons 1`] 
   variant={null}
 >
   <TableHeader />
-  <Component />
+  <TableBody />
 </Table>
 `;
 
@@ -1174,6 +1186,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
 <Table
   aria-label="Loading"
   borders={true}
+  canCollapseAll={false}
   canSelectAll={false}
   canSortFavorites={true}
   cells={
@@ -1183,11 +1196,14 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
     ]
   }
   className=""
+  collapseAllAriaLabel=""
   contentId="expanded-content"
   dropdownDirection="down"
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
+  isHeaderSelectDisabled={false}
+  isNested={false}
   isStickyHeader={false}
   isTreeTable={false}
   ouiaSafe={true}
@@ -1456,7 +1472,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
   variant={null}
 >
   <TableHeader />
-  <Component />
+  <TableBody />
 </Table>
 `;
 
@@ -1464,6 +1480,7 @@ exports[`SkeletonTable component should render correctly without rows 1`] = `
 <Table
   aria-label="Loading"
   borders={true}
+  canCollapseAll={false}
   canSelectAll={false}
   canSortFavorites={true}
   cells={
@@ -1501,11 +1518,14 @@ exports[`SkeletonTable component should render correctly without rows 1`] = `
     ]
   }
   className=""
+  collapseAllAriaLabel=""
   contentId="expanded-content"
   dropdownDirection="down"
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
+  isHeaderSelectDisabled={false}
+  isNested={false}
   isStickyHeader={false}
   isTreeTable={false}
   ouiaSafe={true}
@@ -1516,6 +1536,6 @@ exports[`SkeletonTable component should render correctly without rows 1`] = `
   variant={null}
 >
   <TableHeader />
-  <Component />
+  <TableBody />
 </Table>
 `;

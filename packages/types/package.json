@@ -1,7 +1,7 @@
 {
     "name": "@redhat-cloud-services/types",
     "description": "TypeScript definitions for @redhat-cloud-services common typings",
-    "version": "0.0.10",
+    "version": "0.0.13",
     "main": "",
     "types": "index.d.ts",
     "publishConfig": {
@@ -14,9 +14,10 @@
     },
     "scripts": {},
     "devDependencies": {
-        "@patternfly/quickstarts": "^1.4.1-rc.1",
-        "@redhat-cloud-services/rbac-client": "^1.0.104",
-        "history": "^4.0.0"
+        "@patternfly/quickstarts": "^2.3.1",
+        "@redhat-cloud-services/rbac-client": "^1.0.111",
+        "history": "^4.10.1",
+        "@segment/analytics-next": "^1.43.2"
     },
     "author": "",
     "license": "Apache-2.0"

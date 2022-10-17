@@ -78,7 +78,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
         <button
           aria-disabled="false"
           class="pf-c-dropdown__menu-item"
-          data-ouia-component-id="OUIA-Generated-DropdownItem-1"
+          data-ouia-component-id="OUIA-Generated-DropdownItem-3"
           data-ouia-component-type="PF4/DropdownItem"
           data-ouia-safe="true"
           role="menuitem"

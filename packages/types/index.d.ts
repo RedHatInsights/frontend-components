@@ -1,6 +1,7 @@
-import { QuickStartCatalogPage } from '@patternfly/quickstarts';
+import { QuickStart, QuickStartCatalogPage } from '@patternfly/quickstarts';
 import { History } from 'history';
 import { Access } from '@redhat-cloud-services/rbac-client';
+import { AnalyticsBrowser } from '@segment/analytics-next';
 
 export declare type HelpTopicLink = {
   href: string;
@@ -53,7 +54,7 @@ declare type VisibilityFunctions = {
   isProd: () => boolean;
   isBeta: () => boolean;
   isHidden: () => true;
-  withemai: (toHave: string) => Promise<boolean>;
+  withEmail: (toHave: string) => Promise<boolean>;
   loosePermissions: (permissions: string[]) => boolean;
   hasPermissions: (permissions: string[]) => boolean;
   hasLocalStorage: (key: string, value: any) => boolean;
@@ -99,13 +100,13 @@ export interface ChromeAPI {
   initialized: boolean;
   experimentalApi: boolean;
   /** Return true if current environment is fedramp */
-  isFedramp: () => boolean;
+  isFedramp: boolean;
   usePendoFeedback: () => void;
   toggleFeedbackModal: (isOpen: boolean) => void;
-  quickstarts: {
+  quickStarts: {
     version: number;
-    set: (key: string, qs: any[]) => void;
-    toogle: (quickstartId: string) => void;
+    updateQuickStarts: (key: string, quickstarts: QuickStart[]) => void;
+    toggle: (quickstartId: string) => void;
     Catalog: typeof QuickStartCatalogPage;
   };
   chromeHistory: History;
@@ -155,9 +156,9 @@ export interface ChromeAPI {
   };
   helpTopics: {
     addHelpTopics: (topics: HelpTopic[], enabled?: boolean) => void;
-    enableTopics: (...topicsNames: string[]) => Promise<void>;
+    enableTopics: (...topicsNames: string[]) => Promise<void[]>;
     disableTopics: (...topicsNames: string[]) => void;
-    setActiveTopic: (name: string) => void;
+    setActiveTopic: (name: string) => Promise<void>;
     closeHelpTopic: () => void;
   };
   hideGlobalFilter: (isHidden: boolean) => void;
@@ -190,6 +191,31 @@ export interface ChromeAPI {
   };
   updateDocumentTitle: (title: string, noSuffix?: boolean) => void;
   visibilityFunctions: VisibilityFunctions;
+  isAnsibleTrialFlagActive: () => boolean | undefined;
+  setAnsibleTrialFlag: () => void;
+  clearAnsibleTrialFlag: () => void;
+  // segment API
+  segment: {
+    setPageMetadata: (pageOptions?: Record<string, unknown>) => void;
+  };
+  analytics: AnalyticsBrowser;
+  useGlobalFilter: <T = undefined>(
+    callback: (selectedTags?: {
+      [key: string]: {
+        [key: string]: {
+          isSelected?: boolean;
+          value: string;
+          item?: {
+            tagKey?: string;
+            tagValue?: string;
+          };
+          group?: {
+            items?: unknown;
+          };
+        };
+      };
+    }) => T
+  ) => T;
 }
 
 declare global {

@@ -3,6 +3,8 @@ USER root
 WORKDIR /docs
 COPY ./packages /docs/packages
 COPY ./tsconfig.json /docs/tsconfig.json
+# Clear any modules from disk
+RUN rm -rf /docs/packages/*/node_modules
 WORKDIR /docs/packages/docs
 RUN npm i
 RUN npm run build

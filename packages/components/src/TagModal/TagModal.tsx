@@ -7,7 +7,11 @@ import { ICell, IRow } from '@patternfly/react-table';
 import { ConditionalFilterItem } from '../ConditionalFilter';
 import { BulkSelectProps } from '../BulkSelect';
 
-export interface TagModalProps extends Omit<TableWithFilterProps, 'columns' | 'pagination' | 'loaded' | 'filters' | 'onUpdateData' | 'bulkSelect'> {
+export type OnSelectRow = (selected?: IRow[]) => void;
+export type OnUpdateData = (pagination: TableWithFilterPagination) => number | undefined;
+
+export interface TagModalProps
+  extends Omit<TableWithFilterProps, 'onSelect' | 'columns' | 'pagination' | 'loaded' | 'filters' | 'onUpdateData' | 'bulkSelect'> {
   title: string;
   systemName?: string;
   className?: string;
@@ -21,8 +25,8 @@ export interface TagModalProps extends Omit<TableWithFilterProps, 'columns' | 'p
   loaded: boolean | boolean[];
   filters?: ConditionalFilterItem[][] | ConditionalFilterItem[];
   selected?: IRow[] | IRow[][];
-  onSelect?: (selected?: IRow[]) => void | ((selected?: IRow[]) => void)[];
-  onUpdateData?: (pagination: TableWithFilterPagination) => number | undefined | ((pagination: TableWithFilterPagination) => number | undefined)[];
+  onSelect?: OnSelectRow | OnSelectRow[];
+  onUpdateData?: OnUpdateData | OnUpdateData[];
   bulkSelect?: BulkSelectProps | BulkSelectProps[];
 }
 

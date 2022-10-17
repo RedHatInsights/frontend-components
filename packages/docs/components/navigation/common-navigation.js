@@ -6,12 +6,15 @@ import classnames from 'classnames';
 
 const NavLink = ({ href, title }) => {
   const { pathname } = useRouter();
+  if (!href) {
+    return null;
+  }
   return (
     <NavItem
       id={href}
       to={href}
       ouiaId={href}
-      component={({ children, ...props }) => (
+      component={(props) => (
         <Link {...props}>
           <a
             className={classnames('pf-c-nav__link', {

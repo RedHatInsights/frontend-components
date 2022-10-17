@@ -8,6 +8,7 @@ exports[`FilterInput component should render a checkbox input 1`] = `
   id="id"
   isChecked={false}
   isDisabled={false}
+  isRequired={false}
   isValid={true}
   label="label"
   onChange={[Function]}

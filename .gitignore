@@ -3,6 +3,7 @@
 # ide config
 .idea/
 .editorconfig
+.vscode/
 
 # devel
 *.js.map
@@ -30,3 +31,4 @@ coverage
 lerna-debug.log
 .DS_Store
 packages/**/package-lock.json
+packages/**/.cache

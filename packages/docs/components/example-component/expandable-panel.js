@@ -26,7 +26,7 @@ const TimedToas = ({ handleClose, title }) => {
     return () => {
       clearTimeout(timeout);
     };
-  }, []);
+  }, [handleClose]);
   return <Alert onClick={handleClose} className={classnames(classes.toast)} title={title} variant="info" />;
 };
 

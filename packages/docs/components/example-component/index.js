@@ -27,7 +27,7 @@ const ExampleComponent = ({ language = 'jsx', source, name, codeOnly }) => {
     import(`!raw-loader!@docs/examples/${source}`).then((file) => {
       setSourceCode(file.default);
     });
-  }, []);
+  }, [source]);
   return (
     <div className={classes.exampleContainer}>
       <H2 className={classnames(classes.name)}>{name}</H2>

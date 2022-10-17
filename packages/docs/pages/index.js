@@ -1,5 +1,6 @@
 import { Divider, Title } from '@patternfly/react-core';
 import Head from 'next/head';
+import BlogNav from '../components/blog-nav';
 import SearchInput from '../components/search/search-input';
 import Sections from '../components/sections';
 
@@ -16,6 +17,7 @@ export default function Home() {
       <SearchInput />
       <Divider />
       <Sections />
+      <BlogNav />
     </div>
   );
 }

@@ -1,0 +1,163 @@
+import { Alert } from '@patternfly/react-core'
+
+# Router v6 upgrade
+
+The router package [react-router-dom](https://reactrouter.com/en/main) has undergone a lot of changes in it latest v6 major release. Frontend applications in HCC are on a v5 which is no longer the LTS. Migration to V6 comes with some challenges. Mainly a router context can no longer be nested.
+
+This means our applications have to adapt to the new changes.
+
+## What are immediate actions?
+
+<Alert isInline variant="danger" title="Do not start migrating to router v6!">
+  The chrome UI has to be prepared first. Any application will have to adjust to chrome changes as well.
+</Alert>
+
+### My application has marked react-router-dom dependency as singleton
+
+If your application is on v5.x.x and has the router dependency marked as singleton, it will break once we upgrade chrome to v6. Please make sure this is not the case. This can only happen if you are using custom config, or have explicitly set the router dependency as shaped in your config.
+
+Let us (**@crc-experience-team** [#forum-consoledot-ui](https://app.slack.com/client/T027F3GAJ)) so we can keep track of your application.
+
+### My application is already using react-router-dom dependency v6
+
+Please make sure to contact the **@crc-experience-team** [#forum-consoledot-ui](https://app.slack.com/client/T027F3GAJ/C023VGW21NU). The releases must be synchronized.
+
+## BrowserRouter nesting
+
+Currently, both Chrome and applications define their own `BrowserRouter` context. Because the whole UI shares a single VirtualDOM, these components are nested in each other. Chrome is always the top-level context.
+
+```jsx
+// react-router-dom@5
+// Chrome browser router
+<BrowserRouter>
+...
+  {/**  application specific browser router */}
+  <BrowserRouter>
+     ...
+  </BrowserRouter>
+...
+</BrowserRouter>
+```
+
+This has one major drawback. Chrome and applications do not share the same `browser history` instance. That leads to many side effects (especially when using the browser navigation buttons) and blocks client-side navigation between apps without using ChromeAPI.
+
+<br />
+<Alert variant="danger" isInline title="Nesting Routers is no longer possible in react-router-dom@6!" />
+<br />
+
+**Nesting Routers is no longer possible in react-router-dom@6!**. It is blocked within the library source code and will result in a runtime error! 
+
+```jsx
+// react-router-dom@6
+// Chrome browser router
+<BrowserRouter>
+...
+  {/**  application specific browser router */}
+  <BrowserRouter>
+     ...
+  </BrowserRouter>
+...
+</BrowserRouter>
+
+/**
+ * Uncaught Error: You cannot render a <Router> inside another <Router>. You should never have more than one in your app.
+    at invariant (vendors-node_modules_react-router-dom_index_js.7c3dc582257c856ce836.js:505:20)
+    at Router (vendors-node_modules_react-router-dom_index_js.7c3dc582257c856ce836.js:129
+*/
+```
+
+We have to adapt to this change and make sure only one Router is in the component tree. **Chrome will be providing the router.**
+
+## Sharing BrowserRouter and history
+
+Sharing BrowserRouter means that Chrome and applications will share the same history instance. The positive is navigating in the HCC UI will now be simpler and have better UX and will allow fixing all navigation issues and removing several cases of technical debt.
+
+The disadvantage is that it comes with additional developer work.
+
+### Applications no longer have basename
+
+Let's take a look at a simplified sample `Link` usage component in v5 and v6 in a pseudo sources application:
+
+```jsx
+// In router v5
+// chrome
+<BrowserRouter basename={isBeta() ? '/beta' : ''}>
+  ...
+  <SourcesApp>
+    {/** Sources UI router configuration */}
+    <BrowserRouter basename={`/${isBeta() ? 'beta/' : ''}settings/sources`}>
+      ...
+      {/** Nested route that leads to http://console.redhat.com/settings/sources/some-id */}
+      <Link to="/some-id">Source detail</Link>
+    </BrowserRouter>
+  </SourcesApp>
+</BrowserRouter>
+```
+
+With router nesting, it is not necessary to include the router basename in links and routes.
+
+But in v6, history and by extension basename will be shared. Basename will always be `/` or `/beta`.
+
+```jsx
+// In router v6
+// chrome
+<BrowserRouter basename={isBeta() ? '/beta' : ''}>
+  ...
+  <SourcesApp>
+    {/** Sources UI router configuration does not exist. It uses the context from chrome */}
+    {/** Nested route that leads to http://console.redhat.com/some-id. There is no sources basename!  */}
+    <Link to="/some-id">Source detail</Link>
+    {/** Nested route that leads to http://console.redhat.com/settings/sources/some-id */}
+    <Link to="/settings/sources/some-id">Source detail</Link>
+    {/** If relative links are used, link will use current pathname! http://console.redhat.com/settings/sources/some-id */}
+    <Link to="some-id">Source detail</Link>
+  </SourcesApp>  
+</BrowserRouter>
+```
+
+<br/>
+<Alert variant="info" isInline title="Most of links and routes with absolute paths will point to wrong location!" />
+<br/>
+
+## No more useHistory
+
+In version 6 the hook `useHistory` is no longer available. There is also no other way of getting the history object. We will provide the object in ChromeAPI.
+
+The navigation methods are replaced by [useNavigate hook](https://reactrouter.com/en/main/upgrading/v5#use-usenavigate-instead-of-usehistory).
+
+## Migration guide
+
+Check out the official [migration guide](https://reactrouter.com/en/main/upgrading/v5#use-usenavigate-instead-of-usehistory) for router specific guide.
+
+### Upgrading to router v6
+
+**Only start router v6 upgrade once the Chrome was updated and changes were deployed to production!**
+
+#### Update your react-router-dom dependency to `6.x.x`
+
+Simply bump the version app `package.json`. If exists, remove `react-router` from your package.json!
+
+#### Mark your react-router-dom dependency as a singleton in the module federation plugin
+
+```js
+plugins.push(
+ require('@redhat-cloud-services/frontend-components-config/federated-modules')({
+   root: resolve(__dirname, '../'),
+   shared: [
+     {
+       'react-router-dom': { singleton: true, requiredVersion: '*' },
+     },
+   ],
+ })
+);
+
+```
+
+#### Remove Router (BrowserRouter)
+
+In your application root (Usually AppEntry.js) remove your Router component.
+
+
+#### Follow the official migration guide
+
+The rest is now a regular router migration. Check out the official [migration guide](https://reactrouter.com/en/main/upgrading/v5#use-usenavigate-instead-of-usehistory) for router specific guide.

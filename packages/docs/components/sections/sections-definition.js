@@ -1,4 +1,4 @@
-export default [
+const sectionsDefinitions = [
   {
     title: 'Contributing to docs',
     href: '/contributing',
@@ -72,3 +72,5 @@ export default [
     href: '/common-issues',
   },
 ];
+
+export default sectionsDefinitions;

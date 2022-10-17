@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { SetStateAction, useEffect, useState } from 'react';
 import { constructGroups, mapGroups } from './constants';
 import { Spinner } from '@patternfly/react-core';
 import './tagFilterHook.scss';
@@ -22,7 +22,14 @@ type UseTagsFilter = (
   reducer?: [Record<string, { [key: string]: GroupValue }>, (...args: any[]) => any] | [Record<string, { [key: string]: GroupValue }>],
   itemText?: string,
   showMoreTitle?: React.ReactNode
-) => void;
+) => {
+  filter: any;
+  chips: any;
+  selectedTags: { [key: string]: GroupValue };
+  setValue: (newValue: unknown | SetStateAction<any>) => void;
+  filterTagsBy: string;
+  seFilterTagsBy: (value: string) => void;
+};
 
 export const useTagsFilter: UseTagsFilter = (
   allTags = [],

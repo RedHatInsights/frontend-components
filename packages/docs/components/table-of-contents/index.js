@@ -11,7 +11,7 @@ const useStyles = createUseStyles({
     overflowY: 'auto',
   },
   list: {
-    minWidth: 250,
+    width: 250,
     boxShadow: 'none !important',
     background: 'none !important',
   },
@@ -43,6 +43,7 @@ const ContentLink = ({ title, setActive, isActive, targetId }) => {
       onClick={() => {
         setActive(targetId);
       }}
+      title={title}
       className={classnames(classes.listItem, {
         [classes.activeLink]: isActive,
       })}
@@ -88,9 +89,10 @@ const TableOfContents = () => {
       tocRef.current.style.right = '20px';
       tocRef.current.style.top = '0px';
     }
-  }, [tocRef.current]);
+  }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     isMounted = true;
     document.querySelector('.pf-c-page__main').addEventListener('scroll', () => scrollListener(setActive));
     scrollListener(setActive);
