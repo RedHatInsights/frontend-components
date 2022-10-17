@@ -5,7 +5,7 @@ const yargs = require('yargs');
 
 const devScript = require('../src/scripts/dev-script');
 const buildScript = require('../src/scripts/build-script');
-const { logError } = require('../src/scripts/common');
+const { logError, validateFECConfig } = require('../src/scripts/common');
 
 function patchHosts() {
     const command = `
@@ -59,7 +59,11 @@ const argv = yargs
 .argv;
 
 const scripts = {
-    static,
+    static: (argv, cwd) => {
+        // set fec config
+        validateFECConfig(cwd)
+        static(argv, cwd)
+    },
     'patch-etc-hosts': patchHosts,
     dev: devScript,
     build: buildScript
