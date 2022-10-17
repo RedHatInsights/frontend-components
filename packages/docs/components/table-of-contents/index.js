@@ -11,7 +11,7 @@ const useStyles = createUseStyles({
     overflowY: 'auto',
   },
   list: {
-    minWidth: 250,
+    width: 250,
     boxShadow: 'none !important',
     background: 'none !important',
   },
@@ -43,6 +43,7 @@ const ContentLink = ({ title, setActive, isActive, targetId }) => {
       onClick={() => {
         setActive(targetId);
       }}
+      title={title}
       className={classnames(classes.listItem, {
         [classes.activeLink]: isActive,
       })}

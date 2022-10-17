@@ -3,6 +3,7 @@
 # ide config
 .idea/
 .editorconfig
+.vscode/
 
 # devel
 *.js.map
