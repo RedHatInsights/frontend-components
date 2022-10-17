@@ -6,6 +6,9 @@ import classnames from 'classnames';
 
 const NavLink = ({ href, title }) => {
   const { pathname } = useRouter();
+  if (!href) {
+    return null;
+  }
   return (
     <NavItem
       id={href}
