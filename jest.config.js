@@ -21,7 +21,7 @@ const config = {
   setupFilesAfterEnv: ['<rootDir>/config/setupTests.js', 'jest-canvas-mock'],
   testEnvironment: 'jsdom',
   roots: ['<rootDir>/packages/'],
-  modulePathIgnorePatterns: ['<rootDir>/packages/create-crc-app/templates'],
+  modulePathIgnorePatterns: ['<rootDir>/packages/create-crc-app/templates', '<rootDir>/packages/docs/.cache'],
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy',
     '^lodash-es$': 'lodash',
