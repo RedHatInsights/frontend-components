@@ -53,6 +53,8 @@ export interface TextFilterProps {
   icon?: React.FunctionComponent;
   /** Optional className. */
   className?: string;
+  /** Input element react ref */
+  innerRef?: React.Ref<HTMLInputElement>;
 }
 
 /**
@@ -72,6 +74,7 @@ const TextFilter: React.FunctionComponent<TextFilterProps> = ({
   onSubmit = () => undefined,
   value = '',
   placeholder,
+  innerRef,
   ...props
 }) => {
   const filterValue = value as string | FilterValue;
@@ -95,6 +98,7 @@ const TextFilter: React.FunctionComponent<TextFilterProps> = ({
         ouiaId="ConditionalFilter"
         placeholder={placeholder}
         widget-type="InsightsInput"
+        ref={innerRef}
       />
       <Icon size="sm" className="ins-c-search-icon" />
     </Fragment>
