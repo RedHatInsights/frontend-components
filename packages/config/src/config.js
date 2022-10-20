@@ -89,6 +89,13 @@ module.exports = ({
           test: /src\/.*\.tsx?$/,
           loader: 'ts-loader',
           exclude: /(node_modules)/i,
+          /**
+           * Do not run type checking on main thread
+           * Type checking is offloaded to separate thread via ForkTsCheckerWebpackPlugin
+           */
+          options: {
+            transpileOnly: true,
+          },
         },
         {
           test: /\.s?[ac]ss$/,
