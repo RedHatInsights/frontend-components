@@ -31,6 +31,7 @@
         "concurrently": "^7.4.0",
         "chalk": "^4.1.2",
         "express": "^4.18.1",
+        "fork-ts-checker-webpack-plugin": "^7.2.13",
         "git-revision-webpack-plugin": "^3.0.6",
         "glob": "^7.2.3",
         "html-replace-webpack-plugin": "^2.6.0",

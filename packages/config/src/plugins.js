@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
 const ChunkMapperPlugin = require('@redhat-cloud-services/frontend-components-config-utilities/chunk-mapper');
 const jsVarName = require('@redhat-cloud-services/frontend-components-config-utilities/jsVarName');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = ({
   rootFolder,
@@ -65,5 +66,6 @@ module.exports = ({
     Buffer: ['buffer', 'Buffer'],
   }),
   new ChunkMapperPlugin({ modules: [...(insights ? [jsVarName(insights.appname)] : []), ...(modules || [])] }),
+  new ForkTsCheckerWebpackPlugin(),
   ...(plugins || []),
 ];

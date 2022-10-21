@@ -8,12 +8,12 @@ describe('plugins generations, no option', () => {
   const enabledPlugins = plugins({ useChromeTemplate: false });
 
   it('should generate plugins', () => {
-    expect(enabledPlugins.length).toBe(7);
+    expect(enabledPlugins.length).toBe(8);
   });
 
   it('should generate plugins with sourceMaps', () => {
     const enabledPlugins = plugins({ generateSourceMaps: true, useChromeTemplate: false });
-    expect(enabledPlugins.length).toBe(8);
+    expect(enabledPlugins.length).toBe(9);
   });
 
   it('should generate correct template path for HtmlWebpackPlugin', () => {
