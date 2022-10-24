@@ -1,3 +1,4 @@
+/* global cy, Cypress */
 import _ from 'lodash';
 
 import { ROW, TABLE, TBODY, TITLE } from './selectors';
