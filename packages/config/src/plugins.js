@@ -7,6 +7,7 @@ const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
 const ChunkMapperPlugin = require('@redhat-cloud-services/frontend-components-config-utilities/chunk-mapper');
 const jsVarName = require('@redhat-cloud-services/frontend-components-config-utilities/jsVarName');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { glob } = require('glob');
 const path = require('path');
 
@@ -21,21 +22,24 @@ module.exports = ({
   plugins,
   useChromeTemplate = true,
   definePlugin = {},
+  _unstableHotReload = false,
+  useFileHash = true,
 } = {}) => {
   const hasTsConfig = glob.sync(path.resolve(rootFolder, './{tsconfig.json,!(node_modules)/**/tsconfig.json}')).length > 0;
+  const fileHash = !_unstableHotReload && useFileHash;
   return [
     ...(generateSourceMaps
       ? [
           new SourceMapDevToolPlugin({
             test: 'js',
             exclude: /(node_modules|bower_components)/i,
-            filename: 'sourcemaps/[name].[contenthash].js.map',
+            filename: fileHash ? 'sourcemaps/[name].js.map' : 'sourcemaps/[name].[contenthash].js.map',
           }),
         ]
       : []),
     new MiniCssExtractPlugin({
-      chunkFilename: 'css/[name].[contenthash].css',
-      filename: 'css/[name].[contenthash].css',
+      chunkFilename: fileHash ? 'css/[name].css' : 'css/[name].[contenthash].css',
+      filename: fileHash ? 'css/[name].css' : 'css/[name].[contenthash].css',
       ignoreOrder: true,
     }),
     new CleanWebpackPlugin({
@@ -69,8 +73,9 @@ module.exports = ({
       process: 'process/browser.js',
       Buffer: ['buffer', 'Buffer'],
     }),
-    new ChunkMapperPlugin({ modules: [...(insights ? [jsVarName(insights.appname)] : []), ...(modules || [])] }),
+    new ChunkMapperPlugin({ _unstableHotReload, modules: [...(insights ? [jsVarName(insights.appname)] : []), ...(modules || [])] }),
     ...(hasTsConfig ? [new ForkTsCheckerWebpackPlugin()] : []),
     ...(plugins || []),
+    ...(_unstableHotReload ? [new ReactRefreshWebpackPlugin()] : []),
   ];
 };
