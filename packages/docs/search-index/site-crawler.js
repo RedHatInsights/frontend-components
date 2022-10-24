@@ -13,7 +13,10 @@ function getNewLinks(allLinks, hrefs, origin) {
 }
 
 function getChromiumExectuablePath() {
-  const paths = glob.sync(path.resolve(__dirname, '../node_modules/puppeteer/.local-chromium/*/chrome-linux/chrome/'));
+  const paths = [
+    ...glob.sync(path.resolve(__dirname, '../node_modules/puppeteer/.local-chromium/*/chrome-linux/chrome/')),
+    ...glob.sync('/opt/app-root/src/.cache/puppeteer/chrome/*/chrome-linux/chrome')
+  ];
   if (paths.length > 0) {
     return paths[0];
   } else {
