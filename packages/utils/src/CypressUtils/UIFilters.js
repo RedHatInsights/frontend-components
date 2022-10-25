@@ -1,3 +1,4 @@
+/* global cy */
 /*
 Utilities related to URL parameters passed for table filtering
 */

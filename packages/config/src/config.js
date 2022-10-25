@@ -39,6 +39,8 @@ module.exports = ({
   bounceProd,
   useAgent,
   useDevBuild = true,
+  useCache = false,
+  cacheConfig = {},
 } = {}) => {
   const filenameMask = `js/[name]${useFileHash ? `.${Date.now()}.[fullhash]` : ''}.js`;
   if (betaEnv) {
@@ -61,6 +63,18 @@ module.exports = ({
   return {
     mode: mode || (isProd ? 'production' : 'development'),
     devtool: false,
+    ...(useCache
+      ? {
+          cache: {
+            type: 'filesystem',
+            buildDependencies: {
+              config: [__filename],
+            },
+            cacheDirectory: path.resolve(rootFolder, '.cache'),
+            ...cacheConfig,
+          },
+        }
+      : {}),
     entry: {
       App: appEntry,
     },
@@ -89,6 +103,13 @@ module.exports = ({
           test: /src\/.*\.tsx?$/,
           loader: 'ts-loader',
           exclude: /(node_modules)/i,
+          /**
+           * Do not run type checking on main thread
+           * Type checking is offloaded to separate thread via ForkTsCheckerWebpackPlugin
+           */
+          options: {
+            transpileOnly: true,
+          },
         },
         {
           test: /\.s?[ac]ss$/,

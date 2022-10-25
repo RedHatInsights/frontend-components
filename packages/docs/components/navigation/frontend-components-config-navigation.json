@@ -3,5 +3,10 @@
 		"title": "Frontend components config",
 		"href": "/frontend-components-config"
 	},
-	"items": []
+	"items": [
+		{
+			"title": "Use cache",
+			"href": "/frontend-components-config/use-cache"
+		}
+	]
 }

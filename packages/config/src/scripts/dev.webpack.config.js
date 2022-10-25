@@ -47,6 +47,10 @@ const internalProxyRoutes = {
 };
 
 const { config: webpackConfig, plugins } = config({
+  // do not hash files in dev env
+  useFileHash: false,
+  // enable webpack cache by default in dev env
+  useCache: true,
   ...externalConfig,
   routes: internalProxyRoutes,
   appUrl,
