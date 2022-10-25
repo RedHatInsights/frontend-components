@@ -41,8 +41,9 @@ module.exports = ({
   useDevBuild = true,
   useCache = false,
   cacheConfig = {},
+  _unstableHotReload = false,
 } = {}) => {
-  const filenameMask = `js/[name]${useFileHash ? `.${Date.now()}.[fullhash]` : ''}.js`;
+  const filenameMask = `js/[name]${!_unstableHotReload && useFileHash ? `.${Date.now()}.[fullhash]` : ''}.js`;
   if (betaEnv) {
     env = `${betaEnv}-beta`;
     console.warn('betaEnv is deprecated in favor of env');
@@ -75,15 +76,29 @@ module.exports = ({
           },
         }
       : {}),
-    entry: {
-      App: appEntry,
-    },
+    entry: _unstableHotReload
+      ? {
+          main: appEntry,
+          vendors: ['react', 'react-dom', 'react-refresh/runtime'],
+        }
+      : {
+          App: appEntry,
+        },
     output: {
       filename: filenameMask,
       path: outputPath,
       publicPath,
       chunkFilename: filenameMask,
     },
+    ...(_unstableHotReload
+      ? {
+          optimization: {
+            // for HMR all runtime chunks must be in a single file
+            runtimeChunk: 'single',
+            removeEmptyChunks: true,
+          },
+        }
+      : {}),
     module: {
       rules: [
         {
@@ -179,7 +194,8 @@ module.exports = ({
       port: devServerPort,
       https: https || Boolean(useProxy),
       host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
-      hot: false, // Use livereload instead of HMR which is spotty with federated modules
+      hot: _unstableHotReload, // Use livereload instead of HMR which is spotty with federated modules
+      liveReload: !_unstableHotReload,
       allowedHosts: 'all',
       // https://github.com/bripkens/connect-history-api-fallback
       historyApiFallback: {
