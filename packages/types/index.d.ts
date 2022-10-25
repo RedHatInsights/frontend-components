@@ -105,7 +105,7 @@ export interface ChromeAPI {
   toggleFeedbackModal: (isOpen: boolean) => void;
   quickStarts: {
     version: number;
-    updateQuickStarts: (key: string, quickstarts: QuickStart[]) => void;
+    set: (key: string, quickstarts: QuickStart[]) => void;
     toggle: (quickstartId: string) => void;
     Catalog: typeof QuickStartCatalogPage;
   };
