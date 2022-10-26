@@ -3,12 +3,13 @@ const commonPlugins = require('./webpack.plugins');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const fecConfig = require(process.env.FEC_CONFIG_PATH);
 
+const { plugins: externalPlugins, interceptChromeConfig, routes, ...externalConfig } = fecConfig;
 const { config: webpackConfig, plugins } = config({
   rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
+  ...externalConfig,
   ...(process.env.BETA === 'true' && { deployment: 'beta/apps' }),
 });
 
-const { plugins: externalPlugins } = fecConfig;
 plugins.push(...commonPlugins, ...externalPlugins);
 
 module.exports = (env) => {
