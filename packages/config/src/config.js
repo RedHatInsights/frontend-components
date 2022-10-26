@@ -42,6 +42,7 @@ module.exports = ({
   useCache = false,
   cacheConfig = {},
   _unstableHotReload = false,
+  resolve = {},
 } = {}) => {
   const filenameMask = `js/[name]${!_unstableHotReload && useFileHash ? `.${Date.now()}.[fullhash]` : ''}.js`;
   if (betaEnv) {
@@ -172,9 +173,11 @@ module.exports = ({
       ],
     },
     resolve: {
-      extensions: ['.ts', '.tsx', '.mjs', '.js', '.scss'],
+      ...resolve,
+      extensions: ['.ts', '.tsx', '.mjs', '.js', '.scss', ...(resolve.extensions, [])],
       alias: {
         ...(bundlePfModules ? {} : searchIgnoredStyles(rootFolder)),
+        ...resolve.alias,
       },
       fallback: {
         path: require.resolve('path-browserify'),
@@ -185,6 +188,7 @@ module.exports = ({
         url: require.resolve('url/'),
         util: require.resolve('util/'),
         process: 'process/browser.js',
+        ...resolve.fallback,
       },
     },
     devServer: {
