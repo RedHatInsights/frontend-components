@@ -31,7 +31,7 @@
         "prop-types": "^15.6.2",
         "react": "^16.14.0 || ^17.0.0",
         "react-dom": "^16.14.0 || ^17.0.0",
-        "react-router-dom": "^5.0.0"
+        "react-router-dom": "^5.0.0 || ^6.0.0"
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components-utilities": "^3.2.25",
