@@ -5,6 +5,10 @@
 	},
 	"items": [
 		{
+			"title": "Hot module replacement",
+			"href": "/frontend-components-config/hot-module-replacement"
+		},
+		{
 			"title": "Use cache",
 			"href": "/frontend-components-config/use-cache"
 		}

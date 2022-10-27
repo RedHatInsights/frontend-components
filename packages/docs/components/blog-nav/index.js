@@ -3,6 +3,7 @@ import { createUseStyles } from 'react-jss';
 import Link from 'next/link';
 import { MenuContent, MenuItem, MenuList, Title } from '@patternfly/react-core';
 import BookOpenIcon from '@patternfly/react-icons/dist/esm/icons/book-open-icon';
+import InfoIcon from '@patternfly/react-icons/dist/esm/icons/info-icon'
 import classNames from 'classnames';
 
 const useStyles = createUseStyles({
@@ -21,6 +22,19 @@ const useStyles = createUseStyles({
   },
 });
 
+const blogSchema = [
+  {
+    "title": "HMR available in development!",
+    "href": "/frontend-components-config/hot-module-replacement",
+    Icon: InfoIcon
+  },
+
+  {
+    "title": "React router v6 upgrade",
+    "href": "/news/router-v6",
+    Icon: BookOpenIcon
+  }]
+
 const BlogNav = () => {
   const classes = useStyles();
   return (
@@ -31,20 +45,24 @@ const BlogNav = () => {
             <MenuItem>
               <Title headingLevel="h2">Whats new?</Title>
             </MenuItem>
+            {blogSchema.map(({ title, href, Icon }) => (
             <MenuItem
+              key={href}
               component={({ props, children }) => (
                 <Link href="/blog/router-v6">
                   <button className="pf-c-menu__item">
-                    <a {...props} className={classNames(props?.className, classes.blogLink)} href="/blog/router-v6">
+                    <a {...props} className={classNames(props?.className, classes.blogLink)} href={href}>
                       {children}
                     </a>
                   </button>
                 </Link>
               )}
-              icon={<BookOpenIcon />}
+              icon={<Icon />}
             >
-              React router v6 upgrade
+              {title}
             </MenuItem>
+
+            ))}
           </MenuList>
         </MenuContent>
       </div>

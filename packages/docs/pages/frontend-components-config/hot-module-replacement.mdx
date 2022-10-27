@@ -1,0 +1,26 @@
+import { Alert } from '@patternfly/react-core'
+
+# HMR (Hot Module Replacement)
+
+Hot Module Replacement (HMR) exchanges, adds, or removes modules while an application is running, without a full reload. This can significantly speed up development in a few ways.
+
+[Read more at webpack documentation.](https://webpack.js.org/concepts/hot-module-replacement/)
+
+## Enable HMR
+
+<Alert isInline className="pf-u-mt-md pf-u-mb-md" variant="info" title="HMR is available from @redhat-cloud-services/frontend-components-config to 4.6.28" />
+
+HMR **is disabled by default**. That is because HMR and module federation can be a bit flaky. Even though it worked in several applications during testing, we keep this feature opt-in, before the stability was validated on more projects.
+
+To enable the HRM, go to your `fec.config.js` or `dev.webpack.config.js` and add the `_unstableHotReload` flag.
+
+<Alert isInline className="pf-u-mt-md pf-u-mb-md" variant="danger" title="Do not add the flag to production webpack config!" />
+
+```js
+// fec.config.js
+{
+  // application config
+  ...
+  _unstableHotReload: true
+}
+```
