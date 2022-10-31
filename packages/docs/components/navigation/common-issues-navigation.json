@@ -3,5 +3,10 @@
 		"title": "Common issues",
 		"href": "/common-issues"
 	},
-	"items": []
+	"items": [
+		{
+			"title": "Function hoisting and cache",
+			"href": "/common-issues/function-hoisting-and-cache"
+		}
+	]
 }
