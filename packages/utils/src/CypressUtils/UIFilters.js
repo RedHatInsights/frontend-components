@@ -6,6 +6,8 @@ Utilities related to URL parameters passed for table filtering
 import _ from 'lodash';
 
 import { CHIP, CHIP_GROUP, FILTERS_DROPDOWN, FILTER_TOGGLE } from './selectors';
+import { findElementByOuiaId } from './CustomCommands';
+findElementByOuiaId();
 
 /**
  * A filter configuration
