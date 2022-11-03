@@ -33,13 +33,13 @@ module.exports = ({
           new SourceMapDevToolPlugin({
             test: 'js',
             exclude: /(node_modules|bower_components)/i,
-            filename: fileHash ? 'sourcemaps/[name].js.map' : 'sourcemaps/[name].[contenthash].js.map',
+            filename: !fileHash ? 'sourcemaps/[name].js.map' : 'sourcemaps/[name].[contenthash].js.map',
           }),
         ]
       : []),
     new MiniCssExtractPlugin({
-      chunkFilename: fileHash ? 'css/[name].css' : 'css/[name].[contenthash].css',
-      filename: fileHash ? 'css/[name].css' : 'css/[name].[contenthash].css',
+      chunkFilename: !fileHash ? 'css/[name].css' : 'css/[name].[contenthash].css',
+      filename: !fileHash ? 'css/[name].css' : 'css/[name].[contenthash].css',
       ignoreOrder: true,
     }),
     new CleanWebpackPlugin({
