@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { getDefaultOUIAId } from '@patternfly/react-core/';
-import { Dropdown, DropdownToggle, Level } from '@patternfly/react-core';
+import { Dropdown, DropdownToggle, Level, getDefaultOUIAId } from '@patternfly/react-core';
 import FilterInput from './FilterInput';
 import './filter-dropdown.scss';
 

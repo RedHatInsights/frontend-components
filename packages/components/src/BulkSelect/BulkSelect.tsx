@@ -9,8 +9,8 @@ import {
   DropdownToggleCheckbox,
   DropdownToggleCheckboxProps,
   DropdownToggleProps,
+  getDefaultOUIAId,
 } from '@patternfly/react-core';
-import { getDefaultOUIAId } from '@patternfly/react-core/';
 import './bulk-select.scss';
 
 export type BulkSelectItem = {
