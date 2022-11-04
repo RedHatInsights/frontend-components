@@ -530,6 +530,12 @@
 				"items": [
 					"RowLoader"
 				]
+			},
+			{
+				"group": "Cypress",
+				"items": [
+					"Cypress"
+				]
 			}
 		]
 	}
