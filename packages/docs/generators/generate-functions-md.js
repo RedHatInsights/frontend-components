@@ -33,7 +33,7 @@ function getParamName(param) {
 }
 
 function getParamType(param) {
-  return `<code>${escapeHtml(param.type.names.join('|'))}</code>`;
+  return `<code>${escapeHtml(param.type?.names.join('|'))}</code>`;
 }
 
 function getParamDefaultValue(param) {
@@ -50,7 +50,7 @@ function createParams(item) {
     item.params.forEach((param) => {
       content = `${content}\n|${getParamName(param)}|${getParamType(param)
         .replace(/\{/gm, '&#123;')
-        .replace(/\}/gm, '&#125;')}|${getParamDefaultValue(param).replace(/\{/gm, '&#123;').replace(/\}/gm, '&#125;')}|${getParamDescription(param)}`;
+        .replace(/\}/gm, '&#125;')}|${getParamDefaultValue(param).replace(/\{/gm, '&#123;').replace(/\}/gm, '&#125;')}|${getParamDescription(param).replace(/\{/gm, '&#123;').replace(/\}/gm, '&#125;')}`;
     });
   }
 
@@ -67,6 +67,8 @@ async function createItemMd(pathname, item, exampleName) {
     content = `${content}\n${description}\n`;
   }
 
+  const jsDocsExamples = item.examples || []
+
   if (examples.length > 0) {
     content = `import ExampleComponent from '@docs/example-component'\n\n${content}`;
     examples.forEach((example) => {
@@ -77,6 +79,10 @@ async function createItemMd(pathname, item, exampleName) {
 
   if (params) {
     content = `${content}\n## Params\n|Name|Type|Default|Description|\n|---|---|---|---|${params}\n`;
+  }
+
+  if(jsDocsExamples.length > 0) {
+    content = `${content}\n ## Examples\n ${jsDocsExamples.map(item => `\`\`\`js\n${item}\n\`\`\``).join('\n')}`
   }
 
   return fse.writeFile(pathname, content);
