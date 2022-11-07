@@ -13,18 +13,17 @@ import { CHIP, CHIP_GROUP, FILTERS_DROPDOWN, FILTER_TOGGLE } from './selectors';
  * @property {string} selectorText - Text of the selector in the filter's dropdown
  * @property {Array} values - List of values to try
  * @property {string} type - Type of selector: input, checkbox, radio
- * @property {function filterFunc(it, value) {
+ * @property {Function} filterFunc(it, value) {
     @property {Object} it - Data from the API
-    @property {Object} value - Instance from the values above
+    @property {Object} value - Instance from the values above 
  }} - function describing if a given item should stay or be filtered
  */
 
 /**
  * Apply a given set of filters taken into account the filters configuration
  * @typedef {Function} applyFilters
- * @param {*} filters value to set on the filters
- * {key: string (for input/radio) | array (for checkbox)}
- * @param {@FiltersConf} - global configuration of the filter settings
+ * @param {*} filters value to set on the filters {key: string (for input/radio) | array (for checkbox)}
+ * @param {filtersConf} config global configuration of the filter settings
  */
 function applyFilters(filters, filtersConf) {
   for (const [key, value] of Object.entries(filters)) {
@@ -59,7 +58,8 @@ function applyFilters(filters, filtersConf) {
  * @param {string} key - string key of URL parameter
  * @param {string} value - string value of URL parameter
  * @param {Object} filters - Object that contains filters description.
- * - Example of filters parameter
+ * @example
+ * // of filters parameter
  * FILTER_CATEGORIES = {
  * total_risk: {
  *  type: 'checkbox',
@@ -102,7 +102,7 @@ function hasChip(name, value) {
  * @param {filtersConf} conf - Configuration of the filters
  * @param {Array} data - Values to be filtered
  * @param {Object} filters - Applied filters and their values
- * @returns
+ * @returns {Array} filteredData
  */
 function filter(conf, data, filters) {
   let filteredData = data;

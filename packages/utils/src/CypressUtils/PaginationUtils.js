@@ -53,7 +53,7 @@ export function checkPaginationValues(expectedValues) {
  * @typedef {Object} changePagination
  * @param {array} paginationValue - array of strings with pagination values
  *
- * - Example
+ * @example
  * cy.wrap(PAGINATION_VALUES).each((el) => {
  *    changePagination(el).then(() => {
  *      expect(window.location.search).to.contain(`limit=${el}`);
