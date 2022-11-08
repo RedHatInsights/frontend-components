@@ -2,6 +2,8 @@
 import _ from 'lodash';
 
 import { ROW, TABLE, TBODY, TITLE } from './selectors';
+import { findElementByOuiaId } from './CustomCommands';
+findElementByOuiaId();
 
 /**
  * - Check the table column headers to be equal to provided array of objects.
