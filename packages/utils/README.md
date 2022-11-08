@@ -79,7 +79,7 @@ import parseCvssScore from '@redhat-cloud-services/frontend-components-utilities
   * [redux](doc/redux.md)
   * [routerParams](doc/routerParams.md)
   * [debounce](doc/debounce.md)
-  * [cypress](../docs/pages/fec/modules/utils/Cypress.mdx)
+  * [cypress](doc/Cypress.md)
 
 Additionaly it exports these utilities
 * AsyncComponent - class to load component via async calls

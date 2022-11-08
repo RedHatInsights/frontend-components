@@ -121,7 +121,8 @@ async function parseTSFile(file) {
   }
 }
 
-const parseJSFile = async (file) =>
+// has to return a promise. jsdocParser returns undefined hence custom promise
+const parseJSFile = async (file) => new Promise(res => {
   jsdocParser(file, (error, ast) => {
     if (error) {
       console.log(error);
@@ -135,19 +136,21 @@ const parseJSFile = async (file) =>
     try {
       const documented = ast.filter(({ undocumented, comment = '', scope }) => !undocumented && comment.length > 0 && scope === 'global');
       if (documented.length > 0) {
-        return { jsdoc: true, items: documented };
+        return res({ jsdoc: true, items: documented });
       }
     } catch (error) {
       console.log(error, file);
     }
 
-    return;
+    return res();
   });
+})
 
 async function createJsdocContent(file) {
   try {
     if (file.match(/\.js$/)) {
-      return await parseJSFile(file);
+      const result = await parseJSFile(file)
+      return result;
     } else {
       return await parseTSFile(file);
     }

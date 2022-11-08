@@ -394,6 +394,33 @@
 		]
 	},
 	{
+		"packageName": "config",
+		"groups": [
+			{
+				"group": "scripts",
+				"items": [
+					{
+						"title": "_unstableHotReload",
+						"name": "prod.webpack.config-_unstableHotReload"
+					}
+				]
+			},
+			{
+				"group": "src",
+				"items": [
+					{
+						"title": "loader",
+						"name": "config-loader"
+					},
+					{
+						"title": "options",
+						"name": "config-options"
+					}
+				]
+			}
+		]
+	},
+	{
 		"packageName": "notifications",
 		"groups": [
 			{
@@ -520,6 +547,71 @@
 		"packageName": "utils",
 		"groups": [
 			{
+				"group": "CypressUtils",
+				"items": [
+					{
+						"title": "applyFilters",
+						"name": "UIFilters-applyFilters"
+					},
+					{
+						"title": "changePagination",
+						"name": "PaginationUtils-changePagination"
+					},
+					{
+						"title": "checkEmptyState",
+						"name": "TableUtils-checkEmptyState"
+					},
+					{
+						"title": "checkPaginationTotal",
+						"name": "PaginationUtils-checkPaginationTotal"
+					},
+					{
+						"title": "checkPaginationValues",
+						"name": "PaginationUtils-checkPaginationValues"
+					},
+					{
+						"title": "checkRowCounts",
+						"name": "TableUtils-checkRowCounts"
+					},
+					{
+						"title": "checkTableHeaders",
+						"name": "TableUtils-checkTableHeaders"
+					},
+					{
+						"title": "columnName2UrlParam",
+						"name": "TableUtils-columnName2UrlParam"
+					},
+					{
+						"title": "filter",
+						"name": "UIFilters-filter"
+					},
+					{
+						"title": "FiltersConf",
+						"name": "UIFilters-FiltersConf"
+					},
+					{
+						"title": "hasChip",
+						"name": "UIFilters-hasChip"
+					},
+					{
+						"title": "itemsPerPage",
+						"name": "PaginationUtils-itemsPerPage"
+					},
+					{
+						"title": "removeAllChips",
+						"name": "UIFilters-removeAllChips"
+					},
+					{
+						"title": "tableIsSortedBy",
+						"name": "TableUtils-tableIsSortedBy"
+					},
+					{
+						"title": "urlParamConvert",
+						"name": "UIFilters-urlParamConvert"
+					}
+				]
+			},
+			{
 				"group": "parseCvssScore",
 				"items": [
 					"parseCvssScore"
@@ -529,12 +621,6 @@
 				"group": "RowLoader",
 				"items": [
 					"RowLoader"
-				]
-			},
-			{
-				"group": "Cypress",
-				"items": [
-					"Cypress"
 				]
 			}
 		]
