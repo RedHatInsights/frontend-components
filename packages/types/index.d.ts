@@ -156,7 +156,7 @@ export interface ChromeAPI {
   };
   helpTopics: {
     addHelpTopics: (topics: HelpTopic[], enabled?: boolean) => void;
-    enableTopics: (...topicsNames: string[]) => Promise<void[]>;
+    enableTopics: (...topicsNames: string[]) => Promise<HelpTopic[]>;
     disableTopics: (...topicsNames: string[]) => void;
     setActiveTopic: (name: string) => Promise<void>;
     closeHelpTopic: () => void;
