@@ -39,8 +39,12 @@ module.exports = ({
   bounceProd,
   useAgent,
   useDevBuild = true,
+  useCache = false,
+  cacheConfig = {},
+  _unstableHotReload = false,
+  resolve = {},
 } = {}) => {
-  const filenameMask = `js/[name]${useFileHash ? `.${Date.now()}.[fullhash]` : ''}.js`;
+  const filenameMask = `js/[name]${!_unstableHotReload && useFileHash ? `.${Date.now()}.[fullhash]` : ''}.js`;
   if (betaEnv) {
     env = `${betaEnv}-beta`;
     console.warn('betaEnv is deprecated in favor of env');
@@ -61,15 +65,41 @@ module.exports = ({
   return {
     mode: mode || (isProd ? 'production' : 'development'),
     devtool: false,
-    entry: {
-      App: appEntry,
-    },
+    ...(useCache
+      ? {
+          cache: {
+            type: 'filesystem',
+            buildDependencies: {
+              config: [__filename],
+            },
+            cacheDirectory: path.resolve(rootFolder, '.cache'),
+            ...cacheConfig,
+          },
+        }
+      : {}),
+    entry: _unstableHotReload
+      ? {
+          main: appEntry,
+          vendors: ['react', 'react-dom', 'react-refresh/runtime'],
+        }
+      : {
+          App: appEntry,
+        },
     output: {
       filename: filenameMask,
       path: outputPath,
       publicPath,
       chunkFilename: filenameMask,
     },
+    ...(_unstableHotReload
+      ? {
+          optimization: {
+            // for HMR all runtime chunks must be in a single file
+            runtimeChunk: 'single',
+            removeEmptyChunks: true,
+          },
+        }
+      : {}),
     module: {
       rules: [
         {
@@ -89,6 +119,13 @@ module.exports = ({
           test: /src\/.*\.tsx?$/,
           loader: 'ts-loader',
           exclude: /(node_modules)/i,
+          /**
+           * Do not run type checking on main thread
+           * Type checking is offloaded to separate thread via ForkTsCheckerWebpackPlugin
+           */
+          options: {
+            transpileOnly: true,
+          },
         },
         {
           test: /\.s?[ac]ss$/,
@@ -136,9 +173,11 @@ module.exports = ({
       ],
     },
     resolve: {
-      extensions: ['.ts', '.tsx', '.mjs', '.js', '.scss'],
+      ...resolve,
+      extensions: ['.ts', '.tsx', '.mjs', '.js', '.scss', ...(resolve.extensions, [])],
       alias: {
         ...(bundlePfModules ? {} : searchIgnoredStyles(rootFolder)),
+        ...resolve.alias,
       },
       fallback: {
         path: require.resolve('path-browserify'),
@@ -149,6 +188,7 @@ module.exports = ({
         url: require.resolve('url/'),
         util: require.resolve('util/'),
         process: 'process/browser.js',
+        ...resolve.fallback,
       },
     },
     devServer: {
@@ -158,7 +198,8 @@ module.exports = ({
       port: devServerPort,
       https: https || Boolean(useProxy),
       host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
-      hot: false, // Use livereload instead of HMR which is spotty with federated modules
+      hot: _unstableHotReload, // Use livereload instead of HMR which is spotty with federated modules
+      liveReload: !_unstableHotReload,
       allowedHosts: 'all',
       // https://github.com/bripkens/connect-history-api-fallback
       historyApiFallback: {

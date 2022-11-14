@@ -8,6 +8,7 @@ const fecConfig = require(process.env.FEC_CONFIG_PATH);
 const plugins = [
   fedModulePlugin({
     root: rootDir,
+    useFileHash: process.env.NODE_ENV === 'production',
     /** Load optional config for federated modules */
     ...fecConfig.moduleFederation,
   }),

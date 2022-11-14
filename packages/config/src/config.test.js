@@ -48,6 +48,7 @@ describe('should create dummy config with no options', () => {
       host: '0.0.0.0',
       port: 8002,
       hot: false,
+      liveReload: true,
       allowedHosts: 'all',
       historyApiFallback: {
         rewrites: [

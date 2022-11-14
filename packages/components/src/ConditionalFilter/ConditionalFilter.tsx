@@ -42,12 +42,13 @@ export interface ConditionalFilterItem {
   placeholder?: string;
 }
 
-export interface ConditionalFilterProps extends TextInputProps {
+export interface ConditionalFilterProps<R extends HTMLElement = any> extends TextInputProps {
   hideLabel?: boolean;
   items: ConditionalFilterItem[];
   id?: string;
   isDisabled?: boolean;
   useMobileLayout?: boolean;
+  innerRef?: React.Ref<R>;
 }
 
 const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
@@ -59,6 +60,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   placeholder,
   useMobileLayout = false,
   value = '',
+  innerRef,
 }) => {
   const breakpointConstant = parseInt(globalBreakpointMd.value.replace('px', ''));
   const updateFilterViewport = (width: number) => width <= breakpointConstant;
@@ -108,6 +110,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                   {...(activeItem.type !== conditionalFilterType.custom && {
                     placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
                     id: activeItem.filterValues ? activeItem.filterValues.id : currentValue ? String(currentValue) : undefined,
+                    innerRef,
                   })}
                   {...activeItem.filterValues}
                 />
@@ -125,6 +128,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
               })}
             >
               <TextFilter
+                innerRef={innerRef}
                 id={id}
                 isDisabled={isDisabled}
                 onChange={(e) => onChangeCallback(e as FormEvent<HTMLInputElement>, (e.target as HTMLInputElement).value)}
@@ -142,6 +146,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
               {items.length > 1 && (
                 <SplitItem>
                   <Dropdown
+                    ref={innerRef}
                     className="ins-c-conditional-filter__group"
                     onSelect={() => setIsOpen(false)}
                     isOpen={isOpen}

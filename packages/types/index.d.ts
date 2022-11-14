@@ -105,7 +105,7 @@ export interface ChromeAPI {
   toggleFeedbackModal: (isOpen: boolean) => void;
   quickStarts: {
     version: number;
-    updateQuickStarts: (key: string, quickstarts: QuickStart[]) => void;
+    set: (key: string, quickstarts: QuickStart[]) => void;
     toggle: (quickstartId: string) => void;
     Catalog: typeof QuickStartCatalogPage;
   };
@@ -156,7 +156,7 @@ export interface ChromeAPI {
   };
   helpTopics: {
     addHelpTopics: (topics: HelpTopic[], enabled?: boolean) => void;
-    enableTopics: (...topicsNames: string[]) => Promise<void[]>;
+    enableTopics: (...topicsNames: string[]) => Promise<HelpTopic[]>;
     disableTopics: (...topicsNames: string[]) => void;
     setActiveTopic: (name: string) => Promise<void>;
     closeHelpTopic: () => void;

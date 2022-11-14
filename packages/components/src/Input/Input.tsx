@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { useOUIAId } from '@patternfly/react-core/';
+import { useOUIAId } from '@patternfly/react-core';
 
 export interface InputProps extends Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'capture'> {
   type?: string;

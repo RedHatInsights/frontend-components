@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components",
-    "version": "3.9.19",
+    "version": "3.9.25",
     "description": "Common components for RedHat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
@@ -20,6 +20,7 @@
         "build:esm": "tsc --module es2015 --target es5",
         "build:js": "tsc -p tsconfig.cjs.json",
         "test:ct": "cypress run-ct",
+        "test:openct": "cypress open-ct",
         "transform:css": "node ../../scripts/transform-scss.js"
     },
     "repository": {
@@ -42,7 +43,7 @@
         "react-dom": "^16.14.0 || ^17.0.0",
         "react-content-loader": "^6.2.0",
         "react-redux": ">=7.0.0",
-        "react-router-dom": "^5.0.0",
+        "react-router-dom": "^5.0.0 || ^6.0.0",
         "lodash": "^4.17.15"
     },
     "dependencies": {
@@ -50,7 +51,7 @@
         "sanitize-html": "^2.7.2",
         "@scalprum/core": "^0.2.3",
         "@scalprum/react-core": "^0.2.4",
-        "@redhat-cloud-services/types": "^0.0.10"
+        "@redhat-cloud-services/types": "^0.0.15"
     },
     "devDependencies": {
         "@patternfly/patternfly": "^4.217.0",
