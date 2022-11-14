@@ -7,7 +7,15 @@ const SamplePage = lazy(() => import(/* webpackChunkName: "SamplePage" */ './Rou
 const OopsPage = lazy(() => import(/* webpackChunkName: "OopsPage" */ './Routes/OopsPage/OopsPage'));
 const NoPermissionsPage = lazy(() => import(/* webpackChunkName: "NoPermissionsPage" */ './Routes/NoPermissionsPage/NoPermissionsPage'));
 
-export const Routes = () => (
+/**
+ * the Switch component changes routes depending on the path.
+ *
+ * Route properties:
+ *      exact - path must match exactly,
+ *      path - https://prod.foo.redhat.com:1337/insights/advisor/rules
+ *      component - component to be rendered when a route has been chosen.
+ */
+const Routes = () => (
   <Suspense
     fallback={
       <Bullseye>
@@ -26,3 +34,5 @@ export const Routes = () => (
     </Switch>
   </Suspense>
 );
+
+export default Routes;

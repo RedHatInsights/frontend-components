@@ -1,0 +1,7 @@
+@import "~@redhat-cloud-services/frontend-components-utilities/styles/variables";
+
+.sample-component {
+  font-size: $ins-fontSize;
+  margin: $ins-margin;
+  display: block;
+}
