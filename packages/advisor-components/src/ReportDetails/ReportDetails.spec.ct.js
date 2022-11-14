@@ -18,8 +18,10 @@ describe('report details: kba loaded', () => {
     mount(<ReportDetails {...props} />);
   });
 
-  it('renders component', () => {
-    cy.get(ROOT);
+  it('renders component and matches screenshot', () => {
+    cy.get(ROOT).matchImage({
+      maxDiffThreshold: 0.025,
+    });
   });
 
   it('renders correct number of headers', () => {

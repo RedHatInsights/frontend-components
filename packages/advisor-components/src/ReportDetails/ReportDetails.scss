@@ -18,14 +18,46 @@
       }
     }
 
-    ol {
-      @include rem('margin-top', 10px);
-      @include rem('margin-left', 15px);
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dt,
+    dd,
+    blockquote,
+    figure,
+    fieldset,
+    legend,
+    textarea,
+    iframe,
+    hr {
+      margin: revert;
+      padding: revert;
     }
 
-    pre + p,
-    pre + ul {
-      @include rem('margin-top', 10px);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--pf-global--FontFamily--heading--sans-serif);
+      line-height: 1.5;
+    }
+
+    h1 {
+      font-size: var(--pf-global--FontSize--2xl);
+      line-height: 1.3;
+    }
+    h2 {
+      font-size: var(--pf-global--FontSize--xl);
+    }
+    h3 {
+      font-size: var(--pf-global--FontSize--lg);
+    }
+    h4, h5, h6 {
+      font-size: var(--pf-global--FontSize--md);
     }
 
     .pf-c-list {

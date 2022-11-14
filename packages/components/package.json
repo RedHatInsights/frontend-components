@@ -20,6 +20,7 @@
         "build:esm": "tsc --module es2015 --target es5",
         "build:js": "tsc -p tsconfig.cjs.json",
         "test:ct": "cypress run-ct",
+        "test:openct": "cypress open-ct",
         "transform:css": "node ../../scripts/transform-scss.js"
     },
     "repository": {
