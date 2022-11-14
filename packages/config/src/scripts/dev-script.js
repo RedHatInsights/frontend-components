@@ -40,9 +40,8 @@ async function devScript(argv, cwd) {
     } else {
       configPath = resolve(__dirname, './dev.webpack.config.js');
     }
-    processArgs.push(`node_modules/.bin/webpack serve -c ${configPath}`);
     await setEnv(cwd);
-    spawn('node', processArgs, {
+    spawn(`npm exec -- webpack serve -c ${configPath}`, processArgs, {
       stdio: [process.stdout, process.stdout, process.stdout],
       cwd,
       shell: true,
