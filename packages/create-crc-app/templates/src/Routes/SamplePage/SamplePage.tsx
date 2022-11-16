@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { Button, Spinner, Stack, StackItem, Title } from '@patternfly/react-core';
@@ -8,8 +8,6 @@ import { PageHeader, PageHeaderTitle } from '@redhat-cloud-services/frontend-com
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 
 const SampleComponent = lazy(() => import('../../Components/SampleComponent/sample-component'));
-
-import './sample-page.scss';
 
 /**
  * A smart component that handles all the api calls and data needed by the dumb components.
@@ -80,4 +78,4 @@ const SamplePage = () => {
   );
 };
 
-export default withRouter(SamplePage);
+export default SamplePage;

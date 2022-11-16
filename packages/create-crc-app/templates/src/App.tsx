@@ -9,7 +9,6 @@ import { getRegistry } from '@redhat-cloud-services/frontend-components-utilitie
 import NotificationsPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
 import { notificationsReducer } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
-import pckg from '../package.json';
 
 type Unregister = (() => void) | undefined;
 
