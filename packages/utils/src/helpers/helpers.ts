@@ -45,7 +45,7 @@ export function getBaseName(pathname: string, level = 2) {
     release = `/beta/`;
   }
 
-  return [...new Array(level)].reduce((acc, _curr, key) => {
+  return [...new Array(level)].reduce<string>((acc, _curr, key) => {
     return `${acc}${pathName[key] || ''}${key < level - 1 ? '/' : ''}`;
   }, release);
 }
