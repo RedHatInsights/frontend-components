@@ -4,7 +4,11 @@
     "publishConfig": {
         "access": "public"
     },
-    "files": ["bin", "templates", "templates/src"],
+    "files": [
+        "bin",
+        "templates",
+        "templates/src"
+    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/RedHatInsights/frontend-components.git"
@@ -14,7 +18,7 @@
     "bugs": {
         "url": "https://github.com/RedHatInsights/frontend-components/issues"
     },
-    "version": "0.1.7",
+    "version": "0.1.8",
     "description": "A CLI tool to create new CRC frontend application. Based on the frontend starter app",
     "main": "./bin/create-crc-app.js",
     "bin": {
