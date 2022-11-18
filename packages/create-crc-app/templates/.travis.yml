@@ -24,3 +24,4 @@ env:
   - REPO_DIR="{{appname}}-build"
   - BRANCH=${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
   - NODE_OPTIONS="--max-old-space-size=4096 --max_old_space_size=4096"
+  

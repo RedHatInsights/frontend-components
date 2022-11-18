@@ -4,6 +4,7 @@
     "publishConfig": {
         "access": "public"
     },
+    "files": ["bin", "templates", "templates/src"],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/RedHatInsights/frontend-components.git"
