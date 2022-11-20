@@ -2,6 +2,7 @@ import { QuickStart, QuickStartCatalogPage } from '@patternfly/quickstarts';
 import { History } from 'history';
 import { Access } from '@redhat-cloud-services/rbac-client';
 import { AnalyticsBrowser } from '@segment/analytics-next';
+import { Method } from 'axios';
 
 export declare type HelpTopicLink = {
   href: string;
@@ -50,23 +51,24 @@ declare type VisibilityFunctions = {
   isOrgAdmin: () => Promise<boolean>;
   isActive: () => Promise<boolean>;
   isInternal: () => Promise<boolean>;
-  isEntitled: () => Promise<boolean>;
+  isEntitled: (appName?: string) => Promise<{ [key: string]: boolean }>;
   isProd: () => boolean;
   isBeta: () => boolean;
   isHidden: () => true;
   withEmail: (toHave: string) => Promise<boolean>;
-  loosePermissions: (permissions: string[]) => boolean;
-  hasPermissions: (permissions: string[]) => boolean;
+  loosePermissions: (permissions: string[]) => Promise<boolean>;
+  hasPermissions: (permissions: string[]) => Promise<boolean>;
   hasLocalStorage: (key: string, value: any) => boolean;
   hasCookie: (key: string, value: any) => boolean;
   /** TODO: Extends FEC axios instance config */
   apiRequest: (config: {
     [key: string]: any;
     url: string;
-    method?: 'string';
+    method?: Method;
     accessor?: string;
     matcher?: 'isEmpty' | 'isNotEmpty';
   }) => Promise<boolean>;
+  featureFlag: (flagName: string, expectedValue: boolean) => boolean;
 };
 
 /**
@@ -117,8 +119,8 @@ export interface ChromeAPI {
   auth: {
     doOffline: () => void;
     getOfflineToken: () => Promise<any>;
-    getToken: () => Promise<string>;
-    getUser: () => Promise<ChromeUser>;
+    getToken: () => Promise<string | undefined>;
+    getUser: () => Promise<ChromeUser | void>;
     login: () => Promise<any>;
     logout: () => void;
     /** @deprecated will be removed from useChrome hook */
@@ -144,11 +146,13 @@ export interface ChromeAPI {
   getApp: () => string;
   getBundle: () => string;
   getEnvironment: () => string;
-  getEnvironmentDetails: () => {
-    url: string[];
-    sso: string;
-    portal: string;
-  };
+  getEnvironmentDetails: () =>
+    | undefined
+    | {
+        url: string[];
+        sso: string;
+        portal: string;
+      };
   getUserPermissions: (applicationName?: string, disableCache?: boolean) => Promise<Access[]>;
   globalFilterScope: (scope: string) => {
     type: string;
@@ -164,7 +168,8 @@ export interface ChromeAPI {
   hideGlobalFilter: (isHidden: boolean) => void;
   /** @deprecated This function server no purpse. For document title update use "updateDocumentTitle" function instead. */
   identifyApp: (data: any, appTitle?: string, noSuffix?: boolean) => Promise<any>;
-  init: () => ChromeAPI;
+  /**  @deprecated this function has no effect */
+  init: () => void;
   isBeta: () => boolean;
   isChrome2: boolean;
   isDemo: () => boolean;
