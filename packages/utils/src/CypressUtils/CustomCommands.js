@@ -6,6 +6,7 @@
 /**
  * this functions adds a .ouiaId command that allows to better find elements by the ouiaId
  * - ouiaId accepts 3 parameters: (subject, item, el = '')
+ * @example
  * ${el}[data-ouia-component-id="${item}"]
  * if the subject is true it wraps it and finds ${el}[data-ouia-component-id="${item}"]
  * otherwise it runs cy.get(${el}[data-ouia-component-id="${item}"])
@@ -21,6 +22,7 @@ export function findElementByOuiaId() {
 /**
  * this functions adds a .ouiaType command that allows to better find elements by the ouiaType
  * ouiaType accepts 3 parameters: (subject, item, el = '')
+ * @example
  * ${el}[data-ouia-component-type="${item}"]
  * if the subject is true it wraps it and finds ${el}[data-ouia-component-type="${item}"]
  * otherwise it runs cy.get(${el}[data-ouia-component-type="${item}"])
