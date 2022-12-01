@@ -7,6 +7,7 @@ import Section from '../Section';
 
 interface ErrorPageProps {
   headerTitle: string;
+  silent?: boolean;
   errorTitle?: string;
   errorDescription?: string;
 }
@@ -40,6 +41,9 @@ class ErrorBoundaryPage extends React.Component<ErrorPageProps, ErrorPageState> 
     }
 
     if (this.state.hasError) {
+      if (this.props.silent) {
+        return null;
+      }
       return (
         <div>
           <PageHeader>
