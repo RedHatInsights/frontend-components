@@ -590,6 +590,14 @@
 						"name": "UIFilters-FiltersConf"
 					},
 					{
+						"title": "findElementByOuiaId",
+						"name": "CustomCommands-findElementByOuiaId"
+					},
+					{
+						"title": "findElementByOuiaType",
+						"name": "CustomCommands-findElementByOuiaType"
+					},
+					{
 						"title": "hasChip",
 						"name": "UIFilters-hasChip"
 					},
