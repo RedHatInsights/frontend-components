@@ -112,7 +112,7 @@ export interface ChromeAPI {
     Catalog: typeof QuickStartCatalogPage;
   };
   chromeHistory: History;
-  isProd: boolean;
+  isProd: () => boolean;
   appAction: (action: string) => void;
   appNavClick: (payload: any) => void;
   appObjectId: (objectId: string) => void;
