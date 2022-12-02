@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactWrapper, mount } from 'enzyme';
+import { Provider } from 'react-redux';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import { NotificationsPortal } from '..';
@@ -22,7 +23,13 @@ describe('Notification portal', () => {
   it('should return no component when no notifications given', () => {
     const t = () => {
       try {
-        new ReactWrapper(mount(<NotificationsPortal {...initialProps} />));
+        new ReactWrapper(
+          mount(
+            <Provider store={mockStore({})}>
+              <NotificationsPortal {...initialProps} />
+            </Provider>
+          )
+        );
       } catch (error) {
         throw new TypeError();
       }
@@ -43,24 +50,30 @@ describe('Notification portal', () => {
         },
       ],
     });
-    const wrapper = mount(<NotificationsPortal {...initialProps} store={modifiedStore} />);
+    const wrapper = mount(
+      <Provider store={modifiedStore}>
+        <NotificationsPortal {...initialProps} />
+      </Provider>
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should render notifications given as direct props', () => {
     const wrapper = mount(
-      <NotificationsPortal
-        {...initialProps}
-        notifications={[
-          {
-            id: '0',
-            variant: 'success',
-            title: 'Notification title',
-            description: 'Some meaningfull description',
-            dismissable: true,
-          },
-        ]}
-      />
+      <Provider store={mockStore({})}>
+        <NotificationsPortal
+          {...initialProps}
+          notifications={[
+            {
+              id: '0',
+              variant: 'success',
+              title: 'Notification title',
+              description: 'Some meaningfull description',
+              dismissable: true,
+            },
+          ]}
+        />
+      </Provider>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -79,19 +92,20 @@ describe('Notification portal', () => {
     });
 
     const wrapper = mount(
-      <NotificationsPortal
-        {...initialProps}
-        store={modifiedStore}
-        notifications={[
-          {
-            id: 'Direct notification',
-            variant: 'success',
-            title: 'Notification title',
-            description: 'Some meaningfull description',
-            dismissable: true,
-          },
-        ]}
-      />
+      <Provider store={modifiedStore}>
+        <NotificationsPortal
+          {...initialProps}
+          notifications={[
+            {
+              id: 'Direct notification',
+              variant: 'success',
+              title: 'Notification title',
+              description: 'Some meaningfull description',
+              dismissable: true,
+            },
+          ]}
+        />
+      </Provider>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -108,7 +122,11 @@ describe('Notification portal', () => {
         },
       ],
     });
-    const wrapper = mount(<NotificationsPortal {...initialProps} store={modifiedStore} />);
+    const wrapper = mount(
+      <Provider store={modifiedStore}>
+        <NotificationsPortal {...initialProps} />
+      </Provider>
+    );
     wrapper.find(Notification).find('button').simulate('click');
     expect(modifiedStore.getActions()).toEqual([
       expect.objectContaining({
@@ -130,7 +148,11 @@ describe('Notification portal', () => {
       ],
     });
     const dismiss = jest.fn();
-    const wrapper = mount(<NotificationsPortal {...initialProps} store={modifiedStore} removeNotification={dismiss} />);
+    const wrapper = mount(
+      <Provider store={modifiedStore}>
+        <NotificationsPortal {...initialProps} removeNotification={dismiss} />
+      </Provider>
+    );
     wrapper.find(Notification).find('button').simulate('click');
     expect(dismiss).toHaveBeenCalledWith('store notification');
   });
@@ -146,7 +168,11 @@ describe('Notification portal', () => {
       })),
     });
     const clearNotifications = jest.fn();
-    const wrapper = mount(<NotificationsPortal {...initialProps} store={modifiedStore} clearNotifications={clearNotifications} />);
+    const wrapper = mount(
+      <Provider store={modifiedStore}>
+        <NotificationsPortal {...initialProps} clearNotifications={clearNotifications} />
+      </Provider>
+    );
     wrapper.find('.ins-c-pagination__clear-all').last().simulate('click');
     expect(clearNotifications).toHaveBeenCalled();
   });
