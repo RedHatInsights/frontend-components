@@ -16,6 +16,16 @@ const DOT_SETTINGS = {
 };
 
 const TemplateProcessor: React.FC<TemplateProcessorProps> = ({ template, definitions, onError }) => {
+  const walkTokens = (token: marked.Token) => {
+    if (token.type === 'codespan') {
+      token.text = token.text.replace(/\\\*/g, '*');
+    }
+  };
+
+  marked.use({ walkTokens });
+
+  definitions = definitions = JSON.parse(JSON.stringify(definitions ?? '').replace(/\*/g, '\\\\*'));
+
   try {
     const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
     const compiledMd = marked(compiledDot);
