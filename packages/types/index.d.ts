@@ -96,6 +96,8 @@ declare function OnChromeEvent<K extends 'APP_NAVIGATION' | 'NAVIGATION_TOGGLE' 
   callback: OnEventCallbacks[K]
 ): undefined | (() => void) | (() => undefined) | (() => boolean);
 
+export type EnableTopicsArgs = [{ names: string[]; append?: boolean }] | string[];
+
 export interface ChromeAPI {
   /** @deprecated will be removed from useChrome hook */
   $internal: any;
@@ -160,7 +162,7 @@ export interface ChromeAPI {
   };
   helpTopics: {
     addHelpTopics: (topics: HelpTopic[], enabled?: boolean) => void;
-    enableTopics: (...topicsNames: string[]) => Promise<HelpTopic[]>;
+    enableTopics: (...topicsNames: EnableTopicsArgs) => Promise<HelpTopic[]>;
     disableTopics: (...topicsNames: string[]) => void;
     setActiveTopic: (name: string) => Promise<void>;
     closeHelpTopic: () => void;
