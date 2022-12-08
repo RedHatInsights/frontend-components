@@ -55,7 +55,7 @@ const { config: webpackConfig, plugins } = config({
   routes: internalProxyRoutes,
   appUrl,
   deployment: isBeta ? 'beta/apps' : 'apps',
-  env: `${process.env.CLOUDOT_ENV}-${isBeta === 'true' ? 'beta' : 'stable'}`,
+  env: `${process.env.CLOUDOT_ENV}-${isBeta === true ? 'beta' : 'stable'}`,
   rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
 });
 plugins.push(...commonPlugins, ...externalPlugins);

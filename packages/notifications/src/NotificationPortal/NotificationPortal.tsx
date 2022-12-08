@@ -1,28 +1,38 @@
-import { connect } from 'react-redux';
-import { ActionCreator, Dispatch } from 'redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Portal, { PortalNotificationConfig } from '../Portal';
 import { clearNotifications, removeNotification } from '../redux/actions/notifications';
+import { ErrorBoundary } from '@redhat-cloud-services/frontend-components/ErrorBoundary';
 
 export interface NotificationsState {
-  [key: string]: any;
   notifications?: PortalNotificationConfig[];
 }
 
 export interface NotificationPortalProps {
-  removeNotification: ActionCreator<PortalNotificationConfig>;
-  clearNotifications: ActionCreator<Record<string, unknown>>;
+  clearNotifications?: () => void;
+  silent?: boolean;
 }
 
-const mapStateToProps = ({ notifications }: NotificationsState, initialProps: NotificationsState) => ({
-  notifications: initialProps.notifications || notifications,
-});
+export const NotificationPortalBase: React.FC<NotificationPortalProps> = ({ clearNotifications: propsClear, ...props }) => {
+  const notifications = useSelector<NotificationsState>(({ notifications }) => notifications);
+  const dispatch = useDispatch();
+  const removeNotif = (id: number | string) => dispatch(removeNotification(id));
+  const onClearAll = () => dispatch(clearNotifications());
+  return (
+    <Portal
+      notifications={notifications as PortalNotificationConfig[]}
+      removeNotification={removeNotif}
+      onClearAll={propsClear || onClearAll}
+      {...props}
+    />
+  );
+};
 
-const mapDispatchToProps = (dispatch: Dispatch, initialProps: NotificationPortalProps) => ({
-  removeNotification: initialProps.removeNotification ? initialProps.removeNotification : (id: number | string) => dispatch(removeNotification(id)),
-  onClearAll: initialProps.clearNotifications ? initialProps.clearNotifications : () => dispatch(clearNotifications()),
-});
-
-export const NotificationPortal = connect<NotificationsState>(mapStateToProps, mapDispatchToProps)(Portal);
+export const NotificationPortal: React.FC<NotificationPortalProps> = ({ silent = true, ...props }) => (
+  <ErrorBoundary headerTitle="Notifications portal" silent={silent}>
+    <NotificationPortalBase {...props} />
+  </ErrorBoundary>
+);
 
 export { default as Portal } from '../Portal';
 

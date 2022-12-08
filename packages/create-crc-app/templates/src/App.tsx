@@ -10,25 +10,19 @@ import NotificationsPortal from '@redhat-cloud-services/frontend-components-noti
 import { notificationsReducer } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
-type Unregister = (() => void) | undefined;
-
 const App = () => {
   const history = useHistory();
-  const chrome = useChrome();
+  const { on } = useChrome();
 
   useEffect(() => {
-    let unregister: Unregister;
-    if (chrome) {
-      const registry = getRegistry();
-      registry.register({ notifications: notificationsReducer as Reducer });
-      const { on } = chrome.init();
+    const registry = getRegistry();
+    registry.register({ notifications: notificationsReducer as Reducer });
 
-      unregister = on('APP_NAVIGATION', (event) => history.push(`/${event.navId}`));
-    }
+    const unregister = on('APP_NAVIGATION', (event) => history.push(`/${event.navId}`));
     return () => {
       unregister?.();
     };
-  }, [chrome]);
+  }, []);
 
   return (
     <Fragment>
