@@ -15,9 +15,26 @@ const DOT_SETTINGS = {
   strip: false,
 };
 
+// codespan and code tags escape child text by default, therefore we have to remove all escapes from there
+const walkTokens = (token: marked.Token) => {
+  if (token.type === 'codespan' || token.type === 'code') {
+    token.text = token.text.replace(/\\\*/g, '*').replace(/\\_/g, '_').replace(/\\~/g, '~');
+  }
+};
+
+marked.use({ walkTokens });
+
 const TemplateProcessor: React.FC<TemplateProcessorProps> = ({ template, definitions, onError }) => {
+  // we don't want to apply html styling to data so it is necessary to eacape all special characters ('*', '_', '~')
+  definitions = JSON.parse(
+    JSON.stringify(definitions ?? {})
+      .replace(/\*/g, '\\\\*')
+      .replace(/~/g, '\\\\~')
+      .replace(/\b_|_\b/g, '\\\\_') // we don't want to escape python variables (e.g. `pydata.bad_rpms`) so match only border '_'
+  );
+
   try {
-    const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
+    const compiledDot = Object.keys(definitions).length !== 0 ? doT.template(template, DOT_SETTINGS)(definitions) : template;
     const compiledMd = marked(compiledDot);
     const sanitized = sanitize(compiledMd, {
       allowedAttributes: { '*': ['href', 'target', 'class', 'style', 'rel'] },
