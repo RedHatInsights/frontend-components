@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-utilities",
-    "version": "3.3.9",
+    "version": "3.3.11",
     "description": "Util functions for RedHat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
@@ -37,7 +37,7 @@
         "cypress": ">=10.0.0 < 12.0.0"
     },
     "dependencies": {
-        "@redhat-cloud-services/types": "^0.0.15",
+        "@redhat-cloud-services/types": "^0.0.17",
         "@sentry/browser": "^5.30.0",
         "awesome-debounce-promise": "^2.1.0",
         "axios": "^0.27.2",
