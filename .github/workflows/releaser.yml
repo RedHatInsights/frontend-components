@@ -1,0 +1,19 @@
+name: Releaser
+on:
+  pull_request:
+    types: [ labeled, closed ]
+  issue_comment:
+    types: [ created, edited ]
+
+jobs:
+  pr_merged:
+    runs-on: ubuntu-latest
+    name: Trigger job on comment, merge or label
+    steps:
+      - name: Trigger release
+        id: release
+        uses: RedHatInsights/frontend-releaser@v1
+        with:
+          gh-bot-token: ${{ secrets.GH_BOT_TOKEN }}
+          travis-config: '{"token":"${{ secrets.TRAVIS_TOKEN }}"}'
+          allowed-users: '["karelhala", "ryelo", "Hyperkid123", "fhlavac"]'
