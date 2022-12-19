@@ -1,5 +1,7 @@
 # RedHat Cloud Services frontend components - PDF generator
 
+**This package is deprecated, please notify platform-experience team for documentation on how to add your app to the PDF service.**
+
 [![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-pdf-generator.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-pdf-generator)
 
 You can use this component in order to create download/preview PDF.
