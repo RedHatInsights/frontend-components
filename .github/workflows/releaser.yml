@@ -17,3 +17,4 @@ jobs:
           gh-bot-token: ${{ secrets.GH_BOT_TOKEN }}
           travis-config: '{"token":"${{ secrets.TRAVIS_TOKEN }}"}'
           allowed-users: '["karelhala", "ryelo", "Hyperkid123", "fhlavac"]'
+          bot-name: nacho-bot
