@@ -16,6 +16,7 @@ do
     then
         echo "Adding $host to /etc/hosts"
         echo "127.0.0.1 $host" >>/etc/hosts
+        echo "::1 $host" >>/etc/hosts
     fi
 done
 `

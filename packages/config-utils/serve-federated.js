@@ -25,7 +25,7 @@ function federate(argv, cwd) {
 
       concurrently([
         `${WEBPACK_PATH} --config ${configPath} --watch --output-path ${path.join(outputPath, config.output.publicPath)}`,
-        `${HTTP_SERVER_PATH} ${outputPath} -p ${argv.port || 8003} -c-1`,
+        `${HTTP_SERVER_PATH} ${outputPath} -p ${argv.port || 8003} -c-1 -a ::`,
       ]);
     });
   } catch (error) {
