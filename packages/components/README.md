@@ -142,7 +142,6 @@ transform: (importName) =>`@redhat-cloud-services/frontend-components/esm/${FECM
   * [pagination](doc/pagination.md)
   * [treeview-table](doc/treeview-table.md)
   * [section](doc/section.md)
-  * [dark](doc/dark.md)
   * [breadcrumbs](doc/breadcrumbs.md)
   * [reboot](doc/reboot.md)
   * [useScreenSize](doc/useScreenSize.md)
