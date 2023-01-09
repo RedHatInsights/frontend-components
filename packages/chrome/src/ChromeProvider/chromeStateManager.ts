@@ -1,14 +1,78 @@
+export type ChromeContextState = {
+  lastVisitedPages: string[];
+};
+
+export enum UpdateEvents {
+  lastVisited = 'lastVisited',
+}
+
 const chromeState = () => {
-  const state: {
-    lastVisitedPages: string[];
-  } = {
+  let state: ChromeContextState = {
     lastVisitedPages: [],
   };
+  // registry of all subscribers (hooks)
+  const subscribtions: {
+    [key in UpdateEvents]: {
+      onUpdate: () => void;
+    }[];
+  } = {
+    lastVisited: [],
+  };
 
-  function setLastVisited(pages: string[]) {
-    state.lastVisitedPages = pages;
+  // add subscriber (hook) to registry
+  function subscribe(event: UpdateEvents, onUpdate: () => void) {
+    // get id of a new subscriber
+    const id = subscribtions[event].length;
+    // add new subscriber
+    subscribtions[event].push({ onUpdate });
+    // trigger initial update to get the initial data
+    onUpdate();
+    return id;
   }
+
+  // remove subscriber from registry
+  function unsubscribe(id: number, event: UpdateEvents) {
+    if (id < subscribtions[event].length) {
+      subscribtions[event].splice(id, 1);
+    } else {
+      console.error('Trying to unsubscribe client outside of the range!');
+    }
+  }
+
+  // update state attribute and push data to subscribers
+  function update(event: UpdateEvents, attributes: Partial<ChromeContextState>) {
+    const updateSubscriptions = subscribtions[event];
+    if (updateSubscriptions.length === 0) {
+      return;
+    }
+    state = {
+      ...state,
+      ...attributes,
+    };
+
+    // update the subscribed clients
+    updateSubscriptions.forEach(({ onUpdate }) => {
+      onUpdate();
+    });
+  }
+
+  // lasy visited update event wrapper
+  function setLastVisited(pages: string[]) {
+    update(UpdateEvents.lastVisited, { lastVisitedPages: pages });
+  }
+
+  function getState() {
+    return state;
+  }
+
+  // public state manager interface
   return {
-    ...state
+    getState,
+    setLastVisited,
+    subscribe,
+    unsubscribe,
+    update,
   };
 };
+
+export default chromeState;
