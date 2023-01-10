@@ -56,7 +56,7 @@ const chromeState = () => {
     });
   }
 
-  // lasy visited update event wrapper
+  // last visited update event wrapper
   function setLastVisited(pages: string[]) {
     update(UpdateEvents.lastVisited, { lastVisitedPages: pages });
   }
