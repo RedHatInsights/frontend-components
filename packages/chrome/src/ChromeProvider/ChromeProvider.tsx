@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useFlag } from '@unleash/proxy-client-react';
 
 import { ChromeContext } from '../ChromeContext';
-import chromeState from './chromeStateManager';
+import chromeState from './chromeState';
 import { get, post } from '../utils/fetch';
 
 const getLastVisited = () => get<string[]>('/api/chrome-service/v1/last-visited');

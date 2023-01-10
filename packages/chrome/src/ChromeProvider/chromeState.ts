@@ -41,14 +41,14 @@ const chromeState = () => {
 
   // update state attribute and push data to subscribers
   function update(event: UpdateEvents, attributes: Partial<ChromeContextState>) {
-    const updateSubscriptions = subscribtions[event];
-    if (updateSubscriptions.length === 0) {
-      return;
-    }
     state = {
       ...state,
       ...attributes,
     };
+    const updateSubscriptions = subscribtions[event];
+    if (updateSubscriptions.length === 0) {
+      return;
+    }
 
     // update the subscribed clients
     updateSubscriptions.forEach(({ onUpdate }) => {

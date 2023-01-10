@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import chromeState from '../ChromeProvider/chromeStateManager';
+import chromeState from '../ChromeProvider/chromeState';
 
 const ChromeContext = createContext<ReturnType<typeof chromeState>>({
   update: () => undefined,
