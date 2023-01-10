@@ -4,7 +4,6 @@
     "description": "Common components for RedHat Cloud Services project to generate PDF from JS.",
     "browser": "dist/js/index.js",
     "module": "dist/esm/index.js",
-    "private": true,
     "sideEffects": [
         "./**/*.css",
         "./**/*.scss"
@@ -46,6 +45,7 @@
         "@scalprum/react-core": "^0.1.7"
     },
     "devDependencies": {
+        "style-inject": "0.3.0",
         "rollup": "^2.46.0",
         "rollup-plugin-babel": "^4.4.0",
         "rollup-plugin-node-globals": "^1.4.0",
