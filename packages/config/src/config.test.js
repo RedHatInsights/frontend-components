@@ -30,10 +30,10 @@ describe('should create dummy config with no options', () => {
 
   test('output', () => {
     expect(output).toEqual({
-      filename: expect.stringMatching(/js\/\[name\]\.\d+\.\[fullhash\]\.js/),
+      filename: expect.stringMatching(/js\/\[name\]\.\[fullhash\]\.js/),
       path: '/dist',
       publicPath: undefined,
-      chunkFilename: expect.stringMatching(/js\/\[name\]\.\d+\.\[fullhash\]\.js/),
+      chunkFilename: expect.stringMatching(/js\/\[name\]\.\[fullhash\]\.js/),
     });
   });
 
@@ -119,4 +119,9 @@ describe('port', () => {
 test('https', () => {
   const { devServer } = configBuilder({ https: true });
   expect(devServer.https).toBe(true);
+});
+
+test('noFileHash', () => {
+  const { output } = configBuilder({ useFileHash: false });
+  expect(output.filename).toBe('js/[name].js');
 });
