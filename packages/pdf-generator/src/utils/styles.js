@@ -34,14 +34,11 @@ export default (style = {}) =>
     ...style,
     page: {
       fontWeight: 500,
-      fontFamily: 'RedHatText',
       height: '100%',
       padding: '20 50',
       lineHeight: 1.5,
     },
-    displayFont: {
-      fontFamily: 'RedHatDisplay',
-    },
+    displayFont: {},
     headerContainer: {
       display: 'flex',
       flexDirection: 'row',

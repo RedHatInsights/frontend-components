@@ -24,7 +24,10 @@ const globals = {
 
 const commonjsOptions = {
     ignoreGlobal: true,
-    include: /node_modules/
+    include: /node_modules/,
+    namedExports: {
+      'react/jsx-runtime': ['jsx', 'jsxs'],
+    }
 };
 
 const babelOptions = {
