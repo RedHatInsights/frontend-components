@@ -1,0 +1,40 @@
+{
+    "name": "@redhat-cloud-services/chrome",
+    "version": "0.0.2",
+    "description": "Chrome functions for RedHat Hybrid cloud console.",
+    "main": "index.js",
+    "typings": "index.d.ts",
+    "module": "esm/index.js",
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "npm run build:js && npm run build:esm && npm run build:packages",
+        "build:packages": "node ../../scripts/build-packages.js --forceTypes",
+        "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:packages\"",
+        "build:esm": "tsc --module es2015 --target es5",
+        "build:js": "tsc -p tsconfig.cjs.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+    },
+    "author": "",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/RedHatInsights/frontend-components/issues"
+    },
+    "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/chrome#readme",
+    "peerDependencies": {
+        "@unleash/proxy-client-react": "^3.5.0",
+        "react-router-dom": "^5.0.0 || ^6.0.0"
+    },
+    "dependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    },
+    "devDependencies": {
+        "@types/react": "^17.0.0"
+    },
+    "sideEffects": false
+}
