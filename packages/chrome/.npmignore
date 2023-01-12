@@ -8,3 +8,5 @@ doc/
 config/
 tsconfig.json
 pre-publish.js
+*/**/__mocks__
+tsconfig.*

@@ -26,6 +26,7 @@ describe('fetch', () => {
     await post('/foo/bar', { request: 'body' });
     expect(fetchSpy).toHaveBeenCalledWith('/foo/bar', {
       body: JSON.stringify({ request: 'body' }),
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -37,6 +38,7 @@ describe('fetch', () => {
     await post('/foo/bar', { request: 'body' }, { headers: { 'x-rh-identity': 'foobar' } });
     expect(fetchSpy).toHaveBeenCalledWith('/foo/bar', {
       body: JSON.stringify({ request: 'body' }),
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'x-rh-identity': 'foobar',
@@ -49,6 +51,7 @@ describe('fetch', () => {
     await post('/foo/bar', { request: 'body' }, { headers: { 'Content-Type': 'text' } });
     expect(fetchSpy).toHaveBeenCalledWith('/foo/bar', {
       body: JSON.stringify({ request: 'body' }),
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },

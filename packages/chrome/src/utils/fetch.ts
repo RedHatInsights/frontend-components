@@ -6,6 +6,7 @@ export function get<T>(url: RequestInfo, options?: RequestInit) {
 
 export function post<R, T extends Record<string, any> = Record<string, any>>(url: RequestInfo, data: T, options?: Omit<RequestInit, 'body'>) {
   return fetch(url, {
+    credentials: 'include',
     ...options,
     headers: {
       ...options?.headers,

@@ -6,13 +6,16 @@ import { ChromeContext } from '../ChromeContext';
 import chromeState from './chromeState';
 import { get, post } from '../utils/fetch';
 
-const getLastVisited = () => get<string[]>('/api/chrome-service/v1/last-visited');
+const API_BASE = '/api/chrome-service/v1';
+const LAST_VISITED_URL = `${API_BASE}/last-visited`;
+
+const getLastVisited = () => get<string[]>(LAST_VISITED_URL);
 
 const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState>, chromeBackendEnabled?: boolean) => {
   const { pathname } = useLocation();
   useEffect(() => {
     if (chromeBackendEnabled) {
-      post<string[], { pathname: string; title: string }>('/api/chrome-service/v1/last-visited', {
+      post<string[], { pathname: string; title: string }>(LAST_VISITED_URL, {
         pathname,
         title: document.title,
       }).then((data) => providerState.setLastVisited(data));
@@ -50,7 +53,3 @@ const ChromeProvider: React.FC = ({ children }) => {
 };
 
 export default ChromeProvider;
-
-<ChromeProvider>
-  <div>Foo bar</div>
-</ChromeProvider>;
