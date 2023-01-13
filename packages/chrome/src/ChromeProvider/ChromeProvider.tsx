@@ -3,19 +3,17 @@ import { useLocation } from 'react-router-dom';
 import { useFlag } from '@unleash/proxy-client-react';
 
 import { ChromeContext } from '../ChromeContext';
-import chromeState from './chromeState';
-import { get, post } from '../utils/fetch';
+import chromeState, { FavoritePage, LastVisitedPage } from './chromeState';
+import { FAVORITE_PAGE_URL, LAST_VISITED_URL, get, post } from '../utils/fetch';
 
-const API_BASE = '/api/chrome-service/v1';
-const LAST_VISITED_URL = `${API_BASE}/last-visited`;
-
-const getLastVisited = () => get<string[]>(LAST_VISITED_URL);
+const getLastVisited = () => get<LastVisitedPage[]>(LAST_VISITED_URL);
+const getFavoritePages = () => get<FavoritePage[]>(`${FAVORITE_PAGE_URL}?getAll=true`);
 
 const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState>, chromeBackendEnabled?: boolean) => {
   const { pathname } = useLocation();
   useEffect(() => {
     if (chromeBackendEnabled) {
-      post<string[], { pathname: string; title: string }>(LAST_VISITED_URL, {
+      post<LastVisitedPage[], { pathname: string; title: string }>(LAST_VISITED_URL, {
         pathname,
         title: document.title,
       }).then((data) => providerState.setLastVisited(data));
@@ -37,9 +35,10 @@ const ChromeProvider: React.FC = ({ children }) => {
   useEffect(() => {
     isMounted.current = true;
     if (chromeBackendEnabled && !initialRequest) {
-      getLastVisited().then((lastVisited) => {
+      Promise.all([getLastVisited(), getFavoritePages()]).then(([lastVisited, favoritePages]) => {
         if (isMounted.current) {
           providerState.current?.setLastVisited(lastVisited);
+          providerState.current?.setFavoritePages(favoritePages);
           setInitialRequest(true);
         }
       });

@@ -1,15 +1,29 @@
+export type FavoritePage = {
+  pathname: string;
+  favorite: boolean;
+};
+
+export type LastVisitedPage = {
+  pathname: string;
+  title: string;
+};
+
 export type ChromeContextState = {
-  lastVisitedPages: string[];
+  lastVisitedPages: LastVisitedPage[];
+  favoritePages: FavoritePage[];
 };
 
 export enum UpdateEvents {
   lastVisited = 'lastVisited',
+  favoritePages = 'favoritePages',
 }
 
 const chromeState = () => {
   let state: ChromeContextState = {
     lastVisitedPages: [],
+    favoritePages: [],
   };
+
   // registry of all subscribers (hooks)
   const subscribtions: {
     [key in UpdateEvents]: {
@@ -17,6 +31,7 @@ const chromeState = () => {
     }[];
   } = {
     lastVisited: [],
+    favoritePages: [],
   };
 
   // add subscriber (hook) to registry
@@ -57,8 +72,12 @@ const chromeState = () => {
   }
 
   // last visited update event wrapper
-  function setLastVisited(pages: string[]) {
+  function setLastVisited(pages: LastVisitedPage[]) {
     update(UpdateEvents.lastVisited, { lastVisitedPages: pages });
+  }
+
+  function setFavoritePages(pages: FavoritePage[]) {
+    update(UpdateEvents.favoritePages, { favoritePages: pages });
   }
 
   function getState() {
@@ -69,6 +88,7 @@ const chromeState = () => {
   return {
     getState,
     setLastVisited,
+    setFavoritePages,
     subscribe,
     unsubscribe,
     update,
