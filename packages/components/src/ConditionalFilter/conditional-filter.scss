@@ -1,6 +1,10 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
 
 .ins-c-conditional-filter {
+  input {
+    outline: none;
+  }
+
   &.mobile {
     display: none !important;
     visibility: hidden !important;

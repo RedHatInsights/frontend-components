@@ -1,4 +1,4 @@
-import React, { FormEvent, MouseEventHandler, useEffect, useRef, useState } from 'react';
+import React, { FormEvent, Fragment, MouseEventHandler, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import {
   Button,
@@ -16,6 +16,7 @@ import {
   TreeView,
   TreeViewDataItem,
 } from '@patternfly/react-core';
+import { CloseIcon } from '@patternfly/react-icons';
 import {
   FilterMenuItemOnChange,
   calculateSelected,
@@ -167,6 +168,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
   const toggleRef = useRef<HTMLButtonElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     selected && setStateSelected(selected);
@@ -288,6 +290,15 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
         renderItem(item, key, type, groupKey)
       )
     );
+
+  const hasFocus = document.activeElement === inputRef.current || document.activeElement === toggleRef.current;
+  const searchDirty = hasFocus && searchString?.length > 0;
+
+  const setFilter = (value: string) => {
+    setSearchString(value);
+    onFilter?.(value);
+  };
+
   return (
     <div ref={containerRef}>
       <Popper
@@ -296,24 +307,45 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
           <MenuToggle
             aria-label="Group filter"
             ref={toggleRef}
-            onClick={onToggleClick}
+            onClick={(e) => onToggleClick(e)}
             isExpanded={isOpen}
             className={className}
             isDisabled={isDisabled}
           >
             {isFilterable || onFilter ? (
-              <TextInput
-                isDisabled={isDisabled}
-                aria-label="input with dropdown and clear button"
-                placeholder={placeholder}
-                value={searchString}
-                tabIndex={0}
-                onChange={(value) => {
-                  setSearchString(value);
-                  onFilter?.(value);
-                }}
-                type="search"
-              />
+              <div>
+                <TextInput
+                  ref={inputRef}
+                  className={classNames({
+                    'ins-c-input__clearable': searchDirty,
+                  })}
+                  onChange={(value) => setFilter(value)}
+                  onClick={(e) => e.preventDefault()}
+                  onKeyDown={(e) => {
+                    if (e.key === ' ' || e.key === 'Escape') {
+                      e.preventDefault();
+                      setFilter(e.key === ' ' ? `${searchString} ` : '');
+                      e.key === 'Escape' && setIsOpen(false);
+                    }
+                  }}
+                  isDisabled={isDisabled}
+                  aria-label="input with dropdown and clear button"
+                  placeholder={placeholder}
+                  value={searchString}
+                  tabIndex={0}
+                  type="text"
+                />
+                {searchDirty && (
+                  <span className="ins-c-icon__link">
+                    <CloseIcon
+                      onClick={() => {
+                        setFilter('');
+                        setIsOpen(false);
+                      }}
+                    />
+                  </span>
+                )}
+              </div>
             ) : (
               placeholder
             )}
