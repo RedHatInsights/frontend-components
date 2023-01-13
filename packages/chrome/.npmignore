@@ -1,0 +1,12 @@
+!components
+!index.js
+!index.css
+src/
+.babelrc
+babel.config.js
+doc/
+config/
+tsconfig.json
+pre-publish.js
+*/**/__mocks__
+tsconfig.*

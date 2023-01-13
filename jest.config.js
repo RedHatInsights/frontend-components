@@ -13,6 +13,8 @@ const config = {
   ],
   collectCoverageFrom: [
     '<rootDir>/packages/**/src/**/*.js',
+    '<rootDir>/packages/**/src/**/*.ts',
+    '<rootDir>/packages/**/src/**/*.tsx',
     '!<rootDir>/packages/**/stories/*',
     '!<rootDir>/packages/**/index.js',
     '!<rootDir>/packages/**/*{c|C}ontext*.js',

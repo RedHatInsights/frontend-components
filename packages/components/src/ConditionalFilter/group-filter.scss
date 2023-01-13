@@ -1,5 +1,21 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
 
+button.pf-c-menu-toggle {
+    outline: none;
+    max-width: 261px;
+}
+
+.ins-c-input__clearable {
+    width: 93%;
+}
+
+.ins-c-icon__link {
+    color: var(--pf-global--primary-color--100);
+    :hover {
+        color: var(--pf-global--primary-color--200);
+    }
+}
+
 .ins-c-tree-view {
     .pf-c-tree-view {
         padding: 0;

@@ -8,6 +8,7 @@
     "private": true,
     "workspaces": [
         "packages/charts",
+        "packages/chrome",
         "packages/components",
         "packages/config",
         "packages/config-utils",
