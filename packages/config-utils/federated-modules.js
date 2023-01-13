@@ -25,6 +25,7 @@ module.exports = ({ root, exposes, shared = [], debug, moduleName, useFileHash =
 
   const { dependencies, insights } = require(resolve(root, './package.json')) || {};
   const appName = moduleName || (insights && jsVarName(insights.appname));
+  const filename = `${appName}.${useFileHash ? `[fullhash].` : ''}js`;
 
   const sharedDeps = Object.entries(include)
     .filter(([key]) => dependencies[key] && !exclude.includes(key))
@@ -64,7 +65,7 @@ module.exports = ({ root, exposes, shared = [], debug, moduleName, useFileHash =
 
   return new ModuleFederationPlugin({
     name: appName,
-    filename: `${appName}${useFileHash ? `.${Date.now()}.[fullhash]` : ''}.js`,
+    filename: filename,
     library: { type: libType, name: libName || appName },
     exposes: {
       ...(exposes || {
