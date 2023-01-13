@@ -7,15 +7,13 @@ import { ChartBar } from '@patternfly/react-charts/dist/js/components/ChartBar';
 import { ChartPie } from '@patternfly/react-charts/dist/js/components/ChartPie';
 import { ChartDonut } from '@patternfly/react-charts/dist/js/components/ChartDonut';
 import { ChartDonutUtilization } from '@patternfly/react-charts/dist/js/components/ChartDonutUtilization';
-import { getLightThemeColors, getThemeColors } from '@patternfly/react-charts/dist/js/components/ChartUtils/chart-theme';
+import { getLightThemeColors } from '../utils/theme/utils';
 import Table from './Table';
 import styles from '../utils/styles';
 import rgbHex from 'rgb-hex';
 import flatten from 'lodash/flatten';
 import globalPaletteBlack300 from '@patternfly/react-tokens/dist/js/global_palette_black_300';
 import globalPaletteBlack700 from '@patternfly/react-tokens/dist/js/global_palette_black_700';
-
-const getColors = (...props) => getLightThemeColors?.(...props) || getThemeColors?.(...props);
 
 const appliedStyles = styles();
 const chartMapper = {
@@ -56,7 +54,7 @@ const chartMapper = {
   donutUtilization: {
     component: ChartDonutUtilization,
     width: 80,
-    colorScale: ([color]) => [color, ...getColors('gray').voronoi.colorScale],
+    colorScale: ([color]) => [color, ...getLightThemeColors('gray').voronoi.colorScale],
     translate: {
       x: 100,
       y: 100,
@@ -128,7 +126,9 @@ class Chart extends React.Component {
     const { data, chartType, colorSchema, legendHeader, ...props } = this.props;
     const currChart = chartMapper[chartType] || chartMapper.pie;
 
-    const colors = currChart.colorScale ? currChart.colorScale(getColors(colorSchema).voronoi.colorScale) : getColors(colorSchema).voronoi.colorScale;
+    const colors = currChart.colorScale
+      ? currChart.colorScale(getLightThemeColors(colorSchema).voronoi.colorScale)
+      : getLightThemeColors(colorSchema).voronoi.colorScale;
 
     const [paths, texts] = this.getChartData(currChart);
 
