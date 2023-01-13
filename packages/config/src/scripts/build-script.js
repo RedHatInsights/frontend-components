@@ -4,16 +4,14 @@ const { spawn } = require('child_process');
 
 function buildScript(argv, cwd) {
   validateFECConfig(cwd);
-  const processArgs = [];
   let configPath;
   if (typeof argv.webpackConfig !== 'undefined') {
     configPath = getWebpackConfigPath(argv.webpackConfig, cwd);
   } else {
     configPath = resolve(__dirname, './prod.webpack.config.js');
   }
-  processArgs.push(`node_modules/.bin/webpack -c ${configPath}`);
   process.env.NODE_ENV = 'production';
-  const subprocess = spawn('node', processArgs, {
+  const subprocess = spawn(`npm exec -- webpack -c ${configPath}`, [], {
     stdio: [process.stdout, process.stdout, process.stdout],
     cwd,
     shell: true,
