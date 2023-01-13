@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-pdf-generator",
-    "version": "2.6.16",
+    "version": "2.6.18",
     "description": "Common components for RedHat Cloud Services project to generate PDF from JS.",
     "browser": "dist/js/index.js",
     "module": "dist/esm/index.js",
@@ -32,7 +32,7 @@
     "author": "Red Hat",
     "license": "Apache-2.0",
     "dependencies": {
-        "@patternfly/react-charts": "^6.3.9",
+        "@patternfly/react-charts": "6.3.9",
         "@patternfly/react-core": "^4.18.5",
         "@patternfly/react-icons": "^3.15.3",
         "@patternfly/react-styles": "^4.3.4",
