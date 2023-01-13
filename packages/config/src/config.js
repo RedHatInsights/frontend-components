@@ -44,7 +44,7 @@ module.exports = ({
   _unstableHotReload = false,
   resolve = {},
 } = {}) => {
-  const filenameMask = `js/[name]${!_unstableHotReload && useFileHash ? `.${Date.now()}.[fullhash]` : ''}.js`;
+  const filenameMask = `js/[name].${!_unstableHotReload && useFileHash ? `[fullhash].` : ''}js`;
   if (betaEnv) {
     env = `${betaEnv}-beta`;
     console.warn('betaEnv is deprecated in favor of env');
