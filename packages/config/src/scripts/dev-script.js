@@ -33,7 +33,6 @@ async function devScript(argv, cwd) {
     validateFECConfig(cwd);
 
     const fecConfig = require(process.env.FEC_CONFIG_PATH);
-    const processArgs = [];
     let configPath;
     if (typeof argv.webpackConfig !== 'undefined') {
       configPath = getWebpackConfigPath(argv.webpackConfig, cwd);
@@ -41,7 +40,7 @@ async function devScript(argv, cwd) {
       configPath = resolve(__dirname, './dev.webpack.config.js');
     }
     await setEnv(cwd);
-    spawn(`npm exec -- webpack serve -c ${configPath}`, processArgs, {
+    spawn(`npm exec -- webpack serve -c ${configPath}`, [], {
       stdio: [process.stdout, process.stdout, process.stdout],
       cwd,
       shell: true,
