@@ -71,25 +71,3 @@ export const generateFilter = (data: FilterData, path = 'filter', options?: { ar
   }, {});
 
 export const toUpperCase = (text = '') => `${text.charAt(0).toUpperCase()}${text.slice(1)}`;
-
-const getIdProp = (item: { [index: string]: any }, idProp: string): object => item[idProp || 'id'];
-
-const identify = (item: object, identifier: any) => {
-  if (typeof identifier === 'string') {
-    return {
-      ...item,
-      itemId: getIdProp(item, identifier),
-    };
-  } else {
-    return {
-      ...item,
-      itemId: identifier(item),
-    };
-  }
-};
-
-export const identifyItems = (items: Record<string, any>, options: { identifier: string }) => {
-  const identifier = options?.identifier || getIdProp;
-
-  return items.map((item: object) => identify(item, identifier));
-};

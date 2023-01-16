@@ -1,0 +1,7 @@
+!components
+!index.js
+!index.css
+src/
+babel.config.js
+*/**/__fixtures__
+

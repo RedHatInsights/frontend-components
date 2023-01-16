@@ -21,6 +21,7 @@
         "packages/remediations",
         "packages/router",
         "packages/rule-components",
+        "packages/tabletools",
         "packages/translations",
         "packages/testing",
         "packages/utils",
