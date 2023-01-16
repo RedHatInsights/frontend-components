@@ -4,7 +4,7 @@ import chromeState from '../ChromeProvider/chromeState';
 const ChromeContext = createContext<ReturnType<typeof chromeState>>({
   update: () => undefined,
   setLastVisited: () => undefined,
-  setFavouritePages: () => undefined,
+  setFavoritePages: () => undefined,
   subscribe: () => 0,
   unsubscribe: () => undefined,
   getState: () => ({

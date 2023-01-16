@@ -33,6 +33,11 @@ describe('chromeState', () => {
     expect(state.getState().lastVisitedPages).toEqual(lastVisitedPayload);
   });
 
+  test('should correctly update favrite pages data via dedicated callback', () => {
+    state.setFavoritePages([{ pathname: 'favorite', favorite: true }]);
+    expect(state.getState().favoritePages).toEqual([{ pathname: 'favorite', favorite: true }]);
+  });
+
   test('should subscribe to lastVisited event and trigger update callback', () => {
     const onUpdateSpy = jest.fn();
     state.subscribe(UpdateEvents.lastVisited, onUpdateSpy);
