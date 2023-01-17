@@ -2,6 +2,10 @@ import chromeState, { UpdateEvents } from './chromeState';
 
 describe('chromeState', () => {
   let state: ReturnType<typeof chromeState>;
+  const lastVisitedPayload = [
+    { pathname: 'foo', title: 'Foo title' },
+    { pathname: 'bar', title: 'Bar title' },
+  ];
   beforeEach(() => {
     state = chromeState();
   });
@@ -10,6 +14,7 @@ describe('chromeState', () => {
     expect(state).toEqual({
       getState: expect.any(Function),
       setLastVisited: expect.any(Function),
+      setFavoritePages: expect.any(Function),
       subscribe: expect.any(Function),
       unsubscribe: expect.any(Function),
       update: expect.any(Function),
@@ -17,13 +22,20 @@ describe('chromeState', () => {
   });
 
   test('should correctly update lastVisited data via "update API"', () => {
-    state.update(UpdateEvents.lastVisited, { lastVisitedPages: ['foo', 'bar'] });
-    expect(state.getState().lastVisitedPages).toEqual(['foo', 'bar']);
+    state.update(UpdateEvents.lastVisited, {
+      lastVisitedPages: lastVisitedPayload,
+    });
+    expect(state.getState().lastVisitedPages).toEqual(lastVisitedPayload);
   });
 
   test('should correctly update lastVisited data via dedicated callback', () => {
-    state.setLastVisited(['foo', 'bar']);
-    expect(state.getState().lastVisitedPages).toEqual(['foo', 'bar']);
+    state.setLastVisited(lastVisitedPayload);
+    expect(state.getState().lastVisitedPages).toEqual(lastVisitedPayload);
+  });
+
+  test('should correctly update favrite pages data via dedicated callback', () => {
+    state.setFavoritePages([{ pathname: 'favorite', favorite: true }]);
+    expect(state.getState().favoritePages).toEqual([{ pathname: 'favorite', favorite: true }]);
   });
 
   test('should subscribe to lastVisited event and trigger update callback', () => {
@@ -31,7 +43,7 @@ describe('chromeState', () => {
     state.subscribe(UpdateEvents.lastVisited, onUpdateSpy);
     expect(onUpdateSpy).toHaveBeenCalledTimes(1);
 
-    state.update(UpdateEvents.lastVisited, { lastVisitedPages: ['foo', 'bar'] });
+    state.update(UpdateEvents.lastVisited, { lastVisitedPages: lastVisitedPayload });
     expect(onUpdateSpy).toHaveBeenCalledTimes(2);
   });
 
@@ -47,7 +59,7 @@ describe('chromeState', () => {
 
     state.unsubscribe(id, UpdateEvents.lastVisited);
 
-    state.update(UpdateEvents.lastVisited, { lastVisitedPages: ['foo', 'bar'] });
+    state.update(UpdateEvents.lastVisited, { lastVisitedPages: lastVisitedPayload });
     expect(onUpdateSpyOne).toHaveBeenCalledTimes(1);
     expect(onUpdateSpyTwo).toHaveBeenCalledTimes(2);
   });
