@@ -33,3 +33,4 @@ npx cypress open-ct
 * Components
   * [RuleDetails](doc/ruleDetails.md)
   * [ReportDetails](doc/reportDetails.md)
+ 
