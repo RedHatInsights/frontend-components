@@ -47,7 +47,7 @@ describe('ChromeProvider', () => {
               return null;
             }}
           ></Route>
-          <ChromeProvider />
+          <ChromeProvider bundle="bundle-title" />
         </MemoryRouter>
       );
     });
@@ -61,6 +61,6 @@ describe('ChromeProvider', () => {
       await flushPromises();
     });
     expect(postSpy).toHaveBeenCalledTimes(2);
-    expect(postSpy).toHaveBeenLastCalledWith('/api/chrome-service/v1/last-visited', { pathname: '/foo/bar', title: '' });
+    expect(postSpy).toHaveBeenLastCalledWith('/api/chrome-service/v1/last-visited', { pathname: '/foo/bar', title: '', bundle: 'bundle-title' });
   });
 });

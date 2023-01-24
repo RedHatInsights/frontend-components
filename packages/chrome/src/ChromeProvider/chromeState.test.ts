@@ -3,8 +3,8 @@ import chromeState, { UpdateEvents } from './chromeState';
 describe('chromeState', () => {
   let state: ReturnType<typeof chromeState>;
   const lastVisitedPayload = [
-    { pathname: 'foo', title: 'Foo title' },
-    { pathname: 'bar', title: 'Bar title' },
+    { pathname: 'foo', title: 'Foo title', bundle: 'foo-title' },
+    { pathname: 'bar', title: 'Bar title', bundle: 'bar-title' },
   ];
   beforeEach(() => {
     state = chromeState();
