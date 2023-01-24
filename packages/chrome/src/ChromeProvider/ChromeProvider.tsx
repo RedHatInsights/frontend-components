@@ -9,19 +9,20 @@ import { FAVORITE_PAGE_URL, LAST_VISITED_URL, get, post } from '../utils/fetch';
 const getLastVisited = () => get<LastVisitedPage[]>(LAST_VISITED_URL);
 const getFavoritePages = () => get<FavoritePage[]>(`${FAVORITE_PAGE_URL}?getAll=true`);
 
-const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState>, chromeBackendEnabled?: boolean) => {
+const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState>, chromeBackendEnabled?: boolean, bundle = '') => {
   const { pathname } = useLocation();
   useEffect(() => {
     if (chromeBackendEnabled) {
-      post<LastVisitedPage[], { pathname: string; title: string }>(LAST_VISITED_URL, {
+      post<LastVisitedPage[], { pathname: string; title: string; bundle: string }>(LAST_VISITED_URL, {
         pathname,
         title: document.title,
+        bundle,
       }).then((data) => providerState.setLastVisited(data));
     }
   }, [pathname]);
 };
 
-const ChromeProvider: React.FC = ({ children }) => {
+const ChromeProvider: React.FC<{ bundle?: string }> = ({ children, bundle }) => {
   const chromeBackendEnabled = useFlag('platform.chrome.chrome-service');
   const isMounted = useRef(false);
   const [initialRequest, setInitialRequest] = useState(false);
@@ -30,7 +31,7 @@ const ChromeProvider: React.FC = ({ children }) => {
     providerState.current = chromeState();
   }
 
-  useLastPageVisitedUploader(providerState.current, chromeBackendEnabled);
+  useLastPageVisitedUploader(providerState.current, chromeBackendEnabled, bundle);
 
   useEffect(() => {
     isMounted.current = true;

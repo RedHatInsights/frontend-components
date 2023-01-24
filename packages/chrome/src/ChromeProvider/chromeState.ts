@@ -6,6 +6,7 @@ export type FavoritePage = {
 export type LastVisitedPage = {
   pathname: string;
   title: string;
+  bundle: string;
 };
 
 export type ChromeContextState = {
