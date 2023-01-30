@@ -39,7 +39,28 @@ async function devScript(argv, cwd) {
     } else {
       configPath = resolve(__dirname, './dev.webpack.config.js');
     }
-    await setEnv(cwd);
+
+    const clouddotEnvOptions = ['stage', 'prod', 'qa', 'ci'];
+    const uiEnvOptions = ['beta', 'stable'];
+    if (argv?.clouddotEnv && argv?.uiEnv) {
+      if (clouddotEnvOptions.includes(argv.clouddotEnv) && uiEnvOptions.includes(argv.uiEnv)) {
+        process.env.BETA = argv.uiEnv;
+        process.env.CLOUDOT_ENV = argv.clouddotEnv;
+        process.env.FEC_ROOT_DIR = cwd;
+      } else {
+        console.error(
+          'Incorrect argument value:\n--clouddotEnv must be one of: [',
+          clouddotEnvOptions.toString(),
+          ']\n--uiEnv must be one of: [',
+          uiEnvOptions.toString(),
+          ']\nRun fec --help for more information.'
+        );
+        process.exit(1);
+      }
+    } else {
+      await setEnv(cwd);
+    }
+
     spawn(`npm exec -- webpack serve -c ${configPath}`, [], {
       stdio: [process.stdout, process.stdout, process.stdout],
       cwd,
