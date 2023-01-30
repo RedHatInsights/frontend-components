@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-config",
-    "version": "4.6.39",
+    "version": "4.6.40",
     "description": "Config plugins and settings for RedHat Cloud Services project.",
     "main": "index.js",
     "bin": {
@@ -21,7 +21,7 @@
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/config#readme",
     "dependencies": {
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.8",
-        "@redhat-cloud-services/frontend-components-config-utilities": "^1.5.27",
+        "@redhat-cloud-services/frontend-components-config-utilities": "^1.5.28",
         "assert": "^2.0.0",
         "axios": "^0.27.2",
         "babel-loader": "^8.2.5",

@@ -9,6 +9,7 @@ const createIncludes = (eager = false) => ({
   '@patternfly/react-tokens': {},
   '@patternfly/react-icons': {},
   '@patternfly/quickstarts': { singleton: true, eager },
+  '@redhat-cloud-services/chrome': { singleton: true },
   '@redhat-cloud-services/frontend-components': {},
   '@redhat-cloud-services/frontend-components-utilities': {},
   '@redhat-cloud-services/frontend-components-notifications': {},
