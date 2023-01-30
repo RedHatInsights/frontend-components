@@ -56,6 +56,15 @@ const argv = yargs
         describe: 'Path to webpack config',
     })
 })
+.option('clouddotEnv', {
+    describe: "Set platform environment ['stage', 'prod', 'qa', 'ci']",
+    type: 'string',
+})
+.option('uiEnv', {
+    describe: "Set Chrome environment ['beta', 'stable']",
+    type: 'string',
+})
+.example('$0 dev --clouddotEnv=stage --uiEnv=stable', 'Example of usage in non-interactive environments')
 .help()
 .argv;
 
@@ -66,7 +75,10 @@ const scripts = {
         static(argv, cwd)
     },
     'patch-etc-hosts': patchHosts,
-    dev: devScript,
+    dev: (argv, cwd) => {
+        validateFECConfig(cwd)
+        devScript(argv, cwd)
+    },
     build: buildScript
 };
 
@@ -74,7 +86,7 @@ const args = [ argv, cwd ];
 
 function run() {
     if (!argv._.length || argv._.length === 0) {
-        console.error('Script name name must be specified. Run fec --help for more information.');
+        console.error('Script name must be specified. Run fec --help for more information.');
         process.exit(1);
     }
 
