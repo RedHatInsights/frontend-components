@@ -33,6 +33,6 @@ exports[`RouterParams component should render 1`] = `
     }
   }
 >
-  <withRouter(Connect(Component)) />
+  <Component />
 </Router>
 `;
