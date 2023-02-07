@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
 
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { NotAuthorized } from '@redhat-cloud-services/frontend-components/NotAuthorized';
@@ -16,4 +15,4 @@ const NoPermissionsPage = () => {
   );
 };
 
-export default withRouter(NoPermissionsPage);
+export default NoPermissionsPage;
