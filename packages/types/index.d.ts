@@ -27,7 +27,7 @@ declare type ChromeUser = {
     };
   };
   identity: {
-    account_number: string;
+    account_number?: string;
     org_id: string;
     internal?: {
       org_id: string;
@@ -119,8 +119,8 @@ export interface ChromeAPI {
   appNavClick: (payload: any) => void;
   appObjectId: (objectId: string) => void;
   auth: {
-    doOffline: () => void;
-    getOfflineToken: () => Promise<any>;
+    doOffline?: () => void;
+    getOfflineToken?: () => Promise<any>;
     getToken: () => Promise<string | undefined>;
     getUser: () => Promise<ChromeUser | void>;
     login: () => Promise<any>;
