@@ -1,7 +1,12 @@
 /* eslint-disable no-console */
-const { resolve } = require('path');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { resolve, relative } = require('path');
+const { DynamicRemotePlugin } = require('@openshift/dynamic-plugin-sdk-webpack');
 const jsVarName = require('./jsVarName');
+
+const defaultPluginMetaDataJSON = {
+  version: '1.0.0',
+  extensions: [],
+};
 
 const createIncludes = (eager = false) => ({
   '@patternfly/react-core': { eager },
@@ -21,36 +26,54 @@ const createIncludes = (eager = false) => ({
   'react-router-dom': { eager },
 });
 
-module.exports = ({ root, exposes, shared = [], debug, moduleName, useFileHash = true, libType = 'var', libName, exclude = [], eager = false }) => {
+module.exports = ({
+  root,
+  exposes,
+  shared = [],
+  debug,
+  moduleName,
+  useFileHash = true,
+  separateRuntime = false,
+  exclude = [],
+  eager = false,
+  pluginMetadata,
+}) => {
   const include = createIncludes(eager);
 
   const { dependencies, insights } = require(resolve(root, './package.json')) || {};
   const appName = moduleName || (insights && jsVarName(insights.appname));
   const filename = `${appName}.${useFileHash ? `[fullhash].` : ''}js`;
 
-  const sharedDeps = Object.entries(include)
+  let sharedDeps = Object.entries(include)
     .filter(([key]) => dependencies[key] && !exclude.includes(key))
     .map(([key, val]) => ({
       [key]: {
         requiredVersion: dependencies[key],
         ...val,
       },
-    }));
+    }))
+    .reduce((acc, curr) => ({ ...acc, ...curr }), {});
 
+  shared.forEach((dep) => {
+    sharedDeps = {
+      ...sharedDeps,
+      ...dep,
+    };
+  });
   /**
    * Add scalprum and force it as singletong.
    * It is required to share the context via `useChrome`.
    * No application should be installing/interacting with scalprum directly.
    */
   if (dependencies['@redhat-cloud-services/frontend-components']) {
-    sharedDeps.push({ '@scalprum/react-core': { requiredVersion: '*', singleton: true, eager } });
+    sharedDeps['@scalprum/react-core'] = { requiredVersion: '*', singleton: true, eager };
   }
 
   /**
    * Make sure the unleash proxy client is a singleton
    */
   if (dependencies['@unleash/proxy-client-react']) {
-    sharedDeps.push({ '@unleash/proxy-client-react': { singleton: true, requiredVersion: dependencies['@unleash/proxy-client-react'] } });
+    sharedDeps['@unleash/proxy-client-react'] = { singleton: true, requiredVersion: dependencies['@unleash/proxy-client-react'] };
   }
 
   if (debug) {
@@ -64,15 +87,27 @@ module.exports = ({ root, exposes, shared = [], debug, moduleName, useFileHash =
     }
   }
 
-  return new ModuleFederationPlugin({
+  const pluginMetadataInternal = pluginMetadata || {
+    ...defaultPluginMetaDataJSON,
     name: appName,
-    filename: filename,
-    library: { type: libType, name: libName || appName },
-    exposes: {
+    exposedModules: {
       ...(exposes || {
-        './RootApp': resolve(root, './src/AppEntry'),
+        './RootApp': `./${relative(root, './src/AppEntry')}`,
       }),
     },
-    shared: [...sharedDeps, ...shared],
+  };
+
+  /** @type { import('@openshift/dynamic-plugin-sdk-webpack').DynamicRemotePlugin } */
+  const dynamicPlugin = new DynamicRemotePlugin({
+    extensions: [],
+    sharedModules: sharedDeps,
+    entryScriptFilename: filename,
+    moduleFederationSettings: {
+      libraryType: separateRuntime ? 'var' : 'jsonp',
+    },
+    pluginManifestFilename: 'fed-mods.json',
+    pluginMetadata: pluginMetadataInternal,
   });
+
+  return dynamicPlugin;
 };
