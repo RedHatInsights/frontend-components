@@ -35,7 +35,6 @@ module.exports = ({
   registry,
   client = {},
   bundlePfModules = false,
-  useChromeTemplate = true,
   bounceProd,
   useAgent,
   useDevBuild = true,
@@ -242,7 +241,7 @@ module.exports = ({
         target,
         registry,
         onBeforeSetupMiddleware: ({ chromePath }) => {
-          if (useChromeTemplate && chromePath) {
+          if (chromePath) {
             copyTemplate(chromePath);
           }
         },

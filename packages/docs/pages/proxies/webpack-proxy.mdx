@@ -9,7 +9,6 @@
     - [Removed features with webpack 5](#removed-features-with-webpack-5)
   - [useProxy](#useproxy)
     - [Attributes](#attributes)
-      - [useChromeTemplate](#useChromeTemplate)
       - [useDevBuild](#useDevBuild)
       - [localChrome](#localchrome)
       - [registry](#registry)
@@ -58,7 +57,6 @@ const { config: webpackConfig, plugins } = config({
 |---------|----|-----------|
 |[useProxy](#useproxy)|`boolean`|Enables webpack proxy.|
 |[proxyURL](#proxyURL)|`string`|URL to proxy Akamai environment requests to.|
-|[useChromeTemplate](#useChromeTemplate)|`boolean`|Load chrome HTMl template.|
 |[useDevBuild](#useDevBuild)|`boolean`|Use chrome development build.|
 |[localChrome](#localChrome)|`string`|Path to your local chrome build folder.|
 |[keycloakUri](#keycloakUri)|`string`|Uri to inject into proxied chrome assets.|
@@ -70,23 +68,6 @@ const { config: webpackConfig, plugins } = config({
 |[useCloud](#use-cloud)|`boolean`|Toggle to use old fallback to cloud.redhat.com paths instead of console.redhat.com.|
 |[target](#target)|`string`|Override `env` and `useCloud` to use a custom URI.|
 
-
-#### useChromeTemplate
-
-**This option will become the default. App-specific templates are deprecated**
-
-To load chrome HTML template instead of using the APP-specific template add `useChromeTemplate` flag to your config.
-
-```js
-const config = require('@redhat-cloud-services/frontend-components-config');
-
-const { config: webpackConfig, plugins } = config({
-  rootFolder: resolve(__dirname, '../'),
-  useProxy: true,
-  useChromeTemplate: true
-  ...
-});
-```
 
 #### useDevBuild
 
