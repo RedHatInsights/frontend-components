@@ -1,5 +1,9 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
 
+button.ins-c-group-menu-toggle {
+    padding: 0;
+}
+
 button.pf-c-menu-toggle {
     outline: none;
     max-width: 261px;
