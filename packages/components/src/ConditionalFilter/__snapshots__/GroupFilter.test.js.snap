@@ -6,7 +6,7 @@ exports[`Group - component render should render correctly 1`] = `
     <button
       aria-expanded="false"
       aria-label="Group filter"
-      class="pf-c-menu-toggle"
+      class="pf-c-menu-toggle ins-c-group-menu-toggle"
       type="button"
     >
       <span
@@ -44,7 +44,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
     <button
       aria-expanded="false"
       aria-label="Group filter"
-      class="pf-c-menu-toggle"
+      class="pf-c-menu-toggle ins-c-group-menu-toggle"
       type="button"
     >
       <span
@@ -84,7 +84,7 @@ exports[`Group - component render should render correctly with items - isDisable
     <button
       aria-expanded="false"
       aria-label="Group filter"
-      class="pf-c-menu-toggle pf-m-disabled"
+      class="pf-c-menu-toggle pf-m-disabled ins-c-group-menu-toggle"
       disabled=""
       type="button"
     >
@@ -123,7 +123,7 @@ exports[`Group - component render should render correctly with items 1`] = `
     <button
       aria-expanded="false"
       aria-label="Group filter"
-      class="pf-c-menu-toggle"
+      class="pf-c-menu-toggle ins-c-group-menu-toggle"
       type="button"
     >
       <span
@@ -161,7 +161,7 @@ exports[`Group - component render should render correctly with items and default
     <button
       aria-expanded="false"
       aria-label="Group filter"
-      class="pf-c-menu-toggle"
+      class="pf-c-menu-toggle ins-c-group-menu-toggle"
       type="button"
     >
       <span
@@ -199,7 +199,7 @@ exports[`Group - component render should render correctly with items and selecte
     <button
       aria-expanded="false"
       aria-label="Group filter"
-      class="pf-c-menu-toggle"
+      class="pf-c-menu-toggle ins-c-group-menu-toggle"
       type="button"
     >
       <span
@@ -237,7 +237,7 @@ exports[`Group - component render should render correctly with selectable group 
     <button
       aria-expanded="false"
       aria-label="Group filter"
-      class="pf-c-menu-toggle"
+      class="pf-c-menu-toggle ins-c-group-menu-toggle"
       type="button"
     >
       <span
@@ -275,7 +275,7 @@ exports[`Group - component render show more should render correctly with items a
     <button
       aria-expanded="false"
       aria-label="Group filter"
-      class="pf-c-menu-toggle"
+      class="pf-c-menu-toggle ins-c-group-menu-toggle"
       type="button"
     >
       <span
@@ -313,7 +313,7 @@ exports[`Group - component render show more should render correctly with items a
     <button
       aria-expanded="false"
       aria-label="Group filter"
-      class="pf-c-menu-toggle"
+      class="pf-c-menu-toggle ins-c-group-menu-toggle"
       type="button"
     >
       <span
@@ -351,7 +351,7 @@ exports[`Group - component render show more should render correctly with items a
     <button
       aria-expanded="false"
       aria-label="Group filter"
-      class="pf-c-menu-toggle"
+      class="pf-c-menu-toggle ins-c-group-menu-toggle"
       type="button"
     >
       <span
@@ -389,7 +389,7 @@ exports[`Group - component render show more should render correctly with items a
     <button
       aria-expanded="false"
       aria-label="Group filter"
-      class="pf-c-menu-toggle"
+      class="pf-c-menu-toggle ins-c-group-menu-toggle"
       type="button"
     >
       <span
