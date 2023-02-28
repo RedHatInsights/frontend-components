@@ -309,7 +309,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
             ref={toggleRef}
             onClick={(e) => onToggleClick(e)}
             isExpanded={isOpen}
-            className={className}
+            className={classNames('ins-c-group-menu-toggle', className)}
             isDisabled={isDisabled}
           >
             {isFilterable || onFilter ? (
