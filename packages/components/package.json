@@ -50,7 +50,7 @@
         "@redhat-cloud-services/frontend-components-utilities": "^3.2.25",
         "sanitize-html": "^2.7.2",
         "@scalprum/core": "^0.2.3",
-        "@scalprum/react-core": "^0.2.4",
+        "@scalprum/react-core": "^0.4.0",
         "@redhat-cloud-services/types": "^0.0.17"
     },
     "devDependencies": {
