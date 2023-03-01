@@ -69,8 +69,8 @@ describe('chromeState', () => {
   test('should log an error if trying unsubscribe non existing client', () => {
     const errorSpy = jest.spyOn(global.console, 'error').mockImplementationOnce(() => undefined /**silently fail in test */);
 
-    state.unsubscribe(123, UpdateEvents.lastVisited);
+    state.unsubscribe(Symbol(123), UpdateEvents.lastVisited);
 
-    expect(errorSpy).toHaveBeenCalledWith('Trying to unsubscribe client outside of the range!');
+    expect(errorSpy).toHaveBeenCalledWith('Trying to unsubscribe non existing client!');
   });
 });
