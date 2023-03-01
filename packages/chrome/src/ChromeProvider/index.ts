@@ -1,3 +1,3 @@
 export { default as ChromeProvider } from './ChromeProvider';
 export { default } from './ChromeProvider';
-export { ChromeContextState, UpdateEvents, LastVisitedPage, FavoritePage } from './chromeState';
+export { UserIdentity, UpdateEvents, LastVisitedPage, FavoritePage, VisitedBundles } from './chromeState';

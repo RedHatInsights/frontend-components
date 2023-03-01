@@ -9,20 +9,25 @@ export type LastVisitedPage = {
   bundle: string;
 };
 
-export type ChromeContextState = {
+export type VisitedBundles = { [bundle: string]: true };
+
+export type UserIdentity = {
   lastVisitedPages: LastVisitedPage[];
   favoritePages: FavoritePage[];
+  visitedBundles: VisitedBundles;
 };
 
 export enum UpdateEvents {
   lastVisited = 'lastVisited',
   favoritePages = 'favoritePages',
+  visitedBundles = 'visitedBundles',
 }
 
 const chromeState = () => {
-  let state: ChromeContextState = {
+  let state: UserIdentity = {
     lastVisitedPages: [],
     favoritePages: [],
+    visitedBundles: {},
   };
 
   // registry of all subscribers (hooks)
@@ -33,6 +38,7 @@ const chromeState = () => {
   } = {
     lastVisited: [],
     favoritePages: [],
+    visitedBundles: [],
   };
 
   // add subscriber (hook) to registry
@@ -56,7 +62,7 @@ const chromeState = () => {
   }
 
   // update state attribute and push data to subscribers
-  function update(event: UpdateEvents, attributes: Partial<ChromeContextState>) {
+  function update(event: UpdateEvents, attributes: Partial<UserIdentity>) {
     state = {
       ...state,
       ...attributes,
@@ -81,15 +87,31 @@ const chromeState = () => {
     update(UpdateEvents.favoritePages, { favoritePages: pages });
   }
 
+  function setVisitedBundles(visitedBundles: VisitedBundles) {
+    update(UpdateEvents.visitedBundles, { visitedBundles });
+  }
+
   function getState() {
     return state;
+  }
+
+  // initializes state with new identity and should trigger all updates
+  function setIdentity(userIdentity: UserIdentity) {
+    state = userIdentity;
+    Object.values(subscribtions)
+      .flat()
+      .forEach((sub) => {
+        sub.onUpdate();
+      });
   }
 
   // public state manager interface
   return {
     getState,
     setLastVisited,
+    setIdentity,
     setFavoritePages,
+    setVisitedBundles,
     subscribe,
     unsubscribe,
     update,

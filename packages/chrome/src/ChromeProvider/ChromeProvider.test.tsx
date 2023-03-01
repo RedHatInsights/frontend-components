@@ -28,9 +28,8 @@ describe('ChromeProvider', () => {
       );
     });
 
-    expect(getSpy).toHaveBeenCalledTimes(2);
-    expect(getSpy).toHaveBeenCalledWith('/api/chrome-service/v1/last-visited');
-    expect(getSpy).toHaveBeenCalledWith('/api/chrome-service/v1/favorite-pages?getAll=true');
+    expect(getSpy).toHaveBeenCalledTimes(1);
+    expect(getSpy).toHaveBeenCalledWith('/api/chrome-service/v1/user');
   });
 
   test('should post new data on pathname change', async () => {

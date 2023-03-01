@@ -1,6 +1,8 @@
 export const API_BASE = '/api/chrome-service/v1';
 export const LAST_VISITED_URL = `${API_BASE}/last-visited`;
 export const FAVORITE_PAGE_URL = `${API_BASE}/favorite-pages`;
+export const IDENTITY_URL = `${API_BASE}/user`;
+export const VISITED_BUNDLES_URL = `${API_BASE}/user/visited-bundles`;
 
 export function get<T>(url: RequestInfo, options?: RequestInit) {
   return fetch(url, { ...options, method: 'GET' })

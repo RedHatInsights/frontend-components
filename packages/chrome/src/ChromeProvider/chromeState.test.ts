@@ -13,8 +13,10 @@ describe('chromeState', () => {
   test('should correctly initialize', () => {
     expect(state).toEqual({
       getState: expect.any(Function),
+      setIdentity: expect.any(Function),
       setLastVisited: expect.any(Function),
       setFavoritePages: expect.any(Function),
+      setVisitedBundles: expect.any(Function),
       subscribe: expect.any(Function),
       unsubscribe: expect.any(Function),
       update: expect.any(Function),
