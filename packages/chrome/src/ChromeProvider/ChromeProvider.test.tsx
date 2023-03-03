@@ -62,4 +62,26 @@ describe('ChromeProvider', () => {
     expect(postSpy).toHaveBeenCalledTimes(2);
     expect(postSpy).toHaveBeenLastCalledWith('/api/chrome-service/v1/last-visited', { pathname: '/foo/bar', title: '', bundle: 'bundle-title' });
   });
+
+  test('should not update state on mount if received error response', async () => {
+    const errorResponse = { errors: [{ status: 404, meta: { response_by: 'gateway' }, detail: 'Undefined Insights application' }] };
+    getSpy.mockRejectedValue(errorResponse);
+    postSpy.mockRejectedValue(errorResponse);
+    // do not polute console with errors
+    const consoleSpy = jest.spyOn(global.console, 'error').mockImplementation(() => undefined);
+    await act(async () => {
+      await render(
+        <MemoryRouter>
+          <ChromeProvider />
+        </MemoryRouter>
+      );
+    });
+
+    expect(consoleSpy).toHaveBeenCalledTimes(2);
+    expect(consoleSpy.mock.calls).toEqual([
+      ['Unable to update last visited pages!', errorResponse],
+      ['Unable to initialize ChromeProvider!', errorResponse],
+    ]);
+    consoleSpy.mockRestore();
+  });
 });
