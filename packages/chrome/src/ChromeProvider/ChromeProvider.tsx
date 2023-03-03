@@ -14,7 +14,9 @@ const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState
       pathname,
       title: document.title,
       bundle,
-    }).then((data) => providerState.setLastVisited(data));
+    })
+      .then((data) => providerState.setLastVisited(data))
+      .catch((error) => console.error('Unable to update last visited pages!', error));
   }, [pathname]);
 };
 
@@ -31,12 +33,16 @@ const ChromeProvider: React.FC<{ bundle?: string }> = ({ children, bundle }) => 
   useEffect(() => {
     isMounted.current = true;
     if (!initialRequest) {
-      getUserIdentity().then((identity) => {
-        if (isMounted.current) {
-          providerState.current?.setIdentity(identity);
-          setInitialRequest(true);
-        }
-      });
+      getUserIdentity()
+        .then((identity) => {
+          if (isMounted.current) {
+            providerState.current?.setIdentity(identity);
+            setInitialRequest(true);
+          }
+        })
+        .catch((error) => {
+          console.error('Unable to initialize ChromeProvider!', error);
+        });
     }
     return () => {
       isMounted.current = false;

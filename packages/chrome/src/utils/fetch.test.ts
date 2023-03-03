@@ -3,7 +3,11 @@ import { get, post } from './fetch';
 describe('fetch', () => {
   const fetchSpy = jest.spyOn(global, 'fetch').mockImplementation((input: RequestInfo | URL, init?: RequestInit | undefined) => {
     return Promise.resolve({
+      ok: true,
       json: () => Promise.resolve({ data: { foo: 'bar' } }),
+      clone: () => ({
+        json: () => Promise.resolve({ data: { foo: 'bar' } }),
+      }),
     } as Response);
   });
 
@@ -56,6 +60,25 @@ describe('fetch', () => {
         'Content-Type': 'application/json',
       },
       method: 'POST',
+    });
+  });
+
+  test('should handle server errors', () => {
+    const errorResponse = { errors: [{ status: 404, meta: { response_by: 'gateway' }, detail: 'Undefined Insights application' }] };
+    fetchSpy.mockImplementationOnce(() =>
+      // @ts-ignore
+      Promise.resolve({
+        ok: false,
+        clone: () => ({
+          headers: {
+            get: () => 'application/json',
+          },
+          json: () => Promise.resolve(errorResponse),
+        }),
+      })
+    );
+    return get('/foo/bar').catch((error) => {
+      expect(error).toEqual(errorResponse);
     });
   });
 });
