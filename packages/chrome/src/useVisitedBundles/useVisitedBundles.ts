@@ -31,7 +31,7 @@ const useVisitedBundles = () => {
       unsubscribe(subsId, UpdateEvents.visitedBundles);
     };
   }, []);
-  return { visitedBundles: getState().visitedBundles, markVisited };
+  return { visitedBundles: getState().visitedBundles, markVisited, initialized: getState().initialized };
 };
 
 export default useVisitedBundles;

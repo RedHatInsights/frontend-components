@@ -46,7 +46,7 @@ const useFavoritePages = () => {
       unsubscribe(subsId, UpdateEvents.favoritePages);
     };
   }, []);
-  return { favoritePages: getState().favoritePages, favoritePage, unfavoritePage };
+  return { favoritePages: getState().favoritePages, favoritePage, unfavoritePage, initialized: getState().initialized };
 };
 
 export default useFavoritePages;

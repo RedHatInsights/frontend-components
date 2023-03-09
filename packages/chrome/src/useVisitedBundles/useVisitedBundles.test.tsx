@@ -87,6 +87,7 @@ describe('useVisitedBundles', () => {
             },
             favoritePages: [],
             lastVisitedPages: [],
+            initialized: true,
           }),
         }}
       >
