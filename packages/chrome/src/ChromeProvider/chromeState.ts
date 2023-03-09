@@ -15,6 +15,7 @@ export type UserIdentity = {
   lastVisitedPages: LastVisitedPage[];
   favoritePages: FavoritePage[];
   visitedBundles: VisitedBundles;
+  initialized: boolean;
 };
 
 export enum UpdateEvents {
@@ -28,6 +29,7 @@ const chromeState = () => {
     lastVisitedPages: [],
     favoritePages: [],
     visitedBundles: {},
+    initialized: false,
   };
 
   // registry of all subscribers (hooks)
@@ -96,7 +98,7 @@ const chromeState = () => {
 
   // initializes state with new identity and should trigger all updates
   function setIdentity(userIdentity: UserIdentity) {
-    state = userIdentity;
+    state = { ...userIdentity, initialized: true };
     Object.values(subscribtions)
       .flat()
       .forEach((event) => {

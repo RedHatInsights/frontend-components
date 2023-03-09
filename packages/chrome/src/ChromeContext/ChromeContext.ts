@@ -14,6 +14,7 @@ const ChromeContext = createContext<ReturnType<typeof chromeState>>({
     subscribtions: {},
     favoritePages: [],
     visitedBundles: {},
+    initialized: false,
   }),
 });
 
