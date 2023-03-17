@@ -108,7 +108,12 @@ const Notification: React.ComponentType<NotificationProps> = ({
       onMouseEnter={clearDismissTimeout}
       onMouseLeave={setDismissTimeout}
     >
-      {typeof description === 'string' ? description.replace(/<\/?[^>]+(>|$)/g, '') : description}
+      <TextContent>
+        <Text className="sentry-mask data-hj-suppress" component={TextVariants.small}>
+          {typeof description === 'string' ? description.replace(/<\/?[^>]+(>|$)/g, '') : description}
+        </Text>
+      </TextContent>
+
       {sentryId && (
         <TextContent>
           <Text component={TextVariants.small}>Tracking Id: {sentryId}</Text>

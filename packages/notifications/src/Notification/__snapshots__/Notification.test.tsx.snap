@@ -10,7 +10,14 @@ exports[`Notification component pagination should render correctly 1`] = `
   title="Bar"
   variant="success"
 >
-  description
+  <TextContent>
+    <Text
+      className="sentry-mask data-hj-suppress"
+      component="small"
+    >
+      description
+    </Text>
+  </TextContent>
 </Alert>
 `;
 
@@ -24,7 +31,14 @@ exports[`Notification component should render correctly 1`] = `
   title="Bar"
   variant="success"
 >
-  description
+  <TextContent>
+    <Text
+      className="sentry-mask data-hj-suppress"
+      component="small"
+    >
+      description
+    </Text>
+  </TextContent>
 </Alert>
 `;
 
@@ -38,7 +52,14 @@ exports[`Notification component should render correctly with HTML description 1`
   title="Bar"
   variant="success"
 >
-  Some textanother
+  <TextContent>
+    <Text
+      className="sentry-mask data-hj-suppress"
+      component="small"
+    >
+      Some textanother
+    </Text>
+  </TextContent>
 </Alert>
 `;
 
@@ -52,7 +73,14 @@ exports[`Notification component should render correctly with HTML title 1`] = `
   title="Some textanother"
   variant="success"
 >
-  description
+  <TextContent>
+    <Text
+      className="sentry-mask data-hj-suppress"
+      component="small"
+    >
+      description
+    </Text>
+  </TextContent>
 </Alert>
 `;
 
@@ -77,7 +105,14 @@ exports[`Notification component should render correctly with dismiss button 1`] 
   onMouseLeave={[Function]}
   title="Bar"
   variant="success"
-/>
+>
+  <TextContent>
+    <Text
+      className="sentry-mask data-hj-suppress"
+      component="small"
+    />
+  </TextContent>
+</Alert>
 `;
 
 exports[`Notification component should render correctly with sentryId 1`] = `
@@ -90,7 +125,14 @@ exports[`Notification component should render correctly with sentryId 1`] = `
   title="Bar"
   variant="success"
 >
-  description
+  <TextContent>
+    <Text
+      className="sentry-mask data-hj-suppress"
+      component="small"
+    >
+      description
+    </Text>
+  </TextContent>
   <TextContent>
     <Text
       component="small"
@@ -111,5 +153,12 @@ exports[`Notification component should render correctly withouth description 1`]
   onMouseLeave={[Function]}
   title="Bar"
   variant="success"
-/>
+>
+  <TextContent>
+    <Text
+      className="sentry-mask data-hj-suppress"
+      component="small"
+    />
+  </TextContent>
+</Alert>
 `;
