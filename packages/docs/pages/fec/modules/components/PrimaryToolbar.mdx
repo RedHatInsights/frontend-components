@@ -1,0 +1,25 @@
+import ExampleComponent from '@docs/example-component'
+
+# PrimaryToolbar
+<ExampleComponent source="PrimaryToolbar/expand-all.js" name="expand all.js" /><ExampleComponent source="PrimaryToolbar/filter-categories.js" name="filter categories.js" /><ExampleComponent source="PrimaryToolbar/simple-toolbar.js" name="simple toolbar.js" /><ExampleComponent source="PrimaryToolbar/toolbar-actions.js" name="toolbar actions.js" /><ExampleComponent source="PrimaryToolbar/toolbar-chips.js" name="toolbar chips.js" /><ExampleComponent source="PrimaryToolbar/with-bulkselect.js" name="with bulkselect.js" />
+
+## Props
+
+|name|type|default|description|
+|----|----|-------|-----------|
+|id|string&#124;number|||
+|className|`string`|||
+|toggleIsExpanded|()=&gt;void|`() => undefined`||
+|bulkSelect|<code>Object</code>|| [BulkSelect props](/fec/modules/components/BulkSelect)|
+|filterConfig|<code>Object</code>|| [ConditionalFilter props](/fec/modules/components/ConditionalFilter)|
+|dedicatedAction|React.ReactNode|||
+|pagination|Omit&lt;PaginationProps,'ref'&gt;|| [PF pagination props](https://www.patternfly.org/v4/components/pagination#pagination)|
+|sortByConfig|<code>Object</code>|| [SortBy props](/fec/modules/components/SortBy)|
+|exportConfig|<code>Object</code>|| [DownloadButton props](/fec/modules/components/DownloadButton)|
+|activeFiltersConfig|<code>Object</code>|| [FilterChips props](/fec/modules/components/FilterChips)|
+|actionsConfig|<code>&#123;<br/><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span> "name": "ActionsProps"<br />&#125;</code>|||
+|expandAll|React.ReactNode&#124;PrimaryToolbarExpandAllObject|||
+|useMobileLayout|<code>&#123;<br/><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span> "name": "boolean"<br />&#125;</code>||Use PF [toolbar toggle component for conditional filter](https://www.patternfly.org/v4/components/toolbar/react/component-managed-toggle-groups/)|
+
+
+

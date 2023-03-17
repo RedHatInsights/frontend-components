@@ -1,0 +1,23 @@
+import ExampleComponent from '@docs/example-component'
+
+# Battery
+This is the battery component that generates a 'battery'
+which corresponds to a level 1-4
+1 - low, green - best case scenario
+2 - medium, yellow
+3 - high, orange
+4 - critical, red - worst case scenario
+Also accepts a label which can be made invisible
+<ExampleComponent source="Battery/critical-severity.js" name="critical severity.js" /><ExampleComponent source="Battery/high-severity.js" name="high severity.js" /><ExampleComponent source="Battery/low-severity.js" name="low severity.js" /><ExampleComponent source="Battery/medium-severity.js" name="medium severity.js" />
+
+## Props
+
+|name|type|default|description|
+|----|----|-------|-----------|
+|severity&#42;|1&#124;2&#124;3&#124;4&#124;'info'&#124;'low'&#124;'warn'&#124;'medium'&#124;'error'&#124;'high'&#124;'critical'|||
+|label&#42;|`string`|||
+|labelHidden|<code>&#123;<br/><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span> "name": "boolean"<br />&#125;</code>|||
+|className|`string`|||
+
+
+

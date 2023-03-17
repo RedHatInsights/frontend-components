@@ -1,0 +1,32 @@
+import ExampleComponent from '@docs/example-component'
+
+# GroupFilter
+Component that works as a group filter for ConditionalFilter component.
+
+You can either pass flat config using `items` to it. Or supply `groups` array to show groups with titles.
+
+You can even mix match them (items will be rendered before groups).
+
+It was not designed to be used as a standalone component, but rather within conditionalFilter.
+<ExampleComponent source="GroupFilter/groupped-example.js" name="groupped example.js" /><ExampleComponent source="GroupFilter/searchable-example.js" name="searchable example.js" /><ExampleComponent source="GroupFilter/simple-example.js" name="simple example.js" /><ExampleComponent source="GroupFilter/tree-view-example.js" name="tree view-example.js" />
+
+## Props
+
+|name|type|default|description|
+|----|----|-------|-----------|
+|className|`string`||Optional className.|
+|filterBy|`string`|`''`|Optional filterBy key.|
+|groups|Group[]|`[]`|Optional groups.|
+|isFilterable|<code>&#123;<br/><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span> "name": "boolean"<br />&#125;</code>|`false`|Optional isFilterable flag.|
+|items|GroupFilterItem[]||Optional groupFilter items.|
+|onFilter|(value:string)=&gt;void||Optional onFilter callback.|
+|onChange|<code>&#123;<br/><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span> "name": "FilterMenuItemOnChange"<br />&#125;</code>||onChange event called on input change.|
+|onShowMore|(event:React.MouseEvent&#124;React.KeyboardEvent&#124;MouseEvent)=&gt;void||Optional callback on showMore button click.|
+|placeholder|`string`||Optional text filter placeholder.|
+|selected|Record&lt;string,Record&lt;string,GroupItem&#124;boolean&gt;&gt;||Selected filters object.|
+|showMoreTitle|React.ReactNode||Optional showMore button title element.|
+|showMoreOptions|Record&lt;string,unknown&gt;||Optional object containing properties for showMore element.|
+|isDisabled|<code>&#123;<br/><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span> "name": "boolean"<br />&#125;</code>||Optional boolean to disable the dropdown and text filter.|
+
+
+

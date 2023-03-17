@@ -1,0 +1,21 @@
+import ExampleComponent from '@docs/example-component'
+
+# RadioFilter
+Component that works as a radio filter for ConditionalFilter component.
+
+It was not designed to be used as a standalone component, but rather within conditionalFilter.
+<ExampleComponent source="RadioFilter/conditional-filter-controlled.js" name="conditional filter-controlled.js" /><ExampleComponent source="RadioFilter/conditional-filter.js" name="conditional filter.js" /><ExampleComponent source="RadioFilter/simple-example.js" name="simple example.js" />
+
+## Props
+
+|name|type|default|description|
+|----|----|-------|-----------|
+|className|`string`||Optional className.|
+|isDisabled|<code>&#123;<br/><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span> "name": "boolean"<br />&#125;</code>|`false`|Optional disabled flag.|
+|items|FilterItem[]|`[]`|Optional list of available options.|
+|onChange|(e:React.MouseEvent&#124;React.ChangeEvent&#124;React.FormEvent&lt;HTMLInputElement&gt;,newSelection:string&#124;FilterValue&#124;(string&#124;FilterValue)[],selection?:string&#124;FilterValue)=&gt;void|`() => undefined`|Optional onChange event callback.|
+|placeholder|`string`||Optional select value placeholder.|
+|value|string&#124;FilterValue&#124;(string&#124;FilterValue)[]&#124;Record&lt;string,unknown&gt;||Optional list of selected values.|
+
+
+

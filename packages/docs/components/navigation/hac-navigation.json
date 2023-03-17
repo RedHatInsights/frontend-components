@@ -1,0 +1,24 @@
+{
+	"index": {
+		"title": "Hac",
+		"href": "/hac"
+	},
+	"items": [
+		{
+			"title": "Lib core",
+			"href": "/hac/lib-core"
+		},
+		{
+			"title": "Lib extensions",
+			"href": "/hac/lib-extensions"
+		},
+		{
+			"title": "Lib utils",
+			"href": "/hac/lib-utils"
+		},
+		{
+			"title": "Lib webpack",
+			"href": "/hac/lib-webpack"
+		}
+	]
+}

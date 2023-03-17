@@ -1,0 +1,17 @@
+import ExampleComponent from '@docs/example-component'
+
+# DownloadButton
+Download Button is a button component specifically made to be used for any download logic
+<ExampleComponent source="DownloadButton/downloadbutton-example.js" name="downloadbutton example.js" />
+
+## Props
+
+|name|type|default|description|
+|----|----|-------|-----------|
+|extraItems|React.ReactElement[]|`[]`|Additional JSX elements rendered as dropdown options|
+|tooltipText|React.ReactNode||Text to appear in the tooltip|
+|onSelect|(event:MouseEvent&#124;React.MouseEvent&lt;any,MouseEvent&gt;&#124;React.KeyboardEvent&lt;Element&gt;,format:'csv'&#124;'json')=&gt;void|`() => undefined`|Action the button will take when selected|
+|isDisabled|<code>&#123;<br/><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span> "name": "boolean"<br />&#125;</code>||Determines if the button is disabled or not|
+
+
+

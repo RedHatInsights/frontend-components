@@ -1,0 +1,28 @@
+# urlParamConvert
+
+- Converts URL parameters to the values and checks if filter chips with such values exists.
+
+## Params
+|Name|Type|Default|Description|
+|---|---|---|---|
+|key&#42;|<code>string</code>|<code></code>|string key of URL parameter
+|value&#42;|<code>string</code>|<code></code>|string value of URL parameter
+|filters&#42;|<code>Object</code>|<code></code>|Object that contains filters description.
+
+ ## Examples
+ ```js
+// of filters parameter
+FILTER_CATEGORIES = {
+total_risk: {
+ type: 'checkbox',
+ title: 'total risk',
+ urlParam: 'total_risk',
+ values: [
+   { label: TOTAL_RISK_LABEL[4], value: '4' },
+   { label: TOTAL_RISK_LABEL[3], value: '3' },
+   { label: TOTAL_RISK_LABEL[2], value: '2' },
+   { label: TOTAL_RISK_LABEL[1], value: '1' },
+ ],
+},
+}
+```
