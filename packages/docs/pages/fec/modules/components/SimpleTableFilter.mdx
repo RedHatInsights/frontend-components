@@ -1,0 +1,19 @@
+
+# SimpleFilter
+
+## Props
+
+|name|type|default|description|
+|----|----|-------|-----------|
+|widgetId|`string`|||
+|buttonTitle|`string`|`'Filter'`||
+|placeholder|`string`|`'Search items'`||
+|className|`string`|`''`||
+|options|&#123;title?:string;items?:SimpleFilterOptionItem[];&#125;|||
+|onButtonClick|(activeFilter:string,selected?:SimpleFilterOptionItem)=&gt;void|`() => undefined`||
+|onFilterChange|(value:string,selected?:SimpleFilterOptionItem)=&gt;void|`() => undefined`||
+|onOptionSelect|(event:MouseEvent&#124;React.MouseEvent&lt;any,MouseEvent&gt;&#124;React.KeyboardEvent&lt;Element&gt;,oneItem:SimpleFilterOptionItem)=&gt;void|`() => undefined`||
+|searchIcon|<code>&#123;<br/><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span> "name": "boolean"<br />&#125;</code>|`true`||
+
+
+

@@ -1,0 +1,28 @@
+import ExampleComponent from '@docs/example-component'
+
+# TextFilter
+Component that works as a text filter for ConditionalFilter component.
+
+This component accepts onChange event called on input change
+and onSubmit event called on Enter press.
+
+It was not designed to be used as a standalone component, but rather within conditionalFilter.
+<ExampleComponent source="TextFilter/conditional-filter-controlled.js" name="conditional filter-controlled.js" /><ExampleComponent source="TextFilter/conditional-filter.js" name="conditional filter.js" /><ExampleComponent source="TextFilter/simple-example.js" name="simple example.js" />
+
+## Props
+
+|name|type|default|description|
+|----|----|-------|-----------|
+|value|string&#124;FilterValue&#124;(string&#124;FilterValue)[]&#124;Record&lt;string,unknown&gt;|`''`|Optional text filter value.|
+|placeholder|`string`||Optional text filter placeholder.|
+|onChange|(e:React.MouseEvent&#124;React.ChangeEvent&#124;React.FormEvent&lt;HTMLInputElement&gt;,newSelection:string&#124;FilterValue&#124;(string&#124;FilterValue)[],selection?:string&#124;FilterValue)=&gt;void||Optional onChange event called on input change.|
+|onSubmit|(e:React.FormEvent&lt;HTMLInputElement&gt;,value:string)=&gt;void|`() => undefined`|Optional onSubmit event called on Enter press.|
+|isDisabled|<code>&#123;<br/><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span> "name": "boolean"<br />&#125;</code>|`false`|Optional input disabled state indicator.|
+|aria-label|`string`||Optional aria-label value.|
+|id|`string`||Optional id value.|
+|icon|React.FunctionComponent||Optional icon component.|
+|className|`string`||Optional className.|
+|innerRef|React.Ref&lt;HTMLInputElement&gt;||Input element react ref|
+
+
+

@@ -39,12 +39,6 @@
 				]
 			},
 			{
-				"group": "TemplateProcessor",
-				"items": [
-					"TemplateProcessor"
-				]
-			},
-			{
 				"group": "ViewAffectedLink",
 				"items": [
 					"ViewAffectedLink"
@@ -88,6 +82,30 @@
 				"group": "SeverityLine",
 				"items": [
 					"SeverityLine"
+				]
+			}
+		]
+	},
+	{
+		"packageName": "chrome",
+		"groups": [
+			{
+				"group": "ChromeProvider",
+				"items": [
+					"ChromeProvider",
+					"chromeState"
+				]
+			},
+			{
+				"group": "useFavoritePages",
+				"items": [
+					"useFavoritePages"
+				]
+			},
+			{
+				"group": "useLastVisited",
+				"items": [
+					"useLastVisited"
 				]
 			}
 		]
@@ -451,6 +469,19 @@
 					"PDFDocument",
 					"Section",
 					"Table"
+				]
+			},
+			{
+				"group": "theme",
+				"items": [
+					{
+						"title": "ChartThemeColor",
+						"name": "chartTheme-ChartThemeColor"
+					},
+					{
+						"title": "ChartThemeVariant",
+						"name": "chartTheme-ChartThemeVariant"
+					}
 				]
 			}
 		]

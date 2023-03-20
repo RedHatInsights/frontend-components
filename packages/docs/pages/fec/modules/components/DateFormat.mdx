@@ -1,0 +1,18 @@
+import ExampleComponent from '@docs/example-component'
+
+# DateFormat
+A component that formats date to a unified CRC format.
+Relative date format adds a tooltip with a full date string.
+<ExampleComponent source="DateFormat/data-types.js" name="data types.js" /><ExampleComponent source="DateFormat/date-formats.js" name="date formats.js" /><ExampleComponent source="DateFormat/extra-title.js" name="extra title.js" /><ExampleComponent source="DateFormat/tooltip-props.js" name="tooltip props.js" />
+
+## Props
+
+|name|type|default|description|
+|----|----|-------|-----------|
+|date&#42;|Date&#124;number&#124;string|||
+|type|Exclude&lt;DateType,'invalid'&gt;|`'relative'`|Output format of the date|
+|extraTitle|React.ReactNode||Additional text in the tooltip|
+|tooltipProps|<code>&#123;<br/><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span><span className="default-prop-spacer"></span> "name": "TooltipProps"<br />&#125;</code>||<a target="_blank" href="https://www.patternfly.org/v4/components/tooltip/#props">PF Tooltip props object</a>|
+
+
+
