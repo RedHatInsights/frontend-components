@@ -13,8 +13,10 @@ describe('chromeState', () => {
   test('should correctly initialize', () => {
     expect(state).toEqual({
       getState: expect.any(Function),
+      setIdentity: expect.any(Function),
       setLastVisited: expect.any(Function),
       setFavoritePages: expect.any(Function),
+      setVisitedBundles: expect.any(Function),
       subscribe: expect.any(Function),
       unsubscribe: expect.any(Function),
       update: expect.any(Function),
@@ -67,8 +69,8 @@ describe('chromeState', () => {
   test('should log an error if trying unsubscribe non existing client', () => {
     const errorSpy = jest.spyOn(global.console, 'error').mockImplementationOnce(() => undefined /**silently fail in test */);
 
-    state.unsubscribe(123, UpdateEvents.lastVisited);
+    state.unsubscribe(Symbol(123), UpdateEvents.lastVisited);
 
-    expect(errorSpy).toHaveBeenCalledWith('Trying to unsubscribe client outside of the range!');
+    expect(errorSpy).toHaveBeenCalledWith('Trying to unsubscribe non existing client!');
   });
 });

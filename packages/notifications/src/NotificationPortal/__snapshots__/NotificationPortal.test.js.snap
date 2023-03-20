@@ -159,7 +159,19 @@ exports[`Notification portal should render notifications given as direct props 1
                     <div
                       class="pf-c-alert__description"
                     >
-                      Some meaningfull description
+                      <div
+                        class="pf-c-content"
+                      >
+                        <small
+                          class="sentry-mask data-hj-suppress"
+                          data-ouia-component-id="OUIA-Generated-Text-1"
+                          data-ouia-component-type="PF4/Text"
+                          data-ouia-safe="true"
+                          data-pf-content="true"
+                        >
+                          Some meaningfull description
+                        </small>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -231,7 +243,19 @@ exports[`Notification portal should render notifications given as direct props 1
                     <div
                       class="pf-c-alert__description"
                     >
-                      Some meaningfull description
+                      <div
+                        class="pf-c-content"
+                      >
+                        <small
+                          class="sentry-mask data-hj-suppress"
+                          data-ouia-component-id="OUIA-Generated-Text-2"
+                          data-ouia-component-type="PF4/Text"
+                          data-ouia-safe="true"
+                          data-pf-content="true"
+                        >
+                          Some meaningfull description
+                        </small>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -386,7 +410,26 @@ exports[`Notification portal should render notifications given as direct props 1
                     <div
                       className="pf-c-alert__description"
                     >
-                      Some meaningfull description
+                      <TextContent>
+                        <div
+                          className="pf-c-content"
+                        >
+                          <Text
+                            className="sentry-mask data-hj-suppress"
+                            component="small"
+                          >
+                            <small
+                              className="sentry-mask data-hj-suppress"
+                              data-ouia-component-id="OUIA-Generated-Text-2"
+                              data-ouia-component-type="PF4/Text"
+                              data-ouia-safe={true}
+                              data-pf-content={true}
+                            >
+                              Some meaningfull description
+                            </small>
+                          </Text>
+                        </div>
+                      </TextContent>
                     </div>
                   </div>
                 </Alert>
@@ -559,7 +602,19 @@ exports[`Notification portal should render notifications given as direct props o
                     <div
                       class="pf-c-alert__description"
                     >
-                      Some meaningfull description
+                      <div
+                        class="pf-c-content"
+                      >
+                        <small
+                          class="sentry-mask data-hj-suppress"
+                          data-ouia-component-id="OUIA-Generated-Text-1"
+                          data-ouia-component-type="PF4/Text"
+                          data-ouia-safe="true"
+                          data-pf-content="true"
+                        >
+                          Some meaningfull description
+                        </small>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -631,7 +686,19 @@ exports[`Notification portal should render notifications given as direct props o
                     <div
                       class="pf-c-alert__description"
                     >
-                      Some meaningfull description
+                      <div
+                        class="pf-c-content"
+                      >
+                        <small
+                          class="sentry-mask data-hj-suppress"
+                          data-ouia-component-id="OUIA-Generated-Text-2"
+                          data-ouia-component-type="PF4/Text"
+                          data-ouia-safe="true"
+                          data-pf-content="true"
+                        >
+                          Some meaningfull description
+                        </small>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -703,7 +770,19 @@ exports[`Notification portal should render notifications given as direct props o
                     <div
                       class="pf-c-alert__description"
                     >
-                      Some meaningfull description
+                      <div
+                        class="pf-c-content"
+                      >
+                        <small
+                          class="sentry-mask data-hj-suppress"
+                          data-ouia-component-id="OUIA-Generated-Text-3"
+                          data-ouia-component-type="PF4/Text"
+                          data-ouia-safe="true"
+                          data-pf-content="true"
+                        >
+                          Some meaningfull description
+                        </small>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -858,7 +937,26 @@ exports[`Notification portal should render notifications given as direct props o
                     <div
                       className="pf-c-alert__description"
                     >
-                      Some meaningfull description
+                      <TextContent>
+                        <div
+                          className="pf-c-content"
+                        >
+                          <Text
+                            className="sentry-mask data-hj-suppress"
+                            component="small"
+                          >
+                            <small
+                              className="sentry-mask data-hj-suppress"
+                              data-ouia-component-id="OUIA-Generated-Text-3"
+                              data-ouia-component-type="PF4/Text"
+                              data-ouia-safe={true}
+                              data-pf-content={true}
+                            >
+                              Some meaningfull description
+                            </small>
+                          </Text>
+                        </div>
+                      </TextContent>
                     </div>
                   </div>
                 </Alert>
@@ -1009,7 +1107,19 @@ exports[`Notification portal should render notifications given from store 1`] = 
                     <div
                       class="pf-c-alert__description"
                     >
-                      Some meaningfull description
+                      <div
+                        class="pf-c-content"
+                      >
+                        <small
+                          class="sentry-mask data-hj-suppress"
+                          data-ouia-component-id="OUIA-Generated-Text-1"
+                          data-ouia-component-type="PF4/Text"
+                          data-ouia-safe="true"
+                          data-pf-content="true"
+                        >
+                          Some meaningfull description
+                        </small>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1164,7 +1274,26 @@ exports[`Notification portal should render notifications given from store 1`] = 
                     <div
                       className="pf-c-alert__description"
                     >
-                      Some meaningfull description
+                      <TextContent>
+                        <div
+                          className="pf-c-content"
+                        >
+                          <Text
+                            className="sentry-mask data-hj-suppress"
+                            component="small"
+                          >
+                            <small
+                              className="sentry-mask data-hj-suppress"
+                              data-ouia-component-id="OUIA-Generated-Text-1"
+                              data-ouia-component-type="PF4/Text"
+                              data-ouia-safe={true}
+                              data-pf-content={true}
+                            >
+                              Some meaningfull description
+                            </small>
+                          </Text>
+                        </div>
+                      </TextContent>
                     </div>
                   </div>
                 </Alert>

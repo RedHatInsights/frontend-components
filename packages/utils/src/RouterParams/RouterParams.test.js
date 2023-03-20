@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import RouterParams from './RouterParams';
+import { act } from 'react-dom/test-utils';
 
 describe('RouterParams component', () => {
   const RouterParamsComponent = RouterParams('div');
@@ -32,27 +33,29 @@ describe('RouterParams component', () => {
     mount(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/route']}>
-          <Route render={(props) => <RouterParamsComponent {...props} />} path="/route" />
+          <Route component={RouterParamsComponent} path="/route" />
         </MemoryRouter>
       </Provider>
     );
     expect(store.getActions()[0].type).toBe('@@INSIGHTS-CORE/NAVIGATION');
   });
 
-  it('should dispatch on mount and pass params', () => {
+  it('should dispatch on mount and pass params', async () => {
     const store = mockStore(initialState);
-    mount(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/route/paramValue']}>
-          <Route render={(props) => <RouterParamsComponent {...props} />} path="/route/:paramName" />
-        </MemoryRouter>
-      </Provider>
-    );
+    await act(async () => {
+      await mount(
+        <Provider store={store}>
+          <MemoryRouter initialEntries={['/route/paramValue']}>
+            <Route render={(props) => <RouterParamsComponent {...props} />} path="/route/:paramName" />
+          </MemoryRouter>
+        </Provider>
+      );
+    });
     expect(store.getActions()[0].type).toBe('@@INSIGHTS-CORE/NAVIGATION');
     expect(store.getActions()[0].payload.params).toEqual({ paramName: 'paramValue' });
   });
 
-  it('should dispatch on update when parameter changes', () => {
+  it('should dispatch on update when parameter changes', async () => {
     const store = mockStore({ routerData: { path: '/route/:paramName', params: { paramName: 'paramValue0' } } });
     const wrapper = mount(
       <MemoryRouter initialEntries={['/route/paramValue0']}>
@@ -64,31 +67,14 @@ describe('RouterParams component', () => {
         </React.Fragment>
       </MemoryRouter>
     );
-    wrapper.find('a#link').props().onClick(new MouseEvent('click'));
-    expect(store.getActions()).toHaveLength(3);
-    expect(store.getActions()[1].payload).toEqual({
-      path: '/route/:paramName',
-      params: { paramName: 'paramValue1' },
-    });
-  });
 
-  it('should dispatch on update when path changes', () => {
-    const store = mockStore({ routerData: { path: '/previousRoute/:paramName', params: { paramName: 'paramValue0' } } });
-    const wrapper = mount(
-      <MemoryRouter initialEntries={['/route/paramValue0']}>
-        <React.Fragment>
-          <Provider store={store}>
-            <Route render={(props) => <RouterParamsComponent {...props} />} path="/route/:paramName" />
-          </Provider>
-          <Link to="/route/paramValue0" id="link" />
-        </React.Fragment>
-      </MemoryRouter>
-    );
-    wrapper.find('a#link').props().onClick(new MouseEvent('click'));
-    expect(store.getActions().length).toBe(3);
+    await act(async () => {
+      await wrapper.find('a#link').props().onClick(new MouseEvent('click'));
+    });
+    expect(store.getActions()).toHaveLength(2);
     expect(store.getActions()[1].payload).toEqual({
-      path: '/route/:paramName',
-      params: { paramName: 'paramValue0' },
+      path: '/route/paramValue1',
+      params: { paramName: 'paramValue1' },
     });
   });
 

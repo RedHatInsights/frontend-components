@@ -5,12 +5,16 @@ const ChromeContext = createContext<ReturnType<typeof chromeState>>({
   update: () => undefined,
   setLastVisited: () => undefined,
   setFavoritePages: () => undefined,
-  subscribe: () => 0,
+  subscribe: () => Symbol(0),
   unsubscribe: () => undefined,
+  setIdentity: () => undefined,
+  setVisitedBundles: () => undefined,
   getState: () => ({
     lastVisitedPages: [],
     subscribtions: {},
     favoritePages: [],
+    visitedBundles: {},
+    initialized: false,
   }),
 });
 

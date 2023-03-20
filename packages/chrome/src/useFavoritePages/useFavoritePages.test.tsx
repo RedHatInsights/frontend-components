@@ -15,11 +15,15 @@ describe('useFavoritePages', () => {
   const subscribeSpy = jest.fn();
   const unsubscribeSpy = jest.fn();
   const updateSpy = jest.fn();
+  const setIdentitySpy = jest.fn();
+  const setVisitedBundlesSpy = jest.fn();
   const postSpy = jest.spyOn(fetch, 'post');
   const initialProps: ReturnType<typeof chromeState> = {
     getState: getStateSpy,
+    setIdentity: setIdentitySpy,
     setFavoritePages: setFavoritePagesSpy,
     setLastVisited: setLastVisitedSpy,
+    setVisitedBundles: setVisitedBundlesSpy,
     subscribe: subscribeSpy,
     unsubscribe: unsubscribeSpy,
     update: updateSpy,
@@ -34,6 +38,8 @@ describe('useFavoritePages', () => {
     subscribeSpy.mockReset();
     unsubscribeSpy.mockReset();
     updateSpy.mockReset();
+    setIdentitySpy.mockReset();
+    setVisitedBundlesSpy.mockReset();
     postSpy.mockReset();
   });
 
