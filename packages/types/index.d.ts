@@ -107,6 +107,8 @@ export interface ChromeAPI {
   isFedramp: boolean;
   usePendoFeedback: () => void;
   toggleFeedbackModal: (isOpen: boolean) => void;
+  toggleDebuggerModal: (isOpen: boolean) => void;
+  enableDebugging: () => void;
   quickStarts: {
     version: number;
     set: (key: string, quickstarts: QuickStart[]) => void;
