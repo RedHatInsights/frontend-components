@@ -6,7 +6,7 @@ const config = {
   coverageDirectory: './coverage/',
   collectCoverage: true,
   transformIgnorePatterns: [
-    'node_modules/(?!@patternfly|@data-driven-forms)',
+    'node_modules/(?!@patternfly|@data-driven-forms|lodash-es|@openshift)',
 
     // Uncomment the below line if you face any errors with jest
     // '/node_modules/(?!@redhat-cloud-services)',
