@@ -1,3 +1,4 @@
+/* eslint-disable rulesdir/no-chrome-api-call-from-window */
 import axios from 'axios';
 import { captureException, configureScope } from '@sentry/browser';
 
