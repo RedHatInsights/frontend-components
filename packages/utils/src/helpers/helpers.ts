@@ -35,14 +35,16 @@ export function processDate(dateString: string | number | Date) {
 }
 
 export function getBaseName(pathname: string, level = 2) {
+  const previewFragment = pathname.split('/')[1];
+  const isPreview = ['beta', 'preview'].includes(previewFragment);
   let release = '/';
   const pathName = pathname.replace(/(#|\?).*/, '').split('/');
 
   pathName.shift();
 
-  if (pathName[0] === 'beta') {
+  if (isPreview) {
     pathName.shift();
-    release = `/beta/`;
+    release = `/${previewFragment}/`;
   }
 
   return [...new Array(level)].reduce<string>((acc, _curr, key) => {

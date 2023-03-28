@@ -99,6 +99,8 @@ describe('getBaseName', () => {
     ['/group', '/group/'],
     ['/beta/group/application', '/beta/group/application'],
     ['/beta/group', '/beta/group/'],
+    ['/preview/group', '/preview/group/'],
+    ['/preview/group/application', '/preview/group/application'],
     ['/group/application#id', '/group/application'],
     ['/group/application?param=value', '/group/application'],
   ].map(([pathName, baseName]) =>
