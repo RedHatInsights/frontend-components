@@ -43,6 +43,8 @@ module.exports = ({
   cacheConfig = {},
   _unstableHotReload = false,
   resolve = {},
+  // additional node_modules dirs for searchIgnoredStyles, usefull in monorepo scenario
+  nodeModulesDirectories = [],
 } = {}) => {
   const filenameMask = `js/[name].${!_unstableHotReload && useFileHash ? `[fullhash].` : ''}js`;
   if (betaEnv) {
@@ -176,7 +178,9 @@ module.exports = ({
       ...resolve,
       extensions: ['.ts', '.tsx', '.mjs', '.js', '.scss', ...(resolve.extensions, [])],
       alias: {
-        ...(bundlePfModules ? {} : searchIgnoredStyles(rootFolder)),
+        ...(bundlePfModules
+          ? {}
+          : searchIgnoredStyles(rootFolder, ...(Array.isArray(nodeModulesDirectories) ? nodeModulesDirectories : [nodeModulesDirectories]))),
         ...resolve.alias,
       },
       fallback: {
