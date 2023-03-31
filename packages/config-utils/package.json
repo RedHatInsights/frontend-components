@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-config-utilities",
-    "version": "1.5.30",
+    "version": "1.5.31",
     "description": "Utilities for shared config used in RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
