@@ -24,7 +24,7 @@ const searchIgnoredStyles = (root, ...paths) => {
       }),
       {}
     );
-  if (Object.keys(result).length !== 0) {
+  if (Object.keys(result).length === 0) {
     logWarning(`No PF CSS assets found!
     Your application can override PF styling in deployed environments!
     Please check your build configuration.
