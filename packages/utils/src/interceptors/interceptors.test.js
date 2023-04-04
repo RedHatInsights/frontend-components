@@ -1,12 +1,22 @@
-import { authInterceptor, errorInterceptor, interceptor401, responseDataInterceptor } from './interceptors';
+import { renderHook } from '@testing-library/react-hooks';
+import {
+  authInterceptor,
+  authInterceptorWithChrome,
+  errorInterceptor,
+  interceptor401,
+  responseDataInterceptor,
+  useAxiosWithPlatformInterceptors,
+} from './interceptors';
 
 global.insights = {
   chrome: {
     auth: {
-      getUser: () =>
-        new Promise((resolve) => {
-          setTimeout(resolve, 1);
-        }),
+      getUser: jest.fn(
+        () =>
+          new Promise((resolve) => {
+            setTimeout(resolve, 1);
+          })
+      ),
       logout: jest.fn(),
     },
   },
@@ -15,6 +25,22 @@ global.insights = {
 it('authInterceptor', async () => {
   const config = await authInterceptor({});
   expect(config).toMatchObject({});
+});
+
+describe('authInterceptorWithChrome', () => {
+  it('does not call chrome via the global scope when chrome is provided', async () => {
+    const fakeChrome = {
+      auth: {
+        getUser: jest.fn(),
+      },
+    };
+    const interceptor = authInterceptorWithChrome();
+
+    interceptor().then(() => {
+      expect(fakeChrome.auth.getUser).toHaveBeenCalled();
+      expect(insights.chrome.auth.getUser).not.toHaveBeenCalled();
+    });
+  });
 });
 
 describe('responseDataInterceptor', () => {
@@ -38,6 +64,22 @@ describe('interceptor401', () => {
   });
 });
 
+describe('interceptor401WithChrome', () => {
+  it('does not call chrome via the global scope when chrome is provided', async () => {
+    const fakeChrome = {
+      auth: {
+        logout: jest.fn(),
+      },
+    };
+    const interceptor = authInterceptorWithChrome();
+
+    interceptor().then(() => {
+      expect(fakeChrome.auth.logout).toHaveBeenCalled();
+      expect(insights.chrome.auth.logout).not.toHaveBeenCalled();
+    });
+  });
+});
+
 describe('errorInterceptor', () => {
   it('should throw data error', () => {
     expect(() => errorInterceptor({ response: { data: 'error' } })).toThrow();
@@ -45,5 +87,14 @@ describe('errorInterceptor', () => {
 
   it('should throw response error', () => {
     expect(() => errorInterceptor('')).toThrow();
+  });
+});
+
+describe('useAxiosWithPlatformInterceptors', () => {
+  it('should throw response error', () => {
+    const { result } = renderHook(() => useAxiosWithPlatformInterceptors());
+
+    expect(result.current).toHaveProperty('interceptors');
+    expect(result.current).toHaveProperty('create');
   });
 });
