@@ -149,6 +149,10 @@ export interface ChromeAPI {
   forceDemo: () => void;
   getApp: () => string;
   getBundle: () => string;
+  getBundleData: () => {
+    bundleId: string;
+    bundleTitle: string;
+  };
   getEnvironment: () => string;
   getEnvironmentDetails: () =>
     | undefined
