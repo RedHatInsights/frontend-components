@@ -229,6 +229,7 @@ export interface ChromeAPI {
       };
     }) => T
   ) => T;
+  enablePackagesDebug: () => void;
 }
 
 declare global {
