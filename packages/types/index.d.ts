@@ -114,6 +114,7 @@ export interface ChromeAPI {
     set: (key: string, quickstarts: QuickStart[]) => void;
     toggle: (quickstartId: string) => void;
     Catalog: typeof QuickStartCatalogPage;
+    activateQuickstart: (name: string) => Promise<void>;
   };
   chromeHistory: History;
   isProd: () => boolean;
