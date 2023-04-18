@@ -33,7 +33,9 @@ module.exports = ({
   useCloud,
   target,
   registry,
-  client = {},
+  client = {
+    overlay: false,
+  },
   bundlePfModules = false,
   bounceProd,
   useAgent,
