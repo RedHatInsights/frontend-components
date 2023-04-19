@@ -58,7 +58,9 @@ describe('should create dummy config with no options', () => {
         verbose: false,
         disableDotRule: true,
       },
-      client: {},
+      client: {
+        overlay: false,
+      },
       devMiddleware: {
         writeToDisk: true,
       },

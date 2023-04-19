@@ -9,16 +9,16 @@
 			"href": "/fed/consuming-module"
 		},
 		{
+			"title": "Plugin sdk",
+			"href": "/fed/plugin-sdk"
+		},
+		{
 			"title": "Sharing module",
 			"href": "/fed/sharing-module"
 		},
 		{
 			"title": "Testing",
 			"href": "/fed/testing"
-		},
-		{
-			"title": "Versioning",
-			"href": "/fed/versioning"
 		}
 	]
 }
