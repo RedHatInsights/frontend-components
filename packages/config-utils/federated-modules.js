@@ -37,6 +37,7 @@ module.exports = ({
   exclude = [],
   eager = false,
   pluginMetadata,
+  extensions = [],
 }) => {
   const include = createIncludes(eager);
 
@@ -99,7 +100,7 @@ module.exports = ({
 
   /** @type { import('@openshift/dynamic-plugin-sdk-webpack').DynamicRemotePlugin } */
   const dynamicPlugin = new DynamicRemotePlugin({
-    extensions: [],
+    extensions,
     sharedModules: sharedDeps,
     entryScriptFilename: filename,
     moduleFederationSettings: {
