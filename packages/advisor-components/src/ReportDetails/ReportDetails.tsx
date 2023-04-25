@@ -35,6 +35,11 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
     }
   };
 
+  const fixBrokenHydraLink = (url: string) => {
+    const linkToArray = url.split('/');
+    return `https://access.redhat.com/solutions/${linkToArray.at(-1)}`;
+  };
+
   return (
     <Card className="ins-c-report-details" style={{ boxShadow: 'none' }}>
       <CardBody>
@@ -79,7 +84,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
                     ) : (
                       <React.Fragment>
                         <ExternalLink
-                          href={`${kbaDetail.view_uri}`}
+                          href={`${kbaDetail?.view_uri?.includes('hydra') ? fixBrokenHydraLink(kbaDetail?.view_uri) : kbaDetail.view_uri}`}
                           content={kbaDetail.publishedTitle ? kbaDetail.publishedTitle : `Knowledgebase article`}
                         />
                         .
