@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Alert, Card, CardBody, CardHeader, Divider, Stack, StackItem } from '@patternfly/react-core';
 import { BullseyeIcon, InfoCircleIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
+import useChrome from '@redhat-cloud-services/frontend-components/useChrome';
 
 import { RuleContentOcp, RuleContentRhel } from '../types';
 import { TemplateProcessor } from '../TemplateProcessor';
@@ -28,6 +29,7 @@ interface ReportDetailsProps {
 const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoading }) => {
   const { rule, details, resolution } = report;
   const [error, setError] = useState<Error | null>(null);
+  const { isProd } = useChrome();
 
   const handleError = (e: Error) => {
     if (error === null) {
@@ -35,9 +37,13 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
     }
   };
 
-  const fixBrokenHydraLink = (url: string) => {
+  const linkEditor = (url: string) => {
     const linkToArray = url.split('/');
-    return `https://access.redhat.com/solutions/${linkToArray.at(-1)}`;
+    if (isProd()) {
+      return `https://access.redhat.com/solutions/${linkToArray.at(-1)}`;
+    } else {
+      return `https://access.stage.redhat.com/solutions/${linkToArray.at(-1)}`;
+    }
   };
 
   return (
@@ -84,7 +90,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
                     ) : (
                       <React.Fragment>
                         <ExternalLink
-                          href={`${kbaDetail?.view_uri?.includes('hydra') ? fixBrokenHydraLink(kbaDetail?.view_uri) : kbaDetail.view_uri}`}
+                          href={`${linkEditor(kbaDetail?.view_uri)}`}
                           content={kbaDetail.publishedTitle ? kbaDetail.publishedTitle : `Knowledgebase article`}
                         />
                         .
