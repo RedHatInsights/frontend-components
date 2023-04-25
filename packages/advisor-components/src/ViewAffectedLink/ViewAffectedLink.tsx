@@ -14,12 +14,12 @@ const ViewAffectedLink: React.FC<ViewAffectedLinkProps> = ({ messages, product, 
   <React.Fragment>
     {product === AdvisorProduct.ocp
       ? (rule as RuleContentOcp).impacted_clusters_count > 0 && (
-          <Link key={`${rule.rule_id}-link`} to={`/recommendations/${rule.rule_id}`}>
+          <Link key={`${rule.rule_id}-link`} to={`/openshift/insights/advisor/recommendations/${rule.rule_id}`}>
             {messages.viewAffectedClusters}
           </Link>
         )
       : (rule as RuleContentRhel).impacted_systems_count > 0 && (
-          <Link key={`${rule.rule_id}-link`} to={`/recommendations/${rule.rule_id}`}>
+          <Link key={`${rule.rule_id}-link`} to={`/openshift/insights/advisor/recommendations/${rule.rule_id}`}>
             {messages.viewAffectedSystems}
           </Link>
         )}
