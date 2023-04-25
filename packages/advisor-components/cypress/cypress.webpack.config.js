@@ -28,6 +28,12 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      '@redhat-cloud-services/frontend-components/useChrome': path.resolve(
+        __dirname,
+        './overrideChrome.js'
+      ),
+    },
   },
   output: {
     filename: 'bundle.js',
