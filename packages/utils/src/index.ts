@@ -15,3 +15,4 @@ export { default as routerParams } from './RouterParams';
 export { default as RowLoader } from './RowLoader';
 export { useInventory } from './useInventory';
 export * from './CypressUtils';
+export * from './useInsightsNavigate';

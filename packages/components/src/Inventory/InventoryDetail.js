@@ -5,6 +5,7 @@ import { useStore } from 'react-redux';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 import InventoryLoadError from './InventoryLoadError';
 import classNames from 'classnames';
+import WithHistory from './WithHistory';
 
 const BaseInventoryDetail = (props) => {
   const store = useStore();
@@ -13,6 +14,7 @@ const BaseInventoryDetail = (props) => {
     <Cmp className={classNames(props.className, 'inventory')}>
       <Suspense fallback={props.fallback}>
         <ScalprumComponent
+          history={props.history}
           store={store}
           appName="inventory"
           module="./InventoryDetail"
@@ -31,6 +33,7 @@ BaseInventoryDetail.propTypes = {
   innerRef: PropTypes.object,
   component: PropTypes.string,
   className: PropTypes.string,
+  history: PropTypes.object,
 };
 
 /**
@@ -58,4 +61,6 @@ InventoryDetail.defaultProps = {
   component: 'section',
 };
 
-export default InventoryDetail;
+const CompatiblityWrapper = (props, ref) => <WithHistory innerRef={ref} Component={InventoryDetail} {...props} />;
+
+export default React.forwardRef(CompatiblityWrapper);
