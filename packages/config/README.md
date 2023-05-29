@@ -7,7 +7,6 @@
     - [Removed features with webpack 5](#removed-features-with-webpack-5)
   - [useProxy](#useproxy)
     - [Attributes](#attributes)
-      - [useChromeTemplate](#usechrometemplate)
       - [localChrome](#localchrome)
       - [keycloakUri](#keycloakuri)
       - [Registry](#registry)
@@ -69,7 +68,6 @@ const { config: webpackConfig, plugins } = config({
 |---------|----|-----------|
 |[useProxy](#useproxy)|`boolean`|Enables webpack proxy.|
 |[proxyURL](#proxyURL)|`string`|URL to proxy Akamai environment requests to.|
-|[useChromeTemplate](#useChromeTemplate)|`boolean`|Load chrome HTMl template.|
 |[localChrome](#localChrome)|`string`|Path to your local chrome build folder.|
 |[keycloakUri](#keycloakUri)|`string`|Uri to inject into proxied chrome assets.|
 |[registry](#registry)|`(({ app, server, compiler, standaloneConfig }) => void)[]`|Express middleware to register.|
@@ -82,23 +80,6 @@ const { config: webpackConfig, plugins } = config({
 |[useAgent](#useAgent)|`boolean` = `true`|Enforce using the agent to proxy requests via `proxyUrl`.|
 |[bounceProd](#bounceProd)|`boolean` = `false`|Bounce all non-GET requests via server requests.|
 
-
-#### useChromeTemplate
-
-**This option will become the default. App-specific templates are deprecated**
-
-To load chrome HTML template instead of using the APP-specific template add `useChromeTemplate` flag to your config.
-
-```js
-const config = require('@redhat-cloud-services/frontend-components-config');
-
-const { config: webpackConfig, plugins } = config({
-  rootFolder: resolve(__dirname, '../'),
-  useProxy: true,
-  useChromeTemplate: true
-  ...
-});
-```
 
 #### localChrome
 

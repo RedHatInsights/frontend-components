@@ -107,6 +107,12 @@
 				"items": [
 					"useLastVisited"
 				]
+			},
+			{
+				"group": "useVisitedBundles",
+				"items": [
+					"useVisitedBundles"
+				]
 			}
 		]
 	},
@@ -654,6 +660,12 @@
 				"group": "parseCvssScore",
 				"items": [
 					"parseCvssScore"
+				]
+			},
+			{
+				"group": "RouterParams",
+				"items": [
+					"RouterParams"
 				]
 			},
 			{

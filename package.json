@@ -60,6 +60,7 @@
         "@babel/runtime": "^7.19.0",
         "@frsource/cypress-plugin-visual-regression-diff": "^3.1.3",
         "@octokit/rest": "^16.43.2",
+        "@openshift/dynamic-plugin-sdk-webpack": "^3.0.0",
         "@patternfly/quickstarts": "^2.3.1",
         "@patternfly/react-core": "^4.247.1",
         "@patternfly/react-icons": "^4.92.5",

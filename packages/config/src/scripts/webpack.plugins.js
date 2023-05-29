@@ -9,6 +9,7 @@ const plugins = [
   fedModulePlugin({
     root: rootDir,
     useFileHash: process.env.NODE_ENV === 'production',
+    separateRuntime: !!fecConfig._unstableHotReload,
     /** Load optional config for federated modules */
     ...fecConfig.moduleFederation,
   }),

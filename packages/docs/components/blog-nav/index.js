@@ -24,6 +24,11 @@ const useStyles = createUseStyles({
 
 const blogSchema = [
   {
+    "title": "Dynamic plugin SDK build",
+    "href": "/fed/plugin-sdk",
+    Icon: InfoIcon
+  },
+  {
     "title": "HMR available in development!",
     "href": "/frontend-components-config/hot-module-replacement",
     Icon: InfoIcon
@@ -31,7 +36,7 @@ const blogSchema = [
 
   {
     "title": "React router v6 upgrade",
-    "href": "/news/router-v6",
+    "href": "/blog/router-v6",
     Icon: BookOpenIcon
   }]
 
@@ -49,7 +54,7 @@ const BlogNav = () => {
             <MenuItem
               key={href}
               component={({ props, children }) => (
-                <Link href="/blog/router-v6">
+                <Link href={href}>
                   <button className="pf-c-menu__item">
                     <a {...props} className={classNames(props?.className, classes.blogLink)} href={href}>
                       {children}
