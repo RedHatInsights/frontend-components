@@ -88,9 +88,10 @@ module.exports = ({
     }
   }
 
-  const pluginMetadataInternal = pluginMetadata || {
+  const pluginMetadataInternal = {
     ...defaultPluginMetaDataJSON,
     name: appName,
+    ...pluginMetadata,
     exposedModules: {
       ...(exposes || {
         './RootApp': `./${relative(root, './src/AppEntry')}`,
