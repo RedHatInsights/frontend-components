@@ -40,7 +40,7 @@ const internalProxyRoutes = {
     ? {
         '/api/chrome-service/v1/static': {
           host: 'http://localhost:9999',
-        }
+        },
       }
     : {}),
 };
