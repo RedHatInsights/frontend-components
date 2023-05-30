@@ -6,7 +6,7 @@ const gitRevisionPlugin = new (require('git-revision-webpack-plugin'))({
   branch: true,
 });
 const betaBranches = ['master', 'qa-beta', 'ci-beta', 'prod-beta', 'main', 'devel', 'stage-beta'];
-const akamaiBranches = ['prod-beta', 'prod-stable'];
+const akamaiBranches = ['prod-stable'];
 
 const getAppEntry = (rootFolder, isProd) => {
   // Use entry-dev if it exists

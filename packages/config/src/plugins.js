@@ -17,6 +17,7 @@ module.exports = ({ rootFolder, insights, generateSourceMaps, plugins, definePlu
             test: 'js',
             exclude: /(node_modules|bower_components)/i,
             filename: !fileHash ? 'sourcemaps/[name].js.map' : 'sourcemaps/[name].[contenthash].js.map',
+            append: false,
           }),
         ]
       : []),
