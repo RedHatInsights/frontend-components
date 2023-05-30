@@ -38,10 +38,7 @@ const internalProxyRoutes = {
   ...routes,
   ...(interceptChromeConfig === true
     ? {
-        '/beta/config': {
-          host: 'http://localhost:9999',
-        },
-        '/config': {
+        '/api/chrome-service/v1/static': {
           host: 'http://localhost:9999',
         },
       }

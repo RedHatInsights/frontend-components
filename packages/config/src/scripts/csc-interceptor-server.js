@@ -27,7 +27,7 @@ const bundles = Array.from(
 const app = express();
 const port = 9999;
 
-const BASE_URL = 'https://raw.githubusercontent.com/RedHatInsights/cloud-services-config/ci-beta/';
+const BASE_URL = 'https://raw.githubusercontent.com/RedHatInsights/chrome-service-backend/main';
 
 function getRequestBundle(requestUrl) {
   const bundle = requestUrl.split('/').pop().split('-').shift();
@@ -35,14 +35,11 @@ function getRequestBundle(requestUrl) {
 }
 
 app.get('*', async (req, res, next) => {
-  let requestUrl = `${BASE_URL}${req.url.replace(/(\/beta)?\/config/gm, '')}`;
-  if (requestUrl.includes('insights-navigation.json')) {
-    requestUrl = requestUrl.replace('insights-navigation.json', 'rhel-navigation.json');
-  }
   try {
-    const schema = await axios.get(requestUrl);
+    const reqUrl = BASE_URL + req.url.replace('/api/chrome-service/v1', '');
+    const schema = await axios.get(reqUrl);
     if (req.url.includes('-navigation.json') && bundles.some((bundle) => req.url.includes(bundle))) {
-      const requestBundle = getRequestBundle(requestUrl);
+      const requestBundle = getRequestBundle(req.url);
       /** handle nav json */
       const payload = schema.data;
       payload.navItems = [...payload.navItems, ...navItems.filter(({ href }) => href.includes(requestBundle))];

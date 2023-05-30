@@ -69,7 +69,8 @@ async function devScript(argv, cwd) {
     if (fecConfig.interceptChromeConfig === true) {
       const interceptorServerPath = resolve(__dirname, './csc-interceptor-server.js');
       const interceptorServerArgs = [interceptorServerPath];
-      spawn('node', interceptorServerArgs, {
+      // Ensure ipv4 DNS is hit first. Currently there are issues with IPV4
+      spawn('NODE_OPTIONS=--dns-result-order=ipv4first node', interceptorServerArgs, {
         stdio: [process.stdout, process.stdout, process.stdout],
         cwd,
         shell: true,
