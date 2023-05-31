@@ -40,3 +40,4 @@ export * from './AsyncComponent';
 export * from './Ouia';
 export * from './ErrorBoundary';
 export * from './RBACProvider';
+export * from './OpenSourceBadge';
