@@ -38,11 +38,11 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
   };
 
   const linkEditor = (url: string) => {
-    const linkToArray = url.split('/');
+    const linkToArray = url?.split('/');
     if (isProd()) {
-      return `https://access.redhat.com/${linkToArray.at(-2)}/${linkToArray.at(-1)}`;
+      return `https://access.redhat.com/${linkToArray?.at(-2)}/${linkToArray?.at(-1)}`;
     } else {
-      return `https://access.stage.redhat.com/${linkToArray.at(-2)}/${linkToArray.at(-1)}`;
+      return `https://access.stage.redhat.com/${linkToArray?.at(-2)}/${linkToArray?.at(-1)}`;
     }
   };
 
