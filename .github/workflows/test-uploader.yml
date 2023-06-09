@@ -2,6 +2,8 @@ name: Upload tests to Ibutsu
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 jobs:
   tests-upload:
     runs-on: ubuntu-latest
