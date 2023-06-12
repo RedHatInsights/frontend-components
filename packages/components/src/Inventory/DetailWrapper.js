@@ -1,26 +1,25 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { ScalprumComponent } from '@scalprum/react-core';
-import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 import InventoryLoadError from './InventoryLoadError';
 import classNames from 'classnames';
+import WithHistory from './WithHistory';
 
 const BaseDetailWrapper = (props) => {
-  const history = useHistory();
   const store = useStore();
   const Cmp = props.component;
   return (
     <Cmp className={classNames(props.className, 'inventory')}>
       <Suspense fallback={props.fallback}>
         <ScalprumComponent
-          history={history}
+          history={props.history}
           store={store}
           appName="inventory"
           module="./DetailWrapper"
           scope="inventory"
-          ErrorComponent={<InventoryLoadError component="InventoryDetailHead" history={history} store={store} {...props} />}
+          ErrorComponent={<InventoryLoadError component="InventoryDetailHead" {...props} />}
           ref={props.innerRef}
           {...props}
         />
@@ -34,6 +33,7 @@ BaseDetailWrapper.propTypes = {
   innerRef: PropTypes.object,
   component: PropTypes.string,
   className: PropTypes.string,
+  history: PropTypes.object,
 };
 
 /**
@@ -61,4 +61,6 @@ DetailWrapper.defaultProps = {
   component: 'section',
 };
 
-export default DetailWrapper;
+const CompatiblityWrapper = (props, ref) => <WithHistory innerRef={ref} Component={DetailWrapper} {...props} />;
+
+export default React.forwardRef(CompatiblityWrapper);
