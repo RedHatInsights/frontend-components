@@ -14,6 +14,7 @@ before_script:
 script:
   - npm run lint
   - npm run test:ci
+  - docker login -u="insights-qe+iqe" -p="${PULL_SECRET}" quay.io
   - docker pull quay.io/cloudservices/iqe-artifact-uploader-s3:latest
   - # TODO Run artifact uploader image
 
