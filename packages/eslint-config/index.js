@@ -22,6 +22,7 @@ module.exports = {
     'no-unused-vars': ['error', { ignoreRestSiblings: true }],
     'prettier/prettier': ['error', { singleQuote: true }],
     'rulesdir/disallow-fec-relative-imports': 2,
+    'rulesdir/disallow-pf-relative-imports': 2,
     'rulesdir/deprecated-packages': 1,
     'rulesdir/no-chrome-api-call-from-window': 2,
   },
