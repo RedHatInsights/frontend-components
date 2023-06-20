@@ -45,14 +45,18 @@ function extractResourceDefinitionValues(rds: ResourceDefinition[]) {
   }, []);
 }
 
-function checkResourceDefinitions(userRds: ResourceDefinition[], requestedRds: ResourceDefinition[]) {
+function verifyResourceDefinitions(userRds: ResourceDefinition[], requestedRds: ResourceDefinition[]) {
   const userValues = extractResourceDefinitionValues(userRds),
     requestedValues = extractResourceDefinitionValues(requestedRds);
 
   return requestedValues.every((value) => userValues.includes(value));
 }
 
-function checkRequestedPermission(userPermissions: (Access | string)[], requestedPermission: Access | string): boolean {
+function checkRequestedPermission(
+  userPermissions: (Access | string)[],
+  requestedPermission: Access | string,
+  checkResourceDefinitions: boolean
+): boolean {
   return userPermissions.some((userPermission: Access | string) => {
     const requestedPermissionArray = (isAccessType(requestedPermission) ? requestedPermission.permission : requestedPermission).split(':');
     const userPermissionArray = (isAccessType(userPermission) ? userPermission.permission : userPermission).split(':');
@@ -78,50 +82,60 @@ function checkRequestedPermission(userPermissions: (Access | string)[], requeste
       return false;
     }, true);
 
-    if (matchesPermission === true) {
-      if (wildcard === true) {
-        return true; // user permission contains wildcard = ignore resource definition check
-      }
-
-      if (isAccessType(userPermission)) {
-        if (userPermission.resourceDefinitions === undefined || userPermission.resourceDefinitions.length === 0) {
-          return true; // user permission is not limited with resource definition = has general permission
+    if (checkResourceDefinitions === true) {
+      if (matchesPermission === true) {
+        if (wildcard === true) {
+          return true; // user permission contains wildcard = ignore resource definition check
         }
 
-        if (
-          !isAccessType(requestedPermission) ||
-          userPermission.resourceDefinitions === undefined ||
-          requestedPermission.resourceDefinitions.length === 0
-        ) {
-          return false;
+        if (isAccessType(userPermission)) {
+          if (userPermission.resourceDefinitions === undefined || userPermission.resourceDefinitions.length === 0) {
+            return true; // user permission is not limited with resource definition = has general permission
+          }
+
+          if (
+            !isAccessType(requestedPermission) ||
+            userPermission.resourceDefinitions === undefined ||
+            requestedPermission.resourceDefinitions.length === 0
+          ) {
+            return false;
+          }
+
+          return verifyResourceDefinitions(userPermission.resourceDefinitions, requestedPermission.resourceDefinitions);
         }
 
-        return checkResourceDefinitions(userPermission.resourceDefinitions, requestedPermission.resourceDefinitions);
+        return true; // user permission is not limited with resource definition = has general permission
       }
-
-      return true; // user permission is not limited with resource definition = has general permission
     }
 
-    return false;
+    return matchesPermission;
   });
 }
 
 // when checkAll is false
-export function doesHavePermissions(userPermissions: (Access | string)[], permissionList: (Access | string)[]): boolean {
+export function doesHavePermissions(
+  userPermissions: (Access | string)[],
+  permissionList: (Access | string)[],
+  checkResourceDefinitions: boolean
+): boolean {
   if (!userPermissions) {
     return false;
   }
 
-  return permissionList.some((permission) => checkRequestedPermission(userPermissions, permission));
+  return permissionList.some((permission) => checkRequestedPermission(userPermissions, permission, checkResourceDefinitions));
 }
 
 // when checkAll is true
-export function hasAllPermissions(userPermissions: (Access | string)[], permissionList: (Access | string)[]): boolean {
+export function hasAllPermissions(
+  userPermissions: (Access | string)[],
+  permissionList: (Access | string)[],
+  checkResourceDefinitions: boolean
+): boolean {
   if (!userPermissions) {
     return false;
   }
 
-  return permissionList.every((permission) => checkRequestedPermission(userPermissions, permission));
+  return permissionList.every((permission) => checkRequestedPermission(userPermissions, permission, checkResourceDefinitions));
 }
 
 export interface UsePermissionsState extends RBAC {

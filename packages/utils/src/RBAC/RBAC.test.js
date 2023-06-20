@@ -18,6 +18,62 @@ describe('RBAC utilities', () => {
       expect(doesHavePermissions([{ permission: 'cost-management:rate:write' }, 'cost-management:cluster:write'], requiredPermissions)).toBe(true);
     });
 
+    describe('can omit resource definitions check', () => {
+      let requiredPermissions = [];
+      let userPermissions = [];
+
+      it('returns true even when resource definition is too narrow', () => {
+        requiredPermissions = ['inventory:hosts:write', 'inventory:hosts:read'];
+        userPermissions = [
+          {
+            permission: 'inventory:hosts:read',
+            resourceDefinitions: [
+              {
+                attributeFilter: {
+                  scope: 'system-id',
+                  operation: 'in',
+                  value: '123',
+                },
+              },
+            ],
+          },
+        ];
+        expect(doesHavePermissions(userPermissions, requiredPermissions, false)).toBe(true);
+      });
+
+      it('returns true even when resource definition do not match', () => {
+        requiredPermissions = [
+          {
+            permission: 'inventory:hosts:read',
+            resourceDefinitions: [
+              {
+                attributeFilter: {
+                  scope: 'system-id',
+                  operation: 'equal',
+                  value: '123',
+                },
+              },
+            ],
+          },
+        ];
+        userPermissions = [
+          {
+            permission: 'inventory:hosts:read',
+            resourceDefinitions: [
+              {
+                attributeFilter: {
+                  scope: 'system-id',
+                  operation: 'equal',
+                  value: '456',
+                },
+              },
+            ],
+          },
+        ];
+        expect(doesHavePermissions(userPermissions, requiredPermissions, false)).toBe(true);
+      });
+    });
+
     describe('with resource definitions', () => {
       let requiredPermissions = [];
       let userPermissions = [];
@@ -43,7 +99,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true with empty user resource definition, equals operation', () => {
@@ -67,7 +123,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true with matching resource definition, 1', () => {
@@ -99,7 +155,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true with matching resource definition, 2', () => {
@@ -131,7 +187,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true with matching resource definition, 3', () => {
@@ -163,7 +219,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns false with not matching resource definitions, 1', () => {
@@ -195,7 +251,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
 
       it('returns false with not matching resource definitions, 2', () => {
@@ -227,7 +283,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
 
       it('returns false with not matching resource definitions, 3', () => {
@@ -259,7 +315,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
 
       it('returns false with not matching resource definitions, 4', () => {
@@ -291,7 +347,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
 
       it('returns false with empty resource definitions required, 1', () => {
@@ -315,7 +371,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
 
       it('returns false with empty resource definitions required, 2', () => {
@@ -339,7 +395,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
 
       it('returns true with user having wildcard permissions, 1', () => {
@@ -363,7 +419,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true with user having wildcard permissions, 2', () => {
@@ -387,7 +443,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true with user having wildcard permissions, 3', () => {
@@ -411,7 +467,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true if at least one of many permissions is fulfilled, 1', () => {
@@ -439,7 +495,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns false if none of more permissions is fulfilled', () => {
@@ -467,7 +523,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(doesHavePermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
     });
   });
@@ -496,6 +552,106 @@ describe('RBAC utilities', () => {
       expect(hasAllPermissions(['cost-management:*:read', 'some-app:*:*'], requiredPermissions)).toBe(false);
     });
 
+    describe('can omit resource definitions check', () => {
+      let requiredPermissions = [];
+      let userPermissions = [];
+
+      it('returns true even when resource definition is too narrow', () => {
+        requiredPermissions = ['inventory:hosts:write', 'inventory:hosts:read'];
+        userPermissions = [
+          'inventory:hosts:write',
+          {
+            permission: 'inventory:hosts:read',
+            resourceDefinitions: [
+              {
+                attributeFilter: {
+                  scope: 'system-id',
+                  operation: 'in',
+                  value: '123',
+                },
+              },
+            ],
+          },
+        ];
+        expect(hasAllPermissions(userPermissions, requiredPermissions, false)).toBe(true);
+      });
+
+      it('returns true even when resource definition do not match', () => {
+        requiredPermissions = [
+          {
+            permission: 'inventory:hosts:write',
+            resourceDefinitions: [
+              {
+                attributeFilter: {
+                  scope: 'system-id',
+                  operation: 'equal',
+                  value: '123',
+                },
+              },
+            ],
+          },
+          {
+            permission: 'inventory:hosts:read',
+            resourceDefinitions: [
+              {
+                attributeFilter: {
+                  scope: 'system-id',
+                  operation: 'equal',
+                  value: '123',
+                },
+              },
+            ],
+          },
+        ];
+        userPermissions = [
+          {
+            permission: 'inventory:hosts:write',
+            resourceDefinitions: [
+              {
+                attributeFilter: {
+                  scope: 'system-id',
+                  operation: 'equal',
+                  value: '123',
+                },
+              },
+            ],
+          },
+          {
+            permission: 'inventory:hosts:read',
+            resourceDefinitions: [
+              {
+                attributeFilter: {
+                  scope: 'system-id',
+                  operation: 'equal',
+                  value: '456',
+                },
+              },
+            ],
+          },
+        ];
+        expect(hasAllPermissions(userPermissions, requiredPermissions, false)).toBe(true);
+      });
+
+      it('returns false when there not all permissions match', () => {
+        requiredPermissions = ['inventory:hosts:write', 'inventory:hosts:read'];
+        userPermissions = [
+          {
+            permission: 'inventory:hosts:read',
+            resourceDefinitions: [
+              {
+                attributeFilter: {
+                  scope: 'system-id',
+                  operation: 'in',
+                  value: '123',
+                },
+              },
+            ],
+          },
+        ];
+        expect(hasAllPermissions(userPermissions, requiredPermissions, false)).toBe(false);
+      });
+    });
+
     describe('with resource definitions', () => {
       let requiredPermissions = [];
       let userPermissions = [];
@@ -521,7 +677,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true with empty user resource definition, equals operation', () => {
@@ -545,7 +701,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true with matching resource definition, 1', () => {
@@ -577,7 +733,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true with matching resource definition, 2', () => {
@@ -609,7 +765,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true with matching resource definition, 3', () => {
@@ -641,7 +797,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns false with not matching resource definitions, 1', () => {
@@ -673,7 +829,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
 
       it('returns false with not matching resource definitions, 2', () => {
@@ -705,7 +861,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
 
       it('returns false with not matching resource definitions, 3', () => {
@@ -737,7 +893,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
 
       it('returns false with not matching resource definitions, 4', () => {
@@ -769,7 +925,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
 
       it('returns false with empty resource definitions required, 1', () => {
@@ -793,7 +949,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
 
       it('returns false with empty resource definitions required, 2', () => {
@@ -817,7 +973,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
 
       it('returns true with user having wildcard permissions, 1', () => {
@@ -841,7 +997,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true with user having wildcard permissions, 2', () => {
@@ -865,7 +1021,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true with user having wildcard permissions, 3', () => {
@@ -908,7 +1064,7 @@ describe('RBAC utilities', () => {
           },
         ];
         userPermissions = ['*:*:read'];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns true if all permissions are fulfilled', () => {
@@ -937,7 +1093,7 @@ describe('RBAC utilities', () => {
           },
           'inventory:groups:*',
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(true);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(true);
       });
 
       it('returns false if not all of the permissions are fulfilled', () => {
@@ -973,7 +1129,7 @@ describe('RBAC utilities', () => {
             ],
           },
         ];
-        expect(hasAllPermissions(userPermissions, requiredPermissions)).toBe(false);
+        expect(hasAllPermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
     });
   });
