@@ -30,15 +30,15 @@ function isAccessType(permission: Access | string): permission is Access {
 }
 
 function extractResourceDefinitionValues(rds: ResourceDefinition[]) {
-  return rds.reduce((acc, cur) => {
-    const { scope, operation, value } = cur.attributeFilter;
+  return rds.reduce((acc: string[], cur: ResourceDefinition) => {
+    const { key, operation, value } = cur.attributeFilter;
 
     if (operation === ResourceDefinitionFilterOperationEnum.In) {
-      return [...acc, ...value.split(',').map((value) => `${scope}:${value}`)];
+      return [...acc, ...value.split(',').map((value) => `${key}:${value}`)];
     }
 
     if (operation === ResourceDefinitionFilterOperationEnum.Equal) {
-      return [...acc, `${scope}:${value}`];
+      return [...acc, `${key}:${value}`];
     }
 
     throw new TypeError('Resource definition operation has incorrect format.');
@@ -61,51 +61,33 @@ function checkRequestedPermission(
     const requestedPermissionArray = (isAccessType(requestedPermission) ? requestedPermission.permission : requestedPermission).split(':');
     const userPermissionArray = (isAccessType(userPermission) ? userPermission.permission : userPermission).split(':');
 
-    let wildcard = false;
-
     const matchesPermission = userPermissionArray.slice(0).reduce((acc, curr, index, array) => {
       if (acc === false) {
         array.splice(index);
         return acc;
       }
 
-      if (curr === '*') {
-        wildcard = true;
-        return true;
-      }
-
-      if (curr === requestedPermissionArray?.[index]) {
-        wildcard = false;
-        return true;
-      }
-
-      return false;
+      return curr === '*' || curr === requestedPermissionArray?.[index];
     }, true);
 
-    if (checkResourceDefinitions === true) {
-      if (matchesPermission === true) {
-        if (wildcard === true) {
-          return true; // user permission contains wildcard = ignore resource definition check
+    if (checkResourceDefinitions === true && matchesPermission === true) {
+      if (isAccessType(userPermission)) {
+        if (userPermission.resourceDefinitions === undefined || userPermission.resourceDefinitions.length === 0) {
+          return true; // user permission is not limited with resource definition = has general permission
         }
 
-        if (isAccessType(userPermission)) {
-          if (userPermission.resourceDefinitions === undefined || userPermission.resourceDefinitions.length === 0) {
-            return true; // user permission is not limited with resource definition = has general permission
-          }
-
-          if (
-            !isAccessType(requestedPermission) ||
-            userPermission.resourceDefinitions === undefined ||
-            requestedPermission.resourceDefinitions.length === 0
-          ) {
-            return false;
-          }
-
-          return verifyResourceDefinitions(userPermission.resourceDefinitions, requestedPermission.resourceDefinitions);
+        if (
+          !isAccessType(requestedPermission) ||
+          userPermission.resourceDefinitions === undefined ||
+          requestedPermission.resourceDefinitions.length === 0
+        ) {
+          return false;
         }
 
-        return true; // user permission is not limited with resource definition = has general permission
+        return verifyResourceDefinitions(userPermission.resourceDefinitions, requestedPermission.resourceDefinitions);
       }
+
+      return true; // user permission is not limited with resource definition = has general permission
     }
 
     return matchesPermission;
@@ -147,7 +129,7 @@ export interface UsePermissionsContextState {
   isLoading?: boolean;
   isOrgAdmin: boolean;
   permissions: (string | Access)[];
-  hasAccess?: (requiredPermissions: string[], checkAll?: boolean) => boolean;
+  hasAccess?: (requiredPermissions: (Access | string)[], checkAll?: boolean) => boolean;
 }
 
 export const initialPermissions: UsePermissionsContextState = {

@@ -6,7 +6,8 @@ export function usePermissions(
   appName: string,
   permissionsList: (Access | string)[],
   disableCache?: boolean,
-  checkAll?: boolean
+  checkAll?: boolean,
+  checkResourceDefinitions = false
 ): UsePermissionsState {
   const [permissions, setPermissions] = useState<UsePermissionsState>({
     isLoading: true,
@@ -24,7 +25,9 @@ export function usePermissions(
           isLoading: false,
           isOrgAdmin,
           permissions: userPermissions,
-          hasAccess: checkAll ? hasAllPermissions(userPermissions, permissionsList) : doesHavePermissions(userPermissions, permissionsList),
+          hasAccess: checkAll
+            ? hasAllPermissions(userPermissions, permissionsList, checkResourceDefinitions)
+            : doesHavePermissions(userPermissions, permissionsList, checkResourceDefinitions),
         });
     })();
 

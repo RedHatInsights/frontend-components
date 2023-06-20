@@ -30,7 +30,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123',
                 },
@@ -48,7 +48,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -62,7 +62,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '456',
                 },
@@ -85,7 +85,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123',
                 },
@@ -109,7 +109,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -133,7 +133,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -147,7 +147,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -165,7 +165,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -179,7 +179,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456',
                 },
@@ -197,7 +197,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456',
                 },
@@ -211,7 +211,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456,789',
                 },
@@ -229,7 +229,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456',
                 },
@@ -243,7 +243,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -261,7 +261,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456',
                 },
@@ -275,7 +275,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,789',
                 },
@@ -293,7 +293,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -307,7 +307,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '456,789',
                 },
@@ -325,7 +325,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -339,7 +339,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '456',
                 },
@@ -363,7 +363,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -387,7 +387,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456',
                 },
@@ -405,7 +405,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -429,7 +429,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -453,7 +453,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -481,7 +481,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -515,7 +515,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -565,7 +565,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123',
                 },
@@ -583,7 +583,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -595,7 +595,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -609,7 +609,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -621,7 +621,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '456',
                 },
@@ -640,7 +640,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123',
                 },
@@ -663,7 +663,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123',
                 },
@@ -687,7 +687,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -711,7 +711,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -725,7 +725,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -743,7 +743,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -757,7 +757,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456',
                 },
@@ -775,7 +775,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456',
                 },
@@ -789,7 +789,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456,789',
                 },
@@ -807,7 +807,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456',
                 },
@@ -821,7 +821,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -839,7 +839,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456',
                 },
@@ -853,7 +853,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,789',
                 },
@@ -871,7 +871,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -885,7 +885,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '456,789',
                 },
@@ -903,7 +903,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -917,7 +917,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '456',
                 },
@@ -941,7 +941,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -965,7 +965,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456',
                 },
@@ -983,7 +983,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -1007,7 +1007,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -1031,7 +1031,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -1043,7 +1043,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -1055,7 +1055,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -1078,7 +1078,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -1107,7 +1107,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'equal',
                   value: '123',
                 },
@@ -1121,7 +1121,7 @@ describe('RBAC utilities', () => {
             resourceDefinitions: [
               {
                 attributeFilter: {
-                  scope: 'system-id',
+                  key: 'system-id',
                   operation: 'in',
                   value: '123,456',
                 },
