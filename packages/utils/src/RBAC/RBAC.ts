@@ -80,12 +80,12 @@ function checkRequestedPermission(userPermissions: (Access | string)[], requeste
 
     if (matchesPermission === true) {
       if (wildcard === true) {
-        return true;
+        return true; // user permission contains wildcard = ignore resource definition check
       }
 
       if (isAccessType(userPermission)) {
         if (userPermission.resourceDefinitions === undefined || userPermission.resourceDefinitions.length === 0) {
-          return true; // has general permission
+          return true; // user permission is not limited with resource definition = has general permission
         }
 
         if (
@@ -99,7 +99,7 @@ function checkRequestedPermission(userPermissions: (Access | string)[], requeste
         return checkResourceDefinitions(userPermission.resourceDefinitions, requestedPermission.resourceDefinitions);
       }
 
-      return true; // has general permission
+      return true; // user permission is not limited with resource definition = has general permission
     }
 
     return false;
@@ -121,21 +121,7 @@ export function hasAllPermissions(userPermissions: (Access | string)[], permissi
     return false;
   }
 
-  return permissionList.every((permission) => {
-    return userPermissions.some((access) => {
-      const accessArray = (isAccessType(access) ? access?.permission : access)?.split(':') || [];
-      const permissionArray = (permission as string).split(':');
-      const hasAccess = accessArray.slice(0).reduce((acc, curr, index, array) => {
-        if (acc === false) {
-          array.splice(index);
-          return acc;
-        }
-
-        return curr === '*' || curr === permissionArray?.[index];
-      }, true);
-      return hasAccess || accessArray.join(':') === permission;
-    });
-  });
+  return permissionList.every((permission) => checkRequestedPermission(userPermissions, permission));
 }
 
 export interface UsePermissionsState extends RBAC {
