@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Access } from '@redhat-cloud-services/rbac-client';
+import { Access, ResourceDefinition, ResourceDefinitionFilterOperationEnum } from '@redhat-cloud-services/rbac-client';
 import type { ChromeAPI } from '@redhat-cloud-services/types';
 
 declare global {
@@ -29,36 +29,95 @@ function isAccessType(permission: Access | string): permission is Access {
   return typeof permission === 'object';
 }
 
-export function doesHavePermissions(userPermissions: (Access | string)[], permissionList: (Access | string)[]): boolean {
-  if (!userPermissions) {
-    return false;
-  }
+function extractResourceDefinitionValues(rds: ResourceDefinition[]) {
+  return rds.reduce((acc: string[], cur: ResourceDefinition) => {
+    const { key, operation, value } = cur.attributeFilter;
 
-  return userPermissions.some((access) => {
-    return permissionList.includes(isAccessType(access) ? access?.permission : access);
+    if (operation === ResourceDefinitionFilterOperationEnum.In) {
+      return [...acc, ...value.split(',').map((value) => `${key}:${value}`)];
+    }
+
+    if (operation === ResourceDefinitionFilterOperationEnum.Equal) {
+      return [...acc, `${key}:${value}`];
+    }
+
+    throw new TypeError('Resource definition operation has incorrect format.');
+  }, []);
+}
+
+function verifyResourceDefinitions(userRds: ResourceDefinition[], requestedRds: ResourceDefinition[]) {
+  const userValues = extractResourceDefinitionValues(userRds),
+    requestedValues = extractResourceDefinitionValues(requestedRds);
+
+  return requestedValues.every((value) => userValues.includes(value));
+}
+
+function checkRequestedPermission(
+  userPermissions: (Access | string)[],
+  requestedPermission: Access | string,
+  checkResourceDefinitions: boolean
+): boolean {
+  return userPermissions.some((userPermission: Access | string) => {
+    const requestedPermissionArray = (isAccessType(requestedPermission) ? requestedPermission.permission : requestedPermission).split(':');
+    const userPermissionArray = (isAccessType(userPermission) ? userPermission.permission : userPermission).split(':');
+
+    const matchesPermission = userPermissionArray.slice(0).reduce((acc, curr, index, array) => {
+      if (acc === false) {
+        array.splice(index);
+        return acc;
+      }
+
+      return curr === '*' || curr === requestedPermissionArray?.[index];
+    }, true);
+
+    if (checkResourceDefinitions === true && matchesPermission === true) {
+      if (isAccessType(userPermission)) {
+        if (userPermission.resourceDefinitions === undefined || userPermission.resourceDefinitions.length === 0) {
+          return true; // user permission is not limited with resource definition = has general permission
+        }
+
+        if (
+          !isAccessType(requestedPermission) ||
+          userPermission.resourceDefinitions === undefined ||
+          requestedPermission.resourceDefinitions.length === 0
+        ) {
+          return false;
+        }
+
+        return verifyResourceDefinitions(userPermission.resourceDefinitions, requestedPermission.resourceDefinitions);
+      }
+
+      return true; // user permission is not limited with resource definition = has general permission
+    }
+
+    return matchesPermission;
   });
 }
 
-export function hasAllPermissions(userPermissions: (Access | string)[], permissionList: (Access | string)[]): boolean {
+// when checkAll is false
+export function doesHavePermissions(
+  userPermissions: (Access | string)[],
+  permissionList: (Access | string)[],
+  checkResourceDefinitions: boolean
+): boolean {
   if (!userPermissions) {
     return false;
   }
 
-  return permissionList.every((permission) => {
-    return userPermissions.some((access) => {
-      const accessArray = (isAccessType(access) ? access?.permission : access)?.split(':') || [];
-      const permissionArray = (permission as string).split(':');
-      const hasAccess = accessArray.slice(0).reduce((acc, curr, index, array) => {
-        if (acc === false) {
-          array.splice(index);
-          return acc;
-        }
+  return permissionList.some((permission) => checkRequestedPermission(userPermissions, permission, checkResourceDefinitions));
+}
 
-        return curr === '*' || curr === permissionArray?.[index];
-      }, true);
-      return hasAccess || accessArray.join(':') === permission;
-    });
-  });
+// when checkAll is true
+export function hasAllPermissions(
+  userPermissions: (Access | string)[],
+  permissionList: (Access | string)[],
+  checkResourceDefinitions: boolean
+): boolean {
+  if (!userPermissions) {
+    return false;
+  }
+
+  return permissionList.every((permission) => checkRequestedPermission(userPermissions, permission, checkResourceDefinitions));
 }
 
 export interface UsePermissionsState extends RBAC {
@@ -70,7 +129,7 @@ export interface UsePermissionsContextState {
   isLoading?: boolean;
   isOrgAdmin: boolean;
   permissions: (string | Access)[];
-  hasAccess?: (requiredPermissions: string[], checkAll?: boolean) => boolean;
+  hasAccess?: (requiredPermissions: (Access | string)[], checkAll?: boolean) => boolean;
 }
 
 export const initialPermissions: UsePermissionsContextState = {
