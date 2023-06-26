@@ -45,6 +45,7 @@ export interface RuleDetailsProps {
   resolutionRiskDesc?: string;
   header?: React.ReactNode;
   isDetailsPage: boolean;
+  children?: React.ReactNode;
   topics?: TopicRhel[];
   /**
    * onVoteClick - a callback used to update the rating of a particular rule
