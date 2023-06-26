@@ -8,7 +8,7 @@ notifications:
 node_js:
 - '16'
 install:
-  - npm ci
+  - echo "hello" # npm ci
 before_script:
   - npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
 script:
