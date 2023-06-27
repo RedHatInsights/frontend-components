@@ -10,17 +10,20 @@ import {
   initialPermissions,
 } from '@redhat-cloud-services/frontend-components-utilities/RBAC';
 
-const hasAccessWithUserPermissions = (userPermissions: (Access | string)[]) => {
+const hasAccessWithUserPermissions = (userPermissions: (Access | string)[], checkResourceDefinitions: boolean) => {
   return (requiredPermissions: (Access | string)[], checkAll?: boolean): boolean => {
-    return checkAll ? hasAllPermissions(userPermissions, requiredPermissions) : doesHavePermissions(userPermissions, requiredPermissions);
+    return checkAll
+      ? hasAllPermissions(userPermissions, requiredPermissions, checkResourceDefinitions)
+      : doesHavePermissions(userPermissions, requiredPermissions, checkResourceDefinitions);
   };
 };
 
 export interface RBACProviderProps {
   appName: string;
+  checkResourceDefinitions: boolean;
 }
 
-export const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appName, children }) => {
+export const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appName, checkResourceDefinitions = false, children }) => {
   const [permissionState, setPermissionState] = useState(initialPermissions);
 
   const fetchPermissions = async () => {
@@ -44,7 +47,7 @@ export const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appNa
     <RBACContext.Provider
       value={{
         ...permissionState,
-        hasAccess: hasAccessWithUserPermissions(permissionState?.permissions || []),
+        hasAccess: hasAccessWithUserPermissions(permissionState?.permissions || [], checkResourceDefinitions),
       }}
     >
       {!permissionState.isLoading ? (

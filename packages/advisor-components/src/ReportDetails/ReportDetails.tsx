@@ -21,12 +21,21 @@ interface ReportDetailsProps {
   report: Report;
   kbaDetail: {
     publishedTitle: string;
+    id: string;
     view_uri: string;
   };
   kbaLoading: boolean; // if true, renders skeleton instead of kba link
 }
 
-const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoading }) => {
+const ReportDetails: React.FC<ReportDetailsProps> = ({
+  report,
+  kbaDetail = {
+    publishedTitle: 'N/A',
+    id: '',
+    view_uri: '',
+  },
+  kbaLoading,
+}) => {
   const { rule, details, resolution } = report;
   const [error, setError] = useState<Error | null>(null);
   const { isProd } = useChrome();
@@ -75,7 +84,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, kbaDetail, kbaLoa
               <CardBody>{resolution && <TemplateProcessor template={resolution} definitions={details} onError={handleError} />}</CardBody>
             </Card>
           </StackItem>
-          {(rule as RuleContentRhel).node_id && (
+          {kbaDetail.publishedTitle !== 'N/A' && (
             <React.Fragment>
               <Divider />
               <StackItem>
