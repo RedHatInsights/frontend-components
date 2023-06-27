@@ -30,10 +30,10 @@ describe('should create dummy config with no options', () => {
 
   test('output', () => {
     expect(output).toEqual({
-      filename: expect.stringMatching(/js\/\[name\]\.\[contenthash\]\.js/),
+      filename: expect.stringMatching(/js\/\[name\]\.\[fullhash\]\.js/),
       path: '/dist',
       publicPath: undefined,
-      chunkFilename: expect.stringMatching(/js\/\[name\]\.\[contenthash\]\.js/),
+      chunkFilename: expect.stringMatching(/js\/\[name\]\.\[fullhash\]\.js/),
     });
   });
 
