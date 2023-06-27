@@ -47,7 +47,7 @@ module.exports = ({
   // additional node_modules dirs for searchIgnoredStyles, usefull in monorepo scenario
   nodeModulesDirectories = [],
 } = {}) => {
-  const filenameMask = `js/[name].${!_unstableHotReload && useFileHash ? `[contenthash].` : ''}js`;
+  const filenameMask = `js/[name].${!_unstableHotReload && useFileHash ? `[fullhash].` : ''}js`;
   if (betaEnv) {
     env = `${betaEnv}-beta`;
     console.warn('betaEnv is deprecated in favor of env');
@@ -165,7 +165,7 @@ module.exports = ({
           test: /\.(woff(2)?|ttf|jpg|png|eot|gif|svg)(\?v=\d+\.\d+\.\d+)?$/,
           type: 'asset/resource',
           generator: {
-            filename: 'assets/[name][ext]',
+            filename: 'fonts/[name][ext]',
           },
         },
         {
