@@ -6,11 +6,12 @@ import { buildInsightsPath } from '@redhat-cloud-services/frontend-components-ut
 interface InsightsLinkProps {
   to: LinkProps['to'];
   app: string;
+  preview: boolean;
 }
 
-const InsightsLink: React.FC<InsightsLinkProps> = ({ to, app, ...props }) => {
+const InsightsLink: React.FC<InsightsLinkProps> = ({ to, app, preview, ...props }) => {
   const chrome = useChrome();
-  const toPath = buildInsightsPath(chrome, app, to);
+  const toPath = buildInsightsPath(chrome, app, to, preview);
 
   return (
     <Link to={toPath} {...props}>
