@@ -2,9 +2,9 @@
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 
 const CRC_PDF_GENERATE_API = '/api/crc-pdf-generator/v1/generate';
+export const pdfGeneratorURL = new URL(CRC_PDF_GENERATE_API, window.location.origin);
 const fetchPDF = (service: string, template: string, params: Record<string, unknown>) => {
-  const url = new URL(CRC_PDF_GENERATE_API, window.location.origin);
-  return fetch(url, {
+  return fetch(pdfGeneratorURL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

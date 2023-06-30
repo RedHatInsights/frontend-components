@@ -1,5 +1,6 @@
 import useExportPDF from './useExportPDF';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { pdfGeneratorURL } from './useExportPDF';
 jest.mock('@redhat-cloud-services/frontend-components-notifications/redux', () => ({
   ...jest.requireActual('@redhat-cloud-services/frontend-components-notifications/redux'),
   addNotification: jest.fn(() => ({})),
@@ -16,7 +17,7 @@ describe('useExportPDF', () => {
     const exportPDF = useExportPDF('vulnerability');
     await exportPDF('executiveReport', 'vulnerability-test-export', { someRequestPayload: 'some value' });
 
-    expect(fetch).toHaveBeenCalledWith('http://localhost:5000/api/crc-pdf-generator/v1/generate', {
+    expect(fetch).toHaveBeenCalledWith(pdfGeneratorURL, {
       body: '{"service":"vulnerability","template":"executiveReport","params":{"someRequestPayload":"some value"}}',
       headers: { 'Content-Type': 'application/json' },
       method: 'POST',

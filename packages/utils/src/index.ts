@@ -16,3 +16,4 @@ export { default as RowLoader } from './RowLoader';
 export { useInventory } from './useInventory';
 export * from './CypressUtils';
 export * from './useInsightsNavigate';
+export * from './useExportPDF';
