@@ -1,3 +1,4 @@
+//@ts-ignore
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 
 const CRC_PDF_GENERATE_API = '/api/crc-pdf-generator/v1/generate';
