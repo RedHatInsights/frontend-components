@@ -1,5 +1,5 @@
 import useExportPDF from './useExportPDF';
-
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 jest.mock('@redhat-cloud-services/frontend-components-notifications/redux', () => ({
   ...jest.requireActual('@redhat-cloud-services/frontend-components-notifications/redux'),
   addNotification: jest.fn(() => ({})),
@@ -21,5 +21,6 @@ describe('useExportPDF', () => {
       headers: { 'Content-Type': 'application/json' },
       method: 'POST',
     });
+    expect(addNotification).toHaveBeenCalledWith();
   });
 });
