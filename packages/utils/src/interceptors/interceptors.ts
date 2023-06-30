@@ -2,7 +2,6 @@
 import { useMemo } from 'react';
 import axios from 'axios';
 import { captureException, configureScope } from '@sentry/browser';
-//@ts-ignore
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 export class HttpError extends Error {
