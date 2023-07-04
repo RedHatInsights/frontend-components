@@ -1,10 +1,13 @@
 import React from 'react';
 
-import { RuleDetailsMessages } from '../RuleDetails/RuleDetails';
+import { Message } from '../RuleDetails/RuleDetails';
 import { AdvisorProduct, RuleContentOcp, RuleContentRhel } from '../types';
 
 interface ViewAffectedLinkProps {
-  messages: RuleDetailsMessages;
+  messages: {
+    viewAffectedClusters: Message;
+    viewAffectedSystems: Message;
+  };
   product: AdvisorProduct;
   rule: RuleContentOcp | RuleContentRhel;
   linkComponent: any;
