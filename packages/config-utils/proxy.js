@@ -16,6 +16,68 @@ const { registerChrome } = require('./standalone/services/default/chrome');
 
 const defaultReposDir = path.join(__dirname, 'repos');
 
+const checkLocalAppHost = (appName, hostUrl, port) => {
+  const check = execSync(`curl --max-time 5 --silent --head ${hostUrl} | awk '/^HTTP/{print $2}'`).toString().trim();
+
+  if (check !== '200') {
+    console.error('\n' + appName[0].toUpperCase() + appName.substring(1) + ' is not running or available via ' + hostUrl);
+    console.log(
+      '\nMake sure to run `npm run start -- --port=' +
+        port +
+        '` in the ' +
+        appName +
+        " application directory to start it's webpack dev server and the bundle is built.\n"
+    );
+
+    return false;
+  } else {
+    return true;
+  }
+};
+
+const buildRoutes = (routes, target) =>
+  Object.entries(routes || {}).map(([route, redirect]) => {
+    const currTarget = redirect.host || redirect;
+    delete redirect.host;
+    return {
+      context: (path) => path.includes(route),
+      target: currTarget === 'PORTAL_BACKEND_MARKER' ? target : currTarget,
+      secure: false,
+      changeOrigin: true,
+      autoRewrite: true,
+      ws: true,
+      onProxyReq: cookieTransform,
+      ...(currTarget === 'PORTAL_BACKEND_MARKER' && { router }),
+      ...(typeof redirect === 'object' ? redirect : {}),
+    };
+  });
+
+const buildLocalAppRoutes = (localApps, defaultLocalAppHost, target) =>
+  buildRoutes(
+    (!Array.isArray(localApps) ? localApps.split(',') : localApps).reduce((acc, curr) => {
+      const [appName, appConfig] = (curr || '').split(':');
+      const [appPort = 8003, protocol = 'http'] = appConfig.split('~');
+      const appUrl = `${protocol}://${defaultLocalAppHost}:${appPort}`;
+
+      if (checkLocalAppHost(appName, appUrl, appPort)) {
+        console.log('Creating app proxy routes for: ' + appName + ' to ' + appUrl);
+
+        return {
+          ...acc,
+          [`/apps/${appName}`]: {
+            host: appUrl,
+          },
+          [`/preview/apps/${appName}`]: {
+            host: appUrl,
+          },
+        };
+      } else {
+        process.exit();
+      }
+    }, {}),
+    target
+  );
+
 module.exports = ({
   env = 'ci-beta',
   customProxy = [],
@@ -39,9 +101,12 @@ module.exports = ({
   bounceProd = false,
   useAgent = true,
   useDevBuild = true,
+  localApps = process.env.LOCAL_APPS,
 }) => {
   const proxy = [];
   const majorEnv = env.split('-')[0];
+  const defaultLocalAppHost = process.env.LOCAL_APP_HOST || majorEnv + '.foo.redhat.com';
+
   if (target === '') {
     target += 'https://';
     if (!['prod', 'stage'].includes(majorEnv)) {
@@ -86,24 +151,11 @@ module.exports = ({
 
   if (routes) {
     routes = routes.routes || routes;
-    console.log('Making proxy from SPANDX routes');
-    proxy.push(
-      ...Object.entries(routes || {}).map(([route, redirect]) => {
-        const currTarget = redirect.host || redirect;
-        delete redirect.host;
-        return {
-          context: (path) => path.includes(route),
-          target: currTarget === 'PORTAL_BACKEND_MARKER' ? target : currTarget,
-          secure: false,
-          changeOrigin: true,
-          autoRewrite: true,
-          ws: true,
-          onProxyReq: cookieTransform,
-          ...(currTarget === 'PORTAL_BACKEND_MARKER' && { router }),
-          ...(typeof redirect === 'object' ? redirect : {}),
-        };
-      })
-    );
+    proxy.push(...buildRoutes(routes, target));
+  }
+
+  if (localApps?.length > 0) {
+    proxy.push(...buildLocalAppRoutes(localApps, defaultLocalAppHost, target));
   }
 
   if (customProxy) {
