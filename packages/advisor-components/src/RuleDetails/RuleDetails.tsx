@@ -10,20 +10,13 @@ import { SeverityLine } from '@redhat-cloud-services/frontend-components-charts/
 
 import RebootRequired from '../RebootRequired/RebootRequired';
 import RuleRating from '../RuleRating/RuleRating';
-import { barDividedList, topicLinks } from '../common';
 import { AdvisorProduct, Rating, RuleContentOcp, RuleContentRhel, TopicRhel } from '../types';
-import { ViewAffectedLink } from '../ViewAffectedLink';
 import { RuleDescription } from '../RuleDescription';
 
 export type Message = React.ReactNode;
 export type RuleDetailsMessages = {
   systemReboot: Message;
-  // RHEL
-  viewAffectedSystems?: Message;
-  // OCP
-  viewAffectedClusters?: Message;
   knowledgebaseArticle: Message;
-  topicRelatedToRule: Message;
   totalRisk: Message;
   rulesDetailsTotalRiskBody: Message;
   likelihoodLevel: Message;
@@ -46,16 +39,15 @@ export interface RuleDetailsProps {
   header?: React.ReactNode;
   isDetailsPage: boolean;
   children?: React.ReactNode;
-  topics?: TopicRhel[];
   /**
    * onVoteClick - a callback used to update the rating of a particular rule
    * @param {string} ruleId - ID (usually in plugin|error_key format) of the rule that needs to be updated
    * @param {number} newRating rating (-1, 0, 1)
    */
   onVoteClick?: (ruleId: string, calculatedRating: Rating) => unknown;
-  showViewAffected?: boolean;
-  linkComponent?: any;
   knowledgebaseUrl?: string;
+  Topics?: React.ReactNode;
+  ViewAffectedLink?: React.ReactNode;
 }
 
 const RuleDetails: React.FC<RuleDetailsProps> = ({
@@ -64,14 +56,13 @@ const RuleDetails: React.FC<RuleDetailsProps> = ({
   header,
   rule,
   isDetailsPage,
-  topics,
   onVoteClick,
-  showViewAffected,
   resolutionRisk,
   resolutionRiskDesc,
   children,
-  linkComponent: Link,
   knowledgebaseUrl,
+  Topics,
+  ViewAffectedLink,
 }) => (
   <Flex
     className="ins-c-rule-details"
@@ -92,23 +83,13 @@ const RuleDetails: React.FC<RuleDetailsProps> = ({
             </a>
           </StackItem>
         )}
-        {topics && rule.tags && topicLinks(rule as RuleContentRhel, topics, Link).length > 0 && (
-          <StackItem className="ins-c-rule-details__topics">
-            <strong>{messages.topicRelatedToRule}</strong>
-            <br />
-            {barDividedList(topicLinks(rule as RuleContentRhel, topics, Link))}
-          </StackItem>
-        )}
+        {Topics && <StackItem className="ins-c-rule-details__topics">{Topics}</StackItem>}
         {isDetailsPage && onVoteClick && (
           <StackItem className="ins-c-rule-details__vote">
             <RuleRating messages={messages} ruleId={rule.rule_id} ruleRating={rule.rating} onVoteClick={onVoteClick} />
           </StackItem>
         )}
-        {!isDetailsPage && showViewAffected && Link && (
-          <StackItem className="ins-c-rule-details__view-affected">
-            <ViewAffectedLink messages={messages} rule={rule} product={product} linkComponent={Link} />
-          </StackItem>
-        )}
+        {ViewAffectedLink && <StackItem className="ins-c-rule-details__view-affected">{ViewAffectedLink}</StackItem>}
       </Stack>
     </FlexItem>
     <FlexItem align={{ lg: 'alignRight' }}>
