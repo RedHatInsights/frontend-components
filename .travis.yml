@@ -8,12 +8,13 @@ notifications:
 node_js:
 - '16'
 install:
-  - echo "hello" # npm ci
+  - npm ci
 before_script:
   - npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
 script:
-  #  - npm run lint
-  # - npm run test:ci
+  - npm run lint
+  - npm run test:ci
   - docker login -u "${QUAY_USER}" -p "${QUAY_PULL_SECRET}" quay.io
   - docker pull quay.io/cloudservices/iqe-artifact-uploader-s3:latest
+  - docker run -e AWS_BUCKET="${AWS_BUCKET}" -e AWS_REGION="${AWS_REGION}" -e AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" -e AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" iqe-artifact-uploader-s3
 
