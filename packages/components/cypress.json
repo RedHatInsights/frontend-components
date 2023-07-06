@@ -5,5 +5,12 @@
     "viewportHeight": 660,
     "viewportWidth": 1000
   },
-  "video": false
+  "video": false,
+  "reporter": "mocha-ibutsu-reporter",
+  "reporterOptions": {
+    "project": "insights-qe",
+    "component": "frontend-components",
+    "outputDir": "cypress/results/"
+  }
 }
+
