@@ -19,11 +19,9 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
       - uses: actions/checkout@v3
-      - name: Install dependencies
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
-      - run: npm install
+          node-version: 18
       - run: npm ci
       - run: npm run test:ci
       - name: Merge tests results
