@@ -22,6 +22,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      # force install of mocha reporter
+      - run: npm install mocha-ibutsu-reporter
       - run: npm ci
       - run: npm run test:ci
       - name: Merge tests results
