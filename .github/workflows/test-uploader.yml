@@ -20,7 +20,7 @@ jobs:
     steps:
       - run: docker login -u ${{ secrets.QUAY_INSIGHTS_QE_LOGIN }} -p ${{secrets.QUAY_INSIGHTS_QE_PASSWORD}} quay.io
       - run: docker pull quay.io/cloudservices/iqe-artifact-uploader-s3
-      - run: docker run run --read-only -v ./dummyreport . -e AWS_BUCKET="${{ secrets.AWS_BUCKET }}" -e AWS_REGION="${{ secrets.AWS_REGION }}" -e AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" quay.io/cloudservices/iqe-artifact-uploader-s3:latest
+      - run: docker run --read-only -v ./dummyreport . -e AWS_BUCKET="${{ secrets.AWS_BUCKET }}" -e AWS_REGION="${{ secrets.AWS_REGION }}" -e AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" quay.io/cloudservices/iqe-artifact-uploader-s3:latest
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
