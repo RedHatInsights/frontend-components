@@ -30,26 +30,32 @@ const renderPDF = (pdfBlob: Blob, fileName = 'new-report') => {
 
 // Hook to provide a function that request pdf-generator service to generate report blob
 // and convert returned blob into pdf
-const usePDFExport = (service: string) => {
+const usePDFExport = (service: string, dispatch: any) => {
   const exportPDF = async (template: string, filename: string, exportSettings: Record<string, unknown>) => {
-    addNotification({
-      variant: 'info',
-      title: 'Preparing export',
-      description: 'Once complete, your download will start automatically.',
-    });
+    dispatch(
+      addNotification({
+        variant: 'info',
+        title: 'Preparing export',
+        description: 'Once complete, your download will start automatically.',
+      })
+    );
     try {
       const pdfBlob = await fetchPDF(service, template, exportSettings);
       renderPDF(pdfBlob, filename);
-      addNotification({
-        variant: 'success',
-        title: 'Downloading export',
-      });
+      dispatch(
+        addNotification({
+          variant: 'success',
+          title: 'Downloading export',
+        })
+      );
     } catch (e) {
-      addNotification({
-        variant: 'danger',
-        title: 'Couldn’t download export',
-        description: 'Reinitiate this export to try again.',
-      });
+      dispatch(
+        addNotification({
+          variant: 'danger',
+          title: 'Couldn’t download export',
+          description: 'Reinitiate this export to try again.',
+        })
+      );
     }
   };
 
