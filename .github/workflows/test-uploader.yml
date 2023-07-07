@@ -18,7 +18,8 @@ jobs:
       #  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       #  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
-      - run: docker pull -u ${{ secrets.QUAY_INSIGHTS_QE_LOGIN }} -p ${{secrets.QUAY_INSIGHTS_QE_PASSWORD}} quay.io/cloudservices/iqe-artifact-uploader
+      - run: docker login -u ${{ secrets.QUAY_INSIGHTS_QE_LOGIN }} -p ${{secrets.QUAY_INSIGHTS_QE_PASSWORD}} quay.io
+      - run: docker pull quay.io/cloudservices/iqe-artifact-uploader
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
