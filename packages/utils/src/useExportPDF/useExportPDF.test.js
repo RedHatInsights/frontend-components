@@ -8,11 +8,12 @@ jest.mock('@redhat-cloud-services/frontend-components-notifications/redux', () =
 
 window.URL.createObjectURL = jest.fn();
 global.fetch = jest.fn();
+const dispatch = jest.fn();
 
 describe('useExportPDF', () => {
   it('Should download PDF', async () => {
     global.fetch.mockReturnValueOnce(Promise.resolve({ blob: jest.fn() }));
-    const exportPDF = useExportPDF('vulnerability');
+    const exportPDF = useExportPDF('vulnerability', dispatch);
     await exportPDF('executiveReport', 'vulnerability-test-export', { someRequestPayload: 'some value' });
     expect(fetch).toHaveBeenCalledWith(pdfGeneratorURL, {
       body: '{"service":"vulnerability","template":"executiveReport","params":{"someRequestPayload":"some value"}}',
@@ -32,7 +33,7 @@ describe('useExportPDF', () => {
   it('Should fail to download PDF with notification', async () => {
     global.fetch.mockReturnValueOnce(Promise.reject('error'));
 
-    const exportPDF = useExportPDF('vulnerability');
+    const exportPDF = useExportPDF('vulnerability', dispatch);
     await exportPDF('executiveReport', 'vulnerability-test-export', { someRequestPayload: 'some value' });
     expect(addNotification).toHaveBeenCalledWith({
       description: 'Reinitiate this export to try again.',
