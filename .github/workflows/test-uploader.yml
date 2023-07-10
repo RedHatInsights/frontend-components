@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: docker login -u ${{ secrets.QUAY_INSIGHTS_QE_LOGIN }} -p ${{secrets.QUAY_INSIGHTS_QE_PASSWORD}} quay.io
       - run: docker pull quay.io/cloudservices/iqe-artifact-uploader-s3
-      - run: ls -la /home/runners/work/frontend-components/frontend-components/dummyreport
+      - run: ls -la /home/runner/work/frontend-components/frontend-components/dummyreport
       - run: docker run --mount "type=bind,source=/home/runner/work/frontend-components/frontend-components/dummyreport:z,destination=/results:z" -e AWS_BUCKET="${{ secrets.AWS_BUCKET }}" -e AWS_REGION="${{ secrets.AWS_REGION }}" -e AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" quay.io/cloudservices/iqe-artifact-uploader-s3:latest -d /results
       - uses: actions/setup-node@v3
         with:
