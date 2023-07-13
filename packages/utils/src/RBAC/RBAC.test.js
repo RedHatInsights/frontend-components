@@ -525,6 +525,54 @@ describe('RBAC utilities', () => {
         ];
         expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(false);
       });
+
+      it('recognizes array syntax for IN value, 1', () => {
+        requiredPermissions = [
+          {
+            permission: 'inventory:hosts:read',
+            resourceDefinitions: [],
+          },
+        ];
+        userPermissions = [
+          {
+            permission: 'inventory:hosts:read',
+            resourceDefinitions: [
+              {
+                attributeFilter: {
+                  key: 'system-id',
+                  operation: 'in',
+                  value: [123, 456],
+                },
+              },
+            ],
+          },
+        ];
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(false);
+      });
+
+      it('recognizes array syntax for IN value, 2', () => {
+        requiredPermissions = [
+          {
+            permission: 'inventory:hosts:read',
+            resourceDefinitions: [
+              {
+                attributeFilter: {
+                  key: 'system-id',
+                  operation: 'in',
+                  value: [123, 456],
+                },
+              },
+            ],
+          },
+        ];
+        userPermissions = [
+          {
+            permission: 'inventory:hosts:read',
+            resourceDefinitions: [],
+          },
+        ];
+        expect(doesHavePermissions(userPermissions, requiredPermissions, true)).toBe(true);
+      });
     });
   });
   describe('has all permissions', () => {

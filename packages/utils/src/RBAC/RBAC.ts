@@ -34,7 +34,13 @@ function extractResourceDefinitionValues(rds: ResourceDefinition[]) {
     const { key, operation, value } = cur.attributeFilter;
 
     if (operation === ResourceDefinitionFilterOperationEnum.In) {
-      return [...acc, ...value.split(',').map((value) => `${key}:${value}`)];
+      return [
+        ...acc,
+        ...value
+          .toString()
+          .split(',')
+          .map((value) => `${key}:${value}`),
+      ];
     }
 
     if (operation === ResourceDefinitionFilterOperationEnum.Equal) {
