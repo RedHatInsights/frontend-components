@@ -197,6 +197,24 @@ const { config: webpackConfig, plugins } = config({
 
 This configuration will redirect all API requests to QA environment, so you can check CI UI with QA data.
 
+#### Running multiple local (frontend) applications
+
+With the proxy enabled it is possible to run multiple frontend applications together using one proxy and webpack dev servers for each other application via passing a `LOCAL_APPS` variable.
+
+```
+$ LOCAL_APPS=APP_NAME:APP_PORT[~APP_PROTOCOL] npm run start:proxy
+```
+
+##### Steps to run multiple applications
+
+1) Choose a "main application", which will run the proxy and proxy all other applications, for example Inventory and open a terminal in it's directory
+2) Open another terminal in any other application that you want to run with the Inventory, for example Advisor and start it's webpack dev server with `npm run start`
+3) Ensure the dev server is started and make not of it's addresses and port it is listening to. (This example assumes it runs on port `8002`)
+3.1) You can repeat this process for any application you want to run the Inventory with.
+4) With this information now, in the terminal for Inventory you can start the proxy and pass applications via the `LOCAL_APPS` variable, like `LOCAL_APPS=advisor:2002 npm run start:proxy`
+4.1) You can pass multiple applications as a comma separated list, like `LOCAL_APPS=advisor:8002,compliance:8003 npm run start:proxy`
+5) With this you should be able to see any changes in both Inventroy and Advisor via the usual `https://stage.foo.redhat.com:1337`.
+
 #### Env
 A hyphenated string in the form of (qa|ci|stage|prod)-(stable|beta). Used to determine the proxy target (such as ci.console.redhat.com or console.stage.redhat.com) and branch to checkout of build repos. If "stage" is specific qa is used as the branch.
 
