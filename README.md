@@ -21,7 +21,7 @@ To contribute to docs and run the docs developemnt environment, please follow th
 
 ## Treeshaking PF with babel plugin
 
-Patternfly packages require some ehancements to be done in order to properly treeshake your bundles. You can either use direct imports or plugin that does that for you, there are actually 2 plugins to do this
+Patternfly packages require some enhancements to be done in order to properly treeshake your bundles. You can either use direct imports or plugin that does that for you, there are actually 2 plugins to do this
 * [babel-plugin-import](https://www.npmjs.com/package/babel-plugin-import) - easy setup, however not that extensible
 * [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) - harder to setup, but allows custom rules
 
