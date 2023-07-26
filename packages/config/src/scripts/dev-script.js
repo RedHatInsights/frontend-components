@@ -44,7 +44,7 @@ async function devScript(argv, cwd) {
     const uiEnvOptions = ['beta', 'stable'];
     if (argv?.clouddotEnv && argv?.uiEnv) {
       if (clouddotEnvOptions.includes(argv.clouddotEnv) && uiEnvOptions.includes(argv.uiEnv)) {
-        process.env.BETA = argv.uiEnv;
+        process.env.BETA = argv.uiEnv === 'beta' ? 'true' : 'false';
         process.env.CLOUDOT_ENV = argv.clouddotEnv;
         process.env.FEC_ROOT_DIR = cwd;
       } else {
