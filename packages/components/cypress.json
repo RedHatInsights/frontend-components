@@ -1,0 +1,15 @@
+{
+  "component": {
+    "componentFolder": "src/",
+    "testFiles": "**/*.spec.ct.{js,ts,jsx,tsx}",
+    "viewportHeight": 660,
+    "viewportWidth": 1000
+  },
+  "video": false,
+  "reporter": "mocha-ibutsu-reporter",
+  "reporterOptions": {
+    "project": "frontend-components",
+    "component": "some-component",
+    "outputDir": "results/"
+  }
+}
