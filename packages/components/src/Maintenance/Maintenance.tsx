@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateProps, Stack, StackItem, Title } from '@patternfly/react-core';
+import { EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateProps, Stack, StackItem, EmptyStateHeader,  } from '@patternfly/react-core';
 import { HourglassHalfIcon } from '@patternfly/react-icons';
 import './maintenance.scss';
 
@@ -30,10 +30,7 @@ const Maintenance: React.FunctionComponent<MaintenanceProps> = ({
 
   return (
     <EmptyState className={emptyStateClassName} {...props}>
-      <EmptyStateIcon icon={HourglassHalfIcon} />
-      <Title headingLevel="h4" size="lg">
-        Maintenance in progress
-      </Title>
+      <EmptyStateHeader titleText="Maintenance in progress" icon={<EmptyStateIcon icon={HourglassHalfIcon} />} headingLevel="h4" />
       <EmptyStateBody>
         {description ? (
           description

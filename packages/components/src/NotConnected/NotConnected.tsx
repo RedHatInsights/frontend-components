@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, EmptyState, EmptyStateBody, EmptyStateIcon, Title } from '@patternfly/react-core';
+import { Button, EmptyState, EmptyStateBody, EmptyStateFooter, EmptyStateHeader, EmptyStateIcon } from '@patternfly/react-core';
 import { DisconnectedIcon } from '@patternfly/react-icons';
 
 export interface NotConnectedProps {
@@ -14,21 +14,20 @@ const NotConnected: React.FC<NotConnectedProps> = ({
   buttonText = 'Learn how to activate the Insights client',
 }) => (
   <EmptyState>
-    <EmptyStateIcon icon={DisconnectedIcon} />
-    <Title headingLevel="h5" size="lg">
-      {titleText}
-    </Title>
+    <EmptyStateHeader titleText={titleText} icon={<EmptyStateIcon icon={DisconnectedIcon} />} headingLevel="h5" />
     <EmptyStateBody>{bodyText}</EmptyStateBody>
-    <Button
-      variant="primary"
-      component="a"
-      href="http://access.redhat.com/products/cloud_management_services_for_rhel#getstarted"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="pf-u-mt-lg"
-    >
-      {buttonText}
-    </Button>
+    <EmptyStateFooter>
+      <Button
+        variant="primary"
+        component="a"
+        href="http://access.redhat.com/products/cloud_management_services_for_rhel#getstarted"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="pf-u-mt-lg"
+      >
+        {buttonText}
+      </Button>
+    </EmptyStateFooter>
   </EmptyState>
 );
 

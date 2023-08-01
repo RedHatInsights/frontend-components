@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Bullseye, EmptyState, EmptyStateBody, EmptyStateVariant, ModalProps, Pagination, Title } from '@patternfly/react-core';
+import { Bullseye, EmptyState, EmptyStateBody, EmptyStateHeader, EmptyStateVariant, ModalProps, Pagination } from '@patternfly/react-core';
 import { Table, TableBody, TableHeader, TableProps } from '@patternfly/react-table/deprecated';
 import { EmptyTable } from '../EmptyTable';
 import { TableToolbar } from '../TableToolbar';
@@ -132,9 +132,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
                           <EmptyTable>
                             <Bullseye>
                               <EmptyState variant={EmptyStateVariant.full}>
-                                <Title headingLevel="h5" size="lg">
-                                  No {entityName} found
-                                </Title>
+                                <EmptyStateHeader titleText={`No${entityName}found`} headingLevel="h5" />
                                 <EmptyStateBody>
                                   This filter criteria matches no {entityName}. <br /> Try changing your filter settings.
                                 </EmptyStateBody>
