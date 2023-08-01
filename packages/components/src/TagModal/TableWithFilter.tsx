@@ -69,7 +69,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
             pagination && {
               bulkSelect: {
                 count: selected?.length,
-                onSelect: (_e, isSelected: boolean) => {
+                onSelect: (isSelected: boolean) => {
                   if (isSelected) {
                     onSelect(unique?.([...rows, ...selected]));
                   } else {
