@@ -1,4 +1,6 @@
-import { Dropdown, DropdownItem, DropdownProps, DropdownToggle, Tooltip } from '@patternfly/react-core';
+import { Icon, Tooltip } from '@patternfly/react-core';
+import { Dropdown, DropdownItem, DropdownProps, DropdownToggle, DropdownToggleProps } from '@patternfly/react-core/deprecated';
+
 import React, { useState } from 'react';
 
 import { ExportIcon } from '@patternfly/react-icons';
@@ -35,7 +37,7 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const onToggle = (isOpen: boolean) => setIsOpen(isOpen);
+  const onToggle: DropdownToggleProps['onToggle'] = (_e, isOpen) => setIsOpen(isOpen);
 
   const internalOnSelect = () => setIsOpen((prev) => !prev);
 
@@ -52,7 +54,9 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
           onSelect={internalOnSelect}
           toggle={
             <DropdownToggle aria-label="Export" toggleIndicator={null} onToggle={onToggle} isDisabled={isDisabled} ouiaId="Export">
-              <ExportIcon size="sm" />
+              <Icon size="sm">
+                <ExportIcon />
+              </Icon>
             </DropdownToggle>
           }
           isOpen={isOpen}

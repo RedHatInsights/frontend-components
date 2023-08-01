@@ -21,7 +21,7 @@ export interface ErrorStateProps extends Omit<EmptyStateProps, 'children'> {
 
 const ErrorState: React.FunctionComponent<ErrorStateProps> = ({ errorTitle = 'Something went wrong', errorDescription, ...props }) => {
   return (
-    <EmptyState variant={EmptyStateVariant.large} {...props} className="ins-c-error-state">
+    <EmptyState variant={EmptyStateVariant.lg} {...props} className="ins-c-error-state">
       <EmptyStateIcon icon={ExclamationCircleIcon} />
       <Title headingLevel="h4" size="lg">
         {errorTitle}

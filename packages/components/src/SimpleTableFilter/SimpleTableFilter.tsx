@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Button, ButtonVariant, Dropdown, DropdownItem, DropdownToggle } from '@patternfly/react-core';
+import { Button, ButtonVariant, Icon } from '@patternfly/react-core';
+import { Dropdown, DropdownItem, DropdownToggle, DropdownToggleProps } from '@patternfly/react-core/deprecated';
+
 import { Input } from '../Input';
 import { SearchIcon } from '@patternfly/react-icons';
 import './simple-table-filter.scss';
@@ -42,7 +44,7 @@ const SimpleFilter: React.FC<SimpleFilterProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<undefined | SimpleFilterOptionItem>();
 
-  const onToggle = (isOpen: boolean) => setIsOpen(isOpen);
+  const onToggle: DropdownToggleProps['onToggle'] = (_e, isOpen) => setIsOpen(isOpen);
 
   const onInputChange = (event: React.KeyboardEvent<HTMLInputElement> | React.ChangeEvent<HTMLInputElement>) => {
     setActiveFilter((event as React.ChangeEvent<HTMLInputElement>).target?.value);
@@ -84,7 +86,11 @@ const SimpleFilter: React.FC<SimpleFilterProps> = ({
         widget-id={widgetId}
         onChange={(event) => onInputChange(event)}
       />
-      {!buttonTitle && searchIcon && <SearchIcon size="sm" className="ins-c-search-icon" />}
+      {!buttonTitle && searchIcon && (
+        <Icon size="sm">
+          <SearchIcon className="ins-c-search-icon" />
+        </Icon>
+      )}
       {buttonTitle && (
         <Button variant={ButtonVariant.secondary} action="filter" onClick={onFilterSubmit}>
           {buttonTitle}

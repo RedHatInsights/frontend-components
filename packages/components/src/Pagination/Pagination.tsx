@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PaginationNext, { PaginationNextProps } from './PaginationNext';
-import PropTypes from 'prop-types';
-import { DropdownDirection } from '@patternfly/react-core';
-import { PageOption } from './PaginationMenu';
+import { DropdownDirection } from '@patternfly/react-core/deprecated';
 
 export const dropDirection = {
   up: 'up',

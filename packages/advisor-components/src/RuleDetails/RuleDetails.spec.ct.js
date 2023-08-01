@@ -1,5 +1,4 @@
 import React from 'react';
-import { mount } from '@cypress/react';
 
 import rule from '../../cypress/fixtures/rule.json';
 import messages from '../../cypress/fixtures/messages.json';
@@ -25,7 +24,7 @@ describe('RuleDetails: details page', () => {
   const ROOT = '.ins-c-rule-details';
 
   beforeEach(() => {
-    mount(<RuleDetails {...fixtures} />);
+    cy.mount(<RuleDetails {...fixtures} />);
   });
 
   it('renders component', () => {

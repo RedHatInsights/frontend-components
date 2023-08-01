@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState } from 'react';
 import classnames from 'classnames';
+import { Checkbox, getDefaultOUIAId } from '@patternfly/react-core';
 import {
-  Checkbox,
   Dropdown,
   DropdownItem,
   DropdownItemProps,
@@ -9,8 +9,7 @@ import {
   DropdownToggleCheckbox,
   DropdownToggleCheckboxProps,
   DropdownToggleProps,
-  getDefaultOUIAId,
-} from '@patternfly/react-core';
+} from '@patternfly/react-core/deprecated';
 import './bulk-select.scss';
 
 export type BulkSelectItem = {
@@ -95,7 +94,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
                   )}
                 </Fragment>,
               ]}
-              onToggle={onToggle}
+              onToggle={(_e, isOpen) => onToggle(isOpen)}
             />
           }
           isOpen={isOpen}

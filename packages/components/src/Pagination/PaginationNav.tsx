@@ -61,9 +61,9 @@ const PaginationNav: React.FunctionComponent<PaginationNavProps> = ({
           data-action="set-page"
           max={amountOfPages}
           style={{ width: `${lastPage.toString().length}rem`, minWidth: '3rem' }}
-          isReadOnly={amountOfPages === 1}
+          readOnly={amountOfPages === 1}
           value={page}
-          onChange={(value, event) => {
+          onChange={(event, value) => {
             setPage(event, value === '' ? NaN : Number(value));
           }}
         />

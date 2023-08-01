@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Bullseye, EmptyState, EmptyStateBody, EmptyStateVariant, ModalProps, Pagination, Title } from '@patternfly/react-core';
-import { ICell, IRow, Table, TableBody, TableHeader, TableProps } from '@patternfly/react-table';
+import { Table, TableBody, TableHeader, TableProps } from '@patternfly/react-table/deprecated';
 import { EmptyTable } from '../EmptyTable';
 import { TableToolbar } from '../TableToolbar';
 import { PrimaryToolbar, PrimaryToolbarProps } from '../PrimaryToolbar';
@@ -8,6 +8,7 @@ import { Skeleton } from '../Skeleton';
 import { SkeletonTable } from '../SkeletonTable';
 import { BulkSelectProps } from '../BulkSelect';
 import { ConditionalFilterItem } from '../ConditionalFilter';
+import { ICell, IRow } from '@patternfly/react-table';
 
 export type TableWithFilterPagination = {
   count: number;
@@ -68,7 +69,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
             pagination && {
               bulkSelect: {
                 count: selected?.length,
-                onSelect: (isSelected) => {
+                onSelect: (_e, isSelected: boolean) => {
                   if (isSelected) {
                     onSelect(unique?.([...rows, ...selected]));
                   } else {

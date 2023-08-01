@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { KeyboardEvent } from 'react';
 import {
   Button,
   ButtonProps,
@@ -59,7 +59,7 @@ function isPrimaryToolbarExpandAllObject(node: React.ReactNode | PrimaryToolbarE
   return !React.isValidElement(node);
 }
 
-const PrimaryToolbar: React.FunctionComponent<PrimaryToolbarProps> = ({
+const PrimaryToolbar: React.FunctionComponent<React.PropsWithChildren<PrimaryToolbarProps>> = ({
   id,
   className,
   toggleIsExpanded = () => undefined,
@@ -82,12 +82,14 @@ const PrimaryToolbar: React.FunctionComponent<PrimaryToolbarProps> = ({
           {
             label: 'Sort order ASC',
             props: { isDisabled: sortByConfig.direction === SortByDirection.asc },
-            onClick: (e: React.MouseEvent) => sortByConfig.onSortChange && sortByConfig.onSortChange(e, SortByDirection.asc),
+            onClick: (e: MouseEvent | React.MouseEvent<any, MouseEvent> | KeyboardEvent<Element>) =>
+              sortByConfig.onSortChange && sortByConfig.onSortChange(e, SortByDirection.asc),
           },
           {
             label: 'Sort order DESC',
             props: { isDisabled: sortByConfig.direction === SortByDirection.desc },
-            onClick: (e: React.MouseEvent) => sortByConfig.onSortChange && sortByConfig.onSortChange(e, SortByDirection.desc),
+            onClick: (e: MouseEvent | React.MouseEvent<any, MouseEvent> | KeyboardEvent<Element>) =>
+              sortByConfig.onSortChange && sortByConfig.onSortChange(e, SortByDirection.desc),
           },
         ]
       : []),

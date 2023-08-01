@@ -1,7 +1,7 @@
 import React from 'react';
 import PaginationNav, { PaginationNavProps } from './PaginationNav';
 import PaginationMenu, { PageOption, PaginationMenuProps } from './PaginationMenu';
-import { DropdownDirection } from '@patternfly/react-core';
+import { DropdownDirection } from '@patternfly/react-core/deprecated';
 
 export interface PaginationNextProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   amountOfPages?: number;

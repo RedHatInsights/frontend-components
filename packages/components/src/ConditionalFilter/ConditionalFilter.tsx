@@ -1,7 +1,9 @@
 import React, { FormEvent, Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import globalBreakpointMd from '@patternfly/react-tokens/dist/js/global_breakpoint_md';
-import { Dropdown, DropdownItem, DropdownToggle, Split, SplitItem, ToolbarGroup, ToolbarItem, ToolbarToggleGroup } from '@patternfly/react-core';
+import { Icon, Split, SplitItem, ToolbarGroup, ToolbarItem, ToolbarToggleGroup } from '@patternfly/react-core';
+import { Dropdown, DropdownItem, DropdownToggle } from '@patternfly/react-core/deprecated';
+
 import { FilterIcon } from '@patternfly/react-icons';
 import TextFilter, { FilterValue } from './TextFilter';
 import { conditionalFilterType, typeMapper } from './conditionalFilterConstants';
@@ -154,12 +156,14 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                     toggle={
                       <DropdownToggle
                         aria-label="Conditional filter"
-                        onToggle={setIsOpen}
+                        onToggle={(_e, isOpen) => setIsOpen(isOpen)}
                         isDisabled={isDisabled}
                         className={hideLabel ? 'ins-c-conditional-filter__no-label' : ''}
                         ouiaId="ConditionalFilter"
                       >
-                        <FilterIcon size="sm" />
+                        <Icon size="sm">
+                          <FilterIcon />
+                        </Icon>
                         {!hideLabel && (
                           <span className="ins-c-conditional-filter__value-selector">{activeItem && capitalize(String(activeItem.label))}</span>
                         )}
@@ -171,7 +175,6 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                         component="button"
                         ouiaId={String(item.label)}
                         onClick={(e) => onChangeCallback(e as FormEvent<HTMLInputElement>, item.value || key)}
-                        isHovered={(activeItem as ConditionalFilterItem).label === item.label}
                       >
                         {capitalize(String(item.label))}
                       </DropdownItem>

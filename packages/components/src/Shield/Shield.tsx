@@ -1,5 +1,5 @@
-import { Tooltip } from '@patternfly/react-core';
-import { IconSize, QuestionIcon, SecurityIcon } from '@patternfly/react-icons';
+import { Icon, IconComponentProps, Tooltip } from '@patternfly/react-core';
+import { QuestionIcon, SecurityIcon } from '@patternfly/react-icons';
 import { SVGIconProps } from '@patternfly/react-icons/dist/js/createIcon';
 import React from 'react';
 import { impactList } from './consts';
@@ -8,7 +8,7 @@ export interface ShieldProps {
   impact: keyof typeof impactList | 'N/A';
   hasLabel?: boolean;
   hasTooltip?: boolean;
-  size?: IconSize | keyof typeof IconSize;
+  size?: IconComponentProps['size'];
 }
 
 const Shield: React.FunctionComponent<ShieldProps> = ({ impact = 'N/A', hasLabel = false, size = 'sm', hasTooltip = true }) => {
@@ -17,10 +17,9 @@ const Shield: React.FunctionComponent<ShieldProps> = ({ impact = 'N/A', hasLabel
     'aria-hidden': 'false',
     'aria-label': attributes.title,
     color: attributes.color,
-    size,
   };
 
-  const badge = attributes.title === 'Unknown' ? <QuestionIcon {...badgeProps} /> : <SecurityIcon {...badgeProps} />;
+  const badge = <Icon size={size}>{attributes.title === 'Unknown' ? <QuestionIcon {...badgeProps} /> : <SecurityIcon {...badgeProps} />}</Icon>;
 
   const body = (
     <span>

@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from 'react';
-import { Radio, Select, SelectOption, SelectVariant } from '@patternfly/react-core';
+import { Radio } from '@patternfly/react-core';
+import { Select, SelectOption, SelectVariant } from '@patternfly/react-core/deprecated';
+
 import TextFilter, { FilterItem, FilterValue, isFilterValue } from './TextFilter';
 
 export interface RadioFilterProps {
@@ -56,7 +58,7 @@ const RadioFilter: React.FunctionComponent<RadioFilterProps> = ({ items = [], on
           variant={SelectVariant.single}
           aria-label="Select Input"
           isDisabled={isDisabled}
-          onToggle={(value) => setExpanded(value)}
+          onToggle={(_e, value) => setExpanded(value)}
           onSelect={(event, value) => onSelect(event, value as string | FilterValue)}
           isOpen={isExpanded}
           placeholderText={placeholder}
@@ -74,7 +76,7 @@ const RadioFilter: React.FunctionComponent<RadioFilterProps> = ({ items = [], on
                   (checkedValue !== undefined && checkedValue === '' + key) ||
                   false
                 }
-                onChange={(_value, e) => onChange?.(e, { id, label, value, isChecked, ...item }, key)}
+                onChange={(e) => onChange?.(e, { id, label, value, isChecked, ...item }, key)}
                 id={id || `${value}-${key}`}
               />
             </SelectOption>

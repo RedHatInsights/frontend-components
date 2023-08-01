@@ -1,5 +1,5 @@
-import React, { FormEvent, Fragment, MouseEventHandler, useState } from 'react';
-import { TextInput } from '@patternfly/react-core';
+import React, { FormEvent, Fragment, MouseEventHandler, ReactNode, useState } from 'react';
+import { Icon, TextInput } from '@patternfly/react-core';
 import { SearchIcon } from '@patternfly/react-icons';
 import './conditional-filter.scss';
 
@@ -8,7 +8,7 @@ export function isFilterValue(item: string | FilterValue): item is FilterValue {
 }
 export interface FilterItem {
   /** Item label. */
-  label: Node | string;
+  label: ReactNode;
   /** Optional item name. */
   name?: string;
   /** Item value. */
@@ -25,7 +25,7 @@ export interface FilterItem {
 
 export interface FilterValue {
   /** Label. */
-  label: Node;
+  label: ReactNode;
   /** Value string. */
   value: string;
 }
@@ -79,7 +79,7 @@ const TextFilter: React.FunctionComponent<TextFilterProps> = ({
 }) => {
   const filterValue = value as string | FilterValue;
   const [stateValue, setStateValue] = useState('');
-  const Icon = icon || SearchIcon;
+  const InternalIcon = icon || SearchIcon;
   const changeCallback = (e: React.FormEvent<HTMLInputElement>, value: string) => (onChange ? onChange(e, value) : setStateValue(value));
 
   return (
@@ -91,7 +91,7 @@ const TextFilter: React.FunctionComponent<TextFilterProps> = ({
         id={id}
         isDisabled={isDisabled}
         value={(onChange ? (typeof value === 'string' ? filterValue : (filterValue as FilterValue).value) : stateValue) as string}
-        onChange={(_inputValue, e) => changeCallback(e, (e.target as HTMLInputElement).value)}
+        onChange={(e) => changeCallback(e, (e.target as HTMLInputElement).value)}
         onKeyDown={(e) =>
           e.key === 'Enter' && onSubmit?.(e, ((typeof value === 'string' ? filterValue : (filterValue as FilterValue).value) as string) || stateValue)
         }
@@ -100,7 +100,9 @@ const TextFilter: React.FunctionComponent<TextFilterProps> = ({
         widget-type="InsightsInput"
         ref={innerRef}
       />
-      <Icon size="sm" className="ins-c-search-icon" />
+      <Icon size="sm">
+        <InternalIcon className="ins-c-search-icon" />
+      </Icon>
     </Fragment>
   );
 };

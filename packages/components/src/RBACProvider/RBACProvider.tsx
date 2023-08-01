@@ -23,7 +23,11 @@ export interface RBACProviderProps {
   checkResourceDefinitions: boolean;
 }
 
-export const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appName, checkResourceDefinitions = false, children }) => {
+export const RBACProvider: React.FunctionComponent<React.PropsWithChildren<RBACProviderProps>> = ({
+  appName,
+  checkResourceDefinitions = false,
+  children,
+}) => {
   const [permissionState, setPermissionState] = useState(initialPermissions);
 
   const fetchPermissions = async () => {

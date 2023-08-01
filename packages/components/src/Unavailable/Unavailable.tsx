@@ -5,7 +5,7 @@ import './Unavailable.scss';
 
 const Unavailable: React.FC = () => {
   return (
-    <EmptyState variant={EmptyStateVariant.large} className="ins-c-empty-state__unavailable pf-m-redhat-font">
+    <EmptyState variant={EmptyStateVariant.lg} className="ins-c-empty-state__unavailable pf-m-redhat-font">
       <EmptyStateIcon icon={ExclamationCircleIcon} />
       <Title headingLevel="h5" size="lg">
         This page is temporarily unavailable

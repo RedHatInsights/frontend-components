@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, ReactNode } from 'react';
 import { Group, GroupFilterItem, GroupItem, TreeViewItem } from './GroupFilter';
 import groupTypes, { GroupType } from './groupType';
 
@@ -44,7 +44,7 @@ export type FilterMenuItemOnChange = (
   selected: unknown,
   selectedItem: {
     value: string;
-    label: string | Node;
+    label: string | ReactNode;
     id: string;
     type: unknown;
     items: GroupFilterItem[];
@@ -84,7 +84,7 @@ export const getMenuItems = (
           unknown,
           {
             value: string;
-            label: string | Node;
+            label: string | ReactNode;
             id: string;
             type: unknown;
             items: GroupFilterItem[];

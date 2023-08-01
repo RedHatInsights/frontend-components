@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react';
-import { Select, SelectOption, SelectVariant } from '@patternfly/react-core';
+import { Select, SelectOption, SelectVariant } from '@patternfly/react-core/deprecated';
 import isEqual from 'lodash/isEqual';
 import omit from 'lodash/omit';
 import TextFilter, { FilterItem, FilterValue, isFilterValue } from './TextFilter';
@@ -78,7 +78,7 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({
           className={className}
           variant={SelectVariant.checkbox}
           aria-label="Select Input"
-          onToggle={(isExpanded) => setExpanded(isExpanded)}
+          onToggle={(_e, isExpanded) => setExpanded(isExpanded)}
           isDisabled={isDisabled}
           onSelect={(event, value) => onSelect(event, value as string | FilterValue)}
           selections={calculateSelected()}

@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from 'react';
-import { Button, Dropdown, DropdownItem, DropdownProps, DropdownSeparator, KebabToggle, KebabToggleProps, ToolbarItem } from '@patternfly/react-core';
+import { Button, ToolbarItem } from '@patternfly/react-core';
+import { Dropdown, DropdownItem, DropdownProps, DropdownSeparator, KebabToggle, KebabToggleProps } from '@patternfly/react-core/deprecated';
+
 import { DownloadButton, DownloadButtonProps } from '../DownloadButton';
 import classNames from 'classnames';
 
@@ -40,7 +42,8 @@ export const overflowActionsMapper = (action: ActionsType, key: string | number)
       component={(internalAction.props && internalAction.props.component) || React.isValidElement(internalAction.label || action) ? 'div' : 'button'}
       onClick={(e) => internalAction.onClick && internalAction.onClick(e, internalAction, key)}
     >
-      {internalAction.label || action}
+      {/* FIXME: fix typings */}
+      {internalAction.label || (action as React.ReactNode)}
     </DropdownItem>
   );
 };
@@ -55,7 +58,7 @@ export const actionPropsGenerator = (action: ActionsType, key: string | number) 
     ...(action as ActionObject)?.props,
     onClick,
     component: (action as ActionObject)?.props?.component || (React.isValidElement((action as ActionObject).label || action) ? 'div' : 'button'),
-    children: typeof action === 'object' && typeof action !== null ? (action as { label?: React.ReactNode })?.label : action,
+    children: (typeof action === 'object' && typeof action !== null ? (action as { label?: React.ReactNode })?.label : action) as React.ReactNode,
   };
 };
 
@@ -128,7 +131,7 @@ const Actions: React.FunctionComponent<ActionsProps> = ({
             toggle={
               <KebabToggle
                 {...kebabToggleProps}
-                onToggle={(isOpen) => {
+                onToggle={(_e, isOpen) => {
                   toggleOpen(isOpen);
                 }}
               />

@@ -1,4 +1,4 @@
-import React, { FormEvent, Fragment, MouseEventHandler, useEffect, useRef, useState } from 'react';
+import React, { FormEvent, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import {
   Button,
@@ -38,7 +38,7 @@ export interface GroupFilterItem {
   /** isChecked flag. */
   isChecked?: boolean;
   /** Item label. */
-  label?: Node | string;
+  label?: ReactNode;
   /** Item name. */
   name?: string;
   /** Optional noFilter flag. */
@@ -237,14 +237,14 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
         <TreeView
           data={[mapTree(item as TreeViewItem, groupKey, stateSelected, selected || {})] as TreeViewDataItem[]}
           onCheck={(e, value) => onTreeCheck(e, value as TreeViewItem, [item as TreeViewItem])}
-          hasChecks
+          hasCheckboxes
         />
       ) : (type || item.type) === groupType.checkbox ? (
         <Checkbox
           {...item}
           label={item?.label}
           isChecked={item?.isChecked || isChecked(groupKey, item?.value || key, item?.id, item?.tagValue, stateSelected, selected || {}) || false}
-          onChange={(value, event) => {
+          onChange={(event, value) => {
             item?.onChange?.(value, event);
           }}
           onClick={
@@ -262,7 +262,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
         <Radio
           {...item}
           isChecked={item?.isChecked || isChecked(groupKey, item?.value || key, item?.id, item?.tagValue, stateSelected, selected || {}) || false}
-          onChange={(value, event) => {
+          onChange={(event, value) => {
             item?.onChange?.(value, event);
           }}
           value={item?.value || key}
@@ -319,7 +319,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
                   className={classNames({
                     'ins-c-input__clearable': searchDirty,
                   })}
-                  onChange={(value) => setFilter(value)}
+                  onChange={(_e, value) => setFilter(value)}
                   onClick={(e) => e.preventDefault()}
                   onKeyDown={(e) => {
                     if (e.key === ' ' || e.key === 'Escape') {

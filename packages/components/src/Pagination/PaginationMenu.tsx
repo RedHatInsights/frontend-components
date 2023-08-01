@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CaretDownIcon, CaretUpIcon, CheckIcon } from '@patternfly/react-icons';
-import { Dropdown, DropdownDirection, DropdownItem, DropdownToggle } from '@patternfly/react-core';
+import { Dropdown, DropdownDirection, DropdownItem, DropdownToggle } from '@patternfly/react-core/deprecated';
+import { Icon } from '@patternfly/react-core';
 
 export type PageOption = {
   title: React.ReactNode;
@@ -50,11 +51,15 @@ const PaginationMenu: React.FunctionComponent<PaginationMenuProps> = ({
           dropdownItems={perPageOptions.map(({ title, value }) => (
             <DropdownItem onClick={(event) => value !== perPage && onSetPerPage(event, value)} key={value} component="button">
               {title}
-              {value === perPage && <CheckIcon className="pf-c-options-menu__menu-item-icon" size="md" />}
+              {value === perPage && (
+                <Icon size="md">
+                  <CheckIcon className="pf-c-options-menu__menu-item-icon" />
+                </Icon>
+              )}
             </DropdownItem>
           ))}
           toggle={
-            <DropdownToggle onToggle={(isOpen) => setIsOpen(isOpen)} toggleIndicator={null} className="pf-c-options-menu__toggle-button">
+            <DropdownToggle onToggle={(_e, isOpen) => setIsOpen(isOpen)} toggleIndicator={null} className="pf-c-options-menu__toggle-button">
               <span className="pf-c-options-menu__toggle-text">
                 <b>
                   {itemsStart} - {itemsEnd}

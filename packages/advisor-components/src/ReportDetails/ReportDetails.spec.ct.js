@@ -1,5 +1,4 @@
 import React from 'react';
-import { mount } from '@cypress/react';
 
 import { ReportDetails } from '..';
 import report from '../../cypress/fixtures/report.json';
@@ -15,7 +14,7 @@ const props = {
 
 describe('report details: kba loaded', () => {
   beforeEach(() => {
-    mount(<ReportDetails {...props} />);
+    cy.mount(<ReportDetails {...props} />);
   });
 
   it('renders component and matches screenshot', () => {

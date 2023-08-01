@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Dropdown, DropdownToggle, Level, getDefaultOUIAId } from '@patternfly/react-core';
+import { Level, getDefaultOUIAId } from '@patternfly/react-core';
+import { Dropdown, DropdownToggle } from '@patternfly/react-core/deprecated';
+
 import FilterInput from './FilterInput';
 import './filter-dropdown.scss';
 
@@ -52,7 +54,7 @@ const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({
       className="ins-c-filter__dropdown"
       {...props}
       toggle={
-        <DropdownToggle ouiaId={ouiaId} ouiaSafe={ouiaSafe} onToggle={(isOpen) => setIsOpen(isOpen)}>
+        <DropdownToggle ouiaId={ouiaId} ouiaSafe={ouiaSafe} onToggle={(_e, isOpen) => setIsOpen(isOpen)}>
           {label}
         </DropdownToggle>
       }
