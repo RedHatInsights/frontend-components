@@ -100,7 +100,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({
                       <React.Fragment>
                         <ExternalLink
                           href={`${linkEditor(kbaDetail?.view_uri)}`}
-                          content={kbaDetail.publishedTitle ? kbaDetail.publishedTitle : `Knowledgebase article`}
+                          content={kbaDetail?.publishedTitle ? kbaDetail?.publishedTitle : `Knowledgebase article`}
                         />
                         .
                       </React.Fragment>
