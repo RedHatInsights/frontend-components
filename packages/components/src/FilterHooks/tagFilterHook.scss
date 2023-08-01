@@ -7,14 +7,14 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .pf-c-badge {
+    .pf-v5-c-badge {
       margin-left: auto;
       padding-top: 0.2;
     }
   }
-  .pf-c-select__menu-group-title:empty { display: none; }
+  .pf-v5-c-select__menu-group-title:empty { display: none; }
 
-  .pf-c-select__menu > div { padding-top: 0; }
+  .pf-v5-c-select__menu > div { padding-top: 0; }
 
   &.pf-m-expanded { width: 18.75rem !important; }
 }

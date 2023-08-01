@@ -74,24 +74,24 @@ const A = ({ children, target, ...props }) => (
   </Link>
 );
 
-export const H1 = addLinkAnchor(({ className, ...props }) => <Title className={classnames(className, 'pf-u-mb-lg')} headingLevel="h1" {...props} />);
+export const H1 = addLinkAnchor(({ className, ...props }) => <Title className={classnames(className, 'pf-v5-u-mb-lg')} headingLevel="h1" {...props} />);
 
 export const H2 = addLinkAnchor(({ className, ...props }) => (
-  <Title className={classnames(className, 'pf-u-mb-md pf-u-mt-md')} headingLevel="h2" {...props} />
+  <Title className={classnames(className, 'pf-v5-u-mb-md pf-v5-u-mt-md')} headingLevel="h2" {...props} />
 ));
 
 export const H3 = addLinkAnchor(({ className, ...props }) => (
-  <Title className={classnames(className, 'pf-u-mb-md pf-u-mt-md')} headingLevel="h3" {...props} />
+  <Title className={classnames(className, 'pf-v5-u-mb-md pf-v5-u-mt-md')} headingLevel="h3" {...props} />
 ));
 export const H4 = addLinkAnchor(({ className, ...props }) => (
-  <Title className={classnames(className, 'pf-u-mb-md pf-u-mt-md')} headingLevel="h4" {...props} />
+  <Title className={classnames(className, 'pf-v5-u-mb-md pf-v5-u-mt-md')} headingLevel="h4" {...props} />
 ));
 export const Table = (props) => {
   const classes = useTableStyles();
   return (
-    <Card className={classnames('pf-u-mb-lg', classes.card)}>
+    <Card className={classnames('pf-v5-u-mb-lg', classes.card)}>
       <CardBody>
-        <table className="pf-c-table pf-m-grid-md" {...props} />
+        <table className="pf-v5-c-table pf-m-grid-md" {...props} />
       </CardBody>
     </Card>
   );

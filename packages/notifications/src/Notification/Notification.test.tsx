@@ -92,7 +92,7 @@ describe('Notification component', () => {
       wrapper = mount(<Notification dismissDelay={100} {...initialProps} description={undefined} />);
     });
     // @ts-ignore
-    wrapper?.find('.pf-c-alert').simulate('mouseEnter');
+    wrapper?.find('.pf-v5-c-alert').simulate('mouseEnter');
     expect(timeoutSpy).toHaveBeenCalledTimes(1);
     timeoutSpy.mockRestore();
   });
@@ -105,7 +105,7 @@ describe('Notification component', () => {
       wrapper = mount(<Notification dismissDelay={100} {...initialProps} description={undefined} />);
     });
     // @ts-ignore
-    wrapper?.find('.pf-c-alert').simulate('mouseLeave');
+    wrapper?.find('.pf-v5-c-alert').simulate('mouseLeave');
     expect(timeoutSpy).toHaveBeenCalledTimes(3);
     timeoutSpy.mockRestore();
   });

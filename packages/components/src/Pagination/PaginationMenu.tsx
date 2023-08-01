@@ -38,11 +38,11 @@ const PaginationMenu: React.FunctionComponent<PaginationMenuProps> = ({
 
   const onSelect = () => setIsOpen((prev) => !prev);
   return (
-    <div className={`pf-c-options-menu ${className}`} {...props}>
+    <div className={`pf-v5-c-options-menu ${className}`} {...props}>
       <span id={`${widtgetId}-label`} hidden>
         Items per page:
       </span>
-      <div className="pf-c-options-menu__toggle pf-m-text pf-m-plain">
+      <div className="pf-v5-c-options-menu__toggle pf-m-text pf-m-plain">
         <Dropdown
           direction={dropDirection}
           isPlain
@@ -53,14 +53,14 @@ const PaginationMenu: React.FunctionComponent<PaginationMenuProps> = ({
               {title}
               {value === perPage && (
                 <Icon size="md">
-                  <CheckIcon className="pf-c-options-menu__menu-item-icon" />
+                  <CheckIcon className="pf-v5-c-options-menu__menu-item-icon" />
                 </Icon>
               )}
             </DropdownItem>
           ))}
           toggle={
-            <DropdownToggle onToggle={(_e, isOpen) => setIsOpen(isOpen)} toggleIndicator={null} className="pf-c-options-menu__toggle-button">
-              <span className="pf-c-options-menu__toggle-text">
+            <DropdownToggle onToggle={(_e, isOpen) => setIsOpen(isOpen)} toggleIndicator={null} className="pf-v5-c-options-menu__toggle-button">
+              <span className="pf-v5-c-options-menu__toggle-text">
                 <b>
                   {itemsStart} - {itemsEnd}
                 </b>{' '}

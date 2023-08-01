@@ -27,7 +27,7 @@ const PaginationNav: React.FunctionComponent<PaginationNavProps> = ({
   ...props
 }) => {
   return (
-    <nav className="pf-c-pagination__nav" aria-label="Pagination" {...props}>
+    <nav className="pf-v5-c-pagination__nav" aria-label="Pagination" {...props}>
       <Button
         variant={ButtonVariant.plain}
         isDisabled={page === 1}
@@ -52,9 +52,9 @@ const PaginationNav: React.FunctionComponent<PaginationNavProps> = ({
       >
         <AngleLeftIcon />
       </Button>
-      <div className="pf-c-pagination__nav-page-select" aria-label={`Current page ${page} of ${lastPage}`}>
+      <div className="pf-v5-c-pagination__nav-page-select" aria-label={`Current page ${page} of ${lastPage}`}>
         <TextInput
-          className="pf-c-form-control"
+          className="pf-v5-c-form-control"
           aria-label="Current page"
           type="number"
           min="1"

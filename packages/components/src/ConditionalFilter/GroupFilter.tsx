@@ -271,7 +271,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
           id={item?.id || item?.value || `${groupKey}-${key}`}
         />
       ) : (type || item.type) === groupType.button ? (
-        <Button id={item.id} className={`pf-c-select__option-button ${item?.className || ''}`} variant={item?.variant} onClick={item.onClick}>
+        <Button id={item.id} className={`pf-v5-c-select__option-button ${item?.className || ''}`} variant={item?.variant} onClick={item.onClick}>
           {item?.label}
         </Button>
       ) : (

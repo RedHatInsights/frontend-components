@@ -41,7 +41,7 @@ const ToolbarFilterCategories = () => {
           ],
         }}
       />
-      <pre className="pf-u-ml-md">{JSON.stringify({ filterCategory, categoryValues }, null, 2)}</pre>
+      <pre className="pf-v5-u-ml-md">{JSON.stringify({ filterCategory, categoryValues }, null, 2)}</pre>
     </div>
   );
 };

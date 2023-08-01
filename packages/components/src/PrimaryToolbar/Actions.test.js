@@ -105,7 +105,7 @@ describe('Actions - component', () => {
   describe('API', () => {
     it('should update open', () => {
       const wrapper = mount(<Actions actions={actions} />);
-      wrapper.find('button.pf-c-dropdown__toggle').first().simulate('click');
+      wrapper.find('button.pf-v5-c-dropdown__toggle').first().simulate('click');
       wrapper.update();
       expect(toJson(wrapper)).toMatchSnapshot();
     });
@@ -113,9 +113,9 @@ describe('Actions - component', () => {
     it('should NOT call onSelect', () => {
       const onSelect = jest.fn();
       const wrapper = mount(<Actions actions={actions} />);
-      wrapper.find('button.pf-c-dropdown__toggle').first().simulate('click');
+      wrapper.find('button.pf-v5-c-dropdown__toggle').first().simulate('click');
       wrapper.update();
-      wrapper.find('button.pf-c-dropdown__menu-item').first().simulate('click');
+      wrapper.find('button.pf-v5-c-dropdown__menu-item').first().simulate('click');
       expect(onSelect).not.toHaveBeenCalled();
     });
 
@@ -123,10 +123,10 @@ describe('Actions - component', () => {
       const onSelect = jest.fn();
       const wrapper = mount(<Actions actions={actions} onSelect={onSelect} />);
       act(() => {
-        wrapper.find('button.pf-c-dropdown__toggle').first().simulate('click');
+        wrapper.find('button.pf-v5-c-dropdown__toggle').first().simulate('click');
       });
       wrapper.update();
-      wrapper.find('button.pf-c-dropdown__menu-item').first().simulate('click');
+      wrapper.find('button.pf-v5-c-dropdown__menu-item').first().simulate('click');
       expect(onSelect).toHaveBeenCalled();
     });
   });

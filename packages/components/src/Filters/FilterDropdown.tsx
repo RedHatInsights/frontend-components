@@ -62,7 +62,7 @@ const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({
       ouiaId={ouiaId}
       ouiaSafe={ouiaSafe}
     >
-      <div className="pf-c-dropdown__menu-item">
+      <div className="pf-v5-c-dropdown__menu-item">
         {filterCategories?.map(
           (data: FilterCategory, index) =>
             !hideCategories?.includes(data?.urlParam) && (

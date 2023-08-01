@@ -122,9 +122,9 @@ describe('Pagination component', () => {
     it('onPerPageSelect', () => {
       const onPerPageSelect = jest.fn();
       const wrapper = mount(<Pagination numberOfItems={30} onPerPageSelect={onPerPageSelect} />);
-      wrapper.find('.pf-c-options-menu__toggle-button').first().simulate('click');
+      wrapper.find('.pf-v5-c-options-menu__toggle-button').first().simulate('click');
       wrapper.update();
-      wrapper.find('.pf-c-options-menu__toggle ul li button').at(2).simulate('click');
+      wrapper.find('.pf-v5-c-options-menu__toggle ul li button').at(2).simulate('click');
       expect(onPerPageSelect.mock.calls.length).toBe(1);
       expect(onPerPageSelect.mock.calls[0][0]).toBe(20);
     });

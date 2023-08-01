@@ -27,14 +27,14 @@ describe('BulkSelect component', () => {
   it('renders component with data', () => {
     mount(<BulkSelect {...config} />);
     cy.get('#toggle-checkbox-text').should('contain.text', '100');
-    cy.get('.pf-c-dropdown__toggle-button').click();
-    cy.get('.pf-c-dropdown__menu').find('>li>button').should('have.length', 2);
+    cy.get('.pf-v5-c-dropdown__toggle-button').click();
+    cy.get('.pf-v5-c-dropdown__menu').find('>li>button').should('have.length', 2);
   });
 
   it('cannot be expanded or checked when disabled', () => {
     mount(<BulkSelect {...config} isDisabled={true} />);
-    cy.get('.pf-c-dropdown__toggle-button').click({ force: true });
-    cy.get('.pf-c-dropdown__menu').should('not.exist');
+    cy.get('.pf-v5-c-dropdown__toggle-button').click({ force: true });
+    cy.get('.pf-v5-c-dropdown__menu').should('not.exist');
     cy.get('#toggle-checkbox').check({ force: true }).should('not.be.checked');
   });
 
@@ -43,10 +43,10 @@ describe('BulkSelect component', () => {
     config.items[1].onClick = cy.spy().as('disabledSpy');
     config.onClick = cy.spy().as('checkboxSpy');
     mount(<BulkSelect {...config} />);
-    cy.get('.pf-c-dropdown__toggle-button').click();
-    cy.get('.pf-c-dropdown__menu').find('>li>button').eq(0).click();
-    cy.get('.pf-c-dropdown__toggle-button').click();
-    cy.get('.pf-c-dropdown__menu').find('>li>button').eq(1).click({ force: true });
+    cy.get('.pf-v5-c-dropdown__toggle-button').click();
+    cy.get('.pf-v5-c-dropdown__menu').find('>li>button').eq(0).click();
+    cy.get('.pf-v5-c-dropdown__toggle-button').click();
+    cy.get('.pf-v5-c-dropdown__menu').find('>li>button').eq(1).click({ force: true });
     cy.get('#toggle-checkbox').check();
     cy.get('@enabledSpy').should('have.been.called');
     cy.get('@disabledSpy').should('not.have.been.called');

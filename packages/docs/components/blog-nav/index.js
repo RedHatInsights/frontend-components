@@ -11,7 +11,7 @@ const useStyles = createUseStyles({
     padding: 8,
   },
   blogLink: {
-    color: 'var(--pf-c-menu__list-item--Color)',
+    color: 'var(--pf-v5-c-menu__list-item--Color)',
   },
   '@media (min-width: 1200px)': {
     blogContainer: {
@@ -44,7 +44,7 @@ const BlogNav = () => {
   const classes = useStyles();
   return (
     <div className={classes.blogContainer}>
-      <div className="pf-c-menu">
+      <div className="pf-v5-c-menu">
         <MenuContent>
           <MenuList iconSize="large">
             <MenuItem>
@@ -55,7 +55,7 @@ const BlogNav = () => {
               key={href}
               component={({ props, children }) => (
                 <Link href={href}>
-                  <button className="pf-c-menu__item">
+                  <button className="pf-v5-c-menu__item">
                     <a {...props} className={classNames(props?.className, classes.blogLink)} href={href}>
                       {children}
                     </a>

@@ -75,7 +75,7 @@ export const getMenuItems = (
   const result =
     items?.map((item: GroupFilterItem, index: number) => ({
       ...item,
-      className: `${item?.className || 'pf-u-pl-sm'}`,
+      className: `${item?.className || 'pf-v5-u-pl-sm'}`,
       key: item.id || item.value || index,
       value: String(item.value || item.id || index),
       onClick: (event: React.FormEvent | React.MouseEventHandler, treeViewItem?: TreeViewItem, checked?: boolean) => {
@@ -165,7 +165,7 @@ export const getGroupMenuItems = (
                   label: label || '',
                   id: id || '',
                   type,
-                  className: 'pf-u-pl-xs',
+                  className: 'pf-v5-u-pl-xs',
                   ...group,
                 },
               ]

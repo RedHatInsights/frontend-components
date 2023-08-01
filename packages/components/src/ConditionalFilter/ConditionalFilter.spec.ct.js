@@ -68,31 +68,31 @@ describe('ConditionalFilter component', () => {
 
   it('renders disabled', () => {
     mount(<ConditionalFilter isDisabled items={config} />);
-    cy.get('.pf-c-dropdown').click({ force: true });
-    cy.get('.pf-c-dropdown__menu').should('not.exist');
+    cy.get('.pf-v5-c-dropdown').click({ force: true });
+    cy.get('.pf-v5-c-dropdown__menu').should('not.exist');
   });
 
   it('renders with data', () => {
     mount(<ConditionalFilter items={config} />);
     cy.get('.ins-c-conditional-filter');
-    cy.get('.pf-c-dropdown').click();
-    cy.get('.pf-c-dropdown__menu').children().should('have.length', 4);
+    cy.get('.pf-v5-c-dropdown').click();
+    cy.get('.pf-v5-c-dropdown__menu').children().should('have.length', 4);
   });
 
   it('filter changes on click', () => {
     mount(<ConditionalFilter items={config} />);
-    cy.get('.pf-c-dropdown').click();
-    cy.get('.pf-c-dropdown__menu').children().eq(1).click();
-    cy.get('.pf-c-dropdown').should('not.contain.text', 'Text');
-    cy.get('.pf-c-select').click();
-    cy.get('.pf-c-select__menu');
+    cy.get('.pf-v5-c-dropdown').click();
+    cy.get('.pf-v5-c-dropdown__menu').children().eq(1).click();
+    cy.get('.pf-v5-c-dropdown').should('not.contain.text', 'Text');
+    cy.get('.pf-v5-c-select').click();
+    cy.get('.pf-v5-c-select__menu');
   });
 
   it('onChange called', () => {
     const ocSpy = cy.spy().as('ocSpy');
     mount(<ConditionalFilter items={config} onChange={ocSpy} />);
-    cy.get('.pf-c-dropdown').click();
-    cy.get('.pf-c-dropdown__menu').children().eq(2).click();
+    cy.get('.pf-v5-c-dropdown').click();
+    cy.get('.pf-v5-c-dropdown__menu').children().eq(2).click();
     cy.get('@ocSpy').should('have.been.called');
   });
 });

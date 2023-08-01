@@ -2,34 +2,34 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins';
 
 .ins-c-rule__report-detail {
-  padding: var(--pf-global--gutter--md) 40px;
+  padding: var(--pf-v5-global--gutter--md) 40px;
 
   .ins-c-rule__report-detail-actions {
     text-align: right;
   }
 
   .ins-c-rule__report-detail-link {
-    margin-bottom: var(--pf-global--spacer--xs);
-    margin-left: var(--pf-global--spacer--form-element);
+    margin-bottom: var(--pf-v5-global--spacer--xs);
+    margin-left: var(--pf-v5-global--spacer--form-element);
   }
 
   .ins-c-rule__risk-detail-title {
-    margin-bottom: var(--pf-global--spacer--sm);
-    font-weight: var(--pf-global--FontWeight--light);
+    margin-bottom: var(--pf-v5-global--spacer--sm);
+    font-weight: var(--pf-v5-global--FontWeight--light);
   }
 
   .ins-c-rule__risk-detail-description-text {
-    color: var(--pf-global--Color--200);
+    color: var(--pf-v5-global--Color--200);
     size: var(--pf-chart-global--FontSize--sm);
   }
 
   p > .ins-c-rule__link-in-description:only-child {
     display: block;
-    margin-top: var(--pf-l-stack--m-gutter--MarginBottom);
+    margin-top: var(--pf-v5-l-stack--m-gutter--MarginBottom);
   }
 
   .ins-c-rule__rule-feedback-like-button, .ins-c-rule__rule-feedback-dislike-button {
-    padding: 0 var(--pf-global--spacer--sm);
+    padding: 0 var(--pf-v5-global--spacer--sm);
   }
 
   .ins-c-rule__risk-description {
@@ -42,13 +42,13 @@
     // change color of icons and text according to current severity
     .ins-c-rule__severity-level-1 {
       .ins-c-risk-of-change__label, .ins-c-risk-of-change__icon, .label {
-        color: var(--pf-global--Color--200);
+        color: var(--pf-v5-global--Color--200);
       }
     }
 
     .ins-c-rule__severity-level-2 {
       .ins-c-risk-of-change__label, .ins-c-risk-of-change__icon, .label {
-        color: var(--pf-global--warning-color--100);
+        color: var(--pf-v5-global--warning-color--100);
       }
     }
 
@@ -60,7 +60,7 @@
 
     .ins-c-rule__severity-level-4 {
       .ins-c-risk-of-change__label, .ins-c-risk-of-change__icon, .label {
-        color: var(--pf-global--danger-color--100);
+        color: var(--pf-v5-global--danger-color--100);
       }
     }
   }
@@ -76,9 +76,9 @@
 
   p + pre, ul + pre { @include rem('margin-bottom', 20px); }
 
-  .pf-c-list { @include rem('margin', 5px 0); }
+  .pf-v5-c-list { @include rem('margin', 5px 0); }
 
-  .pf-c-button.pf-m-link {
+  .pf-v5-c-button.pf-m-link {
     padding-left: 0;
   }
 
@@ -92,7 +92,7 @@
 
   p + pre, ul + pre { @include rem('margin-bottom', 20px); }
 
-  .pf-c-list { @include rem('margin', 5px 0); }
+  .pf-v5-c-list { @include rem('margin', 5px 0); }
 
   .ins-c-rule__modal-content {
     margin-top: 24px;

@@ -23,7 +23,7 @@ const NoRegisteredSystems: React.FC<NoRegisteredSystemsProps> = ({
         href="https://access.redhat.com/products/red-hat-insights#getstarted"
         target="_blank"
         rel="noopener noreferrer"
-        className="pf-u-mt-lg"
+        className="pf-v5-u-mt-lg"
       >
         {buttonText}
       </Button>

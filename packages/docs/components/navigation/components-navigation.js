@@ -22,10 +22,10 @@ const useStyles = createUseStyles({
 const NavLink = ({ href, children }) => {
   const { pathname } = useRouter();
   return (
-    <li id={href} to={href} ouiaId={href} className="pf-c-nav__item">
+    <li id={href} to={href} ouiaId={href} className="pf-v5-c-nav__item">
       <Link href={href}>
         <a
-          className={classnames('pf-c-nav__link', {
+          className={classnames('pf-v5-c-nav__link', {
             'pf-m-current': href === pathname,
           })}
         >
@@ -55,9 +55,9 @@ const NavigationGroup = ({ group, items, packageName }) => {
   }
 
   return (
-    <section key={group} title={group} className={classnames('pf-c-nav__section', classes.capitalize)}>
-      <h2 className="pf-c-nav__section-title">{group}</h2>
-      <ul className={classnames('pf-c-nav__list', classes.capitalize)}>
+    <section key={group} title={group} className={classnames('pf-v5-c-nav__section', classes.capitalize)}>
+      <h2 className="pf-v5-c-nav__section-title">{group}</h2>
+      <ul className={classnames('pf-v5-c-nav__list', classes.capitalize)}>
         {items.map((item) => {
           const title = typeof item === 'object' ? item.title : item;
           const name = typeof item === 'object' ? item.name : item;
@@ -86,7 +86,7 @@ const ExpandableLink = ({ packageName, groups }) => {
   }, [pathname]);
   return (
     <li
-      className={classnames('pf-c-nav__item', 'pf-m-expandable', {
+      className={classnames('pf-v5-c-nav__item', 'pf-m-expandable', {
         'pf-m-expanded': isExpanded,
       })}
       key={packageName}
@@ -94,10 +94,10 @@ const ExpandableLink = ({ packageName, groups }) => {
       id={packageName}
       title={packageName.replace(/-/gm, ' ')}
     >
-      <button className="pf-c-nav__link" onClick={() => setIsExpandend((prev) => !prev)}>
+      <button className="pf-v5-c-nav__link" onClick={() => setIsExpandend((prev) => !prev)}>
         {packageName.replace(/-/gm, ' ')}
-        <span className="pf-c-nav__toggle">
-          <span className="pf-c-nav__toggle-icon">
+        <span className="pf-v5-c-nav__toggle">
+          <span className="pf-v5-c-nav__toggle-icon">
             <AngleRightIcon />
           </span>
         </span>
@@ -114,8 +114,8 @@ ExpandableLink.propTypes = {
 
 const Navigation = () => {
   return (
-    <nav className="pf-c-nav" ouiaId="docs-nav">
-      <ul className="pf-c-nav__list">
+    <nav className="pf-v5-c-nav" ouiaId="docs-nav">
+      <ul className="pf-v5-c-nav__list">
         {data.map(({ packageName, groups }) => (
           <ExpandableLink key={packageName} packageName={packageName} groups={groups} />
         ))}

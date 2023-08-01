@@ -71,7 +71,7 @@ const SimpleFilter: React.FC<SimpleFilterProps> = ({
       </DropdownItem>
     ));
   return (
-    <div className={`pf-c-input-group ins-c-filter ${!buttonTitle ? 'ins-u-no-title' : ''} ${className}`} {...props}>
+    <div className={`pf-v5-c-input-group ins-c-filter ${!buttonTitle ? 'ins-u-no-title' : ''} ${className}`} {...props}>
       {options && (
         <Dropdown
           onSelect={onSelect}

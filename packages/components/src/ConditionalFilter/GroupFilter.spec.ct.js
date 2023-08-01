@@ -72,25 +72,25 @@ describe('GroupFilter component', () => {
 
   it('renders empty', () => {
     mount(<Group />);
-    cy.get('.pf-c-menu-toggle');
+    cy.get('.pf-v5-c-menu-toggle');
   });
 
   it('renders with placeholder', () => {
     mount(<Group placeholder="foo" />);
-    cy.get('.pf-c-menu-toggle__text').should('contain', 'foo');
+    cy.get('.pf-v5-c-menu-toggle__text').should('contain', 'foo');
   });
 
   it('renders with data', () => {
     mount(<Group {...config} showMoreTitle="hello" onShowMore={() => undefined} />);
-    cy.get('.pf-c-menu-toggle__controls').click();
-    cy.get('.pf-c-menu__item').should('have.length', 11);
+    cy.get('.pf-v5-c-menu-toggle__controls').click();
+    cy.get('.pf-v5-c-menu__item').should('have.length', 11);
   });
 
   it('onChange called', () => {
     const ocSpy = cy.spy().as('ocSpy');
     mount(<Group {...config} onChange={ocSpy} />);
-    cy.get('.pf-c-menu-toggle__controls').click();
-    cy.get('.pf-c-menu__item').eq(5).click();
+    cy.get('.pf-v5-c-menu-toggle__controls').click();
+    cy.get('.pf-v5-c-menu__item').eq(5).click();
     cy.get('@ocSpy').should('have.been.called');
   });
 });

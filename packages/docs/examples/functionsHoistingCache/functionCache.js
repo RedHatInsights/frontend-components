@@ -42,13 +42,13 @@ const FunctionCache = () => {
       <FormGroup label="Type some something same multiple types">
         <TextInput value={value} onChange={handleChange} />
       </FormGroup>
-      <p className="pf-u-mt-md">
+      <p className="pf-v5-u-mt-md">
         Function output
       </p>
       <pre>
         {doubledValue}
       </pre>
-      <p p className="pf-u-mt-md">
+      <p p className="pf-v5-u-mt-md">
         Memoized function calls: {counter}
       </p>
     </div>

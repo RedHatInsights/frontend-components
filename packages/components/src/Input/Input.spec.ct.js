@@ -6,17 +6,17 @@ import { Input } from '..';
 describe('Input component', () => {
   it('renders the checkbox input', () => {
     mount(<Input widget-id="some-id" type="checkbox" />);
-    cy.get('.pf-c-check');
+    cy.get('.pf-v5-c-check');
   });
 
   it('renders the radio input', () => {
     mount(<Input widget-id="some-id" type="radio" />);
-    cy.get('.pf-c-check');
+    cy.get('.pf-v5-c-check');
   });
 
   it('renders the text input', () => {
     mount(<Input widget-id="some-id" />);
-    cy.get('.pf-c-form-control');
+    cy.get('.pf-v5-c-form-control');
   });
 
   it('checks the radio functionality', () => {

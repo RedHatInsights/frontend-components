@@ -16,13 +16,13 @@ describe('Breadcrumbs component', () => {
 
   it('renders multiple items correctly', () => {
     mount(<Breadcrumbs items={items} current={'third'} onNavigate={undefined} />);
-    cy.get('.pf-c-breadcrumb__list').children().should('have.length', 3);
+    cy.get('.pf-v5-c-breadcrumb__list').children().should('have.length', 3);
   });
 
   it('fires callback when an item is clicked', () => {
     const onNavigateSpy = cy.spy().as('onNavigateSpy');
     mount(<Breadcrumbs items={items} current={'third'} onNavigate={onNavigateSpy} />);
-    cy.get('.pf-c-breadcrumb__list > li[data-key="1"] > a').click();
+    cy.get('.pf-v5-c-breadcrumb__list > li[data-key="1"] > a').click();
     cy.get('@onNavigateSpy').should('have.been.calledWithMatch', Cypress.sinon.match.object, 'second', 1);
   });
 });

@@ -34,7 +34,7 @@ const NavigationGroup = ({ group, items, packageName }) => {
         component={({ children, ...props }) => (
           <Link {...props}>
             <a
-              className={classnames('pf-c-nav__link', {
+              className={classnames('pf-v5-c-nav__link', {
                 'pf-m-current': props.href === pathname,
               })}
             >
@@ -62,7 +62,7 @@ const NavigationGroup = ({ group, items, packageName }) => {
             component={({ children, ...props }) => (
               <Link {...props}>
                 <a
-                  className={classnames('pf-c-nav__link', classes.groupLink, {
+                  className={classnames('pf-v5-c-nav__link', classes.groupLink, {
                     // eslint-disable-next-line react/prop-types
                     'pf-m-current': props.href === pathname,
                   })}

@@ -143,7 +143,7 @@ const RuleDetails: React.FC<RuleDetailsProps> = ({
                 <FlexItem spacer={{ default: 'spacerSm' }}>
                   <strong>{messages.riskOfChange}</strong>
                 </FlexItem>
-                <FlexItem className={`pf-u-display-inline-flex alignCenterOverride pf-u-pb-sm pf-u-pt-sm`}>
+                <FlexItem className={`pf-v5-u-display-inline-flex alignCenterOverride pf-v5-u-pb-sm pf-v5-u-pt-sm`}>
                   <Flex flexWrap={{ default: 'nowrap' }}>
                     <FlexItem>
                       {/* remove pf-m-compact class name once https://github.com/patternfly/patternfly-react/issues/7196 is resolved */}

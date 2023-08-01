@@ -23,7 +23,7 @@ const NotConnected: React.FC<NotConnectedProps> = ({
         href="http://access.redhat.com/products/cloud_management_services_for_rhel#getstarted"
         target="_blank"
         rel="noopener noreferrer"
-        className="pf-u-mt-lg"
+        className="pf-v5-u-mt-lg"
       >
         {buttonText}
       </Button>

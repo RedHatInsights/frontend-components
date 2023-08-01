@@ -6,7 +6,7 @@ const LabeledInput: React.FC<InputProps> = ({ type = 'text', className, children
   // Might generate ID which is not unique enough
   name = name || new Date().getTime() + Math.random().toString(36);
   return (
-    <label className={classnames('pf-c-form__label', className)} htmlFor={name}>
+    <label className={classnames('pf-v5-c-form__label', className)} htmlFor={name}>
       <Input {...props} type={type} name={name} id={name} /> {children}
     </label>
   );

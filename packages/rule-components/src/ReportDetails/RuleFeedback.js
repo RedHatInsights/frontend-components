@@ -33,7 +33,7 @@ class RuleFeedback extends React.Component {
           aria-label="Rule is helpful"
           onClick={() => this.handleFeedbackChange(feedback.positive)}
         >
-          <Icon color={userVote === feedback.positive ? 'var(--pf-global--success-color--100)' : undefined}>
+          <Icon color={userVote === feedback.positive ? 'var(--pf-v5-global--success-color--100)' : undefined}>
             {userVote === feedback.positive ? <ThumbsUpIcon /> : <OutlinedThumbsUpIcon />}
           </Icon>
         </Button>
@@ -43,7 +43,7 @@ class RuleFeedback extends React.Component {
           aria-label="Rule is not helpful"
           onClick={() => this.handleFeedbackChange(feedback.negative)}
         >
-          <Icon color={userVote === feedback.negative ? 'var(--pf-global--primary-color--100)' : undefined}>
+          <Icon color={userVote === feedback.negative ? 'var(--pf-v5-global--primary-color--100)' : undefined}>
             {userVote === feedback.negative ? <ThumbsDownIcon /> : <OutlinedThumbsDownIcon />}
           </Icon>
         </Button>

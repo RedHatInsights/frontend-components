@@ -68,9 +68,9 @@ describe('SimpleTableFilter component', () => {
             onOptionSelect={onOptionSelect}
           />
         );
-        wrapper.find('.pf-c-dropdown button.pf-c-dropdown__toggle').first().simulate('click');
+        wrapper.find('.pf-v5-c-dropdown button.pf-v5-c-dropdown__toggle').first().simulate('click');
         wrapper.update();
-        wrapper.find('.pf-c-dropdown ul li button').first().simulate('click');
+        wrapper.find('.pf-v5-c-dropdown ul li button').first().simulate('click');
         expect(onOptionSelect.mock.calls.length).toBe(1);
         expect(onOptionSelect.mock.calls[0][1]).toMatchObject({ value: 'one' });
       });
@@ -85,9 +85,9 @@ describe('SimpleTableFilter component', () => {
             }}
           />
         );
-        wrapper.find('.pf-c-dropdown button.pf-c-dropdown__toggle').first().simulate('click');
+        wrapper.find('.pf-v5-c-dropdown button.pf-v5-c-dropdown__toggle').first().simulate('click');
         wrapper.update();
-        wrapper.find('.pf-c-dropdown ul li button').first().simulate('click');
+        wrapper.find('.pf-v5-c-dropdown ul li button').first().simulate('click');
         expect(onOptionSelect.mock.calls.length).toBe(1);
       });
     });
@@ -140,9 +140,9 @@ describe('SimpleTableFilter component', () => {
             onFilterChange={onFilterChange}
           />
         );
-        wrapper.find('.pf-c-dropdown button.pf-c-dropdown__toggle').first().simulate('click');
+        wrapper.find('.pf-v5-c-dropdown button.pf-v5-c-dropdown__toggle').first().simulate('click');
         wrapper.update();
-        wrapper.find('.pf-c-dropdown ul li button').first().simulate('click');
+        wrapper.find('.pf-v5-c-dropdown ul li button').first().simulate('click');
         wrapper.update();
         wrapper
           .find('input[widget-id="filter"]')
@@ -163,9 +163,9 @@ describe('SimpleTableFilter component', () => {
             onFilterChange={onFilterChange}
           />
         );
-        wrapper.find('.pf-c-dropdown button.pf-c-dropdown__toggle').first().simulate('click');
+        wrapper.find('.pf-v5-c-dropdown button.pf-v5-c-dropdown__toggle').first().simulate('click');
         wrapper.update();
-        wrapper.find('.pf-c-dropdown ul li button').first().simulate('click');
+        wrapper.find('.pf-v5-c-dropdown ul li button').first().simulate('click');
         wrapper.update();
         wrapper
           .find('input[widget-id="filter"]')
@@ -227,9 +227,9 @@ describe('SimpleTableFilter component', () => {
             onButtonClick={onButtonClick}
           />
         );
-        wrapper.find('.pf-c-dropdown button.pf-c-dropdown__toggle').first().simulate('click');
+        wrapper.find('.pf-v5-c-dropdown button.pf-v5-c-dropdown__toggle').first().simulate('click');
         wrapper.update();
-        wrapper.find('.pf-c-dropdown ul li button').first().simulate('click');
+        wrapper.find('.pf-v5-c-dropdown ul li button').first().simulate('click');
         wrapper.update();
         wrapper
           .find('input[widget-id="filter"]')

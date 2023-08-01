@@ -9,7 +9,7 @@ describe('DownloadButton component', () => {
   });
 
   it('renders the dropdown', () => {
-    cy.get('.pf-c-dropdown');
+    cy.get('.pf-v5-c-dropdown');
   });
 
   it('on download CSV callback fired', () => {

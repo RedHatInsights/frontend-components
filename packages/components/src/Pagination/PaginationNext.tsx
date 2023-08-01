@@ -44,7 +44,7 @@ const PaginationNext: React.FunctionComponent<PaginationNextProps> = ({
   ...props
 }) => {
   return (
-    <div className={`pf-c-pagination pf-m-footer ${className}`} aria-label="Element pagination" {...props}>
+    <div className={`pf-v5-c-pagination pf-m-footer ${className}`} aria-label="Element pagination" {...props}>
       <PaginationMenu
         itemsStart={itemsStart}
         itemsEnd={itemsEnd}

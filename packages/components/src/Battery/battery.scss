@@ -10,7 +10,7 @@ i.ins-battery {
   line-height: 0;
   svg {
     position: relative;
-    top: var(--pf-global--spacer--sm);
+    top: var(--pf-v5-global--spacer--sm);
     @include setBatteryFont;
   }
 }
