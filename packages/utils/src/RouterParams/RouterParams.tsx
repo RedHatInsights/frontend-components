@@ -20,11 +20,16 @@ const RouterParams = (props: RouterParamsProps) => {
 
   useEffect(() => {
     // This will not work in router v6. Route does not pass `match` to child element.
-    if (matchPath(pathname, { path: props?.match?.path, exact: true })) {
-      onPathChange({
-        params,
-        path: pathname,
-      });
+    try {
+      // @ts-ignore
+      if (matchPath(pathname, { path: props?.match?.path, exact: true })) {
+        onPathChange({
+          params,
+          path: pathname,
+        });
+      }
+    } catch (error) {
+      console.error('Unable to handle patch change', error);
     }
   }, [pathname, JSON.stringify(params)]);
 
