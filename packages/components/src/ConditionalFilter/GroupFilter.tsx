@@ -1,8 +1,7 @@
-import React, { FormEvent, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import {
   Button,
-  ButtonVariant,
   Checkbox,
   Menu,
   MenuContent,
@@ -12,72 +11,30 @@ import {
   MenuToggle,
   Popper,
   Radio,
-  TextInput,
+  TextInputGroup,
+  TextInputGroupMain,
   TreeView,
   TreeViewDataItem,
 } from '@patternfly/react-core';
 import { CloseIcon } from '@patternfly/react-icons';
 import {
   FilterMenuItemOnChange,
+  GroupFilterItem,
+  TreeViewItem,
   calculateSelected,
   convertTreeItem,
   getGroupMenuItems,
   getMenuItems,
+  isButtonItem,
+  isCheckboxItem,
   isChecked,
+  isRadioItem,
+  isTreeViewItem,
   mapTree,
   onTreeCheck,
 } from './groupFilterConstants';
-import groupType, { GroupType } from './groupType';
+import GroupType from './groupType';
 import './group-filter.scss';
-
-export interface GroupFilterItem {
-  /** Optional className. */
-  className?: string;
-  /** Optional identifier. */
-  id?: string;
-  /** isChecked flag. */
-  isChecked?: boolean;
-  /** Item label. */
-  label?: ReactNode;
-  /** Item name. */
-  name?: string;
-  /** Optional noFilter flag. */
-  noFilter?: boolean;
-  /** Optional onChange event called on input change. */
-  onChange?: (value: boolean, event: FormEvent<HTMLInputElement>) => void;
-  /** onClick event callback. */
-  onClick?: (
-    e?: FormEvent | MouseEventHandler<HTMLInputElement>,
-    item?: GroupFilterItem,
-    key?: number,
-    checked?: boolean,
-    groupName?: string,
-    itemName?: string
-  ) => void;
-  /** Optional tagKey. */
-  tagKey?: string;
-  /** Optional tagValue. */
-  tagValue?: string;
-  /** Optional groupFilter item type. */
-  type?: GroupType;
-  /** Optional variant. */
-  variant?: ButtonVariant;
-  /** Item value. */
-  value?: string;
-}
-
-export interface TreeViewItem extends GroupFilterItem {
-  /** Optional hasCheck flag. */
-  hasCheck?: boolean;
-  /** Additional properties of the tree view item checkbox */
-  checkProps?: Record<string, boolean | null>;
-  /** Optional children items. */
-  children?: TreeViewItem[];
-  /** Optional item label. */
-  label?: string;
-  /** Optional item name. */
-  name?: string;
-}
 
 export interface GroupItem {
   /** Optional isSelected flag */
@@ -100,7 +57,7 @@ export interface Group {
   /** Group item array. */
   items: GroupFilterItem[];
   /** Optional label. */
-  label?: string;
+  label: string;
   /** Optional noFilter flag. */
   noFilter?: boolean;
   /** Optional group type. */
@@ -109,21 +66,24 @@ export interface Group {
   value?: string;
 }
 
-export interface GroupFilterProps {
+type FilterableProps = {
+  /** Optional isFilterable flag. */
+  isFilterable: true;
+  /** Optional onFilter callback. */
+  onFilter: (value: string) => void;
+};
+
+export type GroupFilterProps = {
   /** Optional className. */
   className?: string;
   /** Optional filterBy key. */
   filterBy?: string;
   /** Optional groups. */
   groups?: Group[];
-  /** Optional isFilterable flag. */
-  isFilterable?: boolean;
   /** Optional groupFilter items. */
-  items?: GroupFilterItem[];
-  /** Optional onFilter callback. */
-  onFilter?: (value: string) => void;
+  items: GroupFilterItem[];
   /** onChange event called on input change. */
-  onChange?: FilterMenuItemOnChange;
+  onChange: FilterMenuItemOnChange;
   /** Optional callback on showMore button click. */
   onShowMore?: (event: React.MouseEvent | React.KeyboardEvent | MouseEvent) => void;
   /** Optional text filter placeholder. */
@@ -136,7 +96,14 @@ export interface GroupFilterProps {
   showMoreOptions?: Record<string, unknown>;
   /** Optional boolean to disable the dropdown and text filter. */
   isDisabled?: boolean;
-}
+} & (
+  | FilterableProps
+  | {
+      isFilterable?: false;
+      // not required and only accepts undefined if isFilterable is set to false
+      onFilter?: undefined;
+    }
+);
 
 /**
  * Component that works as a group filter for ConditionalFilter component.
@@ -147,32 +114,28 @@ export interface GroupFilterProps {
  *
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
-const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
-  className,
-  filterBy = '',
-  groups = [],
-  items,
-  isFilterable = false,
-  onFilter,
-  onChange,
-  onShowMore,
-  placeholder,
-  selected,
-  showMoreTitle,
-  showMoreOptions,
-  isDisabled,
-}) => {
-  const [stateSelected, setStateSelected] = useState({});
+const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
+  const {
+    className,
+    filterBy = '',
+    groups = [],
+    items,
+    isFilterable,
+    onChange,
+    onShowMore,
+    placeholder,
+    selected,
+    showMoreTitle,
+    showMoreOptions,
+    isDisabled,
+    onFilter,
+  } = props;
   const [searchString, setSearchString] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    selected && setStateSelected(selected);
-  }, [selected]);
 
   useEffect(() => {
     setSearchString(filterBy);
@@ -213,7 +176,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
   };
 
   const menuItems = getMenuItems(
-    items?.map((item) => (item.type === groupType.treeView ? convertTreeItem(item as TreeViewItem) : item)) || [],
+    items?.map((item) => (item.type === GroupType.treeView ? convertTreeItem(item) : item)) || [],
     onChange,
     calculateSelected(selected || {})
   );
@@ -225,32 +188,30 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
       key={`${item.value}-${key}-item`}
       className={item?.className}
       onClick={
-        item.onClick && (type || item.type) === groupType.checkbox
+        isCheckboxItem(type, item)
           ? (e) => {
-              item.onClick && item.onClick();
+              item.onClick?.(e);
               e.preventDefault();
             }
           : undefined
       }
     >
-      {(type || item.type) === groupType.treeView ? (
+      {isTreeViewItem(type, item) ? (
         <TreeView
-          data={[mapTree(item as TreeViewItem, groupKey, stateSelected, selected || {})] as TreeViewDataItem[]}
+          data={[mapTree(item, groupKey, selected || {})] as TreeViewDataItem[]}
           onCheck={(e, value) => onTreeCheck(e, value as TreeViewItem, [item as TreeViewItem])}
           hasCheckboxes
         />
-      ) : (type || item.type) === groupType.checkbox ? (
+      ) : isCheckboxItem(type, item) ? (
         <Checkbox
           {...item}
           label={item?.label}
-          isChecked={item?.isChecked || isChecked(groupKey, item?.value || key, item?.id, item?.tagValue, stateSelected, selected || {}) || false}
-          onChange={(event, value) => {
-            item?.onChange?.(value, event);
-          }}
+          isChecked={item?.isChecked || isChecked(groupKey, item?.value || key, item?.id, item?.tagValue, selected || {}) || false}
+          onChange={item.onChange}
           onClick={
             item.onClick
               ? (e) => {
-                  item.onClick && item.onClick();
+                  item.onClick?.(e);
                   e.stopPropagation();
                 }
               : undefined
@@ -258,21 +219,19 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
           name={item?.name || item?.value || `${groupKey}-${key}`}
           id={item?.id || item?.value || `${groupKey}-${key}`}
         />
-      ) : (type || item.type) === groupType.radio ? (
+      ) : isRadioItem(type, item) ? (
         <Radio
           {...item}
-          isChecked={item?.isChecked || isChecked(groupKey, item?.value || key, item?.id, item?.tagValue, stateSelected, selected || {}) || false}
-          onChange={(event, value) => {
-            item?.onChange?.(value, event);
-          }}
+          isChecked={item?.isChecked || isChecked(groupKey, item.value, item?.id, item?.tagValue, selected || {}) || false}
+          onChange={item.onChange}
           value={item?.value || key}
           name={item?.name || item?.value || `${groupKey}-${key}`}
           label={item?.label || ''}
           id={item?.id || item?.value || `${groupKey}-${key}`}
         />
-      ) : (type || item.type) === groupType.button ? (
-        <Button id={item.id} className={`pf-v5-c-select__option-button ${item?.className || ''}`} variant={item?.variant} onClick={item.onClick}>
-          {item?.label}
+      ) : isButtonItem(type, item) ? (
+        <Button id={item.id} className={classNames('pf-v5-c-select__option-button', item.className)} variant={item.variant} onClick={item.onClick}>
+          {item.label}
         </Button>
       ) : (
         item?.label || ''
@@ -282,7 +241,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
 
   const renderItems = (items: GroupFilterItem[], type?: GroupType, groupKey = '') =>
     items.map((item, key) =>
-      (type || item.type) === groupType.treeView ? (
+      (type || item.type) === GroupType.treeView ? (
         <div key={`${item.value}-${key}-item`} className="ins-c-tree-view">
           {renderItem(item as TreeViewItem, key, type, groupKey)}
         </div>
@@ -309,16 +268,17 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
             ref={toggleRef}
             onClick={(e) => onToggleClick(e)}
             isExpanded={isOpen}
-            className={classNames('ins-c-group-menu-toggle', className)}
+            className={classNames('ins-c-group-menu-toggle', className, {
+              // turn off extra padding if filter input is within the input
+              'pf-v5-u-p-0': isFilterable,
+            })}
             isDisabled={isDisabled}
           >
             {isFilterable || onFilter ? (
-              <div>
-                <TextInput
+              <TextInputGroup isDisabled={isDisabled} isPlain>
+                <TextInputGroupMain
+                  autoComplete="off"
                   ref={inputRef}
-                  className={classNames({
-                    'ins-c-input__clearable': searchDirty,
-                  })}
                   onChange={(_e, value) => setFilter(value)}
                   onClick={(e) => e.preventDefault()}
                   onKeyDown={(e) => {
@@ -328,7 +288,6 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
                       e.key === 'Escape' && setIsOpen(false);
                     }
                   }}
-                  isDisabled={isDisabled}
                   aria-label="input with dropdown and clear button"
                   placeholder={placeholder}
                   value={searchString}
@@ -345,7 +304,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
                     />
                   </span>
                 )}
-              </div>
+              </TextInputGroup>
             ) : (
               placeholder
             )}
@@ -356,12 +315,12 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = ({
             <MenuContent>
               <MenuList aria-label="Group filter">
                 {menuItems.length > 0 && <MenuGroup>{renderItems(menuItems as GroupFilterItem[])}</MenuGroup>}
-                {groupMenuItems.map((group: GroupFilterItem | Group, groupKey: number) => (
+                {groupMenuItems.map((group, groupKey) => (
                   <MenuGroup
                     label={!(group as Group).groupSelectable && typeof group.label === 'string' ? group.label : undefined}
                     key={`${group.label}-${groupKey}-group`}
                   >
-                    {renderItems((group as Group).items, group.type, group.value)}
+                    {renderItems(group.items, group.type, group.value)}
                   </MenuGroup>
                 ))}
                 {onShowMore ? (

@@ -128,7 +128,7 @@ const PrimaryToolbar: React.FunctionComponent<React.PropsWithChildren<PrimaryToo
             )}
             {filterConfig && (
               <ToolbarItem className="ins-c-primary-toolbar__filter">
-                {React.isValidElement(filterConfig) ? filterConfig : <ConditionalFilter useMobileLayout={useMobileLayout} {...filterConfig} />}
+                {React.isValidElement(filterConfig) ? filterConfig : <ConditionalFilter {...filterConfig} />}
               </ToolbarItem>
             )}
             {dedicatedAction && <ToolbarItem>{dedicatedAction}</ToolbarItem>}
