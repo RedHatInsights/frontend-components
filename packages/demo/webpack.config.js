@@ -9,17 +9,27 @@ module.exports = (env) => ({
         minimize: process.env.NODE_ENV === 'production'
     },
     entry: {
-        index: './src/index.js'
+        index: './src/index.tsx'
     },
     output: {
         filename: '[name].js',
     },
     module: {
-        rules: [{
-            test: /src\/.*\.js$/,
-            exclude: /(node_modules|bower_components)/i,
-            use: [{ loader: 'babel-loader' }]
-        }, {
+        rules: [        {
+            test: /\.(js|ts)x?$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'swc-loader',
+              options: {
+                jsc: {
+                  parser: {
+                    syntax: 'typescript',
+                    tsx: true,
+                  },
+                },
+              },
+            },
+          }, {
             test: /\.s?[ac]ss$/,
             use: [
                 MiniCssExtractPlugin.loader,
