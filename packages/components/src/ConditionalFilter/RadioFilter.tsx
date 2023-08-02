@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { Radio } from '@patternfly/react-core';
 import { Select, SelectOption, SelectVariant } from '@patternfly/react-core/deprecated';
 
-import TextFilter, { FilterItem, FilterValue, isFilterValue } from './TextFilter';
+import { FilterItem, FilterValue, isFilterValue } from './TextFilter';
 
 export interface RadioFilterProps {
   /** Optional className. */
@@ -21,6 +21,8 @@ export interface RadioFilterProps {
   placeholder?: string;
   /** Optional list of selected values. */
   value?: string | FilterValue | (string | FilterValue)[] | Record<string, unknown>;
+  /** Input element react ref for TextFilter */
+  innerRef?: React.Ref<HTMLInputElement>;
 }
 
 /**
@@ -49,41 +51,35 @@ const RadioFilter: React.FunctionComponent<RadioFilterProps> = ({ items = [], on
 
   const checkedValue = calculateSelected();
   return (
-    <Fragment>
-      {!items || (items && items.length <= 0) ? (
-        <TextFilter {...props} onChange={onChange} isDisabled={isDisabled} value={`${calculateSelected()}`} />
-      ) : (
-        <Select
-          className={className}
-          variant={SelectVariant.single}
-          aria-label="Select Input"
-          isDisabled={isDisabled}
-          onToggle={(_e, value) => setExpanded(value)}
-          onSelect={(event, value) => onSelect(event, value as string | FilterValue)}
-          isOpen={isExpanded}
-          placeholderText={placeholder}
-          ouiaId={placeholder}
-        >
-          {items.map(({ value, isChecked, onChange, label, id, ...item }, key) => (
-            <SelectOption {...item} key={id || key} value={value || '' + key}>
-              <Radio
-                name={id || `${key}-radio`}
-                label={label}
-                value={value || key}
-                isChecked={
-                  isChecked ||
-                  (checkedValue !== undefined && checkedValue === value) ||
-                  (checkedValue !== undefined && checkedValue === '' + key) ||
-                  false
-                }
-                onChange={(e) => onChange?.(e, { id, label, value, isChecked, ...item }, key)}
-                id={id || `${value}-${key}`}
-              />
-            </SelectOption>
-          ))}
-        </Select>
-      )}
-    </Fragment>
+    <Select
+      className={className}
+      variant={SelectVariant.single}
+      aria-label="Select Input"
+      isDisabled={isDisabled}
+      onToggle={(_e, value) => setExpanded(value)}
+      onSelect={(event, value) => onSelect(event, value as string | FilterValue)}
+      isOpen={isExpanded}
+      placeholderText={placeholder}
+      ouiaId={placeholder}
+    >
+      {items.map(({ value, isChecked, onChange, label, id, ...item }, key) => (
+        <SelectOption {...item} key={id || key} value={value || '' + key}>
+          <Radio
+            name={id || `${key}-radio`}
+            label={label}
+            value={value || key}
+            isChecked={
+              isChecked ||
+              (checkedValue !== undefined && checkedValue === value) ||
+              (checkedValue !== undefined && checkedValue === '' + key) ||
+              false
+            }
+            onChange={(e) => onChange?.(e, { id, label, value, isChecked, ...item }, key)}
+            id={id || `${value}-${key}`}
+          />
+        </SelectOption>
+      ))}
+    </Select>
   );
 };
 
