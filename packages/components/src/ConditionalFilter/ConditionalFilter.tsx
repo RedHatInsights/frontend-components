@@ -1,8 +1,18 @@
 import React, { FormEvent, Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import globalBreakpointMd from '@patternfly/react-tokens/dist/js/global_breakpoint_md';
-import { Icon, Split, SplitItem, ToolbarGroup, ToolbarItem, ToolbarToggleGroup } from '@patternfly/react-core';
-import { Dropdown, DropdownItem, DropdownToggle } from '@patternfly/react-core/deprecated';
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownList,
+  Icon,
+  MenuToggle,
+  Split,
+  SplitItem,
+  ToolbarGroup,
+  ToolbarItem,
+  ToolbarToggleGroup,
+} from '@patternfly/react-core';
 
 import { FilterIcon } from '@patternfly/react-icons';
 import TextFilter, { FilterValue, TextFilterProps } from './TextFilter';
@@ -175,13 +185,14 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                     onSelect={() => setIsOpen(false)}
                     isOpen={isOpen}
                     ouiaId="ConditionalFilter"
-                    toggle={
-                      <DropdownToggle
-                        aria-label="Conditional filter"
-                        onToggle={(_e, isOpen) => setIsOpen(isOpen)}
+                    toggle={(toggleRef) => (
+                      <MenuToggle
                         isDisabled={isDisabled}
                         className={hideLabel ? 'ins-c-conditional-filter__no-label' : ''}
-                        ouiaId="ConditionalFilter"
+                        aria-label="Conditional filter"
+                        ref={toggleRef}
+                        onClick={() => setIsOpen((prev) => !prev)}
+                        isExpanded={isOpen}
                       >
                         <Icon size="sm">
                           <FilterIcon />
@@ -189,19 +200,22 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                         {!hideLabel && (
                           <span className="ins-c-conditional-filter__value-selector">{activeItem && capitalize(String(activeItem.label))}</span>
                         )}
-                      </DropdownToggle>
-                    }
-                    dropdownItems={items.map((item, key) => (
-                      <DropdownItem
-                        key={item.id ? `${item.id}-dropdown` : key}
-                        component="button"
-                        ouiaId={String(item.label)}
-                        onClick={(e) => onChangeCallback(e as FormEvent<HTMLInputElement>, item.value || key)}
-                      >
-                        {capitalize(String(item.label))}
-                      </DropdownItem>
-                    ))}
-                  />
+                      </MenuToggle>
+                    )}
+                  >
+                    <DropdownList>
+                      {items.map((item, key) => (
+                        <DropdownItem
+                          key={item.id ? `${item.id}-dropdown` : key}
+                          component="button"
+                          ouiaId={String(item.label)}
+                          onClick={(e) => onChangeCallback(e as FormEvent<HTMLInputElement>, item.value || key)}
+                        >
+                          {capitalize(String(item.label))}
+                        </DropdownItem>
+                      ))}
+                    </DropdownList>
+                  </Dropdown>
                 </SplitItem>
               )}
               {ActiveComponent && <SplitItem isFilled>{getActiveComponent(activeItem)}</SplitItem>}
