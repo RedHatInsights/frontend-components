@@ -78,7 +78,6 @@ const Actions: React.FunctionComponent<ActionsProps> = ({
   overflowActions = [],
   onSelect = () => undefined,
   dropdownProps = {},
-  kebabToggleProps,
   exportConfig,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
