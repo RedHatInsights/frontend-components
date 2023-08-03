@@ -203,7 +203,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                       </MenuToggle>
                     )}
                   >
-                    <DropdownList>
+                    <DropdownList aria-label="Conditional filter">
                       {items.map((item, key) => (
                         <DropdownItem
                           key={item.id ? `${item.id}-dropdown` : key}

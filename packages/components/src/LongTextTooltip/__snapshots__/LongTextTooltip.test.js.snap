@@ -58,7 +58,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
       distance={15}
       enableFlip={true}
       flipBehavior={
-        Array [
+        [
           "top",
           "right",
           "bottom",
@@ -69,6 +69,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
         ]
       }
       isVisible={false}
+      minWidth="revert"
       onBlur={[Function]}
       onDocumentClick={false}
       onDocumentKeyDown={[Function]}
@@ -82,11 +83,11 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
       popper={
         <div
           aria-live="off"
-          className="pf-c-tooltip"
+          className="pf-v5-c-tooltip"
           id="pf-tooltip-1"
           role="tooltip"
           style={
-            Object {
+            {
               "maxWidth": "50vw",
               "opacity": 0,
               "transition": "opacity 300ms cubic-bezier(.54, 1.5, .38, 1.11)",
@@ -103,9 +104,13 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           </TooltipContent>
         </div>
       }
-      popperMatchesTriggerWidth={false}
+      popperRef={
+        {
+          "current": null,
+        }
+      }
       positionModifiers={
-        Object {
+        {
           "bottom": "pf-m-bottom",
           "bottom-end": "pf-m-bottom-right",
           "bottom-start": "pf-m-bottom-left",
@@ -120,7 +125,6 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           "top-start": "pf-m-top-left",
         }
       }
-      removeFindDomNode={false}
       trigger={
         <div>
           …
@@ -128,13 +132,17 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
       }
       zIndex={9999}
     >
-      <FindRefWrapper
-        onFoundRef={[Function]}
+      <div
+        style={
+          {
+            "display": "contents",
+          }
+        }
       >
         <div>
           …
         </div>
-      </FindRefWrapper>
+      </div>
     </Popper>
   </Tooltip>
 </LongTextTooltip>

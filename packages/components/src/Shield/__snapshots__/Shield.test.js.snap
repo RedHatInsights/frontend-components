@@ -3,13 +3,15 @@
 exports[`Shield component should render where hasTooltip is false 1`] = `
 <span>
   <span>
-    <QuestionIcon
-      aria-hidden="false"
-      aria-label="Unknown"
-      color="#737679"
-      noVerticalAlign={false}
+    <Icon
       size="sm"
-    />
+    >
+      <QuestionIcon
+        aria-hidden="false"
+        aria-label="Unknown"
+        color="#737679"
+      />
+    </Icon>
      
   </span>
 </span>
@@ -26,13 +28,15 @@ exports[`Shield component should render where impact value is 1 1`] = `
     position="bottom"
   >
     <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="Low"
-        color="#737679"
-        noVerticalAlign={false}
+      <Icon
         size="sm"
-      />
+      >
+        <SecurityIcon
+          aria-hidden="false"
+          aria-label="Low"
+          color="#737679"
+        />
+      </Icon>
        
     </span>
   </Tooltip>
@@ -50,13 +54,15 @@ exports[`Shield component should render where impact value is 2 1`] = `
     position="bottom"
   >
     <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="Medium"
-        color="#f0ab00"
-        noVerticalAlign={false}
+      <Icon
         size="sm"
-      />
+      >
+        <SecurityIcon
+          aria-hidden="false"
+          aria-label="Medium"
+          color="#f0ab00"
+        />
+      </Icon>
        
     </span>
   </Tooltip>
@@ -74,13 +80,15 @@ exports[`Shield component should render where impact value is 3 1`] = `
     position="bottom"
   >
     <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="High"
-        color="#ec7a08"
-        noVerticalAlign={false}
+      <Icon
         size="sm"
-      />
+      >
+        <SecurityIcon
+          aria-hidden="false"
+          aria-label="High"
+          color="#ec7a08"
+        />
+      </Icon>
        
     </span>
   </Tooltip>
@@ -98,13 +106,15 @@ exports[`Shield component should render where impact value is 4 1`] = `
     position="bottom"
   >
     <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="Critical"
-        color="#a30000"
-        noVerticalAlign={false}
+      <Icon
         size="sm"
-      />
+      >
+        <SecurityIcon
+          aria-hidden="false"
+          aria-label="Critical"
+          color="#a30000"
+        />
+      </Icon>
        
     </span>
   </Tooltip>
@@ -122,13 +132,15 @@ exports[`Shield component should render where impact value is Critical 1`] = `
     position="bottom"
   >
     <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="Critical"
-        color="#a30000"
-        noVerticalAlign={false}
+      <Icon
         size="sm"
-      />
+      >
+        <SecurityIcon
+          aria-hidden="false"
+          aria-label="Critical"
+          color="#a30000"
+        />
+      </Icon>
        
     </span>
   </Tooltip>
@@ -146,13 +158,15 @@ exports[`Shield component should render where impact value is Low 1`] = `
     position="bottom"
   >
     <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="Low"
-        color="#737679"
-        noVerticalAlign={false}
+      <Icon
         size="sm"
-      />
+      >
+        <SecurityIcon
+          aria-hidden="false"
+          aria-label="Low"
+          color="#737679"
+        />
+      </Icon>
        
     </span>
   </Tooltip>
@@ -170,13 +184,15 @@ exports[`Shield component should render where impact value is NonExist 1`] = `
     position="bottom"
   >
     <span>
-      <QuestionIcon
-        aria-hidden="false"
-        aria-label="Unknown"
-        color="#737679"
-        noVerticalAlign={false}
+      <Icon
         size="sm"
-      />
+      >
+        <QuestionIcon
+          aria-hidden="false"
+          aria-label="Unknown"
+          color="#737679"
+        />
+      </Icon>
        
     </span>
   </Tooltip>
@@ -194,13 +210,15 @@ exports[`Shield component should render where impact value is empty string 1`] =
     position="bottom"
   >
     <span>
-      <QuestionIcon
-        aria-hidden="false"
-        aria-label="Unknown"
-        color="#737679"
-        noVerticalAlign={false}
+      <Icon
         size="sm"
-      />
+      >
+        <QuestionIcon
+          aria-hidden="false"
+          aria-label="Unknown"
+          color="#737679"
+        />
+      </Icon>
        
     </span>
   </Tooltip>
@@ -218,13 +236,15 @@ exports[`Shield component should render where impact value is undefined 1`] = `
     position="bottom"
   >
     <span>
-      <QuestionIcon
-        aria-hidden="false"
-        aria-label="Unknown"
-        color="#737679"
-        noVerticalAlign={false}
+      <Icon
         size="sm"
-      />
+      >
+        <QuestionIcon
+          aria-hidden="false"
+          aria-label="Unknown"
+          color="#737679"
+        />
+      </Icon>
        
     </span>
   </Tooltip>
@@ -242,13 +262,15 @@ exports[`Shield component should render with label 1`] = `
     position="bottom"
   >
     <span>
-      <SecurityIcon
-        aria-hidden="false"
-        aria-label="Medium"
-        color="#f0ab00"
-        noVerticalAlign={false}
+      <Icon
         size="sm"
-      />
+      >
+        <SecurityIcon
+          aria-hidden="false"
+          aria-label="Medium"
+          color="#f0ab00"
+        />
+      </Icon>
        
       Medium
     </span>
@@ -267,13 +289,15 @@ exports[`Shield component should render without props 1`] = `
     position="bottom"
   >
     <span>
-      <QuestionIcon
-        aria-hidden="false"
-        aria-label="Unknown"
-        color="#737679"
-        noVerticalAlign={false}
+      <Icon
         size="sm"
-      />
+      >
+        <QuestionIcon
+          aria-hidden="false"
+          aria-label="Unknown"
+          color="#737679"
+        />
+      </Icon>
        
     </span>
   </Tooltip>

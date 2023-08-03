@@ -82,7 +82,16 @@ const SimpleFilter: React.FC<SimpleFilterProps> = ({
         </Dropdown>
       )}
       {/* FIXME: Find some relevant label or ID */}
-      <TextInput aria-label="simple-table-filter" placeholder={placeholder} onChange={onInputChange} />
+      <TextInput
+        onKeyUp={(e) => {
+          if (e.code === 'Enter') {
+            onInputChange(e, (e.target as HTMLInputElement).value);
+          }
+        }}
+        aria-label="simple-table-filter"
+        placeholder={placeholder}
+        onChange={onInputChange}
+      />
       {!buttonTitle && searchIcon && (
         <Icon size="sm">
           <SearchIcon className="ins-c-search-icon" />

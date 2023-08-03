@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { useEffect } from 'react';
 import { matchPath, useLocation, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -7,7 +8,10 @@ export type RouterParamsProps = {
   Component: React.ComponentType;
 };
 
-const RouterParams = (props: RouterParamsProps) => {
+/**
+ * @deprecated
+ */
+const RouterParamsInternal = (props: RouterParamsProps) => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const params = useParams();
@@ -37,5 +41,8 @@ const RouterParams = (props: RouterParamsProps) => {
   return <Component {...rest} />;
 };
 
-// eslint-disable-next-line react/display-name
-export default (Component: React.ComponentType) => (props: Record<string, any>) => <RouterParams Component={Component} {...props} />;
+/**
+ * @deprecated
+ */
+const RouterParams = (Component: React.ComponentType) => (props: Record<string, any>) => <RouterParamsInternal Component={Component} {...props} />;
+export default RouterParams;

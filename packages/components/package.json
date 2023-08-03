@@ -59,7 +59,7 @@
         "@types/react": "^18.0.0",
         "@cypress/webpack-dev-server": "^1.8.4",
         "css-loader": "^6.7.1",
-        "cypress": "^9.7.0",
+        "cypress": "^12.17.3",
         "eslint-plugin-cypress": "^2.12.1",
         "sass-loader": "^12.6.0",
         "style-loader": "^3.3.1"

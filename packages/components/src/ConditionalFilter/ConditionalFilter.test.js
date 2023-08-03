@@ -8,6 +8,7 @@ const config = [
     id: 'some',
     label: 'simple text 1',
     value: 'simple-text-1',
+    type: 'text',
   },
   {
     label: 'simple text 2',
@@ -56,6 +57,7 @@ const config = [
   },
   {
     label: 'no value',
+    value: '',
     type: 'text',
   },
 ];
@@ -111,43 +113,62 @@ describe('ConditionalFilter', () => {
     it('should not call onChange', () => {
       const onChange = jest.fn();
       render(<ConditionalFilter {...initialProps} />);
-      userEvent.type(screen.getByRole('textbox', { name: 'text input' }), 'new-value');
+      act(() => {
+        userEvent.type(screen.getByRole('textbox', { name: 'text input' }), 'new-value');
+      });
       expect(onChange).not.toHaveBeenCalled();
     });
 
     it('should call onChange', () => {
       const onChange = jest.fn();
       render(<ConditionalFilter {...initialProps} onChange={onChange} />);
-      userEvent.type(screen.getByRole('textbox', { name: 'text input' }), 'new-value');
-      expect(onChange).toHaveBeenCalled();
+      act(() => {
+        userEvent.type(screen.getByRole('textbox', { name: 'text input' }), 'new-value');
+      });
+      expect(onChange).toHaveBeenLastCalledWith(expect.any(Object), 'new-value');
     });
 
-    it('should open dropdown', () => {
+    it('should open dropdown', async () => {
       render(<ConditionalFilter {...initialProps} items={config} />);
-      userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+      await act(async () => {
+        await userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+      });
       expect(screen.getByRole('menu', { name: 'Conditional filter' })).toBeDefined();
     });
 
-    it('should call NOT call onChange when clicked on dropdown', () => {
+    it('should call NOT call onChange when clicked on dropdown', async () => {
       const onChange = jest.fn();
       render(<ConditionalFilter {...initialProps} items={config} />);
-      userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
-      userEvent.click(screen.getByRole('menuitem', { name: 'Simple text 1' }));
+      act(() => {
+        userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+      });
+      await act(async () => {
+        userEvent.click(screen.getByRole('menuitem', { name: 'Simple text 1' }));
+      });
       expect(onChange).not.toHaveBeenCalled();
     });
 
-    it('should call call onChange when clicked on dropdown', () => {
+    it('should call call onChange when clicked on dropdown', async () => {
       const onChange = jest.fn();
       render(<ConditionalFilter {...initialProps} items={config} onChange={onChange} />);
-      userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
-      userEvent.click(screen.getByRole('menuitem', { name: 'Simple text 1' }));
+      act(() => {
+        userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+      });
+      await act(async () => {
+        await userEvent.click(screen.getByRole('menuitem', { name: 'Simple text 1' }));
+      });
       expect(onChange).toHaveBeenCalled();
     });
 
-    it('should update state on select', () => {
+    it('should update state on select', async () => {
       render(<ConditionalFilter {...initialProps} items={config} />);
-      userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
-      userEvent.click(screen.getByRole('menuitem', { name: 'Checkbox' }));
+      act(() => {
+        userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+      });
+
+      await act(async () => {
+        await userEvent.click(screen.getByRole('menuitem', { name: 'Checkbox' }));
+      });
       expect(screen.getByRole('button', { name: 'Options menu' })).toBeDefined();
     });
 
@@ -223,12 +244,15 @@ describe('ConditionalFilter', () => {
 
       render(<ConditionalFilter {...initialProps} items={items} />);
 
-      await act(() => {
-        userEvent.click(screen.getByRole('button', { name: 'Group filter' }));
+      await act(async () => {
+        await userEvent.click(screen.getByRole('button', { name: 'Group filter' }));
       });
-      userEvent.click(screen.getByRole('checkbox', { name: 'RHEL 7' }));
+
+      act(() => {
+        userEvent.click(screen.getByLabelText('RHEL 7'));
+      });
       expect(onChange).toHaveBeenCalledWith(
-        undefined,
+        expect.any(Object),
         { 'rhel-7': { 'rhel-7': true } },
         {
           groupSelectable: true,

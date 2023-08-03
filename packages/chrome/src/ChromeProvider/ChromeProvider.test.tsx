@@ -1,11 +1,10 @@
 import React from 'react';
-import { MemoryRouter, Route } from 'react-router-dom';
-import { render } from '@testing-library/react';
+import { Link, MemoryRouter, Route, Routes } from 'react-router-dom';
+import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 
 import ChromeProvider from './ChromeProvider';
 import * as fetch from '../utils/fetch';
-import { History } from 'history';
 
 const flushPromises = () => new Promise(setImmediate);
 
@@ -35,24 +34,19 @@ describe('ChromeProvider', () => {
   test('should post new data on pathname change', async () => {
     getSpy.mockResolvedValueOnce([]);
     postSpy.mockResolvedValue(['/', '/bar']);
-    let testPush: History['push'];
     await act(async () => {
       render(
         <MemoryRouter initialEntries={['/']} initialIndex={0}>
-          <Route
-            path="*"
-            render={({ history }) => {
-              testPush = history.push;
-              return null;
-            }}
-          ></Route>
+          <Routes>
+            <Route path="*" element={<Link to="/foo/bar">/foo/bar</Link>}></Route>
+          </Routes>
           <ChromeProvider bundle="bundle-title" />
         </MemoryRouter>
       );
     });
     // change location
     act(() => {
-      testPush('/foo/bar');
+      screen.getByText('/foo/bar').click();
     });
 
     // wait for calls to be finished

@@ -49,7 +49,13 @@ const RadioFilter: React.FunctionComponent<RadioFilterProps> = ({ items = [], on
       className={className}
       aria-label="Select Input"
       toggle={(menuRef) => (
-        <MenuToggle isExpanded={isExpanded} onClick={() => setExpanded((prev) => !prev)} isDisabled={isDisabled} ref={menuRef}>
+        <MenuToggle
+          aria-label="Options menu"
+          isExpanded={isExpanded}
+          onClick={() => setExpanded((prev) => !prev)}
+          isDisabled={isDisabled}
+          ref={menuRef}
+        >
           {placeholder}
         </MenuToggle>
       )}
@@ -58,7 +64,7 @@ const RadioFilter: React.FunctionComponent<RadioFilterProps> = ({ items = [], on
       isOpen={isExpanded}
       ouiaId={placeholder}
     >
-      <SelectList>
+      <SelectList aria-label="Options menu">
         {items.map(({ value, isChecked, onChange, label, id, ...item }, key) => (
           <SelectOption {...item} key={id || key} value={value || '' + key}>
             <Radio

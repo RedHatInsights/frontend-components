@@ -1,9 +1,9 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { mount, shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render, screen } from '@testing-library/react';
 import Notification, { NotificationProps } from './Notification';
 import { AlertVariant } from '@patternfly/react-core';
+import userEvent from '@testing-library/user-event';
 
 describe('Notification component', () => {
   let initialProps: NotificationProps;
@@ -19,67 +19,61 @@ describe('Notification component', () => {
   });
 
   it('should render correctly', () => {
-    const wrapper = shallow(<Notification {...initialProps} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Notification {...initialProps} />);
+    expect(container).toMatchSnapshot();
   });
 
-  it('pagination should render correctly', () => {
-    const wrapper = shallow(<Notification {...initialProps} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('should render correctly withouth description', () => {
-    const wrapper = shallow(<Notification {...initialProps} description={undefined} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+  it('should render correctly without description', () => {
+    const { container } = render(<Notification {...initialProps} description={undefined} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly with sentryId', () => {
-    const wrapper = shallow(<Notification {...initialProps} sentryId={'some-UUID'} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Notification {...initialProps} sentryId={'some-UUID'} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly with HTML description', () => {
     const description = '<html><body><h1>Some text</h1><div>another</div></body><img src="some" /></html>';
-    const wrapper = shallow(<Notification {...initialProps} description={description} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Notification {...initialProps} description={description} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly with HTML title', () => {
     const title = '<html><body><h1>Some text</h1><div>another</div></body><img src="some" /></html>';
-    const wrapper = shallow(<Notification {...initialProps} title={title} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Notification {...initialProps} title={title} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly with dismiss button', () => {
-    const wrapper = shallow(<Notification {...initialProps} description={undefined} dismissable />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Notification {...initialProps} description={undefined} dismissable />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should call dismiss function on action click', () => {
     const onDismiss = jest.fn();
-    const wrapper = mount(<Notification {...initialProps} onDismiss={onDismiss} description={undefined} dismissable />);
-    wrapper.find('button').simulate('click');
+    render(<Notification {...initialProps} onDismiss={onDismiss} description={undefined} dismissable />);
+    screen.getByRole('button').click();
     expect(onDismiss).toHaveBeenCalledWith(initialProps.id);
   });
 
   it('should call dismiss function when timer runs out', () => {
     jest.useFakeTimers();
     const onDismiss = jest.fn();
-    const wrapper = mount(<Notification dismissDelay={100} {...initialProps} onDismiss={onDismiss} description={undefined} />);
+    render(<Notification dismissDelay={100} {...initialProps} onDismiss={onDismiss} description={undefined} />);
     jest.advanceTimersByTime(100);
-    wrapper.update();
     expect(onDismiss).toHaveBeenCalledWith('Foo');
   });
 
   it('should clear interval on notification unmout', () => {
     const timeoutSpy = jest.spyOn(global, 'clearTimeout');
     timeoutSpy.mockReset();
-    let wrapper = mount(<Notification dismissDelay={100} {...initialProps} description={undefined} />);
-    wrapper.unmount();
+    const { unmount } = render(<Notification dismissDelay={100} {...initialProps} description={undefined} />);
+    unmount();
     expect(timeoutSpy).toHaveBeenCalledTimes(1);
     timeoutSpy.mockRestore();
 
-    wrapper = mount(<Notification dismissDelay={100} {...initialProps} dismissable description={undefined} />);
+    render(<Notification dismissDelay={100} {...initialProps} dismissable description={undefined} />);
     expect(timeoutSpy).not.toHaveBeenCalled();
     timeoutSpy.mockRestore();
   });
@@ -87,25 +81,28 @@ describe('Notification component', () => {
   it('should clear timeout on notification mouse enter', () => {
     const timeoutSpy = jest.spyOn(global, 'clearTimeout');
     timeoutSpy.mockReset();
-    let wrapper;
     act(() => {
-      wrapper = mount(<Notification dismissDelay={100} {...initialProps} description={undefined} />);
+      render(<Notification dismissDelay={100} {...initialProps} description={undefined} />);
     });
-    // @ts-ignore
-    wrapper?.find('.pf-v5-c-alert').simulate('mouseEnter');
+    act(() => {
+      userEvent.hover(screen.getByText('Bar'));
+    });
     expect(timeoutSpy).toHaveBeenCalledTimes(1);
     timeoutSpy.mockRestore();
   });
 
   it('should set timeout on notification mouse leave', async () => {
     const timeoutSpy = jest.spyOn(global, 'setTimeout');
-    let wrapper;
+    timeoutSpy.mockReset();
     act(() => {
-      timeoutSpy.mockReset();
-      wrapper = mount(<Notification dismissDelay={100} {...initialProps} description={undefined} />);
+      render(<Notification dismissDelay={100} {...initialProps} description={undefined} />);
     });
-    // @ts-ignore
-    wrapper?.find('.pf-v5-c-alert').simulate('mouseLeave');
+    act(() => {
+      userEvent.hover(screen.getByText('Bar'));
+    });
+    act(() => {
+      userEvent.unhover(screen.getByText('Bar'));
+    });
     expect(timeoutSpy).toHaveBeenCalledTimes(3);
     timeoutSpy.mockRestore();
   });

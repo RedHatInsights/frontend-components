@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import useInsightsNavigate from './useInsightsNavigate';
 import { useNavigate } from 'react-router-dom';
 import useChrome from '@redhat-cloud-services/frontend-components/useChrome';

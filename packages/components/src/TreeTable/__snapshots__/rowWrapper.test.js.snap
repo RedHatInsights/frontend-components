@@ -6,7 +6,7 @@ exports[`TreeTable RowWrapper should render correctly - no data 1`] = `
   aria-setsize={0}
   className=""
   row={
-    Object {
+    {
       "isEditable": undefined,
       "isExpanded": undefined,
       "isHeightAuto": undefined,
@@ -24,10 +24,10 @@ exports[`TreeTable RowWrapper should render correctly - with data 1`] = `
   aria-setsize={2}
   className="pf-m-expandable pf-m-expanded"
   row={
-    Object {
+    {
       "isTreeOpen": true,
       "level": 0,
-      "point": Object {
+      "point": {
         "size": 2,
       },
       "posinset": 1,
@@ -44,10 +44,10 @@ exports[`TreeTable RowWrapper should render correctly - with data collapsed 1`] 
   aria-setsize={2}
   className="pf-m-expandable"
   row={
-    Object {
+    {
       "isTreeOpen": false,
       "level": 0,
-      "point": Object {
+      "point": {
         "size": 2,
       },
       "posinset": 1,

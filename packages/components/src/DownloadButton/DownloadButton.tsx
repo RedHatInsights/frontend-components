@@ -50,7 +50,7 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
           onOpenChange={(isOpen) => setIsOpen(isOpen)}
           onSelect={internalOnSelect}
           toggle={(toggleRef) => (
-            <MenuToggle variant="plain" ref={toggleRef} isExpanded={isOpen} onClick={() => setIsOpen((prev) => !prev)}>
+            <MenuToggle aria-label="Export" variant="plain" ref={toggleRef} isExpanded={isOpen} onClick={() => setIsOpen((prev) => !prev)}>
               <ExportIcon />
             </MenuToggle>
           )}
@@ -64,11 +64,13 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
               component="button"
               onClick={(event) => onSelect(event, 'csv')}
               isDisabled={isDisabled}
+              aria-label="Export to CSV"
             >
               Export to CSV
             </DropdownItem>
             ,
             <DropdownItem
+              aria-label="Export to JSON"
               key="download-json"
               ouiaId="DownloadJSON"
               component="button"

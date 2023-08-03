@@ -4,11 +4,7 @@ exports[`Reboot component should render correctly 1`] = `
 <span
   className="ins-c-reboot"
 >
-  <RebootingIcon
-    color="currentColor"
-    noVerticalAlign={false}
-    size="sm"
-  />
+  <RebootingIcon />
   <span>
     Reboot required
   </span>
@@ -19,11 +15,7 @@ exports[`Reboot component should render correctly with red 1`] = `
 <span
   className="ins-c-reboot ins-m-red"
 >
-  <RebootingIcon
-    color="currentColor"
-    noVerticalAlign={false}
-    size="sm"
-  />
+  <RebootingIcon />
   <span>
     Reboot required
   </span>

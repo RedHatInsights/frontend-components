@@ -4,24 +4,24 @@ exports[`provider messages multiple Languages cs-locale 1`] = `
 <IntlProvider
   locale="cs"
   messages={
-    Object {
-      "cs": Object {
+    {
+      "cs": {
         "some.msg": "Zpráva",
       },
-      "en": Object {
+      "en": {
         "some.msg": "Message",
       },
     }
   }
 >
   <IntlProvider
-    defaultFormats={Object {}}
+    defaultFormats={{}}
     defaultLocale="en"
     fallbackOnEmptyString={true}
-    formats={Object {}}
+    formats={{}}
     locale="cs"
     messages={
-      Object {
+      {
         "default.cancel": "Zrušit",
         "default.delete": "Smazat",
         "default.remove": "Odstranit",
@@ -44,24 +44,24 @@ exports[`provider messages multiple Languages no locale 1`] = `
 <IntlProvider
   locale={null}
   messages={
-    Object {
-      "cs": Object {
+    {
+      "cs": {
         "some.msg": "Zpráva",
       },
-      "en": Object {
+      "en": {
         "some.msg": "Message",
       },
     }
   }
 >
   <IntlProvider
-    defaultFormats={Object {}}
+    defaultFormats={{}}
     defaultLocale="en"
     fallbackOnEmptyString={true}
-    formats={Object {}}
+    formats={{}}
     locale="en"
     messages={
-      Object {
+      {
         "default.cancel": "Cancel",
         "default.delete": "Delete",
         "default.remove": "Remove",
@@ -84,19 +84,19 @@ exports[`provider messages no langauge 1`] = `
 <IntlProvider
   locale={null}
   messages={
-    Object {
+    {
       "some.msg": "Message",
     }
   }
 >
   <IntlProvider
-    defaultFormats={Object {}}
+    defaultFormats={{}}
     defaultLocale="en"
     fallbackOnEmptyString={true}
-    formats={Object {}}
+    formats={{}}
     locale="en"
     messages={
-      Object {
+      {
         "default.cancel": "Cancel",
         "default.delete": "Delete",
         "default.remove": "Remove",
@@ -120,13 +120,13 @@ exports[`provider should render correctly 1`] = `
   locale={null}
 >
   <IntlProvider
-    defaultFormats={Object {}}
+    defaultFormats={{}}
     defaultLocale="en"
     fallbackOnEmptyString={true}
-    formats={Object {}}
+    formats={{}}
     locale="en"
     messages={
-      Object {
+      {
         "default.cancel": "Cancel",
         "default.delete": "Delete",
         "default.remove": "Remove",

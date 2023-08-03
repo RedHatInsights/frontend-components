@@ -3,1539 +3,404 @@
 exports[`SkeletonTable component should render correctly 1`] = `
 <Table
   aria-label="Loading"
-  borders={true}
-  canCollapseAll={false}
-  canSelectAll={false}
-  canSortFavorites={true}
-  cells={
-    Array [
-      Object {
-        "title": <Skeleton
-          isDark={false}
-          size="sm"
-        />,
-      },
-      Object {
-        "title": <Skeleton
-          isDark={false}
-          size="sm"
-        />,
-      },
-      Object {
-        "title": <Skeleton
-          isDark={false}
-          size="sm"
-        />,
-      },
-      Object {
-        "title": <Skeleton
-          isDark={false}
-          size="sm"
-        />,
-      },
-      Object {
-        "title": <Skeleton
-          isDark={false}
-          size="sm"
-        />,
-      },
-    ]
-  }
-  className=""
-  collapseAllAriaLabel=""
-  contentId="expanded-content"
-  dropdownDirection="down"
-  dropdownPosition="right"
-  expandId="expandable-toggle"
-  gridBreakPoint="grid-md"
-  isHeaderSelectDisabled={false}
-  isNested={false}
-  isStickyHeader={false}
-  isTreeTable={false}
-  ouiaSafe={true}
-  role="grid"
-  rowLabeledBy="simple-node"
-  rows={
-    Array [
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-    ]
-  }
-  selectVariant="checkbox"
-  variant={null}
 >
-  <TableHeader />
-  <TableBody />
+  <Thead>
+    <Tr>
+      <Th
+        key="0"
+      >
+        <Skeleton />
+      </Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr
+      key="0"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="1"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="2"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="3"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="4"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+  </Tbody>
 </Table>
 `;
 
 exports[`SkeletonTable component should render correctly with checkboxes 1`] = `
 <Table
   aria-label="Loading"
-  borders={true}
-  canCollapseAll={false}
-  canSelectAll={false}
-  canSortFavorites={true}
-  cells={
-    Array [
-      "first",
-      "second",
-    ]
-  }
-  className=""
-  collapseAllAriaLabel=""
-  contentId="expanded-content"
-  dropdownDirection="down"
-  dropdownPosition="right"
-  expandId="expandable-toggle"
-  gridBreakPoint="grid-md"
-  isHeaderSelectDisabled={false}
-  isNested={false}
-  isStickyHeader={false}
-  isTreeTable={false}
-  onSelect={[Function]}
-  ouiaSafe={true}
-  role="grid"
-  rowLabeledBy="simple-node"
-  rows={
-    Array [
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-    ]
-  }
-  selectVariant="checkbox"
-  variant={null}
 >
-  <TableHeader />
-  <TableBody />
+  <Thead>
+    <Tr>
+      <Th
+        key="0"
+      >
+        first
+      </Th>
+      <Th
+        key="1"
+      >
+        second
+      </Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr
+      key="0"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="1"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="2"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="3"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="4"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+  </Tbody>
 </Table>
 `;
 
 exports[`SkeletonTable component should render correctly with radio buttons 1`] = `
 <Table
   aria-label="Loading"
-  borders={true}
-  canCollapseAll={false}
-  canSelectAll={false}
-  canSortFavorites={true}
-  cells={
-    Array [
-      "first",
-      "second",
-    ]
-  }
-  className=""
-  collapseAllAriaLabel=""
-  contentId="expanded-content"
-  dropdownDirection="down"
-  dropdownPosition="right"
-  expandId="expandable-toggle"
-  gridBreakPoint="grid-md"
-  isHeaderSelectDisabled={false}
-  isNested={false}
-  isStickyHeader={false}
-  isTreeTable={false}
-  onSelect={[Function]}
-  ouiaSafe={true}
-  role="grid"
-  rowLabeledBy="simple-node"
-  rows={
-    Array [
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-    ]
-  }
-  selectVariant="radio"
-  variant={null}
 >
-  <TableHeader />
-  <TableBody />
+  <Thead>
+    <Tr>
+      <Th
+        key="0"
+      >
+        first
+      </Th>
+      <Th
+        key="1"
+      >
+        second
+      </Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr
+      key="0"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="1"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="2"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="3"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="4"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+  </Tbody>
 </Table>
 `;
 
 exports[`SkeletonTable component should render correctly with static columns 1`] = `
 <Table
   aria-label="Loading"
-  borders={true}
-  canCollapseAll={false}
-  canSelectAll={false}
-  canSortFavorites={true}
-  cells={
-    Array [
-      "first",
-      "second",
-    ]
-  }
-  className=""
-  collapseAllAriaLabel=""
-  contentId="expanded-content"
-  dropdownDirection="down"
-  dropdownPosition="right"
-  expandId="expandable-toggle"
-  gridBreakPoint="grid-md"
-  isHeaderSelectDisabled={false}
-  isNested={false}
-  isStickyHeader={false}
-  isTreeTable={false}
-  ouiaSafe={true}
-  role="grid"
-  rowLabeledBy="simple-node"
-  rows={
-    Array [
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-      Object {
-        "cells": Array [
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-          Object {
-            "title": <Skeleton
-              isDark={false}
-              size="md"
-            />,
-          },
-        ],
-        "disableSelection": true,
-      },
-    ]
-  }
-  selectVariant="checkbox"
-  variant={null}
 >
-  <TableHeader />
-  <TableBody />
+  <Thead>
+    <Tr>
+      <Th
+        key="0"
+      >
+        first
+      </Th>
+      <Th
+        key="1"
+      >
+        second
+      </Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr
+      key="0"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="1"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="2"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="3"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="4"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+      <Td
+        key="1"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+  </Tbody>
 </Table>
 `;
 
 exports[`SkeletonTable component should render correctly without rows 1`] = `
 <Table
   aria-label="Loading"
-  borders={true}
-  canCollapseAll={false}
-  canSelectAll={false}
-  canSortFavorites={true}
-  cells={
-    Array [
-      Object {
-        "title": <Skeleton
-          isDark={false}
-          size="sm"
-        />,
-      },
-      Object {
-        "title": <Skeleton
-          isDark={false}
-          size="sm"
-        />,
-      },
-      Object {
-        "title": <Skeleton
-          isDark={false}
-          size="sm"
-        />,
-      },
-      Object {
-        "title": <Skeleton
-          isDark={false}
-          size="sm"
-        />,
-      },
-      Object {
-        "title": <Skeleton
-          isDark={false}
-          size="sm"
-        />,
-      },
-    ]
-  }
-  className=""
-  collapseAllAriaLabel=""
-  contentId="expanded-content"
-  dropdownDirection="down"
-  dropdownPosition="right"
-  expandId="expandable-toggle"
-  gridBreakPoint="grid-md"
-  isHeaderSelectDisabled={false}
-  isNested={false}
-  isStickyHeader={false}
-  isTreeTable={false}
-  ouiaSafe={true}
-  role="grid"
-  rowLabeledBy="simple-node"
-  rows={Array []}
-  selectVariant="checkbox"
-  variant={null}
 >
-  <TableHeader />
-  <TableBody />
+  <Thead>
+    <Tr>
+      <Th
+        key="0"
+      >
+        <Skeleton />
+      </Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr
+      key="0"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="1"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="2"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="3"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+    <Tr
+      key="4"
+    >
+      <Td
+        key="0"
+      >
+        <Skeleton />
+      </Td>
+    </Tr>
+  </Tbody>
 </Table>
 `;

@@ -57,6 +57,7 @@ export type GroupFilterItem = {
   tagValue?: string;
   /** Item value. */
   value: string;
+  groupSelectable?: boolean;
 } & (
   | ExtraButtonAttributes
   | ExtraCheckboxAttributes
@@ -226,7 +227,7 @@ export const getGroupMenuItems = (
 ): Group[] => {
   const result = groups.map((group) => {
     const { value, label, groupSelectable, id, type, items, noFilter } = group;
-    const converted = type === GroupType.treeView ? items.map((item: GroupFilterItem) => convertTreeItem(item as TreeViewItem)) : items;
+    let converted = type === GroupType.treeView && items ? items.map((item: GroupFilterItem) => convertTreeItem(item as TreeViewItem)) : items || [];
     if (groupSelectable) {
       const artificialGroupItem: GroupFilterItem = {
         value: value || '',
@@ -235,7 +236,7 @@ export const getGroupMenuItems = (
         ...group,
         type: group.type || GroupType.plain,
       } as GroupFilterItem;
-      converted.unshift(artificialGroupItem);
+      converted = [artificialGroupItem, ...converted];
     }
     return {
       label,

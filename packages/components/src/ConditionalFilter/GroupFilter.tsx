@@ -55,7 +55,7 @@ export interface Group {
   /** Optional item. */
   item?: GroupFilterItem;
   /** Group item array. */
-  items: GroupFilterItem[];
+  items?: GroupFilterItem[];
   /** Optional label. */
   label: string;
   /** Optional noFilter flag. */
@@ -81,7 +81,7 @@ export type GroupFilterProps = {
   /** Optional groups. */
   groups?: Group[];
   /** Optional groupFilter items. */
-  items: GroupFilterItem[];
+  items?: GroupFilterItem[];
   /** onChange event called on input change. */
   onChange: FilterMenuItemOnChange;
   /** Optional callback on showMore button click. */
@@ -119,7 +119,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
     className,
     filterBy = '',
     groups = [],
-    items,
+    items = [],
     isFilterable,
     onChange,
     onShowMore,
@@ -182,7 +182,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
   );
   const groupMenuItems = getGroupMenuItems(groups, onChange, calculateSelected(selected || {}));
 
-  const renderItem = (item: GroupFilterItem, key: string | number, type?: GroupType, groupKey = '') => (
+  const renderItem = ({ groupSelectable, ...item }: GroupFilterItem, key: string | number, type?: GroupType, groupKey = '') => (
     <MenuItem
       itemId={key}
       key={`${item.value}-${key}-item`}
@@ -320,7 +320,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
                     label={!(group as Group).groupSelectable && typeof group.label === 'string' ? group.label : undefined}
                     key={`${group.label}-${groupKey}-group`}
                   >
-                    {renderItems(group.items, group.type, group.value)}
+                    {group.items && renderItems(group.items, group.type, group.value)}
                   </MenuGroup>
                 ))}
                 {onShowMore ? (

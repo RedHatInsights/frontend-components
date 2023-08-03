@@ -57,7 +57,13 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({ items = 
   };
 
   const toggle: SelectProps['toggle'] = (toggleRef) => (
-    <MenuToggle isDisabled={isDisabled} onClick={() => setExpanded((prev) => !prev)} ref={toggleRef} isExpanded={isExpanded}>
+    <MenuToggle
+      aria-label="Options menu"
+      isDisabled={isDisabled}
+      onClick={() => setExpanded((prev) => !prev)}
+      ref={toggleRef}
+      isExpanded={isExpanded}
+    >
       {placeholder}
       {selected.length > 0 && (
         <Badge className="pf-v5-u-ml-sm" isRead>
@@ -69,16 +75,16 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({ items = 
 
   return (
     <Select
+      role="menu"
       toggle={toggle}
       className={className}
-      aria-label="Select Input"
       onOpenChange={(isExpanded) => setExpanded(isExpanded)}
       onSelect={(event, value) => onSelect(event, value)}
       isOpen={isExpanded}
       placeholder={placeholder}
       ouiaId={placeholder}
     >
-      <SelectList>
+      <SelectList aria-label="Options menu">
         {items.map(({ value, onClick, label, id, ...item }, key) => (
           <SelectOption
             hasCheckbox
