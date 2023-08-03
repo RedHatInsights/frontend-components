@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { Level, getDefaultOUIAId } from '@patternfly/react-core';
-import { Dropdown, DropdownToggle } from '@patternfly/react-core/deprecated';
+import { Dropdown, MenuGroup, MenuItem, MenuList, MenuToggle, getDefaultOUIAId } from '@patternfly/react-core';
 
 import FilterInput from './FilterInput';
 import './filter-dropdown.scss';
+import './filter-input.scss';
 
 export type FilterCategory = {
-  title?: string;
+  title: string;
   type?: string;
   urlParam?: string;
-  values?: {
-    label?: string;
-    value?: string;
+  values: {
+    label: string;
+    value: string;
   }[];
 };
 
@@ -20,8 +20,8 @@ export interface FilterDropdownProps {
   removeFilter?: (filterName?: string, selectedValue?: string | number) => void;
   hideCategories?: [string | undefined];
   filters?: Record<string, string>;
-  filterCategories?: FilterCategory[];
-  label?: React.ReactNode;
+  filterCategories: FilterCategory[];
+  label: React.ReactNode;
   ouiaId?: string;
   ouiaSafe?: boolean;
 }
@@ -42,6 +42,7 @@ const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const addRemoveFilters = (selectedValue?: string | number, filterName?: string, type?: string, isChecked?: boolean) => {
+    console.log({ selectedValue, filterName });
     if (type === 'checkbox') {
       isChecked ? addFilter?.(filterName, selectedValue, type) : removeFilter?.(filterName, selectedValue);
     } else {
@@ -53,39 +54,44 @@ const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({
     <Dropdown
       className="ins-c-filter__dropdown"
       {...props}
-      toggle={
-        <DropdownToggle ouiaId={ouiaId} ouiaSafe={ouiaSafe} onToggle={(_e, isOpen) => setIsOpen(isOpen)}>
+      onOpenChange={setIsOpen}
+      toggle={(toggleRef) => (
+        <MenuToggle ref={toggleRef} isExpanded={isOpen} onClick={() => setIsOpen((prev) => !prev)}>
           {label}
-        </DropdownToggle>
-      }
+        </MenuToggle>
+      )}
       isOpen={isOpen}
       ouiaId={ouiaId}
       ouiaSafe={ouiaSafe}
     >
-      <div className="pf-v5-c-dropdown__menu-item">
-        {filterCategories?.map(
-          (data: FilterCategory, index) =>
+      <MenuList>
+        {filterCategories.map(
+          (data, index) =>
             !hideCategories?.includes(data?.urlParam) && (
-              <Level key={`${data.urlParam}${index}`}>
-                {data.title || ''}
-                {data.values?.map((item: { label?: React.ReactNode; value?: string }, key: string | number) => (
-                  <FilterInput
-                    key={`check${index}${key}`}
-                    aria-label={item.label}
-                    id={`${data.urlParam}${key}`}
-                    label={item.label}
-                    addRemoveFilters={addRemoveFilters}
-                    param={data.urlParam}
-                    type={data.type}
-                    value={item.value}
-                    filters={filters}
-                  />
-                ))}
-                {index !== filterCategories.length - 1 && <br />}
-              </Level>
+              <MenuGroup label={data.title} key={index}>
+                <MenuList>
+                  {data.values.map((item, key) => (
+                    // FIXME: Make the menu item clickable
+                    // Clicking no the "edge" of the item does not trigger the change handler
+                    // Using keyboard does not trigger the change event
+                    <MenuItem key={`check${index}${key}`}>
+                      <FilterInput
+                        aria-label={item.label}
+                        id={`check${index}${key}`}
+                        label={item.label}
+                        addRemoveFilters={addRemoveFilters}
+                        param={data.urlParam}
+                        type={data.type}
+                        value={item.value}
+                        filters={filters}
+                      />
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </MenuGroup>
             )
         )}
-      </div>
+      </MenuList>
     </Dropdown>
   );
 };
