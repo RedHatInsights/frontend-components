@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateProps, Stack, StackItem, EmptyStateHeader,  } from '@patternfly/react-core';
+import { EmptyState, EmptyStateBody, EmptyStateHeader, EmptyStateIcon, EmptyStateProps, Stack, StackItem } from '@patternfly/react-core';
 import { HourglassHalfIcon } from '@patternfly/react-icons';
 import './maintenance.scss';
 

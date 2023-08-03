@@ -35,7 +35,8 @@ describe('BulkSelect component', () => {
     mount(<BulkSelect {...config} isDisabled={true} />);
     cy.get('.pf-v5-c-dropdown__toggle-button').click({ force: true });
     cy.get('.pf-v5-c-dropdown__menu').should('not.exist');
-    cy.get('#toggle-checkbox').check({ force: true }).should('not.be.checked');
+    cy.get('#toggle-checkbox').check({ force: true });
+    cy.get('#toggle-checkbox').should('not.be.checked');
   });
 
   it('buttons (do not) respond to being clicked', () => {

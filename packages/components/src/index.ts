@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as t from '@redhat-cloud-services/types'; // required to get the API. We can't use simple import due to tree shaking
 export * from './LongTextTooltip';
 export * from './Section';

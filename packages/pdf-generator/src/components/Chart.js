@@ -1,3 +1,4 @@
+/* eslint-disable react/no-deprecated */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { CircleIconConfig } from '@patternfly/react-icons/dist/js/icons/circle-icon';

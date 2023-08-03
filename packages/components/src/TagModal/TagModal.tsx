@@ -87,7 +87,6 @@ class TagModal extends Component<TagModalProps> {
       isOpen = false,
       rows = [],
       columns = [{ title: 'Name' }, { title: 'Tag source' }],
-      children,
       pagination = { count: 10 },
       loaded = false,
       filters,
@@ -96,7 +95,6 @@ class TagModal extends Component<TagModalProps> {
       onSelect,
       onUpdateData = () => undefined,
       selected,
-      tableProps = {},
       bulkSelect,
       ...props
     } = this.props;

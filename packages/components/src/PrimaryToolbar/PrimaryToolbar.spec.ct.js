@@ -86,6 +86,7 @@ describe('PrimaryToolbar component', () => {
 
   it('renders items correctly - everything', () => {
     cy.mount(<PrimaryToolbar {...groupConfig} {...otherConfig} />);
+    // eslint-disable-next-line cypress/unsafe-to-chain-command
     cy.get('.pf-v5-c-toolbar__content-section')
       .within(() => {
         cy.get('.pf-v5-c-toolbar__group').children().should('have.length', 4);

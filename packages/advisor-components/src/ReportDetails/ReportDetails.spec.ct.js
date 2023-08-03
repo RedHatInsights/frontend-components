@@ -75,7 +75,7 @@ describe('report details: kba loaded', () => {
 
 describe('report details: kba loading', () => {
   beforeEach(() => {
-    mount(<ReportDetails {...{ ...props, kbaLoading: true }} />);
+    cy.mount(<ReportDetails {...{ ...props, kbaLoading: true }} />);
   });
 
   it('renders skeleton instead of a kba link', () => {

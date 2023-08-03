@@ -62,7 +62,13 @@ export function checkPaginationValues(expectedValues) {
  */
 export function changePagination(paginationValue) {
   cy.get(TOOLBAR).find(PAGINATION_MENU).find(DROPDOWN_TOGGLE).click();
-  return cy.get(TOOLBAR).find(PAGINATION_MENU).find('ul[class=pf-v5-c-options-menu__menu]').find(DROPDOWN_ITEM).contains(`${paginationValue}`).click();
+  return cy
+    .get(TOOLBAR)
+    .find(PAGINATION_MENU)
+    .find('ul[class=pf-v5-c-options-menu__menu]')
+    .find(DROPDOWN_ITEM)
+    .contains(`${paginationValue}`)
+    .click();
 }
 
 export { DEFAULT_ROW_COUNT, PAGINATION_VALUES, SORTING_ORDERS };

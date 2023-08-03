@@ -64,7 +64,7 @@ describe('RuleDetails: details page', () => {
     const onVoteClick = () => fetch('https://foo.bar/rating');
     cy.intercept('https://foo.bar/rating', 'ok').as('voteRequest');
 
-    mount(<RuleDetails {...fixtures} onVoteClick={onVoteClick} />);
+    cy.mount(<RuleDetails {...fixtures} onVoteClick={onVoteClick} />);
     cy.get('.ins-c-rule-details__vote').find('[data-ouia-component-id="thumbsDown"]').click();
     cy.wait('@voteRequest');
   });

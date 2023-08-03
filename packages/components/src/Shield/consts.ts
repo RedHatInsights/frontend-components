@@ -32,7 +32,8 @@ export const messageList = {
         impact. These are the types of vulnerabilities that are believed to \
         require unlikely circumstances to be able to be exploited, or where \
         a successful exploit would give minimal consequences.',
-  unknown: 'Red Hat Product Security has determined that this vulnerability does \
+  unknown:
+    'Red Hat Product Security has determined that this vulnerability does \
         not impact Red Hat products.',
 };
 

@@ -1,7 +1,8 @@
 import { get, post } from './fetch';
 
 describe('fetch', () => {
-  const fetchSpy = jest.spyOn(global, 'fetch').mockImplementation((input: RequestInfo | URL, init?: RequestInit | undefined) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const fetchSpy = jest.spyOn(global, 'fetch').mockImplementation((_input: RequestInfo | URL, _init?: RequestInit | undefined) => {
     return Promise.resolve({
       ok: true,
       json: () => Promise.resolve({ data: { foo: 'bar' } }),

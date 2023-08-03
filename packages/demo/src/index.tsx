@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { DownloadButton } from '@redhat-cloud-services/frontend-components/DownloadButton';
+import { TableVariant } from '@patternfly/react-table';
+import SkeletonTable from '@redhat-cloud-services/frontend-components/SkeletonTable';
 
 const MyCmp = () => {
-  const [selected, setSelected] = useState<string | undefined>();
-  return <DownloadButton />;
+  return <SkeletonTable variant={TableVariant.compact} numberOfColumns={10} columns={['Foo', 'Bar', 'zaz']} />;
 };
 
 const element = document.querySelector('.demo-app');

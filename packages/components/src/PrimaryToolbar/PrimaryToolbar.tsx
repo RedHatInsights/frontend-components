@@ -73,7 +73,6 @@ const PrimaryToolbar: React.FunctionComponent<React.PropsWithChildren<PrimaryToo
   children,
   exportConfig,
   expandAll,
-  useMobileLayout,
   ...props
 }) => {
   const overflowActions = [
