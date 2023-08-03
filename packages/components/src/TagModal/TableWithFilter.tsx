@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Bullseye, EmptyState, EmptyStateBody, EmptyStateHeader, EmptyStateVariant, ModalProps, Pagination } from '@patternfly/react-core';
+// FIXME: Deal with table after
 import { Table, TableBody, TableHeader, TableProps } from '@patternfly/react-table/deprecated';
 import { EmptyTable } from '../EmptyTable';
 import { TableToolbar } from '../TableToolbar';
@@ -158,7 +159,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
           <TableBody />
         </Table>
       ) : (
-        <SkeletonTable columns={columns} rowSize={pagination?.perPage || 10} />
+        <SkeletonTable numberOfColumns={columns.length} rows={pagination?.perPage || 10} />
       )}
       {onUpdateData && pagination && loaded && (
         <TableToolbar isFooter className="ins-c-inventory__table--toolbar">

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { sortable } from '@patternfly/react-table';
+// FIXME: Deal with table later
 import { Table, TableBody, TableHeader } from '@patternfly/react-table/deprecated';
 import { Bullseye, EmptyState, EmptyStateBody, EmptyStateHeader, EmptyStateIcon, EmptyStateVariant } from '@patternfly/react-core';
 import { SearchIcon } from '@patternfly/react-icons';

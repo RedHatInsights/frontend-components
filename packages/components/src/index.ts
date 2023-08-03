@@ -4,7 +4,6 @@ export * from './Section';
 export * from './Ansible';
 export * from './Main';
 export * from './SimpleTableFilter';
-export * from './Input';
 export * from './InsightsLabel';
 export * from './Battery';
 export * from './Breadcrumbs';
