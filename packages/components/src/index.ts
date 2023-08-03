@@ -3,7 +3,6 @@ export * from './LongTextTooltip';
 export * from './Section';
 export * from './Ansible';
 export * from './Main';
-export * from './Pagination';
 export * from './SimpleTableFilter';
 export * from './Input';
 export * from './InsightsLabel';
