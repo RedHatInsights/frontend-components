@@ -1,6 +1,5 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Select, SelectOption, SelectVariant } from '@patternfly/react-core';
-import isEqual from 'lodash/isEqual';
 import omit from 'lodash/omit';
 import TextFilter, { FilterItem, FilterValue, isFilterValue } from './TextFilter';
 
@@ -37,22 +36,16 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({
 }) => {
   const { placeholder, className } = props;
   const [isExpanded, setExpanded] = useState(false);
-  const [selected, setSelected] = useState<(string | FilterValue)[]>([]);
-  const prevSelected = useRef(selected);
-
-  const changeSelected = (value: (string | FilterValue)[]) => {
-    prevSelected.current = selected;
-    setSelected(value);
-  };
+  const [selected, setSelected] = useState<(string | FilterValue)[]>(Array.isArray(value) ? value : ([value] as (string | FilterValue)[]));
 
   useEffect(() => {
-    !isEqual(prevSelected.current, value) && value && changeSelected(value as (string | FilterValue)[]);
-  }, [selected, value]);
+    setSelected(Array.isArray(value) ? value : ([value] as (string | FilterValue)[]));
+  }, [value]);
 
   const calculateSelected = () =>
     Array.from(
       new Set([
-        ...(value && (value as (string | FilterValue)[]).length > 0 && value.constructor === Array
+        ...(value && (value as (string | FilterValue)[]).length > 0 && Array.isArray(value)
           ? value.map((item) => {
               return isFilterValue(item) ? item.value : item;
             })
@@ -66,7 +59,7 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({
     newSelection = newSelection.includes(selection) ? newSelection.filter((item) => item !== selection) : [...newSelection, selection];
 
     onChange?.(event, newSelection, selection);
-    changeSelected(newSelection);
+    setSelected(newSelection);
   };
 
   return (
