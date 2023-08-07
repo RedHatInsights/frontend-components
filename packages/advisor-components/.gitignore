@@ -24,6 +24,7 @@
 !cypress
 !cypress/*
 !.eslintrc
+!cypress.config.js
 
 # Incremental ts info
 tsconfig.tsbuildinfo

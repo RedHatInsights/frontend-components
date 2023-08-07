@@ -88,11 +88,12 @@ describe('PrimaryToolbar component', () => {
     cy.mount(<PrimaryToolbar {...groupConfig} {...otherConfig} />);
     // eslint-disable-next-line cypress/unsafe-to-chain-command
     cy.get('.pf-v5-c-toolbar__content-section')
+      .first()
       .within(() => {
         cy.get('.pf-v5-c-toolbar__group').children().should('have.length', 4);
       })
       .children()
-      .should('have.length', 6);
+      .should('have.length', 5);
   });
 
   it('responds to interaction with individual items', () => {
@@ -101,8 +102,8 @@ describe('PrimaryToolbar component', () => {
     otherConfig.activeFiltersConfig.onDelete = cy.spy().as('afSpy');
     cy.mount(<PrimaryToolbar {...groupConfig} {...otherConfig} />);
     cy.get('[data-ouia-component-id="ExpandCollapseAll"]').click();
-    cy.get('button[data-ouia-component-id="BulkSelect"]').click();
-    cy.get(':nth-child(2) > .pf-v5-c-dropdown__menu-item').click();
+    cy.get('button[aria-label="BulkSelect"]').click();
+    cy.get(':nth-child(2) > .pf-v5-c-menu__item').click();
     cy.get('[data-ouia-component-id="ClearFilters"]').click();
     cy.get('@eaSpy').should('have.been.called');
     cy.get('@bsSpy').should('have.been.called');

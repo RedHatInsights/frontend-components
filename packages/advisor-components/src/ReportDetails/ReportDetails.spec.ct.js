@@ -18,7 +18,7 @@ describe('report details: kba loaded', () => {
   });
 
   it('renders component and matches screenshot', () => {
-    cy.get(ROOT).matchImage({
+    cy.get(ROOT).matchImageSnapshot({
       maxDiffThreshold: 0.5,
     });
   });
@@ -29,7 +29,7 @@ describe('report details: kba loaded', () => {
   });
 
   it('each header has an icon', () => {
-    cy.get('.pf-v5-c-card__header > .ins-c-report-details__icon').should('have.length', HEADERS.length);
+    cy.get('.pf-v5-c-card__header-main > .ins-c-report-details__icon').should('have.length', HEADERS.length);
   });
 
   it('links have an icon', () => {

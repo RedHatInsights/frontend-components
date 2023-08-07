@@ -23,6 +23,7 @@ exports[`BulkSelect should render correctly - null checked 1`] = `
 <div>
   <button
     aria-expanded="false"
+    aria-label="OUIA-Generated-RHI/BulkSelect-4"
     class="pf-v5-c-menu-toggle"
     type="button"
   >
@@ -74,6 +75,7 @@ exports[`BulkSelect should render correctly 1`] = `
 <div>
   <button
     aria-expanded="false"
+    aria-label="OUIA-Generated-RHI/BulkSelect-2"
     class="pf-v5-c-menu-toggle"
     type="button"
   >
@@ -132,6 +134,7 @@ exports[`BulkSelect should render correctly 2`] = `
 <div>
   <button
     aria-expanded="false"
+    aria-label="OUIA-Generated-RHI/BulkSelect-3"
     class="pf-v5-c-menu-toggle"
     type="button"
   >
@@ -183,6 +186,7 @@ exports[`BulkSelect should render custom props 1`] = `
 <div>
   <button
     aria-expanded="false"
+    aria-label="OUIA-Generated-RHI/BulkSelect-5"
     class="pf-v5-c-menu-toggle"
     type="button"
   >

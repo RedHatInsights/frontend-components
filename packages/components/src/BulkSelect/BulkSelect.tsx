@@ -70,7 +70,14 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
           ouiaId={ouiaFinalId}
           ouiaSafe={ouiaSafe}
           toggle={(toggleRef) => (
-            <MenuToggle {...toggleProps} isDisabled={isDisabled} isExpanded={isOpen} ref={toggleRef} onClick={() => setIsOpen((prev) => !prev)}>
+            <MenuToggle
+              aria-label={ouiaFinalId}
+              {...toggleProps}
+              isDisabled={isDisabled}
+              isExpanded={isOpen}
+              ref={toggleRef}
+              onClick={() => setIsOpen((prev) => !prev)}
+            >
               <Fragment key="split-checkbox">
                 {hasError ? (
                   <MenuToggleCheckbox

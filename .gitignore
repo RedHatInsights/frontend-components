@@ -33,3 +33,4 @@ lerna-debug.log
 packages/**/package-lock.json
 packages/**/.cache
 *.tgz
+!/packages/*/cypress/
