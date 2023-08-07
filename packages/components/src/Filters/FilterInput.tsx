@@ -25,7 +25,6 @@ const FilterInput: React.FC<FilterInputProps> = ({ addRemoveFilters, param = '',
     }
   }, []);
   const handleChange = () => {
-    console.log({ type, value, param, checked });
     if (type === 'checkbox') {
       return setChecked((prev) => {
         addRemoveFilters?.(value, param, type, !prev);

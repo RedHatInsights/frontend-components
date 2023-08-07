@@ -21,7 +21,8 @@
 !pre-publish.js
 !tsconfig.*
 !cypress.config.js
-!cypress/support/component.js
+!cypress
+!cypress/*
 
 # Incremental ts info
 tsconfig.tsbuildinfo
