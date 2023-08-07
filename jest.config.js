@@ -17,6 +17,7 @@ const config = {
     '<rootDir>/packages/**/src/**/*.tsx',
     '!<rootDir>/packages/**/stories/*',
     '!<rootDir>/packages/**/index.js',
+    '!<rootDir>/packages/**/index.ts',
     '!<rootDir>/packages/**/*{c|C}ontext*.js',
     '!<rootDir>/packages/components/src/Components/Table/*',
   ],
