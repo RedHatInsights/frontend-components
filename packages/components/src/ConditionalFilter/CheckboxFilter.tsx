@@ -29,17 +29,21 @@ export interface CheckboxFilterProps {
  */
 const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({
   items = [],
-  value = [],
+  value,
   onChange = () => undefined,
   isDisabled = false,
   ...props
 }) => {
   const { placeholder, className } = props;
   const [isExpanded, setExpanded] = useState(false);
-  const [selected, setSelected] = useState<(string | FilterValue)[]>(Array.isArray(value) ? value : ([value] as (string | FilterValue)[]));
+  const [selected, setSelected] = useState<(string | FilterValue)[]>([]);
 
   useEffect(() => {
-    setSelected(Array.isArray(value) ? value : ([value] as (string | FilterValue)[]));
+    if (value === undefined) {
+      setSelected([]);
+    } else {
+      setSelected(Array.isArray(value) ? value : ([value] as (string | FilterValue)[]));
+    }
   }, [value]);
 
   const calculateSelected = () =>
