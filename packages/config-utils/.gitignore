@@ -1,5 +1,5 @@
 # ignore everything in root that will be the destination of build output
-# /*
+/*
 
 # white list allowed files
 !src
