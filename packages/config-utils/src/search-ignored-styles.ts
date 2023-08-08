@@ -1,8 +1,8 @@
-const path = require('path');
-const glob = require('glob');
-const chalk = require('chalk');
+import path from 'path';
+import glob from 'glob';
+import chalk from 'chalk';
 
-function logWarning(message) {
+function logWarning(message: string) {
   console.log(chalk.blue('[fec]') + chalk.yellow(' WARNING: ') + message);
 }
 
@@ -12,7 +12,7 @@ function logWarning(message) {
  * @param {string[]} ...paths node_modulesDirectories
  * @returns {Object}
  */
-const searchIgnoredStyles = (root, ...paths) => {
+const searchIgnoredStyles = (root: string, ...paths: string[]) => {
   const modulesPaths = [path.join(root, 'node_modules/@patternfly/react-styles'), ...paths.map((path) => `${path}/@patternfly/react-styles`)];
   const result = modulesPaths
     .map((modulesPath) => glob.sync(`${modulesPath}/**/*.css`))
@@ -34,4 +34,4 @@ const searchIgnoredStyles = (root, ...paths) => {
   return result;
 };
 
-module.exports = searchIgnoredStyles;
+export default searchIgnoredStyles;

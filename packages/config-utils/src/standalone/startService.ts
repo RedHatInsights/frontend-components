@@ -1,8 +1,20 @@
 // Starts services for `standalone: true` using docker images from quay
-const { execSync } = require('child_process');
-const { NET } = require('./helpers');
+import { execSync } from 'child_process';
+import { NET } from './helpers';
 
-async function startService(services, name, subService) {
+export async function startService(
+  services: {
+    [service: string]: {
+      services: {
+        [subService: string]: {
+          startMessage: string;
+        };
+      };
+    };
+  },
+  name: string,
+  subService: { args: string[]; dependsOn: string[] }
+) {
   const args = subService.args.filter(Boolean).join(' \\\n');
   // Remove existing container
   execSync(`docker container rm --force ${name}`);
@@ -25,13 +37,8 @@ async function startService(services, name, subService) {
   execSync(`docker run --detach --name ${name} --network ${NET} --pull always ${args}`, { stdio: 'inherit' });
 }
 
-function stopService(name) {
+export function stopService(name: string) {
   // stop container
   console.log('stopping', name);
   execSync(`docker stop ${name}`);
 }
-
-module.exports = {
-  startService,
-  stopService,
-};

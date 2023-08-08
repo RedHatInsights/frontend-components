@@ -1,7 +1,20 @@
-const webpack = require('webpack');
+import { DynamicRemotePluginOptions, PluginRuntimeMetadata } from '@openshift/dynamic-plugin-sdk-webpack';
+import webpack, { Compiler } from 'webpack';
 
+export type ExtensionsMapperOptions = {
+  pluginManifestFile?: string;
+  remoteEntryFile?: string;
+  remoteEntryCallback?: string;
+};
+
+/**
+ * @deprecated
+ * Do not use ExtensionsMapper. The default config already supports Extensions.
+ */
 class ExtensionsMapper {
-  constructor(plugin, options) {
+  options: Required<ExtensionsMapperOptions>;
+  plugin: Partial<DynamicRemotePluginOptions & PluginRuntimeMetadata>;
+  constructor(plugin: DynamicRemotePluginOptions & PluginRuntimeMetadata, options: ExtensionsMapperOptions) {
     if (!plugin) {
       throw new Error('Missing plugin config!');
     }
@@ -15,7 +28,7 @@ class ExtensionsMapper {
     };
   }
 
-  apply(compiler) {
+  apply(compiler: Compiler) {
     compiler.hooks.thisCompilation.tap(ExtensionsMapper.name, (compilation) => {
       // Generate extensions manifest
       compilation.hooks.processAssets.tap(
@@ -74,4 +87,4 @@ class ExtensionsMapper {
   }
 }
 
-module.exports = ExtensionsMapper;
+export default ExtensionsMapper;

@@ -1,22 +1,24 @@
 /* eslint-disable no-console */
 // Webpack proxy and express config for `useProxy: true` or `standalone: true`
-const { execSync } = require('child_process');
-const fetch = require('node-fetch');
-var express = require('express');
-const path = require('path');
-const HttpsProxyAgent = require('https-proxy-agent');
-const cookieTransform = require('./cookieTransform');
-const router = require('./standalone/helpers/router');
-const { getConfig, isGitUrl, getExposedPort, resolvePath } = require('./standalone/helpers/index');
-const { checkoutRepo } = require('./standalone/helpers/checkout');
-const { startService, stopService } = require('./standalone/startService');
-const { NET } = require('./standalone/helpers');
-const defaultServices = require('./standalone/services/default');
-const { registerChrome } = require('./standalone/services/default/chrome');
+import { execSync } from 'child_process';
+import fetch from 'node-fetch';
+import express from 'express';
+import path from 'path';
+import type { Configuration } from 'webpack-dev-server';
+import type HttpProxy from 'http-proxy';
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import cookieTransform from './cookieTransform';
+import router from './standalone/helpers/router';
+import { getConfig, getExposedPort, isGitUrl, resolvePath } from './standalone/helpers/index';
+import { checkoutRepo } from './standalone/helpers/checkout';
+import { startService, stopService } from './standalone/startService';
+import { NET } from './standalone/helpers';
+import defaultServices from './standalone/services/default';
+import { registerChrome } from './standalone/services/default/chrome';
 
 const defaultReposDir = path.join(__dirname, 'repos');
 
-const checkLocalAppHost = (appName, hostUrl, port) => {
+const checkLocalAppHost = (appName: string, hostUrl: string, port: number | string) => {
   const check = execSync(`curl --max-time 5 --silent --head ${hostUrl} | awk '/^HTTP/{print $2}'`).toString().trim();
 
   if (check !== '200') {
@@ -35,24 +37,35 @@ const checkLocalAppHost = (appName, hostUrl, port) => {
   }
 };
 
-const buildRoutes = (routes, target) =>
+type ProxyConfigItem = import('webpack-dev-server').ProxyConfigArrayItem;
+
+const buildRoutes = (
+  routes: {
+    [route: string]: ProxyConfigItem & { host?: string };
+  },
+  target: string
+) =>
   Object.entries(routes || {}).map(([route, redirect]) => {
-    const currTarget = redirect.host || redirect;
-    delete redirect.host;
-    return {
-      context: (path) => path.includes(route),
-      target: currTarget === 'PORTAL_BACKEND_MARKER' ? target : currTarget,
+    const currTarget = typeof redirect === 'object' ? redirect.host : redirect;
+    if (typeof redirect === 'object') {
+      delete redirect.host;
+    }
+    const result: ProxyConfigItem = {
+      context: (path: string) => path.includes(route),
+      target: currTarget === 'PORTAL_BACKEND_MARKER' ? target : currTarget || undefined,
       secure: false,
       changeOrigin: true,
       autoRewrite: true,
       ws: true,
-      onProxyReq: cookieTransform,
-      ...(currTarget === 'PORTAL_BACKEND_MARKER' && { router }),
+      onProxyReq: cookieTransform as ProxyConfigItem['onProxyReq'],
+      ...(currTarget === 'PORTAL_BACKEND_MARKER' && { router: router(target, false) }),
       ...(typeof redirect === 'object' ? redirect : {}),
     };
+
+    return result;
   });
 
-const buildLocalAppRoutes = (localApps, defaultLocalAppHost, target) =>
+const buildLocalAppRoutes = (localApps: string | string[], defaultLocalAppHost: string, target: string) =>
   buildRoutes(
     (!Array.isArray(localApps) ? localApps.split(',') : localApps).reduce((acc, curr) => {
       const [appName, appConfig] = (curr || '').split(':');
@@ -78,7 +91,33 @@ const buildLocalAppRoutes = (localApps, defaultLocalAppHost, target) =>
     target
   );
 
-module.exports = ({
+export type ProxyOptions = {
+  env?: 'prod-stable' | 'prod-beta' | 'stage-stable' | 'stage-beta' | string;
+  customProxy?: HttpProxy.ServerOptions[];
+  routes?: { routes?: { [route: string]: ProxyConfigItem } } & { [route: string]: ProxyConfigItem };
+  routesPath?: string;
+  useProxy?: boolean;
+  proxyURL?: string;
+  standalone?: boolean;
+  port?: number;
+  reposDir?: string;
+  localChrome?: string;
+  appUrl?: (string | RegExp)[];
+  publicPath: string;
+  proxyVerbose?: boolean;
+  useCloud?: boolean;
+  target?: string;
+  keycloakUri?: string;
+  registry?: ((...args: any[]) => void)[];
+  isChrome?: boolean;
+  onBeforeSetupMiddleware?: (opts: { chromePath?: string }) => void;
+  bounceProd?: boolean;
+  useAgent?: boolean;
+  useDevBuild?: boolean;
+  localApps?: string;
+};
+
+const proxy = ({
   env = 'ci-beta',
   customProxy = [],
   routes,
@@ -97,13 +136,13 @@ module.exports = ({
   keycloakUri = '',
   registry = [],
   isChrome = false,
-  onBeforeSetupMiddleware = () => {},
+  onBeforeSetupMiddleware = () => undefined,
   bounceProd = false,
   useAgent = true,
   useDevBuild = true,
   localApps = process.env.LOCAL_APPS,
-}) => {
-  const proxy = [];
+}: ProxyOptions) => {
+  const proxy: ProxyConfigItem[] = [];
   const majorEnv = env.split('-')[0];
   const defaultLocalAppHost = process.env.LOCAL_APP_HOST || majorEnv + '.foo.redhat.com';
 
@@ -154,7 +193,7 @@ module.exports = ({
     proxy.push(...buildRoutes(routes, target));
   }
 
-  if (localApps?.length > 0) {
+  if (localApps && localApps.length > 0) {
     proxy.push(...buildLocalAppRoutes(localApps, defaultLocalAppHost, target));
   }
 
@@ -162,7 +201,7 @@ module.exports = ({
     proxy.push(...customProxy);
   }
 
-  let standaloneConfig;
+  let standaloneConfig: ReturnType<typeof getConfig>;
   if (standalone) {
     standaloneConfig = getConfig(standalone, localChrome, env, port);
     // Create network for services.
@@ -203,12 +242,13 @@ module.exports = ({
     // Start standalone services.
     for (const [projName, proj] of Object.entries(standaloneConfig)) {
       const { services, path, assets, onProxyReq, keycloakUri, register, target, ...rest } = proj;
-      const serviceNames = [];
-      for (let [subServiceName, subService] of Object.entries(proj.services || {})) {
+      const serviceNames: string[] = [];
+      for (const [subServiceName, subService] of Object.entries(proj.services || {})) {
         const name = [projName, subServiceName].join('_');
-        startService(standaloneConfig, name, subService);
+        // FIXME: Fix the typecasting
+        startService(standaloneConfig, name, subService as { args: string[]; dependsOn: string[] });
         serviceNames.push(name);
-        const port = getExposedPort(subService.args);
+        const port = getExposedPort((subService as { args: string[]; dependsOn: string[] }).args);
         console.log('Container', name, 'listening', port ? 'on' : '', port || '');
       }
 
@@ -234,7 +274,7 @@ module.exports = ({
       secure: false,
       changeOrigin: true,
       autoRewrite: true,
-      context: (url) => {
+      context: (url: string) => {
         const shouldProxy = !appUrl.find((u) => (typeof u === 'string' ? url.startsWith(u) : u.test(url)));
         if (shouldProxy) {
           if (proxyVerbose) {
@@ -252,7 +292,7 @@ module.exports = ({
          * Bypass any HTML requests if using chrome
          * Serves as a historyApiFallback when refreshing on any other URL than '/'
          */
-        if (isChrome && !req.url.match(/\/api\//) && !req.url.match(/\./) && req.headers.accept.includes('text/html')) {
+        if (isChrome && !req.url.match(/\/api\//) && !req.url.match(/\./) && req.headers.accept?.includes('text/html')) {
           return '/';
         }
 
@@ -264,7 +304,12 @@ module.exports = ({
           const result = await fetch((target + req.url).replace(/\/\//g, '/'), {
             method: req.method,
             body: JSON.stringify(req.body),
-            headers: { cookie: req.headers.cookie, 'Content-Type': 'application/json' },
+            headers: {
+              ...(req.headers.cookie && {
+                cookie: req.headers.cookie,
+              }),
+              'Content-Type': 'application/json',
+            },
           });
 
           const text = await result.text();
@@ -290,7 +335,7 @@ module.exports = ({
     });
   }
 
-  return {
+  const config: Configuration = {
     ...(proxy.length > 0 && { proxy }),
     onListening(server) {
       if (useProxy || standaloneConfig) {
@@ -314,11 +359,11 @@ module.exports = ({
       }
     },
     onBeforeSetupMiddleware({ app, compiler, options }) {
-      app.enable('strict routing'); // trailing slashes are mean
+      app?.enable('strict routing'); // trailing slashes are mean
 
       if (shouldBounceProdRequests) {
-        app.use(express.json());
-        app.use(express.urlencoded({ extended: true }));
+        app?.use(express.json());
+        app?.use(express.urlencoded({ extended: true }));
       }
 
       /**
@@ -333,13 +378,11 @@ module.exports = ({
             keycloakUri = standaloneConfig.chrome.keycloakUri;
           }
         } else if (!localChrome && useProxy) {
-          if (typeof defaultServices.chrome === 'function') {
-            defaultServices.chrome = defaultServices.chrome({});
-          }
+          const chromeConfig = typeof defaultServices.chrome === 'function' ? defaultServices.chrome({}) : defaultServices.chrome;
 
           const chromeEnv = useDevBuild ? (env.includes('-beta') ? 'dev-beta' : 'dev-stable') : env;
           chromePath = checkoutRepo({
-            repo: `${defaultServices.chrome.path}#${chromeEnv}`,
+            repo: `${chromeConfig.path}#${chromeEnv}`,
             reposDir,
             overwrite: true,
           });
@@ -347,7 +390,7 @@ module.exports = ({
 
         onBeforeSetupMiddleware({ chromePath });
 
-        if (chromePath) {
+        if (app && chromePath) {
           registerChrome({
             app,
             chromePath,
@@ -368,4 +411,8 @@ module.exports = ({
       );
     },
   };
+
+  return config;
 };
+
+export default proxy;

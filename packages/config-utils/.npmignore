@@ -1,3 +1,4 @@
 .eslintrc
-*.ts
-*.tsx
+src/**/*.ts
+src/**/*.tsx
+tsconfig.json

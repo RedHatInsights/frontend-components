@@ -1,4 +1,4 @@
-function jsVarName(s) {
+function jsVarName(s: string) {
   return (
     s
       // Camel case dashes
@@ -10,4 +10,4 @@ function jsVarName(s) {
   );
 }
 
-module.exports = jsVarName;
+export default jsVarName;

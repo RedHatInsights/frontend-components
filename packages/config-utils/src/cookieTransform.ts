@@ -1,8 +1,12 @@
-/* eslint-disable camelcase */
-/* eslint-disable no-console */
-const jws = require('jws');
+import { Request as ExpressRequest, Response } from 'express';
+import jws from 'jws';
+import type * as http from 'http';
 
-const defaultEntitlements = {
+export type Entitlement = {
+  is_entitled?: boolean;
+  is_trial?: boolean;
+};
+const defaultEntitlements: { [sku: string]: Entitlement } = {
   insights: { is_entitled: true },
   smart_management: { is_entitled: true },
   openshift: { is_entitled: true },
@@ -11,8 +15,24 @@ const defaultEntitlements = {
   ansible: { is_entitled: true },
   cost_management: { is_entitled: true },
 };
-
-function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlements, user, internal, identity: customIdentity }) {
+// webpack.config
+function cookieTransform(
+  proxyReq: http.ClientRequest,
+  req: ExpressRequest,
+  _res: Response,
+  {
+    entitlements = defaultEntitlements,
+    user,
+    internal,
+    identity: customIdentity,
+  }: {
+    entitlements?: { [sku: string]: Entitlement };
+    // FIXME: define the user object
+    user: any;
+    internal: any;
+    identity: any;
+  }
+) {
   const { cookie, authorization } = req.headers;
   const match = cookie?.match(/cs_jwt=([^;]+)/) || authorization?.match(/^Bearer (.*)$/);
 
@@ -52,4 +72,4 @@ function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlemen
   }
 }
 
-module.exports = cookieTransform;
+export default cookieTransform;
