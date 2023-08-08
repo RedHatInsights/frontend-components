@@ -6,7 +6,7 @@ const config = {
   coverageDirectory: './coverage/',
   collectCoverage: true,
   transformIgnorePatterns: [
-    'node_modules/(?!@patternfly|@data-driven-forms|lodash-es|@openshift)',
+    'node_modules/(?!@data-driven-forms|lodash-es|@openshift|uuid)',
 
     // Uncomment the below line if you face any errors with jest
     // '/node_modules/(?!@redhat-cloud-services)',
@@ -17,6 +17,7 @@ const config = {
     '<rootDir>/packages/**/src/**/*.tsx',
     '!<rootDir>/packages/**/stories/*',
     '!<rootDir>/packages/**/index.js',
+    '!<rootDir>/packages/**/index.ts',
     '!<rootDir>/packages/**/*{c|C}ontext*.js',
     '!<rootDir>/packages/components/src/Components/Table/*',
   ],
@@ -32,16 +33,18 @@ const config = {
     PFReactCore: '@patternfly/react-core',
     PFReactTable: '@patternfly/react-table',
   },
-  testURL: 'http://localhost:5000/',
+  testEnvironmentOptions: {
+    url: 'http://localhost:5000/',
+  },
   globalSetup: '<rootDir>/config/globalSetup.js',
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
-    '^.+\\.tsx?$': 'ts-jest',
-  },
-  globals: {
-    'ts-jest': {
-      tsconfig: './tsconfig.json',
-    },
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: './tsconfig.json',
+      },
+    ],
   },
 };
 

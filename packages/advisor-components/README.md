@@ -20,12 +20,12 @@ This package is dependent on [@redhat-cloud-services/frontend-components](https:
 
 Run cypress component tests in terminal:
 ```bash
-npx cypress run-ct
+npx cypress run --component
 ```
 
 Run cypress components tests in the interactive (window) mode:
 ```bash
-npx cypress open-ct
+npx cypress open --component
 ```
 
 ## Documentation Links

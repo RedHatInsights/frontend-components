@@ -6,7 +6,7 @@ exports[`Spinner component should render 1`] = `
   role="status"
 >
   <span
-    className="pf-u-screen-reader"
+    className="pf-v5-u-screen-reader"
   >
     Loading...
   </span>
@@ -19,7 +19,7 @@ exports[`Spinner component should render center Spinner 1`] = `
   role="status"
 >
   <span
-    className="pf-u-screen-reader"
+    className="pf-v5-u-screen-reader"
   >
     Loading...
   </span>

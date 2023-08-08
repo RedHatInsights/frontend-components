@@ -1,13 +1,25 @@
 import React, { FormEvent, Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import globalBreakpointMd from '@patternfly/react-tokens/dist/js/global_breakpoint_md';
-import { Dropdown, DropdownItem, DropdownToggle, Split, SplitItem, ToolbarGroup, ToolbarItem, ToolbarToggleGroup } from '@patternfly/react-core';
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownList,
+  Icon,
+  MenuToggle,
+  Split,
+  SplitItem,
+  ToolbarGroup,
+  ToolbarItem,
+  ToolbarToggleGroup,
+} from '@patternfly/react-core';
+
 import { FilterIcon } from '@patternfly/react-icons';
-import TextFilter, { FilterValue } from './TextFilter';
-import { conditionalFilterType, typeMapper } from './conditionalFilterConstants';
-import { RadioFilterProps } from './RadioFilter';
-import { CheckboxFilterProps } from './CheckboxFilter';
-import { GroupFilterProps } from './GroupFilter';
+import TextFilter, { FilterValue, TextFilterProps } from './TextFilter';
+import { conditionalFilterType, identifyComponent, typeMapper } from './conditionalFilterConstants';
+import RadioFilter, { RadioFilterProps } from './RadioFilter';
+import CheckboxFilter, { CheckboxFilterProps } from './CheckboxFilter';
+import GroupFilter, { GroupFilterProps } from './GroupFilter';
 import './conditional-filter.scss';
 
 export type FilterValues = TextInputProps &
@@ -33,22 +45,40 @@ export interface TextInputProps {
  *
  * It supports type text, checkbox, radio, custom, group (+ tree view).
  */
-export interface ConditionalFilterItem {
+export type ConditionalFilterItem = {
   id?: string;
   label?: ReactNode;
-  value?: string;
-  type: 'text' | 'checkbox' | 'radio' | 'custom' | 'group';
-  filterValues?: Omit<FilterValues, 'value'> & { value?: string | string[] | FilterValue | FilterValue[] | Record<string, unknown> };
   placeholder?: string;
-}
+  value?: string;
+} & (
+  | {
+      type: 'checkbox';
+      filterValues: CheckboxFilterProps;
+    }
+  | {
+      type: 'text';
+      filterValues: TextFilterProps;
+    }
+  | {
+      type: 'radio';
+      filterValues: RadioFilterProps;
+    }
+  | {
+      type: 'group';
+      filterValues: GroupFilterProps;
+    }
+  | {
+      type: 'custom';
+      filterValues: Record<string, any>;
+    }
+);
 
-export interface ConditionalFilterProps<R extends HTMLElement = any> extends TextInputProps {
+export interface ConditionalFilterProps<R extends HTMLElement = NonNullable<any>> extends TextInputProps {
   hideLabel?: boolean;
   items: ConditionalFilterItem[];
   id?: string;
   isDisabled?: boolean;
-  useMobileLayout?: boolean;
-  innerRef?: React.Ref<R>;
+  innerRef?: React.RefObject<R>;
 }
 
 const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
@@ -58,7 +88,6 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   items = [],
   onChange,
   placeholder,
-  useMobileLayout = false,
   value = '',
   innerRef,
 }) => {
@@ -72,11 +101,6 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   });
 
   useEffect(() => {
-    useMobileLayout ||
-      console.warn(`The prop "useMobileLayout" is set to false. You are using an outdated mobile layout of conditional filter.
-    Please switch to new layout by adding "useMobileLayout={true}" prop to the PrimaryToolbar or ConditionalFilter directly.
-    The new mobile layout will become the default in next minor release.`);
-
     window.addEventListener('resize', resizeListener.current);
 
     return () => {
@@ -88,43 +112,53 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   const activeItem = items && items.length && (items.find((item, key) => item.value === currentValue || key === Number(currentValue)) || items[0]);
   const onChangeDefault = (_e: FormEvent<HTMLInputElement>, value: number | string) => setStateValue(value);
   const onChangeCallback = onChange || onChangeDefault;
-  const shouldRenderNewLayout = useMobileLayout && isMobile;
 
   const capitalize = (string: string) => string[0].toUpperCase() + string.substring(1);
 
+  const Wrapper = isMobile
+    ? (props: Record<string, unknown>) => <ToolbarToggleGroup {...props} breakpoint="md" toggleIcon={<FilterIcon />}></ToolbarToggleGroup>
+    : Fragment;
+
+  const getActiveComponent = (activeItem: ConditionalFilterItem) => {
+    if (activeItem.type === 'checkbox' && identifyComponent<CheckboxFilterProps>(activeItem.type, activeItem.filterValues)) {
+      return <CheckboxFilter placeholder={placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`} {...activeItem.filterValues} />;
+    } else if (activeItem.type === 'text' && identifyComponent<TextFilterProps>(activeItem.type, activeItem.filterValues)) {
+      return <TextFilter placeholder={placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`} {...activeItem.filterValues} />;
+    } else if (activeItem.type === 'group' && identifyComponent<GroupFilterProps>(activeItem.type, activeItem.filterValues)) {
+      return <GroupFilter placeholder={placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`} {...activeItem.filterValues} />;
+    } else if (activeItem.type === 'radio' && identifyComponent<RadioFilterProps>(activeItem.type, activeItem.filterValues)) {
+      return (
+        <RadioFilter
+          innerRef={innerRef}
+          placeholder={placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`}
+          {...activeItem.filterValues}
+        />
+      );
+    } else if (activeItem.type === 'custom' && identifyComponent<Record<string, any>>(activeItem.type, activeItem.filterValues)) {
+      const C = typeMapper.custom;
+      return <C {...activeItem.filterValues} />;
+    } else {
+      throw new Error(`Invalid conditional filter component type! Expected one of ${Object.keys(conditionalFilterType)}, got ${activeItem.type}.`);
+    }
+  };
+
   const ActiveComponent = activeItem && (typeMapper[activeItem.type] || typeMapper.text);
-  const Wrapper =
-    useMobileLayout && isMobile
-      ? (props: Record<string, unknown>) => <ToolbarToggleGroup {...props} breakpoint="md" toggleIcon={<FilterIcon />}></ToolbarToggleGroup>
-      : Fragment;
 
   return (
     <Wrapper>
-      {useMobileLayout && isMobile && (
+      {isMobile && (
         <ToolbarGroup className="ins-c-conditional-filter mobile">
-          {items.map((activeItem, key) => {
-            const ActiveComponent = activeItem && (typeMapper[activeItem.type] || typeMapper.text);
-            return (
-              <ToolbarItem key={key}>
-                <ActiveComponent
-                  {...(activeItem.type !== conditionalFilterType.custom && {
-                    placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
-                    id: activeItem.filterValues ? activeItem.filterValues.id : currentValue ? String(currentValue) : undefined,
-                    innerRef,
-                  })}
-                  {...activeItem.filterValues}
-                />
-              </ToolbarItem>
-            );
-          })}
+          {items.map((activeItem, key) => (
+            <ToolbarItem key={key}>{getActiveComponent(activeItem)}</ToolbarItem>
+          ))}
         </ToolbarGroup>
       )}
-      {!shouldRenderNewLayout && (
+      {!isMobile && (
         <Fragment>
           {!items || (items && items.length <= 0) ? (
             <div
               className={classNames('ins-c-conditional-filter', {
-                desktop: useMobileLayout,
+                desktop: isMobile,
               })}
             >
               <TextFilter
@@ -140,7 +174,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
           ) : (
             <Split
               className={classNames('ins-c-conditional-filter', {
-                desktop: useMobileLayout,
+                desktop: isMobile,
               })}
             >
               {items.length > 1 && (
@@ -151,45 +185,40 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                     onSelect={() => setIsOpen(false)}
                     isOpen={isOpen}
                     ouiaId="ConditionalFilter"
-                    toggle={
-                      <DropdownToggle
-                        aria-label="Conditional filter"
-                        onToggle={setIsOpen}
+                    toggle={(toggleRef) => (
+                      <MenuToggle
                         isDisabled={isDisabled}
                         className={hideLabel ? 'ins-c-conditional-filter__no-label' : ''}
-                        ouiaId="ConditionalFilter"
+                        aria-label="Conditional filter"
+                        ref={toggleRef}
+                        onClick={() => setIsOpen((prev) => !prev)}
+                        isExpanded={isOpen}
                       >
-                        <FilterIcon size="sm" />
+                        <Icon size="sm">
+                          <FilterIcon />
+                        </Icon>
                         {!hideLabel && (
                           <span className="ins-c-conditional-filter__value-selector">{activeItem && capitalize(String(activeItem.label))}</span>
                         )}
-                      </DropdownToggle>
-                    }
-                    dropdownItems={items.map((item, key) => (
-                      <DropdownItem
-                        key={item.id ? `${item.id}-dropdown` : key}
-                        component="button"
-                        ouiaId={String(item.label)}
-                        onClick={(e) => onChangeCallback(e as FormEvent<HTMLInputElement>, item.value || key)}
-                        isHovered={(activeItem as ConditionalFilterItem).label === item.label}
-                      >
-                        {capitalize(String(item.label))}
-                      </DropdownItem>
-                    ))}
-                  />
+                      </MenuToggle>
+                    )}
+                  >
+                    <DropdownList aria-label="Conditional filter">
+                      {items.map((item, key) => (
+                        <DropdownItem
+                          key={item.id ? `${item.id}-dropdown` : key}
+                          component="button"
+                          ouiaId={String(item.label)}
+                          onClick={(e) => onChangeCallback(e as FormEvent<HTMLInputElement>, item.value || key)}
+                        >
+                          {capitalize(String(item.label))}
+                        </DropdownItem>
+                      ))}
+                    </DropdownList>
+                  </Dropdown>
                 </SplitItem>
               )}
-              {ActiveComponent && (
-                <SplitItem isFilled>
-                  <ActiveComponent
-                    {...(activeItem.type !== conditionalFilterType.custom && {
-                      placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
-                      id: (activeItem.filterValues && activeItem.filterValues.id) || currentValue ? String(currentValue) : undefined,
-                    })}
-                    {...activeItem.filterValues}
-                  />
-                </SplitItem>
-              )}
+              {ActiveComponent && <SplitItem isFilled>{getActiveComponent(activeItem)}</SplitItem>}
             </Split>
           )}
         </Fragment>

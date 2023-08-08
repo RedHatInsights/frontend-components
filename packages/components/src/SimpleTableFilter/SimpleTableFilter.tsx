@@ -1,40 +1,38 @@
 import React, { useState } from 'react';
-import { Button, ButtonVariant, Dropdown, DropdownItem, DropdownToggle } from '@patternfly/react-core';
-import { Input } from '../Input';
+import { Button, ButtonVariant, Dropdown, DropdownItem, DropdownList, Icon, MenuToggle, TextInput, TextInputProps } from '@patternfly/react-core';
+
 import { SearchIcon } from '@patternfly/react-icons';
 import './simple-table-filter.scss';
 
 export type SimpleFilterOptionItem = {
-  value?: string;
-  title?: string;
+  value: string;
+  title: string;
 };
 
 export type SimpleFilterOption = {
-  title?: string;
-  items?: SimpleFilterOptionItem[];
+  title: string;
+  items: SimpleFilterOptionItem[];
 };
 
 export interface SimpleFilterProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  widgetId?: string;
   buttonTitle?: string;
   placeholder?: string;
   className?: string;
   options?: SimpleFilterOption;
   onButtonClick?: (activeFilter: string, selected?: SimpleFilterOptionItem) => void;
-  onFilterChange?: (value: string, selected?: SimpleFilterOptionItem) => void;
+  onFilterChange: (value: string, selected?: SimpleFilterOptionItem) => void;
   onOptionSelect?: (event: MouseEvent | React.MouseEvent<any, MouseEvent> | React.KeyboardEvent<Element>, oneItem: SimpleFilterOptionItem) => void;
   searchIcon?: boolean;
 }
 
 const SimpleFilter: React.FC<SimpleFilterProps> = ({
   options,
-  widgetId,
-  className = '',
+  className,
   placeholder = 'Search items',
   buttonTitle = 'Filter',
-  onButtonClick = () => undefined,
-  onFilterChange = () => undefined,
-  onOptionSelect = () => undefined,
+  onButtonClick,
+  onFilterChange,
+  onOptionSelect,
   searchIcon = true,
   ...props
 }) => {
@@ -42,20 +40,18 @@ const SimpleFilter: React.FC<SimpleFilterProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<undefined | SimpleFilterOptionItem>();
 
-  const onToggle = (isOpen: boolean) => setIsOpen(isOpen);
-
-  const onInputChange = (event: React.KeyboardEvent<HTMLInputElement> | React.ChangeEvent<HTMLInputElement>) => {
-    setActiveFilter((event as React.ChangeEvent<HTMLInputElement>).target?.value);
-    onFilterChange((event as React.ChangeEvent<HTMLInputElement>).target.value, selected);
+  const onInputChange: TextInputProps['onChange'] = (_e, value) => {
+    setActiveFilter(value);
+    onFilterChange(value, selected);
   };
 
   const onFilterSubmit = () => {
-    onButtonClick(activeFilter, selected);
+    onButtonClick?.(activeFilter, selected);
   };
 
   const onFilterSelect = (event: MouseEvent | React.MouseEvent<any, MouseEvent> | React.KeyboardEvent<Element>, oneItem: SimpleFilterOptionItem) => {
     setSelected(oneItem);
-    onOptionSelect(event, oneItem);
+    onOptionSelect?.(event, oneItem);
   };
 
   const onSelect = () => setIsOpen(false);
@@ -68,23 +64,39 @@ const SimpleFilter: React.FC<SimpleFilterProps> = ({
         {oneItem.title}
       </DropdownItem>
     ));
+  // FIXME: Fix the layout in primary toolbar
   return (
-    <div className={`pf-c-input-group ins-c-filter ${!buttonTitle ? 'ins-u-no-title' : ''} ${className}`} {...props}>
+    <div className={`pf-v5-c-input-group ins-c-filter ${!buttonTitle ? 'ins-u-no-title' : ''} ${className}`} {...props}>
       {options && (
         <Dropdown
           onSelect={onSelect}
           isOpen={isOpen}
-          toggle={<DropdownToggle onToggle={onToggle}>{(selected && selected.title) || options.title || 'Dropdown'}</DropdownToggle>}
-          dropdownItems={dropdownItems}
-        />
+          onOpenChange={setIsOpen}
+          toggle={(toggleRef) => (
+            <MenuToggle ref={toggleRef} onClick={() => setIsOpen((prev) => !prev)} isExpanded={isOpen}>
+              {selected?.title || options.title || 'Dropdown'}
+            </MenuToggle>
+          )}
+        >
+          <DropdownList>{dropdownItems}</DropdownList>
+        </Dropdown>
       )}
-      <Input
+      {/* FIXME: Find some relevant label or ID */}
+      <TextInput
+        onKeyUp={(e) => {
+          if (e.code === 'Enter') {
+            onInputChange(e, (e.target as HTMLInputElement).value);
+          }
+        }}
+        aria-label="simple-table-filter"
         placeholder={placeholder}
-        onKeyPress={(event) => event.key === 'Enter' && onInputChange(event)}
-        widget-id={widgetId}
-        onChange={(event) => onInputChange(event)}
+        onChange={onInputChange}
       />
-      {!buttonTitle && searchIcon && <SearchIcon size="sm" className="ins-c-search-icon" />}
+      {!buttonTitle && searchIcon && (
+        <Icon size="sm">
+          <SearchIcon className="ins-c-search-icon" />
+        </Icon>
+      )}
       {buttonTitle && (
         <Button variant={ButtonVariant.secondary} action="filter" onClick={onFilterSubmit}>
           {buttonTitle}

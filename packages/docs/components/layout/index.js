@@ -41,11 +41,11 @@ const useStyles = createUseStyles({
   },
   link: {
     textDecoration: 'none',
-    color: 'var(--pf-global--BackgroundColor--100)',
+    color: 'var(--pf-v5-global--BackgroundColor--100)',
   },
   footer: {
     height: 'auto',
-    background: 'var(--pf-global--BackgroundColor--dark-100)',
+    background: 'var(--pf-v5-global--BackgroundColor--dark-100)',
   },
   contentWrapper: {
     flex: 1,
@@ -115,7 +115,7 @@ const Layout = ({ children }) => {
       <div className={classes.contentWrapper}>
         <Split style={{ minHeight: '76.9vh' }} hasGutter>
           <SplitItem isFilled>
-            <div className={classnames('pf-u-p-md', classes.content)}>
+            <div className={classnames('pf-v5-u-p-md', classes.content)}>
               <Stack hasGutter>
                 <StackItem>
                   <Breadcrumbs />
@@ -131,7 +131,7 @@ const Layout = ({ children }) => {
       </div>
 
       <PageSection className={classes.footer} isFilled={false}>
-        <Footer className="pf-u-my-xl pf-u-mx-md">
+        <Footer className="pf-v5-u-my-xl pf-v5-u-mx-md">
           <Flex
             direction={{ default: 'column', md: 'row' }}
             justifyContent={{ md: 'justifyContentFlexEnd' }}

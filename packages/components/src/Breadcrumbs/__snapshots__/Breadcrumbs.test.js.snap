@@ -4,16 +4,17 @@ exports[`Breadcrumbs component should render correctly no current 1`] = `
 <div>
   <nav
     aria-label="Breadcrumb"
-    class="pf-c-breadcrumb ins-c-breadcrumbs"
+    class="pf-v5-c-breadcrumb ins-c-breadcrumbs"
     data-ouia-component-id="OUIA-Generated-Breadcrumb-2"
-    data-ouia-component-type="PF4/Breadcrumb"
+    data-ouia-component-type="PF5/Breadcrumb"
     data-ouia-safe="true"
   >
     <ol
-      class="pf-c-breadcrumb__list"
+      class="pf-v5-c-breadcrumb__list"
+      role="list"
     >
       <li
-        class="pf-c-breadcrumb__item"
+        class="pf-v5-c-breadcrumb__item"
         data-key="0"
       >
         <a
@@ -23,18 +24,18 @@ exports[`Breadcrumbs component should render correctly no current 1`] = `
         </a>
       </li>
       <li
-        class="pf-c-breadcrumb__item"
+        class="pf-v5-c-breadcrumb__item"
         data-key="1"
       >
         <span
-          class="pf-c-breadcrumb__item-divider"
+          class="pf-v5-c-breadcrumb__item-divider"
         >
           <svg
             aria-hidden="true"
+            class="pf-v5-svg"
             fill="currentColor"
             height="1em"
             role="img"
-            style="vertical-align: -0.125em;"
             viewBox="0 0 256 512"
             width="1em"
           >
@@ -60,16 +61,17 @@ exports[`Breadcrumbs component should render correctly no items 1`] = `
 <div>
   <nav
     aria-label="Breadcrumb"
-    class="pf-c-breadcrumb ins-c-breadcrumbs"
+    class="pf-v5-c-breadcrumb ins-c-breadcrumbs"
     data-ouia-component-id="OUIA-Generated-Breadcrumb-1"
-    data-ouia-component-type="PF4/Breadcrumb"
+    data-ouia-component-type="PF5/Breadcrumb"
     data-ouia-safe="true"
   >
     <ol
-      class="pf-c-breadcrumb__list"
+      class="pf-v5-c-breadcrumb__list"
+      role="list"
     >
       <li
-        class="pf-c-breadcrumb__item"
+        class="pf-v5-c-breadcrumb__item"
       >
          
         Something
@@ -84,16 +86,17 @@ exports[`Breadcrumbs component should render correctly with items and current it
 <div>
   <nav
     aria-label="Breadcrumb"
-    class="pf-c-breadcrumb ins-c-breadcrumbs"
+    class="pf-v5-c-breadcrumb ins-c-breadcrumbs"
     data-ouia-component-id="OUIA-Generated-Breadcrumb-3"
-    data-ouia-component-type="PF4/Breadcrumb"
+    data-ouia-component-type="PF5/Breadcrumb"
     data-ouia-safe="true"
   >
     <ol
-      class="pf-c-breadcrumb__list"
+      class="pf-v5-c-breadcrumb__list"
+      role="list"
     >
       <li
-        class="pf-c-breadcrumb__item"
+        class="pf-v5-c-breadcrumb__item"
         data-key="0"
       >
         <a
@@ -103,18 +106,18 @@ exports[`Breadcrumbs component should render correctly with items and current it
         </a>
       </li>
       <li
-        class="pf-c-breadcrumb__item"
+        class="pf-v5-c-breadcrumb__item"
         data-key="1"
       >
         <span
-          class="pf-c-breadcrumb__item-divider"
+          class="pf-v5-c-breadcrumb__item-divider"
         >
           <svg
             aria-hidden="true"
+            class="pf-v5-svg"
             fill="currentColor"
             height="1em"
             role="img"
-            style="vertical-align: -0.125em;"
             viewBox="0 0 256 512"
             width="1em"
           >
@@ -132,17 +135,17 @@ exports[`Breadcrumbs component should render correctly with items and current it
         </a>
       </li>
       <li
-        class="pf-c-breadcrumb__item"
+        class="pf-v5-c-breadcrumb__item"
       >
         <span
-          class="pf-c-breadcrumb__item-divider"
+          class="pf-v5-c-breadcrumb__item-divider"
         >
           <svg
             aria-hidden="true"
+            class="pf-v5-svg"
             fill="currentColor"
             height="1em"
             role="img"
-            style="vertical-align: -0.125em;"
             viewBox="0 0 256 512"
             width="1em"
           >

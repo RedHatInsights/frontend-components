@@ -1,11 +1,10 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as t from '@redhat-cloud-services/types'; // required to get the API. We can't use simple import due to tree shaking
 export * from './LongTextTooltip';
 export * from './Section';
 export * from './Ansible';
 export * from './Main';
-export * from './Pagination';
 export * from './SimpleTableFilter';
-export * from './Input';
 export * from './InsightsLabel';
 export * from './Battery';
 export * from './Breadcrumbs';

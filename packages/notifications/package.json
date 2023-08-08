@@ -28,11 +28,11 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/notifications#readme",
     "peerDependencies": {
-        "@patternfly/react-core": "^4.18.5",
-        "@patternfly/react-icons": "^4.3.5",
+        "@patternfly/react-core": "^5.0.0",
+        "@patternfly/react-icons": "^5.0.0",
         "prop-types": "^15.6.2",
-        "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
-        "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
         "redux": ">=4.2.0",
         "react-redux": ">=7.2.9"
     },

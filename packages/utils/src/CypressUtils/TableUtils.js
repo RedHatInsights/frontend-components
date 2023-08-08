@@ -46,7 +46,7 @@ export function columnName2UrlParam(name) {
  * @param {string} columnTitle - column title string
  */
 export function tableIsSortedBy(columnTitle) {
-  return cy.get('table').find(`th[data-label="${columnTitle}"]`).should('have.class', 'pf-c-table__sort pf-m-selected');
+  return cy.get('table').find(`th[data-label="${columnTitle}"]`).should('have.class', 'pf-v5-c-table__sort pf-m-selected');
 }
 /**
  * - Check the empty state message by the passed string parameter.
@@ -63,7 +63,7 @@ export function checkEmptyState(title, checkIcon = false) {
     .ouiaId('empty-state')
     .should('have.length', 1)
     .within(() => {
-      cy.get('.pf-c-empty-state__icon').should('have.length', checkIcon ? 1 : 0);
+      cy.get('.pf-v5-c-empty-state__icon').should('have.length', checkIcon ? 1 : 0);
       cy.get(`h5${TITLE}`).should('have.text', title);
     });
 }

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Table, TableBody, TableHeader, sortable } from '@patternfly/react-table';
-import { Bullseye, EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateVariant, Title } from '@patternfly/react-core';
+import { sortable } from '@patternfly/react-table';
+// FIXME: Deal with table later
+import { Table, TableBody, TableHeader } from '@patternfly/react-table/deprecated';
+import { Bullseye, EmptyState, EmptyStateBody, EmptyStateHeader, EmptyStateIcon, EmptyStateVariant } from '@patternfly/react-core';
 import { SearchIcon } from '@patternfly/react-icons';
 import { Skeleton } from '@redhat-cloud-services/frontend-components/Skeleton';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
@@ -201,11 +203,12 @@ class RuleTable extends Component {
                         props: { colSpan: columns.length + Boolean(actions) },
                         title: (
                           <Bullseye>
-                            <EmptyState variant={EmptyStateVariant.small}>
-                              <EmptyStateIcon icon={emptyStateIcon} />
-                              <Title headingLevel="h2" size="lg">
-                                {emptyStateTitle}
-                              </Title>
+                            <EmptyState variant={EmptyStateVariant.sm}>
+                              <EmptyStateHeader
+                                titleText={<>{emptyStateTitle}</>}
+                                icon={<EmptyStateIcon icon={emptyStateIcon} />}
+                                headingLevel="h2"
+                              />
                               <EmptyStateBody>{emptyStateDescription}</EmptyStateBody>
                             </EmptyState>
                           </Bullseye>

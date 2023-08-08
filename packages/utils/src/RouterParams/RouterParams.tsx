@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { useEffect } from 'react';
 import { matchPath, useLocation, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -7,7 +8,10 @@ export type RouterParamsProps = {
   Component: React.ComponentType;
 };
 
-const RouterParams = (props: RouterParamsProps) => {
+/**
+ * @deprecated
+ */
+const RouterParamsInternal = (props: RouterParamsProps) => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const params = useParams();
@@ -20,11 +24,16 @@ const RouterParams = (props: RouterParamsProps) => {
 
   useEffect(() => {
     // This will not work in router v6. Route does not pass `match` to child element.
-    if (matchPath(pathname, { path: props?.match?.path, exact: true })) {
-      onPathChange({
-        params,
-        path: pathname,
-      });
+    try {
+      // @ts-ignore
+      if (matchPath(pathname, { path: props?.match?.path, exact: true })) {
+        onPathChange({
+          params,
+          path: pathname,
+        });
+      }
+    } catch (error) {
+      console.error('Unable to handle patch change', error);
     }
   }, [pathname, JSON.stringify(params)]);
 
@@ -32,5 +41,8 @@ const RouterParams = (props: RouterParamsProps) => {
   return <Component {...rest} />;
 };
 
-// eslint-disable-next-line react/display-name
-export default (Component: React.ComponentType) => (props: Record<string, any>) => <RouterParams Component={Component} {...props} />;
+/**
+ * @deprecated
+ */
+const RouterParams = (Component: React.ComponentType) => (props: Record<string, any>) => <RouterParamsInternal Component={Component} {...props} />;
+export default RouterParams;

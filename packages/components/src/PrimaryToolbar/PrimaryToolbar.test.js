@@ -53,6 +53,7 @@ const config = {
   filterConfig: {
     items: [
       {
+        type: 'text',
         label: 'First filter',
       },
       {
@@ -149,18 +150,18 @@ describe('PrimaryToolbar', () => {
   describe('API', () => {
     it('should call DESC sort', () => {
       const wrapper = mount(<PrimaryToolbar {...config} sortByConfig={{ ...config.sortByConfig, direction: 'desc' }} />);
-      wrapper.find('.ins-c-primary-toolbar__actions button.pf-c-dropdown__toggle').first().simulate('click');
+      wrapper.find('.ins-c-primary-toolbar__actions button.pf-v5-c-menu-toggle').first().simulate('click');
       wrapper.update();
-      wrapper.find('.ins-c-primary-toolbar__overflow-actions.pf-c-dropdown__menu-item').first().simulate('click');
+      wrapper.find('.ins-c-primary-toolbar__overflow-actions.pf-v5-c-menu__item').first().simulate('click');
       expect(config.sortByConfig.onSortChange).toHaveBeenCalled();
       expect(config.sortByConfig.onSortChange.mock.calls[0][1]).toBe('asc');
     });
 
     it('should call ASC sort', () => {
       const wrapper = mount(<PrimaryToolbar {...config} />);
-      wrapper.find('.ins-c-primary-toolbar__actions button.pf-c-dropdown__toggle').first().simulate('click');
+      wrapper.find('.ins-c-primary-toolbar__actions button.pf-v5-c-menu-toggle').first().simulate('click');
       wrapper.update();
-      wrapper.find('.ins-c-primary-toolbar__overflow-actions.pf-c-dropdown__menu-item').at(1).simulate('click');
+      wrapper.find('.ins-c-primary-toolbar__overflow-actions.pf-v5-c-menu__item').at(1).simulate('click');
       expect(config.sortByConfig.onSortChange).toHaveBeenCalled();
       expect(config.sortByConfig.onSortChange.mock.calls[1][1]).toBe('desc');
     });

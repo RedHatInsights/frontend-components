@@ -1,16 +1,8 @@
 import { useEffect, useState } from 'react';
 import * as reactRouterDom from 'react-router-dom';
-import {
-  Table as PfTable,
-  SortByDirection,
-  TableBody,
-  TableGridBreakpoint,
-  TableHeader,
-  TableVariant,
-  cellWidth,
-  expandable,
-  sortable,
-} from '@patternfly/react-table';
+import { SortByDirection, TableGridBreakpoint, TableVariant, cellWidth, expandable, sortable } from '@patternfly/react-table';
+// FIXME: Deal with table later
+import { Table as PfTable, TableBody, TableHeader } from '@patternfly/react-table/deprecated';
 
 console.error('"useInventory" hook is deprecated and will be removed in v4. Please use Chrome 2.0 compatible Inventory version.');
 export const useInventory = ({ store, tableReducer, detailReducer, getRegistry }) => {

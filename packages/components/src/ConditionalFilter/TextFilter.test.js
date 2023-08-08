@@ -39,7 +39,8 @@ describe('Text component', () => {
       render(<Text id="test-id" value="some-value" onSubmit={onSubmit} />);
       userEvent.type(screen.getByRole('textbox', { name: 'text input' }), '{enter}');
       expect(onSubmit).toHaveBeenCalled();
-      expect(onSubmit.mock.calls[0][1]).toBe('some-value');
+      // On submit cna only have argument and thst is the event, by HTML spec
+      expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ target: expect.objectContaining({ value: 'some-value' }) }));
     });
 
     it('should update state', () => {

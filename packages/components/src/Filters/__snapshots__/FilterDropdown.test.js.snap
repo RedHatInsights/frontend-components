@@ -4,35 +4,34 @@ exports[`FilterDropdown component should render 1`] = `
 <Dropdown
   className="ins-c-filter__dropdown"
   isOpen={false}
+  onOpenChange={[Function]}
   ouiaId="OUIA-Generated-RHI/FilterDropdown-1"
   ouiaSafe={true}
-  toggle={
-    <DropdownToggle
-      onToggle={[Function]}
-      ouiaId="OUIA-Generated-RHI/FilterDropdown-1"
-      ouiaSafe={true}
-    />
-  }
+  toggle={[Function]}
 >
-  <div
-    className="pf-c-dropdown__menu-item"
-  >
-    <Level
+  <MenuList>
+    <MenuGroup
       key="0"
+      label=""
     >
-      <FilterInput
-        addRemoveFilters={[Function]}
-        aria-label=""
-        filters={Object {}}
-        id="0"
-        key="check00"
-        label=""
-        param=""
-        type=""
-        value=""
-      />
-    </Level>
-  </div>
+      <MenuList>
+        <MenuItem
+          key="check00"
+        >
+          <FilterInput
+            addRemoveFilters={[Function]}
+            aria-label=""
+            filters={{}}
+            id="check00"
+            label=""
+            param=""
+            type=""
+            value=""
+          />
+        </MenuItem>
+      </MenuList>
+    </MenuGroup>
+  </MenuList>
 </Dropdown>
 `;
 
@@ -40,36 +39,33 @@ exports[`FilterDropdown component should render with a component as label 1`] = 
 <Dropdown
   className="ins-c-filter__dropdown"
   isOpen={false}
+  onOpenChange={[Function]}
   ouiaId="OUIA-Generated-RHI/FilterDropdown-1"
   ouiaSafe={true}
-  toggle={
-    <DropdownToggle
-      onToggle={[Function]}
-      ouiaId="OUIA-Generated-RHI/FilterDropdown-1"
-      ouiaSafe={true}
-    >
-      <React.Fragment />
-    </DropdownToggle>
-  }
+  toggle={[Function]}
 >
-  <div
-    className="pf-c-dropdown__menu-item"
-  >
-    <Level
+  <MenuList>
+    <MenuGroup
       key="0"
+      label=""
     >
-      <FilterInput
-        addRemoveFilters={[Function]}
-        aria-label=""
-        filters={Object {}}
-        id="0"
-        key="check00"
-        label=""
-        param=""
-        type=""
-        value=""
-      />
-    </Level>
-  </div>
+      <MenuList>
+        <MenuItem
+          key="check00"
+        >
+          <FilterInput
+            addRemoveFilters={[Function]}
+            aria-label=""
+            filters={{}}
+            id="check00"
+            label=""
+            param=""
+            type=""
+            value=""
+          />
+        </MenuItem>
+      </MenuList>
+    </MenuGroup>
+  </MenuList>
 </Dropdown>
 `;

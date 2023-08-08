@@ -27,14 +27,14 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/utils#readme",
     "peerDependencies": {
-        "@patternfly/react-core": "^4.239.0",
-        "@patternfly/react-table": "^4.108.0",
+        "@patternfly/react-core": "^5.0.0",
+        "@patternfly/react-table": "^5.0.0",
         "@redhat-cloud-services/rbac-client": "^1.0.100",
-        "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
-        "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
         "react-redux": ">=7.0.0",
         "react-router-dom": "^5.0.0 || ^6.0.0",
-        "cypress": ">=10.0.0 < 13.0.0"
+        "cypress": ">=12.0.0 < 13.0.0"
     },
     "dependencies": {
         "@redhat-cloud-services/types": "^0.0.24",
@@ -46,7 +46,7 @@
         "react-content-loader": "^6.2.0"
     },
     "devDependencies": {
-        "@types/react": "^16.14.32"
+        "@types/react": "^18.0.0"
     },
     "sideEffects": false
 }

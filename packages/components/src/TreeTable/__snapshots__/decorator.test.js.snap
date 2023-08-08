@@ -2,10 +2,10 @@
 
 exports[`TreeTable decorator should render correctly - with data 1`] = `
 <div
-  className="pf-c-treeview__control"
+  className="pf-v5-c-treeview__control"
 >
   <div
-    className="pf-c-treeview__control-text"
+    className="pf-v5-c-treeview__control-text"
   >
     value
   </div>
@@ -14,10 +14,10 @@ exports[`TreeTable decorator should render correctly - with data 1`] = `
 
 exports[`TreeTable decorator should render correctly - with data tree collapsed 1`] = `
 <div
-  className="pf-c-treeview__control"
+  className="pf-v5-c-treeview__control"
 >
   <div
-    className="pf-c-treeview__toggle"
+    className="pf-v5-c-treeview__toggle"
   >
     <Button
       onClick={[Function]}
@@ -25,15 +25,12 @@ exports[`TreeTable decorator should render correctly - with data tree collapsed 
     >
       <AngleRightIcon
         aria-hidden="true"
-        className="pf-c-treeview__toggle-icon"
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
+        className="pf-v5-c-treeview__toggle-icon"
       />
     </Button>
   </div>
   <div
-    className="pf-c-treeview__control-text"
+    className="pf-v5-c-treeview__control-text"
   >
     value
   </div>
@@ -42,10 +39,10 @@ exports[`TreeTable decorator should render correctly - with data tree collapsed 
 
 exports[`TreeTable decorator should render correctly - with data tree opened 1`] = `
 <div
-  className="pf-c-treeview__control"
+  className="pf-v5-c-treeview__control"
 >
   <div
-    className="pf-c-treeview__toggle"
+    className="pf-v5-c-treeview__toggle"
   >
     <Button
       onClick={[Function]}
@@ -53,15 +50,12 @@ exports[`TreeTable decorator should render correctly - with data tree opened 1`]
     >
       <AngleRightIcon
         aria-hidden="true"
-        className="pf-c-treeview__toggle-icon"
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
+        className="pf-v5-c-treeview__toggle-icon"
       />
     </Button>
   </div>
   <div
-    className="pf-c-treeview__control-text"
+    className="pf-v5-c-treeview__control-text"
   >
     value
   </div>

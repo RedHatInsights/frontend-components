@@ -21,7 +21,7 @@ const Markdown = ({ template, definitions }) => {
       ul() {
         return {
           tagName: 'ul',
-          attribs: { class: 'pf-c-list' },
+          attribs: { class: 'pf-v5-c-list' },
         };
       },
     },
@@ -40,7 +40,7 @@ const Markdown = ({ template, definitions }) => {
         className="ins-c-rule__markdown"
         dangerouslySetInnerHTML={{
           __html: compiledMd
-            .replace(/<ul>/gim, `<ul class="pf-c-list" style="font-size: inherit">`)
+            .replace(/<ul>/gim, `<ul class="pf-v5-c-list" style="font-size: inherit">`)
             .replace(/<a>/gim, `<a rel="noopener noreferrer" target="_blank">`)
             .replace(/<\/a>/gim, ` ${externalLinkIcon}</a>`),
         }}

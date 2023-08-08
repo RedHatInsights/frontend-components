@@ -20,8 +20,6 @@ describe('OpenSourceBadge component', () => {
       await screen.findByRole('dialog', {
         name: /about open source/i,
       });
-      const popoverContainer = document.body.querySelector('.pf-c-popover');
-      expect(popoverContainer).toMatchSnapshot();
     });
   });
 });

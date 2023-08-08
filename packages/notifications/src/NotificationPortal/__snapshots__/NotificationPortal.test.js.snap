@@ -3,7 +3,7 @@
 exports[`Notification portal should render notifications given as direct props 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -15,8 +15,8 @@ exports[`Notification portal should render notifications given as direct props 1
 >
   <NotificationPortal
     notifications={
-      Array [
-        Object {
+      [
+        {
           "description": "Some meaningfull description",
           "dismissable": true,
           "id": "0",
@@ -26,7 +26,7 @@ exports[`Notification portal should render notifications given as direct props 1
       ]
     }
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -42,8 +42,8 @@ exports[`Notification portal should render notifications given as direct props 1
     >
       <NotificationPortalBase
         notifications={
-          Array [
-            Object {
+          [
+            {
               "description": "Some meaningfull description",
               "dismissable": true,
               "id": "0",
@@ -53,7 +53,7 @@ exports[`Notification portal should render notifications given as direct props 1
           ]
         }
         store={
-          Object {
+          {
             "clearActions": [Function],
             "dispatch": [Function],
             "getActions": [Function],
@@ -65,8 +65,8 @@ exports[`Notification portal should render notifications given as direct props 1
       >
         <Portal
           notifications={
-            Array [
-              Object {
+            [
+              {
                 "description": "Some meaningfull description",
                 "dismissable": true,
                 "id": "0",
@@ -78,7 +78,7 @@ exports[`Notification portal should render notifications given as direct props 1
           onClearAll={[Function]}
           removeNotification={[Function]}
           store={
-            Object {
+            {
               "clearActions": [Function],
               "dispatch": [Function],
               "getActions": [Function],
@@ -95,22 +95,21 @@ exports[`Notification portal should render notifications given as direct props 1
                   class="notifications-portal"
                 >
                   <div
-                    aria-label="Success Alert"
-                    class="pf-c-alert pf-m-success notification-item"
+                    class="pf-v5-c-alert pf-m-success notification-item"
                     data-ouia-component-id="OUIA-Generated-Alert-success-1"
-                    data-ouia-component-type="PF4/Alert"
+                    data-ouia-component-type="PF5/Alert"
                     data-ouia-safe="true"
                     id="0"
                   >
                     <div
-                      class="pf-c-alert__icon"
+                      class="pf-v5-c-alert__icon"
                     >
                       <svg
                         aria-hidden="true"
+                        class="pf-v5-svg"
                         fill="currentColor"
                         height="1em"
                         role="img"
-                        style="vertical-align: -0.125em;"
                         viewBox="0 0 512 512"
                         width="1em"
                       >
@@ -120,33 +119,33 @@ exports[`Notification portal should render notifications given as direct props 1
                       </svg>
                     </div>
                     <h4
-                      class="pf-c-alert__title"
+                      class="pf-v5-c-alert__title"
                     >
                       <span
-                        class="pf-u-screen-reader"
+                        class="pf-v5-u-screen-reader"
                       >
                         Success alert:
                       </span>
                       Notification title
                     </h4>
                     <div
-                      class="pf-c-alert__action"
+                      class="pf-v5-c-alert__action"
                     >
                       <button
                         aria-disabled="false"
                         aria-label="close-notification"
-                        class="pf-c-button pf-m-plain"
+                        class="pf-v5-c-button pf-m-plain"
                         data-ouia-component-id="OUIA-Generated-Button-plain-1"
-                        data-ouia-component-type="PF4/Button"
+                        data-ouia-component-type="PF5/Button"
                         data-ouia-safe="true"
                         type="button"
                       >
                         <svg
                           aria-hidden="true"
+                          class="pf-v5-svg"
                           fill="currentColor"
                           height="1em"
                           role="img"
-                          style="vertical-align: -0.125em;"
                           viewBox="0 0 352 512"
                           width="1em"
                         >
@@ -157,15 +156,15 @@ exports[`Notification portal should render notifications given as direct props 1
                       </button>
                     </div>
                     <div
-                      class="pf-c-alert__description"
+                      class="pf-v5-c-alert__description"
                     >
                       <div
-                        class="pf-c-content"
+                        class="pf-v5-c-content"
                       >
                         <small
                           class="sentry-mask data-hj-suppress"
                           data-ouia-component-id="OUIA-Generated-Text-1"
-                          data-ouia-component-type="PF4/Text"
+                          data-ouia-component-type="PF5/Text"
                           data-ouia-safe="true"
                           data-pf-content="true"
                         >
@@ -179,22 +178,21 @@ exports[`Notification portal should render notifications given as direct props 1
                   class="notifications-portal"
                 >
                   <div
-                    aria-label="Success Alert"
-                    class="pf-c-alert pf-m-success notification-item"
+                    class="pf-v5-c-alert pf-m-success notification-item"
                     data-ouia-component-id="OUIA-Generated-Alert-success-2"
-                    data-ouia-component-type="PF4/Alert"
+                    data-ouia-component-type="PF5/Alert"
                     data-ouia-safe="true"
                     id="0"
                   >
                     <div
-                      class="pf-c-alert__icon"
+                      class="pf-v5-c-alert__icon"
                     >
                       <svg
                         aria-hidden="true"
+                        class="pf-v5-svg"
                         fill="currentColor"
                         height="1em"
                         role="img"
-                        style="vertical-align: -0.125em;"
                         viewBox="0 0 512 512"
                         width="1em"
                       >
@@ -204,33 +202,33 @@ exports[`Notification portal should render notifications given as direct props 1
                       </svg>
                     </div>
                     <h4
-                      class="pf-c-alert__title"
+                      class="pf-v5-c-alert__title"
                     >
                       <span
-                        class="pf-u-screen-reader"
+                        class="pf-v5-u-screen-reader"
                       >
                         Success alert:
                       </span>
                       Notification title
                     </h4>
                     <div
-                      class="pf-c-alert__action"
+                      class="pf-v5-c-alert__action"
                     >
                       <button
                         aria-disabled="false"
                         aria-label="close-notification"
-                        class="pf-c-button pf-m-plain"
+                        class="pf-v5-c-button pf-m-plain"
                         data-ouia-component-id="OUIA-Generated-Button-plain-2"
-                        data-ouia-component-type="PF4/Button"
+                        data-ouia-component-type="PF5/Button"
                         data-ouia-safe="true"
                         type="button"
                       >
                         <svg
                           aria-hidden="true"
+                          class="pf-v5-svg"
                           fill="currentColor"
                           height="1em"
                           role="img"
-                          style="vertical-align: -0.125em;"
                           viewBox="0 0 352 512"
                           width="1em"
                         >
@@ -241,15 +239,15 @@ exports[`Notification portal should render notifications given as direct props 1
                       </button>
                     </div>
                     <div
-                      class="pf-c-alert__description"
+                      class="pf-v5-c-alert__description"
                     >
                       <div
-                        class="pf-c-content"
+                        class="pf-v5-c-content"
                       >
                         <small
                           class="sentry-mask data-hj-suppress"
                           data-ouia-component-id="OUIA-Generated-Text-2"
-                          data-ouia-component-type="PF4/Text"
+                          data-ouia-component-type="PF5/Text"
                           data-ouia-safe="true"
                           data-pf-content="true"
                         >
@@ -281,11 +279,7 @@ exports[`Notification portal should render notifications given as direct props 1
                       onClick={[Function]}
                       variant="plain"
                     >
-                      <CloseIcon
-                        color="currentColor"
-                        noVerticalAlign={false}
-                        size="sm"
-                      />
+                      <CloseIcon />
                     </AlertActionCloseButton>
                   }
                   className="notification-item"
@@ -296,10 +290,9 @@ exports[`Notification portal should render notifications given as direct props 1
                   variant="success"
                 >
                   <div
-                    aria-label="Success Alert"
-                    className="pf-c-alert pf-m-success notification-item"
+                    className="pf-v5-c-alert pf-m-success notification-item"
                     data-ouia-component-id="OUIA-Generated-Alert-success-2"
-                    data-ouia-component-type="PF4/Alert"
+                    data-ouia-component-type="PF5/Alert"
                     data-ouia-safe={true}
                     id="0"
                     onMouseEnter={[Function]}
@@ -309,24 +302,16 @@ exports[`Notification portal should render notifications given as direct props 1
                       variant="success"
                     >
                       <div
-                        className="pf-c-alert__icon"
+                        className="pf-v5-c-alert__icon"
                       >
-                        <CheckCircleIcon
-                          color="currentColor"
-                          noVerticalAlign={false}
-                          size="sm"
-                        >
+                        <CheckCircleIcon>
                           <svg
                             aria-hidden={true}
                             aria-labelledby={null}
+                            className="pf-v5-svg"
                             fill="currentColor"
                             height="1em"
                             role="img"
-                            style={
-                              Object {
-                                "verticalAlign": "-0.125em",
-                              }
-                            }
                             viewBox="0 0 512 512"
                             width="1em"
                           >
@@ -338,17 +323,17 @@ exports[`Notification portal should render notifications given as direct props 1
                       </div>
                     </AlertIcon>
                     <h4
-                      className="pf-c-alert__title"
+                      className="pf-v5-c-alert__title"
                     >
                       <span
-                        className="pf-u-screen-reader"
+                        className="pf-v5-u-screen-reader"
                       >
                         Success alert:
                       </span>
                       Notification title
                     </h4>
                     <div
-                      className="pf-c-alert__action"
+                      className="pf-v5-c-alert__action"
                     >
                       <AlertActionCloseButton
                         aria-label="close-notification"
@@ -369,31 +354,23 @@ exports[`Notification portal should render notifications given as direct props 1
                             <button
                               aria-disabled={false}
                               aria-label="close-notification"
-                              className="pf-c-button pf-m-plain"
+                              className="pf-v5-c-button pf-m-plain"
                               data-ouia-component-id="OUIA-Generated-Button-plain-2"
-                              data-ouia-component-type="PF4/Button"
+                              data-ouia-component-type="PF5/Button"
                               data-ouia-safe={true}
                               disabled={false}
                               onClick={[Function]}
                               role={null}
                               type="button"
                             >
-                              <TimesIcon
-                                color="currentColor"
-                                noVerticalAlign={false}
-                                size="sm"
-                              >
+                              <TimesIcon>
                                 <svg
                                   aria-hidden={true}
                                   aria-labelledby={null}
+                                  className="pf-v5-svg"
                                   fill="currentColor"
                                   height="1em"
                                   role="img"
-                                  style={
-                                    Object {
-                                      "verticalAlign": "-0.125em",
-                                    }
-                                  }
                                   viewBox="0 0 352 512"
                                   width="1em"
                                 >
@@ -408,11 +385,11 @@ exports[`Notification portal should render notifications given as direct props 1
                       </AlertActionCloseButton>
                     </div>
                     <div
-                      className="pf-c-alert__description"
+                      className="pf-v5-c-alert__description"
                     >
                       <TextContent>
                         <div
-                          className="pf-c-content"
+                          className="pf-v5-c-content"
                         >
                           <Text
                             className="sentry-mask data-hj-suppress"
@@ -421,7 +398,7 @@ exports[`Notification portal should render notifications given as direct props 1
                             <small
                               className="sentry-mask data-hj-suppress"
                               data-ouia-component-id="OUIA-Generated-Text-2"
-                              data-ouia-component-type="PF4/Text"
+                              data-ouia-component-type="PF5/Text"
                               data-ouia-safe={true}
                               data-pf-content={true}
                             >
@@ -446,7 +423,7 @@ exports[`Notification portal should render notifications given as direct props 1
 exports[`Notification portal should render notifications given as direct props over store notifications 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -458,8 +435,8 @@ exports[`Notification portal should render notifications given as direct props o
 >
   <NotificationPortal
     notifications={
-      Array [
-        Object {
+      [
+        {
           "description": "Some meaningfull description",
           "dismissable": true,
           "id": "Direct notification",
@@ -469,7 +446,7 @@ exports[`Notification portal should render notifications given as direct props o
       ]
     }
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -485,8 +462,8 @@ exports[`Notification portal should render notifications given as direct props o
     >
       <NotificationPortalBase
         notifications={
-          Array [
-            Object {
+          [
+            {
               "description": "Some meaningfull description",
               "dismissable": true,
               "id": "Direct notification",
@@ -496,7 +473,7 @@ exports[`Notification portal should render notifications given as direct props o
           ]
         }
         store={
-          Object {
+          {
             "clearActions": [Function],
             "dispatch": [Function],
             "getActions": [Function],
@@ -508,8 +485,8 @@ exports[`Notification portal should render notifications given as direct props o
       >
         <Portal
           notifications={
-            Array [
-              Object {
+            [
+              {
                 "description": "Some meaningfull description",
                 "dismissable": true,
                 "id": "Direct notification",
@@ -521,7 +498,7 @@ exports[`Notification portal should render notifications given as direct props o
           onClearAll={[Function]}
           removeNotification={[Function]}
           store={
-            Object {
+            {
               "clearActions": [Function],
               "dispatch": [Function],
               "getActions": [Function],
@@ -538,22 +515,21 @@ exports[`Notification portal should render notifications given as direct props o
                   class="notifications-portal"
                 >
                   <div
-                    aria-label="Success Alert"
-                    class="pf-c-alert pf-m-success notification-item"
+                    class="pf-v5-c-alert pf-m-success notification-item"
                     data-ouia-component-id="OUIA-Generated-Alert-success-1"
-                    data-ouia-component-type="PF4/Alert"
+                    data-ouia-component-type="PF5/Alert"
                     data-ouia-safe="true"
                     id="0"
                   >
                     <div
-                      class="pf-c-alert__icon"
+                      class="pf-v5-c-alert__icon"
                     >
                       <svg
                         aria-hidden="true"
+                        class="pf-v5-svg"
                         fill="currentColor"
                         height="1em"
                         role="img"
-                        style="vertical-align: -0.125em;"
                         viewBox="0 0 512 512"
                         width="1em"
                       >
@@ -563,33 +539,33 @@ exports[`Notification portal should render notifications given as direct props o
                       </svg>
                     </div>
                     <h4
-                      class="pf-c-alert__title"
+                      class="pf-v5-c-alert__title"
                     >
                       <span
-                        class="pf-u-screen-reader"
+                        class="pf-v5-u-screen-reader"
                       >
                         Success alert:
                       </span>
                       Notification title
                     </h4>
                     <div
-                      class="pf-c-alert__action"
+                      class="pf-v5-c-alert__action"
                     >
                       <button
                         aria-disabled="false"
                         aria-label="close-notification"
-                        class="pf-c-button pf-m-plain"
+                        class="pf-v5-c-button pf-m-plain"
                         data-ouia-component-id="OUIA-Generated-Button-plain-1"
-                        data-ouia-component-type="PF4/Button"
+                        data-ouia-component-type="PF5/Button"
                         data-ouia-safe="true"
                         type="button"
                       >
                         <svg
                           aria-hidden="true"
+                          class="pf-v5-svg"
                           fill="currentColor"
                           height="1em"
                           role="img"
-                          style="vertical-align: -0.125em;"
                           viewBox="0 0 352 512"
                           width="1em"
                         >
@@ -600,15 +576,15 @@ exports[`Notification portal should render notifications given as direct props o
                       </button>
                     </div>
                     <div
-                      class="pf-c-alert__description"
+                      class="pf-v5-c-alert__description"
                     >
                       <div
-                        class="pf-c-content"
+                        class="pf-v5-c-content"
                       >
                         <small
                           class="sentry-mask data-hj-suppress"
                           data-ouia-component-id="OUIA-Generated-Text-1"
-                          data-ouia-component-type="PF4/Text"
+                          data-ouia-component-type="PF5/Text"
                           data-ouia-safe="true"
                           data-pf-content="true"
                         >
@@ -622,22 +598,21 @@ exports[`Notification portal should render notifications given as direct props o
                   class="notifications-portal"
                 >
                   <div
-                    aria-label="Success Alert"
-                    class="pf-c-alert pf-m-success notification-item"
+                    class="pf-v5-c-alert pf-m-success notification-item"
                     data-ouia-component-id="OUIA-Generated-Alert-success-2"
-                    data-ouia-component-type="PF4/Alert"
+                    data-ouia-component-type="PF5/Alert"
                     data-ouia-safe="true"
                     id="0"
                   >
                     <div
-                      class="pf-c-alert__icon"
+                      class="pf-v5-c-alert__icon"
                     >
                       <svg
                         aria-hidden="true"
+                        class="pf-v5-svg"
                         fill="currentColor"
                         height="1em"
                         role="img"
-                        style="vertical-align: -0.125em;"
                         viewBox="0 0 512 512"
                         width="1em"
                       >
@@ -647,33 +622,33 @@ exports[`Notification portal should render notifications given as direct props o
                       </svg>
                     </div>
                     <h4
-                      class="pf-c-alert__title"
+                      class="pf-v5-c-alert__title"
                     >
                       <span
-                        class="pf-u-screen-reader"
+                        class="pf-v5-u-screen-reader"
                       >
                         Success alert:
                       </span>
                       Notification title
                     </h4>
                     <div
-                      class="pf-c-alert__action"
+                      class="pf-v5-c-alert__action"
                     >
                       <button
                         aria-disabled="false"
                         aria-label="close-notification"
-                        class="pf-c-button pf-m-plain"
+                        class="pf-v5-c-button pf-m-plain"
                         data-ouia-component-id="OUIA-Generated-Button-plain-2"
-                        data-ouia-component-type="PF4/Button"
+                        data-ouia-component-type="PF5/Button"
                         data-ouia-safe="true"
                         type="button"
                       >
                         <svg
                           aria-hidden="true"
+                          class="pf-v5-svg"
                           fill="currentColor"
                           height="1em"
                           role="img"
-                          style="vertical-align: -0.125em;"
                           viewBox="0 0 352 512"
                           width="1em"
                         >
@@ -684,15 +659,15 @@ exports[`Notification portal should render notifications given as direct props o
                       </button>
                     </div>
                     <div
-                      class="pf-c-alert__description"
+                      class="pf-v5-c-alert__description"
                     >
                       <div
-                        class="pf-c-content"
+                        class="pf-v5-c-content"
                       >
                         <small
                           class="sentry-mask data-hj-suppress"
                           data-ouia-component-id="OUIA-Generated-Text-2"
-                          data-ouia-component-type="PF4/Text"
+                          data-ouia-component-type="PF5/Text"
                           data-ouia-safe="true"
                           data-pf-content="true"
                         >
@@ -706,22 +681,21 @@ exports[`Notification portal should render notifications given as direct props o
                   class="notifications-portal"
                 >
                   <div
-                    aria-label="Success Alert"
-                    class="pf-c-alert pf-m-success notification-item"
+                    class="pf-v5-c-alert pf-m-success notification-item"
                     data-ouia-component-id="OUIA-Generated-Alert-success-3"
-                    data-ouia-component-type="PF4/Alert"
+                    data-ouia-component-type="PF5/Alert"
                     data-ouia-safe="true"
                     id="Direct notification"
                   >
                     <div
-                      class="pf-c-alert__icon"
+                      class="pf-v5-c-alert__icon"
                     >
                       <svg
                         aria-hidden="true"
+                        class="pf-v5-svg"
                         fill="currentColor"
                         height="1em"
                         role="img"
-                        style="vertical-align: -0.125em;"
                         viewBox="0 0 512 512"
                         width="1em"
                       >
@@ -731,33 +705,33 @@ exports[`Notification portal should render notifications given as direct props o
                       </svg>
                     </div>
                     <h4
-                      class="pf-c-alert__title"
+                      class="pf-v5-c-alert__title"
                     >
                       <span
-                        class="pf-u-screen-reader"
+                        class="pf-v5-u-screen-reader"
                       >
                         Success alert:
                       </span>
                       Notification title
                     </h4>
                     <div
-                      class="pf-c-alert__action"
+                      class="pf-v5-c-alert__action"
                     >
                       <button
                         aria-disabled="false"
                         aria-label="close-notification"
-                        class="pf-c-button pf-m-plain"
+                        class="pf-v5-c-button pf-m-plain"
                         data-ouia-component-id="OUIA-Generated-Button-plain-3"
-                        data-ouia-component-type="PF4/Button"
+                        data-ouia-component-type="PF5/Button"
                         data-ouia-safe="true"
                         type="button"
                       >
                         <svg
                           aria-hidden="true"
+                          class="pf-v5-svg"
                           fill="currentColor"
                           height="1em"
                           role="img"
-                          style="vertical-align: -0.125em;"
                           viewBox="0 0 352 512"
                           width="1em"
                         >
@@ -768,15 +742,15 @@ exports[`Notification portal should render notifications given as direct props o
                       </button>
                     </div>
                     <div
-                      class="pf-c-alert__description"
+                      class="pf-v5-c-alert__description"
                     >
                       <div
-                        class="pf-c-content"
+                        class="pf-v5-c-content"
                       >
                         <small
                           class="sentry-mask data-hj-suppress"
                           data-ouia-component-id="OUIA-Generated-Text-3"
-                          data-ouia-component-type="PF4/Text"
+                          data-ouia-component-type="PF5/Text"
                           data-ouia-safe="true"
                           data-pf-content="true"
                         >
@@ -808,11 +782,7 @@ exports[`Notification portal should render notifications given as direct props o
                       onClick={[Function]}
                       variant="plain"
                     >
-                      <CloseIcon
-                        color="currentColor"
-                        noVerticalAlign={false}
-                        size="sm"
-                      />
+                      <CloseIcon />
                     </AlertActionCloseButton>
                   }
                   className="notification-item"
@@ -823,10 +793,9 @@ exports[`Notification portal should render notifications given as direct props o
                   variant="success"
                 >
                   <div
-                    aria-label="Success Alert"
-                    className="pf-c-alert pf-m-success notification-item"
+                    className="pf-v5-c-alert pf-m-success notification-item"
                     data-ouia-component-id="OUIA-Generated-Alert-success-3"
-                    data-ouia-component-type="PF4/Alert"
+                    data-ouia-component-type="PF5/Alert"
                     data-ouia-safe={true}
                     id="Direct notification"
                     onMouseEnter={[Function]}
@@ -836,24 +805,16 @@ exports[`Notification portal should render notifications given as direct props o
                       variant="success"
                     >
                       <div
-                        className="pf-c-alert__icon"
+                        className="pf-v5-c-alert__icon"
                       >
-                        <CheckCircleIcon
-                          color="currentColor"
-                          noVerticalAlign={false}
-                          size="sm"
-                        >
+                        <CheckCircleIcon>
                           <svg
                             aria-hidden={true}
                             aria-labelledby={null}
+                            className="pf-v5-svg"
                             fill="currentColor"
                             height="1em"
                             role="img"
-                            style={
-                              Object {
-                                "verticalAlign": "-0.125em",
-                              }
-                            }
                             viewBox="0 0 512 512"
                             width="1em"
                           >
@@ -865,17 +826,17 @@ exports[`Notification portal should render notifications given as direct props o
                       </div>
                     </AlertIcon>
                     <h4
-                      className="pf-c-alert__title"
+                      className="pf-v5-c-alert__title"
                     >
                       <span
-                        className="pf-u-screen-reader"
+                        className="pf-v5-u-screen-reader"
                       >
                         Success alert:
                       </span>
                       Notification title
                     </h4>
                     <div
-                      className="pf-c-alert__action"
+                      className="pf-v5-c-alert__action"
                     >
                       <AlertActionCloseButton
                         aria-label="close-notification"
@@ -896,31 +857,23 @@ exports[`Notification portal should render notifications given as direct props o
                             <button
                               aria-disabled={false}
                               aria-label="close-notification"
-                              className="pf-c-button pf-m-plain"
+                              className="pf-v5-c-button pf-m-plain"
                               data-ouia-component-id="OUIA-Generated-Button-plain-3"
-                              data-ouia-component-type="PF4/Button"
+                              data-ouia-component-type="PF5/Button"
                               data-ouia-safe={true}
                               disabled={false}
                               onClick={[Function]}
                               role={null}
                               type="button"
                             >
-                              <TimesIcon
-                                color="currentColor"
-                                noVerticalAlign={false}
-                                size="sm"
-                              >
+                              <TimesIcon>
                                 <svg
                                   aria-hidden={true}
                                   aria-labelledby={null}
+                                  className="pf-v5-svg"
                                   fill="currentColor"
                                   height="1em"
                                   role="img"
-                                  style={
-                                    Object {
-                                      "verticalAlign": "-0.125em",
-                                    }
-                                  }
                                   viewBox="0 0 352 512"
                                   width="1em"
                                 >
@@ -935,11 +888,11 @@ exports[`Notification portal should render notifications given as direct props o
                       </AlertActionCloseButton>
                     </div>
                     <div
-                      className="pf-c-alert__description"
+                      className="pf-v5-c-alert__description"
                     >
                       <TextContent>
                         <div
-                          className="pf-c-content"
+                          className="pf-v5-c-content"
                         >
                           <Text
                             className="sentry-mask data-hj-suppress"
@@ -948,7 +901,7 @@ exports[`Notification portal should render notifications given as direct props o
                             <small
                               className="sentry-mask data-hj-suppress"
                               data-ouia-component-id="OUIA-Generated-Text-3"
-                              data-ouia-component-type="PF4/Text"
+                              data-ouia-component-type="PF5/Text"
                               data-ouia-safe={true}
                               data-pf-content={true}
                             >
@@ -973,7 +926,7 @@ exports[`Notification portal should render notifications given as direct props o
 exports[`Notification portal should render notifications given from store 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -985,7 +938,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
 >
   <NotificationPortal
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -1001,7 +954,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
     >
       <NotificationPortalBase
         store={
-          Object {
+          {
             "clearActions": [Function],
             "dispatch": [Function],
             "getActions": [Function],
@@ -1013,8 +966,8 @@ exports[`Notification portal should render notifications given from store 1`] = 
       >
         <Portal
           notifications={
-            Array [
-              Object {
+            [
+              {
                 "description": "Some meaningfull description",
                 "dismissable": true,
                 "id": "0",
@@ -1026,7 +979,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
           onClearAll={[Function]}
           removeNotification={[Function]}
           store={
-            Object {
+            {
               "clearActions": [Function],
               "dispatch": [Function],
               "getActions": [Function],
@@ -1043,22 +996,21 @@ exports[`Notification portal should render notifications given from store 1`] = 
                   class="notifications-portal"
                 >
                   <div
-                    aria-label="Success Alert"
-                    class="pf-c-alert pf-m-success notification-item"
+                    class="pf-v5-c-alert pf-m-success notification-item"
                     data-ouia-component-id="OUIA-Generated-Alert-success-1"
-                    data-ouia-component-type="PF4/Alert"
+                    data-ouia-component-type="PF5/Alert"
                     data-ouia-safe="true"
                     id="0"
                   >
                     <div
-                      class="pf-c-alert__icon"
+                      class="pf-v5-c-alert__icon"
                     >
                       <svg
                         aria-hidden="true"
+                        class="pf-v5-svg"
                         fill="currentColor"
                         height="1em"
                         role="img"
-                        style="vertical-align: -0.125em;"
                         viewBox="0 0 512 512"
                         width="1em"
                       >
@@ -1068,33 +1020,33 @@ exports[`Notification portal should render notifications given from store 1`] = 
                       </svg>
                     </div>
                     <h4
-                      class="pf-c-alert__title"
+                      class="pf-v5-c-alert__title"
                     >
                       <span
-                        class="pf-u-screen-reader"
+                        class="pf-v5-u-screen-reader"
                       >
                         Success alert:
                       </span>
                       Notification title
                     </h4>
                     <div
-                      class="pf-c-alert__action"
+                      class="pf-v5-c-alert__action"
                     >
                       <button
                         aria-disabled="false"
                         aria-label="close-notification"
-                        class="pf-c-button pf-m-plain"
+                        class="pf-v5-c-button pf-m-plain"
                         data-ouia-component-id="OUIA-Generated-Button-plain-1"
-                        data-ouia-component-type="PF4/Button"
+                        data-ouia-component-type="PF5/Button"
                         data-ouia-safe="true"
                         type="button"
                       >
                         <svg
                           aria-hidden="true"
+                          class="pf-v5-svg"
                           fill="currentColor"
                           height="1em"
                           role="img"
-                          style="vertical-align: -0.125em;"
                           viewBox="0 0 352 512"
                           width="1em"
                         >
@@ -1105,15 +1057,15 @@ exports[`Notification portal should render notifications given from store 1`] = 
                       </button>
                     </div>
                     <div
-                      class="pf-c-alert__description"
+                      class="pf-v5-c-alert__description"
                     >
                       <div
-                        class="pf-c-content"
+                        class="pf-v5-c-content"
                       >
                         <small
                           class="sentry-mask data-hj-suppress"
                           data-ouia-component-id="OUIA-Generated-Text-1"
-                          data-ouia-component-type="PF4/Text"
+                          data-ouia-component-type="PF5/Text"
                           data-ouia-safe="true"
                           data-pf-content="true"
                         >
@@ -1145,11 +1097,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
                       onClick={[Function]}
                       variant="plain"
                     >
-                      <CloseIcon
-                        color="currentColor"
-                        noVerticalAlign={false}
-                        size="sm"
-                      />
+                      <CloseIcon />
                     </AlertActionCloseButton>
                   }
                   className="notification-item"
@@ -1160,10 +1108,9 @@ exports[`Notification portal should render notifications given from store 1`] = 
                   variant="success"
                 >
                   <div
-                    aria-label="Success Alert"
-                    className="pf-c-alert pf-m-success notification-item"
+                    className="pf-v5-c-alert pf-m-success notification-item"
                     data-ouia-component-id="OUIA-Generated-Alert-success-1"
-                    data-ouia-component-type="PF4/Alert"
+                    data-ouia-component-type="PF5/Alert"
                     data-ouia-safe={true}
                     id="0"
                     onMouseEnter={[Function]}
@@ -1173,24 +1120,16 @@ exports[`Notification portal should render notifications given from store 1`] = 
                       variant="success"
                     >
                       <div
-                        className="pf-c-alert__icon"
+                        className="pf-v5-c-alert__icon"
                       >
-                        <CheckCircleIcon
-                          color="currentColor"
-                          noVerticalAlign={false}
-                          size="sm"
-                        >
+                        <CheckCircleIcon>
                           <svg
                             aria-hidden={true}
                             aria-labelledby={null}
+                            className="pf-v5-svg"
                             fill="currentColor"
                             height="1em"
                             role="img"
-                            style={
-                              Object {
-                                "verticalAlign": "-0.125em",
-                              }
-                            }
                             viewBox="0 0 512 512"
                             width="1em"
                           >
@@ -1202,17 +1141,17 @@ exports[`Notification portal should render notifications given from store 1`] = 
                       </div>
                     </AlertIcon>
                     <h4
-                      className="pf-c-alert__title"
+                      className="pf-v5-c-alert__title"
                     >
                       <span
-                        className="pf-u-screen-reader"
+                        className="pf-v5-u-screen-reader"
                       >
                         Success alert:
                       </span>
                       Notification title
                     </h4>
                     <div
-                      className="pf-c-alert__action"
+                      className="pf-v5-c-alert__action"
                     >
                       <AlertActionCloseButton
                         aria-label="close-notification"
@@ -1233,31 +1172,23 @@ exports[`Notification portal should render notifications given from store 1`] = 
                             <button
                               aria-disabled={false}
                               aria-label="close-notification"
-                              className="pf-c-button pf-m-plain"
+                              className="pf-v5-c-button pf-m-plain"
                               data-ouia-component-id="OUIA-Generated-Button-plain-1"
-                              data-ouia-component-type="PF4/Button"
+                              data-ouia-component-type="PF5/Button"
                               data-ouia-safe={true}
                               disabled={false}
                               onClick={[Function]}
                               role={null}
                               type="button"
                             >
-                              <TimesIcon
-                                color="currentColor"
-                                noVerticalAlign={false}
-                                size="sm"
-                              >
+                              <TimesIcon>
                                 <svg
                                   aria-hidden={true}
                                   aria-labelledby={null}
+                                  className="pf-v5-svg"
                                   fill="currentColor"
                                   height="1em"
                                   role="img"
-                                  style={
-                                    Object {
-                                      "verticalAlign": "-0.125em",
-                                    }
-                                  }
                                   viewBox="0 0 352 512"
                                   width="1em"
                                 >
@@ -1272,11 +1203,11 @@ exports[`Notification portal should render notifications given from store 1`] = 
                       </AlertActionCloseButton>
                     </div>
                     <div
-                      className="pf-c-alert__description"
+                      className="pf-v5-c-alert__description"
                     >
                       <TextContent>
                         <div
-                          className="pf-c-content"
+                          className="pf-v5-c-content"
                         >
                           <Text
                             className="sentry-mask data-hj-suppress"
@@ -1285,7 +1216,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
                             <small
                               className="sentry-mask data-hj-suppress"
                               data-ouia-component-id="OUIA-Generated-Text-1"
-                              data-ouia-component-type="PF4/Text"
+                              data-ouia-component-type="PF5/Text"
                               data-ouia-safe={true}
                               data-pf-content={true}
                             >

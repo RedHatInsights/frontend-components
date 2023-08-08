@@ -14,25 +14,37 @@ exports[`DateFormat component DateFormat renders onlyDate with date integer 1`] 
 
 exports[`DateFormat component DateFormat renders with date integer 1`] = `
 <div>
-  <span>
-    Just now
-  </span>
+  <div
+    style="display: contents;"
+  >
+    <span>
+      Just now
+    </span>
+  </div>
 </div>
 `;
 
 exports[`DateFormat component DateFormat renders with date object 1`] = `
 <div>
-  <span>
-    Just now
-  </span>
+  <div
+    style="display: contents;"
+  >
+    <span>
+      Just now
+    </span>
+  </div>
 </div>
 `;
 
 exports[`DateFormat component DateFormat renders with date string 1`] = `
 <div>
-  <span>
-    Just now
-  </span>
+  <div
+    style="display: contents;"
+  >
+    <span>
+      Just now
+    </span>
+  </div>
 </div>
 `;
 

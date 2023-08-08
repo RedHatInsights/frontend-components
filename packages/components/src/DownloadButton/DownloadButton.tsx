@@ -1,4 +1,5 @@
-import { Dropdown, DropdownItem, DropdownProps, DropdownToggle, Tooltip } from '@patternfly/react-core';
+import { Dropdown, DropdownItem, DropdownList, DropdownProps, MenuToggle, Tooltip } from '@patternfly/react-core';
+
 import React, { useState } from 'react';
 
 import { ExportIcon } from '@patternfly/react-icons';
@@ -7,7 +8,7 @@ export interface DownloadButtonProps extends Omit<DropdownProps, 'onSelect' | 't
   /**
    * Additional JSX elements rendered as dropdown options
    */
-  extraItems?: React.ReactElement[];
+  extraItems?: React.ReactNode;
   /**
    * Text to appear in the tooltip
    */
@@ -35,8 +36,6 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const onToggle = (isOpen: boolean) => setIsOpen(isOpen);
-
   const internalOnSelect = () => setIsOpen((prev) => !prev);
 
   const conditionallyTooltip = (children: React.ReactElement) => {
@@ -47,27 +46,31 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
     <React.Fragment>
       {conditionallyTooltip(
         <Dropdown
-          isPlain
           {...props}
+          onOpenChange={(isOpen) => setIsOpen(isOpen)}
           onSelect={internalOnSelect}
-          toggle={
-            <DropdownToggle aria-label="Export" toggleIndicator={null} onToggle={onToggle} isDisabled={isDisabled} ouiaId="Export">
-              <ExportIcon size="sm" />
-            </DropdownToggle>
-          }
+          toggle={(toggleRef) => (
+            <MenuToggle aria-label="Export" variant="plain" ref={toggleRef} isExpanded={isOpen} onClick={() => setIsOpen((prev) => !prev)}>
+              <ExportIcon />
+            </MenuToggle>
+          )}
           isOpen={isOpen}
           ouiaId="Export"
-          dropdownItems={[
+        >
+          <DropdownList>
             <DropdownItem
               key="download-csv"
               ouiaId="DownloadCSV"
               component="button"
               onClick={(event) => onSelect(event, 'csv')}
               isDisabled={isDisabled}
+              aria-label="Export to CSV"
             >
               Export to CSV
-            </DropdownItem>,
+            </DropdownItem>
+            ,
             <DropdownItem
+              aria-label="Export to JSON"
               key="download-json"
               ouiaId="DownloadJSON"
               component="button"
@@ -75,10 +78,10 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
               isDisabled={isDisabled}
             >
               Export to JSON
-            </DropdownItem>,
-            ...extraItems,
-          ]}
-        />
+            </DropdownItem>
+            {extraItems}
+          </DropdownList>
+        </Dropdown>
       )}
     </React.Fragment>
   );

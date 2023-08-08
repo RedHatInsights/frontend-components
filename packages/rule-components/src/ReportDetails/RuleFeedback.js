@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '@patternfly/react-core';
+import { Button, Icon } from '@patternfly/react-core';
 import { ThumbsUpIcon } from '@patternfly/react-icons';
 import { OutlinedThumbsUpIcon } from '@patternfly/react-icons';
 import { ThumbsDownIcon } from '@patternfly/react-icons';
@@ -33,7 +33,9 @@ class RuleFeedback extends React.Component {
           aria-label="Rule is helpful"
           onClick={() => this.handleFeedbackChange(feedback.positive)}
         >
-          {userVote === feedback.positive ? <ThumbsUpIcon color="var(--pf-global--success-color--100)" /> : <OutlinedThumbsUpIcon />}
+          <Icon color={userVote === feedback.positive ? 'var(--pf-v5-global--success-color--100)' : undefined}>
+            {userVote === feedback.positive ? <ThumbsUpIcon /> : <OutlinedThumbsUpIcon />}
+          </Icon>
         </Button>
         <Button
           className="ins-c-rule__rule-feedback-dislike-button"
@@ -41,7 +43,9 @@ class RuleFeedback extends React.Component {
           aria-label="Rule is not helpful"
           onClick={() => this.handleFeedbackChange(feedback.negative)}
         >
-          {userVote === feedback.negative ? <ThumbsDownIcon color="var(--pf-global--primary-color--100)" /> : <OutlinedThumbsDownIcon />}
+          <Icon color={userVote === feedback.negative ? 'var(--pf-v5-global--primary-color--100)' : undefined}>
+            {userVote === feedback.negative ? <ThumbsDownIcon /> : <OutlinedThumbsDownIcon />}
+          </Icon>
         </Button>
         {this.state.feedbackSaved && 'Thank you for your feedback!'}
       </div>

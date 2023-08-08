@@ -1,10 +1,10 @@
 .ins-c-severity-line {
-    --ins-c-severity-line-text:         var(--pf-global--Color--200);
-    --inc-c-severity-line-base:         var(--pf-global--palette--black-400);
-    --ins-c-severity-line-low:          var(--pf-global--palette--blue-200);
-    --ins-c-severity-line-moderate:     var(--pf-global--palette--gold-200);
-    --ins-c-severity-line-high:         var(--pf-global--palette--orange-200);
-    --ins-c-severity-line-critical:     var(--pf-global--palette--red-100);
+    --ins-c-severity-line-text:         var(--pf-v5-global--Color--200);
+    --inc-c-severity-line-base:         var(--pf-v5-global--palette--black-400);
+    --ins-c-severity-line-low:          var(--pf-v5-global--palette--blue-200);
+    --ins-c-severity-line-moderate:     var(--pf-v5-global--palette--gold-200);
+    --ins-c-severity-line-high:         var(--pf-v5-global--palette--orange-200);
+    --ins-c-severity-line-critical:     var(--pf-v5-global--palette--red-100);
 
     display: inline-flex;
 }
@@ -14,7 +14,7 @@
         width: 115px;
         span {
             color: var(--inc-c-severity-line-text);
-            font-size: var(--pf-global--FontSize--sm);
+            font-size: var(--pf-v5-global--FontSize--sm);
         }
     }
 }

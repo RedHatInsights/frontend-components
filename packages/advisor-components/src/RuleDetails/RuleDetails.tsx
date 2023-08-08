@@ -2,7 +2,7 @@ import './RuleDetails.scss';
 
 import React from 'react';
 
-import { Flex, FlexItem, Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
+import { Flex, FlexItem, Icon, Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { ExternalLinkAltIcon } from '@patternfly/react-icons';
 
 import InsightsLabel from '@redhat-cloud-services/frontend-components/InsightsLabel';
@@ -10,7 +10,7 @@ import { SeverityLine } from '@redhat-cloud-services/frontend-components-charts/
 
 import RebootRequired from '../RebootRequired/RebootRequired';
 import RuleRating from '../RuleRating/RuleRating';
-import { AdvisorProduct, Rating, RuleContentOcp, RuleContentRhel, TopicRhel } from '../types';
+import { AdvisorProduct, Rating, RuleContentOcp, RuleContentRhel } from '../types';
 import { RuleDescription } from '../RuleDescription';
 
 export type Message = React.ReactNode;
@@ -79,7 +79,9 @@ const RuleDetails: React.FC<RuleDetailsProps> = ({
           <StackItem className="ins-c-rule-details__kbs">
             <a rel="noopener noreferrer" target="_blank" href={knowledgebaseUrl}>
               {messages.knowledgebaseArticle}&nbsp;
-              <ExternalLinkAltIcon size="sm" />
+              <Icon size="sm">
+                <ExternalLinkAltIcon />
+              </Icon>
             </a>
           </StackItem>
         )}
@@ -141,7 +143,7 @@ const RuleDetails: React.FC<RuleDetailsProps> = ({
                 <FlexItem spacer={{ default: 'spacerSm' }}>
                   <strong>{messages.riskOfChange}</strong>
                 </FlexItem>
-                <FlexItem className={`pf-u-display-inline-flex alignCenterOverride pf-u-pb-sm pf-u-pt-sm`}>
+                <FlexItem className={`pf-v5-u-display-inline-flex alignCenterOverride pf-v5-u-pb-sm pf-v5-u-pt-sm`}>
                   <Flex flexWrap={{ default: 'nowrap' }}>
                     <FlexItem>
                       {/* remove pf-m-compact class name once https://github.com/patternfly/patternfly-react/issues/7196 is resolved */}

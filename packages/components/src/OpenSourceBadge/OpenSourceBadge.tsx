@@ -26,7 +26,7 @@ const OpenSourceBadge: React.FunctionComponent<OpenSourceBadgeProps> = ({ reposi
         id={'open-source-badge'}
         headerContent={'About open source'}
       >
-        <Button variant="plain" aria-label="About Open Services" className="pf-u-pl-sm open-source-badge">
+        <Button variant="plain" aria-label="About Open Services" className="pf-v5-u-pl-sm open-source-badge">
           <CodeBranchIcon />
         </Button>
       </Popover>

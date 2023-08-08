@@ -31,7 +31,7 @@ function applyFilters(filters, filtersConf) {
   for (const [key, value] of Object.entries(filters)) {
     const item = filtersConf[key];
     // open filter selector
-    cy.get('div.ins-c-primary-toolbar__filter').find('button[class=pf-c-dropdown__toggle]').click();
+    cy.get('div.ins-c-primary-toolbar__filter').find('button[class=pf-v5-c-dropdown__toggle]').click();
 
     // select appropriate filter
     cy.get(FILTERS_DROPDOWN).contains(item.selectorText).click();
@@ -42,13 +42,13 @@ function applyFilters(filters, filtersConf) {
     } else if (item.type === 'checkbox') {
       cy.get(FILTER_TOGGLE).click();
       value.forEach((it) => {
-        cy.get('ul[class=pf-c-select__menu]').find('label').contains(it).parent().find('input[type=checkbox]').check();
+        cy.get('ul[class=pf-v5-c-select__menu]').find('label').contains(it).parent().find('input[type=checkbox]').check();
       });
       // close dropdown again
       cy.get(FILTER_TOGGLE).click();
     } else if (item.type == 'radio') {
       cy.get(FILTER_TOGGLE).click();
-      cy.get('ul[class=pf-c-select__menu]').find('label').contains(value).parent().find('input[type=radio]').check();
+      cy.get('ul[class=pf-v5-c-select__menu]').find('label').contains(value).parent().find('input[type=radio]').check();
     } else {
       throw `${item.type} not recognized`;
     }

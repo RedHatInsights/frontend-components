@@ -10,8 +10,8 @@ const useStyles = createUseStyles({
   search: {
     maxWidth: 400,
     margin: 'auto',
-    '& .pf-c-search-input__icon': {
-      color: 'var(--pf-global--palette--black-600) !important',
+    '& .pf-v5-c-search-input__icon': {
+      color: 'var(--pf-v5-global--palette--black-600) !important',
     },
   },
 });
@@ -35,7 +35,7 @@ const HeaderTools = () => {
               key={title}
               component={
                 <Link href={href || '#'}>
-                  <a className="pf-c-app-launcher__menu-item" href={href || '#'}>
+                  <a className="pf-v5-c-app-launcher__menu-item" href={href || '#'}>
                     {title}
                   </a>
                 </Link>

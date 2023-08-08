@@ -1,7 +1,7 @@
 const TOOLBAR = 'div[id="ins-primary-data-toolbar"]';
 const CHIP_GROUP = 'div[data-ouia-component-type="PF4/ChipGroup"]';
 const CHIP = '[data-ouia-component-type="PF4/Chip"]';
-const ROW = '[data-ouia-component-type="PF4/TableRow"]:not([class~="pf-c-table__expandable-row"])';
+const ROW = '[data-ouia-component-type="PF4/TableRow"]:not([class~="pf-v5-c-table__expandable-row"])';
 const PAGINATION = 'div[data-ouia-component-type="PF4/Pagination"]';
 const PAGINATION_MENU = 'div[data-ouia-component-type="PF4/PaginationOptionsMenu"]';
 const DROPDOWN = '[data-ouia-component-type="PF4/Dropdown"]';
@@ -14,11 +14,11 @@ const TBODY = 'tbody[role=rowgroup]';
 const TOOLBAR_FILTER = '.ins-c-primary-toolbar__filter';
 const TABLE = 'table';
 const TABLE_HEADER = 'thead';
-const ROWS_TOGGLER = `${TABLE_HEADER} .pf-c-table__toggle`;
+const ROWS_TOGGLER = `${TABLE_HEADER} .pf-v5-c-table__toggle`;
 const TITLE = '[data-ouia-component-type="PF4/Title"]';
 const ouiaId = (id) => `[data-ouia-component-id="${id}"]`;
-const FILTERS_DROPDOWN = 'ul[class=pf-c-dropdown__menu]';
-const FILTER_TOGGLE = 'button[class=pf-c-select__toggle]';
+const FILTERS_DROPDOWN = 'ul[class=pf-v5-c-dropdown__menu]';
+const FILTER_TOGGLE = 'button[class=pf-v5-c-select__toggle]';
 
 export {
   ouiaId,

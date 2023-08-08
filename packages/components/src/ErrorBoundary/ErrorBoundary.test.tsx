@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ErrorBoundaryPage from './ErrorBoundary';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 describe('ErrorBoundary component', () => {
@@ -56,7 +56,9 @@ describe('ErrorBoundary component', () => {
       </ErrorBoundaryPage>
     );
 
-    userEvent.click(screen.getByText(/show details/i));
+    act(() => {
+      userEvent.click(screen.getByText(/show details/i));
+    });
     expect(screen.getByText(/but a welcome one/i)).toBeVisible();
   });
 

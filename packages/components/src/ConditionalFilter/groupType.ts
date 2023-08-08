@@ -1,11 +1,9 @@
-export type GroupType = 'treeView' | 'checkbox' | 'radio' | 'button' | 'plain';
+enum GroupType {
+  treeView = 'treeView',
+  checkbox = 'checkbox',
+  radio = 'radio',
+  button = 'button',
+  plain = 'plain',
+}
 
-const groupType = {
-  treeView: 'treeView',
-  checkbox: 'checkbox',
-  radio: 'radio',
-  button: 'button',
-  plain: 'plain',
-};
-
-export default groupType;
+export default GroupType;

@@ -13,7 +13,7 @@ const ExpandAll = () => {
         }}
         filterConfig={{ placeholder: 'Filter by string', onChange: ({ target: { value } }) => setFilterValue(value), value: filterValue }}
       />
-      <pre className="pf-u-ml-md">{JSON.stringify({ filterValue, isAllExpanded }, null, 2)}</pre>
+      <pre className="pf-v5-u-ml-md">{JSON.stringify({ filterValue, isAllExpanded }, null, 2)}</pre>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import { Bullseye, EmptyState, EmptyStateBody, EmptyStateVariant, ModalProps, Pagination, Title } from '@patternfly/react-core';
-import { ICell, IRow, Table, TableBody, TableHeader, TableProps } from '@patternfly/react-table';
+import { Bullseye, EmptyState, EmptyStateBody, EmptyStateHeader, EmptyStateVariant, ModalProps, Pagination } from '@patternfly/react-core';
+// FIXME: Deal with table after
+import { Table, TableBody, TableHeader, TableProps } from '@patternfly/react-table/deprecated';
 import { EmptyTable } from '../EmptyTable';
 import { TableToolbar } from '../TableToolbar';
 import { PrimaryToolbar, PrimaryToolbarProps } from '../PrimaryToolbar';
@@ -8,6 +9,7 @@ import { Skeleton } from '../Skeleton';
 import { SkeletonTable } from '../SkeletonTable';
 import { BulkSelectProps } from '../BulkSelect';
 import { ConditionalFilterItem } from '../ConditionalFilter';
+import { ICell, IRow } from '@patternfly/react-table';
 
 export type TableWithFilterPagination = {
   count: number;
@@ -68,7 +70,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
             pagination && {
               bulkSelect: {
                 count: selected?.length,
-                onSelect: (isSelected) => {
+                onSelect: (isSelected: boolean) => {
                   if (isSelected) {
                     onSelect(unique?.([...rows, ...selected]));
                   } else {
@@ -131,9 +133,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
                           <EmptyTable>
                             <Bullseye>
                               <EmptyState variant={EmptyStateVariant.full}>
-                                <Title headingLevel="h5" size="lg">
-                                  No {entityName} found
-                                </Title>
+                                <EmptyStateHeader titleText={`No${entityName}found`} headingLevel="h5" />
                                 <EmptyStateBody>
                                   This filter criteria matches no {entityName}. <br /> Try changing your filter settings.
                                 </EmptyStateBody>
@@ -159,7 +159,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
           <TableBody />
         </Table>
       ) : (
-        <SkeletonTable columns={columns} rowSize={pagination?.perPage || 10} />
+        <SkeletonTable numberOfColumns={columns.length} rows={pagination?.perPage || 10} />
       )}
       {onUpdateData && pagination && loaded && (
         <TableToolbar isFooter className="ins-c-inventory__table--toolbar">

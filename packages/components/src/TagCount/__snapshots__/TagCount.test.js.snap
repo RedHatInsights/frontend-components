@@ -7,11 +7,11 @@ exports[`TagCount component should render a disabled tag count with count 0 1`] 
   onClick={[Function]}
   variant="plain"
 >
-  <TagIcon
-    color="currentColor"
-    noVerticalAlign={false}
+  <Icon
     size="md"
-  />
+  >
+    <TagIcon />
+  </Icon>
   <span
     className="ins-c-tag__text"
   />
@@ -25,11 +25,11 @@ exports[`TagCount component should render a tag count of 11 1`] = `
   onClick={[Function]}
   variant="plain"
 >
-  <TagIcon
-    color="currentColor"
-    noVerticalAlign={false}
+  <Icon
     size="md"
-  />
+  >
+    <TagIcon />
+  </Icon>
   <span
     className="ins-c-tag__text"
   >
@@ -45,11 +45,11 @@ exports[`TagCount component should render a tag count with no value 1`] = `
   onClick={[Function]}
   variant="plain"
 >
-  <TagIcon
-    color="currentColor"
-    noVerticalAlign={false}
+  <Icon
     size="md"
-  />
+  >
+    <TagIcon />
+  </Icon>
   <span
     className="ins-c-tag__text"
   />

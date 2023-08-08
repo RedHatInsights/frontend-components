@@ -1,6 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { useEffect } from 'react';
+// FIXME: REMOVE this component
+// @ts-ignore
 import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import Breadcrumbs, { BreadcrumbItem, BreadcrumbsProps } from './Breadcrumbs';
 

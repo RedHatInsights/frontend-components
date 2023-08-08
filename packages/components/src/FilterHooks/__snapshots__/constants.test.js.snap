@@ -1,31 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`constructGroups should build filter with empty badge 1`] = `
-Array [
+[
   <div
-    className="ins-c-tagfilter__option-value"
+    style={
+      {
+        "display": "contents",
+      }
+    }
   >
-    someKey=someValue
+    <div
+      className="ins-c-tagfilter__option-value"
+    >
+      someKey=someValue
+    </div>
   </div>,
-  <span
-    className="pf-c-badge pf-m-read"
+  <div
+    style={
+      {
+        "display": "contents",
+      }
+    }
   >
-    0
-  </span>,
+    <span
+      className="pf-v5-c-badge pf-m-read"
+    >
+      0
+    </span>
+  </div>,
 ]
 `;
 
 exports[`constructGroups should render correctly 1`] = `
-Array [
+[
   <div
-    className="ins-c-tagfilter__option-value"
+    style={
+      {
+        "display": "contents",
+      }
+    }
   >
-    someKey=someValue
+    <div
+      className="ins-c-tagfilter__option-value"
+    >
+      someKey=someValue
+    </div>
   </div>,
-  <span
-    className="pf-c-badge pf-m-unread"
+  <div
+    style={
+      {
+        "display": "contents",
+      }
+    }
   >
-    1
-  </span>,
+    <span
+      className="pf-v5-c-badge pf-m-unread"
+    >
+      1
+    </span>
+  </div>,
 ]
 `;
