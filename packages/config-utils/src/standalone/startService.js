@@ -8,17 +8,17 @@ async function startService(services, name, subService) {
   execSync(`docker container rm --force ${name}`);
 
   // Wait for dependencies to start
-  for (const dep of (subService.dependsOn || [])) {
+  for (const dep of subService.dependsOn || []) {
     const [project, subService] = dep.split('_');
     const { startMessage } = services[project].services[subService];
 
     console.log('Waiting for', dep);
     while (!execSync(`docker logs ${dep} 2>&1`).toString().includes(startMessage)) {
       console.log('Waiting for', dep);
-      await new Promise(res => setTimeout(res, 1000));
+      await new Promise((res) => setTimeout(res, 1000));
     }
     // RBAC is sad without this extra delay
-    await new Promise(res => setTimeout(res, 500));
+    await new Promise((res) => setTimeout(res, 500));
   }
 
   // Start container
@@ -33,5 +33,5 @@ function stopService(name) {
 
 module.exports = {
   startService,
-  stopService
+  stopService,
 };

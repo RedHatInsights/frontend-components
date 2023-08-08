@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+      "rootDir": "./src",
+      "outDir": "./",
+      "module": "commonjs",
+      "declarationDir": "./",
+      "allowJs": true
+  },
+  "include": [
+      "./src/**/*"
+  ],
+  "exclude": [
+    "./src/**/*.test.js",
+    "./src/**/*.spec.js",
+    "./src/**/*.test.ts",
+    "./src/**/*.test.tsx"
+  ]
+}

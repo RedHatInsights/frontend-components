@@ -16,6 +16,9 @@
         "url": "https://github.com/RedHatInsights/frontend-components/issues"
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components#readme",
+    "scripts": {
+        "build": "tsc"
+    },
     "peerDependencies": {
         "webpack": "^5.0.0"
     },
