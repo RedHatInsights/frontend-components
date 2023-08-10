@@ -416,3 +416,4 @@ const proxy = ({
 };
 
 export default proxy;
+module.exports = proxy;

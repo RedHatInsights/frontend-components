@@ -36,3 +36,4 @@ function federate(argv: Record<string, any>, cwd: string) {
 }
 
 export default federate;
+module.exports = federate;

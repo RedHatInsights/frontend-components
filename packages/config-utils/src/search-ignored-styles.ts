@@ -1,5 +1,5 @@
 import path from 'path';
-import glob from 'glob';
+import * as glob from 'glob';
 import chalk from 'chalk';
 
 function logWarning(message: string) {
@@ -34,4 +34,5 @@ const searchIgnoredStyles = (root: string, ...paths: string[]) => {
   return result;
 };
 
+export default searchIgnoredStyles;
 module.exports = searchIgnoredStyles;

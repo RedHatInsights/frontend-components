@@ -147,3 +147,4 @@ const federatedModules = ({
 };
 
 export default federatedModules;
+module.exports = federatedModules;

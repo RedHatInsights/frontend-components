@@ -1,9 +1,3 @@
-/*
-    port,
-    publicPath,
-    appEntry,
-    rootFolder,
-    https*/
 import config from './config';
 
 const configBuilder = (c) => config({ rootFolder: '', ...c });

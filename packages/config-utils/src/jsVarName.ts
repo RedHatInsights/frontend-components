@@ -11,3 +11,4 @@ function jsVarName(s: string) {
 }
 
 export default jsVarName;
+module.exports = jsVarName;

@@ -17,3 +17,4 @@ function serveLocalFile(url: string, path: string, target = 'https://ci.cloud.re
 }
 
 export default serveLocalFile;
+module.exports = serveLocalFile;

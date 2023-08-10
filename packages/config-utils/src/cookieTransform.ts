@@ -73,3 +73,4 @@ function cookieTransform(
 }
 
 export default cookieTransform;
+module.exports = cookieTransform;

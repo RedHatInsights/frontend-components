@@ -1,7 +1,7 @@
 /* eslint-disable no-inner-declarations */
 import fs from 'fs';
 import path from 'path';
-import glob from 'glob';
+import * as glob from 'glob';
 import { Application } from 'express';
 
 const keycloakPort = process.env['KEYCLOAK_PORT'] ? process.env['KEYCLOAK_PORT'] : 4001;
