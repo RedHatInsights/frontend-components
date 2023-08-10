@@ -37,9 +37,16 @@ const calculateChecked = (rows: IRow[] = [], selected: IRow[]) =>
 
 const unique = (arr: IRow[]) => arr.filter(({ id }, index, arr) => arr.findIndex(({ id: currId }) => currId === id) === index);
 
-class TagModal extends Component<TagModalProps> {
+class TagModal extends Component<
+  TagModalProps,
+  {
+    selectedTab: number;
+    activeTabKey?: string | number | undefined;
+  }
+> {
   state = {
     selectedTab: 0,
+    // @ts-ignore
     activeTabKey: undefined,
   };
 

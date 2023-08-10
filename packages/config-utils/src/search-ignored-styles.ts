@@ -34,4 +34,4 @@ const searchIgnoredStyles = (root: string, ...paths: string[]) => {
   return result;
 };
 
-export default searchIgnoredStyles;
+module.exports = searchIgnoredStyles;

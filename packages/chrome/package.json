@@ -12,7 +12,7 @@
         "build": "npm run build:js && npm run build:esm && npm run build:packages",
         "build:packages": "node ../../scripts/build-packages.js --forceTypes",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:packages\"",
-        "build:esm": "tsc --module es2015 --target es5",
+        "build:esm": "MODULES_ROOT=../../ tsc --module es2015 --target es5",
         "build:js": "tsc -p tsconfig.cjs.json"
     },
     "repository": {
@@ -31,7 +31,8 @@
         "react-router-dom": "^6.0.0"
     },
     "devDependencies": {
-        "@types/react": "^18.0.0"
+        "@types/react": "^18.0.0",
+        "glob": "10.3.3"
     },
     "sideEffects": false
 }

@@ -33,6 +33,7 @@
         "@types/http-server": "^0.12.1",
         "@types/js-yaml": "^4.0.5",
         "@types/jws": "^3.2.5",
-        "@types/node-fetch": "^2.6.4"
+        "@types/node-fetch": "^2.6.4",
+        "glob": "10.3.3"
     }
 }

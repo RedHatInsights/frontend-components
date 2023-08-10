@@ -1,0 +1,13 @@
+{
+  "name": "@redhat-cloud-services/tsc-transform-imports",
+  "version": "0.0.1",
+  "private": "true",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "dependencies": {
+    "glob": "10.3.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

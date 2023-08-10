@@ -4,7 +4,9 @@
       "rootDir": "./src",
       "outDir": "./esm",
       "declarationDir": "./",
-      "allowJs": true
+      "module": "es2015",
+      "target": "ES5",
+      "allowJs": true,
   },
   "include": [
       "./src/**/*"
