@@ -68,7 +68,6 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
             >
               Export to CSV
             </DropdownItem>
-            ,
             <DropdownItem
               aria-label="Export to JSON"
               key="download-json"
