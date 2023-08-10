@@ -5,6 +5,7 @@ export * from './proxy';
 export * from './search-ignored-styles';
 export * from './serve-federated';
 export * from './generate-pf-shared-assets-list';
+export * from './babel-transform-imports';
 
 export { default as cookieTransform } from './cookieTransform';
 export { default as federatedModules } from './federated-modules';
@@ -12,3 +13,4 @@ export { default as jsVarName } from './jsVarName';
 export { default as proxy } from './proxy';
 export { default as serveFederated } from './serve-federated';
 export { default as generatePFSharedAssetsList } from './generate-pf-shared-assets-list';
+export { default as babelTransformImports } from './babel-transform-imports';
