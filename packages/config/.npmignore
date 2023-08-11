@@ -1,9 +1,10 @@
 !/index.js
 !/chunk-mapper.js
 !/federated-modules.js
-!src/
+!lib/
 .babelrc
 babel.config.js
 doc/
 config/
 .eslintrc
+tsconfig.json
