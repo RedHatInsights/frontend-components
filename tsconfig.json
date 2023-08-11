@@ -66,16 +66,19 @@
   
       "skipLibCheck": true,                     /* Skip type checking of declaration files. */
       "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */,
-      "plugins": [{
-        "transform": "@redhat-cloud-services/tsc-transform-imports",
-        "type": "raw"
-      }]
     },
     "exclude": [
       "packages/**/*.test.ts",
       "packages/**/*.test.tsx",
       "packages/**/*.test.js",
       "packages/**/*.test.jsx",
+      "packages/**/babel.config.js",
+      "packages/**/cypress.config.js",
+      "packages/**/cypress.config.ts",
+      "packages/**/cypress/**/.js",
+      "packages/**/cypress/**/.jsx",
+      "packages/**/cypress/**/.ts",
+      "packages/**/cypress/**/.tsx",
     ]
   }
   

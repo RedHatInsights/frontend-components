@@ -15,7 +15,7 @@
     "scripts": {
         "build": "npm run build:js && npm run build:esm && npm run build:packages",
         "build:packages": "node ../../scripts/build-packages.js --forceTypes",
-        "build:esm": "MODULES_ROOT=../../ tsc --module es2015 --target es5",
+        "build:esm": "MODULES_ROOT=../../ tsc --module es2015 --target es5 -p tsconfig.esm.json",
         "build:js": "tsc -p tsconfig.cjs.json"
     },
     "repository": {

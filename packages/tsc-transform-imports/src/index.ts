@@ -60,19 +60,23 @@ function getModuleExplicitLocation(roots: string[], relativePath: string) {
 }
 
 // Prefilled with modules which name bindings do not match the import specifier
-const COMPONENTS_CACHE: {
+let COMPONENTS_CACHE: {
   [nameBinding: string]: string;
-} = {
-  getResizeObserver: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/resizeObserver'),
-  useOUIAProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
-  OUIAProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
-  getDefaultOUIAId: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
-  useOUIAId: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
-  handleArrows: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/KeyboardHandler'),
-  setTabIndex: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/KeyboardHandler'),
-  IconComponentProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Icon'),
-  TreeViewDataItem: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/TreeView'),
-};
+} = {};
+
+if (CORE_DIRECTORIES.length > 0) {
+  COMPONENTS_CACHE = {
+    getResizeObserver: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/resizeObserver'),
+    useOUIAProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
+    OUIAProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
+    getDefaultOUIAId: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
+    useOUIAId: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
+    handleArrows: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/KeyboardHandler'),
+    setTabIndex: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/KeyboardHandler'),
+    IconComponentProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Icon'),
+    TreeViewDataItem: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/TreeView'),
+  };
+}
 
 // Icons names that do not match the filename pattern
 const ICONS_NAME_FIX: {
@@ -182,6 +186,9 @@ function createDynamicReactCoreImports(nodeFactory: ts.NodeFactory, node: ts.Imp
 const DYNAMIC_OUTPUTS = [ts.ModuleKind.ES2015, ts.ModuleKind.ES2020, ts.ModuleKind.ES2022, ts.ModuleKind.ESNext];
 
 const transformer: ts.TransformerFactory<ts.Node> = (context) => (rootNode) => {
+  if (CORE_DIRECTORIES.length === 0 || ICONS_DIRECTORIES.length === 0) {
+    return rootNode;
+  }
   const opts = context.getCompilerOptions();
   // identify output eligible for dynamic imports
   const isDynamic = opts.module && DYNAMIC_OUTPUTS.includes(opts.module);

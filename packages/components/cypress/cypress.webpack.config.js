@@ -18,6 +18,7 @@ const myGenerator = asGenerator((item, ...rest) => {
 });
 
 module.exports = {
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
