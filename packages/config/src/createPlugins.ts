@@ -1,3 +1,6 @@
+import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { Compiler, WebpackPluginInstance } from 'webpack';
+
 const { SourceMapDevToolPlugin } = require('webpack');
 const { ProvidePlugin, DefinePlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -7,9 +10,34 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const { glob } = require('glob');
 const path = require('path');
 
-module.exports = ({ rootFolder, insights, generateSourceMaps, plugins, definePlugin = {}, _unstableHotReload = false, useFileHash = true } = {}) => {
+export type WebpackPluginDefinition = undefined | null | false | '' | 0 | ((this: Compiler, compiler: Compiler) => void) | WebpackPluginInstance;
+
+export type CreatePluginsOptions = {
+  rootFolder: string;
+  appname?: string;
+  generateSourceMaps?: boolean;
+  plugins?: WebpackPluginDefinition[];
+  definePlugin?: Record<string, any>;
+  hotReload?: boolean;
+  useFileHash?: boolean;
+};
+
+export const createPlugins = ({
+  rootFolder,
+  appname,
+  generateSourceMaps,
+  plugins,
+  definePlugin = {},
+  hotReload = false,
+  useFileHash = true,
+  ...rest
+}: CreatePluginsOptions) => {
+  if (!rootFolder) {
+    fecLogger(LogType.error, 'rootFolder is required attribute for the createPlugins function!');
+    throw new Error('No rootFolder defined!');
+  }
   const hasTsConfig = glob.sync(path.resolve(rootFolder, './{tsconfig.json,!(node_modules)/**/tsconfig.json}')).length > 0;
-  const fileHash = !_unstableHotReload && useFileHash;
+  const fileHash = !hotReload && useFileHash;
   return [
     ...(generateSourceMaps
       ? [
@@ -31,8 +59,8 @@ module.exports = ({ rootFolder, insights, generateSourceMaps, plugins, definePlu
     }),
     new DefinePlugin({
       // we have to wrap the appname string in another string because of how define plugin explodes strings
-      CRC_APP_NAME: JSON.stringify(insights?.appname),
-      ...(definePlugin || {}),
+      CRC_APP_NAME: JSON.stringify(appname),
+      ...definePlugin,
     }),
     new ProvidePlugin({
       process: 'process/browser.js',
@@ -40,6 +68,9 @@ module.exports = ({ rootFolder, insights, generateSourceMaps, plugins, definePlu
     }),
     ...(hasTsConfig ? [new ForkTsCheckerWebpackPlugin()] : []),
     ...(plugins || []),
-    ...(_unstableHotReload ? [new ReactRefreshWebpackPlugin()] : []),
+    ...(hotReload ? [new ReactRefreshWebpackPlugin()] : []),
   ];
 };
+
+export default createPlugins;
+module.exports = createPlugins;

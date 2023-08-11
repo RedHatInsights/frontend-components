@@ -3,9 +3,9 @@ const { execSync } = require('child_process');
 const static = require('@redhat-cloud-services/frontend-components-config-utilities/serve-federated');
 const yargs = require('yargs');
 
-const devScript = require('../src/scripts/dev-script');
-const buildScript = require('../src/scripts/build-script');
-const { logError, validateFECConfig } = require('../src/scripts/common');
+const devScript = require('./dev-script');
+const buildScript = require('./build-script');
+const { logError, validateFECConfig } = require('./common');
 
 function patchHosts() {
     const command = `

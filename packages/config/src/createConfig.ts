@@ -1,11 +1,54 @@
-/* eslint-disable camelcase */
 const path = require('path');
 const fs = require('fs');
-const proxy = require('@redhat-cloud-services/frontend-components-config-utilities/proxy');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
 
-module.exports = ({
+import { ProxyOptions, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
+type Configuration = import('webpack').Configuration;
+type CacheOptions = import('webpack').FileCacheOptions | import('webpack').MemoryCacheOptions;
+type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
+type ClientConfiguration = import('webpack-dev-server').ClientConfiguration;
+type ResolveOptions = import('webpack').ResolveOptions;
+
+export type FrontendEnv = 'stage-stable' | 'prod-stable' | 'ci-stable' | 'qa-stable' | 'stage-beta' | 'prod-beta' | 'ci-beta' | 'qa-beta';
+export type CreateConfigOptions = {
+  port?: number;
+  publicPath: string;
+  appEntry: string;
+  rootFolder: string;
+  https?: boolean;
+  mode?: Configuration['mode'];
+  appName: string;
+  useFileHash?: boolean;
+  env: FrontendEnv;
+  sassPrefix?: string;
+  useProxy?: boolean;
+  proxyURL?: string;
+  localChrome?: string;
+  keycloakUri?: string;
+  customProxy?: ProxyConfigArrayItem[];
+  routes?: { [path: string]: ProxyConfigArrayItem };
+  routesPath?: string;
+  isProd?: boolean;
+  standalone?: boolean;
+  reposDir?: string;
+  appUrl?: (string | RegExp)[];
+  proxyVerbose?: boolean;
+  target?: string;
+  registry?: ProxyOptions['registry'];
+  client?: ClientConfiguration;
+  bundlePfModules?: boolean;
+  bounceProd?: ProxyOptions['bounceProd'];
+  useAgent?: boolean;
+  useDevBuild?: boolean;
+  useCache?: boolean;
+  cacheConfig?: Partial<CacheOptions>;
+  hotReload?: boolean;
+  nodeModulesDirectories?: string[];
+  resolve?: ResolveOptions;
+};
+
+export const createConfig = ({
   port,
   publicPath,
   appEntry,
@@ -14,10 +57,8 @@ module.exports = ({
   mode,
   appName,
   useFileHash = true,
-  betaEnv,
   env,
   sassPrefix,
-  skipChrome2 = false,
   useProxy,
   proxyURL,
   localChrome,
@@ -30,7 +71,6 @@ module.exports = ({
   reposDir,
   appUrl = [],
   proxyVerbose,
-  useCloud,
   target,
   registry,
   client = {
@@ -42,20 +82,16 @@ module.exports = ({
   useDevBuild = true,
   useCache = false,
   cacheConfig = {},
-  _unstableHotReload = false,
+  hotReload = false,
   resolve = {},
   // additional node_modules dirs for searchIgnoredStyles, usefull in monorepo scenario
   nodeModulesDirectories = [],
-} = {}) => {
-  const filenameMask = `js/[name].${!_unstableHotReload && useFileHash ? `[fullhash].` : ''}js`;
-  if (betaEnv) {
-    env = `${betaEnv}-beta`;
-    console.warn('betaEnv is deprecated in favor of env');
-  }
+}: CreateConfigOptions): Configuration => {
+  const filenameMask = `js/[name].${!hotReload && useFileHash ? `[fullhash].` : ''}js`;
 
   const outputPath = `${rootFolder || ''}/dist`;
 
-  const copyTemplate = (chromePath) => {
+  const copyTemplate = (chromePath: string) => {
     const template = fs.readFileSync(`${chromePath}/index.html`, { encoding: 'utf-8' });
     if (!fs.existsSync(outputPath)) {
       fs.mkdirSync(outputPath);
@@ -80,7 +116,7 @@ module.exports = ({
           },
         }
       : {}),
-    entry: _unstableHotReload
+    entry: hotReload
       ? {
           main: appEntry,
           vendors: ['react', 'react-dom', 'react-refresh/runtime'],
@@ -94,7 +130,7 @@ module.exports = ({
       publicPath,
       chunkFilename: filenameMask,
     },
-    ...(_unstableHotReload
+    ...(hotReload
       ? {
           optimization: {
             // for HMR all runtime chunks must be in a single file
@@ -110,7 +146,6 @@ module.exports = ({
           loader: path.resolve(__dirname, './chrome-render-loader.js'),
           options: {
             appName,
-            skipChrome2,
           },
         },
         {
@@ -143,7 +178,13 @@ module.exports = ({
                */
               loader: 'sass-loader',
               options: {
-                additionalData: function (content, loaderContext) {
+                additionalData: function (
+                  content: string,
+                  loaderContext: {
+                    resourcePath: string;
+                    rootContext: string;
+                  }
+                ) {
                   const { resourcePath, rootContext } = loaderContext;
                   const relativePath = path.relative(rootContext, resourcePath);
                   /**
@@ -203,8 +244,8 @@ module.exports = ({
       port: devServerPort,
       https: https || Boolean(useProxy),
       host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
-      hot: _unstableHotReload, // Use livereload instead of HMR which is spotty with federated modules
-      liveReload: !_unstableHotReload,
+      hot: hotReload, // Use livereload instead of HMR which is spotty with federated modules
+      liveReload: !hotReload,
       allowedHosts: 'all',
       // https://github.com/bripkens/connect-history-api-fallback
       historyApiFallback: {
@@ -225,7 +266,6 @@ module.exports = ({
       },
       client,
       ...proxy({
-        useCloud,
         env,
         localChrome,
         keycloakUri,
@@ -254,3 +294,6 @@ module.exports = ({
     },
   };
 };
+
+export default createConfig;
+module.exports = createConfig;

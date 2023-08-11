@@ -5,7 +5,6 @@ import fetch from 'node-fetch';
 import express from 'express';
 import path from 'path';
 import type { Configuration } from 'webpack-dev-server';
-import type HttpProxy from 'http-proxy';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import cookieTransform from './cookieTransform';
 import router from './standalone/helpers/router';
@@ -93,7 +92,7 @@ const buildLocalAppRoutes = (localApps: string | string[], defaultLocalAppHost: 
 
 export type ProxyOptions = {
   env?: 'prod-stable' | 'prod-beta' | 'stage-stable' | 'stage-beta' | string;
-  customProxy?: HttpProxy.ServerOptions[];
+  customProxy?: ProxyConfigItem[];
   routes?: { routes?: { [route: string]: ProxyConfigItem } } & { [route: string]: ProxyConfigItem };
   routesPath?: string;
   useProxy?: boolean;

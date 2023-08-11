@@ -5,11 +5,12 @@
       "outDir": "./lib",
       "module": "commonjs",
       "target": "ES5",
-      "declarationDir": "./",
+      "declarationDir": "./lib",
       "allowJs": true,
       "resolveJsonModule": true,
       "isolatedModules": true,
-      "plugins": []
+      "plugins": [],
+      "lib": ["ES2015"]
   },
   "include": [
       "./src/**/*"
