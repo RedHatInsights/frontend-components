@@ -1,5 +1,5 @@
-const config = require('../index.js');
-const commonPlugins = require('./webpack.plugins.js');
+const config = require('../lib/index.js');
+const commonPlugins = require('../lib/webpack.plugins.js');
 const fecConfig = require(process.env.FEC_CONFIG_PATH);
 
 const isBeta = process.env.BETA === 'true';

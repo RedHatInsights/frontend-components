@@ -2,7 +2,8 @@
     "name": "@redhat-cloud-services/frontend-components-config",
     "version": "6.0.0-beta.1",
     "description": "Config plugins and settings for RedHat Cloud Services project.",
-    "main": "index.js",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
     "bin": {
         "fec": "bin/fec.js"
     },
@@ -19,6 +20,9 @@
         "url": "https://github.com/RedHatInsights/frontend-components/issues"
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/config#readme",
+    "scripts": {
+        "build": "tsc"
+    },
     "dependencies": {
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.8",
         "@redhat-cloud-services/frontend-components-config-utilities": "^3.0.0-beta.0",
