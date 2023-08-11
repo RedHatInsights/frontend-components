@@ -1,4 +1,4 @@
-const config = require('@redhat-cloud-services/frontend-components-config');
+const config = require('../index.js');
 const commonPlugins = require('./webpack.plugins.js');
 const fecConfig = require(process.env.FEC_CONFIG_PATH);
 

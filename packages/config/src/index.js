@@ -1,5 +1,5 @@
-const config = require('./src/config');
-const plugins = require('./src/plugins');
+const config = require('./config');
+const plugins = require('./plugins');
 const { sync } = require('glob');
 
 const gitRevisionPlugin = new (require('git-revision-webpack-plugin'))({

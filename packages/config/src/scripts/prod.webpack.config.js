@@ -1,4 +1,4 @@
-const config = require('@redhat-cloud-services/frontend-components-config');
+const config = require('..');
 const commonPlugins = require('./webpack.plugins');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const fecConfig = require(process.env.FEC_CONFIG_PATH);
