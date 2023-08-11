@@ -12,7 +12,7 @@
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js --forceTypes",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\" \"npm run build:packages\"",
-        "build:esm": "tsc --module es2015 --target es5",
+        "build:esm": "MODULES_ROOT=../../ tsc --module es2015 --target es5 -p tsconfig.esm.json",
         "build:js": "tsc -p tsconfig.cjs.json",
         "transform:css": "node ../../scripts/transform-scss.js"
     },
@@ -46,7 +46,8 @@
         "react-content-loader": "^6.2.0"
     },
     "devDependencies": {
-        "@types/react": "^18.0.0"
+        "@types/react": "^18.0.0",
+        "glob": "10.3.3"
     },
     "sideEffects": false
 }

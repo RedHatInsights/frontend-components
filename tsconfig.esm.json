@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "plugins": [{
+      "transform": "@redhat-cloud-services/tsc-transform-imports",
+      "type": "raw"
+    }]
+  }
+}
+  

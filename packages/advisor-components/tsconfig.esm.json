@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.esm.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./esm",
+    "declarationDir": "./",
+    "allowJs": true,
+    "resolveJsonModule": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./src/**/*spec.ct*"]
+}

@@ -5,7 +5,7 @@ export type UseChromeSelector<T = any> = (chromeState: ChromeAPI) => T;
 
 const useChrome = <T = ChromeAPI>(selector?: UseChromeSelector<T>): ChromeAPI | T => {
   const state = useScalprum<{ initialized: boolean; api: { chrome: ChromeAPI } }>();
-  let chrome: ChromeAPI = state.api?.chrome || {};
+  let chrome: ChromeAPI = state.api?.chrome || ({} as ChromeAPI);
   chrome = {
     ...chrome,
     initialized: state.initialized,

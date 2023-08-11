@@ -13,7 +13,7 @@
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js --forceTypes",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\"",
-        "build:esm": "tsc --module es2015 --target es5",
+        "build:esm": "MODULES_ROOT=../../ tsc --module es2015 --target es5 -p tsconfig.esm.json",
         "build:js": "tsc -p tsconfig.cjs.json",
         "transform:css": "node ../../scripts/transform-scss.js"
     },
@@ -42,6 +42,7 @@
         "@redhat-cloud-services/frontend-components": "*"
     },
     "devDependencies": {
-        "typescript": "^4.8.4"
+        "glob": "10.3.3",
+        "typescript": "4.7.4"
     }
 }

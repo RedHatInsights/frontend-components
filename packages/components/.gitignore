@@ -21,6 +21,7 @@
 !pre-publish.js
 !tsconfig.*
 !cypress.config.js
+!cypress.config.ts
 !cypress
 !cypress/*
 

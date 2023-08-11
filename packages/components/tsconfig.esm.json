@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.esm.json",
+  "compilerOptions": {
+      "rootDir": "./src",
+      "outDir": "./esm",
+      "declarationDir": "./",
+      "module": "es2015",
+      "target": "ES5",
+      "allowJs": true,
+  },
+  "include": [
+      "./src/**/*"
+  ],
+  "exclude": [
+    "./src/**/*.test.js",
+    "./src/**/*.spec.js",
+    "./src/**/*.test.ts",
+    "./src/**/*.test.tsx"
+  ]
+}

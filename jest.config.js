@@ -1,25 +1,30 @@
 // Sync object
-/** @type {import('@jest/types').Config.InitialOptions} */
-
+/** @type {import('jest').Config} */
 const config = {
   verbose: true,
   coverageDirectory: './coverage/',
   collectCoverage: true,
+  projects: [
+    '<rootDir>',
+    {
+      testMatch: ['<rootDir>/packages/*'],
+      transform: {
+        '^.+\\.jsx?$': 'babel-jest',
+        '^.+\\.tsx?$': [
+          'ts-jest',
+          {
+            tsconfig: './tsconfig.test.json',
+          },
+        ],
+      },
+      collectCoverageFrom: ['<rootDir>/packages/**/src/**/*.js', '<rootDir>/packages/**/src/**/*.ts', '<rootDir>/packages/**/src/**/*.tsx'],
+    },
+  ],
   transformIgnorePatterns: [
     'node_modules/(?!@data-driven-forms|lodash-es|@openshift|uuid)',
 
     // Uncomment the below line if you face any errors with jest
     // '/node_modules/(?!@redhat-cloud-services)',
-  ],
-  collectCoverageFrom: [
-    '<rootDir>/packages/**/src/**/*.js',
-    '<rootDir>/packages/**/src/**/*.ts',
-    '<rootDir>/packages/**/src/**/*.tsx',
-    '!<rootDir>/packages/**/stories/*',
-    '!<rootDir>/packages/**/index.js',
-    '!<rootDir>/packages/**/index.ts',
-    '!<rootDir>/packages/**/*{c|C}ontext*.js',
-    '!<rootDir>/packages/components/src/Components/Table/*',
   ],
   setupFilesAfterEnv: ['<rootDir>/config/setupTests.js', 'jest-canvas-mock'],
   testEnvironment: 'jsdom',
@@ -42,7 +47,7 @@ const config = {
     '^.+\\.tsx?$': [
       'ts-jest',
       {
-        tsconfig: './tsconfig.json',
+        tsconfig: './tsconfig.test.json',
       },
     ],
   },
