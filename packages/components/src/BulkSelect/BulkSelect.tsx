@@ -65,6 +65,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
       {items && items.length > 0 ? (
         <Dropdown
           onSelect={() => onToggle(false)}
+          onOpenChange={(isOpen: boolean) => setIsOpen(isOpen)}
           {...props}
           className={classnames(className, 'ins-c-bulk-select')}
           ouiaId={ouiaFinalId}

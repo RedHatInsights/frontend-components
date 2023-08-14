@@ -49,7 +49,7 @@ const TextFilter: React.FunctionComponent<TextFilterProps> = ({ customIcon = <Se
       <TextInput
         {...props}
         customIcon={
-          <Icon className="ins-c-search-icon" size="sm">
+          <Icon className="ins-c-search-icon" size="md">
             {customIcon}
           </Icon>
         }
