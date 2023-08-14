@@ -30,7 +30,6 @@ export const createPlugins = ({
   definePlugin = {},
   hotReload = false,
   useFileHash = true,
-  ...rest
 }: CreatePluginsOptions) => {
   if (!rootFolder) {
     fecLogger(LogType.error, 'rootFolder is required attribute for the createPlugins function!');

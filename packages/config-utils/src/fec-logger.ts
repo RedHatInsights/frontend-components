@@ -20,8 +20,15 @@ const colors = {
   [LogType.debug]: chalk.magenta,
 };
 
-function getFecMessage(level: LogType, message: string) {
-  return `${colors[level](level)}: ${message}`;
+const logFunctions = {
+  [LogType.error]: console.error,
+  [LogType.warn]: console.warn,
+  [LogType.info]: console.info,
+  [LogType.debug]: console.debug,
+};
+
+function getFecMessage(level: LogType, ...data: any[]) {
+  logFunctions[level](`${colors[level](level)}: `, ...data);
 }
 
 export default getFecMessage;
