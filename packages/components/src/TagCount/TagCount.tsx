@@ -14,7 +14,7 @@ export interface TagCountProps extends ButtonProps {
 const TagCount: React.FunctionComponent<TagCountProps> = ({ count, onTagClick = () => undefined, className, ...props }) => {
   return (
     <Button {...props} variant="plain" isDisabled={!count} className={classNames('ins-c-tag-count', className)} onClick={onTagClick}>
-      <Icon size="md">
+      <Icon size="lg">
         <TagIcon />
       </Icon>
       <span className="ins-c-tag__text">{count}</span>
