@@ -39,12 +39,16 @@ export function usePermissions(
   return permissions;
 }
 
-export const usePermissionsWithContext = (requiredPermissions: (Access | string)[], checkAll?: boolean) => {
+export const usePermissionsWithContext = (
+  requiredPermissions: (Access | string)[],
+  checkAll?: boolean,
+  checkResourceDefinitionsOverride?: boolean
+) => {
   const { hasAccess, ...permissionState } = useContext(RBACContext);
 
   return {
     ...permissionState,
-    hasAccess: hasAccess?.(requiredPermissions, checkAll) || false,
+    hasAccess: hasAccess?.(requiredPermissions, checkAll, checkResourceDefinitionsOverride) || false,
   };
 };
 

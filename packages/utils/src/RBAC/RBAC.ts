@@ -135,7 +135,7 @@ export interface UsePermissionsContextState {
   isLoading?: boolean;
   isOrgAdmin: boolean;
   permissions: (string | Access)[];
-  hasAccess?: (requiredPermissions: (Access | string)[], checkAll?: boolean) => boolean;
+  hasAccess?: (requiredPermissions: (Access | string)[], checkAll?: boolean, checkResourceDefinitionsOverride?: boolean) => boolean;
 }
 
 export const initialPermissions: UsePermissionsContextState = {
