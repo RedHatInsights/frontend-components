@@ -106,7 +106,7 @@ exports[`Actions - component API should update open 1`] = `
               </DropdownItem>,
             ]
           }
-          isFlipEnabled={false}
+          isFlipEnabled={true}
           isGrouped={false}
           isOpen={true}
           isPlain={true}
@@ -120,6 +120,7 @@ exports[`Actions - component API should update open 1`] = `
               onToggle={[Function]}
             />
           }
+          zIndex={9999}
         >
           <div
             className="pf-c-dropdown pf-m-expanded"

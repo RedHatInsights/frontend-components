@@ -4,7 +4,7 @@ import { SearchIcon } from '@patternfly/react-icons';
 import './conditional-filter.scss';
 
 export function isFilterValue(item: string | FilterValue): item is FilterValue {
-  return (item as FilterValue).value !== undefined;
+  return (item as FilterValue)?.value !== undefined;
 }
 export interface FilterItem {
   /** Item label. */

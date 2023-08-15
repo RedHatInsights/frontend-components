@@ -216,9 +216,9 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
         <button
           aria-expanded="false"
           aria-label="Options menu"
-          aria-labelledby=" pf-select-toggle-id-0"
+          aria-labelledby=" pf-select-toggle-id-1"
           class="pf-c-select__toggle"
-          id="pf-select-toggle-id-0"
+          id="pf-select-toggle-id-1"
           type="button"
         >
           <div
@@ -435,9 +435,9 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
           aria-expanded="false"
           aria-haspopup="listbox"
           aria-label="Options menu"
-          aria-labelledby=" pf-select-toggle-id-1"
+          aria-labelledby=" pf-select-toggle-id-2"
           class="pf-c-select__toggle"
-          id="pf-select-toggle-id-1"
+          id="pf-select-toggle-id-2"
           type="button"
         >
           <div
