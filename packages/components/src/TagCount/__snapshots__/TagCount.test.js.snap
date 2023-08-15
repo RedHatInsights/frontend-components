@@ -8,7 +8,7 @@ exports[`TagCount component should render a disabled tag count with count 0 1`] 
   variant="plain"
 >
   <Icon
-    size="md"
+    size="lg"
   >
     <TagIcon />
   </Icon>
@@ -26,7 +26,7 @@ exports[`TagCount component should render a tag count of 11 1`] = `
   variant="plain"
 >
   <Icon
-    size="md"
+    size="lg"
   >
     <TagIcon />
   </Icon>
@@ -46,7 +46,7 @@ exports[`TagCount component should render a tag count with no value 1`] = `
   variant="plain"
 >
   <Icon
-    size="md"
+    size="lg"
   >
     <TagIcon />
   </Icon>

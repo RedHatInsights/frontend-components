@@ -24,7 +24,7 @@ exports[`Text component render should render correctly - isDisabled 1`] = `
         class="pf-v5-c-form-control__icon"
       >
         <span
-          class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+          class="pf-v5-c-icon pf-m-md ins-c-search-icon"
         >
           <span
             class="pf-v5-c-icon__content"
@@ -73,7 +73,7 @@ exports[`Text component render should render correctly 1`] = `
         class="pf-v5-c-form-control__icon"
       >
         <span
-          class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+          class="pf-v5-c-icon pf-m-md ins-c-search-icon"
         >
           <span
             class="pf-v5-c-icon__content"
@@ -123,7 +123,7 @@ exports[`Text component render should render placeholder 1`] = `
         class="pf-v5-c-form-control__icon"
       >
         <span
-          class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+          class="pf-v5-c-icon pf-m-md ins-c-search-icon"
         >
           <span
             class="pf-v5-c-icon__content"
@@ -172,7 +172,7 @@ exports[`Text component render should render value 1`] = `
         class="pf-v5-c-form-control__icon"
       >
         <span
-          class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+          class="pf-v5-c-icon pf-m-md ins-c-search-icon"
         >
           <span
             class="pf-v5-c-icon__content"

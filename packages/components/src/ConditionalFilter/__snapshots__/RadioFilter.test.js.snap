@@ -5,7 +5,7 @@ exports[`Radio render should render correctly 1`] = `
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle"
+    class="pf-v5-c-menu-toggle pf-m-full-width"
     type="button"
   >
     <span
@@ -41,7 +41,7 @@ exports[`Radio render should render correctly placeholder 1`] = `
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle"
+    class="pf-v5-c-menu-toggle pf-m-full-width"
     type="button"
   >
     <span
@@ -79,7 +79,7 @@ exports[`Radio render should render correctly with items - isDisabled 1`] = `
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle pf-m-disabled"
+    class="pf-v5-c-menu-toggle pf-m-full-width pf-m-disabled"
     disabled=""
     type="button"
   >
@@ -116,7 +116,7 @@ exports[`Radio render should render correctly with items 1`] = `
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle"
+    class="pf-v5-c-menu-toggle pf-m-full-width"
     type="button"
   >
     <span
@@ -152,7 +152,7 @@ exports[`Radio render should render correctly with items and default value 1`] =
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle"
+    class="pf-v5-c-menu-toggle pf-m-full-width"
     type="button"
   >
     <span
@@ -188,7 +188,7 @@ exports[`Radio render should render correctly with items and selected value 1`] 
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle"
+    class="pf-v5-c-menu-toggle pf-m-full-width"
     type="button"
   >
     <span
