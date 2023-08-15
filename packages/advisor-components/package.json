@@ -36,7 +36,7 @@
         "react-router-dom": "^5.0.0 || ^6.0.0"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components": "^3.9.12",
+        "@redhat-cloud-services/frontend-components": "^4.0.0-beta.1",
         "dot": "^1.1.3",
         "lodash": "^4.17.21",
         "marked": "^4.1.1",

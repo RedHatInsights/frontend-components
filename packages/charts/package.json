@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-charts",
-    "version": "3.1.0",
+    "version": "4.0.0-beta.0",
     "description": "Charts for RedHat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
@@ -34,7 +34,7 @@
         "react-router-dom": "^5.0.0 || ^6.0.0"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components-utilities": "^3.2.25",
+        "@redhat-cloud-services/frontend-components-utilities": "4.0.0-beta.0",
         "c3": "^0.7.20",
         "classnames": "^2.3.2",
         "d3": "^5.16.0"

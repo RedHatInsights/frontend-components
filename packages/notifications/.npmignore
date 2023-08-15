@@ -9,3 +9,4 @@ src/
 babel.config.js
 doc/
 config/
+tsconfig*
