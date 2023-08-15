@@ -18,6 +18,7 @@ module.exports = {
       },
     ],
     'react/no-unknown-property': ['error', { ignore: ['widget-type', 'widget-id', 'page-type', 'ouiaId'] }],
+    'rulesdir/forbid-pf-relative-imports': 1,
   },
   overrides: [
     {
