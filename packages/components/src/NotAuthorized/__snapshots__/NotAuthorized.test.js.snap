@@ -18,13 +18,15 @@ exports[`NotAuthorized component should apply custom styles 1`] = `
     <ContactBody />
   </EmptyStateBody>
   <EmptyStateFooter>
-    <Button
-      component="a"
-      href="."
-      variant="primary"
-    >
-      Go to landing page
-    </Button>
+    <EmptyStateActions>
+      <Button
+        component="a"
+        href="."
+        variant="primary"
+      >
+        Go to landing page
+      </Button>
+    </EmptyStateActions>
   </EmptyStateFooter>
 </EmptyState>
 `;
@@ -46,7 +48,9 @@ exports[`NotAuthorized component should not show buttons 1`] = `
   <EmptyStateBody>
     <ContactBody />
   </EmptyStateBody>
-  <EmptyStateFooter />
+  <EmptyStateFooter>
+    <EmptyStateActions />
+  </EmptyStateFooter>
 </EmptyState>
 `;
 
@@ -68,13 +72,15 @@ exports[`NotAuthorized component should render 1`] = `
     <ContactBody />
   </EmptyStateBody>
   <EmptyStateFooter>
-    <Button
-      component="a"
-      href="."
-      variant="primary"
-    >
-      Go to landing page
-    </Button>
+    <EmptyStateActions>
+      <Button
+        component="a"
+        href="."
+        variant="primary"
+      >
+        Go to landing page
+      </Button>
+    </EmptyStateActions>
   </EmptyStateFooter>
 </EmptyState>
 `;
@@ -97,25 +103,29 @@ exports[`NotAuthorized component should show custom actions 1`] = `
     <ContactBody />
   </EmptyStateBody>
   <EmptyStateFooter>
-    <button
-      id="action-one"
-      key="1"
-    >
-      1
-    </button>
-    <button
-      id="action-one"
-      key="2"
-    >
-      2
-    </button>
-    <Button
-      component="a"
-      href="."
-      variant="primary"
-    >
-      Go to landing page
-    </Button>
+    <EmptyStateActions>
+      <button
+        id="action-one"
+        key="1"
+      >
+        1
+      </button>
+      <button
+        id="action-one"
+        key="2"
+      >
+        2
+      </button>
+    </EmptyStateActions>
+    <EmptyStateActions>
+      <Button
+        component="a"
+        href="."
+        variant="primary"
+      >
+        Go to landing page
+      </Button>
+    </EmptyStateActions>
   </EmptyStateFooter>
 </EmptyState>
 `;
@@ -138,13 +148,15 @@ exports[`NotAuthorized component should show custom description 1`] = `
     Some text
   </EmptyStateBody>
   <EmptyStateFooter>
-    <Button
-      component="a"
-      href="."
-      variant="primary"
-    >
-      Go to landing page
-    </Button>
+    <EmptyStateActions>
+      <Button
+        component="a"
+        href="."
+        variant="primary"
+      >
+        Go to landing page
+      </Button>
+    </EmptyStateActions>
   </EmptyStateFooter>
 </EmptyState>
 `;
@@ -167,13 +179,15 @@ exports[`NotAuthorized component should show custom title 1`] = `
     <ContactBody />
   </EmptyStateBody>
   <EmptyStateFooter>
-    <Button
-      component="a"
-      href="."
-      variant="primary"
-    >
-      Go to landing page
-    </Button>
+    <EmptyStateActions>
+      <Button
+        component="a"
+        href="."
+        variant="primary"
+      >
+        Go to landing page
+      </Button>
+    </EmptyStateActions>
   </EmptyStateFooter>
 </EmptyState>
 `;
@@ -219,20 +233,24 @@ exports[`NotAuthorized component should use custom icon 1`] = `
     <div
       className="pf-v5-c-empty-state__footer"
     >
-      <a
-        aria-disabled={false}
-        aria-label={null}
-        className="pf-v5-c-button pf-m-primary"
-        data-ouia-component-id="OUIA-Generated-Button-primary-1"
-        data-ouia-component-type="PF5/Button"
-        data-ouia-safe={true}
-        disabled={null}
-        href="."
-        role={null}
-        type={null}
+      <div
+        className="pf-v5-c-empty-state__actions"
       >
-        Go to landing page
-      </a>
+        <a
+          aria-disabled={false}
+          aria-label={null}
+          className="pf-v5-c-button pf-m-primary"
+          data-ouia-component-id="OUIA-Generated-Button-primary-1"
+          data-ouia-component-type="PF5/Button"
+          data-ouia-safe={true}
+          disabled={null}
+          href="."
+          role={null}
+          type={null}
+        >
+          Go to landing page
+        </a>
+      </div>
     </div>
   </div>
 </div>
