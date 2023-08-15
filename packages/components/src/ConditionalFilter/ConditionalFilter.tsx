@@ -116,7 +116,17 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   const capitalize = (string: string) => string[0].toUpperCase() + string.substring(1);
 
   const Wrapper = isMobile
-    ? (props: Record<string, unknown>) => <ToolbarToggleGroup {...props} breakpoint="md" toggleIcon={<Icon size="md"><FilterIcon /></Icon>}></ToolbarToggleGroup>
+    ? (props: Record<string, unknown>) => (
+        <ToolbarToggleGroup
+          {...props}
+          breakpoint="md"
+          toggleIcon={
+            <Icon size="md">
+              <FilterIcon />
+            </Icon>
+          }
+        />
+      )
     : Fragment;
 
   const getActiveComponent = (activeItem: ConditionalFilterItem) => {
@@ -188,7 +198,9 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                     toggle={(toggleRef) => (
                       <MenuToggle
                         isDisabled={isDisabled}
-                        className={hideLabel ? 'ins-c-conditional-filter__group ins-c-conditional-filter__no-label' : 'ins-c-conditional-filter__group'}
+                        className={
+                          hideLabel ? 'ins-c-conditional-filter__group ins-c-conditional-filter__no-label' : 'ins-c-conditional-filter__group'
+                        }
                         aria-label="Conditional filter"
                         ref={toggleRef}
                         onClick={() => setIsOpen((prev) => !prev)}
