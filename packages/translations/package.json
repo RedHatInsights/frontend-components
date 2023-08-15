@@ -30,8 +30,8 @@
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/translations#readme",
     "peerDependencies": {
         "prop-types": "^15.6.2",
-        "react": "^18.0.0",
-        "react-dom": "^18.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "react-intl": "^6.4.4"
     },
     "optionalDependencies": {

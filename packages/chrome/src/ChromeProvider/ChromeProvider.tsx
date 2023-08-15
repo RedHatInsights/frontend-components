@@ -20,7 +20,7 @@ const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState
   }, [pathname]);
 };
 
-const ChromeProvider: React.FC<{ bundle?: string; children?: React.ReactNode }> = ({ children, bundle }) => {
+const ChromeProvider: React.FC<React.PropsWithChildren<{ bundle?: string }>> = ({ children, bundle }) => {
   const isMounted = useRef(false);
   const [initialRequest, setInitialRequest] = useState(false);
   const providerState = useRef<ReturnType<typeof chromeState>>();

@@ -7,3 +7,4 @@ config/
 !Styles.css
 !helpers.css
 !postinstall.js
+tsconfig*

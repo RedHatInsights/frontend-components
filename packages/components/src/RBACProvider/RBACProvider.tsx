@@ -11,10 +11,10 @@ import {
 } from '@redhat-cloud-services/frontend-components-utilities/RBAC';
 
 const hasAccessWithUserPermissions = (userPermissions: (Access | string)[], checkResourceDefinitions: boolean) => {
-  return (requiredPermissions: (Access | string)[], checkAll?: boolean): boolean => {
+  return (requiredPermissions: (Access | string)[], checkAll?: boolean, checkResourceDefinitionsOverride?: boolean): boolean => {
     return checkAll
-      ? hasAllPermissions(userPermissions, requiredPermissions, checkResourceDefinitions)
-      : doesHavePermissions(userPermissions, requiredPermissions, checkResourceDefinitions);
+      ? hasAllPermissions(userPermissions, requiredPermissions, checkResourceDefinitionsOverride ?? checkResourceDefinitions)
+      : doesHavePermissions(userPermissions, requiredPermissions, checkResourceDefinitionsOverride ?? checkResourceDefinitions);
   };
 };
 

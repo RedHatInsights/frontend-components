@@ -51,7 +51,9 @@ function getModuleExplicitLocation(roots: string[], relativePath: string) {
     .map((root) => {
       return glob.sync(`${root}/dist/dynamic/**/${relativePath}`);
     })
-    .find((r) => r.length > 0)?.[0];
+    .find((r) => r.length > 0)?.[0]
+    ?.split('/dynamic/')
+    .pop();
   if (defaultLocation) {
     return defaultLocation;
   }
@@ -75,6 +77,7 @@ if (CORE_DIRECTORIES.length > 0) {
     setTabIndex: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/KeyboardHandler'),
     IconComponentProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Icon'),
     TreeViewDataItem: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/TreeView'),
+    Popper: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/Popper/Popper'),
   };
 }
 
