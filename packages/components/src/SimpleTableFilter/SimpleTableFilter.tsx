@@ -91,12 +91,8 @@ const SimpleFilter: React.FC<SimpleFilterProps> = ({
         aria-label="simple-table-filter"
         placeholder={placeholder}
         onChange={onInputChange}
+        {...(!buttonTitle && searchIcon && { customIcon: <SearchIcon className="ins-c-search-icon" /> })}
       />
-      {!buttonTitle && searchIcon && (
-        <Icon size="sm">
-          <SearchIcon className="ins-c-search-icon" />
-        </Icon>
-      )}
       {buttonTitle && (
         <Button variant={ButtonVariant.secondary} action="filter" onClick={onFilterSubmit}>
           {buttonTitle}
