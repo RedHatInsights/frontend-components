@@ -30,14 +30,14 @@
         "@patternfly/react-icons": "^5.0.0",
         "@patternfly/react-table": "^5.0.0",
         "prop-types": "^15.6.2",
-        "react": "^18.0.0",
-        "react-dom": "^18.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "react-redux": "^7.0.0"
     },
     "dependencies": {
         "@data-driven-forms/pf4-component-mapper": "^3.21.0",
         "@data-driven-forms/react-form-renderer": "^3.21.0",
-        "@redhat-cloud-services/frontend-components": "4.0.0-beta.1",
+        "@redhat-cloud-services/frontend-components": "^4.0.0-beta.2",
         "@redhat-cloud-services/frontend-components-utilities": "4.0.0-beta.0",
         "@redhat-cloud-services/host-inventory-client": "^1.0.111",
         "redux-promise-middleware": "^6.1.3",

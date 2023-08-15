@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import dynamic from 'next/dynamic';
 import { createUseStyles } from 'react-jss';
-
-const ReactJson = dynamic(() => import('react-json-view'), { ssr: false });
 
 const useStyles = createUseStyles({
   jsonContainer: {
@@ -18,7 +15,9 @@ const ExtensiveProp = ({ data }) => {
   const { required, description, defaultValue, ...src } = data;
   return (
     <div className={classes.jsonContainer}>
-      <ReactJson className="foo" theme="apathy" collapsed={3} src={src} />
+      <pre>
+        {JSON.stringify(src)}
+      </pre>
     </div>
   );
 };
