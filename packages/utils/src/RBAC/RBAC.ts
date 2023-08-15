@@ -36,8 +36,7 @@ function extractResourceDefinitionValues(rds: ResourceDefinition[]) {
     if (operation === ResourceDefinitionFilterOperationEnum.In) {
       return [
         ...acc,
-        ...value
-          .toString()
+        ...(Array.isArray(value) ? value.map((value) => (value === null ? 'null' : value)).toString() : value)
           .split(',')
           .map((value) => `${key}:${value}`),
       ];
@@ -135,7 +134,7 @@ export interface UsePermissionsContextState {
   isLoading?: boolean;
   isOrgAdmin: boolean;
   permissions: (string | Access)[];
-  hasAccess?: (requiredPermissions: (Access | string)[], checkAll?: boolean) => boolean;
+  hasAccess?: (requiredPermissions: (Access | string)[], checkAll?: boolean, checkResourceDefinitionsOverride?: boolean) => boolean;
 }
 
 export const initialPermissions: UsePermissionsContextState = {
