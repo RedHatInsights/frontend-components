@@ -79,7 +79,7 @@ const RuleDetails: React.FC<RuleDetailsProps> = ({
           <StackItem className="ins-c-rule-details__kbs">
             <a rel="noopener noreferrer" target="_blank" href={knowledgebaseUrl}>
               {messages.knowledgebaseArticle}&nbsp;
-              <Icon size="sm">
+              <Icon size="md">
                 <ExternalLinkAltIcon />
               </Icon>
             </a>
