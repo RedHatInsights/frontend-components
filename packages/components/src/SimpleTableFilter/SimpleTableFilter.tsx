@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ButtonVariant, Dropdown, DropdownItem, DropdownList, Icon, MenuToggle, TextInput, TextInputProps } from '@patternfly/react-core';
+import { Button, ButtonVariant, Dropdown, DropdownItem, DropdownList, MenuToggle, TextInput, TextInputProps } from '@patternfly/react-core';
 
 import { SearchIcon } from '@patternfly/react-icons';
 import './simple-table-filter.scss';
