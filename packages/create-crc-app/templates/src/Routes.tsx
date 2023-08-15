@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
+// eslint-disable-next-line rulesdir/forbid-pf-relative-imports
 import { Bullseye, Spinner } from '@patternfly/react-core';
 
 const SamplePage = lazy(() => import(/* webpackChunkName: "SamplePage" */ './Routes/SamplePage/SamplePage'));
