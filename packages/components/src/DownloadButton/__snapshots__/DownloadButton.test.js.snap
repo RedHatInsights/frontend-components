@@ -64,7 +64,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             </span>
           </button>
         </li>
-        ,
         <li
           class="pf-v5-c-menu__list-item"
           data-ouia-component-id="DownloadJSON"
