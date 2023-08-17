@@ -1,9 +1,10 @@
 const path = require('path');
-const express = require('express');
 const axios = require('axios');
-const jsVarName = require('@redhat-cloud-services/frontend-components-config-utilities/jsVarName');
 const fs = require('fs');
 const jsyaml = require('js-yaml');
+
+import express from 'express';
+import { jsVarName } from '@redhat-cloud-services/frontend-components-config-utilities';
 
 const cwd = process.cwd();
 const pgk = require(path.resolve(cwd, './package.json'));
@@ -14,7 +15,11 @@ const moduleName = jsVarName(appname);
 const frontendDeployConfig = jsyaml.load(fs.readFileSync(path.resolve(cwd, './deploy/frontend.yaml')));
 const frontendSpec = frontendDeployConfig.objects[0];
 const navItems = frontendSpec.spec.navItems;
-const fecModules = frontendSpec.spec.module;
+const fecModules: {
+  modules: {
+    routes: { pathname: string }[];
+  }[];
+} = frontendSpec.spec.module;
 const bundles = Array.from(
   new Set(
     fecModules.modules
@@ -29,8 +34,8 @@ const port = 9999;
 
 const BASE_URL = 'https://raw.githubusercontent.com/RedHatInsights/chrome-service-backend/main';
 
-function getRequestBundle(requestUrl) {
-  const bundle = requestUrl.split('/').pop().split('-').shift();
+function getRequestBundle(requestUrl: string) {
+  const bundle = requestUrl.split('/').pop()?.split('-').shift();
   return bundle === 'rhel' ? 'insights' : bundle;
 }
 
@@ -42,7 +47,7 @@ app.get('*', async (req, res, next) => {
       const requestBundle = getRequestBundle(req.url);
       /** handle nav json */
       const payload = schema.data;
-      payload.navItems = [...payload.navItems, ...navItems.filter(({ href }) => href.includes(requestBundle))];
+      payload.navItems = [...payload.navItems, ...navItems.filter(({ href }: { href: string }) => requestBundle && href.includes(requestBundle))];
       res.json(payload);
       res.end();
       return;

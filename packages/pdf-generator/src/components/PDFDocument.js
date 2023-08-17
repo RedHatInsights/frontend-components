@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Document, Page, Text, View } from '@react-pdf/renderer';
 import RHLogo from './Logo';
 // eslint-disable-next-line rulesdir/disallow-fec-relative-imports
-import { DateFormat } from '@redhat-cloud-services/frontend-components/DateFormat';
+import { DateFormat } from '@redhat-cloud-services/frontend-components';
 import { customTitle } from '../utils/text';
 import styles from '../utils/styles';
 

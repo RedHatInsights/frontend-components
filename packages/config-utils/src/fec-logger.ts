@@ -33,3 +33,4 @@ function getFecMessage(level: LogType, ...data: any[]) {
 
 export default getFecMessage;
 module.exports = getFecMessage;
+module.exports.LogType = LogType;

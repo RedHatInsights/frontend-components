@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
-const inquirer = require('inquirer');
+import inquirer from 'inquirer';
 const { resolve } = require('path');
 const { spawn } = require('child_process');
-const { validateFECConfig, getWebpackConfigPath } = require('./common');
+import { getWebpackConfigPath, validateFECConfig } from './common';
 
-async function setEnv(cwd) {
+async function setEnv(cwd: string) {
   return inquirer
     .prompt([
       {
@@ -28,11 +28,18 @@ async function setEnv(cwd) {
     });
 }
 
-async function devScript(argv, cwd) {
+async function devScript(
+  argv: {
+    webpackConfig?: string;
+    clouddotEnv?: string;
+    uiEnv?: string;
+  },
+  cwd: string
+) {
   try {
     validateFECConfig(cwd);
 
-    const fecConfig = require(process.env.FEC_CONFIG_PATH);
+    const fecConfig = require(process.env.FEC_CONFIG_PATH!);
     let configPath;
     if (typeof argv.webpackConfig !== 'undefined') {
       configPath = getWebpackConfigPath(argv.webpackConfig, cwd);

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { BlobProvider, PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 import { Button } from '@patternfly/react-core';
 import PDFDocument from './components/PDFDocument';
-import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
+// eslint-disable-next-line rulesdir/disallow-fec-relative-imports
+import { AsyncComponent } from '@redhat-cloud-services/frontend-components';
 
 class DownloadButtonWrapper extends React.Component {
   constructor(props) {

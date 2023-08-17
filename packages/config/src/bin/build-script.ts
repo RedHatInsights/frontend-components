@@ -1,6 +1,6 @@
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 
-const { getWebpackConfigPath, validateFECConfig } = require('./common');
+import { getWebpackConfigPath, validateFECConfig } from './common';
 const { resolve } = require('path');
 const { spawn } = require('child_process');
 

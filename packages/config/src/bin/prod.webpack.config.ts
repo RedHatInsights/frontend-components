@@ -1,7 +1,9 @@
-const config = require('..');
-const commonPlugins = require('../lib/webpack.plugins');
+import config from '../lib/index';
+import commonPlugins from './webpack.plugins';
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const fecConfig = require(process.env.FEC_CONFIG_PATH);
+const fecConfig = require(process.env.FEC_CONFIG_PATH!);
+
+type Configuration = import('webpack').Configuration;
 
 const { plugins: externalPlugins, interceptChromeConfig, routes, _unstableHotReload, ...externalConfig } = fecConfig;
 const { config: webpackConfig, plugins } = config({
@@ -14,7 +16,7 @@ const { config: webpackConfig, plugins } = config({
 
 plugins.push(...commonPlugins, ...externalPlugins);
 
-module.exports = (env) => {
+const start = (env: { analyze?: string }): Configuration => {
   if (env && env.analyze === 'true') {
     plugins.push(new BundleAnalyzerPlugin());
   }
@@ -23,3 +25,6 @@ module.exports = (env) => {
     plugins,
   };
 };
+
+export default start;
+module.exports = start;

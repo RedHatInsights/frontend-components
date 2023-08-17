@@ -1,18 +1,20 @@
-const config = require('../lib/index.js');
+import config from '../lib';
 const commonPlugins = require('../lib/webpack.plugins.js');
-const fecConfig = require(process.env.FEC_CONFIG_PATH);
+const fecConfig = require(process.env.FEC_CONFIG_PATH!);
+
+type Configuration = import('webpack').Configuration;
 
 const isBeta = process.env.BETA === 'true';
 
-function parseRegexpURL(url) {
+function parseRegexpURL(url: RegExp) {
   return isBeta ? [new RegExp(`/beta${url.toString()}`), new RegExp(`/preview${url.toString()}`)] : new RegExp(url.toString());
 }
 
-function createAppUrl(appUrl) {
+function createAppUrl(appUrl: string | string[] | (string | RegExp)[]) {
   if (Array.isArray(appUrl)) {
     return appUrl
       .map((url) => {
-        if (typeof url === 'object') {
+        if (url instanceof RegExp) {
           return parseRegexpURL(url);
         } else if (typeof url === 'string') {
           return isBeta ? [`/beta${url}`, `/preview${url}`] : url;
@@ -59,7 +61,10 @@ const { config: webpackConfig, plugins } = config({
 });
 plugins.push(...commonPlugins, ...externalPlugins);
 
-module.exports = {
+const devConfig: Configuration = {
   ...webpackConfig,
   plugins,
 };
+
+module.exports = devConfig;
+export default devConfig;
