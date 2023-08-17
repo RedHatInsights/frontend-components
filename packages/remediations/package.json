@@ -37,7 +37,7 @@
     "dependencies": {
         "@data-driven-forms/pf4-component-mapper": "^3.21.0",
         "@data-driven-forms/react-form-renderer": "^3.21.0",
-        "@redhat-cloud-services/frontend-components": "^4.0.0-beta.2",
+        "@redhat-cloud-services/frontend-components": "^4.0.0-beta.3",
         "@redhat-cloud-services/frontend-components-utilities": "4.0.0-beta.0",
         "@redhat-cloud-services/host-inventory-client": "^1.0.111",
         "redux-promise-middleware": "^6.1.3",

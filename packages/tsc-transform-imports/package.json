@@ -1,7 +1,6 @@
 {
   "name": "@redhat-cloud-services/tsc-transform-imports",
-  "version": "0.0.1",
-  "private": "true",
+  "version": "1.0.0-beta.1",
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {

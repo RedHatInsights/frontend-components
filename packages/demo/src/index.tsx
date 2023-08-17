@@ -1,16 +1,29 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import ErrorBoundaryPage from '@redhat-cloud-services/frontend-components/ErrorBoundary/ErrorBoundary';
-
-const Surprise = () => {
-  throw new Error('but a welcome one');
-};
+import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { DropdownItem } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
 
 const MyCmp = () => {
   return (
-    <ErrorBoundaryPage headerTitle="My app" errorTitle="Something wrong happened">
-      <Surprise />
-    </ErrorBoundaryPage>
+    <PrimaryToolbar
+      actionsConfig={{
+        dropdownProps: { popperProps: { position: 'left' } },
+        actions: [
+          <Button
+            key="Foo"
+            data-hcc-index="true"
+            data-hcc-title={'bar'}
+            data-hcc-alt="create source;add cloud provider"
+            variant="primary"
+            id="addSourceButton"
+          >
+            FOO
+          </Button>,
+        ],
+      }}
+    />
   );
 };
 

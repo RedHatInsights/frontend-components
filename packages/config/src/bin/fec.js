@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 const { execSync } = require('child_process');
 const static = require('@redhat-cloud-services/frontend-components-config-utilities/serve-federated');
+const {  } = require('@redhat-cloud-services/frontend-components-config-utilities')
 const yargs = require('yargs');
 
 const devScript = require('../src/scripts/dev-script');
 const buildScript = require('../src/scripts/build-script');
-const { logError, validateFECConfig } = require('../src/scripts/common');
+const { logError, validateFECConfig, logInfo } = require('../src/scripts/common');
 
 function patchHosts() {
     const command = `
@@ -28,6 +29,22 @@ done
 }
 
 const cwd = process.cwd();
+
+function patchTs() {
+    logInfo('postinstall')
+    const dependencies = 'typescript ts-patch @redhat-cloud-services/tsc-transform-imports'
+    const usesYarn = fs.existsSync(path.resolve(cwd, 'yarn.lock'))
+    let command
+    if(usesYarn) {
+        command = `yarn add -D ${dependencies}`
+    } else {
+        command = `npm i --save-dev ${dependencies}`
+    }
+    logInfo('Installing required build dependencies: ', command)
+    execSync(command, { stdio: 'inherit', cwd })
+    logInfo('Patching TS: ', command)
+    execSync('npx ts-patch install', { stdio: 'inherit', cwd })
+}
 
 const argv = yargs
 .usage('Usage: $0 <command> [options]')
@@ -79,7 +96,8 @@ const scripts = {
         validateFECConfig(cwd)
         devScript(argv, cwd)
     },
-    build: buildScript
+    build: buildScript,
+    'patch-ts': patchTs,
 };
 
 const args = [ argv, cwd ];

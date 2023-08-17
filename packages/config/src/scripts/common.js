@@ -6,6 +6,10 @@ function logError(message) {
   console.log(chalk.blue('[fec]') + chalk.red(' ERROR: ') + message);
 }
 
+function logInfo(message) {
+  console.log(chalk.blue('[fec]') + chalk.blue(' INFO: ') + message);
+}
+
 function validateFECConfig(cwd) {
   const configPath = resolve(cwd, './fec.config.js');
   try {
@@ -44,5 +48,6 @@ function getWebpackConfigPath(path, cwd) {
 }
 
 module.exports.logError = logError;
+module.exports.logInfo = logInfo;
 module.exports.validateFECConfig = validateFECConfig;
 module.exports.getWebpackConfigPath = getWebpackConfigPath;

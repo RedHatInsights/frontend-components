@@ -26,20 +26,24 @@ const VARIANT_MATCH = /Variants?$/g;
 const POSITION_MATCH = /Position$/g;
 
 function getPossibleLocations(roots: string[], nameBinding: string) {
-  let moduleLocation = roots.map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding}.js`)).find((r) => r.length > 0)?.[0];
+  let moduleLocation = roots
+    .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding}.js`).filter((p) => !p.includes('deprecated')))
+    .find((r) => r.length > 0)?.[0];
   if (!moduleLocation && nameBinding.match(PROPS_MATCH)) {
-    moduleLocation = roots.map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(PROPS_MATCH, '')}.js`)).find((r) => r.length > 0)?.[0];
+    moduleLocation = roots
+      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(PROPS_MATCH, '')}.js`).filter((p) => !p.includes('deprecated')))
+      .find((r) => r.length > 0)?.[0];
   }
 
   if (!moduleLocation && nameBinding.match(VARIANT_MATCH)) {
     moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(VARIANT_MATCH, '')}.js`))
+      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(VARIANT_MATCH, '')}.js`).filter((p) => !p.includes('deprecated')))
       .find((r) => r.length > 0)?.[0];
   }
 
   if (!moduleLocation && nameBinding.match(POSITION_MATCH)) {
     moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(POSITION_MATCH, '')}.js`))
+      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(POSITION_MATCH, '')}.js`).filter((p) => !p.includes('deprecated')))
       .find((r) => r.length > 0)?.[0];
   }
 

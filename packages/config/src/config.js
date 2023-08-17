@@ -17,7 +17,6 @@ module.exports = ({
   betaEnv,
   env,
   sassPrefix,
-  skipChrome2 = false,
   useProxy,
   proxyURL,
   localChrome,
@@ -106,28 +105,23 @@ module.exports = ({
     module: {
       rules: [
         {
-          test: new RegExp(appEntry),
-          loader: path.resolve(__dirname, './chrome-render-loader.js'),
-          options: {
-            appName,
-            skipChrome2,
-          },
-        },
-        {
-          test: /src\/.*\.js$/,
-          exclude: /(node_modules|bower_components)/i,
-          use: ['babel-loader'],
-        },
-        {
-          test: /src\/.*\.tsx?$/,
-          loader: 'ts-loader',
-          exclude: /(node_modules)/i,
-          /**
-           * Do not run type checking on main thread
-           * Type checking is offloaded to separate thread via ForkTsCheckerWebpackPlugin
-           */
-          options: {
-            transpileOnly: true,
+          test: /\.(js|ts)x?$/,
+          exclude: /node_modules/,
+          use: {
+            // This TS loader is used here to apply the transform imports plugin
+            loader: 'ts-loader',
+            /** @type import("ts-loader/dist/interfaces").LoaderOptions */
+            options: {
+              transpileOnly: true,
+              compilerOptions: {
+                plugins: [
+                  {
+                    transform: '@redhat-cloud-services/tsc-transform-imports',
+                    type: 'raw',
+                  },
+                ],
+              },
+            },
           },
         },
         {
