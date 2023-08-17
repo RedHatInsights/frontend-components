@@ -116,7 +116,17 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   const capitalize = (string: string) => string[0].toUpperCase() + string.substring(1);
 
   const Wrapper = isMobile
-    ? (props: Record<string, unknown>) => <ToolbarToggleGroup {...props} breakpoint="md" toggleIcon={<FilterIcon />}></ToolbarToggleGroup>
+    ? (props: Record<string, unknown>) => (
+        <ToolbarToggleGroup
+          {...props}
+          breakpoint="md"
+          toggleIcon={
+            <Icon size="md">
+              <FilterIcon />
+            </Icon>
+          }
+        />
+      )
     : Fragment;
 
   const getActiveComponent = (activeItem: ConditionalFilterItem) => {
@@ -181,20 +191,22 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                 <SplitItem>
                   <Dropdown
                     ref={innerRef}
-                    className="ins-c-conditional-filter__group"
                     onSelect={() => setIsOpen(false)}
                     isOpen={isOpen}
                     ouiaId="ConditionalFilter"
+                    onOpenChange={(isOpen: boolean) => setIsOpen(isOpen)}
                     toggle={(toggleRef) => (
                       <MenuToggle
                         isDisabled={isDisabled}
-                        className={hideLabel ? 'ins-c-conditional-filter__no-label' : ''}
+                        className={
+                          hideLabel ? 'ins-c-conditional-filter__group ins-c-conditional-filter__no-label' : 'ins-c-conditional-filter__group'
+                        }
                         aria-label="Conditional filter"
                         ref={toggleRef}
                         onClick={() => setIsOpen((prev) => !prev)}
                         isExpanded={isOpen}
                       >
-                        <Icon size="sm">
+                        <Icon size="md">
                           <FilterIcon />
                         </Icon>
                         {!hideLabel && (

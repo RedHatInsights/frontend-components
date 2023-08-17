@@ -63,6 +63,7 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({ items = 
       onClick={() => setExpanded((prev) => !prev)}
       ref={toggleRef}
       isExpanded={isExpanded}
+      isFullWidth
     >
       {placeholder}
       {selected.length > 0 && (

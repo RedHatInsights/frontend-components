@@ -11,7 +11,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
       <button
         aria-expanded="false"
         aria-label="Conditional filter"
-        class="pf-v5-c-menu-toggle pf-m-disabled"
+        class="pf-v5-c-menu-toggle pf-m-disabled ins-c-conditional-filter__group"
         disabled=""
         type="button"
       >
@@ -19,7 +19,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
           class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-v5-c-icon pf-m-sm"
+            class="pf-v5-c-icon pf-m-md"
           >
             <span
               class="pf-v5-c-icon__content"
@@ -92,7 +92,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
             class="pf-v5-c-form-control__icon"
           >
             <span
-              class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
             >
               <span
                 class="pf-v5-c-icon__content"
@@ -146,7 +146,7 @@ exports[`ConditionalFilter render should render correctly 1`] = `
           class="pf-v5-c-form-control__icon"
         >
           <span
-            class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+            class="pf-v5-c-icon pf-m-md ins-c-search-icon"
           >
             <span
               class="pf-v5-c-icon__content"
@@ -184,14 +184,14 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
       <button
         aria-expanded="false"
         aria-label="Conditional filter"
-        class="pf-v5-c-menu-toggle"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
         type="button"
       >
         <span
           class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-v5-c-icon pf-m-sm"
+            class="pf-v5-c-icon pf-m-md"
           >
             <span
               class="pf-v5-c-icon__content"
@@ -246,7 +246,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
       <button
         aria-expanded="false"
         aria-label="Options menu"
-        class="pf-v5-c-menu-toggle"
+        class="pf-v5-c-menu-toggle pf-m-full-width"
         type="button"
       >
         <span
@@ -292,14 +292,14 @@ exports[`ConditionalFilter render should render correctly no value with value  1
       <button
         aria-expanded="false"
         aria-label="Conditional filter"
-        class="pf-v5-c-menu-toggle"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
         type="button"
       >
         <span
           class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-v5-c-icon pf-m-sm"
+            class="pf-v5-c-icon pf-m-md"
           >
             <span
               class="pf-v5-c-icon__content"
@@ -372,7 +372,7 @@ exports[`ConditionalFilter render should render correctly no value with value  1
             class="pf-v5-c-form-control__icon"
           >
             <span
-              class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
             >
               <span
                 class="pf-v5-c-icon__content"
@@ -411,14 +411,14 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
       <button
         aria-expanded="false"
         aria-label="Conditional filter"
-        class="pf-v5-c-menu-toggle"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
         type="button"
       >
         <span
           class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-v5-c-icon pf-m-sm"
+            class="pf-v5-c-icon pf-m-md"
           >
             <span
               class="pf-v5-c-icon__content"
@@ -473,7 +473,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
       <button
         aria-expanded="false"
         aria-label="Options menu"
-        class="pf-v5-c-menu-toggle"
+        class="pf-v5-c-menu-toggle pf-m-full-width"
         type="button"
       >
         <span
@@ -519,14 +519,14 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
       <button
         aria-expanded="false"
         aria-label="Conditional filter"
-        class="pf-v5-c-menu-toggle"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
         type="button"
       >
         <span
           class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-v5-c-icon pf-m-sm"
+            class="pf-v5-c-icon pf-m-md"
           >
             <span
               class="pf-v5-c-icon__content"
@@ -599,7 +599,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
             class="pf-v5-c-form-control__icon"
           >
             <span
-              class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
             >
               <span
                 class="pf-v5-c-icon__content"
@@ -638,14 +638,14 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
       <button
         aria-expanded="false"
         aria-label="Conditional filter"
-        class="pf-v5-c-menu-toggle"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
         type="button"
       >
         <span
           class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-v5-c-icon pf-m-sm"
+            class="pf-v5-c-icon pf-m-md"
           >
             <span
               class="pf-v5-c-icon__content"
@@ -718,7 +718,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
             class="pf-v5-c-form-control__icon"
           >
             <span
-              class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
             >
               <span
                 class="pf-v5-c-icon__content"
@@ -757,14 +757,14 @@ exports[`ConditionalFilter render should render correctly with config - each ite
       <button
         aria-expanded="false"
         aria-label="Conditional filter"
-        class="pf-v5-c-menu-toggle"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
         type="button"
       >
         <span
           class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-v5-c-icon pf-m-sm"
+            class="pf-v5-c-icon pf-m-md"
           >
             <span
               class="pf-v5-c-icon__content"
@@ -838,7 +838,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
             class="pf-v5-c-form-control__icon"
           >
             <span
-              class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
             >
               <span
                 class="pf-v5-c-icon__content"
@@ -877,14 +877,14 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
       <button
         aria-expanded="false"
         aria-label="Conditional filter"
-        class="pf-v5-c-menu-toggle"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
         type="button"
       >
         <span
           class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-v5-c-icon pf-m-sm"
+            class="pf-v5-c-icon pf-m-md"
           >
             <span
               class="pf-v5-c-icon__content"
@@ -957,7 +957,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
             class="pf-v5-c-form-control__icon"
           >
             <span
-              class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
             >
               <span
                 class="pf-v5-c-icon__content"
@@ -1014,7 +1014,7 @@ exports[`ConditionalFilter render should render correctly with one filter 1`] = 
             class="pf-v5-c-form-control__icon"
           >
             <span
-              class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
             >
               <span
                 class="pf-v5-c-icon__content"
@@ -1053,14 +1053,14 @@ exports[`ConditionalFilter render should render correctly with with the active l
       <button
         aria-expanded="false"
         aria-label="Conditional filter"
-        class="pf-v5-c-menu-toggle ins-c-conditional-filter__no-label"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group ins-c-conditional-filter__no-label"
         type="button"
       >
         <span
           class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-v5-c-icon pf-m-sm"
+            class="pf-v5-c-icon pf-m-md"
           >
             <span
               class="pf-v5-c-icon__content"
@@ -1128,7 +1128,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
             class="pf-v5-c-form-control__icon"
           >
             <span
-              class="pf-v5-c-icon pf-m-sm ins-c-search-icon"
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
             >
               <span
                 class="pf-v5-c-icon__content"

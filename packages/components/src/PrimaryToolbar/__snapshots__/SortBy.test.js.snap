@@ -6,7 +6,7 @@ exports[`PrimaryToolbar should render desc direction 1`] = `
   variant="plain"
 >
   <Icon
-    size="sm"
+    size="md"
   >
     <SortAmountDownIcon />
   </Icon>
@@ -19,7 +19,7 @@ exports[`PrimaryToolbar should render no data 1`] = `
   variant="plain"
 >
   <Icon
-    size="sm"
+    size="md"
   >
     <SortAmountUpIcon />
   </Icon>

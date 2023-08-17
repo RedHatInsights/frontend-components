@@ -11,7 +11,7 @@ export interface ShieldProps {
   size?: IconComponentProps['size'];
 }
 
-const Shield: React.FunctionComponent<ShieldProps> = ({ impact = 'N/A', hasLabel = false, size = 'sm', hasTooltip = true }) => {
+const Shield: React.FunctionComponent<ShieldProps> = ({ impact = 'N/A', hasLabel = false, size = 'md', hasTooltip = true }) => {
   const attributes = impactList?.[impact as keyof typeof impactList] ?? impactList.Unknown;
   const badgeProps: SVGIconProps = {
     'aria-hidden': 'false',

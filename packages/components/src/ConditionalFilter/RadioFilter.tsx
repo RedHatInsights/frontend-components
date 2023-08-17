@@ -55,6 +55,7 @@ const RadioFilter: React.FunctionComponent<RadioFilterProps> = ({ items = [], on
           onClick={() => setExpanded((prev) => !prev)}
           isDisabled={isDisabled}
           ref={menuRef}
+          isFullWidth
         >
           {placeholder}
         </MenuToggle>
