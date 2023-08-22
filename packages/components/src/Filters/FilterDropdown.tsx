@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dropdown, MenuGroup, MenuItem, MenuList, MenuToggle, getDefaultOUIAId } from '@patternfly/react-core';
+import { MenuToggle, Select, SelectGroup, SelectList, SelectOption, getDefaultOUIAId } from '@patternfly/react-core';
 
 import FilterInput from './FilterInput';
 import './filter-dropdown.scss';
@@ -51,7 +51,7 @@ const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({
   };
 
   return (
-    <Dropdown
+    <Select
       className="ins-c-filter__dropdown"
       {...props}
       onOpenChange={setIsOpen}
@@ -64,35 +64,33 @@ const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({
       ouiaId={ouiaId}
       ouiaSafe={ouiaSafe}
     >
-      <MenuList>
-        {filterCategories.map(
-          (data, index) =>
-            !hideCategories?.includes(data?.urlParam) && (
-              <MenuGroup label={data.title} key={index}>
-                <MenuList>
-                  {data.values.map((item, key) => (
-                    // FIXME: Make the menu item clickable
-                    // Clicking no the "edge" of the item does not trigger the change handler
-                    // Using keyboard does not trigger the change event
-                    <MenuItem key={`check${index}${key}`}>
-                      <FilterInput
-                        aria-label={item.label}
-                        id={`check${index}${key}`}
-                        label={item.label}
-                        addRemoveFilters={addRemoveFilters}
-                        param={data.urlParam}
-                        type={data.type}
-                        value={item.value}
-                        filters={filters}
-                      />
-                    </MenuItem>
-                  ))}
-                </MenuList>
-              </MenuGroup>
-            )
-        )}
-      </MenuList>
-    </Dropdown>
+      {filterCategories.map(
+        (data, index) =>
+          !hideCategories?.includes(data?.urlParam) && (
+            <SelectGroup label={data.title} key={index}>
+              <SelectList>
+                {data.values.map((item, key) => (
+                  // FIXME: use SelectOption object rather than FilterInput. Will resolve:
+                  // Clicking no the "edge" of the item does not trigger the change handler
+                  // Using keyboard does not trigger the change event
+                  <SelectOption key={`check${index}${key}`}>
+                    <FilterInput
+                      aria-label={item.label}
+                      id={`check${index}${key}`}
+                      label={item.label}
+                      addRemoveFilters={addRemoveFilters}
+                      param={data.urlParam}
+                      type={data.type}
+                      value={item.value}
+                      filters={filters}
+                    />
+                  </SelectOption>
+                ))}
+              </SelectList>
+            </SelectGroup>
+          )
+      )}
+    </Select>
   );
 };
 

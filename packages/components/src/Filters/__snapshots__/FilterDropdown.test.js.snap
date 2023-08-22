@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterDropdown component should render 1`] = `
-<Dropdown
+<Select
   className="ins-c-filter__dropdown"
   isOpen={false}
   onOpenChange={[Function]}
@@ -9,34 +9,32 @@ exports[`FilterDropdown component should render 1`] = `
   ouiaSafe={true}
   toggle={[Function]}
 >
-  <MenuList>
-    <MenuGroup
-      key="0"
-      label=""
-    >
-      <MenuList>
-        <MenuItem
-          key="check00"
-        >
-          <FilterInput
-            addRemoveFilters={[Function]}
-            aria-label=""
-            filters={{}}
-            id="check00"
-            label=""
-            param=""
-            type=""
-            value=""
-          />
-        </MenuItem>
-      </MenuList>
-    </MenuGroup>
-  </MenuList>
-</Dropdown>
+  <SelectGroup
+    key="0"
+    label=""
+  >
+    <SelectList>
+      <SelectOption
+        key="check00"
+      >
+        <FilterInput
+          addRemoveFilters={[Function]}
+          aria-label=""
+          filters={{}}
+          id="check00"
+          label=""
+          param=""
+          type=""
+          value=""
+        />
+      </SelectOption>
+    </SelectList>
+  </SelectGroup>
+</Select>
 `;
 
 exports[`FilterDropdown component should render with a component as label 1`] = `
-<Dropdown
+<Select
   className="ins-c-filter__dropdown"
   isOpen={false}
   onOpenChange={[Function]}
@@ -44,28 +42,26 @@ exports[`FilterDropdown component should render with a component as label 1`] = 
   ouiaSafe={true}
   toggle={[Function]}
 >
-  <MenuList>
-    <MenuGroup
-      key="0"
-      label=""
-    >
-      <MenuList>
-        <MenuItem
-          key="check00"
-        >
-          <FilterInput
-            addRemoveFilters={[Function]}
-            aria-label=""
-            filters={{}}
-            id="check00"
-            label=""
-            param=""
-            type=""
-            value=""
-          />
-        </MenuItem>
-      </MenuList>
-    </MenuGroup>
-  </MenuList>
-</Dropdown>
+  <SelectGroup
+    key="0"
+    label=""
+  >
+    <SelectList>
+      <SelectOption
+        key="check00"
+      >
+        <FilterInput
+          addRemoveFilters={[Function]}
+          aria-label=""
+          filters={{}}
+          id="check00"
+          label=""
+          param=""
+          type=""
+          value=""
+        />
+      </SelectOption>
+    </SelectList>
+  </SelectGroup>
+</Select>
 `;

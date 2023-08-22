@@ -3,6 +3,7 @@ import React from 'react';
 import {
   Button,
   EmptyState,
+  EmptyStateActions,
   EmptyStateBody,
   EmptyStateFooter,
   EmptyStateHeader,
@@ -12,8 +13,6 @@ import {
 } from '@patternfly/react-core';
 
 import { LockIcon } from '@patternfly/react-icons';
-
-import './NotAuthorized.scss';
 
 export interface NotAuthorizedProps extends Omit<EmptyStateProps, 'children' | 'title'> {
   serviceName?: string;
@@ -52,17 +51,19 @@ const NotAuthorized: React.FunctionComponent<NotAuthorizedProps> = ({
       <EmptyStateHeader titleText={heading} icon={<EmptyStateIcon icon={Icon} />} headingLevel="h5" />
       <EmptyStateBody>{description}</EmptyStateBody>
       <EmptyStateFooter>
-        {actions}
-        {showReturnButton &&
-          (document.referrer ? (
-            <Button variant="primary" onClick={() => history.back()}>
-              {prevPageButtonText}
-            </Button>
-          ) : (
-            <Button variant="primary" component="a" href=".">
-              {toLandingPageText}
-            </Button>
-          ))}
+        {actions && <EmptyStateActions>{actions}</EmptyStateActions>}
+        <EmptyStateActions>
+          {showReturnButton &&
+            (document.referrer ? (
+              <Button variant="primary" onClick={() => history.back()}>
+                {prevPageButtonText}
+              </Button>
+            ) : (
+              <Button variant="primary" component="a" href=".">
+                {toLandingPageText}
+              </Button>
+            ))}
+        </EmptyStateActions>
       </EmptyStateFooter>
     </EmptyState>
   );
