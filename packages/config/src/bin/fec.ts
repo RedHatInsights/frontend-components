@@ -35,16 +35,28 @@ const cwd = process.cwd();
 function checkDependencies() {
   const requiredDependencies = ['typescript', 'ts-patch', '@redhat-cloud-services/tsc-transform-imports'];
   const missingDependencies: string[] = [];
-  const { dependencies = {}, devDependencies = {} } = JSON.parse(fs.readFileSync(path.resolve(cwd, 'package.json')));
+  const packageJsonFile = path.resolve(cwd, 'package.json');
+  // do not destruct the json to not mutate order of attributes in the file
+  const pckJson = JSON.parse(fs.readFileSync(packageJsonFile));
   requiredDependencies.forEach((dep) => {
-    if (!dependencies[dep] && !devDependencies[dep]) {
+    if (!pckJson.dependencies[dep] && !pckJson.devDependencies[dep]) {
       missingDependencies.push(dep);
     }
   });
 
+  if (!pckJson.scripts.postinstall || !pckJson.scripts.postinstall.includes('ts-patch install')) {
+    // prepend patch ts to existing postinstall command
+    if (pckJson.scripts.postinstall) {
+      pckJson.scripts.postinstall = `ts-patch install && ${pckJson.scripts.postinstall}`;
+    } else {
+      pckJson.scripts.postinstall = `ts-patch install`;
+    }
+
+    fs.writeFileSync(packageJsonFile, JSON.stringify(pckJson, null, 2));
+  }
+
   return missingDependencies;
 }
-
 function patchTs(dependencies: string) {
   const usesYarn = fs.existsSync(path.resolve(cwd, 'yarn.lock'));
   if (dependencies.length > 0) {

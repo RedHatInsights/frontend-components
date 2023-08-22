@@ -38,10 +38,11 @@ const getAppEntry = (rootFolder: string, isProd?: boolean) => {
   return `${rootFolder}/${entries[0]}`;
 };
 
-type FecConfigurationOptions = CreateConfigOptions &
+type FecConfigurationOptions = Omit<CreateConfigOptions, 'publicPath' | 'appEntry' | 'appName'> &
   CreatePluginsOptions & {
     deployment?: string;
     debug?: boolean;
+    appEntry?: string;
   };
 
 const createFecConfig = (

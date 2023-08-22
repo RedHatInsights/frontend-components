@@ -82,7 +82,7 @@ describe('rootFolder', () => {
 describe('module rules', () => {
   test('length', () => {
     const { module } = configBuilder({ appEntry: 'testEntry', appName: 'someName' });
-    expect(module.rules.length).toBe(6);
+    expect(module.rules.length).toBe(4);
   });
 });
 

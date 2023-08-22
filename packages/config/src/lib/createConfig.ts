@@ -3,7 +3,7 @@ const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
 
-import { ProxyOptions, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { LogType, ProxyOptions, fecLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
 type Configuration = import('webpack').Configuration;
 type CacheOptions = import('webpack').FileCacheOptions | import('webpack').MemoryCacheOptions;
 type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
@@ -20,7 +20,7 @@ export type CreateConfigOptions = {
   mode?: Configuration['mode'];
   appName: string;
   useFileHash?: boolean;
-  env: FrontendEnv;
+  env?: FrontendEnv;
   sassPrefix?: string;
   useProxy?: boolean;
   proxyURL?: string;
@@ -43,6 +43,8 @@ export type CreateConfigOptions = {
   useDevBuild?: boolean;
   useCache?: boolean;
   cacheConfig?: Partial<CacheOptions>;
+  /** @deprecated use hotReload config instead */
+  _unstableHotReload?: boolean;
   hotReload?: boolean;
   nodeModulesDirectories?: string[];
   resolve?: ResolveOptions;
@@ -82,12 +84,17 @@ export const createConfig = ({
   useDevBuild = true,
   useCache = false,
   cacheConfig = {},
-  hotReload = false,
+  _unstableHotReload,
+  hotReload,
   resolve = {},
   // additional node_modules dirs for searchIgnoredStyles, usefull in monorepo scenario
   nodeModulesDirectories = [],
 }: CreateConfigOptions): Configuration => {
-  const filenameMask = `js/[name].${!hotReload && useFileHash ? `[fullhash].` : ''}js`;
+  if (typeof _unstableHotReload !== 'undefined') {
+    fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
+  }
+  const internalHotReload = !!(typeof hotReload !== 'undefined' ? hotReload : _unstableHotReload);
+  const filenameMask = `js/[name].${!internalHotReload && useFileHash ? `[fullhash].` : ''}js`;
 
   const outputPath = `${rootFolder || ''}/dist`;
 
@@ -116,7 +123,7 @@ export const createConfig = ({
           },
         }
       : {}),
-    entry: hotReload
+    entry: internalHotReload
       ? {
           main: appEntry,
           vendors: ['react', 'react-dom', 'react-refresh/runtime'],
@@ -130,7 +137,7 @@ export const createConfig = ({
       publicPath,
       chunkFilename: filenameMask,
     },
-    ...(hotReload
+    ...(internalHotReload
       ? {
           optimization: {
             // for HMR all runtime chunks must be in a single file
@@ -240,8 +247,8 @@ export const createConfig = ({
       port: devServerPort,
       https: https || Boolean(useProxy),
       host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
-      hot: hotReload, // Use livereload instead of HMR which is spotty with federated modules
-      liveReload: !hotReload,
+      hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
+      liveReload: !internalHotReload,
       allowedHosts: 'all',
       // https://github.com/bripkens/connect-history-api-fallback
       historyApiFallback: {

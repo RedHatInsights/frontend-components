@@ -1,9 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import ErrorBoundaryPage from '@redhat-cloud-services/frontend-components/ErrorBoundary/ErrorBoundary';
 import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
-import { DropdownItem } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
 
 const MyCmp = () => {
   return (

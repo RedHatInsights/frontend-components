@@ -2,7 +2,7 @@ import { AngleDoubleDownIcon } from '@patternfly/react-icons';
 import { AngleDoubleUpIcon } from '@patternfly/react-icons';
 import { CriticalRiskIcon } from '@patternfly/react-icons';
 import { EqualsIcon } from '@patternfly/react-icons';
-import { Label, LabelProps, Button } from '@patternfly/react-core';
+import { Label, LabelProps } from '@patternfly/react-core';
 import React from 'react';
 
 type InsightsLabelValueMapping = {

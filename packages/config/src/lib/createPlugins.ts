@@ -18,6 +18,8 @@ export type CreatePluginsOptions = {
   generateSourceMaps?: boolean;
   plugins?: WebpackPluginDefinition[];
   definePlugin?: Record<string, any>;
+  /** @deprecated use hotReload config instead */
+  _unstableHotReload?: boolean;
   hotReload?: boolean;
   useFileHash?: boolean;
 };
@@ -28,15 +30,20 @@ export const createPlugins = ({
   generateSourceMaps,
   plugins,
   definePlugin = {},
-  hotReload = false,
+  _unstableHotReload,
+  hotReload,
   useFileHash = true,
 }: CreatePluginsOptions) => {
   if (!rootFolder) {
     fecLogger(LogType.error, 'rootFolder is required attribute for the createPlugins function!');
     throw new Error('No rootFolder defined!');
   }
+  if (typeof _unstableHotReload !== 'undefined') {
+    fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack plugins config is deprecated. Use hotReload config instead.`);
+  }
+  const internalHotReload = !!(typeof hotReload !== 'undefined' ? hotReload : _unstableHotReload);
   const hasTsConfig = glob.sync(path.resolve(rootFolder, './{tsconfig.json,!(node_modules)/**/tsconfig.json}')).length > 0;
-  const fileHash = !hotReload && useFileHash;
+  const fileHash = !internalHotReload && useFileHash;
   return [
     ...(generateSourceMaps
       ? [
@@ -67,7 +74,7 @@ export const createPlugins = ({
     }),
     ...(hasTsConfig ? [new ForkTsCheckerWebpackPlugin()] : []),
     ...(plugins || []),
-    ...(hotReload ? [new ReactRefreshWebpackPlugin()] : []),
+    ...(internalHotReload ? [new ReactRefreshWebpackPlugin()] : []),
   ];
 };
 
