@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.esm.json",
   "compilerOptions": {
-      // "rootDir": "./src",
+      "rootDir": "./src",
       "outDir": "./esm",
       "declarationDir": "./",
       "module": "es2015",
@@ -9,7 +9,7 @@
       "allowJs": true,
   },
   "include": [
-      "./src/InsightsLabel/*"
+      "./src/**/*"
   ],
   "exclude": [
     "./src/**/*.test.js",
