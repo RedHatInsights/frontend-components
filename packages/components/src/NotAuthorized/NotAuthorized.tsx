@@ -14,8 +14,6 @@ import {
 
 import { LockIcon } from '@patternfly/react-icons';
 
-import './NotAuthorized.scss';
-
 export interface NotAuthorizedProps extends Omit<EmptyStateProps, 'children' | 'title'> {
   serviceName?: string;
   icon?: React.ComponentType<any>;
