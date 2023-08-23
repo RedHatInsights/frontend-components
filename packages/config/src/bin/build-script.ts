@@ -2,7 +2,7 @@ import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-c
 
 import { getWebpackConfigPath, validateFECConfig } from './common';
 const { resolve } = require('path');
-const { spawn } = require('child_process');
+import { spawn } from 'child_process';
 
 export function buildScript(argv: { [name: string]: string }, cwd: string) {
   validateFECConfig(cwd);
@@ -18,7 +18,7 @@ export function buildScript(argv: { [name: string]: string }, cwd: string) {
     cwd,
     shell: true,
   });
-  subprocess.on('error', function (err: any) {
+  subprocess.on('error', function (err) {
     fecLogger(LogType.error, err);
     process.exit(1);
   });
