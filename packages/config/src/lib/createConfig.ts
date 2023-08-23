@@ -1,11 +1,58 @@
-/* eslint-disable camelcase */
 const path = require('path');
 const fs = require('fs');
-const proxy = require('@redhat-cloud-services/frontend-components-config-utilities/proxy');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
 
-module.exports = ({
+import { LogType, ProxyOptions, fecLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
+type Configuration = import('webpack').Configuration;
+type CacheOptions = import('webpack').FileCacheOptions | import('webpack').MemoryCacheOptions;
+type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
+type ClientConfiguration = import('webpack-dev-server').ClientConfiguration;
+type ResolveOptions = import('webpack').ResolveOptions;
+
+export interface CommonConfigOptions {
+  rootFolder: string;
+  appName: string;
+  /** @deprecated use hotReload config instead */
+  _unstableHotReload?: boolean;
+  hotReload?: boolean;
+  useFileHash?: boolean;
+}
+export type FrontendEnv = 'stage-stable' | 'prod-stable' | 'ci-stable' | 'qa-stable' | 'stage-beta' | 'prod-beta' | 'ci-beta' | 'qa-beta';
+export interface CreateConfigOptions extends CommonConfigOptions {
+  port?: number;
+  publicPath: string;
+  appEntry: string;
+  https?: boolean;
+  mode?: Configuration['mode'];
+  env?: FrontendEnv;
+  sassPrefix?: string;
+  useProxy?: boolean;
+  proxyURL?: string;
+  localChrome?: string;
+  keycloakUri?: string;
+  customProxy?: ProxyConfigArrayItem[];
+  routes?: { [path: string]: ProxyConfigArrayItem };
+  routesPath?: string;
+  isProd?: boolean;
+  standalone?: boolean;
+  reposDir?: string;
+  appUrl?: (string | RegExp)[];
+  proxyVerbose?: boolean;
+  target?: string;
+  registry?: ProxyOptions['registry'];
+  client?: ClientConfiguration;
+  bundlePfModules?: boolean;
+  bounceProd?: ProxyOptions['bounceProd'];
+  useAgent?: boolean;
+  useDevBuild?: boolean;
+  useCache?: boolean;
+  cacheConfig?: Partial<CacheOptions>;
+  nodeModulesDirectories?: string[];
+  resolve?: ResolveOptions;
+}
+
+export const createConfig = ({
   port,
   publicPath,
   appEntry,
@@ -14,10 +61,8 @@ module.exports = ({
   mode,
   appName,
   useFileHash = true,
-  betaEnv,
   env,
   sassPrefix,
-  skipChrome2 = false,
   useProxy,
   proxyURL,
   localChrome,
@@ -30,7 +75,6 @@ module.exports = ({
   reposDir,
   appUrl = [],
   proxyVerbose,
-  useCloud,
   target,
   registry,
   client = {
@@ -42,20 +86,21 @@ module.exports = ({
   useDevBuild = true,
   useCache = false,
   cacheConfig = {},
-  _unstableHotReload = false,
+  _unstableHotReload,
+  hotReload,
   resolve = {},
   // additional node_modules dirs for searchIgnoredStyles, usefull in monorepo scenario
   nodeModulesDirectories = [],
-} = {}) => {
-  const filenameMask = `js/[name].${!_unstableHotReload && useFileHash ? `[fullhash].` : ''}js`;
-  if (betaEnv) {
-    env = `${betaEnv}-beta`;
-    console.warn('betaEnv is deprecated in favor of env');
+}: CreateConfigOptions): Configuration => {
+  if (typeof _unstableHotReload !== 'undefined') {
+    fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
   }
+  const internalHotReload = !!(typeof hotReload !== 'undefined' ? hotReload : _unstableHotReload);
+  const filenameMask = `js/[name].${!internalHotReload && useFileHash ? `[fullhash].` : ''}js`;
 
   const outputPath = `${rootFolder || ''}/dist`;
 
-  const copyTemplate = (chromePath) => {
+  const copyTemplate = (chromePath: string) => {
     const template = fs.readFileSync(`${chromePath}/index.html`, { encoding: 'utf-8' });
     if (!fs.existsSync(outputPath)) {
       fs.mkdirSync(outputPath);
@@ -80,7 +125,7 @@ module.exports = ({
           },
         }
       : {}),
-    entry: _unstableHotReload
+    entry: internalHotReload
       ? {
           main: appEntry,
           vendors: ['react', 'react-dom', 'react-refresh/runtime'],
@@ -94,7 +139,7 @@ module.exports = ({
       publicPath,
       chunkFilename: filenameMask,
     },
-    ...(_unstableHotReload
+    ...(internalHotReload
       ? {
           optimization: {
             // for HMR all runtime chunks must be in a single file
@@ -106,28 +151,23 @@ module.exports = ({
     module: {
       rules: [
         {
-          test: new RegExp(appEntry),
-          loader: path.resolve(__dirname, './chrome-render-loader.js'),
-          options: {
-            appName,
-            skipChrome2,
-          },
-        },
-        {
-          test: /src\/.*\.js$/,
-          exclude: /(node_modules|bower_components)/i,
-          use: ['babel-loader'],
-        },
-        {
-          test: /src\/.*\.tsx?$/,
-          loader: 'ts-loader',
-          exclude: /(node_modules)/i,
-          /**
-           * Do not run type checking on main thread
-           * Type checking is offloaded to separate thread via ForkTsCheckerWebpackPlugin
-           */
-          options: {
-            transpileOnly: true,
+          test: /\.(js|ts)x?$/,
+          exclude: /node_modules/,
+          use: {
+            // This TS loader is used here to apply the transform imports plugin
+            loader: 'ts-loader',
+            /** @type import("ts-loader/dist/interfaces").LoaderOptions */
+            options: {
+              transpileOnly: true,
+              compilerOptions: {
+                plugins: [
+                  {
+                    transform: '@redhat-cloud-services/tsc-transform-imports',
+                    type: 'raw',
+                  },
+                ],
+              },
+            },
           },
         },
         {
@@ -143,7 +183,13 @@ module.exports = ({
                */
               loader: 'sass-loader',
               options: {
-                additionalData: function (content, loaderContext) {
+                additionalData: function (
+                  content: string,
+                  loaderContext: {
+                    resourcePath: string;
+                    rootContext: string;
+                  }
+                ) {
                   const { resourcePath, rootContext } = loaderContext;
                   const relativePath = path.relative(rootContext, resourcePath);
                   /**
@@ -203,8 +249,8 @@ module.exports = ({
       port: devServerPort,
       https: https || Boolean(useProxy),
       host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
-      hot: _unstableHotReload, // Use livereload instead of HMR which is spotty with federated modules
-      liveReload: !_unstableHotReload,
+      hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
+      liveReload: !internalHotReload,
       allowedHosts: 'all',
       // https://github.com/bripkens/connect-history-api-fallback
       historyApiFallback: {
@@ -225,7 +271,6 @@ module.exports = ({
       },
       client,
       ...proxy({
-        useCloud,
         env,
         localChrome,
         keycloakUri,
@@ -254,3 +299,6 @@ module.exports = ({
     },
   };
 };
+
+export default createConfig;
+module.exports = createConfig;

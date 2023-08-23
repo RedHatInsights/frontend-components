@@ -1,0 +1,6 @@
+bin
+lib
+!src/bin
+!src/bin/*
+!src/lib
+!src/lib/*

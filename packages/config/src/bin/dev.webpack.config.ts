@@ -1,18 +1,22 @@
-const config = require('@redhat-cloud-services/frontend-components-config');
-const commonPlugins = require('./webpack.plugins.js');
-const fecConfig = require(process.env.FEC_CONFIG_PATH);
+import { ProxyConfigArrayItem } from 'webpack-dev-server';
+import config, { FrontendEnv } from '../lib';
+import FECConfiguration from '../lib/fec.config';
+import commonPlugins from './webpack.plugins';
+const fecConfig: FECConfiguration = require(process.env.FEC_CONFIG_PATH!);
+
+type Configuration = import('webpack').Configuration;
 
 const isBeta = process.env.BETA === 'true';
 
-function parseRegexpURL(url) {
-  return isBeta ? [new RegExp(`/beta${url.toString()}`), new RegExp(`/preview${url.toString()}`)] : new RegExp(url.toString());
+function parseRegexpURL(url: RegExp) {
+  return isBeta ? [new RegExp(`/beta${url.toString()}`), new RegExp(`/preview${url.toString()}`)] : [new RegExp(url.toString())];
 }
 
-function createAppUrl(appUrl) {
+function createAppUrl(appUrl: string | string[] | (string | RegExp)[]) {
   if (Array.isArray(appUrl)) {
     return appUrl
       .map((url) => {
-        if (typeof url === 'object') {
+        if (url instanceof RegExp) {
           return parseRegexpURL(url);
         } else if (typeof url === 'string') {
           return isBeta ? [`/beta${url}`, `/preview${url}`] : url;
@@ -24,7 +28,7 @@ function createAppUrl(appUrl) {
   } else if (typeof appUrl === 'object') {
     return parseRegexpURL(appUrl);
   } else if (typeof appUrl === 'string') {
-    return `${isBeta ? '/beta' : ''}${appUrl}`;
+    return [`${isBeta ? '/beta' : ''}${appUrl}`];
   } else {
     throw `Invalid appURL format! Expected string or regexp, got ${typeof appUrl}. Check your fec.config.js:appUrl.`;
   }
@@ -32,14 +36,14 @@ function createAppUrl(appUrl) {
 
 const appUrl = createAppUrl(fecConfig.appUrl);
 
-const { plugins: externalPlugins, interceptChromeConfig, routes, ...externalConfig } = fecConfig;
+const { plugins: externalPlugins = [], interceptChromeConfig, routes, ...externalConfig } = fecConfig;
 
-const internalProxyRoutes = {
+const internalProxyRoutes: { [endpoint: string]: ProxyConfigArrayItem } = {
   ...routes,
   ...(interceptChromeConfig === true
     ? {
         '/api/chrome-service/v1/static': {
-          host: 'http://localhost:9999',
+          target: 'http://localhost:9999',
         },
       }
     : {}),
@@ -54,12 +58,15 @@ const { config: webpackConfig, plugins } = config({
   routes: internalProxyRoutes,
   appUrl,
   deployment: isBeta ? 'beta/apps' : 'apps',
-  env: `${process.env.CLOUDOT_ENV}-${isBeta === true ? 'beta' : 'stable'}`,
+  env: `${process.env.CLOUDOT_ENV}-${isBeta === true ? 'beta' : 'stable'}` as FrontendEnv,
   rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
 });
 plugins.push(...commonPlugins, ...externalPlugins);
 
-module.exports = {
+const devConfig: Configuration = {
   ...webpackConfig,
   plugins,
 };
+
+module.exports = devConfig;
+export default devConfig;

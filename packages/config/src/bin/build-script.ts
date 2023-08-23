@@ -1,8 +1,10 @@
-const { logError, getWebpackConfigPath, validateFECConfig } = require('./common');
-const { resolve } = require('path');
-const { spawn } = require('child_process');
+import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 
-function buildScript(argv, cwd) {
+import { getWebpackConfigPath, validateFECConfig } from './common';
+const { resolve } = require('path');
+import { spawn } from 'child_process';
+
+export function buildScript(argv: { [name: string]: string }, cwd: string) {
   validateFECConfig(cwd);
   let configPath;
   if (typeof argv.webpackConfig !== 'undefined') {
@@ -17,18 +19,19 @@ function buildScript(argv, cwd) {
     shell: true,
   });
   subprocess.on('error', function (err) {
-    logError(err);
+    fecLogger(LogType.error, err);
     process.exit(1);
   });
-  subprocess.on('exit', (code, signal) => {
+  subprocess.on('exit', (code: string | null, signal: string) => {
     if (code) {
-      logError('Exited with code', code);
+      fecLogger(LogType.error, 'Exited with code', code);
     } else if (signal) {
-      logError('Exited with signal', signal);
+      fecLogger(LogType.error, 'Exited with signal', signal);
     } else {
-      console.log('Exited Okay');
+      fecLogger(LogType.info, 'Exited Okay');
     }
   });
 }
 
+export default buildScript;
 module.exports = buildScript;

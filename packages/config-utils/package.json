@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-config-utilities",
-    "version": "3.0.0-beta.0",
+    "version": "3.0.0-beta.1",
     "description": "Utilities for shared config used in RedHat Cloud Services project.",
     "main": "index.js",
     "types": "index.d.ts",

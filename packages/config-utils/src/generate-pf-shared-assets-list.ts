@@ -42,7 +42,11 @@ const getDynamicModules = (root: string) => {
     { requiredVersion: coreVersion, files: glob.sync(componentsGlob) },
     { requiredVersion: iconsVersion, files: glob.sync(iconsGlob) },
   ];
-  const modules = files
+  const modules: {
+    [moduleName: string]: {
+      requiredVersion: string;
+    };
+  } = files
     .map(({ files, requiredVersion }) =>
       files.reduce((acc, curr) => {
         const moduleName = curr

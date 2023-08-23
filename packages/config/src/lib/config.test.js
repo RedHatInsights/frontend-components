@@ -1,9 +1,15 @@
-import config from './config';
+import config from './createConfig';
 
 const configBuilder = (c) => config({ rootFolder: '', ...c });
 
 describe('should create dummy config with no options', () => {
-  const { mode, optimization, entry, output, devServer } = config({ rootFolder: '' });
+  const { mode, optimization, entry, output, devServer } = config({
+    rootFolder: '',
+    appEntry: '/foo/bar',
+    appName: 'Fooapp',
+    env: 'stage-beta',
+    publicPath: 'foo/bar',
+  });
 
   const { mode: prodMode } = configBuilder({ mode: 'production' });
   test('mode', () => {
@@ -19,14 +25,14 @@ describe('should create dummy config with no options', () => {
   });
 
   test('entry', () => {
-    expect(entry).toEqual({ App: undefined });
+    expect(entry).toEqual({ App: '/foo/bar' });
   });
 
   test('output', () => {
     expect(output).toEqual({
       filename: expect.stringMatching(/js\/\[name\]\.\[fullhash\]\.js/),
       path: '/dist',
-      publicPath: undefined,
+      publicPath: 'foo/bar',
       chunkFilename: expect.stringMatching(/js\/\[name\]\.\[fullhash\]\.js/),
     });
   });
@@ -76,18 +82,7 @@ describe('rootFolder', () => {
 describe('module rules', () => {
   test('length', () => {
     const { module } = configBuilder({ appEntry: 'testEntry', appName: 'someName' });
-    expect(module.rules.length).toBe(6);
-  });
-
-  test('first to be chrome-render-loader', () => {
-    const { module } = configBuilder({ appEntry: 'testEntry', appName: 'someName' });
-    expect(new RegExp(module.rules[0].rules).test('testEntry')).toBe(true);
-    expect(module.rules[0].options.skipChrome2).toBe(false);
-  });
-
-  test('first to be chrome-render-loader', () => {
-    const { module } = configBuilder({ appEntry: 'testEntry', appName: 'someName', skipChrome2: true });
-    expect(module.rules[0].options.skipChrome2).toBe(true);
+    expect(module.rules.length).toBe(4);
   });
 });
 
