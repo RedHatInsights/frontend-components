@@ -123,7 +123,7 @@
         "clean": "lerna clean -y && lerna exec rm -- -f package-lock.json && rm -rf node_modules",
         "postinstall": "ts-patch install && tsc -p packages/tsc-transform-imports && npm run build && lerna exec rm -- -f package-lock.json",
         "start": "lerna run --parallel start --ignore=docs",
-        "build": "MODULES_ROOT=../../ lerna run build --stream --no-private --ignore=@redhat-cloud-services/frontend-components-config",
+        "build": "MODULES_ROOT=../../ lerna run build --stream --no-private",
         "ts:esm": "tsc --build --force --verbose tsconfig.json",
         "generate-translations": "npm run build && node packages/utils/src/mergeMessages.js",
         "test:ct": "lerna run --stream test:ct",

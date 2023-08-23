@@ -1,5 +1,6 @@
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 import { Compiler, WebpackPluginInstance } from 'webpack';
+import { CommonConfigOptions } from './createConfig';
 
 const { SourceMapDevToolPlugin } = require('webpack');
 const { ProvidePlugin, DefinePlugin } = require('webpack');
@@ -12,21 +13,15 @@ const path = require('path');
 
 export type WebpackPluginDefinition = undefined | null | false | '' | 0 | ((this: Compiler, compiler: Compiler) => void) | WebpackPluginInstance;
 
-export type CreatePluginsOptions = {
-  rootFolder: string;
-  appname?: string;
+export interface CreatePluginsOptions extends CommonConfigOptions {
   generateSourceMaps?: boolean;
   plugins?: WebpackPluginDefinition[];
   definePlugin?: Record<string, any>;
-  /** @deprecated use hotReload config instead */
-  _unstableHotReload?: boolean;
-  hotReload?: boolean;
-  useFileHash?: boolean;
-};
+}
 
 export const createPlugins = ({
   rootFolder,
-  appname,
+  appName,
   generateSourceMaps,
   plugins,
   definePlugin = {},
@@ -64,8 +59,8 @@ export const createPlugins = ({
       cleanOnceBeforeBuildPatterns: ['**/*', '!index.html'],
     }),
     new DefinePlugin({
-      // we have to wrap the appname string in another string because of how define plugin explodes strings
-      CRC_APP_NAME: JSON.stringify(appname),
+      // we have to wrap the appName string in another string because of how define plugin explodes strings
+      CRC_APP_NAME: JSON.stringify(appName),
       ...definePlugin,
     }),
     new ProvidePlugin({

@@ -6,7 +6,7 @@ const fecConfig: FECConfiguration = require(process.env.FEC_CONFIG_PATH!);
 
 type Configuration = import('webpack').Configuration;
 
-const { plugins: externalPlugins = [], interceptChromeConfig, routes, hotReload, ...externalConfig } = fecConfig;
+const { plugins: externalPlugins = [], interceptChromeConfig, routes, hotReload, appUrl, ...externalConfig } = fecConfig;
 const { config: webpackConfig, plugins } = config({
   rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
   ...externalConfig,

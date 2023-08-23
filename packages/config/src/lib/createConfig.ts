@@ -10,16 +10,21 @@ type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
 type ClientConfiguration = import('webpack-dev-server').ClientConfiguration;
 type ResolveOptions = import('webpack').ResolveOptions;
 
+export interface CommonConfigOptions {
+  rootFolder: string;
+  appName: string;
+  /** @deprecated use hotReload config instead */
+  _unstableHotReload?: boolean;
+  hotReload?: boolean;
+  useFileHash?: boolean;
+}
 export type FrontendEnv = 'stage-stable' | 'prod-stable' | 'ci-stable' | 'qa-stable' | 'stage-beta' | 'prod-beta' | 'ci-beta' | 'qa-beta';
-export type CreateConfigOptions = {
+export interface CreateConfigOptions extends CommonConfigOptions {
   port?: number;
   publicPath: string;
   appEntry: string;
-  rootFolder: string;
   https?: boolean;
   mode?: Configuration['mode'];
-  appName: string;
-  useFileHash?: boolean;
   env?: FrontendEnv;
   sassPrefix?: string;
   useProxy?: boolean;
@@ -43,12 +48,9 @@ export type CreateConfigOptions = {
   useDevBuild?: boolean;
   useCache?: boolean;
   cacheConfig?: Partial<CacheOptions>;
-  /** @deprecated use hotReload config instead */
-  _unstableHotReload?: boolean;
-  hotReload?: boolean;
   nodeModulesDirectories?: string[];
   resolve?: ResolveOptions;
-};
+}
 
 export const createConfig = ({
   port,

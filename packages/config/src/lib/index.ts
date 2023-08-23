@@ -97,7 +97,7 @@ const createFecConfig = (
     plugins: createPlugins({
       ...configurations,
       generateSourceMaps,
-      appname: insights.appname,
+      appName: insights.appname,
     }),
   };
 };
