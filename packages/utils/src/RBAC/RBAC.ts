@@ -36,8 +36,7 @@ function extractResourceDefinitionValues(rds: ResourceDefinition[]) {
     if (operation === ResourceDefinitionFilterOperationEnum.In) {
       return [
         ...acc,
-        ...value
-          .toString()
+        ...(Array.isArray(value) ? value.map((value) => (value === null ? 'null' : value)).toString() : value)
           .split(',')
           .map((value) => `${key}:${value}`),
       ];
