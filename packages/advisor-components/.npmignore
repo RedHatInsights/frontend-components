@@ -7,4 +7,7 @@ babel.config.js
 doc/
 config/
 tsconfig.json
+tsconfig.cjs.json
+tsconfig.esm.json
+.cypress-cache
 pre-publish.js
