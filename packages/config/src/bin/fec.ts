@@ -4,6 +4,8 @@ import serveStatic from '@redhat-cloud-services/frontend-components-config-utili
 const fs = require('fs');
 const path = require('path');
 import yargs from 'yargs';
+// to force TS to copy the file
+import './tsconfig.template.json';
 
 const devScript = require('./dev-script');
 const buildScript = require('./build-script');
