@@ -24,6 +24,7 @@ if (MODULES_ROOT) {
 const PROPS_MATCH = /Props$/g;
 const VARIANT_MATCH = /Variants?$/g;
 const POSITION_MATCH = /Position$/g;
+const SIZE_MATCH = /Sizes?$/g;
 
 function getPossibleLocations(roots: string[], nameBinding: string) {
   let moduleLocation = roots
@@ -44,6 +45,12 @@ function getPossibleLocations(roots: string[], nameBinding: string) {
   if (!moduleLocation && nameBinding.match(POSITION_MATCH)) {
     moduleLocation = roots
       .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(POSITION_MATCH, '')}.js`).filter((p) => !p.includes('deprecated')))
+      .find((r) => r.length > 0)?.[0];
+  }
+
+  if (!moduleLocation && nameBinding.match(SIZE_MATCH)) {
+    moduleLocation = roots
+      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(SIZE_MATCH, '')}.js`).filter((p) => !p.includes('deprecated')))
       .find((r) => r.length > 0)?.[0];
   }
 
@@ -82,6 +89,10 @@ if (CORE_DIRECTORIES.length > 0) {
     IconComponentProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Icon'),
     TreeViewDataItem: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/TreeView'),
     Popper: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/Popper/Popper'),
+    clipboardCopyFunc: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/ClipboardCopy'),
+    ToolbarChipGroup: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Toolbar'),
+    DatePickerRef: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/DatePicker'),
+    ButtonType: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Button'),
   };
 }
 
