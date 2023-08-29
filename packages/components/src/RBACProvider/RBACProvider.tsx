@@ -19,15 +19,15 @@ const hasAccessWithUserPermissions = (userPermissions: (Access | string)[], chec
 };
 
 export interface RBACProviderProps {
-  appName: string;
-  checkResourceDefinitions: boolean;
+  appName?: string | null;
+  checkResourceDefinitions?: boolean;
 }
 
 export const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appName, checkResourceDefinitions = false, children }) => {
   const [permissionState, setPermissionState] = useState(initialPermissions);
 
   const fetchPermissions = async () => {
-    const { isOrgAdmin, permissions: userPermissions } = await getRBAC(appName, true);
+    const { isOrgAdmin, permissions: userPermissions } = await getRBAC(appName === null ? '' : appName, true);
 
     setPermissionState((currentPerms) => ({
       ...currentPerms,
@@ -38,8 +38,14 @@ export const RBACProvider: React.FunctionComponent<RBACProviderProps> = ({ appNa
   };
 
   useEffect(() => {
-    if (appName) {
+    // if null or string - then fetch the permissions
+    if (appName !== undefined) {
       fetchPermissions();
+    } else {
+      setPermissionState((currentPerms) => ({
+        ...currentPerms,
+        isLoading: false,
+      }));
     }
   }, [appName]);
 
