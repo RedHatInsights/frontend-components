@@ -9,21 +9,13 @@ const defaultPluginMetaDataJSON = {
 };
 
 const createIncludes = (eager = false): { [module: string]: WebpackSharedConfig } => ({
-  '@patternfly/react-core': { eager },
-  '@patternfly/react-table': { eager },
-  '@patternfly/react-tokens': {},
-  '@patternfly/react-icons': {},
   '@patternfly/quickstarts': { singleton: true, eager },
   '@redhat-cloud-services/chrome': { singleton: true },
-  '@redhat-cloud-services/frontend-components': {},
-  '@redhat-cloud-services/frontend-components-utilities': {},
-  '@redhat-cloud-services/frontend-components-notifications': {},
   axios: {},
   lodash: {},
   'redux-promise-middleware': {},
   react: { singleton: true, eager },
   'react-dom': { singleton: true, eager },
-  'react-router-dom': { eager },
 });
 
 export type FederatedModulesConfig = {
