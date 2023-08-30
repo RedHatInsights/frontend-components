@@ -27,7 +27,7 @@ describe('WithOuia', () => {
   });
 
   it('Can have a component wrapper', () => {
-    const Custom: React.FunctionComponent<OuiaDataAttributes> = (props) => {
+    const Custom: React.FunctionComponent<React.PropsWithChildren<OuiaDataAttributes>> = (props) => {
       return <ul {...props}>{props.children}</ul>;
     };
 

@@ -18,6 +18,7 @@ module.exports = {
       },
     ],
     'react/no-unknown-property': ['error', { ignore: ['widget-type', 'widget-id', 'page-type', 'ouiaId'] }],
+    'rulesdir/forbid-pf-relative-imports': 1,
   },
   overrides: [
     {
@@ -30,6 +31,7 @@ module.exports = {
         '@typescript-eslint/no-use-before-define': ['error'],
         'react/prop-types': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }],
       },
     },
     {

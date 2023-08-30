@@ -2,7 +2,8 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import DownloadButton from './DownloadButton';
-import { DropdownItem } from '@patternfly/react-core';
+import { DropdownItem } from '@patternfly/react-core/deprecated';
+import { act } from 'react-dom/test-utils';
 
 const extraItems = [<DropdownItem key="extra-1" component="button"></DropdownItem>];
 
@@ -25,35 +26,52 @@ describe('DownloadButton component', () => {
   });
 
   describe('API', () => {
-    it('clicking should open dropdown', () => {
+    it('clicking should open dropdown', async () => {
       const { container } = render(<DownloadButton extraItems={extraItems} />);
-      userEvent.click(screen.getByRole('button', { name: 'Export' }));
+      await act(async () => {
+        userEvent.click(screen.getByRole('button', { name: 'Export' }));
+      });
       expect(container).toMatchSnapshot();
     });
 
-    it('onSelect should be called with CSV', () => {
+    it('onSelect should be called with CSV', async () => {
       const onSelect = jest.fn();
       render(<DownloadButton extraItems={extraItems} onSelect={onSelect} />);
-      userEvent.click(screen.getByRole('button', { name: 'Export' }));
-      userEvent.click(screen.getByRole('menuitem', { name: 'Export to CSV' }));
+      await act(async () => {
+        userEvent.click(screen.getByRole('button', { name: 'Export' }));
+      });
+
+      act(() => {
+        userEvent.click(screen.getByRole('menuitem', { name: 'Export to CSV' }));
+      });
       expect(onSelect.mock.calls.length).toBe(1);
       expect(onSelect.mock.calls[0][1]).toBe('csv');
     });
 
-    it('onSelect should be called with JSON', () => {
+    it('onSelect should be called with JSON', async () => {
       const onSelect = jest.fn();
       render(<DownloadButton extraItems={extraItems} onSelect={onSelect} />);
-      userEvent.click(screen.getByRole('button', { name: 'Export' }));
-      userEvent.click(screen.getByRole('menuitem', { name: 'Export to JSON' }));
+      await act(async () => {
+        userEvent.click(screen.getByRole('button', { name: 'Export' }));
+      });
+
+      act(() => {
+        userEvent.click(screen.getByRole('menuitem', { name: 'Export to JSON' }));
+      });
       expect(onSelect.mock.calls.length).toBe(1);
       expect(onSelect.mock.calls[0][1]).toBe('json');
     });
 
-    it("shouldn't call onSelect", () => {
+    it("shouldn't call onSelect", async () => {
       const onSelect = jest.fn();
       render(<DownloadButton extraItems={extraItems} />);
-      userEvent.click(screen.getByRole('button', { name: 'Export' }));
-      userEvent.click(screen.getByRole('menuitem', { name: 'Export to JSON' }));
+      await act(async () => {
+        userEvent.click(screen.getByRole('button', { name: 'Export' }));
+      });
+
+      act(() => {
+        userEvent.click(screen.getByRole('menuitem', { name: 'Export to JSON' }));
+      });
       expect(onSelect.mock.calls.length).toBe(0);
     });
   });

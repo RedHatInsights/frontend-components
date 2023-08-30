@@ -26,7 +26,7 @@ const ToolbarActions = () => {
         dedicatedAction={<Button onClick={() => alert('Dedicated action callback')}>Always visible action</Button>}
         filterConfig={{ placeholder: 'Filter by string', onChange: ({ target: { value } }) => setFilterValue(value), value: filterValue }}
       />
-      <pre className="pf-u-ml-md">{JSON.stringify({ filterValue }, null, 2)}</pre>
+      <pre className="pf-v5-u-ml-md">{JSON.stringify({ filterValue }, null, 2)}</pre>
     </div>
   );
 };

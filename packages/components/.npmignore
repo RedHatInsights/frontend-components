@@ -8,3 +8,6 @@ doc/
 config/
 tsconfig.json
 pre-publish.js
+.cypress-cache/
+cypress/
+tsconfig*

@@ -19,7 +19,7 @@ exports[`Pie component should render correctly 1`] = `
         className={null}
         color="none"
         coords={
-          Array [
+          [
             215,
             0,
           ]
@@ -30,16 +30,16 @@ exports[`Pie component should render correctly 1`] = `
         <NodeElement
           cellCoord={2}
           cellData={
-            Array [
-              Object {
+            [
+              {
                 "label": "First",
               },
             ]
           }
           color="#FF6666"
           config={
-            Object {
-              "colors": Array [
+            {
+              "colors": [
                 "#f0ab00",
                 "#FF6666",
                 "#d1d1d1",
@@ -62,7 +62,7 @@ exports[`Pie component should render correctly 1`] = `
         className={null}
         color="none"
         coords={
-          Array [
+          [
             0,
             0,
           ]
@@ -73,16 +73,16 @@ exports[`Pie component should render correctly 1`] = `
         <NodeElement
           cellCoord={2}
           cellData={
-            Array [
-              Object {
+            [
+              {
                 "label": "Second",
               },
             ]
           }
           color="#f0ab00"
           config={
-            Object {
-              "colors": Array [
+            {
+              "colors": [
                 "#f0ab00",
                 "#FF6666",
                 "#d1d1d1",
@@ -105,7 +105,7 @@ exports[`Pie component should render correctly 1`] = `
         className={null}
         color="none"
         coords={
-          Array [
+          [
             215,
             215,
           ]
@@ -116,16 +116,16 @@ exports[`Pie component should render correctly 1`] = `
         <NodeElement
           cellCoord={2}
           cellData={
-            Array [
-              Object {
+            [
+              {
                 "label": "Third",
               },
             ]
           }
           color="#bee1f4"
           config={
-            Object {
-              "colors": Array [
+            {
+              "colors": [
                 "#f0ab00",
                 "#FF6666",
                 "#d1d1d1",
@@ -148,7 +148,7 @@ exports[`Pie component should render correctly 1`] = `
         className={null}
         color="none"
         coords={
-          Array [
+          [
             0,
             215,
           ]
@@ -159,16 +159,16 @@ exports[`Pie component should render correctly 1`] = `
         <NodeElement
           cellCoord={2}
           cellData={
-            Array [
-              Object {
+            [
+              {
                 "label": "Fourth",
               },
             ]
           }
           color="#d1d1d1"
           config={
-            Object {
-              "colors": Array [
+            {
+              "colors": [
                 "#f0ab00",
                 "#FF6666",
                 "#d1d1d1",
@@ -192,13 +192,13 @@ exports[`Pie component should render correctly 1`] = `
       color="#414241"
       size={430}
       values={
-        Object {
-          "subLabels": Object {
-            "xLabels": Array [
+        {
+          "subLabels": {
+            "xLabels": [
               "Low",
               "High",
             ],
-            "yLabels": Array [
+            "yLabels": [
               "Low",
               "High",
             ],
@@ -234,7 +234,7 @@ exports[`Pie component should render with config 1`] = `
         className={null}
         color="none"
         coords={
-          Array [
+          [
             5,
             0,
           ]
@@ -245,16 +245,16 @@ exports[`Pie component should render with config 1`] = `
         <NodeElement
           cellCoord={2}
           cellData={
-            Array [
-              Object {
+            [
+              {
                 "label": "First",
               },
             ]
           }
           color="blue"
           config={
-            Object {
-              "colors": Array [
+            {
+              "colors": [
                 "yellow",
                 "blue",
                 "red",
@@ -277,7 +277,7 @@ exports[`Pie component should render with config 1`] = `
         className={null}
         color="none"
         coords={
-          Array [
+          [
             0,
             0,
           ]
@@ -288,16 +288,16 @@ exports[`Pie component should render with config 1`] = `
         <NodeElement
           cellCoord={2}
           cellData={
-            Array [
-              Object {
+            [
+              {
                 "label": "Second",
               },
             ]
           }
           color="yellow"
           config={
-            Object {
-              "colors": Array [
+            {
+              "colors": [
                 "yellow",
                 "blue",
                 "red",
@@ -320,7 +320,7 @@ exports[`Pie component should render with config 1`] = `
         className={null}
         color="none"
         coords={
-          Array [
+          [
             5,
             5,
           ]
@@ -331,16 +331,16 @@ exports[`Pie component should render with config 1`] = `
         <NodeElement
           cellCoord={2}
           cellData={
-            Array [
-              Object {
+            [
+              {
                 "label": "Third",
               },
             ]
           }
           color="black"
           config={
-            Object {
-              "colors": Array [
+            {
+              "colors": [
                 "yellow",
                 "blue",
                 "red",
@@ -363,7 +363,7 @@ exports[`Pie component should render with config 1`] = `
         className={null}
         color="none"
         coords={
-          Array [
+          [
             0,
             5,
           ]
@@ -374,16 +374,16 @@ exports[`Pie component should render with config 1`] = `
         <NodeElement
           cellCoord={2}
           cellData={
-            Array [
-              Object {
+            [
+              {
                 "label": "Fourth",
               },
             ]
           }
           color="red"
           config={
-            Object {
-              "colors": Array [
+            {
+              "colors": [
                 "yellow",
                 "blue",
                 "red",
@@ -407,13 +407,13 @@ exports[`Pie component should render with config 1`] = `
       color="#414241"
       size={10}
       values={
-        Object {
-          "subLabels": Object {
-            "xLabels": Array [
+        {
+          "subLabels": {
+            "xLabels": [
               "Low",
               "High",
             ],
-            "yLabels": Array [
+            "yLabels": [
               "Low",
               "High",
             ],
@@ -449,7 +449,7 @@ exports[`Pie component should render with labels 1`] = `
         className={null}
         color="none"
         coords={
-          Array [
+          [
             215,
             0,
           ]
@@ -460,16 +460,16 @@ exports[`Pie component should render with labels 1`] = `
         <NodeElement
           cellCoord={2}
           cellData={
-            Array [
-              Object {
+            [
+              {
                 "label": "First",
               },
             ]
           }
           color="#FF6666"
           config={
-            Object {
-              "colors": Array [
+            {
+              "colors": [
                 "#f0ab00",
                 "#FF6666",
                 "#d1d1d1",
@@ -492,7 +492,7 @@ exports[`Pie component should render with labels 1`] = `
         className={null}
         color="none"
         coords={
-          Array [
+          [
             0,
             0,
           ]
@@ -503,16 +503,16 @@ exports[`Pie component should render with labels 1`] = `
         <NodeElement
           cellCoord={2}
           cellData={
-            Array [
-              Object {
+            [
+              {
                 "label": "Second",
               },
             ]
           }
           color="#f0ab00"
           config={
-            Object {
-              "colors": Array [
+            {
+              "colors": [
                 "#f0ab00",
                 "#FF6666",
                 "#d1d1d1",
@@ -535,7 +535,7 @@ exports[`Pie component should render with labels 1`] = `
         className={null}
         color="none"
         coords={
-          Array [
+          [
             215,
             215,
           ]
@@ -546,16 +546,16 @@ exports[`Pie component should render with labels 1`] = `
         <NodeElement
           cellCoord={2}
           cellData={
-            Array [
-              Object {
+            [
+              {
                 "label": "Third",
               },
             ]
           }
           color="#bee1f4"
           config={
-            Object {
-              "colors": Array [
+            {
+              "colors": [
                 "#f0ab00",
                 "#FF6666",
                 "#d1d1d1",
@@ -578,7 +578,7 @@ exports[`Pie component should render with labels 1`] = `
         className={null}
         color="none"
         coords={
-          Array [
+          [
             0,
             215,
           ]
@@ -589,16 +589,16 @@ exports[`Pie component should render with labels 1`] = `
         <NodeElement
           cellCoord={2}
           cellData={
-            Array [
-              Object {
+            [
+              {
                 "label": "Fourth",
               },
             ]
           }
           color="#d1d1d1"
           config={
-            Object {
-              "colors": Array [
+            {
+              "colors": [
                 "#f0ab00",
                 "#FF6666",
                 "#d1d1d1",
@@ -622,13 +622,13 @@ exports[`Pie component should render with labels 1`] = `
       color="#414241"
       size={430}
       values={
-        Object {
-          "subLabels": Object {
-            "xLabels": Array [
+        {
+          "subLabels": {
+            "xLabels": [
               "Low",
               "High",
             ],
-            "yLabels": Array [
+            "yLabels": [
               "Low",
               "High",
             ],

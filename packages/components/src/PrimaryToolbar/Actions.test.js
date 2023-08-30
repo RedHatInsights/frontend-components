@@ -1,9 +1,7 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { Button } from '@patternfly/react-core';
 import Actions, { actionPropsGenerator, overflowActionsMapper } from './Actions';
-import { mount, shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render, screen } from '@testing-library/react';
 
 const onButtonClick = jest.fn();
 
@@ -27,43 +25,38 @@ const actions = [
 describe('Actions - component', () => {
   describe('should render', () => {
     it('no data', () => {
-      const wrapper = shallow(<Actions />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Actions />);
+      expect(container).toMatchSnapshot();
     });
 
     it('just actions', () => {
-      const wrapper = shallow(<Actions actions={actions} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Actions actions={actions} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('empty actions', () => {
-      const wrapper = shallow(<Actions overflowActions={actions} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Actions overflowActions={actions} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('actions and overflow', () => {
-      const wrapper = shallow(<Actions actions={actions} overflowActions={actions} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Actions actions={actions} overflowActions={actions} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('one action', () => {
-      const wrapper = shallow(<Actions actions={[actions[0]]} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Actions actions={[actions[0]]} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('one action and multiple overflow', () => {
-      const wrapper = shallow(<Actions actions={[actions[0]]} overflowActions={actions} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
-    });
-
-    it('actionObject as first action has the onClick handler', () => {
-      const wrapper = shallow(<Actions actions={[actions[1]]} />);
-      expect(wrapper.find(Button).prop('onClick')).toEqual(actions[1].onClick);
+      const { container } = render(<Actions actions={[actions[0]]} overflowActions={actions} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('onClick takes priority from action', () => {
       const onClick = jest.fn();
-      const wrapper = shallow(
+      render(
         <Actions
           actions={[
             {
@@ -76,57 +69,46 @@ describe('Actions - component', () => {
           ]}
         />
       );
-      expect(wrapper.find(Button).prop('onClick')).toEqual(onClick);
-    });
-
-    it('actionObject as first action has the onClick handler from props', () => {
-      const onClick = jest.fn();
-      const wrapper = shallow(
-        <Actions
-          actions={[
-            {
-              label: 'some  label',
-              props: {
-                onClick: onClick,
-              },
-            },
-          ]}
-        />
-      );
-      expect(wrapper.find(Button).prop('onClick')).toEqual(onClick);
+      screen.getByText('some label').click();
+      expect(onClick).toHaveBeenCalled();
     });
 
     it('actionObject as first action', () => {
-      const wrapper = shallow(<Actions actions={[actions[1]]} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Actions actions={[actions[1]]} />);
+      expect(container).toMatchSnapshot();
     });
   });
 
   describe('API', () => {
     it('should update open', () => {
-      const wrapper = mount(<Actions actions={actions} />);
-      wrapper.find('button.pf-c-dropdown__toggle').first().simulate('click');
-      wrapper.update();
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Actions actions={actions} />);
+      act(() => {
+        screen.getByRole('button', { expanded: false }).click();
+      });
+      expect(container).toMatchSnapshot();
     });
 
-    it('should NOT call onSelect', () => {
+    it('should NOT call onSelect', async () => {
       const onSelect = jest.fn();
-      const wrapper = mount(<Actions actions={actions} />);
-      wrapper.find('button.pf-c-dropdown__toggle').first().simulate('click');
-      wrapper.update();
-      wrapper.find('button.pf-c-dropdown__menu-item').first().simulate('click');
+      render(<Actions actions={actions} />);
+      await act(async () => {
+        await screen.getByRole('button', { expanded: false }).click();
+      });
+      act(() => {
+        screen.getByText('Some button').click();
+      });
       expect(onSelect).not.toHaveBeenCalled();
     });
 
-    it('should call onSelect', () => {
+    it('should call onSelect', async () => {
       const onSelect = jest.fn();
-      const wrapper = mount(<Actions actions={actions} onSelect={onSelect} />);
-      act(() => {
-        wrapper.find('button.pf-c-dropdown__toggle').first().simulate('click');
+      render(<Actions actions={actions} onSelect={onSelect} />);
+      await act(async () => {
+        await screen.getByRole('button', { expanded: false }).click();
       });
-      wrapper.update();
-      wrapper.find('button.pf-c-dropdown__menu-item').first().simulate('click');
+      act(() => {
+        screen.getByText('Some title').click();
+      });
       expect(onSelect).toHaveBeenCalled();
     });
   });
@@ -154,17 +136,17 @@ describe('actionPropsGenerator', () => {
 
 describe('overflowActionsMapper', () => {
   it('should render component', () => {
-    const wrapper = shallow(<div>{overflowActionsMapper(actions[0])}</div>);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<div>{overflowActionsMapper(actions[0])}</div>);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render action object', () => {
-    const wrapper = shallow(<div>{overflowActionsMapper(actions[1])}</div>);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<div>{overflowActionsMapper(actions[1])}</div>);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render plain string', () => {
-    const wrapper = shallow(<div>{overflowActionsMapper(actions[2])}</div>);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<div>{overflowActionsMapper(actions[2])}</div>);
+    expect(container).toMatchSnapshot();
   });
 });

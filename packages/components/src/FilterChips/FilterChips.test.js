@@ -51,7 +51,7 @@ describe('FilterChips component', () => {
     it('should call onDelete when deleting a single chip', () => {
       const onDelete = jest.fn();
       const wrapper = mount(<FilterChips filters={filters} onDelete={onDelete} />);
-      wrapper.find('.pf-c-chip button').last().simulate('click');
+      wrapper.find('.pf-v5-c-chip button').last().simulate('click');
       expect(onDelete).toHaveBeenCalledWith(expect.anything(), [{ name: 'Chip 4' }]);
       expect(onDelete).toHaveBeenCalledTimes(1);
     });
@@ -59,7 +59,7 @@ describe('FilterChips component', () => {
     it('should call onDelete when deleting a single chip in group', () => {
       const onDelete = jest.fn();
       const wrapper = mount(<FilterChips filters={filters} onDelete={onDelete} />);
-      wrapper.find('.pf-c-chip button').first().simulate('click');
+      wrapper.find('.pf-v5-c-chip button').first().simulate('click');
       expect(onDelete).toHaveBeenCalledWith(expect.anything(), [
         {
           category: 'Group 1',
@@ -101,7 +101,7 @@ describe('FilterChips component', () => {
         ],
       };
       const wrapper = mount(<FilterChips filters={[...filters, newGroup]} onDeleteGroup={onDelete} />);
-      wrapper.find('.pf-c-chip-group__close button').last().simulate('click');
+      wrapper.find('.pf-v5-c-chip-group__close button').last().simulate('click');
       expect(onDelete).toHaveBeenCalledWith(
         expect.anything(),
         [newGroup],

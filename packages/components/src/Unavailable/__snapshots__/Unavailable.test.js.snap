@@ -4,61 +4,66 @@ exports[`Unavailable component should render 1`] = `
 <Unavailable>
   <EmptyState
     className="ins-c-empty-state__unavailable pf-m-redhat-font"
-    variant="large"
+    variant="lg"
   >
     <div
-      className="pf-c-empty-state pf-m-lg ins-c-empty-state__unavailable pf-m-redhat-font"
+      className="pf-v5-c-empty-state pf-m-lg ins-c-empty-state__unavailable pf-m-redhat-font"
     >
       <div
-        className="pf-c-empty-state__content"
+        className="pf-v5-c-empty-state__content"
       >
-        <EmptyStateIcon
-          icon={[Function]}
-        >
-          <ExclamationCircleIcon
-            aria-hidden="true"
-            className="pf-c-empty-state__icon"
-            color="currentColor"
-            noVerticalAlign={false}
-            size="sm"
-          >
-            <svg
-              aria-hidden="true"
-              aria-labelledby={null}
-              className="pf-c-empty-state__icon"
-              fill="currentColor"
-              height="1em"
-              role="img"
-              style={
-                Object {
-                  "verticalAlign": "-0.125em",
-                }
-              }
-              viewBox="0 0 512 512"
-              width="1em"
-            >
-              <path
-                d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"
-              />
-            </svg>
-          </ExclamationCircleIcon>
-        </EmptyStateIcon>
-        <Title
+        <EmptyStateHeader
           headingLevel="h5"
-          size="lg"
+          icon={
+            <EmptyStateIcon
+              icon={[Function]}
+            />
+          }
+          titleText="This page is temporarily unavailable"
         >
-          <h5
-            className="pf-c-title pf-m-lg"
-            data-ouia-component-id="OUIA-Generated-Title-1"
-            data-ouia-component-type="PF4/Title"
-            data-ouia-safe={true}
+          <div
+            className="pf-v5-c-empty-state__header"
           >
-            This page is temporarily unavailable
-          </h5>
-        </Title>
+            <EmptyStateIcon
+              icon={[Function]}
+            >
+              <div
+                className="pf-v5-c-empty-state__icon"
+              >
+                <ExclamationCircleIcon
+                  aria-hidden={true}
+                >
+                  <svg
+                    aria-hidden={true}
+                    aria-labelledby={null}
+                    className="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"
+                    />
+                  </svg>
+                </ExclamationCircleIcon>
+              </div>
+            </EmptyStateIcon>
+            <div
+              className="pf-v5-c-empty-state__title"
+            >
+              <h5
+                className="pf-v5-c-empty-state__title-text"
+              >
+                This page is temporarily unavailable
+              </h5>
+            </div>
+          </div>
+        </EmptyStateHeader>
         <EmptyStateBody>
           <div
-            className="pf-c-empty-state__body"
+            className="pf-v5-c-empty-state__body"
           >
             Try refreshing the page. If the problem persists, contact your organization administrator or visit our
             <a

@@ -6,15 +6,15 @@
       margin-right: 30px;
       text-align: center;
       cursor: pointer;
-      color: var(--pf-global--link--Color);
+      color: var(--pf-v5-global--link--Color);
 
       &.active {
-        border-bottom: 3px var(--pf-global--link--Color) solid;
+        border-bottom: 3px var(--pf-v5-global--link--Color) solid;
       }
 
       &:hover {
-        color: var(--pf-global--link--Color--hover);
-        border-bottom: 3px var(--pf-global--link--Color--hover) solid;
+        color: var(--pf-v5-global--link--Color--hover);
+        border-bottom: 3px var(--pf-v5-global--link--Color--hover) solid;
       }
     }
   }

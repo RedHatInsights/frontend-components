@@ -7,7 +7,7 @@ exports[`Truncate component should render correctly block clicking on expand tog
   <StackItem>
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -39,7 +39,7 @@ exports[`Truncate component should render correctly block clicking on expand tog
   <StackItem>
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -71,7 +71,7 @@ exports[`Truncate component should render correctly block custom button titles 1
   <StackItem>
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -103,7 +103,7 @@ exports[`Truncate component should render correctly block custom button titles 2
   <StackItem>
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -135,7 +135,7 @@ exports[`Truncate component should render correctly block custom expande button 
   <StackItem>
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, q...",
         }
@@ -164,7 +164,7 @@ exports[`Truncate component should render correctly block custom expande button 
   <StackItem>
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, q...",
         }
@@ -196,7 +196,7 @@ exports[`Truncate component should render correctly block hovering over toggles 
   >
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing...",
         }
       }
@@ -216,7 +216,7 @@ exports[`Truncate component should render correctly block hovering over toggles 
   >
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -240,7 +240,7 @@ exports[`Truncate component should render correctly block hovering over toggles 
   >
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing...",
         }
       }
@@ -257,7 +257,7 @@ exports[`Truncate component should render correctly block when text length is le
   <StackItem>
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -278,7 +278,7 @@ exports[`Truncate component should render correctly block with short length 1`] 
   <StackItem>
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lo...",
         }
       }
@@ -306,7 +306,7 @@ exports[`Truncate component should render correctly block without length specifi
   <StackItem>
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, q...",
         }
@@ -333,7 +333,7 @@ exports[`Truncate component should render correctly inline clicking on expand to
   <span
     className="ins-c-truncate is-inline"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -358,7 +358,7 @@ exports[`Truncate component should render correctly inline clicking on expand to
   <span
     className="ins-c-truncate is-inline"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -383,7 +383,7 @@ exports[`Truncate component should render correctly inline custom button titles 
   <span
     className="ins-c-truncate is-inline"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -408,7 +408,7 @@ exports[`Truncate component should render correctly inline custom button titles 
   <span
     className="ins-c-truncate is-inline"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -433,7 +433,7 @@ exports[`Truncate component should render correctly inline custom expande button
   <span
     className="ins-c-truncate is-inline"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, q...",
       }
@@ -455,7 +455,7 @@ exports[`Truncate component should render correctly inline custom expande button
   <span
     className="ins-c-truncate is-inline"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, q...",
       }
@@ -477,7 +477,7 @@ exports[`Truncate component should render correctly inline hovering over toggles
   <span
     className="ins-c-truncate is-inline"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing...",
       }
     }
@@ -493,7 +493,7 @@ exports[`Truncate component should render correctly inline hovering over toggles
   <span
     className="ins-c-truncate is-inline"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -513,7 +513,7 @@ exports[`Truncate component should render correctly inline hovering over toggles
   <span
     className="ins-c-truncate is-inline"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing...",
       }
     }
@@ -529,7 +529,7 @@ exports[`Truncate component should render correctly inline when text length is l
   <span
     className="ins-c-truncate is-inline"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -549,7 +549,7 @@ exports[`Truncate component should render correctly inline with short length 1`]
   <StackItem>
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "Lo...",
         }
       }
@@ -575,7 +575,7 @@ exports[`Truncate component should render correctly inline without length specif
   <span
     className="ins-c-truncate is-inline"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, q...",
       }

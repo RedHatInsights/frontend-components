@@ -5,25 +5,29 @@ exports[`NotAuthorized component should apply custom styles 1`] = `
   className="ins-c-not-authorized something"
   variant="full"
 >
-  <EmptyStateIcon
-    icon={[Function]}
-  />
-  <Title
+  <EmptyStateHeader
     headingLevel="h5"
-    size="lg"
-  >
-    You do not have access to Foo
-  </Title>
+    icon={
+      <EmptyStateIcon
+        icon={[Function]}
+      />
+    }
+    titleText="You do not have access to Foo"
+  />
   <EmptyStateBody>
     <ContactBody />
   </EmptyStateBody>
-  <Button
-    component="a"
-    href="."
-    variant="primary"
-  >
-    Go to landing page
-  </Button>
+  <EmptyStateFooter>
+    <EmptyStateActions>
+      <Button
+        component="a"
+        href="."
+        variant="primary"
+      >
+        Go to landing page
+      </Button>
+    </EmptyStateActions>
+  </EmptyStateFooter>
 </EmptyState>
 `;
 
@@ -32,18 +36,21 @@ exports[`NotAuthorized component should not show buttons 1`] = `
   className="ins-c-not-authorized "
   variant="full"
 >
-  <EmptyStateIcon
-    icon={[Function]}
-  />
-  <Title
+  <EmptyStateHeader
     headingLevel="h5"
-    size="lg"
-  >
-    You do not have access to Foo
-  </Title>
+    icon={
+      <EmptyStateIcon
+        icon={[Function]}
+      />
+    }
+    titleText="You do not have access to Foo"
+  />
   <EmptyStateBody>
     <ContactBody />
   </EmptyStateBody>
+  <EmptyStateFooter>
+    <EmptyStateActions />
+  </EmptyStateFooter>
 </EmptyState>
 `;
 
@@ -52,25 +59,29 @@ exports[`NotAuthorized component should render 1`] = `
   className="ins-c-not-authorized "
   variant="full"
 >
-  <EmptyStateIcon
-    icon={[Function]}
-  />
-  <Title
+  <EmptyStateHeader
     headingLevel="h5"
-    size="lg"
-  >
-    You do not have access to Foo
-  </Title>
+    icon={
+      <EmptyStateIcon
+        icon={[Function]}
+      />
+    }
+    titleText="You do not have access to Foo"
+  />
   <EmptyStateBody>
     <ContactBody />
   </EmptyStateBody>
-  <Button
-    component="a"
-    href="."
-    variant="primary"
-  >
-    Go to landing page
-  </Button>
+  <EmptyStateFooter>
+    <EmptyStateActions>
+      <Button
+        component="a"
+        href="."
+        variant="primary"
+      >
+        Go to landing page
+      </Button>
+    </EmptyStateActions>
+  </EmptyStateFooter>
 </EmptyState>
 `;
 
@@ -79,37 +90,43 @@ exports[`NotAuthorized component should show custom actions 1`] = `
   className="ins-c-not-authorized "
   variant="full"
 >
-  <EmptyStateIcon
-    icon={[Function]}
-  />
-  <Title
+  <EmptyStateHeader
     headingLevel="h5"
-    size="lg"
-  >
-    You do not have access to Foo
-  </Title>
+    icon={
+      <EmptyStateIcon
+        icon={[Function]}
+      />
+    }
+    titleText="You do not have access to Foo"
+  />
   <EmptyStateBody>
     <ContactBody />
   </EmptyStateBody>
-  <button
-    id="action-one"
-    key="1"
-  >
-    1
-  </button>
-  <button
-    id="action-one"
-    key="2"
-  >
-    2
-  </button>
-  <Button
-    component="a"
-    href="."
-    variant="primary"
-  >
-    Go to landing page
-  </Button>
+  <EmptyStateFooter>
+    <EmptyStateActions>
+      <button
+        id="action-one"
+        key="1"
+      >
+        1
+      </button>
+      <button
+        id="action-one"
+        key="2"
+      >
+        2
+      </button>
+    </EmptyStateActions>
+    <EmptyStateActions>
+      <Button
+        component="a"
+        href="."
+        variant="primary"
+      >
+        Go to landing page
+      </Button>
+    </EmptyStateActions>
+  </EmptyStateFooter>
 </EmptyState>
 `;
 
@@ -118,25 +135,29 @@ exports[`NotAuthorized component should show custom description 1`] = `
   className="ins-c-not-authorized "
   variant="full"
 >
-  <EmptyStateIcon
-    icon={[Function]}
-  />
-  <Title
+  <EmptyStateHeader
     headingLevel="h5"
-    size="lg"
-  >
-    You do not have access to Foo
-  </Title>
+    icon={
+      <EmptyStateIcon
+        icon={[Function]}
+      />
+    }
+    titleText="You do not have access to Foo"
+  />
   <EmptyStateBody>
     Some text
   </EmptyStateBody>
-  <Button
-    component="a"
-    href="."
-    variant="primary"
-  >
-    Go to landing page
-  </Button>
+  <EmptyStateFooter>
+    <EmptyStateActions>
+      <Button
+        component="a"
+        href="."
+        variant="primary"
+      >
+        Go to landing page
+      </Button>
+    </EmptyStateActions>
+  </EmptyStateFooter>
 </EmptyState>
 `;
 
@@ -145,48 +166,61 @@ exports[`NotAuthorized component should show custom title 1`] = `
   className="ins-c-not-authorized "
   variant="full"
 >
-  <EmptyStateIcon
-    icon={[Function]}
-  />
-  <Title
+  <EmptyStateHeader
     headingLevel="h5"
-    size="lg"
-  >
-    Custom title
-  </Title>
+    icon={
+      <EmptyStateIcon
+        icon={[Function]}
+      />
+    }
+    titleText="Custom title"
+  />
   <EmptyStateBody>
     <ContactBody />
   </EmptyStateBody>
-  <Button
-    component="a"
-    href="."
-    variant="primary"
-  >
-    Go to landing page
-  </Button>
+  <EmptyStateFooter>
+    <EmptyStateActions>
+      <Button
+        component="a"
+        href="."
+        variant="primary"
+      >
+        Go to landing page
+      </Button>
+    </EmptyStateActions>
+  </EmptyStateFooter>
 </EmptyState>
 `;
 
 exports[`NotAuthorized component should use custom icon 1`] = `
 <div
-  className="pf-c-empty-state ins-c-not-authorized "
+  className="pf-v5-c-empty-state ins-c-not-authorized "
 >
   <div
-    className="pf-c-empty-state__content"
+    className="pf-v5-c-empty-state__content"
   >
-    some Icon!
-    <h5
-      className="pf-c-title pf-m-lg"
-      data-ouia-component-id="OUIA-Generated-Title-1"
-      data-ouia-component-type="PF4/Title"
-      data-ouia-safe={true}
-    >
-      You do not have access to Foo
-    </h5>
     <div
-      className="pf-c-empty-state__body"
+      className="pf-v5-c-empty-state__header"
     >
-      Array [
+      <div
+        className="pf-v5-c-empty-state__icon"
+      >
+        some Icon!
+      </div>
+      <div
+        className="pf-v5-c-empty-state__title"
+      >
+        <h5
+          className="pf-v5-c-empty-state__title-text"
+        >
+          You do not have access to Foo
+        </h5>
+      </div>
+    </div>
+    <div
+      className="pf-v5-c-empty-state__body"
+    >
+      [
         "Contact your organization administrator(s) for more information or visit ",
         <a
           href="./settings/my-user-access"
@@ -196,20 +230,28 @@ exports[`NotAuthorized component should use custom icon 1`] = `
         "  to learn more about your permissions.",
       ]
     </div>
-    <a
-      aria-disabled={false}
-      aria-label={null}
-      className="pf-c-button pf-m-primary"
-      data-ouia-component-id="OUIA-Generated-Button-primary-1"
-      data-ouia-component-type="PF4/Button"
-      data-ouia-safe={true}
-      disabled={null}
-      href="."
-      role={null}
-      type={null}
+    <div
+      className="pf-v5-c-empty-state__footer"
     >
-      Go to landing page
-    </a>
+      <div
+        className="pf-v5-c-empty-state__actions"
+      >
+        <a
+          aria-disabled={false}
+          aria-label={null}
+          className="pf-v5-c-button pf-m-primary"
+          data-ouia-component-id="OUIA-Generated-Button-primary-1"
+          data-ouia-component-type="PF5/Button"
+          data-ouia-safe={true}
+          disabled={null}
+          href="."
+          role={null}
+          type={null}
+        >
+          Go to landing page
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 `;

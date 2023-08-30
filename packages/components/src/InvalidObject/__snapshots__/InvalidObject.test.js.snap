@@ -3,16 +3,16 @@
 exports[`InvalidObject component should render 1`] = `
 <InvalidObject>
   <section
-    className="pf-l-page__main-section pf-c-page__main-section ins-c-component_invalid-component"
+    className="pf-v5-l-page__main-section pf-v5-c-page__main-section ins-c-component_invalid-component"
   >
     <Title
       headingLevel="h1"
       size="3xl"
     >
       <h1
-        className="pf-c-title pf-m-3xl"
+        className="pf-v5-c-title pf-m-3xl"
         data-ouia-component-id="OUIA-Generated-Title-1"
-        data-ouia-component-type="PF4/Title"
+        data-ouia-component-type="PF5/Title"
         data-ouia-safe={true}
       >
         We lost that page
@@ -264,9 +264,9 @@ exports[`InvalidObject component should render 1`] = `
       size="xl"
     >
       <h1
-        className="pf-c-title pf-m-xl ins-c-text__sorry"
+        className="pf-v5-c-title pf-m-xl ins-c-text__sorry"
         data-ouia-component-id="OUIA-Generated-Title-2"
-        data-ouia-component-type="PF4/Title"
+        data-ouia-component-type="PF5/Title"
         data-ouia-safe={true}
       >
         Let's find you a new one. Try a new search or return home.
@@ -286,9 +286,9 @@ exports[`InvalidObject component should render 1`] = `
         <a
           aria-disabled={false}
           aria-label={null}
-          className="pf-c-button pf-m-link"
+          className="pf-v5-c-button pf-m-link"
           data-ouia-component-id="OUIA-Generated-Button-link-1"
-          data-ouia-component-type="PF4/Button"
+          data-ouia-component-type="PF5/Button"
           data-ouia-safe={true}
           disabled={null}
           href="http://localhost:5000"

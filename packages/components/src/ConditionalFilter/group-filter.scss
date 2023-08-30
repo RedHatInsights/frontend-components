@@ -1,10 +1,10 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
 
-button.ins-c-group-menu-toggle .pf-c-form-control {
+button.ins-c-group-menu-toggle .pf-v5-c-form-control {
     margin: -1rem 0 -1rem 0;
 }
 
-button.pf-c-menu-toggle {
+button.pf-v5-c-menu-toggle {
     outline: none;
     max-width: 261px;
 }
@@ -14,28 +14,31 @@ button.pf-c-menu-toggle {
 }
 
 .ins-c-icon__link {
-    color: var(--pf-global--primary-color--100);
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    color: var(--pf-v5-global--primary-color--100);
     :hover {
-        color: var(--pf-global--primary-color--200);
+        color: var(--pf-v5-global--primary-color--200);
     }
 }
 
 .ins-c-tree-view {
-    .pf-c-tree-view {
+    .pf-v5-c-tree-view {
         padding: 0;
     }
 
-    .pf-c-menu__list-item {
+    .pf-v5-c-menu__list-item {
         background: none;
 
-        .pf-c-menu__item {
+        .pf-v5-c-menu__item {
             padding: 0;
 
-            .pf-c-tree-view__content {
+            .pf-v5-c-tree-view__content {
                 background: none;
             }
             
-            .pf-c-tree-view__node {
+            .pf-v5-c-tree-view__node {
                 background: none;
             }
         }

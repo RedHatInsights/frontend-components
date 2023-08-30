@@ -1,8 +1,8 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
 
 .ins-c-table__empty {
-  background: var(--pf-global--Color--light-100);
-  border-bottom: 1px solid var(--pf-global--BorderColor--light-200);
+  background: var(--pf-v5-global--Color--light-100);
+  border-bottom: 1px solid var(--pf-v5-global--BorderColor--light-200);
   @include rem('padding', 20px);
   &.is-centered {
     display: flex;

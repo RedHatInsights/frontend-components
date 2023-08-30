@@ -11,21 +11,21 @@ describe('TreeTable decorator', () => {
 
   it('should render correctly - with data', () => {
     const { children, className } = decorator()('value', { rowData: { level: 0 } });
-    expect(className).toBe('pf-c-treeview__title-cell');
+    expect(className).toBe('pf-v5-c-treeview__title-cell');
     const wrapper = shallow(children);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should render correctly - with data tree collapsed', () => {
     const { children, className } = decorator()('value', { rowData: { level: 0, isTreeOpen: false } });
-    expect(className).toBe('pf-c-treeview__title-cell');
+    expect(className).toBe('pf-v5-c-treeview__title-cell');
     const wrapper = shallow(children);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should render correctly - with data tree opened', () => {
     const { children, className } = decorator()('value', { rowData: { level: 0, isTreeOpen: true } });
-    expect(className).toBe('pf-c-treeview__title-cell');
+    expect(className).toBe('pf-v5-c-treeview__title-cell');
     const wrapper = shallow(children);
     expect(toJson(wrapper)).toMatchSnapshot();
   });

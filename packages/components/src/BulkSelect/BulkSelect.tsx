@@ -5,12 +5,14 @@ import {
   Dropdown,
   DropdownItem,
   DropdownItemProps,
-  DropdownToggle,
-  DropdownToggleCheckbox,
-  DropdownToggleCheckboxProps,
-  DropdownToggleProps,
+  DropdownList,
+  MenuToggle,
+  MenuToggleCheckbox,
+  MenuToggleCheckboxProps,
+  MenuToggleProps,
   getDefaultOUIAId,
 } from '@patternfly/react-core';
+
 import './bulk-select.scss';
 
 export type BulkSelectItem = {
@@ -30,8 +32,8 @@ export interface BulkSelectProps {
   items?: BulkSelectItem[];
   checked?: boolean | null;
   id?: string;
-  onSelect?: DropdownToggleCheckboxProps['onChange'];
-  toggleProps?: DropdownToggleProps;
+  onSelect?: MenuToggleCheckboxProps['onChange'];
+  toggleProps?: MenuToggleProps;
   isDisabled?: boolean;
   ouiaId?: string;
   ouiaSafe?: boolean;
@@ -41,11 +43,11 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
   id,
   isDisabled = false,
   items = [],
-  onSelect = () => undefined,
+  onSelect,
   checked = false,
   toggleProps,
   count,
-  className = '',
+  className,
   ouiaId,
   ouiaSafe = true,
   ...props
@@ -63,57 +65,58 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
       {items && items.length > 0 ? (
         <Dropdown
           onSelect={() => onToggle(false)}
+          onOpenChange={(isOpen: boolean) => setIsOpen(isOpen)}
           {...props}
           className={classnames(className, 'ins-c-bulk-select')}
           ouiaId={ouiaFinalId}
           ouiaSafe={ouiaSafe}
-          toggle={
-            <DropdownToggle
+          toggle={(toggleRef) => (
+            <MenuToggle
+              aria-label={ouiaFinalId}
               {...toggleProps}
               isDisabled={isDisabled}
-              ouiaId={ouiaFinalId}
-              splitButtonItems={[
-                <Fragment key="split-checkbox">
-                  {hasError ? (
-                    <DropdownToggleCheckbox
-                      id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
-                      aria-label="Select all"
-                      onChange={onSelect}
-                      checked={checked}
-                      ouiaId={ouiaFinalId}
-                    />
-                  ) : (
-                    <DropdownToggleCheckbox
-                      id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
-                      aria-label="Select all"
-                      onChange={onSelect}
-                      isChecked={checked}
-                      ouiaId={ouiaFinalId}
-                    >
-                      {count ? `${count} selected` : ''}
-                    </DropdownToggleCheckbox>
-                  )}
-                </Fragment>,
-              ]}
-              onToggle={onToggle}
-            />
-          }
-          isOpen={isOpen}
-          dropdownItems={[
-            ...(count !== undefined && count > 0
-              ? [
-                  <DropdownItem
-                    key="count"
-                    isDisabled
-                    className={classnames({
-                      'ins-c-bulk-select__selected': !hasError,
-                    })}
+              isExpanded={isOpen}
+              ref={toggleRef}
+              onClick={() => setIsOpen((prev) => !prev)}
+            >
+              <Fragment key="split-checkbox">
+                {hasError ? (
+                  <MenuToggleCheckbox
+                    id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
+                    aria-label="Select all"
+                    onChange={onSelect}
+                    isChecked={checked}
+                    ouiaId={ouiaFinalId}
+                  />
+                ) : (
+                  <MenuToggleCheckbox
+                    id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
+                    aria-label="Select all"
+                    onChange={onSelect}
+                    isChecked={checked}
+                    ouiaId={ouiaFinalId}
                   >
-                    {count} Selected
-                  </DropdownItem>,
-                ]
-              : []),
-            ...items.map((oneItem, key) => (
+                    {count ? `${count} selected` : ''}
+                  </MenuToggleCheckbox>
+                )}
+              </Fragment>
+            </MenuToggle>
+          )}
+          isOpen={isOpen}
+        >
+          <DropdownList>
+            {count !== undefined && count > 0 && (
+              <DropdownItem
+                key="count"
+                isDisabled
+                className={classnames({
+                  'ins-c-bulk-select__selected': !hasError,
+                })}
+              >
+                {count} Selected
+              </DropdownItem>
+            )}
+            {items.map((oneItem, key) => (
               <DropdownItem
                 component="button"
                 key={oneItem.key || key}
@@ -123,9 +126,9 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
               >
                 {oneItem.title}
               </DropdownItem>
-            )),
-          ]}
-        />
+            ))}
+          </DropdownList>
+        </Dropdown>
       ) : (
         <Checkbox
           {...props}
@@ -133,7 +136,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
           className={classnames(className, 'ins-c-bulk-select')}
           id={`${id}-checkbox`}
           isChecked={checked}
-          onChange={onSelect}
+          onChange={(e, checked) => onSelect?.(checked, e)}
         />
       )}
     </Fragment>

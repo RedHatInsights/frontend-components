@@ -4,15 +4,15 @@
   &__md { width: 66% !important; }
   &__lg { width: 100% !important; }
   &.ins-m-dark {
-    --pf-c-skeleton--BackgroundColor: var(--pf-global--palette--black-600);
-    --pf-c-skeleton--after--LinearGradientColorStop1: var(
-      --pf-global--palette--black-600
+    --pf-v5-c-skeleton--BackgroundColor: var(--pf-v5-global--palette--black-600);
+    --pf-v5-c-skeleton--after--LinearGradientColorStop1: var(
+      --pf-v5-global--palette--black-600
     );
-    --pf-c-skeleton--after--LinearGradientColorStop2: var(
-      --pf-global--palette--black-500
+    --pf-v5-c-skeleton--after--LinearGradientColorStop2: var(
+      --pf-v5-global--palette--black-500
     );
-    --pf-c-skeleton--after--LinearGradientColorStop3: var(
-      --pf-global--palette--black-600
+    --pf-v5-c-skeleton--after--LinearGradientColorStop3: var(
+      --pf-v5-global--palette--black-600
     );
   }
 }

@@ -23,7 +23,7 @@ const WithOuia = <P,>(Component: React.ComponentType<P>, params: WithOuiaParams)
   const type = typeof params === 'string' ? params : params.module ? `${params.module}/${params.type}` : params.type;
   const InnerComponent = typeof params !== 'string' && params.InnerComponent !== undefined ? params.InnerComponent : 'div';
 
-  const withOuia: React.ComponentType<P & OuiaProps> = (props) => {
+  const withOuia: React.ComponentType<React.PropsWithChildren<P & OuiaProps>> = (props) => {
     const ouiaData = makeOuiaAttributes({
       fullType: type,
       ouiaId: props.ouiaId,

@@ -16,42 +16,23 @@ exports[`Notification Pagination component should render correctly 1`] = `
       </LevelItem>
       <LevelItem>
         <Pagination
-          className=""
-          defaultToFullPage={false}
-          firstPage={1}
-          isCompact={false}
-          isDisabled={false}
-          isSticky={false}
           itemCount={10}
-          itemsEnd={null}
-          itemsStart={null}
-          offset={0}
-          onFirstClick={[Function]}
-          onLastClick={[Function]}
-          onNextClick={[Function]}
-          onPageInput={[Function]}
-          onPerPageSelect={[Function]}
-          onPreviousClick={[Function]}
-          onSetPage={[Function]}
-          ouiaSafe={true}
           page={1}
           perPage={5}
-          perPageComponent="div"
           perPageOptions={
-            Array [
-              Object {
+            [
+              {
                 "title": "5",
                 "value": 5,
               },
             ]
           }
           titles={
-            Object {
+            {
               "items": "Notifications",
             }
           }
           variant="bottom"
-          widgetId="options-menu"
         />
       </LevelItem>
     </Level>

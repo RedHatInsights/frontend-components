@@ -2,6 +2,7 @@ import React from 'react';
 import Radio from './RadioFilter';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
 
 const config = {
   items: [
@@ -56,43 +57,61 @@ describe('Radio', () => {
   });
 
   describe('API', () => {
-    it('should open', () => {
+    it('should open', async () => {
       render(<Radio {...config} placeholder="some placeholder" />);
-      userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
-      expect(screen.getByRole('listbox', { name: 'Select Input' })).toBeDefined();
+      await act(async () => {
+        await userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
+      });
+      expect(screen.getByRole('listbox', { name: 'Options menu' })).toBeDefined();
     });
 
-    it('should NOT call onChange', () => {
+    it('should NOT call onChange', async () => {
       const onChange = jest.fn();
       render(<Radio {...config} placeholder="some placeholder" />);
-      userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
-      userEvent.click(screen.getByRole('option', { name: 'Custom value' }));
+      await act(async () => {
+        await userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
+      });
+      act(() => {
+        userEvent.click(screen.getByRole('option', { name: 'Custom value' }));
+      });
       expect(onChange).not.toHaveBeenCalled();
     });
 
-    it('should call onChange', () => {
+    it('should call onChange', async () => {
       const onChange = jest.fn();
       render(<Radio {...config} onChange={onChange} placeholder="some placeholder" />);
-      userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
-      userEvent.click(screen.getByRole('option', { name: 'Custom value' }));
+      await act(async () => {
+        await userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
+      });
+      act(() => {
+        userEvent.click(screen.getByRole('option', { name: 'Custom value' }));
+      });
       expect(onChange).toHaveBeenCalled();
     });
 
-    it('should update selected', () => {
+    it('should update selected', async () => {
       const onChange = jest.fn();
       render(<Radio {...config} onChange={onChange} placeholder="some placeholder" />);
-      userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
-      userEvent.click(screen.getByRole('option', { name: 'Custom value' }));
+      await act(async () => {
+        await userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
+      });
+      act(() => {
+        userEvent.click(screen.getByRole('option', { name: 'Custom value' }));
+      });
       expect(onChange.mock.calls[0][1]).toBe('some-value');
     });
 
-    it('should update selected with default value', () => {
-      const currectConfig = { ...config };
-      currectConfig.items[1].isChecked = true;
+    it('should update selected with default value', async () => {
+      const correctConfig = { ...config };
+      correctConfig.items[1].isChecked = true;
       const onChange = jest.fn();
-      render(<Radio {...currectConfig} onChange={onChange} placeholder="some placeholder" />);
-      userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
-      userEvent.click(screen.getByRole('option', { name: 'Custom value' }));
+      render(<Radio {...correctConfig} onChange={onChange} placeholder="some placeholder" />);
+      await act(async () => {
+        await userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
+      });
+      act(() => {
+        userEvent.click(screen.getByRole('option', { name: 'Custom value' }));
+      });
       expect(onChange.mock.calls[0][1]).toBe('some-value');
     });
   });

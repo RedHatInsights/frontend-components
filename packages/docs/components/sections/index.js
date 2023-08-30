@@ -9,7 +9,7 @@ import sections from './sections-definition';
 const useStyles = createUseStyles({
   description: {
     color: 'black',
-    fontSize: 'var(--pf-global--FontSize--sm)',
+    fontSize: 'var(--pf-v5-global--FontSize--sm)',
   },
   cardBody: {
     overflow: 'hidden',
@@ -22,14 +22,14 @@ const useStyles = createUseStyles({
     height: 210,
     textDecoration: 'none',
     letterSpacing: 2,
-    '& .pf-c-card__title': {
-      background: 'var(--pf-global--BackgroundColor--dark-400)',
-      color: 'var(--pf-global--Color--light-200)',
+    '& .pf-v5-c-card__title': {
+      background: 'var(--pf-v5-global--BackgroundColor--dark-400)',
+      color: 'var(--pf-v5-global--Color--light-200)',
       height: 80,
     },
     '&:hover': {
-      '& .pf-c-card__title': {
-        background: 'var(--pf-global--BackgroundColor--dark-200)',
+      '& .pf-v5-c-card__title': {
+        background: 'var(--pf-v5-global--BackgroundColor--dark-200)',
       },
     },
   },
@@ -39,19 +39,19 @@ const Sections = () => {
   const classes = useStyles();
 
   return (
-    <Gallery hasGutter className="pf-u-my-2xl">
+    <Gallery hasGutter className="pf-v5-u-my-2xl">
       {sections.map(({ title, href = '#', description = '' }) => (
         <GalleryItem key={title}>
           <Link href={href}>
             <a className={classes.link}>
               <Card id={title} className={classes.card} isSelectable>
-                <CardTitle className={classnames('pf-u-pb-lg')}>
+                <CardTitle className={classnames('pf-v5-u-pb-lg')}>
                   <Bullseye>
                     <Title headingLevel="h3">{title}</Title>
                   </Bullseye>
                 </CardTitle>
                 <CardBody className={classes.cardBody}>
-                  <Text className={classnames('pf-u-py-md', classes.description)} component={TextVariants.p}>
+                  <Text className={classnames('pf-v5-u-py-md', classes.description)} component={TextVariants.p}>
                     {typeof description === 'object' ? description : truncate(description, { length: '135' })}
                   </Text>
                 </CardBody>

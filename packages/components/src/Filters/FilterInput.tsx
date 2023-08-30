@@ -26,17 +26,30 @@ const FilterInput: React.FC<FilterInputProps> = ({ addRemoveFilters, param = '',
   }, []);
   const handleChange = () => {
     if (type === 'checkbox') {
-      setChecked(!checked);
+      return setChecked((prev) => {
+        addRemoveFilters?.(value, param, type, !prev);
+        return !prev;
+      });
     }
     addRemoveFilters?.(value, param, type, checked);
   };
   if (type !== 'radio') {
     return (
-      <Checkbox aria-label={String(label)} id={id} isChecked={checked} label={label} onChange={handleChange} value={value} ouiaId={String(label)} />
+      <Checkbox
+        className="ins-c-filter-input__checkbox"
+        aria-label={String(label)}
+        id={id}
+        isChecked={checked}
+        label={label}
+        onChange={handleChange}
+        value={value}
+        ouiaId={String(label)}
+      />
     );
   }
   return (
     <Radio
+      className="ins-c-filter-input__checkbox"
       isChecked={filters && !!value && !!param && filters[param] === value}
       aria-label={String(label)}
       id={id}

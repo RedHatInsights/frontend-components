@@ -5,11 +5,11 @@ exports[`PrimaryToolbar should render desc direction 1`] = `
   onClick={[Function]}
   variant="plain"
 >
-  <SortAmountDownIcon
-    color="currentColor"
-    noVerticalAlign={false}
-    size="sm"
-  />
+  <Icon
+    size="md"
+  >
+    <SortAmountDownIcon />
+  </Icon>
 </Button>
 `;
 
@@ -18,10 +18,10 @@ exports[`PrimaryToolbar should render no data 1`] = `
   onClick={[Function]}
   variant="plain"
 >
-  <SortAmountUpIcon
-    color="currentColor"
-    noVerticalAlign={false}
-    size="sm"
-  />
+  <Icon
+    size="md"
+  >
+    <SortAmountUpIcon />
+  </Icon>
 </Button>
 `;

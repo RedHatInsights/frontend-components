@@ -3,60 +3,60 @@
 exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
 <div>
   <div
-    class="pf-l-split ins-c-conditional-filter desktop"
+    class="pf-v5-l-split ins-c-conditional-filter"
   >
     <div
-      class="pf-l-split__item"
+      class="pf-v5-l-split__item"
     >
-      <div
-        class="pf-c-dropdown ins-c-conditional-filter__group"
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/Dropdown"
-        data-ouia-safe="true"
+      <button
+        aria-expanded="false"
+        aria-label="Conditional filter"
+        class="pf-v5-c-menu-toggle pf-m-disabled ins-c-conditional-filter__group"
+        disabled=""
+        type="button"
       >
-        <button
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-label="Conditional filter"
-          class="pf-c-dropdown__toggle"
-          data-ouia-component-id="ConditionalFilter"
-          data-ouia-component-type="PF4/DropdownToggle"
-          data-ouia-safe="true"
-          disabled=""
-          id="pf-dropdown-toggle-id-0"
-          type="button"
+        <span
+          class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-c-dropdown__toggle-text"
+            class="pf-v5-c-icon pf-m-md"
           >
-            <svg
-              aria-hidden="true"
-              fill="currentColor"
-              height="1em"
-              role="img"
-              style="vertical-align: -0.125em;"
-              viewBox="0 0 512 512"
-              width="1em"
-            >
-              <path
-                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-              />
-            </svg>
             <span
-              class="ins-c-conditional-filter__value-selector"
+              class="pf-v5-c-icon__content"
             >
-              No value
+              <svg
+                aria-hidden="true"
+                class="pf-v5-svg"
+                fill="currentColor"
+                height="1em"
+                role="img"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                />
+              </svg>
             </span>
           </span>
           <span
-            class="pf-c-dropdown__toggle-icon"
+            class="ins-c-conditional-filter__value-selector"
+          >
+            Simple text 1
+          </span>
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v5-c-menu-toggle__toggle-icon"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 320 512"
               width="1em"
             >
@@ -65,38 +65,56 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
               />
             </svg>
           </span>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
     <div
-      class="pf-l-split__item pf-m-fill"
+      class="pf-v5-l-split__item pf-m-fill"
     >
-      <input
-        aria-invalid="false"
-        aria-label="text input"
-        class="pf-c-form-control ins-c-conditional-filter "
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/TextInput"
-        data-ouia-safe="true"
-        placeholder="Filter by no value"
-        type="text"
-        value=""
-        widget-type="InsightsInput"
-      />
-      <svg
-        aria-hidden="true"
-        class="ins-c-search-icon"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        style="vertical-align: -0.125em;"
-        viewBox="0 0 512 512"
-        width="1em"
+      <span
+        class="pf-v5-c-form-control pf-m-icon ins-c-conditional-filter"
       >
-        <path
-          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        <input
+          aria-invalid="false"
+          aria-label="text input"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF5/TextInput"
+          data-ouia-safe="true"
+          placeholder="Filter by simple text 1"
+          type="text"
+          value=""
+          widget-type="InsightsInput"
         />
-      </svg>
+        <span
+          class="pf-v5-c-form-control__utilities"
+        >
+          <span
+            class="pf-v5-c-form-control__icon"
+          >
+            <span
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+            >
+              <span
+                class="pf-v5-c-icon__content"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="pf-v5-svg"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
     </div>
   </div>
 </div>
@@ -105,34 +123,52 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
 exports[`ConditionalFilter render should render correctly 1`] = `
 <div>
   <div
-    class="ins-c-conditional-filter desktop"
+    class="ins-c-conditional-filter"
   >
-    <input
-      aria-invalid="false"
-      aria-label="text input"
-      class="pf-c-form-control ins-c-conditional-filter "
-      data-ouia-component-id="ConditionalFilter"
-      data-ouia-component-type="PF4/TextInput"
-      data-ouia-safe="true"
-      id="default-input"
-      type="text"
-      value=""
-      widget-type="InsightsInput"
-    />
-    <svg
-      aria-hidden="true"
-      class="ins-c-search-icon"
-      fill="currentColor"
-      height="1em"
-      role="img"
-      style="vertical-align: -0.125em;"
-      viewBox="0 0 512 512"
-      width="1em"
+    <span
+      class="pf-v5-c-form-control pf-m-icon ins-c-conditional-filter"
     >
-      <path
-        d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+      <input
+        aria-invalid="false"
+        aria-label="text input"
+        data-ouia-component-id="ConditionalFilter"
+        data-ouia-component-type="PF5/TextInput"
+        data-ouia-safe="true"
+        id="default-input"
+        type="text"
+        value=""
+        widget-type="InsightsInput"
       />
-    </svg>
+      <span
+        class="pf-v5-c-form-control__utilities"
+      >
+        <span
+          class="pf-v5-c-form-control__icon"
+        >
+          <span
+            class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+          >
+            <span
+              class="pf-v5-c-icon__content"
+            >
+              <svg
+                aria-hidden="true"
+                class="pf-v5-svg"
+                fill="currentColor"
+                height="1em"
+                role="img"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                />
+              </svg>
+            </span>
+          </span>
+        </span>
+      </span>
+    </span>
   </div>
 </div>
 `;
@@ -140,59 +176,59 @@ exports[`ConditionalFilter render should render correctly 1`] = `
 exports[`ConditionalFilter render should render correctly checkbox with value checkbox-filter 1`] = `
 <div>
   <div
-    class="pf-l-split ins-c-conditional-filter desktop"
+    class="pf-v5-l-split ins-c-conditional-filter"
   >
     <div
-      class="pf-l-split__item"
+      class="pf-v5-l-split__item"
     >
-      <div
-        class="pf-c-dropdown ins-c-conditional-filter__group"
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/Dropdown"
-        data-ouia-safe="true"
+      <button
+        aria-expanded="false"
+        aria-label="Conditional filter"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
+        type="button"
       >
-        <button
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-label="Conditional filter"
-          class="pf-c-dropdown__toggle"
-          data-ouia-component-id="ConditionalFilter"
-          data-ouia-component-type="PF4/DropdownToggle"
-          data-ouia-safe="true"
-          id="pf-dropdown-toggle-id-5"
-          type="button"
+        <span
+          class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-c-dropdown__toggle-text"
+            class="pf-v5-c-icon pf-m-md"
           >
-            <svg
-              aria-hidden="true"
-              fill="currentColor"
-              height="1em"
-              role="img"
-              style="vertical-align: -0.125em;"
-              viewBox="0 0 512 512"
-              width="1em"
-            >
-              <path
-                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-              />
-            </svg>
             <span
-              class="ins-c-conditional-filter__value-selector"
+              class="pf-v5-c-icon__content"
             >
-              Checkbox
+              <svg
+                aria-hidden="true"
+                class="pf-v5-svg"
+                fill="currentColor"
+                height="1em"
+                role="img"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                />
+              </svg>
             </span>
           </span>
           <span
-            class="pf-c-dropdown__toggle-icon"
+            class="ins-c-conditional-filter__value-selector"
+          >
+            Checkbox
+          </span>
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v5-c-menu-toggle__toggle-icon"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 320 512"
               width="1em"
             >
@@ -201,44 +237,35 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
               />
             </svg>
           </span>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
     <div
-      class="pf-l-split__item pf-m-fill"
+      class="pf-v5-l-split__item pf-m-fill"
     >
-      <div
-        class="pf-c-select"
-        data-ouia-component-id="Filter by checkbox"
-        data-ouia-component-type="PF4/Select"
-        data-ouia-safe="true"
+      <button
+        aria-expanded="false"
+        aria-label="Options menu"
+        class="pf-v5-c-menu-toggle pf-m-full-width"
+        type="button"
       >
-        <button
-          aria-expanded="false"
-          aria-label="Options menu"
-          aria-labelledby=" pf-select-toggle-id-1"
-          class="pf-c-select__toggle"
-          id="pf-select-toggle-id-1"
-          type="button"
+        <span
+          class="pf-v5-c-menu-toggle__text"
         >
-          <div
-            class="pf-c-select__toggle-wrapper"
-          >
-            <span
-              class="pf-c-select__toggle-text"
-            >
-              Filter by checkbox
-            </span>
-          </div>
+          Filter by checkbox
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
           <span
-            class="pf-c-select__toggle-arrow"
+            class="pf-v5-c-menu-toggle__toggle-icon"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 320 512"
               width="1em"
             >
@@ -247,69 +274,69 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
               />
             </svg>
           </span>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
   </div>
 </div>
 `;
 
-exports[`ConditionalFilter render should render correctly no value with value undefined 1`] = `
+exports[`ConditionalFilter render should render correctly no value with value  1`] = `
 <div>
   <div
-    class="pf-l-split ins-c-conditional-filter desktop"
+    class="pf-v5-l-split ins-c-conditional-filter"
   >
     <div
-      class="pf-l-split__item"
+      class="pf-v5-l-split__item"
     >
-      <div
-        class="pf-c-dropdown ins-c-conditional-filter__group"
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/Dropdown"
-        data-ouia-safe="true"
+      <button
+        aria-expanded="false"
+        aria-label="Conditional filter"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
+        type="button"
       >
-        <button
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-label="Conditional filter"
-          class="pf-c-dropdown__toggle"
-          data-ouia-component-id="ConditionalFilter"
-          data-ouia-component-type="PF4/DropdownToggle"
-          data-ouia-safe="true"
-          id="pf-dropdown-toggle-id-7"
-          type="button"
+        <span
+          class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-c-dropdown__toggle-text"
+            class="pf-v5-c-icon pf-m-md"
           >
-            <svg
-              aria-hidden="true"
-              fill="currentColor"
-              height="1em"
-              role="img"
-              style="vertical-align: -0.125em;"
-              viewBox="0 0 512 512"
-              width="1em"
-            >
-              <path
-                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-              />
-            </svg>
             <span
-              class="ins-c-conditional-filter__value-selector"
+              class="pf-v5-c-icon__content"
             >
-              Simple text 1
+              <svg
+                aria-hidden="true"
+                class="pf-v5-svg"
+                fill="currentColor"
+                height="1em"
+                role="img"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                />
+              </svg>
             </span>
           </span>
           <span
-            class="pf-c-dropdown__toggle-icon"
+            class="ins-c-conditional-filter__value-selector"
+          >
+            Simple text 1
+          </span>
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v5-c-menu-toggle__toggle-icon"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 320 512"
               width="1em"
             >
@@ -318,38 +345,56 @@ exports[`ConditionalFilter render should render correctly no value with value un
               />
             </svg>
           </span>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
     <div
-      class="pf-l-split__item pf-m-fill"
+      class="pf-v5-l-split__item pf-m-fill"
     >
-      <input
-        aria-invalid="false"
-        aria-label="text input"
-        class="pf-c-form-control ins-c-conditional-filter "
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/TextInput"
-        data-ouia-safe="true"
-        placeholder="Filter by simple text 1"
-        type="text"
-        value=""
-        widget-type="InsightsInput"
-      />
-      <svg
-        aria-hidden="true"
-        class="ins-c-search-icon"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        style="vertical-align: -0.125em;"
-        viewBox="0 0 512 512"
-        width="1em"
+      <span
+        class="pf-v5-c-form-control pf-m-icon ins-c-conditional-filter"
       >
-        <path
-          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        <input
+          aria-invalid="false"
+          aria-label="text input"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF5/TextInput"
+          data-ouia-safe="true"
+          placeholder="Filter by simple text 1"
+          type="text"
+          value=""
+          widget-type="InsightsInput"
         />
-      </svg>
+        <span
+          class="pf-v5-c-form-control__utilities"
+        >
+          <span
+            class="pf-v5-c-form-control__icon"
+          >
+            <span
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+            >
+              <span
+                class="pf-v5-c-icon__content"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="pf-v5-svg"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
     </div>
   </div>
 </div>
@@ -358,59 +403,59 @@ exports[`ConditionalFilter render should render correctly no value with value un
 exports[`ConditionalFilter render should render correctly radio filter with value radio-filter 1`] = `
 <div>
   <div
-    class="pf-l-split ins-c-conditional-filter desktop"
+    class="pf-v5-l-split ins-c-conditional-filter"
   >
     <div
-      class="pf-l-split__item"
+      class="pf-v5-l-split__item"
     >
-      <div
-        class="pf-c-dropdown ins-c-conditional-filter__group"
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/Dropdown"
-        data-ouia-safe="true"
+      <button
+        aria-expanded="false"
+        aria-label="Conditional filter"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
+        type="button"
       >
-        <button
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-label="Conditional filter"
-          class="pf-c-dropdown__toggle"
-          data-ouia-component-id="ConditionalFilter"
-          data-ouia-component-type="PF4/DropdownToggle"
-          data-ouia-safe="true"
-          id="pf-dropdown-toggle-id-6"
-          type="button"
+        <span
+          class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-c-dropdown__toggle-text"
+            class="pf-v5-c-icon pf-m-md"
           >
-            <svg
-              aria-hidden="true"
-              fill="currentColor"
-              height="1em"
-              role="img"
-              style="vertical-align: -0.125em;"
-              viewBox="0 0 512 512"
-              width="1em"
-            >
-              <path
-                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-              />
-            </svg>
             <span
-              class="ins-c-conditional-filter__value-selector"
+              class="pf-v5-c-icon__content"
             >
-              Radio filter
+              <svg
+                aria-hidden="true"
+                class="pf-v5-svg"
+                fill="currentColor"
+                height="1em"
+                role="img"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                />
+              </svg>
             </span>
           </span>
           <span
-            class="pf-c-dropdown__toggle-icon"
+            class="ins-c-conditional-filter__value-selector"
+          >
+            Radio filter
+          </span>
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v5-c-menu-toggle__toggle-icon"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 320 512"
               width="1em"
             >
@@ -419,45 +464,35 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
               />
             </svg>
           </span>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
     <div
-      class="pf-l-split__item pf-m-fill"
+      class="pf-v5-l-split__item pf-m-fill"
     >
-      <div
-        class="pf-c-select"
-        data-ouia-component-id="Filter by radio filter"
-        data-ouia-component-type="PF4/Select"
-        data-ouia-safe="true"
+      <button
+        aria-expanded="false"
+        aria-label="Options menu"
+        class="pf-v5-c-menu-toggle pf-m-full-width"
+        type="button"
       >
-        <button
-          aria-expanded="false"
-          aria-haspopup="listbox"
-          aria-label="Options menu"
-          aria-labelledby=" pf-select-toggle-id-2"
-          class="pf-c-select__toggle"
-          id="pf-select-toggle-id-2"
-          type="button"
+        <span
+          class="pf-v5-c-menu-toggle__text"
         >
-          <div
-            class="pf-c-select__toggle-wrapper"
-          >
-            <span
-              class="pf-c-select__toggle-text"
-            >
-              Filter by radio filter
-            </span>
-          </div>
+          Filter by radio filter
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
           <span
-            class="pf-c-select__toggle-arrow"
+            class="pf-v5-c-menu-toggle__toggle-icon"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 320 512"
               width="1em"
             >
@@ -466,8 +501,8 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
               />
             </svg>
           </span>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
   </div>
 </div>
@@ -476,59 +511,59 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
 exports[`ConditionalFilter render should render correctly simple text 1 with value simple-text-1 1`] = `
 <div>
   <div
-    class="pf-l-split ins-c-conditional-filter desktop"
+    class="pf-v5-l-split ins-c-conditional-filter"
   >
     <div
-      class="pf-l-split__item"
+      class="pf-v5-l-split__item"
     >
-      <div
-        class="pf-c-dropdown ins-c-conditional-filter__group"
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/Dropdown"
-        data-ouia-safe="true"
+      <button
+        aria-expanded="false"
+        aria-label="Conditional filter"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
+        type="button"
       >
-        <button
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-label="Conditional filter"
-          class="pf-c-dropdown__toggle"
-          data-ouia-component-id="ConditionalFilter"
-          data-ouia-component-type="PF4/DropdownToggle"
-          data-ouia-safe="true"
-          id="pf-dropdown-toggle-id-3"
-          type="button"
+        <span
+          class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-c-dropdown__toggle-text"
+            class="pf-v5-c-icon pf-m-md"
           >
-            <svg
-              aria-hidden="true"
-              fill="currentColor"
-              height="1em"
-              role="img"
-              style="vertical-align: -0.125em;"
-              viewBox="0 0 512 512"
-              width="1em"
-            >
-              <path
-                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-              />
-            </svg>
             <span
-              class="ins-c-conditional-filter__value-selector"
+              class="pf-v5-c-icon__content"
             >
-              Simple text 1
+              <svg
+                aria-hidden="true"
+                class="pf-v5-svg"
+                fill="currentColor"
+                height="1em"
+                role="img"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                />
+              </svg>
             </span>
           </span>
           <span
-            class="pf-c-dropdown__toggle-icon"
+            class="ins-c-conditional-filter__value-selector"
+          >
+            Simple text 1
+          </span>
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v5-c-menu-toggle__toggle-icon"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 320 512"
               width="1em"
             >
@@ -537,39 +572,56 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
               />
             </svg>
           </span>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
     <div
-      class="pf-l-split__item pf-m-fill"
+      class="pf-v5-l-split__item pf-m-fill"
     >
-      <input
-        aria-invalid="false"
-        aria-label="text input"
-        class="pf-c-form-control ins-c-conditional-filter "
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/TextInput"
-        data-ouia-safe="true"
-        id="simple-text-1"
-        placeholder="Filter by simple text 1"
-        type="text"
-        value=""
-        widget-type="InsightsInput"
-      />
-      <svg
-        aria-hidden="true"
-        class="ins-c-search-icon"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        style="vertical-align: -0.125em;"
-        viewBox="0 0 512 512"
-        width="1em"
+      <span
+        class="pf-v5-c-form-control pf-m-icon ins-c-conditional-filter"
       >
-        <path
-          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        <input
+          aria-invalid="false"
+          aria-label="text input"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF5/TextInput"
+          data-ouia-safe="true"
+          placeholder="Filter by simple text 1"
+          type="text"
+          value=""
+          widget-type="InsightsInput"
         />
-      </svg>
+        <span
+          class="pf-v5-c-form-control__utilities"
+        >
+          <span
+            class="pf-v5-c-form-control__icon"
+          >
+            <span
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+            >
+              <span
+                class="pf-v5-c-icon__content"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="pf-v5-svg"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
     </div>
   </div>
 </div>
@@ -578,59 +630,59 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
 exports[`ConditionalFilter render should render correctly simple text 2 with value simple-text-2 1`] = `
 <div>
   <div
-    class="pf-l-split ins-c-conditional-filter desktop"
+    class="pf-v5-l-split ins-c-conditional-filter"
   >
     <div
-      class="pf-l-split__item"
+      class="pf-v5-l-split__item"
     >
-      <div
-        class="pf-c-dropdown ins-c-conditional-filter__group"
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/Dropdown"
-        data-ouia-safe="true"
+      <button
+        aria-expanded="false"
+        aria-label="Conditional filter"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
+        type="button"
       >
-        <button
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-label="Conditional filter"
-          class="pf-c-dropdown__toggle"
-          data-ouia-component-id="ConditionalFilter"
-          data-ouia-component-type="PF4/DropdownToggle"
-          data-ouia-safe="true"
-          id="pf-dropdown-toggle-id-4"
-          type="button"
+        <span
+          class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-c-dropdown__toggle-text"
+            class="pf-v5-c-icon pf-m-md"
           >
-            <svg
-              aria-hidden="true"
-              fill="currentColor"
-              height="1em"
-              role="img"
-              style="vertical-align: -0.125em;"
-              viewBox="0 0 512 512"
-              width="1em"
-            >
-              <path
-                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-              />
-            </svg>
             <span
-              class="ins-c-conditional-filter__value-selector"
+              class="pf-v5-c-icon__content"
             >
-              Simple text 2
+              <svg
+                aria-hidden="true"
+                class="pf-v5-svg"
+                fill="currentColor"
+                height="1em"
+                role="img"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                />
+              </svg>
             </span>
           </span>
           <span
-            class="pf-c-dropdown__toggle-icon"
+            class="ins-c-conditional-filter__value-selector"
+          >
+            Simple text 2
+          </span>
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v5-c-menu-toggle__toggle-icon"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 320 512"
               width="1em"
             >
@@ -639,39 +691,56 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
               />
             </svg>
           </span>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
     <div
-      class="pf-l-split__item pf-m-fill"
+      class="pf-v5-l-split__item pf-m-fill"
     >
-      <input
-        aria-invalid="false"
-        aria-label="text input"
-        class="pf-c-form-control ins-c-conditional-filter "
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/TextInput"
-        data-ouia-safe="true"
-        id="simple-text-2"
-        placeholder="Filter by simple text 2"
-        type="text"
-        value=""
-        widget-type="InsightsInput"
-      />
-      <svg
-        aria-hidden="true"
-        class="ins-c-search-icon"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        style="vertical-align: -0.125em;"
-        viewBox="0 0 512 512"
-        width="1em"
+      <span
+        class="pf-v5-c-form-control pf-m-icon ins-c-conditional-filter"
       >
-        <path
-          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        <input
+          aria-invalid="false"
+          aria-label="text input"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF5/TextInput"
+          data-ouia-safe="true"
+          placeholder="Filter by simple text 2"
+          type="text"
+          value="some-value blaa"
+          widget-type="InsightsInput"
         />
-      </svg>
+        <span
+          class="pf-v5-c-form-control__utilities"
+        >
+          <span
+            class="pf-v5-c-form-control__icon"
+          >
+            <span
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+            >
+              <span
+                class="pf-v5-c-icon__content"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="pf-v5-svg"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
     </div>
   </div>
 </div>
@@ -680,59 +749,59 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
 exports[`ConditionalFilter render should render correctly with config - each item as disabled 1`] = `
 <div>
   <div
-    class="pf-l-split ins-c-conditional-filter desktop"
+    class="pf-v5-l-split ins-c-conditional-filter"
   >
     <div
-      class="pf-l-split__item"
+      class="pf-v5-l-split__item"
     >
-      <div
-        class="pf-c-dropdown ins-c-conditional-filter__group"
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/Dropdown"
-        data-ouia-safe="true"
+      <button
+        aria-expanded="false"
+        aria-label="Conditional filter"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
+        type="button"
       >
-        <button
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-label="Conditional filter"
-          class="pf-c-dropdown__toggle"
-          data-ouia-component-id="ConditionalFilter"
-          data-ouia-component-type="PF4/DropdownToggle"
-          data-ouia-safe="true"
-          id="pf-dropdown-toggle-id-2"
-          type="button"
+        <span
+          class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-c-dropdown__toggle-text"
+            class="pf-v5-c-icon pf-m-md"
           >
-            <svg
-              aria-hidden="true"
-              fill="currentColor"
-              height="1em"
-              role="img"
-              style="vertical-align: -0.125em;"
-              viewBox="0 0 512 512"
-              width="1em"
-            >
-              <path
-                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-              />
-            </svg>
             <span
-              class="ins-c-conditional-filter__value-selector"
+              class="pf-v5-c-icon__content"
             >
-              No value
+              <svg
+                aria-hidden="true"
+                class="pf-v5-svg"
+                fill="currentColor"
+                height="1em"
+                role="img"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                />
+              </svg>
             </span>
           </span>
           <span
-            class="pf-c-dropdown__toggle-icon"
+            class="ins-c-conditional-filter__value-selector"
+          >
+            Simple text 1
+          </span>
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v5-c-menu-toggle__toggle-icon"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 320 512"
               width="1em"
             >
@@ -741,39 +810,57 @@ exports[`ConditionalFilter render should render correctly with config - each ite
               />
             </svg>
           </span>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
     <div
-      class="pf-l-split__item pf-m-fill"
+      class="pf-v5-l-split__item pf-m-fill"
     >
-      <input
-        aria-invalid="false"
-        aria-label="text input"
-        class="pf-c-form-control ins-c-conditional-filter "
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/TextInput"
-        data-ouia-safe="true"
-        disabled=""
-        placeholder="Filter by no value"
-        type="text"
-        value=""
-        widget-type="InsightsInput"
-      />
-      <svg
-        aria-hidden="true"
-        class="ins-c-search-icon"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        style="vertical-align: -0.125em;"
-        viewBox="0 0 512 512"
-        width="1em"
+      <span
+        class="pf-v5-c-form-control pf-m-disabled pf-m-icon ins-c-conditional-filter"
       >
-        <path
-          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        <input
+          aria-invalid="false"
+          aria-label="text input"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF5/TextInput"
+          data-ouia-safe="true"
+          disabled=""
+          placeholder="Filter by simple text 1"
+          type="text"
+          value=""
+          widget-type="InsightsInput"
         />
-      </svg>
+        <span
+          class="pf-v5-c-form-control__utilities"
+        >
+          <span
+            class="pf-v5-c-form-control__icon"
+          >
+            <span
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+            >
+              <span
+                class="pf-v5-c-icon__content"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="pf-v5-svg"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
     </div>
   </div>
 </div>
@@ -782,59 +869,59 @@ exports[`ConditionalFilter render should render correctly with config - each ite
 exports[`ConditionalFilter render should render correctly with config 1`] = `
 <div>
   <div
-    class="pf-l-split ins-c-conditional-filter desktop"
+    class="pf-v5-l-split ins-c-conditional-filter"
   >
     <div
-      class="pf-l-split__item"
+      class="pf-v5-l-split__item"
     >
-      <div
-        class="pf-c-dropdown ins-c-conditional-filter__group"
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/Dropdown"
-        data-ouia-safe="true"
+      <button
+        aria-expanded="false"
+        aria-label="Conditional filter"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group"
+        type="button"
       >
-        <button
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-label="Conditional filter"
-          class="pf-c-dropdown__toggle"
-          data-ouia-component-id="ConditionalFilter"
-          data-ouia-component-type="PF4/DropdownToggle"
-          data-ouia-safe="true"
-          id="pf-dropdown-toggle-id-1"
-          type="button"
+        <span
+          class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-c-dropdown__toggle-text"
+            class="pf-v5-c-icon pf-m-md"
           >
-            <svg
-              aria-hidden="true"
-              fill="currentColor"
-              height="1em"
-              role="img"
-              style="vertical-align: -0.125em;"
-              viewBox="0 0 512 512"
-              width="1em"
-            >
-              <path
-                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-              />
-            </svg>
             <span
-              class="ins-c-conditional-filter__value-selector"
+              class="pf-v5-c-icon__content"
             >
-              No value
+              <svg
+                aria-hidden="true"
+                class="pf-v5-svg"
+                fill="currentColor"
+                height="1em"
+                role="img"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                />
+              </svg>
             </span>
           </span>
           <span
-            class="pf-c-dropdown__toggle-icon"
+            class="ins-c-conditional-filter__value-selector"
+          >
+            Simple text 1
+          </span>
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v5-c-menu-toggle__toggle-icon"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 320 512"
               width="1em"
             >
@@ -843,38 +930,56 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
               />
             </svg>
           </span>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
     <div
-      class="pf-l-split__item pf-m-fill"
+      class="pf-v5-l-split__item pf-m-fill"
     >
-      <input
-        aria-invalid="false"
-        aria-label="text input"
-        class="pf-c-form-control ins-c-conditional-filter "
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/TextInput"
-        data-ouia-safe="true"
-        placeholder="Filter by no value"
-        type="text"
-        value=""
-        widget-type="InsightsInput"
-      />
-      <svg
-        aria-hidden="true"
-        class="ins-c-search-icon"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        style="vertical-align: -0.125em;"
-        viewBox="0 0 512 512"
-        width="1em"
+      <span
+        class="pf-v5-c-form-control pf-m-icon ins-c-conditional-filter"
       >
-        <path
-          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        <input
+          aria-invalid="false"
+          aria-label="text input"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF5/TextInput"
+          data-ouia-safe="true"
+          placeholder="Filter by simple text 1"
+          type="text"
+          value=""
+          widget-type="InsightsInput"
         />
-      </svg>
+        <span
+          class="pf-v5-c-form-control__utilities"
+        >
+          <span
+            class="pf-v5-c-form-control__icon"
+          >
+            <span
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+            >
+              <span
+                class="pf-v5-c-icon__content"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="pf-v5-svg"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
     </div>
   </div>
 </div>
@@ -883,37 +988,55 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
 exports[`ConditionalFilter render should render correctly with one filter 1`] = `
 <div>
   <div
-    class="pf-l-split ins-c-conditional-filter desktop"
+    class="pf-v5-l-split ins-c-conditional-filter"
   >
     <div
-      class="pf-l-split__item pf-m-fill"
+      class="pf-v5-l-split__item pf-m-fill"
     >
-      <input
-        aria-invalid="false"
-        aria-label="text input"
-        class="pf-c-form-control ins-c-conditional-filter "
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/TextInput"
-        data-ouia-safe="true"
-        placeholder="Filter by simple text 1"
-        type="text"
-        value=""
-        widget-type="InsightsInput"
-      />
-      <svg
-        aria-hidden="true"
-        class="ins-c-search-icon"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        style="vertical-align: -0.125em;"
-        viewBox="0 0 512 512"
-        width="1em"
+      <span
+        class="pf-v5-c-form-control pf-m-icon ins-c-conditional-filter"
       >
-        <path
-          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        <input
+          aria-invalid="false"
+          aria-label="text input"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF5/TextInput"
+          data-ouia-safe="true"
+          placeholder="Filter by simple text 1"
+          type="text"
+          value=""
+          widget-type="InsightsInput"
         />
-      </svg>
+        <span
+          class="pf-v5-c-form-control__utilities"
+        >
+          <span
+            class="pf-v5-c-form-control__icon"
+          >
+            <span
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+            >
+              <span
+                class="pf-v5-c-icon__content"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="pf-v5-svg"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
     </div>
   </div>
 </div>
@@ -922,54 +1045,54 @@ exports[`ConditionalFilter render should render correctly with one filter 1`] = 
 exports[`ConditionalFilter render should render correctly with with the active label hidden 1`] = `
 <div>
   <div
-    class="pf-l-split ins-c-conditional-filter desktop"
+    class="pf-v5-l-split ins-c-conditional-filter"
   >
     <div
-      class="pf-l-split__item"
+      class="pf-v5-l-split__item"
     >
-      <div
-        class="pf-c-dropdown ins-c-conditional-filter__group"
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/Dropdown"
-        data-ouia-safe="true"
+      <button
+        aria-expanded="false"
+        aria-label="Conditional filter"
+        class="pf-v5-c-menu-toggle ins-c-conditional-filter__group ins-c-conditional-filter__no-label"
+        type="button"
       >
-        <button
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-label="Conditional filter"
-          class="pf-c-dropdown__toggle ins-c-conditional-filter__no-label"
-          data-ouia-component-id="ConditionalFilter"
-          data-ouia-component-type="PF4/DropdownToggle"
-          data-ouia-safe="true"
-          id="pf-dropdown-toggle-id-8"
-          type="button"
+        <span
+          class="pf-v5-c-menu-toggle__text"
         >
           <span
-            class="pf-c-dropdown__toggle-text"
+            class="pf-v5-c-icon pf-m-md"
           >
-            <svg
-              aria-hidden="true"
-              fill="currentColor"
-              height="1em"
-              role="img"
-              style="vertical-align: -0.125em;"
-              viewBox="0 0 512 512"
-              width="1em"
+            <span
+              class="pf-v5-c-icon__content"
             >
-              <path
-                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-              />
-            </svg>
+              <svg
+                aria-hidden="true"
+                class="pf-v5-svg"
+                fill="currentColor"
+                height="1em"
+                role="img"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                />
+              </svg>
+            </span>
           </span>
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
           <span
-            class="pf-c-dropdown__toggle-icon"
+            class="pf-v5-c-menu-toggle__toggle-icon"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 320 512"
               width="1em"
             >
@@ -978,38 +1101,56 @@ exports[`ConditionalFilter render should render correctly with with the active l
               />
             </svg>
           </span>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
     <div
-      class="pf-l-split__item pf-m-fill"
+      class="pf-v5-l-split__item pf-m-fill"
     >
-      <input
-        aria-invalid="false"
-        aria-label="text input"
-        class="pf-c-form-control ins-c-conditional-filter "
-        data-ouia-component-id="ConditionalFilter"
-        data-ouia-component-type="PF4/TextInput"
-        data-ouia-safe="true"
-        placeholder="Filter by no value"
-        type="text"
-        value=""
-        widget-type="InsightsInput"
-      />
-      <svg
-        aria-hidden="true"
-        class="ins-c-search-icon"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        style="vertical-align: -0.125em;"
-        viewBox="0 0 512 512"
-        width="1em"
+      <span
+        class="pf-v5-c-form-control pf-m-icon ins-c-conditional-filter"
       >
-        <path
-          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+        <input
+          aria-invalid="false"
+          aria-label="text input"
+          data-ouia-component-id="ConditionalFilter"
+          data-ouia-component-type="PF5/TextInput"
+          data-ouia-safe="true"
+          placeholder="Filter by simple text 1"
+          type="text"
+          value=""
+          widget-type="InsightsInput"
         />
-      </svg>
+        <span
+          class="pf-v5-c-form-control__utilities"
+        >
+          <span
+            class="pf-v5-c-form-control__icon"
+          >
+            <span
+              class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+            >
+              <span
+                class="pf-v5-c-icon__content"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="pf-v5-svg"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
     </div>
   </div>
 </div>

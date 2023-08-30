@@ -11,8 +11,14 @@ export interface PageHeaderProps {
 /**
  * This is a page header that mimics the patternfly layout for a header section
  */
-const PageHeader: React.FunctionComponent<PageHeaderProps> = ({ className, children, ...props }) => {
-  const pageHeaderClasses = classNames(className, 'pf-l-page-header', 'pf-c-page-header', 'pf-l-page__main-section', 'pf-c-page__main-section');
+const PageHeader: React.FunctionComponent<React.PropsWithChildren<PageHeaderProps>> = ({ className, children, ...props }) => {
+  const pageHeaderClasses = classNames(
+    className,
+    'pf-v5-l-page-header',
+    'pf-v5-c-page-header',
+    'pf-v5-l-page__main-section',
+    'pf-v5-c-page__main-section'
+  );
 
   return (
     <DarkContext.Consumer>

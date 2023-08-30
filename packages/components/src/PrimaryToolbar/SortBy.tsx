@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { KeyboardEvent } from 'react';
 import { SortByDirection } from '@patternfly/react-table';
-import { Button } from '@patternfly/react-core';
+import { Button, Icon } from '@patternfly/react-core';
 import { SortAmountDownIcon, SortAmountUpIcon } from '@patternfly/react-icons';
 
 export function flipDirection(direction: SortByDirection) {
@@ -9,12 +9,12 @@ export function flipDirection(direction: SortByDirection) {
 
 export interface SortByProps {
   direction?: SortByDirection;
-  onSortChange?: (event: React.MouseEvent<Element, MouseEvent> | undefined, direction: SortByDirection) => void;
+  onSortChange?: (event: MouseEvent | React.MouseEvent<any, MouseEvent> | KeyboardEvent<Element>, direction: SortByDirection) => void;
 }
 
 const SortBy: React.FunctionComponent<SortByProps> = ({ direction = SortByDirection.asc, onSortChange = () => undefined }) => (
   <Button variant="plain" onClick={(e) => onSortChange(e, flipDirection(direction))}>
-    {direction === SortByDirection.asc ? <SortAmountUpIcon size="sm" /> : <SortAmountDownIcon size="sm" />}
+    <Icon size="md">{direction === SortByDirection.asc ? <SortAmountUpIcon /> : <SortAmountDownIcon />}</Icon>
   </Button>
 );
 

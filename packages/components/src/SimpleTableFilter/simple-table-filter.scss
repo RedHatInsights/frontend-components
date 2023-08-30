@@ -2,15 +2,3 @@
 @import '~@patternfly/patternfly/sass-utilities/all';
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
 
-.pf-c-input-group.ins-c-filter {
-  &.ins-u-no-title input {
-    @include rem('padding-right', 35px);
-    @include rem('margin-right', -23px);
-  }
-  .ins-c-search-icon {
-    color: var(--pf-global--secondary-color--100);
-    position: relative;
-    @include rem('left', -5px);
-    @include rem('top', 8px);
-  }
-}

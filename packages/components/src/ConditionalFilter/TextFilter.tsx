@@ -1,20 +1,21 @@
-import React, { FormEvent, Fragment, MouseEventHandler, useState } from 'react';
-import { TextInput } from '@patternfly/react-core';
+import React, { FormEvent, Fragment, MouseEventHandler, ReactNode } from 'react';
+import { Icon, TextInput, TextInputProps } from '@patternfly/react-core';
 import { SearchIcon } from '@patternfly/react-icons';
 import './conditional-filter.scss';
+import classNames from 'classnames';
 
-export function isFilterValue(item: string | FilterValue): item is FilterValue {
-  return (item as FilterValue)?.value !== undefined;
+export function isFilterValue(item: undefined | string | number | boolean | FilterValue | Record<string, any>): item is FilterValue {
+  return item !== null && typeof item === 'object';
 }
 export interface FilterItem {
   /** Item label. */
-  label: Node | string;
+  label: ReactNode;
   /** Optional item name. */
   name?: string;
   /** Item value. */
   value: string;
   /** Item identifier. */
-  id: string;
+  id?: string;
   /** Optional onChange event callback. */
   onChange?: (e: FormEvent, item: FilterItem, key: number) => void;
   /** Optional onClick event callback. */
@@ -25,36 +26,13 @@ export interface FilterItem {
 
 export interface FilterValue {
   /** Label. */
-  label: Node;
-  /** Value string. */
-  value: string;
+  label: ReactNode;
+  /** Filter value. */
+  value: string | number | boolean;
 }
 
-export interface TextFilterProps {
-  /** Optional text filter value. */
-  value?: string | FilterValue | (string | FilterValue)[] | Record<string, unknown>;
-  /** Optional text filter placeholder. */
-  placeholder?: string;
-  /** Optional onChange event called on input change. */
-  onChange?: (
-    e: React.MouseEvent | React.ChangeEvent | React.FormEvent<HTMLInputElement>,
-    newSelection: string | FilterValue | (string | FilterValue)[],
-    selection?: string | FilterValue
-  ) => void;
-  /** Optional onSubmit event called on Enter press. */
-  onSubmit?: (e: React.FormEvent<HTMLInputElement>, value: string) => void;
-  /** Optional input disabled state indicator. */
-  isDisabled?: boolean;
-  /** Optional aria-label value. */
-  'aria-label'?: string;
-  /** Optional id value. */
-  id?: string;
-  /** Optional icon component. */
-  icon?: React.FunctionComponent;
-  /** Optional className. */
-  className?: string;
-  /** Input element react ref */
-  innerRef?: React.Ref<HTMLInputElement>;
+export interface TextFilterProps extends Omit<TextInputProps, 'onChange'> {
+  onChange: NonNullable<TextInputProps['onChange']>;
 }
 
 /**
@@ -65,42 +43,25 @@ export interface TextFilterProps {
  *
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
-const TextFilter: React.FunctionComponent<TextFilterProps> = ({
-  icon,
-  id,
-  isDisabled = false,
-  className,
-  onChange,
-  onSubmit = () => undefined,
-  value = '',
-  placeholder,
-  innerRef,
-  ...props
-}) => {
-  const filterValue = value as string | FilterValue;
-  const [stateValue, setStateValue] = useState('');
-  const Icon = icon || SearchIcon;
-  const changeCallback = (e: React.FormEvent<HTMLInputElement>, value: string) => (onChange ? onChange(e, value) : setStateValue(value));
-
+const TextFilter: React.FunctionComponent<TextFilterProps> = ({ customIcon = <SearchIcon />, isDisabled = false, className, innerRef, ...props }) => {
   return (
     <Fragment>
       <TextInput
-        aria-label={props['aria-label'] || 'text input'}
-        className={`ins-c-conditional-filter ${className || ''}`}
-        data-ouia-component-type="PF4/TextInput"
-        id={id}
-        isDisabled={isDisabled}
-        value={(onChange ? (typeof value === 'string' ? filterValue : (filterValue as FilterValue).value) : stateValue) as string}
-        onChange={(_inputValue, e) => changeCallback(e, (e.target as HTMLInputElement).value)}
-        onKeyDown={(e) =>
-          e.key === 'Enter' && onSubmit?.(e, ((typeof value === 'string' ? filterValue : (filterValue as FilterValue).value) as string) || stateValue)
+        {...props}
+        customIcon={
+          <Icon className="ins-c-search-icon" size="md">
+            {customIcon}
+          </Icon>
         }
+        isDisabled={isDisabled}
+        aria-label={props['aria-label'] || 'text input'}
+        className={classNames('ins-c-conditional-filter', className)}
+        data-ouia-component-type="PF4/TextInput"
+        onKeyDown={(e) => e.key === 'Enter' && props?.onSubmit?.(e)}
         ouiaId="ConditionalFilter"
-        placeholder={placeholder}
         widget-type="InsightsInput"
         ref={innerRef}
       />
-      <Icon size="sm" className="ins-c-search-icon" />
     </Fragment>
   );
 };

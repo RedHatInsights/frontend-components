@@ -1,13 +1,13 @@
 .ins-c-like {
-  color: var(--pf-global--success-color--100);
+  color: var(--pf-v5-global--success-color--100);
 }
 
 .ins-c-dislike {
-  color: var(--pf-global--primary-color--100);
+  color: var(--pf-v5-global--primary-color--100);
 }
 
 .ratingSpanOverride {
-  font-size: var(--pf-global--FontSize--sm) !important;
+  font-size: var(--pf-v5-global--FontSize--sm) !important;
   button {
     padding: 8px;
   }

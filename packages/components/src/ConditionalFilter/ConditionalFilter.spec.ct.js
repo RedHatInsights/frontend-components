@@ -1,11 +1,11 @@
 import React from 'react';
-import { mount } from '@cypress/react';
 
 import ConditionalFilter from './ConditionalFilter';
 
 describe('ConditionalFilter component', () => {
   const config = [
     {
+      type: 'text',
       label: 'text',
     },
     {
@@ -62,37 +62,37 @@ describe('ConditionalFilter component', () => {
   ];
 
   it('renders empty', () => {
-    mount(<ConditionalFilter />);
+    cy.mount(<ConditionalFilter />);
     cy.get('.ins-c-conditional-filter');
   });
 
   it('renders disabled', () => {
-    mount(<ConditionalFilter isDisabled items={config} />);
-    cy.get('.pf-c-dropdown').click({ force: true });
-    cy.get('.pf-c-dropdown__menu').should('not.exist');
+    cy.mount(<ConditionalFilter isDisabled items={config} />);
+    cy.get('.pf-v5-c-menu-toggle').click({ force: true });
+    cy.get('.pf-v5-c-menu__item').should('not.exist');
   });
 
   it('renders with data', () => {
-    mount(<ConditionalFilter items={config} />);
+    cy.mount(<ConditionalFilter items={config} />);
     cy.get('.ins-c-conditional-filter');
-    cy.get('.pf-c-dropdown').click();
-    cy.get('.pf-c-dropdown__menu').children().should('have.length', 4);
+    cy.get('.pf-v5-c-menu-toggle').click();
+    cy.get('.pf-v5-c-menu__item').children().should('have.length', 4);
   });
 
   it('filter changes on click', () => {
-    mount(<ConditionalFilter items={config} />);
-    cy.get('.pf-c-dropdown').click();
-    cy.get('.pf-c-dropdown__menu').children().eq(1).click();
-    cy.get('.pf-c-dropdown').should('not.contain.text', 'Text');
-    cy.get('.pf-c-select').click();
-    cy.get('.pf-c-select__menu');
+    cy.mount(<ConditionalFilter items={config} />);
+    cy.get('.pf-v5-c-menu-toggle').click();
+    cy.get('.pf-v5-c-menu__item').children().eq(1).click();
+    cy.get('.pf-v5-c-menu-toggle').should('not.contain.text', 'Text');
+    cy.get('.pf-m-fill > .pf-v5-c-menu-toggle').click();
+    cy.get('.pf-v5-c-menu');
   });
 
   it('onChange called', () => {
     const ocSpy = cy.spy().as('ocSpy');
-    mount(<ConditionalFilter items={config} onChange={ocSpy} />);
-    cy.get('.pf-c-dropdown').click();
-    cy.get('.pf-c-dropdown__menu').children().eq(2).click();
+    cy.mount(<ConditionalFilter items={config} onChange={ocSpy} />);
+    cy.get('.pf-v5-c-menu-toggle').click();
+    cy.get('.pf-v5-c-menu__item').children().eq(2).click();
     cy.get('@ocSpy').should('have.been.called');
   });
 });

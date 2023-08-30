@@ -4,15 +4,15 @@ exports[`Maintenance component should render with default props 1`] = `
 <EmptyState
   className="ins-c-empty-state__maintenance"
 >
-  <EmptyStateIcon
-    icon={[Function]}
-  />
-  <Title
+  <EmptyStateHeader
     headingLevel="h4"
-    size="lg"
-  >
-    Maintenance in progress
-  </Title>
+    icon={
+      <EmptyStateIcon
+        icon={[Function]}
+      />
+    }
+    titleText="Maintenance in progress"
+  />
   <EmptyStateBody>
     <Stack>
       <StackItem>
@@ -49,15 +49,15 @@ exports[`Maintenance component should render with new description 1`] = `
 <EmptyState
   className="ins-c-empty-state__maintenance"
 >
-  <EmptyStateIcon
-    icon={[Function]}
-  />
-  <Title
+  <EmptyStateHeader
     headingLevel="h4"
-    size="lg"
-  >
-    Maintenance in progress
-  </Title>
+    icon={
+      <EmptyStateIcon
+        icon={[Function]}
+      />
+    }
+    titleText="Maintenance in progress"
+  />
   <EmptyStateBody>
     <span>
        test 
@@ -70,15 +70,15 @@ exports[`Maintenance component should render with times 1`] = `
 <EmptyState
   className="ins-c-empty-state__maintenance"
 >
-  <EmptyStateIcon
-    icon={[Function]}
-  />
-  <Title
+  <EmptyStateHeader
     headingLevel="h4"
-    size="lg"
-  >
-    Maintenance in progress
-  </Title>
+    icon={
+      <EmptyStateIcon
+        icon={[Function]}
+      />
+    }
+    titleText="Maintenance in progress"
+  />
   <EmptyStateBody>
     <Stack>
       <StackItem>

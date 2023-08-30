@@ -1,10 +1,16 @@
 /* eslint-disable no-unused-vars */
 import { configure } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import Adapter from '@cfaester/enzyme-adapter-react-18';
 import 'whatwg-fetch';
 import 'babel-polyfill';
 import '@testing-library/jest-dom';
+import { expect } from '@jest/globals';
+import * as matchers from '@testing-library/jest-dom/dist/matchers';
 
+// ensure the expect is picked up from jest not cypress
+global.expect = expect;
+// extends with RTL
+global.expect.extend(matchers);
 configure({ adapter: new Adapter() });
 global.SVGPathElement = function () {};
 

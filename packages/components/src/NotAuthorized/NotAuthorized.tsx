@@ -1,10 +1,18 @@
 import React from 'react';
 
-import { Button, EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateProps, EmptyStateVariant, Title } from '@patternfly/react-core';
+import {
+  Button,
+  EmptyState,
+  EmptyStateActions,
+  EmptyStateBody,
+  EmptyStateFooter,
+  EmptyStateHeader,
+  EmptyStateIcon,
+  EmptyStateProps,
+  EmptyStateVariant,
+} from '@patternfly/react-core';
 
 import { LockIcon } from '@patternfly/react-icons';
-
-import './NotAuthorized.scss';
 
 export interface NotAuthorizedProps extends Omit<EmptyStateProps, 'children' | 'title'> {
   serviceName?: string;
@@ -40,22 +48,23 @@ const NotAuthorized: React.FunctionComponent<NotAuthorizedProps> = ({
   const heading = title || `You do not have access to ${serviceName}`;
   return (
     <EmptyState variant={EmptyStateVariant.full} className={`ins-c-not-authorized ${className || ''}`} {...props}>
-      <EmptyStateIcon icon={Icon} />
-      <Title headingLevel="h5" size="lg">
-        {heading}
-      </Title>
+      <EmptyStateHeader titleText={heading} icon={<EmptyStateIcon icon={Icon} />} headingLevel="h5" />
       <EmptyStateBody>{description}</EmptyStateBody>
-      {actions}
-      {showReturnButton &&
-        (document.referrer ? (
-          <Button variant="primary" onClick={() => history.back()}>
-            {prevPageButtonText}
-          </Button>
-        ) : (
-          <Button variant="primary" component="a" href=".">
-            {toLandingPageText}
-          </Button>
-        ))}
+      <EmptyStateFooter>
+        {actions && <EmptyStateActions>{actions}</EmptyStateActions>}
+        <EmptyStateActions>
+          {showReturnButton &&
+            (document.referrer ? (
+              <Button variant="primary" onClick={() => history.back()}>
+                {prevPageButtonText}
+              </Button>
+            ) : (
+              <Button variant="primary" component="a" href=".">
+                {toLandingPageText}
+              </Button>
+            ))}
+        </EmptyStateActions>
+      </EmptyStateFooter>
     </EmptyState>
   );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import BulkSelect from './BulkSelect';
+import { act } from 'react-dom/test-utils';
 
 describe('BulkSelect', () => {
   it('should render correctly - no data', () => {
@@ -83,7 +84,7 @@ describe('BulkSelect', () => {
       expect(onSelect).toHaveBeenCalled();
     });
 
-    it('should call on select', () => {
+    it('should call on select', async () => {
       const onSelect = jest.fn();
       render(
         <BulkSelect
@@ -96,11 +97,13 @@ describe('BulkSelect', () => {
           onSelect={onSelect}
         />
       );
-      userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
+      await act(async () => {
+        await userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
+      });
       expect(onSelect).toHaveBeenCalled();
     });
 
-    it('should NOT call on select', () => {
+    it('should NOT call on select', async () => {
       const onSelect = jest.fn();
       render(
         <BulkSelect
@@ -112,11 +115,13 @@ describe('BulkSelect', () => {
           ]}
         />
       );
-      userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
+      await act(async () => {
+        await userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
+      });
       expect(onSelect).not.toHaveBeenCalled();
     });
 
-    it('should call first action', () => {
+    it('should call first action', async () => {
       const onSelect = jest.fn();
       const otherAction = jest.fn();
       render(
@@ -133,8 +138,12 @@ describe('BulkSelect', () => {
           onSelect={onSelect}
         />
       );
-      userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
-      userEvent.click(screen.getByRole('button', { name: 'Select' }));
+      await act(async () => {
+        await userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
+      });
+      act(() => {
+        userEvent.click(screen.getByRole('button', { expanded: true }));
+      });
       expect(onSelect).toHaveBeenCalled();
       expect(otherAction).not.toHaveBeenCalled();
     });
@@ -151,7 +160,7 @@ describe('BulkSelect', () => {
           isDisabled={true}
         />
       );
-      expect(screen.getByRole('button', { name: 'Select' })).toBeDisabled();
+      expect(screen.getByRole('button', { expanded: false })).toBeDisabled();
     });
   });
 });

@@ -3,7 +3,7 @@
 exports[`FilterInput component should render a checkbox input 1`] = `
 <Checkbox
   aria-label="label"
-  className=""
+  className="ins-c-filter-input__checkbox"
   component="div"
   id="id"
   isChecked={false}
@@ -21,7 +21,7 @@ exports[`FilterInput component should render a checkbox input 1`] = `
 exports[`FilterInput component should render a radio input 1`] = `
 <Radio
   aria-label="label"
-  className=""
+  className="ins-c-filter-input__checkbox"
   id="id"
   isChecked={true}
   isDisabled={false}

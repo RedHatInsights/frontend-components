@@ -10,14 +10,8 @@ exports[`TableWithFilter should render loading and pagination 1`] = `
     }
   />
   <SkeletonTable
-    columns={
-      Array [
-        Object {
-          "title": "something",
-        },
-      ]
-    }
-    rowSize={10}
+    numberOfColumns={1}
+    rows={10}
   />
 </Fragment>
 `;
@@ -25,14 +19,15 @@ exports[`TableWithFilter should render loading and pagination 1`] = `
 exports[`TableWithFilter should render with data 1`] = `
 <Fragment>
   <Table
+    actionsMenuAppendTo="inline"
     aria-label="undefined tags"
     borders={true}
     canCollapseAll={false}
     canSelectAll={true}
     canSortFavorites={true}
     cells={
-      Array [
-        Object {
+      [
+        {
           "title": "something",
         },
       ]
@@ -52,8 +47,8 @@ exports[`TableWithFilter should render with data 1`] = `
     role="grid"
     rowLabeledBy="simple-node"
     rows={
-      Array [
-        Array [
+      [
+        [
           "one",
         ],
       ]
@@ -71,15 +66,15 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
 <Fragment>
   <PrimaryToolbar
     bulkSelect={
-      Object {
+      {
         "checked": undefined,
         "count": 0,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "onClick": [Function],
             "title": "Select none (0)",
           },
-          Object {
+          {
             "onClick": [Function],
             "title": "Select page (1)",
           },
@@ -88,7 +83,7 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
       }
     }
     pagination={
-      Object {
+      {
         "itemCount": undefined,
         "onPerPageSelect": [Function],
         "onSetPage": [Function],
@@ -97,14 +92,15 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
     }
   />
   <Table
+    actionsMenuAppendTo="inline"
     aria-label="undefined tags"
     borders={true}
     canCollapseAll={false}
     canSelectAll={true}
     canSortFavorites={true}
     cells={
-      Array [
-        Object {
+      [
+        {
           "title": "something",
         },
       ]
@@ -125,8 +121,8 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
     role="grid"
     rowLabeledBy="simple-node"
     rows={
-      Array [
-        Array [
+      [
+        [
           "one",
         ],
       ]
@@ -142,65 +138,10 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
     isFooter={true}
   >
     <Pagination
-      className=""
-      defaultToFullPage={false}
-      firstPage={1}
-      isCompact={false}
-      isDisabled={false}
-      isSticky={false}
-      itemsEnd={null}
-      itemsStart={null}
-      offset={0}
-      onFirstClick={[Function]}
-      onLastClick={[Function]}
-      onNextClick={[Function]}
-      onPageInput={[Function]}
       onPerPageSelect={[Function]}
-      onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaSafe={true}
       page={1}
-      perPage={10}
-      perPageComponent="div"
-      perPageOptions={
-        Array [
-          Object {
-            "title": "10",
-            "value": 10,
-          },
-          Object {
-            "title": "20",
-            "value": 20,
-          },
-          Object {
-            "title": "50",
-            "value": 50,
-          },
-          Object {
-            "title": "100",
-            "value": 100,
-          },
-        ]
-      }
-      titles={
-        Object {
-          "currPage": "Current page",
-          "items": "",
-          "itemsPerPage": "Items per page",
-          "ofWord": "of",
-          "optionsToggle": "",
-          "page": "",
-          "pages": "",
-          "paginationTitle": "Pagination",
-          "perPageSuffix": "per page",
-          "toFirstPage": "Go to first page",
-          "toLastPage": "Go to last page",
-          "toNextPage": "Go to next page",
-          "toPreviousPage": "Go to previous page",
-        }
-      }
       variant="bottom"
-      widgetId="options-menu"
     />
   </TableToolbar>
 </Fragment>
@@ -210,15 +151,15 @@ exports[`TableWithFilter should render with data and bulk select without calcula
 <Fragment>
   <PrimaryToolbar
     bulkSelect={
-      Object {
+      {
         "checked": undefined,
         "count": 0,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "onClick": [Function],
             "title": "Select none (0)",
           },
-          Object {
+          {
             "onClick": [Function],
             "title": "Select page (1)",
           },
@@ -227,7 +168,7 @@ exports[`TableWithFilter should render with data and bulk select without calcula
       }
     }
     pagination={
-      Object {
+      {
         "itemCount": undefined,
         "onPerPageSelect": [Function],
         "onSetPage": [Function],
@@ -236,14 +177,15 @@ exports[`TableWithFilter should render with data and bulk select without calcula
     }
   />
   <Table
+    actionsMenuAppendTo="inline"
     aria-label="undefined tags"
     borders={true}
     canCollapseAll={false}
     canSelectAll={true}
     canSortFavorites={true}
     cells={
-      Array [
-        Object {
+      [
+        {
           "title": "something",
         },
       ]
@@ -264,8 +206,8 @@ exports[`TableWithFilter should render with data and bulk select without calcula
     role="grid"
     rowLabeledBy="simple-node"
     rows={
-      Array [
-        Array [
+      [
+        [
           "one",
         ],
       ]
@@ -281,65 +223,10 @@ exports[`TableWithFilter should render with data and bulk select without calcula
     isFooter={true}
   >
     <Pagination
-      className=""
-      defaultToFullPage={false}
-      firstPage={1}
-      isCompact={false}
-      isDisabled={false}
-      isSticky={false}
-      itemsEnd={null}
-      itemsStart={null}
-      offset={0}
-      onFirstClick={[Function]}
-      onLastClick={[Function]}
-      onNextClick={[Function]}
-      onPageInput={[Function]}
       onPerPageSelect={[Function]}
-      onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaSafe={true}
       page={1}
-      perPage={10}
-      perPageComponent="div"
-      perPageOptions={
-        Array [
-          Object {
-            "title": "10",
-            "value": 10,
-          },
-          Object {
-            "title": "20",
-            "value": 20,
-          },
-          Object {
-            "title": "50",
-            "value": 50,
-          },
-          Object {
-            "title": "100",
-            "value": 100,
-          },
-        ]
-      }
-      titles={
-        Object {
-          "currPage": "Current page",
-          "items": "",
-          "itemsPerPage": "Items per page",
-          "ofWord": "of",
-          "optionsToggle": "",
-          "page": "",
-          "pages": "",
-          "paginationTitle": "Pagination",
-          "perPageSuffix": "per page",
-          "toFirstPage": "Go to first page",
-          "toLastPage": "Go to last page",
-          "toNextPage": "Go to next page",
-          "toPreviousPage": "Go to previous page",
-        }
-      }
       variant="bottom"
-      widgetId="options-menu"
     />
   </TableToolbar>
 </Fragment>
@@ -349,16 +236,16 @@ exports[`TableWithFilter should render with data and filters 1`] = `
 <Fragment>
   <PrimaryToolbar
     filterConfig={
-      Object {
-        "items": Array [
-          Object {
+      {
+        "items": [
+          {
             "something": "1",
           },
         ],
       }
     }
     pagination={
-      Object {
+      {
         "itemCount": undefined,
         "onPerPageSelect": [Function],
         "onSetPage": [Function],
@@ -366,14 +253,15 @@ exports[`TableWithFilter should render with data and filters 1`] = `
     }
   />
   <Table
+    actionsMenuAppendTo="inline"
     aria-label="undefined tags"
     borders={true}
     canCollapseAll={false}
     canSelectAll={true}
     canSortFavorites={true}
     cells={
-      Array [
-        Object {
+      [
+        {
           "title": "something",
         },
       ]
@@ -393,8 +281,8 @@ exports[`TableWithFilter should render with data and filters 1`] = `
     role="grid"
     rowLabeledBy="simple-node"
     rows={
-      Array [
-        Array [
+      [
+        [
           "one",
         ],
       ]
@@ -412,7 +300,7 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
 <Fragment>
   <PrimaryToolbar
     pagination={
-      Object {
+      {
         "itemCount": undefined,
         "onPerPageSelect": [Function],
         "onSetPage": [Function],
@@ -421,14 +309,15 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
     }
   />
   <Table
+    actionsMenuAppendTo="inline"
     aria-label="undefined tags"
     borders={true}
     canCollapseAll={false}
     canSelectAll={true}
     canSortFavorites={true}
     cells={
-      Array [
-        Object {
+      [
+        {
           "title": "something",
         },
       ]
@@ -448,8 +337,8 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
     role="grid"
     rowLabeledBy="simple-node"
     rows={
-      Array [
-        Array [
+      [
+        [
           "one",
         ],
       ]
@@ -465,65 +354,10 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
     isFooter={true}
   >
     <Pagination
-      className=""
-      defaultToFullPage={false}
-      firstPage={1}
-      isCompact={false}
-      isDisabled={false}
-      isSticky={false}
-      itemsEnd={null}
-      itemsStart={null}
-      offset={0}
-      onFirstClick={[Function]}
-      onLastClick={[Function]}
-      onNextClick={[Function]}
-      onPageInput={[Function]}
       onPerPageSelect={[Function]}
-      onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaSafe={true}
       page={1}
-      perPage={10}
-      perPageComponent="div"
-      perPageOptions={
-        Array [
-          Object {
-            "title": "10",
-            "value": 10,
-          },
-          Object {
-            "title": "20",
-            "value": 20,
-          },
-          Object {
-            "title": "50",
-            "value": 50,
-          },
-          Object {
-            "title": "100",
-            "value": 100,
-          },
-        ]
-      }
-      titles={
-        Object {
-          "currPage": "Current page",
-          "items": "",
-          "itemsPerPage": "Items per page",
-          "ofWord": "of",
-          "optionsToggle": "",
-          "page": "",
-          "pages": "",
-          "paginationTitle": "Pagination",
-          "perPageSuffix": "per page",
-          "toFirstPage": "Go to first page",
-          "toLastPage": "Go to last page",
-          "toNextPage": "Go to next page",
-          "toPreviousPage": "Go to previous page",
-        }
-      }
       variant="bottom"
-      widgetId="options-menu"
     />
   </TableToolbar>
 </Fragment>
@@ -532,8 +366,8 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
 exports[`TableWithFilter should render without data 1`] = `
 <Fragment>
   <SkeletonTable
-    columns={Array []}
-    rowSize={10}
+    numberOfColumns={0}
+    rows={10}
   />
 </Fragment>
 `;

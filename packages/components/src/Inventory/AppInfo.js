@@ -54,7 +54,7 @@ AppInfo.propTypes = {
 
 AppInfo.defaultProps = {
   fallback: (
-    <Bullseye className="pf-u-p-lg">
+    <Bullseye className="pf-v5-u-p-lg">
       <Spinner size="xl" />
     </Bullseye>
   ),

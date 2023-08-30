@@ -4,9 +4,16 @@
       "rootDir": "./src",
       "outDir": "./esm",
       "declarationDir": "./",
-      "allowJs": true
+      "allowJs": true,
+      "plugins": []
   },
   "include": [
       "./src/**/*"
   ],
+  "exclude": [
+    "./src/**/*.test.js",
+    "./src/**/*.spec.js",
+    "./src/**/*.test.ts",
+    "./src/**/*.test.tsx"
+  ]
 }

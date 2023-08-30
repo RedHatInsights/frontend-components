@@ -3,7 +3,7 @@ import './RuleRating.scss';
 import React, { useCallback, useState } from 'react';
 import debounce from 'lodash/debounce';
 
-import { Button } from '@patternfly/react-core';
+import { Button, Icon } from '@patternfly/react-core';
 import { OutlinedThumbsDownIcon, OutlinedThumbsUpIcon, ThumbsDownIcon, ThumbsUpIcon } from '@patternfly/react-icons';
 
 import { Rating } from '../types';
@@ -46,10 +46,10 @@ const RuleRating: React.FC<RuleRatingProps> = ({ messages, ruleId, ruleRating, o
     <span className="ratingSpanOverride">
       {messages.ruleHelpful}
       <Button variant="plain" aria-label="thumbs-up" onClick={() => updateRuleRating(1)} ouiaId="thumbsUp">
-        {rating === 1 ? <ThumbsUpIcon className="ins-c-like" size="sm" /> : <OutlinedThumbsUpIcon size="sm" />}
+        <Icon size="md">{rating === 1 ? <ThumbsUpIcon className="ins-c-like" /> : <OutlinedThumbsUpIcon />}</Icon>
       </Button>
       <Button variant="plain" aria-label="thumbs-down" onClick={() => updateRuleRating(-1)} ouiaId="thumbsDown">
-        {rating === -1 ? <ThumbsDownIcon className="ins-c-dislike" size="sm" /> : <OutlinedThumbsDownIcon size="sm" />}
+        <Icon size="md">{rating === -1 ? <ThumbsDownIcon className="ins-c-dislike" /> : <OutlinedThumbsDownIcon />}</Icon>
       </Button>
       {submitted && messages.feedbackThankYou}
     </span>

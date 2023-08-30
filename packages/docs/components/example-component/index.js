@@ -32,7 +32,7 @@ const ExampleComponent = ({ language = 'jsx', source, name, codeOnly }) => {
     <div className={classes.exampleContainer}>
       <H2 className={classnames(classes.name)}>{name}</H2>
       {!codeOnly && Component && (
-        <Card className="pf-u-mb-md">
+        <Card className="pf-v5-u-mb-md">
           <CardBody>
             <Component />
           </CardBody>

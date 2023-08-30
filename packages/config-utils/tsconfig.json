@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+      "rootDir": "./src",
+      "outDir": "./",
+      "module": "commonjs",
+      "target": "ES5",
+      "declarationDir": "./",
+      "allowJs": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "plugins": []
+  },
+  "include": [
+      "./src/**/*"
+  ],
+  "exclude": [
+    "./src/**/*.test.js",
+    "./src/**/*.spec.js",
+    "./src/**/*.test.ts",
+    "./src/**/*.test.tsx"
+  ]
+}

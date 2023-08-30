@@ -27,7 +27,6 @@
     "dependencies": {
         "chalk": "^4.1.2",
         "fs-extra": "^10.1.0",
-        "glob": "^7.2.3",
         "inquirer": "^8.2.4",
         "mustache": "^4.2.0",
         "yargs": "^17.6.2"

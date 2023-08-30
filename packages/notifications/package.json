@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-notifications",
-    "version": "3.2.16",
+    "version": "4.0.0",
     "description": "Notifications portal to show toast notifications for RedHat Cloud Services project.",
     "browser": "index.js",
     "module": "esm/index.js",
@@ -13,7 +13,7 @@
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js --forceTypes",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\"",
-        "build:esm": "tsc --module es2015 --target es5",
+        "build:esm": "MODULES_ROOT=../../ tsc --module es2015 --target es5 -p tsconfig.esm.json",
         "build:js": "tsc -p tsconfig.cjs.json",
         "transform:css": "node ../../scripts/transform-scss.js"
     },
@@ -28,20 +28,21 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/notifications#readme",
     "peerDependencies": {
-        "@patternfly/react-core": "^4.18.5",
-        "@patternfly/react-icons": "^4.3.5",
+        "@patternfly/react-core": "^5.0.0",
+        "@patternfly/react-icons": "^5.0.0",
         "prop-types": "^15.6.2",
-        "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
-        "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "redux": ">=4.2.0",
         "react-redux": ">=7.2.9"
     },
     "dependencies": {
         "redux-promise-middleware": "6.1.3",
-        "@redhat-cloud-services/frontend-components-utilities": "*",
-        "@redhat-cloud-services/frontend-components": "*"
+        "@redhat-cloud-services/frontend-components-utilities": "^4.0.0",
+        "@redhat-cloud-services/frontend-components": "^4.0.0"
     },
     "devDependencies": {
-        "typescript": "^4.8.4"
+        "glob": "10.3.3",
+        "typescript": "^5.0.0"
     }
 }

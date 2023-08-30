@@ -22,4 +22,4 @@
 
 # Incremental ts info
 tsconfig.tsbuildinfo
-!tsconfig.cjs.json
+!tsconfig.*.json

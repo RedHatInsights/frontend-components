@@ -8,7 +8,7 @@ const SimpleToolbar = () => {
       <PrimaryToolbar
         filterConfig={{ placeholder: 'Filter by string', onChange: ({ target: { value } }) => setFilterValue(value), value: filterValue }}
       />
-      <pre className="pf-u-ml-md">{JSON.stringify({ filterValue })}</pre>
+      <pre className="pf-v5-u-ml-md">{JSON.stringify({ filterValue })}</pre>
     </div>
   );
 };

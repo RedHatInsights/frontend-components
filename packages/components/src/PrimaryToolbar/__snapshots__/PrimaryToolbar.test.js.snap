@@ -34,6 +34,11 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
   id="ins-primary-data-toolbar"
   ouiaId="PrimaryToolbar"
   toggleIsExpanded={[Function]}
+  useMobileLayout={
+    <div>
+      Loading...
+    </div>
+  }
 >
   <ToolbarContent
     isExpanded={false}
@@ -107,6 +112,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
   id="ins-primary-data-toolbar"
   ouiaId="PrimaryToolbar"
   toggleIsExpanded={[Function]}
+  useMobileLayout={true}
 >
   <ToolbarContent
     isExpanded={false}
@@ -120,8 +126,8 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         <BulkSelect
           checked={false}
           items={
-            Array [
-              Object {
+            [
+              {
                 "onClick": [MockFunction],
                 "title": "Some action",
               },
@@ -136,14 +142,15 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
       >
         <ConditionalFilter
           items={
-            Array [
-              Object {
+            [
+              {
                 "label": "First filter",
+                "type": "text",
               },
-              Object {
-                "filterValues": Object {
-                  "items": Array [
-                    Object {
+              {
+                "filterValues": {
+                  "items": [
+                    {
                       "label": "Some checkbox",
                     },
                   ],
@@ -153,13 +160,12 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
               },
             ]
           }
-          useMobileLayout={true}
         />
       </ToolbarItem>
     </ForwardRef>
     <Actions
       actions={
-        Array [
+        [
           <Button
             onClick={[MockFunction]}
           >
@@ -171,7 +177,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
           >
             Another button
           </Button>,
-          Object {
+          {
             "label": "Or objects",
             "onClick": [MockFunction],
           },
@@ -179,29 +185,29 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         ]
       }
       dropdownProps={
-        Object {
+        {
           "className": "custom-class",
         }
       }
       exportConfig={
-        Object {
+        {
           "onSelect": [MockFunction],
         }
       }
       onSelect={[MockFunction]}
       overflowActions={
-        Array [
-          Object {
+        [
+          {
             "label": "Sort order ASC",
             "onClick": [Function],
-            "props": Object {
+            "props": {
               "isDisabled": true,
             },
           },
-          Object {
+          {
             "label": "Sort order DESC",
             "onClick": [Function],
-            "props": Object {
+            "props": {
               "isDisabled": false,
             },
           },
@@ -220,67 +226,13 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
       className="ins-c-primary-toolbar__pagination"
     >
       <Pagination
-        className=""
-        defaultToFullPage={false}
-        firstPage={1}
         isCompact={true}
-        isDisabled={false}
-        isSticky={false}
         itemCount={100}
-        itemsEnd={null}
-        itemsStart={null}
-        offset={0}
-        onFirstClick={[Function]}
-        onLastClick={[Function]}
-        onNextClick={[Function]}
-        onPageInput={[Function]}
         onPerPageSelect={[MockFunction]}
-        onPreviousClick={[Function]}
         onSetPage={[MockFunction]}
         ouiaId="CompactPagination"
-        ouiaSafe={true}
         page={1}
         perPage={10}
-        perPageComponent="div"
-        perPageOptions={
-          Array [
-            Object {
-              "title": "10",
-              "value": 10,
-            },
-            Object {
-              "title": "20",
-              "value": 20,
-            },
-            Object {
-              "title": "50",
-              "value": 50,
-            },
-            Object {
-              "title": "100",
-              "value": 100,
-            },
-          ]
-        }
-        titles={
-          Object {
-            "currPage": "Current page",
-            "items": "",
-            "itemsPerPage": "Items per page",
-            "ofWord": "of",
-            "optionsToggle": "",
-            "page": "",
-            "pages": "",
-            "paginationTitle": "Pagination",
-            "perPageSuffix": "per page",
-            "toFirstPage": "Go to first page",
-            "toLastPage": "Go to last page",
-            "toNextPage": "Go to next page",
-            "toPreviousPage": "Go to previous page",
-          }
-        }
-        variant="top"
-        widgetId="options-menu"
       />
     </ToolbarItem>
   </ToolbarContent>
@@ -291,27 +243,27 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
     <ToolbarItem>
       <FilterChips
         filters={
-          Array [
-            Object {
+          [
+            {
               "category": "Some",
-              "chips": Array [
-                Object {
+              "chips": [
+                {
                   "name": "something",
                 },
-                Object {
+                {
                   "name": "something 2",
                 },
               ],
             },
-            Object {
+            {
               "category": "Another",
-              "chips": Array [
-                Object {
+              "chips": [
+                {
                   "name": "One chip",
                 },
               ],
             },
-            Object {
+            {
               "name": "Something else",
             },
           ]
@@ -342,8 +294,8 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
         <BulkSelect
           checked={false}
           items={
-            Array [
-              Object {
+            [
+              {
                 "onClick": [MockFunction],
                 "title": "Some action",
               },
@@ -378,14 +330,15 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
       >
         <ConditionalFilter
           items={
-            Array [
-              Object {
+            [
+              {
                 "label": "First filter",
+                "type": "text",
               },
-              Object {
-                "filterValues": Object {
-                  "items": Array [
-                    Object {
+              {
+                "filterValues": {
+                  "items": [
+                    {
                       "label": "Some checkbox",
                     },
                   ],
@@ -408,6 +361,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
   id="ins-primary-data-toolbar"
   ouiaId="PrimaryToolbar"
   toggleIsExpanded={[Function]}
+  useMobileLayout={true}
 >
   <ToolbarContent
     isExpanded={false}
@@ -421,8 +375,8 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
         <BulkSelect
           checked={false}
           items={
-            Array [
-              Object {
+            [
+              {
                 "onClick": [MockFunction],
                 "title": "Some action",
               },
@@ -437,14 +391,15 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
       >
         <ConditionalFilter
           items={
-            Array [
-              Object {
+            [
+              {
                 "label": "First filter",
+                "type": "text",
               },
-              Object {
-                "filterValues": Object {
-                  "items": Array [
-                    Object {
+              {
+                "filterValues": {
+                  "items": [
+                    {
                       "label": "Some checkbox",
                     },
                   ],
@@ -454,29 +409,28 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
               },
             ]
           }
-          useMobileLayout={true}
         />
       </ToolbarItem>
     </ForwardRef>
     <Actions
       exportConfig={
-        Object {
+        {
           "onSelect": [MockFunction],
         }
       }
       overflowActions={
-        Array [
-          Object {
+        [
+          {
             "label": "Sort order ASC",
             "onClick": [Function],
-            "props": Object {
+            "props": {
               "isDisabled": true,
             },
           },
-          Object {
+          {
             "label": "Sort order DESC",
             "onClick": [Function],
-            "props": Object {
+            "props": {
               "isDisabled": false,
             },
           },
@@ -495,67 +449,13 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
       className="ins-c-primary-toolbar__pagination"
     >
       <Pagination
-        className=""
-        defaultToFullPage={false}
-        firstPage={1}
         isCompact={true}
-        isDisabled={false}
-        isSticky={false}
         itemCount={100}
-        itemsEnd={null}
-        itemsStart={null}
-        offset={0}
-        onFirstClick={[Function]}
-        onLastClick={[Function]}
-        onNextClick={[Function]}
-        onPageInput={[Function]}
         onPerPageSelect={[MockFunction]}
-        onPreviousClick={[Function]}
         onSetPage={[MockFunction]}
         ouiaId="CompactPagination"
-        ouiaSafe={true}
         page={1}
         perPage={10}
-        perPageComponent="div"
-        perPageOptions={
-          Array [
-            Object {
-              "title": "10",
-              "value": 10,
-            },
-            Object {
-              "title": "20",
-              "value": 20,
-            },
-            Object {
-              "title": "50",
-              "value": 50,
-            },
-            Object {
-              "title": "100",
-              "value": 100,
-            },
-          ]
-        }
-        titles={
-          Object {
-            "currPage": "Current page",
-            "items": "",
-            "itemsPerPage": "Items per page",
-            "ofWord": "of",
-            "optionsToggle": "",
-            "page": "",
-            "pages": "",
-            "paginationTitle": "Pagination",
-            "perPageSuffix": "per page",
-            "toFirstPage": "Go to first page",
-            "toLastPage": "Go to last page",
-            "toNextPage": "Go to next page",
-            "toPreviousPage": "Go to previous page",
-          }
-        }
-        variant="top"
-        widgetId="options-menu"
       />
     </ToolbarItem>
   </ToolbarContent>
@@ -566,27 +466,27 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
     <ToolbarItem>
       <FilterChips
         filters={
-          Array [
-            Object {
+          [
+            {
               "category": "Some",
-              "chips": Array [
-                Object {
+              "chips": [
+                {
                   "name": "something",
                 },
-                Object {
+                {
                   "name": "something 2",
                 },
               ],
             },
-            Object {
+            {
               "category": "Another",
-              "chips": Array [
-                Object {
+              "chips": [
+                {
                   "name": "One chip",
                 },
               ],
             },
-            Object {
+            {
               "name": "Something else",
             },
           ]

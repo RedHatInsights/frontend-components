@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-advisor-components",
-    "version": "1.0.16",
+    "version": "2.0.0-beta.0",
     "description": "Components to be used in Advisor applications and integrations.",
     "main": "index.js",
     "module": "esm/index.js",
@@ -10,12 +10,12 @@
     "scripts": {
         "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
         "build:js": "tsc -p tsconfig.cjs.json",
-        "build:esm": "tsc --module es2015 --target es5",
+        "build:esm": "MODULES_ROOT=../../ tsc --module es2015 --target es5 -p tsconfig.esm.json",
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js --forceTypes",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\"",
-        "test:ct": "cypress run-ct",
-        "test:openct": "cypress open-ct"
+        "test:ct": "cypress run --component",
+        "test:openct": "cypress open --component"
     },
     "repository": {
         "type": "git",
@@ -28,15 +28,15 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/advisor-components#readme",
     "peerDependencies": {
-        "@patternfly/react-core": "^4.162.16",
-        "@patternfly/react-icons": "^4.3.5",
+        "@patternfly/react-core": "^5.0.0",
+        "@patternfly/react-icons": "^5.0.0",
         "prop-types": "^15.6.2",
-        "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
-        "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "react-router-dom": "^5.0.0 || ^6.0.0"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components": "^3.9.12",
+        "@redhat-cloud-services/frontend-components": "^4.0.0-beta.3",
         "dot": "^1.1.3",
         "lodash": "^4.17.21",
         "marked": "^4.1.1",
@@ -46,12 +46,11 @@
         "sanitize-html": "^2.10.0"
     },
     "devDependencies": {
-        "@cypress/react": "^5.12.5",
-        "@cypress/webpack-dev-server": "^1.8.4",
+        "@cypress/webpack-dev-server": "^3.5.1",
         "@types/dot": "^1.1.5",
         "@types/marked": "^4.0.7",
         "css-loader": "^6.7.1",
-        "cypress": "^9.7.0",
+        "cypress": "^12.17.2",
         "eslint-plugin-cypress": "^2.12.1",
         "sass-loader": "^12.6.0",
         "style-loader": "^3.3.1"

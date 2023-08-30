@@ -7,13 +7,13 @@
 
   .reboot-required-icon {
     margin-top: 5px;
-    margin-right: var(--pf-global--spacer--sm);
-    color: var(--pf-global--palette--red-100);
+    margin-right: var(--pf-v5-global--spacer--sm);
+    color: var(--pf-v5-global--palette--red-100);
   }
 
   .no-reboot-required-icon {
     margin-top: 5px;
-    margin-right: var(--pf-global--spacer--sm);
-    color: var(--pf-global--palette--black-400);
+    margin-right: var(--pf-v5-global--spacer--sm);
+    color: var(--pf-v5-global--palette--black-400);
   }
 }

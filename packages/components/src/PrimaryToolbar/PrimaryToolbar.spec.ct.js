@@ -1,6 +1,4 @@
 import React from 'react';
-import { mount } from '@cypress/react';
-
 import { PrimaryToolbar } from '..';
 import { Button } from '@patternfly/react-core';
 
@@ -67,43 +65,45 @@ describe('PrimaryToolbar component', () => {
   };
 
   it('renders empty toolbar with class and id', () => {
-    mount(<PrimaryToolbar id="myToolbar" className="tbPrimary" />);
+    cy.mount(<PrimaryToolbar id="myToolbar" className="tbPrimary" />);
     cy.get('.ins-c-primary-toolbar').should('have.id', 'myToolbar').should('have.class', 'tbPrimary');
   });
 
   it('renders items correctly - only one item', () => {
-    mount(<PrimaryToolbar filterConfig={groupConfig.filterConfig} />);
-    cy.get('.pf-c-toolbar__group').get('.ins-c-primary-toolbar__filter');
+    cy.mount(<PrimaryToolbar filterConfig={groupConfig.filterConfig} />);
+    cy.get('.pf-v5-c-toolbar__group').get('.ins-c-primary-toolbar__filter');
   });
 
   it('renders items correctly - only group', () => {
-    mount(<PrimaryToolbar {...groupConfig} />);
-    cy.get('.pf-c-toolbar__group').children().should('have.length', 4);
+    cy.mount(<PrimaryToolbar {...groupConfig} />);
+    cy.get('.pf-v5-c-toolbar__group').children().should('have.length', 4);
   });
 
   it('renders items correctly - only items outside of the group', () => {
-    mount(<PrimaryToolbar {...otherConfig} />);
-    cy.get('.pf-c-toolbar__content-section').children().should('have.length', 5);
+    cy.mount(<PrimaryToolbar {...otherConfig} />);
+    cy.get('.pf-v5-c-toolbar__content-section').children().should('have.length', 5);
   });
 
   it('renders items correctly - everything', () => {
-    mount(<PrimaryToolbar {...groupConfig} {...otherConfig} />);
-    cy.get('.pf-c-toolbar__content-section')
+    cy.mount(<PrimaryToolbar {...groupConfig} {...otherConfig} />);
+    // eslint-disable-next-line cypress/unsafe-to-chain-command
+    cy.get('.pf-v5-c-toolbar__content-section')
+      .first()
       .within(() => {
-        cy.get('.pf-c-toolbar__group').children().should('have.length', 4);
+        cy.get('.pf-v5-c-toolbar__group').children().should('have.length', 4);
       })
       .children()
-      .should('have.length', 6);
+      .should('have.length', 5);
   });
 
   it('responds to interaction with individual items', () => {
     groupConfig.expandAll.onClick = cy.spy().as('eaSpy');
     groupConfig.bulkSelect.items[1].onClick = cy.spy().as('bsSpy');
     otherConfig.activeFiltersConfig.onDelete = cy.spy().as('afSpy');
-    mount(<PrimaryToolbar {...groupConfig} {...otherConfig} />);
+    cy.mount(<PrimaryToolbar {...groupConfig} {...otherConfig} />);
     cy.get('[data-ouia-component-id="ExpandCollapseAll"]').click();
-    cy.get('button[data-ouia-component-id="BulkSelect"]').click();
-    cy.get(':nth-child(2) > .pf-c-dropdown__menu-item').click();
+    cy.get('button[aria-label="BulkSelect"]').click();
+    cy.get(':nth-child(2) > .pf-v5-c-menu__item').click();
     cy.get('[data-ouia-component-id="ClearFilters"]').click();
     cy.get('@eaSpy').should('have.been.called');
     cy.get('@bsSpy').should('have.been.called');

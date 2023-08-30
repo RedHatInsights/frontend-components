@@ -1,1040 +1,459 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Actions - component API should update open 1`] = `
-<Actions
-  actions={
-    Array [
-      <button
-        onClick={[MockFunction]}
-      >
-        Some button
-      </button>,
-      Object {
-        "label": "Some title",
-        "onClick": [MockFunction],
-      },
-      Object {
-        "label": "Custom props",
-        "props": Object {
-          "key": "some-key",
-        },
-      },
-      "plain string",
-    ]
-  }
->
-  <ToolbarItem
-    className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+<div>
+  <div
+    class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
-    <div
-      className="pf-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
-    >
-      <button
-        key="btn"
-        onClick={[MockFunction]}
-      >
-        Some button
-      </button>
-    </div>
-  </ToolbarItem>
-  <ToolbarItem
-    className=" ins-c-primary-toolbar__actions pf-m-spacer-sm"
+    <button>
+      Some button
+    </button>
+  </div>
+  <div
+    class="pf-v5-c-toolbar__item  ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <div
-      className="pf-c-toolbar__item  ins-c-primary-toolbar__actions pf-m-spacer-sm"
+    <button
+      aria-expanded="true"
+      aria-label="kebab dropdown toggle"
+      class="pf-v5-c-menu-toggle pf-m-expanded pf-m-plain"
+      type="button"
     >
-      <Dropdown
-        dropdownItems={
-          Array [
-            <DropdownItem
-              className="ins-c-primary-toolbar__first-action"
-              component="div"
-            />,
-            <DropdownItem
-              component="button"
-              onClick={[Function]}
-            >
-              Some title
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-            >
-              Custom props
-            </DropdownItem>,
-            <DropdownItem
-              component="button"
-            >
-              plain string
-            </DropdownItem>,
-          ]
-        }
-        isOpen={true}
-        isPlain={true}
-        onSelect={[Function]}
-        ouiaId="Actions"
-        toggle={
-          <KebabToggle
-            onToggle={[Function]}
-          />
-        }
+      <svg
+        aria-hidden="true"
+        class="pf-v5-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 192 512"
+        width="1em"
       >
-        <DropdownWithContext
-          autoFocus={true}
-          className=""
-          direction="down"
-          dropdownItems={
-            Array [
-              <DropdownItem
-                className="ins-c-primary-toolbar__first-action"
-                component="div"
-              />,
-              <DropdownItem
-                component="button"
-                onClick={[Function]}
-              >
-                Some title
-              </DropdownItem>,
-              <DropdownItem
-                component="button"
-              >
-                Custom props
-              </DropdownItem>,
-              <DropdownItem
-                component="button"
-              >
-                plain string
-              </DropdownItem>,
-            ]
-          }
-          isFlipEnabled={true}
-          isGrouped={false}
-          isOpen={true}
-          isPlain={true}
-          isText={false}
-          menuAppendTo="inline"
-          onSelect={[Function]}
-          position="left"
-          removeFindDomNode={false}
-          toggle={
-            <KebabToggle
-              onToggle={[Function]}
-            />
-          }
-          zIndex={9999}
+        <path
+          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+        />
+      </svg>
+    </button>
+    <div
+      class="pf-v5-c-menu"
+      data-ouia-component-id="Actions"
+      data-ouia-component-type="PF5/Dropdown"
+      data-ouia-safe="true"
+      style="position: absolute; left: 0px; top: 0px; z-index: 9999; min-width: 0px;"
+    >
+      <div
+        class="pf-v5-c-menu__content"
+      >
+        <ul
+          class="pf-v5-c-menu__list"
+          role="menu"
         >
-          <div
-            className="pf-c-dropdown pf-m-expanded"
-            data-ouia-component-id="Actions"
-            data-ouia-component-type="PF4/Dropdown"
-            data-ouia-safe={true}
+          <li
+            class="pf-v5-c-menu__list-item ins-c-primary-toolbar__first-action"
+            data-ouia-component-id="OUIA-Generated-DropdownItem-1"
+            data-ouia-component-type="PF5/DropdownItem"
+            data-ouia-safe="true"
+            role="none"
           >
-            <KebabToggle
-              aria-haspopup={true}
-              getMenuRef={[Function]}
-              id="pf-dropdown-toggle-id-1"
-              isOpen={true}
-              isPlain={true}
-              isText={false}
-              key=".0"
-              onEnter={[Function]}
-              onToggle={[Function]}
-              parentRef={
-                Object {
-                  "current": <div
-                    class="pf-c-dropdown pf-m-expanded"
-                    data-ouia-component-id="Actions"
-                    data-ouia-component-type="PF4/Dropdown"
-                    data-ouia-safe="true"
-                  >
-                    <button
-                      aria-expanded="true"
-                      aria-haspopup="true"
-                      aria-label="Actions"
-                      class="pf-c-dropdown__toggle pf-m-plain"
-                      id="pf-dropdown-toggle-id-1"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        fill="currentColor"
-                        height="1em"
-                        role="img"
-                        style="vertical-align: -0.125em;"
-                        viewBox="0 0 192 512"
-                        width="1em"
-                      >
-                        <path
-                          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-                        />
-                      </svg>
-                    </button>
-                    <ul
-                      aria-labelledby="pf-dropdown-toggle-id-1"
-                      class="pf-c-dropdown__menu"
-                      role="menu"
-                    >
-                      <li
-                        role="none"
-                      >
-                        <div
-                          class="ins-c-primary-toolbar__first-action pf-c-dropdown__menu-item"
-                          data-ouia-component-id="OUIA-Generated-DropdownItem-1"
-                          data-ouia-component-type="PF4/DropdownItem"
-                          data-ouia-safe="true"
-                          role="menuitem"
-                          tabindex="-1"
-                        />
-                      </li>
-                      <li
-                        role="none"
-                      >
-                        <button
-                          aria-disabled="false"
-                          class="pf-c-dropdown__menu-item"
-                          data-ouia-component-id="OUIA-Generated-DropdownItem-2"
-                          data-ouia-component-type="PF4/DropdownItem"
-                          data-ouia-safe="true"
-                          role="menuitem"
-                          tabindex="-1"
-                          type="button"
-                        >
-                          Some title
-                        </button>
-                      </li>
-                      <li
-                        role="none"
-                      >
-                        <button
-                          aria-disabled="false"
-                          class="pf-c-dropdown__menu-item"
-                          data-ouia-component-id="OUIA-Generated-DropdownItem-3"
-                          data-ouia-component-type="PF4/DropdownItem"
-                          data-ouia-safe="true"
-                          role="menuitem"
-                          tabindex="-1"
-                          type="button"
-                        >
-                          Custom props
-                        </button>
-                      </li>
-                      <li
-                        role="none"
-                      >
-                        <button
-                          aria-disabled="false"
-                          class="pf-c-dropdown__menu-item"
-                          data-ouia-component-id="OUIA-Generated-DropdownItem-4"
-                          data-ouia-component-type="PF4/DropdownItem"
-                          data-ouia-safe="true"
-                          role="menuitem"
-                          tabindex="-1"
-                          type="button"
-                        >
-                          plain string
-                        </button>
-                      </li>
-                    </ul>
-                  </div>,
-                }
-              }
+            <div
+              class="pf-v5-c-menu__item ins-c-primary-toolbar__first-action"
+              role="menuitem"
+              tabindex="-1"
             >
-              <Toggle
-                aria-haspopup={true}
-                aria-label="Actions"
-                bubbleEvent={false}
-                className=""
-                getMenuRef={[Function]}
-                id="pf-dropdown-toggle-id-1"
-                isActive={false}
-                isDisabled={false}
-                isOpen={true}
-                isPlain={true}
-                isPrimary={false}
-                isSplitButton={false}
-                isText={false}
-                onEnter={[Function]}
-                onToggle={[Function]}
-                parentRef={
-                  Object {
-                    "current": <div
-                      class="pf-c-dropdown pf-m-expanded"
-                      data-ouia-component-id="Actions"
-                      data-ouia-component-type="PF4/Dropdown"
-                      data-ouia-safe="true"
-                    >
-                      <button
-                        aria-expanded="true"
-                        aria-haspopup="true"
-                        aria-label="Actions"
-                        class="pf-c-dropdown__toggle pf-m-plain"
-                        id="pf-dropdown-toggle-id-1"
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          fill="currentColor"
-                          height="1em"
-                          role="img"
-                          style="vertical-align: -0.125em;"
-                          viewBox="0 0 192 512"
-                          width="1em"
-                        >
-                          <path
-                            d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-                          />
-                        </svg>
-                      </button>
-                      <ul
-                        aria-labelledby="pf-dropdown-toggle-id-1"
-                        class="pf-c-dropdown__menu"
-                        role="menu"
-                      >
-                        <li
-                          role="none"
-                        >
-                          <div
-                            class="ins-c-primary-toolbar__first-action pf-c-dropdown__menu-item"
-                            data-ouia-component-id="OUIA-Generated-DropdownItem-1"
-                            data-ouia-component-type="PF4/DropdownItem"
-                            data-ouia-safe="true"
-                            role="menuitem"
-                            tabindex="-1"
-                          />
-                        </li>
-                        <li
-                          role="none"
-                        >
-                          <button
-                            aria-disabled="false"
-                            class="pf-c-dropdown__menu-item"
-                            data-ouia-component-id="OUIA-Generated-DropdownItem-2"
-                            data-ouia-component-type="PF4/DropdownItem"
-                            data-ouia-safe="true"
-                            role="menuitem"
-                            tabindex="-1"
-                            type="button"
-                          >
-                            Some title
-                          </button>
-                        </li>
-                        <li
-                          role="none"
-                        >
-                          <button
-                            aria-disabled="false"
-                            class="pf-c-dropdown__menu-item"
-                            data-ouia-component-id="OUIA-Generated-DropdownItem-3"
-                            data-ouia-component-type="PF4/DropdownItem"
-                            data-ouia-safe="true"
-                            role="menuitem"
-                            tabindex="-1"
-                            type="button"
-                          >
-                            Custom props
-                          </button>
-                        </li>
-                        <li
-                          role="none"
-                        >
-                          <button
-                            aria-disabled="false"
-                            class="pf-c-dropdown__menu-item"
-                            data-ouia-component-id="OUIA-Generated-DropdownItem-4"
-                            data-ouia-component-type="PF4/DropdownItem"
-                            data-ouia-safe="true"
-                            role="menuitem"
-                            tabindex="-1"
-                            type="button"
-                          >
-                            plain string
-                          </button>
-                        </li>
-                      </ul>
-                    </div>,
-                  }
-                }
+              <span
+                class="pf-v5-c-menu__item-main"
               >
-                <button
-                  aria-expanded={true}
-                  aria-haspopup={true}
-                  aria-label="Actions"
-                  className="pf-c-dropdown__toggle pf-m-plain"
-                  disabled={false}
-                  id="pf-dropdown-toggle-id-1"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  type="button"
-                >
-                  <EllipsisVIcon
-                    color="currentColor"
-                    noVerticalAlign={false}
-                    size="sm"
-                  >
-                    <svg
-                      aria-hidden={true}
-                      aria-labelledby={null}
-                      fill="currentColor"
-                      height="1em"
-                      role="img"
-                      style={
-                        Object {
-                          "verticalAlign": "-0.125em",
-                        }
-                      }
-                      viewBox="0 0 192 512"
-                      width="1em"
-                    >
-                      <path
-                        d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-                      />
-                    </svg>
-                  </EllipsisVIcon>
-                </button>
-              </Toggle>
-            </KebabToggle>
-            <DropdownMenu
-              aria-labelledby="pf-dropdown-toggle-id-1"
-              autoFocus={false}
-              className=""
-              component="ul"
-              isGrouped={false}
-              isOpen={true}
-              openedOnEnter={false}
-              position="left"
-              setMenuComponentRef={[Function]}
+                <span
+                  class="pf-v5-c-menu__item-text"
+                />
+              </span>
+            </div>
+          </li>
+          <li
+            class="pf-v5-c-menu__list-item"
+            data-ouia-component-id="OUIA-Generated-DropdownItem-2"
+            data-ouia-component-type="PF5/DropdownItem"
+            data-ouia-safe="true"
+            role="none"
+          >
+            <button
+              class="pf-v5-c-menu__item"
+              role="menuitem"
+              tabindex="0"
+              type="button"
             >
-              <ul
-                aria-labelledby="pf-dropdown-toggle-id-1"
-                autoFocus={false}
-                className="pf-c-dropdown__menu"
-                hidden={false}
-                role="menu"
+              <span
+                class="pf-v5-c-menu__item-main"
               >
-                <DropdownItem
-                  className="ins-c-primary-toolbar__first-action"
-                  component="div"
-                  index={0}
-                  key=".$first-action"
+                <span
+                  class="pf-v5-c-menu__item-text"
                 >
-                  <InternalDropdownItem
-                    className="ins-c-primary-toolbar__first-action"
-                    component="div"
-                    context={
-                      Object {
-                        "keyHandler": [Function],
-                        "sendRef": [Function],
-                      }
-                    }
-                    data-ouia-component-id="OUIA-Generated-DropdownItem-1"
-                    data-ouia-component-type="PF4/DropdownItem"
-                    data-ouia-safe={true}
-                    description={null}
-                    enterTriggersArrowDown={false}
-                    icon={null}
-                    index={0}
-                    inoperableEvents={
-                      Array [
-                        "onClick",
-                        "onKeyPress",
-                      ]
-                    }
-                    isAriaDisabled={false}
-                    isDisabled={false}
-                    isPlainText={false}
-                    onClick={[Function]}
-                    role="menuitem"
-                    styleChildren={true}
-                    tabIndex={-1}
-                    tooltipProps={Object {}}
-                  >
-                    <li
-                      onClick={[Function]}
-                      onKeyDown={[Function]}
-                      role="none"
-                    >
-                      <div
-                        className="ins-c-primary-toolbar__first-action pf-c-dropdown__menu-item"
-                        data-ouia-component-id="OUIA-Generated-DropdownItem-1"
-                        data-ouia-component-type="PF4/DropdownItem"
-                        data-ouia-safe={true}
-                        role="menuitem"
-                        tabIndex={-1}
-                      />
-                    </li>
-                  </InternalDropdownItem>
-                </DropdownItem>
-                <DropdownItem
-                  component="button"
-                  index={1}
-                  key=".$0"
-                  onClick={[Function]}
+                  Some title
+                </span>
+              </span>
+            </button>
+          </li>
+          <li
+            class="pf-v5-c-menu__list-item"
+            data-ouia-component-id="OUIA-Generated-DropdownItem-3"
+            data-ouia-component-type="PF5/DropdownItem"
+            data-ouia-safe="true"
+            role="none"
+          >
+            <button
+              class="pf-v5-c-menu__item"
+              role="menuitem"
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="pf-v5-c-menu__item-main"
+              >
+                <span
+                  class="pf-v5-c-menu__item-text"
                 >
-                  <InternalDropdownItem
-                    className=""
-                    component="button"
-                    context={
-                      Object {
-                        "keyHandler": [Function],
-                        "sendRef": [Function],
-                      }
-                    }
-                    data-ouia-component-id="OUIA-Generated-DropdownItem-2"
-                    data-ouia-component-type="PF4/DropdownItem"
-                    data-ouia-safe={true}
-                    description={null}
-                    enterTriggersArrowDown={false}
-                    icon={null}
-                    index={1}
-                    inoperableEvents={
-                      Array [
-                        "onClick",
-                        "onKeyPress",
-                      ]
-                    }
-                    isAriaDisabled={false}
-                    isDisabled={false}
-                    isPlainText={false}
-                    onClick={[Function]}
-                    role="menuitem"
-                    styleChildren={true}
-                    tabIndex={-1}
-                    tooltipProps={Object {}}
-                  >
-                    <li
-                      onClick={[Function]}
-                      onKeyDown={[Function]}
-                      role="none"
-                    >
-                      <button
-                        aria-disabled={false}
-                        className="pf-c-dropdown__menu-item"
-                        data-ouia-component-id="OUIA-Generated-DropdownItem-2"
-                        data-ouia-component-type="PF4/DropdownItem"
-                        data-ouia-safe={true}
-                        role="menuitem"
-                        tabIndex={-1}
-                        type="button"
-                      >
-                        Some title
-                      </button>
-                    </li>
-                  </InternalDropdownItem>
-                </DropdownItem>
-                <DropdownItem
-                  component="button"
-                  index={2}
-                  key=".$some-key"
+                  Custom props
+                </span>
+              </span>
+            </button>
+          </li>
+          <li
+            class="pf-v5-c-menu__list-item"
+            data-ouia-component-id="OUIA-Generated-DropdownItem-4"
+            data-ouia-component-type="PF5/DropdownItem"
+            data-ouia-safe="true"
+            role="none"
+          >
+            <button
+              class="pf-v5-c-menu__item"
+              role="menuitem"
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="pf-v5-c-menu__item-main"
+              >
+                <span
+                  class="pf-v5-c-menu__item-text"
                 >
-                  <InternalDropdownItem
-                    className=""
-                    component="button"
-                    context={
-                      Object {
-                        "keyHandler": [Function],
-                        "sendRef": [Function],
-                      }
-                    }
-                    data-ouia-component-id="OUIA-Generated-DropdownItem-3"
-                    data-ouia-component-type="PF4/DropdownItem"
-                    data-ouia-safe={true}
-                    description={null}
-                    enterTriggersArrowDown={false}
-                    icon={null}
-                    index={2}
-                    inoperableEvents={
-                      Array [
-                        "onClick",
-                        "onKeyPress",
-                      ]
-                    }
-                    isAriaDisabled={false}
-                    isDisabled={false}
-                    isPlainText={false}
-                    onClick={[Function]}
-                    role="menuitem"
-                    styleChildren={true}
-                    tabIndex={-1}
-                    tooltipProps={Object {}}
-                  >
-                    <li
-                      onClick={[Function]}
-                      onKeyDown={[Function]}
-                      role="none"
-                    >
-                      <button
-                        aria-disabled={false}
-                        className="pf-c-dropdown__menu-item"
-                        data-ouia-component-id="OUIA-Generated-DropdownItem-3"
-                        data-ouia-component-type="PF4/DropdownItem"
-                        data-ouia-safe={true}
-                        role="menuitem"
-                        tabIndex={-1}
-                        type="button"
-                      >
-                        Custom props
-                      </button>
-                    </li>
-                  </InternalDropdownItem>
-                </DropdownItem>
-                <DropdownItem
-                  component="button"
-                  index={3}
-                  key=".$2"
-                >
-                  <InternalDropdownItem
-                    className=""
-                    component="button"
-                    context={
-                      Object {
-                        "keyHandler": [Function],
-                        "sendRef": [Function],
-                      }
-                    }
-                    data-ouia-component-id="OUIA-Generated-DropdownItem-4"
-                    data-ouia-component-type="PF4/DropdownItem"
-                    data-ouia-safe={true}
-                    description={null}
-                    enterTriggersArrowDown={false}
-                    icon={null}
-                    index={3}
-                    inoperableEvents={
-                      Array [
-                        "onClick",
-                        "onKeyPress",
-                      ]
-                    }
-                    isAriaDisabled={false}
-                    isDisabled={false}
-                    isPlainText={false}
-                    onClick={[Function]}
-                    role="menuitem"
-                    styleChildren={true}
-                    tabIndex={-1}
-                    tooltipProps={Object {}}
-                  >
-                    <li
-                      onClick={[Function]}
-                      onKeyDown={[Function]}
-                      role="none"
-                    >
-                      <button
-                        aria-disabled={false}
-                        className="pf-c-dropdown__menu-item"
-                        data-ouia-component-id="OUIA-Generated-DropdownItem-4"
-                        data-ouia-component-type="PF4/DropdownItem"
-                        data-ouia-safe={true}
-                        role="menuitem"
-                        tabIndex={-1}
-                        type="button"
-                      >
-                        plain string
-                      </button>
-                    </li>
-                  </InternalDropdownItem>
-                </DropdownItem>
-              </ul>
-            </DropdownMenu>
-          </div>
-        </DropdownWithContext>
-      </Dropdown>
+                  plain string
+                </span>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
-  </ToolbarItem>
-</Actions>
+  </div>
+</div>
 `;
 
 exports[`Actions - component should render actionObject as first action 1`] = `
-<Fragment>
-  <ToolbarItem
-    className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+<div>
+  <div
+    class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
-    <Button
-      onClick={[MockFunction]}
-      ouiaId="Some title"
+    <button
+      aria-disabled="false"
+      class="pf-v5-c-button pf-m-primary"
+      data-ouia-component-id="Some title"
+      data-ouia-component-type="PF5/Button"
+      data-ouia-safe="true"
+      type="button"
     >
       Some title
-    </Button>
-  </ToolbarItem>
-  <ToolbarItem
-    className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+    </button>
+  </div>
+  <div
+    class="pf-v5-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <Dropdown
-      dropdownItems={
-        Array [
-          <DropdownItem
-            className="ins-c-primary-toolbar__first-action"
-            component="button"
-            onClick={[Function]}
-          >
-            Some title
-          </DropdownItem>,
-        ]
-      }
-      isOpen={false}
-      isPlain={true}
-      onSelect={[Function]}
-      ouiaId="Actions"
-      toggle={
-        <KebabToggle
-          onToggle={[Function]}
+    <button
+      aria-expanded="false"
+      aria-label="kebab dropdown toggle"
+      class="pf-v5-c-menu-toggle pf-m-plain"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-v5-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 192 512"
+        width="1em"
+      >
+        <path
+          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
         />
-      }
-    />
-  </ToolbarItem>
-</Fragment>
+      </svg>
+    </button>
+  </div>
+</div>
 `;
 
 exports[`Actions - component should render actions and overflow 1`] = `
-<Fragment>
-  <ToolbarItem
-    className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+<div>
+  <div
+    class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
-    <button
-      key="btn"
-      onClick={[MockFunction]}
-    >
+    <button>
       Some button
     </button>
-  </ToolbarItem>
-  <ToolbarItem
-    className=" ins-c-primary-toolbar__actions pf-m-spacer-sm"
+  </div>
+  <div
+    class="pf-v5-c-toolbar__item  ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <Dropdown
-      dropdownItems={
-        Array [
-          <DropdownItem
-            className="ins-c-primary-toolbar__first-action"
-            component="div"
-          />,
-          <DropdownItem
-            component="button"
-            onClick={[Function]}
-          >
-            Some title
-          </DropdownItem>,
-          <DropdownItem
-            component="button"
-          >
-            Custom props
-          </DropdownItem>,
-          <DropdownItem
-            component="button"
-          >
-            plain string
-          </DropdownItem>,
-          <DropdownSeparator
-            className="ins-c-primary-toolbar__overflow-actions-separator"
-          />,
-          <DropdownItem
-            className="ins-c-primary-toolbar__overflow-actions"
-            component="div"
-            onClick={[Function]}
-          >
-            <button
-              onClick={[MockFunction]}
-            >
-              Some button
-            </button>
-          </DropdownItem>,
-          <DropdownItem
-            className="ins-c-primary-toolbar__overflow-actions"
-            component="button"
-            onClick={[Function]}
-          >
-            Some title
-          </DropdownItem>,
-          <DropdownItem
-            className="ins-c-primary-toolbar__overflow-actions"
-            component="button"
-            onClick={[Function]}
-          >
-            Custom props
-          </DropdownItem>,
-          <DropdownItem
-            className="ins-c-primary-toolbar__overflow-actions"
-            component="button"
-            onClick={[Function]}
-          >
-            plain string
-          </DropdownItem>,
-        ]
-      }
-      isOpen={false}
-      isPlain={true}
-      onSelect={[Function]}
-      ouiaId="Actions"
-      toggle={
-        <KebabToggle
-          onToggle={[Function]}
+    <button
+      aria-expanded="false"
+      aria-label="kebab dropdown toggle"
+      class="pf-v5-c-menu-toggle pf-m-plain"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-v5-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 192 512"
+        width="1em"
+      >
+        <path
+          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
         />
-      }
-    />
-  </ToolbarItem>
-</Fragment>
+      </svg>
+    </button>
+  </div>
+</div>
 `;
 
 exports[`Actions - component should render empty actions 1`] = `
-<Fragment>
-  <ToolbarItem
-    className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+<div>
+  <div
+    class="pf-v5-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <Dropdown
-      dropdownItems={
-        Array [
-          <DropdownItem
-            className="ins-c-primary-toolbar__overflow-actions"
-            component="div"
-            onClick={[Function]}
-          >
-            <button
-              onClick={[MockFunction]}
-            >
-              Some button
-            </button>
-          </DropdownItem>,
-          <DropdownItem
-            className="ins-c-primary-toolbar__overflow-actions"
-            component="button"
-            onClick={[Function]}
-          >
-            Some title
-          </DropdownItem>,
-          <DropdownItem
-            className="ins-c-primary-toolbar__overflow-actions"
-            component="button"
-            onClick={[Function]}
-          >
-            Custom props
-          </DropdownItem>,
-          <DropdownItem
-            className="ins-c-primary-toolbar__overflow-actions"
-            component="button"
-            onClick={[Function]}
-          >
-            plain string
-          </DropdownItem>,
-        ]
-      }
-      isOpen={false}
-      isPlain={true}
-      onSelect={[Function]}
-      ouiaId="Actions"
-      toggle={
-        <KebabToggle
-          onToggle={[Function]}
+    <button
+      aria-expanded="false"
+      aria-label="kebab dropdown toggle"
+      class="pf-v5-c-menu-toggle pf-m-plain"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-v5-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 192 512"
+        width="1em"
+      >
+        <path
+          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
         />
-      }
-    />
-  </ToolbarItem>
-</Fragment>
+      </svg>
+    </button>
+  </div>
+</div>
 `;
 
 exports[`Actions - component should render just actions 1`] = `
-<Fragment>
-  <ToolbarItem
-    className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+<div>
+  <div
+    class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
-    <button
-      key="btn"
-      onClick={[MockFunction]}
-    >
+    <button>
       Some button
     </button>
-  </ToolbarItem>
-  <ToolbarItem
-    className=" ins-c-primary-toolbar__actions pf-m-spacer-sm"
+  </div>
+  <div
+    class="pf-v5-c-toolbar__item  ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <Dropdown
-      dropdownItems={
-        Array [
-          <DropdownItem
-            className="ins-c-primary-toolbar__first-action"
-            component="div"
-          />,
-          <DropdownItem
-            component="button"
-            onClick={[Function]}
-          >
-            Some title
-          </DropdownItem>,
-          <DropdownItem
-            component="button"
-          >
-            Custom props
-          </DropdownItem>,
-          <DropdownItem
-            component="button"
-          >
-            plain string
-          </DropdownItem>,
-        ]
-      }
-      isOpen={false}
-      isPlain={true}
-      onSelect={[Function]}
-      ouiaId="Actions"
-      toggle={
-        <KebabToggle
-          onToggle={[Function]}
+    <button
+      aria-expanded="false"
+      aria-label="kebab dropdown toggle"
+      class="pf-v5-c-menu-toggle pf-m-plain"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-v5-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 192 512"
+        width="1em"
+      >
+        <path
+          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
         />
-      }
-    />
-  </ToolbarItem>
-</Fragment>
+      </svg>
+    </button>
+  </div>
+</div>
 `;
 
-exports[`Actions - component should render no data 1`] = `<Fragment />`;
+exports[`Actions - component should render no data 1`] = `<div />`;
 
 exports[`Actions - component should render one action 1`] = `
-<Fragment>
-  <ToolbarItem
-    className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+<div>
+  <div
+    class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
-    <button
-      key="btn"
-      onClick={[MockFunction]}
-    >
+    <button>
       Some button
     </button>
-  </ToolbarItem>
-  <ToolbarItem
-    className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+  </div>
+  <div
+    class="pf-v5-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <Dropdown
-      dropdownItems={
-        Array [
-          <DropdownItem
-            className="ins-c-primary-toolbar__first-action"
-            component="div"
-          />,
-        ]
-      }
-      isOpen={false}
-      isPlain={true}
-      onSelect={[Function]}
-      ouiaId="Actions"
-      toggle={
-        <KebabToggle
-          onToggle={[Function]}
+    <button
+      aria-expanded="false"
+      aria-label="kebab dropdown toggle"
+      class="pf-v5-c-menu-toggle pf-m-plain"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-v5-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 192 512"
+        width="1em"
+      >
+        <path
+          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
         />
-      }
-    />
-  </ToolbarItem>
-</Fragment>
+      </svg>
+    </button>
+  </div>
+</div>
 `;
 
 exports[`Actions - component should render one action and multiple overflow 1`] = `
-<Fragment>
-  <ToolbarItem
-    className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+<div>
+  <div
+    class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
-    <button
-      key="btn"
-      onClick={[MockFunction]}
-    >
+    <button>
       Some button
     </button>
-  </ToolbarItem>
-  <ToolbarItem
-    className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+  </div>
+  <div
+    class="pf-v5-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <Dropdown
-      dropdownItems={
-        Array [
-          <DropdownItem
-            className="ins-c-primary-toolbar__first-action"
-            component="div"
-          />,
-          <DropdownSeparator
-            className="ins-c-primary-toolbar__overflow-actions-separator"
-          />,
-          <DropdownItem
-            className="ins-c-primary-toolbar__overflow-actions"
-            component="div"
-            onClick={[Function]}
-          >
-            <button
-              onClick={[MockFunction]}
-            >
-              Some button
-            </button>
-          </DropdownItem>,
-          <DropdownItem
-            className="ins-c-primary-toolbar__overflow-actions"
-            component="button"
-            onClick={[Function]}
-          >
-            Some title
-          </DropdownItem>,
-          <DropdownItem
-            className="ins-c-primary-toolbar__overflow-actions"
-            component="button"
-            onClick={[Function]}
-          >
-            Custom props
-          </DropdownItem>,
-          <DropdownItem
-            className="ins-c-primary-toolbar__overflow-actions"
-            component="button"
-            onClick={[Function]}
-          >
-            plain string
-          </DropdownItem>,
-        ]
-      }
-      isOpen={false}
-      isPlain={true}
-      onSelect={[Function]}
-      ouiaId="Actions"
-      toggle={
-        <KebabToggle
-          onToggle={[Function]}
+    <button
+      aria-expanded="false"
+      aria-label="kebab dropdown toggle"
+      class="pf-v5-c-menu-toggle pf-m-plain"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-v5-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 192 512"
+        width="1em"
+      >
+        <path
+          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
         />
-      }
-    />
-  </ToolbarItem>
-</Fragment>
+      </svg>
+    </button>
+  </div>
+</div>
 `;
 
 exports[`overflowActionsMapper should render action object 1`] = `
 <div>
-  <DropdownItem
-    className="ins-c-primary-toolbar__overflow-actions"
-    component="button"
-    key="undefined-overflow"
-    onClick={[Function]}
-  >
-    Some title
-  </DropdownItem>
+  <div>
+    <li
+      class="pf-v5-c-menu__list-item ins-c-primary-toolbar__overflow-actions"
+      data-ouia-component-id="OUIA-Generated-DropdownItem-14"
+      data-ouia-component-type="PF5/DropdownItem"
+      data-ouia-safe="true"
+      role="none"
+    >
+      <button
+        class="pf-v5-c-menu__item ins-c-primary-toolbar__overflow-actions"
+        role="menuitem"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          class="pf-v5-c-menu__item-main"
+        >
+          <span
+            class="pf-v5-c-menu__item-text"
+          >
+            Some title
+          </span>
+        </span>
+      </button>
+    </li>
+  </div>
 </div>
 `;
 
 exports[`overflowActionsMapper should render component 1`] = `
 <div>
-  <DropdownItem
-    className="ins-c-primary-toolbar__overflow-actions"
-    component="div"
-    key="btn"
-    onClick={[Function]}
-  >
-    <button
-      key="btn"
-      onClick={[MockFunction]}
+  <div>
+    <li
+      class="pf-v5-c-menu__list-item ins-c-primary-toolbar__overflow-actions"
+      data-ouia-component-id="OUIA-Generated-DropdownItem-13"
+      data-ouia-component-type="PF5/DropdownItem"
+      data-ouia-safe="true"
+      role="none"
     >
-      Some button
-    </button>
-  </DropdownItem>
+      <div
+        class="pf-v5-c-menu__item ins-c-primary-toolbar__overflow-actions"
+        role="menuitem"
+        tabindex="-1"
+      >
+        <span
+          class="pf-v5-c-menu__item-main"
+        >
+          <span
+            class="pf-v5-c-menu__item-text"
+          >
+            <button>
+              Some button
+            </button>
+          </span>
+        </span>
+      </div>
+    </li>
+  </div>
 </div>
 `;
 
 exports[`overflowActionsMapper should render plain string 1`] = `
 <div>
-  <DropdownItem
-    className="ins-c-primary-toolbar__overflow-actions"
-    component="button"
-    key="undefined-overflow"
-    onClick={[Function]}
-  >
-    Custom props
-  </DropdownItem>
+  <div>
+    <li
+      class="pf-v5-c-menu__list-item ins-c-primary-toolbar__overflow-actions"
+      data-ouia-component-id="OUIA-Generated-DropdownItem-15"
+      data-ouia-component-type="PF5/DropdownItem"
+      data-ouia-safe="true"
+      role="none"
+    >
+      <button
+        class="pf-v5-c-menu__item ins-c-primary-toolbar__overflow-actions"
+        role="menuitem"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          class="pf-v5-c-menu__item-main"
+        >
+          <span
+            class="pf-v5-c-menu__item-text"
+          >
+            Custom props
+          </span>
+        </span>
+      </button>
+    </li>
+  </div>
 </div>
 `;

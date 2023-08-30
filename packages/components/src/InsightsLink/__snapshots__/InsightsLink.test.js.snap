@@ -42,14 +42,14 @@ exports[`InsightsLink component under / should render a link with a given path 1
 exports[`InsightsLink component under /preview should render a /preview link 1`] = `
 <InsightsLink
   to={
-    Object {
+    {
       "pathname": "/scappolicies",
     }
   }
 >
   <Link
     to={
-      Object {
+      {
         "pathname": "/insights/compliance/scappolicies",
       }
     }

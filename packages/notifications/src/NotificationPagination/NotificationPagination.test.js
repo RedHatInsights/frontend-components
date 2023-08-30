@@ -11,8 +11,8 @@ describe('Notification Pagination component', () => {
 
   it('render should contain correct items', () => {
     const wrapper = mount(<NotificationPagination page={1} count={10} />);
-    expect(wrapper.find('.pf-c-pagination.pf-m-bottom').length).toBe(1);
-    expect(wrapper.find('.pf-c-pagination__nav').length).toBe(1);
+    expect(wrapper.find('.pf-v5-c-pagination.pf-m-bottom').length).toBe(1);
+    expect(wrapper.find('.pf-v5-c-pagination__nav').length).toBe(1);
   });
 
   it('should call clear all action', () => {
@@ -25,7 +25,7 @@ describe('Notification Pagination component', () => {
   it('should call next page action', () => {
     const onSetPage = jest.fn();
     const wrapper = mount(<NotificationPagination page={1} count={10} onSetPage={onSetPage} />);
-    wrapper.find('.pf-c-pagination__nav button').last().simulate('click');
+    wrapper.find('.pf-v5-c-pagination__nav button').last().simulate('click');
     expect(onSetPage).toHaveBeenCalled();
   });
 });

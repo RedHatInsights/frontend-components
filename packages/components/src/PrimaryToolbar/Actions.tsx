@@ -1,5 +1,18 @@
 import React, { Fragment, useState } from 'react';
-import { Button, Dropdown, DropdownItem, DropdownProps, DropdownSeparator, KebabToggle, KebabToggleProps, ToolbarItem } from '@patternfly/react-core';
+import {
+  Button,
+  Divider,
+  Dropdown,
+  DropdownItem,
+  DropdownList,
+  DropdownProps,
+  MenuToggle,
+  MenuToggleProps,
+  ToolbarItem,
+} from '@patternfly/react-core';
+
+import EllipsisVIcon from '@patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon';
+
 import { DownloadButton, DownloadButtonProps } from '../DownloadButton';
 import classNames from 'classnames';
 
@@ -22,7 +35,7 @@ export interface ActionsProps {
   onSelect?: DropdownProps['onSelect'];
   overflowActions?: ActionsType[];
   dropdownProps?: DropdownProps;
-  kebabToggleProps?: KebabToggleProps;
+  kebabToggleProps?: MenuToggleProps;
   exportConfig?: DownloadButtonProps;
 }
 
@@ -40,7 +53,8 @@ export const overflowActionsMapper = (action: ActionsType, key: string | number)
       component={(internalAction.props && internalAction.props.component) || React.isValidElement(internalAction.label || action) ? 'div' : 'button'}
       onClick={(e) => internalAction.onClick && internalAction.onClick(e, internalAction, key)}
     >
-      {internalAction.label || action}
+      {/* FIXME: fix typings */}
+      {internalAction.label || (action as React.ReactNode)}
     </DropdownItem>
   );
 };
@@ -55,7 +69,7 @@ export const actionPropsGenerator = (action: ActionsType, key: string | number) 
     ...(action as ActionObject)?.props,
     onClick,
     component: (action as ActionObject)?.props?.component || (React.isValidElement((action as ActionObject).label || action) ? 'div' : 'button'),
-    children: typeof action === 'object' && typeof action !== null ? (action as { label?: React.ReactNode })?.label : action,
+    children: (typeof action === 'object' && typeof action !== null ? (action as { label?: React.ReactNode })?.label : action) as React.ReactNode,
   };
 };
 
@@ -64,7 +78,6 @@ const Actions: React.FunctionComponent<ActionsProps> = ({
   overflowActions = [],
   onSelect = () => undefined,
   dropdownProps = {},
-  kebabToggleProps,
   exportConfig,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,7 +100,7 @@ const Actions: React.FunctionComponent<ActionsProps> = ({
       <DropdownItem key={(action as ActionObject)?.key || (action as ActionObject)?.props?.key || key} {...actionPropsGenerator(action, key)} />
     )),
     ...(actions.length > 0 && overflowActions.length > 0
-      ? [<DropdownSeparator key="separator" className="ins-c-primary-toolbar__overflow-actions-separator" />]
+      ? [<Divider key="separator" className="ins-c-primary-toolbar__overflow-actions-separator" />]
       : []),
     ...overflowActions.map((action, key) => overflowActionsMapper(action as ActionObject, key)),
   ];
@@ -114,27 +127,31 @@ const Actions: React.FunctionComponent<ActionsProps> = ({
           <DownloadButton {...exportConfig} />
         </ToolbarItem>
       )}
-      {((actions && actions?.length > 0) || overflowActions.length > 0) && (
+      {(actions?.length > 0 || overflowActions.length > 0) && (
         <ToolbarItem className={`${actions.length <= 1 ? 'ins-m-actions--empty' : ''} ins-c-primary-toolbar__actions pf-m-spacer-sm`}>
           <Dropdown
             {...dropdownProps}
             isOpen={isOpen}
-            isPlain
             onSelect={(...props) => {
-              onSelect && onSelect(...props);
+              onSelect?.(...props);
               toggleOpen(false);
             }}
+            onOpenChange={setIsOpen}
             ouiaId="Actions"
-            toggle={
-              <KebabToggle
-                {...kebabToggleProps}
-                onToggle={(isOpen) => {
-                  toggleOpen(isOpen);
-                }}
-              />
-            }
-            dropdownItems={dropdownItems}
-          />
+            toggle={(toggleRef) => (
+              <MenuToggle
+                ref={toggleRef}
+                aria-label="kebab dropdown toggle"
+                variant="plain"
+                onClick={() => setIsOpen((prev) => !prev)}
+                isExpanded={isOpen}
+              >
+                <EllipsisVIcon />
+              </MenuToggle>
+            )}
+          >
+            <DropdownList>{dropdownItems}</DropdownList>
+          </Dropdown>
         </ToolbarItem>
       )}
     </Fragment>

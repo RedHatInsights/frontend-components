@@ -11,7 +11,7 @@ export default function Home() {
         <title>Platform experience documentation</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Title headingLevel="h1" size="3xl" className="pf-u-mb-xl pf-u-text-align-center">
+      <Title headingLevel="h1" size="3xl" className="pf-v5-u-mb-xl pf-v5-u-text-align-center">
         Welcome to Platform experience documentation
       </Title>
       <SearchInput />
