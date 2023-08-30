@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components",
-    "version": "4.0.2",
+    "version": "3.11.6",
     "description": "Common components for RedHat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
@@ -10,7 +10,8 @@
         "./**/*.scss"
     ],
     "publishConfig": {
-        "access": "public"
+        "access": "public",
+        "tag": "legacy"
     },
     "scripts": {
         "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages && npm run transform:css",
