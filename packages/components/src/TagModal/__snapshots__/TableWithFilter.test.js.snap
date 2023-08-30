@@ -200,7 +200,7 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
         }
       }
       variant="bottom"
-      widgetId="pagination-options-menu"
+      widgetId="options-menu"
     />
   </TableToolbar>
 </Fragment>
@@ -339,7 +339,7 @@ exports[`TableWithFilter should render with data and bulk select without calcula
         }
       }
       variant="bottom"
-      widgetId="pagination-options-menu"
+      widgetId="options-menu"
     />
   </TableToolbar>
 </Fragment>
@@ -523,7 +523,7 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
         }
       }
       variant="bottom"
-      widgetId="pagination-options-menu"
+      widgetId="options-menu"
     />
   </TableToolbar>
 </Fragment>

@@ -51,7 +51,7 @@ exports[`Notification Pagination component should render correctly 1`] = `
             }
           }
           variant="bottom"
-          widgetId="pagination-options-menu"
+          widgetId="options-menu"
         />
       </LevelItem>
     </Level>
