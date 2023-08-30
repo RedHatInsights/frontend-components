@@ -36,34 +36,16 @@ exports[`Notification portal should render notifications given as direct props 1
       }
     }
   >
-    <ErrorBoundaryPage
+    <ErrorBoundary
       headerTitle="Notifications portal"
       silent={true}
     >
-      <NotificationPortalBase
-        notifications={
-          [
-            {
-              "description": "Some meaningfull description",
-              "dismissable": true,
-              "id": "0",
-              "title": "Notification title",
-              "variant": "success",
-            },
-          ]
-        }
-        store={
-          {
-            "clearActions": [Function],
-            "dispatch": [Function],
-            "getActions": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-          }
-        }
+      <ErrorBoundary
+        defaultErrorDescription={[Function]}
+        headerTitle="Notifications portal"
+        silent={true}
       >
-        <Portal
+        <NotificationPortalBase
           notifications={
             [
               {
@@ -75,8 +57,6 @@ exports[`Notification portal should render notifications given as direct props 1
               },
             ]
           }
-          onClearAll={[Function]}
-          removeNotification={[Function]}
           store={
             {
               "clearActions": [Function],
@@ -89,333 +69,359 @@ exports[`Notification portal should render notifications given as direct props 1
           }
         >
           <Portal
-            containerInfo={
-              <body>
-                <div
-                  class="notifications-portal"
-                >
-                  <div
-                    class="pf-v5-c-alert pf-m-success notification-item"
-                    data-ouia-component-id="OUIA-Generated-Alert-success-1"
-                    data-ouia-component-type="PF5/Alert"
-                    data-ouia-safe="true"
-                    id="0"
-                  >
-                    <div
-                      class="pf-v5-c-alert__icon"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="pf-v5-svg"
-                        fill="currentColor"
-                        height="1em"
-                        role="img"
-                        viewBox="0 0 512 512"
-                        width="1em"
-                      >
-                        <path
-                          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                        />
-                      </svg>
-                    </div>
-                    <h4
-                      class="pf-v5-c-alert__title"
-                    >
-                      <span
-                        class="pf-v5-u-screen-reader"
-                      >
-                        Success alert:
-                      </span>
-                      Notification title
-                    </h4>
-                    <div
-                      class="pf-v5-c-alert__action"
-                    >
-                      <button
-                        aria-disabled="false"
-                        aria-label="close-notification"
-                        class="pf-v5-c-button pf-m-plain"
-                        data-ouia-component-id="OUIA-Generated-Button-plain-1"
-                        data-ouia-component-type="PF5/Button"
-                        data-ouia-safe="true"
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="pf-v5-svg"
-                          fill="currentColor"
-                          height="1em"
-                          role="img"
-                          viewBox="0 0 352 512"
-                          width="1em"
-                        >
-                          <path
-                            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                    <div
-                      class="pf-v5-c-alert__description"
-                    >
-                      <div
-                        class="pf-v5-c-content"
-                      >
-                        <small
-                          class="sentry-mask data-hj-suppress"
-                          data-ouia-component-id="OUIA-Generated-Text-1"
-                          data-ouia-component-type="PF5/Text"
-                          data-ouia-safe="true"
-                          data-pf-content="true"
-                        >
-                          Some meaningfull description
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="notifications-portal"
-                >
-                  <div
-                    class="pf-v5-c-alert pf-m-success notification-item"
-                    data-ouia-component-id="OUIA-Generated-Alert-success-2"
-                    data-ouia-component-type="PF5/Alert"
-                    data-ouia-safe="true"
-                    id="0"
-                  >
-                    <div
-                      class="pf-v5-c-alert__icon"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="pf-v5-svg"
-                        fill="currentColor"
-                        height="1em"
-                        role="img"
-                        viewBox="0 0 512 512"
-                        width="1em"
-                      >
-                        <path
-                          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                        />
-                      </svg>
-                    </div>
-                    <h4
-                      class="pf-v5-c-alert__title"
-                    >
-                      <span
-                        class="pf-v5-u-screen-reader"
-                      >
-                        Success alert:
-                      </span>
-                      Notification title
-                    </h4>
-                    <div
-                      class="pf-v5-c-alert__action"
-                    >
-                      <button
-                        aria-disabled="false"
-                        aria-label="close-notification"
-                        class="pf-v5-c-button pf-m-plain"
-                        data-ouia-component-id="OUIA-Generated-Button-plain-2"
-                        data-ouia-component-type="PF5/Button"
-                        data-ouia-safe="true"
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="pf-v5-svg"
-                          fill="currentColor"
-                          height="1em"
-                          role="img"
-                          viewBox="0 0 352 512"
-                          width="1em"
-                        >
-                          <path
-                            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                    <div
-                      class="pf-v5-c-alert__description"
-                    >
-                      <div
-                        class="pf-v5-c-content"
-                      >
-                        <small
-                          class="sentry-mask data-hj-suppress"
-                          data-ouia-component-id="OUIA-Generated-Text-2"
-                          data-ouia-component-type="PF5/Text"
-                          data-ouia-safe="true"
-                          data-pf-content="true"
-                        >
-                          Some meaningfull description
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </body>
+            notifications={
+              [
+                {
+                  "description": "Some meaningfull description",
+                  "dismissable": true,
+                  "id": "0",
+                  "title": "Notification title",
+                  "variant": "success",
+                },
+              ]
+            }
+            onClearAll={[Function]}
+            removeNotification={[Function]}
+            store={
+              {
+                "clearActions": [Function],
+                "dispatch": [Function],
+                "getActions": [Function],
+                "getState": [Function],
+                "replaceReducer": [Function],
+                "subscribe": [Function],
+              }
             }
           >
-            <div
-              className="notifications-portal"
-            >
-              <Notification
-                description="Some meaningfull description"
-                dismissable={true}
-                id="0"
-                key="0"
-                onDismiss={[Function]}
-                title="Notification title"
-                variant="success"
-              >
-                <Alert
-                  actionClose={
-                    <AlertActionCloseButton
-                      aria-label="close-notification"
-                      onClick={[Function]}
-                      variant="plain"
-                    >
-                      <CloseIcon />
-                    </AlertActionCloseButton>
-                  }
-                  className="notification-item"
-                  id="0"
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  title="Notification title"
-                  variant="success"
-                >
+            <Portal
+              containerInfo={
+                <body>
                   <div
-                    className="pf-v5-c-alert pf-m-success notification-item"
-                    data-ouia-component-id="OUIA-Generated-Alert-success-2"
-                    data-ouia-component-type="PF5/Alert"
-                    data-ouia-safe={true}
-                    id="0"
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
+                    class="notifications-portal"
                   >
-                    <AlertIcon
-                      variant="success"
+                    <div
+                      class="pf-v5-c-alert pf-m-success notification-item"
+                      data-ouia-component-id="OUIA-Generated-Alert-success-1"
+                      data-ouia-component-type="PF5/Alert"
+                      data-ouia-safe="true"
+                      id="0"
                     >
                       <div
-                        className="pf-v5-c-alert__icon"
+                        class="pf-v5-c-alert__icon"
                       >
-                        <CheckCircleIcon>
+                        <svg
+                          aria-hidden="true"
+                          class="pf-v5-svg"
+                          fill="currentColor"
+                          height="1em"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                        >
+                          <path
+                            d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                          />
+                        </svg>
+                      </div>
+                      <h4
+                        class="pf-v5-c-alert__title"
+                      >
+                        <span
+                          class="pf-v5-u-screen-reader"
+                        >
+                          Success alert:
+                        </span>
+                        Notification title
+                      </h4>
+                      <div
+                        class="pf-v5-c-alert__action"
+                      >
+                        <button
+                          aria-disabled="false"
+                          aria-label="close-notification"
+                          class="pf-v5-c-button pf-m-plain"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-1"
+                          data-ouia-component-type="PF5/Button"
+                          data-ouia-safe="true"
+                          type="button"
+                        >
                           <svg
-                            aria-hidden={true}
-                            aria-labelledby={null}
-                            className="pf-v5-svg"
+                            aria-hidden="true"
+                            class="pf-v5-svg"
                             fill="currentColor"
                             height="1em"
                             role="img"
-                            viewBox="0 0 512 512"
+                            viewBox="0 0 352 512"
                             width="1em"
                           >
                             <path
-                              d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
                             />
                           </svg>
-                        </CheckCircleIcon>
+                        </button>
                       </div>
-                    </AlertIcon>
-                    <h4
-                      className="pf-v5-c-alert__title"
-                    >
-                      <span
-                        className="pf-v5-u-screen-reader"
+                      <div
+                        class="pf-v5-c-alert__description"
                       >
-                        Success alert:
-                      </span>
-                      Notification title
-                    </h4>
+                        <div
+                          class="pf-v5-c-content"
+                        >
+                          <small
+                            class="sentry-mask data-hj-suppress"
+                            data-ouia-component-id="OUIA-Generated-Text-1"
+                            data-ouia-component-type="PF5/Text"
+                            data-ouia-safe="true"
+                            data-pf-content="true"
+                          >
+                            Some meaningfull description
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="notifications-portal"
+                  >
                     <div
-                      className="pf-v5-c-alert__action"
+                      class="pf-v5-c-alert pf-m-success notification-item"
+                      data-ouia-component-id="OUIA-Generated-Alert-success-2"
+                      data-ouia-component-type="PF5/Alert"
+                      data-ouia-safe="true"
+                      id="0"
                     >
+                      <div
+                        class="pf-v5-c-alert__icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="pf-v5-svg"
+                          fill="currentColor"
+                          height="1em"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                        >
+                          <path
+                            d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                          />
+                        </svg>
+                      </div>
+                      <h4
+                        class="pf-v5-c-alert__title"
+                      >
+                        <span
+                          class="pf-v5-u-screen-reader"
+                        >
+                          Success alert:
+                        </span>
+                        Notification title
+                      </h4>
+                      <div
+                        class="pf-v5-c-alert__action"
+                      >
+                        <button
+                          aria-disabled="false"
+                          aria-label="close-notification"
+                          class="pf-v5-c-button pf-m-plain"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-2"
+                          data-ouia-component-type="PF5/Button"
+                          data-ouia-safe="true"
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="pf-v5-svg"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            viewBox="0 0 352 512"
+                            width="1em"
+                          >
+                            <path
+                              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                      <div
+                        class="pf-v5-c-alert__description"
+                      >
+                        <div
+                          class="pf-v5-c-content"
+                        >
+                          <small
+                            class="sentry-mask data-hj-suppress"
+                            data-ouia-component-id="OUIA-Generated-Text-2"
+                            data-ouia-component-type="PF5/Text"
+                            data-ouia-safe="true"
+                            data-pf-content="true"
+                          >
+                            Some meaningfull description
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </body>
+              }
+            >
+              <div
+                className="notifications-portal"
+              >
+                <Notification
+                  description="Some meaningfull description"
+                  dismissable={true}
+                  id="0"
+                  key="0"
+                  onDismiss={[Function]}
+                  title="Notification title"
+                  variant="success"
+                >
+                  <Alert
+                    actionClose={
                       <AlertActionCloseButton
                         aria-label="close-notification"
                         onClick={[Function]}
                         variant="plain"
                       >
-                        <Button
+                        <CloseIcon />
+                      </AlertActionCloseButton>
+                    }
+                    className="notification-item"
+                    id="0"
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    title="Notification title"
+                    variant="success"
+                  >
+                    <div
+                      className="pf-v5-c-alert pf-m-success notification-item"
+                      data-ouia-component-id="OUIA-Generated-Alert-success-2"
+                      data-ouia-component-type="PF5/Alert"
+                      data-ouia-safe={true}
+                      id="0"
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                    >
+                      <AlertIcon
+                        variant="success"
+                      >
+                        <div
+                          className="pf-v5-c-alert__icon"
+                        >
+                          <CheckCircleIcon>
+                            <svg
+                              aria-hidden={true}
+                              aria-labelledby={null}
+                              className="pf-v5-svg"
+                              fill="currentColor"
+                              height="1em"
+                              role="img"
+                              viewBox="0 0 512 512"
+                              width="1em"
+                            >
+                              <path
+                                d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                              />
+                            </svg>
+                          </CheckCircleIcon>
+                        </div>
+                      </AlertIcon>
+                      <h4
+                        className="pf-v5-c-alert__title"
+                      >
+                        <span
+                          className="pf-v5-u-screen-reader"
+                        >
+                          Success alert:
+                        </span>
+                        Notification title
+                      </h4>
+                      <div
+                        className="pf-v5-c-alert__action"
+                      >
+                        <AlertActionCloseButton
                           aria-label="close-notification"
                           onClick={[Function]}
                           variant="plain"
                         >
-                          <ButtonBase
+                          <Button
                             aria-label="close-notification"
-                            innerRef={null}
                             onClick={[Function]}
                             variant="plain"
                           >
-                            <button
-                              aria-disabled={false}
+                            <ButtonBase
                               aria-label="close-notification"
-                              className="pf-v5-c-button pf-m-plain"
-                              data-ouia-component-id="OUIA-Generated-Button-plain-2"
-                              data-ouia-component-type="PF5/Button"
-                              data-ouia-safe={true}
-                              disabled={false}
+                              innerRef={null}
                               onClick={[Function]}
-                              role={null}
-                              type="button"
+                              variant="plain"
                             >
-                              <TimesIcon>
-                                <svg
-                                  aria-hidden={true}
-                                  aria-labelledby={null}
-                                  className="pf-v5-svg"
-                                  fill="currentColor"
-                                  height="1em"
-                                  role="img"
-                                  viewBox="0 0 352 512"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                                  />
-                                </svg>
-                              </TimesIcon>
-                            </button>
-                          </ButtonBase>
-                        </Button>
-                      </AlertActionCloseButton>
-                    </div>
-                    <div
-                      className="pf-v5-c-alert__description"
-                    >
-                      <TextContent>
-                        <div
-                          className="pf-v5-c-content"
-                        >
-                          <Text
-                            className="sentry-mask data-hj-suppress"
-                            component="small"
+                              <button
+                                aria-disabled={false}
+                                aria-label="close-notification"
+                                className="pf-v5-c-button pf-m-plain"
+                                data-ouia-component-id="OUIA-Generated-Button-plain-2"
+                                data-ouia-component-type="PF5/Button"
+                                data-ouia-safe={true}
+                                disabled={false}
+                                onClick={[Function]}
+                                role={null}
+                                type="button"
+                              >
+                                <TimesIcon>
+                                  <svg
+                                    aria-hidden={true}
+                                    aria-labelledby={null}
+                                    className="pf-v5-svg"
+                                    fill="currentColor"
+                                    height="1em"
+                                    role="img"
+                                    viewBox="0 0 352 512"
+                                    width="1em"
+                                  >
+                                    <path
+                                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                    />
+                                  </svg>
+                                </TimesIcon>
+                              </button>
+                            </ButtonBase>
+                          </Button>
+                        </AlertActionCloseButton>
+                      </div>
+                      <div
+                        className="pf-v5-c-alert__description"
+                      >
+                        <TextContent>
+                          <div
+                            className="pf-v5-c-content"
                           >
-                            <small
+                            <Text
                               className="sentry-mask data-hj-suppress"
-                              data-ouia-component-id="OUIA-Generated-Text-2"
-                              data-ouia-component-type="PF5/Text"
-                              data-ouia-safe={true}
-                              data-pf-content={true}
+                              component="small"
                             >
-                              Some meaningfull description
-                            </small>
-                          </Text>
-                        </div>
-                      </TextContent>
+                              <small
+                                className="sentry-mask data-hj-suppress"
+                                data-ouia-component-id="OUIA-Generated-Text-2"
+                                data-ouia-component-type="PF5/Text"
+                                data-ouia-safe={true}
+                                data-pf-content={true}
+                              >
+                                Some meaningfull description
+                              </small>
+                            </Text>
+                          </div>
+                        </TextContent>
+                      </div>
                     </div>
-                  </div>
-                </Alert>
-              </Notification>
-            </div>
+                  </Alert>
+                </Notification>
+              </div>
+            </Portal>
           </Portal>
-        </Portal>
-      </NotificationPortalBase>
-    </ErrorBoundaryPage>
+        </NotificationPortalBase>
+      </ErrorBoundary>
+    </ErrorBoundary>
   </NotificationPortal>
 </Provider>
 `;
@@ -456,34 +462,16 @@ exports[`Notification portal should render notifications given as direct props o
       }
     }
   >
-    <ErrorBoundaryPage
+    <ErrorBoundary
       headerTitle="Notifications portal"
       silent={true}
     >
-      <NotificationPortalBase
-        notifications={
-          [
-            {
-              "description": "Some meaningfull description",
-              "dismissable": true,
-              "id": "Direct notification",
-              "title": "Notification title",
-              "variant": "success",
-            },
-          ]
-        }
-        store={
-          {
-            "clearActions": [Function],
-            "dispatch": [Function],
-            "getActions": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-          }
-        }
+      <ErrorBoundary
+        defaultErrorDescription={[Function]}
+        headerTitle="Notifications portal"
+        silent={true}
       >
-        <Portal
+        <NotificationPortalBase
           notifications={
             [
               {
@@ -495,8 +483,6 @@ exports[`Notification portal should render notifications given as direct props o
               },
             ]
           }
-          onClearAll={[Function]}
-          removeNotification={[Function]}
           store={
             {
               "clearActions": [Function],
@@ -509,416 +495,442 @@ exports[`Notification portal should render notifications given as direct props o
           }
         >
           <Portal
-            containerInfo={
-              <body>
-                <div
-                  class="notifications-portal"
-                >
-                  <div
-                    class="pf-v5-c-alert pf-m-success notification-item"
-                    data-ouia-component-id="OUIA-Generated-Alert-success-1"
-                    data-ouia-component-type="PF5/Alert"
-                    data-ouia-safe="true"
-                    id="0"
-                  >
-                    <div
-                      class="pf-v5-c-alert__icon"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="pf-v5-svg"
-                        fill="currentColor"
-                        height="1em"
-                        role="img"
-                        viewBox="0 0 512 512"
-                        width="1em"
-                      >
-                        <path
-                          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                        />
-                      </svg>
-                    </div>
-                    <h4
-                      class="pf-v5-c-alert__title"
-                    >
-                      <span
-                        class="pf-v5-u-screen-reader"
-                      >
-                        Success alert:
-                      </span>
-                      Notification title
-                    </h4>
-                    <div
-                      class="pf-v5-c-alert__action"
-                    >
-                      <button
-                        aria-disabled="false"
-                        aria-label="close-notification"
-                        class="pf-v5-c-button pf-m-plain"
-                        data-ouia-component-id="OUIA-Generated-Button-plain-1"
-                        data-ouia-component-type="PF5/Button"
-                        data-ouia-safe="true"
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="pf-v5-svg"
-                          fill="currentColor"
-                          height="1em"
-                          role="img"
-                          viewBox="0 0 352 512"
-                          width="1em"
-                        >
-                          <path
-                            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                    <div
-                      class="pf-v5-c-alert__description"
-                    >
-                      <div
-                        class="pf-v5-c-content"
-                      >
-                        <small
-                          class="sentry-mask data-hj-suppress"
-                          data-ouia-component-id="OUIA-Generated-Text-1"
-                          data-ouia-component-type="PF5/Text"
-                          data-ouia-safe="true"
-                          data-pf-content="true"
-                        >
-                          Some meaningfull description
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="notifications-portal"
-                >
-                  <div
-                    class="pf-v5-c-alert pf-m-success notification-item"
-                    data-ouia-component-id="OUIA-Generated-Alert-success-2"
-                    data-ouia-component-type="PF5/Alert"
-                    data-ouia-safe="true"
-                    id="0"
-                  >
-                    <div
-                      class="pf-v5-c-alert__icon"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="pf-v5-svg"
-                        fill="currentColor"
-                        height="1em"
-                        role="img"
-                        viewBox="0 0 512 512"
-                        width="1em"
-                      >
-                        <path
-                          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                        />
-                      </svg>
-                    </div>
-                    <h4
-                      class="pf-v5-c-alert__title"
-                    >
-                      <span
-                        class="pf-v5-u-screen-reader"
-                      >
-                        Success alert:
-                      </span>
-                      Notification title
-                    </h4>
-                    <div
-                      class="pf-v5-c-alert__action"
-                    >
-                      <button
-                        aria-disabled="false"
-                        aria-label="close-notification"
-                        class="pf-v5-c-button pf-m-plain"
-                        data-ouia-component-id="OUIA-Generated-Button-plain-2"
-                        data-ouia-component-type="PF5/Button"
-                        data-ouia-safe="true"
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="pf-v5-svg"
-                          fill="currentColor"
-                          height="1em"
-                          role="img"
-                          viewBox="0 0 352 512"
-                          width="1em"
-                        >
-                          <path
-                            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                    <div
-                      class="pf-v5-c-alert__description"
-                    >
-                      <div
-                        class="pf-v5-c-content"
-                      >
-                        <small
-                          class="sentry-mask data-hj-suppress"
-                          data-ouia-component-id="OUIA-Generated-Text-2"
-                          data-ouia-component-type="PF5/Text"
-                          data-ouia-safe="true"
-                          data-pf-content="true"
-                        >
-                          Some meaningfull description
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="notifications-portal"
-                >
-                  <div
-                    class="pf-v5-c-alert pf-m-success notification-item"
-                    data-ouia-component-id="OUIA-Generated-Alert-success-3"
-                    data-ouia-component-type="PF5/Alert"
-                    data-ouia-safe="true"
-                    id="Direct notification"
-                  >
-                    <div
-                      class="pf-v5-c-alert__icon"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="pf-v5-svg"
-                        fill="currentColor"
-                        height="1em"
-                        role="img"
-                        viewBox="0 0 512 512"
-                        width="1em"
-                      >
-                        <path
-                          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                        />
-                      </svg>
-                    </div>
-                    <h4
-                      class="pf-v5-c-alert__title"
-                    >
-                      <span
-                        class="pf-v5-u-screen-reader"
-                      >
-                        Success alert:
-                      </span>
-                      Notification title
-                    </h4>
-                    <div
-                      class="pf-v5-c-alert__action"
-                    >
-                      <button
-                        aria-disabled="false"
-                        aria-label="close-notification"
-                        class="pf-v5-c-button pf-m-plain"
-                        data-ouia-component-id="OUIA-Generated-Button-plain-3"
-                        data-ouia-component-type="PF5/Button"
-                        data-ouia-safe="true"
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="pf-v5-svg"
-                          fill="currentColor"
-                          height="1em"
-                          role="img"
-                          viewBox="0 0 352 512"
-                          width="1em"
-                        >
-                          <path
-                            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                    <div
-                      class="pf-v5-c-alert__description"
-                    >
-                      <div
-                        class="pf-v5-c-content"
-                      >
-                        <small
-                          class="sentry-mask data-hj-suppress"
-                          data-ouia-component-id="OUIA-Generated-Text-3"
-                          data-ouia-component-type="PF5/Text"
-                          data-ouia-safe="true"
-                          data-pf-content="true"
-                        >
-                          Some meaningfull description
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </body>
+            notifications={
+              [
+                {
+                  "description": "Some meaningfull description",
+                  "dismissable": true,
+                  "id": "Direct notification",
+                  "title": "Notification title",
+                  "variant": "success",
+                },
+              ]
+            }
+            onClearAll={[Function]}
+            removeNotification={[Function]}
+            store={
+              {
+                "clearActions": [Function],
+                "dispatch": [Function],
+                "getActions": [Function],
+                "getState": [Function],
+                "replaceReducer": [Function],
+                "subscribe": [Function],
+              }
             }
           >
-            <div
-              className="notifications-portal"
-            >
-              <Notification
-                description="Some meaningfull description"
-                dismissable={true}
-                id="Direct notification"
-                key="Direct notification"
-                onDismiss={[Function]}
-                title="Notification title"
-                variant="success"
-              >
-                <Alert
-                  actionClose={
-                    <AlertActionCloseButton
-                      aria-label="close-notification"
-                      onClick={[Function]}
-                      variant="plain"
-                    >
-                      <CloseIcon />
-                    </AlertActionCloseButton>
-                  }
-                  className="notification-item"
-                  id="Direct notification"
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  title="Notification title"
-                  variant="success"
-                >
+            <Portal
+              containerInfo={
+                <body>
                   <div
-                    className="pf-v5-c-alert pf-m-success notification-item"
-                    data-ouia-component-id="OUIA-Generated-Alert-success-3"
-                    data-ouia-component-type="PF5/Alert"
-                    data-ouia-safe={true}
-                    id="Direct notification"
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
+                    class="notifications-portal"
                   >
-                    <AlertIcon
-                      variant="success"
+                    <div
+                      class="pf-v5-c-alert pf-m-success notification-item"
+                      data-ouia-component-id="OUIA-Generated-Alert-success-1"
+                      data-ouia-component-type="PF5/Alert"
+                      data-ouia-safe="true"
+                      id="0"
                     >
                       <div
-                        className="pf-v5-c-alert__icon"
+                        class="pf-v5-c-alert__icon"
                       >
-                        <CheckCircleIcon>
+                        <svg
+                          aria-hidden="true"
+                          class="pf-v5-svg"
+                          fill="currentColor"
+                          height="1em"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                        >
+                          <path
+                            d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                          />
+                        </svg>
+                      </div>
+                      <h4
+                        class="pf-v5-c-alert__title"
+                      >
+                        <span
+                          class="pf-v5-u-screen-reader"
+                        >
+                          Success alert:
+                        </span>
+                        Notification title
+                      </h4>
+                      <div
+                        class="pf-v5-c-alert__action"
+                      >
+                        <button
+                          aria-disabled="false"
+                          aria-label="close-notification"
+                          class="pf-v5-c-button pf-m-plain"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-1"
+                          data-ouia-component-type="PF5/Button"
+                          data-ouia-safe="true"
+                          type="button"
+                        >
                           <svg
-                            aria-hidden={true}
-                            aria-labelledby={null}
-                            className="pf-v5-svg"
+                            aria-hidden="true"
+                            class="pf-v5-svg"
                             fill="currentColor"
                             height="1em"
                             role="img"
-                            viewBox="0 0 512 512"
+                            viewBox="0 0 352 512"
                             width="1em"
                           >
                             <path
-                              d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
                             />
                           </svg>
-                        </CheckCircleIcon>
+                        </button>
                       </div>
-                    </AlertIcon>
-                    <h4
-                      className="pf-v5-c-alert__title"
-                    >
-                      <span
-                        className="pf-v5-u-screen-reader"
+                      <div
+                        class="pf-v5-c-alert__description"
                       >
-                        Success alert:
-                      </span>
-                      Notification title
-                    </h4>
+                        <div
+                          class="pf-v5-c-content"
+                        >
+                          <small
+                            class="sentry-mask data-hj-suppress"
+                            data-ouia-component-id="OUIA-Generated-Text-1"
+                            data-ouia-component-type="PF5/Text"
+                            data-ouia-safe="true"
+                            data-pf-content="true"
+                          >
+                            Some meaningfull description
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="notifications-portal"
+                  >
                     <div
-                      className="pf-v5-c-alert__action"
+                      class="pf-v5-c-alert pf-m-success notification-item"
+                      data-ouia-component-id="OUIA-Generated-Alert-success-2"
+                      data-ouia-component-type="PF5/Alert"
+                      data-ouia-safe="true"
+                      id="0"
                     >
+                      <div
+                        class="pf-v5-c-alert__icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="pf-v5-svg"
+                          fill="currentColor"
+                          height="1em"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                        >
+                          <path
+                            d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                          />
+                        </svg>
+                      </div>
+                      <h4
+                        class="pf-v5-c-alert__title"
+                      >
+                        <span
+                          class="pf-v5-u-screen-reader"
+                        >
+                          Success alert:
+                        </span>
+                        Notification title
+                      </h4>
+                      <div
+                        class="pf-v5-c-alert__action"
+                      >
+                        <button
+                          aria-disabled="false"
+                          aria-label="close-notification"
+                          class="pf-v5-c-button pf-m-plain"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-2"
+                          data-ouia-component-type="PF5/Button"
+                          data-ouia-safe="true"
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="pf-v5-svg"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            viewBox="0 0 352 512"
+                            width="1em"
+                          >
+                            <path
+                              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                      <div
+                        class="pf-v5-c-alert__description"
+                      >
+                        <div
+                          class="pf-v5-c-content"
+                        >
+                          <small
+                            class="sentry-mask data-hj-suppress"
+                            data-ouia-component-id="OUIA-Generated-Text-2"
+                            data-ouia-component-type="PF5/Text"
+                            data-ouia-safe="true"
+                            data-pf-content="true"
+                          >
+                            Some meaningfull description
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="notifications-portal"
+                  >
+                    <div
+                      class="pf-v5-c-alert pf-m-success notification-item"
+                      data-ouia-component-id="OUIA-Generated-Alert-success-3"
+                      data-ouia-component-type="PF5/Alert"
+                      data-ouia-safe="true"
+                      id="Direct notification"
+                    >
+                      <div
+                        class="pf-v5-c-alert__icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="pf-v5-svg"
+                          fill="currentColor"
+                          height="1em"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                        >
+                          <path
+                            d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                          />
+                        </svg>
+                      </div>
+                      <h4
+                        class="pf-v5-c-alert__title"
+                      >
+                        <span
+                          class="pf-v5-u-screen-reader"
+                        >
+                          Success alert:
+                        </span>
+                        Notification title
+                      </h4>
+                      <div
+                        class="pf-v5-c-alert__action"
+                      >
+                        <button
+                          aria-disabled="false"
+                          aria-label="close-notification"
+                          class="pf-v5-c-button pf-m-plain"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-3"
+                          data-ouia-component-type="PF5/Button"
+                          data-ouia-safe="true"
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="pf-v5-svg"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            viewBox="0 0 352 512"
+                            width="1em"
+                          >
+                            <path
+                              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                      <div
+                        class="pf-v5-c-alert__description"
+                      >
+                        <div
+                          class="pf-v5-c-content"
+                        >
+                          <small
+                            class="sentry-mask data-hj-suppress"
+                            data-ouia-component-id="OUIA-Generated-Text-3"
+                            data-ouia-component-type="PF5/Text"
+                            data-ouia-safe="true"
+                            data-pf-content="true"
+                          >
+                            Some meaningfull description
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </body>
+              }
+            >
+              <div
+                className="notifications-portal"
+              >
+                <Notification
+                  description="Some meaningfull description"
+                  dismissable={true}
+                  id="Direct notification"
+                  key="Direct notification"
+                  onDismiss={[Function]}
+                  title="Notification title"
+                  variant="success"
+                >
+                  <Alert
+                    actionClose={
                       <AlertActionCloseButton
                         aria-label="close-notification"
                         onClick={[Function]}
                         variant="plain"
                       >
-                        <Button
+                        <CloseIcon />
+                      </AlertActionCloseButton>
+                    }
+                    className="notification-item"
+                    id="Direct notification"
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    title="Notification title"
+                    variant="success"
+                  >
+                    <div
+                      className="pf-v5-c-alert pf-m-success notification-item"
+                      data-ouia-component-id="OUIA-Generated-Alert-success-3"
+                      data-ouia-component-type="PF5/Alert"
+                      data-ouia-safe={true}
+                      id="Direct notification"
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                    >
+                      <AlertIcon
+                        variant="success"
+                      >
+                        <div
+                          className="pf-v5-c-alert__icon"
+                        >
+                          <CheckCircleIcon>
+                            <svg
+                              aria-hidden={true}
+                              aria-labelledby={null}
+                              className="pf-v5-svg"
+                              fill="currentColor"
+                              height="1em"
+                              role="img"
+                              viewBox="0 0 512 512"
+                              width="1em"
+                            >
+                              <path
+                                d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                              />
+                            </svg>
+                          </CheckCircleIcon>
+                        </div>
+                      </AlertIcon>
+                      <h4
+                        className="pf-v5-c-alert__title"
+                      >
+                        <span
+                          className="pf-v5-u-screen-reader"
+                        >
+                          Success alert:
+                        </span>
+                        Notification title
+                      </h4>
+                      <div
+                        className="pf-v5-c-alert__action"
+                      >
+                        <AlertActionCloseButton
                           aria-label="close-notification"
                           onClick={[Function]}
                           variant="plain"
                         >
-                          <ButtonBase
+                          <Button
                             aria-label="close-notification"
-                            innerRef={null}
                             onClick={[Function]}
                             variant="plain"
                           >
-                            <button
-                              aria-disabled={false}
+                            <ButtonBase
                               aria-label="close-notification"
-                              className="pf-v5-c-button pf-m-plain"
-                              data-ouia-component-id="OUIA-Generated-Button-plain-3"
-                              data-ouia-component-type="PF5/Button"
-                              data-ouia-safe={true}
-                              disabled={false}
+                              innerRef={null}
                               onClick={[Function]}
-                              role={null}
-                              type="button"
+                              variant="plain"
                             >
-                              <TimesIcon>
-                                <svg
-                                  aria-hidden={true}
-                                  aria-labelledby={null}
-                                  className="pf-v5-svg"
-                                  fill="currentColor"
-                                  height="1em"
-                                  role="img"
-                                  viewBox="0 0 352 512"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                                  />
-                                </svg>
-                              </TimesIcon>
-                            </button>
-                          </ButtonBase>
-                        </Button>
-                      </AlertActionCloseButton>
-                    </div>
-                    <div
-                      className="pf-v5-c-alert__description"
-                    >
-                      <TextContent>
-                        <div
-                          className="pf-v5-c-content"
-                        >
-                          <Text
-                            className="sentry-mask data-hj-suppress"
-                            component="small"
+                              <button
+                                aria-disabled={false}
+                                aria-label="close-notification"
+                                className="pf-v5-c-button pf-m-plain"
+                                data-ouia-component-id="OUIA-Generated-Button-plain-3"
+                                data-ouia-component-type="PF5/Button"
+                                data-ouia-safe={true}
+                                disabled={false}
+                                onClick={[Function]}
+                                role={null}
+                                type="button"
+                              >
+                                <TimesIcon>
+                                  <svg
+                                    aria-hidden={true}
+                                    aria-labelledby={null}
+                                    className="pf-v5-svg"
+                                    fill="currentColor"
+                                    height="1em"
+                                    role="img"
+                                    viewBox="0 0 352 512"
+                                    width="1em"
+                                  >
+                                    <path
+                                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                    />
+                                  </svg>
+                                </TimesIcon>
+                              </button>
+                            </ButtonBase>
+                          </Button>
+                        </AlertActionCloseButton>
+                      </div>
+                      <div
+                        className="pf-v5-c-alert__description"
+                      >
+                        <TextContent>
+                          <div
+                            className="pf-v5-c-content"
                           >
-                            <small
+                            <Text
                               className="sentry-mask data-hj-suppress"
-                              data-ouia-component-id="OUIA-Generated-Text-3"
-                              data-ouia-component-type="PF5/Text"
-                              data-ouia-safe={true}
-                              data-pf-content={true}
+                              component="small"
                             >
-                              Some meaningfull description
-                            </small>
-                          </Text>
-                        </div>
-                      </TextContent>
+                              <small
+                                className="sentry-mask data-hj-suppress"
+                                data-ouia-component-id="OUIA-Generated-Text-3"
+                                data-ouia-component-type="PF5/Text"
+                                data-ouia-safe={true}
+                                data-pf-content={true}
+                              >
+                                Some meaningfull description
+                              </small>
+                            </Text>
+                          </div>
+                        </TextContent>
+                      </div>
                     </div>
-                  </div>
-                </Alert>
-              </Notification>
-            </div>
+                  </Alert>
+                </Notification>
+              </div>
+            </Portal>
           </Portal>
-        </Portal>
-      </NotificationPortalBase>
-    </ErrorBoundaryPage>
+        </NotificationPortalBase>
+      </ErrorBoundary>
+    </ErrorBoundary>
   </NotificationPortal>
 </Provider>
 `;
@@ -948,36 +960,16 @@ exports[`Notification portal should render notifications given from store 1`] = 
       }
     }
   >
-    <ErrorBoundaryPage
+    <ErrorBoundary
       headerTitle="Notifications portal"
       silent={true}
     >
-      <NotificationPortalBase
-        store={
-          {
-            "clearActions": [Function],
-            "dispatch": [Function],
-            "getActions": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-          }
-        }
+      <ErrorBoundary
+        defaultErrorDescription={[Function]}
+        headerTitle="Notifications portal"
+        silent={true}
       >
-        <Portal
-          notifications={
-            [
-              {
-                "description": "Some meaningfull description",
-                "dismissable": true,
-                "id": "0",
-                "title": "Notification title",
-                "variant": "success",
-              },
-            ]
-          }
-          onClearAll={[Function]}
-          removeNotification={[Function]}
+        <NotificationPortalBase
           store={
             {
               "clearActions": [Function],
@@ -990,56 +982,45 @@ exports[`Notification portal should render notifications given from store 1`] = 
           }
         >
           <Portal
-            containerInfo={
-              <body>
-                <div
-                  class="notifications-portal"
-                >
+            notifications={
+              [
+                {
+                  "description": "Some meaningfull description",
+                  "dismissable": true,
+                  "id": "0",
+                  "title": "Notification title",
+                  "variant": "success",
+                },
+              ]
+            }
+            onClearAll={[Function]}
+            removeNotification={[Function]}
+            store={
+              {
+                "clearActions": [Function],
+                "dispatch": [Function],
+                "getActions": [Function],
+                "getState": [Function],
+                "replaceReducer": [Function],
+                "subscribe": [Function],
+              }
+            }
+          >
+            <Portal
+              containerInfo={
+                <body>
                   <div
-                    class="pf-v5-c-alert pf-m-success notification-item"
-                    data-ouia-component-id="OUIA-Generated-Alert-success-1"
-                    data-ouia-component-type="PF5/Alert"
-                    data-ouia-safe="true"
-                    id="0"
+                    class="notifications-portal"
                   >
                     <div
-                      class="pf-v5-c-alert__icon"
+                      class="pf-v5-c-alert pf-m-success notification-item"
+                      data-ouia-component-id="OUIA-Generated-Alert-success-1"
+                      data-ouia-component-type="PF5/Alert"
+                      data-ouia-safe="true"
+                      id="0"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="pf-v5-svg"
-                        fill="currentColor"
-                        height="1em"
-                        role="img"
-                        viewBox="0 0 512 512"
-                        width="1em"
-                      >
-                        <path
-                          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                        />
-                      </svg>
-                    </div>
-                    <h4
-                      class="pf-v5-c-alert__title"
-                    >
-                      <span
-                        class="pf-v5-u-screen-reader"
-                      >
-                        Success alert:
-                      </span>
-                      Notification title
-                    </h4>
-                    <div
-                      class="pf-v5-c-alert__action"
-                    >
-                      <button
-                        aria-disabled="false"
-                        aria-label="close-notification"
-                        class="pf-v5-c-button pf-m-plain"
-                        data-ouia-component-id="OUIA-Generated-Button-plain-1"
-                        data-ouia-component-type="PF5/Button"
-                        data-ouia-safe="true"
-                        type="button"
+                      <div
+                        class="pf-v5-c-alert__icon"
                       >
                         <svg
                           aria-hidden="true"
@@ -1047,193 +1028,230 @@ exports[`Notification portal should render notifications given from store 1`] = 
                           fill="currentColor"
                           height="1em"
                           role="img"
-                          viewBox="0 0 352 512"
+                          viewBox="0 0 512 512"
                           width="1em"
                         >
                           <path
-                            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                            d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
                           />
                         </svg>
-                      </button>
-                    </div>
-                    <div
-                      class="pf-v5-c-alert__description"
-                    >
-                      <div
-                        class="pf-v5-c-content"
-                      >
-                        <small
-                          class="sentry-mask data-hj-suppress"
-                          data-ouia-component-id="OUIA-Generated-Text-1"
-                          data-ouia-component-type="PF5/Text"
-                          data-ouia-safe="true"
-                          data-pf-content="true"
-                        >
-                          Some meaningfull description
-                        </small>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </body>
-            }
-          >
-            <div
-              className="notifications-portal"
-            >
-              <Notification
-                description="Some meaningfull description"
-                dismissable={true}
-                id="0"
-                key="0"
-                onDismiss={[Function]}
-                title="Notification title"
-                variant="success"
-              >
-                <Alert
-                  actionClose={
-                    <AlertActionCloseButton
-                      aria-label="close-notification"
-                      onClick={[Function]}
-                      variant="plain"
-                    >
-                      <CloseIcon />
-                    </AlertActionCloseButton>
-                  }
-                  className="notification-item"
-                  id="0"
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  title="Notification title"
-                  variant="success"
-                >
-                  <div
-                    className="pf-v5-c-alert pf-m-success notification-item"
-                    data-ouia-component-id="OUIA-Generated-Alert-success-1"
-                    data-ouia-component-type="PF5/Alert"
-                    data-ouia-safe={true}
-                    id="0"
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                  >
-                    <AlertIcon
-                      variant="success"
-                    >
-                      <div
-                        className="pf-v5-c-alert__icon"
+                      <h4
+                        class="pf-v5-c-alert__title"
                       >
-                        <CheckCircleIcon>
+                        <span
+                          class="pf-v5-u-screen-reader"
+                        >
+                          Success alert:
+                        </span>
+                        Notification title
+                      </h4>
+                      <div
+                        class="pf-v5-c-alert__action"
+                      >
+                        <button
+                          aria-disabled="false"
+                          aria-label="close-notification"
+                          class="pf-v5-c-button pf-m-plain"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-1"
+                          data-ouia-component-type="PF5/Button"
+                          data-ouia-safe="true"
+                          type="button"
+                        >
                           <svg
-                            aria-hidden={true}
-                            aria-labelledby={null}
-                            className="pf-v5-svg"
+                            aria-hidden="true"
+                            class="pf-v5-svg"
                             fill="currentColor"
                             height="1em"
                             role="img"
-                            viewBox="0 0 512 512"
+                            viewBox="0 0 352 512"
                             width="1em"
                           >
                             <path
-                              d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
                             />
                           </svg>
-                        </CheckCircleIcon>
+                        </button>
                       </div>
-                    </AlertIcon>
-                    <h4
-                      className="pf-v5-c-alert__title"
-                    >
-                      <span
-                        className="pf-v5-u-screen-reader"
+                      <div
+                        class="pf-v5-c-alert__description"
                       >
-                        Success alert:
-                      </span>
-                      Notification title
-                    </h4>
-                    <div
-                      className="pf-v5-c-alert__action"
-                    >
+                        <div
+                          class="pf-v5-c-content"
+                        >
+                          <small
+                            class="sentry-mask data-hj-suppress"
+                            data-ouia-component-id="OUIA-Generated-Text-1"
+                            data-ouia-component-type="PF5/Text"
+                            data-ouia-safe="true"
+                            data-pf-content="true"
+                          >
+                            Some meaningfull description
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </body>
+              }
+            >
+              <div
+                className="notifications-portal"
+              >
+                <Notification
+                  description="Some meaningfull description"
+                  dismissable={true}
+                  id="0"
+                  key="0"
+                  onDismiss={[Function]}
+                  title="Notification title"
+                  variant="success"
+                >
+                  <Alert
+                    actionClose={
                       <AlertActionCloseButton
                         aria-label="close-notification"
                         onClick={[Function]}
                         variant="plain"
                       >
-                        <Button
+                        <CloseIcon />
+                      </AlertActionCloseButton>
+                    }
+                    className="notification-item"
+                    id="0"
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    title="Notification title"
+                    variant="success"
+                  >
+                    <div
+                      className="pf-v5-c-alert pf-m-success notification-item"
+                      data-ouia-component-id="OUIA-Generated-Alert-success-1"
+                      data-ouia-component-type="PF5/Alert"
+                      data-ouia-safe={true}
+                      id="0"
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                    >
+                      <AlertIcon
+                        variant="success"
+                      >
+                        <div
+                          className="pf-v5-c-alert__icon"
+                        >
+                          <CheckCircleIcon>
+                            <svg
+                              aria-hidden={true}
+                              aria-labelledby={null}
+                              className="pf-v5-svg"
+                              fill="currentColor"
+                              height="1em"
+                              role="img"
+                              viewBox="0 0 512 512"
+                              width="1em"
+                            >
+                              <path
+                                d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                              />
+                            </svg>
+                          </CheckCircleIcon>
+                        </div>
+                      </AlertIcon>
+                      <h4
+                        className="pf-v5-c-alert__title"
+                      >
+                        <span
+                          className="pf-v5-u-screen-reader"
+                        >
+                          Success alert:
+                        </span>
+                        Notification title
+                      </h4>
+                      <div
+                        className="pf-v5-c-alert__action"
+                      >
+                        <AlertActionCloseButton
                           aria-label="close-notification"
                           onClick={[Function]}
                           variant="plain"
                         >
-                          <ButtonBase
+                          <Button
                             aria-label="close-notification"
-                            innerRef={null}
                             onClick={[Function]}
                             variant="plain"
                           >
-                            <button
-                              aria-disabled={false}
+                            <ButtonBase
                               aria-label="close-notification"
-                              className="pf-v5-c-button pf-m-plain"
-                              data-ouia-component-id="OUIA-Generated-Button-plain-1"
-                              data-ouia-component-type="PF5/Button"
-                              data-ouia-safe={true}
-                              disabled={false}
+                              innerRef={null}
                               onClick={[Function]}
-                              role={null}
-                              type="button"
+                              variant="plain"
                             >
-                              <TimesIcon>
-                                <svg
-                                  aria-hidden={true}
-                                  aria-labelledby={null}
-                                  className="pf-v5-svg"
-                                  fill="currentColor"
-                                  height="1em"
-                                  role="img"
-                                  viewBox="0 0 352 512"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                                  />
-                                </svg>
-                              </TimesIcon>
-                            </button>
-                          </ButtonBase>
-                        </Button>
-                      </AlertActionCloseButton>
-                    </div>
-                    <div
-                      className="pf-v5-c-alert__description"
-                    >
-                      <TextContent>
-                        <div
-                          className="pf-v5-c-content"
-                        >
-                          <Text
-                            className="sentry-mask data-hj-suppress"
-                            component="small"
+                              <button
+                                aria-disabled={false}
+                                aria-label="close-notification"
+                                className="pf-v5-c-button pf-m-plain"
+                                data-ouia-component-id="OUIA-Generated-Button-plain-1"
+                                data-ouia-component-type="PF5/Button"
+                                data-ouia-safe={true}
+                                disabled={false}
+                                onClick={[Function]}
+                                role={null}
+                                type="button"
+                              >
+                                <TimesIcon>
+                                  <svg
+                                    aria-hidden={true}
+                                    aria-labelledby={null}
+                                    className="pf-v5-svg"
+                                    fill="currentColor"
+                                    height="1em"
+                                    role="img"
+                                    viewBox="0 0 352 512"
+                                    width="1em"
+                                  >
+                                    <path
+                                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                    />
+                                  </svg>
+                                </TimesIcon>
+                              </button>
+                            </ButtonBase>
+                          </Button>
+                        </AlertActionCloseButton>
+                      </div>
+                      <div
+                        className="pf-v5-c-alert__description"
+                      >
+                        <TextContent>
+                          <div
+                            className="pf-v5-c-content"
                           >
-                            <small
+                            <Text
                               className="sentry-mask data-hj-suppress"
-                              data-ouia-component-id="OUIA-Generated-Text-1"
-                              data-ouia-component-type="PF5/Text"
-                              data-ouia-safe={true}
-                              data-pf-content={true}
+                              component="small"
                             >
-                              Some meaningfull description
-                            </small>
-                          </Text>
-                        </div>
-                      </TextContent>
+                              <small
+                                className="sentry-mask data-hj-suppress"
+                                data-ouia-component-id="OUIA-Generated-Text-1"
+                                data-ouia-component-type="PF5/Text"
+                                data-ouia-safe={true}
+                                data-pf-content={true}
+                              >
+                                Some meaningfull description
+                              </small>
+                            </Text>
+                          </div>
+                        </TextContent>
+                      </div>
                     </div>
-                  </div>
-                </Alert>
-              </Notification>
-            </div>
+                  </Alert>
+                </Notification>
+              </div>
+            </Portal>
           </Portal>
-        </Portal>
-      </NotificationPortalBase>
-    </ErrorBoundaryPage>
+        </NotificationPortalBase>
+      </ErrorBoundary>
+    </ErrorBoundary>
   </NotificationPortal>
 </Provider>
 `;
