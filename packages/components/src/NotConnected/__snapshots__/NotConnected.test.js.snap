@@ -63,7 +63,7 @@ exports[`Not connected component should render 1`] = `
         <Button
           className="pf-u-mt-lg"
           component="a"
-          href="http://access.redhat.com/products/cloud_management_services_for_rhel#getstarted"
+          href="https://access.redhat.com/products/red-hat-insights/"
           rel="noopener noreferrer"
           target="_blank"
           variant="primary"
@@ -71,7 +71,7 @@ exports[`Not connected component should render 1`] = `
           <ButtonBase
             className="pf-u-mt-lg"
             component="a"
-            href="http://access.redhat.com/products/cloud_management_services_for_rhel#getstarted"
+            href="https://access.redhat.com/products/red-hat-insights/"
             innerRef={null}
             rel="noopener noreferrer"
             target="_blank"
@@ -85,7 +85,7 @@ exports[`Not connected component should render 1`] = `
               data-ouia-component-type="PF4/Button"
               data-ouia-safe={true}
               disabled={null}
-              href="http://access.redhat.com/products/cloud_management_services_for_rhel#getstarted"
+              href="https://access.redhat.com/products/red-hat-insights/"
               rel="noopener noreferrer"
               role={null}
               target="_blank"
