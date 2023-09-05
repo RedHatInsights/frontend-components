@@ -96,17 +96,20 @@ describe('Checkbox', () => {
       expect(config.items[0].onClick).toHaveBeenCalled();
     });
 
+    // NO longer internal state
     it('should update selected', async () => {
-      render(<Checkbox {...config} placeholder="some placeholder" />);
+      const onChange = jest.fn();
+      render(<Checkbox {...config} onChange={onChange} placeholder="some placeholder" />);
       await act(async () => await userEvent.click(screen.getByRole('button', { name: 'Options menu' })));
       act(() => {
         userEvent.click(screen.getByRole('checkbox', { name: 'Custom value' }));
       });
-      expect(screen.getByRole('checkbox', { name: 'Custom value' }).checked).toBe(true);
+      expect(onChange).toHaveBeenCalledWith(expect.any(Object), ['some-value'], 'some-value');
     });
 
     it('should update selected with default value', async () => {
-      render(<Checkbox {...config} value={[{ value: 'another-value' }]} placeholder="some placeholder" />);
+      const onChange = jest.fn();
+      render(<Checkbox {...config} onChange={onChange} value={[{ value: 'another-value' }]} placeholder="some placeholder" />);
       await act(async () => {
         await userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
       });
@@ -114,8 +117,22 @@ describe('Checkbox', () => {
       act(() => {
         userEvent.click(screen.getByRole('checkbox', { name: 'Custom value' }));
       });
-      expect(screen.getByRole('checkbox', { name: 'Custom value' }).checked).toBe(true);
-      expect(screen.getByRole('checkbox', { name: 'Another' }).checked).toBe(true);
+
+      expect(onChange).toHaveBeenCalledWith(expect.any(Object), [{ value: 'another-value' }, 'some-value'], 'some-value');
+    });
+
+    it('should remove value', async () => {
+      const onChange = jest.fn();
+      render(<Checkbox {...config} onChange={onChange} value={['another-value']} placeholder="some placeholder" />);
+      await act(async () => {
+        await userEvent.click(screen.getByRole('button', { name: 'Options menu' }));
+      });
+
+      act(() => {
+        userEvent.click(screen.getByRole('checkbox', { name: 'Another' }));
+      });
+
+      expect(onChange).toHaveBeenCalledWith(expect.any(Object), [], 'another-value');
     });
   });
 });
