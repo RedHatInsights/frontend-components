@@ -34,7 +34,7 @@
         "react-dom": "^18.2.0",
         "react-redux": ">=7.0.0",
         "react-router-dom": "^5.0.0 || ^6.0.0",
-        "cypress": ">=12.0.0 < 13.0.0"
+        "cypress": ">=12.0.0 < 14.0.0"
     },
     "dependencies": {
         "@redhat-cloud-services/types": "^0.0.24",
