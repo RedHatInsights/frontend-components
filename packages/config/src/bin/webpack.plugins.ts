@@ -18,7 +18,7 @@ const plugins = [
     /** Load optional config for federated modules */
     ...fecConfig.moduleFederation,
     shared: [
-      ...(fecConfig.moduleFederation.shared || []),
+      ...(fecConfig.moduleFederation?.shared || []),
       Object.entries(generatePFSharedAssetsList(rootDir)).reduce<{
         [moduleName: string]: {
           version: string;
