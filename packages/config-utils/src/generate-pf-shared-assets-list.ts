@@ -4,7 +4,7 @@ import fs from 'fs';
 import chalk from 'chalk';
 
 const checkPfVersion = (version: string) => {
-  const number = version.replace(/[^0-9]/g, '');
+  const number = version?.replace(/[^0-9]/g, '');
   try {
     const versionInt = Number(number);
     return versionInt >= 500;
