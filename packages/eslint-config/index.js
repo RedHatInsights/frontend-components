@@ -24,7 +24,7 @@ module.exports = {
     'rulesdir/disallow-fec-relative-imports': 2,
     'rulesdir/deprecated-packages': 1,
     'rulesdir/no-chrome-api-call-from-window': 2,
-    'rulesdir/forbid-pf-relative-imports': 2,
+    'rulesdir/forbid-pf-relative-imports': 1,
     'rulesdir/disallow-pf-migrated-components': 1,
   },
   globals: {
