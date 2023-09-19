@@ -41,7 +41,7 @@ exports[`Notification portal should render notifications given as direct props 1
       silent={true}
     >
       <ErrorBoundary
-        defaultErrorDescription={[Function]}
+        defaultErrorDescription={<DefaultErrorMessage />}
         headerTitle="Notifications portal"
         silent={true}
       >
@@ -467,7 +467,7 @@ exports[`Notification portal should render notifications given as direct props o
       silent={true}
     >
       <ErrorBoundary
-        defaultErrorDescription={[Function]}
+        defaultErrorDescription={<DefaultErrorMessage />}
         headerTitle="Notifications portal"
         silent={true}
       >
@@ -965,7 +965,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
       silent={true}
     >
       <ErrorBoundary
-        defaultErrorDescription={[Function]}
+        defaultErrorDescription={<DefaultErrorMessage />}
         headerTitle="Notifications portal"
         silent={true}
       >
