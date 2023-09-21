@@ -44,7 +44,6 @@ const BaseAsyncComponent: React.FunctionComponent<BaseAsyncComponentProps> = ({
     appName,
     module,
     scope: scope ?? appName,
-    ErrorComponent: fallback,
     ref: innerRef,
     fallback,
     ...props,
@@ -62,6 +61,6 @@ const BaseAsyncComponent: React.FunctionComponent<BaseAsyncComponentProps> = ({
  * This component uses fallback as ErrorComponent, if you want to show different
  * component for error pass it as ErrorComponent prop.
  */
-const AsynComponent = React.forwardRef<HTMLElement, AsyncComponentProps>((props, ref) => <BaseAsyncComponent innerRef={ref} {...props} />);
+export const AsyncComponent = React.forwardRef<HTMLElement, AsyncComponentProps>((props, ref) => <BaseAsyncComponent innerRef={ref} {...props} />);
 
-export default AsynComponent;
+export default AsyncComponent;
