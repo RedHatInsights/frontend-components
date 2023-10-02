@@ -124,8 +124,8 @@ export interface ChromeAPI {
   appObjectId: (objectId: string) => void;
   auth: {
     doOffline?: () => void;
-    getOfflineToken?: () => Promise<any>;
-    getRefreshToken?: () => string;
+    getOfflineToken: () => Promise<any>;
+    getRefreshToken: () => string;
     getToken: () => Promise<string | undefined>;
     getUser: () => Promise<ChromeUser | void>;
     login: () => Promise<any>;
