@@ -49,7 +49,7 @@
     "dependencies": {
         "@redhat-cloud-services/frontend-components-utilities": "^4.0.0",
         "@redhat-cloud-services/types": "^0.0.24",
-        "@patternfly/react-component-groups": "^1.0.17",
+        "@patternfly/react-component-groups": "^1.1.0",
         "@scalprum/core": "^0.5.1",
         "@scalprum/react-core": "^0.5.1",
         "sanitize-html": "^2.7.2"
