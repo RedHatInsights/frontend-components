@@ -6,6 +6,7 @@ import 'babel-polyfill';
 import '@testing-library/jest-dom';
 import { expect } from '@jest/globals';
 import * as matchers from '@testing-library/jest-dom/dist/matchers';
+import MutationObserver from 'mutation-observer';
 
 // ensure the expect is picked up from jest not cypress
 global.expect = expect;
@@ -13,12 +14,8 @@ global.expect = expect;
 global.expect.extend(matchers);
 configure({ adapter: new Adapter() });
 global.SVGPathElement = function () {};
-
-global.MutationObserver = class {
-  constructor(callback) {}
-  disconnect() {}
-  observe(element, initObject) {}
-};
+// real MutationObserver polyfill for JSDOM
+global.MutationObserver = MutationObserver;
 
 global.window.insights = {
   ...(window.insights || {}),

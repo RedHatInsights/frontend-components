@@ -26,11 +26,13 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/chrome#readme",
     "peerDependencies": {
+        "@scalprum/react-core": "^0.5.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.0.0"
     },
     "devDependencies": {
+        "@redhat-cloud-services/types": "^1.0.3",
         "@types/react": "^18.0.0",
         "glob": "10.3.3"
     },
