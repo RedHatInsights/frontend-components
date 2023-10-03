@@ -1,29 +1,10 @@
-import { Tooltip, TooltipPosition, TooltipProps } from '@patternfly/react-core';
 import React from 'react';
+import LongTextTooltipPF, { LongTextTooltipProps } from '@patternfly/react-component-groups/dist/dynamic/LongTextTooltip';
 
-export interface LongTextTooltipProps extends Omit<TooltipProps, 'content'> {
-  content?: string;
-  maxLength?: number;
-  tooltipPosition?: TooltipPosition;
-  tooltipMaxWidth?: string;
-}
-
-const LongTextTooltip: React.FC<LongTextTooltipProps> = ({
-  content = '',
-  maxLength = Infinity,
-  tooltipMaxWidth = '50vw',
-  tooltipPosition = TooltipPosition.top,
-  ...rest
-}) => {
-  const truncate = (str: string, max: number) => (str.length > max ? str.substr(0, max - 1) + '…' : str);
-
-  return content.length > maxLength ? (
-    <Tooltip maxWidth={tooltipMaxWidth} position={tooltipPosition} content={<div>{content}</div>} {...rest}>
-      <div>{truncate(content, maxLength)}</div>
-    </Tooltip>
-  ) : (
-    <span>{content}</span>
-  );
-};
+/**
+ * @deprecated Do not use deprecated LongTextTooltip import, the component has been moved to @patternfly/react-component-groups
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const LongTextTooltip: React.FunctionComponent<LongTextTooltipProps> = (props) => <LongTextTooltipPF {...props} />;
 
 export default LongTextTooltip;
