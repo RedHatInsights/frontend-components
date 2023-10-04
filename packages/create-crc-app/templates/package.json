@@ -20,8 +20,8 @@
     "verify": "npm-run-all build lint test"
   },
   "dependencies": {
-    "@patternfly/react-core": "^5.0.0",
-    "@patternfly/react-table": "^5.0.0",
+    "@patternfly/react-core": "5.1.1-prerelease.23",
+    "@patternfly/react-table": "5.1.1-prerelease.23",
     "@redhat-cloud-services/frontend-components": "^3.9.5",
     "@redhat-cloud-services/frontend-components-notifications": "^3.2.8",
     "@redhat-cloud-services/frontend-components-utilities": "^3.2.21",
