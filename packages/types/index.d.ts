@@ -210,6 +210,9 @@ export interface ChromeAPI {
   isAnsibleTrialFlagActive: () => boolean | undefined;
   setAnsibleTrialFlag: () => void;
   clearAnsibleTrialFlag: () => void;
+  isProductTrialFlagActive: (flag: string) => boolean | undefined;
+  setProductTrialFlag: (flag: string) => void;
+  clearProductTrialFlag: (flag: string) => void;
   // segment API
   segment: {
     setPageMetadata: (pageOptions?: Record<string, unknown>) => void;
