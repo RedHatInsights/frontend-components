@@ -1,3 +1,4 @@
+export * from '@patternfly/react-component-groups/dist/dynamic/Battery';
 export { default } from './Battery';
 export { default as Battery } from './Battery';
 export { default as CriticalBattery } from './CriticalBattery';
