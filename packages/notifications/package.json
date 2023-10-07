@@ -28,8 +28,8 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/notifications#readme",
     "peerDependencies": {
-        "@patternfly/react-core": "^5.0.0",
-        "@patternfly/react-icons": "^5.0.0",
+        "@patternfly/react-core": "5.1.1-prerelease.23",
+        "@patternfly/react-icons": "5.1.1-prerelease.8",
         "prop-types": "^15.6.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
