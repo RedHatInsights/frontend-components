@@ -21,7 +21,7 @@ const config = {
     },
   ],
   transformIgnorePatterns: [
-    'node_modules/(?!@data-driven-forms|lodash-es|@openshift|uuid)',
+    'node_modules/(?!uuid)',
 
     // Uncomment the below line if you face any errors with jest
     // '/node_modules/(?!@redhat-cloud-services)',
