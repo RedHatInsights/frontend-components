@@ -11,7 +11,10 @@
   padding: var(--ins-c-table-toolbar--PaddingVertical) var(--ins-c-table-toolbar--PaddingHorizontal);
 }
 
-.ins-c-table__toolbar.ins-m-footer { border-top: 1px solid var(--pf-v5-global--BorderColor--light-200); }
+.ins-c-table__toolbar.ins-m-footer {
+  padding: var(--pf-v5-global--spacer--md);
+  border-top: 1px solid var(--pf-v5-global--BorderColor--light-200);
+}
 
 .ins-c-table__toolbar-results { color: var(--pf-v5-global--Color--200); }
 
