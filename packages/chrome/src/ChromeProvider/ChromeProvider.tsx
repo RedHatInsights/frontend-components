@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useScalprum } from '@scalprum/react-core';
+import { ChromeAPI } from '@redhat-cloud-services/types';
 import { useLocation } from 'react-router-dom';
 
 import { ChromeContext } from '../ChromeContext';
@@ -7,20 +9,61 @@ import { IDENTITY_URL, LAST_VISITED_URL, get, post } from '../utils/fetch';
 
 const getUserIdentity = () => get<UserIdentity>(IDENTITY_URL);
 
-const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState>, bundle = '') => {
+const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState>) => {
+  const scalprum = useScalprum<{ initialized: boolean; api: { chrome: ChromeAPI } }>();
   const { pathname } = useLocation();
+  const postData = async (pathname: string, title: string, bundle: string) => {
+    try {
+      const data = await post<LastVisitedPage[], { pathname: string; title: string; bundle: string }>(LAST_VISITED_URL, {
+        pathname,
+        title,
+        bundle,
+      });
+      providerState.setLastVisited(data);
+    } catch (error) {
+      console.error('Unable to update last visited pages!', error);
+    }
+  };
   useEffect(() => {
-    post<LastVisitedPage[], { pathname: string; title: string; bundle: string }>(LAST_VISITED_URL, {
-      pathname,
-      title: document.title,
-      bundle,
-    })
-      .then((data) => providerState.setLastVisited(data))
-      .catch((error) => console.error('Unable to update last visited pages!', error));
+    let titleObserver: MutationObserver | undefined;
+    let prevTitle: string | null;
+    const titleTarget = document.querySelector('title');
+    if (titleTarget) {
+      prevTitle = titleTarget.textContent;
+      // initial api call on mount
+      postData(pathname, prevTitle ?? '', scalprum.api.chrome.getBundleData().bundleTitle);
+      /**
+       * Use Mutation observer to trigger the updates.
+       * Using the observer will ensure the last visited pages gets updated on document title change rather than just location change.
+       * The chrome service uses pathname as identifier and updates title according.
+       * Multiple calls with the same pathname and different title will ensure that the latest correct title is assigned to a pathname.       *
+       *  */
+      titleObserver = new MutationObserver((mutations) => {
+        // grab text from the title element
+        const currentTitle = mutations[0]?.target.textContent;
+        // trigger only if the titles are different
+        if (typeof currentTitle === 'string' && currentTitle !== prevTitle) {
+          try {
+            prevTitle = currentTitle;
+            postData(pathname, currentTitle, scalprum.api.chrome.getBundleData().bundleTitle);
+          } catch (error) {
+            // catch sync errors
+            console.error('Unable to update last visited pages!', error);
+          }
+        }
+      });
+      titleObserver.observe(titleTarget, {
+        // observe only the children
+        childList: true,
+      });
+    }
+    return () => {
+      titleObserver?.disconnect();
+    };
   }, [pathname]);
 };
 
-const ChromeProvider: React.FC<React.PropsWithChildren<{ bundle?: string }>> = ({ children, bundle }) => {
+const ChromeProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const isMounted = useRef(false);
   const [initialRequest, setInitialRequest] = useState(false);
   const providerState = useRef<ReturnType<typeof chromeState>>();
@@ -28,7 +71,7 @@ const ChromeProvider: React.FC<React.PropsWithChildren<{ bundle?: string }>> = (
     providerState.current = chromeState();
   }
 
-  useLastPageVisitedUploader(providerState.current, bundle);
+  useLastPageVisitedUploader(providerState.current);
 
   useEffect(() => {
     isMounted.current = true;

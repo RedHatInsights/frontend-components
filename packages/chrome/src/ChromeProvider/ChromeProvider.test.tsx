@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, MemoryRouter, Route, Routes } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
+import { ScalprumContext } from '@scalprum/react-core';
+import { PluginStore } from '@openshift/dynamic-plugin-sdk';
 
 import ChromeProvider from './ChromeProvider';
 import * as fetch from '../utils/fetch';
@@ -31,17 +33,41 @@ describe('ChromeProvider', () => {
     expect(getSpy).toHaveBeenCalledWith('/api/chrome-service/v1/user');
   });
 
-  test('should post new data on pathname change', async () => {
+  test('should post new data on title change', async () => {
     getSpy.mockResolvedValueOnce([]);
     postSpy.mockResolvedValue(['/', '/bar']);
+    const DocumentMutator = () => {
+      useEffect(() => {
+        document.title = 'Foo title';
+      }, []);
+      return null;
+    };
+    // mock the initial document title
+    document.title = 'Initial title';
     await act(async () => {
       render(
-        <MemoryRouter initialEntries={['/']} initialIndex={0}>
-          <Routes>
-            <Route path="*" element={<Link to="/foo/bar">/foo/bar</Link>}></Route>
-          </Routes>
-          <ChromeProvider bundle="bundle-title" />
-        </MemoryRouter>
+        <ScalprumContext.Provider
+          value={{
+            config: {},
+            initialized: true,
+            pluginStore: new PluginStore(),
+            api: {
+              chrome: {
+                getBundleData: () => ({
+                  bundleTitle: 'bundle-title',
+                }),
+              },
+            },
+          }}
+        >
+          <MemoryRouter initialEntries={['/']} initialIndex={0}>
+            <Routes>
+              <Route path="/foo/bar" element={<DocumentMutator />}></Route>
+              <Route path="*" element={<Link to="/foo/bar">/foo/bar</Link>}></Route>
+            </Routes>
+            <ChromeProvider />
+          </MemoryRouter>
+        </ScalprumContext.Provider>
       );
     });
     // change location
@@ -54,7 +80,11 @@ describe('ChromeProvider', () => {
       await flushPromises();
     });
     expect(postSpy).toHaveBeenCalledTimes(2);
-    expect(postSpy).toHaveBeenLastCalledWith('/api/chrome-service/v1/last-visited', { pathname: '/foo/bar', title: '', bundle: 'bundle-title' });
+    expect(postSpy).toHaveBeenLastCalledWith('/api/chrome-service/v1/last-visited', {
+      pathname: '/foo/bar',
+      title: 'Foo title',
+      bundle: 'bundle-title',
+    });
   });
 
   test('should not update state on mount if received error response', async () => {
@@ -66,7 +96,22 @@ describe('ChromeProvider', () => {
     await act(async () => {
       await render(
         <MemoryRouter>
-          <ChromeProvider />
+          <ScalprumContext.Provider
+            value={{
+              config: {},
+              initialized: true,
+              pluginStore: new PluginStore(),
+              api: {
+                chrome: {
+                  getBundleData: () => ({
+                    bundleTitle: 'bundle-title',
+                  }),
+                },
+              },
+            }}
+          >
+            <ChromeProvider />
+          </ScalprumContext.Provider>
         </MemoryRouter>
       );
     });
