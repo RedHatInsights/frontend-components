@@ -8,8 +8,6 @@ import { PluginStore } from '@openshift/dynamic-plugin-sdk';
 import ChromeProvider from './ChromeProvider';
 import * as fetch from '../utils/fetch';
 
-const flushPromises = () => new Promise(setImmediate);
-
 describe('ChromeProvider', () => {
   const getSpy = jest.spyOn(fetch, 'get');
   const postSpy = jest.spyOn(fetch, 'post');
@@ -34,6 +32,7 @@ describe('ChromeProvider', () => {
   });
 
   test('should post new data on title change', async () => {
+    jest.useFakeTimers();
     getSpy.mockResolvedValueOnce([]);
     postSpy.mockResolvedValue(['/', '/bar']);
     const DocumentMutator = () => {
@@ -75,17 +74,19 @@ describe('ChromeProvider', () => {
       screen.getByText('/foo/bar').click();
     });
 
+    // debounce timer
     // wait for calls to be finished
     await act(async () => {
-      await flushPromises();
+      await jest.advanceTimersByTime(5001);
     });
-    expect(postSpy).toHaveBeenCalledTimes(2);
+    // should be called anly once because of the debounce
+    expect(postSpy).toHaveBeenCalledTimes(1);
     expect(postSpy).toHaveBeenLastCalledWith('/api/chrome-service/v1/last-visited', {
       pathname: '/foo/bar',
       title: 'Foo title',
       bundle: 'bundle-title',
     });
-  });
+  }, 10000);
 
   test('should not update state on mount if received error response', async () => {
     const errorResponse = { errors: [{ status: 404, meta: { response_by: 'gateway' }, detail: 'Undefined Insights application' }] };
@@ -116,11 +117,8 @@ describe('ChromeProvider', () => {
       );
     });
 
-    expect(consoleSpy).toHaveBeenCalledTimes(2);
-    expect(consoleSpy.mock.calls).toEqual([
-      ['Unable to update last visited pages!', errorResponse],
-      ['Unable to initialize ChromeProvider!', errorResponse],
-    ]);
+    expect(consoleSpy).toHaveBeenCalledTimes(1);
+    expect(consoleSpy.mock.calls).toEqual([['Unable to initialize ChromeProvider!', errorResponse]]);
     consoleSpy.mockRestore();
   });
 });

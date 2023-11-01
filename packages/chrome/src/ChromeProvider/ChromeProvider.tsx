@@ -2,24 +2,33 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useScalprum } from '@scalprum/react-core';
 import { ChromeAPI } from '@redhat-cloud-services/types';
 import { useLocation } from 'react-router-dom';
+import debounce from 'lodash/debounce';
 
 import { ChromeContext } from '../ChromeContext';
 import chromeState, { LastVisitedPage, UserIdentity } from './chromeState';
 import { IDENTITY_URL, LAST_VISITED_URL, get, post } from '../utils/fetch';
 
 const getUserIdentity = () => get<UserIdentity>(IDENTITY_URL);
+const postDataDebounced = debounce(async (pathname: string, title: string, bundle: string) => {
+  const data = await post<LastVisitedPage[], { pathname: string; title: string; bundle: string }>(LAST_VISITED_URL, {
+    pathname,
+    title,
+    bundle,
+  });
+  return data;
+  // count page as visited after 5 second of being on the page
+  // should help limit number of API calls
+}, 5000);
 
 const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState>) => {
   const scalprum = useScalprum<{ initialized: boolean; api: { chrome: ChromeAPI } }>();
   const { pathname } = useLocation();
   const postData = async (pathname: string, title: string, bundle: string) => {
     try {
-      const data = await post<LastVisitedPage[], { pathname: string; title: string; bundle: string }>(LAST_VISITED_URL, {
-        pathname,
-        title,
-        bundle,
-      });
-      providerState.setLastVisited(data);
+      const data = await postDataDebounced(pathname, title, bundle);
+      if (data) {
+        providerState.setLastVisited(data);
+      }
     } catch (error) {
       console.error('Unable to update last visited pages!', error);
     }
@@ -59,6 +68,7 @@ const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState
     }
     return () => {
       titleObserver?.disconnect();
+      postDataDebounced?.cancel();
     };
   }, [pathname]);
 };
