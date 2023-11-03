@@ -61,7 +61,10 @@ const createFecConfig = (
     fecLogger(LogType.info, 'no git branch detected, using main for webpack "main" config.');
     gitBranch = 'main';
   }
-  const appDeployment = configurations.deployment || (isProd && betaBranches.includes(gitBranch) ? 'beta/apps' : 'apps');
+  const appDeployment =
+    typeof configurations.deployment === 'string'
+      ? configurations.deployment
+      : configurations.deployment || ((isProd && betaBranches.includes(gitBranch)) || process.env.BETA === 'true' ? 'beta/apps' : 'apps');
 
   const publicPath = `/${appDeployment}/${insights.appname}/`;
   const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
