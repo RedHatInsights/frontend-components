@@ -20,6 +20,8 @@ const postDataDebounced = debounce(async (pathname: string, title: string, bundl
   // should help limit number of API calls
 }, 5000);
 
+// FIXME: Use this hook once the issues with dead locking are resolved
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState>) => {
   const scalprum = useScalprum<{ initialized: boolean; api: { chrome: ChromeAPI } }>();
   const { pathname } = useLocation();
@@ -73,6 +75,62 @@ const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState
   }, [pathname]);
 };
 
+const LAST_VISITED_FLAG = 'chrome:lastVisited';
+
+const useLastVisitedLocalStorage = (providerState: ReturnType<typeof chromeState>) => {
+  const { pathname } = useLocation();
+  const scalprum = useScalprum();
+  const titleTarget = document.querySelector('title');
+  useEffect(() => {
+    let titleObserver: MutationObserver | undefined;
+    let prevTitle: string | null;
+    const lastVisited = localStorage.getItem(LAST_VISITED_FLAG);
+    if (lastVisited) {
+      try {
+        const lastVisited: LastVisitedPage[] = JSON.parse(localStorage.getItem(LAST_VISITED_FLAG) ?? '[]');
+        if (!Array.isArray(lastVisited)) {
+          localStorage.setItem(LAST_VISITED_FLAG, JSON.stringify([]));
+          providerState.setLastVisited([]);
+        } else {
+          providerState.setLastVisited(lastVisited);
+        }
+      } catch (error) {
+        console.error('Unable to parse last visited pages from localStorage!', error);
+        providerState.setLastVisited([]);
+        localStorage.setItem(LAST_VISITED_FLAG, JSON.stringify([]));
+      }
+    }
+
+    if (titleTarget) {
+      titleObserver = new MutationObserver((mutations) => {
+        // grab text from the title element
+        const currentTitle = mutations[0]?.target.textContent;
+        // trigger only if the titles are different
+        if (typeof currentTitle === 'string' && currentTitle !== prevTitle) {
+          try {
+            prevTitle = currentTitle;
+            const newTitles = providerState.getState().lastVisitedPages.filter((item) => item.pathname !== pathname);
+            newTitles.unshift({ pathname, title: currentTitle, bundle: scalprum.api?.chrome.getBundleData().bundleTitle });
+            providerState.setLastVisited(newTitles.slice(0, 10));
+
+            localStorage.setItem(LAST_VISITED_FLAG, JSON.stringify(newTitles.slice(0, 10)));
+          } catch (error) {
+            // catch sync errors
+            console.error('Unable to update last visited pages!', error);
+          }
+        }
+      });
+
+      titleObserver.observe(titleTarget, {
+        childList: true,
+      });
+    }
+    return () => {
+      titleObserver?.disconnect();
+    };
+  }, [pathname]);
+};
+
 const ChromeProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const isMounted = useRef(false);
   const [initialRequest, setInitialRequest] = useState(false);
@@ -81,7 +139,7 @@ const ChromeProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
     providerState.current = chromeState();
   }
 
-  useLastPageVisitedUploader(providerState.current);
+  useLastVisitedLocalStorage(providerState.current);
 
   useEffect(() => {
     isMounted.current = true;
