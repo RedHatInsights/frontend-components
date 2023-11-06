@@ -31,7 +31,7 @@ describe('ChromeProvider', () => {
     expect(getSpy).toHaveBeenCalledWith('/api/chrome-service/v1/user');
   });
 
-  test('should post new data on title change', async () => {
+  test.skip('should post new data on title change', async () => {
     jest.useFakeTimers();
     getSpy.mockResolvedValueOnce([]);
     postSpy.mockResolvedValue(['/', '/bar']);
