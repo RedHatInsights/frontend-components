@@ -300,7 +300,9 @@ exports[`Two tables Should render modal with disabled button 1`] = `
 >
   <Tabs
     activeKey={0}
+    backScrollAriaLabel="Scroll back"
     component="div"
+    forwardScrollAriaLabel="Scroll forward"
     hasNoBorderBottom={false}
     isBox={false}
     isFilled={false}
@@ -437,7 +439,9 @@ exports[`Two tables should render modal with enabled button 1`] = `
 >
   <Tabs
     activeKey={0}
+    backScrollAriaLabel="Scroll back"
     component="div"
+    forwardScrollAriaLabel="Scroll forward"
     hasNoBorderBottom={false}
     isBox={false}
     isFilled={false}
@@ -562,7 +566,9 @@ exports[`Two tables should render two tables 1`] = `
 >
   <Tabs
     activeKey={0}
+    backScrollAriaLabel="Scroll back"
     component="div"
+    forwardScrollAriaLabel="Scroll forward"
     hasNoBorderBottom={false}
     isBox={false}
     isFilled={false}
@@ -680,7 +686,9 @@ exports[`Two tables should render two tables in loading state 1`] = `
 >
   <Tabs
     activeKey={0}
+    backScrollAriaLabel="Scroll back"
     component="div"
+    forwardScrollAriaLabel="Scroll forward"
     hasNoBorderBottom={false}
     isBox={false}
     isFilled={false}

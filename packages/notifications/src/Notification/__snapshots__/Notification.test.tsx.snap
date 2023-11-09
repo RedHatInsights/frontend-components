@@ -30,7 +30,7 @@ exports[`Notification component should render correctly 1`] = `
       class="pf-v5-c-alert__title"
     >
       <span
-        class="pf-v5-u-screen-reader"
+        class="pf-v5-screen-reader"
       >
         Success alert:
       </span>
@@ -87,7 +87,7 @@ exports[`Notification component should render correctly with HTML description 1`
       class="pf-v5-c-alert__title"
     >
       <span
-        class="pf-v5-u-screen-reader"
+        class="pf-v5-screen-reader"
       >
         Success alert:
       </span>
@@ -144,7 +144,7 @@ exports[`Notification component should render correctly with HTML title 1`] = `
       class="pf-v5-c-alert__title"
     >
       <span
-        class="pf-v5-u-screen-reader"
+        class="pf-v5-screen-reader"
       >
         Success alert:
       </span>
@@ -201,7 +201,7 @@ exports[`Notification component should render correctly with dismiss button 1`] 
       class="pf-v5-c-alert__title"
     >
       <span
-        class="pf-v5-u-screen-reader"
+        class="pf-v5-screen-reader"
       >
         Success alert:
       </span>
@@ -283,7 +283,7 @@ exports[`Notification component should render correctly with sentryId 1`] = `
       class="pf-v5-c-alert__title"
     >
       <span
-        class="pf-v5-u-screen-reader"
+        class="pf-v5-screen-reader"
       >
         Success alert:
       </span>
@@ -354,7 +354,7 @@ exports[`Notification component should render correctly without description 1`] 
       class="pf-v5-c-alert__title"
     >
       <span
-        class="pf-v5-u-screen-reader"
+        class="pf-v5-screen-reader"
       >
         Success alert:
       </span>
