@@ -37,7 +37,7 @@ exports[`Actions - component API should update open 1`] = `
       data-ouia-component-id="Actions"
       data-ouia-component-type="PF5/Dropdown"
       data-ouia-safe="true"
-      style="position: absolute; left: 0px; top: 0px; z-index: 9999; min-width: 0px;"
+      style="position: absolute; left: 0px; top: 0px; z-index: 9999; opacity: 0; transition: opacity 0ms cubic-bezier(.54, 1.5, .38, 1.11); min-width: 0px;"
     >
       <div
         class="pf-v5-c-menu__content"

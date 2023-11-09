@@ -130,7 +130,6 @@ transform: (importName) =>`@redhat-cloud-services/frontend-components/esm/${FECM
   * [emptyTable](doc/emptyTable.md)
   * [input](doc/input.md)
   * [dropdown](doc/dropdown.md)
-  * [longTextTooltip](doc/longTextTooltip.md)
   * [spinner](doc/spinner.md)
   * [ansible](doc/ansible.md)
   * [filters](doc/filters.md)

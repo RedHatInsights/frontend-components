@@ -244,12 +244,6 @@
 				]
 			},
 			{
-				"group": "LongTextTooltip",
-				"items": [
-					"LongTextTooltip"
-				]
-			},
-			{
 				"group": "Maintenance",
 				"items": [
 					"Maintenance"
