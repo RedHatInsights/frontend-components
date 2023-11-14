@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import { Button, Stack, StackItem } from '@patternfly/react-core';
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { Stack } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
+import { StackItem } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
 import sanitizeHtml from 'sanitize-html';
 
 import './truncate.scss';
@@ -19,6 +21,10 @@ export interface TruncateProps {
   expandOnMouseOver?: boolean;
 }
 
+/**
+ * @deprecated Do not use deprecated Truncate import, use an example from @patternfly/react-component-groups migration guide instead
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Truncate: React.FunctionComponent<TruncateProps> = ({
   text = '',
   length = 150,
