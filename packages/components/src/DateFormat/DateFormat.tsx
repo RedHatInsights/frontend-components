@@ -1,6 +1,6 @@
 import React from 'react';
 import { dateByType } from './helper';
-import { TooltipProps } from '@patternfly/react-core';
+import { TooltipProps } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
 import { DateType } from './helper';
 
 export interface DateFormatProps {
@@ -20,6 +20,7 @@ export interface DateFormatProps {
 }
 
 /**
+ * @deprecated Do not use deprecated DateFormat component, use official PatternFly Timestamp instead
  * A component that formats date to a unified CRC format.
  * Relative date format adds a tooltip with a full date string.
  */

@@ -233,7 +233,6 @@
 			{
 				"group": "InvalidObject",
 				"items": [
-					"icon-404",
 					"InvalidObject"
 				]
 			},
@@ -241,12 +240,6 @@
 				"group": "Inventory",
 				"items": [
 					"InventoryLoadError"
-				]
-			},
-			{
-				"group": "LongTextTooltip",
-				"items": [
-					"LongTextTooltip"
 				]
 			},
 			{

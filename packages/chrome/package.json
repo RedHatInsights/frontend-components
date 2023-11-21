@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/chrome",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "description": "Chrome functions for RedHat Hybrid cloud console.",
     "main": "index.js",
     "typings": "index.d.ts",
@@ -25,6 +25,9 @@
         "url": "https://github.com/RedHatInsights/frontend-components/issues"
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/chrome#readme",
+    "dependencies": {
+        "lodash": "^4.17.21"
+    },
     "peerDependencies": {
         "@scalprum/react-core": "^0.5.1",
         "react": "^18.2.0",
