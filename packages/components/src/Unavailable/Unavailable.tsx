@@ -1,22 +1,12 @@
 import React from 'react';
-import { EmptyState, EmptyStateBody, EmptyStateHeader, EmptyStateIcon, EmptyStateVariant } from '@patternfly/react-core';
-import { ExclamationCircleIcon } from '@patternfly/react-icons';
-import './Unavailable.scss';
+import UnavailableContent, { UnavailableContentProps } from '@patternfly/react-component-groups/dist/dynamic/UnavailableContent';
 
-const Unavailable: React.FC = () => {
-  return (
-    <EmptyState variant={EmptyStateVariant.lg} className="ins-c-empty-state__unavailable pf-m-redhat-font">
-      <EmptyStateHeader titleText="This page is temporarily unavailable" icon={<EmptyStateIcon icon={ExclamationCircleIcon} />} headingLevel="h5" />
-      <EmptyStateBody>
-        Try refreshing the page. If the problem persists, contact your organization administrator or visit our
-        <a href="https://status.redhat.com/" target="_blank" rel="noopener noreferrer">
-          {' '}
-          status page
-        </a>{' '}
-        for known outages.
-      </EmptyStateBody>
-    </EmptyState>
-  );
-};
+/**
+ * @deprecated Do not use deprecated UnavailableContent import, the component has been moved to @patternfly/react-component-groups
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Unavailable: React.FunctionComponent<UnavailableContentProps> = (props) => (
+  <UnavailableContent statusPageUrl="https://status.redhat.com/" {...props} />
+);
 
 export default Unavailable;

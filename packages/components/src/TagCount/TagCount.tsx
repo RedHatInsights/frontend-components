@@ -1,25 +1,16 @@
 import React from 'react';
-import classNames from 'classnames';
-import { Button, ButtonProps, Icon } from '@patternfly/react-core';
-import { TagIcon } from '@patternfly/react-icons';
-
-import './tagCount.scss';
-
+import TagCountPF from '@patternfly/react-component-groups/dist/dynamic/TagCount';
+import { ButtonProps } from '@patternfly/react-core/dist/dynamic/components/Button';
 export interface TagCountProps extends ButtonProps {
   count?: number;
   onTagClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
 }
 
-const TagCount: React.FunctionComponent<TagCountProps> = ({ count, onTagClick = () => undefined, className, ...props }) => {
-  return (
-    <Button {...props} variant="plain" isDisabled={!count} className={classNames('ins-c-tag-count', className)} onClick={onTagClick}>
-      <Icon size="lg">
-        <TagIcon />
-      </Icon>
-      <span className="ins-c-tag__text">{count}</span>
-    </Button>
-  );
-};
+/**
+ * @deprecated Do not use deprecated TagCount import, the component has been moved to @patternfly/react-component-groups
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const TagCount: React.FunctionComponent<TagCountProps> = ({ onTagClick, ...props }) => <TagCountPF onClick={onTagClick} iconSize="md" {...props} />;
 
 export default TagCount;
