@@ -34,3 +34,6 @@ packages/**/package-lock.json
 packages/**/.cache
 *.tgz
 !/packages/*/cypress/
+
+# Ibutsu test reports
+ibutsu-report
