@@ -45,7 +45,6 @@ declare type ChromeUser = {
       locale: string;
     };
   };
-  scope: string[];
 };
 
 declare type VisibilityFunctions = {
