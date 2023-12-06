@@ -125,7 +125,7 @@ export interface ChromeAPI {
   auth: {
     doOffline?: () => void;
     getOfflineToken: () => Promise<any>;
-    getRefreshToken: () => string;
+    getRefreshToken: () => Promise<string>;
     getToken: () => Promise<string | undefined>;
     getUser: () => Promise<ChromeUser | void>;
     login: () => Promise<any>;
