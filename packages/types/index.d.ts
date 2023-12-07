@@ -131,6 +131,7 @@ export interface ChromeAPI {
     logout: () => void;
     /** @deprecated will be removed from useChrome hook */
     qe: any;
+    reAuthWithScopes: (...scopes: string[]) => Promise<void>;
   };
   createCase: (fields: Record<string, unknown>) => void;
   enable: {
