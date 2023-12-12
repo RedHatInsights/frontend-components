@@ -1,11 +1,11 @@
 name: Upload results to Ibutsu
-on:
-  pull_request:
-    branches:
-      - master
-    types:
-      [closed]
-  workflow_dispatch:
+on: workflow_dispatch
+#  pull_request:
+#    branches:
+#      - master
+#    types:
+#      [closed]
+#  workflow_dispatch:
 jobs:
   upload:
     if: |
