@@ -5,6 +5,7 @@ on:
       - master
     types:
       [closed]
+  workflow_dispatch:
 jobs:
   upload:
     if: |
