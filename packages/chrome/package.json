@@ -29,7 +29,7 @@
         "lodash": "^4.17.21"
     },
     "peerDependencies": {
-        "@scalprum/react-core": "^0.5.1",
+        "@scalprum/react-core": "^0.6.5",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.0.0"
