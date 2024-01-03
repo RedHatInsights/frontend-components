@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
+const childProcess = require('child_process');
 
 import { LogType, ProxyOptions, fecLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
 type Configuration = import('webpack').Configuration;
@@ -96,7 +97,20 @@ export const createConfig = ({
     fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
   }
   const internalHotReload = !!(typeof hotReload !== 'undefined' ? hotReload : _unstableHotReload);
-  const filenameMask = `js/[name].${!internalHotReload && useFileHash ? `[fullhash].` : ''}js`;
+
+  // Set our file hashing to use the git commit hash
+  // If git command fails, fall back to Webpack's [fullhash]
+  // We do this so that we get deterministic file names for each commit
+  let outputFileHash;
+  try {
+    // Try to execute the git command
+    const gitOutput = childProcess.execSync('git rev-parse HEAD').toString().trim();
+    outputFileHash = gitOutput;
+  } catch (error) {
+    // If git command fails, fall back to Webpack's [fullhash]
+    outputFileHash = '[fullhash]';
+  }
+  const filenameMask = `js/[name].${!internalHotReload && useFileHash ? `${outputFileHash}.` : ''}js`;
 
   const outputPath = `${rootFolder || ''}/dist`;
 
