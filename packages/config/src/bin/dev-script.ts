@@ -37,13 +37,14 @@ async function devScript(
   cwd: string
 ) {
   try {
-    validateFECConfig(cwd);
-
-    const fecConfig = require(process.env.FEC_CONFIG_PATH!);
+    let fecConfig: any = {};
     let configPath;
     if (typeof argv.webpackConfig !== 'undefined') {
       configPath = getWebpackConfigPath(argv.webpackConfig, cwd);
     } else {
+      // validate the FEC config only if a custom webpack config is not provided
+      validateFECConfig(cwd);
+      fecConfig = require(process.env.FEC_CONFIG_PATH!);
       configPath = resolve(__dirname, './dev.webpack.config.js');
     }
 

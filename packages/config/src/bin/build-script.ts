@@ -5,11 +5,12 @@ const { resolve } = require('path');
 import { spawn } from 'child_process';
 
 export function buildScript(argv: { [name: string]: string }, cwd: string) {
-  validateFECConfig(cwd);
   let configPath;
   if (typeof argv.webpackConfig !== 'undefined') {
     configPath = getWebpackConfigPath(argv.webpackConfig, cwd);
   } else {
+    // validate the FEC config only if a custom webpack config is not provided
+    validateFECConfig(cwd);
     configPath = resolve(__dirname, './prod.webpack.config.js');
   }
   process.env.NODE_ENV = 'production';

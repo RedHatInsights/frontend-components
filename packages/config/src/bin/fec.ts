@@ -9,7 +9,6 @@ import './tsconfig.template.json';
 
 const devScript = require('./dev-script');
 const buildScript = require('./build-script');
-const { validateFECConfig } = require('./common');
 const { fecLogger, LogType } = require('@redhat-cloud-services/frontend-components-config-utilities');
 
 function patchHosts() {
@@ -121,13 +120,10 @@ const argv = yargs
 
 const scripts: { [name: string]: (...args: any[]) => void } = {
   static: (argv: any, cwd: string) => {
-    // set fec config
-    validateFECConfig(cwd);
     serveStatic(argv, cwd);
   },
   'patch-etc-hosts': patchHosts,
   dev: (argv: any, cwd: string) => {
-    validateFECConfig(cwd);
     devScript(argv, cwd);
   },
   build: buildScript,
