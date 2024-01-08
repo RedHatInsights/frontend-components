@@ -338,3 +338,4 @@ import A from './a' // <- not migrated to TS, has to be migrated first
 ```
 4. Follow typescript guidelines when refactoring
 5. Create PR and link it to the project card
+
