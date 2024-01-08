@@ -3,13 +3,11 @@ on:
   pull_request:
     branches:
       - master
-    #types:
-    #  [closed]
+    types:
+      - closed
 jobs:
   upload:
-    #if: |
-    #  contains(github.event.pull_request.labels.*.name, 'release') ||
-    #  contains(github.event.pull_request.labels.*.name, 'release minor')
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
