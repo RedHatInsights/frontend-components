@@ -6,6 +6,7 @@ const path = require('path');
 import yargs from 'yargs';
 // to force TS to copy the file
 import './tsconfig.template.json';
+import { validateFECConfig } from './common';
 
 const devScript = require('./dev-script');
 const buildScript = require('./build-script');
@@ -120,6 +121,7 @@ const argv = yargs
 
 const scripts: { [name: string]: (...args: any[]) => void } = {
   static: (argv: any, cwd: string) => {
+    validateFECConfig(cwd);
     serveStatic(argv, cwd);
   },
   'patch-etc-hosts': patchHosts,
