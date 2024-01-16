@@ -94,6 +94,7 @@ if (CORE_DIRECTORIES.length > 0) {
     DatePickerRef: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/DatePicker'),
     ButtonType: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Button'),
     PaginationTitles: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Pagination'),
+    ProgressMeasureLocation: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Progress'),
   };
 }
 
