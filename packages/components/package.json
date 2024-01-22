@@ -50,8 +50,8 @@
         "@redhat-cloud-services/frontend-components-utilities": "^4.0.0",
         "@redhat-cloud-services/types": "^0.0.24",
         "@patternfly/react-component-groups": "^5.0.0-prerelease.7",
-        "@scalprum/core": "^0.6.5",
-        "@scalprum/react-core": "^0.6.5",
+        "@scalprum/core": "^0.7.0",
+        "@scalprum/react-core": "^0.7.0",
         "sanitize-html": "^2.7.2"
     },
     "devDependencies": {

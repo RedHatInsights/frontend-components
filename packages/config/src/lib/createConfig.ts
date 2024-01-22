@@ -96,7 +96,7 @@ export const createConfig = ({
     fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
   }
   const internalHotReload = !!(typeof hotReload !== 'undefined' ? hotReload : _unstableHotReload);
-  const filenameMask = `js/[name].${!internalHotReload && useFileHash ? `[fullhash].` : ''}js`;
+  const filenameMask = `js/[name].${!internalHotReload && useFileHash ? `[contenthash].` : ''}js`;
 
   const outputPath = `${rootFolder || ''}/dist`;
 

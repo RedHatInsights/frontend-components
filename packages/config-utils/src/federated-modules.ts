@@ -61,7 +61,7 @@ const federatedModules = ({
 
   const { dependencies, insights } = require(resolve(root, './package.json')) || {};
   const appName = moduleName || (insights && jsVarName(insights.appname));
-  const filename = `${appName}.${useFileHash ? `[fullhash].` : ''}js`;
+  const filename = `${appName}.${useFileHash ? `[contenthash].` : ''}js`;
 
   let sharedDeps = Object.entries(include)
     .filter(([key]) => dependencies[key] && !exclude.includes(key))
