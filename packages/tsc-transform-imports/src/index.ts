@@ -80,6 +80,9 @@ let COMPONENTS_CACHE: {
 if (CORE_DIRECTORIES.length > 0) {
   COMPONENTS_CACHE = {
     getResizeObserver: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/resizeObserver'),
+    isValidDate: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/isValidDate'),
+    capitalize: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/capitalize'),
+    ValidatedOptions: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/ValidatedOptions'),
     useOUIAProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
     OUIAProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
     getDefaultOUIAId: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
