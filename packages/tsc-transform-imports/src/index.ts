@@ -95,6 +95,9 @@ if (CORE_DIRECTORIES.length > 0) {
     ButtonType: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Button'),
     PaginationTitles: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Pagination'),
     ProgressMeasureLocation: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Progress'),
+    isValidDate: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/datetimeUtils'),
+    ValidatedOptions: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/constants'),
+    capitalize: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/util'),
   };
 }
 
