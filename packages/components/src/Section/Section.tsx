@@ -7,7 +7,7 @@ export interface SectionProps extends React.DetailedHTMLProps<React.HTMLAttribut
   type?: string;
 }
 
-const Section: React.FunctionComponent<SectionProps> = ({ type, children, className, ...props }) => {
+const Section: React.FunctionComponent<React.PropsWithChildren<SectionProps>> = ({ type, children, className, ...props }) => {
   const sectionClasses = classNames(className, { [`ins-l-${type}`]: type !== undefined });
 
   return (

@@ -9,7 +9,7 @@ export interface EmptyTableProps extends React.DetailedHTMLProps<React.HTMLAttri
   className?: string;
 }
 
-const EmptyTable: React.FunctionComponent<EmptyTableProps> = ({ centered, className, children, ...props }) => {
+const EmptyTable: React.FunctionComponent<React.PropsWithChildren<EmptyTableProps>> = ({ centered, className, children, ...props }) => {
   const emptyTableClasses = classNames('ins-c-table__empty', { [`is-centered`]: centered }, className);
 
   return (
