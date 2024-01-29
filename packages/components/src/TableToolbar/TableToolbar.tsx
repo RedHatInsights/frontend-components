@@ -21,7 +21,7 @@ function generateCount(results: number) {
   }
 }
 
-const TableToolbar: React.FunctionComponent<TableToolbarProps> = ({
+const TableToolbar: React.FunctionComponent<React.PropsWithChildren<TableToolbarProps>> = ({
   isFooter = false,
   results,
   className,

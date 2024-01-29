@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import './main.scss';
 
-export type MainProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+export type MainProps = React.PropsWithChildren<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>>;
 export type InternalMainProps = MainProps;
 
 /**

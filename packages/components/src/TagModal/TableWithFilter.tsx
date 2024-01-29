@@ -34,7 +34,7 @@ export interface TableWithFilterProps extends Omit<Partial<ModalProps>, 'rows' |
   bulkSelect?: BulkSelectProps;
 }
 
-const TableWithFilter: React.FC<TableWithFilterProps> = ({
+const TableWithFilter: React.FC<React.PropsWithChildren<TableWithFilterProps>> = ({
   rows = [],
   onSelect,
   selected = [],

@@ -59,7 +59,7 @@ function isPrimaryToolbarExpandAllObject(node: React.ReactNode | PrimaryToolbarE
   return !React.isValidElement(node);
 }
 
-const PrimaryToolbar: React.FunctionComponent<PrimaryToolbarProps> = ({
+const PrimaryToolbar: React.FunctionComponent<React.PropsWithChildren<PrimaryToolbarProps>> = ({
   id,
   className,
   toggleIsExpanded = () => undefined,
