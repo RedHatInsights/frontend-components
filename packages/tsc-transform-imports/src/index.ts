@@ -26,31 +26,35 @@ const VARIANT_MATCH = /Variants?$/g;
 const POSITION_MATCH = /Position$/g;
 const SIZE_MATCH = /Sizes?$/g;
 
+function filterNonStableLocation(location: string) {
+  return !location.includes('next') && !location.includes('deprecated');
+}
+
 function getPossibleLocations(roots: string[], nameBinding: string) {
   let moduleLocation = roots
-    .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding}.js`).filter((p) => !p.includes('deprecated')))
+    .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding}.js`).filter(filterNonStableLocation))
     .find((r) => r.length > 0)?.[0];
   if (!moduleLocation && nameBinding.match(PROPS_MATCH)) {
     moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(PROPS_MATCH, '')}.js`).filter((p) => !p.includes('deprecated')))
+      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(PROPS_MATCH, '')}.js`).filter(filterNonStableLocation))
       .find((r) => r.length > 0)?.[0];
   }
 
   if (!moduleLocation && nameBinding.match(VARIANT_MATCH)) {
     moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(VARIANT_MATCH, '')}.js`).filter((p) => !p.includes('deprecated')))
+      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(VARIANT_MATCH, '')}.js`).filter(filterNonStableLocation))
       .find((r) => r.length > 0)?.[0];
   }
 
   if (!moduleLocation && nameBinding.match(POSITION_MATCH)) {
     moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(POSITION_MATCH, '')}.js`).filter((p) => !p.includes('deprecated')))
+      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(POSITION_MATCH, '')}.js`).filter(filterNonStableLocation))
       .find((r) => r.length > 0)?.[0];
   }
 
   if (!moduleLocation && nameBinding.match(SIZE_MATCH)) {
     moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(SIZE_MATCH, '')}.js`).filter((p) => !p.includes('deprecated')))
+      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(SIZE_MATCH, '')}.js`).filter(filterNonStableLocation))
       .find((r) => r.length > 0)?.[0];
   }
 
