@@ -13,7 +13,7 @@ const useLastVisited = () => {
       unsubscribe(subsId, UpdateEvents.lastVisited);
     };
   }, []);
-  return getState().lastVisitedPages;
+  return getState().lastVisitedPages ?? [];
 };
 
 export default useLastVisited;
