@@ -33,7 +33,7 @@ const chromeState = () => {
   };
 
   // registry of all subscribers (hooks)
-  const subscribtions: {
+  const subscriptions: {
     [key in UpdateEvents]: Map<symbol, { onUpdate: () => void }>;
   } = {
     lastVisited: new Map(),
@@ -47,7 +47,7 @@ const chromeState = () => {
     // Symbol('foo') !== Symbol('foo'), no need for UUID or any other id generator
     const id = Symbol(event);
     // add new subscriber
-    subscribtions[event].set(id, { onUpdate });
+    subscriptions[event].set(id, { onUpdate });
     // trigger initial update to get the initial data
     onUpdate();
     return id;
@@ -55,8 +55,8 @@ const chromeState = () => {
 
   // remove subscriber from registry
   function unsubscribe(id: symbol, event: UpdateEvents) {
-    if (subscribtions[event].has(id)) {
-      subscribtions[event].delete(id);
+    if (subscriptions[event].has(id)) {
+      subscriptions[event].delete(id);
     } else {
       console.error('Trying to unsubscribe non existing client!');
     }
@@ -68,7 +68,7 @@ const chromeState = () => {
       ...state,
       ...attributes,
     };
-    const updateSubscriptions = subscribtions[event];
+    const updateSubscriptions = subscriptions[event];
     if (updateSubscriptions.size === 0) {
       return;
     }
@@ -99,7 +99,7 @@ const chromeState = () => {
   // initializes state with new identity and should trigger all updates
   function setIdentity(userIdentity: UserIdentity) {
     state = { ...userIdentity, initialized: true };
-    Object.values(subscribtions)
+    Object.values(subscriptions)
       .flat()
       .forEach((event) => {
         Array.from(event.values()).forEach((sub) => {

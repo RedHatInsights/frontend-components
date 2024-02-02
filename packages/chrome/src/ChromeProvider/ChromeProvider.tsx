@@ -1,78 +1,75 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useScalprum } from '@scalprum/react-core';
-import { ChromeAPI } from '@redhat-cloud-services/types';
 import { useLocation } from 'react-router-dom';
-import debounce from 'lodash/debounce';
-
 import { ChromeContext } from '../ChromeContext';
 import chromeState, { LastVisitedPage, UserIdentity } from './chromeState';
 import { IDENTITY_URL, LAST_VISITED_URL, get, post } from '../utils/fetch';
 
 const getUserIdentity = () => get<UserIdentity>(IDENTITY_URL);
-const postDataDebounced = debounce(async (pathname: string, title: string, bundle: string) => {
-  const data = await post<LastVisitedPage[], { pathname: string; title: string; bundle: string }>(LAST_VISITED_URL, {
-    pathname,
-    title,
-    bundle,
-  });
-  return data;
-  // count page as visited after 5 second of being on the page
-  // should help limit number of API calls
-}, 5000);
 
-// FIXME: Use this hook once the issues with dead locking are resolved
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const useLastPageVisitedUploader = (providerState: ReturnType<typeof chromeState>) => {
-  const scalprum = useScalprum<{ initialized: boolean; api: { chrome: ChromeAPI } }>();
-  const { pathname } = useLocation();
-  const postData = async (pathname: string, title: string, bundle: string) => {
+  const inactiveDuration = 1000 * 20;
+  const batchUpdateInterval = 1000 * 60 * 3;
+  // There was some lint and namespacing weirdness with ChromeAPI and NodeJS.Timeout so
+  // we're grabbing the type without managing another import or adding anything to tsconfig.
+  const inactiveTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const postBatchData = async (recentPages: LastVisitedPage[]) => {
     try {
-      const data = await postDataDebounced(pathname, title, bundle);
-      if (data) {
-        providerState.setLastVisited(data);
-      }
+      await post<LastVisitedPage[], { pages: LastVisitedPage[] }>(LAST_VISITED_URL, {
+        pages: recentPages,
+      });
     } catch (error) {
       console.error('Unable to update last visited pages!', error);
     }
   };
-  useEffect(() => {
-    let titleObserver: MutationObserver | undefined;
-    let prevTitle: string | null;
-    const titleTarget = document.querySelector('title');
-    if (titleTarget) {
-      prevTitle = titleTarget.textContent;
-      // initial api call on mount
-      postData(pathname, prevTitle ?? '', scalprum.api.chrome.getBundleData().bundleTitle);
-      /**
-       * Use Mutation observer to trigger the updates.
-       * Using the observer will ensure the last visited pages gets updated on document title change rather than just location change.
-       * The chrome service uses pathname as identifier and updates title according.
-       * Multiple calls with the same pathname and different title will ensure that the latest correct title is assigned to a pathname.       *
-       *  */
-      titleObserver = new MutationObserver((mutations) => {
-        // grab text from the title element
-        const currentTitle = mutations[0]?.target.textContent;
-        // trigger only if the titles are different
-        if (typeof currentTitle === 'string' && currentTitle !== prevTitle) {
-          try {
-            prevTitle = currentTitle;
-            postData(pathname, currentTitle, scalprum.api.chrome.getBundleData().bundleTitle);
-          } catch (error) {
-            // catch sync errors
-            console.error('Unable to update last visited pages!', error);
-          }
-        }
-      });
-      titleObserver.observe(titleTarget, {
-        // observe only the children
-        childList: true,
-      });
+
+  const sanitizeRecentPages = (recentPages: LastVisitedPage[]): LastVisitedPage[] => {
+    return recentPages.map(({ pathname, title, bundle }) => ({ pathname, title, bundle }));
+  };
+
+  const clearInactiveTimeout = () => {
+    if (inactiveTimeout.current !== undefined) {
+      clearTimeout(inactiveTimeout.current);
+      inactiveTimeout.current = undefined;
     }
-    return () => {
-      titleObserver?.disconnect();
-      postDataDebounced?.cancel();
+  };
+
+  const updateMostRecentPages = async () => {
+    const recentPages = providerState.getState().lastVisitedPages;
+    const sanitizedPages: LastVisitedPage[] = sanitizeRecentPages(recentPages);
+    await postBatchData(sanitizedPages);
+  };
+
+  useEffect(() => {
+    // Save state from localStorage on an interval
+    const updateInterval = setInterval(async () => {
+      updateMostRecentPages();
+    }, batchUpdateInterval);
+
+    const handleVisibilityChange = () => {
+      // Tab is reported as inactive
+      if (document.visibilityState !== 'visible') {
+        // Don't duplicate timer
+        if (inactiveTimeout.current) {
+          return;
+        }
+        // Start the timer to send when user is away for the interval
+        inactiveTimeout.current = setTimeout(async () => {
+          updateMostRecentPages();
+        }, inactiveDuration);
+      } else {
+        // User has returned before the timeout duration, clear the timer
+        clearInactiveTimeout();
+      }
     };
-  }, [pathname]);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      clearInterval(updateInterval);
+      clearInactiveTimeout();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
 };
 
 const LAST_VISITED_FLAG = 'chrome:lastVisited';
@@ -81,25 +78,41 @@ const useLastVisitedLocalStorage = (providerState: ReturnType<typeof chromeState
   const { pathname } = useLocation();
   const scalprum = useScalprum();
   const titleTarget = document.querySelector('title');
+  const lastVisitedLocal = localStorage.getItem(LAST_VISITED_FLAG);
   useEffect(() => {
-    let titleObserver: MutationObserver | undefined;
-    let prevTitle: string | null;
-    const lastVisited = localStorage.getItem(LAST_VISITED_FLAG);
-    if (lastVisited) {
+    const getInitialPages = async () => {
       try {
-        const lastVisited: LastVisitedPage[] = JSON.parse(localStorage.getItem(LAST_VISITED_FLAG) ?? '[]');
-        if (!Array.isArray(lastVisited)) {
-          localStorage.setItem(LAST_VISITED_FLAG, JSON.stringify([]));
-          providerState.setLastVisited([]);
+        if (!lastVisitedLocal) {
+          const firstPages: LastVisitedPage[] = await get<LastVisitedPage[]>(LAST_VISITED_URL);
+          if (firstPages) {
+            providerState.setLastVisited(firstPages);
+            try {
+              localStorage.setItem(LAST_VISITED_FLAG, JSON.stringify(firstPages));
+            } catch (error) {
+              console.error('Unable to load initial last visited pages!', error);
+            }
+          }
         } else {
-          providerState.setLastVisited(lastVisited);
+          const lastVisited: LastVisitedPage[] = JSON.parse(localStorage.getItem(LAST_VISITED_FLAG) ?? '[]');
+          if (!Array.isArray(lastVisited)) {
+            localStorage.setItem(LAST_VISITED_FLAG, JSON.stringify([]));
+            providerState.setLastVisited([]);
+          } else {
+            providerState.setLastVisited(lastVisited);
+          }
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error('Unable to parse last visited pages from localStorage!', error);
         providerState.setLastVisited([]);
         localStorage.setItem(LAST_VISITED_FLAG, JSON.stringify([]));
       }
-    }
+    };
+    getInitialPages();
+  }, []);
+
+  useEffect(() => {
+    let titleObserver: MutationObserver | undefined;
+    let prevTitle: string | null;
 
     if (titleTarget) {
       titleObserver = new MutationObserver((mutations) => {
@@ -140,6 +153,7 @@ const ChromeProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   }
 
   useLastVisitedLocalStorage(providerState.current);
+  useLastPageVisitedUploader(providerState.current);
 
   useEffect(() => {
     isMounted.current = true;
