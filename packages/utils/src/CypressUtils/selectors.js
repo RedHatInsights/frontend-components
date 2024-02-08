@@ -1,45 +1,51 @@
-const TOOLBAR = 'div[id="ins-primary-data-toolbar"]';
-const CHIP_GROUP = 'div[data-ouia-component-type="PF5/ChipGroup"]';
-const CHIP = '[data-ouia-component-type="PF5/Chip"]';
-const ROW = '[data-ouia-component-type="PF5/TableRow"]:not([class~="pf-v5-c-table__expandable-row"])';
-const PAGINATION = 'div[data-ouia-component-type="PF5/Pagination"]';
-const PAGINATION_MENU = 'div[data-ouia-component-type="PF5/PaginationOptionsMenu"]';
-const DROPDOWN = '[data-ouia-component-type="PF5/Dropdown"]';
-const MODAL = '[data-ouia-component-type="PF5/ModalContent"]';
-const CHECKBOX = '[data-ouia-component-type="PF5/Checkbox"]';
-const TEXT_INPUT = '[data-ouia-component-type="PF5/TextInput"]';
-const DROPDOWN_TOGGLE = '[data-ouia-component-type="PF5/DropdownToggle"]';
-const DROPDOWN_ITEM = '[data-ouia-component-type="PF5/DropdownItem"]';
-const TBODY = 'tbody[role=rowgroup]';
-const TOOLBAR_FILTER = '.ins-c-primary-toolbar__filter';
-const TABLE = 'table';
-const TABLE_HEADER = 'thead';
-const ROWS_TOGGLER = `${TABLE_HEADER} .pf-v5-c-table__toggle`;
-const TITLE = '[data-ouia-component-type="PF5/Title"]';
-const ouiaId = (id) => `[data-ouia-component-id="${id}"]`;
-const FILTERS_DROPDOWN = 'ul[class=pf-v5-c-dropdown__menu]';
-const FILTER_TOGGLE = 'button[class=pf-v5-c-select__toggle]';
+export const ouiaId = (id) => `[data-ouia-component-id="${id}"]`;
 
-export {
-  ouiaId,
-  TOOLBAR,
-  CHIP_GROUP,
-  CHIP,
-  ROW,
-  PAGINATION,
-  PAGINATION_MENU,
-  DROPDOWN,
-  MODAL,
-  CHECKBOX,
-  TEXT_INPUT,
-  DROPDOWN_TOGGLE,
-  DROPDOWN_ITEM,
-  TBODY,
-  TOOLBAR_FILTER,
-  TABLE,
-  TABLE_HEADER,
-  ROWS_TOGGLER,
-  TITLE,
-  FILTERS_DROPDOWN,
-  FILTER_TOGGLE,
-};
+/** PF5 OUIA */
+export const BUTTON = '[data-ouia-component-type="PF5/Button"]';
+export const DROPDOWN = '[data-ouia-component-type="PF5/Dropdown"]';
+export const DROPDOWN_TOGGLE = '[data-ouia-component-type="PF5/DropdownToggle"]';
+export const DROPDOWN_ITEM = '[data-ouia-component-type="PF5/DropdownItem"]';
+export const CHIP = '[data-ouia-component-type="PF5/Chip"]';
+export const CHIP_GROUP = 'div[data-ouia-component-type="PF5/ChipGroup"]';
+export const MENU = '[data-ouia-component-type="PF5/Menu"]';
+export const MENU_TOGGLE_CHECKBOX = '[data-ouia-component-type="PF5/MenuToggleCheckbox"]';
+export const MODAL_CONTENT = '[data-ouia-component-type="PF5/ModalContent"]';
+export const CHECKBOX = '[data-ouia-component-type="PF5/Checkbox"]';
+export const TITLE = '[data-ouia-component-type="PF5/Title"]';
+export const PAGINATION = '[data-ouia-component-type="PF5/Pagination"]';
+export const TEXT_INPUT = '[data-ouia-component-type="PF5/TextInput"]';
+export const TOOLBAR = '[data-ouia-component-type="PF5/Toolbar"]';
+export const TABLE = '[data-ouia-component-type="PF5/Table"]';
+export const TABLE_HEADER = 'thead [data-ouia-component-type="PF5/TableRow"]';
+export const TABLE_ROW = 'tbody [data-ouia-component-type="PF5/TableRow"]';
+export const TABLE_ROW_CHECKBOX = 'tbody [data-ouia-component-type="PF5/TableRow"] input';
+export const EMPTY_STATE = '[data-ouia-component-type="PF4/EmptyState"]';
+export const CARD = '[data-ouia-component-type="PF5/Card"]';
+export const BREADCRUMB = '[data-ouia-component-type="PF5/Breadcrumb"]';
+export const TAB_CONTENT = '[data-ouia-component-type="PF5/TabContent"]';
+export const TAB_BUTTON = '[data-ouia-component-type="PF5/TabButton"]';
+export const ALERT = '[data-ouia-component-type="PF5/Alert"]';
+
+/** PF5 classes */
+export const MENU_TOGGLE = '.pf-v5-c-menu-toggle';
+export const MENU_LIST = '.pf-v5-c-menu__list';
+export const MENU_TOGGLE_TEXT = '.pf-v5-c-menu-toggle__text';
+export const MENU_ITEM = '.pf-v5-c-menu__list-item';
+export const SELECT_MENU_ITEM = '.pf-v5-c-select__menu-item';
+export const PAGINATION_TOP = `${PAGINATION}:not(.pf-m-bottom)`;
+export const PAGINATION_BOTTOM = `${PAGINATION}.pf-m-bottom`;
+export const EMPTY_STATE_TITLE = '.pf-v5-c-empty-state__title';
+export const EMPTY_STATE_ICON = '.pf-v5-c-empty-state__icon';
+export const CARD_TITLE = '.pf-v5-c-card__title';
+
+/** PF5 aria */
+export const PAGINATION_NEXT = 'button[aria-label="Go to next page"]';
+export const PAGINATION_PREV = 'button[aria-label="Go to previous page"]';
+export const PAGINATION_LAST = 'button[aria-label="Go to last page"]';
+export const PAGINATION_FIRST = 'button[aria-label="Go to first page"]';
+export const PAGINATION_CURRENT = '[aria-label="Current page"]';
+
+/** FEC, other */
+export const PRIMARY_TOOLBAR = '[data-ouia-component-id="PrimaryToolbar"]';
+export const PRIMARY_TOOLBAR_ACTIONS = '.ins-c-primary-toolbar__actions';
+export const CONDITIONAL_FILTER = '.ins-c-conditional-filter__group';

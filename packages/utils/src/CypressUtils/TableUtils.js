@@ -1,9 +1,6 @@
 /* global cy, Cypress */
 import _ from 'lodash';
-
-import { ROW, TABLE, TBODY, TITLE } from './selectors';
-import { findElementByOuiaId } from './CustomCommands';
-findElementByOuiaId();
+import { EMPTY_STATE, EMPTY_STATE_ICON, EMPTY_STATE_TITLE, TABLE, TABLE_ROW, TABLE_ROW_CHECKBOX } from './selectors';
 
 /**
  * - Check the table column headers to be equal to provided array of objects.
@@ -26,10 +23,9 @@ export function checkTableHeaders(expectedHeaders) {
  * - Check if the table setting of "rows shown" is equal to the passed number parameter.
  * @typedef {Object} checkRowCounts
  * @param {number} n - number of rows
- * @param {boolean} isSelectableTable - selectable table option
  */
-export function checkRowCounts(n, isSelectableTable = false) {
-  return isSelectableTable ? cy.get('table').find(TBODY).should('have.length', n) : cy.get('table').find(TBODY).find(ROW).should('have.length', n);
+export function checkRowCounts(n) {
+  cy.get('table').find(TABLE_ROW).should('have.length', n);
 }
 /**
  * - Checks the URL for the name of the column which sorting is "active".
@@ -60,10 +56,22 @@ export function checkEmptyState(title, checkIcon = false) {
   cy.get(TABLE)
     // @ts-ignore
     // NEED TO FIX type error here
-    .ouiaId('empty-state')
+    .find(EMPTY_STATE)
     .should('have.length', 1)
     .within(() => {
-      cy.get('.pf-v5-c-empty-state__icon').should('have.length', checkIcon ? 1 : 0);
-      cy.get(`h5${TITLE}`).should('have.text', title);
+      cy.get(EMPTY_STATE_ICON).should('have.length', checkIcon ? 1 : 0);
+      cy.get(EMPTY_STATE_TITLE).should('have.text', title);
     });
 }
+
+export const selectRowN = (number) => {
+  cy.get(TABLE_ROW_CHECKBOX).eq(number).click();
+};
+
+export const checkSelectedNumber = (number, selector = '#toggle-checkbox') => {
+  if (number === 0) {
+    cy.get(selector).should('not.exist');
+  } else {
+    cy.get(selector).should('have.text', `${number} selected`);
+  }
+};
