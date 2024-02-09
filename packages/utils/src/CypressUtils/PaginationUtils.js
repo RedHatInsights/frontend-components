@@ -1,5 +1,5 @@
 /* global cy */
-import { DROPDOWN_ITEM, DROPDOWN_TOGGLE, PAGINATION_MENU, TOOLBAR } from './selectors';
+import { MENU_ITEM, MENU_TOGGLE, PAGINATION, PAGINATION_TOP } from './selectors';
 
 const DEFAULT_ROW_COUNT = 20;
 const PAGINATION_VALUES = [10, 20, 50, 100];
@@ -29,7 +29,7 @@ export function itemsPerPage(totalLength, pageSize = DEFAULT_ROW_COUNT) {
  * @param {number} n - the length of fixtures array e.g. the amount of items overall.
  */
 export function checkPaginationTotal(n) {
-  return cy.get('.pf-v5-c-options-menu__toggle-text').find('b').eq(1).should('have.text', n);
+  return cy.get(PAGINATION).should('contain.text', `of ${n}`);
 }
 
 /**
@@ -38,11 +38,9 @@ export function checkPaginationTotal(n) {
  * @param {array} expectedValues - array of strings with pagination values
  */
 export function checkPaginationValues(expectedValues) {
-  cy.get(TOOLBAR).find(PAGINATION_MENU).find(DROPDOWN_TOGGLE).click();
-  cy.get(TOOLBAR)
-    .find(PAGINATION_MENU)
-    .find('ul[class=pf-v5-c-options-menu__menu]')
-    .find('li')
+  cy.get(PAGINATION_TOP).find(MENU_TOGGLE).click();
+  cy.get(PAGINATION_TOP)
+    .find(MENU_ITEM)
     .each(($el, index) => {
       cy.wrap($el).should('have.text', `${expectedValues[index]} per page`);
     });
@@ -61,14 +59,8 @@ export function checkPaginationValues(expectedValues) {
  *  });
  */
 export function changePagination(paginationValue) {
-  cy.get(TOOLBAR).find(PAGINATION_MENU).find(DROPDOWN_TOGGLE).click();
-  return cy
-    .get(TOOLBAR)
-    .find(PAGINATION_MENU)
-    .find('ul[class=pf-v5-c-options-menu__menu]')
-    .find(DROPDOWN_ITEM)
-    .contains(`${paginationValue}`)
-    .click();
+  cy.get(PAGINATION_TOP).find(MENU_TOGGLE).click();
+  return cy.get(PAGINATION_TOP).find(MENU_ITEM).contains(`${paginationValue}`).click();
 }
 
 export { DEFAULT_ROW_COUNT, PAGINATION_VALUES, SORTING_ORDERS };
