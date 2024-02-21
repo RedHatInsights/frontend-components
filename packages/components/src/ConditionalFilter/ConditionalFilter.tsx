@@ -193,7 +193,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                     ref={innerRef}
                     onSelect={() => setIsOpen(false)}
                     isOpen={isOpen}
-                    ouiaId="ConditionalFilter"
+                    ouiaId="ConditionalFilterList"
                     onOpenChange={(isOpen: boolean) => setIsOpen(isOpen)}
                     toggle={(toggleRef) => (
                       <MenuToggle
@@ -201,10 +201,11 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                         className={
                           hideLabel ? 'ins-c-conditional-filter__group ins-c-conditional-filter__no-label' : 'ins-c-conditional-filter__group'
                         }
-                        aria-label="Conditional filter"
+                        aria-label="Conditional filter toggle"
                         ref={toggleRef}
                         onClick={() => setIsOpen((prev) => !prev)}
                         isExpanded={isOpen}
+                        data-ouia-component-id="ConditionalFilterToggle"
                       >
                         <Icon size="md">
                           <FilterIcon />
@@ -215,7 +216,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                       </MenuToggle>
                     )}
                   >
-                    <DropdownList aria-label="Conditional filter">
+                    <DropdownList aria-label="Conditional filters list">
                       {items.map((item, key) => (
                         <DropdownItem
                           key={item.id ? `${item.id}-dropdown` : key}
@@ -230,7 +231,11 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                   </Dropdown>
                 </SplitItem>
               )}
-              {ActiveComponent && <SplitItem isFilled>{getActiveComponent(activeItem)}</SplitItem>}
+              {ActiveComponent && (
+                <SplitItem isFilled data-ouia-component-id="ConditionalFilter">
+                  {getActiveComponent(activeItem)}
+                </SplitItem>
+              )}
             </Split>
           )}
         </Fragment>
