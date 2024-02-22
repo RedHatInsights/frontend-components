@@ -16,6 +16,7 @@ exports[`Actions - component API should update open 1`] = `
       aria-expanded="true"
       aria-label="kebab dropdown toggle"
       class="pf-v5-c-menu-toggle pf-m-expanded pf-m-plain"
+      data-ouia-component-id="BulkActionsToggle"
       type="button"
     >
       <svg
@@ -34,7 +35,7 @@ exports[`Actions - component API should update open 1`] = `
     </button>
     <div
       class="pf-v5-c-menu"
-      data-ouia-component-id="Actions"
+      data-ouia-component-id="BulkActionsList"
       data-ouia-component-type="PF5/Dropdown"
       data-ouia-safe="true"
       style="position: absolute; left: 0px; top: 0px; z-index: 9999; opacity: 0; transition: opacity 0ms cubic-bezier(.54, 1.5, .38, 1.11); min-width: 0px;"
@@ -169,6 +170,7 @@ exports[`Actions - component should render actionObject as first action 1`] = `
       aria-expanded="false"
       aria-label="kebab dropdown toggle"
       class="pf-v5-c-menu-toggle pf-m-plain"
+      data-ouia-component-id="BulkActionsToggle"
       type="button"
     >
       <svg
@@ -205,6 +207,7 @@ exports[`Actions - component should render actions and overflow 1`] = `
       aria-expanded="false"
       aria-label="kebab dropdown toggle"
       class="pf-v5-c-menu-toggle pf-m-plain"
+      data-ouia-component-id="BulkActionsToggle"
       type="button"
     >
       <svg
@@ -234,6 +237,7 @@ exports[`Actions - component should render empty actions 1`] = `
       aria-expanded="false"
       aria-label="kebab dropdown toggle"
       class="pf-v5-c-menu-toggle pf-m-plain"
+      data-ouia-component-id="BulkActionsToggle"
       type="button"
     >
       <svg
@@ -270,6 +274,7 @@ exports[`Actions - component should render just actions 1`] = `
       aria-expanded="false"
       aria-label="kebab dropdown toggle"
       class="pf-v5-c-menu-toggle pf-m-plain"
+      data-ouia-component-id="BulkActionsToggle"
       type="button"
     >
       <svg
@@ -308,6 +313,7 @@ exports[`Actions - component should render one action 1`] = `
       aria-expanded="false"
       aria-label="kebab dropdown toggle"
       class="pf-v5-c-menu-toggle pf-m-plain"
+      data-ouia-component-id="BulkActionsToggle"
       type="button"
     >
       <svg
@@ -344,6 +350,7 @@ exports[`Actions - component should render one action and multiple overflow 1`] 
       aria-expanded="false"
       aria-label="kebab dropdown toggle"
       class="pf-v5-c-menu-toggle pf-m-plain"
+      data-ouia-component-id="BulkActionsToggle"
       type="button"
     >
       <svg
