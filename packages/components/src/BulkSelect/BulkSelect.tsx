@@ -71,7 +71,14 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
           className={classnames(className, 'ins-c-bulk-select')}
           ouiaSafe={ouiaSafe}
           toggle={(toggleRef) => (
-            <MenuToggle {...toggleProps} isDisabled={isDisabled} isExpanded={isOpen} ref={toggleRef} onClick={() => setIsOpen((prev) => !prev)}>
+            <MenuToggle
+              {...toggleProps}
+              isDisabled={isDisabled}
+              isExpanded={isOpen}
+              ref={toggleRef}
+              onClick={() => setIsOpen((prev) => !prev)}
+              data-ouia-component-id={dropdownOuiaId ?? 'BulkSelect'}
+            >
               <Fragment key="split-checkbox">
                 {hasError ? (
                   <MenuToggleCheckbox
