@@ -24,6 +24,7 @@ exports[`BulkSelect should render correctly - null checked 1`] = `
   <button
     aria-expanded="false"
     class="pf-v5-c-menu-toggle"
+    data-ouia-component-id="BulkSelect"
     type="button"
   >
     <span
@@ -75,6 +76,7 @@ exports[`BulkSelect should render correctly 1`] = `
   <button
     aria-expanded="false"
     class="pf-v5-c-menu-toggle"
+    data-ouia-component-id="BulkSelect"
     type="button"
   >
     <span
@@ -133,6 +135,7 @@ exports[`BulkSelect should render correctly 2`] = `
   <button
     aria-expanded="false"
     class="pf-v5-c-menu-toggle"
+    data-ouia-component-id="BulkSelect"
     type="button"
   >
     <span
@@ -184,6 +187,7 @@ exports[`BulkSelect should render custom props 1`] = `
   <button
     aria-expanded="false"
     class="pf-v5-c-menu-toggle"
+    data-ouia-component-id="BulkSelect"
     type="button"
   >
     <span
