@@ -131,16 +131,16 @@ describe('ConditionalFilter', () => {
     it('should open dropdown', async () => {
       render(<ConditionalFilter {...initialProps} items={config} />);
       await act(async () => {
-        await userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+        await userEvent.click(screen.getByRole('button', { name: 'Conditional filter toggle' }));
       });
-      expect(screen.getByRole('menu', { name: 'Conditional filter' })).toBeDefined();
+      expect(screen.getByLabelText('Conditional filters list')).toBeDefined();
     });
 
     it('should call NOT call onChange when clicked on dropdown', async () => {
       const onChange = jest.fn();
       render(<ConditionalFilter {...initialProps} items={config} />);
       act(() => {
-        userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+        userEvent.click(screen.getByRole('button', { name: 'Conditional filter toggle' }));
       });
       await act(async () => {
         userEvent.click(screen.getByRole('menuitem', { name: 'Simple text 1' }));
@@ -152,7 +152,7 @@ describe('ConditionalFilter', () => {
       const onChange = jest.fn();
       render(<ConditionalFilter {...initialProps} items={config} onChange={onChange} />);
       act(() => {
-        userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+        userEvent.click(screen.getByRole('button', { name: 'Conditional filter toggle' }));
       });
       await act(async () => {
         await userEvent.click(screen.getByRole('menuitem', { name: 'Simple text 1' }));
@@ -163,7 +163,7 @@ describe('ConditionalFilter', () => {
     it('should update state on select', async () => {
       render(<ConditionalFilter {...initialProps} items={config} />);
       act(() => {
-        userEvent.click(screen.getByRole('button', { name: 'Conditional filter' }));
+        userEvent.click(screen.getByRole('button', { name: 'Conditional filter toggle' }));
       });
 
       await act(async () => {

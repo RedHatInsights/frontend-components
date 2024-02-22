@@ -1,5 +1,6 @@
 import React, { Fragment, useRef, useState } from 'react';
 import classnames from 'classnames';
+// eslint-disable-next-line rulesdir/forbid-pf-relative-imports
 import {
   Checkbox,
   Dropdown,
@@ -10,7 +11,6 @@ import {
   MenuToggleCheckbox,
   MenuToggleCheckboxProps,
   MenuToggleProps,
-  getDefaultOUIAId,
 } from '@patternfly/react-core';
 
 import './bulk-select.scss';
@@ -35,8 +35,10 @@ export interface BulkSelectProps {
   onSelect?: MenuToggleCheckboxProps['onChange'];
   toggleProps?: MenuToggleProps;
   isDisabled?: boolean;
-  ouiaId?: string;
   ouiaSafe?: boolean;
+  dropdownOuiaId?: string;
+  checkboxOuiaId?: string;
+  listOuiaId?: string;
 }
 
 const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
@@ -48,17 +50,15 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
   toggleProps,
   count,
   className,
-  ouiaId,
   ouiaSafe = true,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { current: hasError } = useRef(false);
-  const { current: ouiaStateId } = useRef(getDefaultOUIAId('RHI/BulkSelect'));
 
   const onToggle = (isOpen: boolean) => setIsOpen(isOpen);
 
-  const ouiaFinalId = ouiaId !== undefined ? ouiaId : ouiaStateId;
+  const { dropdownOuiaId, checkboxOuiaId, listOuiaId } = props;
 
   return (
     <Fragment>
@@ -66,18 +66,18 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
         <Dropdown
           onSelect={() => onToggle(false)}
           onOpenChange={(isOpen: boolean) => setIsOpen(isOpen)}
+          data-ouia-component-id={dropdownOuiaId ?? 'BulkSelect'}
           {...props}
           className={classnames(className, 'ins-c-bulk-select')}
-          ouiaId={ouiaFinalId}
           ouiaSafe={ouiaSafe}
           toggle={(toggleRef) => (
             <MenuToggle
-              aria-label={ouiaFinalId}
               {...toggleProps}
               isDisabled={isDisabled}
               isExpanded={isOpen}
               ref={toggleRef}
               onClick={() => setIsOpen((prev) => !prev)}
+              data-ouia-component-id={dropdownOuiaId ?? 'BulkSelect'}
             >
               <Fragment key="split-checkbox">
                 {hasError ? (
@@ -86,7 +86,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
                     aria-label="Select all"
                     onChange={onSelect}
                     isChecked={checked}
-                    ouiaId={ouiaFinalId}
+                    ouiaId={checkboxOuiaId ?? 'BulkSelectCheckbox'}
                   />
                 ) : (
                   <MenuToggleCheckbox
@@ -94,7 +94,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
                     aria-label="Select all"
                     onChange={onSelect}
                     isChecked={checked}
-                    ouiaId={ouiaFinalId}
+                    ouiaId={checkboxOuiaId ?? 'BulkSelectCheckbox'}
                   >
                     {count ? `${count} selected` : ''}
                   </MenuToggleCheckbox>
@@ -104,7 +104,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
           )}
           isOpen={isOpen}
         >
-          <DropdownList>
+          <DropdownList data-ouia-component-id={listOuiaId ?? 'BulkSelectList'}>
             {count !== undefined && count > 0 && (
               <DropdownItem
                 key="count"
@@ -120,7 +120,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
               <DropdownItem
                 component="button"
                 key={oneItem.key || key}
-                ouiaId={`${ouiaFinalId}-${oneItem.key || key}`}
+                ouiaId={`${listOuiaId ?? 'BulkSelectList'}-${oneItem.key || key}`}
                 onClick={(event) => oneItem.onClick && oneItem.onClick(event, oneItem, key)}
                 {...oneItem?.props}
               >
@@ -137,6 +137,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
           id={`${id}-checkbox`}
           isChecked={checked}
           onChange={(e, checked) => onSelect?.(checked, e)}
+          ouiaId={dropdownOuiaId ?? 'BulkSelect'}
         />
       )}
     </Fragment>

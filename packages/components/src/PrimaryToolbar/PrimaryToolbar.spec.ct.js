@@ -102,7 +102,7 @@ describe('PrimaryToolbar component', () => {
     otherConfig.activeFiltersConfig.onDelete = cy.spy().as('afSpy');
     cy.mount(<PrimaryToolbar {...groupConfig} {...otherConfig} />);
     cy.get('[data-ouia-component-id="ExpandCollapseAll"]').click();
-    cy.get('button[aria-label="BulkSelect"]').click();
+    cy.get('[data-ouia-component-id="BulkSelect"]').click();
     cy.get(':nth-child(2) > .pf-v5-c-menu__item').click();
     cy.get('[data-ouia-component-id="ClearFilters"]').click();
     cy.get('@eaSpy').should('have.been.called');

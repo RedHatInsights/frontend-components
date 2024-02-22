@@ -1,3 +1,4 @@
+/* eslint-disable rulesdir/forbid-pf-relative-imports */
 import React, { Fragment, useState } from 'react';
 import {
   Button,
@@ -137,7 +138,7 @@ const Actions: React.FunctionComponent<ActionsProps> = ({
               toggleOpen(false);
             }}
             onOpenChange={setIsOpen}
-            ouiaId="Actions"
+            ouiaId="BulkActionsList"
             toggle={(toggleRef) => (
               <MenuToggle
                 ref={toggleRef}
@@ -145,6 +146,7 @@ const Actions: React.FunctionComponent<ActionsProps> = ({
                 variant="plain"
                 onClick={() => setIsOpen((prev) => !prev)}
                 isExpanded={isOpen}
+                data-ouia-component-id="BulkActionsToggle"
               >
                 <EllipsisVIcon />
               </MenuToggle>

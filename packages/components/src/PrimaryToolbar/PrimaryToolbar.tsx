@@ -122,9 +122,7 @@ const PrimaryToolbar: React.FunctionComponent<React.PropsWithChildren<PrimaryToo
                 )}
               </ToolbarItem>
             )}
-            {bulkSelect && (
-              <ToolbarItem>{React.isValidElement(bulkSelect) ? bulkSelect : <BulkSelect ouiaId="BulkSelect" {...bulkSelect} />}</ToolbarItem>
-            )}
+            {bulkSelect && <ToolbarItem>{React.isValidElement(bulkSelect) ? bulkSelect : <BulkSelect {...bulkSelect} />}</ToolbarItem>}
             {filterConfig && (
               <ToolbarItem className="ins-c-primary-toolbar__filter">
                 {React.isValidElement(filterConfig) ? filterConfig : <ConditionalFilter {...filterConfig} />}
