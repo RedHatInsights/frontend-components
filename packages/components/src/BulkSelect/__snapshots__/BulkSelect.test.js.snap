@@ -9,7 +9,7 @@ exports[`BulkSelect should render correctly - no data 1`] = `
       aria-invalid="false"
       aria-label="Select all"
       class="pf-v5-c-check__input"
-      data-ouia-component-id="OUIA-Generated-Checkbox-1"
+      data-ouia-component-id="BulkSelect"
       data-ouia-component-type="PF5/Checkbox"
       data-ouia-safe="true"
       id="undefined-checkbox"
@@ -23,7 +23,6 @@ exports[`BulkSelect should render correctly - null checked 1`] = `
 <div>
   <button
     aria-expanded="false"
-    aria-label="OUIA-Generated-RHI/BulkSelect-4"
     class="pf-v5-c-menu-toggle"
     type="button"
   >
@@ -38,7 +37,7 @@ exports[`BulkSelect should render correctly - null checked 1`] = `
           aria-invalid="false"
           aria-label="Select all"
           class="pf-v5-c-check__input"
-          data-ouia-component-id="OUIA-Generated-RHI/BulkSelect-4"
+          data-ouia-component-id="BulkSelectCheckbox"
           data-ouia-component-type="PF5/MenuToggleCheckbox"
           data-ouia-safe="true"
           name="toggle-checkbox"
@@ -75,7 +74,6 @@ exports[`BulkSelect should render correctly 1`] = `
 <div>
   <button
     aria-expanded="false"
-    aria-label="OUIA-Generated-RHI/BulkSelect-2"
     class="pf-v5-c-menu-toggle"
     type="button"
   >
@@ -90,7 +88,7 @@ exports[`BulkSelect should render correctly 1`] = `
           aria-invalid="false"
           aria-label="Select all"
           class="pf-v5-c-check__input"
-          data-ouia-component-id="OUIA-Generated-RHI/BulkSelect-2"
+          data-ouia-component-id="BulkSelectCheckbox"
           data-ouia-component-type="PF5/MenuToggleCheckbox"
           data-ouia-safe="true"
           name="some-id-toggle-checkbox"
@@ -134,7 +132,6 @@ exports[`BulkSelect should render correctly 2`] = `
 <div>
   <button
     aria-expanded="false"
-    aria-label="OUIA-Generated-RHI/BulkSelect-3"
     class="pf-v5-c-menu-toggle"
     type="button"
   >
@@ -149,7 +146,7 @@ exports[`BulkSelect should render correctly 2`] = `
           aria-invalid="false"
           aria-label="Select all"
           class="pf-v5-c-check__input"
-          data-ouia-component-id="OUIA-Generated-RHI/BulkSelect-3"
+          data-ouia-component-id="BulkSelectCheckbox"
           data-ouia-component-type="PF5/MenuToggleCheckbox"
           data-ouia-safe="true"
           name="toggle-checkbox"
@@ -186,7 +183,6 @@ exports[`BulkSelect should render custom props 1`] = `
 <div>
   <button
     aria-expanded="false"
-    aria-label="OUIA-Generated-RHI/BulkSelect-5"
     class="pf-v5-c-menu-toggle"
     type="button"
   >
@@ -201,7 +197,7 @@ exports[`BulkSelect should render custom props 1`] = `
           aria-invalid="false"
           aria-label="Select all"
           class="pf-v5-c-check__input"
-          data-ouia-component-id="OUIA-Generated-RHI/BulkSelect-5"
+          data-ouia-component-id="BulkSelectCheckbox"
           data-ouia-component-type="PF5/MenuToggleCheckbox"
           data-ouia-safe="true"
           name="toggle-checkbox"
