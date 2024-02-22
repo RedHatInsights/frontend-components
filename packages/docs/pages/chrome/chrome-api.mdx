@@ -144,13 +144,13 @@ A function that will return the name of the current environment:
 function getEnvironment(): string
 
 // URL: https://ci.console.redhat.com/beta/insights/advisor/recommendations
-getBundle() // => 'ci'
+getEnvironment() // => 'ci'
 // https://qa.console.redhat.com/beta/insights/advisor/recommendations
-getBundle() // => 'qa'
+getEnvironment() // => 'qa'
 // https://console.stage.redhat.com/beta/insights/advisor/recommendations
-getBundle() // => 'stage'
+getEnvironment() // => 'stage'
 // https://console.redhat.com/beta/insights/advisor/recommendations
-getBundle() // => 'prod'
+getEnvironment() // => 'prod'
 ```
 
 ### `getUserPermissions`
