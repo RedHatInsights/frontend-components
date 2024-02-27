@@ -86,7 +86,7 @@ describe('ChromeProvider', () => {
     });
   }, 10000);
 
-  test('should not update state on mount if received error response', async () => {
+  test('should update state on mount with fallback data if received error response', async () => {
     const errorResponse = { errors: [{ status: 404, meta: { response_by: 'gateway' }, detail: 'Undefined Insights application' }] };
     getSpy.mockRejectedValue(errorResponse);
     postSpy.mockRejectedValue(errorResponse);
@@ -118,7 +118,8 @@ describe('ChromeProvider', () => {
     // There is some race condition that mismatches local runs vs travis runs.
     // We're going to handle the base case and use Cypress to test the component.
     expect(consoleSpy).toHaveBeenCalled();
-    expect(getSpy).toHaveBeenCalledTimes(1);
+    expect(getSpy).toHaveBeenCalledTimes(2);
+    expect(getSpy).toHaveBeenCalledWith('/api/chrome-service/v1/last-visited');
     expect(getSpy).toHaveBeenCalledWith('/api/chrome-service/v1/user');
   });
 });

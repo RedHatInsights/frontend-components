@@ -78,35 +78,28 @@ const useLastVisitedLocalStorage = (providerState: ReturnType<typeof chromeState
   const { pathname } = useLocation();
   const scalprum = useScalprum();
   const titleTarget = document.querySelector('title');
-  const lastVisitedLocal = localStorage.getItem(LAST_VISITED_FLAG);
-  useEffect(() => {
-    const getInitialPages = async () => {
-      try {
-        if (!lastVisitedLocal) {
-          const firstPages: LastVisitedPage[] = await get<LastVisitedPage[]>(LAST_VISITED_URL);
-          if (firstPages) {
-            providerState.setLastVisited(firstPages);
-            try {
-              localStorage.setItem(LAST_VISITED_FLAG, JSON.stringify(firstPages));
-            } catch (error) {
-              console.error('Unable to load initial last visited pages!', error);
-            }
-          }
-        } else {
-          const lastVisited: LastVisitedPage[] = JSON.parse(localStorage.getItem(LAST_VISITED_FLAG) ?? '[]');
-          if (!Array.isArray(lastVisited)) {
-            localStorage.setItem(LAST_VISITED_FLAG, JSON.stringify([]));
-            providerState.setLastVisited([]);
-          } else {
-            providerState.setLastVisited(lastVisited);
-          }
-        }
-      } catch (error: any) {
-        console.error('Unable to parse last visited pages from localStorage!', error);
-        providerState.setLastVisited([]);
-        localStorage.setItem(LAST_VISITED_FLAG, JSON.stringify([]));
+  const getInitialPages = async () => {
+    let localVisited: LastVisitedPage[] = [];
+    try {
+      localVisited = JSON.parse(localStorage.getItem(LAST_VISITED_FLAG) ?? '[]');
+      if (!Array.isArray(localVisited)) {
+        localVisited = [];
       }
-    };
+    } catch (error) {
+      console.error('Unable to parse last visited pages from localStorage!', error);
+      localVisited = [];
+    }
+    try {
+      const firstPages: LastVisitedPage[] = [...((await get<LastVisitedPage[]>(LAST_VISITED_URL)) ?? []), ...localVisited].slice(0, 10);
+      providerState.setLastVisited(firstPages);
+      localStorage.setItem(LAST_VISITED_FLAG, JSON.stringify(firstPages));
+    } catch (error: any) {
+      console.error('Unable to load initial last visited pages!', error);
+      providerState.setLastVisited(localVisited);
+      localStorage.setItem(LAST_VISITED_FLAG, JSON.stringify(localVisited));
+    }
+  };
+  useEffect(() => {
     getInitialPages();
   }, []);
 
