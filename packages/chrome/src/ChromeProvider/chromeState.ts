@@ -97,8 +97,8 @@ const chromeState = () => {
   }
 
   // initializes state with new identity and should trigger all updates
-  function setIdentity(userIdentity: UserIdentity) {
-    state = { ...userIdentity, initialized: true };
+  function setIdentity({ lastVisitedPages, ...userIdentity }: UserIdentity) {
+    state = { ...state, ...userIdentity, initialized: true };
     Object.values(subscriptions)
       .flat()
       .forEach((event) => {
