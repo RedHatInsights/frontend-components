@@ -48,4 +48,5 @@ export const PAGINATION_CURRENT = '[aria-label="Current page"]';
 /** FEC, other */
 export const PRIMARY_TOOLBAR = '[data-ouia-component-id="PrimaryToolbar"]';
 export const PRIMARY_TOOLBAR_ACTIONS = '.ins-c-primary-toolbar__actions';
-export const CONDITIONAL_FILTER = '.ins-c-conditional-filter__group';
+export const CONDITIONAL_FILTER = '[data-ouia-component-id="ConditionalFilter"]';
+export const CONDITIONAL_FILTER_TOGGLE = '[data-ouia-component-id="ConditionalFilterToggle"]';

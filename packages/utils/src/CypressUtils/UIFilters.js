@@ -5,7 +5,7 @@ Utilities related to URL parameters passed for table filtering
 
 import _ from 'lodash';
 
-import { CHIP, CHIP_GROUP, FILTERS_DROPDOWN, FILTER_TOGGLE } from './selectors';
+import { CHIP, CHIP_GROUP, CONDITIONAL_FILTER, CONDITIONAL_FILTER_TOGGLE, DROPDOWN_ITEM } from './selectors';
 import { findElementByOuiaId } from './CustomCommands';
 findElementByOuiaId();
 
@@ -17,7 +17,7 @@ findElementByOuiaId();
  * @property {string} type - Type of selector: input, checkbox, radio
  * @property {Function} filterFunc(it, value) {
     @property {Object} it - Data from the API
-    @property {Object} value - Instance from the values above 
+    @property {Object} value - Instance from the values above
  }} - function describing if a given item should stay or be filtered
  */
 
@@ -31,24 +31,24 @@ function applyFilters(filters, filtersConf) {
   for (const [key, value] of Object.entries(filters)) {
     const item = filtersConf[key];
     // open filter selector
-    cy.get('div.ins-c-primary-toolbar__filter').find('button[class=pf-v5-c-dropdown__toggle]').click();
+    cy.get('div.ins-c-primary-toolbar__filter').find(CONDITIONAL_FILTER_TOGGLE).click();
 
     // select appropriate filter
-    cy.get(FILTERS_DROPDOWN).contains(item.selectorText).click();
+    cy.get(DROPDOWN_ITEM).contains(item.selectorText).click();
 
     // fill appropriate filter
     if (item.type === 'input') {
-      cy.get('input.ins-c-conditional-filter').type(value);
+      cy.get('input[data-ouia-component-type="PF5/TextInput"]').type(value);
     } else if (item.type === 'checkbox') {
-      cy.get(FILTER_TOGGLE).click();
       value.forEach((it) => {
-        cy.get('ul[class=pf-v5-c-select__menu]').find('label').contains(it).parent().find('input[type=checkbox]').check();
+        cy.get(CONDITIONAL_FILTER).find('button').click();
+        cy.get('[data-ouia-component-type="PF5/Select"]').find('label').contains(it).parent().find('input[type=checkbox]').check();
       });
       // close dropdown again
-      cy.get(FILTER_TOGGLE).click();
+      cy.get(CONDITIONAL_FILTER).click();
     } else if (item.type == 'radio') {
-      cy.get(FILTER_TOGGLE).click();
-      cy.get('ul[class=pf-v5-c-select__menu]').find('label').contains(value).parent().find('input[type=radio]').check();
+      cy.get(CONDITIONAL_FILTER).click();
+      cy.get(CONDITIONAL_FILTER).find('label').contains(value).parent().find('input[type=radio]').check();
     } else {
       throw `${item.type} not recognized`;
     }
