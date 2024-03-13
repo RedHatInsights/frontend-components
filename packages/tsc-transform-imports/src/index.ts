@@ -64,7 +64,7 @@ function getPossibleLocations(roots: string[], nameBinding: string) {
 function getModuleExplicitLocation(roots: string[], relativePath: string) {
   const defaultLocation = roots
     .map((root) => {
-      return glob.sync(`${root}/dist/dynamic/**/${relativePath}`);
+      return glob.sync(`${root}/dist/dynamic/**/${relativePath}`).filter(filterNonStableLocation);
     })
     .find((r) => r.length > 0)?.[0]
     ?.split('/dynamic/')
@@ -102,6 +102,10 @@ if (CORE_DIRECTORIES.length > 0) {
     isValidDate: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/datetimeUtils'),
     ValidatedOptions: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/constants'),
     capitalize: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/util'),
+    WizardFooterWrapper: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Wizard'),
+    WizardFooter: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Wizard'),
+    WizardContextProvider: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Wizard'),
+    useWizardContext: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Wizard'),
   };
 }
 
