@@ -83,7 +83,7 @@
         "@types/sanitize-html": "^2.6.2",
         "@typescript-eslint/eslint-plugin": "^5.38.1",
         "@typescript-eslint/parser": "^5.38.1",
-        "axios-mock-adapter": "^1.21.2",
+        "axios-mock-adapter": "^1.22.0",
         "babel-core": "^7.0.0-bridge.0",
         "babel-jest": "^29.0.0",
         "babel-plugin-lodash": "^3.3.4",
