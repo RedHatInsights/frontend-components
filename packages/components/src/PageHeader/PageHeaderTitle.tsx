@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Title } from '@patternfly/react-core/dist/dynamic/components/Title';
 import { TitleProps } from '@patternfly/react-core/dist/dynamic/components/Title';
-import { useOUIAId } from '@patternfly/react-core/dist/dynamic/helpers/OUIA';
+import { useOUIAId } from '@patternfly/react-core';
 
 export interface PageHeaderTitleProps extends Omit<TitleProps, 'title' | 'headingLevel'> {
   title: React.ReactNode;
