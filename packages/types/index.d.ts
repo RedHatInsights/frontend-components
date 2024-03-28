@@ -233,6 +233,7 @@ export interface ChromeAPI {
     }) => T
   ) => T;
   enablePackagesDebug: () => void;
+  requestPdf: (options: { service: string; template: string; filename?: string; [key: string]: any }) => Promise<void>;
 }
 
 declare global {
