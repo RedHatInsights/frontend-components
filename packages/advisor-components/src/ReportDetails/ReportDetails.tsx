@@ -25,6 +25,7 @@ interface ReportDetailsProps {
     view_uri: string;
   };
   kbaLoading: boolean; // if true, renders skeleton instead of kba link
+  isProd: boolean;
 }
 
 const ReportDetails: React.FC<ReportDetailsProps> = ({
@@ -35,10 +36,10 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({
     view_uri: '',
   },
   kbaLoading,
+  isProd,
 }) => {
   const { rule, details, resolution } = report;
   const [error, setError] = useState<Error | null>(null);
-  const { isProd } = useChrome();
 
   const handleError = (e: Error) => {
     if (error === null) {
@@ -48,7 +49,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({
 
   const linkEditor = (url: string) => {
     const linkToArray = url?.split('/');
-    if (isProd()) {
+    if (isProd) {
       return `https://access.redhat.com/${linkToArray?.at(-2)}/${linkToArray?.at(-1)}`;
     } else {
       return `https://access.stage.redhat.com/${linkToArray?.at(-2)}/${linkToArray?.at(-1)}`;
