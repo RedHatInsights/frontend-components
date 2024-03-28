@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { Alert, Card, CardBody, CardHeader, Divider, Stack, StackItem } from '@patternfly/react-core';
 import { BullseyeIcon, InfoCircleIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
-import useChrome from '@redhat-cloud-services/frontend-components/useChrome';
 
 import { RuleContentOcp, RuleContentRhel } from '../types';
 import { TemplateProcessor } from '../TemplateProcessor';
@@ -25,6 +24,7 @@ interface ReportDetailsProps {
     view_uri: string;
   };
   kbaLoading: boolean; // if true, renders skeleton instead of kba link
+  isProd: boolean;
 }
 
 const ReportDetails: React.FC<ReportDetailsProps> = ({
@@ -35,10 +35,10 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({
     view_uri: '',
   },
   kbaLoading,
+  isProd,
 }) => {
   const { rule, details, resolution } = report;
   const [error, setError] = useState<Error | null>(null);
-  const { isProd } = useChrome();
 
   const handleError = (e: Error) => {
     if (error === null) {
@@ -48,7 +48,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({
 
   const linkEditor = (url: string) => {
     const linkToArray = url?.split('/');
-    if (isProd()) {
+    if (isProd) {
       return `https://access.redhat.com/${linkToArray?.at(-2)}/${linkToArray?.at(-1)}`;
     } else {
       return `https://access.stage.redhat.com/${linkToArray?.at(-2)}/${linkToArray?.at(-1)}`;
