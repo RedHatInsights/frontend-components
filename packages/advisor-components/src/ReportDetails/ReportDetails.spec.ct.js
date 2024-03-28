@@ -10,6 +10,7 @@ const props = {
   report,
   kbaDetail: { view_uri: 'https://access.redhat.com/solutions/12345678', publishedTitle: 'Lorem ipsum article' },
   kbaLoading: false,
+  isProd: true,
 };
 
 describe('report details: kba loaded', () => {
@@ -65,7 +66,6 @@ describe('report details: kba loaded', () => {
   });
 
   it('renders a loaded kba link', () => {
-    cy.mount(<ReportDetails {...{ ...props, kbaLoading: true, isProd: true }} />);
     cy.get(`${ROOT} .ins-c-report-details__kba .pf-v5-c-card__body`).find('.pf-v5-c-skeleton').should('have.length', 0);
     cy.get(`${ROOT} .ins-c-report-details__kba .pf-v5-c-card__body`)
       .contains(props.kbaDetail.publishedTitle)
