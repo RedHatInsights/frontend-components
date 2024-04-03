@@ -39,7 +39,7 @@
         "@redhat-cloud-services/types": "^0.0.24",
         "@sentry/browser": "^5.30.0",
         "awesome-debounce-promise": "^2.1.0",
-        "axios": "^0.28.0",
+        "axios": "^0.28.1",
         "commander": "^2.20.3",
         "mkdirp": "^1.0.4",
         "p-all": "^5.0.0",
