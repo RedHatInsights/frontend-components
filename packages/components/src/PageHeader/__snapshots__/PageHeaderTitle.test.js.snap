@@ -4,21 +4,39 @@ exports[`PageHeader component should render 1`] = `
 <PageHeaderTitle
   title="Something"
 >
-  <Title
-    className=""
-    headingLevel="h1"
-    size="2xl"
-    widget-type="InsightsPageHeaderTitle"
+  <Flex
+    justifyContent={
+      {
+        "default": "justifyContentSpaceBetween",
+      }
+    }
   >
-    <h1
-      className="pf-v5-c-title pf-m-2xl"
-      data-ouia-component-id="OUIA-Generated-Title-1"
-      data-ouia-component-type="PF5/Title"
-      data-ouia-safe={true}
-      widget-type="InsightsPageHeaderTitle"
+    <div
+      className="pf-v5-l-flex pf-m-justify-content-space-between"
     >
-      Something
-    </h1>
-  </Title>
+      <FlexItem>
+        <div
+          className=""
+        >
+          <Title
+            className=""
+            headingLevel="h1"
+            size="2xl"
+            widget-type="InsightsPageHeaderTitle"
+          >
+            <h1
+              className="pf-v5-c-title pf-m-2xl"
+              data-ouia-component-id="OUIA-Generated-Title-1"
+              data-ouia-component-type="PF5/Title"
+              data-ouia-safe={true}
+              widget-type="InsightsPageHeaderTitle"
+            >
+              Something
+            </h1>
+          </Title>
+        </div>
+      </FlexItem>
+    </div>
+  </Flex>
 </PageHeaderTitle>
 `;
