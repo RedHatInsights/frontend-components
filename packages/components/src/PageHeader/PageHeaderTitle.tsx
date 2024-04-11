@@ -1,33 +1,30 @@
 import React from 'react';
 import classNames from 'classnames';
-import { 
-  Title, 
-  TitleProps, 
-  Flex, 
-  FlexItem  
-} from '@patternfly/react-core';
-
+import { Title } from '@patternfly/react-core/dist/dynamic/components/Title';
+import { TitleProps } from '@patternfly/react-core/dist/dynamic/components/Title';
+import { Flex } from '@patternfly/react-core/dist/dynamic/layouts/Flex';
+import { FlexItem } from '@patternfly/react-core/dist/dynamic/layouts/Flex';
 
 export interface PageHeaderTitleProps extends Omit<TitleProps, 'title' | 'headingLevel'> {
   title: React.ReactNode;
-  actionsComponent: React.ReactNode;
+  actionsContent?: React.ReactNode;
 }
 
 /**
  * This is the title section of the pageHeader
  */
-const PageHeaderTitle: React.FunctionComponent<PageHeaderTitleProps> = ({ className, title, actionsComponent }) => {
+const PageHeaderTitle: React.FC<PageHeaderTitleProps> = ({ className, title, actionsContent }) => {
   const pageHeaderTitleClasses = classNames(className);
 
   return (
-   <Flex className="example-border" justifyContent={{ default: 'justifyContentSpaceBetween' }}>
-    <FlexItem>    
-      <Title headingLevel="h1" size="2xl" className={pageHeaderTitleClasses} widget-type="InsightsPageHeaderTitle">
-        {title}
-      </Title>
-    </FlexItem>
-    {actionsComponent && <FlexItem>{actionsComponent}</FlexItem>}
-  </Flex>
+    <Flex justifyContent={{ default: 'justifyContentSpaceBetween' }}>
+      <FlexItem>
+        <Title headingLevel="h1" size="2xl" className={pageHeaderTitleClasses} widget-type="InsightsPageHeaderTitle">
+          {title}
+        </Title>
+      </FlexItem>
+      {actionsContent ? <FlexItem>{actionsContent}</FlexItem> : null}
+    </Flex>
   );
 };
 
