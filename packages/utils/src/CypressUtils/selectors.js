@@ -45,8 +45,16 @@ export const PAGINATION_LAST = 'button[aria-label="Go to last page"]';
 export const PAGINATION_FIRST = 'button[aria-label="Go to first page"]';
 export const PAGINATION_CURRENT = '[aria-label="Current page"]';
 
-/** FEC, other */
+/** PrimaryToolbar OUIA */
 export const PRIMARY_TOOLBAR = '[data-ouia-component-id="PrimaryToolbar"]';
 export const PRIMARY_TOOLBAR_ACTIONS = '.ins-c-primary-toolbar__actions';
 export const CONDITIONAL_FILTER = '[data-ouia-component-id="ConditionalFilter"]';
 export const CONDITIONAL_FILTER_TOGGLE = '[data-ouia-component-id="ConditionalFilterToggle"]';
+export const PT_CONDITIONAL_FILTER = '[data-ouia-component-id="ConditionalFilter"]';
+export const PT_CONDITIONAL_FILTER_TOGGLE = '[data-ouia-component-id="ConditionalFilterToggle"]';
+export const PT_CONDITIONAL_FILTER_LIST = '[data-ouia-component-id="ConditionalFilterList"]';
+export const PT_BULK_SELECT = '[data-ouia-component-id="BulkSelect"]';
+export const PT_BULK_SELECT_CHECKBOX = '[data-ouia-component-id="BulkSelectCheckbox"]';
+export const PT_BULK_SELECT_LIST = '[data-ouia-component-id="BulkSelectList"]';
+export const PT_BULK_ACTIONS_TOGGLE = '[data-ouia-component-id="BulkActionsToggle"]';
+export const PT_BULK_ACTIONS_LIST = '[data-ouia-component-id="BulkActionsList"]';

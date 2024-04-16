@@ -10,6 +10,7 @@ const props = {
   report,
   kbaDetail: { view_uri: 'https://access.redhat.com/solutions/12345678', publishedTitle: 'Lorem ipsum article' },
   kbaLoading: false,
+  isProd: true,
 };
 
 describe('report details: kba loaded', () => {

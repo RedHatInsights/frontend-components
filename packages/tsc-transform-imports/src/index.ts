@@ -115,7 +115,6 @@ const ICONS_NAME_FIX: {
 } = {
   AnsibeTowerIcon: 'ansibeTower-icon',
   ChartSpikeIcon: 'chartSpike-icon',
-  CloudServerIcon: 'cloudServer-icon',
 };
 
 const ICONS_CACHE: {
