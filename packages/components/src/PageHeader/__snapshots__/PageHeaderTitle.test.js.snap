@@ -20,14 +20,17 @@ exports[`PageHeader component should render 1`] = `
         >
           <Title
             className=""
+            data-ouia-component-id="OUIA-Generated-RHI/Header-true-1"
+            data-ouia-component-type="RHI/Header"
+            data-ouia-safe={true}
             headingLevel="h1"
             size="2xl"
             widget-type="InsightsPageHeaderTitle"
           >
             <h1
               className="pf-v5-c-title pf-m-2xl"
-              data-ouia-component-id="OUIA-Generated-Title-1"
-              data-ouia-component-type="PF5/Title"
+              data-ouia-component-id="OUIA-Generated-RHI/Header-true-1"
+              data-ouia-component-type="RHI/Header"
               data-ouia-safe={true}
               widget-type="InsightsPageHeaderTitle"
             >
