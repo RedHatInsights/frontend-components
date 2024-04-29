@@ -47,7 +47,7 @@ declare type ChromeUser = {
   };
 };
 
-declare type VisibilityFunctions = {
+export declare type VisibilityFunctions = {
   isOrgAdmin: () => Promise<boolean>;
   isActive: () => Promise<boolean>;
   isInternal: () => Promise<boolean>;
