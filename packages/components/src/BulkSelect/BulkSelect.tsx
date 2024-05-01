@@ -79,27 +79,31 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
               onClick={() => setIsOpen((prev) => !prev)}
               data-ouia-component-id={dropdownOuiaId ?? 'BulkSelect'}
             >
-              <Fragment key="split-checkbox">
-                {hasError ? (
-                  <MenuToggleCheckbox
-                    id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
-                    aria-label="Select all"
-                    onChange={onSelect}
-                    isChecked={checked}
-                    ouiaId={checkboxOuiaId ?? 'BulkSelectCheckbox'}
-                  />
-                ) : (
-                  <MenuToggleCheckbox
-                    id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
-                    aria-label="Select all"
-                    onChange={onSelect}
-                    isChecked={checked}
-                    ouiaId={checkboxOuiaId ?? 'BulkSelectCheckbox'}
-                  >
-                    {count ? `${count} selected` : ''}
-                  </MenuToggleCheckbox>
-                )}
-              </Fragment>
+              {toggleProps?.children ? (
+                toggleProps?.children
+              ) : (
+                <Fragment key="split-checkbox">
+                  {hasError ? (
+                    <MenuToggleCheckbox
+                      id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
+                      aria-label="Select all"
+                      onChange={onSelect}
+                      isChecked={checked}
+                      ouiaId={checkboxOuiaId ?? 'BulkSelectCheckbox'}
+                    />
+                  ) : (
+                    <MenuToggleCheckbox
+                      id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
+                      aria-label="Select all"
+                      onChange={onSelect}
+                      isChecked={checked}
+                      ouiaId={checkboxOuiaId ?? 'BulkSelectCheckbox'}
+                    >
+                      {count ? `${count} selected` : ''}
+                    </MenuToggleCheckbox>
+                  )}
+                </Fragment>
+              )}
             </MenuToggle>
           )}
           isOpen={isOpen}

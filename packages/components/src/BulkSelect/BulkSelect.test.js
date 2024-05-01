@@ -162,5 +162,23 @@ describe('BulkSelect', () => {
       );
       expect(screen.getByRole('button', { expanded: false })).toBeDisabled();
     });
+
+    it('should not override children passed in via toggleProps', () => {
+      render(
+        <BulkSelect
+          items={[
+            {
+              title: 'Select all',
+              onClick: jest.fn(),
+            },
+          ]}
+          toggleProps={{
+            children: ['10 selected'],
+          }}
+        />
+      );
+
+      expect(screen.getByRole('button', { name: '10 selected' })).toBeInTheDocument();
+    });
   });
 });
