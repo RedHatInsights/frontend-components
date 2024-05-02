@@ -1,7 +1,7 @@
+const { fecLogger, LogType } = require('@redhat-cloud-services/frontend-components-config-utilities');
 import FECConfiguration from '../lib/fec.config';
 import config from '../lib/index';
 import commonPlugins from './webpack.plugins';
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const fecConfig: FECConfiguration = require(process.env.FEC_CONFIG_PATH!);
 
 type Configuration = import('webpack').Configuration;
@@ -18,9 +18,16 @@ const { config: webpackConfig, plugins } = config({
 plugins.push(...commonPlugins, ...externalPlugins);
 
 const start = (env: { analyze?: string }): Configuration => {
-  if (env && env.analyze === 'true') {
-    plugins.push(new BundleAnalyzerPlugin());
-  }
+  try {
+    const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+    if (BundleAnalyzerPlugin && env && env.analyze === 'true') {
+      fecLogger(LogType.warn, `Webpack Bundle Analyzer support will be is deprecated and will be removed in the next major release.`);
+
+      plugins.push(new BundleAnalyzerPlugin());
+    }
+  } catch {} // eslint-disable-line
+
   return {
     ...webpackConfig,
     plugins,
