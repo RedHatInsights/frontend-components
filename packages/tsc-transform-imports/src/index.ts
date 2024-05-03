@@ -145,17 +145,35 @@ function camelToDash(str: string) {
   return str.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`).replace(/^-/, '');
 }
 
+function iconImportLiteral(icon: string) {
+  if (ICONS_CACHE[icon]) {
+    return ICONS_CACHE[icon];
+  }
+
+  const assumedImportName = camelToDash(icon);
+  const fallbackName = ICONS_NAME_FIX[icon];
+
+  if (ICONS_DIRECTORIES.map((root) => glob.sync(`${root}/**/${assumedImportName}.js`)).flat().length > 0) {
+    ICONS_CACHE[icon] = `@patternfly/react-icons/dist/dynamic/icons/${assumedImportName}`;
+  }
+
+  if (!ICONS_CACHE[icon] && fallbackName && ICONS_DIRECTORIES.map((root) => glob.sync(`${root}/**/${fallbackName}.js`)).flat().length > 0) {
+    ICONS_CACHE[icon] = `@patternfly/react-icons/dist/dynamic/icons/${fallbackName}`;
+  }
+
+  if (ICONS_CACHE[icon]) {
+    return ICONS_CACHE[icon];
+  } else {
+    throw new Error(
+      `Cannot find source files for the ${icon} icon. Expected filename ${assumedImportName}. It is possible the icon name does not match the filename pattern. You can look for the source file and add a new entry to the ICONS_NAME_FIX in the @redhat-cloud-services/tsc-transform-imports package.`
+    );
+  }
+}
+
 function createIconDynamicImports(nodeFactory: ts.NodeFactory, iconNames: string[]) {
   const imports = iconNames.map((icon) => {
-    const nameSpecifier = ICONS_NAME_FIX[icon] || camelToDash(icon);
-    const importLiteral = `@patternfly/react-icons/dist/dynamic/icons/${nameSpecifier}`;
-    const exists = ICONS_CACHE[icon] || ICONS_DIRECTORIES.map((root) => glob.sync(`${root}/**/${nameSpecifier}.js`)).flat().length > 0;
-    if (!exists) {
-      throw new Error(
-        `Cannot find source files for the ${icon} icon. Expected filename ${nameSpecifier}. It is possible the icon name does not match the filename pattern. You can look for the source file and add a new entry to the ICONS_NAME_FIX in the @redhat-cloud-services/tsc-transform-imports package.`
-      );
-    }
-    ICONS_CACHE[icon] = importLiteral;
+    const importLiteral = iconImportLiteral(icon);
+
     return nodeFactory.createImportDeclaration(
       undefined,
       nodeFactory.createImportClause(false, nodeFactory.createIdentifier(icon), undefined),
