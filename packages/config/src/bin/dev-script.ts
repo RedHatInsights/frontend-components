@@ -33,6 +33,7 @@ async function devScript(
     webpackConfig?: string;
     clouddotEnv?: string;
     uiEnv?: string;
+    port?: string;
   },
   cwd: string
 ) {
@@ -67,6 +68,10 @@ async function devScript(
       }
     } else {
       await setEnv(cwd);
+    }
+
+    if (argv.port) {
+      process.env.PORT = argv.port;
     }
 
     spawn(`npm exec -- webpack serve -c ${configPath}`, [], {

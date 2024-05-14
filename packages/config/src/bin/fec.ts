@@ -88,7 +88,7 @@ const argv = yargs
         alias: 'c',
         describe: 'Path to webpack config',
       })
-      .positional('port', {
+      .option('port', {
         type: 'number',
         alias: 'p',
         describe: 'Asset server port',
@@ -97,10 +97,17 @@ const argv = yargs
   })
   .command('patch-etc-hosts', "You may have to run this as 'sudo'. Setup your etc/hosts allow development hosts in your browser")
   .command('dev', 'Start development server', (yargs) => {
-    yargs.positional('webpack-config', {
-      type: 'string',
-      describe: 'Path to webpack config',
-    });
+    yargs
+      .positional('webpack-config', {
+        type: 'string',
+        describe: 'Path to webpack config',
+      })
+      .option('port', {
+        type: 'number',
+        alias: 'p',
+        describe: 'Asset server port',
+        default: 1337,
+      });
   })
   .command('build', 'Build production bundle', (yargs) => {
     yargs.positional('webpack-config', {
