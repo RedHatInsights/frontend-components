@@ -2,6 +2,7 @@
 import { relative, resolve } from 'path';
 import { DynamicRemotePlugin, EncodedExtension, PluginBuildMetadata, WebpackSharedConfig } from '@openshift/dynamic-plugin-sdk-webpack';
 import jsVarName from './jsVarName';
+import fecLogger, { LogType } from './fec-logger';
 
 const defaultPluginMetaDataJSON = {
   version: '1.0.0',
@@ -111,6 +112,10 @@ const federatedModules = ({
     if (exclude.length > 0) {
       console.log('Excluding default packages', exclude);
     }
+  }
+
+  if (!exposes) {
+    fecLogger(LogType.warn, 'No exposed modules provided! Falling back to ./src/AppEntry as "./RootApp"');
   }
 
   const pluginMetadataInternal = {
