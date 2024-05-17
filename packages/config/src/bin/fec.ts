@@ -105,7 +105,7 @@ const argv = yargs
       .option('port', {
         type: 'number',
         alias: 'p',
-        describe: 'Asset server port',
+        describe: 'Webpack dev server port',
         default: 1337,
       });
   })

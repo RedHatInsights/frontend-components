@@ -54,12 +54,13 @@ const { config: webpackConfig, plugins } = config({
   useFileHash: false,
   // enable webpack cache by default in dev env
   useCache: true,
-  ...externalConfig,
   routes: internalProxyRoutes,
   appUrl,
   deployment: isBeta ? 'beta/apps' : 'apps',
   env: `${process.env.CLOUDOT_ENV}-${isBeta === true ? 'beta' : 'stable'}` as FrontendEnv,
   rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
+  ...externalConfig,
+  ...(process.env.PORT ? { port: parseInt(process.env.PORT) } : {}),
 });
 plugins.push(...commonPlugins, ...externalPlugins);
 
