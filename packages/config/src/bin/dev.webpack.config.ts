@@ -62,6 +62,7 @@ const { config: webpackConfig, plugins } = config({
   ...externalConfig,
   ...(process.env.PORT ? { port: parseInt(process.env.PORT) } : {}),
   ...(process.env.LOCAL_APPS ? { localApps: process.env.LOCAL_APPS } : {}),
+  ...(process.env.USE_PROXY === 'true' ? { useProxy: true } : {}),
 });
 plugins.push(...commonPlugins, ...externalPlugins);
 

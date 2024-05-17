@@ -75,6 +75,9 @@ async function devScript(
       process.env.PORT = argv.port;
     }
 
+    if (argv.proxy) {
+      process.env.USE_PROXY = 'true';
+    }
 
     if (argv.apps) {
       process.env.LOCAL_APPS = argv.apps;

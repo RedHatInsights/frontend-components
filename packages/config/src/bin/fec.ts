@@ -107,6 +107,11 @@ const argv = yargs
         alias: 'p',
         describe: 'Webpack dev server port',
         default: 1337,
+      })
+      .option('proxy', {
+        type: 'boolean',
+        default: false,
+        describe: 'Enable proxying',
       });
   })
   .command('build', 'Build production bundle', (yargs) => {
