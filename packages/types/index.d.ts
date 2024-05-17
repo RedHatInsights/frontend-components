@@ -169,6 +169,7 @@ export interface ChromeAPI {
     type: string;
     payload: string;
   };
+  getAvailableBundles: () => { id: string; title: string }[];
   helpTopics: {
     addHelpTopics: (topics: HelpTopic[], enabled?: boolean) => void;
     enableTopics: (...topicsNames: EnableTopicsArgs) => Promise<HelpTopic[]>;
