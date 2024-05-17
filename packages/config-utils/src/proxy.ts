@@ -139,7 +139,7 @@ const proxy = ({
   bounceProd = false,
   useAgent = true,
   useDevBuild = true,
-  localApps = process.env.LOCAL_APPS,
+  localApps,
 }: ProxyOptions) => {
   const proxy: ProxyConfigItem[] = [];
   const majorEnv = env.split('-')[0];

@@ -50,6 +50,7 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   cacheConfig?: Partial<CacheOptions>;
   nodeModulesDirectories?: string[];
   resolve?: ResolveOptions;
+  localApps: string;
 }
 
 export const createConfig = ({
@@ -91,6 +92,7 @@ export const createConfig = ({
   resolve = {},
   // additional node_modules dirs for searchIgnoredStyles, usefull in monorepo scenario
   nodeModulesDirectories = [],
+  localApps,
 }: CreateConfigOptions): Configuration => {
   if (typeof _unstableHotReload !== 'undefined') {
     fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
@@ -295,6 +297,7 @@ export const createConfig = ({
         bounceProd,
         useAgent,
         useDevBuild,
+        localApps,
       }),
     },
   };

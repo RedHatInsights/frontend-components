@@ -61,6 +61,7 @@ const { config: webpackConfig, plugins } = config({
   rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
   ...externalConfig,
   ...(process.env.PORT ? { port: parseInt(process.env.PORT) } : {}),
+  ...(process.env.LOCAL_APPS ? { localApps: process.env.LOCAL_APPS } : {}),
 });
 plugins.push(...commonPlugins, ...externalPlugins);
 

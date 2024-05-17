@@ -34,6 +34,7 @@ async function devScript(
     clouddotEnv?: string;
     uiEnv?: string;
     port?: string;
+    apps?: string;
   },
   cwd: string
 ) {
@@ -74,11 +75,16 @@ async function devScript(
       process.env.PORT = argv.port;
     }
 
+
+    if (argv.apps) {
+      process.env.LOCAL_APPS = argv.apps;
+    }
     spawn(`npm exec -- webpack serve -c ${configPath}`, [], {
       stdio: [process.stdout, process.stdout, process.stdout],
       cwd,
       shell: true,
     });
+
     if (fecConfig.interceptChromeConfig === true) {
       const interceptorServerPath = resolve(__dirname, './csc-interceptor-server.js');
       const interceptorServerArgs = [interceptorServerPath];
