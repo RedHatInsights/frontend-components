@@ -34,8 +34,6 @@ function createAppUrl(appUrl: string | string[] | (string | RegExp)[]) {
   }
 }
 
-const appUrl = createAppUrl(fecConfig.appUrl);
-
 const { plugins: externalPlugins = [], interceptChromeConfig, routes, ...externalConfig } = fecConfig;
 
 const internalProxyRoutes: { [endpoint: string]: ProxyConfigArrayItem } = {
@@ -55,7 +53,7 @@ const { config: webpackConfig, plugins } = config({
   // enable webpack cache by default in dev env
   useCache: true,
   routes: internalProxyRoutes,
-  appUrl,
+  ...(fecConfig.appUrl ? { appUrl: createAppUrl(fecConfig.appUrl) } : {}),
   deployment: isBeta ? 'beta/apps' : 'apps',
   env: `${process.env.CLOUDOT_ENV}-${isBeta === true ? 'beta' : 'stable'}` as FrontendEnv,
   rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
@@ -63,7 +61,12 @@ const { config: webpackConfig, plugins } = config({
   ...(process.env.PORT ? { port: parseInt(process.env.PORT) } : {}),
   ...(process.env.LOCAL_APPS ? { localApps: process.env.LOCAL_APPS } : {}),
   ...(process.env.USE_PROXY === 'true' ? { useProxy: true } : {}),
+  ...(process.env.LOCAL_APIS ? { localApis: process.env.LOCAL_APIS } : {}),
+  ...(process.env.LOCAL_APP_HOST ? { localAppHost: process.env.LOCAL_APP_HOST } : {}),
+  ...(process.env.SKIP_PROXY_CHECK === 'true' ? { skipProxyCheck: true } : {}),
+  ...(process.env.DEBUG === 'true' ? { debug: true } : {}),
 });
+
 plugins.push(...commonPlugins, ...externalPlugins);
 
 const devConfig: Configuration = {

@@ -35,6 +35,10 @@ async function devScript(
     uiEnv?: string;
     port?: string;
     apps?: string;
+    apis?: string;
+    proxy?: boolean;
+    debug?: boolean;
+    proxyCheck?: boolean;
   },
   cwd: string
 ) {
@@ -82,6 +86,19 @@ async function devScript(
     if (argv.apps) {
       process.env.LOCAL_APPS = argv.apps;
     }
+
+    if (argv.apis) {
+      process.env.LOCAL_APIS = argv.apis;
+    }
+
+    if (argv.debug) {
+      process.env.DEBUG = 'true';
+    }
+
+    if (argv.proxyCheck === false) {
+      process.env.SKIP_PROXY_CHECK = 'true';
+    }
+
     spawn(`npm exec -- webpack serve -c ${configPath}`, [], {
       stdio: [process.stdout, process.stdout, process.stdout],
       cwd,

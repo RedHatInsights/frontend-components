@@ -112,6 +112,21 @@ const argv = yargs
         type: 'boolean',
         default: false,
         describe: 'Enable proxying',
+      })
+      .option('apps', {
+        type: 'string',
+        describe:
+          'A coma seperated string of frontend applications with ports and optional protocol to create routes for (APP_NAME:APP_PORT[~APP_PROTOCOL])',
+      })
+      .option('apis', {
+        type: 'string',
+        describe:
+          'A coma seperated string of application APIs with ports and optional protocol to create routes for (APP_NAME:APP_PORT[~APP_PROTOCOL])',
+      })
+      .option('proxy-check', {
+        type: 'boolean',
+        default: false,
+        describe: 'Disable checking proxied routes via curl (if available)',
       });
   })
   .command('build', 'Build production bundle', (yargs) => {
@@ -127,6 +142,10 @@ const argv = yargs
   .option('uiEnv', {
     describe: "Set Chrome environment ['beta', 'stable']",
     type: 'string',
+  })
+  .option('debug', {
+    type: 'boolean',
+    describe: 'Enable debug output',
   })
   .example('$0 dev --clouddotEnv=stage --uiEnv=stable', 'Example of usage in non-interactive environments')
   .help().argv;

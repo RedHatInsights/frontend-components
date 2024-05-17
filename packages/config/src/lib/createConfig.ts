@@ -37,7 +37,7 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   isProd?: boolean;
   standalone?: boolean;
   reposDir?: string;
-  appUrl?: (string | RegExp)[];
+  appUrl?: string | (string | RegExp)[];
   proxyVerbose?: boolean;
   target?: string;
   registry?: ProxyOptions['registry'];
@@ -50,7 +50,10 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   cacheConfig?: Partial<CacheOptions>;
   nodeModulesDirectories?: string[];
   resolve?: ResolveOptions;
-  localApps: string;
+  localApps?: string;
+  localApis?: string;
+  skipProxyCheck?: boolean;
+  debug?: boolean;
 }
 
 export const createConfig = ({
@@ -93,6 +96,8 @@ export const createConfig = ({
   // additional node_modules dirs for searchIgnoredStyles, usefull in monorepo scenario
   nodeModulesDirectories = [],
   localApps,
+  localApis,
+  skipProxyCheck,
 }: CreateConfigOptions): Configuration => {
   if (typeof _unstableHotReload !== 'undefined') {
     fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
@@ -298,6 +303,8 @@ export const createConfig = ({
         useAgent,
         useDevBuild,
         localApps,
+        localApis,
+        skipProxyCheck,
       }),
     },
   };
