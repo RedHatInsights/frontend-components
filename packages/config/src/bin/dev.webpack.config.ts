@@ -48,6 +48,7 @@ const internalProxyRoutes: { [endpoint: string]: ProxyConfigArrayItem } = {
 };
 
 const { config: webpackConfig, plugins } = config({
+  ...externalConfig,
   // do not hash files in dev env
   useFileHash: false,
   // enable webpack cache by default in dev env
@@ -57,14 +58,14 @@ const { config: webpackConfig, plugins } = config({
   deployment: isBeta ? 'beta/apps' : 'apps',
   env: `${process.env.CLOUDOT_ENV}-${isBeta === true ? 'beta' : 'stable'}` as FrontendEnv,
   rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
-  ...externalConfig,
+  hotReload: process.env.HOT_RELOAD === 'true',
+  debug: process.env.DEBUG === 'true',
+  skipProxyCheck: process.env.SKIP_PROXY_CHECK === 'true',
+  useProxy: process.env.USE_PROXY === 'true',
   ...(process.env.PORT ? { port: parseInt(process.env.PORT) } : {}),
   ...(process.env.LOCAL_APPS ? { localApps: process.env.LOCAL_APPS } : {}),
-  ...(process.env.USE_PROXY === 'true' ? { useProxy: true } : {}),
   ...(process.env.LOCAL_APIS ? { localApis: process.env.LOCAL_APIS } : {}),
   ...(process.env.LOCAL_APP_HOST ? { localAppHost: process.env.LOCAL_APP_HOST } : {}),
-  ...(process.env.SKIP_PROXY_CHECK === 'true' ? { skipProxyCheck: true } : {}),
-  ...(process.env.DEBUG === 'true' ? { debug: true } : {}),
 });
 
 plugins.push(...commonPlugins, ...externalPlugins);

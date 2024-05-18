@@ -4,7 +4,7 @@ const { resolve } = require('path');
 const { spawn } = require('child_process');
 import { getWebpackConfigPath, validateFECConfig } from './common';
 
-export const flags = (yargs) => {
+export const flags = (yargs: any) => {
   yargs
     .positional('webpack-config', {
       type: 'string',
@@ -33,8 +33,13 @@ export const flags = (yargs) => {
     })
     .option('proxy-check', {
       type: 'boolean',
-      default: false,
-      describe: 'Disable checking proxied routes via curl (if available)',
+      default: true,
+      describe: 'Check proxied routes via curl (if available)',
+    })
+    .option('hot-reload', {
+      type: 'boolean',
+      default: true,
+      describe: 'Enable hot reloading',
     });
 };
 
@@ -73,6 +78,7 @@ async function devScript(
     proxy?: boolean;
     debug?: boolean;
     proxyCheck?: boolean;
+    hotReload?: boolean;
   },
   cwd: string
 ) {
@@ -126,11 +132,15 @@ async function devScript(
     }
 
     if (argv.debug) {
-      process.env.DEBUG = 'true';
+      process.env.DEBUG = argv.debug;
     }
 
-    if (argv.proxyCheck === false) {
-      process.env.SKIP_PROXY_CHECK = 'true';
+    if (argv.proxyCheck) {
+      process.env.SKIP_PROXY_CHECK = !argv.proxyCheck;
+    }
+
+    if (argv.hotReload) {
+      process.env.HOT_RELOAD = argv.hotReload;
     }
 
     spawn(`npm exec -- webpack serve -c ${configPath}`, [], {
