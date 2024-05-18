@@ -97,37 +97,7 @@ const argv = yargs
   })
   .command('patch-etc-hosts', "You may have to run this as 'sudo'. Setup your etc/hosts allow development hosts in your browser")
   .command('dev', 'Start development server', (yargs) => {
-    yargs
-      .positional('webpack-config', {
-        type: 'string',
-        describe: 'Path to webpack config',
-      })
-      .option('port', {
-        type: 'number',
-        alias: 'p',
-        describe: 'Webpack dev server port',
-        default: 1337,
-      })
-      .option('proxy', {
-        type: 'boolean',
-        default: false,
-        describe: 'Enable proxying',
-      })
-      .option('apps', {
-        type: 'string',
-        describe:
-          'A coma seperated string of frontend applications with ports and optional protocol to create routes for (APP_NAME:APP_PORT[~APP_PROTOCOL])',
-      })
-      .option('apis', {
-        type: 'string',
-        describe:
-          'A coma seperated string of application APIs with ports and optional protocol to create routes for (APP_NAME:APP_PORT[~APP_PROTOCOL])',
-      })
-      .option('proxy-check', {
-        type: 'boolean',
-        default: false,
-        describe: 'Disable checking proxied routes via curl (if available)',
-      });
+    devScript.flags(yargs);
   })
   .command('build', 'Build production bundle', (yargs) => {
     yargs.positional('webpack-config', {
