@@ -390,15 +390,6 @@ const proxy = ({
             chromePath = resolvePath(reposDir, standaloneConfig.chrome.path);
             keycloakUri = standaloneConfig.chrome.keycloakUri;
           }
-        } else if (!localChrome && useProxy) {
-          const chromeConfig = typeof defaultServices.chrome === 'function' ? defaultServices.chrome({}) : defaultServices.chrome;
-
-          const chromeEnv = useDevBuild ? (env.includes('-beta') ? 'dev-beta' : 'dev-stable') : env;
-          chromePath = checkoutRepo({
-            repo: `${chromeConfig.path}#${chromeEnv}`,
-            reposDir,
-            overwrite: true,
-          });
         }
 
         onBeforeSetupMiddleware({ chromePath });

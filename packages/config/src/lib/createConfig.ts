@@ -10,6 +10,8 @@ type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
 type ClientConfiguration = import('webpack-dev-server').ClientConfiguration;
 type ResolveOptions = import('webpack').ResolveOptions;
 
+export type FrontendEnv = 'stage-stable' | 'prod-stable' | 'ci-stable' | 'qa-stable' | 'stage-beta' | 'prod-beta' | 'ci-beta' | 'qa-beta';
+
 export interface CommonConfigOptions {
   rootFolder: string;
   appName: string;
@@ -17,15 +19,15 @@ export interface CommonConfigOptions {
   _unstableHotReload?: boolean;
   hotReload?: boolean;
   useFileHash?: boolean;
+  env?: FrontendEnv;
 }
-export type FrontendEnv = 'stage-stable' | 'prod-stable' | 'ci-stable' | 'qa-stable' | 'stage-beta' | 'prod-beta' | 'ci-beta' | 'qa-beta';
+
 export interface CreateConfigOptions extends CommonConfigOptions {
   port?: number;
   publicPath: string;
   appEntry: string;
   https?: boolean;
   mode?: Configuration['mode'];
-  env?: FrontendEnv;
   sassPrefix?: string;
   useProxy?: boolean;
   proxyURL?: string;
@@ -299,11 +301,6 @@ export const createConfig = ({
         proxyVerbose,
         target,
         registry,
-        onBeforeSetupMiddleware: ({ chromePath }) => {
-          if (chromePath) {
-            copyTemplate(chromePath);
-          }
-        },
         bounceProd,
         useAgent,
         useDevBuild,
