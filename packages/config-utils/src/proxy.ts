@@ -363,9 +363,10 @@ const proxy = ({
       if (useProxy || standaloneConfig) {
         const host = useProxy ? `${majorEnv}.foo.redhat.com` : 'localhost';
         const origin = `http${server.options.https ? 's' : ''}://${host}:${server.options.port}`;
+        fecLogger(LogType.info, '');
         fecLogger(LogType.info, 'App should run on:');
-
         (typeof appUrl === 'string' ? [appUrl] : appUrl).forEach((url) => fecLogger(LogType.info, `  - ${origin}${url}`));
+        fecLogger(LogType.info, '');
       }
     },
     onBeforeSetupMiddleware({ app, compiler, options }) {

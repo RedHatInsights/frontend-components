@@ -1,4 +1,5 @@
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
+type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
 import createConfig, { CreateConfigOptions } from './createConfig';
 import createPlugins, { CreatePluginsOptions } from './createPlugins';
 const { sync } = require('glob');
@@ -51,6 +52,10 @@ const createFecConfig = (
   config: ReturnType<typeof createConfig>;
   plugins: ReturnType<typeof createPlugins>;
 } => {
+  if (configurations.debug) {
+    fecLogger(LogType.info, 'FEC configuration: ', JSON.stringify(configurations || {}, null, 2));
+  }
+
   configurations.isProd = configurations.isProd || process.env.NODE_ENV === 'production';
   const isProd = configurations.isProd;
   const { insights } = require(`${configurations.rootFolder}/package.json`);
@@ -70,27 +75,23 @@ const createFecConfig = (
   const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
   const generateSourceMaps = !akamaiBranches.includes(gitBranch);
 
-  if (configurations.debug) {
-    console.group();
-    fecLogger(LogType.debug, '~~~Using variables~~~');
-    fecLogger(LogType.debug, `Root folder: ${configurations.rootFolder}`);
-    fecLogger(LogType.debug, `Current branch: ${gitBranch}`);
-    !generateSourceMaps && fecLogger(LogType.debug, `Source map generation for "${gitBranch}" deployment has been disabled.`);
-    fecLogger(LogType.debug, `Beta branches: ${betaBranches}`);
-    fecLogger(LogType.debug, `Using deployments: ${appDeployment}`);
-    fecLogger(LogType.debug, `Public path: ${publicPath}`);
-    fecLogger(LogType.debug, `App entry: ${appEntry}`);
-    fecLogger(LogType.debug, `Use proxy: ${configurations.useProxy ? 'true' : 'false'}`);
-    if (!(configurations.useProxy || configurations.standalone)) {
-      fecLogger(LogType.warn, 'Insights-proxy is deprecated in favor of "useProxy" or "standalone".');
-      fecLogger(LogType.warn, 'See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
-    }
+  console.group();
+  fecLogger(LogType.info, `Root folder: ${configurations.rootFolder}`);
+  fecLogger(LogType.info, `Current branch: ${gitBranch}`);
+  !generateSourceMaps && fecLogger(LogType.info, `Source map generation for "${gitBranch}" deployment has been disabled.`);
+  fecLogger(LogType.info, `Using deployments: ${appDeployment}`);
+  fecLogger(LogType.info, `Public path: ${publicPath}`);
+  fecLogger(LogType.info, `App entry: ${appEntry}`);
+  fecLogger(LogType.info, `Proxy Mode enabled: ${configurations.useProxy ? 'true' : 'false'}`);
+  fecLogger(LogType.info, `NODE_ENV: ${process.env.NODE_ENV || 'not set'}`);
 
-    console.groupEnd();
-    /* eslint-enable no-console */
+  if (!(configurations.useProxy || configurations.standalone)) {
+    fecLogger(LogType.warn, 'Insights-proxy is deprecated in favor of "useProxy" or "standalone".');
+    fecLogger(LogType.warn, 'See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
   }
+  console.groupEnd();
 
-  return {
+  const fullWebPackConfig = {
     config: createConfig({
       ...configurations,
       publicPath,
@@ -103,6 +104,12 @@ const createFecConfig = (
       appName: insights.appname,
     }),
   };
+
+  if (configurations.debug) {
+    fecLogger(LogType.info, 'Full webpack configuration: ', JSON.stringify(fullWebPackConfig, null, 2));
+  }
+
+  return fullWebPackConfig;
 };
 
 export default createFecConfig;
