@@ -40,6 +40,11 @@ export const flags = (yargs: any) => {
       type: 'boolean',
       default: true,
       describe: 'Enable hot reloading',
+    })
+    .option('output-configs', {
+      type: 'boolean',
+      default: false,
+      describe: 'Enables output of the full FEC configuration and the resulting Webpack (DevServer) config',
     });
 };
 
@@ -79,6 +84,7 @@ async function devScript(
     debug?: boolean;
     proxyCheck?: boolean;
     hotReload?: boolean;
+    outputConfigs?: boolean;
   },
   cwd: string
 ) {
@@ -141,6 +147,10 @@ async function devScript(
 
     if (argv.hotReload) {
       process.env.HOT_RELOAD = argv.hotReload;
+    }
+
+    if (argv.outputConfigs) {
+      process.env.OUTPUT_CONFIGS = argv.outputConfigs;
     }
 
     spawn(`npm exec -- webpack serve -c ${configPath}`, [], {

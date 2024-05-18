@@ -4,6 +4,7 @@ import { execSync } from 'child_process';
 import fetch from 'node-fetch';
 import express from 'express';
 import path from 'path';
+import chalk from 'chalk';
 import type { Configuration } from 'webpack-dev-server';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import cookieTransform from './cookieTransform';
@@ -364,7 +365,8 @@ const proxy = ({
         const host = useProxy ? `${majorEnv}.foo.redhat.com` : 'localhost';
         const origin = `http${server.options.https ? 's' : ''}://${host}:${server.options.port}`;
         fecLogger(LogType.info, '');
-        fecLogger(LogType.info, 'App should run on:');
+        fecLogger(LogType.info, chalk.bold('App should run on:'));
+        fecLogger(LogType.info, '');
         (typeof appUrl === 'string' ? [appUrl] : appUrl).forEach((url) => fecLogger(LogType.info, `  - ${origin}${url}`));
         fecLogger(LogType.info, '');
       }

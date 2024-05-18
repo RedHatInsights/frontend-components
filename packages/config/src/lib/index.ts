@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
 import createConfig, { CreateConfigOptions } from './createConfig';
@@ -52,10 +53,6 @@ const createFecConfig = (
   config: ReturnType<typeof createConfig>;
   plugins: ReturnType<typeof createPlugins>;
 } => {
-  if (configurations.debug) {
-    fecLogger(LogType.info, 'FEC configuration: ', JSON.stringify(configurations || {}, null, 2));
-  }
-
   configurations.isProd = configurations.isProd || process.env.NODE_ENV === 'production';
   const isProd = configurations.isProd;
   const { insights } = require(`${configurations.rootFolder}/package.json`);
@@ -75,22 +72,6 @@ const createFecConfig = (
   const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
   const generateSourceMaps = !akamaiBranches.includes(gitBranch);
 
-  console.group();
-  fecLogger(LogType.info, `Root folder: ${configurations.rootFolder}`);
-  fecLogger(LogType.info, `Current branch: ${gitBranch}`);
-  !generateSourceMaps && fecLogger(LogType.info, `Source map generation for "${gitBranch}" deployment has been disabled.`);
-  fecLogger(LogType.info, `Using deployments: ${appDeployment}`);
-  fecLogger(LogType.info, `Public path: ${publicPath}`);
-  fecLogger(LogType.info, `App entry: ${appEntry}`);
-  fecLogger(LogType.info, `Proxy Mode enabled: ${configurations.useProxy ? 'true' : 'false'}`);
-  fecLogger(LogType.info, `NODE_ENV: ${process.env.NODE_ENV || 'not set'}`);
-
-  if (!(configurations.useProxy || configurations.standalone)) {
-    fecLogger(LogType.warn, 'Insights-proxy is deprecated in favor of "useProxy" or "standalone".');
-    fecLogger(LogType.warn, 'See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
-  }
-  console.groupEnd();
-
   const fullWebPackConfig = {
     config: createConfig({
       ...configurations,
@@ -105,8 +86,25 @@ const createFecConfig = (
     }),
   };
 
-  if (configurations.debug) {
-    fecLogger(LogType.info, 'Full webpack configuration: ', JSON.stringify(fullWebPackConfig, null, 2));
+  if (configurations.outputConfigs) {
+    fecLogger(LogType.info, chalk.bold('FEC configuration:') + '\n' + JSON.stringify(configurations || {}, null, 2));
+    fecLogger(LogType.info, '');
+    fecLogger(LogType.info, chalk.bold('Webpack configuration:') + '\n' + JSON.stringify(fullWebPackConfig || {}, null, 2));
+  }
+
+  fecLogger(LogType.info, `Root folder: ${configurations.rootFolder}`);
+  fecLogger(LogType.info, `Current branch: ${gitBranch}`);
+  !generateSourceMaps && fecLogger(LogType.info, `Source map generation for "${gitBranch}" deployment has been disabled.`);
+  fecLogger(LogType.info, `Using deployments: ${appDeployment}`);
+  fecLogger(LogType.info, `Public path: ${publicPath}`);
+  fecLogger(LogType.info, `App entry: ${appEntry}`);
+  fecLogger(LogType.info, `Proxy Mode enabled: ${configurations.useProxy ? 'true' : 'false'}`);
+  fecLogger(LogType.info, `NODE_ENV: ${process.env.NODE_ENV || 'not set'}`);
+  fecLogger(LogType.info, `Backend environment: ${configurations.env}`);
+
+  if (!(configurations.useProxy || configurations.standalone)) {
+    fecLogger(LogType.warn, 'Insights-proxy is deprecated in favor of "useProxy" or "standalone".');
+    fecLogger(LogType.warn, 'See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
   }
 
   return fullWebPackConfig;

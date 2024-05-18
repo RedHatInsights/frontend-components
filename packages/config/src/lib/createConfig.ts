@@ -3,7 +3,7 @@ const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
 
-import { LogType, ProxyOptions, fecLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { LogType, ProxyOptions, fecLogger, fecWebpackLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
 type Configuration = import('webpack').Configuration;
 type CacheOptions = import('webpack').FileCacheOptions | import('webpack').MemoryCacheOptions;
 type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
@@ -54,6 +54,7 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   localApis?: string;
   skipProxyCheck?: boolean;
   debug?: boolean;
+  outputConfigs?: boolean;
 }
 
 export const createConfig = ({
@@ -120,6 +121,10 @@ export const createConfig = ({
   return {
     mode: mode || (isProd ? 'production' : 'development'),
     devtool: false,
+    infrastructureLogging: {
+      colors: true,
+      console: fecWebpackLogger(),
+    },
     ...(useCache
       ? {
           cache: {
