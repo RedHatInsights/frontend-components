@@ -47,6 +47,7 @@ export const fecWebpackLogger = () => {
   }
 
   return {
+    ...console,
     error: (...args: any[]) => log(LogType.error, chalk.bold.red(...cleanUpLog(args))),
     warn: (...args: any[]) => log(LogType.warn, ...cleanUpLog(args)),
     info: (...args: any[]) => log(LogType.info, ...cleanUpLog(args)),
