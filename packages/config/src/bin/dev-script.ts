@@ -132,31 +132,31 @@ async function devScript(
     }
 
     if (argv.proxy) {
-      process.env.USE_PROXY = 'true';
+      process.env.USE_PROXY = argv.proxy.toString();
     }
 
     if (argv.apps) {
-      process.env.LOCAL_APPS = argv.apps;
+      process.env.LOCAL_APPS = argv.apps.toString();
     }
 
     if (argv.apis) {
-      process.env.LOCAL_APIS = argv.apis;
+      process.env.LOCAL_APIS = argv.apis.toString();
     }
 
     if (argv.debug) {
-      process.env.DEBUG = argv.debug;
+      process.env.DEBUG = argv.debug.toString();
     }
 
     if (argv.proxyCheck) {
-      process.env.SKIP_PROXY_CHECK = !argv.proxyCheck;
+      process.env.SKIP_PROXY_CHECK = (!argv.proxyCheck).toString();
     }
 
     if (argv.hotReload) {
-      process.env.HOT_RELOAD = argv.hotReload;
+      process.env.HOT_RELOAD = argv.hotReload.toString();
     }
 
     if (argv.outputConfigs) {
-      process.env.OUTPUT_CONFIGS = argv.outputConfigs;
+      process.env.OUTPUT_CONFIGS = argv.outputConfigs.toString();
     }
 
     if (argv.verbose) {
