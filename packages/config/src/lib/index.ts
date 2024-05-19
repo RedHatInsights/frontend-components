@@ -53,9 +53,12 @@ const createFecConfig = (
   config: ReturnType<typeof createConfig>;
   plugins: ReturnType<typeof createPlugins>;
 } => {
+  // TODO ... sus.
   configurations.isProd = configurations.isProd || process.env.NODE_ENV === 'production';
   const isProd = configurations.isProd;
   const { insights } = require(`${configurations.rootFolder}/package.json`);
+
+  // TODO We should deprecated building based upon git branches
   let gitBranch;
   try {
     gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH || gitRevisionPlugin.branch();

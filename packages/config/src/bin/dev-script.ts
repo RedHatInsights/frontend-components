@@ -124,6 +124,8 @@ async function devScript(
         process.exit(1);
       }
     } else {
+      // TODO This is neat,
+      // but we should just default to stage-stable, which is what we need in dev 99% of the time.
       await setEnv(cwd);
     }
 
@@ -163,12 +165,16 @@ async function devScript(
       process.env.PROXY_VERBOSE = argv.verbose.toString();
     }
 
+    // TODO Move to WebpackDevServer API instead of spawning a process
+    // Spawning a process does act weird when quitting the process, due to devservers way of quitting.
+    // It would also allow us to not have to (ab)use env variable to pass settings
     spawn(`npm exec -- webpack serve -c ${configPath}`, [], {
       stdio: [process.stdout, process.stdout, process.stdout],
       cwd,
       shell: true,
     });
 
+    // TODO Move this to be middleware that won't need a separate process.
     if (fecConfig.interceptChromeConfig === true) {
       const interceptorServerPath = resolve(__dirname, './csc-interceptor-server.js');
       const interceptorServerArgs = [interceptorServerPath];

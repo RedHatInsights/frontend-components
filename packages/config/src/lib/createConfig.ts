@@ -261,6 +261,7 @@ export const createConfig = ({
         directory: `${rootFolder || ''}/dist`,
       },
       port: devServerPort,
+      // TODO deprecated and should be replaced with `server` when fully moving to webpack(devserver) v5
       https: https || Boolean(useProxy),
       host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
       hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
@@ -281,6 +282,7 @@ export const createConfig = ({
         disableDotRule: true,
       },
       devMiddleware: {
+        // TODO Figure out if this helps in any way or if it is required for something
         writeToDisk: true,
       },
       client,

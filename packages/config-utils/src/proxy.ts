@@ -136,6 +136,7 @@ const proxy = ({
   routes,
   routesPath,
   useProxy,
+  // TODO It should be possible to set this as well from the outside.
   proxyURL = 'http://squid.corp.redhat.com:3128',
   standalone,
   port,
@@ -223,6 +224,8 @@ const proxy = ({
   }
 
   let standaloneConfig: ReturnType<typeof getConfig>;
+  // TODO do we need this "standalone" mode still?
+  // We should at least extract this into it's own module
   if (standalone) {
     standaloneConfig = getConfig(standalone, localChrome, env, port);
     // Create network for services.
@@ -362,6 +365,7 @@ const proxy = ({
     ...(proxy.length > 0 && { proxy }),
     onListening(server) {
       if (useProxy || standaloneConfig) {
+        // TODO Refactor to use the hostname provided from a config/option higher up.
         const host = useProxy ? `${majorEnv}.foo.redhat.com` : 'localhost';
         const origin = `http${server.options.https ? 's' : ''}://${host}:${server.options.port}`;
         fecLogger(LogType.info, '');
@@ -371,6 +375,7 @@ const proxy = ({
         fecLogger(LogType.info, '');
       }
     },
+    // TODO Deprecated: needs to be replaced with `setupMiddleware`
     onBeforeSetupMiddleware({ app, compiler, options }) {
       app?.enable('strict routing'); // trailing slashes are mean
 
@@ -383,6 +388,7 @@ const proxy = ({
        * Allow serving chrome assets
        * This will allow running chrome as a host application
        */
+      // TODO Most of this should be ...not here.
       if (!isChrome) {
         let chromePath = localChrome;
         if (standaloneConfig) {
@@ -394,6 +400,7 @@ const proxy = ({
 
         onBeforeSetupMiddleware({ chromePath });
 
+        // TODO What is this?
         if (app && chromePath) {
           registerChrome({
             app,
@@ -405,6 +412,7 @@ const proxy = ({
         }
       }
 
+      // TODO and this?
       registry.forEach((cb) =>
         cb({
           app,

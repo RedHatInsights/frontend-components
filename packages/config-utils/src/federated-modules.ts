@@ -14,6 +14,10 @@ const createIncludes = (eager = false): { [module: string]: WebpackSharedConfig 
   '@redhat-cloud-services/chrome': { singleton: true },
   axios: {},
   lodash: {},
+  // TODO I would propose to remove this from the shared deps
+  // The benefit is minmal. redux promise middleware and similar packages that extend redux may be highly dependent
+  // on redux and different version can become incompatible and raise unexpected errors.
+  // We could also share redux and react-redux to minimise these issues, but apps could still add other similar packages.
   'redux-promise-middleware': {},
   react: { singleton: true, eager },
   'react-dom': { singleton: true, eager },
