@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { relative, resolve } from 'path';
 import { DynamicRemotePlugin, EncodedExtension, PluginBuildMetadata, WebpackSharedConfig } from '@openshift/dynamic-plugin-sdk-webpack';
-import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
+import fecLogger, { LogType } from './fec-logger';
 import jsVarName from './jsVarName';
 
 const defaultPluginMetaDataJSON = {
