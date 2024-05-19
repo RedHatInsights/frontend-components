@@ -45,6 +45,11 @@ export const flags = (yargs: any) => {
       type: 'boolean',
       default: false,
       describe: 'Enables output of the full FEC configuration and the resulting Webpack (DevServer) config',
+    })
+    .option('verbose', {
+      type: 'boolean',
+      default: false,
+      describe: 'Enables verbose mode',
     });
 };
 
@@ -85,6 +90,7 @@ async function devScript(
     proxyCheck?: boolean;
     hotReload?: boolean;
     outputConfigs?: boolean;
+    verbose?: boolean;
   },
   cwd: string
 ) {
@@ -151,6 +157,10 @@ async function devScript(
 
     if (argv.outputConfigs) {
       process.env.OUTPUT_CONFIGS = argv.outputConfigs;
+    }
+
+    if (argv.verbose) {
+      process.env.PROXY_VERBOSE = argv.verbose.toString();
     }
 
     spawn(`npm exec -- webpack serve -c ${configPath}`, [], {

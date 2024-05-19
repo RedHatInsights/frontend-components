@@ -67,6 +67,7 @@ const { config: webpackConfig, plugins } = config({
   ...(process.env.LOCAL_APIS ? { localApis: process.env.LOCAL_APIS } : {}),
   ...(process.env.LOCAL_APP_HOST ? { localAppHost: process.env.LOCAL_APP_HOST } : {}),
   ...(process.env.OUTPUT_CONFIGS ? { outputConfigs: process.env.OUTPUT_CONFIGS === 'true' } : {}),
+  ...(process.env.PROXY_VERBOSE ? { proxyVerbose: process.env.PROXY_VERBOSE === 'true' } : {}),
 });
 
 plugins.push(...commonPlugins, ...externalPlugins);
