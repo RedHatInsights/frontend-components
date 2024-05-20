@@ -36,7 +36,7 @@
     },
     "dependencies": {
         "@redhat-cloud-services/rbac-client": "^1.0.100",
-        "@redhat-cloud-services/types": "^0.0.24",
+        "@redhat-cloud-services/types": "^1.0.9",
         "@sentry/browser": "^5.30.0",
         "awesome-debounce-promise": "^2.1.0",
         "axios": "^0.28.1",
