@@ -52,7 +52,7 @@
         "@scalprum/core": "^0.7.0",
         "@scalprum/react-core": "^0.7.0",
         "classnames": "^2.2.5",
-        "sanitize-html": "^2.7.2"
+        "sanitize-html": "^2.12.1"
     },
     "devDependencies": {
         "@cypress/webpack-dev-server": "^1.8.4",
