@@ -3,7 +3,6 @@ import { ScalprumComponent, ScalprumComponentProps } from '@scalprum/react-core'
 import { Bullseye, Spinner } from '@patternfly/react-core';
 import classNames from 'classnames';
 import { ChromeAPI } from '@redhat-cloud-services/types';
-
 export type ExcludeModulesKeys = 'appName' | 'module' | 'scope';
 
 export interface AsyncComponentProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
@@ -49,7 +48,7 @@ const BaseAsyncComponent: React.FunctionComponent<BaseAsyncComponentProps> = ({
     ...props,
   };
   return (
-    <Cmp className={classNames(className, appName)}>
+    <Cmp className={classNames(className, appName, 'pf-v5-u-h-100')}>
       <ScalprumComponent {...SCProps} />
     </Cmp>
   );
