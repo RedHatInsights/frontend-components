@@ -12,6 +12,7 @@ exports[`TableWithFilter should render loading and pagination 1`] = `
   <SkeletonTable
     numberOfColumns={1}
     rows={10}
+    variant="compact"
   />
 </Fragment>
 `;
@@ -368,6 +369,7 @@ exports[`TableWithFilter should render without data 1`] = `
   <SkeletonTable
     numberOfColumns={0}
     rows={10}
+    variant="compact"
   />
 </Fragment>
 `;

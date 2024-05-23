@@ -6,10 +6,10 @@ import { EmptyTable } from '../EmptyTable';
 import { TableToolbar } from '../TableToolbar';
 import { PrimaryToolbar, PrimaryToolbarProps } from '../PrimaryToolbar';
 import { Skeleton } from '../Skeleton';
-import { SkeletonTable } from '../SkeletonTable';
 import { BulkSelectProps } from '../BulkSelect';
 import { ConditionalFilterItem } from '../ConditionalFilter';
-import { ICell, IRow } from '@patternfly/react-table';
+import { ICell, IRow, TableVariant } from '@patternfly/react-table';
+import { SkeletonTable } from '@patternfly/react-component-groups';
 
 export type TableWithFilterPagination = {
   count: number;
@@ -119,7 +119,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
       {loaded ? (
         <Table
           aria-label={title || `${systemName} ${entityName}`}
-          variant="compact"
+          variant={TableVariant.compact}
           className="ins-c-tag-modal__table"
           cells={columns}
           rows={
@@ -133,7 +133,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
                           <EmptyTable>
                             <Bullseye>
                               <EmptyState variant={EmptyStateVariant.full}>
-                                <EmptyStateHeader titleText={`No${entityName}found`} headingLevel="h5" />
+                                <EmptyStateHeader titleText={`No ${entityName} found`} headingLevel="h5" />
                                 <EmptyStateBody>
                                   This filter criteria matches no {entityName}. <br /> Try changing your filter settings.
                                 </EmptyStateBody>
@@ -159,7 +159,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
           <TableBody />
         </Table>
       ) : (
-        <SkeletonTable numberOfColumns={columns.length} rows={pagination?.perPage || 10} />
+        <SkeletonTable numberOfColumns={columns.length} rows={pagination?.perPage || 10} variant={TableVariant.compact} />
       )}
       {onUpdateData && pagination && loaded && (
         <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
