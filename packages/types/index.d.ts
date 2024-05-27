@@ -19,6 +19,19 @@ export declare type HelpTopic = {
   links?: HelpTopicLink[];
 };
 
+export declare type PDFRequestPayload = {
+  manifestLocation: string;
+  scope: string;
+  module: string;
+  importName?: string;
+  fetchDataParams?: Record<string, any>;
+};
+
+export declare type PDFRequestOptions = {
+  payload: PDFRequestPayload;
+  filename?: string;
+};
+
 declare type ChromeUser = {
   entitlements: {
     [key: string]: {
@@ -234,7 +247,7 @@ export interface ChromeAPI {
     }) => T
   ) => T;
   enablePackagesDebug: () => void;
-  requestPdf: (options: { service: string; template: string; filename?: string; [key: string]: any }) => Promise<void>;
+  requestPdf: (options: PDFRequestOptions) => Promise<void>;
 }
 
 declare global {
