@@ -3,12 +3,14 @@ const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
 
-import { LogType, ProxyOptions, fecLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { LogType, ProxyOptions, fecLogger, fecWebpackLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
 type Configuration = import('webpack').Configuration;
 type CacheOptions = import('webpack').FileCacheOptions | import('webpack').MemoryCacheOptions;
 type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
 type ClientConfiguration = import('webpack-dev-server').ClientConfiguration;
 type ResolveOptions = import('webpack').ResolveOptions;
+
+export type FrontendEnv = 'stage-stable' | 'prod-stable' | 'ci-stable' | 'qa-stable' | 'stage-beta' | 'prod-beta' | 'ci-beta' | 'qa-beta';
 
 export interface CommonConfigOptions {
   rootFolder: string;
@@ -17,15 +19,15 @@ export interface CommonConfigOptions {
   _unstableHotReload?: boolean;
   hotReload?: boolean;
   useFileHash?: boolean;
+  env?: FrontendEnv;
 }
-export type FrontendEnv = 'stage-stable' | 'prod-stable' | 'ci-stable' | 'qa-stable' | 'stage-beta' | 'prod-beta' | 'ci-beta' | 'qa-beta';
+
 export interface CreateConfigOptions extends CommonConfigOptions {
   port?: number;
   publicPath: string;
   appEntry: string;
   https?: boolean;
   mode?: Configuration['mode'];
-  env?: FrontendEnv;
   sassPrefix?: string;
   useProxy?: boolean;
   proxyURL?: string;
@@ -37,7 +39,7 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   isProd?: boolean;
   standalone?: boolean;
   reposDir?: string;
-  appUrl?: (string | RegExp)[];
+  appUrl?: string | (string | RegExp)[];
   proxyVerbose?: boolean;
   target?: string;
   registry?: ProxyOptions['registry'];
@@ -50,6 +52,11 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   cacheConfig?: Partial<CacheOptions>;
   nodeModulesDirectories?: string[];
   resolve?: ResolveOptions;
+  localApps?: string;
+  localApis?: string;
+  skipProxyCheck?: boolean;
+  debug?: boolean;
+  outputConfigs?: boolean;
 }
 
 export const createConfig = ({
@@ -91,6 +98,9 @@ export const createConfig = ({
   resolve = {},
   // additional node_modules dirs for searchIgnoredStyles, usefull in monorepo scenario
   nodeModulesDirectories = [],
+  localApps,
+  localApis,
+  skipProxyCheck,
 }: CreateConfigOptions): Configuration => {
   if (typeof _unstableHotReload !== 'undefined') {
     fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
@@ -113,6 +123,10 @@ export const createConfig = ({
   return {
     mode: mode || (isProd ? 'production' : 'development'),
     devtool: false,
+    infrastructureLogging: {
+      colors: true,
+      console: fecWebpackLogger(),
+    },
     ...(useCache
       ? {
           cache: {
@@ -247,6 +261,7 @@ export const createConfig = ({
         directory: `${rootFolder || ''}/dist`,
       },
       port: devServerPort,
+      // TODO deprecated and should be replaced with `server` when fully moving to webpack(devserver) v5
       https: https || Boolean(useProxy),
       host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
       hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
@@ -267,6 +282,7 @@ export const createConfig = ({
         disableDotRule: true,
       },
       devMiddleware: {
+        // TODO Figure out if this helps in any way or if it is required for something
         writeToDisk: true,
       },
       client,
@@ -287,14 +303,12 @@ export const createConfig = ({
         proxyVerbose,
         target,
         registry,
-        onBeforeSetupMiddleware: ({ chromePath }) => {
-          if (chromePath) {
-            copyTemplate(chromePath);
-          }
-        },
         bounceProd,
         useAgent,
         useDevBuild,
+        localApps,
+        localApis,
+        skipProxyCheck,
       }),
     },
   };

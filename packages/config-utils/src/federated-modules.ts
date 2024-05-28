@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { relative, resolve } from 'path';
 import { DynamicRemotePlugin, EncodedExtension, PluginBuildMetadata, WebpackSharedConfig } from '@openshift/dynamic-plugin-sdk-webpack';
+import fecLogger, { LogType } from './fec-logger';
 import jsVarName from './jsVarName';
 import fecLogger, { LogType } from './fec-logger';
 
@@ -14,6 +15,10 @@ const createIncludes = (eager = false): { [module: string]: WebpackSharedConfig 
   '@redhat-cloud-services/chrome': { singleton: true },
   axios: {},
   lodash: {},
+  // TODO I would propose to remove this from the shared deps
+  // The benefit is minmal. redux promise middleware and similar packages that extend redux may be highly dependent
+  // on redux and different version can become incompatible and raise unexpected errors.
+  // We could also share redux and react-redux to minimise these issues, but apps could still add other similar packages.
   'redux-promise-middleware': {},
   react: { singleton: true, eager },
   'react-dom': { singleton: true, eager },
@@ -104,13 +109,13 @@ const federatedModules = ({
   }
 
   if (debug) {
-    console.log('Using package at path: ', resolve(root, './package.json'));
-    console.log('Using appName: ', appName);
-    console.log(`Using ${exposes ? 'custom' : 'default'} exposes`);
-    console.log('Number of custom shared modules is: ', shared.length);
-    console.log('Number of default shared modules is: ', sharedDeps.length);
+    fecLogger(LogType.info, 'Using package at path: ', resolve(root, './package.json'));
+    fecLogger(LogType.info, 'Using appName: ', appName);
+    fecLogger(LogType.info, `Using ${exposes ? 'custom' : 'default'} exposes`);
+    fecLogger(LogType.info, 'Number of custom shared modules is: ', shared.length);
+    fecLogger(LogType.info, 'Number of default shared modules is: ', sharedDeps.length);
     if (exclude.length > 0) {
-      console.log('Excluding default packages', exclude);
+      fecLogger(LogType.info, 'Excluding default packages', exclude);
     }
   }
 

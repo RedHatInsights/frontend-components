@@ -4,6 +4,7 @@ import { execSync } from 'child_process';
 import fetch from 'node-fetch';
 import express from 'express';
 import path from 'path';
+import chalk from 'chalk';
 import type { Configuration } from 'webpack-dev-server';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import cookieTransform from './cookieTransform';
@@ -14,16 +15,20 @@ import { startService, stopService } from './standalone/startService';
 import { NET } from './standalone/helpers';
 import defaultServices from './standalone/services/default';
 import { registerChrome } from './standalone/services/default/chrome';
+import fecLogger, { LogType } from './fec-logger';
 
 const defaultReposDir = path.join(__dirname, 'repos');
+
+const hasCurlInstalled = () => execSync('which curl | echo $?').toString().trim() === '0';
 
 const checkLocalAppHost = (appName: string, hostUrl: string, port: number | string) => {
   const check = execSync(`curl --max-time 5 --silent --head ${hostUrl} | awk '/^HTTP/{print $2}'`).toString().trim();
 
   if (check !== '200') {
-    console.error('\n' + appName[0].toUpperCase() + appName.substring(1) + ' is not running or available via ' + hostUrl);
-    console.log(
-      '\nMake sure to run `npm run start -- --port=' +
+    fecLogger(LogType.error, appName[0].toUpperCase() + appName.substring(1) + ' is not running or available via ' + hostUrl);
+    fecLogger(
+      LogType.info,
+      '\nIf it is another frontend application, make sure to run `npm run start -- --port=' +
         port +
         '` in the ' +
         appName +
@@ -64,28 +69,34 @@ const buildRoutes = (
     return result;
   });
 
-const buildLocalAppRoutes = (localApps: string | string[], defaultLocalAppHost: string, target: string) =>
+const buildLocalAppRoutes = (
+  localApps: string | string[],
+  defaultLocalAppHost: string,
+  target: string,
+  pathPrefix: string,
+  skipProxyCheck: boolean
+) =>
   buildRoutes(
     (!Array.isArray(localApps) ? localApps.split(',') : localApps).reduce((acc, curr) => {
       const [appName, appConfig] = (curr || '').split(':');
       const [appPort = 8003, protocol = 'http'] = appConfig.split('~');
       const appUrl = `${protocol}://${defaultLocalAppHost}:${appPort}`;
+      const appPath = `${pathPrefix}/${appName}`;
 
-      if (checkLocalAppHost(appName, appUrl, appPort)) {
-        console.log('Creating app proxy routes for: ' + appName + ' to ' + appUrl);
-
-        return {
-          ...acc,
-          [`/apps/${appName}`]: {
-            host: appUrl,
-          },
-          [`/preview/apps/${appName}`]: {
-            host: appUrl,
-          },
-        };
-      } else {
-        process.exit();
+      if (!skipProxyCheck && hasCurlInstalled()) {
+        if (!checkLocalAppHost(appName, appUrl, appPort)) {
+          process.exit();
+        }
       }
+
+      fecLogger(LogType.info, 'Creating proxy route for: ' + appPath + ' to ' + appUrl);
+
+      return {
+        ...acc,
+        [appPath]: {
+          host: appUrl,
+        },
+      };
     }, {}),
     target
   );
@@ -101,7 +112,7 @@ export type ProxyOptions = {
   port?: number;
   reposDir?: string;
   localChrome?: string;
-  appUrl?: (string | RegExp)[];
+  appUrl?: string | (string | RegExp)[];
   publicPath: string;
   proxyVerbose?: boolean;
   useCloud?: boolean;
@@ -114,6 +125,9 @@ export type ProxyOptions = {
   useAgent?: boolean;
   useDevBuild?: boolean;
   localApps?: string;
+  localApis?: string;
+  skipProxyCheck?: boolean;
+  localAppHost?: string;
 };
 
 const proxy = ({
@@ -122,6 +136,7 @@ const proxy = ({
   routes,
   routesPath,
   useProxy,
+  // TODO It should be possible to set this as well from the outside.
   proxyURL = 'http://squid.corp.redhat.com:3128',
   standalone,
   port,
@@ -139,11 +154,14 @@ const proxy = ({
   bounceProd = false,
   useAgent = true,
   useDevBuild = true,
-  localApps = process.env.LOCAL_APPS,
+  localApps,
+  localApis,
+  skipProxyCheck = false,
+  localAppHost,
 }: ProxyOptions) => {
   const proxy: ProxyConfigItem[] = [];
   const majorEnv = env.split('-')[0];
-  const defaultLocalAppHost = process.env.LOCAL_APP_HOST || majorEnv + '.foo.redhat.com';
+  const defaultLocalAppHost = localAppHost || majorEnv + '.foo.redhat.com';
 
   if (target === '') {
     target += 'https://';
@@ -193,7 +211,12 @@ const proxy = ({
   }
 
   if (localApps && localApps.length > 0) {
-    proxy.push(...buildLocalAppRoutes(localApps, defaultLocalAppHost, target));
+    proxy.push(...buildLocalAppRoutes(localApps, defaultLocalAppHost, target, '/apps', skipProxyCheck));
+    proxy.push(...buildLocalAppRoutes(localApps, defaultLocalAppHost, target, '/preview/apps', skipProxyCheck));
+  }
+
+  if (localApis && localApis.length > 0) {
+    proxy.push(...buildLocalAppRoutes(localApis, defaultLocalAppHost, target, '/api', skipProxyCheck));
   }
 
   if (customProxy) {
@@ -201,6 +224,8 @@ const proxy = ({
   }
 
   let standaloneConfig: ReturnType<typeof getConfig>;
+  // TODO do we need this "standalone" mode still?
+  // We should at least extract this into it's own module
   if (standalone) {
     standaloneConfig = getConfig(standalone, localChrome, env, port);
     // Create network for services.
@@ -274,10 +299,12 @@ const proxy = ({
       changeOrigin: true,
       autoRewrite: true,
       context: (url: string) => {
-        const shouldProxy = !appUrl.find((u) => (typeof u === 'string' ? url.startsWith(u) : u.test(url)));
+        const shouldProxy = !(typeof appUrl === 'string' ? [appUrl] : appUrl).find((u: string | RegExp) =>
+          typeof u === 'string' ? url.startsWith(u) : u.test(url)
+        );
         if (shouldProxy) {
           if (proxyVerbose) {
-            console.log('proxy', url);
+            fecLogger(LogType.info, 'proxy' + url);
           }
 
           return true;
@@ -338,25 +365,17 @@ const proxy = ({
     ...(proxy.length > 0 && { proxy }),
     onListening(server) {
       if (useProxy || standaloneConfig) {
+        // TODO Refactor to use the hostname provided from a config/option higher up.
         const host = useProxy ? `${majorEnv}.foo.redhat.com` : 'localhost';
         const origin = `http${server.options.https ? 's' : ''}://${host}:${server.options.port}`;
-        console.log('App should run on:');
-
-        console.log('\u001b[34m'); // Use same webpack-dev-server blue
-        if (appUrl.length > 0) {
-          appUrl.slice(0, appUrl.length - 1).forEach((url) => console.log(`  - ${origin}${url}`));
-
-          console.log('\x1b[0m');
-          console.log('Static assets are available at:');
-          console.log('\u001b[34m'); // Use same webpack-dev-server blue
-          console.log(`  - ${origin}${appUrl[appUrl.length - 1]}`);
-        } else {
-          console.log(`  - ${origin}`);
-        }
-
-        console.log('\u001b[0m');
+        fecLogger(LogType.info, '');
+        fecLogger(LogType.info, chalk.bold('App should run on:'));
+        fecLogger(LogType.info, '');
+        (typeof appUrl === 'string' ? [appUrl] : appUrl).forEach((url) => fecLogger(LogType.info, `  - ${origin}${url}`));
+        fecLogger(LogType.info, '');
       }
     },
+    // TODO Deprecated: needs to be replaced with `setupMiddleware`
     onBeforeSetupMiddleware({ app, compiler, options }) {
       app?.enable('strict routing'); // trailing slashes are mean
 
@@ -369,6 +388,7 @@ const proxy = ({
        * Allow serving chrome assets
        * This will allow running chrome as a host application
        */
+      // TODO Most of this should be ...not here.
       if (!isChrome) {
         let chromePath = localChrome;
         if (standaloneConfig) {
@@ -376,19 +396,11 @@ const proxy = ({
             chromePath = resolvePath(reposDir, standaloneConfig.chrome.path);
             keycloakUri = standaloneConfig.chrome.keycloakUri;
           }
-        } else if (!localChrome && useProxy) {
-          const chromeConfig = typeof defaultServices.chrome === 'function' ? defaultServices.chrome({}) : defaultServices.chrome;
-
-          const chromeEnv = useDevBuild ? (env.includes('-beta') ? 'dev-beta' : 'dev-stable') : env;
-          chromePath = checkoutRepo({
-            repo: `${chromeConfig.path}#${chromeEnv}`,
-            reposDir,
-            overwrite: true,
-          });
         }
 
         onBeforeSetupMiddleware({ chromePath });
 
+        // TODO What is this?
         if (app && chromePath) {
           registerChrome({
             app,
@@ -400,6 +412,7 @@ const proxy = ({
         }
       }
 
+      // TODO and this?
       registry.forEach((cb) =>
         cb({
           app,

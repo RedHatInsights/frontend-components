@@ -4,6 +4,55 @@ const { resolve } = require('path');
 const { spawn } = require('child_process');
 import { getWebpackConfigPath, validateFECConfig } from './common';
 
+export const flags = (yargs: any) => {
+  yargs
+    .positional('webpack-config', {
+      type: 'string',
+      describe: 'Path to webpack config',
+    })
+    .option('port', {
+      type: 'number',
+      alias: 'p',
+      describe: 'Webpack dev server port',
+      default: 1337,
+    })
+    .option('proxy', {
+      type: 'boolean',
+      default: false,
+      describe: 'Enable proxying',
+    })
+    .option('apps', {
+      type: 'string',
+      describe:
+        'A coma seperated string of frontend applications with ports and optional protocol to create routes for (APP_NAME:APP_PORT[~APP_PROTOCOL])',
+    })
+    .option('apis', {
+      type: 'string',
+      describe:
+        'A coma seperated string of application APIs with ports and optional protocol to create routes for (APP_NAME:APP_PORT[~APP_PROTOCOL])',
+    })
+    .option('proxy-check', {
+      type: 'boolean',
+      default: true,
+      describe: 'Check proxied routes via curl (if available)',
+    })
+    .option('hot-reload', {
+      type: 'boolean',
+      default: true,
+      describe: 'Enable hot reloading',
+    })
+    .option('output-configs', {
+      type: 'boolean',
+      default: false,
+      describe: 'Enables output of the full FEC configuration and the resulting Webpack (DevServer) config',
+    })
+    .option('verbose', {
+      type: 'boolean',
+      default: false,
+      describe: 'Enables verbose mode',
+    });
+};
+
 async function setEnv(cwd: string) {
   return inquirer
     .prompt([
@@ -34,6 +83,14 @@ async function devScript(
     clouddotEnv?: string;
     uiEnv?: string;
     port?: string;
+    apps?: string;
+    apis?: string;
+    proxy?: boolean;
+    debug?: boolean;
+    proxyCheck?: boolean;
+    hotReload?: boolean;
+    outputConfigs?: boolean;
+    verbose?: boolean;
   },
   cwd: string
 ) {
@@ -67,6 +124,8 @@ async function devScript(
         process.exit(1);
       }
     } else {
+      // TODO This is neat,
+      // but we should just default to stage-stable, which is what we need in dev 99% of the time.
       await setEnv(cwd);
     }
 
@@ -74,11 +133,48 @@ async function devScript(
       process.env.PORT = argv.port;
     }
 
+    if (argv.proxy) {
+      process.env.USE_PROXY = argv.proxy.toString();
+    }
+
+    if (argv.apps) {
+      process.env.LOCAL_APPS = argv.apps.toString();
+    }
+
+    if (argv.apis) {
+      process.env.LOCAL_APIS = argv.apis.toString();
+    }
+
+    if (argv.debug) {
+      process.env.DEBUG = argv.debug.toString();
+    }
+
+    if (argv.proxyCheck) {
+      process.env.SKIP_PROXY_CHECK = (!argv.proxyCheck).toString();
+    }
+
+    if (argv.hotReload) {
+      process.env.HOT_RELOAD = argv.hotReload.toString();
+    }
+
+    if (argv.outputConfigs) {
+      process.env.OUTPUT_CONFIGS = argv.outputConfigs.toString();
+    }
+
+    if (argv.verbose) {
+      process.env.PROXY_VERBOSE = argv.verbose.toString();
+    }
+
+    // TODO Move to WebpackDevServer API instead of spawning a process
+    // Spawning a process does act weird when quitting the process, due to devservers way of quitting.
+    // It would also allow us to not have to (ab)use env variable to pass settings
     spawn(`npm exec -- webpack serve -c ${configPath}`, [], {
       stdio: [process.stdout, process.stdout, process.stdout],
       cwd,
       shell: true,
     });
+
+    // TODO Move this to be middleware that won't need a separate process.
     if (fecConfig.interceptChromeConfig === true) {
       const interceptorServerPath = resolve(__dirname, './csc-interceptor-server.js');
       const interceptorServerArgs = [interceptorServerPath];
@@ -94,4 +190,6 @@ async function devScript(
   }
 }
 
+export default devScript;
 module.exports = devScript;
+module.exports.flags = flags;

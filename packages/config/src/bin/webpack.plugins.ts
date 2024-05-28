@@ -15,6 +15,7 @@ const plugins = [
     root: rootDir,
     useFileHash: process.env.NODE_ENV === 'production',
     separateRuntime: typeof fecConfig.hotReload !== 'undefined' ? !!fecConfig.hotReload : !!fecConfig._unstableHotReload,
+    debug: process.env.DEBUG === 'true',
     /** Load optional config for federated modules */
     ...fecConfig.moduleFederation,
     shared: [
@@ -35,6 +36,10 @@ const plugins = [
 
 // Save 20kb of bundle size in prod
 if (process.env.NODE_ENV === 'production') {
+  // TODO This is questionable...
+  // The reason why redux logger would appear in prod is if it was mistakenly included.
+  // Replacing it with an empty module can, and has raised errors, that are especially hard to debug not knowing this bit here
+  // We should rather just be warning that there are dependencies that aren't recommended in prod
   plugins.push(new webpack.NormalModuleReplacementPlugin(/redux-logger/, resolve(__dirname, './empty.js')));
 }
 

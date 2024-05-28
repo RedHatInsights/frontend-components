@@ -18,7 +18,8 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components#readme",
     "scripts": {
-        "build": "tsc"
+        "build": "tsc",
+        "start": "tsc --watch"
     },
     "peerDependencies": {
         "webpack": "^5.0.0"
