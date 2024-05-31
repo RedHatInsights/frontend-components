@@ -106,6 +106,7 @@ if (CORE_DIRECTORIES.length > 0) {
     WizardFooter: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Wizard'),
     WizardContextProvider: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Wizard'),
     useWizardContext: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Wizard'),
+    DataListWrapModifier: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/DataList'),
   };
 }
 
