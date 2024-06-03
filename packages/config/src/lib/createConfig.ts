@@ -52,6 +52,7 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   nodeModulesDirectories?: string[];
   resolve?: ResolveOptions;
   stripAllPfStyles?: boolean;
+  blockLegacyChrome?: boolean;
 }
 
 export const createConfig = ({
@@ -94,6 +95,7 @@ export const createConfig = ({
   // additional node_modules dirs for searchIgnoredStyles, usefull in monorepo scenario
   nodeModulesDirectories = [],
   stripAllPfStyles = false,
+  blockLegacyChrome,
 }: CreateConfigOptions): Configuration => {
   if (typeof _unstableHotReload !== 'undefined') {
     fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
@@ -305,6 +307,7 @@ export const createConfig = ({
         bounceProd,
         useAgent,
         useDevBuild,
+        blockLegacyChrome,
       }),
     },
   };

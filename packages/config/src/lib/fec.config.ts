@@ -11,6 +11,8 @@ export interface FECConfiguration
   interceptChromeConfig?: boolean;
   moduleFederation: Omit<FederatedModulesConfig, 'root' | 'separateRuntime'>;
   debug?: boolean;
+  chromeHost?: string;
+  chromePort?: number;
 }
 
 export default FECConfiguration;

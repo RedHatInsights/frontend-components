@@ -43,6 +43,7 @@ type FecConfigurationOptions = Omit<CreateConfigOptions, 'publicPath' | 'appEntr
     deployment?: string;
     debug?: boolean;
     appEntry?: string;
+    blockLegacyChrome?: boolean;
   };
 
 const createFecConfig = (
