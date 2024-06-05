@@ -115,12 +115,12 @@ export const createConfig = ({
     // Helper function to check if a prefix should be prepended
     function shouldPrependPrefix(selector: string): boolean {
       for (let prefix of sassPrefixes) {
-        const exactPrefix = new RegExp(`^${prefix}(\\s|\\{)`);
+        const exactPrefix = new RegExp(`^${prefix}(\\s|\\{|$)`);
         if (exactPrefix.test(selector)) {
             return false;
         }
     }
-    const exactAppNamePrefix = new RegExp(`^\\.${appName}(\\s|\\{)`);
+    const exactAppNamePrefix = new RegExp(`^\\.${appName}(\\s|\\{|$)`);
     return !exactAppNamePrefix.test(selector);
     }
 
