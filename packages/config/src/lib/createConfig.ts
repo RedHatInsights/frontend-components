@@ -119,31 +119,28 @@ export const createConfig = ({
         if (exactPrefix.test(selector)) {
             return false;
         }
-    }
-    const exactAppNamePrefix = new RegExp(`^\\.${appName}(\\s|\\{|$)`);
-    return !exactAppNamePrefix.test(selector);
-    }
-
-    // process the content
-    const topLevelMatches = content.match(/([^\{]+)\s*\{([\s\S]*)\}/);
-    if(!topLevelMatches) {
-      return `${sassPrefix}{\n${content}\n}`;
+      }
+      const exactAppNamePrefix = new RegExp(`^\\.${appName}(\\s|\\{|$)`);
+      return !exactAppNamePrefix.test(selector);
     }
 
-    const topLevelSelectors = topLevelMatches[1].trim().split(',').map(selector => selector.trim());
-    const nestedContent = topLevelMatches[2].trim();
-
-    const prefixedSelectors = topLevelSelectors.map(selector => {
+    function addPrefixToSelector(selector: string): string {
       if(shouldPrependPrefix(selector)) {
-        const prefixToUse = (sassPrefix && sassPrefix.length > 0) ? sassPrefixes[0] : `.${appName}`;
-        return `${prefixToUse} ${selector}`;
+        const prefixes : string[] = (sassPrefixes && sassPrefixes.length > 0) ? sassPrefixes : [`.${appName}`];
+        return prefixes.map((prefix : string) => `${prefix} ${selector}`).join(', ');
       }
       return selector;
+    }
+
+    // Process the content to add prefixes to all selectors
+    const prefixedContent = content.replace(/([^\{\}]+)\s*\{/g, (match, selectors) => { 
+      const prefixedSelectors = selectors.split(',')
+      .map((selector : string) => selector.trim())
+      .map((selector: string) => addPrefixToSelector(selector))
+      .join(', ');
+      return `${prefixedSelectors} {`
     });
-
-    const finalContent = `${prefixedSelectors.join(', ')} {\n${nestedContent}}\n`;
-
-    return finalContent;
+    return prefixedContent;  
   }
 
 
@@ -231,89 +228,12 @@ export const createConfig = ({
                   const { resourcePath, rootContext } = loaderContext;
                   const relativePath = path.relative(rootContext, resourcePath);
                   /**
-                   * sassPrefix = .learning-resources, .learningResources
-                   * 
-                   * learning-resources.scss
-                   * 
-                   * <div class="chr-scope__default-layout learningResources"></div>
-                   * .learningResources {
-                   *    positions: sticky;
-                   * }
-                   * 
-                   * 
-                   * Nested element
-                   * <article class="pf-v5-c-card learning-card"></article>
-                   * .pf-v5-c-card {
-                   *    &.learning-card {
-                   *      color: red;
-                   *    }
-                   * }
-                   * 
-                   * // current SCSS output
-                   * 
-                   * .learning-resources, .learningResources {
-                   * 
-                   *  .learningResources {
-                   *    positions: sticky;
-                   *  }
-                   * .pf-v5-c-card {
-                   *    &.learning-card {
-                   *      color: red;
-                   *    }
-                   *  }                                  
-                   * }
-                   * 
-                   * current CSS output
-                   *   prefix                  selector             prefix             selector
-                   * .learning-resources .learningResources, .learningResources .learningResources {
-                   *   positions: sticky;
-                   * }
-                   *      prefix                       selector              prefix               selector
-                   * .learning-resources .pf-v5-c-card.learning-card, .learningResources .pf-v5-c-card.learning-card {
-                   *   blanbla
-                   * }
-                   * ____________________________________________________________________________________________________________
-                   * // new SCSS output
-                   * 
-                   *   selector matches sassPrefix
-                   * .learningResources {
-                   *   positions: sticky;
-                   * }
-                   * 
-                   * .learning-resources, .learningResources {
-                   *  .pf-v5-c-card {
-                   *    &.learning-card {
-                   *      color: red;
-                   *    }
-                   *  }         
-                   * }
-                   * 
-                   * // new CSS output
-                   * 
-                   *     selector (matches sassPrefix prefix)
-                   * .learningResources {
-                   *   positions: sticky;
-                   * }
-                   * 
-                   *      prefix                       selector              prefix               selector
-                   * .learning-resources .pf-v5-c-card.learning-card, .learningResources .pf-v5-c-card.learning-card {
-                   *   blanbla
-                   * }
-                   */
-
-
-
-
-                  /**
                    * Add app class context for local style files.
                    * Context class is equal to app name and that class ass added to root element via the chrome-render-loader.
                    */
 
-                  console.log(`content before modification: ${content}`);
-
                   if (relativePath.match(/^src/)) {
                     const transformedContent = addPrefixToContent(content, sassPrefix, appName);
-                    console.log(`Transformed content: ${transformedContent}`);
                     return transformedContent;
                   }
 
