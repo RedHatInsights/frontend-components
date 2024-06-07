@@ -109,15 +109,15 @@ export const createConfig = ({
     fs.writeFileSync(`${outputPath}/index.html`, template);
   };
 
-  const addPrefixToContent = (content: string, sassPrefix: string | undefined, appName: string) : string => {
-    const sassPrefixes = sassPrefix ? sassPrefix.split(',').map(prefix => prefix.trim()) :  [];
+  const addPrefixToContent = (content: string, sassPrefix: string | undefined, appName: string): string => {
+    const sassPrefixes = sassPrefix ? sassPrefix.split(',').map((prefix) => prefix.trim()) : [];
 
     // Helper function to check if a prefix should be prepended
     function shouldPrependPrefix(selector: string): boolean {
-      for (let prefix of sassPrefixes) {
+      for (const prefix of sassPrefixes) {
         const exactPrefix = new RegExp(`^${prefix}(\\s|\\{|$)`);
         if (exactPrefix.test(selector)) {
-            return false;
+          return false;
         }
       }
       const exactAppNamePrefix = new RegExp(`^\\.${appName}(\\s|\\{|$)`);
@@ -125,24 +125,24 @@ export const createConfig = ({
     }
 
     function addPrefixToSelector(selector: string): string {
-      if(shouldPrependPrefix(selector)) {
-        const prefixes : string[] = (sassPrefixes && sassPrefixes.length > 0) ? sassPrefixes : [`.${appName}`];
-        return prefixes.map((prefix : string) => `${prefix} ${selector}`).join(', ');
+      if (shouldPrependPrefix(selector)) {
+        const prefixes: string[] = sassPrefixes && sassPrefixes.length > 0 ? sassPrefixes : [`.${appName}`];
+        return prefixes.map((prefix: string) => `${prefix} ${selector}`).join(', ');
       }
       return selector;
     }
 
     // Process the content to add prefixes to all selectors
-    const prefixedContent = content.replace(/([^\{\}]+)\s*\{/g, (match, selectors) => { 
-      const prefixedSelectors = selectors.split(',')
-      .map((selector : string) => selector.trim())
-      .map((selector: string) => addPrefixToSelector(selector))
-      .join(', ');
-      return `${prefixedSelectors} {`
+    const prefixedContent = content.replace(/([^{}]+)\s*\{/g, (match, selectors) => {
+      const prefixedSelectors = selectors
+        .split(',')
+        .map((selector: string) => selector.trim())
+        .map((selector: string) => addPrefixToSelector(selector))
+        .join(', ');
+      return `${prefixedSelectors} {`;
     });
-    return prefixedContent;  
-  }
-
+    return prefixedContent;
+  };
 
   const devServerPort = typeof port === 'number' ? port : useProxy || standalone ? 1337 : 8002;
   return {
