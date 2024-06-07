@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
 
 import { LogType, ProxyOptions, fecLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
+import addPrefixToContent from './addPrefixToContent';
 type Configuration = import('webpack').Configuration;
 type CacheOptions = import('webpack').FileCacheOptions | import('webpack').MemoryCacheOptions;
 type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
@@ -109,41 +110,6 @@ export const createConfig = ({
     fs.writeFileSync(`${outputPath}/index.html`, template);
   };
 
-  const addPrefixToContent = (content: string, sassPrefix: string | undefined, appName: string): string => {
-    const sassPrefixes = sassPrefix ? sassPrefix.split(',').map((prefix) => prefix.trim()) : [];
-
-    // Helper function to check if a prefix should be prepended
-    function shouldPrependPrefix(selector: string): boolean {
-      for (const prefix of sassPrefixes) {
-        const exactPrefix = new RegExp(`^${prefix}(\\s|\\{|$)`);
-        if (exactPrefix.test(selector)) {
-          return false;
-        }
-      }
-      const exactAppNamePrefix = new RegExp(`^\\.${appName}(\\s|\\{|$)`);
-      return !exactAppNamePrefix.test(selector);
-    }
-
-    function addPrefixToSelector(selector: string): string {
-      if (shouldPrependPrefix(selector)) {
-        const prefixes: string[] = sassPrefixes && sassPrefixes.length > 0 ? sassPrefixes : [`.${appName}`];
-        return prefixes.map((prefix: string) => `${prefix} ${selector}`).join(', ');
-      }
-      return selector;
-    }
-
-    // Process the content to add prefixes to all selectors
-    const prefixedContent = content.replace(/([^{}]+)\s*\{/g, (match, selectors) => {
-      const prefixedSelectors = selectors
-        .split(',')
-        .map((selector: string) => selector.trim())
-        .map((selector: string) => addPrefixToSelector(selector))
-        .join(', ');
-      return `${prefixedSelectors} {`;
-    });
-    return prefixedContent;
-  };
-
   const devServerPort = typeof port === 'number' ? port : useProxy || standalone ? 1337 : 8002;
   return {
     mode: mode || (isProd ? 'production' : 'development'),
@@ -233,7 +199,7 @@ export const createConfig = ({
                    */
 
                   if (relativePath.match(/^src/)) {
-                    const transformedContent = addPrefixToContent(content, sassPrefix, appName);
+                    const transformedContent = addPrefixToContent(content, sassPrefix ?? `.${appName}`);
                     return transformedContent;
                   }
 
