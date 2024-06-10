@@ -1,6 +1,3 @@
-//TODO - iterate through a string and save indexes of the curly parentheses [openingIndex, closingIndex]
-// slice the selector before that, if it's top level selector, add prefix in a scope above, if its nested, dont care
-
 const addPrefixToContent = (content: string, sassPrefix: string): string => {
   // Stack to store pairs of opening and closing curly brace indexes
   const stack: Array<[number, number | undefined]> = [];
@@ -19,8 +16,9 @@ const addPrefixToContent = (content: string, sassPrefix: string): string => {
           // Top-level block
           const blockContent = content.slice(start + 1, i);
           const selectors = content.slice(lastIndex, start);
+          const selectorsArr = selectors.split(',').map((prefix) => prefix.trim());
 
-          const shouldPrependPrefix = prefixes.every((prefix) => selectors.includes(prefix));
+          const shouldPrependPrefix = prefixes.some((prefix) => selectorsArr.includes(prefix));
           if (!shouldPrependPrefix) {
             // Add prefix to top-level selectors
             result.push(`${sassPrefix} { ${selectors} { ${blockContent} } }`);
@@ -33,7 +31,6 @@ const addPrefixToContent = (content: string, sassPrefix: string): string => {
     }
   }
 
-  // Wrap the entire content with the prefixes
   return result.join(' ');
 };
 
