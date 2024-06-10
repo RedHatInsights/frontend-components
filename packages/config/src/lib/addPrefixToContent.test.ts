@@ -41,7 +41,6 @@ describe('shouldnt prefix nested selectors', () => {
     const content = `.learningResources-learningResources{overflow-y:auto}.widget-learning-resources{column-width:300px}`;
     const prefix = '.learningResources, .learning-resources';
     const output = `.learningResources, .learning-resources { .learningResources-learningResources {overflow-y:auto}}.learningResources, .learning-resources { .widget-learning-resources {column-width:300px}}`;
-    console.log(`real output: ${addPrefixToContent(content, prefix)}`);
     expect(addPrefixToContent(content, prefix)).toEqualIgnoringWhitespace(output);
   });
 
