@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
 
 import { LogType, ProxyOptions, fecLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
+import addPrefixToContent from './addPrefixToContent';
 type Configuration = import('webpack').Configuration;
 type CacheOptions = import('webpack').FileCacheOptions | import('webpack').MemoryCacheOptions;
 type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
@@ -196,8 +197,10 @@ export const createConfig = ({
                    * Add app class context for local style files.
                    * Context class is equal to app name and that class ass added to root element via the chrome-render-loader.
                    */
+
                   if (relativePath.match(/^src/)) {
-                    return `${sassPrefix || `.${appName}`}{\n${content}\n}`;
+                    const transformedContent = addPrefixToContent(content, sassPrefix ?? `.${appName}`);
+                    return transformedContent;
                   }
 
                   return content;
