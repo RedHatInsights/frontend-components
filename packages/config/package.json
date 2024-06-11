@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-config",
-    "version": "6.0.14",
+    "version": "6.0.15",
     "description": "Config plugins and settings for RedHat Cloud Services project.",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
