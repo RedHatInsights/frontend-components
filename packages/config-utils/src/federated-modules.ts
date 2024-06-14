@@ -14,7 +14,6 @@ const createIncludes = (eager = false): { [module: string]: WebpackSharedConfig 
   '@redhat-cloud-services/chrome': { singleton: true },
   axios: {},
   lodash: {},
-  'redux-promise-middleware': {},
   react: { singleton: true, eager },
   'react-dom': { singleton: true, eager },
 });

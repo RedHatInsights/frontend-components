@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-const { resolve } = require('path');
 import { LogType, fecLogger, federatedModules, generatePFSharedAssetsList } from '@redhat-cloud-services/frontend-components-config-utilities';
 import FECConfiguration from '../lib/fec.config';
 
@@ -32,11 +30,6 @@ const plugins = [
     ],
   }),
 ];
-
-// Save 20kb of bundle size in prod
-if (process.env.NODE_ENV === 'production') {
-  plugins.push(new webpack.NormalModuleReplacementPlugin(/redux-logger/, resolve(__dirname, './empty.js')));
-}
 
 export default plugins;
 module.exports = plugins;
