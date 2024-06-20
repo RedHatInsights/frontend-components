@@ -51,6 +51,7 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   cacheConfig?: Partial<CacheOptions>;
   nodeModulesDirectories?: string[];
   resolve?: ResolveOptions;
+  stripAllPfStyles?: boolean;
 }
 
 export const createConfig = ({
@@ -92,6 +93,7 @@ export const createConfig = ({
   resolve = {},
   // additional node_modules dirs for searchIgnoredStyles, usefull in monorepo scenario
   nodeModulesDirectories = [],
+  stripAllPfStyles = false,
 }: CreateConfigOptions): Configuration => {
   if (typeof _unstableHotReload !== 'undefined') {
     fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
@@ -192,6 +194,11 @@ export const createConfig = ({
                   }
                 ) {
                   const { resourcePath, rootContext } = loaderContext;
+                  if (stripAllPfStyles && resourcePath.includes('node_modules') && resourcePath.includes('@patternfly/react-styles')) {
+                    // hard remove PF styles from nested node_modules
+                    // this fixes issues with apps having a significant number of PF version installed from transitive dependencies
+                    return '';
+                  }
                   const relativePath = path.relative(rootContext, resourcePath);
                   /**
                    * Add app class context for local style files.
