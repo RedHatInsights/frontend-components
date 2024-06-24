@@ -15,7 +15,7 @@
     "scripts": {},
     "devDependencies": {
         "@patternfly/quickstarts": "^5.0.0",
-        "@redhat-cloud-services/rbac-client": "^1.0.111",
+        "@redhat-cloud-services/rbac-client": "^1.0.111 || 2.x",
         "history": "^4.10.1",
         "glob": "10.3.3",
         "@segment/analytics-next": "^1.43.2"
