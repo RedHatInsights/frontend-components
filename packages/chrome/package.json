@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/chrome",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "Chrome functions for RedHat Hybrid cloud console.",
     "main": "index.js",
     "typings": "index.d.ts",
@@ -29,7 +29,7 @@
         "lodash": "^4.17.21"
     },
     "peerDependencies": {
-        "@scalprum/react-core": "^0.7.0",
+        "@scalprum/react-core": "^0.8.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.0.0"
