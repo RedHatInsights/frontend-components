@@ -30,8 +30,8 @@
     },
     "dependencies": {
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.8",
-        "@redhat-cloud-services/frontend-components-config-utilities": "^3.0.5",
-        "@redhat-cloud-services/tsc-transform-imports": "^1.0.8",
+        "@redhat-cloud-services/frontend-components-config-utilities": "^3.1.0",
+        "@redhat-cloud-services/tsc-transform-imports": "^1.0.12",
         "@swc/core": "^1.3.76",
         "assert": "^2.0.0",
         "axios": "^0.28.1 || ^1.7.0",
