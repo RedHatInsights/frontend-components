@@ -127,7 +127,7 @@
         "start": "lerna run --parallel start --ignore=docs",
         "build": "MODULES_ROOT=../../ lerna run build --stream --no-private",
         "ts:esm": "tsc --build --force --verbose tsconfig.json",
-        "generate-translations": "npm run build && node packages/utils/src/mergeMessages.js",
+        "generate-translations": "npm run build && node packages/utils/src/mergeMessages/mergeMessages.js",
         "test:ct": "lerna run --stream test:ct",
         "test": "jest",
         "test:ci": "npm run test && npm run test:ct",

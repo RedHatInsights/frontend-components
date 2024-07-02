@@ -116,10 +116,10 @@ class App extends Component {
 ## Export strings from your app
 You can use [babel-plugin-react-intl](https://www.npmjs.com/package/babel-plugin-react-intl) to export all of your formatted messages from your app to generate JSON files that will be used by translators.
 
-To join your messages to one JSON that can be uploaded to translate service and combine all languages together you can use `mergeMessages.js` from `@redhat-cloud-services/frontend-components-utilities`. For full describtion of how to pass custom config can be found at [mergeMessages.md](/RedHatInsights/frontend-components/blob/master/packages/utils/doc/mergeMessages.md), or by passing `--help` to `mergeMessages.js`
+To join your messages to one JSON that can be uploaded to translate service and combine all languages together you can use `mergeMessages.js` from `@redhat-cloud-services/frontend-components-utilities`. For description of how to pass custom config run `mergeMessages.js --help`
 
 ```bash
-node node_modules/@redhat-cloud-services/frontend-components-utilities/mergeMessages.js
+node node_modules/@redhat-cloud-services/frontend-components-utilities/mergeMessages/mergeMessages.js
 ```
 
 ## Use messages in your app
@@ -156,7 +156,7 @@ export default () => {
 
 ## Providing access to intl for a non-components
 
-A file contaning app constants, that is very much not a component can still leverage 
+A file contaning app constants, that is very much not a component can still leverage
 translations by using the `intlHelper` function in the following way.
 
 ```JS
@@ -165,7 +165,7 @@ import { intlHelper } from '@redhat-cloud-services/frontend-components-translati
 import messages from './Messages';
 const cache = createIntlCache();
 const intl = createIntl({
-    onError: console.log, 
+    onError: console.log,
     locale: navigator.language
 }, cache);
 const intlSettings = {locale: navigator.language}
