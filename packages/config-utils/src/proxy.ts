@@ -114,6 +114,11 @@ export type ProxyOptions = {
   useAgent?: boolean;
   useDevBuild?: boolean;
   localApps?: string;
+  /**
+   * Used to block running chrome from build repos.
+   * Chrome should be running from container from now on.
+   */
+  blockLegacyChrome?: boolean;
 };
 
 const proxy = ({
@@ -140,6 +145,7 @@ const proxy = ({
   useAgent = true,
   useDevBuild = true,
   localApps = process.env.LOCAL_APPS,
+  blockLegacyChrome = false,
 }: ProxyOptions) => {
   const proxy: ProxyConfigItem[] = [];
   const majorEnv = env.split('-')[0];
@@ -369,14 +375,14 @@ const proxy = ({
        * Allow serving chrome assets
        * This will allow running chrome as a host application
        */
-      if (!isChrome) {
+      if (localChrome || (!blockLegacyChrome && !isChrome)) {
         let chromePath = localChrome;
         if (standaloneConfig) {
           if (standaloneConfig.chrome) {
             chromePath = resolvePath(reposDir, standaloneConfig.chrome.path);
             keycloakUri = standaloneConfig.chrome.keycloakUri;
           }
-        } else if (!localChrome && useProxy) {
+        } else if (!blockLegacyChrome && !localChrome && useProxy) {
           const chromeConfig = typeof defaultServices.chrome === 'function' ? defaultServices.chrome({}) : defaultServices.chrome;
 
           const chromeEnv = useDevBuild ? (env.includes('-beta') ? 'dev-beta' : 'dev-stable') : env;

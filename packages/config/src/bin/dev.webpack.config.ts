@@ -40,6 +40,9 @@ const { plugins: externalPlugins = [], interceptChromeConfig, routes, ...externa
 
 const internalProxyRoutes: { [endpoint: string]: ProxyConfigArrayItem } = {
   ...routes,
+  '/apps/chrome': {
+    target: `http://${process.env.FEC_CHROME_HOST}:${process.env.FEC_CHROME_PORT}`,
+  },
   ...(interceptChromeConfig === true
     ? {
         '/api/chrome-service/v1/static': {
@@ -60,6 +63,7 @@ const { config: webpackConfig, plugins } = config({
   deployment: isBeta ? 'beta/apps' : 'apps',
   env: `${process.env.CLOUDOT_ENV}-${isBeta === true ? 'beta' : 'stable'}` as FrontendEnv,
   rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
+  blockLegacyChrome: true,
 });
 plugins.push(...commonPlugins, ...externalPlugins);
 

@@ -25,7 +25,8 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/config#readme",
     "scripts": {
-        "build": "tsc"
+        "build": "tsc",
+        "watch": "tsc -w"
     },
     "dependencies": {
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.8",
@@ -61,15 +62,18 @@
         "source-map-loader": "^3.0.1",
         "stream-browserify": "^3.0.0",
         "swc-loader": "^0.2.3",
+        "tree-kill": "^1.2.2",
         "ts-loader": "^9.4.4",
         "url": "^0.11.0",
         "util": "^0.12.4",
+        "wait-on": "^7.2.0",
         "webpack": "^5.88.0",
         "webpack-cli": "^5.1.4",
         "webpack-dev-server": "4.15.1",
         "yargs": "^17.6.2"
     },
     "devDependencies": {
-        "@types/inquirer": "^9.0.3"
+        "@types/inquirer": "^9.0.3",
+        "@types/wait-on": "^5.3.4"
     }
 }
