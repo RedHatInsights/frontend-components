@@ -91,6 +91,7 @@ if (CORE_DIRECTORIES.length > 0) {
     handleArrows: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/KeyboardHandler'),
     setTabIndex: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/KeyboardHandler'),
     IconComponentProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Icon'),
+    ListComponent: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/List'),
     TreeViewDataItem: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/TreeView'),
     Popper: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/Popper/Popper'),
     clipboardCopyFunc: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/ClipboardCopy'),
