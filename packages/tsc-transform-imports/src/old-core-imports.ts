@@ -57,12 +57,12 @@ function getModuleExplicitLocation(roots: string[], relativePath: string) {
 }
 
 // Prefilled with modules which name bindings do not match the import specifier
-let COMPONENTS_CACHE: {
+let HARDCODED_COMPONENTS: {
   [nameBinding: string]: string;
 } = {};
 
 if (CORE_DIRECTORIES.length > 0) {
-  COMPONENTS_CACHE = {
+  HARDCODED_COMPONENTS = {
     getResizeObserver: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/resizeObserver'),
     useOUIAProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
     OUIAProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
@@ -92,7 +92,7 @@ if (CORE_DIRECTORIES.length > 0) {
 }
 
 export function guessComponentModule(nameBinding: string) {
-  let modulePath = COMPONENTS_CACHE[nameBinding];
+  let modulePath = HARDCODED_COMPONENTS[nameBinding];
   if (modulePath) {
     return modulePath;
   }
@@ -107,6 +107,5 @@ export function guessComponentModule(nameBinding: string) {
   const moduleSource: string[] = sourceFile[0].split('esm').pop()?.split('/') || [];
   moduleSource?.pop();
   modulePath = moduleSource?.join('/').replace(/^\//, '');
-  COMPONENTS_CACHE[nameBinding] = modulePath;
   return modulePath;
 }
