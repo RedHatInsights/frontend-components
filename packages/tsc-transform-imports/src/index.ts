@@ -47,8 +47,9 @@ function loadModuleMap(roots: string[]): Map<string, string> | undefined {
 }
 
 const CORE_MODULE_MAP = loadModuleMap(CORE_DIRECTORIES);
+const CORE_COMPONENT_CACHE = new Map<string, string>();
 
-function findComponentModule(nameBinding: string): string {
+function findComponentModuleUncached(nameBinding: string): string {
   // If dynamic-modules.json is present in this react-core version, use that.
   if (CORE_MODULE_MAP !== undefined) {
     const mapPath = CORE_MODULE_MAP.get(nameBinding);
@@ -69,6 +70,16 @@ function findComponentModule(nameBinding: string): string {
 
   // If dynamic-modules.json is not present (or if the name to load is not in the map), guess at the module path.
   return guessComponentModule(nameBinding);
+}
+
+function findComponentModule(nameBinding: string): string {
+  const cached = CORE_COMPONENT_CACHE.get(nameBinding);
+  if (cached !== undefined) return cached;
+
+  const module = findComponentModuleUncached(nameBinding);
+  CORE_COMPONENT_CACHE.set(nameBinding, module);
+
+  return module;
 }
 
 function camelToDash(str: string) {
