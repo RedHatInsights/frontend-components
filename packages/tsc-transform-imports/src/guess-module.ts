@@ -91,7 +91,7 @@ if (CORE_DIRECTORIES.length > 0) {
   };
 }
 
-export function guessComponentModule(nameBinding: string) {
+function guessComponentModule(nameBinding: string) {
   let modulePath = HARDCODED_COMPONENTS[nameBinding];
   if (modulePath) {
     return modulePath;
@@ -109,3 +109,5 @@ export function guessComponentModule(nameBinding: string) {
   modulePath = moduleSource?.join('/').replace(/^\//, '');
   return modulePath;
 }
+
+export default guessComponentModule;

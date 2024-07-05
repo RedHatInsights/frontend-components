@@ -3,7 +3,7 @@ import * as ts from 'typescript';
 import * as fs from 'fs';
 import * as glob from 'glob';
 import { CORE_DIRECTORIES, ICONS_DIRECTORIES, findFirstGlob } from './directories';
-import { guessComponentModule } from './old-core-imports';
+import guessComponentModule from './guess-module';
 
 // Icons names that do not match the filename pattern
 const ICONS_NAME_FIX: {
