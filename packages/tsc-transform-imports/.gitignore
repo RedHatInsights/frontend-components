@@ -3,5 +3,5 @@ index.d.ts
 index.js.map
 directories.js
 directories.d.ts
-old-core-imports.js
-old-core-imports.d.ts
+guess-module.js
+guess-module.d.ts
