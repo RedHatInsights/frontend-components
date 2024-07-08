@@ -33,13 +33,8 @@ function getPossibleLocations(roots: string[], nameBinding: string) {
 }
 
 function getModuleExplicitLocation(roots: string[], relativePath: string) {
-  const defaultLocation = roots
-    .map((root) => {
-      return glob.sync(`${root}/dist/dynamic/**/${relativePath}`).filter(filterNonStableLocation);
-    })
-    .find((r) => r.length > 0)?.[0]
-    ?.split('/dynamic/')
-    .pop();
+  const defaultLocation = findFirstGlob(roots, `dist/dynamic/**/${relativePath}`, filterNonStableLocation)?.split('/dynamic/').pop();
+
   if (defaultLocation) {
     return defaultLocation;
   }
