@@ -32,7 +32,6 @@ exports[`BulkSelect should render correctly - null checked 1`] = `
     >
       <label
         class="pf-v5-c-check pf-m-standalone"
-        for="toggle-checkbox"
       >
         <input
           aria-invalid="false"
@@ -84,7 +83,6 @@ exports[`BulkSelect should render correctly 1`] = `
     >
       <label
         class="pf-v5-c-check"
-        for="some-id-toggle-checkbox"
       >
         <input
           aria-invalid="false"
@@ -143,7 +141,6 @@ exports[`BulkSelect should render correctly 2`] = `
     >
       <label
         class="pf-v5-c-check pf-m-standalone"
-        for="toggle-checkbox"
       >
         <input
           aria-invalid="false"
@@ -195,7 +192,6 @@ exports[`BulkSelect should render custom props 1`] = `
     >
       <label
         class="pf-v5-c-check pf-m-standalone"
-        for="toggle-checkbox"
       >
         <input
           aria-invalid="false"
