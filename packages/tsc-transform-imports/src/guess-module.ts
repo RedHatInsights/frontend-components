@@ -1,5 +1,5 @@
 import * as glob from 'glob';
-import { CORE_DIRECTORIES } from './directories';
+import { CORE_DIRECTORIES, findFirstGlob } from './directories';
 
 const PROPS_MATCH = /Props$/g;
 const VARIANT_MATCH = /Variants?$/g;
@@ -11,31 +11,22 @@ function filterNonStableLocation(location: string) {
 }
 
 function getPossibleLocations(roots: string[], nameBinding: string) {
-  let moduleLocation = roots
-    .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding}.js`).filter(filterNonStableLocation))
-    .find((r) => r.length > 0)?.[0];
+  let moduleLocation = findFirstGlob(roots, `dist/esm/**/${nameBinding}.js`, filterNonStableLocation);
+
   if (!moduleLocation && nameBinding.match(PROPS_MATCH)) {
-    moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(PROPS_MATCH, '')}.js`).filter(filterNonStableLocation))
-      .find((r) => r.length > 0)?.[0];
+    moduleLocation = findFirstGlob(roots, `dist/esm/**/${nameBinding.replace(PROPS_MATCH, '')}.js`, filterNonStableLocation);
   }
 
   if (!moduleLocation && nameBinding.match(VARIANT_MATCH)) {
-    moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(VARIANT_MATCH, '')}.js`).filter(filterNonStableLocation))
-      .find((r) => r.length > 0)?.[0];
+    moduleLocation = findFirstGlob(roots, `dist/esm/**/${nameBinding.replace(VARIANT_MATCH, '')}.js`, filterNonStableLocation);
   }
 
   if (!moduleLocation && nameBinding.match(POSITION_MATCH)) {
-    moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(POSITION_MATCH, '')}.js`).filter(filterNonStableLocation))
-      .find((r) => r.length > 0)?.[0];
+    moduleLocation = findFirstGlob(roots, `dist/esm/**/${nameBinding.replace(POSITION_MATCH, '')}.js`, filterNonStableLocation);
   }
 
   if (!moduleLocation && nameBinding.match(SIZE_MATCH)) {
-    moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(SIZE_MATCH, '')}.js`).filter(filterNonStableLocation))
-      .find((r) => r.length > 0)?.[0];
+    moduleLocation = findFirstGlob(roots, `dist/esm/**/${nameBinding.replace(SIZE_MATCH, '')}.js`, filterNonStableLocation);
   }
 
   return moduleLocation;
