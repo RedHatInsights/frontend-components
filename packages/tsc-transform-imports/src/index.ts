@@ -1,117 +1,9 @@
 // https://levelup.gitconnected.com/writing-typescript-custom-ast-transformer-part-2-5322c2b1660e
 import * as ts from 'typescript';
-import path from 'path';
+import * as fs from 'fs';
 import * as glob from 'glob';
-
-const MODULES_ROOT = process.env.MODULES_ROOT;
-const PACKAGES_ROOT = path.resolve(process.cwd(), 'packages');
-const CORE_DIRECTORIES = [
-  glob.sync(`${process.cwd()}/node_modules/@patternfly/react-core`),
-  glob.sync(`${PACKAGES_ROOT}/*/node_modules/@patternfly/react-core`),
-].flat();
-const ICONS_DIRECTORIES = [
-  glob.sync(`${process.cwd()}/node_modules/@patternfly/react-icons`),
-  glob.sync(`${PACKAGES_ROOT}/*/node_modules/@patternfly/react-icons`),
-].flat();
-if (MODULES_ROOT) {
-  // comma separated list of roots
-  MODULES_ROOT.split(',').forEach((root) => {
-    CORE_DIRECTORIES.push(...glob.sync(`${path.resolve(__dirname, root)}/node_modules/@patternfly/react-core`.replace(/\/\//, '/')));
-    ICONS_DIRECTORIES.push(...glob.sync(`${path.resolve(__dirname, root)}/node_modules/@patternfly/react-icons`.replace(/\/\//, '/')));
-  });
-}
-
-const PROPS_MATCH = /Props$/g;
-const VARIANT_MATCH = /Variants?$/g;
-const POSITION_MATCH = /Position$/g;
-const SIZE_MATCH = /Sizes?$/g;
-
-function filterNonStableLocation(location: string) {
-  return !location.includes('next') && !location.includes('deprecated');
-}
-
-function getPossibleLocations(roots: string[], nameBinding: string) {
-  let moduleLocation = roots
-    .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding}.js`).filter(filterNonStableLocation))
-    .find((r) => r.length > 0)?.[0];
-  if (!moduleLocation && nameBinding.match(PROPS_MATCH)) {
-    moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(PROPS_MATCH, '')}.js`).filter(filterNonStableLocation))
-      .find((r) => r.length > 0)?.[0];
-  }
-
-  if (!moduleLocation && nameBinding.match(VARIANT_MATCH)) {
-    moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(VARIANT_MATCH, '')}.js`).filter(filterNonStableLocation))
-      .find((r) => r.length > 0)?.[0];
-  }
-
-  if (!moduleLocation && nameBinding.match(POSITION_MATCH)) {
-    moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(POSITION_MATCH, '')}.js`).filter(filterNonStableLocation))
-      .find((r) => r.length > 0)?.[0];
-  }
-
-  if (!moduleLocation && nameBinding.match(SIZE_MATCH)) {
-    moduleLocation = roots
-      .map((root) => glob.sync(`${root}/dist/esm/**/${nameBinding.replace(SIZE_MATCH, '')}.js`).filter(filterNonStableLocation))
-      .find((r) => r.length > 0)?.[0];
-  }
-
-  return moduleLocation;
-}
-
-function getModuleExplicitLocation(roots: string[], relativePath: string) {
-  const defaultLocation = roots
-    .map((root) => {
-      return glob.sync(`${root}/dist/dynamic/**/${relativePath}`).filter(filterNonStableLocation);
-    })
-    .find((r) => r.length > 0)?.[0]
-    ?.split('/dynamic/')
-    .pop();
-  if (defaultLocation) {
-    return defaultLocation;
-  }
-
-  throw new Error(`Could not find source file for ${relativePath} in any of ${roots}!`);
-}
-
-// Prefilled with modules which name bindings do not match the import specifier
-let COMPONENTS_CACHE: {
-  [nameBinding: string]: string;
-} = {};
-
-if (CORE_DIRECTORIES.length > 0) {
-  COMPONENTS_CACHE = {
-    getResizeObserver: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/resizeObserver'),
-    useOUIAProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
-    OUIAProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
-    getDefaultOUIAId: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
-    useOUIAId: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/OUIA/ouia'),
-    handleArrows: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/KeyboardHandler'),
-    setTabIndex: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/KeyboardHandler'),
-    IconComponentProps: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Icon'),
-    ListComponent: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/List'),
-    TreeViewDataItem: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/TreeView'),
-    Popper: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/Popper/Popper'),
-    clipboardCopyFunc: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/ClipboardCopy'),
-    ToolbarChipGroup: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Toolbar'),
-    DatePickerRef: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/DatePicker'),
-    ButtonType: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Button'),
-    PaginationTitles: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Pagination'),
-    ProgressMeasureLocation: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Progress'),
-    isValidDate: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/datetimeUtils'),
-    ValidatedOptions: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/constants'),
-    capitalize: getModuleExplicitLocation(CORE_DIRECTORIES, 'helpers/util'),
-    WizardFooterWrapper: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Wizard'),
-    WizardFooter: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Wizard'),
-    WizardContextProvider: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Wizard'),
-    useWizardContext: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Wizard'),
-    DataListWrapModifier: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/DataList'),
-    MenuToggleElement: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/MenuToggle'),
-    TimestampFormat: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Timestamp'),
-  };
-}
+import { CORE_DIRECTORIES, ICONS_DIRECTORIES, findFirstGlob } from './directories';
+import guessComponentModule from './guess-module';
 
 // Icons names that do not match the filename pattern
 const ICONS_NAME_FIX: {
@@ -125,24 +17,69 @@ const ICONS_CACHE: {
   [iconImport: string]: string;
 } = {};
 
-function findComponentModule(nameBinding: string) {
-  let modulePath = COMPONENTS_CACHE[nameBinding];
-  if (modulePath) {
-    return modulePath;
+function findModuleMap(roots: string[]): string | undefined {
+  return findFirstGlob(roots, 'dist/dynamic-modules.json');
+}
+
+function loadModuleMap(roots: string[]): Map<string, string> | undefined {
+  const path = findModuleMap(roots);
+  if (path === undefined) return undefined;
+
+  const loaded: unknown = JSON.parse(
+    fs.readFileSync(path, {
+      encoding: 'utf-8',
+    })
+  );
+
+  if (typeof loaded !== 'object' || loaded === undefined || loaded === null) {
+    throw new Error(`Expected dynamic-modules.json to contain an object, got ${loaded}`);
   }
 
-  const sourceGlob = getPossibleLocations(CORE_DIRECTORIES, nameBinding);
-  const sourceFile = sourceGlob ? glob.sync(sourceGlob) : [];
-  if (sourceFile.length < 1) {
-    throw new Error(
-      `Unable to find source file for module ${nameBinding}! The module likely does not have unique file as is included within another file. Please add the entry into the COMPONENTS_CACHE in FEC repository`
-    );
+  const map = new Map<string, string>();
+  const dynamicPrefix = 'dist/dynamic/';
+
+  for (const [key, value] of Object.entries(loaded)) {
+    if (typeof value !== 'string') throw new Error(`Expected value of ${key} in dynamic-modules.json to be string, got ${value}`);
+    map.set(key, value.startsWith(dynamicPrefix) ? value.substring(dynamicPrefix.length) : value);
   }
-  const moduleSource: string[] = sourceFile[0].split('esm').pop()?.split('/') || [];
-  moduleSource?.pop();
-  modulePath = moduleSource?.join('/').replace(/^\//, '');
-  COMPONENTS_CACHE[nameBinding] = modulePath;
-  return modulePath;
+
+  return map;
+}
+
+const CORE_MODULE_MAP = loadModuleMap(CORE_DIRECTORIES);
+const CORE_COMPONENT_CACHE = new Map<string, string>();
+
+function findComponentModuleUncached(nameBinding: string): string {
+  // If dynamic-modules.json is present in this react-core version, use that.
+  if (CORE_MODULE_MAP !== undefined) {
+    const mapPath = CORE_MODULE_MAP.get(nameBinding);
+
+    if (mapPath !== undefined) {
+      const foundPath = findFirstGlob(CORE_DIRECTORIES, `dist/dynamic/${mapPath}`);
+
+      // Fail loudly if a path in the map does not exist on disk.
+      if (foundPath === undefined) {
+        throw new Error(
+          `@patternfly/react-core/dist/dynamic-modules.json contains path "${mapPath}" for "${nameBinding}", but no such file exists in ${CORE_DIRECTORIES}.`
+        );
+      }
+
+      return mapPath;
+    }
+  }
+
+  // If dynamic-modules.json is not present (or if the name to load is not in the map), guess at the module path.
+  return guessComponentModule(nameBinding);
+}
+
+function findComponentModule(nameBinding: string): string {
+  const cached = CORE_COMPONENT_CACHE.get(nameBinding);
+  if (cached !== undefined) return cached;
+
+  const module = findComponentModuleUncached(nameBinding);
+  CORE_COMPONENT_CACHE.set(nameBinding, module);
+
+  return module;
 }
 
 function camelToDash(str: string) {

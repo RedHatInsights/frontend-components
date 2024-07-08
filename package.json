@@ -63,7 +63,7 @@
         "@octokit/rest": "^16.43.2",
         "@openshift/dynamic-plugin-sdk-webpack": "^4.0.1",
         "@patternfly/quickstarts": "^5.0.0",
-        "@patternfly/react-core": "^5.0.0",
+        "@patternfly/react-core": "^5.3.3",
         "@patternfly/react-icons": "^5.0.0",
         "@patternfly/react-table": "^5.0.0",
         "@simonsmith/cypress-image-snapshot": "^8.0.2",

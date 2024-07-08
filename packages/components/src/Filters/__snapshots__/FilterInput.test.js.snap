@@ -4,10 +4,10 @@ exports[`FilterInput component should render a checkbox input 1`] = `
 <Checkbox
   aria-label="label"
   className="ins-c-filter-input__checkbox"
-  component="div"
   id="id"
   isChecked={false}
   isDisabled={false}
+  isLabelWrapped={false}
   isRequired={false}
   isValid={true}
   label="label"
