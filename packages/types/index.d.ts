@@ -111,9 +111,23 @@ declare function OnChromeEvent<K extends 'APP_NAVIGATION' | 'NAVIGATION_TOGGLE' 
 
 export type EnableTopicsArgs = [{ names: string[]; append?: boolean }] | string[];
 
+export type ChromeWsEventTypes = 'com.redhat.console.notifications.drawer';
+export type ChromeWsPayload<T> = {
+  data: T;
+  type: ChromeWsEventTypes;
+  source: string;
+  datacontenttype: string;
+  specversion: string;
+  time: string;
+};
+export type ChromeWsEventListener<T> = (event: ChromeWsPayload<T>) => void;
+export type UnSubscribeFromChromeWsEvent = () => void;
+export type AddChromeWsEventListener = <T>(type: ChromeWsEventTypes, listener: ChromeWsEventListener<T>) => UnSubscribeFromChromeWsEvent;
+
 export interface ChromeAPI {
   /** @deprecated will be removed from useChrome hook */
   $internal: any;
+  addWsEventListener: AddChromeWsEventListener;
   initialized: boolean;
   experimentalApi: boolean;
   /** Return true if current environment is fedramp */
