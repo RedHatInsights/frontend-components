@@ -74,6 +74,7 @@ if (CORE_DIRECTORIES.length > 0) {
     useWizardContext: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Wizard'),
     DataListWrapModifier: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/DataList'),
     MenuToggleElement: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/MenuToggle'),
+    TimestampFormat: getModuleExplicitLocation(CORE_DIRECTORIES, 'components/Timestamp'),
   };
 }
 
