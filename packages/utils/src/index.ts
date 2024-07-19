@@ -20,3 +20,4 @@ export * from './useInsightsNavigate';
 export * from './useExportPDF';
 export * from './usePromiseQueue';
 export * from './useFetchBatched';
+export * from './useSuspenseLoader';
