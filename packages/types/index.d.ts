@@ -130,8 +130,9 @@ export interface ChromeAPI {
   addWsEventListener: AddChromeWsEventListener;
   initialized: boolean;
   experimentalApi: boolean;
-  /** Return true if current environment is fedramp */
+  /** @deprecated will be removed from useChrome hook */
   isFedramp: boolean;
+  isITLess: boolean;
   usePendoFeedback: () => void;
   toggleFeedbackModal: (isOpen: boolean) => void;
   toggleDebuggerModal: (isOpen: boolean) => void;
