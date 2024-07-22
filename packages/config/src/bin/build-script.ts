@@ -23,11 +23,13 @@ export function buildScript(argv: { [name: string]: string }, cwd: string) {
     fecLogger(LogType.error, err);
     process.exit(1);
   });
-  subprocess.on('exit', (code: string | null, signal: string) => {
+  subprocess.on('exit', (code: number | null, signal: string) => {
     if (code) {
       fecLogger(LogType.error, 'Exited with code', code);
+      process.exit(code);
     } else if (signal) {
       fecLogger(LogType.error, 'Exited with signal', signal);
+      process.exit(1);
     } else {
       fecLogger(LogType.info, 'Exited Okay');
     }
