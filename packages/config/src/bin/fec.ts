@@ -116,14 +116,10 @@ const argv = yargs
     });
   })
   .option('clouddotEnv', {
-    describe: "Set platform environment ['stage', 'prod', 'qa', 'ci']",
+    describe: "Set platform environment ['stage', 'prod']",
     type: 'string',
   })
-  .option('uiEnv', {
-    describe: "Set Chrome environment ['beta', 'stable']",
-    type: 'string',
-  })
-  .example('$0 dev --clouddotEnv=stage --uiEnv=stable', 'Example of usage in non-interactive environments')
+  .example('$0 dev --clouddotEnv=stage', 'Example of usage in non-interactive environments')
   .help().argv;
 
 const scripts: { [name: string]: (...args: any[]) => void } = {

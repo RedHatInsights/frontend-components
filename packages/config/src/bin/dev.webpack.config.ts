@@ -6,10 +6,8 @@ const fecConfig: FECConfiguration = require(process.env.FEC_CONFIG_PATH!);
 
 type Configuration = import('webpack').Configuration;
 
-const isBeta = process.env.BETA === 'true';
-
 function parseRegexpURL(url: RegExp) {
-  return isBeta ? [new RegExp(`/beta${url.toString()}`), new RegExp(`/preview${url.toString()}`)] : [new RegExp(url.toString())];
+  return [new RegExp(url.toString())];
 }
 
 function createAppUrl(appUrl: string | string[] | (string | RegExp)[]) {
@@ -19,7 +17,7 @@ function createAppUrl(appUrl: string | string[] | (string | RegExp)[]) {
         if (url instanceof RegExp) {
           return parseRegexpURL(url);
         } else if (typeof url === 'string') {
-          return isBeta ? [`/beta${url}`, `/preview${url}`] : url;
+          return url;
         } else {
           throw `Invalid appURL format! Expected string or regexp, got ${typeof url}. Check your fec.config.js:appUrl.`;
         }
@@ -28,7 +26,7 @@ function createAppUrl(appUrl: string | string[] | (string | RegExp)[]) {
   } else if (typeof appUrl === 'object') {
     return parseRegexpURL(appUrl);
   } else if (typeof appUrl === 'string') {
-    return [`${isBeta ? '/beta' : ''}${appUrl}`];
+    return [appUrl];
   } else {
     throw `Invalid appURL format! Expected string or regexp, got ${typeof appUrl}. Check your fec.config.js:appUrl.`;
   }
@@ -60,8 +58,8 @@ const { config: webpackConfig, plugins } = config({
   ...externalConfig,
   routes: internalProxyRoutes,
   appUrl,
-  deployment: isBeta ? 'beta/apps' : 'apps',
-  env: `${process.env.CLOUDOT_ENV}-${isBeta === true ? 'beta' : 'stable'}` as FrontendEnv,
+  deployment: 'apps',
+  env: `${process.env.CLOUDOT_ENV}-stable` as FrontendEnv,
   rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
   blockLegacyChrome: true,
 });

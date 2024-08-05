@@ -19,7 +19,7 @@ export interface CommonConfigOptions {
   hotReload?: boolean;
   useFileHash?: boolean;
 }
-export type FrontendEnv = 'stage-stable' | 'prod-stable' | 'ci-stable' | 'qa-stable' | 'stage-beta' | 'prod-beta' | 'ci-beta' | 'qa-beta';
+export type FrontendEnv = 'stage-stable' | 'prod-stable';
 export interface CreateConfigOptions extends CommonConfigOptions {
   port?: number;
   publicPath: string;
@@ -267,13 +267,12 @@ export const createConfig = ({
       // https://github.com/bripkens/connect-history-api-fallback
       historyApiFallback: {
         // We should really implement the same logic as cloud-services-config
-        // and only redirect (/beta)?/bundle/app-name to /index.html
         //
         // Until then let known api calls fall through instead of returning /index.html
         // for easier `fetch` debugging
         rewrites: [
           { from: /^\/api/, to: '/404.html' },
-          { from: /^(\/beta)?\/config/, to: '/404.html' },
+          { from: /^\/config/, to: '/404.html' },
         ],
         verbose: Boolean(proxyVerbose),
         disableDotRule: true,

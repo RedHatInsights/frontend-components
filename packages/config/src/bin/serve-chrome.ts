@@ -160,14 +160,14 @@ async function startServer(tag: string, serverPort: number) {
   });
 }
 
-function copyIndex(path: string, isPreview = false) {
-  const copyCommand = `${execBin} cp ${CONTAINER_NAME}:/opt/app-root/src/build/${isPreview ? 'preview' : 'stable'}/index.html ${path}`;
+function copyIndex(path: string) {
+  const copyCommand = `${execBin} cp ${CONTAINER_NAME}:/opt/app-root/src/build/stable/index.html ${path}`;
   execSync(copyCommand, {
     stdio: 'inherit',
   });
 }
 
-async function serveChrome(distPath: string, host: string, onError: (error: Error) => void, isProd = false, isPreview = false, serverPort = 9999) {
+async function serveChrome(distPath: string, host: string, onError: (error: Error) => void, isProd = false, serverPort = 9999) {
   if (!distPath) {
     throw new Error('No distPath provided! Provide an absolute path to the UI dist directory.');
   }
@@ -187,7 +187,7 @@ async function serveChrome(distPath: string, host: string, onError: (error: Erro
   await waitOn({
     resources: [`http://${host}:${serverPort}`],
   });
-  copyIndex(distPath, isPreview);
+  copyIndex(distPath);
 }
 
 export default serveChrome;

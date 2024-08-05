@@ -15,18 +15,11 @@ async function setEnv(cwd: string) {
         type: 'list',
         name: 'clouddotEnv',
         message: 'Which platform environment you want to use?',
-        choices: ['stage', 'prod', { value: 'qa', name: 'qa (deprecated)' }, { value: 'ci', name: 'ci (deprecated)' }],
-      },
-      {
-        type: 'list',
-        name: 'uiEnv',
-        message: 'Which Chrome environment you want to use?',
-        choices: ['beta', 'stable'],
+        choices: ['stage', 'prod'],
       },
     ])
     .then((answers) => {
-      const { uiEnv, clouddotEnv } = answers;
-      process.env.BETA = uiEnv === 'beta' ? 'true' : 'false';
+      const { clouddotEnv } = answers;
       process.env.CLOUDOT_ENV = clouddotEnv ? clouddotEnv : 'stage';
       process.env.FEC_ROOT_DIR = cwd;
     });
@@ -65,19 +58,15 @@ async function devScript(
       configPath = resolve(__dirname, './dev.webpack.config.js');
     }
 
-    const clouddotEnvOptions = ['stage', 'prod', 'qa', 'ci'];
-    const uiEnvOptions = ['beta', 'stable'];
+    const clouddotEnvOptions = ['stage', 'prod'];
     if (argv?.clouddotEnv && argv?.uiEnv) {
-      if (clouddotEnvOptions.includes(argv.clouddotEnv) && uiEnvOptions.includes(argv.uiEnv)) {
-        process.env.BETA = argv.uiEnv === 'beta' ? 'true' : 'false';
+      if (clouddotEnvOptions.includes(argv.clouddotEnv)) {
         process.env.CLOUDOT_ENV = argv.clouddotEnv;
         process.env.FEC_ROOT_DIR = cwd;
       } else {
         console.error(
           'Incorrect argument value:\n--clouddotEnv must be one of: [',
           clouddotEnvOptions.toString(),
-          ']\n--uiEnv must be one of: [',
-          uiEnvOptions.toString(),
           ']\nRun fec --help for more information.'
         );
         process.exit(1);
@@ -124,7 +113,6 @@ async function devScript(
           chromeHost,
           handleServerError,
           process.env.CLOUDOT_ENV === 'prod',
-          argv.uiEnv === 'beta',
           parseInt(process.env.FEC_CHROME_PORT!)
         ).catch((error) => {
           fecLogger(LogType.error, 'Chrome server stopped!');

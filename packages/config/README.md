@@ -74,7 +74,7 @@ const { config: webpackConfig, plugins } = config({
 |[routes](#routes)|`object`|An object with additional routes.|
 |[routesPath](#routespath)|`string`|A path to an object with additional routes.|
 |[customProxy](#custom-proxy-settings)|`object[]`|An array of custom provided proxy configurations.|
-|[env](#env)|`string`|Environment to proxy against such as ci-beta.|
+|[env](#env)|`string`|Environment to proxy against such as stage-stable.|
 |[useCloud](#use-cloud)|`boolean`|Toggle to use old fallback to cloud.redhat.com paths instead of console.redhat.com.|
 |[target](#target)|`string`|Override `env` and `useCloud` to use a custom URI.|
 |[useAgent](#useAgent)|`boolean` = `true`|Enforce using the agent to proxy requests via `proxyUrl`.|
@@ -89,7 +89,6 @@ You can also easily run you application with a local build of Chrome by adding `
   rootFolder: resolve(__dirname, '../'),
   debug: true,
   useFileHash: false,
-  deployment: process.env.BETA ? 'beta/apps' : 'apps',
   useProxy: true,
   localChrome: process.env.INSIGHTS_CHROME,
 });
@@ -122,12 +121,12 @@ const express = require('express');
     // StandaloneConfig is the parsed standalone config given
 
     // Example: override main.yml
-    ({ app, server, compiler, standaloneConfig }) => app.get('(/beta)?/config/main.yml', (_req, res) => res.send('heyo'))
+    ({ app, server, compiler, standaloneConfig }) => app.get('/config/main.yml', (_req, res) => res.send('heyo'))
 
     // Example: override entire cloudServicesConfig
     ({ app, server, compiler, standaloneConfig }) => {
       const staticConfig = express.static('pathToLocalCloudServicesConfig');
-      app.use('(/beta)?/config', staticConfig);
+      app.use('/config', staticConfig);
     }
   ]
 ```
@@ -142,7 +141,6 @@ If you want to serve files or api from different URL you can either pass `routes
   rootFolder: resolve(__dirname, '../'),
   debug: true,
   useFileHash: false,
-  deployment: process.env.BETA ? 'beta/apps' : 'apps',
   useProxy: true,
   routes: {
       '/config/main.yml': { host: 'http://127.0.0.1:8889' }
@@ -155,7 +153,6 @@ If you want to serve files or api from different URL you can either pass `routes
   rootFolder: resolve(__dirname, '../'),
   debug: true,
   useFileHash: false,
-  deployment: process.env.BETA ? 'beta/apps' : 'apps',
   useProxy: true,
   routesPath: process.env.CONFIG_PATH
 ```
@@ -170,7 +167,6 @@ module.exports = {
   routes: {
     '/api': { host: 'PORTAL_BACKEND_MARKER' },
     '/config': { host: 'http://127.0.0.1:8889' },
-    '/beta/config': { host: 'http://127.0.0.1:8889' },
   }
 };
 ```
@@ -216,7 +212,7 @@ $ LOCAL_APPS=APP_NAME:APP_PORT[~APP_PROTOCOL] npm run start:proxy
 5) With this you should be able to see any changes in both Inventroy and Advisor via the usual `https://stage.foo.redhat.com:1337`.
 
 #### Env
-A hyphenated string in the form of (qa|ci|stage|prod)-(stable|beta). Used to determine the proxy target (such as ci.console.redhat.com or console.stage.redhat.com) and branch to checkout of build repos. If "stage" is specific qa is used as the branch.
+A hyphenated string in the form of (stage|prod)-stable. Used to determine the proxy target (such as ci.console.redhat.com or console.stage.redhat.com) and branch to checkout of build repos. If "stage" is specific qa is used as the branch.
 
 #### Use cloud
 
@@ -244,7 +240,7 @@ Set following attributes in your dev webpack proxy:
 ```jsx
 const config = {
   ...options,
-  env: 'prod-stable', // or 'prod-beta'
+  env: 'prod-stable'
   useAgent: false,
   bounceProd: true
 }
@@ -269,7 +265,6 @@ Just pass `true` to use the 4 default services:
 ```js
 const { config: webpackConfig, plugins } = config({
   ...
-  env: 'ci-beta', // Env to use when cloning repos
   reposDir: 'repos', // Directory to clone repos into
   standalone: true
 });
@@ -320,9 +315,6 @@ Services have the following schema:
             dependsOn: string[],
         },
     },
-    // Can be a local path or git url with optional postpended branch name
-    // Once cloned will be replaced with absolute path to repo
-    path: 'https://github.com/redhatinsights/insights-chrome-build#qa-beta',
     // Function to modify express.js [app](https://expressjs.com/en/4x/api.html)
     // runs [before](https://webpack.js.org/configuration/dev-server/#devserverbefore) webpack-dev-server
     // Great for adding routes
@@ -352,7 +344,7 @@ config(
         path: 'https://github.com/redhatinsights/cloud-services-config#prod-stable',
         register({ app, config }) {
             const staticConfig = express.static(config.servicesConfig.path);
-            app.use('(/beta)?/config', staticConfig);
+            app.use('/config', staticConfig);
         }
     }
   }
@@ -455,13 +447,9 @@ index 73eb14c..31f6554 100644
 -    routesPath: process.env.ROUTES_PATH || resolve(__dirname, '../config/spandx.config.js'),
      routes: {
          // Additional routes to the spandx config
-         // '/beta/config': { host: 'http://localhost:8003' }, // for local CSC config
 +        '/apps/inventory': {
 +            host: "http://localhost:8003"
 +        },
-+        '/beta/apps/inventory': {
-+            host: "http://localhost:8003"
-+        }
      },
  };
 
@@ -471,9 +459,9 @@ index 73eb14c..31f6554 100644
 
 ```bash
 # in the inventory frontend
-BETA=true npm run start:federated
+npm run start:federated
 # in compliance frontend
-BETA=true npm run start:proxy
+npm run start:proxy
 ```
 
 # include PF css modules in your bundle

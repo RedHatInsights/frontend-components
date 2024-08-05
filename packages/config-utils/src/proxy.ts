@@ -79,9 +79,6 @@ const buildLocalAppRoutes = (localApps: string | string[], defaultLocalAppHost: 
           [`/apps/${appName}`]: {
             host: appUrl,
           },
-          [`/preview/apps/${appName}`]: {
-            host: appUrl,
-          },
         };
       } else {
         process.exit();
@@ -91,7 +88,7 @@ const buildLocalAppRoutes = (localApps: string | string[], defaultLocalAppHost: 
   );
 
 export type ProxyOptions = {
-  env?: 'prod-stable' | 'prod-beta' | 'stage-stable' | 'stage-beta' | string;
+  env?: 'prod-stable' | 'stage-stable' | string;
   customProxy?: ProxyConfigItem[];
   routes?: { routes?: { [route: string]: ProxyConfigItem } } & { [route: string]: ProxyConfigItem };
   routesPath?: string;
@@ -122,7 +119,7 @@ export type ProxyOptions = {
 };
 
 const proxy = ({
-  env = 'ci-beta',
+  env = 'stage-stable',
   customProxy = [],
   routes,
   routesPath,
@@ -178,7 +175,7 @@ const proxy = ({
   }
 
   if (isStage) {
-    // stage-stable / stage-beta branches don't exist in build repos
+    // stage-stable branches don't exist in build repos
     // Currently stage pulls from QA
     env = env.replace('stage', 'qa');
   }
@@ -385,7 +382,7 @@ const proxy = ({
         } else if (!blockLegacyChrome && !localChrome && useProxy) {
           const chromeConfig = typeof defaultServices.chrome === 'function' ? defaultServices.chrome({}) : defaultServices.chrome;
 
-          const chromeEnv = useDevBuild ? (env.includes('-beta') ? 'dev-beta' : 'dev-stable') : env;
+          const chromeEnv = useDevBuild ? 'dev-stable' : env;
           chromePath = checkoutRepo({
             repo: `${chromeConfig.path}#${chromeEnv}`,
             reposDir,

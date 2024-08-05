@@ -14,8 +14,7 @@ export interface FecWebpackConfiguration extends WebpackConfiguration {
 const gitRevisionPlugin = new (require('git-revision-webpack-plugin'))({
   branch: true,
 });
-const betaBranches = ['master', 'qa-beta', 'ci-beta', 'prod-beta', 'main', 'devel', 'stage-beta'];
-const akamaiBranches = ['prod-beta', 'prod-stable'];
+const akamaiBranches = ['prod-stable'];
 
 const getAppEntry = (rootFolder: string, isProd?: boolean) => {
   // Use entry-dev if it exists
@@ -62,10 +61,7 @@ const createFecConfig = (
     fecLogger(LogType.info, 'no git branch detected, using main for webpack "main" config.');
     gitBranch = 'main';
   }
-  const appDeployment =
-    typeof configurations.deployment === 'string'
-      ? configurations.deployment
-      : configurations.deployment || ((isProd && betaBranches.includes(gitBranch)) || process.env.BETA === 'true' ? 'beta/apps' : 'apps');
+  const appDeployment = typeof configurations.deployment === 'string' ? configurations.deployment : configurations.deployment || 'apps';
 
   const publicPath = `/${appDeployment}/${insights.appname}/`;
   const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
@@ -77,7 +73,6 @@ const createFecConfig = (
     fecLogger(LogType.debug, `Root folder: ${configurations.rootFolder}`);
     fecLogger(LogType.debug, `Current branch: ${gitBranch}`);
     !generateSourceMaps && fecLogger(LogType.debug, `Source map generation for "${gitBranch}" deployment has been disabled.`);
-    fecLogger(LogType.debug, `Beta branches: ${betaBranches}`);
     fecLogger(LogType.debug, `Using deployments: ${appDeployment}`);
     fecLogger(LogType.debug, `Public path: ${publicPath}`);
     fecLogger(LogType.debug, `App entry: ${appEntry}`);
