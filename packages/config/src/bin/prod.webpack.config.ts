@@ -10,7 +10,6 @@ const { plugins: externalPlugins = [], interceptChromeConfig, routes, hotReload,
 const { config: webpackConfig, plugins } = config({
   rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
   ...externalConfig,
-  ...(process.env.BETA === 'true' && { deployment: 'beta/apps' }),
   /** Do not use HMR for production builds */
   hotReload: false,
 });

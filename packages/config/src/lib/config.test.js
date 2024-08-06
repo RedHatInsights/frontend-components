@@ -7,7 +7,7 @@ describe('should create dummy config with no options', () => {
     rootFolder: '',
     appEntry: '/foo/bar',
     appName: 'Fooapp',
-    env: 'stage-beta',
+    env: 'stage-stable',
     publicPath: 'foo/bar',
   });
 
@@ -53,7 +53,7 @@ describe('should create dummy config with no options', () => {
       historyApiFallback: {
         rewrites: [
           { from: /^\/api/, to: '/404.html' },
-          { from: /^(\/beta)?\/config/, to: '/404.html' },
+          { from: /^\/config/, to: '/404.html' },
         ],
         verbose: false,
         disableDotRule: true,
