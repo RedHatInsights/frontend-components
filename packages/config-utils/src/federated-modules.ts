@@ -9,13 +9,13 @@ const defaultPluginMetaDataJSON = {
   extensions: [],
 };
 
-const createIncludes = (eager = false): { [module: string]: WebpackSharedConfig } => ({
-  '@patternfly/quickstarts': { singleton: true, eager },
-  '@redhat-cloud-services/chrome': { singleton: true },
+const createIncludes = (): { [module: string]: WebpackSharedConfig } => ({
+  '@patternfly/quickstarts': { singleton: true, eager: false, import: false },
+  '@redhat-cloud-services/chrome': { singleton: true, import: false },
   axios: {},
   lodash: {},
-  react: { singleton: true, eager },
-  'react-dom': { singleton: true, eager },
+  react: { singleton: true, eager: false, import: false },
+  'react-dom': { singleton: true, eager: false, import: false },
 });
 
 export type FederatedModulesConfig = {
@@ -53,11 +53,10 @@ const federatedModules = ({
   useFileHash = true,
   separateRuntime = false,
   exclude = [],
-  eager = false,
   pluginMetadata,
   extensions = [],
 }: FederatedModulesConfig) => {
-  const include = createIncludes(eager);
+  const include = createIncludes();
 
   const { dependencies, insights } = require(resolve(root, './package.json')) || {};
   const appName = moduleName || (insights && jsVarName(insights.appname));
@@ -92,14 +91,19 @@ const federatedModules = ({
    * No application should be installing/interacting with scalprum directly.
    */
   if (dependencies['@redhat-cloud-services/frontend-components']) {
-    sharedDeps['@scalprum/react-core'] = { requiredVersion: '*', singleton: true, eager };
+    sharedDeps['@scalprum/react-core'] = { requiredVersion: '*', singleton: true, eager: false, import: false };
   }
 
   /**
    * Make sure the unleash proxy client is a singleton
    */
   if (dependencies['@unleash/proxy-client-react']) {
-    sharedDeps['@unleash/proxy-client-react'] = { singleton: true, requiredVersion: dependencies['@unleash/proxy-client-react'] };
+    sharedDeps['@unleash/proxy-client-react'] = {
+      singleton: true,
+      eager: false,
+      import: false,
+      requiredVersion: dependencies['@unleash/proxy-client-react'],
+    };
   }
 
   if (debug) {
