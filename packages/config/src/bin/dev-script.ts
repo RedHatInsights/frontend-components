@@ -89,7 +89,7 @@ async function devScript(
     process.env.FEC_CHROME_HOST = chromeHost;
 
     // ignore chrome server if a localChrome is provided
-    if (!localChrome) {
+    if (!localChrome && process.env.E2E_CI_RUN !== 'true') {
       // get the directory if the build
       // hsa to require here after all FEC env variables are set
       const devConfig = require('./dev.webpack.config');
