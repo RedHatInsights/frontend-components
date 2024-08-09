@@ -11,7 +11,7 @@ export function mergeArraysByKey(arrays: Record<string, unknown>[][], key = 'id'
   return Object.values(mergedObject);
 }
 
-export function downloadFile(data: unknown, filename = `${new Date().toISOString()}`, format = CSV_TYPE) {
+export function downloadFile(data: unknown, filename = `${new Date().toISOString()}`, format = 'csv') {
   const type = format === 'json' ? JSON_TYPE : CSV_TYPE;
   const blob = new Blob([data as unknown as BlobPart], { type });
   const link = document.createElement('a');
