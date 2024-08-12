@@ -5,29 +5,31 @@ import { Provider } from 'react-redux';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 
-const TestWrapper = ({ renderOptions = {}, children }) => {
-  const mockStore = configureStore();
+const mockStore = configureStore();
 
-  return (
-    <IntlProvider locale="en">
-      <Provider store={renderOptions?.store || mockStore()}>
-        <MemoryRouter initialEntries={renderOptions?.initialEntries || ['/']}>
-          {renderOptions?.componentPath ? (
-            <Routes>
-              <Route path={renderOptions?.elementPath || '/'}>{children}</Route>
-            </Routes>
-          ) : (
-            children
-          )}
-        </MemoryRouter>
-      </Provider>
-    </IntlProvider>
-  );
-};
+const TestWrapper = (children, routerProps = { initialEntries: ['/'] }, componentPath, store = mockStore()) => (
+  <IntlProvider locale="en">
+    <Provider store={store}>
+      <MemoryRouter {...routerProps}>
+        {componentPath ? (
+          <Routes>
+            <Route path={componentPath || '/'}>{children}</Route>
+          </Routes>
+        ) : (
+          children
+        )}
+      </MemoryRouter>
+    </Provider>
+  </IntlProvider>
+);
 
 TestWrapper.propTypes = {
   children: PropTypes.element,
-  renderOptions: PropTypes.object,
+  routerProps: PropTypes.shape({
+    initialEntries: PropTypes.array,
+  }),
+  componentPath: PropTypes.string,
+  store: PropTypes.object,
 };
 
 export default TestWrapper;
