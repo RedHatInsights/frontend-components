@@ -31,7 +31,7 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
   extraItems = [],
   onSelect = () => undefined,
   isDisabled,
-  tooltipText,
+  tooltipText = 'Export data',
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
