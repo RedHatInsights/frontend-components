@@ -7,7 +7,7 @@ import { IntlProvider } from 'react-intl';
 
 const mockStore = configureStore();
 
-const TestWrapper = (children, routerProps = { initialEntries: ['/'] }, componentPath, store = mockStore()) => (
+const TestWrapper = ({ children, routerProps = { initialEntries: ['/'] }, componentPath, store = mockStore() }) => (
   <IntlProvider locale="en">
     <Provider store={store}>
       <MemoryRouter {...routerProps}>
