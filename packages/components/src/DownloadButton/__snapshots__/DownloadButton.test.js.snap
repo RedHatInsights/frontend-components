@@ -2,108 +2,113 @@
 
 exports[`DownloadButton component API clicking should open dropdown 1`] = `
 <div>
-  <button
-    aria-expanded="true"
-    aria-label="Export"
-    class="pf-v5-c-menu-toggle pf-m-expanded pf-m-plain"
-    type="button"
-  >
-    <svg
-      aria-hidden="true"
-      class="pf-v5-svg"
-      fill="currentColor"
-      height="1em"
-      role="img"
-      viewBox="0 0 1024 1024"
-      width="1em"
-    >
-      <path
-        d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
-      />
-    </svg>
-  </button>
   <div
-    class="pf-v5-c-menu"
-    data-ouia-component-id="Export"
-    data-ouia-component-type="PF5/Dropdown"
-    data-ouia-safe="true"
-    data-popper-escaped="true"
-    data-popper-placement="bottom-start"
-    data-popper-reference-hidden="true"
-    style="position: absolute; left: 0px; top: 0px; z-index: 9999; opacity: 1; transition: opacity 0ms cubic-bezier(.54, 1.5, .38, 1.11); min-width: 0px; transform: translate(0px, 0px);"
+    style="display: contents;"
   >
-    <div
-      class="pf-v5-c-menu__content"
+    <button
+      aria-expanded="true"
+      aria-label="Export"
+      class="pf-v5-c-menu-toggle pf-m-expanded pf-m-plain"
+      type="button"
     >
-      <ul
-        class="pf-v5-c-menu__list"
-        role="menu"
+      <svg
+        aria-hidden="true"
+        class="pf-v5-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 1024 1024"
+        width="1em"
       >
-        <li
-          class="pf-v5-c-menu__list-item"
-          data-ouia-component-id="DownloadCSV"
-          data-ouia-component-type="PF5/DropdownItem"
-          data-ouia-safe="true"
-          role="none"
+        <path
+          d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
+        />
+      </svg>
+    </button>
+    <div
+      aria-describedby="pf-tooltip-5"
+      class="pf-v5-c-menu"
+      data-ouia-component-id="Export"
+      data-ouia-component-type="PF5/Dropdown"
+      data-ouia-safe="true"
+      data-popper-escaped="true"
+      data-popper-placement="bottom-start"
+      data-popper-reference-hidden="true"
+      style="position: absolute; left: 0px; top: 0px; z-index: 9999; opacity: 1; transition: opacity 0ms cubic-bezier(.54, 1.5, .38, 1.11); min-width: 0px; transform: translate(0px, 0px);"
+    >
+      <div
+        class="pf-v5-c-menu__content"
+      >
+        <ul
+          class="pf-v5-c-menu__list"
+          role="menu"
         >
-          <button
-            aria-label="Export to CSV"
-            class="pf-v5-c-menu__item"
-            role="menuitem"
-            tabindex="0"
-            type="button"
-          >
-            <span
-              class="pf-v5-c-menu__item-main"
-            >
-              <span
-                class="pf-v5-c-menu__item-text"
-              >
-                Export to CSV
-              </span>
-            </span>
-          </button>
-        </li>
-        <li
-          class="pf-v5-c-menu__list-item"
-          data-ouia-component-id="DownloadJSON"
-          data-ouia-component-type="PF5/DropdownItem"
-          data-ouia-safe="true"
-          role="none"
-        >
-          <button
-            aria-label="Export to JSON"
-            class="pf-v5-c-menu__item"
-            role="menuitem"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="pf-v5-c-menu__item-main"
-            >
-              <span
-                class="pf-v5-c-menu__item-text"
-              >
-                Export to JSON
-              </span>
-            </span>
-          </button>
-        </li>
-        <li
-          role="none"
-        >
-          <button
-            aria-disabled="false"
-            class=""
-            data-ouia-component-id="OUIA-Generated-DropdownItem-3"
+          <li
+            class="pf-v5-c-menu__list-item"
+            data-ouia-component-id="DownloadCSV"
             data-ouia-component-type="PF5/DropdownItem"
             data-ouia-safe="true"
-            role="menuitem"
-            tabindex="-1"
-            type="button"
-          />
-        </li>
-      </ul>
+            role="none"
+          >
+            <button
+              aria-label="Export to CSV"
+              class="pf-v5-c-menu__item"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="pf-v5-c-menu__item-main"
+              >
+                <span
+                  class="pf-v5-c-menu__item-text"
+                >
+                  Export to CSV
+                </span>
+              </span>
+            </button>
+          </li>
+          <li
+            class="pf-v5-c-menu__list-item"
+            data-ouia-component-id="DownloadJSON"
+            data-ouia-component-type="PF5/DropdownItem"
+            data-ouia-safe="true"
+            role="none"
+          >
+            <button
+              aria-label="Export to JSON"
+              class="pf-v5-c-menu__item"
+              role="menuitem"
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="pf-v5-c-menu__item-main"
+              >
+                <span
+                  class="pf-v5-c-menu__item-text"
+                >
+                  Export to JSON
+                </span>
+              </span>
+            </button>
+          </li>
+          <li
+            role="none"
+          >
+            <button
+              aria-disabled="false"
+              class=""
+              data-ouia-component-id="OUIA-Generated-DropdownItem-3"
+              data-ouia-component-type="PF5/DropdownItem"
+              data-ouia-safe="true"
+              role="menuitem"
+              tabindex="-1"
+              type="button"
+            />
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
@@ -111,75 +116,87 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
 
 exports[`DownloadButton component should render CSV and JSON by default 1`] = `
 <div>
-  <button
-    aria-expanded="false"
-    aria-label="Export"
-    class="pf-v5-c-menu-toggle pf-m-plain"
-    type="button"
+  <div
+    style="display: contents;"
   >
-    <svg
-      aria-hidden="true"
-      class="pf-v5-svg"
-      fill="currentColor"
-      height="1em"
-      role="img"
-      viewBox="0 0 1024 1024"
-      width="1em"
+    <button
+      aria-expanded="false"
+      aria-label="Export"
+      class="pf-v5-c-menu-toggle pf-m-plain"
+      type="button"
     >
-      <path
-        d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
-      />
-    </svg>
-  </button>
+      <svg
+        aria-hidden="true"
+        class="pf-v5-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 1024 1024"
+        width="1em"
+      >
+        <path
+          d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
+        />
+      </svg>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`DownloadButton component should render custom items 1`] = `
 <div>
-  <button
-    aria-expanded="false"
-    aria-label="Export"
-    class="pf-v5-c-menu-toggle pf-m-plain"
-    type="button"
+  <div
+    style="display: contents;"
   >
-    <svg
-      aria-hidden="true"
-      class="pf-v5-svg"
-      fill="currentColor"
-      height="1em"
-      role="img"
-      viewBox="0 0 1024 1024"
-      width="1em"
+    <button
+      aria-expanded="false"
+      aria-label="Export"
+      class="pf-v5-c-menu-toggle pf-m-plain"
+      type="button"
     >
-      <path
-        d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
-      />
-    </svg>
-  </button>
+      <svg
+        aria-hidden="true"
+        class="pf-v5-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 1024 1024"
+        width="1em"
+      >
+        <path
+          d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
+        />
+      </svg>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`DownloadButton component should render disabled 1`] = `
 <div>
-  <button
-    aria-expanded="false"
-    aria-label="Export"
-    class="pf-v5-c-menu-toggle pf-m-plain"
-    type="button"
+  <div
+    style="display: contents;"
   >
-    <svg
-      aria-hidden="true"
-      class="pf-v5-svg"
-      fill="currentColor"
-      height="1em"
-      role="img"
-      viewBox="0 0 1024 1024"
-      width="1em"
+    <button
+      aria-expanded="false"
+      aria-label="Export"
+      class="pf-v5-c-menu-toggle pf-m-plain"
+      type="button"
     >
-      <path
-        d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
-      />
-    </svg>
-  </button>
+      <svg
+        aria-hidden="true"
+        class="pf-v5-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 1024 1024"
+        width="1em"
+      >
+        <path
+          d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
+        />
+      </svg>
+    </button>
+  </div>
 </div>
 `;
