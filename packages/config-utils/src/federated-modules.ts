@@ -90,8 +90,9 @@ const federatedModules = ({
    * It is required to share the context via `useChrome`.
    * No application should be installing/interacting with scalprum directly.
    */
-  if (dependencies['@redhat-cloud-services/frontend-components']) {
+  if (dependencies['@redhat-cloud-services/frontend-components'] || dependencies['@scalprum/react-core'] || dependencies['@scalprum/core']) {
     sharedDeps['@scalprum/react-core'] = { requiredVersion: '*', singleton: true, eager: false, import: false };
+    sharedDeps['@scalprum/core'] = { requiredVersion: '*', singleton: true, eager: false, import: false };
   }
 
   /**
