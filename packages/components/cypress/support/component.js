@@ -25,7 +25,7 @@ import '@patternfly/patternfly/patternfly-addons.css';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 // const { addMatchImageSnapshotCommand,  } = require('@simonsmith/cypress-image-snapshot/command');
 
 // configure the matcher to be less precise to adjust between the headless and normal browser rendering differences
