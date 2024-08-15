@@ -61,22 +61,32 @@ function checkContainerRuntime(): ContainerRuntime {
   throw new Error('No container runtime found');
 }
 
-async function getLatestCommits(): Promise<string> {
-  const { data } = await axios.get(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/commits`, {
-    headers: {
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-    params: {
-      per_page: 1,
-    },
-  });
-  if (data.length === 0) {
-    throw new Error('No commits for chrome found!');
-  }
+async function getQuaySha(): Promise<string> {
+  const { data } = await axios.get<{ tags: { name: string }[] }>('https://quay.io/api/v1/repository/cloudservices/insights-chrome-frontend/tag/');
+  return data.tags[0].name;
+}
 
-  const { sha } = data[0];
-  return sha.substring(0, 7);
+async function getLatestCommits(): Promise<string> {
+  try {
+    const { data } = await axios.get(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/commits`, {
+      headers: {
+        Accept: 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+      params: {
+        per_page: 1,
+      },
+    });
+    if (data.length === 0) {
+      throw new Error('No commits for chrome found!');
+    }
+
+    const { sha } = data[0];
+    return sha.substring(0, 7);
+  } catch (error) {
+    console.error('Unable to get chrome latest commit hash. Falling back to latest quay image.');
+    return getQuaySha();
+  }
 }
 
 type ResourceTemplate = {
