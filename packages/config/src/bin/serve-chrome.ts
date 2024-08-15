@@ -51,13 +51,19 @@ function checkContainerRuntime(): ContainerRuntime {
     if (execSync('which podman').toString().trim().length > 0) {
       return 'podman';
     }
+  } catch (_) {
+    // Ignore!
+  }
+
+  try {
     if (execSync('which docker').toString().trim().length > 0) {
       return 'docker';
     }
-  } catch (error) {
-    throw new Error('No container runtime found');
+  } catch (_) {
+    // Ignore!
   }
 
+  // Neither found!
   throw new Error('No container runtime found');
 }
 
