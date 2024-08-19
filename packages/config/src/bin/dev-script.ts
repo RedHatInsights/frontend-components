@@ -29,7 +29,6 @@ async function devScript(
   argv: {
     webpackConfig?: string;
     clouddotEnv?: string;
-    uiEnv?: string;
     port?: string;
     chromeServerPort?: number | string;
   },
@@ -59,7 +58,7 @@ async function devScript(
     }
 
     const clouddotEnvOptions = ['stage', 'prod'];
-    if (argv?.clouddotEnv && argv?.uiEnv) {
+    if (argv?.clouddotEnv) {
       if (clouddotEnvOptions.includes(argv.clouddotEnv)) {
         process.env.CLOUDOT_ENV = argv.clouddotEnv;
         process.env.FEC_ROOT_DIR = cwd;
