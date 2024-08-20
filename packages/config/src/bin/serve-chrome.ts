@@ -1,4 +1,5 @@
 import axios from 'axios';
+import fs from 'fs';
 import { execSync, spawn } from 'child_process';
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 import waitOn from 'wait-on';
@@ -177,7 +178,13 @@ async function startServer(tag: string, serverPort: number) {
 }
 
 function copyIndex(path: string) {
-  const copyCommand = `${execBin} cp ${CONTAINER_NAME}:/opt/app-root/src/build/stable/index.html ${path}`;
+  try {
+    fs.statSync(path);
+  } catch (error) {
+    // create dist directory if it doesn't exist
+    fs.mkdirSync(path, { recursive: true });
+  }
+  const copyCommand = `${execBin} cp -p ${CONTAINER_NAME}:/opt/app-root/src/build/stable/index.html ${path}`;
   execSync(copyCommand, {
     stdio: 'inherit',
   });
