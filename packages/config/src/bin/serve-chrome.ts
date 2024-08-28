@@ -184,7 +184,7 @@ function copyIndex(path: string) {
     // create dist directory if it doesn't exist
     fs.mkdirSync(path, { recursive: true });
   }
-  const copyCommand = `${execBin} cp -p ${CONTAINER_NAME}:/opt/app-root/src/build/stable/index.html ${path}`;
+  const copyCommand = `${execBin} cp ${CONTAINER_NAME}:/opt/app-root/src/build/stable/index.html ${path}`;
   execSync(copyCommand, {
     stdio: 'inherit',
   });
