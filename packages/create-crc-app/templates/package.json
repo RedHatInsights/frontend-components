@@ -28,9 +28,9 @@
     "classnames": "^2.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "7.2.9",
+    "react-redux": "^7.2.9",
     "react-router-dom": "5.2.0",
-    "redux": "4.2.0",
+    "redux": "^4.2.1",
     "redux-logger": "3.0.6",
     "redux-promise-middleware": "6.1.2"
   },
@@ -63,8 +63,7 @@
     "stylelint": "13.13.1",
     "stylelint-config-recommended-scss": "4.2.0",
     "stylelint-scss": "3.19.0",
-    "typescript": "^5.0.0",
-    "webpack-bundle-analyzer": "4.4.2"
+    "typescript": "^5.0.0"
   },
   "insights": {
     "appname": "{{appname}}"

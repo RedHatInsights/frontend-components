@@ -1,9 +1,11 @@
 const path = require('path');
-const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
 
-import { LogType, ProxyOptions, fecLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
+// TODO TBH. to me the split between config and config-utils feels unneccessary
+// for example, isn't createConfig.ts a config-util...? it helps creating a config, but it's not a config itself.
+// Maybe we should just jug everything into the config package?
+import { ProxyOptions, fecWebpackLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
 import addPrefixToContent from './addPrefixToContent';
 type Configuration = import('webpack').Configuration;
 type CacheOptions = import('webpack').FileCacheOptions | import('webpack').MemoryCacheOptions;
@@ -18,6 +20,7 @@ export interface CommonConfigOptions {
   _unstableHotReload?: boolean;
   hotReload?: boolean;
   useFileHash?: boolean;
+  env?: FrontendEnv;
 }
 export type FrontendEnv = 'stage-stable' | 'prod-stable';
 export interface CreateConfigOptions extends CommonConfigOptions {
@@ -26,7 +29,6 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   appEntry: string;
   https?: boolean;
   mode?: Configuration['mode'];
-  env?: FrontendEnv;
   sassPrefix?: string;
   useProxy?: boolean;
   proxyURL?: string;
@@ -38,7 +40,7 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   isProd?: boolean;
   standalone?: boolean;
   reposDir?: string;
-  appUrl?: (string | RegExp)[];
+  appUrl?: string | (string | RegExp)[];
   proxyVerbose?: boolean;
   target?: string;
   registry?: ProxyOptions['registry'];
@@ -53,6 +55,11 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   resolve?: ResolveOptions;
   stripAllPfStyles?: boolean;
   blockLegacyChrome?: boolean;
+  localApps?: string;
+  localApis?: string;
+  skipProxyCheck?: boolean;
+  debug?: boolean;
+  outputConfigs?: boolean;
 }
 
 export const createConfig = ({
@@ -89,35 +96,30 @@ export const createConfig = ({
   useDevBuild = true,
   useCache = false,
   cacheConfig = {},
-  _unstableHotReload,
-  hotReload,
   resolve = {},
   // additional node_modules dirs for searchIgnoredStyles, usefull in monorepo scenario
   nodeModulesDirectories = [],
   stripAllPfStyles = false,
   blockLegacyChrome,
+  localApps,
+  localApis,
+  skipProxyCheck,
 }: CreateConfigOptions): Configuration => {
-  if (typeof _unstableHotReload !== 'undefined') {
-    fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
-  }
-  const internalHotReload = !!(typeof hotReload !== 'undefined' ? hotReload : _unstableHotReload);
-  const filenameMask = `js/[name].${!internalHotReload && useFileHash ? `[contenthash].` : ''}js`;
+  const filenameMask = `js/[name].${useFileHash ? `[contenthash].` : ''}js`;
 
   const outputPath = `${rootFolder || ''}/dist`;
 
-  const copyTemplate = (chromePath: string) => {
-    const template = fs.readFileSync(`${chromePath}/index.html`, { encoding: 'utf-8' });
-    if (!fs.existsSync(outputPath)) {
-      fs.mkdirSync(outputPath);
-    }
-
-    fs.writeFileSync(`${outputPath}/index.html`, template);
-  };
-
   const devServerPort = typeof port === 'number' ? port : useProxy || standalone ? 1337 : 8002;
   return {
+    // TODO This and maybe the config building as a whole could be broken up better
+    // I was thinking to break them out into modules for each prop,
+    // like ./webpack/modules.ts, which only contains config related to that.
     mode: mode || (isProd ? 'production' : 'development'),
-    devtool: false,
+    ...(isProd ? { devtool: false } : {}),
+    infrastructureLogging: {
+      colors: true,
+      console: fecWebpackLogger(),
+    },
     ...(useCache
       ? {
           cache: {
@@ -130,29 +132,15 @@ export const createConfig = ({
           },
         }
       : {}),
-    entry: internalHotReload
-      ? {
-          main: appEntry,
-          vendors: ['react', 'react-dom', 'react-refresh/runtime'],
-        }
-      : {
-          App: appEntry,
-        },
+    entry: {
+      App: appEntry,
+    },
     output: {
       filename: filenameMask,
       path: outputPath,
       publicPath,
       chunkFilename: filenameMask,
     },
-    ...(internalHotReload
-      ? {
-          optimization: {
-            // for HMR all runtime chunks must be in a single file
-            runtimeChunk: 'single',
-            removeEmptyChunks: true,
-          },
-        }
-      : {}),
     module: {
       rules: [
         {
@@ -259,10 +247,9 @@ export const createConfig = ({
         directory: `${rootFolder || ''}/dist`,
       },
       port: devServerPort,
-      https: https || Boolean(useProxy),
+      // TODO deprecated and should be replaced with `server` when fully moving to webpack(devserver) v5
+      server: 'https',
       host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
-      hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
-      liveReload: !internalHotReload,
       allowedHosts: 'all',
       // https://github.com/bripkens/connect-history-api-fallback
       historyApiFallback: {
@@ -277,9 +264,10 @@ export const createConfig = ({
         verbose: Boolean(proxyVerbose),
         disableDotRule: true,
       },
-      devMiddleware: {
-        writeToDisk: true,
-      },
+      // devMiddleware: {
+      //   // TODO Figure out if this helps in any way or if it is required for something
+      //   writeToDisk: true,
+      // },
       client,
       ...proxy({
         env,
@@ -298,15 +286,13 @@ export const createConfig = ({
         proxyVerbose,
         target,
         registry,
-        onBeforeSetupMiddleware: ({ chromePath }) => {
-          if (chromePath) {
-            copyTemplate(chromePath);
-          }
-        },
         bounceProd,
         useAgent,
         useDevBuild,
         blockLegacyChrome,
+        localApps,
+        localApis,
+        skipProxyCheck,
       }),
     },
   };

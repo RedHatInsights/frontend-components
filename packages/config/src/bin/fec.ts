@@ -97,17 +97,7 @@ const argv = yargs
   })
   .command('patch-etc-hosts', "You may have to run this as 'sudo'. Setup your etc/hosts allow development hosts in your browser")
   .command('dev', 'Start development server', (yargs) => {
-    yargs
-      .positional('webpack-config', {
-        type: 'string',
-        describe: 'Path to webpack config',
-      })
-      .option('port', {
-        type: 'number',
-        alias: 'p',
-        describe: 'Asset server port',
-        default: 1337,
-      });
+    devScript.flags(yargs);
   })
   .command('build', 'Build production bundle', (yargs) => {
     yargs.positional('webpack-config', {
@@ -118,6 +108,10 @@ const argv = yargs
   .option('clouddotEnv', {
     describe: "Set platform environment ['stage', 'prod']",
     type: 'string',
+  })
+  .option('debug', {
+    type: 'boolean',
+    describe: 'Enable debug output',
   })
   .example('$0 dev --clouddotEnv=stage', 'Example of usage in non-interactive environments')
   .help().argv;

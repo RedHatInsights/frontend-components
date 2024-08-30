@@ -1,4 +1,6 @@
+import chalk from 'chalk';
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
+type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
 import createConfig, { CreateConfigOptions } from './createConfig';
 import createPlugins, { CreatePluginsOptions } from './createPlugins';
 const { sync } = require('glob');
@@ -7,6 +9,8 @@ export * from './createPlugins';
 
 type DevServerConfiguration = import('webpack-dev-server').Configuration;
 type WebpackConfiguration = import('webpack').Configuration;
+// TODO It may not be the best idea to inherit and mix the configuration options for fec and webpack
+// It might be better to separate them or have a prop for it, like `webpackConfig`
 export interface FecWebpackConfiguration extends WebpackConfiguration {
   devServer?: DevServerConfiguration;
 }
@@ -51,9 +55,12 @@ const createFecConfig = (
   config: ReturnType<typeof createConfig>;
   plugins: ReturnType<typeof createPlugins>;
 } => {
+  // TODO ... sus.
   configurations.isProd = configurations.isProd || process.env.NODE_ENV === 'production';
   const isProd = configurations.isProd;
   const { insights } = require(`${configurations.rootFolder}/package.json`);
+
+  // TODO We should deprecated building based upon git branches
   let gitBranch;
   try {
     gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH || gitRevisionPlugin.branch();
@@ -67,26 +74,7 @@ const createFecConfig = (
   const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
   const generateSourceMaps = !akamaiBranches.includes(gitBranch);
 
-  if (configurations.debug) {
-    console.group();
-    fecLogger(LogType.debug, '~~~Using variables~~~');
-    fecLogger(LogType.debug, `Root folder: ${configurations.rootFolder}`);
-    fecLogger(LogType.debug, `Current branch: ${gitBranch}`);
-    !generateSourceMaps && fecLogger(LogType.debug, `Source map generation for "${gitBranch}" deployment has been disabled.`);
-    fecLogger(LogType.debug, `Using deployments: ${appDeployment}`);
-    fecLogger(LogType.debug, `Public path: ${publicPath}`);
-    fecLogger(LogType.debug, `App entry: ${appEntry}`);
-    fecLogger(LogType.debug, `Use proxy: ${configurations.useProxy ? 'true' : 'false'}`);
-    if (!(configurations.useProxy || configurations.standalone)) {
-      fecLogger(LogType.warn, 'Insights-proxy is deprecated in favor of "useProxy" or "standalone".');
-      fecLogger(LogType.warn, 'See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
-    }
-
-    console.groupEnd();
-    /* eslint-enable no-console */
-  }
-
-  return {
+  const fullWebPackConfig = {
     config: createConfig({
       ...configurations,
       publicPath,
@@ -99,6 +87,29 @@ const createFecConfig = (
       appName: insights.appname,
     }),
   };
+
+  if (configurations.outputConfigs) {
+    fecLogger(LogType.info, chalk.bold('FEC configuration:') + '\n' + JSON.stringify(configurations || {}, null, 2));
+    fecLogger(LogType.info, '');
+    fecLogger(LogType.info, chalk.bold('Webpack configuration:') + '\n' + JSON.stringify(fullWebPackConfig || {}, null, 2));
+  }
+
+  fecLogger(LogType.info, `Root folder: ${configurations.rootFolder}`);
+  fecLogger(LogType.info, `Current branch: ${gitBranch}`);
+  !generateSourceMaps && fecLogger(LogType.info, `Source map generation for "${gitBranch}" deployment has been disabled.`);
+  fecLogger(LogType.info, `Using deployments: ${appDeployment}`);
+  fecLogger(LogType.info, `Public path: ${publicPath}`);
+  fecLogger(LogType.info, `App entry: ${appEntry}`);
+  fecLogger(LogType.info, `Proxy Mode enabled: ${configurations.useProxy ? 'true' : 'false'}`);
+  fecLogger(LogType.info, `NODE_ENV: ${process.env.NODE_ENV || 'not set'}`);
+  fecLogger(LogType.info, `Backend environment: ${configurations.env}`);
+
+  if (!(configurations.useProxy || configurations.standalone)) {
+    fecLogger(LogType.warn, 'Insights-proxy is deprecated in favor of "useProxy" or "standalone".');
+    fecLogger(LogType.warn, 'See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
+  }
+
+  return fullWebPackConfig;
 };
 
 export default createFecConfig;

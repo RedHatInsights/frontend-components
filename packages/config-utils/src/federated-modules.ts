@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import { relative, resolve } from 'path';
 import { DynamicRemotePlugin, EncodedExtension, PluginBuildMetadata, WebpackSharedConfig } from '@openshift/dynamic-plugin-sdk-webpack';
-import jsVarName from './jsVarName';
 import fecLogger, { LogType } from './fec-logger';
+import jsVarName from './jsVarName';
 
 const defaultPluginMetaDataJSON = {
   version: '1.0.0',
@@ -108,13 +108,13 @@ const federatedModules = ({
   }
 
   if (debug) {
-    console.log('Using package at path: ', resolve(root, './package.json'));
-    console.log('Using appName: ', appName);
-    console.log(`Using ${exposes ? 'custom' : 'default'} exposes`);
-    console.log('Number of custom shared modules is: ', shared.length);
-    console.log('Number of default shared modules is: ', sharedDeps.length);
+    fecLogger(LogType.info, 'Using package at path: ', resolve(root, './package.json'));
+    fecLogger(LogType.info, 'Using appName: ', appName);
+    fecLogger(LogType.info, `Using ${exposes ? 'custom' : 'default'} exposes`);
+    fecLogger(LogType.info, 'Number of custom shared modules is: ', shared.length);
+    fecLogger(LogType.info, 'Number of default shared modules is: ', sharedDeps.length);
     if (exclude.length > 0) {
-      console.log('Excluding default packages', exclude);
+      fecLogger(LogType.info, 'Excluding default packages', exclude);
     }
   }
 

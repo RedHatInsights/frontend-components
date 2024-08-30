@@ -13,6 +13,7 @@ const plugins = [
     root: rootDir,
     useFileHash: process.env.NODE_ENV === 'production',
     separateRuntime: typeof fecConfig.hotReload !== 'undefined' ? !!fecConfig.hotReload : !!fecConfig._unstableHotReload,
+    debug: process.env.DEBUG === 'true',
     /** Load optional config for federated modules */
     ...fecConfig.moduleFederation,
     shared: [

@@ -6,7 +6,7 @@ export interface FECConfiguration
   extends Partial<Omit<CreateConfigOptions, 'appUrl' | 'appName' | 'env' | 'rootFolder'>>,
     Partial<Omit<CreatePluginsOptions, 'rootFolder' | 'appName'>> {
   appName: never;
-  appUrl: string | string[] | (string | RegExp)[];
+  appUrl?: string | string[] | (string | RegExp)[];
   plugins?: WebpackPluginDefinition[];
   interceptChromeConfig?: boolean;
   moduleFederation: Omit<FederatedModulesConfig, 'root' | 'separateRuntime'>;

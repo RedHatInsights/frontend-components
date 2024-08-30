@@ -46,8 +46,6 @@
         "swc-loader": "^0.2.3",
         "url": "^0.11.0",
         "util": "^0.12.4",
-        "webpack": "^5.74.0",
-        "webpack-bundle-analyzer": "^4.9.0",
-        "webpack-dev-server": "^4.11.1"
+        "webpack": "^5.74.0"
     }
 }

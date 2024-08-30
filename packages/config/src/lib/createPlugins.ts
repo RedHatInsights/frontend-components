@@ -1,8 +1,9 @@
+import fetch from 'node-fetch';
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 import { Compiler, WebpackPluginInstance } from 'webpack';
 import { CommonConfigOptions } from './createConfig';
 
-const { SourceMapDevToolPlugin } = require('webpack');
+// const { SourceMapDevToolPlugin } = require('webpack');
 const { ProvidePlugin, DefinePlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -11,12 +12,19 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const { glob } = require('glob');
 const path = require('path');
 
+const chromeIndexHtmlUrl = (env = 'dev-stable') => {
+  return `https://raw.githubusercontent.com/RedHatInsights/insights-chrome-build/${env}/index.html`;
+};
+
 export type WebpackPluginDefinition = undefined | null | false | '' | 0 | ((this: Compiler, compiler: Compiler) => void) | WebpackPluginInstance;
 
 export interface CreatePluginsOptions extends CommonConfigOptions {
   generateSourceMaps?: boolean;
   plugins?: WebpackPluginDefinition[];
   definePlugin?: Record<string, any>;
+  useProxy?: boolean;
+  useDevBuild?: boolean;
+  localChrome?: string;
 }
 
 export const createPlugins = ({
@@ -28,7 +36,13 @@ export const createPlugins = ({
   _unstableHotReload,
   hotReload,
   useFileHash = true,
+  useProxy,
+  useDevBuild,
+  env,
+  localChrome,
+  ...rest
 }: CreatePluginsOptions) => {
+  console.log('REST', rest);
   if (!rootFolder) {
     fecLogger(LogType.error, 'rootFolder is required attribute for the createPlugins function!');
     throw new Error('No rootFolder defined!');
@@ -40,15 +54,15 @@ export const createPlugins = ({
   const hasTsConfig = glob.sync(path.resolve(rootFolder, './{tsconfig.json,!(node_modules)/**/tsconfig.json}')).length > 0;
   const fileHash = !internalHotReload && useFileHash;
   return [
-    ...(generateSourceMaps
-      ? [
-          new SourceMapDevToolPlugin({
-            test: 'js',
-            exclude: /(node_modules|bower_components)/i,
-            filename: !fileHash ? 'sourcemaps/[name].js.map' : 'sourcemaps/[name].[contenthash].js.map',
-          }),
-        ]
-      : []),
+    // ...(generateSourceMaps
+    //   ? [
+    //       new SourceMapDevToolPlugin({
+    //         test: 'js',
+    //         exclude: /(node_modules|bower_components)/i,
+    //         filename: !fileHash ? 'sourcemaps/[name].js.map' : 'sourcemaps/[name].[contenthash].js.map',
+    //       }),
+    //     ]
+    //   : []),
     new MiniCssExtractPlugin({
       chunkFilename: !fileHash ? 'css/[name].css' : 'css/[name].[contenthash].css',
       filename: !fileHash ? 'css/[name].css' : 'css/[name].[contenthash].css',
@@ -70,6 +84,23 @@ export const createPlugins = ({
     ...(hasTsConfig ? [new ForkTsCheckerWebpackPlugin()] : []),
     ...(plugins || []),
     ...(internalHotReload ? [new ReactRefreshWebpackPlugin()] : []),
+    //     ...(useProxy && !localChrome
+    //       ? [
+    //           new (require('html-webpack-plugin'))({
+    //             title: 'Chrome',
+    //             filename: 'index.html',
+    //             templateContent: async () => {
+    //               // TODO this should maybe be solved differently
+    //               // Maybe a mapper to match clouddotEnv + uiEnv to the approriate branch.
+    //               const chromeEnv = (useDevBuild ? (env?.includes('-beta') ? 'dev-beta' : 'dev-stable') : env)?.replace('stage-', 'qa-');
+    //               const chromeIndexUrl = chromeIndexHtmlUrl(chromeEnv);
+    //
+    //               fecLogger(LogType.info, 'Fetching chrome dist/index.html from ' + chromeIndexUrl);
+    //               return (await fetch(chromeIndexUrl)).text();
+    //             },
+    //           }),
+    //         ]
+    //       : []),
   ];
 };
 
