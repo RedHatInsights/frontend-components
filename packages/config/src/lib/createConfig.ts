@@ -259,7 +259,7 @@ export const createConfig = ({
         directory: `${rootFolder || ''}/dist`,
       },
       port: devServerPort,
-      https: https || Boolean(useProxy),
+      ...(https || Boolean(useProxy)) ? { server: 'spdy' } : {},
       host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
       hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
       liveReload: !internalHotReload,
@@ -298,11 +298,11 @@ export const createConfig = ({
         proxyVerbose,
         target,
         registry,
-        onBeforeSetupMiddleware: ({ chromePath }) => {
-          if (chromePath) {
-            copyTemplate(chromePath);
-          }
-        },
+        // onBeforeSetupMiddleware: ({ chromePath }) => {
+        //   if (chromePath) {
+        //     copyTemplate(chromePath);
+        //   }
+        // },
         bounceProd,
         useAgent,
         useDevBuild,

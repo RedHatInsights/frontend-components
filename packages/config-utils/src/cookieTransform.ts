@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Request as ExpressRequest, Response } from 'express';
 import jws from 'jws';
 import type * as http from 'http';

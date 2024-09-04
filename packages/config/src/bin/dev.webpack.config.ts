@@ -38,16 +38,16 @@ const { plugins: externalPlugins = [], interceptChromeConfig, routes, ...externa
 
 const internalProxyRoutes: { [endpoint: string]: ProxyConfigArrayItem } = {
   ...routes,
-  '/apps/chrome': {
-    target: `http://${process.env.FEC_CHROME_HOST}:${process.env.FEC_CHROME_PORT}`,
-  },
-  ...(interceptChromeConfig === true
-    ? {
-        '/api/chrome-service/v1/static': {
-          target: 'http://localhost:9999',
-        },
-      }
-    : {}),
+  // '/apps/chrome': {
+  //   target: `http://${process.env.FEC_CHROME_HOST}:${process.env.FEC_CHROME_PORT}`,
+  // },
+  // ...(interceptChromeConfig === true
+  //   ? {
+  //       '/api/chrome-service/v1/static': {
+  //         target: 'http://localhost:9999',
+  //       },
+  //     }
+  //   : {}),
 };
 
 const { config: webpackConfig, plugins } = config({

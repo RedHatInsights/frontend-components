@@ -2,7 +2,7 @@ import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-c
 import { Compiler, WebpackPluginInstance } from 'webpack';
 import { CommonConfigOptions } from './createConfig';
 
-const { SourceMapDevToolPlugin } = require('webpack');
+// const { SourceMapDevToolPlugin } = require('webpack');
 const { ProvidePlugin, DefinePlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -40,15 +40,15 @@ export const createPlugins = ({
   const hasTsConfig = glob.sync(path.resolve(rootFolder, './{tsconfig.json,!(node_modules)/**/tsconfig.json}')).length > 0;
   const fileHash = !internalHotReload && useFileHash;
   return [
-    ...(generateSourceMaps
-      ? [
-          new SourceMapDevToolPlugin({
-            test: 'js',
-            exclude: /(node_modules|bower_components)/i,
-            filename: !fileHash ? 'sourcemaps/[name].js.map' : 'sourcemaps/[name].[contenthash].js.map',
-          }),
-        ]
-      : []),
+    // ...(generateSourceMaps
+    //   ? [
+    //       new SourceMapDevToolPlugin({
+    //         test: 'js',
+    //         exclude: /(node_modules|bower_components)/i,
+    //         filename: !fileHash ? 'sourcemaps/[name].js.map' : 'sourcemaps/[name].[contenthash].js.map',
+    //       }),
+    //     ]
+    //   : []),
     new MiniCssExtractPlugin({
       chunkFilename: !fileHash ? 'css/[name].css' : 'css/[name].[contenthash].css',
       filename: !fileHash ? 'css/[name].css' : 'css/[name].[contenthash].css',

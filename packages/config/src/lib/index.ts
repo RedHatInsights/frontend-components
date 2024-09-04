@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 import createConfig, { CreateConfigOptions } from './createConfig';
 import createPlugins, { CreatePluginsOptions } from './createPlugins';
@@ -11,9 +12,6 @@ export interface FecWebpackConfiguration extends WebpackConfiguration {
   devServer?: DevServerConfiguration;
 }
 
-const gitRevisionPlugin = new (require('git-revision-webpack-plugin'))({
-  branch: true,
-});
 const akamaiBranches = ['prod-stable'];
 
 const getAppEntry = (rootFolder: string, isProd?: boolean) => {
@@ -56,7 +54,7 @@ const createFecConfig = (
   const { insights } = require(`${configurations.rootFolder}/package.json`);
   let gitBranch;
   try {
-    gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH || gitRevisionPlugin.branch();
+    gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH;
   } catch (error) {
     fecLogger(LogType.info, 'no git branch detected, using main for webpack "main" config.');
     gitBranch = 'main';

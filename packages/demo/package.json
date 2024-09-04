@@ -35,7 +35,7 @@
         "css-loader": "^5.2.7",
         "file-loader": "^6.2.0",
         "glob": "10.3.3",
-        "html-webpack-plugin": "^5.5.0",
+        "html-webpack-plugin": "^5.6.0",
         "mini-css-extract-plugin": "^2.7.3",
         "path-browserify": "^1.0.1",
         "process": "^0.11.10",
@@ -43,11 +43,9 @@
         "redux": "^4.2.0",
         "sass-loader": "^11.1.1",
         "stream-browserify": "^3.0.0",
-        "swc-loader": "^0.2.3",
+        "swc-loader": "^0.2.6",
         "url": "^0.11.0",
         "util": "^0.12.4",
-        "webpack": "^5.74.0",
-        "webpack-bundle-analyzer": "^4.9.0",
-        "webpack-dev-server": "^4.11.1"
+        "webpack": "^5.94.0"
     }
 }

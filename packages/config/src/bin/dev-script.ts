@@ -140,6 +140,7 @@ async function devScript(
       });
     }
   } catch (error) {
+    fecLogger(LogType.error, error);
     process.exit(1);
   }
 }

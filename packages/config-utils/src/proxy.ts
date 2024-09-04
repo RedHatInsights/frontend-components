@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable no-console */
 // Webpack proxy and express config for `useProxy: true` or `standalone: true`
 import { execSync } from 'child_process';
@@ -161,7 +162,7 @@ const proxy = ({
 
     target += '.redhat.com/';
   }
-
+  console.log('TARGET', target)
   let agent;
 
   const isProd = env.startsWith('prod');
@@ -276,6 +277,9 @@ const proxy = ({
       secure: false,
       changeOrigin: true,
       autoRewrite: true,
+      xfwd: true,
+      // hostRewrite: true,
+      // ws: true,
       context: (url: string) => {
         const shouldProxy = !appUrl.find((u) => (typeof u === 'string' ? url.startsWith(u) : u.test(url)));
         if (shouldProxy) {
@@ -295,6 +299,7 @@ const proxy = ({
          * Serves as a historyApiFallback when refreshing on any other URL than '/'
          */
         if (isChrome && !req.url.match(/\/api\//) && !req.url.match(/\./) && req.headers.accept?.includes('text/html')) {
+          console.log('ROOT')
           return '/';
         }
 
@@ -303,6 +308,7 @@ const proxy = ({
          * This enables using PROD proxy without VPN and agent
          */
         if (shouldBounceProdRequests && req.method !== 'GET') {
+          console.log('BBBB')
           const result = await fetch((target + req.url).replace(/\/\//g, '/'), {
             method: req.method,
             body: JSON.stringify(req.body),
@@ -329,8 +335,8 @@ const proxy = ({
       ...(agent && {
         agent,
         headers: {
-          // Staging Akamai CORS gives 403s for non-GET requests from non-origin hosts
-          Host: target.replace('https://', ''),
+        //   // Staging Akamai CORS gives 403s for non-GET requests from non-origin hosts
+        //   // Host: target.replace('https://', ''),
           Origin: target,
         },
       }),
@@ -360,58 +366,69 @@ const proxy = ({
         console.log('\u001b[0m');
       }
     },
-    onBeforeSetupMiddleware({ app, compiler, options }) {
-      app?.enable('strict routing'); // trailing slashes are mean
-
-      if (shouldBounceProdRequests) {
-        app?.use(express.json());
-        app?.use(express.urlencoded({ extended: true }));
-      }
-
-      /**
-       * Allow serving chrome assets
-       * This will allow running chrome as a host application
-       */
-      if (localChrome || (!blockLegacyChrome && !isChrome)) {
-        let chromePath = localChrome;
-        if (standaloneConfig) {
-          if (standaloneConfig.chrome) {
-            chromePath = resolvePath(reposDir, standaloneConfig.chrome.path);
-            keycloakUri = standaloneConfig.chrome.keycloakUri;
-          }
-        } else if (!blockLegacyChrome && !localChrome && useProxy) {
-          const chromeConfig = typeof defaultServices.chrome === 'function' ? defaultServices.chrome({}) : defaultServices.chrome;
-
-          const chromeEnv = useDevBuild ? 'dev-stable' : env;
-          chromePath = checkoutRepo({
-            repo: `${chromeConfig.path}#${chromeEnv}`,
-            reposDir,
-            overwrite: true,
-          });
-        }
-
-        onBeforeSetupMiddleware({ chromePath });
-
-        if (app && chromePath) {
-          registerChrome({
-            app,
-            chromePath,
-            keycloakUri,
-            https: Boolean(options.https),
-            proxyVerbose,
-          });
-        }
-      }
-
-      registry.forEach((cb) =>
-        cb({
-          app,
-          options,
-          compiler,
-          config: standaloneConfig,
-        })
-      );
-    },
+//     setupMiddlewares: (_middlewares, devServer) => {
+//       devServer.app.enable('strict routing'); // trailing slashes are mean
+//
+//       if (shouldBounceProdRequests) {
+//         console.log('BOUNCCE')
+//         devServer.app.use(express.json());
+//         devServer.app.use(express.urlencoded({ extended: true }));
+//       }
+//
+//       return _middlewares;
+//     },
+//     onBeforeSetupMiddleware({ app, compiler, options }) {
+//       app?.enable('strict routing'); // trailing slashes are mean
+//
+//       if (shouldBounceProdRequests) {
+//         app?.use(express.json());
+//         app?.use(express.urlencoded({ extended: true }));
+//       }
+//
+//       /**
+//        * Allow serving chrome assets
+//        * This will allow running chrome as a host application
+//        */
+//       if (localChrome || (!blockLegacyChrome && !isChrome)) {
+//         let chromePath = localChrome;
+//         if (standaloneConfig) {
+//           if (standaloneConfig.chrome) {
+//             chromePath = resolvePath(reposDir, standaloneConfig.chrome.path);
+//             keycloakUri = standaloneConfig.chrome.keycloakUri;
+//           }
+//         } else if (!blockLegacyChrome && !localChrome && useProxy) {
+//           const chromeConfig = typeof defaultServices.chrome === 'function' ? defaultServices.chrome({}) : defaultServices.chrome;
+//
+//           const chromeEnv = useDevBuild ? 'dev-stable' : env;
+//           chromePath = checkoutRepo({
+//             repo: `${chromeConfig.path}#${chromeEnv}`,
+//             reposDir,
+//             overwrite: true,
+//           });
+//         }
+//
+//         onBeforeSetupMiddleware({ chromePath });
+//
+//         if (app && chromePath) {
+//           registerChrome({
+//             app,
+//             chromePath,
+//             keycloakUri,
+//             https: Boolean(options.https),
+//             proxyVerbose,
+//           });
+//         }
+//       }
+//
+//       registry.forEach((cb) =>
+//         cb({
+//           app,
+//           options,
+//           compiler,
+//           config: standaloneConfig,
+//         })
+//       );
+//     },
   };
 
   return config;

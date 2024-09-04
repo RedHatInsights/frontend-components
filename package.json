@@ -115,7 +115,6 @@
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.55.0",
         "style-to-object": "^0.3.0",
-        "swc-loader": "^0.2.3",
         "ts-jest": "^29.1.1",
         "ts-patch": "^3.0.2",
         "typescript": "^5.0.0",
