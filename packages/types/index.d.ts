@@ -3,6 +3,7 @@ import { History } from 'history';
 import { Access } from '@redhat-cloud-services/rbac-client';
 import { AnalyticsBrowser } from '@segment/analytics-next';
 import { Method } from 'axios';
+import type { AxiosRequestConfig } from 'axios';
 
 export declare type HelpTopicLink = {
   href: string;
@@ -30,6 +31,14 @@ export declare type PDFRequestPayload = {
 export declare type PDFRequestOptions = {
   payload: PDFRequestPayload;
   filename?: string;
+};
+
+type CreateAxiosRequest<T = any> = (service: string, config: AxiosRequestConfig) => Promise<T>;
+
+type FetchData = (createAsyncRequest: CreateAxiosRequest) => Promise<any>;
+
+type AsyncState<T = any> = {
+  data: T;
 };
 
 declare type ChromeUser = {
