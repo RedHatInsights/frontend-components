@@ -49,8 +49,8 @@
         "@redhat-cloud-services/frontend-components-utilities": "^4.0.0",
         "@redhat-cloud-services/types": "^1.0.9",
         "@patternfly/react-component-groups": "^5.0.0",
-        "@scalprum/core": "^0.7.0",
-        "@scalprum/react-core": "^0.8.0",
+        "@scalprum/core": "^0.8.1",
+        "@scalprum/react-core": "^0.9.1",
         "classnames": "^2.2.5",
         "sanitize-html": "^2.12.1"
     },
