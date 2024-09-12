@@ -3,7 +3,7 @@ import inquirer from 'inquirer';
 const { resolve } = require('path');
 import { spawn } from 'child_process';
 import treeKill from 'tree-kill';
-import { getWebpackConfigPath, validateFECConfig } from './common';
+import { getRSpackConfigPath, validateFECConfig } from './common';
 import serveChrome from './serve-chrome';
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 const DEFAULT_CHROME_SERVER_PORT = 9998;
@@ -27,7 +27,7 @@ async function setEnv(cwd: string) {
 
 async function devScript(
   argv: {
-    webpackConfig?: string;
+    rspackConfig?: string;
     clouddotEnv?: string;
     port?: string;
     chromeServerPort?: number | string;
@@ -35,12 +35,13 @@ async function devScript(
   cwd: string
 ) {
   try {
+    console.log('Starting dev server...');
     let localChrome = false;
     let fecConfig: any = {};
     let configPath;
     let chromeHost;
-    if (typeof argv.webpackConfig !== 'undefined') {
-      configPath = getWebpackConfigPath(argv.webpackConfig, cwd);
+    if (typeof argv.rspackConfig !== 'undefined') {
+      configPath = getRSpackConfigPath(argv.rspackConfig, cwd);
       if (typeof argv.chromeServerPort !== 'undefined') {
         process.env.FEC_CHROME_PORT = `${argv.chromeServerPort}`;
       } else {
@@ -48,13 +49,13 @@ async function devScript(
         process.env.FEC_CHROME_PORT = `${DEFAULT_CHROME_SERVER_PORT}`;
       }
     } else {
-      // validate the FEC config only if a custom webpack config is not provided
+      // validate the FEC config only if a custom rspack config is not provided
       validateFECConfig(cwd);
       fecConfig = require(process.env.FEC_CONFIG_PATH!);
       localChrome = fecConfig.localChrome;
       process.env.FEC_CHROME_PORT = fecConfig.chromePort ?? DEFAULT_CHROME_SERVER_PORT;
       chromeHost = fecConfig.chromeHost;
-      configPath = resolve(__dirname, './dev.webpack.config.js');
+      configPath = resolve(__dirname, './dev.rspack.config.js');
     }
 
     const clouddotEnvOptions = ['stage', 'prod'];
@@ -78,7 +79,7 @@ async function devScript(
       process.env.PORT = argv.port;
     }
 
-    let webpackProcess: ReturnType<typeof spawn> | undefined = undefined;
+    let rspackProcess: ReturnType<typeof spawn> | undefined = undefined;
     let interceptorProcess: ReturnType<typeof spawn> | undefined = undefined;
 
     if (!chromeHost) {
@@ -86,19 +87,21 @@ async function devScript(
     }
 
     process.env.FEC_CHROME_HOST = chromeHost;
+    console.log('CHrome host', chromeHost);
 
     // ignore chrome server if a localChrome is provided
     if (!localChrome && process.env.E2E_CI_RUN !== 'true') {
+      console.log('DIS?');
       // get the directory if the build
       // hsa to require here after all FEC env variables are set
-      const devConfig = require('./dev.webpack.config');
+      const devConfig = require('./dev.rspack.config');
       const outputPath = devConfig.output?.path;
       // start chrome frontend server
       try {
         const handleServerError = (error: Error) => {
           fecLogger(LogType.error, error);
-          if (webpackProcess?.pid) {
-            treeKill(webpackProcess.pid, 'SIGKILL');
+          if (rspackProcess?.pid) {
+            treeKill(rspackProcess.pid, 'SIGKILL');
           }
 
           if (interceptorProcess?.pid) {
@@ -124,7 +127,7 @@ async function devScript(
       }
     }
 
-    webpackProcess = spawn(`npm exec -- webpack serve -c ${configPath}`, [], {
+    rspackProcess = spawn(`npm exec --offline -- rspack serve -c ${configPath}`, [], {
       stdio: [process.stdout, process.stdout, process.stdout],
       cwd,
       shell: true,

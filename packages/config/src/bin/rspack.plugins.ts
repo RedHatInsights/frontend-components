@@ -1,14 +1,12 @@
-import { LogType, fecLogger, federatedModules, generatePFSharedAssetsList } from '@redhat-cloud-services/frontend-components-config-utilities';
+import federatedModules from './federated-modules';
 import FECConfiguration from '../lib/fec.config';
+import generatePFSharedAssetsList from './generate-pf-shared-assets-list';
+import { RspackPluginInstance, WebpackPluginInstance } from '@rspack/core';
 
 const rootDir = process.env.FEC_ROOT_DIR || process.cwd();
 const fecConfig: FECConfiguration = require(process.env.FEC_CONFIG_PATH!);
 
-if (typeof fecConfig._unstableHotReload !== 'undefined') {
-  fecLogger(LogType.warn, `The _unstableHotReload option in fec.config.js is deprecated. Use hotReload config instead.`);
-}
-
-const plugins = [
+const plugins: (WebpackPluginInstance | RspackPluginInstance)[] = [
   federatedModules({
     root: rootDir,
     useFileHash: process.env.NODE_ENV === 'production',

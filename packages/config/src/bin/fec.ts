@@ -81,12 +81,12 @@ function patchTs(dependencies: string) {
 
 const argv = yargs
   .usage('Usage: $0 <command> [options]')
-  .command('static', 'Serve webpack output without the webpack server', (yargs) => {
+  .command('static', 'Serve rspack output without the rspack server', (yargs) => {
     yargs
       .positional('config', {
         type: 'string',
         alias: 'c',
-        describe: 'Path to webpack config',
+        describe: 'Path to rspack config',
       })
       .option('port', {
         type: 'number',
@@ -98,9 +98,9 @@ const argv = yargs
   .command('patch-etc-hosts', "You may have to run this as 'sudo'. Setup your etc/hosts allow development hosts in your browser")
   .command('dev', 'Start development server', (yargs) => {
     yargs
-      .positional('webpack-config', {
+      .positional('rspack-config', {
         type: 'string',
-        describe: 'Path to webpack config',
+        describe: 'Path to rspack config',
       })
       .option('port', {
         type: 'number',
@@ -110,9 +110,9 @@ const argv = yargs
       });
   })
   .command('build', 'Build production bundle', (yargs) => {
-    yargs.positional('webpack-config', {
+    yargs.positional('rspack-config', {
       type: 'string',
-      describe: 'Path to webpack config',
+      describe: 'Path to rspack config',
     });
   })
   .option('clouddotEnv', {

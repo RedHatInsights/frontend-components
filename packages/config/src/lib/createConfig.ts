@@ -1,15 +1,13 @@
 const path = require('path');
-const fs = require('fs');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
 
-import { LogType, ProxyOptions, fecLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { ProxyOptions } from '@redhat-cloud-services/frontend-components-config-utilities';
+import createProxy from './createProxy';
 import addPrefixToContent from './addPrefixToContent';
-type Configuration = import('webpack').Configuration;
-type CacheOptions = import('webpack').FileCacheOptions | import('webpack').MemoryCacheOptions;
+import { Configuration } from '@rspack/core';
 type ProxyConfigArrayItem = import('webpack-dev-server').ProxyConfigArrayItem;
 type ClientConfiguration = import('webpack-dev-server').ClientConfiguration;
-type ResolveOptions = import('webpack').ResolveOptions;
+type ResolveOptions = import('@rspack/core').ResolveOptions;
 
 export interface CommonConfigOptions {
   rootFolder: string;
@@ -21,14 +19,11 @@ export interface CommonConfigOptions {
 }
 export type FrontendEnv = 'stage-stable' | 'prod-stable';
 export interface CreateConfigOptions extends CommonConfigOptions {
-  port?: number;
   publicPath: string;
   appEntry: string;
-  https?: boolean;
   mode?: Configuration['mode'];
   env?: FrontendEnv;
   sassPrefix?: string;
-  useProxy?: boolean;
   proxyURL?: string;
   localChrome?: string;
   keycloakUri?: string;
@@ -36,7 +31,6 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   routes?: { [path: string]: ProxyConfigArrayItem };
   routesPath?: string;
   isProd?: boolean;
-  standalone?: boolean;
   reposDir?: string;
   appUrl?: (string | RegExp)[];
   proxyVerbose?: boolean;
@@ -48,7 +42,6 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   useAgent?: boolean;
   useDevBuild?: boolean;
   useCache?: boolean;
-  cacheConfig?: Partial<CacheOptions>;
   nodeModulesDirectories?: string[];
   resolve?: ResolveOptions;
   stripAllPfStyles?: boolean;
@@ -56,17 +49,14 @@ export interface CreateConfigOptions extends CommonConfigOptions {
 }
 
 export const createConfig = ({
-  port,
   publicPath,
   appEntry,
   rootFolder,
-  https,
   mode,
   appName,
   useFileHash = true,
   env,
   sassPrefix,
-  useProxy,
   proxyURL,
   localChrome,
   keycloakUri,
@@ -74,7 +64,6 @@ export const createConfig = ({
   routes,
   routesPath,
   isProd,
-  standalone = false,
   reposDir,
   appUrl = [],
   proxyVerbose,
@@ -87,8 +76,6 @@ export const createConfig = ({
   bounceProd,
   useAgent,
   useDevBuild = true,
-  useCache = false,
-  cacheConfig = {},
   _unstableHotReload,
   hotReload,
   resolve = {},
@@ -97,43 +84,20 @@ export const createConfig = ({
   stripAllPfStyles = false,
   blockLegacyChrome,
 }: CreateConfigOptions): Configuration => {
-  if (typeof _unstableHotReload !== 'undefined') {
-    fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
-  }
   const internalHotReload = !!(typeof hotReload !== 'undefined' ? hotReload : _unstableHotReload);
   const filenameMask = `js/[name].${!internalHotReload && useFileHash ? `[contenthash].` : ''}js`;
 
   const outputPath = `${rootFolder || ''}/dist`;
 
-  const copyTemplate = (chromePath: string) => {
-    const template = fs.readFileSync(`${chromePath}/index.html`, { encoding: 'utf-8' });
-    if (!fs.existsSync(outputPath)) {
-      fs.mkdirSync(outputPath);
-    }
-
-    fs.writeFileSync(`${outputPath}/index.html`, template);
-  };
-
-  const devServerPort = typeof port === 'number' ? port : useProxy || standalone ? 1337 : 8002;
+  const devServerPort = 1337;
   return {
     mode: mode || (isProd ? 'production' : 'development'),
     devtool: false,
-    ...(useCache
-      ? {
-          cache: {
-            type: 'filesystem',
-            buildDependencies: {
-              config: [__filename],
-            },
-            cacheDirectory: path.resolve(rootFolder, '.cache'),
-            ...cacheConfig,
-          },
-        }
-      : {}),
+    cache: true,
     entry: internalHotReload
       ? {
           main: appEntry,
-          vendors: ['react', 'react-dom', 'react-refresh/runtime'],
+          vendors: ['react', 'react-dom'],
         }
       : {
           App: appEntry,
@@ -153,6 +117,9 @@ export const createConfig = ({
           },
         }
       : {}),
+    experiments: {
+      css: true,
+    },
     module: {
       rules: [
         {
@@ -177,9 +144,8 @@ export const createConfig = ({
         },
         {
           test: /\.s?[ac]ss$/,
+          type: 'css/auto',
           use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
             {
               /**
                * Second sass loader used for scoping the css with class name.
@@ -188,6 +154,7 @@ export const createConfig = ({
                */
               loader: 'sass-loader',
               options: {
+                api: 'modern-compiler',
                 additionalData: function (
                   content: string,
                   loaderContext: {
@@ -216,7 +183,12 @@ export const createConfig = ({
                 },
               },
             },
-            'sass-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                api: 'modern-compiler',
+              },
+            },
           ],
         },
         {
@@ -259,7 +231,6 @@ export const createConfig = ({
         directory: `${rootFolder || ''}/dist`,
       },
       port: devServerPort,
-      https: https || Boolean(useProxy),
       host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
       hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
       liveReload: !internalHotReload,
@@ -280,17 +251,16 @@ export const createConfig = ({
       devMiddleware: {
         writeToDisk: true,
       },
+      server: 'https',
       client,
-      ...proxy({
+      ...createProxy({
         env,
         localChrome,
         keycloakUri,
         customProxy,
         routes,
         routesPath,
-        useProxy,
         proxyURL,
-        standalone,
         port: devServerPort,
         reposDir,
         appUrl,
@@ -298,11 +268,6 @@ export const createConfig = ({
         proxyVerbose,
         target,
         registry,
-        onBeforeSetupMiddleware: ({ chromePath }) => {
-          if (chromePath) {
-            copyTemplate(chromePath);
-          }
-        },
         bounceProd,
         useAgent,
         useDevBuild,

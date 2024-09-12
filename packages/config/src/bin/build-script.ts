@@ -1,20 +1,20 @@
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 
-import { getWebpackConfigPath, validateFECConfig } from './common';
+import { getRSpackConfigPath, validateFECConfig } from './common';
 const { resolve } = require('path');
 import { spawn } from 'child_process';
 
 export function buildScript(argv: { [name: string]: string }, cwd: string) {
   let configPath;
-  if (typeof argv.webpackConfig !== 'undefined') {
-    configPath = getWebpackConfigPath(argv.webpackConfig, cwd);
+  if (typeof argv.rspackConfig !== 'undefined') {
+    configPath = getRSpackConfigPath(argv.rspackConfig, cwd);
   } else {
-    // validate the FEC config only if a custom webpack config is not provided
+    // validate the FEC config only if a custom rspack config is not provided
     validateFECConfig(cwd);
-    configPath = resolve(__dirname, './prod.webpack.config.js');
+    configPath = resolve(__dirname, './prod.rspack.config.js');
   }
   process.env.NODE_ENV = 'production';
-  const subprocess = spawn(`npm exec -- webpack -c ${configPath}`, [], {
+  const subprocess = spawn(`npm exec -- rspack -c ${configPath}`, [], {
     stdio: [process.stdout, process.stdout, process.stdout],
     cwd,
     shell: true,
