@@ -14,9 +14,11 @@ exports[`PageHeader component should render 1`] = `
     <div
       className="pf-v5-l-flex pf-m-justify-content-space-between"
     >
-      <FlexItem>
+      <FlexItem
+        className="pf-v5-u-flex-grow-1"
+      >
         <div
-          className=""
+          className="pf-v5-u-flex-grow-1"
         >
           <Title
             className=""
