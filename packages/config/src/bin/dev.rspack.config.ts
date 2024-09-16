@@ -1,10 +1,10 @@
 import { ProxyConfigArrayItem } from 'webpack-dev-server';
 import config, { FrontendEnv } from '../lib';
 import FECConfiguration from '../lib/fec.config';
-import commonPlugins from './webpack.plugins';
+import commonPlugins from './rspack.plugins';
 const fecConfig: FECConfiguration = require(process.env.FEC_CONFIG_PATH!);
 
-type Configuration = import('webpack').Configuration;
+type Configuration = import('@rspack/core').Configuration;
 
 function parseRegexpURL(url: RegExp) {
   return [new RegExp(url.toString())];
@@ -50,10 +50,10 @@ const internalProxyRoutes: { [endpoint: string]: ProxyConfigArrayItem } = {
     : {}),
 };
 
-const { config: webpackConfig, plugins } = config({
+const { config: rspackConfig, plugins } = config({
   // do not hash files in dev env
   useFileHash: false,
-  // enable webpack cache by default in dev env
+  // enable rspack cache by default in dev env
   useCache: true,
   ...externalConfig,
   routes: internalProxyRoutes,
@@ -66,7 +66,7 @@ const { config: webpackConfig, plugins } = config({
 plugins.push(...commonPlugins, ...externalPlugins);
 
 const devConfig: Configuration = {
-  ...webpackConfig,
+  ...rspackConfig,
   plugins,
 };
 

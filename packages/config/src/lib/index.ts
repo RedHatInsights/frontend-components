@@ -1,19 +1,18 @@
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 import createConfig, { CreateConfigOptions } from './createConfig';
 import createPlugins, { CreatePluginsOptions } from './createPlugins';
+import { GitRevisionPlugin } from 'git-revision-webpack-plugin';
 const { sync } = require('glob');
 export * from './createConfig';
 export * from './createPlugins';
 
 type DevServerConfiguration = import('webpack-dev-server').Configuration;
-type WebpackConfiguration = import('webpack').Configuration;
-export interface FecWebpackConfiguration extends WebpackConfiguration {
+type RSpackConfiguration = import('@rspack/core').Configuration;
+export interface FecRSpackConfiguration extends RSpackConfiguration {
   devServer?: DevServerConfiguration;
 }
 
-const gitRevisionPlugin = new (require('git-revision-webpack-plugin'))({
-  branch: true,
-});
+const gitRevisionPlugin = new GitRevisionPlugin({ branch: true });
 const akamaiBranches = ['prod-stable'];
 
 const getAppEntry = (rootFolder: string, isProd?: boolean) => {
@@ -58,14 +57,14 @@ const createFecConfig = (
   try {
     gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH || gitRevisionPlugin.branch();
   } catch (error) {
-    fecLogger(LogType.info, 'no git branch detected, using main for webpack "main" config.');
+    fecLogger(LogType.info, 'no git branch detected, using main for rspack "main" config.');
     gitBranch = 'main';
   }
   const appDeployment = typeof configurations.deployment === 'string' ? configurations.deployment : configurations.deployment || 'apps';
 
   const publicPath = `/${appDeployment}/${insights.appname}/`;
   const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
-  const generateSourceMaps = !akamaiBranches.includes(gitBranch);
+  const generateSourceMaps = gitBranch ? !akamaiBranches.includes(gitBranch) : false;
 
   if (configurations.debug) {
     console.group();
@@ -76,11 +75,6 @@ const createFecConfig = (
     fecLogger(LogType.debug, `Using deployments: ${appDeployment}`);
     fecLogger(LogType.debug, `Public path: ${publicPath}`);
     fecLogger(LogType.debug, `App entry: ${appEntry}`);
-    fecLogger(LogType.debug, `Use proxy: ${configurations.useProxy ? 'true' : 'false'}`);
-    if (!(configurations.useProxy || configurations.standalone)) {
-      fecLogger(LogType.warn, 'Insights-proxy is deprecated in favor of "useProxy" or "standalone".');
-      fecLogger(LogType.warn, 'See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
-    }
 
     console.groupEnd();
     /* eslint-enable no-console */

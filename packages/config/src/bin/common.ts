@@ -20,7 +20,7 @@ export function validateFECConfig(cwd: string) {
   process.env.FEC_CONFIG_PATH = configPath;
 }
 
-export function getWebpackConfigPath(path: string, cwd: string) {
+export function getRSpackConfigPath(path: string, cwd: string) {
   let configPath;
   try {
     configPath = resolve(cwd, path);
@@ -32,7 +32,7 @@ export function getWebpackConfigPath(path: string, cwd: string) {
     return configPath;
   } catch (error: any) {
     if (configPath) {
-      fecLogger(LogType.error, `Unable to open webpack config at: "${configPath}"`);
+      fecLogger(LogType.error, `Unable to open RSpack config at: "${configPath}"`);
     } else {
       fecLogger(LogType.error, error);
       throw 'FEC binary failed';
@@ -41,4 +41,4 @@ export function getWebpackConfigPath(path: string, cwd: string) {
 }
 
 module.exports.validateFECConfig = validateFECConfig;
-module.exports.getWebpackConfigPath = getWebpackConfigPath;
+module.exports.getRSpackConfigPath = getRSpackConfigPath;
