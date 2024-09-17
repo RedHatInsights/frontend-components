@@ -97,7 +97,7 @@ export const createConfig = ({
   nodeModulesDirectories = [],
   stripAllPfStyles = false,
   blockLegacyChrome,
-  devtool,
+  devtool = false,
 }: CreateConfigOptions): Configuration => {
   if (typeof _unstableHotReload !== 'undefined') {
     fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
@@ -119,7 +119,7 @@ export const createConfig = ({
   const devServerPort = typeof port === 'number' ? port : useProxy || standalone ? 1337 : 8002;
   return {
     mode: mode || (isProd ? 'production' : 'development'),
-    devtool: devtool || false,
+    devtool: devtool,
     ...(useCache
       ? {
           cache: {
