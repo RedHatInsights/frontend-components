@@ -46,7 +46,7 @@
     },
     "devDependencies": {
         "style-inject": "0.3.0",
-        "rollup": "^2.46.0",
+        "rollup": "^3.29.5",
         "rollup-plugin-babel": "^4.4.0",
         "rollup-plugin-node-globals": "^1.4.0",
         "rollup-plugin-postcss": "^4.0.2",
