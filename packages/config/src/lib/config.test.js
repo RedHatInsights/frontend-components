@@ -39,7 +39,7 @@ describe('should create dummy config with no options', () => {
 
   test('devServer', () => {
     expect(devServer).toEqual({
-      onBeforeSetupMiddleware: expect.any(Function),
+      setupMiddlewares: expect.any(Function),
       onListening: expect.any(Function),
       static: {
         directory: '/dist',

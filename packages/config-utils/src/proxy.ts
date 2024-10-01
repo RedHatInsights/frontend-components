@@ -360,7 +360,7 @@ const proxy = ({
         console.log('\u001b[0m');
       }
     },
-    onBeforeSetupMiddleware({ app, compiler, options }) {
+    setupMiddlewares(middlewares, { app, compiler, options }) {
       app?.enable('strict routing'); // trailing slashes are mean
 
       if (shouldBounceProdRequests) {
@@ -411,6 +411,8 @@ const proxy = ({
           config: standaloneConfig,
         })
       );
+
+      return middlewares;
     },
   };
 
