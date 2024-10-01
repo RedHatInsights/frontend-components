@@ -5,16 +5,8 @@ const { sync } = require('glob');
 export * from './createConfig';
 export * from './createPlugins';
 
-type DevServerConfiguration = import('webpack-dev-server').Configuration;
 type WebpackConfiguration = import('webpack').Configuration;
-export interface FecWebpackConfiguration extends WebpackConfiguration {
-  devServer?: DevServerConfiguration;
-}
-
-const gitRevisionPlugin = new (require('git-revision-webpack-plugin'))({
-  branch: true,
-});
-const akamaiBranches = ['prod-stable'];
+export type FecWebpackConfiguration = WebpackConfiguration;
 
 const getAppEntry = (rootFolder: string, isProd?: boolean) => {
   // Use entry-dev if it exists
@@ -56,7 +48,7 @@ const createFecConfig = (
   const { insights } = require(`${configurations.rootFolder}/package.json`);
   let gitBranch;
   try {
-    gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH || gitRevisionPlugin.branch();
+    gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH;
   } catch (error) {
     fecLogger(LogType.info, 'no git branch detected, using main for webpack "main" config.');
     gitBranch = 'main';
@@ -65,7 +57,7 @@ const createFecConfig = (
 
   const publicPath = `/${appDeployment}/${insights.appname}/`;
   const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
-  const generateSourceMaps = !akamaiBranches.includes(gitBranch);
+  const generateSourceMaps = !isProd;
 
   if (configurations.debug) {
     console.group();

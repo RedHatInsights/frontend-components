@@ -44,7 +44,7 @@ describe('should create dummy config with no options', () => {
       static: {
         directory: '/dist',
       },
-      https: false,
+      server: 'https',
       host: '0.0.0.0',
       port: 8002,
       hot: false,
@@ -109,7 +109,7 @@ describe('port', () => {
 
 test('https', () => {
   const { devServer } = configBuilder({ https: true });
-  expect(devServer.https).toBe(true);
+  expect(devServer.server).toBe('https');
 });
 
 test('noFileHash', () => {
