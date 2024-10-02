@@ -1,9 +1,7 @@
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
-import { Compiler, WebpackPluginInstance } from 'webpack';
+import webpack, { Compiler, DefinePlugin, ProvidePlugin, WebpackPluginInstance } from 'webpack';
 import { CommonConfigOptions } from './createConfig';
 
-const { SourceMapDevToolPlugin } = require('webpack');
-const { ProvidePlugin, DefinePlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
@@ -42,7 +40,7 @@ export const createPlugins = ({
   return [
     ...(generateSourceMaps
       ? [
-          new SourceMapDevToolPlugin({
+          new webpack.SourceMapDevToolPlugin({
             test: 'js',
             exclude: /(node_modules|bower_components)/i,
             filename: !fileHash ? 'sourcemaps/[name].js.map' : 'sourcemaps/[name].[contenthash].js.map',

@@ -69,6 +69,13 @@ const devConfig: Configuration = {
   ...webpackConfig,
   plugins,
 };
+// @ts-ignore
+if (devConfig.devServer?.onBeforeSetupMiddleware) {
+  // This is no longer required due to the usage of container. In case a old config utilities package is still installed, the option has to be removed.
+  // the proxy was updated to use the new setup middleware callback
+  // @ts-ignore
+  delete devConfig.devServer?.onBeforeSetupMiddleware;
+}
 
 module.exports = devConfig;
 export default devConfig;

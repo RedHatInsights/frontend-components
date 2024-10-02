@@ -54,6 +54,7 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   stripAllPfStyles?: boolean;
   blockLegacyChrome?: boolean;
   devtool?: Configuration['devtool'];
+  _unstableSpdy?: boolean;
 }
 
 export const createConfig = ({
@@ -61,7 +62,7 @@ export const createConfig = ({
   publicPath,
   appEntry,
   rootFolder,
-  https,
+  https = true,
   mode,
   appName,
   useFileHash = true,
@@ -98,6 +99,8 @@ export const createConfig = ({
   stripAllPfStyles = false,
   blockLegacyChrome,
   devtool = false,
+  // enables SPDY as a dev server
+  _unstableSpdy = false,
 }: CreateConfigOptions): Configuration => {
   if (typeof _unstableHotReload !== 'undefined') {
     fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
@@ -216,9 +219,19 @@ export const createConfig = ({
 
                   return content;
                 },
+                sassOptions: {
+                  silenceDeprecations: ['legacy-js-api'],
+                },
               },
             },
-            'sass-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                sassOptions: {
+                  silenceDeprecations: ['legacy-js-api'],
+                },
+              },
+            },
           ],
         },
         {
@@ -261,7 +274,7 @@ export const createConfig = ({
         directory: `${rootFolder || ''}/dist`,
       },
       port: devServerPort,
-      https: https || Boolean(useProxy),
+      server: _unstableSpdy ? 'spdy' : https ? 'https' : 'http',
       host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
       hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
       liveReload: !internalHotReload,
