@@ -1,0 +1,19 @@
+{
+  "executors": {
+    "sync-dependencies": {
+      "implementation": "./src/executors/sync-dependencies/executor",
+      "schema": "./src/executors/sync-dependencies/schema.json",
+      "description": "sync-dependencies executor"
+    },
+    "builder": {
+      "implementation": "./src/executors/builder/executor",
+      "schema": "./src/executors/builder/schema.json",
+      "description": "builder executor"
+    },
+    "build-styles": {
+      "implementation": "./src/executors/build-styles/executor",
+      "schema": "./src/executors/build-styles/schema.json",
+      "description": "build-styles executor"
+    }
+  }
+}
