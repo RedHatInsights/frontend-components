@@ -25,7 +25,8 @@
     "packages/utils",
     "packages/types",
     "packages/advisor-components",
-    "packages/tsc-transform-imports"
+    "packages/tsc-transform-imports",
+    "packages/executors"
   ],
   "files": [
     "index.js",
