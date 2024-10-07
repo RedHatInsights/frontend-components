@@ -43,7 +43,7 @@
         "react-markdown": "^8.0.3",
         "rehype-raw": "^6.1.1",
         "rehype-sanitize": "^5.0.1",
-        "sanitize-html": "^2.12.1"
+        "sanitize-html": "^2.13.1"
     },
     "devDependencies": {
         "@cypress/webpack-dev-server": "^3.5.1",
