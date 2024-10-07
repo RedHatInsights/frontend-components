@@ -1,0 +1,34 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "allowJs": false,
+    "jsx": "react-jsx",
+    "declaration": true,
+    "sourceMap": true,
+    "removeComments": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "types": [
+      "jest",
+      "@testing-library/react",
+      "@testing-library/jest-dom"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@redhat-cloud-services/frontend-components": ["packages/components/src", "dist/packages/components"],
+      "@redhat-cloud-services/types": ["packages/types/src", "dist/packages/types"],
+      "@redhat-cloud-services/frontend-components-config-utilities": ["packages/config-utils/src", "dist/packages/config-utils"],
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
