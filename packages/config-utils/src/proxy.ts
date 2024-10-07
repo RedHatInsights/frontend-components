@@ -7,13 +7,6 @@ import path from 'path';
 import type { Configuration } from 'webpack-dev-server';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import cookieTransform from './cookieTransform';
-import router from './standalone/helpers/router';
-import { getConfig, getExposedPort, isGitUrl, resolvePath } from './standalone/helpers/index';
-import { checkoutRepo } from './standalone/helpers/checkout';
-import { startService, stopService } from './standalone/startService';
-import { NET } from './standalone/helpers';
-import defaultServices from './standalone/services/default';
-import { registerChrome } from './standalone/services/default/chrome';
 
 const defaultReposDir = path.join(__dirname, 'repos');
 
@@ -57,7 +50,6 @@ const buildRoutes = (
       autoRewrite: true,
       ws: true,
       onProxyReq: cookieTransform as ProxyConfigItem['onProxyReq'],
-      ...(currTarget === 'PORTAL_BACKEND_MARKER' && { router: router(target, false) }),
       ...(typeof redirect === 'object' ? redirect : {}),
     };
 
@@ -125,24 +117,15 @@ const proxy = ({
   routesPath,
   useProxy,
   proxyURL = 'http://squid.corp.redhat.com:3128',
-  standalone,
-  port,
-  reposDir = defaultReposDir,
-  localChrome,
   appUrl = [],
   publicPath,
   proxyVerbose,
   useCloud = false,
   target = '',
-  keycloakUri = '',
-  registry = [],
   isChrome = false,
-  onBeforeSetupMiddleware = () => undefined,
   bounceProd = false,
   useAgent = true,
-  useDevBuild = true,
   localApps = process.env.LOCAL_APPS,
-  blockLegacyChrome = false,
 }: ProxyOptions) => {
   const proxy: ProxyConfigItem[] = [];
   const majorEnv = env.split('-')[0];
@@ -203,73 +186,6 @@ const proxy = ({
     proxy.push(...customProxy);
   }
 
-  let standaloneConfig: ReturnType<typeof getConfig>;
-  if (standalone) {
-    standaloneConfig = getConfig(standalone, localChrome, env, port);
-    // Create network for services.
-    execSync(`docker network inspect ${NET} >/dev/null 2>&1 || docker network create ${NET}`);
-
-    // Clone repos and resolve functions
-    // If we manage the repos it's okay to overwrite the contents
-    const overwrite = reposDir === defaultReposDir;
-
-    // Resolve config functions for cross-service references
-    for (const [, proj] of Object.entries(standaloneConfig)) {
-      const { services, path, assets, register } = proj;
-      if (typeof register === 'function') {
-        registry.push(register);
-      }
-
-      if (isGitUrl(path)) {
-        // Add typical branch if not included
-        if (!path.includes('#')) {
-          proj.path = `${path}#${env}`;
-        }
-
-        proj.path = checkoutRepo({ repo: proj.path, reposDir, overwrite });
-      }
-
-      Object.keys(assets || []).forEach((key) => {
-        if (isGitUrl(assets[key])) {
-          assets[key] = checkoutRepo({ repo: assets[key], reposDir, overwrite });
-        }
-      });
-
-      // Resolve functions that depend on env, port, or assets
-      if (typeof services === 'function') {
-        proj.services = services({ env, port, assets });
-      }
-    }
-
-    // Start standalone services.
-    for (const [projName, proj] of Object.entries(standaloneConfig)) {
-      const { services, path, assets, onProxyReq, keycloakUri, register, target, ...rest } = proj;
-      const serviceNames: string[] = [];
-      for (const [subServiceName, subService] of Object.entries(proj.services || {})) {
-        const name = [projName, subServiceName].join('_');
-        // FIXME: Fix the typecasting
-        startService(standaloneConfig, name, subService as { args: string[]; dependsOn: string[] });
-        serviceNames.push(name);
-        const port = getExposedPort((subService as { args: string[]; dependsOn: string[] }).args);
-        console.log('Container', name, 'listening', port ? 'on' : '', port || '');
-      }
-
-      process.on('SIGINT', () => serviceNames.forEach(stopService));
-
-      if (target) {
-        proxy.push({
-          secure: false,
-          changeOrigin: true,
-          onProxyReq: cookieTransform,
-          target,
-          ...rest,
-        });
-      }
-    }
-
-    process.on('SIGINT', () => process.exit());
-  }
-
   if (useProxy) {
     // Catch-all
     proxy.push({
@@ -324,24 +240,14 @@ const proxy = ({
         }
 
         return null;
-      },
-      router: router(target, useCloud),
-      ...(agent && {
-        agent,
-        headers: {
-          // Staging Akamai CORS gives 403s for non-GET requests from non-origin hosts
-          Host: target.replace('https://', ''),
-          // Origin format is protocol://hostname:port only, remove any trailing slash
-          Origin: target.replace(/\/$/, ''),
-        },
-      }),
+      }
     });
   }
 
   const config: Configuration = {
     ...(proxy.length > 0 && { proxy }),
     onListening(server) {
-      if (useProxy || standaloneConfig) {
+      if (useProxy) {
         const host = useProxy ? `${majorEnv}.foo.redhat.com` : 'localhost';
         const origin = `http${server.options.https ? 's' : ''}://${host}:${server.options.port}`;
         console.log('App should run on:');
@@ -368,50 +274,6 @@ const proxy = ({
         app?.use(express.json());
         app?.use(express.urlencoded({ extended: true }));
       }
-
-      /**
-       * Allow serving chrome assets
-       * This will allow running chrome as a host application
-       */
-      if (localChrome || (!blockLegacyChrome && !isChrome)) {
-        let chromePath = localChrome;
-        if (standaloneConfig) {
-          if (standaloneConfig.chrome) {
-            chromePath = resolvePath(reposDir, standaloneConfig.chrome.path);
-            keycloakUri = standaloneConfig.chrome.keycloakUri;
-          }
-        } else if (!blockLegacyChrome && !localChrome && useProxy) {
-          const chromeConfig = typeof defaultServices.chrome === 'function' ? defaultServices.chrome({}) : defaultServices.chrome;
-
-          const chromeEnv = useDevBuild ? 'dev-stable' : env;
-          chromePath = checkoutRepo({
-            repo: `${chromeConfig.path}#${chromeEnv}`,
-            reposDir,
-            overwrite: true,
-          });
-        }
-
-        onBeforeSetupMiddleware({ chromePath });
-
-        if (app && chromePath) {
-          registerChrome({
-            app,
-            chromePath,
-            keycloakUri,
-            https: Boolean(options.https),
-            proxyVerbose,
-          });
-        }
-      }
-
-      registry.forEach((cb) =>
-        cb({
-          app,
-          options,
-          compiler,
-          config: standaloneConfig,
-        })
-      );
 
       return middlewares;
     },
