@@ -44,7 +44,7 @@ describe('should create dummy config with no options', () => {
       static: {
         directory: '/dist',
       },
-      server: 'https',
+      server: 'http',
       host: '0.0.0.0',
       port: 8002,
       hot: false,

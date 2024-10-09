@@ -62,7 +62,7 @@ export const createConfig = ({
   publicPath,
   appEntry,
   rootFolder,
-  https = true,
+  https,
   mode,
   appName,
   useFileHash = true,
@@ -274,7 +274,7 @@ export const createConfig = ({
         directory: `${rootFolder || ''}/dist`,
       },
       port: devServerPort,
-      server: _unstableSpdy ? 'spdy' : https ? 'https' : 'http',
+      server: _unstableSpdy ? 'spdy' : https || Boolean(useProxy) ? 'https' : 'http',
       host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
       hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
       liveReload: !internalHotReload,
