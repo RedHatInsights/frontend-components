@@ -19,6 +19,11 @@
       "implementation": "./src/executors/build-packages/executor",
       "schema": "./src/executors/build-packages/schema.json",
       "description": "build-packages executor"
+    },
+    "transform-scss": {
+      "implementation": "./src/executors/transform-scss/executor",
+      "schema": "./src/executors/transform-scss/schema.json",
+      "description": "transform-scss executor"
     }
   }
 }
