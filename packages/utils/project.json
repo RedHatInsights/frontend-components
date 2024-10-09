@@ -1,0 +1,62 @@
+{
+  "name": "@redhat-cloud-services/frontend-components-utilities",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/types",
+  "projectType": "library",
+  "targets": {
+    "build:cjs": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "rootDir": "packages/utils/src",
+        "main": "packages/utils/src/index.ts",
+        "outputPath": "dist/utils",
+        "tsConfig": "packages/utils/tsconfig.cjs.json"
+      }
+    },
+    "build:esm": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "rootDir": "packages/utils/src",
+        "main": "packages/utils/src/index.ts",
+        "outputPath": "dist/utils/esm",
+        "tsConfig": "packages/utils/tsconfig.esm.json"
+      }
+    },
+    "build:styles": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
+      "dependsOn": ["build:cjs", "build:esm"],
+      "options": {
+        "outputPath": "dist/utils",
+        "sourceDir": "packages/utils"
+      }
+    },
+    "build:packages": {
+      "dependsOn": ["build:cjs", "build:esm"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
+      "options": {
+        "outputPath": "dist/utils",
+        "forceTypes": true
+      }
+    },
+    "transform:scss": {
+      "dependsOn": ["build:cjs", "build:esm"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
+      "options": {
+        "outputPath": "dist/utils"
+      }
+    },
+
+    "build": {
+      "executor": "nx:noop",
+      "dependsOn": ["build:styles", "build:packages", "transform:scss"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/types/**/*.ts", "packages/types/package.json"]
+      }
+    }
+  },
+  "tags": []
+}
