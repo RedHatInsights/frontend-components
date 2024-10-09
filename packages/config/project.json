@@ -1,0 +1,25 @@
+{
+  "name": "@redhat-cloud-services/frontend-components-config",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/types",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "rootDir": "packages/config/src",
+        "main": "packages/config/src/index.ts",
+        "outputPath": "dist/config",
+        "tsConfig": "packages/config/tsconfig.json"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/types/**/*.ts", "packages/types/package.json"]
+      }
+    }
+  },
+  "tags": []
+}
