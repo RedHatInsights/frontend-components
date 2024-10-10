@@ -159,7 +159,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
           <TableBody />
         </Table>
       ) : (
-        <SkeletonTable numberOfColumns={columns.length} rows={pagination?.perPage || 10} variant={TableVariant.compact} />
+        <SkeletonTable columnsCount={columns.length} rows={pagination?.perPage || 10} variant={TableVariant.compact} />
       )}
       {onUpdateData && pagination && loaded && (
         <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
