@@ -36,6 +36,7 @@ export const useTagsFilter: UseTagsFilter = (
   loaded = false,
   additionalTagsCount = 0,
   onShowMoreClick,
+  // @ts-ignore
   [globalState, dispatch] = [tagsFilterState],
   itemText = 'item',
   showMoreTitle
