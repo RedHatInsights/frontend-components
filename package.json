@@ -129,7 +129,8 @@
     "whatwg-fetch": "^3.6.2"
   },
   "scripts": {
-    "nx": "nx"
+    "nx": "nx",
+    "build:all": "nx run-many --target=build"
   },
   "description": "Components for Red Hat Cloud Services",
   "repository": {
