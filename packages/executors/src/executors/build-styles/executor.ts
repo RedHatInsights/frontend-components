@@ -4,8 +4,7 @@ import fs from 'fs'
 import { glob } from 'glob'
 import path from 'path'
 import util from 'util';
-import sass, { NodePackageImporter } from 'sass'
-import pki from 'node-sass-package-importer'
+import sass from 'sass'
 
 const asyncWriteFile = util.promisify(fs.writeFile);
 const asyncCopyFile = util.promisify(fs.copyFile);
