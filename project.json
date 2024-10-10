@@ -1,5 +1,5 @@
 {
-  "name": "@redhat-could-services/source",
+  "name": "@redhat-cloud-services/source",
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "targets": {
     "local-registry": {
