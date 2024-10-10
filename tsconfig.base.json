@@ -37,6 +37,8 @@
       "@redhat-cloud-services/tsc-transform-imports": ["dist/@redhat-cloud-services/tsc-transform-imports"],
       "@redhat-cloud-services/frontend-components-translations": ["dist/@redhat-cloud-services/frontend-components-translations"],
       "@redhat-cloud-services/frontend-components-translations/*": ["dist/@redhat-cloud-services/frontend-components-translations/*"],
+      "@redhat-cloud-services/frontend-components-testing": ["dist/@redhat-cloud-services/frontend-components-testing"],
+      "@redhat-cloud-services/frontend-components-testing/*": ["dist/@redhat-cloud-services/frontend-components-testing/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
