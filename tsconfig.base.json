@@ -26,9 +26,13 @@
     "baseUrl": ".",
     "paths": {
       "@redhat-cloud-services/frontend-components-executors": ["packages/executors/src/index.ts"],
-      "@redhat-cloud-services/frontend-components": ["packages/components/src", "dist/packages/components"],
-      "@redhat-cloud-services/types": ["packages/types/src", "dist/packages/types"],
-      "@redhat-cloud-services/frontend-components-config-utilities": ["packages/config-utils/src", "dist/packages/config-utils"],
+      "@redhat-cloud-services/frontend-components": ["dist/@redhat-cloud-services/frontend-components"],
+      "@redhat-cloud-services/frontend-components/*": ["dist/@redhat-cloud-services/frontend-components/*"],
+      "@redhat-cloud-services/types": ["dist/@redhat-cloud-services/types"],
+      "@redhat-cloud-services/frontend-components-config-utilities": ["dist/@redhat-cloud-services/frontend-components-config-utilities"],
+      "@redhat-cloud-services/frontend-components-utilities": ["dist/@redhat-cloud-services/frontend-components-utilities"],
+      "@redhat-cloud-services/frontend-components-utilities/*": ["dist/@redhat-cloud-services/frontend-components-utilities/*"],
+    
     }
   },
   "exclude": ["node_modules", "tmp"]

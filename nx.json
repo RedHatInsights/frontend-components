@@ -5,9 +5,6 @@
       "dependsOn": [
         "^build"
       ],
-      "outputs": [
-        "{projectRoot}/dist"
-      ],
       "cache": true
     },
     "test:ct": {
