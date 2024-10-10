@@ -1,0 +1,64 @@
+{
+  "name": "@redhat-cloud-services/frontend-components-notifications",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/types",
+  "projectType": "library",
+  "targets": {
+    "build:cjs": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build:cjs"],
+      "options": {
+        "rootDir": "packages/notifications/src",
+        "main": "packages/notifications/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications",
+        "tsConfig": "packages/notifications/tsconfig.cjs.json"
+      }
+    },
+    "build:esm": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build:esm"],
+      "options": {
+        "rootDir": "packages/notifications/src",
+        "main": "packages/notifications/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications/esm",
+        "tsConfig": "packages/notifications/tsconfig.esm.json"
+      }
+    },
+    "build:styles": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
+      "dependsOn": ["^build:styles", "build:cjs", "build:esm"],
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications",
+        "sourceDir": "packages/notifications"
+      }
+    },
+    "build:packages": {
+      "dependsOn": ["^build:packages", "build:cjs", "build:esm"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications",
+        "forceTypes": true
+      }
+    },
+    "transform:scss": {
+      "dependsOn": ["^transform:scss", "build:cjs", "build:esm"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications"
+      }
+    },
+
+    "build": {
+      "executor": "nx:noop",
+      "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/types/**/*.ts", "packages/types/package.json"]
+      }
+    }
+  },
+  "tags": []
+}

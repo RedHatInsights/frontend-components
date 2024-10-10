@@ -32,7 +32,8 @@
       "@redhat-cloud-services/frontend-components-config-utilities": ["dist/@redhat-cloud-services/frontend-components-config-utilities"],
       "@redhat-cloud-services/frontend-components-utilities": ["dist/@redhat-cloud-services/frontend-components-utilities"],
       "@redhat-cloud-services/frontend-components-utilities/*": ["dist/@redhat-cloud-services/frontend-components-utilities/*"],
-    
+      "@redhat-cloud-services/frontend-components-notifications": ["dist/@redhat-cloud-services/frontend-components-notifications"],
+      "@redhat-cloud-services/frontend-components-notifications/*": ["dist/@redhat-cloud-services/frontend-components-notifications/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]

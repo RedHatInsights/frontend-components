@@ -1,48 +1,40 @@
 {
-    "name": "@redhat-cloud-services/frontend-components-notifications",
-    "version": "4.1.0",
-    "description": "Notifications portal to show toast notifications for RedHat Cloud Services project.",
-    "browser": "index.js",
-    "module": "esm/index.js",
-    "types": "index.d.ts",
-    "publishConfig": {
-        "access": "public"
-    },
-    "scripts": {
-        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages && npm run transform:css",
-        "build:css": "node ../../scripts/build-styles.js",
-        "build:packages": "node ../../scripts/build-packages.js --forceTypes",
-        "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\"",
-        "build:esm": "MODULES_ROOT=../../ tsc --module es2015 --target es5 -p tsconfig.esm.json",
-        "build:js": "tsc -p tsconfig.cjs.json",
-        "transform:css": "node ../../scripts/transform-scss.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/RedHatInsights/frontend-components.git"
-    },
-    "author": "",
-    "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/RedHatInsights/frontend-components/issues"
-    },
-    "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/notifications#readme",
-    "peerDependencies": {
-        "@patternfly/react-core": "^5.0.0",
-        "@patternfly/react-icons": "^5.0.0",
-        "prop-types": "^15.6.2",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "redux": ">=4.2.0",
-        "react-redux": ">=7.2.9"
-    },
-    "dependencies": {
-        "redux-promise-middleware": "6.1.3",
-        "@redhat-cloud-services/frontend-components-utilities": "^4.0.2",
-        "@redhat-cloud-services/frontend-components": "^4.0.9"
-    },
-    "devDependencies": {
-        "glob": "10.3.3",
-        "typescript": "^5.0.0"
-    }
+  "name": "@redhat-cloud-services/frontend-components-notifications",
+  "version": "4.1.0",
+  "description": "Notifications portal to show toast notifications for RedHat Cloud Services project.",
+  "browser": "index.js",
+  "module": "esm/index.js",
+  "types": "index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/RedHatInsights/frontend-components/issues"
+  },
+  "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/notifications#readme",
+  "peerDependencies": {
+    "@patternfly/react-core": "^5.0.0",
+    "@patternfly/react-icons": "^5.0.0",
+    "prop-types": "^15.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "redux": ">=4.2.0",
+    "react-redux": ">=7.2.9"
+  },
+  "dependencies": {
+    "redux-promise-middleware": "6.1.3",
+    "@redhat-cloud-services/frontend-components-utilities": "^4.0.2",
+    "@redhat-cloud-services/frontend-components": "^4.0.9"
+  },
+  "devDependencies": {
+    "glob": "10.3.3",
+    "typescript": "^5.0.0"
+  }
 }
