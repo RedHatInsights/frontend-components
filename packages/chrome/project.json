@@ -1,0 +1,49 @@
+{
+  "name": "@redhat-cloud-services/chrome",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/chrome",
+  "projectType": "library",
+  "targets": {
+    "build:cjs": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build:cjs"],
+      "options": {
+        "rootDir": "packages/chrome/src",
+        "main": "packages/chrome/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/chrome",
+        "tsConfig": "packages/chrome/tsconfig.cjs.json"
+      }
+    },
+    "build:esm": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build:esm"],
+      "options": {
+        "rootDir": "packages/chrome/src",
+        "main": "packages/chrome/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/chrome/esm",
+        "tsConfig": "packages/chrome/tsconfig.esm.json"
+      }
+    },
+    "build:packages": {
+      "dependsOn": ["^build:packages", "build:cjs", "build:esm"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components",
+        "forceTypes": true
+      }
+    },
+
+    "build": {
+      "executor": "nx:noop",
+      "dependsOn": ["^build", "build:packages"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/types/**/*.ts", "packages/types/package.json"]
+      }
+    }
+  },
+  "tags": []
+}
