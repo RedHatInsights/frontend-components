@@ -249,7 +249,7 @@ const proxy = ({
     onListening(server) {
       if (useProxy) {
         const host = useProxy ? `${majorEnv}.foo.redhat.com` : 'localhost';
-        const origin = `http${server.options.https ? 's' : ''}://${host}:${server.options.port}`;
+        const origin = `https://${host}:${server.options.port}`;
         console.log('App should run on:');
 
         console.log('\u001b[34m'); // Use same webpack-dev-server blue
