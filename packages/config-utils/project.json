@@ -9,7 +9,7 @@
       "options": {
         "rootDir": "packages/config-utils/src",
         "main": "packages/config-utils/src/index.ts",
-        "outputPath": "dist/config-utils",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-config-utilities",
         "tsConfig": "packages/config-utils/tsconfig.json"
       }
     },
