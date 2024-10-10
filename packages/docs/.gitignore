@@ -35,3 +35,4 @@ yarn-error.log*
 
 generators/component-docs.json
 generators/temp
+./pages/fec/**/*/

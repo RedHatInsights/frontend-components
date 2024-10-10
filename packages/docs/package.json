@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build:next": "next build",
-    "build": "npm run generate:components:docs && next build",
+    "buildx": "npm run generate:components:docs && next build",
     "start": "npm run build && next start -H 0.0.0.0 -p ${PORT:-8080}",
     "watch": "concurrently \"npm run generate:components -- --watch\" \"node generators/docs-generator.js --watch\" \"npm run generate:navigation -- --watch\" \"npm run dev\"",
     "generate:navigation": "node generators/generate-left-nav-common.js",
