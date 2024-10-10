@@ -1,0 +1,64 @@
+{
+  "name": "@redhat-cloud-services/frontend-components-remediations",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/remediations",
+  "projectType": "library",
+  "targets": {
+    "build:cjs": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build:cjs"],
+      "options": {
+        "rootDir": "packages/remediations/src",
+        "main": "packages/remediations/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations",
+        "tsConfig": "packages/remediations/tsconfig.cjs.json"
+      }
+    },
+    "build:esm": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build:esm"],
+      "options": {
+        "rootDir": "packages/remediations/src",
+        "main": "packages/remediations/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations/esm",
+        "tsConfig": "packages/remediations/tsconfig.esm.json"
+      }
+    },
+    "build:styles": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
+      "dependsOn": ["^build:styles", "build:cjs", "build:esm"],
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations",
+        "sourceDir": "packages/remediations"
+      }
+    },
+    "build:packages": {
+      "dependsOn": ["^build:packages", "build:cjs", "build:esm"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations",
+        "forceTypes": true
+      }
+    },
+    "transform:scss": {
+      "dependsOn": ["^transform:scss", "build:cjs", "build:esm"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations"
+      }
+    },
+
+    "build": {
+      "executor": "nx:noop",
+      "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/types/**/*.ts", "packages/types/package.json"]
+      }
+    }
+  },
+  "tags": []
+}
