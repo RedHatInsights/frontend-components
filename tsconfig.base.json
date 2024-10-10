@@ -25,7 +25,6 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@redhat-cloud-services/frontend-components-executors": ["packages/executors/src/index.ts"],
       "@redhat-cloud-services/frontend-components": ["dist/@redhat-cloud-services/frontend-components"],
       "@redhat-cloud-services/frontend-components/*": ["dist/@redhat-cloud-services/frontend-components/*"],
       "@redhat-cloud-services/types": ["dist/@redhat-cloud-services/types"],
@@ -43,6 +42,8 @@
       "@redhat-cloud-services/chrome/*": ["dist/@redhat-cloud-services/chrome/*"],
       "@redhat-cloud-services/frontend-components-charts": ["dist/@redhat-cloud-services/frontend-components-charts"],
       "@redhat-cloud-services/frontend-components-charts/*": ["dist/@redhat-cloud-services/frontend-components-charts/*"],
+      "@redhat-cloud-services/rule-components": ["dist/@redhat-cloud-services/rule-components"],
+      "@redhat-cloud-services/rule-components/*": ["dist/@redhat-cloud-services/rule-components/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]
