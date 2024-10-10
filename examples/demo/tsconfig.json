@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowJs": false,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "paths": {
+      "@redhat-cloud-services/chrome": ["packages/chrome/src"],
+      "@redhat-cloud-services/chrome/*": ["packages/chrome/src/*"],
+      "@redhat-cloud-services/frontend-components-advisor-components": ["packages/advisor-components/src"],
+      "@redhat-cloud-services/frontend-components-advisor-components/*": ["packages/advisor-components/src/*"],
+      "@redhat-cloud-services/frontend-components-charts": ["packages/charts/src"],
+      "@redhat-cloud-services/frontend-components-charts/*": ["packages/charts/src/*"],
+      "@redhat-cloud-services/frontend-components-config-utilities": ["packages/config-utilities"],
+      "@redhat-cloud-services/frontend-components-notifications": ["packages/notifications/src"],
+      "@redhat-cloud-services/frontend-components-notifications/*": ["packages/notifications/src/*"],
+      "@redhat-cloud-services/frontend-components-remediations": ["packages/remediations/src"],
+      "@redhat-cloud-services/frontend-components-remediations/*": ["packages/remediations/src/*"],
+      "@redhat-cloud-services/frontend-components-testing": ["packages/testing/src"],
+      "@redhat-cloud-services/frontend-components-testing/*": ["packages/testing/src/*"],
+      "@redhat-cloud-services/frontend-components-translations": ["packages/translations/src"],
+      "@redhat-cloud-services/frontend-components-translations/*": ["packages/translations//src*"],
+      "@redhat-cloud-services/frontend-components-utilities": ["packages/utils/src/index.ts"],
+      "@redhat-cloud-services/frontend-components-utilities/*": ["packages/utils/src/*"],
+      "@redhat-cloud-services/frontend-components/*": ["packages/components/src/*"],
+      "@redhat-cloud-services/rule-components": ["packages/rule-components/src"],
+      "@redhat-cloud-services/rule-components/*": ["packages/rule-components/src/*"],
+      "@redhat-cloud-services/tsc-transform-imports": ["packages/tsc-transform-imports"],
+      "@redhat-cloud-services/types": ["packages/types"]
+    }
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ],
+  "extends": "../../tsconfig.base.json"
+}
