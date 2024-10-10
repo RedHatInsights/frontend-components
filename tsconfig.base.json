@@ -38,7 +38,9 @@
       "@redhat-cloud-services/frontend-components-translations": ["dist/@redhat-cloud-services/frontend-components-translations"],
       "@redhat-cloud-services/frontend-components-translations/*": ["dist/@redhat-cloud-services/frontend-components-translations/*"],
       "@redhat-cloud-services/frontend-components-testing": ["dist/@redhat-cloud-services/frontend-components-testing"],
-      "@redhat-cloud-services/frontend-components-testing/*": ["dist/@redhat-cloud-services/frontend-components-testing/*"]
+      "@redhat-cloud-services/frontend-components-testing/*": ["dist/@redhat-cloud-services/frontend-components-testing/*"],
+      "@redhat-cloud-services/chrome": ["dist/@redhat-cloud-services/chrome"],
+      "@redhat-cloud-services/chrome/*": ["dist/@redhat-cloud-services/chrome/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]
