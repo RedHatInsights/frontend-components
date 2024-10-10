@@ -34,6 +34,7 @@
       "@redhat-cloud-services/frontend-components-utilities/*": ["dist/@redhat-cloud-services/frontend-components-utilities/*"],
       "@redhat-cloud-services/frontend-components-notifications": ["dist/@redhat-cloud-services/frontend-components-notifications"],
       "@redhat-cloud-services/frontend-components-notifications/*": ["dist/@redhat-cloud-services/frontend-components-notifications/*"],
+      "@redhat-cloud-services/tsc-transform-imports": ["dist/@redhat-cloud-services/tsc-transform-imports"],
     }
   },
   "exclude": ["node_modules", "tmp"]
