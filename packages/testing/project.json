@@ -1,0 +1,64 @@
+{
+  "name": "@redhat-cloud-services/frontend-components-testing",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/testing",
+  "projectType": "library",
+  "targets": {
+    "build:cjs": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build:cjs"],
+      "options": {
+        "rootDir": "packages/testing/src",
+        "main": "packages/testing/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
+        "tsConfig": "packages/testing/tsconfig.cjs.json"
+      }
+    },
+    "build:esm": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build:esm"],
+      "options": {
+        "rootDir": "packages/testing/src",
+        "main": "packages/testing/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing/esm",
+        "tsConfig": "packages/testing/tsconfig.esm.json"
+      }
+    },
+    "build:styles": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
+      "dependsOn": ["^build:styles", "build:cjs", "build:esm"],
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
+        "sourceDir": "packages/testing"
+      }
+    },
+    "build:packages": {
+      "dependsOn": ["^build:packages", "build:cjs", "build:esm"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
+        "forceTypes": true
+      }
+    },
+    "transform:scss": {
+      "dependsOn": ["^transform:scss", "build:cjs", "build:esm"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing"
+      }
+    },
+
+    "build": {
+      "executor": "nx:noop",
+      "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/types/**/*.ts", "packages/types/package.json"]
+      }
+    }
+  },
+  "tags": []
+}
