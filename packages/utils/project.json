@@ -6,49 +6,51 @@
   "targets": {
     "build:cjs": {
       "executor": "@nx/js:tsc",
+      "dependsOn": ["^build:cjs"],
       "options": {
         "rootDir": "packages/utils/src",
         "main": "packages/utils/src/index.ts",
-        "outputPath": "dist/utils",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-utilities",
         "tsConfig": "packages/utils/tsconfig.cjs.json"
       }
     },
     "build:esm": {
       "executor": "@nx/js:tsc",
+      "dependsOn": ["^build:esm"],
       "options": {
         "rootDir": "packages/utils/src",
         "main": "packages/utils/src/index.ts",
-        "outputPath": "dist/utils/esm",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-utilities/esm",
         "tsConfig": "packages/utils/tsconfig.esm.json"
       }
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": ["build:cjs", "build:esm"],
+      "dependsOn": ["^build:styles", "build:cjs", "build:esm"],
       "options": {
-        "outputPath": "dist/utils",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-utilities",
         "sourceDir": "packages/utils"
       }
     },
     "build:packages": {
-      "dependsOn": ["build:cjs", "build:esm"],
+      "dependsOn": ["^build:packages","build:cjs", "build:esm"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
-        "outputPath": "dist/utils",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-utilities",
         "forceTypes": true
       }
     },
     "transform:scss": {
-      "dependsOn": ["build:cjs", "build:esm"],
+      "dependsOn": ["^transform:scss", "build:cjs", "build:esm"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
-        "outputPath": "dist/utils"
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-utilities"
       }
     },
 
     "build": {
       "executor": "nx:noop",
-      "dependsOn": ["build:styles", "build:packages", "transform:scss"]
+      "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",
