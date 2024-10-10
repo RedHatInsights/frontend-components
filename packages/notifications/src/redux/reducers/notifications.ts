@@ -25,10 +25,13 @@ interface RemoveNotificationAction {
   type: typeof REMOVE_NOTIFICATION;
   payload: string | number;
 }
+interface ClearNotificationsAction {
+  type: typeof CLEAR_NOTIFICATIONS;
+}
 
-export type NotificationsReducerActions = AddNotificationAction | RemoveNotificationAction;
+export type NotificationsReducerActions = AddNotificationAction | RemoveNotificationAction | ClearNotificationsAction;
 
-export const notificationsReducers = (state = defaultState, action: AddNotificationAction): PortalNotificationConfig[] => {
+export const notificationsReducers = (state = defaultState, action: NotificationsReducerActions): PortalNotificationConfig[] => {
   switch (action.type) {
     case ADD_NOTIFICATION:
       return addNotification(state, action);
