@@ -19,7 +19,7 @@
       "dependsOn": ["^build:esm"],
       "options": {
         "rootDir": "packages/charts/src",
-        "main": "packages/charts/src/index.ts",
+        "main": "packages/charts/src/index.js",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-charts/esm",
         "tsConfig": "packages/charts/tsconfig.esm.json"
       }

@@ -142,8 +142,8 @@
   },
   "scripts": {
     "nx": "nx",
-    "build": "nx run-many --target=build --exclude=demo,@redhat-cloud-services/frontend-components-pdf-generator",
-    "lint": "nx run-many -t lint --exclude=@redhat-cloud-services/frontend-components-pdf-generator",
+    "build": "nx run-many --target=build --exclude=demo,@redhat-cloud-services/frontend-components-pdf-generator,@redhat-cloud-services/frontend-components-charts",
+    "lint": "nx run-many -t lint --exclude=@redhat-cloud-services/frontend-components-pdf-generator,@redhat-cloud-services/frontend-components-charts",
     "serve:demo": "nx run demo:serve"
   },
   "description": "Components for Red Hat Cloud Services",
