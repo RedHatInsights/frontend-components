@@ -1,0 +1,74 @@
+{
+  "name": "@redhat-cloud-services/frontend-components-translations",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/types",
+  "projectType": "library",
+  "targets": {
+    "build:cjs": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build:cjs"],
+      "options": {
+        "rootDir": "packages/translations/src",
+        "main": "packages/translations/src/index.js",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-translations",
+        "tsConfig": "packages/translations/tsconfig.cjs.json",
+        "assets": [{
+          "glob": "**/*",
+          "input": "packages/translations/src/locales",
+          "output": "dist/@redhat-cloud-services/frontend-components-translations/locales"
+        }]
+      }
+    },
+    "build:esm": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build:esm"],
+      "options": {
+        "rootDir": "packages/translations/src",
+        "main": "packages/translations/src/index.js",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-translations/esm",
+        "tsConfig": "packages/translations/tsconfig.esm.json",
+        "assets": [{
+          "glob": "**/*",
+          "input": "packages/translations/src/locales",
+          "output": "dist/@redhat-cloud-services/frontend-components-translations/esm/locales"
+        }]
+      }
+    },
+    "build:styles": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
+      "dependsOn": ["^build:styles", "build:cjs", "build:esm"],
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-translations",
+        "sourceDir": "packages/translations"
+      }
+    },
+    "build:packages": {
+      "dependsOn": ["^build:packages", "build:cjs", "build:esm"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-translations",
+        "forceTypes": true
+      }
+    },
+    "transform:scss": {
+      "dependsOn": ["^transform:scss", "build:cjs", "build:esm"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-translations"
+      }
+    },
+
+    "build": {
+      "executor": "nx:noop",
+      "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/types/**/*.ts", "packages/types/package.json"]
+      }
+    }
+  },
+  "tags": []
+}
