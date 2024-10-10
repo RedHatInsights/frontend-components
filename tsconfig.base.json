@@ -44,6 +44,8 @@
       "@redhat-cloud-services/frontend-components-charts/*": ["dist/@redhat-cloud-services/frontend-components-charts/*"],
       "@redhat-cloud-services/rule-components": ["dist/@redhat-cloud-services/rule-components"],
       "@redhat-cloud-services/rule-components/*": ["dist/@redhat-cloud-services/rule-components/*"],
+      "@redhat-cloud-services/frontend-components-remediations": ["dist/@redhat-cloud-services/frontend-components-remediations"],
+      "@redhat-cloud-services/frontend-components-remediations/*": ["dist/@redhat-cloud-services/frontend-components-remediations/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]
