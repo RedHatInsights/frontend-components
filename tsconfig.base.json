@@ -46,6 +46,8 @@
       "@redhat-cloud-services/rule-components/*": ["dist/@redhat-cloud-services/rule-components/*"],
       "@redhat-cloud-services/frontend-components-remediations": ["dist/@redhat-cloud-services/frontend-components-remediations"],
       "@redhat-cloud-services/frontend-components-remediations/*": ["dist/@redhat-cloud-services/frontend-components-remediations/*"],
+      "@redhat-cloud-services/frontend-components-advisor-components": ["dist/@redhat-cloud-services/frontend-components-advisor-components"],
+      "@redhat-cloud-services/frontend-components-advisor-components/*": ["dist/@redhat-cloud-services/frontend-components-advisor-components/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]
