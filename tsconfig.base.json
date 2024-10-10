@@ -41,6 +41,8 @@
       "@redhat-cloud-services/frontend-components-testing/*": ["dist/@redhat-cloud-services/frontend-components-testing/*"],
       "@redhat-cloud-services/chrome": ["dist/@redhat-cloud-services/chrome"],
       "@redhat-cloud-services/chrome/*": ["dist/@redhat-cloud-services/chrome/*"],
+      "@redhat-cloud-services/frontend-components-charts": ["dist/@redhat-cloud-services/frontend-components-charts"],
+      "@redhat-cloud-services/frontend-components-charts/*": ["dist/@redhat-cloud-services/frontend-components-charts/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]
