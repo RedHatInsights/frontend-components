@@ -5,10 +5,9 @@ import doT from 'dot';
 import { marked } from 'marked';
 import sanitizeHtml from 'sanitize-html';
 
-marked.Renderer.prototype.link = ({href, title, text}) => {
+marked.Renderer.prototype.link = ({ href, title, text }) => {
   return `<a href="${href}" rel="noopener noreferrer" target="_blank" class="ins-c-rule__link-in-description">${text}</a>`;
 };
-
 
 marked.setOptions({
   renderer: new marked.Renderer(),

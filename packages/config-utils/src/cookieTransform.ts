@@ -39,10 +39,10 @@ function cookieTransform(
   if (match) {
     const cs_jwt = match[1];
     const sig = jws.decode(cs_jwt);
-    if(!sig) {
+    if (!sig) {
       return;
     }
-    const payload = sig.payload
+    const payload = sig.payload;
 
     const identity = {
       entitlements,

@@ -41,7 +41,7 @@ export default async function runExecutor(options: BuilderExecutorSchemaType, co
   }
 
   const projectName = context.projectName;
-  if(!projectName){ 
+  if (!projectName) {
     throw new Error('Project name is required');
   }
   const projectRoot = context.root;

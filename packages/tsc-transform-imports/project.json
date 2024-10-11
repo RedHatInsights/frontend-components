@@ -17,9 +17,9 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/tsc-transform-imports/**/*.ts", "packages/tsc-transform-imports/package.json"]
+        "lintFilePatterns": ["packages/tsc-transform-imports/src/**/*.ts", "packages/tsc-transform-imports/package.json"]
       }
     }
   },
-  "tags": []
+  "tags": ["scope:build"]
 }

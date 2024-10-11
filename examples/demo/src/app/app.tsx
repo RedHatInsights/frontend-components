@@ -21,7 +21,7 @@ const MyCmp = () => {
           ],
         }}
       />
-      <CriticalBattery label="Foo" severity={1} />
+      <CriticalBattery label="Foo" severity="critical" />
     </>
   );
 };

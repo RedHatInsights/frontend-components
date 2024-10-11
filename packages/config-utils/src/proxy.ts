@@ -240,7 +240,7 @@ const proxy = ({
         }
 
         return null;
-      }
+      },
     });
   }
 

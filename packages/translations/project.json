@@ -66,9 +66,9 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/types/**/*.ts", "packages/types/package.json"]
+        "lintFilePatterns": ["packages/translations/src/**/*", "packages/translations/package.json"]
       }
     }
   },
-  "tags": []
+  "tags": ["scope:public"]
 }

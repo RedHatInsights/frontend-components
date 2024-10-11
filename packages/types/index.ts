@@ -35,9 +35,9 @@ export declare type PDFRequestOptions = {
 
 type CreateAxiosRequest<T = any> = (service: string, config: AxiosRequestConfig) => Promise<T>;
 
-type FetchData = (createAsyncRequest: CreateAxiosRequest) => Promise<any>;
+export type FetchData = (createAsyncRequest: CreateAxiosRequest) => Promise<any>;
 
-type AsyncState<T = any> = {
+export type AsyncState<T = any> = {
   data: T;
 };
 
