@@ -1,11 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import PageHeader from './PageHeader';
+import { render } from '@testing-library/react';
 
 describe('PageHeader component', () => {
   it('should render', () => {
-    const wrapper = mount(<PageHeader>Something</PageHeader>);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<PageHeader>Something</PageHeader>);
+    expect(container).toMatchSnapshot();
   });
 });

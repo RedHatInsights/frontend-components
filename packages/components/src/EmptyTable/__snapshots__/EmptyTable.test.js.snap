@@ -1,19 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EmptyTable component should render 1`] = `
-<div
-  className="ins-c-table__empty"
->
-   
-  Some
+<div>
+  <div
+    class="ins-c-table__empty"
+  >
+     
+    Some
+  </div>
 </div>
 `;
 
 exports[`EmptyTable component should render with centered children 1`] = `
-<div
-  className="ins-c-table__empty is-centered"
->
-   
-  Centered
+<div>
+  <div
+    class="ins-c-table__empty is-centered"
+  >
+     
+    Centered
+  </div>
 </div>
 `;

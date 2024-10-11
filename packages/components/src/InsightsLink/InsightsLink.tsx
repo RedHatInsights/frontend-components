@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import useChrome from '../useChrome';
 import { buildInsightsPath } from '@redhat-cloud-services/frontend-components-utilities/helpers/urlPathHelpers';
-
 interface InsightsLinkProps {
   to: LinkProps['to'];
   app: string;

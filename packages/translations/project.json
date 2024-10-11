@@ -68,6 +68,13 @@
       "options": {
         "lintFilePatterns": ["packages/translations/src/**/*", "packages/translations/package.json"]
       }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/translations/jest.config.ts"
+      }
     }
   },
   "tags": ["scope:public"]

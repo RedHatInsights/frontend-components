@@ -1,27 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Spinner component should render 1`] = `
-<div
-  className="ins-c-spinner"
-  role="status"
->
-  <span
-    className="pf-v5-u-screen-reader"
+<div>
+  <div
+    class="ins-c-spinner"
+    role="status"
   >
-    Loading...
-  </span>
+    <span
+      class="pf-v5-u-screen-reader"
+    >
+      Loading...
+    </span>
+  </div>
 </div>
 `;
 
 exports[`Spinner component should render center Spinner 1`] = `
-<div
-  className="ins-c-spinner ins-m-center"
-  role="status"
->
-  <span
-    className="pf-v5-u-screen-reader"
+<div>
+  <div
+    class="ins-c-spinner ins-m-center"
+    role="status"
   >
-    Loading...
-  </span>
+    <span
+      class="pf-v5-u-screen-reader"
+    >
+      Loading...
+    </span>
+  </div>
 </div>
 `;

@@ -1,6 +1,8 @@
-import React from 'react';
 import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
 
+/**
+ * @deprecated Use the Patternfly skeleton components instead
+ */
 const RowLoader = (props: IContentLoaderProps) => (
   <ContentLoader height={20} width={480} {...props}>
     <rect x="30" y="0" rx="3" ry="3" width="250" height="7" />

@@ -1,11 +1,9 @@
 import React from 'react';
-import { ReactWrapper, mount } from 'enzyme';
 import { Provider } from 'react-redux';
-import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
-import { NotificationsPortal } from '..';
-import Notification from '../Notification';
+import NotificationsPortal from './NotificationPortal';
 import { REMOVE_NOTIFICATION } from '../redux/actions/action-types';
+import { render } from '@testing-library/react';
 
 describe('Notification portal', () => {
   let initialProps;
@@ -21,21 +19,15 @@ describe('Notification portal', () => {
   });
 
   it('should return no component when no notifications given', () => {
-    const t = () => {
-      try {
-        new ReactWrapper(
-          mount(
-            <Provider store={mockStore({})}>
-              <NotificationsPortal {...initialProps} />
-            </Provider>
-          )
-        );
-      } catch (error) {
-        throw new TypeError();
+    render(
+      <Provider store={mockStore({})}>
+        <NotificationsPortal {...initialProps} />
+      </Provider>,
+      {
+        container: document.body,
       }
-    };
-
-    expect(t).toThrow(TypeError);
+    );
+    expect(document.body.innerHTML).toBe('');
   });
 
   it('should render notifications given from store', () => {
@@ -50,16 +42,19 @@ describe('Notification portal', () => {
         },
       ],
     });
-    const wrapper = mount(
+    const { container } = render(
       <Provider store={modifiedStore}>
         <NotificationsPortal {...initialProps} />
-      </Provider>
+      </Provider>,
+      {
+        container: document.body,
+      }
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render notifications given as direct props', () => {
-    const wrapper = mount(
+    const { container } = render(
       <Provider store={mockStore({})}>
         <NotificationsPortal
           {...initialProps}
@@ -73,9 +68,12 @@ describe('Notification portal', () => {
             },
           ]}
         />
-      </Provider>
+      </Provider>,
+      {
+        container: document.body,
+      }
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render notifications given as direct props over store notifications', () => {
@@ -91,7 +89,7 @@ describe('Notification portal', () => {
       ],
     });
 
-    const wrapper = mount(
+    const { container } = render(
       <Provider store={modifiedStore}>
         <NotificationsPortal
           {...initialProps}
@@ -105,9 +103,12 @@ describe('Notification portal', () => {
             },
           ]}
         />
-      </Provider>
+      </Provider>,
+      {
+        container: document.body,
+      }
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should call default removeNotification function when none given', () => {
@@ -122,12 +123,15 @@ describe('Notification portal', () => {
         },
       ],
     });
-    const wrapper = mount(
+    const { container } = render(
       <Provider store={modifiedStore}>
         <NotificationsPortal {...initialProps} />
-      </Provider>
+      </Provider>,
+      {
+        container: document.body,
+      }
     );
-    wrapper.find(Notification).find('button').simulate('click');
+    container.querySelector('button').click();
     expect(modifiedStore.getActions()).toEqual([
       expect.objectContaining({
         type: REMOVE_NOTIFICATION,
@@ -148,12 +152,15 @@ describe('Notification portal', () => {
       ],
     });
     const dismiss = jest.fn();
-    const wrapper = mount(
+    const { container } = render(
       <Provider store={modifiedStore}>
         <NotificationsPortal {...initialProps} removeNotification={dismiss} />
-      </Provider>
+      </Provider>,
+      {
+        container: document.body,
+      }
     );
-    wrapper.find(Notification).find('button').simulate('click');
+    container.querySelector('button').click();
     expect(dismiss).toHaveBeenCalledWith('store notification');
   });
 
@@ -168,12 +175,16 @@ describe('Notification portal', () => {
       })),
     });
     const clearNotifications = jest.fn();
-    const wrapper = mount(
+    const { container } = render(
       <Provider store={modifiedStore}>
         <NotificationsPortal {...initialProps} clearNotifications={clearNotifications} />
-      </Provider>
+      </Provider>,
+      {
+        container: document.body,
+      }
     );
-    wrapper.find('.ins-c-pagination__clear-all').last().simulate('click');
+    const paginationItems = container.querySelectorAll('.ins-c-pagination__clear-all');
+    paginationItems[paginationItems.length - 1].click();
     expect(clearNotifications).toHaveBeenCalled();
   });
 });
