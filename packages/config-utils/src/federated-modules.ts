@@ -41,7 +41,7 @@ function hasVersionSpecified(config: { [module: string]: WebpackSharedConfig }):
     requiredVersion: string;
   };
 } {
-  return Object.values(config).every((c) => typeof c.version === 'string');
+  return Object.values(config).every((c) => typeof c.requiredVersion === 'string');
 }
 
 const federatedModules = ({
@@ -76,7 +76,7 @@ const federatedModules = ({
   shared.forEach((dep) => {
     if (!hasVersionSpecified(dep)) {
       const invalidDeps = Object.entries(dep)
-        .filter(([, { version }]) => typeof version !== 'string')
+        .filter(([, { requiredVersion }]) => typeof requiredVersion !== 'string')
         .map(([moduleName]) => moduleName);
       throw new Error('Some of your shared dependencies do not have version specified! Dependencies with no version: ' + invalidDeps);
     }
