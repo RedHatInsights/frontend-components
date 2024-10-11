@@ -32,13 +32,17 @@ async function copyTypings(files: string[], dest: string) {
 
 async function createPackage(file: string, options: RunOptions) {
   const fileName = file.split('/').pop();
-  const esmSource = glob.sync(`${options.outputRoot}/esm/${fileName}/**/index.js`)[0];
+  let cjsSource = glob.sync(`${options.outputRoot}/${fileName}/**/index.js`)[0];
+  let esmSource = glob.sync(`${options.outputRoot}/esm/${fileName}/**/index.js`)[0];
   /**
    * Prevent creating package.json for directories with no JS files (like CSS directories)
    */
   if (!esmSource) {
     return;
   }
+
+  esmSource = esmSource.replace(/\/index\.js$/, '');
+  cjsSource = cjsSource.replace(/\/index\.js$/, '');
 
   const packagePath = file.split('/src/').pop();
   if (!packagePath) {
@@ -47,7 +51,7 @@ async function createPackage(file: string, options: RunOptions) {
 
   const destFile = `${path.resolve(options.outputRoot, packagePath)}/package.json`;
 
-  const esmRelative = path.relative(file.replace('/src', '').replace('/packages', '/dist'), esmSource);
+  const esmRelative = path.relative(cjsSource, esmSource) + '/index.js';
   const content: {
     main: string;
     module: string;
