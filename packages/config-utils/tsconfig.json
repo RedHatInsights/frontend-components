@@ -16,5 +16,10 @@
     "./src/**/*.spec.js",
     "./src/**/*.test.ts",
     "./src/**/*.test.tsx"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.spec.json"
+    }
   ]
 }

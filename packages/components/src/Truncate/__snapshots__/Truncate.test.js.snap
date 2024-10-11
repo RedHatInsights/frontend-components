@@ -1,593 +1,487 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Truncate component should render correctly block clicking on expand toggles to collapse 1`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem>
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-laborum.",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-  <StackItem
-    className=""
+<div>
+  <div
+    class="pf-v5-l-stack ins-c-truncate is-block"
   >
-    <Button
-      className="ins-c-collapse-button"
-      onClick={[Function]}
-      variant="link"
+    <div
+      class="pf-v5-l-stack__item"
     >
-      Custom collapse
-    </Button>
-  </StackItem>
-</Stack>
+      <span
+        widget-type="InsightsTruncateBlock"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+      </span>
+    </div>
+    <div
+      class="pf-v5-l-stack__item"
+    >
+      <button
+        aria-disabled="false"
+        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        data-ouia-component-id="OUIA-Generated-Button-link-11"
+        data-ouia-component-type="PF5/Button"
+        data-ouia-safe="true"
+        type="button"
+      >
+        Custom expand
+      </button>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Truncate component should render correctly block clicking on expand toggles to collapse 2`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem>
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-laborum.",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-  <StackItem
-    className=""
+<div>
+  <div
+    class="pf-v5-l-stack ins-c-truncate is-block"
   >
-    <Button
-      className="ins-c-collapse-button"
-      onClick={[Function]}
-      variant="link"
+    <div
+      class="pf-v5-l-stack__item"
     >
-      Custom collapse
-    </Button>
-  </StackItem>
-</Stack>
+      <span
+        widget-type="InsightsTruncateBlock"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+      </span>
+    </div>
+    <div
+      class="pf-v5-l-stack__item"
+    >
+      <button
+        aria-disabled="false"
+        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        data-ouia-component-id="OUIA-Generated-Button-link-14"
+        data-ouia-component-type="PF5/Button"
+        data-ouia-safe="true"
+        type="button"
+      >
+        Custom expand
+      </button>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Truncate component should render correctly block custom button titles 1`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem>
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-laborum.",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-  <StackItem
-    className=""
+<div>
+  <div
+    class="pf-v5-l-stack ins-c-truncate is-block"
   >
-    <Button
-      className="ins-c-collapse-button"
-      onClick={[Function]}
-      variant="link"
+    <div
+      class="pf-v5-l-stack__item"
     >
-      Custom collapse
-    </Button>
-  </StackItem>
-</Stack>
+      <span
+        widget-type="InsightsTruncateBlock"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+      </span>
+    </div>
+    <div
+      class="pf-v5-l-stack__item"
+    >
+      <button
+        aria-disabled="false"
+        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        data-ouia-component-id="OUIA-Generated-Button-link-13"
+        data-ouia-component-type="PF5/Button"
+        data-ouia-safe="true"
+        type="button"
+      >
+        Custom expand
+      </button>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Truncate component should render correctly block custom button titles 2`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem>
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-laborum.",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-  <StackItem
-    className=""
+<div>
+  <div
+    class="pf-v5-l-stack ins-c-truncate is-block"
   >
-    <Button
-      className="ins-c-collapse-button"
-      onClick={[Function]}
-      variant="link"
+    <div
+      class="pf-v5-l-stack__item"
     >
-      Custom collapse
-    </Button>
-  </StackItem>
-</Stack>
+      <span
+        widget-type="InsightsTruncateBlock"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+      </span>
+    </div>
+    <div
+      class="pf-v5-l-stack__item"
+    >
+      <button
+        aria-disabled="false"
+        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        data-ouia-component-id="OUIA-Generated-Button-link-16"
+        data-ouia-component-type="PF5/Button"
+        data-ouia-safe="true"
+        type="button"
+      >
+        Custom expand
+      </button>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Truncate component should render correctly block custom expande button 1`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem>
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-  <StackItem
-    className=""
+<div>
+  <div
+    class="pf-v5-l-stack ins-c-truncate is-block"
   >
-    <Button
-      className="ins-c-expand-button"
-      onClick={[Function]}
-      variant="link"
+    <div
+      class="pf-v5-l-stack__item"
     >
-      Custom expand
-    </Button>
-  </StackItem>
-</Stack>
+      <span
+        widget-type="InsightsTruncateBlock"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+      </span>
+    </div>
+    <div
+      class="pf-v5-l-stack__item"
+    >
+      <button
+        aria-disabled="false"
+        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        data-ouia-component-id="OUIA-Generated-Button-link-12"
+        data-ouia-component-type="PF5/Button"
+        data-ouia-safe="true"
+        type="button"
+      >
+        Custom expand
+      </button>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Truncate component should render correctly block custom expande button 2`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem>
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-  <StackItem
-    className=""
+<div>
+  <div
+    class="pf-v5-l-stack ins-c-truncate is-block"
   >
-    <Button
-      className="ins-c-expand-button"
-      onClick={[Function]}
-      variant="link"
+    <div
+      class="pf-v5-l-stack__item"
     >
-      Custom expand
-    </Button>
-  </StackItem>
-</Stack>
-`;
-
-exports[`Truncate component should render correctly block hovering over toggles to collapse 1`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing...",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-</Stack>
-`;
-
-exports[`Truncate component should render correctly block hovering over toggles to collapse 2`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-laborum.",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-</Stack>
-`;
-
-exports[`Truncate component should render correctly block hovering over toggles to collapse 3`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing...",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-</Stack>
+      <span
+        widget-type="InsightsTruncateBlock"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+      </span>
+    </div>
+    <div
+      class="pf-v5-l-stack__item"
+    >
+      <button
+        aria-disabled="false"
+        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        data-ouia-component-id="OUIA-Generated-Button-link-15"
+        data-ouia-component-type="PF5/Button"
+        data-ouia-safe="true"
+        type="button"
+      >
+        Custom expand
+      </button>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Truncate component should render correctly block when text length is less than user specified length 1`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem>
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+<div>
+  <div
+    class="pf-v5-l-stack ins-c-truncate is-block"
+  >
+    <div
+      class="pf-v5-l-stack__item"
+    >
+      <span
+        widget-type="InsightsTruncateBlock"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
 pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-laborum.",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-</Stack>
+laborum.
+      </span>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Truncate component should render correctly block with short length 1`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem>
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lo...",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-  <StackItem
-    className=""
+<div>
+  <div
+    class="pf-v5-l-stack ins-c-truncate is-block"
   >
-    <Button
-      className="ins-c-expand-button"
-      onClick={[Function]}
-      variant="link"
+    <div
+      class="pf-v5-l-stack__item"
     >
-      Read more
-    </Button>
-  </StackItem>
-</Stack>
+      <span
+        widget-type="InsightsTruncateBlock"
+      >
+        Lo...
+      </span>
+    </div>
+    <div
+      class="pf-v5-l-stack__item"
+    >
+      <button
+        aria-disabled="false"
+        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        data-ouia-component-id="OUIA-Generated-Button-link-10"
+        data-ouia-component-type="PF5/Button"
+        data-ouia-safe="true"
+        type="button"
+      >
+        Read more
+      </button>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Truncate component should render correctly block without length specified 1`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem>
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-  <StackItem
-    className=""
+<div>
+  <div
+    class="pf-v5-l-stack ins-c-truncate is-block"
   >
-    <Button
-      className="ins-c-expand-button"
-      onClick={[Function]}
-      variant="link"
+    <div
+      class="pf-v5-l-stack__item"
     >
-      Read more
-    </Button>
-  </StackItem>
-</Stack>
+      <span
+        widget-type="InsightsTruncateBlock"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+      </span>
+    </div>
+    <div
+      class="pf-v5-l-stack__item"
+    >
+      <button
+        aria-disabled="false"
+        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        data-ouia-component-id="OUIA-Generated-Button-link-9"
+        data-ouia-component-type="PF5/Button"
+        data-ouia-safe="true"
+        type="button"
+      >
+        Read more
+      </button>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Truncate component should render correctly inline clicking on expand toggles to collapse 1`] = `
-<Fragment>
+<div>
   <span
-    className="ins-c-truncate is-inline"
-    dangerouslySetInnerHTML={
-      {
-        "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-laborum.",
-      }
-    }
+    class="ins-c-truncate is-inline"
     widget-type="InsightsTruncateInline"
-  />
-  <Button
-    className="ins-c-collapse-button"
-    onClick={[Function]}
-    variant="link"
   >
-    Custom collapse
-  </Button>
-</Fragment>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+  </span>
+  <button
+    aria-disabled="false"
+    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    data-ouia-component-id="OUIA-Generated-Button-link-3"
+    data-ouia-component-type="PF5/Button"
+    data-ouia-safe="true"
+    type="button"
+  >
+    Custom expand
+  </button>
+</div>
 `;
 
 exports[`Truncate component should render correctly inline clicking on expand toggles to collapse 2`] = `
-<Fragment>
+<div>
   <span
-    className="ins-c-truncate is-inline"
-    dangerouslySetInnerHTML={
-      {
-        "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-laborum.",
-      }
-    }
+    class="ins-c-truncate is-inline"
     widget-type="InsightsTruncateInline"
-  />
-  <Button
-    className="ins-c-collapse-button"
-    onClick={[Function]}
-    variant="link"
   >
-    Custom collapse
-  </Button>
-</Fragment>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+  </span>
+  <button
+    aria-disabled="false"
+    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    data-ouia-component-id="OUIA-Generated-Button-link-6"
+    data-ouia-component-type="PF5/Button"
+    data-ouia-safe="true"
+    type="button"
+  >
+    Custom expand
+  </button>
+</div>
 `;
 
 exports[`Truncate component should render correctly inline custom button titles 1`] = `
-<Fragment>
+<div>
   <span
-    className="ins-c-truncate is-inline"
-    dangerouslySetInnerHTML={
-      {
-        "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-laborum.",
-      }
-    }
+    class="ins-c-truncate is-inline"
     widget-type="InsightsTruncateInline"
-  />
-  <Button
-    className="ins-c-collapse-button"
-    onClick={[Function]}
-    variant="link"
   >
-    Custom collapse
-  </Button>
-</Fragment>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+  </span>
+  <button
+    aria-disabled="false"
+    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    data-ouia-component-id="OUIA-Generated-Button-link-5"
+    data-ouia-component-type="PF5/Button"
+    data-ouia-safe="true"
+    type="button"
+  >
+    Custom expand
+  </button>
+</div>
 `;
 
 exports[`Truncate component should render correctly inline custom button titles 2`] = `
-<Fragment>
+<div>
   <span
-    className="ins-c-truncate is-inline"
-    dangerouslySetInnerHTML={
-      {
-        "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-laborum.",
-      }
-    }
+    class="ins-c-truncate is-inline"
     widget-type="InsightsTruncateInline"
-  />
-  <Button
-    className="ins-c-collapse-button"
-    onClick={[Function]}
-    variant="link"
   >
-    Custom collapse
-  </Button>
-</Fragment>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+  </span>
+  <button
+    aria-disabled="false"
+    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    data-ouia-component-id="OUIA-Generated-Button-link-8"
+    data-ouia-component-type="PF5/Button"
+    data-ouia-safe="true"
+    type="button"
+  >
+    Custom expand
+  </button>
+</div>
 `;
 
 exports[`Truncate component should render correctly inline custom expande button 1`] = `
-<Fragment>
+<div>
   <span
-    className="ins-c-truncate is-inline"
-    dangerouslySetInnerHTML={
-      {
-        "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...",
-      }
-    }
+    class="ins-c-truncate is-inline"
     widget-type="InsightsTruncateInline"
-  />
-  <Button
-    className="ins-c-expand-button"
-    onClick={[Function]}
-    variant="link"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+  </span>
+  <button
+    aria-disabled="false"
+    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    data-ouia-component-id="OUIA-Generated-Button-link-4"
+    data-ouia-component-type="PF5/Button"
+    data-ouia-safe="true"
+    type="button"
   >
     Custom expand
-  </Button>
-</Fragment>
+  </button>
+</div>
 `;
 
 exports[`Truncate component should render correctly inline custom expande button 2`] = `
-<Fragment>
+<div>
   <span
-    className="ins-c-truncate is-inline"
-    dangerouslySetInnerHTML={
-      {
-        "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...",
-      }
-    }
+    class="ins-c-truncate is-inline"
     widget-type="InsightsTruncateInline"
-  />
-  <Button
-    className="ins-c-expand-button"
-    onClick={[Function]}
-    variant="link"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+  </span>
+  <button
+    aria-disabled="false"
+    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    data-ouia-component-id="OUIA-Generated-Button-link-7"
+    data-ouia-component-type="PF5/Button"
+    data-ouia-safe="true"
+    type="button"
   >
     Custom expand
-  </Button>
-</Fragment>
-`;
-
-exports[`Truncate component should render correctly inline hovering over toggles to collapse 1`] = `
-<Fragment>
-  <span
-    className="ins-c-truncate is-inline"
-    dangerouslySetInnerHTML={
-      {
-        "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing...",
-      }
-    }
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    widget-type="InsightsTruncateInline"
-  />
-</Fragment>
-`;
-
-exports[`Truncate component should render correctly inline hovering over toggles to collapse 2`] = `
-<Fragment>
-  <span
-    className="ins-c-truncate is-inline"
-    dangerouslySetInnerHTML={
-      {
-        "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-laborum.",
-      }
-    }
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    widget-type="InsightsTruncateInline"
-  />
-</Fragment>
-`;
-
-exports[`Truncate component should render correctly inline hovering over toggles to collapse 3`] = `
-<Fragment>
-  <span
-    className="ins-c-truncate is-inline"
-    dangerouslySetInnerHTML={
-      {
-        "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing...",
-      }
-    }
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    widget-type="InsightsTruncateInline"
-  />
-</Fragment>
+  </button>
+</div>
 `;
 
 exports[`Truncate component should render correctly inline when text length is less than user specified length 1`] = `
-<Fragment>
+<div>
   <span
-    className="ins-c-truncate is-inline"
-    dangerouslySetInnerHTML={
-      {
-        "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+    class="ins-c-truncate is-inline"
+    widget-type="InsightsTruncateInline"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
 pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-laborum.",
-      }
-    }
-    widget-type="InsightsTruncateInline"
-  />
-</Fragment>
+laborum.
+  </span>
+</div>
 `;
 
 exports[`Truncate component should render correctly inline with short length 1`] = `
-<Stack
-  className="ins-c-truncate is-block"
->
-  <StackItem>
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "Lo...",
-        }
-      }
-      widget-type="InsightsTruncateBlock"
-    />
-  </StackItem>
-  <StackItem
-    className=""
+<div>
+  <div
+    class="pf-v5-l-stack ins-c-truncate is-block"
   >
-    <Button
-      className="ins-c-expand-button"
-      onClick={[Function]}
-      variant="link"
+    <div
+      class="pf-v5-l-stack__item"
     >
-      Read more
-    </Button>
-  </StackItem>
-</Stack>
+      <span
+        widget-type="InsightsTruncateBlock"
+      >
+        Lo...
+      </span>
+    </div>
+    <div
+      class="pf-v5-l-stack__item"
+    >
+      <button
+        aria-disabled="false"
+        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        data-ouia-component-id="OUIA-Generated-Button-link-2"
+        data-ouia-component-type="PF5/Button"
+        data-ouia-safe="true"
+        type="button"
+      >
+        Read more
+      </button>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Truncate component should render correctly inline without length specified 1`] = `
-<Fragment>
+<div>
   <span
-    className="ins-c-truncate is-inline"
-    dangerouslySetInnerHTML={
-      {
-        "__html": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...",
-      }
-    }
+    class="ins-c-truncate is-inline"
     widget-type="InsightsTruncateInline"
-  />
-  <Button
-    className="ins-c-expand-button"
-    onClick={[Function]}
-    variant="link"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+  </span>
+  <button
+    aria-disabled="false"
+    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    data-ouia-component-id="OUIA-Generated-Button-link-1"
+    data-ouia-component-type="PF5/Button"
+    data-ouia-safe="true"
+    type="button"
   >
     Read more
-  </Button>
-</Fragment>
+  </button>
+</div>
 `;

@@ -1,16 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import Spinner from './Spinner';
+import { render } from '@testing-library/react';
 
 describe('Spinner component', () => {
   it('should render', () => {
-    const wrapper = shallow(<Spinner />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Spinner />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render center Spinner', () => {
-    const wrapper = shallow(<Spinner centered />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Spinner centered />);
+    expect(container).toMatchSnapshot();
   });
 });

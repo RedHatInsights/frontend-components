@@ -58,6 +58,14 @@
       "options": {
         "lintFilePatterns": ["packages/advisor-components/src/**/*", "packages/advisor-components/package.json"]
       }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/advisor-components/jest.config.ts",
+        "passWithNoTests": true
+      }
     }
   },
   "tags": ["scope:public"]

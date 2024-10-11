@@ -1,8 +1,6 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import { ChipGroup } from '@patternfly/react-core';
 import FilterChips from './FilterChips';
+import { render } from '@testing-library/react';
 
 const filters = [
   {
@@ -28,38 +26,39 @@ const filters = [
 
 describe('FilterChips component', () => {
   it('should render - no data', () => {
-    const wrapper = shallow(<FilterChips />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<FilterChips />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render', () => {
-    const wrapper = shallow(<FilterChips filters={filters} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<FilterChips filters={filters} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render with custom delete message', () => {
-    const wrapper = shallow(<FilterChips filters={filters} deleteTitle={<div>Some delete title</div>} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<FilterChips filters={filters} deleteTitle={<div>Some delete title</div>} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render group delete', () => {
-    const wrapper = shallow(<FilterChips filters={filters} onDeleteGroup={() => undefined} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<FilterChips filters={filters} onDeleteGroup={() => undefined} />);
+    expect(container).toMatchSnapshot();
   });
 
   describe('API', () => {
     it('should call onDelete when deleting a single chip', () => {
       const onDelete = jest.fn();
-      const wrapper = mount(<FilterChips filters={filters} onDelete={onDelete} />);
-      wrapper.find('.pf-v5-c-chip button').last().simulate('click');
+      const { container } = render(<FilterChips filters={filters} onDelete={onDelete} />);
+      const chips = container.querySelectorAll('.pf-v5-c-chip button');
+      chips[chips.length - 1].click();
       expect(onDelete).toHaveBeenCalledWith(expect.anything(), [{ name: 'Chip 4' }]);
       expect(onDelete).toHaveBeenCalledTimes(1);
     });
 
     it('should call onDelete when deleting a single chip in group', () => {
       const onDelete = jest.fn();
-      const wrapper = mount(<FilterChips filters={filters} onDelete={onDelete} />);
-      wrapper.find('.pf-v5-c-chip button').first().simulate('click');
+      const { container } = render(<FilterChips filters={filters} onDelete={onDelete} />);
+      container.querySelectorAll('.pf-v5-c-chip button')[0].click();
       expect(onDelete).toHaveBeenCalledWith(expect.anything(), [
         {
           category: 'Group 1',
@@ -76,17 +75,18 @@ describe('FilterChips component', () => {
 
     it('should call onDelete when deleting all chips', () => {
       const onDelete = jest.fn();
-      const wrapper = mount(<FilterChips filters={filters} onDelete={onDelete} />);
-      wrapper.find('button').last().simulate('click');
+      const { container } = render(<FilterChips filters={filters} onDelete={onDelete} />);
+      const buttons = container.querySelectorAll('button');
+      buttons[buttons.length - 1].click();
       expect(onDelete).toHaveBeenCalledWith(expect.anything(), filters, true);
       expect(onDelete).toHaveBeenCalledTimes(1);
     });
 
     it('should not call onDelete when clicking on any ChipGroup', () => {
       const onDelete = jest.fn();
-      const wrapper = mount(<FilterChips filters={filters} onDelete={onDelete} />);
+      const { container } = render(<FilterChips filters={filters} onDelete={onDelete} />);
 
-      wrapper.find(ChipGroup).forEach((group) => group.simulate('click'));
+      container.querySelectorAll('.pf-v5-c-chip-group').forEach((group) => group.click());
       expect(onDelete).not.toHaveBeenCalled();
     });
 
@@ -100,8 +100,9 @@ describe('FilterChips component', () => {
           },
         ],
       };
-      const wrapper = mount(<FilterChips filters={[...filters, newGroup]} onDeleteGroup={onDelete} />);
-      wrapper.find('.pf-v5-c-chip-group__close button').last().simulate('click');
+      const { container } = render(<FilterChips filters={[...filters, newGroup]} onDeleteGroup={onDelete} />);
+      const buttons = container.querySelectorAll('.pf-v5-c-chip-group__close button');
+      buttons[buttons.length - 1].click();
       expect(onDelete).toHaveBeenCalledWith(
         expect.anything(),
         [newGroup],

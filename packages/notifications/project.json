@@ -58,6 +58,13 @@
       "options": {
         "lintFilePatterns": ["packages/notifications/src/**/*", "packages/notifications/package.json"]
       }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/notifications/jest.config.ts"
+      }
     }
   },
   "tags": ["scope:public"]
