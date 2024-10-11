@@ -1,39 +1,39 @@
 {
-  "name": "@redhat-cloud-services/frontend-components-config-utilities",
-  "version": "3.2.2",
-  "description": "Utilities for shared config used in RedHat Cloud Services project.",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RedHatInsights/frontend-components.git"
-  },
-  "author": "",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/RedHatInsights/frontend-components/issues"
-  },
-  "homepage": "https://github.com/RedHatInsights/frontend-components#readme",
-  "scripts": {
-    "build": "tsc"
-  },
-  "peerDependencies": {
-    "webpack": "^5.0.0"
-  },
-  "dependencies": {
-    "@openshift/dynamic-plugin-sdk-webpack": "^4.0.1",
-    "chalk": "^4.1.2",
-    "node-fetch": "2.6.7"
-  },
-  "devDependencies": {
-    "@types/express": "^4.17.17",
-    "@types/http-server": "^0.12.1",
-    "@types/js-yaml": "^4.0.5",
-    "@types/jws": "^3.2.5",
-    "@types/node-fetch": "^2.6.4",
-    "glob": "10.3.3"
-  }
+    "name": "@redhat-cloud-services/frontend-components-config-utilities",
+    "version": "3.2.4",
+    "description": "Utilities for shared config used in RedHat Cloud Services project.",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+    },
+    "author": "",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/RedHatInsights/frontend-components/issues"
+    },
+    "homepage": "https://github.com/RedHatInsights/frontend-components#readme",
+    "scripts": {
+        "build": "tsc"
+    },
+    "peerDependencies": {
+        "webpack": "^5.0.0"
+    },
+    "dependencies": {
+        "@openshift/dynamic-plugin-sdk-webpack": "^4.0.1",
+        "chalk": "^4.1.2",
+        "node-fetch": "2.6.7"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.17",
+        "@types/http-server": "^0.12.1",
+        "@types/js-yaml": "^4.0.5",
+        "@types/jws": "^3.2.5",
+        "@types/node-fetch": "^2.6.4",
+        "glob": "10.3.3"
+    }
 }
