@@ -1,6 +1,6 @@
 import React from 'react';
 import doT from 'dot';
-import { marked, Token } from 'marked';
+import { Token, marked } from 'marked';
 import sanitize, { simpleTransform } from 'sanitize-html';
 
 interface TemplateProcessorProps {

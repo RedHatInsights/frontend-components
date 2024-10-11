@@ -16,7 +16,7 @@ useChrome.mockImplementation(() => ({
 
 describe('useInsightsNavigate', () => {
   it('should return a function', () => {
-    useNavigate.mockImplementation(() => {});
+    useNavigate.mockImplementation(() => undefined);
     const { result } = renderHook(() => useInsightsNavigate());
 
     expect(typeof result.current).toEqual('function');

@@ -49,7 +49,7 @@ export default async function syncDependencies(options: SyncDependenciesExecutor
   const remote = options.remote || 'origin';
   try {
     const projectName = context.projectName;
-    if(!projectName){
+    if (!projectName) {
       throw new Error('Project name is required');
     }
     const currentProjectRoot = context.projectsConfigurations?.projects?.[projectName]?.root;

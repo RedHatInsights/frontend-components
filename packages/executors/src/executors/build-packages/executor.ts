@@ -1,8 +1,8 @@
 import { ExecutorContext } from '@nx/devkit';
 import { z } from 'zod';
 import fse from 'fs-extra';
-import { glob } from 'glob'
-import path from 'path'
+import { glob } from 'glob';
+import path from 'path';
 
 const BuilderExecutorSchema = z.object({
   outputPath: z.string(),
@@ -11,17 +11,15 @@ const BuilderExecutorSchema = z.object({
 
 export type BuilderExecutorSchemaType = z.infer<typeof BuilderExecutorSchema>;
 
-
 type RunOptions = {
   files: string[];
   forceTypes?: boolean;
   indexTypings: string[];
   root: string;
   outputRoot: string;
-}
+};
 
 const foldersBlackList = ['__snapshots__', '__mocks__'];
-
 
 async function copyTypings(files: string[], dest: string) {
   const cmds: Promise<any>[] = [];
@@ -32,7 +30,7 @@ async function copyTypings(files: string[], dest: string) {
   return Promise.all(cmds);
 }
 
-async function createPackage(file: string,options: RunOptions) {
+async function createPackage(file: string, options: RunOptions) {
   const fileName = file.split('/').pop();
   const esmSource = glob.sync(`${options.outputRoot}/esm/${fileName}/**/index.js`)[0];
   /**
@@ -42,8 +40,8 @@ async function createPackage(file: string,options: RunOptions) {
     return;
   }
 
-  const packagePath = file.split('/src/').pop()
-  if(!packagePath){
+  const packagePath = file.split('/src/').pop();
+  if (!packagePath) {
     throw new Error('Invalid package path');
   }
 
@@ -53,13 +51,13 @@ async function createPackage(file: string,options: RunOptions) {
   const content: {
     main: string;
     module: string;
-    typings?: string
+    typings?: string;
   } = {
     main: 'index.js',
     module: esmRelative,
   };
   const typings = glob.sync(`${options.root}/src/${fileName}/*.d.ts`);
-  let cmds = [];
+  const cmds = [];
   if (options.forceTypes) {
     content.typings = 'index.d.ts';
   } else if (typings.length > 0) {
@@ -81,7 +79,6 @@ async function generatePackages(options: RunOptions) {
   return Promise.all(cmds);
 }
 
-
 async function run(options: RunOptions) {
   try {
     await generatePackages(options);
@@ -94,7 +91,6 @@ async function run(options: RunOptions) {
   }
 }
 
-
 export default async function runExecutor(options: BuilderExecutorSchemaType, context: ExecutorContext) {
   try {
     BuilderExecutorSchema.parse(options);
@@ -103,7 +99,7 @@ export default async function runExecutor(options: BuilderExecutorSchemaType, co
   }
 
   const projectName = context.projectName;
-  if(!projectName){ 
+  if (!projectName) {
     throw new Error('Project name is required');
   }
   const projectRoot = context.root;
@@ -113,9 +109,9 @@ export default async function runExecutor(options: BuilderExecutorSchemaType, co
     throw new Error('Project root is required');
   }
   const forceTypes = options.forceTypes;
-  const outputDir = (projectRoot + "/" + options.outputPath).replace(/\/\//g, '/');
+  const outputDir = (projectRoot + '/' + options.outputPath).replace(/\/\//g, '/');
 
-  const files = glob.sync(path.resolve(`${currentProjectRoot}/src/*`)).filter(item => !foldersBlackList.some(name => item.includes(name)));
+  const files = glob.sync(path.resolve(`${currentProjectRoot}/src/*`)).filter((item) => !foldersBlackList.some((name) => item.includes(name)));
   const indexTypings = glob.sync(`${currentProjectRoot}/src/index.d.ts`);
   await run({
     files,

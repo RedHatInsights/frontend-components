@@ -54,7 +54,6 @@ export function tableIsSortedBy(columnTitle) {
 export function checkEmptyState(title, checkIcon = false) {
   checkRowCounts(1);
   cy.get(TABLE)
-    // @ts-ignore
     // NEED TO FIX type error here
     .find(EMPTY_STATE)
     .should('have.length', 1)

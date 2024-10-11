@@ -67,6 +67,7 @@ describe('fetch', () => {
   test('should handle server errors', () => {
     const errorResponse = { errors: [{ status: 404, meta: { response_by: 'gateway' }, detail: 'Undefined Insights application' }] };
     fetchSpy.mockImplementationOnce(() =>
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       Promise.resolve({
         ok: false,
