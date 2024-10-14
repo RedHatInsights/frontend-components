@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { DownloadButton } from '..';
+import { DownloadButton } from '../../../src/DownloadButton';
 
 describe('DownloadButton component', () => {
   beforeEach(() => {

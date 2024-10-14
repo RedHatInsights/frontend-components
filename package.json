@@ -48,7 +48,7 @@
     "@babel/preset-typescript": "^7.18.6",
     "@babel/runtime": "^7.19.0",
     "@frsource/cypress-plugin-visual-regression-diff": "^3.3.10",
-    "@nx/cypress": "20.0.0",
+    "@nx/cypress": "^20.0.0",
     "@nx/eslint": "^20.0.0",
     "@nx/eslint-plugin": "20.0.0",
     "@nx/jest": "20.0.0",
@@ -102,6 +102,7 @@
     "babel-polyfill": "^6.26.0",
     "chokidar": "^3.5.3",
     "concurrently": "^7.4.0",
+    "cypress": "^13.13.0",
     "dotenv": "^10.0.0",
     "eslint": "~8.57.0",
     "eslint-config-prettier": "^9.0.0",
@@ -142,7 +143,8 @@
     "build": "nx run-many --target=build --exclude=demo,@redhat-cloud-services/frontend-components-pdf-generator,@redhat-cloud-services/frontend-components-charts",
     "lint": "nx run-many -t lint --exclude=@redhat-cloud-services/frontend-components-pdf-generator,@redhat-cloud-services/frontend-components-charts",
     "serve:demo": "nx run demo:serve",
-    "test:unit": "nx run-many -t test --exclude=demo"
+    "test:unit": "nx run-many -t test --exclude=demo",
+    "test:component": "nx run-many -t test:component --exclude=demo ----parallel=1"
   },
   "description": "Components for Red Hat Cloud Services",
   "repository": {

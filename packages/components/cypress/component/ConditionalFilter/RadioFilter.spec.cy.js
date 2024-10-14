@@ -1,6 +1,4 @@
-import React from 'react';
-
-import Radio from './RadioFilter';
+import Radio from '../../../src/ConditionalFilter/RadioFilter';
 
 describe('RadioFilter component', () => {
   const config = {

@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { BulkSelect } from '..';
+import { BulkSelect } from '../../../src/BulkSelect';
 
 describe('BulkSelect component', () => {
   const config = {

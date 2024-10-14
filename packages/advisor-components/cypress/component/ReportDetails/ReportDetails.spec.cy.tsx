@@ -1,14 +1,16 @@
-import React from 'react';
-
-import { ReportDetails } from '..';
-import report from '../../cypress/fixtures/report.json';
+import { ReportDetails } from '../../../src/ReportDetails';
+import report from '../../fixtures/report.json';
 
 const ROOT = '.ins-c-report-details';
 const HEADERS = ['Detected issues', 'Steps to resolve', 'Related Knowledgebase article', 'Additional info'];
 
 const props = {
   report,
-  kbaDetail: { view_uri: 'https://access.redhat.com/solutions/12345678', publishedTitle: 'Lorem ipsum article' },
+  kbaDetail: {
+    id: 'foo',
+    view_uri: 'https://access.redhat.com/solutions/12345678',
+    publishedTitle: 'Lorem ipsum article',
+  },
   kbaLoading: false,
   isProd: true,
 };

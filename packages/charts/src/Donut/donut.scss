@@ -16,11 +16,11 @@
         flex-direction: column;
         text-align: center;
         &--total__number {
-            @include rem('font-size', 24px);
+            @include m.rem('font-size', 24px);
             font-weight: 500;
         }
         &--total__label {
-            @include rem('font-size', 20px);
+            @include m.rem('font-size', 20px);
             font-weight: 300;
             text-transform: capitalize;
         }
@@ -33,14 +33,14 @@
     .c3-tooltip {
         display: block;
         background-color:#545454;
-        @include rem('padding', 10px 15px);
+        @include m.rem('padding', 10px 15px);
         .name { font-weight: 700; }
         td {
             flex-direction: row;
             font-size:13px;
             color: #fff;
         }
-        td + td { @include rem('padding-left', 20px); }
+        td + td { @include m.rem('padding-left', 20px); }
     }
 }
 
@@ -62,7 +62,7 @@
     align-items: center;
     justify-content: center;
     grid-area: legend;
-    @include rem('margin-top', 15px);
+    @include m.rem('margin-top', 15px);
     &--item {
         white-space: nowrap;
         cursor: pointer;
@@ -74,11 +74,11 @@
     }
 
     .badge {
-        @include rem('height', 15px);
-        @include rem('width', 15px);
+        @include m.rem('height', 15px);
+        @include m.rem('width', 15px);
         display: inline-block;
-        @include rem('margin-right', 10px);
-        &__number { @include rem(margin-left, 5px); }
+        @include m.rem('margin-right', 10px);
+        &__number { @include m.rem(margin-left, 5px); }
     }
 }
 
