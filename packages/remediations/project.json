@@ -59,7 +59,7 @@
         "lintFilePatterns": ["packages/remediations/src/**/*", "packages/remediations/package.json"]
       }
     },
-    "test": {
+    "test:unit": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {

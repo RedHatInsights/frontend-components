@@ -1,6 +1,4 @@
-import React from 'react';
-
-import Group from './GroupFilter';
+import Group from '../../../src/ConditionalFilter/GroupFilter';
 
 describe('GroupFilter component', () => {
   const config = {

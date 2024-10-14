@@ -18,7 +18,7 @@
       "path": "./tsconfig.spec.json"
     },
     {
-      "path": "./tsconfig.cypress.json"
+      "path": "./tsconfig.cy.json"
     }
   ]
 }

@@ -12,10 +12,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "test:ct": "cypress run --component",
-    "test:openct": "cypress open --component"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RedHatInsights/frontend-components.git"
@@ -55,7 +52,7 @@
     "cypress": "^12.17.3",
     "eslint-plugin-cypress": "^2.12.1",
     "glob": "10.3.3",
-    "sass-loader": "^12.6.0",
+    "sass-loader": "^16.0.2",
     "style-loader": "^3.3.1"
   }
 }

@@ -59,12 +59,22 @@
         "lintFilePatterns": ["packages/advisor-components/src/**/*", "packages/advisor-components/package.json"]
       }
     },
-    "test": {
+    "test:unit": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "packages/advisor-components/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "test:component": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "packages/advisor-components/cypres.config.ts",
+        "tsConfig": "packages/advisor-components/tsconfig.cy.json",
+        "devServerTarget": "my-react-app:build",
+        "testingType": "component",
+        "skipServe": true
       }
     }
   },

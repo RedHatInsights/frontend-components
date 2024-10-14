@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { Breadcrumbs } from '..';
+import { Breadcrumbs } from '../../../src/Breadcrumbs';
 
 describe('Breadcrumbs component', () => {
   const items = [

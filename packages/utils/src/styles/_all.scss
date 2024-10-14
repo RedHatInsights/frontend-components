@@ -1,4 +1,4 @@
 // Sass Imports
-@import './_variables.scss';
-@import './_helpers.scss';
-@import './_mixins.scss';
+@use './_variables.scss' as variables;
+@use './_helpers.scss' as helpers;
+@use './_mixins.scss' as mixins;

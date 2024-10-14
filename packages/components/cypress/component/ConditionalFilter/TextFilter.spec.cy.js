@@ -1,6 +1,4 @@
-import React from 'react';
-
-import Text from './TextFilter';
+import Text from '../../../src/ConditionalFilter/TextFilter';
 
 describe('TextFilter component', () => {
   it('renders empty', () => {

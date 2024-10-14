@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { Actions } from '..';
+import { Actions } from '../../../src/PrimaryToolbar';
 
 describe('Actions component', () => {
   const config = {

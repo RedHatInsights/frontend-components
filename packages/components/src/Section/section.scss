@@ -1,13 +1,13 @@
-@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
+@use '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins.scss' as m;
 
 section.ins-l-content {
-  padding: $ins-padding;
+  padding: var(--pf-v5-global--spacer--lg);
 }
 
 section.ins-l-button-group {
   > * { display: inline; }
-  * + * { @include rem('margin-left', 5px); }
-  @include rem('margin', 24px 0);
+  * + * { @include m.rem('margin-left', 5px); }
+  @include m.rem('margin', 24px 0);
 }
 
 section.ins-l-icon-group {

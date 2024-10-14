@@ -1,9 +1,7 @@
-import React from 'react';
-
-import rule from '../../cypress/fixtures/rule.json';
-import messages from '../../cypress/fixtures/messages.json';
-import { AdvisorProduct } from '../types';
-import { RuleDetails } from '..';
+import rule from '../../fixtures/rule.json';
+import messages from '../../fixtures/messages.json';
+import { AdvisorProduct } from '../../../src/types';
+import { RuleDetails } from '../../../src/RuleDetails';
 
 const fixtures = {
   messages,

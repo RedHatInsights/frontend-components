@@ -6,7 +6,9 @@
   "targets": {
     "build:cjs": {
       "executor": "@nx/js:tsc",
-      "dependsOn": ["^build:cjs"],
+      "dependsOn": [
+        "^build:cjs"
+      ],
       "options": {
         "rootDir": "packages/components/src",
         "main": "packages/components/src/index.ts",
@@ -16,7 +18,9 @@
     },
     "build:esm": {
       "executor": "@nx/js:tsc",
-      "dependsOn": ["^build:esm"],
+      "dependsOn": [
+        "^build:esm"
+      ],
       "options": {
         "rootDir": "packages/components/src",
         "main": "packages/components/src/index.ts",
@@ -26,14 +30,22 @@
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": ["^build:styles", "build:cjs", "build:esm"],
+      "dependsOn": [
+        "^build:styles",
+        "build:cjs",
+        "build:esm"
+      ],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components",
         "sourceDir": "packages/components"
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages", "build:cjs", "build:esm"],
+      "dependsOn": [
+        "^build:packages",
+        "build:cjs",
+        "build:esm"
+      ],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components",
@@ -41,31 +53,58 @@
       }
     },
     "transform:scss": {
-      "dependsOn": ["^transform:scss", "build:cjs", "build:esm"],
+      "dependsOn": [
+        "^transform:scss",
+        "build:cjs",
+        "build:esm"
+      ],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components"
       }
     },
-
     "build": {
       "executor": "nx:noop",
-      "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
+      "dependsOn": [
+        "^build",
+        "build:styles",
+        "build:packages",
+        "transform:scss"
+      ]
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["packages/components/src/**/*", "packages/components/package.json"]
+        "lintFilePatterns": [
+          "packages/components/src/**/*",
+          "packages/components/package.json"
+        ]
       }
     },
-    "test": {
+    "test:unit": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "packages/components/jest.config.ts"
       }
+    },
+    "test:component": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "packages/components/cypres.config.ts",
+        "tsConfig": "packages/components/tsconfig.cy.json",
+        "devServerTarget": "my-react-app:build",
+        "testingType": "component",
+        "skipServe": true
+      }
     }
   },
-  "tags": ["scope:public"]
+  "tags": [
+    "scope:public"
+  ]
 }

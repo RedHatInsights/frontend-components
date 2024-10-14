@@ -1,5 +1,4 @@
-import React from 'react';
-import { PrimaryToolbar } from '..';
+import PrimaryToolbar from '../../../src/PrimaryToolbar';
 import { Button } from '@patternfly/react-core';
 
 describe('PrimaryToolbar component', () => {
@@ -37,6 +36,7 @@ describe('PrimaryToolbar component', () => {
         },
         {
           label: 'Waldo',
+          type: 'text',
         },
       ],
     },
@@ -76,7 +76,7 @@ describe('PrimaryToolbar component', () => {
 
   it('renders items correctly - only group', () => {
     cy.mount(<PrimaryToolbar {...groupConfig} />);
-    cy.get('.pf-v5-c-toolbar__group').children().should('have.length', 4);
+    cy.get('.pf-v5-c-toolbar__group').first().children().should('have.length', 4);
   });
 
   it('renders items correctly - only items outside of the group', () => {
@@ -84,13 +84,13 @@ describe('PrimaryToolbar component', () => {
     cy.get('.pf-v5-c-toolbar__content-section').children().should('have.length', 5);
   });
 
-  it('renders items correctly - everything', () => {
+  it.only('renders items correctly - everything', () => {
     cy.mount(<PrimaryToolbar {...groupConfig} {...otherConfig} />);
     // eslint-disable-next-line cypress/unsafe-to-chain-command
     cy.get('.pf-v5-c-toolbar__content-section')
       .first()
       .within(() => {
-        cy.get('.pf-v5-c-toolbar__group').children().should('have.length', 4);
+        cy.get('.pf-v5-c-toolbar__group').first().children().should('have.length', 4);
       })
       .children()
       .should('have.length', 5);

@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["cypress", "node", "./cypress/support/component.d.ts"],
+    "resolveJsonModule": true
+  },
+  "include": [
+    "./cypress/**/*.tsx",
+    "./cypress/**/*.ts",
+    "./cypress/**/*.js",
+  ]
+}
