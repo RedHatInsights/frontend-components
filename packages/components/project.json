@@ -93,11 +93,23 @@
         "skipServe": true
       }
     },
-    "test": {
+    "test:unit": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "packages/components/jest.config.ts"
+      }
+    },
+    "test:component": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "packages/components/cypres.config.ts",
+        "tsConfig": "packages/components/tsconfig.cy.json",
+        "devServerTarget": "my-react-app:build",
+        "testingType": "component",
+        "skipServe": true
       }
     }
   },
