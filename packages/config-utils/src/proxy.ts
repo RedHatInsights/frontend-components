@@ -331,7 +331,8 @@ const proxy = ({
         headers: {
           // Staging Akamai CORS gives 403s for non-GET requests from non-origin hosts
           Host: target.replace('https://', ''),
-          Origin: target,
+          // Origin format is protocol://hostname:port only, remove any trailing slash
+          Origin: target.replace(/\/$/, ''),
         },
       }),
     });
