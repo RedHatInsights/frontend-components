@@ -1,33 +1,23 @@
 {
   "name": "@redhat-cloud-services/frontend-components-translations",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/types",
+  "sourceRoot": "packages/translations",
   "projectType": "library",
   "targets": {
-    "build:cjs": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": ["^build:cjs"],
+    "build:bundles": {
+      "dependsOn": ["^build:bundles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/translations/src",
-        "main": "packages/translations/src/index.js",
+        "main": "packages/translations/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-translations",
-        "tsConfig": "packages/translations/tsconfig.cjs.json",
+        "cjsTsConfig": "packages/translations/tsconfig.cjs.json",
+        "esmTsConfig": "packages/translations/tsconfig.esm.json",
         "assets": [{
           "glob": "**/*",
           "input": "packages/translations/src/locales",
           "output": "dist/@redhat-cloud-services/frontend-components-translations/locales"
-        }]
-      }
-    },
-    "build:esm": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": ["^build:esm"],
-      "options": {
-        "rootDir": "packages/translations/src",
-        "main": "packages/translations/src/index.js",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-translations/esm",
-        "tsConfig": "packages/translations/tsconfig.esm.json",
-        "assets": [{
+        },{
           "glob": "**/*",
           "input": "packages/translations/src/locales",
           "output": "dist/@redhat-cloud-services/frontend-components-translations/esm/locales"
@@ -36,14 +26,14 @@
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": ["^build:styles", "build:cjs", "build:esm"],
+      "dependsOn": ["^build:styles", "build:bundles"],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-translations",
         "sourceDir": "packages/translations"
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages", "build:cjs", "build:esm"],
+      "dependsOn": ["^build:packages", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-translations",
@@ -51,7 +41,7 @@
       }
     },
     "transform:scss": {
-      "dependsOn": ["^transform:scss", "build:cjs", "build:esm"],
+      "dependsOn": ["^transform:scss", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-translations"

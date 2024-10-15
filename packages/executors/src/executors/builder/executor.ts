@@ -1,36 +1,26 @@
 import { ExecutorContext } from '@nx/devkit';
+import { tscExecutor } from '@nx/js/src/executors/tsc/tsc.impl';
+import { copyAssets } from '@nx/js';
+import { ExecutorOptions as TscExecutorOptions } from '@nx/js/src/utils/schema';
+import { existsSync, unlink } from 'fs';
 import { z } from 'zod';
-import { stat } from 'fs';
 import { promisify } from 'util';
-import { exec, execSync } from 'child_process';
 
-const asyncStat = promisify(stat);
-const asyncExec = promisify(exec);
+const asyncUnlink = promisify(unlink);
 
 const BuilderExecutorSchema = z.object({
   esmTsConfig: z.string(),
   cjsTsConfig: z.string(),
   outputPath: z.string(),
-  assets: z.array(z.string()).optional(),
 });
 
-export type BuilderExecutorSchemaType = z.infer<typeof BuilderExecutorSchema>;
+export type BuilderExecutorSchemaType = Omit<TscExecutorOptions, 'tsConfig'> & z.infer<typeof BuilderExecutorSchema>;
 
-async function validateExistingFile(path: string) {
-  return asyncStat(path);
-}
-
-async function runTSC(tsConfigPath: string, outputDir: string) {
-  try {
-    execSync(`tsc -p ${tsConfigPath} --outDir ${outputDir}`, { stdio: 'inherit' });
-  } catch (error) {
-    console.log(error);
-    throw new Error(`Failed to run tsc for ${tsConfigPath}`);
+async function removeEsmPackageJson(esmOutputPath: string) {
+  const esmPackageJsonPath = `${esmOutputPath}/package.json`;
+  if (existsSync(esmPackageJsonPath)) {
+    return asyncUnlink(esmPackageJsonPath);
   }
-}
-
-async function copyAssets(assets: string[], outputDir: string) {
-  return Promise.all(assets.map((asset) => asyncExec(`cp -r ${asset} ${outputDir}`)));
 }
 
 export default async function runExecutor(options: BuilderExecutorSchemaType, context: ExecutorContext) {
@@ -44,21 +34,35 @@ export default async function runExecutor(options: BuilderExecutorSchemaType, co
   if (!projectName) {
     throw new Error('Project name is required');
   }
-  const projectRoot = context.root;
-  const currentProjectRoot = context.projectsConfigurations?.projects?.[projectName]?.root;
-  const projectPackageJsonPath = `${currentProjectRoot}/package.json`;
-  const outputDir = `${projectRoot}/${options.outputPath}`;
 
-  const assets = [...(options.assets ?? []), projectPackageJsonPath];
+  const currentProjectRoot = context.projectsConfigurations.projects[projectName]?.root;
+  if (!currentProjectRoot) {
+    throw new Error('Project root is required');
+  }
 
-  await Promise.all([
-    validateExistingFile(options.esmTsConfig),
-    validateExistingFile(options.cjsTsConfig),
-    validateExistingFile(projectPackageJsonPath),
-  ]);
-  await Promise.all([runTSC(options.esmTsConfig, `${outputDir}/esm`), runTSC(options.cjsTsConfig, outputDir)]);
-  await copyAssets(assets, outputDir);
-  return {
-    success: true,
-  };
+  async function resolveExecutors(...executorResults: ReturnType<typeof tscExecutor>[]) {
+    for await (const executor of executorResults) {
+      for await (const result of executor) {
+        if (!result.success) {
+          return { success: false };
+        }
+      }
+    }
+    return { success: true };
+  }
+
+  const { cjsTsConfig, esmTsConfig, ...tscOptions } = options;
+  const esmOutputDir = options.outputPath + '/esm';
+  const cjsTscOptions = { ...tscOptions, tsConfig: cjsTsConfig };
+  const esmTscOptions = { ...tscOptions, outputPath: esmOutputDir, tsConfig: esmTsConfig };
+  let executionResult = { success: false };
+  const results = await Promise.all([tscExecutor(cjsTscOptions, context), tscExecutor(esmTscOptions, context)]);
+  executionResult = await resolveExecutors(...results);
+  if (!executionResult.success) {
+    return executionResult;
+  }
+  await removeEsmPackageJson(esmOutputDir);
+  await copyAssets({ outputPath: options.outputPath, assets: [`${currentProjectRoot}/package.json`, ...(options.assets ?? [])] }, context);
+
+  return executionResult;
 }
