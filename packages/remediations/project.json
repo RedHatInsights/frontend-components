@@ -4,36 +4,27 @@
   "sourceRoot": "packages/remediations",
   "projectType": "library",
   "targets": {
-    "build:cjs": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": ["^build:cjs"],
+    "build:bundles": {
+      "dependsOn": ["^build:bundles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/remediations/src",
         "main": "packages/remediations/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations",
-        "tsConfig": "packages/remediations/tsconfig.cjs.json"
-      }
-    },
-    "build:esm": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": ["^build:esm"],
-      "options": {
-        "rootDir": "packages/remediations/src",
-        "main": "packages/remediations/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations/esm",
-        "tsConfig": "packages/remediations/tsconfig.esm.json"
+        "cjsTsConfig": "packages/remediations/tsconfig.cjs.json",
+        "esmTsConfig": "packages/remediations/tsconfig.esm.json"
       }
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": ["^build:styles", "build:cjs", "build:esm"],
+      "dependsOn": ["^build:styles", "build:bundles"],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations",
         "sourceDir": "packages/remediations"
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages", "build:cjs", "build:esm"],
+      "dependsOn": ["^build:packages", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations",
@@ -41,7 +32,7 @@
       }
     },
     "transform:scss": {
-      "dependsOn": ["^transform:scss", "build:cjs", "build:esm"],
+      "dependsOn": ["^transform:scss", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations"

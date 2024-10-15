@@ -4,36 +4,27 @@
   "sourceRoot": "packages/rule-components",
   "projectType": "library",
   "targets": {
-    "build:cjs": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": ["^build:cjs"],
+    "build:bundles": {
+      "dependsOn": ["^build:bundles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/rule-components/src",
         "main": "packages/rule-components/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/rule-components",
-        "tsConfig": "packages/rule-components/tsconfig.cjs.json"
-      }
-    },
-    "build:esm": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": ["^build:esm"],
-      "options": {
-        "rootDir": "packages/rule-components/src",
-        "main": "packages/rule-components/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/rule-components/esm",
-        "tsConfig": "packages/rule-components/tsconfig.esm.json"
+        "cjsTsConfig": "packages/rule-components/tsconfig.cjs.json",
+        "esmTsConfig": "packages/rule-components/tsconfig.esm.json"
       }
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": ["^build:styles", "build:cjs", "build:esm"],
+      "dependsOn": ["^build:styles", "build:bundles"],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/rule-components",
         "sourceDir": "packages/rule-components"
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages", "build:cjs", "build:esm"],
+      "dependsOn": ["^build:packages", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/rule-components",
@@ -41,7 +32,7 @@
       }
     },
     "transform:scss": {
-      "dependsOn": ["^transform:scss", "build:cjs", "build:esm"],
+      "dependsOn": ["^transform:scss", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/rule-components"

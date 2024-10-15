@@ -1,39 +1,25 @@
 {
   "name": "@redhat-cloud-services/frontend-components",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/types",
+  "sourceRoot": "packages/components",
   "projectType": "library",
   "targets": {
-    "build:cjs": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": [
-        "^build:cjs"
-      ],
+    "build:bundles": {
+      "dependsOn": ["^build:bundles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/components/src",
         "main": "packages/components/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components",
-        "tsConfig": "packages/components/tsconfig.cjs.json"
-      }
-    },
-    "build:esm": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": [
-        "^build:esm"
-      ],
-      "options": {
-        "rootDir": "packages/components/src",
-        "main": "packages/components/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components/esm",
-        "tsConfig": "packages/components/tsconfig.esm.json"
+        "cjsTsConfig": "packages/components/tsconfig.cjs.json",
+        "esmTsConfig": "packages/components/tsconfig.esm.json"
       }
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
       "dependsOn": [
         "^build:styles",
-        "build:cjs",
-        "build:esm"
+        "build:bundles"
       ],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components",
@@ -43,8 +29,7 @@
     "build:packages": {
       "dependsOn": [
         "^build:packages",
-        "build:cjs",
-        "build:esm"
+        "build:bundles"
       ],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
@@ -55,8 +40,7 @@
     "transform:scss": {
       "dependsOn": [
         "^transform:scss",
-        "build:cjs",
-        "build:esm"
+        "build:bundles"
       ],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {

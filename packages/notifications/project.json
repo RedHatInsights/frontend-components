@@ -1,39 +1,30 @@
 {
   "name": "@redhat-cloud-services/frontend-components-notifications",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/types",
+  "sourceRoot": "packages/notifications",
   "projectType": "library",
   "targets": {
-    "build:cjs": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": ["^build:cjs"],
+    "build:bundles": {
+      "dependsOn": ["^build:bundles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/notifications/src",
         "main": "packages/notifications/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications",
-        "tsConfig": "packages/notifications/tsconfig.cjs.json"
-      }
-    },
-    "build:esm": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": ["^build:esm"],
-      "options": {
-        "rootDir": "packages/notifications/src",
-        "main": "packages/notifications/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications/esm",
-        "tsConfig": "packages/notifications/tsconfig.esm.json"
+        "cjsTsConfig": "packages/notifications/tsconfig.cjs.json",
+        "esmTsConfig": "packages/notifications/tsconfig.esm.json"
       }
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": ["^build:styles", "build:cjs", "build:esm"],
+      "dependsOn": ["^build:styles", "build:bundles"],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications",
         "sourceDir": "packages/notifications"
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages", "build:cjs", "build:esm"],
+      "dependsOn": ["^build:packages", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications",
@@ -41,7 +32,7 @@
       }
     },
     "transform:scss": {
-      "dependsOn": ["^transform:scss", "build:cjs", "build:esm"],
+      "dependsOn": ["^transform:scss", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications"

@@ -4,36 +4,27 @@
   "sourceRoot": "packages/advisor-components",
   "projectType": "library",
   "targets": {
-    "build:cjs": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": ["^build:cjs"],
+    "build:bundles": {
+      "dependsOn": ["^build:bundles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/advisor-components/src",
         "main": "packages/advisor-components/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-advisor-components",
-        "tsConfig": "packages/advisor-components/tsconfig.cjs.json"
-      }
-    },
-    "build:esm": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": ["^build:esm"],
-      "options": {
-        "rootDir": "packages/advisor-components/src",
-        "main": "packages/advisor-components/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-advisor-components/esm",
-        "tsConfig": "packages/advisor-components/tsconfig.esm.json"
+        "cjsTsConfig": "packages/advisor-components/tsconfig.cjs.json",
+        "esmTsConfig": "packages/advisor-components/tsconfig.esm.json"
       }
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": ["^build:styles", "build:cjs", "build:esm"],
+      "dependsOn": ["^build:styles", "build:bundles"],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-advisor-components",
         "sourceDir": "packages/advisor-components"
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages", "build:cjs", "build:esm"],
+      "dependsOn": ["^build:packages", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-advisor-components",
@@ -41,7 +32,7 @@
       }
     },
     "transform:scss": {
-      "dependsOn": ["^transform:scss", "build:cjs", "build:esm"],
+      "dependsOn": ["^transform:scss", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-advisor-components"

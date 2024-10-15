@@ -1,4 +1,4 @@
-@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all';
+@use '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins' as m;
 
 .ins-c-donut{
     display: inline-flex;
@@ -52,7 +52,7 @@
 }
 
 // When larger than 992px, align the legend in a 2 column list
-@media only screen and (min-width: $ins-break--lg) {
+@media only screen and (min-width: var(--pf-v5-global--breakpoint--lg)) {
     .ins-l-donut__legend { grid-template-columns: auto auto; }
 }
 
@@ -88,7 +88,7 @@
     justify-content: center;
     grid-column-gap: 15px;
 
-    @media only screen and (min-width: $ins-break--xs) {
+    @media only screen and (min-width: var(--pf-v5-global--breakpoint--xs)s) {
         &.legend-right {
             grid-template: 'donut' 'legend';
         }
@@ -98,7 +98,7 @@
         }
     }
 
-    @media only screen and (min-width: $ins-break--sm) {
+    @media only screen and (min-width: var(--pf-v5-global--breakpoint--sm)) {
         &.legend-right {
             grid-template: 'donut legend';
         }
