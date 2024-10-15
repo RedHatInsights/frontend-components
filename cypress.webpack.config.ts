@@ -38,21 +38,8 @@ function localAliasHoisting() {
   return localPackages;
 }
 
-const searchIgnoredStyles = (root: string, ...paths: string[]) => {
-  const modulesPaths = [path.join(root, 'node_modules/@patternfly/react-styles'), ...paths.map((path) => `${path}/@patternfly/react-styles`)];
-  const result = modulesPaths
-    .map((modulesPath) => glob.sync(`${modulesPath}/**/*.css`))
-    .flat()
-    .reduce(
-      (acc, curr) => ({
-        ...acc,
-        [curr]: false,
-      }),
-      {}
-    );
+const localPackages = localAliasHoisting();
 
-    return result;
-};
 
 export default {
   devtool: 'inline-source-map',
@@ -102,7 +89,12 @@ export default {
                     if (url.startsWith('~@redhat-cloud-services')) {
 
                       const repoPackage = url.split('~').pop();
-                      return new URL(`file://${path.resolve(__dirname, './dist/', repoPackage)}`);
+                      const segments = repoPackage.split('/');
+                      const sourcePackage = localPackages[`${segments[0]}/${segments[1]}`];
+                      if(sourcePackage) {
+                        // resolve local packages to local directory
+                        return new URL(`file://${path.resolve(sourcePackage, ...segments.slice(2))}`);
+                      }
                     }
 
                     if(url.startsWith('~')) {
@@ -119,7 +111,7 @@ export default {
                         return new URL(`file://${sassPath}`);
                       }
                     }
-                    return url;
+                    return new URL(url);
                   }
                 }]
               }
@@ -137,7 +129,7 @@ export default {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
       // make sure the runner hoists the local packages, not the build packages
-      ...localAliasHoisting(),
+      ...localPackages,
     },
   },
   output: {
@@ -149,6 +141,8 @@ export default {
     errorDetails: true,
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      ignoreOrder: true,
+    }),
   ]
 };
