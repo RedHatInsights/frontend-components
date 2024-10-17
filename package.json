@@ -143,7 +143,7 @@
     "build": "nx run-many --target=build --exclude=demo,@redhat-cloud-services/frontend-components-pdf-generator,@redhat-cloud-services/frontend-components-charts",
     "lint": "nx run-many -t lint --exclude=@redhat-cloud-services/frontend-components-pdf-generator,@redhat-cloud-services/frontend-components-charts",
     "serve:demo": "nx run demo:serve",
-    "test:unit": "nx run-many -t test --exclude=demo",
+    "test:unit": "nx run-many -t test:unit --exclude=demo",
     "test:component": "nx run-many -t test:component --exclude=demo ----parallel=1"
   },
   "description": "Components for Red Hat Cloud Services",
