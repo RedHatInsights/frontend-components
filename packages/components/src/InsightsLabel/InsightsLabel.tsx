@@ -1,8 +1,8 @@
-import { AngleDoubleDownIcon } from '@patternfly/react-icons';
-import { AngleDoubleUpIcon } from '@patternfly/react-icons';
-import { CriticalRiskIcon } from '@patternfly/react-icons';
-import { EqualsIcon } from '@patternfly/react-icons';
-import { Label, LabelProps } from '@patternfly/react-core';
+import AngleDoubleDownIcon from '@patternfly/react-icons/dist/dynamic/icons/angle-double-down-icon';
+import AngleDoubleUpIcon from '@patternfly/react-icons/dist/dynamic/icons/angle-double-up-icon';
+import CriticalRiskIcon from '@patternfly/react-icons/dist/dynamic/icons/critical-risk-icon';
+import EqualsIcon from '@patternfly/react-icons/dist/dynamic/icons/equals-icon';
+import { Label, LabelProps } from '@patternfly/react-core/dist/dynamic/components/Label';
 import React from 'react';
 
 type InsightsLabelValueMapping = {

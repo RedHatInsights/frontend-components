@@ -1,59 +1,89 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InsightsLabel component should render defaults 1`] = `
-<span
-  className="pf-v5-c-label pf-m-blue"
->
+<div>
   <span
-    className="pf-v5-c-label__content"
+    class="pf-v5-c-label pf-m-blue"
   >
     <span
-      className="pf-v5-c-label__icon"
+      class="pf-v5-c-label__content"
     >
-      <AngleDoubleDownIcon />
-    </span>
-    <span
-      className="pf-v5-c-label__text"
-    >
-      Low
+      <span
+        class="pf-v5-c-label__icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="pf-v5-svg"
+          fill="currentColor"
+          height="1em"
+          role="img"
+          viewBox="0 0 320 512"
+          width="1em"
+        >
+          <path
+            d="M143 256.3L7 120.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0L313 86.3c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.4 9.5-24.6 9.5-34 .1zm34 192l136-136c9.4-9.4 9.4-24.6 0-33.9l-22.6-22.6c-9.4-9.4-24.6-9.4-33.9 0L160 352.1l-96.4-96.4c-9.4-9.4-24.6-9.4-33.9 0L7 278.3c-9.4 9.4-9.4 24.6 0 33.9l136 136c9.4 9.5 24.6 9.5 34 .1z"
+          />
+        </svg>
+      </span>
+      <span
+        class="pf-v5-c-label__text"
+      >
+        Low
+      </span>
     </span>
   </span>
-</span>
+</div>
 `;
 
 exports[`InsightsLabel component should render with icon 1`] = `
-<span
-  className="pf-v5-c-label pf-m-blue"
->
+<div>
   <span
-    className="pf-v5-c-label__content"
+    class="pf-v5-c-label pf-m-blue"
   >
     <span
-      className="pf-v5-c-label__icon"
+      class="pf-v5-c-label__content"
     >
-      <AngleDoubleDownIcon />
-    </span>
-    <span
-      className="pf-v5-c-label__text"
-    >
-      Low
+      <span
+        class="pf-v5-c-label__icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="pf-v5-svg"
+          fill="currentColor"
+          height="1em"
+          role="img"
+          viewBox="0 0 320 512"
+          width="1em"
+        >
+          <path
+            d="M143 256.3L7 120.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0L313 86.3c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.4 9.5-24.6 9.5-34 .1zm34 192l136-136c9.4-9.4 9.4-24.6 0-33.9l-22.6-22.6c-9.4-9.4-24.6-9.4-33.9 0L160 352.1l-96.4-96.4c-9.4-9.4-24.6-9.4-33.9 0L7 278.3c-9.4 9.4-9.4 24.6 0 33.9l136 136c9.4 9.5 24.6 9.5 34 .1z"
+          />
+        </svg>
+      </span>
+      <span
+        class="pf-v5-c-label__text"
+      >
+        Low
+      </span>
     </span>
   </span>
-</span>
+</div>
 `;
 
 exports[`InsightsLabel component should render without icon 1`] = `
-<span
-  className="pf-v5-c-label pf-m-blue"
->
+<div>
   <span
-    className="pf-v5-c-label__content"
+    class="pf-v5-c-label pf-m-blue"
   >
     <span
-      className="pf-v5-c-label__text"
+      class="pf-v5-c-label__content"
     >
-      Low
+      <span
+        class="pf-v5-c-label__text"
+      >
+        Low
+      </span>
     </span>
   </span>
-</span>
+</div>
 `;

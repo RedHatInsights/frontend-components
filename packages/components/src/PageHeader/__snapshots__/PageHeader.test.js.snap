@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageHeader component should render 1`] = `
-<PageHeader>
+<div>
   <section
-    className="pf-v5-l-page-header pf-v5-c-page-header pf-v5-l-page__main-section pf-v5-c-page__main-section pf-m-light"
+    class="pf-v5-l-page-header pf-v5-c-page-header pf-v5-l-page__main-section pf-v5-c-page__main-section pf-m-light"
     data-ouia-component-id="OUIA-Generated-RHI/Header-true-1"
     data-ouia-component-type="RHI/Header"
-    data-ouia-safe={true}
+    data-ouia-safe="true"
     widget-type="InsightsPageHeader"
   >
     Something
   </section>
-</PageHeader>
+</div>
 `;

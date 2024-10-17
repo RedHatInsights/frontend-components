@@ -1,4 +1,4 @@
-@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
+@use '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins.scss' as m;
 
 .ins-c-conditional-filter {
   input {
@@ -10,7 +10,7 @@
     visibility: hidden !important;
   }
   .pf-v5-c-select__toggle-wrapper .pf-v5-c-select__toggle-text {
-    @include rem('max-width', 150px);
+    @include m.rem('max-width', 150px);
   }
   .ins-c-conditional-filter__group {
     .pf-v5-c-menu-toggle__text {
@@ -40,13 +40,13 @@
     }
   }
   input.ins-c-conditional-filter[type="text"] {
-    @include rem('padding-right', 35px);
-    @include rem('margin-right', -23px);
+    @include m.rem('padding-right', 35px);
+    @include m.rem('margin-right', -23px);
 
     & + svg {
       position: relative;
-      @include rem('left', -5px);
-      @include rem('top', 2px);
+      @include m.rem('left', -5px);
+      @include m.rem('top', 2px);
     }
   }
   .pf-v5-c-select__toggle-text {

@@ -1,7 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import FilterDropdown from './FilterDropdown';
+import { render } from '@testing-library/react';
 
 describe('FilterDropdown component', () => {
   const defaultProps = {
@@ -12,12 +11,12 @@ describe('FilterDropdown component', () => {
   };
 
   it('should render', () => {
-    const wrapper = shallow(<FilterDropdown {...defaultProps} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<FilterDropdown {...defaultProps} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render with a component as label', () => {
-    const wrapper = shallow(<FilterDropdown {...defaultProps} label={<React.Fragment />} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<FilterDropdown {...defaultProps} label={<React.Fragment />} />);
+    expect(container).toMatchSnapshot();
   });
 });

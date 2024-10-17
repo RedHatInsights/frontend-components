@@ -1,37 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Skeleton component should render correctly - lg 1`] = `
-<Skeleton
-  className="ins-c-skeleton ins-c-skeleton__lg"
-/>
+<div>
+  <div
+    class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__lg"
+  >
+    <span
+      class="pf-v5-screen-reader"
+    />
+  </div>
+</div>
 `;
 
 exports[`Skeleton component should render correctly - md 1`] = `
-<Skeleton
-  className="ins-c-skeleton ins-c-skeleton__md"
-/>
+<div>
+  <div
+    class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__md"
+  >
+    <span
+      class="pf-v5-screen-reader"
+    />
+  </div>
+</div>
 `;
 
 exports[`Skeleton component should render correctly - sm 1`] = `
-<Skeleton
-  className="ins-c-skeleton ins-c-skeleton__sm"
-/>
+<div>
+  <div
+    class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__sm"
+  >
+    <span
+      class="pf-v5-screen-reader"
+    />
+  </div>
+</div>
 `;
 
 exports[`Skeleton component should render correctly - xs 1`] = `
-<Skeleton
-  className="ins-c-skeleton ins-c-skeleton__xs"
-/>
+<div>
+  <div
+    class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__xs"
+  >
+    <span
+      class="pf-v5-screen-reader"
+    />
+  </div>
+</div>
 `;
 
 exports[`Skeleton component should render correctly as dark 1`] = `
-<Skeleton
-  className="ins-c-skeleton ins-c-skeleton__md ins-m-dark"
-/>
+<div>
+  <div
+    class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__md ins-m-dark"
+  >
+    <span
+      class="pf-v5-screen-reader"
+    />
+  </div>
+</div>
 `;
 
 exports[`Skeleton component should render correctly without size 1`] = `
-<Skeleton
-  className="ins-c-skeleton ins-c-skeleton__md"
-/>
+<div>
+  <div
+    class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__md"
+  >
+    <span
+      class="pf-v5-screen-reader"
+    />
+  </div>
+</div>
 `;

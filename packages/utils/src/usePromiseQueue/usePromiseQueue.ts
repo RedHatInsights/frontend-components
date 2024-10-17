@@ -1,5 +1,9 @@
 import { useCallback, useState } from 'react';
-import pAll from 'p-all';
+import pMap, { Options } from 'p-map';
+
+async function pAll(iterable: AsyncIterable<() => unknown>, options: Options) {
+  return pMap(iterable, (element) => element(), options);
+}
 
 const DEFAULT_CONCURRENT_PROMISES = 2;
 

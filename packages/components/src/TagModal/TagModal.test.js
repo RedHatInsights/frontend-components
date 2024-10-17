@@ -1,11 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import TagModal from './TagModal';
+import { render } from '@testing-library/react';
 
 describe('TagCount component', () => {
   it('Render the modal open with row of tags', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <TagModal
         loaded
         isOpen={true}
@@ -16,20 +15,20 @@ describe('TagCount component', () => {
         ]}
       />
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('Render the modal with a child component', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <TagModal loaded isOpen={true} systemName={'paul.localhost.com'}>
         <h1>I am a child component</h1>
       </TagModal>
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('Should render modal with disabled button', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <TagModal
         loaded
         isOpen={true}
@@ -41,11 +40,11 @@ describe('TagCount component', () => {
         onApply={jest.fn()}
       />
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render modal with enabled button', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <TagModal
         loaded
         isOpen={true}
@@ -58,13 +57,13 @@ describe('TagCount component', () => {
         onApply={jest.fn()}
       />
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
 
 describe('Two tables', () => {
   it('should render two tables in loading state', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <TagModal
         isOpen={true}
         systemName={'paul.localhost.com'}
@@ -73,11 +72,11 @@ describe('Two tables', () => {
         columns={[[{ title: 'one' }], [{ title: 'two' }]]}
       />
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render two tables', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <TagModal
         isOpen={true}
         systemName={'paul.localhost.com'}
@@ -87,11 +86,11 @@ describe('Two tables', () => {
         columns={[[{ title: 'one' }], [{ title: 'two' }]]}
       />
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('Should render modal with disabled button', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <TagModal
         isOpen={true}
         systemName={'paul.localhost.com'}
@@ -102,11 +101,11 @@ describe('Two tables', () => {
         onApply={jest.fn()}
       />
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render modal with enabled button', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <TagModal
         isOpen={true}
         systemName={'paul.localhost.com'}
@@ -118,6 +117,6 @@ describe('Two tables', () => {
         onApply={jest.fn()}
       />
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

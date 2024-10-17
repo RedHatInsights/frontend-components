@@ -1,4 +1,4 @@
-@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
+@use '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins.scss' as m;
 
 button.ins-c-group-menu-toggle .pf-v5-c-form-control {
     margin: -1rem 0 -1rem 0;

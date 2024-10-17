@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "declaration": true,
+    "types": ["node"],
+    "module": "ES2015",
+    "target": "ES5",
+    "rootDir": "./src",
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.js"],
+  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.spec.js", "src/**/*.test.ts", "src/**/*.test.ts", "src/**/*.test.tsx", "src/**/*.test.jsx"]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "@redhat-cloud-services/chrome",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/chrome",
+  "projectType": "library",
+  "targets": {
+    "build:bundles": {
+      "dependsOn": ["^build:bundles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
+      "options": {
+        "rootDir": "packages/chrome/src",
+        "main": "packages/chrome/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/chrome",
+        "cjsTsConfig": "packages/chrome/tsconfig.cjs.json",
+        "esmTsConfig": "packages/chrome/tsconfig.esm.json"
+      }
+    },
+    "build:packages": {
+      "dependsOn": ["^build:packages", "build:bundles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components",
+        "forceTypes": true
+      }
+    },
+
+    "build": {
+      "executor": "nx:noop",
+      "dependsOn": ["^build", "build:packages"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/chrome/src/**/*", "packages/chrome/package.json"]
+      }
+    },
+    "test:unit": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/chrome/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["scope:public"]
+}

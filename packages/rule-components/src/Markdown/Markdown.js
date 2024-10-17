@@ -2,10 +2,10 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import doT from 'dot';
-import marked from 'marked';
+import { marked } from 'marked';
 import sanitizeHtml from 'sanitize-html';
 
-marked.Renderer.prototype.link = (href, title, text) => {
+marked.Renderer.prototype.link = ({ href, title, text }) => {
   return `<a href="${href}" rel="noopener noreferrer" target="_blank" class="ins-c-rule__link-in-description">${text}</a>`;
 };
 
@@ -33,7 +33,7 @@ const Markdown = ({ template, definitions }) => {
 
   try {
     const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
-    const compiledMd = marked(sanitizeHtml(compiledDot, sanitizeOptions));
+    const compiledMd = marked(sanitizeHtml(compiledDot, sanitizeOptions), { async: false });
 
     return (
       <div

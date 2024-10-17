@@ -1,112 +1,215 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Maintenance component should render with default props 1`] = `
-<EmptyState
-  className="ins-c-empty-state__maintenance"
->
-  <EmptyStateHeader
-    headingLevel="h4"
-    icon={
-      <EmptyStateIcon
-        icon={[Function]}
-      />
-    }
-    titleText="Maintenance in progress"
-  />
-  <EmptyStateBody>
-    <Stack>
-      <StackItem>
-        We are currently undergoing scheduled maintenance and will be
-      </StackItem>
-      <StackItem>
-        unavailable from 
-        10am
-         to 
-        12am
-         UTC (
-        6am
-        -
-        8am
-         
-        EST
-        ).
-      </StackItem>
-      <StackItem>
-        For more information please visit 
-        <a
-          href="https://status.redhat.com/incidents"
+<div>
+  <div
+    class="pf-v5-c-empty-state ins-c-empty-state__maintenance"
+  >
+    <div
+      class="pf-v5-c-empty-state__content"
+    >
+      <div
+        class="pf-v5-c-empty-state__header"
+      >
+        <div
+          class="pf-v5-c-empty-state__icon"
         >
-          status.redhat.com
-        </a>
-        .
-      </StackItem>
-    </Stack>
-  </EmptyStateBody>
-</EmptyState>
+          <svg
+            aria-hidden="true"
+            class="pf-v5-svg"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            viewBox="0 0 384 512"
+            width="1em"
+          >
+            <path
+              d="M360 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24 0 90.965 51.016 167.734 120.842 192C75.016 280.266 24 357.035 24 448c-13.255 0-24 10.745-24 24v16c0 13.255 10.745 24 24 24h336c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24 0-90.965-51.016-167.734-120.842-192C308.984 231.734 360 154.965 360 64c13.255 0 24-10.745 24-24V24c0-13.255-10.745-24-24-24zm-75.078 384H99.08c17.059-46.797 52.096-80 92.92-80 40.821 0 75.862 33.196 92.922 80zm.019-256H99.078C91.988 108.548 88 86.748 88 64h208c0 22.805-3.987 44.587-11.059 64z"
+            />
+          </svg>
+        </div>
+        <div
+          class="pf-v5-c-empty-state__title"
+        >
+          <h4
+            class="pf-v5-c-empty-state__title-text"
+          >
+            Maintenance in progress
+          </h4>
+        </div>
+      </div>
+      <div
+        class="pf-v5-c-empty-state__body"
+      >
+        <div
+          class="pf-v5-l-stack"
+        >
+          <div
+            class="pf-v5-l-stack__item"
+          >
+            We are currently undergoing scheduled maintenance and will be
+          </div>
+          <div
+            class="pf-v5-l-stack__item"
+          >
+            unavailable from 
+            10am
+             to 
+            12am
+             UTC (
+            6am
+            -
+            8am
+             
+            EST
+            ).
+          </div>
+          <div
+            class="pf-v5-l-stack__item"
+          >
+            For more information please visit 
+            <a
+              href="https://status.redhat.com/incidents"
+            >
+              status.redhat.com
+            </a>
+            .
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Maintenance component should render with new description 1`] = `
-<EmptyState
-  className="ins-c-empty-state__maintenance"
->
-  <EmptyStateHeader
-    headingLevel="h4"
-    icon={
-      <EmptyStateIcon
-        icon={[Function]}
-      />
-    }
-    titleText="Maintenance in progress"
-  />
-  <EmptyStateBody>
-    <span>
-       test 
-    </span>
-  </EmptyStateBody>
-</EmptyState>
+<div>
+  <div
+    class="pf-v5-c-empty-state ins-c-empty-state__maintenance"
+  >
+    <div
+      class="pf-v5-c-empty-state__content"
+    >
+      <div
+        class="pf-v5-c-empty-state__header"
+      >
+        <div
+          class="pf-v5-c-empty-state__icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="pf-v5-svg"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            viewBox="0 0 384 512"
+            width="1em"
+          >
+            <path
+              d="M360 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24 0 90.965 51.016 167.734 120.842 192C75.016 280.266 24 357.035 24 448c-13.255 0-24 10.745-24 24v16c0 13.255 10.745 24 24 24h336c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24 0-90.965-51.016-167.734-120.842-192C308.984 231.734 360 154.965 360 64c13.255 0 24-10.745 24-24V24c0-13.255-10.745-24-24-24zm-75.078 384H99.08c17.059-46.797 52.096-80 92.92-80 40.821 0 75.862 33.196 92.922 80zm.019-256H99.078C91.988 108.548 88 86.748 88 64h208c0 22.805-3.987 44.587-11.059 64z"
+            />
+          </svg>
+        </div>
+        <div
+          class="pf-v5-c-empty-state__title"
+        >
+          <h4
+            class="pf-v5-c-empty-state__title-text"
+          >
+            Maintenance in progress
+          </h4>
+        </div>
+      </div>
+      <div
+        class="pf-v5-c-empty-state__body"
+      >
+        <span>
+           test 
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Maintenance component should render with times 1`] = `
-<EmptyState
-  className="ins-c-empty-state__maintenance"
->
-  <EmptyStateHeader
-    headingLevel="h4"
-    icon={
-      <EmptyStateIcon
-        icon={[Function]}
-      />
-    }
-    titleText="Maintenance in progress"
-  />
-  <EmptyStateBody>
-    <Stack>
-      <StackItem>
-        We are currently undergoing scheduled maintenance and will be
-      </StackItem>
-      <StackItem>
-        unavailable from 
-        10am
-         to 
-        12am
-         UTC (
-        12am
-        -
-        2am
-         
-        EST
-        ).
-      </StackItem>
-      <StackItem>
-        For more information please visit 
-        <a
-          href="https://status.redhat.com/incidents"
+<div>
+  <div
+    class="pf-v5-c-empty-state ins-c-empty-state__maintenance"
+  >
+    <div
+      class="pf-v5-c-empty-state__content"
+    >
+      <div
+        class="pf-v5-c-empty-state__header"
+      >
+        <div
+          class="pf-v5-c-empty-state__icon"
         >
-          status.redhat.com
-        </a>
-        .
-      </StackItem>
-    </Stack>
-  </EmptyStateBody>
-</EmptyState>
+          <svg
+            aria-hidden="true"
+            class="pf-v5-svg"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            viewBox="0 0 384 512"
+            width="1em"
+          >
+            <path
+              d="M360 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24 0 90.965 51.016 167.734 120.842 192C75.016 280.266 24 357.035 24 448c-13.255 0-24 10.745-24 24v16c0 13.255 10.745 24 24 24h336c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24 0-90.965-51.016-167.734-120.842-192C308.984 231.734 360 154.965 360 64c13.255 0 24-10.745 24-24V24c0-13.255-10.745-24-24-24zm-75.078 384H99.08c17.059-46.797 52.096-80 92.92-80 40.821 0 75.862 33.196 92.922 80zm.019-256H99.078C91.988 108.548 88 86.748 88 64h208c0 22.805-3.987 44.587-11.059 64z"
+            />
+          </svg>
+        </div>
+        <div
+          class="pf-v5-c-empty-state__title"
+        >
+          <h4
+            class="pf-v5-c-empty-state__title-text"
+          >
+            Maintenance in progress
+          </h4>
+        </div>
+      </div>
+      <div
+        class="pf-v5-c-empty-state__body"
+      >
+        <div
+          class="pf-v5-l-stack"
+        >
+          <div
+            class="pf-v5-l-stack__item"
+          >
+            We are currently undergoing scheduled maintenance and will be
+          </div>
+          <div
+            class="pf-v5-l-stack__item"
+          >
+            unavailable from 
+            10am
+             to 
+            12am
+             UTC (
+            12am
+            -
+            2am
+             
+            EST
+            ).
+          </div>
+          <div
+            class="pf-v5-l-stack__item"
+          >
+            For more information please visit 
+            <a
+              href="https://status.redhat.com/incidents"
+            >
+              status.redhat.com
+            </a>
+            .
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;

@@ -1,9 +1,9 @@
-@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
+@use '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins.scss' as m;
 
 .ins-c-table__empty {
   background: var(--pf-v5-global--Color--light-100);
   border-bottom: 1px solid var(--pf-v5-global--BorderColor--light-200);
-  @include rem('padding', 20px);
+  @include m.rem('padding', 20px);
   &.is-centered {
     display: flex;
     justify-content: center;

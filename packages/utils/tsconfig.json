@@ -1,12 +1,23 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-      "rootDir": "./src",
-      "outDir": "./esm",
-      "declarationDir": "./",
-      "allowJs": true
+    "module": "commonjs",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowJs": true
   },
-  "include": [
-      "./src/**/*"
-  ],
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.esm.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

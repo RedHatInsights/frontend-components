@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { ConfigDefaults, ConfigProp, DataProps, LabelsDefaults, LabelsProp } from './Props';
-import { event, select } from 'd3';
+import { select } from 'd3';
 import classnames from 'classnames';
 import Axis from './Axis';
 import Segment from './Segment';

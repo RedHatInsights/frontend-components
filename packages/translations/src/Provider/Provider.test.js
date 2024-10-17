@@ -1,25 +1,24 @@
-import React from 'react';
+import { render } from '@testing-library/react';
+
 import IntlProvider from './Provider';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 describe('provider', () => {
   test('should render correctly', () => {
-    const wrapper = mount(
+    const { container } = render(
       <IntlProvider>
         <div>Test</div>
       </IntlProvider>
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   describe('messages', () => {
     test('no langauge', () => {
-      const wrapper = mount(
+      const { container } = render(
         <IntlProvider messages={{ 'some.msg': 'Message' }}>
           <div>Test</div>
         </IntlProvider>
       );
-      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     });
 
     describe('multiple Languages', () => {
@@ -33,21 +32,21 @@ describe('provider', () => {
       };
 
       test('no locale', () => {
-        const wrapper = mount(
+        const { container } = render(
           <IntlProvider messages={translations}>
             <div>Test</div>
           </IntlProvider>
         );
-        expect(toJson(wrapper)).toMatchSnapshot();
+        expect(container).toMatchSnapshot();
       });
 
       test('cs-locale', () => {
-        const wrapper = mount(
+        const { container } = render(
           <IntlProvider messages={translations} locale="cs">
             <div>Test</div>
           </IntlProvider>
         );
-        expect(toJson(wrapper)).toMatchSnapshot();
+        expect(container).toMatchSnapshot();
       });
     });
   });

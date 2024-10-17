@@ -1,74 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InsightsLink component under / should render a link to /preview with a given path 1`] = `
-<InsightsLink
-  preview={true}
-  to="/scappolicies"
->
-  <Link
-    to="/preview/insights/compliance/scappolicies"
-  >
-    Mocked Link
-  </Link>
-</InsightsLink>
+<div>
+  Mocked Link
+</div>
 `;
 
 exports[`InsightsLink component under / should render a link to a different app in preview when given 1`] = `
-<InsightsLink
-  app="inventory"
-  preview={true}
-  to="/ID_OF_A_SYSTEM"
->
-  <Link
-    to="/preview/insights/inventory/ID_OF_A_SYSTEM"
-  >
-    Mocked Link
-  </Link>
-</InsightsLink>
+<div>
+  Mocked Link
+</div>
 `;
 
 exports[`InsightsLink component under / should render a link with a given path 1`] = `
-<InsightsLink
-  to="/scappolicies"
->
-  <Link
-    to="/insights/compliance/scappolicies"
-  >
-    Mocked Link
-  </Link>
-</InsightsLink>
+<div>
+  Mocked Link
+</div>
 `;
 
 exports[`InsightsLink component under /preview should render a /preview link 1`] = `
-<InsightsLink
-  to={
-    {
-      "pathname": "/scappolicies",
-    }
-  }
->
-  <Link
-    to={
-      {
-        "pathname": "/insights/compliance/scappolicies",
-      }
-    }
-  >
-    Mocked Link
-  </Link>
-</InsightsLink>
+<div>
+  Mocked Link
+</div>
 `;
 
 exports[`InsightsLink component under /preview should render a link to non /preview 1`] = `
-<InsightsLink
-  app="inventory"
-  preview={false}
-  to="/ID_OF_A_SYSTEM"
->
-  <Link
-    to="/insights/inventory/ID_OF_A_SYSTEM"
-  >
-    Mocked Link
-  </Link>
-</InsightsLink>
+<div>
+  Mocked Link
+</div>
 `;

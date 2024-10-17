@@ -1,7 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import Donut from './Donut';
+import { render } from '@testing-library/react';
 
 describe('Donut component', () => {
   const values = [
@@ -15,40 +14,44 @@ describe('Donut component', () => {
   const identifier = 'test-donut';
 
   it('should render correctly', () => {
-    const wrapper = shallow(<Donut values={values} identifier={identifier} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Donut values={values} identifier={identifier} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly with no legend', () => {
-    const wrapper = shallow(<Donut values={values} totalLabel={totalLabel} identifier={identifier} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Donut values={values} totalLabel={totalLabel} identifier={identifier} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly with legend', () => {
-    const wrapper = shallow(<Donut values={values} totalLabel={totalLabel} identifier={identifier} withLegend />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Donut values={values} totalLabel={totalLabel} identifier={identifier} withLegend />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly with legend on the left', () => {
-    const wrapper = shallow(<Donut values={values} link="/foo/" totalLabel={totalLabel} identifier={identifier} withLegend legendPosition="left" />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(
+      <Donut values={values} link="/foo/" totalLabel={totalLabel} identifier={identifier} withLegend legendPosition="left" />
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly with legend and links', () => {
-    const wrapper = shallow(<Donut values={values} link="/foo/" totalLabel={totalLabel} identifier={identifier} withLegend />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Donut values={values} link="/foo/" totalLabel={totalLabel} identifier={identifier} withLegend />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly with legend on top and links', () => {
-    const wrapper = shallow(<Donut values={values} link="/foo/" totalLabel={totalLabel} identifier={identifier} withLegend legendPosition="top" />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(
+      <Donut values={values} link="/foo/" totalLabel={totalLabel} identifier={identifier} withLegend legendPosition="top" />
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly with width and height of 300px, legend on top, with links', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <Donut values={values} link="/foo/" totalLabel={totalLabel} identifier={identifier} withLegend legendPosition="top" height={300} width={300} />
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   // TODO: implement mouseover tests

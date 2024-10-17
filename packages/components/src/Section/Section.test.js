@@ -1,11 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import Section from './Section';
+import { render } from '@testing-library/react';
 
 describe('Section component', () => {
   it('should render correctly', () => {
-    const wrapper = shallow(<Section type="page">Test</Section>);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Section type="page">Test</Section>);
+    expect(container).toMatchSnapshot();
   });
 });

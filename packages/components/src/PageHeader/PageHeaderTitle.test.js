@@ -1,14 +1,12 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import PageHeaderTitle from './PageHeaderTitle';
 
 describe('PageHeader component', () => {
   it('should render', () => {
-    const wrapper = mount(<PageHeaderTitle title="Something" />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<PageHeaderTitle title="Something" />);
+    expect(container).toMatchSnapshot();
   });
 
   it('renders children correctly', () => {

@@ -1,3 +1,4 @@
+@use '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins' as m;
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all';
 
 .ins-c-pie{
@@ -18,14 +19,14 @@
     .c3-tooltip {
         display: block;
         background-color:#545454;
-        @include rem('padding', 10px 15px);
+        @include m.rem('padding', 10px 15px);
         .name { font-weight: 700; }
         td {
             flex-direction: row;
             font-size:13px;
             color: #fff;
         }
-        td + td { @include rem('padding-left', 20px); }
+        td + td { @include m.rem('padding-left', 20px); }
     }
 }
 
@@ -37,7 +38,7 @@
 }
 
 // When larger than 992px, align the legend in a 2 column list
-@media only screen and (min-width: $ins-break--lg) {
+@media only screen and (min-width: var(--pf-v5-global--breakpoint--lg)) {
     .ins-l-pie__legend { grid-template-columns: auto auto; }
 }
 
@@ -47,7 +48,7 @@
     align-items: center;
     justify-content: center;
     grid-area: legend;
-    @include rem('margin-top', 15px);
+    @include m.rem('margin-top', 15px);
     &--item {
         white-space: nowrap;
         cursor: pointer;
@@ -59,11 +60,11 @@
     }
 
     .badge {
-        @include rem('height', 15px);
-        @include rem('width', 15px);
+        @include m.rem('height', 15px);
+        @include m.rem('width', 15px);
         display: inline-block;
-        @include rem('margin-right', 10px);
-        &__number { @include rem(margin-left, 5px); }
+        @include m.rem('margin-right', 10px);
+        &__number { @include m.rem(margin-left, 5px); }
     }
 }
 
@@ -73,7 +74,7 @@
     justify-content: center;
     grid-column-gap: 15px;
 
-    @media only screen and (min-width: $ins-break--xs) {
+    @media only screen and (min-width: var(--pf-v5-global--breakpoint--xs)) {
         &.legend-right {
             grid-template: 'pie' 'legend';
         }
@@ -83,7 +84,7 @@
         }
     }
 
-    @media only screen and (min-width: $ins-break--sm) {
+    @media only screen and (min-width: var(--pf-v5-global--breakpoint--sm)) {
         &.legend-right {
             grid-template: 'pie legend';
         }

@@ -1,10 +1,10 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { mount } from 'enzyme';
 
 import useScreen from './useScreenSize';
 import breakpoints from './breakpoints';
 import isSmallScreen from './isSmallScreen';
+import { render } from '@testing-library/react';
 
 describe('useScreen', () => {
   it('isSmallScreen', () => {
@@ -20,14 +20,11 @@ describe('useScreen', () => {
 
     const renderSpy = jest.fn();
 
-    let wrapper;
-
     const changeSize = async (size) => {
       await act(async () => {
         global.innerWidth = size;
         global.dispatchEvent(new Event('resize'));
       });
-      wrapper.update();
     };
 
     const Dummy = () => {
@@ -43,9 +40,8 @@ describe('useScreen', () => {
     const variants = Object.keys(breakpoints);
 
     await act(async () => {
-      wrapper = mount(<Dummy />);
+      render(<Dummy />);
     });
-    wrapper.update();
 
     expect(renderSpy).toHaveBeenCalledWith(variants[0]);
     renderSpy.mockClear();
@@ -80,10 +76,5 @@ describe('useScreen', () => {
     renderSpy.mockClear();
 
     global.innerWidth = tmpSize;
-
-    await act(async () => {
-      wrapper.unmount();
-    });
-    wrapper.update();
   });
 });

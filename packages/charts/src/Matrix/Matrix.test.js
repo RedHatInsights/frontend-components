@@ -1,7 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import Matrix from './Matrix';
+import { render } from '@testing-library/react';
 
 describe('Pie component', () => {
   const matrixData = {
@@ -33,17 +32,17 @@ describe('Pie component', () => {
   const identifier = 'test-matrix';
 
   it('should render correctly', () => {
-    const wrapper = shallow(<Matrix data={matrixData} identifier={identifier} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Matrix data={matrixData} identifier={identifier} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render with labels', () => {
-    const wrapper = shallow(<Matrix data={matrixData} label={matrixLabels} identifier={identifier} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Matrix data={matrixData} label={matrixLabels} identifier={identifier} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render with config', () => {
-    const wrapper = shallow(<Matrix data={matrixData} label={matrixLabels} config={matrixConfig} identifier={identifier} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Matrix data={matrixData} label={matrixLabels} config={matrixConfig} identifier={identifier} />);
+    expect(container).toMatchSnapshot();
   });
 });

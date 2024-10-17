@@ -1,31 +1,31 @@
 {
-    "name": "@redhat-cloud-services/frontend-components-testing",
-    "version": "0.1.2",
-    "description": "Testing utilities for RedHat Cloud Services project.",
-    "main": "index.js",
-    "module": "esm/index.js",
-    "types": "index.d.ts",
-    "sideEffects": [
-        "./**/*.css",
-        "./**/*.scss"
-    ],
-    "publishConfig": {
-        "access": "public"
-    },
-    "scripts": {
-        "build": "npm run build:js && npm run build:esm && npm run build:packages",
-        "build:packages": "node ../../scripts/build-packages.js --forceTypes",
-        "build:esm": "MODULES_ROOT=../../ tsc --module es2015 --target es5 -p tsconfig.esm.json",
-        "build:js": "tsc -p tsconfig.cjs.json"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/RedHatInsights/frontend-components.git"
-    },
-    "author": "",
-    "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/RedHatInsights/frontend-components/issues"
-    },
-    "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/testing#readme"
+  "name": "@redhat-cloud-services/frontend-components-testing",
+  "version": "0.1.2",
+  "description": "Testing utilities for RedHat Cloud Services project.",
+  "main": "index.js",
+  "module": "esm/index.js",
+  "types": "index.d.ts",
+  "sideEffects": [
+    "./**/*.css",
+    "./**/*.scss"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "npm run build:js && npm run build:esm && npm run build:packages",
+    "build:packages": "node ../../scripts/build-packages.js --forceTypes",
+    "build:esm": "MODULES_ROOT=../../ tsc --module es2015 --target es5 -p tsconfig.esm.json",
+    "build:js": "tsc -p tsconfig.cjs.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/RedHatInsights/frontend-components/issues"
+  },
+  "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/testing#readme"
 }

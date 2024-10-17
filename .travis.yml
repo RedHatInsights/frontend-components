@@ -6,7 +6,7 @@ cache:
 notifications:
   email: false
 node_js:
-- '16'
+- '20'
 install:
   - npm ci
 before_script:
@@ -15,4 +15,6 @@ script:
   # build internally used tsc script while it is private package
   - ./node_modules/.bin/tsc -p packages/tsc-transform-imports/
   - npm run lint
-  - npm run test:ci
+  - npm run test:unit
+  - npm run test:component
+  - npm run build

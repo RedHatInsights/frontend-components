@@ -1,7 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { constructGroups, constructValues, mapGroups } from './constants';
+import { render } from '@testing-library/react';
 
 describe('mapGroups', () => {
   it('should build correctly empty', () => {
@@ -272,15 +271,15 @@ describe('constructGroups', () => {
       },
     ]);
     const Cmp = () => result[1].items[0].label;
-    const wrapper = mount(<Cmp />);
-    expect(toJson(wrapper, { mode: 'deep' })).toMatchSnapshot();
+    const { container } = render(<Cmp />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
     const result = constructGroups(tags);
     const Cmp = () => result[0].items[0].label;
-    const wrapper = mount(<Cmp />);
-    expect(toJson(wrapper, { mode: 'deep' })).toMatchSnapshot();
+    const { container } = render(<Cmp />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should create correct meta info', () => {

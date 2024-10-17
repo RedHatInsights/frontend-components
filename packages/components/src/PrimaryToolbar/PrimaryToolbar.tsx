@@ -1,16 +1,15 @@
 import React, { KeyboardEvent } from 'react';
-import {
-  Button,
-  ButtonProps,
-  Pagination,
-  PaginationProps,
-  Toolbar,
-  ToolbarContent,
-  ToolbarExpandIconWrapper,
-  ToolbarGroup,
-  ToolbarItem,
-} from '@patternfly/react-core';
-import { AngleDownIcon, AngleRightIcon } from '@patternfly/react-icons';
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { ButtonProps } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { Pagination } from '@patternfly/react-core/dist/dynamic/components/Pagination';
+import { PaginationProps } from '@patternfly/react-core/dist/dynamic/components/Pagination';
+import { Toolbar } from '@patternfly/react-core/dist/dynamic/components/Toolbar';
+import { ToolbarContent } from '@patternfly/react-core/dist/dynamic/components/Toolbar';
+import { ToolbarExpandIconWrapper } from '@patternfly/react-core/dist/dynamic/components/Toolbar';
+import { ToolbarGroup } from '@patternfly/react-core/dist/dynamic/components/Toolbar';
+import { ToolbarItem } from '@patternfly/react-core/dist/dynamic/components/Toolbar';
+import AngleDownIcon from '@patternfly/react-icons/dist/dynamic/icons/angle-down-icon';
+import AngleRightIcon from '@patternfly/react-icons/dist/dynamic/icons/angle-right-icon';
 import { SortByDirection } from '@patternfly/react-table';
 
 import Actions, { ActionsProps } from './Actions';

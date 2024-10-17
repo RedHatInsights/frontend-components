@@ -1,5 +1,5 @@
+@use '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins' as m;
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_variables';
-@import '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins';
 
 .ins-c-rule__report-detail {
   padding: var(--pf-v5-global--gutter--md) 40px;
@@ -70,13 +70,13 @@
   }
 
   ol {
-      @include rem('margin-top', 10px);
-      @include rem('margin-left', 15px);
+      @include m.rem('margin-top', 10px);
+      @include m.rem('margin-left', 15px);
   }
 
-  p + pre, ul + pre { @include rem('margin-bottom', 20px); }
+  p + pre, ul + pre { @include m.rem('margin-bottom', 20px); }
 
-  .pf-v5-c-list { @include rem('margin', 5px 0); }
+  .pf-v5-c-list { @include m.rem('margin', 5px 0); }
 
   .pf-v5-c-button.pf-m-link {
     padding-left: 0;
@@ -86,13 +86,13 @@
 
 .ins-c-rule__remediating-modal {
   ol {
-    @include rem('margin-top', 10px);
-    @include rem('margin-left', 15px);
+    @include m.rem('margin-top', 10px);
+    @include m.rem('margin-left', 15px);
   }
 
-  p + pre, ul + pre { @include rem('margin-bottom', 20px); }
+  p + pre, ul + pre { @include m.rem('margin-bottom', 20px); }
 
-  .pf-v5-c-list { @include rem('margin', 5px 0); }
+  .pf-v5-c-list { @include m.rem('margin', 5px 0); }
 
   .ins-c-rule__modal-content {
     margin-top: 24px;

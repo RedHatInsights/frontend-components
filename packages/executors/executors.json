@@ -1,0 +1,29 @@
+{
+  "executors": {
+    "sync-dependencies": {
+      "implementation": "./src/executors/sync-dependencies/executor",
+      "schema": "./src/executors/sync-dependencies/schema.json",
+      "description": "sync-dependencies executor"
+    },
+    "builder": {
+      "implementation": "./src/executors/builder/executor",
+      "schema": "./src/executors/builder/schema.json",
+      "description": "builder executor"
+    },
+    "build-styles": {
+      "implementation": "./src/executors/build-styles/executor",
+      "schema": "./src/executors/build-styles/schema.json",
+      "description": "build-styles executor"
+    },
+    "build-packages": {
+      "implementation": "./src/executors/build-packages/executor",
+      "schema": "./src/executors/build-packages/schema.json",
+      "description": "build-packages executor"
+    },
+    "transform-scss": {
+      "implementation": "./src/executors/transform-scss/executor",
+      "schema": "./src/executors/transform-scss/schema.json",
+      "description": "transform-scss executor"
+    }
+  }
+}

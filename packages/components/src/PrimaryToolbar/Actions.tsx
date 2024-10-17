@@ -62,7 +62,7 @@ export const overflowActionsMapper = (action: ActionsType, key: string | number)
 
 export const actionPropsGenerator = (action: ActionsType, key: string | number) => {
   const onClick =
-    typeof action === 'object' && typeof action !== null && typeof (action as { onClick?: any })?.onClick === 'function'
+    typeof action === 'object' && action !== null && typeof (action as { onClick?: any })?.onClick === 'function'
       ? (e: MouseEvent | React.MouseEvent<any, MouseEvent> | React.KeyboardEvent<Element>) => (action as { onClick?: any })?.onClick(e, action, key)
       : undefined;
 
@@ -70,7 +70,7 @@ export const actionPropsGenerator = (action: ActionsType, key: string | number) 
     ...(action as ActionObject)?.props,
     onClick,
     component: (action as ActionObject)?.props?.component || (React.isValidElement((action as ActionObject).label || action) ? 'div' : 'button'),
-    children: (typeof action === 'object' && typeof action !== null ? (action as { label?: React.ReactNode })?.label : action) as React.ReactNode,
+    children: (typeof action === 'object' && action !== null ? (action as { label?: React.ReactNode })?.label : action) as React.ReactNode,
   };
 };
 

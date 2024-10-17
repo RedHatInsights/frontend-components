@@ -1,20 +1,24 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-      "rootDir": "./src",
-      "outDir": "./esm",
-      "declarationDir": "./",
-      "module": "es2015",
-      "target": "ES5",
-      "allowJs": true,
+    "module": "commonjs",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noFallthroughCasesInSwitch": true,
+    "allowJs": true
   },
-  "include": [
-      "./src/**/*"
-  ],
-  "exclude": [
-    "./src/**/*.test.js",
-    "./src/**/*.spec.js",
-    "./src/**/*.test.ts",
-    "./src/**/*.test.tsx"
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.esm.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.cy.json"
+    }
   ]
 }

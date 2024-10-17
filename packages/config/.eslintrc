@@ -1,9 +1,7 @@
 {
-    "env": {
-        "browser": false,
-        "node": true
-    },
-    "rules": {
-        "@typescript-eslint/no-var-requires": "off"
-    }
+  "extends": ["../../.eslintrc.js"],
+  "ignorePatterns": ["!**/*"],
+  "rules": {
+    "@typescript-eslint/no-var-requires": "off"
+  }
 }

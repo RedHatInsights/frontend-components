@@ -2,8 +2,6 @@
 import { useMemo } from 'react';
 import axios from 'axios';
 import { captureException, configureScope } from '@sentry/browser';
-//@ts-ignore
-import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 export class HttpError extends Error {
   description: string;
@@ -81,7 +79,10 @@ export function errorInterceptor(err: any) {
 }
 
 export const useAxiosWithPlatformInterceptors = () => {
-  const chrome = useChrome();
+  // FXIME: useChrome is not available in this package
+  // its a circular dependency, the auth interceptor should not be required anymore due to header injection
+  //@ts-ignore
+  const chrome = window.insights.chrome;
 
   const instance = useMemo(() => {
     const memoInstance = axios.create();

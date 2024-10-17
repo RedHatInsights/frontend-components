@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Section component should render correctly 1`] = `
-<section
-  className="ins-l-page"
->
-   
-  Test
-   
-</section>
+<div>
+  <section
+    class="ins-l-page"
+  >
+     
+    Test
+     
+  </section>
+</div>
 `;

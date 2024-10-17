@@ -1,3 +1,4 @@
 {
-  "extends": ["plugin:cypress/recommended"]
+  "extends": ["../../.eslintrc.js"],
+  "ignorePatterns": ["!**/*", "**/*.scss", "**/*.png"]
 }

@@ -12,3 +12,5 @@ packages/*/**/*.js
 packages/create-crc-app/templates/fec.config.js
 
 src/SmartComponents/SamplePage/
+
+node_modules

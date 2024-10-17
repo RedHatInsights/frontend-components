@@ -13,7 +13,7 @@ export interface NotificationPortalProps {
   silent?: boolean;
 }
 
-export const NotificationPortalBase: React.FC<NotificationPortalProps> = ({ clearNotifications: propsClear, ...props }) => {
+export const NotificationPortalBase = ({ clearNotifications: propsClear, ...props }: NotificationPortalProps) => {
   const notifications = useSelector<NotificationsState>(({ notifications }) => notifications);
   const dispatch = useDispatch();
   const removeNotif = (id: number | string) => dispatch(removeNotification(id));
@@ -28,11 +28,13 @@ export const NotificationPortalBase: React.FC<NotificationPortalProps> = ({ clea
   );
 };
 
-export const NotificationPortal: React.FC<NotificationPortalProps> = ({ silent = true, ...props }) => (
-  <ErrorBoundary headerTitle="Notifications portal" silent={silent}>
-    <NotificationPortalBase {...props} />
-  </ErrorBoundary>
-);
+export const NotificationPortal: React.FC<NotificationPortalProps> = ({ silent = true, ...props }) => {
+  return (
+    <ErrorBoundary headerTitle="Notifications portal" silent={silent}>
+      <NotificationPortalBase {...props} />
+    </ErrorBoundary>
+  );
+};
 
 export { default as Portal } from '../Portal';
 

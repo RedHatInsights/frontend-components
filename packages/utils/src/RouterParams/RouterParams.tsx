@@ -1,5 +1,4 @@
-/* eslint-disable react/display-name */
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { matchPath, useLocation, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -25,6 +24,7 @@ const RouterParamsInternal = (props: RouterParamsProps) => {
   useEffect(() => {
     // This will not work in router v6. Route does not pass `match` to child element.
     try {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       if (matchPath(pathname, { path: props?.match?.path, exact: true })) {
         onPathChange({
@@ -44,5 +44,6 @@ const RouterParamsInternal = (props: RouterParamsProps) => {
 /**
  * @deprecated
  */
+// eslint-disable-next-line react/display-name
 const RouterParams = (Component: React.ComponentType) => (props: Record<string, any>) => <RouterParamsInternal Component={Component} {...props} />;
 export default RouterParams;

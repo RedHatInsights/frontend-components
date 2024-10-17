@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { LinkProps } from 'react-router-dom';
 import { ChromeAPI } from '@redhat-cloud-services/types';
 

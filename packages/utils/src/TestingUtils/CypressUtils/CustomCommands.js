@@ -14,7 +14,7 @@
  *
  */
 export function findElementByOuiaId() {
-  Cypress.Commands.add('ouiaId', { prevSubject: 'optional' }, (subject, item, el = '') => {
+  global.Cypress?.Commands.add('ouiaId', { prevSubject: 'optional' }, (subject, item, el = '') => {
     const attr = `${el}[data-ouia-component-id="${item}"]`;
     return subject ? cy.wrap(subject).find(attr) : cy.get(attr);
   });
@@ -30,7 +30,7 @@ export function findElementByOuiaId() {
  *
  */
 export function findElementByOuiaType() {
-  Cypress.Commands.add('ouiaType', { prevSubject: 'optional' }, (subject, item, el = '') => {
+  global.Cypress?.Commands.add('ouiaType', { prevSubject: 'optional' }, (subject, item, el = '') => {
     const attr = `${el}[data-ouia-component-type="${item}"]`;
     return subject ? cy.wrap(subject).find(attr) : cy.get(attr);
   });

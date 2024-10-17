@@ -1,58 +1,49 @@
 {
-    "name": "@redhat-cloud-services/frontend-components-advisor-components",
-    "version": "1.0.21",
-    "description": "Components to be used in Advisor applications and integrations.",
-    "main": "index.js",
-    "module": "esm/index.js",
-    "publishConfig": {
-        "access": "public"
-    },
-    "scripts": {
-        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
-        "build:js": "tsc -p tsconfig.cjs.json",
-        "build:esm": "MODULES_ROOT=../../ tsc --module es2015 --target es5 -p tsconfig.esm.json",
-        "build:css": "node ../../scripts/build-styles.js",
-        "build:packages": "node ../../scripts/build-packages.js --forceTypes",
-        "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\"",
-        "test:ct": "cypress run --component",
-        "test:openct": "cypress open --component"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/RedHatInsights/frontend-components.git"
-    },
-    "author": "",
-    "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/RedHatInsights/frontend-components/issues"
-    },
-    "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/advisor-components#readme",
-    "peerDependencies": {
-        "@patternfly/react-core": "^5.0.0",
-        "@patternfly/react-icons": "^5.0.0",
-        "prop-types": "^15.6.2",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-router-dom": "^5.0.0 || ^6.0.0"
-    },
-    "dependencies": {
-        "@redhat-cloud-services/frontend-components": "^4.0.0-beta.3",
-        "dot": "^1.1.3",
-        "lodash": "^4.17.21",
-        "marked": "^4.1.1",
-        "react-markdown": "^8.0.3",
-        "rehype-raw": "^6.1.1",
-        "rehype-sanitize": "^5.0.1",
-        "sanitize-html": "^2.13.1"
-    },
-    "devDependencies": {
-        "@cypress/webpack-dev-server": "^3.5.1",
-        "@types/dot": "^1.1.5",
-        "@types/marked": "^4.0.7",
-        "css-loader": "^6.7.1",
-        "cypress": "^12.17.2",
-        "eslint-plugin-cypress": "^2.12.1",
-        "sass-loader": "^12.6.0",
-        "style-loader": "^3.3.1"
-    }
+  "name": "@redhat-cloud-services/frontend-components-advisor-components",
+  "version": "1.0.21",
+  "description": "Components to be used in Advisor applications and integrations.",
+  "main": "index.js",
+  "module": "esm/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/RedHatInsights/frontend-components/issues"
+  },
+  "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/advisor-components#readme",
+  "peerDependencies": {
+    "@patternfly/react-core": "^5.0.0",
+    "@patternfly/react-icons": "^5.0.0",
+    "prop-types": "^15.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.0.0 || ^6.0.0"
+  },
+  "dependencies": {
+    "@redhat-cloud-services/frontend-components": "^4.0.0-beta.3",
+    "dot": "^1.1.3",
+    "lodash": "^4.17.21",
+    "marked": "14.1.2",
+    "react-markdown": "^8.0.3",
+    "rehype-raw": "^6.1.1",
+    "rehype-sanitize": "^5.0.1",
+    "sanitize-html": "^2.13.1"
+  },
+  "devDependencies": {
+    "@cypress/webpack-dev-server": "^3.5.1",
+    "@types/dot": "^1.1.5",
+    "css-loader": "^6.7.1",
+    "cypress": "^12.17.2",
+    "eslint-plugin-cypress": "^2.12.1",
+    "sass-loader": "^16.0.2",
+    "style-loader": "^3.3.1"
+  }
 }

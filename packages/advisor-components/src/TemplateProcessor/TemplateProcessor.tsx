@@ -1,6 +1,6 @@
 import React from 'react';
 import doT from 'dot';
-import { marked } from 'marked';
+import { Token, marked } from 'marked';
 import sanitize, { simpleTransform } from 'sanitize-html';
 
 interface TemplateProcessorProps {
@@ -16,7 +16,7 @@ const DOT_SETTINGS = {
 };
 
 // codespan and code tags escape child text by default, therefore we have to remove all escapes from there
-const walkTokens = (token: marked.Token) => {
+const walkTokens = (token: Token) => {
   if (token.type === 'codespan' || token.type === 'code') {
     token.text = token.text.replace(/\\\*/g, '*').replace(/\\_/g, '_').replace(/\\~/g, '~');
   }
@@ -35,7 +35,7 @@ const TemplateProcessor: React.FC<TemplateProcessorProps> = ({ template, definit
 
   try {
     const compiledDot = Object.keys(definitions).length !== 0 ? doT.template(template, DOT_SETTINGS)(definitions) : template;
-    const compiledMd = marked(compiledDot);
+    const compiledMd = marked(compiledDot, { async: false });
     const sanitized = sanitize(compiledMd, {
       allowedAttributes: { '*': ['href', 'target', 'class', 'style', 'rel'] },
       allowedSchemes: ['https'], // links must lead only to https://access.redhat.com/

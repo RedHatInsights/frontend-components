@@ -1,67 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterDropdown component should render 1`] = `
-<Select
-  className="ins-c-filter__dropdown"
-  isOpen={false}
-  onOpenChange={[Function]}
-  ouiaId="OUIA-Generated-RHI/FilterDropdown-1"
-  ouiaSafe={true}
-  toggle={[Function]}
->
-  <SelectGroup
-    key="0"
-    label=""
+<div>
+  <button
+    aria-expanded="false"
+    class="pf-v5-c-menu-toggle"
+    data-ouia-component-id="OUIA-Generated-MenuToggle-1"
+    data-ouia-component-type="PF5/MenuToggle"
+    data-ouia-safe="true"
+    type="button"
   >
-    <SelectList>
-      <SelectOption
-        key="check00"
+    <span
+      class="pf-v5-c-menu-toggle__text"
+    />
+    <span
+      class="pf-v5-c-menu-toggle__controls"
+    >
+      <span
+        class="pf-v5-c-menu-toggle__toggle-icon"
       >
-        <FilterInput
-          addRemoveFilters={[Function]}
-          aria-label=""
-          filters={{}}
-          id="check00"
-          label=""
-          param=""
-          type=""
-          value=""
-        />
-      </SelectOption>
-    </SelectList>
-  </SelectGroup>
-</Select>
+        <svg
+          aria-hidden="true"
+          class="pf-v5-svg"
+          fill="currentColor"
+          height="1em"
+          role="img"
+          viewBox="0 0 320 512"
+          width="1em"
+        >
+          <path
+            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+          />
+        </svg>
+      </span>
+    </span>
+  </button>
+</div>
 `;
 
 exports[`FilterDropdown component should render with a component as label 1`] = `
-<Select
-  className="ins-c-filter__dropdown"
-  isOpen={false}
-  onOpenChange={[Function]}
-  ouiaId="OUIA-Generated-RHI/FilterDropdown-1"
-  ouiaSafe={true}
-  toggle={[Function]}
->
-  <SelectGroup
-    key="0"
-    label=""
+<div>
+  <button
+    aria-expanded="false"
+    class="pf-v5-c-menu-toggle"
+    data-ouia-component-id="OUIA-Generated-MenuToggle-2"
+    data-ouia-component-type="PF5/MenuToggle"
+    data-ouia-safe="true"
+    type="button"
   >
-    <SelectList>
-      <SelectOption
-        key="check00"
+    <span
+      class="pf-v5-c-menu-toggle__text"
+    />
+    <span
+      class="pf-v5-c-menu-toggle__controls"
+    >
+      <span
+        class="pf-v5-c-menu-toggle__toggle-icon"
       >
-        <FilterInput
-          addRemoveFilters={[Function]}
-          aria-label=""
-          filters={{}}
-          id="check00"
-          label=""
-          param=""
-          type=""
-          value=""
-        />
-      </SelectOption>
-    </SelectList>
-  </SelectGroup>
-</Select>
+        <svg
+          aria-hidden="true"
+          class="pf-v5-svg"
+          fill="currentColor"
+          height="1em"
+          role="img"
+          viewBox="0 0 320 512"
+          width="1em"
+        >
+          <path
+            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+          />
+        </svg>
+      </span>
+    </span>
+  </button>
+</div>
 `;

@@ -1,85 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TabLayout component should render with active item 1`] = `
-<section
-  className="ins-tab-layout"
-  widget-type="InsightsTabs"
->
-  <div
-    className="ins-tabs"
+<div>
+  <section
+    class="ins-tab-layout"
+    widget-type="InsightsTabs"
   >
     <div
-      className="active"
-      key="one"
-      onClick={[Function]}
-      widget-id="one"
-      widget-type="InsightsTabsItem"
+      class="ins-tabs"
     >
-      <div>
-        one
+      <div
+        class="active"
+        widget-id="one"
+        widget-type="InsightsTabsItem"
+      >
+        <div>
+          one
+        </div>
+      </div>
+      <div
+        class=""
+        widget-id="two"
+        widget-type="InsightsTabsItem"
+      >
+        two
       </div>
     </div>
     <div
-      className=""
-      key="two"
-      onClick={[Function]}
-      widget-id="two"
-      widget-type="InsightsTabsItem"
-    >
-      two
-    </div>
-  </div>
-  <div
-    className="ins-tab-content"
-  />
-</section>
+      class="ins-tab-content"
+    />
+  </section>
+</div>
 `;
 
 exports[`TabLayout component should render with items 1`] = `
-<section
-  className="ins-tab-layout"
-  widget-type="InsightsTabs"
->
-  <div
-    className="ins-tabs"
+<div>
+  <section
+    class="ins-tab-layout"
+    widget-type="InsightsTabs"
   >
     <div
-      className=""
-      key="one"
-      onClick={[Function]}
-      widget-id="one"
-      widget-type="InsightsTabsItem"
+      class="ins-tabs"
     >
-      <div>
-        one
+      <div
+        class=""
+        widget-id="one"
+        widget-type="InsightsTabsItem"
+      >
+        <div>
+          one
+        </div>
+      </div>
+      <div
+        class=""
+        widget-id="two"
+        widget-type="InsightsTabsItem"
+      >
+        two
       </div>
     </div>
     <div
-      className=""
-      key="two"
-      onClick={[Function]}
-      widget-id="two"
-      widget-type="InsightsTabsItem"
-    >
-      two
-    </div>
-  </div>
-  <div
-    className="ins-tab-content"
-  />
-</section>
+      class="ins-tab-content"
+    />
+  </section>
+</div>
 `;
 
 exports[`TabLayout component should render without items 1`] = `
-<section
-  className="ins-tab-layout"
-  widget-type="InsightsTabs"
->
-  <div
-    className="ins-tabs"
-  />
-  <div
-    className="ins-tab-content"
-  />
-</section>
+<div>
+  <section
+    class="ins-tab-layout"
+    widget-type="InsightsTabs"
+  >
+    <div
+      class="ins-tabs"
+    />
+    <div
+      class="ins-tab-content"
+    />
+  </section>
+</div>
 `;

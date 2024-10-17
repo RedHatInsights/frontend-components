@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 
 import Notification from '../Notification';
 import NotificationPagination from '../NotificationPagination';
-import { AlertProps } from '@patternfly/react-core';
+import { AlertProps } from '@patternfly/react-core/dist/dynamic/components/Alert';
 
 import './portal.scss';
 
