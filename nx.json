@@ -19,7 +19,7 @@
       "cache": true
     }
   },
-  "defaultBase": "master",
+  "defaultBase": "origin/nx",
   "plugins": [
     {
       "plugin": "@nx/eslint/plugin",
