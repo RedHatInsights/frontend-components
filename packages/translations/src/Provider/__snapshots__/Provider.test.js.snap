@@ -1,145 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`provider messages multiple Languages cs-locale 1`] = `
-<IntlProvider
-  locale="cs"
-  messages={
-    {
-      "cs": {
-        "some.msg": "Zpráva",
-      },
-      "en": {
-        "some.msg": "Message",
-      },
-    }
-  }
->
-  <IntlProvider
-    defaultFormats={{}}
-    defaultLocale="en"
-    fallbackOnEmptyString={true}
-    formats={{}}
-    locale="cs"
-    messages={
-      {
-        "default.cancel": "Zrušit",
-        "default.delete": "Smazat",
-        "default.remove": "Odstranit",
-        "default.save": "Save",
-        "some.msg": "Zpráva",
-      }
-    }
-    onError={[Function]}
-    onWarn={[Function]}
-    textComponent={Symbol(react.fragment)}
-  >
-    <div>
-      Test
-    </div>
-  </IntlProvider>
-</IntlProvider>
+<div>
+  <div>
+    Test
+  </div>
+</div>
 `;
 
 exports[`provider messages multiple Languages no locale 1`] = `
-<IntlProvider
-  locale={null}
-  messages={
-    {
-      "cs": {
-        "some.msg": "Zpráva",
-      },
-      "en": {
-        "some.msg": "Message",
-      },
-    }
-  }
->
-  <IntlProvider
-    defaultFormats={{}}
-    defaultLocale="en"
-    fallbackOnEmptyString={true}
-    formats={{}}
-    locale="en"
-    messages={
-      {
-        "default.cancel": "Cancel",
-        "default.delete": "Delete",
-        "default.remove": "Remove",
-        "default.save": "Save",
-        "some.msg": "Message",
-      }
-    }
-    onError={[Function]}
-    onWarn={[Function]}
-    textComponent={Symbol(react.fragment)}
-  >
-    <div>
-      Test
-    </div>
-  </IntlProvider>
-</IntlProvider>
+<div>
+  <div>
+    Test
+  </div>
+</div>
 `;
 
 exports[`provider messages no langauge 1`] = `
-<IntlProvider
-  locale={null}
-  messages={
-    {
-      "some.msg": "Message",
-    }
-  }
->
-  <IntlProvider
-    defaultFormats={{}}
-    defaultLocale="en"
-    fallbackOnEmptyString={true}
-    formats={{}}
-    locale="en"
-    messages={
-      {
-        "default.cancel": "Cancel",
-        "default.delete": "Delete",
-        "default.remove": "Remove",
-        "default.save": "Save",
-        "some.msg": "Message",
-      }
-    }
-    onError={[Function]}
-    onWarn={[Function]}
-    textComponent={Symbol(react.fragment)}
-  >
-    <div>
-      Test
-    </div>
-  </IntlProvider>
-</IntlProvider>
+<div>
+  <div>
+    Test
+  </div>
+</div>
 `;
 
 exports[`provider should render correctly 1`] = `
-<IntlProvider
-  locale={null}
->
-  <IntlProvider
-    defaultFormats={{}}
-    defaultLocale="en"
-    fallbackOnEmptyString={true}
-    formats={{}}
-    locale="en"
-    messages={
-      {
-        "default.cancel": "Cancel",
-        "default.delete": "Delete",
-        "default.remove": "Remove",
-        "default.save": "Save",
-      }
-    }
-    onError={[Function]}
-    onWarn={[Function]}
-    textComponent={Symbol(react.fragment)}
-  >
-    <div>
-      Test
-    </div>
-  </IntlProvider>
-</IntlProvider>
+<div>
+  <div>
+    Test
+  </div>
+</div>
 `;

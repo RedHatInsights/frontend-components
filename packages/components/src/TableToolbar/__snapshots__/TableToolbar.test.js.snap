@@ -1,157 +1,229 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TableToolbar component should render 1`] = `
-<Fragment>
-  <Toolbar
-    className="ins-c-table__toolbar"
+<div>
+  <div
+    class="pf-v5-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"
     data-ouia-component-type="RHI/TableToolbar"
-    data-ouia-safe={true}
+    data-ouia-safe="true"
+    id="pf-random-id-0"
   >
     Some
-  </Toolbar>
-</Fragment>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
+</div>
 `;
 
 exports[`TableToolbar component should render a footer 1`] = `
-<Fragment>
-  <Toolbar
-    className="ins-c-table__toolbar ins-m-footer"
+<div>
+  <div
+    class="pf-v5-c-toolbar ins-c-table__toolbar ins-m-footer"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-8"
     data-ouia-component-type="RHI/TableToolbar"
-    data-ouia-safe={true}
+    data-ouia-safe="true"
+    id="pf-random-id-7"
   >
     Footer
-  </Toolbar>
-</Fragment>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
+</div>
 `;
 
 exports[`TableToolbar component should render with results and selection of 1 1`] = `
-<Fragment>
-  <Toolbar
-    className="ins-c-table__toolbar"
+<div>
+  <div
+    class="pf-v5-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-7"
     data-ouia-component-type="RHI/TableToolbar"
-    data-ouia-safe={true}
+    data-ouia-safe="true"
+    id="pf-random-id-6"
   >
     Some
-  </Toolbar>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
   <div
-    className="ins-c-table__toolbar-results"
+    class="ins-c-table__toolbar-results"
   >
     <span
-      className="ins-c-table__toolbar-results-count"
+      class="ins-c-table__toolbar-results-count"
     >
        
       1 Result
        
     </span>
     <span
-      className="ins-c-table__toolbar-results-selected"
+      class="ins-c-table__toolbar-results-selected"
     >
        
       1
        Selected 
     </span>
   </div>
-</Fragment>
+</div>
 `;
 
 exports[`TableToolbar component should render with results greater than 1 1`] = `
-<Fragment>
-  <Toolbar
-    className="ins-c-table__toolbar"
+<div>
+  <div
+    class="pf-v5-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-4"
     data-ouia-component-type="RHI/TableToolbar"
-    data-ouia-safe={true}
+    data-ouia-safe="true"
+    id="pf-random-id-3"
   >
     Some
-  </Toolbar>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
   <div
-    className="ins-c-table__toolbar-results"
+    class="ins-c-table__toolbar-results"
   >
     <span
-      className="ins-c-table__toolbar-results-count"
+      class="ins-c-table__toolbar-results-count"
     >
        
       2 Results
        
     </span>
   </div>
-</Fragment>
+</div>
 `;
 
 exports[`TableToolbar component should render with results of 0 1`] = `
-<Fragment>
-  <Toolbar
-    className="ins-c-table__toolbar"
+<div>
+  <div
+    class="pf-v5-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-2"
     data-ouia-component-type="RHI/TableToolbar"
-    data-ouia-safe={true}
+    data-ouia-safe="true"
+    id="pf-random-id-1"
   >
     Some
-  </Toolbar>
-</Fragment>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
+</div>
 `;
 
 exports[`TableToolbar component should render with results of 1 1`] = `
-<Fragment>
-  <Toolbar
-    className="ins-c-table__toolbar"
+<div>
+  <div
+    class="pf-v5-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-3"
     data-ouia-component-type="RHI/TableToolbar"
-    data-ouia-safe={true}
+    data-ouia-safe="true"
+    id="pf-random-id-2"
   >
     Some
-  </Toolbar>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
   <div
-    className="ins-c-table__toolbar-results"
+    class="ins-c-table__toolbar-results"
   >
     <span
-      className="ins-c-table__toolbar-results-count"
+      class="ins-c-table__toolbar-results-count"
     >
        
       1 Result
        
     </span>
   </div>
-</Fragment>
+</div>
 `;
 
 exports[`TableToolbar component should render with selection of 0 1`] = `
-<Fragment>
-  <Toolbar
-    className="ins-c-table__toolbar"
+<div>
+  <div
+    class="pf-v5-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-5"
     data-ouia-component-type="RHI/TableToolbar"
-    data-ouia-safe={true}
+    data-ouia-safe="true"
+    id="pf-random-id-4"
   >
     Some
-  </Toolbar>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
   0
-</Fragment>
+</div>
 `;
 
 exports[`TableToolbar component should render with selection of 1 1`] = `
-<Fragment>
-  <Toolbar
-    className="ins-c-table__toolbar"
+<div>
+  <div
+    class="pf-v5-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-6"
     data-ouia-component-type="RHI/TableToolbar"
-    data-ouia-safe={true}
+    data-ouia-safe="true"
+    id="pf-random-id-5"
   >
     Some
-  </Toolbar>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
   <div
-    className="ins-c-table__toolbar-results"
+    class="ins-c-table__toolbar-results"
   >
     <span
-      className="ins-c-table__toolbar-results-selected"
+      class="ins-c-table__toolbar-results-selected"
     >
        
       1
        Selected 
     </span>
   </div>
-</Fragment>
+</div>
 `;

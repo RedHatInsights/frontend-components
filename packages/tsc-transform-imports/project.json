@@ -1,0 +1,25 @@
+{
+  "name": "@redhat-cloud-services/tsc-transform-imports",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/tsc-transform-imports",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "rootDir": "packages/tsc-transform-imports/src",
+        "main": "packages/tsc-transform-imports/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/tsc-transform-imports",
+        "tsConfig": "packages/tsc-transform-imports/tsconfig.json"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/tsc-transform-imports/src/**/*.ts", "packages/tsc-transform-imports/package.json"]
+      }
+    }
+  },
+  "tags": ["scope:build"]
+}

@@ -1,6 +1,6 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import PropTypes from 'prop-types';
-import { SecurityIcon } from '@patternfly/react-icons';
+import { SecurityIcon } from '@patternfly/react-icons/dist/dynamic/icons/security-icon';
 
 /**
  * This was created to fix following circular dependency issue

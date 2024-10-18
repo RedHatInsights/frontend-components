@@ -73,7 +73,6 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({ items = 
       onOpenChange={(isExpanded) => setExpanded(isExpanded)}
       onSelect={(event, value) => onSelect(event, value)}
       isOpen={isExpanded}
-      placeholder={placeholder}
       ouiaId={placeholder}
     >
       <SelectList aria-label="Options menu">

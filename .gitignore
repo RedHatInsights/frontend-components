@@ -37,3 +37,11 @@ packages/**/.cache
 
 # Ibutsu test reports
 ibutsu-report
+
+
+
+.nx/cache
+.nx/workspace-data
+tmp
+
+packages/docs/pages/fec
