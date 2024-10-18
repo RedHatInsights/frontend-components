@@ -4,7 +4,7 @@
     "target": "es5",
     "module": "commonjs",
     "lib": ["es2020", "dom"],
-    "allowJs": false,
+    "allowJs": true,
     "jsx": "react-jsx",
     "declaration": true,
     "sourceMap": true,

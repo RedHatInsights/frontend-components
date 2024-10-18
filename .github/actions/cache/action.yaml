@@ -1,0 +1,16 @@
+name: Node modules cache
+description: Retrieve and cache project node_modules
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    # cache node modules for all jobs to use
+    - uses: actions/cache@v4
+      id: node_modules-cache
+      with:
+        path: | 
+          **/node_modules
+        key: install-cache-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
