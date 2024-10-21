@@ -13,10 +13,11 @@ import {
   Radio,
   TextInputGroup,
   TextInputGroupMain,
+  TextInputGroupUtilities,
   TreeView,
   TreeViewDataItem,
 } from '@patternfly/react-core';
-import { CloseIcon } from '@patternfly/react-icons';
+import { TimesIcon } from '@patternfly/react-icons';
 import {
   FilterMenuItemOnChange,
   Group,
@@ -127,9 +128,14 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (isOpen && !menuRef.current?.contains(event.target as Node)) {
-      setIsOpen(false);
-    }
+    if (!isOpen) return;
+
+    const clickedInsideInput = inputRef.current?.contains(event.target as Node);
+    const clickedInsideMenu = menuRef.current?.contains(event.target as Node);
+
+    if (clickedInsideInput || clickedInsideMenu) return;
+
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -141,9 +147,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
     };
   }, [isOpen, menuRef]);
 
-  const onToggleClick = (ev: React.MouseEvent) => {
-    ev.stopPropagation(); // Stop handleClickOutside from handling
-    ev.persist();
+  const onToggleClick = () => {
     setIsOpen(!isOpen);
   };
 
@@ -237,45 +241,44 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
         trigger={
           <MenuToggle
             aria-label="Group filter"
-            ref={toggleRef}
-            onClick={(e) => onToggleClick(e)}
+            innerRef={toggleRef}
+            onClick={onToggleClick}
             isExpanded={isOpen}
             className={classNames('ins-c-group-menu-toggle', className, {
               // turn off extra padding if filter input is within the input
               'pf-v5-u-p-0': isFilterable,
             })}
             isDisabled={isDisabled}
+            variant={isFilterable || onFilter ? 'typeahead' : 'default'}
           >
             {isFilterable || onFilter ? (
               <TextInputGroup isDisabled={isDisabled} isPlain>
                 <TextInputGroupMain
                   autoComplete="off"
-                  ref={inputRef}
-                  onChange={(_e, value) => setFilter(value)}
-                  onClick={(e) => e.preventDefault()}
-                  onKeyDown={(e) => {
-                    if (e.key === ' ' || e.key === 'Escape') {
-                      e.preventDefault();
-                      setFilter(e.key === ' ' ? `${searchString} ` : '');
-                      e.key === 'Escape' && setIsOpen(false);
-                    }
+                  innerRef={inputRef}
+                  onClick={onToggleClick}
+                  onChange={(_e, value) => {
+                    setFilter(value);
                   }}
                   aria-label="input with dropdown and clear button"
                   placeholder={placeholder}
                   value={searchString}
-                  tabIndex={0}
                   type="text"
                 />
-                {searchDirty && (
-                  <span className="ins-c-icon__link">
-                    <CloseIcon
+                <TextInputGroupUtilities>
+                  {searchDirty && (
+                    <Button
+                      variant="plain"
                       onClick={() => {
                         setFilter('');
                         setIsOpen(false);
                       }}
-                    />
-                  </span>
-                )}
+                      aria-label="Clear input value"
+                    >
+                      <TimesIcon aria-hidden />
+                    </Button>
+                  )}
+                </TextInputGroupUtilities>
               </TextInputGroup>
             ) : (
               placeholder
