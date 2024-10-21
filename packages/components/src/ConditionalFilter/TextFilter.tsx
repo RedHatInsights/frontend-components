@@ -56,7 +56,7 @@ const TextFilter: React.FunctionComponent<TextFilterProps> = ({ customIcon = <Se
         isDisabled={isDisabled}
         aria-label={props['aria-label'] || 'text input'}
         className={classNames('ins-c-conditional-filter', className)}
-        data-ouia-component-type="PF4/TextInput"
+        data-ouia-component-type="PF5/TextInput"
         onKeyDown={(e) => e.key === 'Enter' && props?.onSubmit?.(e)}
         ouiaId="ConditionalFilter"
         widget-type="InsightsInput"
