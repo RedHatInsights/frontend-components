@@ -24,7 +24,7 @@ const PageHeaderTitle: React.FC<PageHeaderTitleProps> = ({ className, title, act
 
   return (
     <Flex justifyContent={{ default: 'justifyContentSpaceBetween' }}>
-      <FlexItem className="pf-v5-u-flex-grow-1">
+      <div className="pf-v5-u-flex-grow-1">
         <Title
           headingLevel="h1"
           size="2xl"
@@ -37,7 +37,7 @@ const PageHeaderTitle: React.FC<PageHeaderTitleProps> = ({ className, title, act
         >
           {title}
         </Title>
-      </FlexItem>
+      </div>
       {actionsContent ? <FlexItem>{actionsContent}</FlexItem> : null}
     </Flex>
   );
