@@ -83,25 +83,18 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
                 toggleProps?.children
               ) : (
                 <Fragment key="split-checkbox">
-                  {hasError ? (
-                    <MenuToggleCheckbox
-                      id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
-                      aria-label="Select all"
-                      onChange={onSelect}
-                      isChecked={checked}
-                      ouiaId={checkboxOuiaId ?? 'BulkSelectCheckbox'}
-                    />
-                  ) : (
-                    <MenuToggleCheckbox
-                      id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
-                      aria-label="Select all"
-                      onChange={onSelect}
-                      isChecked={checked}
-                      ouiaId={checkboxOuiaId ?? 'BulkSelectCheckbox'}
-                    >
-                      {count ? `${count} selected` : ''}
-                    </MenuToggleCheckbox>
-                  )}
+                  <MenuToggleCheckbox
+                    id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
+                    aria-label="Select all"
+                    onChange={(checked, event) => {
+                      setIsOpen(false);
+                      onSelect?.(checked, event);
+                    }}
+                    isChecked={checked}
+                    ouiaId={checkboxOuiaId ?? 'BulkSelectCheckbox'}
+                  >
+                    {!hasError && count ? `${count} selected` : ''}
+                  </MenuToggleCheckbox>
                 </Fragment>
               )}
             </MenuToggle>
