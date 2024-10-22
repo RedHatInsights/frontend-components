@@ -6,8 +6,8 @@ import ExampleComponent from '@docs/example-component';
 Chrome provides an API that provides additional information and functions to each application.
 
 ## `useChrome`
-<Alert className="pf-u-mb-sm pf-u-mt-sm" variant="info" isInline title="Use chrome hook is available for chrome 2 compatible applications." />
-<Alert className="pf-u-mb-sm pf-u-mt-sm" variant="info" isInline title="Use chrome hook is available from version 3.3.4." />
+<Alert className="pf-v5-u-mb-sm pf-v5-u-mt-sm" variant="info" isInline title="Use chrome hook is available for chrome 2 compatible applications." />
+<Alert className="pf-v5-u-mb-sm pf-v5-u-mt-sm" variant="info" isInline title="Use chrome hook is available from version 3.3.4." />
 
 To access the chrome API please, use the `useChrome` hook from the `@redhat-cloud-services/frontend-components` package.
 
@@ -17,7 +17,7 @@ To access the chrome API please, use the `useChrome` hook from the `@redhat-clou
 
 If an application is not migrated to chrome 2 you can access the API via `window.insights.chrome` object.
 
-<Alert className="pf-u-mb-sm pf-u-mt-sm" variant="warning" isInline title="Chrome API on window is deprecated! Please use the hook." />
+<Alert className="pf-v5-u-mb-sm pf-v5-u-mt-sm" variant="warning" isInline title="Chrome API on window is deprecated! Please use the hook." />
 
 <ExampleComponent codeOnly source="chrome/api/window-chrome.js" />
 
@@ -27,7 +27,7 @@ If an application is not migrated to chrome 2 you can access the API via `window
 
 The `$internal` object gives access to the chrome redux [store](https://redux.js.org/api/store).
 
-<Alert className="pf-u-mb-sm pf-u-mt-sm" variant="info" isInline title="This object should be only used for debugging purposes. Do not use it in production." />
+<Alert className="pf-v5-u-mb-sm pf-v5-u-mt-sm" variant="info" isInline title="This object should be only used for debugging purposes. Do not use it in production." />
 
 ### `appAction`
 
@@ -45,7 +45,7 @@ Update object ID used in the current action. For instance, to open a `edit entit
 
 Highlights a chrome navigation item.
 
-<Alert className="pf-u-mb-sm pf-u-mt-sm" variant="warning" isInline title="This function has been deprecated!">
+<Alert className="pf-v5-u-mb-sm pf-v5-u-mt-sm" variant="warning" isInline title="This function has been deprecated!">
   Navigation items are highligted based on browser URL. This function has no longer any effect.
 </Alert>
 
@@ -186,7 +186,7 @@ function hideGlobalFilter(hide = true): void
 
 ### `identifyApp`
 
-<Alert className="pf-u-mb-sm pf-u-mt-sm" variant="warning" isInline title="This function has been deprecated!">
+<Alert className="pf-v5-u-mb-sm pf-v5-u-mt-sm" variant="warning" isInline title="This function has been deprecated!">
   Applications are identified automatically based on the loaded module. To update the document title, use <a href="#updateDocumentTitle">updateDocumentTitle</a> API instead.
 </Alert>
 
@@ -203,7 +203,7 @@ identifyApp('advisor', 'Insights advisor')
 
 Initialize chrome. Sets up the chrome API  and adds `data-ouia-safe` to the application root element.
 
-<Alert className="pf-u-mb-sm pf-u-mt-sm" variant="info" isInline title="This function will be called internally after all applications are migrated to chrome 2." />
+<Alert className="pf-v5-u-mb-sm pf-v5-u-mt-sm" variant="info" isInline title="This function will be called internally after all applications are migrated to chrome 2." />
 
 ### `isBeta`
 
@@ -217,7 +217,7 @@ function isBeta(): boolean
 
 A flag that signalizes if the current version of chrome is chrome 2
 
-<Alert className="pf-u-mb-sm pf-u-mt-sm" variant="info" isInline title="Chrome 2 has been deployed to all environments. This flag will be always true." />
+<Alert className="pf-v5-u-mb-sm pf-v5-u-mt-sm" variant="info" isInline title="Chrome 2 has been deployed to all environments. This flag will be always true." />
 
 ### `isPenTest`
 
@@ -246,7 +246,7 @@ mapGlobalFilter()
 
 ### `navigation`
 
-<Alert className="pf-u-mb-sm pf-u-mt-sm" variant="warning" isInline title="This function has been deprecated!">
+<Alert className="pf-v5-u-mb-sm pf-v5-u-mt-sm" variant="warning" isInline title="This function has been deprecated!">
   This function no longer has any purpose. Please, remove it from your code.
 </Alert>
 
@@ -291,7 +291,7 @@ on('NAVIGATION_TOGGLE', () => void)
 
 Register custom federated module to chrome modules library.
 
-<Alert className="pf-u-mb-sm pf-u-mt-sm" variant="info" isInline title="Not required for any chrome 2 application module">
+<Alert className="pf-v5-u-mb-sm pf-v5-u-mt-sm" variant="info" isInline title="Not required for any chrome 2 application module">
   If the application is already migrated to chrome 2, this is not necessary. Chrome 2 includes all federated modules from chrome-migrated applications by default.
 </Alert>
 
