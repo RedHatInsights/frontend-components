@@ -14,33 +14,29 @@ exports[`PageHeader component should render 1`] = `
     <div
       className="pf-v5-l-flex pf-m-justify-content-space-between"
     >
-      <FlexItem
+      <div
         className="pf-v5-u-flex-grow-1"
       >
-        <div
-          className="pf-v5-u-flex-grow-1"
+        <Title
+          className=""
+          data-ouia-component-id="OUIA-Generated-RHI/Header-true-1"
+          data-ouia-component-type="RHI/Header"
+          data-ouia-safe={true}
+          headingLevel="h1"
+          size="2xl"
+          widget-type="InsightsPageHeaderTitle"
         >
-          <Title
-            className=""
+          <h1
+            className="pf-v5-c-title pf-m-2xl"
             data-ouia-component-id="OUIA-Generated-RHI/Header-true-1"
             data-ouia-component-type="RHI/Header"
             data-ouia-safe={true}
-            headingLevel="h1"
-            size="2xl"
             widget-type="InsightsPageHeaderTitle"
           >
-            <h1
-              className="pf-v5-c-title pf-m-2xl"
-              data-ouia-component-id="OUIA-Generated-RHI/Header-true-1"
-              data-ouia-component-type="RHI/Header"
-              data-ouia-safe={true}
-              widget-type="InsightsPageHeaderTitle"
-            >
-              Something
-            </h1>
-          </Title>
-        </div>
-      </FlexItem>
+            Something
+          </h1>
+        </Title>
+      </div>
     </div>
   </Flex>
 </PageHeaderTitle>

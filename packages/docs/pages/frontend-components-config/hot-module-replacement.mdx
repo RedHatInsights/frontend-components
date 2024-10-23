@@ -8,13 +8,13 @@ Hot Module Replacement (HMR) exchanges, adds, or removes modules while an applic
 
 ## Enable HMR
 
-<Alert isInline className="pf-u-mt-md pf-u-mb-md" variant="info" title="HMR is available from @redhat-cloud-services/frontend-components-config to 4.6.28" />
+<Alert isInline className="pf-v5-u-mt-md pf-v5-u-mb-md" variant="info" title="HMR is available from @redhat-cloud-services/frontend-components-config to 4.6.28" />
 
 HMR **is disabled by default**. That is because HMR and module federation can be a bit flaky. Even though it worked in several applications during testing, we keep this feature opt-in, before the stability was validated on more projects.
 
 To enable the HRM, go to your `fec.config.js` or `dev.webpack.config.js` and add the `hotReload` flag. This flag replaces the deprecated `_unstableHotReload` flag.
 
-<Alert isInline className="pf-u-mt-md pf-u-mb-md" variant="danger" title="Do not add the flag to production webpack config!" />
+<Alert isInline className="pf-v5-u-mt-md pf-v5-u-mb-md" variant="danger" title="Do not add the flag to production webpack config!" />
 
 ```js
 // fec.config.js

@@ -10,7 +10,7 @@ Frontend components content generates from source code. That will ensure the doc
 2. Open the docs page in browser: <a href="http://localhost:3000/fec/modules/components/InsightsLabel" target="_blank">http://localhost:3000/fec/modules/components/InsightsLabel</a>
 3. Add a JS comment to the component declaration in the source file:
 
-<Alert isInline className="pf-u-mt-md" variant="info" title="The code comment must be multiline!" />
+<Alert isInline className="pf-v5-u-mt-md" variant="info" title="The code comment must be multiline!" />
 
 ```diff
 diff --git a/packages/components/src/InsightsLabel/InsightsLabel.tsx b/packages/components/src/InsightsLabel/InsightsLabel.tsx
@@ -40,7 +40,7 @@ index 4738553a..a3dd725a 100644
 2. Open the docs page in browser: <a href="http://localhost:3000/fec/modules/components/InsightsLabel" target="_blank">http://localhost:3000/fec/modules/components/InsightsLabel</a>
 3. Edit props definition or add comments to prop types to generate description:
 
-<Alert className="pf-u-mt-md" isInline variant="info" title="The code comment must be multiline!" />
+<Alert className="pf-v5-u-mt-md" isInline variant="info" title="The code comment must be multiline!" />
 
 ```diff
 diff --git a/packages/components/src/InsightsLabel/InsightsLabel.tsx b/packages/components/src/InsightsLabel/InsightsLabel.tsx
@@ -68,7 +68,7 @@ index 4738553a..acca5a75 100644
 1. Pick a component you want to document and open it in your EDI. Eg: `/packages/components/src/InsightsLabel.tsx`.
 2. Create a new JS file in the examples directory. The JS file directory must match the component filename. For `/packages/components/src/InsightsLabel.tsx`, create files in `/packages/docs/examples/InsightsLabel/<filename>.js`. The filename is used to generate an example title.
 
-<Alert className="pf-u-mt-md" isInline variant="info" title="We use JSS to style documentation components." />
+<Alert className="pf-v5-u-mt-md" isInline variant="info" title="We use JSS to style documentation components." />
 
 ```diff
 diff --git a/packages/docs/examples/InsightsLabel/critical-label.js b/packages/docs/examples/InsightsLabel/critical-label.js

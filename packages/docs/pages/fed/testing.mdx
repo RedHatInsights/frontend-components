@@ -100,7 +100,7 @@ global.__scalprum__ = {
 - `expiration` is the cache expiration date; it is set to year 3000. I think that might be enough
 - `modules` is a set of remote modules you want to mock. In this case, we are mocking the `./InventoryTable` module
 
-<Alert className="pf-u-m-lg" variant="info" title="Where can you find the module name?">The remote dependency scope and module name is the same as the "AsyncComponent" props. Check out the <a href="https://github.com/RedHatInsights/frontend-components/blob/master/packages/components/src/Inventory/InventoryTable.js#L21" target="_blank">inventory example</a>.</Alert>
+<Alert className="pf-v5-u-m-lg" variant="info" title="Where can you find the module name?">The remote dependency scope and module name is the same as the "AsyncComponent" props. Check out the <a href="https://github.com/RedHatInsights/frontend-components/blob/master/packages/components/src/Inventory/InventoryTable.js#L21" target="_blank">inventory example</a>.</Alert>
 
 And that is it. If you run a test, the `InventoryTable` will render the mocked component. The same approach is used for any other AsyncComponent or remote module used in the platform.
 
