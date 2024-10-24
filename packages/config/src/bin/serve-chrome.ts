@@ -4,11 +4,10 @@ import { execSync, spawn } from 'child_process';
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 import waitOn from 'wait-on';
 
-const REPO_OWNER = 'RedHatInsights';
-const REPO_NAME = 'insights-chrome';
 const CONTAINER_PORT = 8000;
 const CONTAINER_NAME = 'fec-chrome-local';
-const IMAGE_REPO = 'quay.io/cloudservices/insights-chrome-frontend';
+const IMAGE_REPO = 'quay.io/redhat-services-prod/hcc-platex-services-tenant/insights-chrome';
+const LATEST_IMAGE_TAG = 'latest';
 const GRAPHQL_ENDPOINT = 'https://app-interface.apps.rosa.appsrep09ue1.03r5.p3.openshiftapps.com/graphql';
 
 type ContainerRuntime = 'docker' | 'podman';
@@ -68,34 +67,6 @@ function checkContainerRuntime(): ContainerRuntime {
   throw new Error('No container runtime found');
 }
 
-async function getQuaySha(): Promise<string> {
-  const { data } = await axios.get<{ tags: { name: string }[] }>('https://quay.io/api/v1/repository/cloudservices/insights-chrome-frontend/tag/');
-  return data.tags[0].name;
-}
-
-async function getLatestCommits(): Promise<string> {
-  try {
-    const { data } = await axios.get(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/commits`, {
-      headers: {
-        Accept: 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2022-11-28',
-      },
-      params: {
-        per_page: 1,
-      },
-    });
-    if (data.length === 0) {
-      throw new Error('No commits for chrome found!');
-    }
-
-    const { sha } = data[0];
-    return sha.substring(0, 7);
-  } catch (error) {
-    console.error('Unable to get chrome latest commit hash. Falling back to latest quay image.');
-    return getQuaySha();
-  }
-}
-
 type ResourceTemplate = {
   name: string;
   targets: { ref: string; namespace: { path: string } }[];
@@ -141,7 +112,7 @@ async function getProdRelease() {
   } catch (error) {
     fecLogger(LogType.error, error);
     fecLogger(LogType.warn, 'Unable to find chrome prod deployment! Falling back to latest image.');
-    return getLatestCommits();
+    return Promise.resolve(LATEST_IMAGE_TAG);
   }
 }
 
@@ -200,7 +171,7 @@ async function serveChrome(distPath: string, host: string, onError: (error: Erro
   if (isProd) {
     tag = await getProdRelease();
   } else {
-    tag = await getLatestCommits();
+    tag = LATEST_IMAGE_TAG;
   }
   pullImage(tag);
   startServer(tag, serverPort).catch((error) => {
