@@ -141,10 +141,12 @@ describe('BulkSelect', () => {
       await act(async () => {
         await userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
       });
-      act(() => {
-        userEvent.click(screen.getByRole('button', { expanded: true }));
-      });
       expect(onSelect).toHaveBeenCalled();
+
+      await act(async () => {
+        await userEvent.click(screen.getByRole('button'));
+      });
+      expect(screen.getByRole('button')).toHaveAttribute('aria-expanded', 'true');
       expect(otherAction).not.toHaveBeenCalled();
     });
 
