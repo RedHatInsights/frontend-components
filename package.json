@@ -47,6 +47,8 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
     "@babel/runtime": "^7.19.0",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "@frsource/cypress-plugin-visual-regression-diff": "^3.3.10",
     "@nx/cypress": "^20.0.0",
     "@nx/eslint": "^20.0.0",
@@ -115,6 +117,7 @@
     "fs-extra": "^9.1.0",
     "glob": "10.3.3",
     "history": "^4.10.1",
+    "husky": "^9.1.6",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.6.2",
     "jest-canvas-mock": "^2.4.0",
@@ -144,7 +147,8 @@
     "lint": "nx run-many -t lint --exclude=@redhat-cloud-services/frontend-components-pdf-generator,@redhat-cloud-services/frontend-components-charts",
     "serve:demo": "nx run demo:serve",
     "test:unit": "nx run-many -t test:unit --exclude=demo",
-    "test:component": "nx run-many -t test:component --exclude=demo --parallel=1"
+    "test:component": "nx run-many -t test:component --exclude=demo --parallel=1",
+    "prepare": "husky"
   },
   "description": "Components for Red Hat Cloud Services",
   "repository": {
