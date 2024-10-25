@@ -38,6 +38,12 @@
         "outputPath": "dist/@redhat-cloud-services/rule-components"
       }
     },
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/rule-components/src"
+      }
+    },
 
     "build": {
       "executor": "nx:noop",

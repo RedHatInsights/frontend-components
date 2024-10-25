@@ -1,7 +1,36 @@
 import React, { ChangeEvent, ReactNode } from 'react';
-import { Group, GroupItem } from './GroupFilter';
 import GroupType from './groupType';
 import { ButtonProps, ButtonVariant, CheckboxProps, RadioProps } from '@patternfly/react-core';
+
+export interface GroupItem {
+  /** Optional isSelected flag */
+  isSelected?: boolean;
+  /** Reference back to the group */
+  group: Group;
+  /** Current group filter item */
+  item: GroupFilterItem;
+}
+
+export interface Group {
+  /** Optional groupSelectable flag. */
+  groupSelectable?: boolean;
+  /** Optional id. */
+  id?: string;
+  /** Optional isSelected flag. */
+  isSelected?: boolean;
+  /** Optional item. */
+  item?: GroupFilterItem;
+  /** Group item array. */
+  items?: GroupFilterItem[];
+  /** Optional label. */
+  label: string;
+  /** Optional noFilter flag. */
+  noFilter?: boolean;
+  /** Optional group type. */
+  type?: GroupType;
+  /** Optional value. */
+  value?: string;
+}
 
 type ExtraCheckboxAttributes = {
   type: GroupType.checkbox;

@@ -23,7 +23,12 @@
         "forceTypes": true
       }
     },
-
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/chrome/src"
+      }
+    },
     "build": {
       "executor": "nx:noop",
       "dependsOn": ["^build", "build:packages"]

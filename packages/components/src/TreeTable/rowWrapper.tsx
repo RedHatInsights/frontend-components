@@ -1,17 +1,8 @@
 import React from 'react';
-import { RowWrapper, RowWrapperProps } from '@patternfly/react-table';
+import { RowWrapper } from '@patternfly/react-table';
 import classnames from 'classnames';
 
-import { Point } from './helpers';
-
-export interface TreeTableRow extends RowWrapperProps {
-  [index: string]: any;
-  level: number;
-  isTreeOpen?: boolean;
-  point?: Point;
-  posinset?: string | number;
-  treeParent: number;
-}
+import { TreeTableRow } from './helpers';
 
 export interface TreeRowWrapperProps {
   className?: string;
