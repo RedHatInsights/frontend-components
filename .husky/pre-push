@@ -1,0 +1,4 @@
+npx --no-install nx affected -t lint --exclude=@redhat-cloud-services/frontend-components-pdf-generator,@redhat-cloud-services/frontend-components-charts
+npx --no-install nx affected -t test:unit --exclude=demo
+npx --no-install nx affected -t test:component --exclude=demo --parallel=1
+npx --no-install nx affected -t build --exclude=demo,@redhat-cloud-services/frontend-components-pdf-generator,@redhat-cloud-services/frontend-components-charts
