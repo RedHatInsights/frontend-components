@@ -12,23 +12,7 @@ import RebootRequired from '../RebootRequired/RebootRequired';
 import RuleRating from '../RuleRating/RuleRating';
 import { AdvisorProduct, Rating, RuleContentOcp, RuleContentRhel } from '../types';
 import { RuleDescription } from '../RuleDescription';
-
-export type Message = React.ReactNode;
-export type RuleDetailsMessages = {
-  systemReboot: Message;
-  knowledgebaseArticle: Message;
-  totalRisk: Message;
-  rulesDetailsTotalRiskBody: Message;
-  likelihoodLevel: Message;
-  likelihoodDescription: Message;
-  impactLevel: Message;
-  impactDescription: Message;
-  riskOfChange: Message;
-  riskOfChangeText: Message;
-  riskOfChangeLabel: Message;
-  ruleHelpful: Message;
-  feedbackThankYou: Message;
-};
+import { RuleDetailsMessages } from './RuleDetailsMessages';
 
 export interface RuleDetailsProps {
   messages: RuleDetailsMessages;

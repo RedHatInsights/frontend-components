@@ -13,6 +13,12 @@
         "tsConfig": "packages/tsc-transform-imports/tsconfig.json"
       }
     },
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/ysc-transform-imports/src"
+      }
+    },
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],

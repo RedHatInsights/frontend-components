@@ -38,6 +38,12 @@
         "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications"
       }
     },
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/notifications/src"
+      }
+    },
 
     "build": {
       "executor": "nx:noop",

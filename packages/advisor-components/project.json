@@ -38,7 +38,12 @@
         "outputPath": "dist/@redhat-cloud-services/frontend-components-advisor-components"
       }
     },
-
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/advisor-components/src"
+      }
+    },
     "build": {
       "executor": "nx:noop",
       "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]

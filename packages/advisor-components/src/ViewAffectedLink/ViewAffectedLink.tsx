@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Message } from '../RuleDetails/RuleDetails';
+import { Message } from '../RuleDetails/RuleDetailsMessages';
 import { AdvisorProduct, RuleContentOcp, RuleContentRhel } from '../types';
 
 interface ViewAffectedLinkProps {

@@ -4,6 +4,12 @@
   "sourceRoot": "packages/types",
   "projectType": "library",
   "targets": {
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/config-utils/src"
+      }
+    },
     "build": {
       "executor": "@nx/js:tsc",
       "options": {
