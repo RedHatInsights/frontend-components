@@ -85,6 +85,7 @@
     "@types/history": "^4.7.11",
     "@types/jest": "^27.5.2",
     "@types/lodash": "^4.14.186",
+    "@types/madge": "^5.0.3",
     "@types/node": "18.16.9",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
@@ -123,6 +124,7 @@
     "jest-canvas-mock": "^2.4.0",
     "jest-environment-jsdom": "^29.6.2",
     "jsdom": "~22.1.0",
+    "madge": "^8.0.0",
     "mocha-ibutsu-reporter": "^0.0.2",
     "mutation-observer": "^1.0.3",
     "nx": "20.0.0",
@@ -144,6 +146,7 @@
   "scripts": {
     "nx": "nx",
     "build": "nx run-many --target=build --exclude=demo,@redhat-cloud-services/frontend-components-pdf-generator,@redhat-cloud-services/frontend-components-charts",
+    "check-circular-imports": "nx run-many -t check-circular-imports --exclude=demo",
     "lint": "nx run-many -t lint --exclude=@redhat-cloud-services/frontend-components-pdf-generator,@redhat-cloud-services/frontend-components-charts",
     "serve:demo": "nx run demo:serve",
     "test:unit": "nx run-many -t test:unit --exclude=demo",
