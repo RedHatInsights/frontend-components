@@ -84,3 +84,23 @@ jobs:
       - uses: './.github/actions/cache'
       - name: Lint
         run: npx nx affected -t test:lint --exclude=demo
+  commitlint:
+    needs: [install]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: './.github/actions/cache'
+      - name: install
+        shell: bash
+        run: npm i
+      - name: Validate current commit on push
+        shell: bash
+        if: github.event_name == 'push'
+        run: npx commitlint --last --verbose
+      - name: Validate PR commits
+        shell: bash
+        if: github.event_name == 'pull_request'
+        run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
