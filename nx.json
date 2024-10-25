@@ -1,6 +1,40 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "release": {
+    "changelog": {
+      "workspaceChangelog": {
+        "createRelease": "github"
+      }
+    },
+    "version": {
+      "conventionalCommits": false,
+      "preVersionCommand": "npm run build",
+      "generatorOptions": {
+        "packageRoot": "dist/{projectName}"
+      }
+    },
+    "projects": [
+      "packages/advisor-components",
+      "packages/chrome",
+      "packages/components",
+      "packages/config",
+      "packages/config-utils",
+      "packages/notifications",
+      "packages/remediations",
+      "packages/rule-components",
+      "packages/testing",
+      "packages/translations",
+      "packages/tsc-transform-imports",
+      "packages/utils",
+      "packages/types"
+    ]
+  },
   "targetDefaults": {
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectName}"
+      }
+    },
     "build": {
       "dependsOn": ["^build"],
       "cache": true
@@ -53,6 +87,18 @@
         "openTargetName": "open-cypress",
         "componentTestingTargetName": "component-test",
         "ciTargetName": "e2e-ci"
+      }
+    },
+    {
+      "plugin": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "tsc:typecheck"
+        },
+        "build": {
+          "targetName": "tsc:build",
+          "configName": "tsconfig.lib.json"
+        }
       }
     }
   ],
