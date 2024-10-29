@@ -4,9 +4,9 @@ export type RuleDetailsMessages = {
   knowledgebaseArticle: Message;
   totalRisk: Message;
   rulesDetailsTotalRiskBody: Message;
-  likelihoodLevel: Message;
+  likelihoodLevel: string;
   likelihoodDescription: Message;
-  impactLevel: Message;
+  impactLevel: string;
   impactDescription: Message;
   riskOfChange: Message;
   riskOfChangeText: Message;
