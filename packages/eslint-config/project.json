@@ -1,0 +1,26 @@
+{
+  "name": "@redhat-cloud-services/eslint-config-redhat-cloud-services",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/eslint-config",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build"],
+      "options": {
+        "main": "packages/eslint-config/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/eslint-config-redhat-cloud-services",
+        "tsConfig": "packages/eslint-config/tsconfig.json",
+        "assets": ["README.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/eslint-config/**/*.ts", "packages/eslint-config/package.json"]
+      }
+    }
+  },
+  "tags": ["scope:public"]
+}
