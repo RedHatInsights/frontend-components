@@ -1,20 +1,38 @@
 import React, { useMemo } from 'react';
 
-import PropTypes from 'prop-types';
-import { Tooltip } from '@patternfly/react-core';
+import { Tooltip } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
 import classNames from 'classnames';
 import './severity-line.scss';
 
-const chartMapper = (width) => ({
+const chartMapper = (width: number) => ({
   1: '1',
   2: width / 3,
   3: width * (2 / 3),
   4: width - 1,
 });
 
-const SeverityLine = ({ title, value, className, tooltipMessage, config, chartProps }) => {
-  const { width, height } = config;
-  const severity = useMemo(() => chartMapper(width)?.[value], [width, value]);
+export type SeverityLineProps = {
+  title: string;
+  value: 1 | 2 | 3 | 4;
+  className?: string;
+  tooltipMessage?: React.ReactNode;
+  config?: {
+    height?: number;
+    width?: number;
+  };
+  chartProps?: React.HTMLProps<HTMLDivElement>;
+};
+
+const defaultConfig = {
+  height: 12,
+  width: 302,
+};
+
+const SeverityLine = ({ title, value, className, tooltipMessage, config = defaultConfig, chartProps }: SeverityLineProps) => {
+  const { width, height } = { ...defaultConfig, ...config };
+  const severity = useMemo(() => {
+    return chartMapper(width)?.[value];
+  }, [width, value]);
   const chartClasses = classNames(className, 'ins-c-severity-line');
   const points = [
     { className: 'horizontal', points: `${1}, ${height / 2} ${width - 1}, ${height / 2}` },
@@ -54,27 +72,6 @@ const SeverityLine = ({ title, value, className, tooltipMessage, config, chartPr
       )}
     </div>
   );
-};
-
-SeverityLine.propTypes = {
-  value: PropTypes.number.isRequired,
-  title: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  tooltipMessage: PropTypes.node,
-  config: PropTypes.shape({
-    height: PropTypes.number,
-    width: PropTypes.number,
-  }),
-  chartProps: PropTypes.shape({
-    [PropTypes.string]: PropTypes.any,
-  }),
-};
-
-SeverityLine.defaultProps = {
-  config: {
-    height: 12,
-    width: 302,
-  },
 };
 
 export default SeverityLine;
