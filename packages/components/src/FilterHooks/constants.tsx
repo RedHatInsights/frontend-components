@@ -11,7 +11,7 @@ type TagGroup = {
   tag: Tag;
 };
 
-export type GroupItem = {
+export type FilterHookGroupItem = {
   tagKey: string;
   tagValue: string;
   meta?: {
@@ -23,7 +23,7 @@ type Group = {
   isSelected: boolean;
   group: Record<string, unknown>;
   value?: string;
-  item?: GroupItem;
+  item?: FilterHookGroupItem;
 };
 
 export type GroupValue = {

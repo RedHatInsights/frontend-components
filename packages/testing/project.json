@@ -31,6 +31,12 @@
         "forceTypes": true
       }
     },
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/testing/src"
+      }
+    },
     "transform:scss": {
       "dependsOn": ["^transform:scss", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",

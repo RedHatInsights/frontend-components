@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '@patternfly/react-core';
 import { AngleRightIcon } from '@patternfly/react-icons';
 import './styles.scss';
-import { TreeTableRowProps } from '.';
+import { TreeTableRowProps } from './helpers';
 
 export type TreeTableDecoratorCollapse = (event: React.MouseEvent<HTMLButtonElement>, value: any, row: TreeTableRowProps) => void;
 

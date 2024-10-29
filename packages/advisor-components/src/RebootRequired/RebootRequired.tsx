@@ -3,8 +3,7 @@ import './RebootRequired.scss';
 import React from 'react';
 import { Icon, Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { PowerOffIcon } from '@patternfly/react-icons';
-
-import { RuleDetailsMessages } from '../RuleDetails/RuleDetails';
+import { RuleDetailsMessages } from '../RuleDetails/RuleDetailsMessages';
 
 interface RebootRequiredProps {
   rebootRequired: boolean;

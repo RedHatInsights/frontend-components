@@ -39,6 +39,12 @@
         "outputPath": "dist/@redhat-cloud-services/frontend-components-utilities"
       }
     },
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/utils/src"
+      }
+    },
 
     "build": {
       "executor": "nx:noop",

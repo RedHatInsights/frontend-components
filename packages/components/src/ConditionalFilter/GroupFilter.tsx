@@ -19,6 +19,7 @@ import {
 import { CloseIcon } from '@patternfly/react-icons';
 import {
   FilterMenuItemOnChange,
+  Group,
   GroupFilterItem,
   TreeViewItem,
   calculateSelected,
@@ -35,36 +36,7 @@ import {
 } from './groupFilterConstants';
 import GroupType from './groupType';
 import './group-filter.scss';
-
-export interface GroupItem {
-  /** Optional isSelected flag */
-  isSelected?: boolean;
-  /** Reference back to the group */
-  group: Group;
-  /** Current group filter item */
-  item: GroupFilterItem;
-}
-
-export interface Group {
-  /** Optional groupSelectable flag. */
-  groupSelectable?: boolean;
-  /** Optional id. */
-  id?: string;
-  /** Optional isSelected flag. */
-  isSelected?: boolean;
-  /** Optional item. */
-  item?: GroupFilterItem;
-  /** Group item array. */
-  items?: GroupFilterItem[];
-  /** Optional label. */
-  label: string;
-  /** Optional noFilter flag. */
-  noFilter?: boolean;
-  /** Optional group type. */
-  type?: GroupType;
-  /** Optional value. */
-  value?: string;
-}
+import { GroupItem } from './groupFilterConstants';
 
 type FilterableProps = {
   /** Optional isFilterable flag. */
