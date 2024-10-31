@@ -160,9 +160,9 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
 
     const clickedInsideInput = inputRef.current?.contains(event.target as Node);
     const clickedInsideMenu = menuRef.current?.contains(event.target as Node);
+    const clickedToggle = toggleRef.current?.contains(event.target as Node);
 
-    if (clickedInsideInput || clickedInsideMenu) return;
-
+    if (clickedInsideInput || clickedInsideMenu || clickedToggle) return;
     setIsOpen(false);
   };
 
