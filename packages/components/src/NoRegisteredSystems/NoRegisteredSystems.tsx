@@ -1,6 +1,11 @@
 import React from 'react';
-import { Button, EmptyState, EmptyStateBody, EmptyStateFooter, EmptyStateHeader, EmptyStateIcon } from '@patternfly/react-core';
-import { DisconnectedIcon } from '@patternfly/react-icons';
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { EmptyState } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateBody } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateFooter } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateHeader } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateIcon } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import DisconnectedIcon from '@patternfly/react-icons/dist/dynamic/icons/disconnected-icon';
 
 export interface NoRegisteredSystemsProps {
   titleText?: React.ReactNode;

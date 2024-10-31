@@ -1,32 +1,28 @@
 import React from 'react';
 import { ScalprumComponent, ScalprumComponentProps } from '@scalprum/react-core';
-import { Bullseye, Spinner } from '@patternfly/react-core';
+import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
+import { Spinner } from '@patternfly/react-core/dist/dynamic/components/Spinner';
 import classNames from 'classnames';
 import { ChromeAPI } from '@redhat-cloud-services/types';
 
-export type ExcludeModulesKeys = 'appName' | 'module' | 'scope';
+export type ExcludeModulesKeys = 'module' | 'scope';
 
-export interface AsyncComponentProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
-  /** Name of the app from which module will be loaded. */
-  appName: string;
+export type AsyncComponentProps = {
   /** Loaded module, it has to start with `./`. */
   module: string;
   /** Optional scope, if not passed appName is used. */
-  scope?: string;
+  scope: string;
   /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
   fallback: React.ReactElement;
   /** Optional wrapper component */
   component: keyof JSX.IntrinsicElements;
-  /** Other props passed to the AsyncComponent */
-  [key: string]: any;
-}
+} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
-interface BaseAsyncComponentProps extends AsyncComponentProps {
+type BaseAsyncComponentProps = AsyncComponentProps & {
   innerRef: React.MutableRefObject<HTMLElement | null> | ((instance: HTMLElement | null) => void) | null;
-}
+};
 
 const BaseAsyncComponent: React.FunctionComponent<BaseAsyncComponentProps> = ({
-  appName,
   scope,
   module,
   fallback = (
@@ -41,15 +37,14 @@ const BaseAsyncComponent: React.FunctionComponent<BaseAsyncComponentProps> = ({
 }) => {
   const SCProps: ScalprumComponentProps<ChromeAPI, Omit<AsyncComponentProps, 'component'>> = {
     className,
-    appName,
     module,
-    scope: scope ?? appName,
+    scope,
     ref: innerRef,
     fallback,
     ...props,
   };
   return (
-    <Cmp className={classNames(className, appName)}>
+    <Cmp className={classNames(className, scope)}>
       <ScalprumComponent {...SCProps} />
     </Cmp>
   );

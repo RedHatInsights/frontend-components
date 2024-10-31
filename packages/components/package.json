@@ -49,8 +49,7 @@
     "@patternfly/patternfly": "^5.0.0",
     "@types/react": "^18.0.0",
     "css-loader": "^6.7.1",
-    "cypress": "^12.17.3",
-    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-cypress": "^3.0.0",
     "glob": "10.3.3",
     "sass-loader": "^16.0.2",
     "style-loader": "^3.3.1"

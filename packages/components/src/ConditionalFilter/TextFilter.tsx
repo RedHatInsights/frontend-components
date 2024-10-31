@@ -1,6 +1,8 @@
 import React, { FormEvent, Fragment, MouseEventHandler, ReactNode } from 'react';
-import { Icon, TextInput, TextInputProps } from '@patternfly/react-core';
-import { SearchIcon } from '@patternfly/react-icons';
+import { Icon } from '@patternfly/react-core/dist/dynamic/components/Icon';
+import { TextInput } from '@patternfly/react-core/dist/dynamic/components/TextInput';
+import { TextInputProps } from '@patternfly/react-core/dist/dynamic/components/TextInput';
+import SearchIcon from '@patternfly/react-icons/dist/dynamic/icons/search-icon';
 import './conditional-filter.scss';
 import classNames from 'classnames';
 

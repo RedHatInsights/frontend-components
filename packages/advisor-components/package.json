@@ -41,8 +41,7 @@
     "@cypress/webpack-dev-server": "^3.5.1",
     "@types/dot": "^1.1.5",
     "css-loader": "^6.7.1",
-    "cypress": "^12.17.2",
-    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-cypress": "^3.0.0",
     "sass-loader": "^16.0.2",
     "style-loader": "^3.3.1"
   }

@@ -35,7 +35,7 @@ export default async function runExecutor(options: BuilderExecutorSchemaType, co
     throw new Error('Project name is required');
   }
 
-  const currentProjectRoot = context.projectsConfigurations.projects[projectName]?.root;
+  const currentProjectRoot = context.projectsConfigurations?.projects[projectName]?.root;
   if (!currentProjectRoot) {
     throw new Error('Project root is required');
   }
@@ -56,13 +56,13 @@ export default async function runExecutor(options: BuilderExecutorSchemaType, co
   const cjsTscOptions = { ...tscOptions, tsConfig: cjsTsConfig };
   const esmTscOptions = { ...tscOptions, outputPath: esmOutputDir, tsConfig: esmTsConfig };
   let executionResult = { success: false };
-  const results = await Promise.all([tscExecutor(cjsTscOptions, context), tscExecutor(esmTscOptions, context)]);
+  const results = await Promise.all([tscExecutor(cjsTscOptions, context as any), tscExecutor(esmTscOptions, context as any)]);
   executionResult = await resolveExecutors(...results);
   if (!executionResult.success) {
     return executionResult;
   }
   await removeEsmPackageJson(esmOutputDir);
-  await copyAssets({ outputPath: options.outputPath, assets: [`${currentProjectRoot}/package.json`, ...(options.assets ?? [])] }, context);
+  await copyAssets({ outputPath: options.outputPath, assets: [`${currentProjectRoot}/package.json`, ...(options.assets ?? [])] }, context as any);
 
   return executionResult;
 }
