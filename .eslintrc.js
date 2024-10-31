@@ -51,7 +51,7 @@ module.exports = {
     {
       files: ['*.ct.js', '*.ct.jsx', '*.ct.ts', '*.ct.tsx', '*.cy.js', '*.cy.jsx', '*.cy.ts', '*.cy.tsx'],
       extends: ['plugin:cypress/recommended'],
-    }
+    },
   ],
   rules: {
     '@nx/dependency-checks': 'off',

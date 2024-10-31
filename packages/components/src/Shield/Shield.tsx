@@ -1,5 +1,8 @@
-import { Icon, IconComponentProps, Tooltip } from '@patternfly/react-core';
-import { QuestionIcon, SecurityIcon } from '@patternfly/react-icons';
+import { Icon } from '@patternfly/react-core/dist/dynamic/components/Icon';
+import { IconComponentProps } from '@patternfly/react-core/dist/dynamic/components/Icon';
+import { Tooltip } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
+import QuestionIcon from '@patternfly/react-icons/dist/dynamic/icons/question-icon';
+import SecurityIcon from '@patternfly/react-icons/dist/dynamic/icons/security-icon';
 import { SVGIconProps } from '@patternfly/react-icons/dist/js/createIcon';
 import React from 'react';
 import { impactList } from './consts';

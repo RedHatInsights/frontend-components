@@ -1,6 +1,6 @@
 import React, { SetStateAction, useEffect, useState } from 'react';
 import { constructGroups, mapGroups } from './constants';
-import { Spinner } from '@patternfly/react-core';
+import { Spinner } from '@patternfly/react-core/dist/dynamic/components/Spinner';
 import './tagFilterHook.scss';
 import { AllTag, FilterHookGroupItem, GroupValue } from './constants';
 

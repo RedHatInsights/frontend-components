@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { MenuToggle, Radio, Select, SelectList, SelectOption } from '@patternfly/react-core';
+import { MenuToggle } from '@patternfly/react-core/dist/dynamic/components/MenuToggle';
+import { Radio } from '@patternfly/react-core/dist/dynamic/components/Radio';
+import { Select } from '@patternfly/react-core/dist/dynamic/components/Select';
+import { SelectList } from '@patternfly/react-core/dist/dynamic/components/Select';
+import { SelectOption } from '@patternfly/react-core/dist/dynamic/components/Select';
 
 import { FilterItem, FilterValue, isFilterValue } from './TextFilter';
 

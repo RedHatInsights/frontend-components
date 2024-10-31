@@ -1,20 +1,18 @@
 import React, { FormEvent, Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import globalBreakpointMd from '@patternfly/react-tokens/dist/js/global_breakpoint_md';
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownList,
-  Icon,
-  MenuToggle,
-  Split,
-  SplitItem,
-  ToolbarGroup,
-  ToolbarItem,
-  ToolbarToggleGroup,
-} from '@patternfly/react-core';
+import { Dropdown } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
+import { DropdownItem } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
+import { DropdownList } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
+import { Icon } from '@patternfly/react-core/dist/dynamic/components/Icon';
+import { MenuToggle } from '@patternfly/react-core/dist/dynamic/components/MenuToggle';
+import { Split } from '@patternfly/react-core/dist/dynamic/layouts/Split';
+import { SplitItem } from '@patternfly/react-core/dist/dynamic/layouts/Split';
+import { ToolbarGroup } from '@patternfly/react-core/dist/dynamic/components/Toolbar';
+import { ToolbarItem } from '@patternfly/react-core/dist/dynamic/components/Toolbar';
+import { ToolbarToggleGroup } from '@patternfly/react-core/dist/dynamic/components/Toolbar';
 
-import { FilterIcon } from '@patternfly/react-icons';
+import FilterIcon from '@patternfly/react-icons/dist/dynamic/icons/filter-icon';
 import TextFilter, { FilterValue, TextFilterProps } from './TextFilter';
 import { conditionalFilterType, identifyComponent, typeMapper } from './conditionalFilterConstants';
 import RadioFilter, { RadioFilterProps } from './RadioFilter';

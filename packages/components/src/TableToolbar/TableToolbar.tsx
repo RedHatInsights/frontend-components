@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
-import { Toolbar, ToolbarProps, useOUIAId } from '@patternfly/react-core';
+import { Toolbar } from '@patternfly/react-core/dist/dynamic/components/Toolbar';
+import { ToolbarProps } from '@patternfly/react-core/dist/dynamic/components/Toolbar';
+import { useOUIAId } from '@patternfly/react-core/dist/dynamic/helpers/OUIA/ouia';
 import classNames from 'classnames';
 
 import './TableToolbar.scss';
