@@ -10,8 +10,6 @@
       "@redhat-cloud-services/chrome/*": ["packages/chrome/src/*"],
       "@redhat-cloud-services/frontend-components-advisor-components": ["packages/advisor-components/src"],
       "@redhat-cloud-services/frontend-components-advisor-components/*": ["packages/advisor-components/src/*"],
-      "@redhat-cloud-services/frontend-components-charts": ["packages/charts/src"],
-      "@redhat-cloud-services/frontend-components-charts/*": ["packages/charts/src/*"],
       "@redhat-cloud-services/frontend-components-config-utilities": ["packages/config-utilities"],
       "@redhat-cloud-services/frontend-components-notifications": ["packages/notifications/src"],
       "@redhat-cloud-services/frontend-components-notifications/*": ["packages/notifications/src/*"],
