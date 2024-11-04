@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { MenuToggle, Select, SelectGroup, SelectList, SelectOption, getDefaultOUIAId } from '@patternfly/react-core';
+import { MenuToggle } from '@patternfly/react-core/dist/dynamic/components/MenuToggle';
+import { Select } from '@patternfly/react-core/dist/dynamic/components/Select';
+import { SelectGroup } from '@patternfly/react-core/dist/dynamic/components/Select';
+import { SelectList } from '@patternfly/react-core/dist/dynamic/components/Select';
+import { SelectOption } from '@patternfly/react-core/dist/dynamic/components/Select';
+import { getDefaultOUIAId } from '@patternfly/react-core/dist/dynamic/helpers/OUIA/ouia';
 
 import FilterInput from './FilterInput';
 import './filter-dropdown.scss';

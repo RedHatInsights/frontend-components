@@ -1,22 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import {
-  Button,
-  Checkbox,
-  Menu,
-  MenuContent,
-  MenuGroup,
-  MenuItem,
-  MenuList,
-  MenuToggle,
-  Popper,
-  Radio,
-  TextInputGroup,
-  TextInputGroupMain,
-  TreeView,
-  TreeViewDataItem,
-} from '@patternfly/react-core';
-import { CloseIcon } from '@patternfly/react-icons';
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { Checkbox } from '@patternfly/react-core/dist/dynamic/components/Checkbox';
+import { Menu } from '@patternfly/react-core/dist/dynamic/components/Menu';
+import { MenuContent } from '@patternfly/react-core/dist/dynamic/components/Menu';
+import { MenuGroup } from '@patternfly/react-core/dist/dynamic/components/Menu';
+import { MenuItem } from '@patternfly/react-core/dist/dynamic/components/Menu';
+import { MenuList } from '@patternfly/react-core/dist/dynamic/components/Menu';
+import { MenuToggle } from '@patternfly/react-core/dist/dynamic/components/MenuToggle';
+import { Popper } from '@patternfly/react-core/dist/dynamic/helpers/Popper/Popper';
+import { Radio } from '@patternfly/react-core/dist/dynamic/components/Radio';
+import { TextInputGroup } from '@patternfly/react-core/dist/dynamic/components/TextInputGroup';
+import { TextInputGroupMain } from '@patternfly/react-core/dist/dynamic/components/TextInputGroup';
+import { TreeView } from '@patternfly/react-core/dist/dynamic/components/TreeView';
+import { TreeViewDataItem } from '@patternfly/react-core/dist/dynamic/components/TreeView';
+import CloseIcon from '@patternfly/react-icons/dist/dynamic/icons/close-icon';
 import {
   FilterMenuItemOnChange,
   Group,

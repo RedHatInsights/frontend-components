@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { Button, ButtonVariant, Dropdown, DropdownItem, DropdownList, MenuToggle, TextInput, TextInputProps } from '@patternfly/react-core';
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { ButtonVariant } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { Dropdown } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
+import { DropdownItem } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
+import { DropdownList } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
+import { MenuToggle } from '@patternfly/react-core/dist/dynamic/components/MenuToggle';
+import { TextInput } from '@patternfly/react-core/dist/dynamic/components/TextInput';
+import { TextInputProps } from '@patternfly/react-core/dist/dynamic/components/TextInput';
 
-import { SearchIcon } from '@patternfly/react-icons';
+import SearchIcon from '@patternfly/react-icons/dist/dynamic/icons/search-icon';
 import './simple-table-filter.scss';
 
 export type SimpleFilterOptionItem = {

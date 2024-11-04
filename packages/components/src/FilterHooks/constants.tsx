@@ -1,5 +1,6 @@
 import React from 'react';
-import { Badge, Tooltip } from '@patternfly/react-core';
+import { Badge } from '@patternfly/react-core/dist/dynamic/components/Badge';
+import { Tooltip } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
 
 export type Tag = {
   key: string;

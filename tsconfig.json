@@ -72,7 +72,6 @@
       "packages/**/*.test.tsx",
       "packages/**/*.test.js",
       "packages/**/*.test.jsx",
-      "packages/**/babel.config.js",
       "packages/**/cypress.config.js",
       "packages/**/cypress.config.ts",
       "packages/**/cypress/**/.js",

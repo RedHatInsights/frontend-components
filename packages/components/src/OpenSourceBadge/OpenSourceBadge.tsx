@@ -1,5 +1,9 @@
-import { Button, Popover, Text, TextContent } from '@patternfly/react-core';
-import { CodeBranchIcon, ExternalLinkAltIcon } from '@patternfly/react-icons';
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { Popover } from '@patternfly/react-core/dist/dynamic/components/Popover';
+import { Text } from '@patternfly/react-core/dist/dynamic/components/Text';
+import { TextContent } from '@patternfly/react-core/dist/dynamic/components/Text';
+import CodeBranchIcon from '@patternfly/react-icons/dist/dynamic/icons/code-branch-icon';
+import ExternalLinkAltIcon from '@patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon';
 import React from 'react';
 
 export interface OpenSourceBadgeProps {

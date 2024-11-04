@@ -2,7 +2,6 @@
 
 /* eslint-disable no-unused-vars */
 require( 'whatwg-fetch');
-require('babel-polyfill');
 require('@testing-library/jest-dom');
 const { expect } = require('@jest/globals');
 const matchers = require('@testing-library/jest-dom/dist/matchers');

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './tagModal.scss';
-import { Button, Modal, Tab, TabTitleText, Tabs } from '@patternfly/react-core';
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { Modal } from '@patternfly/react-core/dist/dynamic/next/components/Modal';
+import { Tab } from '@patternfly/react-core/dist/dynamic/components/Tabs';
+import { TabTitleText } from '@patternfly/react-core/dist/dynamic/components/Tabs';
+import { Tabs } from '@patternfly/react-core/dist/dynamic/components/Tabs';
 import classNames from 'classnames';
 import TableWithFilter, { TableWithFilterPagination, TableWithFilterProps } from './TableWithFilter';
 import { ICell, IRow } from '@patternfly/react-table';

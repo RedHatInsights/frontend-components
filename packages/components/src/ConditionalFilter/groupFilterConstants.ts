@@ -1,6 +1,9 @@
 import React, { ChangeEvent, ReactNode } from 'react';
 import GroupType from './groupType';
-import { ButtonProps, ButtonVariant, CheckboxProps, RadioProps } from '@patternfly/react-core';
+import { ButtonProps } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { ButtonVariant } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { CheckboxProps } from '@patternfly/react-core/dist/dynamic/components/Checkbox';
+import { RadioProps } from '@patternfly/react-core/dist/dynamic/components/Radio';
 
 export interface GroupItem {
   /** Optional isSelected flag */
