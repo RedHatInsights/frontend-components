@@ -66,7 +66,9 @@
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
-        "preset": "conventionalcommits"
+        "preset": "conventionalcommits",
+        "postTargets": ["build", "deploy", "github"],
+        "push": true
       }
     },
     "github": {
@@ -75,6 +77,14 @@
         "tag": "${tag}",
         "notesFile": "packages/notifications/CHANGELOG.md"
       }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-notifications",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
     }
   }
 }

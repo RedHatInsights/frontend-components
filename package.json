@@ -91,6 +91,7 @@
     "madge": "^8.0.0",
     "mocha-ibutsu-reporter": "^0.0.2",
     "mutation-observer": "^1.0.3",
+    "ngx-deploy-npm": "^8.3.1",
     "nx": "20.0.6",
     "prettier": "^2.8.8",
     "react-refresh": "~0.14.2",

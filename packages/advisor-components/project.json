@@ -77,7 +77,9 @@
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
-        "preset": "conventionalcommits"
+        "preset": "conventionalcommits",
+        "postTargets": ["build", "deploy", "github"],
+        "push": true
       }
     },
     "github": {
@@ -86,6 +88,14 @@
         "tag": "${tag}",
         "notesFile": "packages/advisor-components/CHANGELOG.md"
       }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-advisor-components",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
     }
   }
 }
