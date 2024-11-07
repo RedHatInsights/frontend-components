@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/types",
   "projectType": "library",
+  "tags": ["scope:public"],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -19,7 +20,12 @@
       "options": {
         "lintFilePatterns": ["packages/types/**/*.ts", "packages/types/package.json"]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits"
+      }
     }
-  },
-  "tags": ["scope:public"]
+  }
 }

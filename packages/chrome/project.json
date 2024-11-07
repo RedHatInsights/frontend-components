@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/chrome",
   "projectType": "library",
+  "tags": ["scope:public"],
   "targets": {
     "build:bundles": {
       "dependsOn": ["^build:bundles"],
@@ -46,7 +47,12 @@
       "options": {
         "jestConfig": "packages/chrome/jest.config.ts"
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits"
+      }
     }
-  },
-  "tags": ["scope:public"]
+  }
 }

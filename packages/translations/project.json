@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/translations",
   "projectType": "library",
+  "tags": ["scope:public"],
   "targets": {
     "build:bundles": {
       "dependsOn": ["^build:bundles"],
@@ -13,15 +14,18 @@
         "outputPath": "dist/@redhat-cloud-services/frontend-components-translations",
         "cjsTsConfig": "packages/translations/tsconfig.cjs.json",
         "esmTsConfig": "packages/translations/tsconfig.esm.json",
-        "assets": [{
-          "glob": "**/*",
-          "input": "packages/translations/src/locales",
-          "output": "dist/@redhat-cloud-services/frontend-components-translations/locales"
-        },{
-          "glob": "**/*",
-          "input": "packages/translations/src/locales",
-          "output": "dist/@redhat-cloud-services/frontend-components-translations/esm/locales"
-        }]
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "packages/translations/src/locales",
+            "output": "dist/@redhat-cloud-services/frontend-components-translations/locales"
+          },
+          {
+            "glob": "**/*",
+            "input": "packages/translations/src/locales",
+            "output": "dist/@redhat-cloud-services/frontend-components-translations/esm/locales"
+          }
+        ]
       }
     },
     "build:styles": {
@@ -53,7 +57,6 @@
         "sourceDir": "packages/translations/src"
       }
     },
-
     "build": {
       "executor": "nx:noop",
       "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
@@ -71,7 +74,12 @@
       "options": {
         "jestConfig": "packages/translations/jest.config.ts"
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits"
+      }
     }
-  },
-  "tags": ["scope:public"]
+  }
 }

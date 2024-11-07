@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/components",
   "projectType": "library",
+  "tags": ["scope:public"],
   "targets": {
     "build:bundles": {
       "dependsOn": ["^build:bundles"],
@@ -17,20 +18,14 @@
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": [
-        "^build:styles",
-        "build:bundles"
-      ],
+      "dependsOn": ["^build:styles", "build:bundles"],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components",
         "sourceDir": "packages/components"
       }
     },
     "build:packages": {
-      "dependsOn": [
-        "^build:packages",
-        "build:bundles"
-      ],
+      "dependsOn": ["^build:packages", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components",
@@ -38,10 +33,7 @@
       }
     },
     "transform:scss": {
-      "dependsOn": [
-        "^transform:scss",
-        "build:bundles"
-      ],
+      "dependsOn": ["^transform:scss", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components"
@@ -55,30 +47,18 @@
     },
     "build": {
       "executor": "nx:noop",
-      "dependsOn": [
-        "^build",
-        "build:styles",
-        "build:packages",
-        "transform:scss"
-      ]
+      "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "packages/components/src/**/*",
-          "packages/components/package.json"
-        ]
+        "lintFilePatterns": ["packages/components/src/**/*", "packages/components/package.json"]
       }
     },
     "test:unit": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "packages/components/jest.config.ts"
       }
@@ -92,9 +72,12 @@
         "testingType": "component",
         "skipServe": true
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits"
+      }
     }
-  },
-  "tags": [
-    "scope:public"
-  ]
+  }
 }
