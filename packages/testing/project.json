@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/testing",
   "projectType": "library",
+  "tags": ["scope:public"],
   "targets": {
     "build:bundles": {
       "dependsOn": ["^build:bundles"],
@@ -44,7 +45,6 @@
         "outputPath": "dist/@redhat-cloud-services/frontend-components-testing"
       }
     },
-
     "build": {
       "executor": "nx:noop",
       "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
@@ -55,7 +55,12 @@
       "options": {
         "lintFilePatterns": ["packages/testing/src/**/*", "packages/testing/package.json"]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits"
+      }
     }
-  },
-  "tags": ["scope:public"]
+  }
 }

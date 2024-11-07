@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/executors/src",
   "projectType": "library",
+  "tags": ["scope:private"],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -40,11 +41,7 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "packages/executors/**/*.ts",
-          "packages/executors/package.json",
-          "packages/executors/executors.json"
-        ]
+        "lintFilePatterns": ["packages/executors/**/*.ts", "packages/executors/package.json", "packages/executors/executors.json"]
       }
     },
     "test:unit": {
@@ -53,7 +50,12 @@
       "options": {
         "jestConfig": "packages/executors/jest.config.ts"
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits"
+      }
     }
-  },
-  "tags": ["scope:private"]
+  }
 }

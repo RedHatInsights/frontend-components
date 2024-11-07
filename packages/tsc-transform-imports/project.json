@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/tsc-transform-imports",
   "projectType": "library",
+  "tags": ["scope:build"],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -25,7 +26,12 @@
       "options": {
         "lintFilePatterns": ["packages/tsc-transform-imports/src/**/*.ts", "packages/tsc-transform-imports/package.json"]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits"
+      }
     }
-  },
-  "tags": ["scope:build"]
+  }
 }
