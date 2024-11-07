@@ -61,6 +61,13 @@
       "options": {
         "preset": "conventionalcommits"
       }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notesFile": "packages/testing/CHANGELOG.md"
+      }
     }
   }
 }

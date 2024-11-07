@@ -17,7 +17,7 @@
     "check-circular-imports": {
       "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
       "options": {
-        "sourceDir": "packages/ysc-transform-imports/src"
+        "sourceDir": "packages/tsc-transform-imports/src"
       }
     },
     "lint": {
@@ -31,6 +31,13 @@
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "conventionalcommits"
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notesFile": "packages/tsc-transform-imports/CHANGELOG.md"
       }
     }
   }
