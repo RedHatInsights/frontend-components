@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/types",
   "projectType": "library",
+  "tags": ["scope:build"],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -33,7 +34,29 @@
       "options": {
         "jestConfig": "packages/config/jest.config.ts"
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits",
+        "postTargets": ["build", "deploy", "github"],
+        "push": true
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notesFile": "packages/config/CHANGELOG.md"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-config",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
     }
-  },
-  "tags": ["scope:build"]
+  }
 }

@@ -1,6 +1,11 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectName}"
+      }
+    },
     "build": {
       "dependsOn": ["^build"],
       "cache": true
@@ -53,6 +58,18 @@
         "openTargetName": "open-cypress",
         "componentTestingTargetName": "component-test",
         "ciTargetName": "e2e-ci"
+      }
+    },
+    {
+      "plugin": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "tsc:typecheck"
+        },
+        "build": {
+          "targetName": "tsc:build",
+          "configName": "tsconfig.lib.json"
+        }
       }
     }
   ],

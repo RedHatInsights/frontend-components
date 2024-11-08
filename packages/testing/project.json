@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/testing",
   "projectType": "library",
+  "tags": ["scope:public"],
   "targets": {
     "build:bundles": {
       "dependsOn": ["^build:bundles"],
@@ -44,7 +45,6 @@
         "outputPath": "dist/@redhat-cloud-services/frontend-components-testing"
       }
     },
-
     "build": {
       "executor": "nx:noop",
       "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
@@ -55,7 +55,29 @@
       "options": {
         "lintFilePatterns": ["packages/testing/src/**/*", "packages/testing/package.json"]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits",
+        "postTargets": ["build", "deploy", "github"],
+        "push": true
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notesFile": "packages/testing/CHANGELOG.md"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-testing",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
     }
-  },
-  "tags": ["scope:public"]
+  }
 }

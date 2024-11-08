@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/types",
   "projectType": "library",
+  "tags": ["scope:build"],
   "targets": {
     "check-circular-imports": {
       "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
@@ -25,7 +26,29 @@
       "options": {
         "lintFilePatterns": ["packages/config-utils/src/**/*", "packages/config-utils/package.json"]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits",
+        "postTargets": ["build", "deploy", "github"],
+        "push": true
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notesFile": "packages/config-utils/CHANGELOG.md"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-config-utilities",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
     }
-  },
-  "tags": ["scope:build"]
+  }
 }

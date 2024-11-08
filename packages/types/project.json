@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/types",
   "projectType": "library",
+  "tags": ["scope:public"],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -19,7 +20,29 @@
       "options": {
         "lintFilePatterns": ["packages/types/**/*.ts", "packages/types/package.json"]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits",
+        "postTargets": ["build", "deploy", "github"],
+        "push": true
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notesFile": "packages/types/CHANGELOG.md"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/types",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
     }
-  },
-  "tags": ["scope:public"]
+  }
 }
