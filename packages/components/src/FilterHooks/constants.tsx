@@ -1,5 +1,6 @@
 import React from 'react';
-import { Badge, Tooltip } from '@patternfly/react-core';
+import { Badge } from '@patternfly/react-core/dist/dynamic/components/Badge';
+import { Tooltip } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
 
 export type Tag = {
   key: string;
@@ -11,7 +12,7 @@ type TagGroup = {
   tag: Tag;
 };
 
-export type GroupItem = {
+export type FilterHookGroupItem = {
   tagKey: string;
   tagValue: string;
   meta?: {
@@ -23,7 +24,7 @@ type Group = {
   isSelected: boolean;
   group: Record<string, unknown>;
   value?: string;
-  item?: GroupItem;
+  item?: FilterHookGroupItem;
 };
 
 export type GroupValue = {

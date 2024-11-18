@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["cypress", "node", "./support/component.d.ts", "@simonsmith/cypress-image-snapshot/types"],
+  },
+  "include": [
+    "./cypress/**/*.tsx",
+    "./cypress/**/*.ts",
+    "./cypress/**/*.js",
+  ]
+}

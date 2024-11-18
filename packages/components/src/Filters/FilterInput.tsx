@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Checkbox, Radio } from '@patternfly/react-core';
+import { Checkbox } from '@patternfly/react-core/dist/dynamic/components/Checkbox';
+import { Radio } from '@patternfly/react-core/dist/dynamic/components/Radio';
 
 export interface FilterInputProps {
   addRemoveFilters?: (value?: string, param?: string, type?: string, checked?: boolean) => void;

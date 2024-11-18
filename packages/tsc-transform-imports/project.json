@@ -1,0 +1,54 @@
+{
+  "name": "@redhat-cloud-services/tsc-transform-imports",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/tsc-transform-imports",
+  "projectType": "library",
+  "tags": ["scope:build"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "rootDir": "packages/tsc-transform-imports/src",
+        "main": "packages/tsc-transform-imports/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/tsc-transform-imports",
+        "tsConfig": "packages/tsc-transform-imports/tsconfig.json"
+      }
+    },
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/tsc-transform-imports/src"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/tsc-transform-imports/src/**/*.ts", "packages/tsc-transform-imports/package.json"]
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits",
+        "postTargets": ["build", "deploy", "github"],
+        "push": true
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notesFile": "packages/tsc-transform-imports/CHANGELOG.md"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/tsc-transform-imports",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
+    }
+  }
+}

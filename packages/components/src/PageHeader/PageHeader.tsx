@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { DarkContext } from '../Dark';
 import './page-header.scss';
-import { useOUIAId } from '@patternfly/react-core';
+import { useOUIAId } from '@patternfly/react-core/dist/dynamic/helpers/OUIA/ouia';
 
 export interface PageHeaderProps {
   className?: string;

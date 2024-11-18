@@ -1,8 +1,13 @@
-import { Dropdown, DropdownItem, DropdownList, DropdownProps, MenuToggle, Tooltip } from '@patternfly/react-core';
+import { Dropdown } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
+import { DropdownItem } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
+import { DropdownList } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
+import { DropdownProps } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
+import { MenuToggle } from '@patternfly/react-core/dist/dynamic/components/MenuToggle';
+import { Tooltip } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
 
 import React, { useState } from 'react';
 
-import { ExportIcon } from '@patternfly/react-icons';
+import ExportIcon from '@patternfly/react-icons/dist/dynamic/icons/export-icon';
 
 export interface DownloadButtonProps extends Omit<DropdownProps, 'onSelect' | 'toggle' | 'dropdownItems'> {
   /**

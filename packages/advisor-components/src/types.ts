@@ -13,7 +13,7 @@ export interface RuleContent {
   rule_id: string;
   generic: string;
   total_risk: TotalRisk;
-  likelihood: number;
+  likelihood: Likelihood;
   description: string;
   publish_date: string;
   more_info: string;

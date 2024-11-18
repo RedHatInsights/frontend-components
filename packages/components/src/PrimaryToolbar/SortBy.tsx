@@ -1,7 +1,9 @@
 import React, { KeyboardEvent } from 'react';
 import { SortByDirection } from '@patternfly/react-table';
-import { Button, Icon } from '@patternfly/react-core';
-import { SortAmountDownIcon, SortAmountUpIcon } from '@patternfly/react-icons';
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { Icon } from '@patternfly/react-core/dist/dynamic/components/Icon';
+import SortAmountDownIcon from '@patternfly/react-icons/dist/dynamic/icons/sort-amount-down-icon';
+import SortAmountUpIcon from '@patternfly/react-icons/dist/dynamic/icons/sort-amount-up-icon';
 
 export function flipDirection(direction: SortByDirection) {
   return direction === SortByDirection.asc ? SortByDirection.desc : SortByDirection.asc;

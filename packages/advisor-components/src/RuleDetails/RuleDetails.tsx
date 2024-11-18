@@ -6,29 +6,13 @@ import { Flex, FlexItem, Icon, Stack, StackItem, Text, TextContent, TextVariants
 import { ExternalLinkAltIcon } from '@patternfly/react-icons';
 
 import InsightsLabel from '@redhat-cloud-services/frontend-components/InsightsLabel';
-import { SeverityLine } from '@redhat-cloud-services/frontend-components-charts/SeverityLine';
+import { SeverityLine } from '@redhat-cloud-services/frontend-components/SeverityLine';
 
 import RebootRequired from '../RebootRequired/RebootRequired';
 import RuleRating from '../RuleRating/RuleRating';
 import { AdvisorProduct, Rating, RuleContentOcp, RuleContentRhel } from '../types';
 import { RuleDescription } from '../RuleDescription';
-
-export type Message = React.ReactNode;
-export type RuleDetailsMessages = {
-  systemReboot: Message;
-  knowledgebaseArticle: Message;
-  totalRisk: Message;
-  rulesDetailsTotalRiskBody: Message;
-  likelihoodLevel: Message;
-  likelihoodDescription: Message;
-  impactLevel: Message;
-  impactDescription: Message;
-  riskOfChange: Message;
-  riskOfChangeText: Message;
-  riskOfChangeLabel: Message;
-  ruleHelpful: Message;
-  feedbackThankYou: Message;
-};
+import { RuleDetailsMessages } from './RuleDetailsMessages';
 
 export interface RuleDetailsProps {
   messages: RuleDetailsMessages;

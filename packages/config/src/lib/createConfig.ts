@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const searchIgnoredStyles = require('@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles');
+import searchIgnoredStyles from '@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles';
 
 import { LogType, ProxyOptions, fecLogger, proxy } from '@redhat-cloud-services/frontend-components-config-utilities';
 import addPrefixToContent from './addPrefixToContent';
@@ -313,11 +313,6 @@ export const createConfig = ({
         proxyVerbose,
         target,
         registry,
-        onBeforeSetupMiddleware: ({ chromePath }) => {
-          if (chromePath) {
-            copyTemplate(chromePath);
-          }
-        },
         bounceProd,
         useAgent,
         useDevBuild,

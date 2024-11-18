@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { RebootingIcon } from '@patternfly/react-icons';
+import RebootingIcon from '@patternfly/react-icons/dist/dynamic/icons/rebooting-icon';
 
 import './reboot.scss';
 

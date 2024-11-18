@@ -1,6 +1,8 @@
 import React from 'react';
-import { ExclamationCircleIcon, ExclamationTriangleIcon } from '@patternfly/react-icons';
-import { Tooltip, TooltipProps } from '@patternfly/react-core';
+import ExclamationCircleIcon from '@patternfly/react-icons/dist/dynamic/icons/exclamation-circle-icon';
+import ExclamationTriangleIcon from '@patternfly/react-icons/dist/dynamic/icons/exclamation-triangle-icon';
+import { Tooltip } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
+import { TooltipProps } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
 import classnames from 'classnames';
 import './CullingInformation.scss';
 import { CullingDate, CullingInfo, calculateTooltip } from './utils';

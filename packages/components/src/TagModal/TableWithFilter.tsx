@@ -1,5 +1,11 @@
 import React, { Fragment } from 'react';
-import { Bullseye, EmptyState, EmptyStateBody, EmptyStateHeader, EmptyStateVariant, ModalProps, Pagination } from '@patternfly/react-core';
+import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
+import { EmptyState } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateBody } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateHeader } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateVariant } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { ModalProps } from '@patternfly/react-core/dist/dynamic/next/components/Modal';
+import { Pagination } from '@patternfly/react-core/dist/dynamic/components/Pagination';
 // FIXME: Deal with table after
 import { Table, TableBody, TableHeader, TableProps } from '@patternfly/react-table/deprecated';
 import { EmptyTable } from '../EmptyTable';
@@ -159,7 +165,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
           <TableBody />
         </Table>
       ) : (
-        <SkeletonTable numberOfColumns={columns.length} rows={pagination?.perPage || 10} variant={TableVariant.compact} />
+        <SkeletonTable columnsCount={columns.length} rows={pagination?.perPage || 10} variant={TableVariant.compact} />
       )}
       {onUpdateData && pagination && loaded && (
         <TableToolbar isFooter className="ins-c-inventory__table--toolbar">

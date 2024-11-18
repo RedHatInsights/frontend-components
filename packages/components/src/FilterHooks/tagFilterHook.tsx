@@ -1,8 +1,8 @@
 import React, { SetStateAction, useEffect, useState } from 'react';
 import { constructGroups, mapGroups } from './constants';
-import { Spinner } from '@patternfly/react-core';
+import { Spinner } from '@patternfly/react-core/dist/dynamic/components/Spinner';
 import './tagFilterHook.scss';
-import { AllTag, GroupItem, GroupValue } from './constants';
+import { AllTag, FilterHookGroupItem, GroupValue } from './constants';
 
 export const tagsFilterState = { tagsFilter: {} };
 export const TAGS_FILTER = 'TAGS_FILTER';
@@ -36,6 +36,7 @@ export const useTagsFilter: UseTagsFilter = (
   loaded = false,
   additionalTagsCount = 0,
   onShowMoreClick,
+  // @ts-ignore
   [globalState, dispatch] = [tagsFilterState],
   itemText = 'item',
   showMoreTitle
@@ -69,7 +70,7 @@ export const useTagsFilter: UseTagsFilter = (
       _e: any,
       newSelection: { [key: string]: GroupValue },
       group: Record<string, unknown>,
-      item: GroupItem,
+      item: FilterHookGroupItem,
       groupKey: string,
       itemKey: string
     ) => {

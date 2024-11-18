@@ -1,5 +1,6 @@
 import React from 'react';
-import { Tooltip, TooltipProps } from '@patternfly/react-core';
+import { Tooltip } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
+import { TooltipProps } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
 
 const second = 1000;
 const minute = second * 60;

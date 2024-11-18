@@ -1,7 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
-import { EmptyState, EmptyStateBody, EmptyStateHeader, EmptyStateIcon, EmptyStateProps, Stack, StackItem } from '@patternfly/react-core';
-import { HourglassHalfIcon } from '@patternfly/react-icons';
+import { EmptyState } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateBody } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateHeader } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateIcon } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateProps } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { Stack } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
+import { StackItem } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
+import HourglassHalfIcon from '@patternfly/react-icons/dist/dynamic/icons/hourglass-half-icon';
 import './maintenance.scss';
 
 export interface MaintenanceProps extends Omit<EmptyStateProps, 'children' | 'title'> {

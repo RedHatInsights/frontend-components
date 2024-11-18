@@ -1,0 +1,62 @@
+.ins-c-severity-line {
+  --ins-c-severity-line-text:         var(--pf-v5-global--Color--200);
+  --inc-c-severity-line-base:         var(--pf-v5-global--palette--black-400);
+  --ins-c-severity-line-low:          var(--pf-v5-global--palette--blue-200);
+  --ins-c-severity-line-moderate:     var(--pf-v5-global--palette--gold-200);
+  --ins-c-severity-line-high:         var(--pf-v5-global--palette--orange-200);
+  --ins-c-severity-line-critical:     var(--pf-v5-global--palette--red-100);
+
+  display: inline-flex;
+}
+
+.ins-c-severity-line {
+  .ins-l-title {
+      width: 115px;
+      span {
+          color: var(--inc-c-severity-line-text);
+          font-size: var(--pf-v5-global--FontSize--sm);
+      }
+  }
+}
+
+.ins-c-severity-line {
+  .ins-l-chart {
+      position: relative;
+      svg {
+          overflow: visible;
+          .horizontal {
+              stroke: var(--inc-c-severity-line-base);
+              stroke-width: 2px;
+          }
+
+          .vertical {
+              stroke: var(--inc-c-severity-line-base);
+              stroke-width: 1px;
+          }
+
+          .dataline-1 {
+              stroke: var(--ins-c-severity-line-low);
+              fill: var(--ins-c-severity-line-low);
+              stroke-width: 4px;
+          }
+
+          .dataline-2 {
+              stroke: var(--ins-c-severity-line-moderate);
+              fill: var(--ins-c-severity-line-moderate);
+              stroke-width: 4px;
+          }
+
+          .dataline-3 {
+              stroke: var(--ins-c-severity-line-high);
+              fill: var(--ins-c-severity-line-high);
+              stroke-width: 4px;
+          }
+
+          .dataline-4 {
+              stroke: var(--ins-c-severity-line-critical);
+              fill: var(--ins-c-severity-line-critical);
+              stroke-width: 4px;
+          }
+      }
+  }
+}

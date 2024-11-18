@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "module": "commonjs",
+    "types": ["jest", "node"],
+    "paths": {
+      "@redhat-cloud-services/frontend-components-utilities": ["packages/utils/src"],
+      "@redhat-cloud-services/frontend-components-utilities/*": ["packages/utils/src/*"],
+      "@redhat-cloud-services/frontend-components": ["packages/components/src"],
+      "@redhat-cloud-services/frontend-components/*": ["packages/components/src/*"]
+    }
+  },
+  "include": [
+    "jest.config.ts",
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
+  ]
+}

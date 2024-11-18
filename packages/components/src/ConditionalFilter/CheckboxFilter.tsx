@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { Badge, MenuToggle, Select, SelectList, SelectOption, SelectProps } from '@patternfly/react-core';
+import { Badge } from '@patternfly/react-core/dist/dynamic/components/Badge';
+import { MenuToggle } from '@patternfly/react-core/dist/dynamic/components/MenuToggle';
+import { Select } from '@patternfly/react-core/dist/dynamic/components/Select';
+import { SelectList } from '@patternfly/react-core/dist/dynamic/components/Select';
+import { SelectOption } from '@patternfly/react-core/dist/dynamic/components/Select';
+import { SelectProps } from '@patternfly/react-core/dist/dynamic/components/Select';
 
 import omit from 'lodash/omit';
 import { FilterItem, FilterValue, isFilterValue } from './TextFilter';
@@ -73,7 +78,6 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({ items = 
       onOpenChange={(isExpanded) => setExpanded(isExpanded)}
       onSelect={(event, value) => onSelect(event, value)}
       isOpen={isExpanded}
-      placeholder={placeholder}
       ouiaId={placeholder}
     >
       <SelectList aria-label="Options menu">

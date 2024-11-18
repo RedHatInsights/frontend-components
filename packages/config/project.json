@@ -1,0 +1,62 @@
+{
+  "name": "@redhat-cloud-services/frontend-components-config",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/config",
+  "projectType": "library",
+  "tags": ["scope:build"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build"],
+      "options": {
+        "rootDir": "packages/config/src",
+        "main": "packages/config/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-config",
+        "tsConfig": "packages/config/tsconfig.build.json"
+      }
+    },
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/config/src"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/config/src/**/*", "packages/config/package.json"]
+      }
+    },
+    "test:unit": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/config/jest.config.ts"
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits",
+        "postTargets": ["build", "deploy", "github"],
+        "push": true
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notesFile": "packages/config/CHANGELOG.md"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-config",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
+    }
+  }
+}

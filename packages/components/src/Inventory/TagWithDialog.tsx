@@ -1,7 +1,8 @@
 import React, { Suspense } from 'react';
 import { ScalprumComponent, ScalprumComponentProps } from '@scalprum/react-core';
 import { useStore } from 'react-redux';
-import { Bullseye, Spinner } from '@patternfly/react-core';
+import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
+import { Spinner } from '@patternfly/react-core/dist/dynamic/components/Spinner';
 import InventoryLoadError from './InventoryLoadError';
 import classNames from 'classnames';
 import { AsyncComponentProps, ExcludeModulesKeys } from '../AsyncComponent';
@@ -15,16 +16,15 @@ export type TagWithDialogProps = Omit<AsyncComponentProps, ExcludeModulesKeys>;
  *
  * This component is used to manipulate with inventory tags.
  */
-const BaseTagWithDialog: React.FC<TagWithDialogProps> = (props) => {
+const BaseTagWithDialog: React.FC<TagWithDialogProps & { innerRef?: React.Ref<HTMLElement>; history?: unknown; store?: unknown }> = (props) => {
   const store = useStore();
   const Cmp = props.component;
   const SCProps: ScalprumComponentProps<ChromeAPI, TagWithDialogProps> = {
     history: props.history,
     store,
-    appName: 'inventory',
     module: './TagWithDialog',
     scope: 'inventory',
-    ErrorComponent: <InventoryLoadError component="InventoryDetailHead" {...props} />,
+    ErrorComponent: <InventoryLoadError {...props} component="InventoryDetailHead" />,
     ref: props.innerRef,
     ...props,
   };

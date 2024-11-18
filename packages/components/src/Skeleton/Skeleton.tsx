@@ -1,5 +1,5 @@
 import React from 'react';
-import { Skeleton as PFSkeleton, SkeletonProps as PFSkeletonProps } from '@patternfly/react-core';
+import { Skeleton as PFSkeleton, SkeletonProps as PFSkeletonProps } from '@patternfly/react-core/dist/dynamic/components/Skeleton';
 import classNames from 'classnames';
 
 import './skeleton.scss';

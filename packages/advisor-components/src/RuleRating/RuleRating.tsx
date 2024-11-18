@@ -7,7 +7,7 @@ import { Button, Icon } from '@patternfly/react-core';
 import { OutlinedThumbsDownIcon, OutlinedThumbsUpIcon, ThumbsDownIcon, ThumbsUpIcon } from '@patternfly/react-icons';
 
 import { Rating } from '../types';
-import { RuleDetailsMessages } from '../RuleDetails/RuleDetails';
+import { RuleDetailsMessages } from '../RuleDetails/RuleDetailsMessages';
 
 export const DEBOUNCE_TIMEOUT = 2000;
 

@@ -1,375 +1,2027 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TableWithFilter should render loading and pagination 1`] = `
-<Fragment>
-  <PrimaryToolbar
-    pagination={
-      <Skeleton
-        size="lg"
+<div>
+  <div
+    class="pf-v5-c-toolbar  ins-c-primary-toolbar"
+    data-ouia-component-id="PrimaryToolbar"
+    data-ouia-component-type="PF5/Toolbar"
+    data-ouia-safe="true"
+    id="ins-primary-data-toolbar"
+  >
+    <div
+      class="pf-v5-c-toolbar__content"
+    >
+      <div
+        class="pf-v5-c-toolbar__content-section"
+      >
+        <div
+          class="pf-v5-c-toolbar__item ins-c-primary-toolbar__pagination"
+        >
+          <div
+            class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__lg"
+          >
+            <span
+              class="pf-v5-screen-reader"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
       />
-    }
-  />
-  <SkeletonTable
-    numberOfColumns={1}
-    rows={10}
-    variant="compact"
-  />
-</Fragment>
+    </div>
+  </div>
+  <table
+    aria-label="Loading"
+    class="pf-v5-c-table pf-m-grid-md pf-m-compact"
+    data-ouia-component-id="SkeletonTable"
+    data-ouia-component-type="PF5/Table"
+    data-ouia-safe="true"
+    role="grid"
+    rows="10"
+  >
+    <thead
+      class="pf-v5-c-table__thead"
+      data-ouia-component-id="SkeletonTable-thead"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="SkeletonTable-tr-head"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <th
+          class="pf-v5-c-table__th"
+          data-ouia-component-id="SkeletonTable-th-0"
+          scope="col"
+          tabindex="-1"
+        >
+          <div
+            class="pf-v5-c-skeleton"
+          >
+            <span
+              class="pf-v5-screen-reader"
+            />
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="pf-v5-c-table__tbody"
+      data-ouia-component-id="SkeletonTable-tbody"
+      role="rowgroup"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="SkeletonTable-tr-0"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <td
+          class="pf-v5-c-table__td"
+          data-ouia-component-id="SkeletonTable-td-0-0"
+          tabindex="-1"
+        >
+          <div
+            class="pf-v5-c-skeleton"
+          >
+            <span
+              class="pf-v5-screen-reader"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="SkeletonTable-tr-1"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <td
+          class="pf-v5-c-table__td"
+          data-ouia-component-id="SkeletonTable-td-1-0"
+          tabindex="-1"
+        >
+          <div
+            class="pf-v5-c-skeleton"
+          >
+            <span
+              class="pf-v5-screen-reader"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="SkeletonTable-tr-2"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <td
+          class="pf-v5-c-table__td"
+          data-ouia-component-id="SkeletonTable-td-2-0"
+          tabindex="-1"
+        >
+          <div
+            class="pf-v5-c-skeleton"
+          >
+            <span
+              class="pf-v5-screen-reader"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="SkeletonTable-tr-3"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <td
+          class="pf-v5-c-table__td"
+          data-ouia-component-id="SkeletonTable-td-3-0"
+          tabindex="-1"
+        >
+          <div
+            class="pf-v5-c-skeleton"
+          >
+            <span
+              class="pf-v5-screen-reader"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="SkeletonTable-tr-4"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <td
+          class="pf-v5-c-table__td"
+          data-ouia-component-id="SkeletonTable-td-4-0"
+          tabindex="-1"
+        >
+          <div
+            class="pf-v5-c-skeleton"
+          >
+            <span
+              class="pf-v5-screen-reader"
+            />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 `;
 
 exports[`TableWithFilter should render with data 1`] = `
-<Fragment>
-  <Table
-    actionsMenuAppendTo="inline"
+<div>
+  <table
     aria-label="undefined tags"
-    borders={true}
-    canCollapseAll={false}
-    canSelectAll={true}
-    canSortFavorites={true}
-    cells={
-      [
-        {
-          "title": "something",
-        },
-      ]
-    }
-    className="ins-c-tag-modal__table"
-    collapseAllAriaLabel=""
-    contentId="expanded-content"
-    dropdownDirection="down"
-    dropdownPosition="right"
-    expandId="expandable-toggle"
-    gridBreakPoint="grid-md"
-    isHeaderSelectDisabled={false}
-    isNested={false}
-    isStickyHeader={false}
-    isTreeTable={false}
-    ouiaSafe={true}
+    class="ins-c-tag-modal__table pf-v5-c-table pf-m-grid-md pf-m-compact"
+    data-ouia-component-id="OUIA-Generated-Table-4"
+    data-ouia-component-type="PF5/Table"
+    data-ouia-safe="true"
     role="grid"
-    rowLabeledBy="simple-node"
-    rows={
-      [
-        [
-          "one",
-        ],
-      ]
-    }
-    selectVariant="checkbox"
-    variant="compact"
   >
-    <TableHeader />
-    <TableBody />
-  </Table>
-</Fragment>
+    <thead
+      class="pf-v5-c-table__thead"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="OUIA-Generated-TableRow-13"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <th
+          class="pf-v5-c-table__th"
+          data-key="0"
+          data-label="something"
+          scope="col"
+          tabindex="-1"
+        >
+          something
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="pf-v5-c-table__tbody"
+      role="rowgroup"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="OUIA-Generated-TableRow-14"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <td
+          class="pf-v5-c-table__td"
+          data-key="0"
+          data-label="something"
+          tabindex="-1"
+        >
+          one
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 `;
 
 exports[`TableWithFilter should render with data and bulk select with calculate checked 1`] = `
-<Fragment>
-  <PrimaryToolbar
-    bulkSelect={
-      {
-        "checked": undefined,
-        "count": 0,
-        "items": [
-          {
-            "onClick": [Function],
-            "title": "Select none (0)",
-          },
-          {
-            "onClick": [Function],
-            "title": "Select page (1)",
-          },
-        ],
-        "onSelect": [Function],
-      }
-    }
-    pagination={
-      {
-        "itemCount": undefined,
-        "onPerPageSelect": [Function],
-        "onSetPage": [Function],
-        "page": 1,
-      }
-    }
-  />
-  <Table
-    actionsMenuAppendTo="inline"
+<div>
+  <div
+    class="pf-v5-c-toolbar  ins-c-primary-toolbar"
+    data-ouia-component-id="PrimaryToolbar"
+    data-ouia-component-type="PF5/Toolbar"
+    data-ouia-safe="true"
+    id="ins-primary-data-toolbar"
+  >
+    <div
+      class="pf-v5-c-toolbar__content"
+    >
+      <div
+        class="pf-v5-c-toolbar__content-section"
+      >
+        <div
+          class="pf-v5-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
+        >
+          <div
+            class="pf-v5-c-toolbar__item"
+          >
+            <button
+              aria-expanded="false"
+              class="pf-v5-c-menu-toggle"
+              data-ouia-component-id="OUIA-Generated-MenuToggle-2"
+              data-ouia-component-type="PF5/MenuToggle"
+              data-ouia-safe="true"
+              type="button"
+            >
+              <span
+                class="pf-v5-c-menu-toggle__text"
+              >
+                <label
+                  class="pf-v5-c-check pf-m-standalone"
+                >
+                  <input
+                    aria-invalid="false"
+                    aria-label="Select all"
+                    class="pf-v5-c-check__input"
+                    data-ouia-component-id="BulkSelectCheckbox"
+                    data-ouia-component-type="PF5/MenuToggleCheckbox"
+                    data-ouia-safe="true"
+                    name="toggle-checkbox"
+                    type="checkbox"
+                  />
+                </label>
+              </span>
+              <span
+                class="pf-v5-c-menu-toggle__controls"
+              >
+                <span
+                  class="pf-v5-c-menu-toggle__toggle-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div
+          class="pf-v5-c-toolbar__item ins-c-primary-toolbar__pagination"
+        >
+          <div
+            class="pf-v5-c-pagination pf-m-compact"
+            data-ouia-component-id="CompactPagination"
+            data-ouia-component-type="PF5/Pagination"
+            data-ouia-safe="true"
+            id="options-menu-top-pagination"
+            style="--pf-v5-c-pagination__nav-page-select--c-form-control--width-chars: 2;"
+          >
+            <div
+              class="pf-v5-c-pagination__total-items"
+            >
+              <b>
+                1
+                 - 
+                10
+              </b>
+               
+              of
+               
+              <b>
+                0
+              </b>
+               
+            </div>
+            <button
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              class="pf-v5-c-menu-toggle pf-m-plain pf-m-text"
+              data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-6"
+              data-ouia-component-type="PF5/MenuToggle"
+              data-ouia-safe="true"
+              id="options-menu-top-toggle"
+              type="button"
+            >
+              <span
+                class="pf-v5-c-menu-toggle__text"
+              >
+                <b>
+                  1
+                   - 
+                  10
+                </b>
+                 
+                of
+                 
+                <b>
+                  0
+                </b>
+                 
+              </span>
+              <span
+                class="pf-v5-c-menu-toggle__controls"
+              >
+                <span
+                  class="pf-v5-c-menu-toggle__toggle-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </button>
+            <nav
+              aria-label="Pagination"
+              class="pf-v5-c-pagination__nav"
+            >
+              <div
+                class="pf-v5-c-pagination__nav-control"
+              >
+                <button
+                  aria-disabled="true"
+                  aria-label="Go to previous page"
+                  class="pf-v5-c-button pf-m-plain pf-m-disabled"
+                  data-action="previous"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-15"
+                  data-ouia-component-type="PF5/Button"
+                  data-ouia-safe="true"
+                  disabled=""
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 256 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="pf-v5-c-pagination__nav-control"
+              >
+                <button
+                  aria-disabled="false"
+                  aria-label="Go to next page"
+                  class="pf-v5-c-button pf-m-plain"
+                  data-action="next"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-16"
+                  data-ouia-component-type="PF5/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 256 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
+  <table
     aria-label="undefined tags"
-    borders={true}
-    canCollapseAll={false}
-    canSelectAll={true}
-    canSortFavorites={true}
-    cells={
-      [
-        {
-          "title": "something",
-        },
-      ]
-    }
-    className="ins-c-tag-modal__table"
-    collapseAllAriaLabel=""
-    contentId="expanded-content"
-    dropdownDirection="down"
-    dropdownPosition="right"
-    expandId="expandable-toggle"
-    gridBreakPoint="grid-md"
-    isHeaderSelectDisabled={false}
-    isNested={false}
-    isStickyHeader={false}
-    isTreeTable={false}
-    onSelect={[Function]}
-    ouiaSafe={true}
+    class="ins-c-tag-modal__table pf-v5-c-table pf-m-grid-md pf-m-compact"
+    data-ouia-component-id="OUIA-Generated-Table-12"
+    data-ouia-component-type="PF5/Table"
+    data-ouia-safe="true"
     role="grid"
-    rowLabeledBy="simple-node"
-    rows={
-      [
-        [
-          "one",
-        ],
-      ]
-    }
-    selectVariant="checkbox"
-    variant="compact"
   >
-    <TableHeader />
-    <TableBody />
-  </Table>
-  <TableToolbar
-    className="ins-c-inventory__table--toolbar"
-    isFooter={true}
+    <thead
+      class="pf-v5-c-table__thead"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="OUIA-Generated-TableRow-21"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <th
+          class="pf-v5-c-table__th pf-v5-c-table__check"
+          data-key="0"
+          data-label=""
+          tabindex="-1"
+        >
+          <label>
+            <input
+              aria-label="Select all rows"
+              name="check-all"
+              type="checkbox"
+            />
+          </label>
+        </th>
+        <th
+          class="pf-v5-c-table__th"
+          data-key="1"
+          data-label="something"
+          scope="col"
+          tabindex="-1"
+        >
+          something
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="pf-v5-c-table__tbody"
+      role="rowgroup"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="OUIA-Generated-TableRow-22"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <td
+          class="pf-v5-c-table__td pf-v5-c-table__check"
+          data-key="0"
+          tabindex="-1"
+        >
+          <label>
+            <input
+              aria-label="Select row 0"
+              name="checkrow0"
+              type="checkbox"
+            />
+          </label>
+        </td>
+        <td
+          class="pf-v5-c-table__td"
+          data-key="1"
+          data-label="something"
+          tabindex="-1"
+        >
+          one
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="pf-v5-c-toolbar ins-c-table__toolbar ins-m-footer ins-c-inventory__table--toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-3"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe="true"
+    id="pf-random-id-2"
   >
-    <Pagination
-      onPerPageSelect={[Function]}
-      onSetPage={[Function]}
-      page={1}
-      variant="bottom"
-    />
-  </TableToolbar>
-</Fragment>
+    <div
+      class="pf-v5-c-pagination pf-m-bottom"
+      data-ouia-component-id="OUIA-Generated-Pagination-bottom-3"
+      data-ouia-component-type="PF5/Pagination"
+      data-ouia-safe="true"
+      id="options-menu-bottom-pagination"
+      style="--pf-v5-c-pagination__nav-page-select--c-form-control--width-chars: 2;"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        class="pf-v5-c-menu-toggle pf-m-plain pf-m-text"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-7"
+        data-ouia-component-type="PF5/MenuToggle"
+        data-ouia-safe="true"
+        id="options-menu-bottom-toggle"
+        type="button"
+      >
+        <span
+          class="pf-v5-c-menu-toggle__text"
+        >
+          <b>
+            1
+             - 
+            10
+          </b>
+           
+          of
+           
+          <b>
+            0
+          </b>
+           
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v5-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+      <nav
+        aria-label="Pagination"
+        class="pf-v5-c-pagination__nav"
+      >
+        <div
+          class="pf-v5-c-pagination__nav-control pf-m-first"
+        >
+          <button
+            aria-disabled="true"
+            aria-label="Go to first page"
+            class="pf-v5-c-button pf-m-plain pf-m-disabled"
+            data-action="first"
+            data-ouia-component-id="OUIA-Generated-Button-plain-17"
+            data-ouia-component-type="PF5/Button"
+            data-ouia-safe="true"
+            disabled=""
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 448 512"
+              width="1em"
+            >
+              <path
+                d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="pf-v5-c-pagination__nav-control"
+        >
+          <button
+            aria-disabled="true"
+            aria-label="Go to previous page"
+            class="pf-v5-c-button pf-m-plain pf-m-disabled"
+            data-action="previous"
+            data-ouia-component-id="OUIA-Generated-Button-plain-18"
+            data-ouia-component-type="PF5/Button"
+            data-ouia-safe="true"
+            disabled=""
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 256 512"
+              width="1em"
+            >
+              <path
+                d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="pf-v5-c-pagination__nav-page-select"
+        >
+          <span
+            class="pf-v5-c-form-control"
+          >
+            <input
+              aria-invalid="false"
+              aria-label="Current page"
+              data-ouia-component-id="OUIA-Generated-TextInputBase-4"
+              data-ouia-component-type="PF5/TextInput"
+              data-ouia-safe="true"
+              max="2"
+              min="1"
+              type="number"
+              value="1"
+            />
+          </span>
+        </div>
+        <div
+          class="pf-v5-c-pagination__nav-control"
+        >
+          <button
+            aria-disabled="false"
+            aria-label="Go to next page"
+            class="pf-v5-c-button pf-m-plain"
+            data-action="next"
+            data-ouia-component-id="OUIA-Generated-Button-plain-19"
+            data-ouia-component-type="PF5/Button"
+            data-ouia-safe="true"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 256 512"
+              width="1em"
+            >
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="pf-v5-c-pagination__nav-control pf-m-last"
+        >
+          <button
+            aria-disabled="false"
+            aria-label="Go to last page"
+            class="pf-v5-c-button pf-m-plain"
+            data-action="last"
+            data-ouia-component-id="OUIA-Generated-Button-plain-20"
+            data-ouia-component-type="PF5/Button"
+            data-ouia-safe="true"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 448 512"
+              width="1em"
+            >
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
+</div>
 `;
 
 exports[`TableWithFilter should render with data and bulk select without calculate checked 1`] = `
-<Fragment>
-  <PrimaryToolbar
-    bulkSelect={
-      {
-        "checked": undefined,
-        "count": 0,
-        "items": [
-          {
-            "onClick": [Function],
-            "title": "Select none (0)",
-          },
-          {
-            "onClick": [Function],
-            "title": "Select page (1)",
-          },
-        ],
-        "onSelect": [Function],
-      }
-    }
-    pagination={
-      {
-        "itemCount": undefined,
-        "onPerPageSelect": [Function],
-        "onSetPage": [Function],
-        "page": 1,
-      }
-    }
-  />
-  <Table
-    actionsMenuAppendTo="inline"
+<div>
+  <div
+    class="pf-v5-c-toolbar  ins-c-primary-toolbar"
+    data-ouia-component-id="PrimaryToolbar"
+    data-ouia-component-type="PF5/Toolbar"
+    data-ouia-safe="true"
+    id="ins-primary-data-toolbar"
+  >
+    <div
+      class="pf-v5-c-toolbar__content"
+    >
+      <div
+        class="pf-v5-c-toolbar__content-section"
+      >
+        <div
+          class="pf-v5-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
+        >
+          <div
+            class="pf-v5-c-toolbar__item"
+          >
+            <button
+              aria-expanded="false"
+              class="pf-v5-c-menu-toggle"
+              data-ouia-component-id="OUIA-Generated-MenuToggle-1"
+              data-ouia-component-type="PF5/MenuToggle"
+              data-ouia-safe="true"
+              type="button"
+            >
+              <span
+                class="pf-v5-c-menu-toggle__text"
+              >
+                <label
+                  class="pf-v5-c-check pf-m-standalone"
+                >
+                  <input
+                    aria-invalid="false"
+                    aria-label="Select all"
+                    class="pf-v5-c-check__input"
+                    data-ouia-component-id="BulkSelectCheckbox"
+                    data-ouia-component-type="PF5/MenuToggleCheckbox"
+                    data-ouia-safe="true"
+                    name="toggle-checkbox"
+                    type="checkbox"
+                  />
+                </label>
+              </span>
+              <span
+                class="pf-v5-c-menu-toggle__controls"
+              >
+                <span
+                  class="pf-v5-c-menu-toggle__toggle-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div
+          class="pf-v5-c-toolbar__item ins-c-primary-toolbar__pagination"
+        >
+          <div
+            class="pf-v5-c-pagination pf-m-compact"
+            data-ouia-component-id="CompactPagination"
+            data-ouia-component-type="PF5/Pagination"
+            data-ouia-safe="true"
+            id="options-menu-top-pagination"
+            style="--pf-v5-c-pagination__nav-page-select--c-form-control--width-chars: 2;"
+          >
+            <div
+              class="pf-v5-c-pagination__total-items"
+            >
+              <b>
+                1
+                 - 
+                10
+              </b>
+               
+              of
+               
+              <b>
+                0
+              </b>
+               
+            </div>
+            <button
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              class="pf-v5-c-menu-toggle pf-m-plain pf-m-text"
+              data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-4"
+              data-ouia-component-type="PF5/MenuToggle"
+              data-ouia-safe="true"
+              id="options-menu-top-toggle"
+              type="button"
+            >
+              <span
+                class="pf-v5-c-menu-toggle__text"
+              >
+                <b>
+                  1
+                   - 
+                  10
+                </b>
+                 
+                of
+                 
+                <b>
+                  0
+                </b>
+                 
+              </span>
+              <span
+                class="pf-v5-c-menu-toggle__controls"
+              >
+                <span
+                  class="pf-v5-c-menu-toggle__toggle-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </button>
+            <nav
+              aria-label="Pagination"
+              class="pf-v5-c-pagination__nav"
+            >
+              <div
+                class="pf-v5-c-pagination__nav-control"
+              >
+                <button
+                  aria-disabled="true"
+                  aria-label="Go to previous page"
+                  class="pf-v5-c-button pf-m-plain pf-m-disabled"
+                  data-action="previous"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-9"
+                  data-ouia-component-type="PF5/Button"
+                  data-ouia-safe="true"
+                  disabled=""
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 256 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="pf-v5-c-pagination__nav-control"
+              >
+                <button
+                  aria-disabled="false"
+                  aria-label="Go to next page"
+                  class="pf-v5-c-button pf-m-plain"
+                  data-action="next"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-10"
+                  data-ouia-component-type="PF5/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 256 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
+  <table
     aria-label="undefined tags"
-    borders={true}
-    canCollapseAll={false}
-    canSelectAll={true}
-    canSortFavorites={true}
-    cells={
-      [
-        {
-          "title": "something",
-        },
-      ]
-    }
-    className="ins-c-tag-modal__table"
-    collapseAllAriaLabel=""
-    contentId="expanded-content"
-    dropdownDirection="down"
-    dropdownPosition="right"
-    expandId="expandable-toggle"
-    gridBreakPoint="grid-md"
-    isHeaderSelectDisabled={false}
-    isNested={false}
-    isStickyHeader={false}
-    isTreeTable={false}
-    onSelect={[Function]}
-    ouiaSafe={true}
+    class="ins-c-tag-modal__table pf-v5-c-table pf-m-grid-md pf-m-compact"
+    data-ouia-component-id="OUIA-Generated-Table-10"
+    data-ouia-component-type="PF5/Table"
+    data-ouia-safe="true"
     role="grid"
-    rowLabeledBy="simple-node"
-    rows={
-      [
-        [
-          "one",
-        ],
-      ]
-    }
-    selectVariant="checkbox"
-    variant="compact"
   >
-    <TableHeader />
-    <TableBody />
-  </Table>
-  <TableToolbar
-    className="ins-c-inventory__table--toolbar"
-    isFooter={true}
+    <thead
+      class="pf-v5-c-table__thead"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="OUIA-Generated-TableRow-19"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <th
+          class="pf-v5-c-table__th pf-v5-c-table__check"
+          data-key="0"
+          data-label=""
+          tabindex="-1"
+        >
+          <label>
+            <input
+              aria-label="Select all rows"
+              name="check-all"
+              type="checkbox"
+            />
+          </label>
+        </th>
+        <th
+          class="pf-v5-c-table__th"
+          data-key="1"
+          data-label="something"
+          scope="col"
+          tabindex="-1"
+        >
+          something
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="pf-v5-c-table__tbody"
+      role="rowgroup"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="OUIA-Generated-TableRow-20"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <td
+          class="pf-v5-c-table__td pf-v5-c-table__check"
+          data-key="0"
+          tabindex="-1"
+        >
+          <label>
+            <input
+              aria-label="Select row 0"
+              name="checkrow0"
+              type="checkbox"
+            />
+          </label>
+        </td>
+        <td
+          class="pf-v5-c-table__td"
+          data-key="1"
+          data-label="something"
+          tabindex="-1"
+        >
+          one
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="pf-v5-c-toolbar ins-c-table__toolbar ins-m-footer ins-c-inventory__table--toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-2"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe="true"
+    id="pf-random-id-1"
   >
-    <Pagination
-      onPerPageSelect={[Function]}
-      onSetPage={[Function]}
-      page={1}
-      variant="bottom"
-    />
-  </TableToolbar>
-</Fragment>
+    <div
+      class="pf-v5-c-pagination pf-m-bottom"
+      data-ouia-component-id="OUIA-Generated-Pagination-bottom-2"
+      data-ouia-component-type="PF5/Pagination"
+      data-ouia-safe="true"
+      id="options-menu-bottom-pagination"
+      style="--pf-v5-c-pagination__nav-page-select--c-form-control--width-chars: 2;"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        class="pf-v5-c-menu-toggle pf-m-plain pf-m-text"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-5"
+        data-ouia-component-type="PF5/MenuToggle"
+        data-ouia-safe="true"
+        id="options-menu-bottom-toggle"
+        type="button"
+      >
+        <span
+          class="pf-v5-c-menu-toggle__text"
+        >
+          <b>
+            1
+             - 
+            10
+          </b>
+           
+          of
+           
+          <b>
+            0
+          </b>
+           
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v5-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+      <nav
+        aria-label="Pagination"
+        class="pf-v5-c-pagination__nav"
+      >
+        <div
+          class="pf-v5-c-pagination__nav-control pf-m-first"
+        >
+          <button
+            aria-disabled="true"
+            aria-label="Go to first page"
+            class="pf-v5-c-button pf-m-plain pf-m-disabled"
+            data-action="first"
+            data-ouia-component-id="OUIA-Generated-Button-plain-11"
+            data-ouia-component-type="PF5/Button"
+            data-ouia-safe="true"
+            disabled=""
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 448 512"
+              width="1em"
+            >
+              <path
+                d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="pf-v5-c-pagination__nav-control"
+        >
+          <button
+            aria-disabled="true"
+            aria-label="Go to previous page"
+            class="pf-v5-c-button pf-m-plain pf-m-disabled"
+            data-action="previous"
+            data-ouia-component-id="OUIA-Generated-Button-plain-12"
+            data-ouia-component-type="PF5/Button"
+            data-ouia-safe="true"
+            disabled=""
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 256 512"
+              width="1em"
+            >
+              <path
+                d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="pf-v5-c-pagination__nav-page-select"
+        >
+          <span
+            class="pf-v5-c-form-control"
+          >
+            <input
+              aria-invalid="false"
+              aria-label="Current page"
+              data-ouia-component-id="OUIA-Generated-TextInputBase-3"
+              data-ouia-component-type="PF5/TextInput"
+              data-ouia-safe="true"
+              max="2"
+              min="1"
+              type="number"
+              value="1"
+            />
+          </span>
+        </div>
+        <div
+          class="pf-v5-c-pagination__nav-control"
+        >
+          <button
+            aria-disabled="false"
+            aria-label="Go to next page"
+            class="pf-v5-c-button pf-m-plain"
+            data-action="next"
+            data-ouia-component-id="OUIA-Generated-Button-plain-13"
+            data-ouia-component-type="PF5/Button"
+            data-ouia-safe="true"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 256 512"
+              width="1em"
+            >
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="pf-v5-c-pagination__nav-control pf-m-last"
+        >
+          <button
+            aria-disabled="false"
+            aria-label="Go to last page"
+            class="pf-v5-c-button pf-m-plain"
+            data-action="last"
+            data-ouia-component-id="OUIA-Generated-Button-plain-14"
+            data-ouia-component-type="PF5/Button"
+            data-ouia-safe="true"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 448 512"
+              width="1em"
+            >
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
+</div>
 `;
 
 exports[`TableWithFilter should render with data and filters 1`] = `
-<Fragment>
-  <PrimaryToolbar
-    filterConfig={
-      {
-        "items": [
-          {
-            "something": "1",
-          },
-        ],
-      }
-    }
-    pagination={
-      {
-        "itemCount": undefined,
-        "onPerPageSelect": [Function],
-        "onSetPage": [Function],
-      }
-    }
-  />
-  <Table
-    actionsMenuAppendTo="inline"
-    aria-label="undefined tags"
-    borders={true}
-    canCollapseAll={false}
-    canSelectAll={true}
-    canSortFavorites={true}
-    cells={
-      [
-        {
-          "title": "something",
-        },
-      ]
-    }
-    className="ins-c-tag-modal__table"
-    collapseAllAriaLabel=""
-    contentId="expanded-content"
-    dropdownDirection="down"
-    dropdownPosition="right"
-    expandId="expandable-toggle"
-    gridBreakPoint="grid-md"
-    isHeaderSelectDisabled={false}
-    isNested={false}
-    isStickyHeader={false}
-    isTreeTable={false}
-    ouiaSafe={true}
-    role="grid"
-    rowLabeledBy="simple-node"
-    rows={
-      [
-        [
-          "one",
-        ],
-      ]
-    }
-    selectVariant="checkbox"
-    variant="compact"
+<div>
+  <div
+    class="pf-v5-c-toolbar  ins-c-primary-toolbar"
+    data-ouia-component-id="PrimaryToolbar"
+    data-ouia-component-type="PF5/Toolbar"
+    data-ouia-safe="true"
+    id="ins-primary-data-toolbar"
   >
-    <TableHeader />
-    <TableBody />
-  </Table>
-</Fragment>
+    <div
+      class="pf-v5-c-toolbar__content"
+    >
+      <div
+        class="pf-v5-c-toolbar__content-section"
+      >
+        <div
+          class="pf-v5-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
+        >
+          <div
+            class="pf-v5-c-toolbar__item ins-c-primary-toolbar__filter"
+          >
+            <div
+              class="pf-v5-l-split ins-c-conditional-filter"
+            >
+              <div
+                class="pf-v5-l-split__item pf-m-fill"
+                data-ouia-component-id="ConditionalFilter"
+              >
+                <span
+                  class="pf-v5-c-form-control pf-m-icon ins-c-conditional-filter"
+                >
+                  <input
+                    aria-invalid="false"
+                    aria-label="text input"
+                    data-ouia-component-id="ConditionalFilter"
+                    data-ouia-component-type="PF5/TextInput"
+                    data-ouia-safe="true"
+                    placeholder="Filter by undefined"
+                    type="text"
+                    value=""
+                    widget-type="InsightsInput"
+                  />
+                  <span
+                    class="pf-v5-c-form-control__utilities"
+                  >
+                    <span
+                      class="pf-v5-c-form-control__icon"
+                    >
+                      <span
+                        class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+                      >
+                        <span
+                          class="pf-v5-c-icon__content"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="pf-v5-svg"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            viewBox="0 0 512 512"
+                            width="1em"
+                          >
+                            <path
+                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                            />
+                          </svg>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pf-v5-c-toolbar__item ins-c-primary-toolbar__pagination"
+        >
+          <div
+            class="pf-v5-c-pagination pf-m-compact"
+            data-ouia-component-id="CompactPagination"
+            data-ouia-component-type="PF5/Pagination"
+            data-ouia-safe="true"
+            id="options-menu-top-pagination"
+            style="--pf-v5-c-pagination__nav-page-select--c-form-control--width-chars: 2;"
+          >
+            <div
+              class="pf-v5-c-pagination__total-items"
+            >
+              <b>
+                1
+                 - 
+                10
+              </b>
+               
+              of
+               
+              <b>
+                0
+              </b>
+               
+            </div>
+            <button
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              class="pf-v5-c-menu-toggle pf-m-plain pf-m-text"
+              data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-3"
+              data-ouia-component-type="PF5/MenuToggle"
+              data-ouia-safe="true"
+              id="options-menu-top-toggle"
+              type="button"
+            >
+              <span
+                class="pf-v5-c-menu-toggle__text"
+              >
+                <b>
+                  1
+                   - 
+                  10
+                </b>
+                 
+                of
+                 
+                <b>
+                  0
+                </b>
+                 
+              </span>
+              <span
+                class="pf-v5-c-menu-toggle__controls"
+              >
+                <span
+                  class="pf-v5-c-menu-toggle__toggle-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </button>
+            <nav
+              aria-label="Pagination"
+              class="pf-v5-c-pagination__nav"
+            >
+              <div
+                class="pf-v5-c-pagination__nav-control"
+              >
+                <button
+                  aria-disabled="true"
+                  aria-label="Go to previous page"
+                  class="pf-v5-c-button pf-m-plain pf-m-disabled"
+                  data-action="previous"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-7"
+                  data-ouia-component-type="PF5/Button"
+                  data-ouia-safe="true"
+                  disabled=""
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 256 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="pf-v5-c-pagination__nav-control"
+              >
+                <button
+                  aria-disabled="false"
+                  aria-label="Go to next page"
+                  class="pf-v5-c-button pf-m-plain"
+                  data-action="next"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-8"
+                  data-ouia-component-type="PF5/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 256 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
+  <table
+    aria-label="undefined tags"
+    class="ins-c-tag-modal__table pf-v5-c-table pf-m-grid-md pf-m-compact"
+    data-ouia-component-id="OUIA-Generated-Table-8"
+    data-ouia-component-type="PF5/Table"
+    data-ouia-safe="true"
+    role="grid"
+  >
+    <thead
+      class="pf-v5-c-table__thead"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="OUIA-Generated-TableRow-17"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <th
+          class="pf-v5-c-table__th"
+          data-key="0"
+          data-label="something"
+          scope="col"
+          tabindex="-1"
+        >
+          something
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="pf-v5-c-table__tbody"
+      role="rowgroup"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="OUIA-Generated-TableRow-18"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <td
+          class="pf-v5-c-table__td"
+          data-key="0"
+          data-label="something"
+          tabindex="-1"
+        >
+          one
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 `;
 
 exports[`TableWithFilter should render with data and pagination 1`] = `
-<Fragment>
-  <PrimaryToolbar
-    pagination={
-      {
-        "itemCount": undefined,
-        "onPerPageSelect": [Function],
-        "onSetPage": [Function],
-        "page": 1,
-      }
-    }
-  />
-  <Table
-    actionsMenuAppendTo="inline"
+<div>
+  <div
+    class="pf-v5-c-toolbar  ins-c-primary-toolbar"
+    data-ouia-component-id="PrimaryToolbar"
+    data-ouia-component-type="PF5/Toolbar"
+    data-ouia-safe="true"
+    id="ins-primary-data-toolbar"
+  >
+    <div
+      class="pf-v5-c-toolbar__content"
+    >
+      <div
+        class="pf-v5-c-toolbar__content-section"
+      >
+        <div
+          class="pf-v5-c-toolbar__item ins-c-primary-toolbar__pagination"
+        >
+          <div
+            class="pf-v5-c-pagination pf-m-compact"
+            data-ouia-component-id="CompactPagination"
+            data-ouia-component-type="PF5/Pagination"
+            data-ouia-safe="true"
+            id="options-menu-top-pagination"
+            style="--pf-v5-c-pagination__nav-page-select--c-form-control--width-chars: 2;"
+          >
+            <div
+              class="pf-v5-c-pagination__total-items"
+            >
+              <b>
+                1
+                 - 
+                10
+              </b>
+               
+              of
+               
+              <b>
+                0
+              </b>
+               
+            </div>
+            <button
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              class="pf-v5-c-menu-toggle pf-m-plain pf-m-text"
+              data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-1"
+              data-ouia-component-type="PF5/MenuToggle"
+              data-ouia-safe="true"
+              id="options-menu-top-toggle"
+              type="button"
+            >
+              <span
+                class="pf-v5-c-menu-toggle__text"
+              >
+                <b>
+                  1
+                   - 
+                  10
+                </b>
+                 
+                of
+                 
+                <b>
+                  0
+                </b>
+                 
+              </span>
+              <span
+                class="pf-v5-c-menu-toggle__controls"
+              >
+                <span
+                  class="pf-v5-c-menu-toggle__toggle-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </button>
+            <nav
+              aria-label="Pagination"
+              class="pf-v5-c-pagination__nav"
+            >
+              <div
+                class="pf-v5-c-pagination__nav-control"
+              >
+                <button
+                  aria-disabled="true"
+                  aria-label="Go to previous page"
+                  class="pf-v5-c-button pf-m-plain pf-m-disabled"
+                  data-action="previous"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-1"
+                  data-ouia-component-type="PF5/Button"
+                  data-ouia-safe="true"
+                  disabled=""
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 256 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="pf-v5-c-pagination__nav-control"
+              >
+                <button
+                  aria-disabled="false"
+                  aria-label="Go to next page"
+                  class="pf-v5-c-button pf-m-plain"
+                  data-action="next"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-2"
+                  data-ouia-component-type="PF5/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="pf-v5-svg"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    viewBox="0 0 256 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
+  <table
     aria-label="undefined tags"
-    borders={true}
-    canCollapseAll={false}
-    canSelectAll={true}
-    canSortFavorites={true}
-    cells={
-      [
-        {
-          "title": "something",
-        },
-      ]
-    }
-    className="ins-c-tag-modal__table"
-    collapseAllAriaLabel=""
-    contentId="expanded-content"
-    dropdownDirection="down"
-    dropdownPosition="right"
-    expandId="expandable-toggle"
-    gridBreakPoint="grid-md"
-    isHeaderSelectDisabled={false}
-    isNested={false}
-    isStickyHeader={false}
-    isTreeTable={false}
-    ouiaSafe={true}
+    class="ins-c-tag-modal__table pf-v5-c-table pf-m-grid-md pf-m-compact"
+    data-ouia-component-id="OUIA-Generated-Table-6"
+    data-ouia-component-type="PF5/Table"
+    data-ouia-safe="true"
     role="grid"
-    rowLabeledBy="simple-node"
-    rows={
-      [
-        [
-          "one",
-        ],
-      ]
-    }
-    selectVariant="checkbox"
-    variant="compact"
   >
-    <TableHeader />
-    <TableBody />
-  </Table>
-  <TableToolbar
-    className="ins-c-inventory__table--toolbar"
-    isFooter={true}
+    <thead
+      class="pf-v5-c-table__thead"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="OUIA-Generated-TableRow-15"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <th
+          class="pf-v5-c-table__th"
+          data-key="0"
+          data-label="something"
+          scope="col"
+          tabindex="-1"
+        >
+          something
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="pf-v5-c-table__tbody"
+      role="rowgroup"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="OUIA-Generated-TableRow-16"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      >
+        <td
+          class="pf-v5-c-table__td"
+          data-key="0"
+          data-label="something"
+          tabindex="-1"
+        >
+          one
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="pf-v5-c-toolbar ins-c-table__toolbar ins-m-footer ins-c-inventory__table--toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe="true"
+    id="pf-random-id-0"
   >
-    <Pagination
-      onPerPageSelect={[Function]}
-      onSetPage={[Function]}
-      page={1}
-      variant="bottom"
-    />
-  </TableToolbar>
-</Fragment>
+    <div
+      class="pf-v5-c-pagination pf-m-bottom"
+      data-ouia-component-id="OUIA-Generated-Pagination-bottom-1"
+      data-ouia-component-type="PF5/Pagination"
+      data-ouia-safe="true"
+      id="options-menu-bottom-pagination"
+      style="--pf-v5-c-pagination__nav-page-select--c-form-control--width-chars: 2;"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        class="pf-v5-c-menu-toggle pf-m-plain pf-m-text"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-2"
+        data-ouia-component-type="PF5/MenuToggle"
+        data-ouia-safe="true"
+        id="options-menu-bottom-toggle"
+        type="button"
+      >
+        <span
+          class="pf-v5-c-menu-toggle__text"
+        >
+          <b>
+            1
+             - 
+            10
+          </b>
+           
+          of
+           
+          <b>
+            0
+          </b>
+           
+        </span>
+        <span
+          class="pf-v5-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v5-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+      <nav
+        aria-label="Pagination"
+        class="pf-v5-c-pagination__nav"
+      >
+        <div
+          class="pf-v5-c-pagination__nav-control pf-m-first"
+        >
+          <button
+            aria-disabled="true"
+            aria-label="Go to first page"
+            class="pf-v5-c-button pf-m-plain pf-m-disabled"
+            data-action="first"
+            data-ouia-component-id="OUIA-Generated-Button-plain-3"
+            data-ouia-component-type="PF5/Button"
+            data-ouia-safe="true"
+            disabled=""
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 448 512"
+              width="1em"
+            >
+              <path
+                d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="pf-v5-c-pagination__nav-control"
+        >
+          <button
+            aria-disabled="true"
+            aria-label="Go to previous page"
+            class="pf-v5-c-button pf-m-plain pf-m-disabled"
+            data-action="previous"
+            data-ouia-component-id="OUIA-Generated-Button-plain-4"
+            data-ouia-component-type="PF5/Button"
+            data-ouia-safe="true"
+            disabled=""
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 256 512"
+              width="1em"
+            >
+              <path
+                d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="pf-v5-c-pagination__nav-page-select"
+        >
+          <span
+            class="pf-v5-c-form-control"
+          >
+            <input
+              aria-invalid="false"
+              aria-label="Current page"
+              data-ouia-component-id="OUIA-Generated-TextInputBase-1"
+              data-ouia-component-type="PF5/TextInput"
+              data-ouia-safe="true"
+              max="2"
+              min="1"
+              type="number"
+              value="1"
+            />
+          </span>
+        </div>
+        <div
+          class="pf-v5-c-pagination__nav-control"
+        >
+          <button
+            aria-disabled="false"
+            aria-label="Go to next page"
+            class="pf-v5-c-button pf-m-plain"
+            data-action="next"
+            data-ouia-component-id="OUIA-Generated-Button-plain-5"
+            data-ouia-component-type="PF5/Button"
+            data-ouia-safe="true"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 256 512"
+              width="1em"
+            >
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="pf-v5-c-pagination__nav-control pf-m-last"
+        >
+          <button
+            aria-disabled="false"
+            aria-label="Go to last page"
+            class="pf-v5-c-button pf-m-plain"
+            data-action="last"
+            data-ouia-component-id="OUIA-Generated-Button-plain-6"
+            data-ouia-component-type="PF5/Button"
+            data-ouia-safe="true"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v5-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 448 512"
+              width="1em"
+            >
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+    <div
+      class="pf-v5-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v5-c-toolbar__group"
+      />
+    </div>
+  </div>
+</div>
 `;
 
 exports[`TableWithFilter should render without data 1`] = `
-<Fragment>
-  <SkeletonTable
-    numberOfColumns={0}
-    rows={10}
-    variant="compact"
-  />
-</Fragment>
+<div>
+  <table
+    aria-label="Loading"
+    class="pf-v5-c-table pf-m-grid-md pf-m-compact"
+    data-ouia-component-id="SkeletonTable"
+    data-ouia-component-type="PF5/Table"
+    data-ouia-safe="true"
+    role="grid"
+    rows="10"
+  >
+    <thead
+      class="pf-v5-c-table__thead"
+      data-ouia-component-id="SkeletonTable-thead"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="SkeletonTable-tr-head"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      />
+    </thead>
+    <tbody
+      class="pf-v5-c-table__tbody"
+      data-ouia-component-id="SkeletonTable-tbody"
+      role="rowgroup"
+    >
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="SkeletonTable-tr-0"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      />
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="SkeletonTable-tr-1"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      />
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="SkeletonTable-tr-2"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      />
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="SkeletonTable-tr-3"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      />
+      <tr
+        class="pf-v5-c-table__tr"
+        data-ouia-component-id="SkeletonTable-tr-4"
+        data-ouia-component-type="PF5/TableRow"
+        data-ouia-safe="true"
+      />
+    </tbody>
+  </table>
+</div>
 `;
