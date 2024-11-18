@@ -118,3 +118,45 @@ jobs:
       - uses: './.github/actions/cache'
       - name: Check circular imports
         run: npx nx affected -t test:circular-dependencies --exclude=demo
+  release:
+    runs-on: ubuntu-latest
+    needs: [install, build, unit-test, component-test, lint, commitlint, check-circular-imports]
+    if: github.event_name != 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ssh-key: ${{ secrets.BOT_AUTH_KEY }}
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      - uses: nrwl/nx-set-shas@v4
+      - uses: './.github/actions/cache'
+      - name: Install deps
+        shell: bash
+        run: npm i
+      - name: Rebuild packages
+        run: npm run build
+      - name: git config
+        shell: bash
+        run: |
+          git config user.name "Nachobot"
+          git config user.email "crc-nachobot@redhat.com"
+      - name: Set publish config
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        shell: bash
+        run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+      - name: Release packages
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+        run: npx nx affected -t version
+      - name: Tag last-release
+        shell: bash
+        run: |
+          git tag -f last-release
+          git push origin last-release --force
