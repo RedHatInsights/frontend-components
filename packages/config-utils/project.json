@@ -1,7 +1,7 @@
 {
   "name": "@redhat-cloud-services/frontend-components-config-utilities",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/types",
+  "sourceRoot": "packages/config-utils",
   "projectType": "library",
   "tags": ["scope:build"],
   "targets": {

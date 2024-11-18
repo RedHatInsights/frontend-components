@@ -1,7 +1,7 @@
 {
   "name": "@redhat-cloud-services/frontend-components-config",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/types",
+  "sourceRoot": "packages/config",
   "projectType": "library",
   "tags": ["scope:build"],
   "targets": {
@@ -12,7 +12,7 @@
         "rootDir": "packages/config/src",
         "main": "packages/config/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-config",
-        "tsConfig": "packages/config/tsconfig.json"
+        "tsConfig": "packages/config/tsconfig.build.json"
       }
     },
     "check-circular-imports": {
