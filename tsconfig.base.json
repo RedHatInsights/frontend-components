@@ -26,6 +26,7 @@
       "@redhat-cloud-services/frontend-components-charts": ["dist/@redhat-cloud-services/frontend-components-charts"],
       "@redhat-cloud-services/frontend-components-charts/*": ["dist/@redhat-cloud-services/frontend-components-charts/*"],
       "@redhat-cloud-services/frontend-components-config-utilities": ["dist/@redhat-cloud-services/frontend-components-config-utilities"],
+      "@redhat-cloud-services/frontend-components-config-utilities/*": ["dist/@redhat-cloud-services/frontend-components-config-utilities/src"],
       "@redhat-cloud-services/frontend-components-notifications": ["dist/@redhat-cloud-services/frontend-components-notifications"],
       "@redhat-cloud-services/frontend-components-notifications/*": ["dist/@redhat-cloud-services/frontend-components-notifications/*"],
       "@redhat-cloud-services/frontend-components-remediations": ["dist/@redhat-cloud-services/frontend-components-remediations"],
