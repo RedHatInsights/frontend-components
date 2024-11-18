@@ -154,7 +154,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-        run: npx nx affected -t version
+        run: npx nx affected --base=last-release --parallel=1 -t version --trackDeps
       - name: Tag last-release
         shell: bash
         run: |
