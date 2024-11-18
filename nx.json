@@ -22,6 +22,9 @@
     "test:unit": {
       "dependsOn": ["^test"],
       "cache": true
+    },   
+    "version": {
+      "dependsOn": ["^version"]
     }
   },
   "defaultBase": "origin/master",
