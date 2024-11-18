@@ -105,3 +105,9 @@ The location of this module changed!
 This module was causing a circular dependency with the `@redhat-cloud-services/frontend-components-notifications` package!
 
 The automated notifications dispatch was removed on the export PDF promise resolution or rejection. The se notifications even should be handled by the consuming code, not internally in the pdf export function!
+
+### @redhat-cloud-services/frontend-components-config-utilities
+
+#### Standalone
+
+The standalone version of development environment was removed. The feature was not supported for a long time and its superseded by ephemeral environments.
