@@ -139,11 +139,11 @@ jobs:
         run: npm i
       - name: Rebuild packages
         run: npm run build
-      # - name: git config
-      #   shell: bash
-      #   run: |
-      #     git config user.name "Nachobot"
-      #     git config user.email "crc-nachobot@redhat.com"
+      - name: git config
+        shell: bash
+        run: |
+          git config user.name "Nachobot"
+          git config user.email "crc-nachobot@redhat.com"
       - name: Set publish config
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
