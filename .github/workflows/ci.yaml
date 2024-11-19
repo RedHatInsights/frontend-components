@@ -127,8 +127,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # ssh-key: ${{ secrets.BOT_AUTH_KEY }}
-          token: ${{ secrets.GH_BOT_TOKEN }}
+          ssh-key: ${{ secrets.BOT_AUTH_KEY }}
       - name: Use Node.js 20.x
         uses: actions/setup-node@v3
         with:
@@ -143,8 +142,8 @@ jobs:
       - name: git config
         shell: bash
         run: |
-          git config user.name "nacho-bot"
-          git config user.email "crc-nachobot@redhat.com"
+          git config user.name "Hyperkid123"
+          git config user.email "${{ secrets.BOT_EMAIL }}"
       - name: Set publish config
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
