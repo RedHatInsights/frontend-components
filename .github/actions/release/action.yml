@@ -1,0 +1,54 @@
+name: Release job
+description: build affected packages and publish them to npm
+inputs:
+  npm_token:
+    description: 'NPM token'
+    required: true
+  gh_token:
+    description: 'Github token'
+    required: true
+  gh_name:
+    description: 'Github name'
+    required: true
+  gh_email:
+    description: 'Github email'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+    - uses: nrwl/nx-set-shas@v4
+    - uses: './.github/actions/cache'
+    - name: Install deps
+      shell: bash
+      run: npm i
+    - name: git config
+      shell: bash
+      run: |
+        git config user.name "${{ inputs.gh_name }}"
+        git config user.email "${{ inputs.gh_email }}"
+    - name: Build
+      shell: bash
+      run: npx nx run-many -t build --exclude=demo,
+    - name: Set publish config
+      env:
+        NPM_TOKEN: ${{ inputs.npm_token }}
+      shell: bash
+      run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+    - name: Version
+      shell: bash
+      env:
+        # skip the git hooks 
+        HUSKY: 0
+        GH_TOKEN: ${{ inputs.gh_token }}
+        GITHUB_TOKEN: ${{ inputs.gh_token }}
+      run: npx nx affected --base=last-release --parallel=1 --target=version --trackDeps --exclude=@redhat-cloud-services/executors,demo
+    - name: Tag last-release
+      shell: bash
+      run: |
+        git tag -f last-release
+        git push origin last-release --force --no-verify
+  
