@@ -67,7 +67,11 @@
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "conventionalcommits",
-        "postTargets": ["build", "deploy", "github"]
+        "postTargets": ["build", "deploy", "github"],
+        "trackDeps": true,
+        "push": true,
+        "commitMessageFormat": "release: bump {projectName} to {version} [skip ci]"
+
       }
     },
     "github": {
