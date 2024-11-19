@@ -138,6 +138,8 @@ jobs:
       - name: Install deps
         shell: bash
         run: npm i
+      - name: Rebuild packages
+        run: npm run build
       - name: git config
         shell: bash
         run: |
