@@ -138,8 +138,6 @@ jobs:
       - name: Install deps
         shell: bash
         run: npm i
-      - name: Rebuild packages
-        run: npm run build
       - name: git config
         shell: bash
         run: |
@@ -163,3 +161,4 @@ jobs:
         run: |
           git tag -f last-release
           git push origin last-release --force --no-verify
+          git push origin master --no-verify

@@ -68,9 +68,8 @@
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "conventionalcommits",
-        "postTargets": ["build", "deploy", "github"],
+        "postTargets": ["tagRelease", "build", "deploy", "github"],
         "trackDeps": true,
-        "push": true,
         "commitMessageFormat": "release: bump {projectName} to {version} [skip ci]"
 
       }
@@ -89,6 +88,12 @@
         "access": "public"
       },
       "dependsOn": ["build"]
+    },
+    "tagRelease": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "git push --tags"
+      }
     }
   }
 }
