@@ -142,7 +142,7 @@ jobs:
       - name: git config
         shell: bash
         run: |
-          git config user.name "Nachobot"
+          git config user.name "nacho-bot"
           git config user.email "crc-nachobot@redhat.com"
       - name: Set publish config
         env:
