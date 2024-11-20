@@ -50,20 +50,6 @@
       "options": {
         "jestConfig": "packages/executors/jest.config.ts"
       }
-    },
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "preset": "conventionalcommits",
-        "postTargets": ["github"]
-      }
-    },
-    "github": {
-      "executor": "@jscutlery/semver:github",
-      "options": {
-        "tag": "${tag}",
-        "notesFile": "packages/executors/CHANGELOG.md"
-      }
     }
   }
 }
