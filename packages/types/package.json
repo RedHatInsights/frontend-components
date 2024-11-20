@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/types",
-    "description": "TypeScript definitions for @redhat-cloud-services common typings",
+    "description": "TypeScript definitions for @redhat-cloud-services common typings.",
     "version": "1.0.17",
     "main": "index.d.ts",
     "types": "index.d.ts",
