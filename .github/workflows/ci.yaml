@@ -127,7 +127,6 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_BOT_TOKEN }}
-          persist-credentials: false
       - uses: './.github/actions/release'
         with:
           gh_token: ${{ secrets.GH_BOT_TOKEN }}
