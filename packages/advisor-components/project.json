@@ -13,7 +13,8 @@
         "main": "packages/advisor-components/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-advisor-components",
         "cjsTsConfig": "packages/advisor-components/tsconfig.cjs.json",
-        "esmTsConfig": "packages/advisor-components/tsconfig.esm.json"
+        "esmTsConfig": "packages/advisor-components/tsconfig.esm.json",
+        "assets": []
       }
     },
     "build:styles": {
