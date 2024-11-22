@@ -16,10 +16,10 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Use Node.js 20.x
+    - name: Use Node.js 18.x
       uses: actions/setup-node@v4
       with:
-        node-version: 20.x
+        node-version: '18'
     - uses: nrwl/nx-set-shas@v4
     - uses: './.github/actions/cache'
     - name: Install deps
@@ -43,7 +43,6 @@ runs:
       env:
         # skip the git hooks 
         HUSKY: 0
-        GH_TOKEN: ${{ inputs.gh_token }}
         GITHUB_TOKEN: ${{ inputs.gh_token }}
       run: npx nx affected --base=last-release --parallel=1 --baseBranch=master --target=version --trackDeps --postTargets=build,deploy,github --exclude=@redhat-cloud-services/executors,demo
     - name: Tag last-release
