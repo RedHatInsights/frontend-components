@@ -43,6 +43,7 @@ runs:
       env:
         # skip the git hooks 
         HUSKY: 0
+        GH_TOKEN: ${{ inputs.gh_token }}
         GITHUB_TOKEN: ${{ inputs.gh_token }}
       run: npx nx affected --base=last-release --parallel=1 --baseBranch=master --target=version --trackDeps --postTargets=build,deploy,github --exclude=@redhat-cloud-services/executors,demo
     - name: Tag last-release
