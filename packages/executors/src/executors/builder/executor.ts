@@ -53,8 +53,8 @@ export default async function runExecutor(options: BuilderExecutorSchemaType, co
 
   const { cjsTsConfig, esmTsConfig, ...tscOptions } = options;
   const esmOutputDir = options.outputPath + '/esm';
-  const cjsTscOptions = { ...tscOptions, tsConfig: cjsTsConfig, assets: [] };
-  const esmTscOptions = { ...tscOptions, outputPath: esmOutputDir, tsConfig: esmTsConfig, assets: [] };
+  const cjsTscOptions = { ...tscOptions, tsConfig: cjsTsConfig };
+  const esmTscOptions = { ...tscOptions, outputPath: esmOutputDir, tsConfig: esmTsConfig };
   let executionResult = { success: false };
   const results = await Promise.all([tscExecutor(cjsTscOptions, context as any), tscExecutor(esmTscOptions, context as any)]);
   executionResult = await resolveExecutors(...results);
