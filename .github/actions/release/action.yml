@@ -13,6 +13,9 @@ inputs:
   gh_email:
     description: 'Github email'
     required: true
+  gh_repository:
+    description: 'Github repository'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -30,6 +33,7 @@ runs:
       run: |
         git config user.name "${{ inputs.gh_name }}"
         git config user.email "${{ inputs.gh_email }}"
+        git remote set-url origin https://${{ inputs.gh_token }}@github.com/${{ inputs.gh_repository }}
     - name: Build
       shell: bash
       run: npx nx run-many -t build --exclude=demo,
