@@ -31,7 +31,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@florkbr/semver": "^5.3.3",
+    "@florkbr/semver": "^5.3.4",
     "@nx/cypress": "^20.0.6",
     "@nx/eslint": "^20.0.6",
     "@nx/eslint-plugin": "20.0.6",
