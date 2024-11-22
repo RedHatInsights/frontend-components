@@ -126,7 +126,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GH_BOT_TOKEN }}
+          ssh-key: ${{ secrets.BOT_AUTH_KEY}}
       - uses: './.github/actions/release'
         with:
           gh_token: ${{ secrets.GH_BOT_TOKEN }}
