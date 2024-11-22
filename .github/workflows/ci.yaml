@@ -126,12 +126,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GH_BOT_TOKEN }}
-          persist-credentials: false
+          ssh-key: ${{ secrets.BOT_AUTH_KEY}}
       - uses: './.github/actions/release'
         with:
           gh_token: ${{ secrets.GH_BOT_TOKEN }}
           npm_token: ${{ secrets.NPM_TOKEN }}
           gh_name: ${{ secrets.BOT_NAME }}
           gh_email: ${{ secrets.BOT_EMAIL }}
-          gh_repository: ${{ github.repository }}

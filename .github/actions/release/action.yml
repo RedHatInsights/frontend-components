@@ -13,9 +13,6 @@ inputs:
   gh_email:
     description: 'Github email'
     required: true
-  gh_repository:
-    description: 'Github repository'
-    required: true
 runs:
   using: "composite"
   steps:
@@ -33,7 +30,6 @@ runs:
       run: |
         git config user.name "${{ inputs.gh_name }}"
         git config user.email "${{ inputs.gh_email }}"
-        git remote set-url origin https://${{ inputs.gh_token }}@github.com/${{ inputs.gh_repository }}
     - name: Build
       shell: bash
       run: npx nx run-many -t build --exclude=demo,
@@ -49,7 +45,7 @@ runs:
         HUSKY: 0
         GH_TOKEN: ${{ inputs.gh_token }}
         GITHUB_TOKEN: ${{ inputs.gh_token }}
-      run: npx nx affected --base=last-release --parallel=1 --baseBranch=master --remote=origin --target=version --trackDeps --postTargets=build,deploy,github --exclude=@redhat-cloud-services/executors,demo
+      run: npx nx affected --base=last-release --parallel=1 --baseBranch=master --target=version --trackDeps --postTargets=build,deploy,github --exclude=@redhat-cloud-services/executors,demo
     - name: Tag last-release
       shell: bash
       run: |
