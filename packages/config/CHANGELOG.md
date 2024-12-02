@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.3.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.3.4...@redhat-cloud-services/frontend-components-config-6.3.5) (2024-12-02)
+
+
+### Bug Fixes
+
+* **fec:** fix missing template.json when running fec dev ([ef6d77c](https://github.com/RedHatInsights/frontend-components/commit/ef6d77c57f5b948712a33810e6f90601ba0eddb6))
+
 ## [6.3.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.3.3...@redhat-cloud-services/frontend-components-config-6.3.4) (2024-11-22)
 
 ### Dependency Updates
