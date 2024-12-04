@@ -13,22 +13,24 @@ const treeTableDecorator =
     value,
     children:
       rowData.level !== undefined ? (
-        <div className="pf-v5-c-treeview__control">
+        <div className="pf-v6-c-treeview__control">
           {rowData.isTreeOpen !== undefined && (
-            <div className="pf-v5-c-treeview__toggle">
-              <Button variant="plain" onClick={(event) => onCollapse && onCollapse(event, value, { rowData, ...props })}>
-                <AngleRightIcon className="pf-v5-c-treeview__toggle-icon" aria-hidden="true" />
-              </Button>
+            <div className="pf-v6-c-treeview__toggle">
+              <Button
+                icon={<AngleRightIcon className="pf-v6-c-treeview__toggle-icon" aria-hidden="true" />}
+                variant="plain"
+                onClick={(event) => onCollapse && onCollapse(event, value, { rowData, ...props })}
+              />
             </div>
           )}
-          <div className="pf-v5-c-treeview__control-text">{typeof value === 'object' ? value.title : value}</div>
+          <div className="pf-v6-c-treeview__control-text">{typeof value === 'object' ? value.title : value}</div>
         </div>
       ) : typeof value === 'object' ? (
         value.title
       ) : (
         value
       ),
-    className: rowData.level !== undefined ? 'pf-v5-c-treeview__title-cell' : '',
+    className: rowData.level !== undefined ? 'pf-v6-c-treeview__title-cell' : '',
   });
 
 export default treeTableDecorator;

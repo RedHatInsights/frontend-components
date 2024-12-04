@@ -3,20 +3,20 @@
 exports[`Not connected component should render 1`] = `
 <div>
   <div
-    class="pf-v5-c-empty-state"
+    class="pf-v6-c-empty-state"
   >
     <div
-      class="pf-v5-c-empty-state__content"
+      class="pf-v6-c-empty-state__content"
     >
       <div
-        class="pf-v5-c-empty-state__header"
+        class="pf-v6-c-empty-state__header"
       >
         <div
-          class="pf-v5-c-empty-state__icon"
+          class="pf-v6-c-empty-state__icon"
         >
           <svg
             aria-hidden="true"
-            class="pf-v5-svg"
+            class="pf-v6-svg"
             fill="currentColor"
             height="1em"
             role="img"
@@ -29,34 +29,38 @@ exports[`Not connected component should render 1`] = `
           </svg>
         </div>
         <div
-          class="pf-v5-c-empty-state__title"
+          class="pf-v6-c-empty-state__title"
         >
           <h5
-            class="pf-v5-c-empty-state__title-text"
+            class="pf-v6-c-empty-state__title-text"
           >
             This system isn’t connected to Insights yet
           </h5>
         </div>
       </div>
       <div
-        class="pf-v5-c-empty-state__body"
+        class="pf-v6-c-empty-state__body"
       >
         To get started, activate the Insights client for this system.
       </div>
       <div
-        class="pf-v5-c-empty-state__footer"
+        class="pf-v6-c-empty-state__footer"
       >
         <a
           aria-disabled="false"
-          class="pf-v5-c-button pf-m-primary pf-v5-u-mt-lg"
+          class="pf-v6-c-button pf-m-primary pf-v6-u-mt-lg"
           data-ouia-component-id="OUIA-Generated-Button-primary-1"
-          data-ouia-component-type="PF5/Button"
+          data-ouia-component-type="PF6/Button"
           data-ouia-safe="true"
           href="https://access.redhat.com/products/red-hat-insights/"
           rel="noopener noreferrer"
           target="_blank"
         >
-          Learn how to activate the Insights client
+          <span
+            class="pf-v6-c-button__text"
+          >
+            Learn how to activate the Insights client
+          </span>
         </a>
       </div>
     </div>

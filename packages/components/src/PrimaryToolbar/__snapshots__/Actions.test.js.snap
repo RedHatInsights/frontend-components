@@ -3,91 +3,95 @@
 exports[`Actions - component API should update open 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button>
       Some button
     </button>
   </div>
   <div
-    class="pf-v5-c-toolbar__item  ins-c-primary-toolbar__actions pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item  ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <button
       aria-expanded="true"
       aria-label="kebab dropdown toggle"
-      class="pf-v5-c-menu-toggle pf-m-expanded pf-m-plain"
+      class="pf-v6-c-menu-toggle pf-m-expanded pf-m-plain"
       data-ouia-component-id="OUIA-Generated-MenuToggle-plain-8"
-      data-ouia-component-type="PF5/MenuToggle"
+      data-ouia-component-type="PF6/MenuToggle"
       data-ouia-safe="true"
       type="button"
     >
-      <svg
-        aria-hidden="true"
-        class="pf-v5-svg"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        viewBox="0 0 192 512"
-        width="1em"
+      <span
+        class="pf-v6-c-menu-toggle__icon"
       >
-        <path
-          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          class="pf-v6-svg"
+          fill="currentColor"
+          height="1em"
+          role="img"
+          viewBox="0 0 192 512"
+          width="1em"
+        >
+          <path
+            d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+          />
+        </svg>
+      </span>
     </button>
     <div
-      class="pf-v5-c-menu"
+      class="pf-v6-c-menu"
       data-ouia-component-id="BulkActionsList"
-      data-ouia-component-type="PF5/Dropdown"
+      data-ouia-component-type="PF6/Dropdown"
       data-ouia-safe="true"
       style="position: absolute; left: 0px; top: 0px; z-index: 9999; opacity: 0; transition: opacity 0ms cubic-bezier(.54, 1.5, .38, 1.11); min-width: 0px;"
     >
       <div
-        class="pf-v5-c-menu__content"
+        class="pf-v6-c-menu__content"
       >
         <ul
-          class="pf-v5-c-menu__list"
+          class="pf-v6-c-menu__list"
           role="menu"
         >
           <li
-            class="pf-v5-c-menu__list-item ins-c-primary-toolbar__first-action"
+            class="pf-v6-c-menu__list-item ins-c-primary-toolbar__first-action"
             data-ouia-component-id="OUIA-Generated-DropdownItem-1"
-            data-ouia-component-type="PF5/DropdownItem"
+            data-ouia-component-type="PF6/DropdownItem"
             data-ouia-safe="true"
             role="none"
           >
             <div
-              class="pf-v5-c-menu__item ins-c-primary-toolbar__first-action"
+              class="pf-v6-c-menu__item ins-c-primary-toolbar__first-action"
               role="menuitem"
               tabindex="-1"
             >
               <span
-                class="pf-v5-c-menu__item-main"
+                class="pf-v6-c-menu__item-main"
               >
                 <span
-                  class="pf-v5-c-menu__item-text"
+                  class="pf-v6-c-menu__item-text"
                 />
               </span>
             </div>
           </li>
           <li
-            class="pf-v5-c-menu__list-item"
+            class="pf-v6-c-menu__list-item"
             data-ouia-component-id="OUIA-Generated-DropdownItem-2"
-            data-ouia-component-type="PF5/DropdownItem"
+            data-ouia-component-type="PF6/DropdownItem"
             data-ouia-safe="true"
             role="none"
           >
             <button
-              class="pf-v5-c-menu__item"
+              class="pf-v6-c-menu__item"
               role="menuitem"
               tabindex="0"
               type="button"
             >
               <span
-                class="pf-v5-c-menu__item-main"
+                class="pf-v6-c-menu__item-main"
               >
                 <span
-                  class="pf-v5-c-menu__item-text"
+                  class="pf-v6-c-menu__item-text"
                 >
                   Some title
                 </span>
@@ -95,23 +99,23 @@ exports[`Actions - component API should update open 1`] = `
             </button>
           </li>
           <li
-            class="pf-v5-c-menu__list-item"
+            class="pf-v6-c-menu__list-item"
             data-ouia-component-id="OUIA-Generated-DropdownItem-3"
-            data-ouia-component-type="PF5/DropdownItem"
+            data-ouia-component-type="PF6/DropdownItem"
             data-ouia-safe="true"
             role="none"
           >
             <button
-              class="pf-v5-c-menu__item"
+              class="pf-v6-c-menu__item"
               role="menuitem"
               tabindex="-1"
               type="button"
             >
               <span
-                class="pf-v5-c-menu__item-main"
+                class="pf-v6-c-menu__item-main"
               >
                 <span
-                  class="pf-v5-c-menu__item-text"
+                  class="pf-v6-c-menu__item-text"
                 >
                   Custom props
                 </span>
@@ -119,23 +123,23 @@ exports[`Actions - component API should update open 1`] = `
             </button>
           </li>
           <li
-            class="pf-v5-c-menu__list-item"
+            class="pf-v6-c-menu__list-item"
             data-ouia-component-id="OUIA-Generated-DropdownItem-4"
-            data-ouia-component-type="PF5/DropdownItem"
+            data-ouia-component-type="PF6/DropdownItem"
             data-ouia-safe="true"
             role="none"
           >
             <button
-              class="pf-v5-c-menu__item"
+              class="pf-v6-c-menu__item"
               role="menuitem"
               tabindex="-1"
               type="button"
             >
               <span
-                class="pf-v5-c-menu__item-main"
+                class="pf-v6-c-menu__item-main"
               >
                 <span
-                  class="pf-v5-c-menu__item-text"
+                  class="pf-v6-c-menu__item-text"
                 >
                   plain string
                 </span>
@@ -152,44 +156,52 @@ exports[`Actions - component API should update open 1`] = `
 exports[`Actions - component should render actionObject as first action 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button
       aria-disabled="false"
-      class="pf-v5-c-button pf-m-primary"
+      class="pf-v6-c-button pf-m-primary"
       data-ouia-component-id="Some title"
-      data-ouia-component-type="PF5/Button"
+      data-ouia-component-type="PF6/Button"
       data-ouia-safe="true"
       type="button"
     >
-      Some title
+      <span
+        class="pf-v6-c-button__text"
+      >
+        Some title
+      </span>
     </button>
   </div>
   <div
-    class="pf-v5-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <button
       aria-expanded="false"
       aria-label="kebab dropdown toggle"
-      class="pf-v5-c-menu-toggle pf-m-plain"
+      class="pf-v6-c-menu-toggle pf-m-plain"
       data-ouia-component-id="OUIA-Generated-MenuToggle-plain-7"
-      data-ouia-component-type="PF5/MenuToggle"
+      data-ouia-component-type="PF6/MenuToggle"
       data-ouia-safe="true"
       type="button"
     >
-      <svg
-        aria-hidden="true"
-        class="pf-v5-svg"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        viewBox="0 0 192 512"
-        width="1em"
+      <span
+        class="pf-v6-c-menu-toggle__icon"
       >
-        <path
-          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          class="pf-v6-svg"
+          fill="currentColor"
+          height="1em"
+          role="img"
+          viewBox="0 0 192 512"
+          width="1em"
+        >
+          <path
+            d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+          />
+        </svg>
+      </span>
     </button>
   </div>
 </div>
@@ -198,37 +210,41 @@ exports[`Actions - component should render actionObject as first action 1`] = `
 exports[`Actions - component should render actions and overflow 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button>
       Some button
     </button>
   </div>
   <div
-    class="pf-v5-c-toolbar__item  ins-c-primary-toolbar__actions pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item  ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <button
       aria-expanded="false"
       aria-label="kebab dropdown toggle"
-      class="pf-v5-c-menu-toggle pf-m-plain"
+      class="pf-v6-c-menu-toggle pf-m-plain"
       data-ouia-component-id="OUIA-Generated-MenuToggle-plain-3"
-      data-ouia-component-type="PF5/MenuToggle"
+      data-ouia-component-type="PF6/MenuToggle"
       data-ouia-safe="true"
       type="button"
     >
-      <svg
-        aria-hidden="true"
-        class="pf-v5-svg"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        viewBox="0 0 192 512"
-        width="1em"
+      <span
+        class="pf-v6-c-menu-toggle__icon"
       >
-        <path
-          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          class="pf-v6-svg"
+          fill="currentColor"
+          height="1em"
+          role="img"
+          viewBox="0 0 192 512"
+          width="1em"
+        >
+          <path
+            d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+          />
+        </svg>
+      </span>
     </button>
   </div>
 </div>
@@ -237,30 +253,34 @@ exports[`Actions - component should render actions and overflow 1`] = `
 exports[`Actions - component should render empty actions 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <button
       aria-expanded="false"
       aria-label="kebab dropdown toggle"
-      class="pf-v5-c-menu-toggle pf-m-plain"
+      class="pf-v6-c-menu-toggle pf-m-plain"
       data-ouia-component-id="OUIA-Generated-MenuToggle-plain-2"
-      data-ouia-component-type="PF5/MenuToggle"
+      data-ouia-component-type="PF6/MenuToggle"
       data-ouia-safe="true"
       type="button"
     >
-      <svg
-        aria-hidden="true"
-        class="pf-v5-svg"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        viewBox="0 0 192 512"
-        width="1em"
+      <span
+        class="pf-v6-c-menu-toggle__icon"
       >
-        <path
-          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          class="pf-v6-svg"
+          fill="currentColor"
+          height="1em"
+          role="img"
+          viewBox="0 0 192 512"
+          width="1em"
+        >
+          <path
+            d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+          />
+        </svg>
+      </span>
     </button>
   </div>
 </div>
@@ -269,37 +289,41 @@ exports[`Actions - component should render empty actions 1`] = `
 exports[`Actions - component should render just actions 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button>
       Some button
     </button>
   </div>
   <div
-    class="pf-v5-c-toolbar__item  ins-c-primary-toolbar__actions pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item  ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <button
       aria-expanded="false"
       aria-label="kebab dropdown toggle"
-      class="pf-v5-c-menu-toggle pf-m-plain"
+      class="pf-v6-c-menu-toggle pf-m-plain"
       data-ouia-component-id="OUIA-Generated-MenuToggle-plain-1"
-      data-ouia-component-type="PF5/MenuToggle"
+      data-ouia-component-type="PF6/MenuToggle"
       data-ouia-safe="true"
       type="button"
     >
-      <svg
-        aria-hidden="true"
-        class="pf-v5-svg"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        viewBox="0 0 192 512"
-        width="1em"
+      <span
+        class="pf-v6-c-menu-toggle__icon"
       >
-        <path
-          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          class="pf-v6-svg"
+          fill="currentColor"
+          height="1em"
+          role="img"
+          viewBox="0 0 192 512"
+          width="1em"
+        >
+          <path
+            d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+          />
+        </svg>
+      </span>
     </button>
   </div>
 </div>
@@ -310,37 +334,41 @@ exports[`Actions - component should render no data 1`] = `<div />`;
 exports[`Actions - component should render one action 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button>
       Some button
     </button>
   </div>
   <div
-    class="pf-v5-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <button
       aria-expanded="false"
       aria-label="kebab dropdown toggle"
-      class="pf-v5-c-menu-toggle pf-m-plain"
+      class="pf-v6-c-menu-toggle pf-m-plain"
       data-ouia-component-id="OUIA-Generated-MenuToggle-plain-4"
-      data-ouia-component-type="PF5/MenuToggle"
+      data-ouia-component-type="PF6/MenuToggle"
       data-ouia-safe="true"
       type="button"
     >
-      <svg
-        aria-hidden="true"
-        class="pf-v5-svg"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        viewBox="0 0 192 512"
-        width="1em"
+      <span
+        class="pf-v6-c-menu-toggle__icon"
       >
-        <path
-          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          class="pf-v6-svg"
+          fill="currentColor"
+          height="1em"
+          role="img"
+          viewBox="0 0 192 512"
+          width="1em"
+        >
+          <path
+            d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+          />
+        </svg>
+      </span>
     </button>
   </div>
 </div>
@@ -349,37 +377,41 @@ exports[`Actions - component should render one action 1`] = `
 exports[`Actions - component should render one action and multiple overflow 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button>
       Some button
     </button>
   </div>
   <div
-    class="pf-v5-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+    class="pf-v6-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <button
       aria-expanded="false"
       aria-label="kebab dropdown toggle"
-      class="pf-v5-c-menu-toggle pf-m-plain"
+      class="pf-v6-c-menu-toggle pf-m-plain"
       data-ouia-component-id="OUIA-Generated-MenuToggle-plain-5"
-      data-ouia-component-type="PF5/MenuToggle"
+      data-ouia-component-type="PF6/MenuToggle"
       data-ouia-safe="true"
       type="button"
     >
-      <svg
-        aria-hidden="true"
-        class="pf-v5-svg"
-        fill="currentColor"
-        height="1em"
-        role="img"
-        viewBox="0 0 192 512"
-        width="1em"
+      <span
+        class="pf-v6-c-menu-toggle__icon"
       >
-        <path
-          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          class="pf-v6-svg"
+          fill="currentColor"
+          height="1em"
+          role="img"
+          viewBox="0 0 192 512"
+          width="1em"
+        >
+          <path
+            d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+          />
+        </svg>
+      </span>
     </button>
   </div>
 </div>
@@ -389,23 +421,23 @@ exports[`overflowActionsMapper should render action object 1`] = `
 <div>
   <div>
     <li
-      class="pf-v5-c-menu__list-item ins-c-primary-toolbar__overflow-actions"
+      class="pf-v6-c-menu__list-item ins-c-primary-toolbar__overflow-actions"
       data-ouia-component-id="OUIA-Generated-DropdownItem-14"
-      data-ouia-component-type="PF5/DropdownItem"
+      data-ouia-component-type="PF6/DropdownItem"
       data-ouia-safe="true"
       role="none"
     >
       <button
-        class="pf-v5-c-menu__item ins-c-primary-toolbar__overflow-actions"
+        class="pf-v6-c-menu__item ins-c-primary-toolbar__overflow-actions"
         role="menuitem"
         tabindex="-1"
         type="button"
       >
         <span
-          class="pf-v5-c-menu__item-main"
+          class="pf-v6-c-menu__item-main"
         >
           <span
-            class="pf-v5-c-menu__item-text"
+            class="pf-v6-c-menu__item-text"
           >
             Some title
           </span>
@@ -420,22 +452,22 @@ exports[`overflowActionsMapper should render component 1`] = `
 <div>
   <div>
     <li
-      class="pf-v5-c-menu__list-item ins-c-primary-toolbar__overflow-actions"
+      class="pf-v6-c-menu__list-item ins-c-primary-toolbar__overflow-actions"
       data-ouia-component-id="OUIA-Generated-DropdownItem-13"
-      data-ouia-component-type="PF5/DropdownItem"
+      data-ouia-component-type="PF6/DropdownItem"
       data-ouia-safe="true"
       role="none"
     >
       <div
-        class="pf-v5-c-menu__item ins-c-primary-toolbar__overflow-actions"
+        class="pf-v6-c-menu__item ins-c-primary-toolbar__overflow-actions"
         role="menuitem"
         tabindex="-1"
       >
         <span
-          class="pf-v5-c-menu__item-main"
+          class="pf-v6-c-menu__item-main"
         >
           <span
-            class="pf-v5-c-menu__item-text"
+            class="pf-v6-c-menu__item-text"
           >
             <button>
               Some button
@@ -452,23 +484,23 @@ exports[`overflowActionsMapper should render plain string 1`] = `
 <div>
   <div>
     <li
-      class="pf-v5-c-menu__list-item ins-c-primary-toolbar__overflow-actions"
+      class="pf-v6-c-menu__list-item ins-c-primary-toolbar__overflow-actions"
       data-ouia-component-id="OUIA-Generated-DropdownItem-15"
-      data-ouia-component-type="PF5/DropdownItem"
+      data-ouia-component-type="PF6/DropdownItem"
       data-ouia-safe="true"
       role="none"
     >
       <button
-        class="pf-v5-c-menu__item ins-c-primary-toolbar__overflow-actions"
+        class="pf-v6-c-menu__item ins-c-primary-toolbar__overflow-actions"
         role="menuitem"
         tabindex="-1"
         type="button"
       >
         <span
-          class="pf-v5-c-menu__item-main"
+          class="pf-v6-c-menu__item-main"
         >
           <span
-            class="pf-v5-c-menu__item-text"
+            class="pf-v6-c-menu__item-text"
           >
             Custom props
           </span>

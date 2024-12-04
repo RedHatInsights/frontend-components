@@ -3,7 +3,7 @@
 exports[`TableToolbar component should render 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar ins-c-table__toolbar"
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
@@ -11,11 +11,11 @@ exports[`TableToolbar component should render 1`] = `
   >
     Some
     <div
-      class="pf-v5-c-toolbar__content pf-m-hidden"
+      class="pf-v6-c-toolbar__content pf-m-hidden"
       hidden=""
     >
       <div
-        class="pf-v5-c-toolbar__group"
+        class="pf-v6-c-toolbar__group"
       />
     </div>
   </div>
@@ -25,7 +25,7 @@ exports[`TableToolbar component should render 1`] = `
 exports[`TableToolbar component should render a footer 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar ins-c-table__toolbar ins-m-footer"
+    class="pf-v6-c-toolbar ins-c-table__toolbar ins-m-footer"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-8"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
@@ -33,11 +33,11 @@ exports[`TableToolbar component should render a footer 1`] = `
   >
     Footer
     <div
-      class="pf-v5-c-toolbar__content pf-m-hidden"
+      class="pf-v6-c-toolbar__content pf-m-hidden"
       hidden=""
     >
       <div
-        class="pf-v5-c-toolbar__group"
+        class="pf-v6-c-toolbar__group"
       />
     </div>
   </div>
@@ -47,7 +47,7 @@ exports[`TableToolbar component should render a footer 1`] = `
 exports[`TableToolbar component should render with results and selection of 1 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar ins-c-table__toolbar"
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-7"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
@@ -55,11 +55,11 @@ exports[`TableToolbar component should render with results and selection of 1 1`
   >
     Some
     <div
-      class="pf-v5-c-toolbar__content pf-m-hidden"
+      class="pf-v6-c-toolbar__content pf-m-hidden"
       hidden=""
     >
       <div
-        class="pf-v5-c-toolbar__group"
+        class="pf-v6-c-toolbar__group"
       />
     </div>
   </div>
@@ -87,7 +87,7 @@ exports[`TableToolbar component should render with results and selection of 1 1`
 exports[`TableToolbar component should render with results greater than 1 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar ins-c-table__toolbar"
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-4"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
@@ -95,11 +95,11 @@ exports[`TableToolbar component should render with results greater than 1 1`] = 
   >
     Some
     <div
-      class="pf-v5-c-toolbar__content pf-m-hidden"
+      class="pf-v6-c-toolbar__content pf-m-hidden"
       hidden=""
     >
       <div
-        class="pf-v5-c-toolbar__group"
+        class="pf-v6-c-toolbar__group"
       />
     </div>
   </div>
@@ -120,7 +120,7 @@ exports[`TableToolbar component should render with results greater than 1 1`] = 
 exports[`TableToolbar component should render with results of 0 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar ins-c-table__toolbar"
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-2"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
@@ -128,11 +128,11 @@ exports[`TableToolbar component should render with results of 0 1`] = `
   >
     Some
     <div
-      class="pf-v5-c-toolbar__content pf-m-hidden"
+      class="pf-v6-c-toolbar__content pf-m-hidden"
       hidden=""
     >
       <div
-        class="pf-v5-c-toolbar__group"
+        class="pf-v6-c-toolbar__group"
       />
     </div>
   </div>
@@ -142,7 +142,7 @@ exports[`TableToolbar component should render with results of 0 1`] = `
 exports[`TableToolbar component should render with results of 1 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar ins-c-table__toolbar"
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-3"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
@@ -150,11 +150,11 @@ exports[`TableToolbar component should render with results of 1 1`] = `
   >
     Some
     <div
-      class="pf-v5-c-toolbar__content pf-m-hidden"
+      class="pf-v6-c-toolbar__content pf-m-hidden"
       hidden=""
     >
       <div
-        class="pf-v5-c-toolbar__group"
+        class="pf-v6-c-toolbar__group"
       />
     </div>
   </div>
@@ -175,7 +175,7 @@ exports[`TableToolbar component should render with results of 1 1`] = `
 exports[`TableToolbar component should render with selection of 0 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar ins-c-table__toolbar"
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-5"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
@@ -183,11 +183,11 @@ exports[`TableToolbar component should render with selection of 0 1`] = `
   >
     Some
     <div
-      class="pf-v5-c-toolbar__content pf-m-hidden"
+      class="pf-v6-c-toolbar__content pf-m-hidden"
       hidden=""
     >
       <div
-        class="pf-v5-c-toolbar__group"
+        class="pf-v6-c-toolbar__group"
       />
     </div>
   </div>
@@ -198,7 +198,7 @@ exports[`TableToolbar component should render with selection of 0 1`] = `
 exports[`TableToolbar component should render with selection of 1 1`] = `
 <div>
   <div
-    class="pf-v5-c-toolbar ins-c-table__toolbar"
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-6"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
@@ -206,11 +206,11 @@ exports[`TableToolbar component should render with selection of 1 1`] = `
   >
     Some
     <div
-      class="pf-v5-c-toolbar__content pf-m-hidden"
+      class="pf-v6-c-toolbar__content pf-m-hidden"
       hidden=""
     >
       <div
-        class="pf-v5-c-toolbar__group"
+        class="pf-v6-c-toolbar__group"
       />
     </div>
   </div>

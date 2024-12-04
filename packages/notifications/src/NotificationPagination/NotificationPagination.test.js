@@ -10,8 +10,8 @@ describe('Notification Pagination component', () => {
 
   it('render should contain correct items', () => {
     const { container } = render(<NotificationPagination page={1} count={10} />);
-    expect(container.querySelectorAll('.pf-v5-c-pagination.pf-m-bottom').length).toBe(1);
-    expect(container.querySelectorAll('.pf-v5-c-pagination__nav').length).toBe(1);
+    expect(container.querySelectorAll('.pf-v6-c-pagination.pf-m-bottom').length).toBe(1);
+    expect(container.querySelectorAll('.pf-v6-c-pagination__nav').length).toBe(1);
   });
 
   it('should call clear all action', () => {

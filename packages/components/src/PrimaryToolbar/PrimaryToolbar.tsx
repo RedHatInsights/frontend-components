@@ -107,15 +107,14 @@ const PrimaryToolbar: React.FunctionComponent<React.PropsWithChildren<PrimaryToo
               <ToolbarItem>
                 {isPrimaryToolbarExpandAllObject(expandAll) ? (
                   <Button
+                    icon={<ToolbarExpandIconWrapper>{expandAll.isAllExpanded ? <AngleDownIcon /> : <AngleRightIcon />}</ToolbarExpandIconWrapper>}
                     {...expandAll.buttonProps}
                     variant="plain"
                     aria-label={`${expandAll.isAllExpanded ? 'Collapse' : 'Expand'} all`}
                     onClick={(e) => expandAll.onClick(e, !expandAll.isAllExpanded)}
                     ouiaId="ExpandCollapseAll"
                     isDisabled={expandAll.isDisabled}
-                  >
-                    <ToolbarExpandIconWrapper>{expandAll.isAllExpanded ? <AngleDownIcon /> : <AngleRightIcon />}</ToolbarExpandIconWrapper>
-                  </Button>
+                  />
                 ) : (
                   expandAll
                 )}
