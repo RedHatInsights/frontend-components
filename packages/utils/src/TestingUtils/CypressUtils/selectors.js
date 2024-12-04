@@ -27,16 +27,16 @@ export const TAB_BUTTON = '[data-ouia-component-type="PF5/TabButton"]';
 export const ALERT = '[data-ouia-component-type="PF5/Alert"]';
 
 /** PF5 classes */
-export const MENU_TOGGLE = '.pf-v5-c-menu-toggle';
-export const MENU_LIST = '.pf-v5-c-menu__list';
-export const MENU_TOGGLE_TEXT = '.pf-v5-c-menu-toggle__text';
-export const MENU_ITEM = '.pf-v5-c-menu__list-item';
-export const SELECT_MENU_ITEM = '.pf-v5-c-select__menu-item';
+export const MENU_TOGGLE = '.pf-v6-c-menu-toggle';
+export const MENU_LIST = '.pf-v6-c-menu__list';
+export const MENU_TOGGLE_TEXT = '.pf-v6-c-menu-toggle__text';
+export const MENU_ITEM = '.pf-v6-c-menu__list-item';
+export const SELECT_MENU_ITEM = '.pf-v6-c-select__menu-item';
 export const PAGINATION_TOP = `${PAGINATION}:not(.pf-m-bottom)`;
 export const PAGINATION_BOTTOM = `${PAGINATION}.pf-m-bottom`;
-export const EMPTY_STATE_TITLE = '.pf-v5-c-empty-state__title';
-export const EMPTY_STATE_ICON = '.pf-v5-c-empty-state__icon';
-export const CARD_TITLE = '.pf-v5-c-card__title';
+export const EMPTY_STATE_TITLE = '.pf-v6-c-empty-state__title';
+export const EMPTY_STATE_ICON = '.pf-v6-c-empty-state__icon';
+export const CARD_TITLE = '.pf-v6-c-card__title';
 
 /** PF5 aria */
 export const PAGINATION_NEXT = 'button[aria-label="Go to next page"]';

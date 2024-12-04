@@ -150,10 +150,10 @@ describe('PrimaryToolbar', () => {
     it('should call DESC sort', () => {
       const { container } = render(<PrimaryToolbar {...config} sortByConfig={{ ...config.sortByConfig, direction: 'desc' }} />);
       act(() => {
-        container.querySelectorAll('.ins-c-primary-toolbar__actions button.pf-v5-c-menu-toggle')[0].click();
+        container.querySelectorAll('.ins-c-primary-toolbar__actions button.pf-v6-c-menu-toggle')[0].click();
       });
       act(() => {
-        container.querySelector('.ins-c-primary-toolbar__overflow-actions.pf-v5-c-menu__item').click();
+        container.querySelector('.ins-c-primary-toolbar__overflow-actions.pf-v6-c-menu__item').click();
       });
       expect(config.sortByConfig.onSortChange).toHaveBeenCalled();
       // FIXME: assertions are not working
@@ -163,10 +163,10 @@ describe('PrimaryToolbar', () => {
     it('should call ASC sort', () => {
       const { container } = render(<PrimaryToolbar {...config} />);
       act(() => {
-        container.querySelector('.ins-c-primary-toolbar__actions button.pf-v5-c-menu-toggle').click();
+        container.querySelector('.ins-c-primary-toolbar__actions button.pf-v6-c-menu-toggle').click();
       });
       act(() => {
-        container.querySelector('.ins-c-primary-toolbar__overflow-actions.pf-v5-c-menu__item').click();
+        container.querySelector('.ins-c-primary-toolbar__overflow-actions.pf-v6-c-menu__item').click();
       });
       expect(config.sortByConfig.onSortChange).toHaveBeenCalled();
       // FIXME: assertions are not working

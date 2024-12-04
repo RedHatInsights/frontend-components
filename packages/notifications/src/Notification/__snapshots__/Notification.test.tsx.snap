@@ -3,18 +3,18 @@
 exports[`Notification component should render correctly 1`] = `
 <div>
   <div
-    class="pf-v5-c-alert pf-m-success notification-item"
+    class="pf-v6-c-alert pf-m-success notification-item"
     data-ouia-component-id="OUIA-Generated-Alert-success-1"
     data-ouia-component-type="PF5/Alert"
     data-ouia-safe="true"
     id="Foo"
   >
     <div
-      class="pf-v5-c-alert__icon"
+      class="pf-v6-c-alert__icon"
     >
       <svg
         aria-hidden="true"
-        class="pf-v5-svg"
+        class="pf-v6-svg"
         fill="currentColor"
         height="1em"
         role="img"
@@ -27,20 +27,20 @@ exports[`Notification component should render correctly 1`] = `
       </svg>
     </div>
     <h4
-      class="pf-v5-c-alert__title"
+      class="pf-v6-c-alert__title"
     >
       <span
-        class="pf-v5-screen-reader"
+        class="pf-v6-screen-reader"
       >
         Success alert:
       </span>
       Bar
     </h4>
     <div
-      class="pf-v5-c-alert__description"
+      class="pf-v6-c-alert__description"
     >
       <div
-        class="pf-v5-c-content"
+        class="pf-v6-c-content"
       >
         <small
           class="sentry-mask data-hj-suppress"
@@ -60,18 +60,18 @@ exports[`Notification component should render correctly 1`] = `
 exports[`Notification component should render correctly with HTML description 1`] = `
 <div>
   <div
-    class="pf-v5-c-alert pf-m-success notification-item"
+    class="pf-v6-c-alert pf-m-success notification-item"
     data-ouia-component-id="OUIA-Generated-Alert-success-4"
     data-ouia-component-type="PF5/Alert"
     data-ouia-safe="true"
     id="Foo"
   >
     <div
-      class="pf-v5-c-alert__icon"
+      class="pf-v6-c-alert__icon"
     >
       <svg
         aria-hidden="true"
-        class="pf-v5-svg"
+        class="pf-v6-svg"
         fill="currentColor"
         height="1em"
         role="img"
@@ -84,20 +84,20 @@ exports[`Notification component should render correctly with HTML description 1`
       </svg>
     </div>
     <h4
-      class="pf-v5-c-alert__title"
+      class="pf-v6-c-alert__title"
     >
       <span
-        class="pf-v5-screen-reader"
+        class="pf-v6-screen-reader"
       >
         Success alert:
       </span>
       Bar
     </h4>
     <div
-      class="pf-v5-c-alert__description"
+      class="pf-v6-c-alert__description"
     >
       <div
-        class="pf-v5-c-content"
+        class="pf-v6-c-content"
       >
         <small
           class="sentry-mask data-hj-suppress"
@@ -117,18 +117,18 @@ exports[`Notification component should render correctly with HTML description 1`
 exports[`Notification component should render correctly with HTML title 1`] = `
 <div>
   <div
-    class="pf-v5-c-alert pf-m-success notification-item"
+    class="pf-v6-c-alert pf-m-success notification-item"
     data-ouia-component-id="OUIA-Generated-Alert-success-5"
     data-ouia-component-type="PF5/Alert"
     data-ouia-safe="true"
     id="Foo"
   >
     <div
-      class="pf-v5-c-alert__icon"
+      class="pf-v6-c-alert__icon"
     >
       <svg
         aria-hidden="true"
-        class="pf-v5-svg"
+        class="pf-v6-svg"
         fill="currentColor"
         height="1em"
         role="img"
@@ -141,20 +141,20 @@ exports[`Notification component should render correctly with HTML title 1`] = `
       </svg>
     </div>
     <h4
-      class="pf-v5-c-alert__title"
+      class="pf-v6-c-alert__title"
     >
       <span
-        class="pf-v5-screen-reader"
+        class="pf-v6-screen-reader"
       >
         Success alert:
       </span>
       Some textanother
     </h4>
     <div
-      class="pf-v5-c-alert__description"
+      class="pf-v6-c-alert__description"
     >
       <div
-        class="pf-v5-c-content"
+        class="pf-v6-c-content"
       >
         <small
           class="sentry-mask data-hj-suppress"
@@ -174,18 +174,18 @@ exports[`Notification component should render correctly with HTML title 1`] = `
 exports[`Notification component should render correctly with dismiss button 1`] = `
 <div>
   <div
-    class="pf-v5-c-alert pf-m-success notification-item"
+    class="pf-v6-c-alert pf-m-success notification-item"
     data-ouia-component-id="OUIA-Generated-Alert-success-6"
     data-ouia-component-type="PF5/Alert"
     data-ouia-safe="true"
     id="Foo"
   >
     <div
-      class="pf-v5-c-alert__icon"
+      class="pf-v6-c-alert__icon"
     >
       <svg
         aria-hidden="true"
-        class="pf-v5-svg"
+        class="pf-v6-svg"
         fill="currentColor"
         height="1em"
         role="img"
@@ -198,22 +198,22 @@ exports[`Notification component should render correctly with dismiss button 1`] 
       </svg>
     </div>
     <h4
-      class="pf-v5-c-alert__title"
+      class="pf-v6-c-alert__title"
     >
       <span
-        class="pf-v5-screen-reader"
+        class="pf-v6-screen-reader"
       >
         Success alert:
       </span>
       Bar
     </h4>
     <div
-      class="pf-v5-c-alert__action"
+      class="pf-v6-c-alert__action"
     >
       <button
         aria-disabled="false"
         aria-label="close-notification"
-        class="pf-v5-c-button pf-m-plain"
+        class="pf-v6-c-button pf-m-plain"
         data-ouia-component-id="OUIA-Generated-Button-plain-1"
         data-ouia-component-type="PF5/Button"
         data-ouia-safe="true"
@@ -221,7 +221,7 @@ exports[`Notification component should render correctly with dismiss button 1`] 
       >
         <svg
           aria-hidden="true"
-          class="pf-v5-svg"
+          class="pf-v6-svg"
           fill="currentColor"
           height="1em"
           role="img"
@@ -235,10 +235,10 @@ exports[`Notification component should render correctly with dismiss button 1`] 
       </button>
     </div>
     <div
-      class="pf-v5-c-alert__description"
+      class="pf-v6-c-alert__description"
     >
       <div
-        class="pf-v5-c-content"
+        class="pf-v6-c-content"
       >
         <small
           class="sentry-mask data-hj-suppress"
@@ -256,18 +256,18 @@ exports[`Notification component should render correctly with dismiss button 1`] 
 exports[`Notification component should render correctly with sentryId 1`] = `
 <div>
   <div
-    class="pf-v5-c-alert pf-m-success notification-item"
+    class="pf-v6-c-alert pf-m-success notification-item"
     data-ouia-component-id="OUIA-Generated-Alert-success-3"
     data-ouia-component-type="PF5/Alert"
     data-ouia-safe="true"
     id="Foo"
   >
     <div
-      class="pf-v5-c-alert__icon"
+      class="pf-v6-c-alert__icon"
     >
       <svg
         aria-hidden="true"
-        class="pf-v5-svg"
+        class="pf-v6-svg"
         fill="currentColor"
         height="1em"
         role="img"
@@ -280,20 +280,20 @@ exports[`Notification component should render correctly with sentryId 1`] = `
       </svg>
     </div>
     <h4
-      class="pf-v5-c-alert__title"
+      class="pf-v6-c-alert__title"
     >
       <span
-        class="pf-v5-screen-reader"
+        class="pf-v6-screen-reader"
       >
         Success alert:
       </span>
       Bar
     </h4>
     <div
-      class="pf-v5-c-alert__description"
+      class="pf-v6-c-alert__description"
     >
       <div
-        class="pf-v5-c-content"
+        class="pf-v6-c-content"
       >
         <small
           class="sentry-mask data-hj-suppress"
@@ -306,7 +306,7 @@ exports[`Notification component should render correctly with sentryId 1`] = `
         </small>
       </div>
       <div
-        class="pf-v5-c-content"
+        class="pf-v6-c-content"
       >
         <small
           class=""
@@ -327,18 +327,18 @@ exports[`Notification component should render correctly with sentryId 1`] = `
 exports[`Notification component should render correctly without description 1`] = `
 <div>
   <div
-    class="pf-v5-c-alert pf-m-success notification-item"
+    class="pf-v6-c-alert pf-m-success notification-item"
     data-ouia-component-id="OUIA-Generated-Alert-success-2"
     data-ouia-component-type="PF5/Alert"
     data-ouia-safe="true"
     id="Foo"
   >
     <div
-      class="pf-v5-c-alert__icon"
+      class="pf-v6-c-alert__icon"
     >
       <svg
         aria-hidden="true"
-        class="pf-v5-svg"
+        class="pf-v6-svg"
         fill="currentColor"
         height="1em"
         role="img"
@@ -351,20 +351,20 @@ exports[`Notification component should render correctly without description 1`] 
       </svg>
     </div>
     <h4
-      class="pf-v5-c-alert__title"
+      class="pf-v6-c-alert__title"
     >
       <span
-        class="pf-v5-screen-reader"
+        class="pf-v6-screen-reader"
       >
         Success alert:
       </span>
       Bar
     </h4>
     <div
-      class="pf-v5-c-alert__description"
+      class="pf-v6-c-alert__description"
     >
       <div
-        class="pf-v5-c-content"
+        class="pf-v6-c-content"
       >
         <small
           class="sentry-mask data-hj-suppress"

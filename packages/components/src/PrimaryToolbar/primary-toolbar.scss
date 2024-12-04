@@ -1,5 +1,5 @@
 .ins-c-primary-toolbar {
-  .pf-v5-c-toolbar__item.ins-c-primary-toolbar__first-action {
+  .pf-v6-c-toolbar__item.ins-c-primary-toolbar__first-action {
     display: initial;
   }
   .ins-c-primary-toolbar__first-action {
@@ -27,7 +27,7 @@
 
 @media only screen and (max-width: 768px) {
   .ins-c-primary-toolbar {
-    .pf-v5-c-toolbar__item.ins-c-primary-toolbar__first-action {
+    .pf-v6-c-toolbar__item.ins-c-primary-toolbar__first-action {
       display: none;
     }
     .ins-c-primary-toolbar__first-action {

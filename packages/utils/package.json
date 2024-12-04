@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/utils#readme",
   "peerDependencies": {
-    "@patternfly/react-core": "^5.0.0",
-    "@patternfly/react-table": "^5.0.0",
+    "@patternfly/react-core": "^6.0.0",
+    "@patternfly/react-table": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^7.0.0 || ^8.0.0 || ^9.0.0",

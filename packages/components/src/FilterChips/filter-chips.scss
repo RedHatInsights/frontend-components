@@ -8,11 +8,11 @@
 }
 
 .ins-c-chip-filters {
-  .pf-v5-c-chip-group:not(:last-child) {
-    margin-right: var(--pf-v5-global--spacer--sm);
+  .pf-v6-c-chip-group:not(:last-child) {
+    margin-right: var(--pf-t--global--spacer--sm);
   }
 }
 
-.ins-c-chip-filters .pf-v5-c-chip .pf-v5-c-badge {
-  margin-left: var(--pf-v5-global--spacer--xs);
+.ins-c-chip-filters .pf-v6-c-chip .pf-v6-c-badge {
+  margin-left: var(--pf-t--global--spacer--xs);
 }

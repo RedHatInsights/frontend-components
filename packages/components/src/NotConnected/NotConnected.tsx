@@ -3,8 +3,7 @@ import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
 import { EmptyState } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
 import { EmptyStateBody } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
 import { EmptyStateFooter } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
-import { EmptyStateHeader } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
-import { EmptyStateIcon } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+
 import DisconnectedIcon from '@patternfly/react-icons/dist/dynamic/icons/disconnected-icon';
 
 export interface NotConnectedProps {
@@ -18,8 +17,7 @@ const NotConnected: React.FC<NotConnectedProps> = ({
   bodyText = 'To get started, activate the Insights client for this system.',
   buttonText = 'Learn how to activate the Insights client',
 }) => (
-  <EmptyState>
-    <EmptyStateHeader titleText={titleText} icon={<EmptyStateIcon icon={DisconnectedIcon} />} headingLevel="h5" />
+  <EmptyState headingLevel="h5" icon={DisconnectedIcon} titleText={titleText}>
     <EmptyStateBody>{bodyText}</EmptyStateBody>
     <EmptyStateFooter>
       <Button
@@ -28,7 +26,7 @@ const NotConnected: React.FC<NotConnectedProps> = ({
         href="https://access.redhat.com/products/red-hat-insights/"
         target="_blank"
         rel="noopener noreferrer"
-        className="pf-v5-u-mt-lg"
+        className="pf-v6-u-mt-lg"
       >
         {buttonText}
       </Button>

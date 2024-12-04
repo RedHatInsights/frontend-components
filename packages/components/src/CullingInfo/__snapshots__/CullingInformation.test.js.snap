@@ -10,7 +10,7 @@ exports[`CullingInformation it should render correctly without any date 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="pf-v5-svg"
+        class="pf-v6-svg"
         fill="currentColor"
         height="1em"
         role="img"
@@ -36,7 +36,7 @@ exports[`CullingInformation should render with dates - danger 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="pf-v5-svg"
+        class="pf-v6-svg"
         fill="currentColor"
         height="1em"
         role="img"
@@ -69,7 +69,7 @@ exports[`CullingInformation should render with dates - warning 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="pf-v5-svg"
+        class="pf-v6-svg"
         fill="currentColor"
         height="1em"
         role="img"
@@ -96,7 +96,7 @@ exports[`CullingInformation should render with dates 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="pf-v5-svg"
+        class="pf-v6-svg"
         fill="currentColor"
         height="1em"
         role="img"

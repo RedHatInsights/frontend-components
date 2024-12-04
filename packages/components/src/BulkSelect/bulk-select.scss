@@ -1,5 +1,5 @@
 .ins-c-bulk-select {
-  .pf-v5-c-dropdown__toggle-check span.pf-v5-c-dropdown__toggle-text {
+  .pf-v6-c-dropdown__toggle-check span.pf-v6-c-dropdown__toggle-text {
     display: initial;
   }
   .ins-c-bulk-select__selected {
@@ -9,7 +9,7 @@
 
 @media only screen and (max-width: 768px) {
   .ins-c-bulk-select {
-    .pf-v5-c-dropdown__toggle-check span.pf-v5-c-dropdown__toggle-text {
+    .pf-v6-c-dropdown__toggle-check span.pf-v6-c-dropdown__toggle-text {
       display: none;
     }
     .ins-c-bulk-select__selected {

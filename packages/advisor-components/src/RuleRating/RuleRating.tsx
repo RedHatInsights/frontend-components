@@ -3,8 +3,12 @@ import './RuleRating.scss';
 import React, { useCallback, useState } from 'react';
 import debounce from 'lodash/debounce';
 
-import { Button, Icon } from '@patternfly/react-core';
-import { OutlinedThumbsDownIcon, OutlinedThumbsUpIcon, ThumbsDownIcon, ThumbsUpIcon } from '@patternfly/react-icons';
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { Icon } from '@patternfly/react-core/dist/dynamic/components/Icon';
+import OutlinedThumbsDownIcon from '@patternfly/react-icons/dist/dynamic/icons/outlined-thumbs-down-icon';
+import OutlinedThumbsUpIcon from '@patternfly/react-icons/dist/dynamic/icons/outlined-thumbs-up-icon';
+import ThumbsDownIcon from '@patternfly/react-icons/dist/dynamic/icons/thumbs-down-icon';
+import ThumbsUpIcon from '@patternfly/react-icons/dist/dynamic/icons/thumbs-up-icon';
 
 import { Rating } from '../types';
 import { RuleDetailsMessages } from '../RuleDetails/RuleDetailsMessages';
@@ -45,12 +49,20 @@ const RuleRating: React.FC<RuleRatingProps> = ({ messages, ruleId, ruleRating, o
   return (
     <span className="ratingSpanOverride">
       {messages.ruleHelpful}
-      <Button variant="plain" aria-label="thumbs-up" onClick={() => updateRuleRating(1)} ouiaId="thumbsUp">
-        <Icon size="md">{rating === 1 ? <ThumbsUpIcon className="ins-c-like" /> : <OutlinedThumbsUpIcon />}</Icon>
-      </Button>
-      <Button variant="plain" aria-label="thumbs-down" onClick={() => updateRuleRating(-1)} ouiaId="thumbsDown">
-        <Icon size="md">{rating === -1 ? <ThumbsDownIcon className="ins-c-dislike" /> : <OutlinedThumbsDownIcon />}</Icon>
-      </Button>
+      <Button
+        icon={<Icon size="md">{rating === 1 ? <ThumbsUpIcon className="ins-c-like" /> : <OutlinedThumbsUpIcon />}</Icon>}
+        variant="plain"
+        aria-label="thumbs-up"
+        onClick={() => updateRuleRating(1)}
+        ouiaId="thumbsUp"
+      />
+      <Button
+        icon={<Icon size="md">{rating === -1 ? <ThumbsDownIcon className="ins-c-dislike" /> : <OutlinedThumbsDownIcon />}</Icon>}
+        variant="plain"
+        aria-label="thumbs-down"
+        onClick={() => updateRuleRating(-1)}
+        ouiaId="thumbsDown"
+      />
       {submitted && messages.feedbackThankYou}
     </span>
   );

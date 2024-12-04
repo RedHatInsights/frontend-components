@@ -67,31 +67,31 @@ describe.skip('ConditionalFilter component', () => {
 
   it('renders disabled', () => {
     cy.mount(<ConditionalFilter isDisabled items={config} />);
-    cy.get('.pf-v5-c-menu-toggle').click({ force: true });
-    cy.get('.pf-v5-c-menu__item').should('not.exist');
+    cy.get('.pf-v6-c-menu-toggle').click({ force: true });
+    cy.get('.pf-v6-c-menu__item').should('not.exist');
   });
 
   it('renders with data', () => {
     cy.mount(<ConditionalFilter items={config} />);
     cy.get('.ins-c-conditional-filter');
-    cy.get('.pf-v5-c-menu-toggle').click();
-    cy.get('.pf-v5-c-menu__item').children().should('have.length', 4);
+    cy.get('.pf-v6-c-menu-toggle').click();
+    cy.get('.pf-v6-c-menu__item').children().should('have.length', 4);
   });
 
   it('filter changes on click', () => {
     cy.mount(<ConditionalFilter items={config} />);
-    cy.get('.pf-v5-c-menu-toggle').click();
-    cy.get('.pf-v5-c-menu__item').children().eq(1).click();
-    cy.get('.pf-v5-c-menu-toggle').should('not.contain.text', 'Text');
-    cy.get('.pf-m-fill > .pf-v5-c-menu-toggle').click();
-    cy.get('.pf-v5-c-menu');
+    cy.get('.pf-v6-c-menu-toggle').click();
+    cy.get('.pf-v6-c-menu__item').children().eq(1).click();
+    cy.get('.pf-v6-c-menu-toggle').should('not.contain.text', 'Text');
+    cy.get('.pf-m-fill > .pf-v6-c-menu-toggle').click();
+    cy.get('.pf-v6-c-menu');
   });
 
   it('onChange called', () => {
     const ocSpy = cy.spy().as('ocSpy');
     cy.mount(<ConditionalFilter items={config} onChange={ocSpy} />);
-    cy.get('.pf-v5-c-menu-toggle').click();
-    cy.get('.pf-v5-c-menu__item').children().eq(2).click();
+    cy.get('.pf-v6-c-menu-toggle').click();
+    cy.get('.pf-v6-c-menu__item').children().eq(2).click();
     cy.get('@ocSpy').should('have.been.called');
   });
 });

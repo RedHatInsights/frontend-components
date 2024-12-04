@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Alert, AlertActionCloseButton, AlertProps, Text, TextContent, TextVariants } from '@patternfly/react-core';
+import { Alert, AlertActionCloseButton, AlertProps, Content, ContentVariants } from '@patternfly/react-core';
 import { CloseIcon } from '@patternfly/react-icons';
 import './notification.scss';
 
@@ -108,21 +108,21 @@ const Notification: React.ComponentType<NotificationProps> = ({
       onMouseEnter={clearDismissTimeout}
       onMouseLeave={setDismissTimeout}
     >
-      <TextContent>
-        <Text className="sentry-mask data-hj-suppress" component={TextVariants.small}>
+      <Content>
+        <Content className="sentry-mask data-hj-suppress" component={ContentVariants.small}>
           {typeof description === 'string' ? description.replace(/<\/?[^>]+(>|$)/g, '') : description}
-        </Text>
-      </TextContent>
+        </Content>
+      </Content>
 
       {sentryId && (
-        <TextContent>
-          <Text component={TextVariants.small}>Tracking Id: {sentryId}</Text>
-        </TextContent>
+        <Content>
+          <Content component={ContentVariants.small}>Tracking Id: {sentryId}</Content>
+        </Content>
       )}
       {requestId && (
-        <TextContent>
-          <Text component={TextVariants.small}>Request Id: {requestId}</Text>
-        </TextContent>
+        <Content>
+          <Content component={ContentVariants.small}>Request Id: {requestId}</Content>
+        </Content>
       )}
     </Alert>
   );
