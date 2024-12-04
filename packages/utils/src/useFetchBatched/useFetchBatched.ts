@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import usePromiseQueue from '../usePromiseQueue';
 
 type FetchFunctionType = (filter: object | Array<string>, options?: object) => void;
@@ -6,16 +7,19 @@ type FetchFunctionType = (filter: object | Array<string>, options?: object) => v
 const useFetchBatched = () => {
   const { isResolving: isLoading, resolve } = usePromiseQueue();
 
-  return {
-    isLoading,
-    fetchBatched: (fetchFunction: FetchFunctionType, total: number, filter: object, batchSize = 50) => {
+  const fetchBatched = useCallback(
+    (fetchFunction: FetchFunctionType, total: number, filter: object, batchSize = 50) => {
       const pages = Math.ceil(total / batchSize) || 1;
 
       const results = resolve([...new Array(pages)].map((_, pageIdx) => () => fetchFunction(filter, { page: pageIdx + 1, per_page: batchSize })));
 
       return results;
     },
-    fetchBatchedInline: (fetchFunction: FetchFunctionType, list: Array<string>, batchSize = 20) => {
+    [resolve]
+  );
+
+  const fetchBatchedInline = useCallback(
+    (fetchFunction: FetchFunctionType, list: Array<string>, batchSize = 20) => {
       const pages = Math.ceil(list.length / batchSize) || 1;
 
       const results = resolve(
@@ -24,6 +28,13 @@ const useFetchBatched = () => {
 
       return results;
     },
+    [resolve]
+  );
+
+  return {
+    isLoading,
+    fetchBatched,
+    fetchBatchedInline,
   };
 };
 
