@@ -3,20 +3,20 @@
 exports[`Maintenance component should render with default props 1`] = `
 <div>
   <div
-    class="pf-v5-c-empty-state ins-c-empty-state__maintenance"
+    class="pf-v6-c-empty-state ins-c-empty-state__maintenance"
   >
     <div
-      class="pf-v5-c-empty-state__content"
+      class="pf-v6-c-empty-state__content"
     >
       <div
-        class="pf-v5-c-empty-state__header"
+        class="pf-v6-c-empty-state__header"
       >
         <div
-          class="pf-v5-c-empty-state__icon"
+          class="pf-v6-c-empty-state__icon"
         >
           <svg
             aria-hidden="true"
-            class="pf-v5-svg"
+            class="pf-v6-svg"
             fill="currentColor"
             height="1em"
             role="img"
@@ -29,28 +29,28 @@ exports[`Maintenance component should render with default props 1`] = `
           </svg>
         </div>
         <div
-          class="pf-v5-c-empty-state__title"
+          class="pf-v6-c-empty-state__title"
         >
           <h4
-            class="pf-v5-c-empty-state__title-text"
+            class="pf-v6-c-empty-state__title-text"
           >
             Maintenance in progress
           </h4>
         </div>
       </div>
       <div
-        class="pf-v5-c-empty-state__body"
+        class="pf-v6-c-empty-state__body"
       >
         <div
-          class="pf-v5-l-stack"
+          class="pf-v6-l-stack"
         >
           <div
-            class="pf-v5-l-stack__item"
+            class="pf-v6-l-stack__item"
           >
             We are currently undergoing scheduled maintenance and will be
           </div>
           <div
-            class="pf-v5-l-stack__item"
+            class="pf-v6-l-stack__item"
           >
             unavailable from 
             10am
@@ -65,7 +65,7 @@ exports[`Maintenance component should render with default props 1`] = `
             ).
           </div>
           <div
-            class="pf-v5-l-stack__item"
+            class="pf-v6-l-stack__item"
           >
             For more information please visit 
             <a
@@ -85,20 +85,20 @@ exports[`Maintenance component should render with default props 1`] = `
 exports[`Maintenance component should render with new description 1`] = `
 <div>
   <div
-    class="pf-v5-c-empty-state ins-c-empty-state__maintenance"
+    class="pf-v6-c-empty-state ins-c-empty-state__maintenance"
   >
     <div
-      class="pf-v5-c-empty-state__content"
+      class="pf-v6-c-empty-state__content"
     >
       <div
-        class="pf-v5-c-empty-state__header"
+        class="pf-v6-c-empty-state__header"
       >
         <div
-          class="pf-v5-c-empty-state__icon"
+          class="pf-v6-c-empty-state__icon"
         >
           <svg
             aria-hidden="true"
-            class="pf-v5-svg"
+            class="pf-v6-svg"
             fill="currentColor"
             height="1em"
             role="img"
@@ -111,17 +111,17 @@ exports[`Maintenance component should render with new description 1`] = `
           </svg>
         </div>
         <div
-          class="pf-v5-c-empty-state__title"
+          class="pf-v6-c-empty-state__title"
         >
           <h4
-            class="pf-v5-c-empty-state__title-text"
+            class="pf-v6-c-empty-state__title-text"
           >
             Maintenance in progress
           </h4>
         </div>
       </div>
       <div
-        class="pf-v5-c-empty-state__body"
+        class="pf-v6-c-empty-state__body"
       >
         <span>
            test 
@@ -135,20 +135,20 @@ exports[`Maintenance component should render with new description 1`] = `
 exports[`Maintenance component should render with times 1`] = `
 <div>
   <div
-    class="pf-v5-c-empty-state ins-c-empty-state__maintenance"
+    class="pf-v6-c-empty-state ins-c-empty-state__maintenance"
   >
     <div
-      class="pf-v5-c-empty-state__content"
+      class="pf-v6-c-empty-state__content"
     >
       <div
-        class="pf-v5-c-empty-state__header"
+        class="pf-v6-c-empty-state__header"
       >
         <div
-          class="pf-v5-c-empty-state__icon"
+          class="pf-v6-c-empty-state__icon"
         >
           <svg
             aria-hidden="true"
-            class="pf-v5-svg"
+            class="pf-v6-svg"
             fill="currentColor"
             height="1em"
             role="img"
@@ -161,28 +161,28 @@ exports[`Maintenance component should render with times 1`] = `
           </svg>
         </div>
         <div
-          class="pf-v5-c-empty-state__title"
+          class="pf-v6-c-empty-state__title"
         >
           <h4
-            class="pf-v5-c-empty-state__title-text"
+            class="pf-v6-c-empty-state__title-text"
           >
             Maintenance in progress
           </h4>
         </div>
       </div>
       <div
-        class="pf-v5-c-empty-state__body"
+        class="pf-v6-c-empty-state__body"
       >
         <div
-          class="pf-v5-l-stack"
+          class="pf-v6-l-stack"
         >
           <div
-            class="pf-v5-l-stack__item"
+            class="pf-v6-l-stack__item"
           >
             We are currently undergoing scheduled maintenance and will be
           </div>
           <div
-            class="pf-v5-l-stack__item"
+            class="pf-v6-l-stack__item"
           >
             unavailable from 
             10am
@@ -197,7 +197,7 @@ exports[`Maintenance component should render with times 1`] = `
             ).
           </div>
           <div
-            class="pf-v5-l-stack__item"
+            class="pf-v6-l-stack__item"
           >
             For more information please visit 
             <a

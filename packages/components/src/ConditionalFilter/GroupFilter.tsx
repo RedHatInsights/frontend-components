@@ -1,23 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import {
-  Button,
-  Checkbox,
-  Menu,
-  MenuContent,
-  MenuGroup,
-  MenuItem,
-  MenuList,
-  MenuToggle,
-  Popper,
-  Radio,
-  TextInputGroup,
-  TextInputGroupMain,
-  TextInputGroupUtilities,
-  TreeView,
-  TreeViewDataItem,
-} from '@patternfly/react-core';
-import { TimesIcon } from '@patternfly/react-icons';
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { Checkbox } from '@patternfly/react-core/dist/dynamic/components/Checkbox';
+import { Menu } from '@patternfly/react-core/dist/dynamic/components/Menu';
+import { MenuContent, MenuGroup, MenuItem, MenuList } from '@patternfly/react-core/dist/dynamic/components/Menu';
+import { MenuToggle } from '@patternfly/react-core/dist/dynamic/components/MenuToggle';
+import { Popper } from '@patternfly/react-core/dist/dynamic/helpers/Popper/Popper';
+import { Radio } from '@patternfly/react-core/dist/dynamic/components/Radio';
+import { TextInputGroup, TextInputGroupMain, TextInputGroupUtilities } from '@patternfly/react-core/dist/dynamic/components/TextInputGroup';
+import { TreeView, TreeViewDataItem } from '@patternfly/react-core/dist/dynamic/components/TreeView';
+import { TimesIcon } from '@patternfly/react-icons/dist/dynamic/icons/times-icon';
 import {
   FilterMenuItemOnChange,
   Group,
@@ -206,7 +198,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
           id={item?.id || item?.value || `${groupKey}-${key}`}
         />
       ) : isButtonItem(type, item) ? (
-        <Button id={item.id} className={classNames('pf-v5-c-select__option-button', item.className)} variant={item.variant} onClick={item.onClick}>
+        <Button id={item.id} className={classNames('pf-v6-c-select__option-button', item.className)} variant={item.variant} onClick={item.onClick}>
           {item.label}
         </Button>
       ) : (
@@ -246,7 +238,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
             isExpanded={isOpen}
             className={classNames('ins-c-group-menu-toggle', className, {
               // turn off extra padding if filter input is within the input
-              'pf-v5-u-p-0': isFilterable,
+              'pf-v6-u-p-0': isFilterable,
             })}
             isDisabled={isDisabled}
             variant={isFilterable || onFilter ? 'typeahead' : 'default'}
@@ -268,15 +260,14 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
                 <TextInputGroupUtilities>
                   {searchDirty && (
                     <Button
+                      icon={<TimesIcon aria-hidden />}
                       variant="plain"
                       onClick={() => {
                         setFilter('');
                         setIsOpen(false);
                       }}
                       aria-label="Clear input value"
-                    >
-                      <TimesIcon aria-hidden />
-                    </Button>
+                    />
                   )}
                 </TextInputGroupUtilities>
               </TextInputGroup>

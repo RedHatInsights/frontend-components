@@ -6,7 +6,7 @@ describe('DownloadButton component', () => {
   });
 
   it('renders the dropdown', () => {
-    cy.get('.pf-v5-c-menu-toggle');
+    cy.get('.pf-v6-c-menu-toggle');
   });
 
   it('on download CSV callback fired', () => {
@@ -15,7 +15,7 @@ describe('DownloadButton component', () => {
     cy.mount(<DownloadButton onSelect={onSelectSpy} />);
     // Act
     cy.get('button[aria-label="Export"]').click();
-    cy.get('.pf-v5-c-menu__content > ul > li[data-ouia-component-id="DownloadCSV"]').click();
+    cy.get('.pf-v6-c-menu__content > ul > li[data-ouia-component-id="DownloadCSV"]').click();
     // Assert
     cy.get('@onSelectSpy').should('have.been.called.with', 'csv');
   });
@@ -26,7 +26,7 @@ describe('DownloadButton component', () => {
     cy.mount(<DownloadButton onSelect={onSelectSpy} />);
     // Act
     cy.get('button[aria-label="Export"]').click();
-    cy.get('.pf-v5-c-menu__content > ul > li[data-ouia-component-id="DownloadJSON"]').click();
+    cy.get('.pf-v6-c-menu__content > ul > li[data-ouia-component-id="DownloadJSON"]').click();
     // Assert
     cy.get('@onSelectSpy').should('have.been.called.with', 'json');
   });

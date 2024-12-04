@@ -3,10 +3,10 @@
 exports[`Truncate component should render correctly block clicking on expand toggles to collapse 1`] = `
 <div>
   <div
-    class="pf-v5-l-stack ins-c-truncate is-block"
+    class="pf-v6-l-stack ins-c-truncate is-block"
   >
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <span
         widget-type="InsightsTruncateBlock"
@@ -16,17 +16,21 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
       </span>
     </div>
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <button
         aria-disabled="false"
-        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-expand-button"
         data-ouia-component-id="OUIA-Generated-Button-link-11"
-        data-ouia-component-type="PF5/Button"
+        data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
         type="button"
       >
-        Custom expand
+        <span
+          class="pf-v6-c-button__text"
+        >
+          Custom expand
+        </span>
       </button>
     </div>
   </div>
@@ -36,10 +40,10 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
 exports[`Truncate component should render correctly block clicking on expand toggles to collapse 2`] = `
 <div>
   <div
-    class="pf-v5-l-stack ins-c-truncate is-block"
+    class="pf-v6-l-stack ins-c-truncate is-block"
   >
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <span
         widget-type="InsightsTruncateBlock"
@@ -49,17 +53,21 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
       </span>
     </div>
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <button
         aria-disabled="false"
-        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-expand-button"
         data-ouia-component-id="OUIA-Generated-Button-link-14"
-        data-ouia-component-type="PF5/Button"
+        data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
         type="button"
       >
-        Custom expand
+        <span
+          class="pf-v6-c-button__text"
+        >
+          Custom expand
+        </span>
       </button>
     </div>
   </div>
@@ -69,10 +77,10 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
 exports[`Truncate component should render correctly block custom button titles 1`] = `
 <div>
   <div
-    class="pf-v5-l-stack ins-c-truncate is-block"
+    class="pf-v6-l-stack ins-c-truncate is-block"
   >
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <span
         widget-type="InsightsTruncateBlock"
@@ -82,17 +90,21 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
       </span>
     </div>
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <button
         aria-disabled="false"
-        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-expand-button"
         data-ouia-component-id="OUIA-Generated-Button-link-13"
-        data-ouia-component-type="PF5/Button"
+        data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
         type="button"
       >
-        Custom expand
+        <span
+          class="pf-v6-c-button__text"
+        >
+          Custom expand
+        </span>
       </button>
     </div>
   </div>
@@ -102,10 +114,10 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
 exports[`Truncate component should render correctly block custom button titles 2`] = `
 <div>
   <div
-    class="pf-v5-l-stack ins-c-truncate is-block"
+    class="pf-v6-l-stack ins-c-truncate is-block"
   >
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <span
         widget-type="InsightsTruncateBlock"
@@ -115,17 +127,21 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
       </span>
     </div>
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <button
         aria-disabled="false"
-        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-expand-button"
         data-ouia-component-id="OUIA-Generated-Button-link-16"
-        data-ouia-component-type="PF5/Button"
+        data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
         type="button"
       >
-        Custom expand
+        <span
+          class="pf-v6-c-button__text"
+        >
+          Custom expand
+        </span>
       </button>
     </div>
   </div>
@@ -135,10 +151,10 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
 exports[`Truncate component should render correctly block custom expande button 1`] = `
 <div>
   <div
-    class="pf-v5-l-stack ins-c-truncate is-block"
+    class="pf-v6-l-stack ins-c-truncate is-block"
   >
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <span
         widget-type="InsightsTruncateBlock"
@@ -148,17 +164,21 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
       </span>
     </div>
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <button
         aria-disabled="false"
-        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-expand-button"
         data-ouia-component-id="OUIA-Generated-Button-link-12"
-        data-ouia-component-type="PF5/Button"
+        data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
         type="button"
       >
-        Custom expand
+        <span
+          class="pf-v6-c-button__text"
+        >
+          Custom expand
+        </span>
       </button>
     </div>
   </div>
@@ -168,10 +188,10 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
 exports[`Truncate component should render correctly block custom expande button 2`] = `
 <div>
   <div
-    class="pf-v5-l-stack ins-c-truncate is-block"
+    class="pf-v6-l-stack ins-c-truncate is-block"
   >
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <span
         widget-type="InsightsTruncateBlock"
@@ -181,17 +201,21 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
       </span>
     </div>
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <button
         aria-disabled="false"
-        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-expand-button"
         data-ouia-component-id="OUIA-Generated-Button-link-15"
-        data-ouia-component-type="PF5/Button"
+        data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
         type="button"
       >
-        Custom expand
+        <span
+          class="pf-v6-c-button__text"
+        >
+          Custom expand
+        </span>
       </button>
     </div>
   </div>
@@ -201,10 +225,10 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
 exports[`Truncate component should render correctly block when text length is less than user specified length 1`] = `
 <div>
   <div
-    class="pf-v5-l-stack ins-c-truncate is-block"
+    class="pf-v6-l-stack ins-c-truncate is-block"
   >
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <span
         widget-type="InsightsTruncateBlock"
@@ -223,10 +247,10 @@ laborum.
 exports[`Truncate component should render correctly block with short length 1`] = `
 <div>
   <div
-    class="pf-v5-l-stack ins-c-truncate is-block"
+    class="pf-v6-l-stack ins-c-truncate is-block"
   >
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <span
         widget-type="InsightsTruncateBlock"
@@ -235,17 +259,21 @@ exports[`Truncate component should render correctly block with short length 1`] 
       </span>
     </div>
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <button
         aria-disabled="false"
-        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-expand-button"
         data-ouia-component-id="OUIA-Generated-Button-link-10"
-        data-ouia-component-type="PF5/Button"
+        data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
         type="button"
       >
-        Read more
+        <span
+          class="pf-v6-c-button__text"
+        >
+          Read more
+        </span>
       </button>
     </div>
   </div>
@@ -255,10 +283,10 @@ exports[`Truncate component should render correctly block with short length 1`] 
 exports[`Truncate component should render correctly block without length specified 1`] = `
 <div>
   <div
-    class="pf-v5-l-stack ins-c-truncate is-block"
+    class="pf-v6-l-stack ins-c-truncate is-block"
   >
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <span
         widget-type="InsightsTruncateBlock"
@@ -268,17 +296,21 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
       </span>
     </div>
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <button
         aria-disabled="false"
-        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-expand-button"
         data-ouia-component-id="OUIA-Generated-Button-link-9"
-        data-ouia-component-type="PF5/Button"
+        data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
         type="button"
       >
-        Read more
+        <span
+          class="pf-v6-c-button__text"
+        >
+          Read more
+        </span>
       </button>
     </div>
   </div>
@@ -296,13 +328,17 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
   </span>
   <button
     aria-disabled="false"
-    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    class="pf-v6-c-button pf-m-link ins-c-expand-button"
     data-ouia-component-id="OUIA-Generated-Button-link-3"
-    data-ouia-component-type="PF5/Button"
+    data-ouia-component-type="PF6/Button"
     data-ouia-safe="true"
     type="button"
   >
-    Custom expand
+    <span
+      class="pf-v6-c-button__text"
+    >
+      Custom expand
+    </span>
   </button>
 </div>
 `;
@@ -318,13 +354,17 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
   </span>
   <button
     aria-disabled="false"
-    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    class="pf-v6-c-button pf-m-link ins-c-expand-button"
     data-ouia-component-id="OUIA-Generated-Button-link-6"
-    data-ouia-component-type="PF5/Button"
+    data-ouia-component-type="PF6/Button"
     data-ouia-safe="true"
     type="button"
   >
-    Custom expand
+    <span
+      class="pf-v6-c-button__text"
+    >
+      Custom expand
+    </span>
   </button>
 </div>
 `;
@@ -340,13 +380,17 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
   </span>
   <button
     aria-disabled="false"
-    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    class="pf-v6-c-button pf-m-link ins-c-expand-button"
     data-ouia-component-id="OUIA-Generated-Button-link-5"
-    data-ouia-component-type="PF5/Button"
+    data-ouia-component-type="PF6/Button"
     data-ouia-safe="true"
     type="button"
   >
-    Custom expand
+    <span
+      class="pf-v6-c-button__text"
+    >
+      Custom expand
+    </span>
   </button>
 </div>
 `;
@@ -362,13 +406,17 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
   </span>
   <button
     aria-disabled="false"
-    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    class="pf-v6-c-button pf-m-link ins-c-expand-button"
     data-ouia-component-id="OUIA-Generated-Button-link-8"
-    data-ouia-component-type="PF5/Button"
+    data-ouia-component-type="PF6/Button"
     data-ouia-safe="true"
     type="button"
   >
-    Custom expand
+    <span
+      class="pf-v6-c-button__text"
+    >
+      Custom expand
+    </span>
   </button>
 </div>
 `;
@@ -384,13 +432,17 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
   </span>
   <button
     aria-disabled="false"
-    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    class="pf-v6-c-button pf-m-link ins-c-expand-button"
     data-ouia-component-id="OUIA-Generated-Button-link-4"
-    data-ouia-component-type="PF5/Button"
+    data-ouia-component-type="PF6/Button"
     data-ouia-safe="true"
     type="button"
   >
-    Custom expand
+    <span
+      class="pf-v6-c-button__text"
+    >
+      Custom expand
+    </span>
   </button>
 </div>
 `;
@@ -406,13 +458,17 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
   </span>
   <button
     aria-disabled="false"
-    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    class="pf-v6-c-button pf-m-link ins-c-expand-button"
     data-ouia-component-id="OUIA-Generated-Button-link-7"
-    data-ouia-component-type="PF5/Button"
+    data-ouia-component-type="PF6/Button"
     data-ouia-safe="true"
     type="button"
   >
-    Custom expand
+    <span
+      class="pf-v6-c-button__text"
+    >
+      Custom expand
+    </span>
   </button>
 </div>
 `;
@@ -435,10 +491,10 @@ laborum.
 exports[`Truncate component should render correctly inline with short length 1`] = `
 <div>
   <div
-    class="pf-v5-l-stack ins-c-truncate is-block"
+    class="pf-v6-l-stack ins-c-truncate is-block"
   >
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <span
         widget-type="InsightsTruncateBlock"
@@ -447,17 +503,21 @@ exports[`Truncate component should render correctly inline with short length 1`]
       </span>
     </div>
     <div
-      class="pf-v5-l-stack__item"
+      class="pf-v6-l-stack__item"
     >
       <button
         aria-disabled="false"
-        class="pf-v5-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-expand-button"
         data-ouia-component-id="OUIA-Generated-Button-link-2"
-        data-ouia-component-type="PF5/Button"
+        data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
         type="button"
       >
-        Read more
+        <span
+          class="pf-v6-c-button__text"
+        >
+          Read more
+        </span>
       </button>
     </div>
   </div>
@@ -475,13 +535,17 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
   </span>
   <button
     aria-disabled="false"
-    class="pf-v5-c-button pf-m-link ins-c-expand-button"
+    class="pf-v6-c-button pf-m-link ins-c-expand-button"
     data-ouia-component-id="OUIA-Generated-Button-link-1"
-    data-ouia-component-type="PF5/Button"
+    data-ouia-component-type="PF6/Button"
     data-ouia-safe="true"
     type="button"
   >
-    Read more
+    <span
+      class="pf-v6-c-button__text"
+    >
+      Read more
+    </span>
   </button>
 </div>
 `;

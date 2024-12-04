@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './tagModal.scss';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
-import { Modal } from '@patternfly/react-core/dist/dynamic/components/Modal';
+import { Modal /* data-codemods */ } from '@patternfly/react-core/dist/dynamic/components/Modal';
 import { Tab } from '@patternfly/react-core/dist/dynamic/components/Tabs';
 import { TabTitleText } from '@patternfly/react-core/dist/dynamic/components/Tabs';
 import { Tabs } from '@patternfly/react-core/dist/dynamic/components/Tabs';

@@ -6,19 +6,19 @@
 }
 
 .ins-c-table__toolbar, .ins-c-table__toolbar-results {
-  background: var(--pf-v5-global--Color--light-100);
-  border-bottom: 1px solid var(--pf-v5-global--BorderColor--light-200);
+  background: var(--pf-t--global--background--color--primary--default);
+  border-bottom: 1px solid var(--pf-t--global--background--color--secondary--default);
   padding: var(--ins-c-table-toolbar--PaddingVertical) var(--ins-c-table-toolbar--PaddingHorizontal);
 }
 
-.ins-c-table__toolbar.ins-m-footer { border-top: 1px solid var(--pf-v5-global--BorderColor--light-200); }
+.ins-c-table__toolbar.ins-m-footer { border-top: 1px solid var(--pf-t--global--background--color--secondary--default); }
 
-.ins-c-table__toolbar-results { color: var(--pf-v5-global--Color--200); }
+.ins-c-table__toolbar-results { color: var(--pf-t--global--background--color--secondary--default); }
 
 .ins-c-table__toolbar-results-count + .ins-c-table__toolbar-results-selected {
   @include m.rem('margin-left', 15px);
   @include m.rem('padding-left', 15px);
-  border-left: 2px solid var(--pf-v5-global--BorderColor--light);
+  border-left: 2px solid var(--pf-t--global--border--color--nonstatus--gray--hover);
 }
 
 @media only screen and (max-width: 768px) {

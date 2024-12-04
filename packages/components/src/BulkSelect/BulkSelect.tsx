@@ -100,6 +100,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
             </MenuToggle>
           )}
           isOpen={isOpen}
+          popperProps={{ appendTo: 'inline' }}
         >
           <DropdownList data-ouia-component-id={listOuiaId ?? 'BulkSelectList'}>
             {count !== undefined && count > 0 && (
@@ -110,7 +111,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
                   'ins-c-bulk-select__selected': !hasError,
                 })}
               >
-                {count} Selected
+                MenuItemected
               </DropdownItem>
             )}
             {items.map((oneItem, key) => (
