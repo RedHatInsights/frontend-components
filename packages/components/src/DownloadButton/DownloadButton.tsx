@@ -63,12 +63,18 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
           onOpenChange={(isOpen) => setIsOpen(isOpen)}
           onSelect={internalOnSelect}
           toggle={(toggleRef) => (
-            <MenuToggle aria-label="Export" variant="plain" ref={toggleRef} isExpanded={isOpen} onClick={() => setIsOpen((prev) => !prev)}>
-              <ExportIcon />
-            </MenuToggle>
+            <MenuToggle
+              aria-label="Export"
+              variant="plain"
+              ref={toggleRef}
+              isExpanded={isOpen}
+              onClick={() => setIsOpen((prev) => !prev)}
+              icon={<ExportIcon />}
+            />
           )}
           isOpen={isOpen}
           ouiaId="Export"
+          popperProps={{ appendTo: 'inline' }}
         >
           <DropdownList>
             <DropdownItem

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextVariants } from '@patternfly/react-core';
+import { Content, ContentVariants } from '@patternfly/react-core/dist/dynamic/components/Content';
 import PropTypes from 'prop-types';
 
 const RiskDescription = ({ riskValue, riskMeta, showDescription }) => {
@@ -10,9 +10,9 @@ const RiskDescription = ({ riskValue, riskMeta, showDescription }) => {
     <div className="ins-c-rule__risk-description">
       <IconComponent value={riskValue} />
       {showDescription && (
-        <Text className="ins-c-rule__risk-detail-description-text" component={TextVariants.small}>
+        <Content className="ins-c-rule__risk-detail-description-text" component={ContentVariants.small}>
           {description}
-        </Text>
+        </Content>
       )}
     </div>
   );

@@ -15,9 +15,11 @@ export interface SortByProps {
 }
 
 const SortBy: React.FunctionComponent<SortByProps> = ({ direction = SortByDirection.asc, onSortChange = () => undefined }) => (
-  <Button variant="plain" onClick={(e) => onSortChange(e, flipDirection(direction))}>
-    <Icon size="md">{direction === SortByDirection.asc ? <SortAmountUpIcon /> : <SortAmountDownIcon />}</Icon>
-  </Button>
+  <Button
+    icon={<Icon size="md">{direction === SortByDirection.asc ? <SortAmountUpIcon /> : <SortAmountDownIcon />}</Icon>}
+    variant="plain"
+    onClick={(e) => onSortChange(e, flipDirection(direction))}
+  />
 );
 
 export default SortBy;

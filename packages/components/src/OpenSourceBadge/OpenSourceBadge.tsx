@@ -1,7 +1,7 @@
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
 import { Popover } from '@patternfly/react-core/dist/dynamic/components/Popover';
-import { Text } from '@patternfly/react-core/dist/dynamic/components/Text';
-import { TextContent } from '@patternfly/react-core/dist/dynamic/components/Text';
+import { Content } from '@patternfly/react-core/dist/dynamic/components/Content';
+
 import CodeBranchIcon from '@patternfly/react-icons/dist/dynamic/icons/code-branch-icon';
 import ExternalLinkAltIcon from '@patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon';
 import React from 'react';
@@ -18,21 +18,19 @@ const OpenSourceBadge: React.FunctionComponent<OpenSourceBadgeProps> = ({ reposi
     <>
       <Popover
         bodyContent={
-          <TextContent>
-            <Text>
+          <Content>
+            <Content component="p">
               This service is open source, so all of its code is inspectable. Explore repositories to view and contribute to the source code.
-            </Text>
+            </Content>
             <Button component="a" target="_blank" variant="link" icon={<ExternalLinkAltIcon />} iconPosition="right" isInline href={repositoriesURL}>
               Repositories
             </Button>
-          </TextContent>
+          </Content>
         }
         id={'open-source-badge'}
         headerContent={'About open source'}
       >
-        <Button variant="plain" aria-label="About Open Services" className="pf-v5-u-pl-sm open-source-badge">
-          <CodeBranchIcon />
-        </Button>
+        <Button icon={<CodeBranchIcon />} variant="plain" aria-label="About Open Services" className="pf-v6-u-pl-sm open-source-badge" />
       </Popover>
     </>
   );
