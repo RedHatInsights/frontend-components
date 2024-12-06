@@ -27,12 +27,12 @@ describe('report details: kba loaded', () => {
   });
 
   it('renders correct number of headers', () => {
-    cy.get('.pf-v5-c-card__header').should('have.length', HEADERS.length);
-    HEADERS.forEach((h) => cy.get('.pf-v5-c-card__header').contains(h).should('have.length', 1));
+    cy.get('.pf-v6-c-card__header').should('have.length', HEADERS.length);
+    HEADERS.forEach((h) => cy.get('.pf-v6-c-card__header').contains(h).should('have.length', 1));
   });
 
   it('each header has an icon', () => {
-    cy.get('.pf-v5-c-card__header-main > .ins-c-report-details__icon').should('have.length', HEADERS.length);
+    cy.get('.pf-v6-c-card__header-main > .ins-c-report-details__icon').should('have.length', HEADERS.length);
   });
 
   it('links have an icon', () => {
@@ -64,12 +64,12 @@ describe('report details: kba loaded', () => {
 
   it('renders three dividers', () => {
     // TODO: make the assertion number dependant on input test data
-    cy.get('hr[class=pf-v5-c-divider]').should('have.length', 3);
+    cy.get('hr[class=pf-v6-c-divider]').should('have.length', 3);
   });
 
   it('renders a loaded kba link', () => {
-    cy.get(`${ROOT} .ins-c-report-details__kba .pf-v5-c-card__body`).find('.pf-v5-c-skeleton').should('have.length', 0);
-    cy.get(`${ROOT} .ins-c-report-details__kba .pf-v5-c-card__body`)
+    cy.get(`${ROOT} .ins-c-report-details__kba .pf-v6-c-card__body`).find('.pf-v6-c-skeleton').should('have.length', 0);
+    cy.get(`${ROOT} .ins-c-report-details__kba .pf-v6-c-card__body`)
       .contains(props.kbaDetail.publishedTitle)
       .invoke('attr', 'href')
       .should('eq', props.kbaDetail.view_uri);
@@ -82,6 +82,6 @@ describe('report details: kba loading', () => {
   });
 
   it('renders skeleton instead of a kba link', () => {
-    cy.get(`${ROOT} .ins-c-report-details__kba .pf-v5-c-card__body`).find('.pf-v5-c-skeleton').should('have.length', 1);
+    cy.get(`${ROOT} .ins-c-report-details__kba .pf-v6-c-card__body`).find('.pf-v6-c-skeleton').should('have.length', 1);
   });
 });

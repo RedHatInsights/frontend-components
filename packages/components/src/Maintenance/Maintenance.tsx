@@ -2,8 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { EmptyState } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
 import { EmptyStateBody } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
-import { EmptyStateHeader } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
-import { EmptyStateIcon } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+
 import { EmptyStateProps } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
 import { Stack } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
 import { StackItem } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
@@ -35,8 +34,7 @@ const Maintenance: React.FunctionComponent<MaintenanceProps> = ({
   const emptyStateClassName = classNames(className, 'ins-c-empty-state__maintenance');
 
   return (
-    <EmptyState className={emptyStateClassName} {...props}>
-      <EmptyStateHeader titleText="Maintenance in progress" icon={<EmptyStateIcon icon={HourglassHalfIcon} />} headingLevel="h4" />
+    <EmptyState headingLevel="h4" icon={HourglassHalfIcon} titleText="Maintenance in progress" className={emptyStateClassName} {...props}>
       <EmptyStateBody>
         {description ? (
           description

@@ -3,8 +3,7 @@ import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
 import { EmptyState } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
 import { EmptyStateBody } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
 import { EmptyStateFooter } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
-import { EmptyStateHeader } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
-import { EmptyStateIcon } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+
 import DisconnectedIcon from '@patternfly/react-icons/dist/dynamic/icons/disconnected-icon';
 
 export interface NoRegisteredSystemsProps {
@@ -18,8 +17,7 @@ const NoRegisteredSystems: React.FC<NoRegisteredSystemsProps> = ({
   bodyText = 'Connect your systems to keep your Red Hat environment running efficiently, with security and compliance with various standards.',
   buttonText = 'Learn more about connecting your systems',
 }) => (
-  <EmptyState>
-    <EmptyStateHeader titleText={titleText} icon={<EmptyStateIcon icon={DisconnectedIcon} />} headingLevel="h5" />
+  <EmptyState headingLevel="h5" icon={DisconnectedIcon} titleText={titleText}>
     <EmptyStateBody>{bodyText}</EmptyStateBody>
     <EmptyStateFooter>
       <Button
@@ -28,7 +26,7 @@ const NoRegisteredSystems: React.FC<NoRegisteredSystemsProps> = ({
         href="https://access.redhat.com/products/red-hat-insights#getstarted"
         target="_blank"
         rel="noopener noreferrer"
-        className="pf-v5-u-mt-lg"
+        className="pf-v6-u-mt-lg"
       >
         {buttonText}
       </Button>

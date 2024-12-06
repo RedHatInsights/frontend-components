@@ -68,6 +68,7 @@ const RadioFilter: React.FunctionComponent<RadioFilterProps> = ({ items = [], on
       onSelect={(event, value) => onSelect(event, value as string | FilterValue)}
       isOpen={isExpanded}
       ouiaId={placeholder}
+      popperProps={{ appendTo: 'inline' }}
     >
       <SelectList aria-label="Options menu">
         {items.map(({ value, isChecked, onChange, label, id, ...item }, key) => (

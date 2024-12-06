@@ -15,8 +15,8 @@
     @include m.rem('width', 30px);
     @include m.rem('height', 30px);
     border-radius: 50%;
-    border: 3px solid var(--pf-v5-global--active-color--200);
-    border-top-color: var(--pf-v5-global--active-color--100);
+    border: 3px solid var(--pf-t--global--color--brand--hover);
+    border-top-color: var(--pf-t--global--color--brand--default);
     animation: spinner 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 }

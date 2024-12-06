@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
 import { EmptyState } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
 import { EmptyStateBody } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
-import { EmptyStateHeader } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+
 import { EmptyStateVariant } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
-import { ModalProps } from '@patternfly/react-core/dist/dynamic/next/components/Modal';
+import { ModalProps } from '@patternfly/react-core/dist/dynamic/components/Modal';
 import { Pagination } from '@patternfly/react-core/dist/dynamic/components/Pagination';
 // FIXME: Deal with table after
 import { Table, TableBody, TableHeader, TableProps } from '@patternfly/react-table/deprecated';
@@ -138,8 +138,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
                         title: (
                           <EmptyTable>
                             <Bullseye>
-                              <EmptyState variant={EmptyStateVariant.full}>
-                                <EmptyStateHeader titleText={`No ${entityName} found`} headingLevel="h5" />
+                              <EmptyState headingLevel="h5" titleText={`No ${entityName} found`} variant={EmptyStateVariant.full}>
                                 <EmptyStateBody>
                                   This filter criteria matches no {entityName}. <br /> Try changing your filter settings.
                                 </EmptyStateBody>

@@ -1,38 +1,38 @@
-$pf-v5-c-treeview--MaxDepth: 10;
+$pf-v6-c-treeview--MaxDepth: 10;
 
-.pf-v5-c-treeview {
+.pf-v6-c-treeview {
   // Th
-  --pf-v5-c-treeview--th--Padding: var(--pf-v5-global--spacer--md);
+  --pf-v6-c-treeview--th--Padding: var(--pf-t--global--spacer--md);
 
   // Td
-  --pf-v5-c-treeview--td--Padding: var(--pf-v5-global--spacer--md);
+  --pf-v6-c-treeview--td--Padding: var(--pf-t--global--spacer--md);
 
   // cell
-  --pf-v5-c-treeview--cell--Padding: var(--pf-v5-global--spacer--md);
+  --pf-v6-c-treeview--cell--Padding: var(--pf-t--global--spacer--md);
   
   // Toggle button
-  --pf-v5-c-treeview__toggle-button--Padding: var(--pf-v5-c-treeview--td--Padding);
+  --pf-v6-c-treeview__toggle-button--Padding: var(--pf-v6-c-treeview--td--Padding);
 
   // Control cell  
-  --pf-v5-c-treeview__control-toggle--Width: 42px;
-  --pf-v5-c-treeview__control-check--Width: 22px;
+  --pf-v6-c-treeview__control-toggle--Width: 42px;
+  --pf-v6-c-treeview__control-check--Width: 22px;
   
-  --pf-v5-c-treeview--td--level-2--PaddingLeft: calc(var(--pf-v5-c-treeview--td--Padding) * 3);
-  --pf-v5-c-treeview--td--level-3--PaddingLeft: calc(var(--pf-v5-c-treeview--td--Padding) * 5);
+  --pf-v6-c-treeview--td--level-2--PaddingLeft: calc(var(--pf-v6-c-treeview--td--Padding) * 3);
+  --pf-v6-c-treeview--td--level-3--PaddingLeft: calc(var(--pf-v6-c-treeview--td--Padding) * 5);
   
-  --pf-v5-c-treeview--level--PaddingLeft: var(--pf-v5-global--spacer--xl);  
+  --pf-v6-c-treeview--level--PaddingLeft: var(--pf-t--global--spacer--xl);  
   
-  --pf-v5-c-treeview__aria-level--GridColumn: 1;
+  --pf-v6-c-treeview__aria-level--GridColumn: 1;
 
-  --pf-v5-c-treeview--tr--Display: table-row;
-  --pf-v5-c-treeview--tr--Visibility: visible;
+  --pf-v6-c-treeview--tr--Display: table-row;
+  --pf-v6-c-treeview--tr--Visibility: visible;
   
   width: 100%;
   border-collapse: collapse;
  
   th,
   td {
-    padding: var(--pf-v5-c-treeview--cell--Padding);
+    padding: var(--pf-v6-c-treeview--cell--Padding);
     text-align: left;
     vertical-align: baseline;
   }
@@ -51,8 +51,8 @@ $pf-v5-c-treeview--MaxDepth: 10;
     display: table-row;
     visibility: visible;
 
-    --pf-v5-c-treeview--tr--Display: table-row;
-    --pf-v5-c-treeview--tr--Visibility: visible;
+    --pf-v6-c-treeview--tr--Display: table-row;
+    --pf-v6-c-treeview--tr--Visibility: visible;
   }
   
   .pf-m-hidden,
@@ -74,25 +74,25 @@ $pf-v5-c-treeview--MaxDepth: 10;
     visibility: visible;
   }
     
-  .pf-v5-c-treeview__check,
-  .pf-v5-c-treeview__action {
+  .pf-v6-c-treeview__check,
+  .pf-v6-c-treeview__action {
     width: 1px;
   }
   
   
-  th.pf-v5-c-treeview__title-cell {
+  th.pf-v6-c-treeview__title-cell {
     padding-left: 0;
   }
   
-  tbody .pf-v5-c-treeview__check + .pf-v5-c-treeview__title-cell {
+  tbody .pf-v6-c-treeview__check + .pf-v6-c-treeview__title-cell {
     padding-left: 0;
   }
   
-  .pf-v5-c-treeview__toggle-icon {
+  .pf-v6-c-treeview__toggle-icon {
     transition: .2s;
   }
   
-  .pf-v5-c-treeview__action {
+  .pf-v6-c-treeview__action {
     text-align: right;
   }
   
@@ -104,11 +104,11 @@ $pf-v5-c-treeview--MaxDepth: 10;
   }
 }
 
-.pf-v5-c-treeview {
-  @for $i from 1 through $pf-v5-c-treeview--MaxDepth {
+.pf-v6-c-treeview {
+  @for $i from 1 through $pf-v6-c-treeview--MaxDepth {
     tr[aria-level="#{$i}"] {
-      .pf-v5-c-treeview__title-cell {
-        padding-left: calc(var(--pf-v5-c-treeview--level--PaddingLeft) * #{$i - 1});
+      .pf-v6-c-treeview__title-cell {
+        padding-left: calc(var(--pf-v6-c-treeview--level--PaddingLeft) * #{$i - 1});
       }
     }
   }
@@ -122,27 +122,27 @@ $pf-v5-c-treeview--MaxDepth: 10;
   }
 
   
-  @for $i from 1 through $pf-v5-c-treeview--MaxDepth {
+  @for $i from 1 through $pf-v6-c-treeview--MaxDepth {
     [aria-level="#{$i}"].pf-m-expanded ~ [aria-level="#{$i + 1}"] {
       display: table-row;
     }
   }
 
-  tr.pf-m-expanded .pf-v5-c-treeview__toggle-icon {
+  tr.pf-m-expanded .pf-v6-c-treeview__toggle-icon {
     transform: rotate(90deg);
   }
 }
 
-.pf-v5-c-treeview__control {
+.pf-v6-c-treeview__control {
   display: grid;
   align-items: baseline;
 }
 
-.pf-v5-c-treeview__control-toggle {
+.pf-v6-c-treeview__control-toggle {
   grid-area: 1 / toggle;
 }
 
-.pf-v5-c-treeview__control-text {
+.pf-v6-c-treeview__control-text {
   grid-area: 1 / text;
   max-width: 100%;
   overflow: hidden;
@@ -150,19 +150,19 @@ $pf-v5-c-treeview--MaxDepth: 10;
   text-overflow: ellipsis;
 }
 
-.pf-v5-c-treeview__check {
+.pf-v6-c-treeview__check {
   grid-row-start: 1;
   grid-column-start: 2;
 }
 
-.pf-v5-c-treeview.pf-m-expandable {
-  .pf-v5-c-treeview__control {
-    grid-template-columns: [toggle] var(--pf-v5-c-treeview__control-toggle--Width)  [text] auto;
+.pf-v6-c-treeview.pf-m-expandable {
+  .pf-v6-c-treeview__control {
+    grid-template-columns: [toggle] var(--pf-v6-c-treeview__control-toggle--Width)  [text] auto;
   }
 }
 
 // Mobile layout
-.pf-v5-c-treeview.pf-m-grid {
+.pf-v6-c-treeview.pf-m-grid {
   @media (max-width: 2000px) {
     &,
     tr {
@@ -197,7 +197,7 @@ $pf-v5-c-treeview--MaxDepth: 10;
     }
 
     [data-label] {
-      grid-column-gap: var(--pf-v5-global--spacer--md);
+      grid-column-gap: var(--pf-t--global--spacer--md);
       padding-top: 8px;
       padding-bottom: 8px;
     }
@@ -206,8 +206,8 @@ $pf-v5-c-treeview--MaxDepth: 10;
       grid-column: 2;
     }  
 
-    .pf-v5-c-treeview__check,
-    .pf-v5-c-treeview__action {
+    .pf-v6-c-treeview__check,
+    .pf-v6-c-treeview__action {
       display: inline-block;
       width: auto;
       grid-row: 1;
@@ -215,30 +215,30 @@ $pf-v5-c-treeview--MaxDepth: 10;
       padding: 0;
     }
 
-    .pf-v5-c-treeview__check {
+    .pf-v6-c-treeview__check {
       grid-column: 3;
     }
 
-    .pf-v5-c-treeview__action {
+    .pf-v6-c-treeview__action {
       grid-column: 4;
     }
 
-    .pf-v5-c-treeview__control {
+    .pf-v6-c-treeview__control {
       display: block;
 
-      .pf-v5-c-treeview__toggle {
+      .pf-v6-c-treeview__toggle {
         display: none;
       }
     }
 
-    [aria-level] .pf-v5-c-treeview__title-cell {
+    [aria-level] .pf-v6-c-treeview__title-cell {
       padding-left: 0;
     }
 
     tr {
       grid-template-columns: 1fr;
       grid-auto-columns: max-content;
-      padding: var(--pf-v5-global--spacer--md);
+      padding: var(--pf-t--global--spacer--md);
       background: rgba(255,255,255,.5);    
       display: none;
       visibility: hidden;    
@@ -247,7 +247,7 @@ $pf-v5-c-treeview--MaxDepth: 10;
 }
 
 // loop through 
-.pf-v5-c-treeview.pf-m-grid {
+.pf-v6-c-treeview.pf-m-grid {
   tr {
     display: none;
   }
@@ -258,7 +258,7 @@ $pf-v5-c-treeview--MaxDepth: 10;
       visibility: visible;
     }
 
-    @for $i from 1 through $pf-v5-c-treeview--MaxDepth {
+    @for $i from 1 through $pf-v6-c-treeview--MaxDepth {
       .pf-m-level-#{$i + 1} {
         tr[aria-level="#{$i}"].pf-m-expanded ~ tr[aria-level="#{$i + 1}"] {
           background: lightsalmon;
@@ -275,4 +275,4 @@ $pf-v5-c-treeview--MaxDepth: 10;
   }
 }
 
-.pf-v5-c-treeview { @for $i from 1 through $pf-v5-c-treeview--MaxDepth {} }
+.pf-v6-c-treeview { @for $i from 1 through $pf-v6-c-treeview--MaxDepth {} }

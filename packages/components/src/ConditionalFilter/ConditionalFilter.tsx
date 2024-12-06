@@ -1,6 +1,6 @@
 import React, { FormEvent, Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import globalBreakpointMd from '@patternfly/react-tokens/dist/js/global_breakpoint_md';
+import t_global_breakpoint_md from '@patternfly/react-tokens/dist/js/t_global_breakpoint_md';
 import { Dropdown } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
 import { DropdownItem } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
 import { DropdownList } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
@@ -89,7 +89,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   value = '',
   innerRef,
 }) => {
-  const breakpointConstant = parseInt(globalBreakpointMd.value.replace('px', ''));
+  const breakpointConstant = parseInt(t_global_breakpoint_md.value.replace('px', ''));
   const updateFilterViewport = (width: number) => width <= breakpointConstant;
   const [isOpen, setIsOpen] = useState(false);
   const [stateValue, setStateValue] = useState<number | string>();

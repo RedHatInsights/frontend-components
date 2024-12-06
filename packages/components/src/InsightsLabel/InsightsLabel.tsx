@@ -9,12 +9,12 @@ type InsightsLabelValueMapping = {
   [key: number]: {
     icon: React.ReactNode;
     text: string;
-    color: 'blue' | 'orange' | 'red' | 'gold';
+    color: 'blue' | 'orange' | 'red' | 'yellow';
   };
 };
 const VALUE_TO_STATE: InsightsLabelValueMapping = {
   1: { icon: <AngleDoubleDownIcon />, text: 'Low', color: 'blue' },
-  2: { icon: <EqualsIcon />, text: 'Moderate', color: 'gold' },
+  2: { icon: <EqualsIcon />, text: 'Moderate', color: 'yellow' },
   3: { icon: <AngleDoubleUpIcon />, text: 'Important', color: 'orange' },
   4: { icon: <CriticalRiskIcon />, text: 'Critical', color: 'red' },
 };

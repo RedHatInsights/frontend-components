@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import { sortable } from '@patternfly/react-table';
 // FIXME: Deal with table later
 import { Table, TableBody, TableHeader } from '@patternfly/react-table/deprecated';
-import { Bullseye, EmptyState, EmptyStateBody, EmptyStateHeader, EmptyStateIcon, EmptyStateVariant } from '@patternfly/react-core';
-import { SearchIcon } from '@patternfly/react-icons';
+import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
+import { EmptyState } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateBody } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateVariant } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import SearchIcon from '@patternfly/react-icons/dist/dynamic/icons/search-icon';
 import { Skeleton } from '@redhat-cloud-services/frontend-components/Skeleton';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
-import { Pagination, PaginationVariant } from '@patternfly/react-core';
+import { Pagination, PaginationVariant } from '@patternfly/react-core/dist/dynamic/components/Pagination';
 import flatten from 'lodash/flatten';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
@@ -203,12 +206,7 @@ class RuleTable extends Component {
                         props: { colSpan: columns.length + Boolean(actions) },
                         title: (
                           <Bullseye>
-                            <EmptyState variant={EmptyStateVariant.sm}>
-                              <EmptyStateHeader
-                                titleText={<>{emptyStateTitle}</>}
-                                icon={<EmptyStateIcon icon={emptyStateIcon} />}
-                                headingLevel="h2"
-                              />
+                            <EmptyState headingLevel="h2" icon={emptyStateIcon} titleText={<>{emptyStateTitle}</>} variant={EmptyStateVariant.sm}>
                               <EmptyStateBody>{emptyStateDescription}</EmptyStateBody>
                             </EmptyState>
                           </Bullseye>

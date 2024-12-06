@@ -13,7 +13,7 @@ const Spinner: React.FunctionComponent<SpinnerProps> = ({ centered, className, .
 
   return (
     <div role="status" className={spinnerClasses} {...props}>
-      <span className="pf-v5-u-screen-reader">Loading...</span>
+      <span className="pf-v6-u-screen-reader">Loading...</span>
     </div>
   );
 };

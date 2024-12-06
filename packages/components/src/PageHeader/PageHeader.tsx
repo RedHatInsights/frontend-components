@@ -23,10 +23,10 @@ const PageHeader: React.FunctionComponent<React.PropsWithChildren<PageHeaderProp
 }) => {
   const pageHeaderClasses = classNames(
     className,
-    'pf-v5-l-page-header',
-    'pf-v5-c-page-header',
-    'pf-v5-l-page__main-section',
-    'pf-v5-c-page__main-section'
+    'pf-v6-l-page-header',
+    'pf-v6-c-page-header',
+    'pf-v6-l-page__main-section',
+    'pf-v6-c-page__main-section'
   );
   const ouiaComponentType = 'RHI/Header';
   const ouiaFinalId = useOUIAId(ouiaComponentType, ouiaId, ouiaSafe as unknown as string);

@@ -1,10 +1,10 @@
-.ins-c-inventory__culling-warning { color: var(--pf-v5-global--warning-color--200); }
+.ins-c-inventory__culling-warning { color: var(--pf-t--global--color--status--warning--default); }
 
-.ins-c-inventory__culling-danger { color: var(--pf-v5-global--danger-color--100); }
+.ins-c-inventory__culling-danger { color: var(--pf-t--global--color--status--danger--default); }
 
 .ins-c-inventory__culling-danger, .ins-c-inventory__culling-warning {
-  font-weight: var(--pf-v5-global--FontWeight--bold);
+  font-weight: var(--pf-t--global--font--weight--body--bold);
   svg {
-    margin-right: var(--pf-v5-global--spacer--sm);
+    margin-right: var(--pf-t--global--spacer--sm);
   }
 }
