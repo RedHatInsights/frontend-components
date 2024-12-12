@@ -108,6 +108,8 @@ export type ProxyOptions = {
    * Chrome should be running from container from now on.
    */
   blockLegacyChrome?: boolean;
+  // needs to be passed from the config directly to proxy
+  frontendCRDPath?: string;
 };
 
 const proxy = ({
@@ -126,6 +128,9 @@ const proxy = ({
   bounceProd = false,
   useAgent = true,
   localApps = process.env.LOCAL_APPS,
+  // should be just a mock, if not passed, the interceptor will not start
+  // will be used once the interceptor is ready
+  frontendCRDPath = path.resolve(process.cwd(), 'deploy/frontend.yaml'),
 }: ProxyOptions) => {
   const proxy: ProxyConfigItem[] = [];
   const majorEnv = env.split('-')[0];
@@ -192,6 +197,15 @@ const proxy = ({
       secure: false,
       changeOrigin: true,
       autoRewrite: true,
+      onProxyReq: (proxyReq, req) => {
+        if (req.url.match(/\/api\/chrome-service\/v1\/static\/.*\/iam-navigation\.json/)) {
+          // necessary to avoid gzip encoding and issues with parsing the json body
+          proxyReq.setHeader('accept-encoding', 'gzip;q=0,deflate,sdch');
+        }
+      },
+      onProxyRes: (proxyRes, req, res) => {
+        // will be used to match and replace the configuration files with the crd values
+      },
       context: (url: string) => {
         const shouldProxy = !appUrl.find((u) => (typeof u === 'string' ? url.startsWith(u) : u.test(url)));
         if (shouldProxy) {

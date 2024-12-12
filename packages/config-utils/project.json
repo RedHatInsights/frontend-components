@@ -55,6 +55,13 @@
       "options": {
         "command": "git push --tags"
       }
-    }
+    },
+    "test:unit": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/config-utils/jest.config.ts"
+      }
+    },
   }
 }
