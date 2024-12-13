@@ -18,7 +18,7 @@ export type TagWithDialogProps = Omit<AsyncComponentProps, ExcludeModulesKeys>;
  */
 const BaseTagWithDialog: React.FC<TagWithDialogProps & { innerRef?: React.Ref<HTMLElement>; history?: unknown; store?: unknown }> = (props) => {
   const store = useStore();
-  const Cmp = props.component;
+  const Cmp = props.component ?? 'section';
   const SCProps: ScalprumComponentProps<ChromeAPI, TagWithDialogProps> = {
     history: props.history,
     store,

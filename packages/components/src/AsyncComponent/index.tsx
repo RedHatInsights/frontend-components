@@ -7,16 +7,17 @@ import { ChromeAPI } from '@redhat-cloud-services/types';
 
 export type ExcludeModulesKeys = 'module' | 'scope';
 
-export type AsyncComponentProps = {
+export type AsyncComponentProps<T extends object = object> = {
   /** Loaded module, it has to start with `./`. */
   module: string;
   /** Optional scope, if not passed appName is used. */
   scope: string;
   /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
-  fallback: React.ReactElement;
+  fallback?: React.ReactElement;
   /** Optional wrapper component */
-  component: keyof JSX.IntrinsicElements;
-} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  component?: keyof JSX.IntrinsicElements;
+} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> &
+  T;
 
 type BaseAsyncComponentProps = AsyncComponentProps & {
   innerRef: React.MutableRefObject<HTMLElement | null> | ((instance: HTMLElement | null) => void) | null;
@@ -56,6 +57,9 @@ const BaseAsyncComponent: React.FunctionComponent<BaseAsyncComponentProps> = ({
  * This component uses fallback as ErrorComponent, if you want to show different
  * component for error pass it as ErrorComponent prop.
  */
-export const AsyncComponent = React.forwardRef<HTMLElement, AsyncComponentProps>((props, ref) => <BaseAsyncComponent innerRef={ref} {...props} />);
+const InternalSyncComponent = React.forwardRef<HTMLElement, AsyncComponentProps>((props, ref) => <BaseAsyncComponent innerRef={ref} {...props} />);
+export function AsyncComponent<T extends object = object>(props: AsyncComponentProps & T) {
+  return <InternalSyncComponent {...props} />;
+}
 
 export default AsyncComponent;
