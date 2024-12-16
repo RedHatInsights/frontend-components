@@ -113,6 +113,13 @@ export type ServiceCategory = {
   id: string;
   groups: ServiceGroup[];
 };
+
+export type ChromeWidgetEntry = {
+  scope: string;
+  module: string;
+  frontendRef: string;
+};
+
 export type CRDObject = {
   metadata: {
     name: string;
@@ -123,6 +130,7 @@ export type CRDObject = {
     module: ChromeModule;
     searchEntries?: ChromeStaticSearchEntry[];
     serviceTiles?: ServiceTile[];
+    widgetRegistry?: ChromeWidgetEntry[];
   };
 };
 
