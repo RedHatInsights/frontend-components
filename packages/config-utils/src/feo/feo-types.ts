@@ -97,6 +97,22 @@ export type BundleSegment = {
   navItems: DirectNavItem[];
 };
 
+export type ServiceTile = {
+  section: string;
+  group: string;
+  id: string;
+  frontendRef: string;
+};
+
+export type ServiceGroup = {
+  id: string;
+  tiles: ServiceTile[];
+};
+
+export type ServiceCategory = {
+  id: string;
+  groups: ServiceGroup[];
+};
 export type CRDObject = {
   metadata: {
     name: string;
@@ -106,6 +122,7 @@ export type CRDObject = {
     navigationSegments?: DirectNavItem[];
     module: ChromeModule;
     searchEntries?: ChromeStaticSearchEntry[];
+    serviceTiles?: ServiceTile[];
   };
 };
 

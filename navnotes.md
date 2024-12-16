@@ -34,3 +34,9 @@ Required to match nav item in bundle to current app
 ## frontendRef
 
 search entries need a `frontendRef` attribute. Without the attribute, we can modify/add frontend entries, but we can't remove them
+
+# Service tiles interceptor
+
+## frontendRef
+
+Service tile entries need a `frontendRef` attribute. Without the attribute, we can modify/add frontend entries, but we can't remove them
