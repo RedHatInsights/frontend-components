@@ -40,3 +40,9 @@ search entries need a `frontendRef` attribute. Without the attribute, we can mod
 ## frontendRef
 
 Service tile entries need a `frontendRef` attribute. Without the attribute, we can modify/add frontend entries, but we can't remove them
+
+# Widget registry interceptor
+
+## frontendRef
+
+Widget registry entries need a `frontendRef` attribute. Without the attribute, we can modify/add frontend entries, but we can't remove them
