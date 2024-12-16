@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-utilities",
-  "version": "5.0.13",
+  "version": "6.0.0-beta.0",
   "description": "Util functions for RedHat Cloud Services project.",
   "main": "index.js",
   "module": "esm/index.js",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@redhat-cloud-services/rbac-client": "^1.0.111 || 2.x",
-    "@redhat-cloud-services/types": "^1.0.19",
+    "@redhat-cloud-services/types": "2.0.0-beta.0",
     "@sentry/browser": "^7.119.1",
     "awesome-debounce-promise": "^2.1.0",
     "axios": "^0.28.1 || ^1.7.0",
