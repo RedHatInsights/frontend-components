@@ -19,6 +19,9 @@ describe('NavigationInterceptor', () => {
               name: frontendName,
             },
             spec: {
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
               bundleSegments: [
                 {
                   bundleId: bundleName,
@@ -195,6 +198,9 @@ describe('NavigationInterceptor', () => {
               name: defaultFrontendName,
             },
             spec: {
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
               bundleSegments: [
                 {
                   bundleId: bundleName,
@@ -260,6 +266,9 @@ describe('NavigationInterceptor', () => {
               name: defaultFrontendName,
             },
             spec: {
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
               bundleSegments: [
                 {
                   bundleId: bundleName,
@@ -349,6 +358,9 @@ describe('NavigationInterceptor', () => {
               name: defaultFrontendName,
             },
             spec: {
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
               bundleSegments: [
                 {
                   bundleId: bundleName,
@@ -412,6 +424,9 @@ describe('NavigationInterceptor', () => {
               name: defaultFrontendName,
             },
             spec: {
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
               bundleSegments: [
                 {
                   bundleId: bundleName,
@@ -476,6 +491,9 @@ describe('NavigationInterceptor', () => {
               name: frontendName,
             },
             spec: {
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
               navigationSegments: [
                 {
                   segmentId: segmentOneId,
