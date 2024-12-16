@@ -54,6 +54,16 @@ export type ChromeModuleRegistry = {
   [moduleName: string]: ChromeModule;
 };
 
+export type ChromeStaticSearchEntry = {
+  frontendRef: string;
+  id: string;
+  href: string;
+  title: string;
+  description: string;
+  alt_title?: string[];
+  isExternal?: boolean;
+};
+
 export type SegmentRef = {
   segmentId: string;
   frontendName: string;
@@ -95,6 +105,7 @@ export type CRDObject = {
     bundleSegments?: BundleSegment[];
     navigationSegments?: DirectNavItem[];
     module: ChromeModule;
+    searchEntries?: ChromeStaticSearchEntry[];
   };
 };
 
