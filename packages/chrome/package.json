@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/chrome",
-  "version": "1.0.18",
+  "version": "2.0.0-beta.0",
   "description": "Chrome functions for RedHat Hybrid cloud console.",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -29,7 +29,7 @@
     "react-router-dom": "^6.0.0"
   },
   "devDependencies": {
-    "@redhat-cloud-services/types": "^1.0.19",
+    "@redhat-cloud-services/types": "2.0.0-beta.0",
     "@types/react": "^18.0.0",
     "glob": "10.3.3"
   },
