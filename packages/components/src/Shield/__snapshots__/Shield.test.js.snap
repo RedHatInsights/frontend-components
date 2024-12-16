@@ -5,15 +5,15 @@ exports[`Shield component should render where hasTooltip is false 1`] = `
   <span>
     <span>
       <span
-        class="pf-v5-c-icon pf-m-md"
+        class="pf-v6-c-icon pf-m-md"
       >
         <span
-          class="pf-v5-c-icon__content"
+          class="pf-v6-c-icon__content"
         >
           <svg
             aria-hidden="false"
             aria-label="Unknown"
-            class="pf-v5-svg"
+            class="pf-v6-svg"
             color="#737679"
             fill="currentColor"
             height="1em"
@@ -41,15 +41,15 @@ exports[`Shield component should render where impact value is 1 1`] = `
     >
       <span>
         <span
-          class="pf-v5-c-icon pf-m-md"
+          class="pf-v6-c-icon pf-m-md"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="false"
               aria-label="Low"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               color="#737679"
               fill="currentColor"
               height="1em"
@@ -78,15 +78,15 @@ exports[`Shield component should render where impact value is 2 1`] = `
     >
       <span>
         <span
-          class="pf-v5-c-icon pf-m-md"
+          class="pf-v6-c-icon pf-m-md"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="false"
               aria-label="Medium"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               color="#f0ab00"
               fill="currentColor"
               height="1em"
@@ -115,15 +115,15 @@ exports[`Shield component should render where impact value is 3 1`] = `
     >
       <span>
         <span
-          class="pf-v5-c-icon pf-m-md"
+          class="pf-v6-c-icon pf-m-md"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="false"
               aria-label="High"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               color="#ec7a08"
               fill="currentColor"
               height="1em"
@@ -152,15 +152,15 @@ exports[`Shield component should render where impact value is 4 1`] = `
     >
       <span>
         <span
-          class="pf-v5-c-icon pf-m-md"
+          class="pf-v6-c-icon pf-m-md"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="false"
               aria-label="Critical"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               color="#a30000"
               fill="currentColor"
               height="1em"
@@ -189,15 +189,15 @@ exports[`Shield component should render where impact value is Critical 1`] = `
     >
       <span>
         <span
-          class="pf-v5-c-icon pf-m-md"
+          class="pf-v6-c-icon pf-m-md"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="false"
               aria-label="Critical"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               color="#a30000"
               fill="currentColor"
               height="1em"
@@ -226,15 +226,15 @@ exports[`Shield component should render where impact value is Low 1`] = `
     >
       <span>
         <span
-          class="pf-v5-c-icon pf-m-md"
+          class="pf-v6-c-icon pf-m-md"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="false"
               aria-label="Low"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               color="#737679"
               fill="currentColor"
               height="1em"
@@ -263,15 +263,15 @@ exports[`Shield component should render where impact value is NonExist 1`] = `
     >
       <span>
         <span
-          class="pf-v5-c-icon pf-m-md"
+          class="pf-v6-c-icon pf-m-md"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="false"
               aria-label="Unknown"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               color="#737679"
               fill="currentColor"
               height="1em"
@@ -300,15 +300,15 @@ exports[`Shield component should render where impact value is empty string 1`] =
     >
       <span>
         <span
-          class="pf-v5-c-icon pf-m-md"
+          class="pf-v6-c-icon pf-m-md"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="false"
               aria-label="Unknown"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               color="#737679"
               fill="currentColor"
               height="1em"
@@ -337,15 +337,15 @@ exports[`Shield component should render where impact value is undefined 1`] = `
     >
       <span>
         <span
-          class="pf-v5-c-icon pf-m-md"
+          class="pf-v6-c-icon pf-m-md"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="false"
               aria-label="Unknown"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               color="#737679"
               fill="currentColor"
               height="1em"
@@ -374,15 +374,15 @@ exports[`Shield component should render with label 1`] = `
     >
       <span>
         <span
-          class="pf-v5-c-icon pf-m-md"
+          class="pf-v6-c-icon pf-m-md"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="false"
               aria-label="Medium"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               color="#f0ab00"
               fill="currentColor"
               height="1em"
@@ -412,15 +412,15 @@ exports[`Shield component should render without props 1`] = `
     >
       <span>
         <span
-          class="pf-v5-c-icon pf-m-md"
+          class="pf-v6-c-icon pf-m-md"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="false"
               aria-label="Unknown"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               color="#737679"
               fill="currentColor"
               height="1em"

@@ -36,8 +36,8 @@ describe('Actions component', () => {
   it('renders component with data', () => {
     cy.mount(<Actions {...config} />);
     cy.get('.ins-c-primary-toolbar__actions');
-    cy.get('.pf-v5-c-menu-toggle').click();
-    cy.get('.pf-v5-c-menu').find('li>button').should('have.length', 5);
+    cy.get('.pf-v6-c-menu-toggle').click();
+    cy.get('.pf-v6-c-menu').find('li>button').should('have.length', 5);
   });
 
   it('functions called on click', () => {
@@ -45,11 +45,11 @@ describe('Actions component', () => {
     config.actions[1].onClick = cy.spy().as('restActionsSpy');
     config.overflowActions[1].onClick = cy.spy().as('ofActionSpy');
     cy.mount(<Actions {...config} />);
-    cy.get('.pf-v5-c-button').click();
-    cy.get('.pf-v5-c-menu-toggle').click();
-    cy.get('.pf-v5-c-menu').find('li>button').eq(1).click();
-    cy.get('.pf-v5-c-menu-toggle').click();
-    cy.get('.pf-v5-c-menu').find('li>button').eq(4).click();
+    cy.get('.pf-v6-c-button').click();
+    cy.get('.pf-v6-c-menu-toggle').click();
+    cy.get('.pf-v6-c-menu').find('li>button').eq(1).click();
+    cy.get('.pf-v6-c-menu-toggle').click();
+    cy.get('.pf-v6-c-menu').find('li>button').eq(4).click();
     cy.get('@firstActionSpy').should('have.been.called');
     cy.get('@restActionsSpy').should('have.been.called');
     cy.get('@ofActionSpy').should('have.been.called');

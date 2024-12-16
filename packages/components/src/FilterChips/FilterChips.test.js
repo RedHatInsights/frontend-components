@@ -49,7 +49,7 @@ describe('FilterChips component', () => {
     it('should call onDelete when deleting a single chip', () => {
       const onDelete = jest.fn();
       const { container } = render(<FilterChips filters={filters} onDelete={onDelete} />);
-      const chips = container.querySelectorAll('.pf-v5-c-chip button');
+      const chips = container.querySelectorAll('.pf-v6-c-label button');
       chips[chips.length - 1].click();
       expect(onDelete).toHaveBeenCalledWith(expect.anything(), [{ name: 'Chip 4' }]);
       expect(onDelete).toHaveBeenCalledTimes(1);
@@ -58,7 +58,7 @@ describe('FilterChips component', () => {
     it('should call onDelete when deleting a single chip in group', () => {
       const onDelete = jest.fn();
       const { container } = render(<FilterChips filters={filters} onDelete={onDelete} />);
-      container.querySelectorAll('.pf-v5-c-chip button')[0].click();
+      container.querySelectorAll('.pf-v6-c-label button')[0].click();
       expect(onDelete).toHaveBeenCalledWith(expect.anything(), [
         {
           category: 'Group 1',
@@ -86,7 +86,7 @@ describe('FilterChips component', () => {
       const onDelete = jest.fn();
       const { container } = render(<FilterChips filters={filters} onDelete={onDelete} />);
 
-      container.querySelectorAll('.pf-v5-c-chip-group').forEach((group) => group.click());
+      container.querySelectorAll('.pf-v6-c-label-group').forEach((group) => group.click());
       expect(onDelete).not.toHaveBeenCalled();
     });
 
@@ -101,7 +101,7 @@ describe('FilterChips component', () => {
         ],
       };
       const { container } = render(<FilterChips filters={[...filters, newGroup]} onDeleteGroup={onDelete} />);
-      const buttons = container.querySelectorAll('.pf-v5-c-chip-group__close button');
+      const buttons = container.querySelectorAll('.pf-v6-c-label-group__close button');
       buttons[buttons.length - 1].click();
       expect(onDelete).toHaveBeenCalledWith(
         expect.anything(),

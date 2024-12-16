@@ -2,8 +2,17 @@ import './ReportDetails.scss';
 
 import React, { useState } from 'react';
 
-import { Alert, Card, CardBody, CardHeader, Divider, Stack, StackItem } from '@patternfly/react-core';
-import { BullseyeIcon, InfoCircleIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
+import { Alert } from '@patternfly/react-core/dist/dynamic/components/Alert';
+import { Card } from '@patternfly/react-core/dist/dynamic/components/Card';
+import { CardBody } from '@patternfly/react-core/dist/dynamic/components/Card';
+import { CardHeader } from '@patternfly/react-core/dist/dynamic/components/Card';
+import { Divider } from '@patternfly/react-core/dist/dynamic/components/Divider';
+import { Stack } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
+import { StackItem } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
+import BullseyeIcon from '@patternfly/react-icons/dist/dynamic/icons/bullseye-icon';
+import InfoCircleIcon from '@patternfly/react-icons/dist/dynamic/icons/info-circle-icon';
+import LightbulbIcon from '@patternfly/react-icons/dist/dynamic/icons/lightbulb-icon';
+import ThumbsUpIcon from '@patternfly/react-icons/dist/dynamic/icons/thumbs-up-icon';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 
 import { RuleContentOcp, RuleContentRhel } from '../types';

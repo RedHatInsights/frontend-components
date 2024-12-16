@@ -3,13 +3,13 @@
 exports[`Text component render should render correctly - isDisabled 1`] = `
 <div>
   <span
-    class="pf-v5-c-form-control pf-m-disabled pf-m-icon ins-c-conditional-filter"
+    class="pf-v6-c-form-control pf-m-disabled pf-m-icon ins-c-conditional-filter"
   >
     <input
       aria-invalid="false"
       aria-label="text input"
       data-ouia-component-id="ConditionalFilter"
-      data-ouia-component-type="PF5/TextInput"
+      data-ouia-component-type="PF6/TextInput"
       data-ouia-safe="true"
       disabled=""
       id="test-id"
@@ -18,20 +18,20 @@ exports[`Text component render should render correctly - isDisabled 1`] = `
       widget-type="InsightsInput"
     />
     <span
-      class="pf-v5-c-form-control__utilities"
+      class="pf-v6-c-form-control__utilities"
     >
       <span
-        class="pf-v5-c-form-control__icon"
+        class="pf-v6-c-form-control__icon"
       >
         <span
-          class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+          class="pf-v6-c-icon pf-m-md ins-c-search-icon"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="true"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               fill="currentColor"
               height="1em"
               role="img"
@@ -53,13 +53,13 @@ exports[`Text component render should render correctly - isDisabled 1`] = `
 exports[`Text component render should render correctly 1`] = `
 <div>
   <span
-    class="pf-v5-c-form-control pf-m-icon ins-c-conditional-filter"
+    class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
   >
     <input
       aria-invalid="false"
       aria-label="text input"
       data-ouia-component-id="ConditionalFilter"
-      data-ouia-component-type="PF5/TextInput"
+      data-ouia-component-type="PF6/TextInput"
       data-ouia-safe="true"
       id="test-id"
       type="text"
@@ -67,20 +67,20 @@ exports[`Text component render should render correctly 1`] = `
       widget-type="InsightsInput"
     />
     <span
-      class="pf-v5-c-form-control__utilities"
+      class="pf-v6-c-form-control__utilities"
     >
       <span
-        class="pf-v5-c-form-control__icon"
+        class="pf-v6-c-form-control__icon"
       >
         <span
-          class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+          class="pf-v6-c-icon pf-m-md ins-c-search-icon"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="true"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               fill="currentColor"
               height="1em"
               role="img"
@@ -102,13 +102,13 @@ exports[`Text component render should render correctly 1`] = `
 exports[`Text component render should render placeholder 1`] = `
 <div>
   <span
-    class="pf-v5-c-form-control pf-m-icon ins-c-conditional-filter"
+    class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
   >
     <input
       aria-invalid="false"
       aria-label="text input"
       data-ouia-component-id="ConditionalFilter"
-      data-ouia-component-type="PF5/TextInput"
+      data-ouia-component-type="PF6/TextInput"
       data-ouia-safe="true"
       id="test-id"
       placeholder="some-placeholder"
@@ -117,20 +117,20 @@ exports[`Text component render should render placeholder 1`] = `
       widget-type="InsightsInput"
     />
     <span
-      class="pf-v5-c-form-control__utilities"
+      class="pf-v6-c-form-control__utilities"
     >
       <span
-        class="pf-v5-c-form-control__icon"
+        class="pf-v6-c-form-control__icon"
       >
         <span
-          class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+          class="pf-v6-c-icon pf-m-md ins-c-search-icon"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="true"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               fill="currentColor"
               height="1em"
               role="img"
@@ -152,13 +152,13 @@ exports[`Text component render should render placeholder 1`] = `
 exports[`Text component render should render value 1`] = `
 <div>
   <span
-    class="pf-v5-c-form-control pf-m-icon ins-c-conditional-filter"
+    class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
   >
     <input
       aria-invalid="false"
       aria-label="text input"
       data-ouia-component-id="ConditionalFilter"
-      data-ouia-component-type="PF5/TextInput"
+      data-ouia-component-type="PF6/TextInput"
       data-ouia-safe="true"
       id="test-id"
       type="text"
@@ -166,20 +166,20 @@ exports[`Text component render should render value 1`] = `
       widget-type="InsightsInput"
     />
     <span
-      class="pf-v5-c-form-control__utilities"
+      class="pf-v6-c-form-control__utilities"
     >
       <span
-        class="pf-v5-c-form-control__icon"
+        class="pf-v6-c-form-control__icon"
       >
         <span
-          class="pf-v5-c-icon pf-m-md ins-c-search-icon"
+          class="pf-v6-c-icon pf-m-md ins-c-search-icon"
         >
           <span
-            class="pf-v5-c-icon__content"
+            class="pf-v6-c-icon__content"
           >
             <svg
               aria-hidden="true"
-              class="pf-v5-svg"
+              class="pf-v6-svg"
               fill="currentColor"
               height="1em"
               role="img"

@@ -273,7 +273,7 @@ describe('ConditionalFilter', () => {
           ],
         },
         {
-          className: 'pf-v5-u-pl-xs',
+          className: 'pf-v6-u-pl-xs',
           groupSelectable: true,
           id: '',
           label: 'RHEL 7',

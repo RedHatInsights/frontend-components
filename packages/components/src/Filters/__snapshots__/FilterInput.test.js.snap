@@ -3,21 +3,21 @@
 exports[`FilterInput component should render a checkbox input 1`] = `
 <div>
   <div
-    class="pf-v5-c-check ins-c-filter-input__checkbox"
+    class="pf-v6-c-check ins-c-filter-input__checkbox"
   >
     <input
       aria-invalid="false"
       aria-label="label"
-      class="pf-v5-c-check__input"
+      class="pf-v6-c-check__input"
       data-ouia-component-id="label"
-      data-ouia-component-type="PF5/Checkbox"
+      data-ouia-component-type="PF6/Checkbox"
       data-ouia-safe="true"
       id="id"
       type="checkbox"
       value="value"
     />
     <label
-      class="pf-v5-c-check__label"
+      class="pf-v6-c-check__label"
       for="id"
     >
       label
@@ -29,14 +29,14 @@ exports[`FilterInput component should render a checkbox input 1`] = `
 exports[`FilterInput component should render a radio input 1`] = `
 <div>
   <div
-    class="pf-v5-c-radio ins-c-filter-input__checkbox"
+    class="pf-v6-c-radio ins-c-filter-input__checkbox"
   >
     <input
       aria-invalid="false"
       checked=""
-      class="pf-v5-c-radio__input"
+      class="pf-v6-c-radio__input"
       data-ouia-component-id="label"
-      data-ouia-component-type="PF5/Radio"
+      data-ouia-component-type="PF6/Radio"
       data-ouia-safe="true"
       id="id"
       name="param"
@@ -44,7 +44,7 @@ exports[`FilterInput component should render a radio input 1`] = `
       value="value"
     />
     <label
-      class="pf-v5-c-radio__label"
+      class="pf-v6-c-radio__label"
       for="id"
     >
       label

@@ -1,7 +1,7 @@
 .ins-c-empty-state__maintenance {
-  .pf-v5-c-empty-state__body {
-    color: var(--pf-v5-global--Color--100);
+  .pf-v6-c-empty-state__body {
+    color: var(--pf-t--color--gray--95);
   }
-  .pf-v5-c-empty-state__icon svg { fill: #EE0000; } // This is Red Hat's red, not Patternfly's red.
-  .pf-v5-c-title { font-weight: 500; }
+  .pf-v6-c-empty-state__icon svg { fill: #EE0000; } // This is Red Hat's red, not Patternfly's red.
+  .pf-v6-c-title { font-weight: 500; }
 }

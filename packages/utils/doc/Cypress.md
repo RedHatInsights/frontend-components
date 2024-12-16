@@ -62,7 +62,7 @@ it('recognizes all parameters', () => {
       for (const [key, value] of urlSearchParameters) {
         if (key == 'text') {
           hasChip('Name', value);
-          cy.get('.pf-m-fill > .pf-v5-c-form-control').should('have.value', value);
+          cy.get('.pf-m-fill > .pf-v6-c-form-control').should('have.value', value);
         } else {
           value.split(',').forEach((it) => {
             const [group, item] = urlParamConvert(key, it, FILTER_CATEGORIES);
@@ -143,7 +143,7 @@ SORTING_ORDERS = ['ascending', 'descending'];
 TOOLBAR = 'div[id="ins-primary-data-toolbar"]';
 CHIP_GROUP = 'div[data-ouia-component-type="PF4/ChipGroup"]';
 CHIP = '[data-ouia-component-type="PF4/Chip"]';
-ROW = '[data-ouia-component-type="PF4/TableRow"]:not([class~="pf-v5-c-table__expandable-row"])';
+ROW = '[data-ouia-component-type="PF4/TableRow"]:not([class~="pf-v6-c-table__expandable-row"])';
 PAGINATION = 'div[data-ouia-component-type="PF4/Pagination"]';
 PAGINATION_MENU = 'div[data-ouia-component-type="PF4/PaginationOptionsMenu"]';
 DROPDOWN = '[data-ouia-component-type="PF4/Dropdown"]';
@@ -156,9 +156,9 @@ TBODY = 'tbody[role=rowgroup]';
 TOOLBAR_FILTER = '.ins-c-primary-toolbar__filter';
 TABLE = 'table';
 TABLE_HEADER = 'thead';
-ROWS_TOGGLER = `${TABLE_HEADER} .pf-v5-c-table__toggle`;
+ROWS_TOGGLER = `${TABLE_HEADER} .pf-v6-c-table__toggle`;
 TITLE = '[data-ouia-component-type="PF4/Title"]';
 ouiaId = (id) => `[data-ouia-component-id="${id}"]`;
-FILTERS_DROPDOWN = 'ul[class=pf-v5-c-dropdown__menu]';
-FILTER_TOGGLE = 'button[class=pf-v5-c-select__toggle]';
+FILTERS_DROPDOWN = 'ul[class=pf-v6-c-dropdown__menu]';
+FILTER_TOGGLE = 'button[class=pf-v6-c-select__toggle]';
 ```
