@@ -1,53 +1,6 @@
-export type SegmentRef = {
-  segmentId: string;
-  frontendName: string;
-};
+import { BundleSegment, DirectNavItem, FrontendCRD, Nav, SegmentRef } from './feo-types';
 
-type DirectNavItem = {
-  id?: string;
-  frontendRef?: string;
-  href?: string;
-  title?: string;
-  expandable?: boolean;
-  // should be removed
-  appId?: string;
-  routes?: NavItem[];
-  navItems?: NavItem[];
-  bundleSegmentRef?: string;
-  segmentRef?: SegmentRef;
-  segmentId?: string;
-};
-
-export type NavItem = DirectNavItem;
-
-export type Nav = {
-  title?: string;
-  id: string;
-  navItems: NavItem[];
-};
-
-type BundleSegment = {
-  segmentId: string;
-  bundleId: string;
-  position: number;
-  navItems: NavItem[];
-};
-
-type CRDObject = {
-  metadata: {
-    name: string;
-  };
-  spec: {
-    bundleSegments?: BundleSegment[];
-    navigationSegments?: DirectNavItem[];
-  };
-};
-
-export type FrontendCRD = {
-  objects: CRDObject[];
-};
-
-function hasSegmentRef(item: NavItem): item is Omit<NavItem, 'segmentRef'> & { segmentRef: SegmentRef } {
+function hasSegmentRef(item: DirectNavItem): item is Omit<DirectNavItem, 'segmentRef'> & { segmentRef: SegmentRef } {
   return typeof item?.segmentRef?.segmentId === 'string' && typeof item?.segmentRef?.frontendName === 'string';
 }
 
@@ -63,7 +16,7 @@ const getBundleSegments = (segmentCache: typeof bundleSegmentsCache, bundleId: s
     }, {});
 };
 
-function findMatchingSegmentItem(navItems: NavItem[], matchId: string): NavItem | undefined {
+function findMatchingSegmentItem(navItems: DirectNavItem[], matchId: string): DirectNavItem | undefined {
   let match = navItems.find((item) => {
     if (!hasSegmentRef(item)) {
       return item.id === matchId;
@@ -92,7 +45,7 @@ function handleNestedNav(
   nSegmentCache: typeof navSegmentCache,
   bundleId: string,
   currentFrontendName: string
-): NavItem {
+): DirectNavItem {
   const { routes, navItems, ...segmentItem } = segmentMatch;
   let parsedRoutes = originalNavItem.routes;
   let parsedNavItems = originalNavItem.navItems;
@@ -112,13 +65,13 @@ function handleNestedNav(
   };
 }
 
-function findNavItemsFirstSegmentIndex(navItems: NavItem[], frontendName: string) {
+function findNavItemsFirstSegmentIndex(navItems: DirectNavItem[], frontendName: string) {
   return navItems.findIndex((item) => {
     return hasSegmentRef(item) && item.segmentRef.frontendName === frontendName;
   });
 }
 
-function findSegmentSequenceLength(navItems: NavItem[], sequenceStartIndex: number, sementId: string, frontendName: string) {
+function findSegmentSequenceLength(navItems: DirectNavItem[], sequenceStartIndex: number, sementId: string, frontendName: string) {
   let finalIndex = sequenceStartIndex;
   for (let i = sequenceStartIndex; i < navItems.length; i += 1) {
     const item = navItems[i];
@@ -138,12 +91,12 @@ function findSegmentSequenceLength(navItems: NavItem[], sequenceStartIndex: numb
 }
 
 function parseNavItems(
-  navItems: NavItem[],
+  navItems: DirectNavItem[],
   bSegmentCache: typeof bundleSegmentsCache,
   nSegmentCache: typeof navSegmentCache,
   bundleId: string,
   currentFrontendName: string
-): NavItem[] {
+): DirectNavItem[] {
   const relevantSegments = getBundleSegments(bSegmentCache, bundleId);
   const res = navItems.map((navItem) => {
     if (!hasSegmentRef(navItem) && navItem.id) {
@@ -195,7 +148,7 @@ function parseNavItems(
 
 // replaces changed nav items, local data overrides the remote data
 const substituteLocalNav = (frontendCRD: FrontendCRD, nav: Nav, bundleName: string) => {
-  let res: NavItem[] = [];
+  let res: DirectNavItem[] = [];
   const bundleSegmentsCache: { [bundleSegmentId: string]: BundleSegment } = {};
   const navSegmentCache: { [navSegmentId: string]: DirectNavItem } = {};
   frontendCRD.objects.forEach((obj) => {

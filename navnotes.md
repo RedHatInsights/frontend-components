@@ -28,3 +28,21 @@ Same as `bundleSegmentRef`, but for global segments.
 ### frontendRef
 
 Required to match nav item in bundle to current app
+
+# Search interceptor notes
+
+## frontendRef
+
+search entries need a `frontendRef` attribute. Without the attribute, we can modify/add frontend entries, but we can't remove them
+
+# Service tiles interceptor
+
+## frontendRef
+
+Service tile entries need a `frontendRef` attribute. Without the attribute, we can modify/add frontend entries, but we can't remove them
+
+# Widget registry interceptor
+
+## frontendRef
+
+Widget registry entries need a `frontendRef` attribute. Without the attribute, we can modify/add frontend entries, but we can't remove them
