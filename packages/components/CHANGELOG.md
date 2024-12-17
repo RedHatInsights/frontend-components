@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.0.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.0.3...@redhat-cloud-services/frontend-components-5.0.4) (2024-12-17)
+
 ## [5.0.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.0.2...@redhat-cloud-services/frontend-components-5.0.3) (2024-12-13)
 
 
