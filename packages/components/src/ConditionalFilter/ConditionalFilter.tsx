@@ -19,6 +19,7 @@ import RadioFilter, { RadioFilterProps } from './RadioFilter';
 import CheckboxFilter, { CheckboxFilterProps } from './CheckboxFilter';
 import GroupFilter, { GroupFilterProps } from './GroupFilter';
 import './conditional-filter.scss';
+import SingleSelectFilter, { SingleSelectFilterProps } from './SingleSelectFilter';
 
 export type FilterValues = TextInputProps &
   RadioFilterProps &
@@ -64,6 +65,10 @@ export type ConditionalFilterItem = {
   | {
       type: 'group';
       filterValues: GroupFilterProps;
+    }
+  | {
+      type: 'singleSelect';
+      filterValues: RadioFilterProps;
     }
   | {
       type: 'custom';
@@ -141,6 +146,10 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
           placeholder={placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`}
           {...activeItem.filterValues}
         />
+      );
+    } else if (activeItem.type === 'singleSelect' && identifyComponent<SingleSelectFilterProps>(activeItem.type, activeItem.filterValues)) {
+      return (
+        <SingleSelectFilter placeholder={placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`} {...activeItem.filterValues} />
       );
     } else if (activeItem.type === 'custom' && identifyComponent<Record<string, any>>(activeItem.type, activeItem.filterValues)) {
       const C = typeMapper.custom;

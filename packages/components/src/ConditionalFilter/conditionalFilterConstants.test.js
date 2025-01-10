@@ -1,7 +1,7 @@
 import { conditionalFilterType, typeMapper } from './conditionalFilterConstants';
 
 it('should have correct types', () => {
-  expect(Object.values(conditionalFilterType).length).toBe(5);
+  expect(Object.values(conditionalFilterType).length).toBe(6);
 });
 
 it('should return correct type', () => {
