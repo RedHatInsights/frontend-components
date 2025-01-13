@@ -41,7 +41,7 @@ export type AsyncState<T = any> = {
   data: T;
 };
 
-declare type ChromeUser = {
+export declare type ChromeUser = {
   entitlements: {
     [key: string]: {
       is_entitled: boolean;
