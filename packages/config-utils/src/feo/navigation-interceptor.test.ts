@@ -1,16 +1,17 @@
-import navigationInterceptor, { FrontendCRD, Nav, NavItem, SegmentRef } from './navigation-interceptor';
+import { DirectNavItem, FrontendCRD, Nav, SegmentRef } from './feo-types';
+import navigationInterceptor from './navigation-interceptor';
 
 describe('NavigationInterceptor', () => {
   describe('bundle segments', () => {
     const bundleName = 'testing-bundle';
     const defaultFrontendName = 'testing-frontend';
     const bundleSegmentName = 'testing-bundle-segment';
-    const baseNavItem: NavItem = {
+    const baseNavItem: DirectNavItem = {
       id: 'link-one',
       href: '/link-one',
       title: 'Link one',
     };
-    function createLocalCRD({ bundleSegmentRef, frontendRef, ...navItem }: NavItem, frontendName: string): FrontendCRD {
+    function createLocalCRD({ bundleSegmentRef, frontendRef, ...navItem }: DirectNavItem, frontendName: string): FrontendCRD {
       return {
         objects: [
           {
@@ -18,6 +19,9 @@ describe('NavigationInterceptor', () => {
               name: frontendName,
             },
             spec: {
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
               bundleSegments: [
                 {
                   bundleId: bundleName,
@@ -31,18 +35,18 @@ describe('NavigationInterceptor', () => {
         ],
       };
     }
-    function createRemoteNav(navItem: NavItem): Nav {
+    function createRemoteNav(navItem: DirectNavItem): Nav {
       return {
         id: bundleName,
         title: bundleName,
         navItems: [navItem],
       };
     }
-    function createExpectedNavItems(navItem: NavItem): NavItem[] {
+    function createExpectedNavItems(navItem: DirectNavItem): DirectNavItem[] {
       return [navItem];
     }
     function crateTestData(
-      navItem: NavItem,
+      navItem: DirectNavItem,
       {
         shouldChange,
         isNestedRoute,
@@ -51,7 +55,7 @@ describe('NavigationInterceptor', () => {
       }: { shouldChange?: boolean; isNestedRoute?: boolean; isNestedNav?: boolean; frontendName?: string } = {}
     ) {
       const internalFrontendName = frontendName ?? defaultFrontendName;
-      let internalNavItem: NavItem = { ...navItem };
+      let internalNavItem: DirectNavItem = { ...navItem };
       internalNavItem.bundleSegmentRef = bundleSegmentName;
       internalNavItem.frontendRef = internalFrontendName;
       if (isNestedRoute) {
@@ -88,7 +92,7 @@ describe('NavigationInterceptor', () => {
           ],
         };
       }
-      let changedNavItem: NavItem;
+      let changedNavItem: DirectNavItem;
       if (shouldChange) {
         if (isNestedRoute) {
           changedNavItem = {
@@ -180,7 +184,7 @@ describe('NavigationInterceptor', () => {
       frontendName: defaultFrontendName,
       segmentId: navSegmentId,
     };
-    const baseNavItem: NavItem = {
+    const baseNavItem: DirectNavItem = {
       id: 'link-one',
       href: '/link-one',
       title: 'Link one',
@@ -194,6 +198,9 @@ describe('NavigationInterceptor', () => {
               name: defaultFrontendName,
             },
             spec: {
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
               bundleSegments: [
                 {
                   bundleId: bundleName,
@@ -219,7 +226,7 @@ describe('NavigationInterceptor', () => {
         navItems: [{ ...baseNavItem, segmentRef: baseSegmentRef, frontendRef: defaultFrontendName, bundleSegmentRef: bundleSegmentName }],
       };
 
-      const expectedResult: NavItem[] = [
+      const expectedResult: DirectNavItem[] = [
         {
           ...baseNavItem,
           title: 'Link one changed',
@@ -239,7 +246,7 @@ describe('NavigationInterceptor', () => {
         frontendName: defaultFrontendName,
         segmentId: navSegmentId,
       };
-      const baseNavItems: NavItem[] = [
+      const baseNavItems: DirectNavItem[] = [
         {
           id: 'link-one',
           href: '/link-one',
@@ -259,6 +266,9 @@ describe('NavigationInterceptor', () => {
               name: defaultFrontendName,
             },
             spec: {
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
               bundleSegments: [
                 {
                   bundleId: bundleName,
@@ -303,7 +313,7 @@ describe('NavigationInterceptor', () => {
         ],
       };
 
-      const expectedResult: NavItem[] = [
+      const expectedResult: DirectNavItem[] = [
         {
           title: 'persistent item',
           href: '/persistent',
@@ -328,7 +338,7 @@ describe('NavigationInterceptor', () => {
         frontendName: defaultFrontendName,
         segmentId: navSegmentId,
       };
-      const baseNavItems: NavItem[] = [
+      const baseNavItems: DirectNavItem[] = [
         {
           id: 'link-one',
           href: '/link-one',
@@ -348,6 +358,9 @@ describe('NavigationInterceptor', () => {
               name: defaultFrontendName,
             },
             spec: {
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
               bundleSegments: [
                 {
                   bundleId: bundleName,
@@ -373,7 +386,7 @@ describe('NavigationInterceptor', () => {
         navItems: [{ ...baseNavItems[0], segmentRef: baseSegmentRef, frontendRef: defaultFrontendName, bundleSegmentRef: bundleSegmentName }],
       };
 
-      const expectedResult: NavItem[] = baseNavItems.map(({ title, ...navItem }) => ({
+      const expectedResult: DirectNavItem[] = baseNavItems.map(({ title, ...navItem }) => ({
         ...navItem,
         title: `${title} changed`,
       }));
@@ -391,7 +404,7 @@ describe('NavigationInterceptor', () => {
         frontendName: defaultFrontendName,
         segmentId: navSegmentId,
       };
-      const baseNavItems: NavItem[] = [
+      const baseNavItems: DirectNavItem[] = [
         {
           id: 'link-one',
           href: '/link-one',
@@ -411,6 +424,9 @@ describe('NavigationInterceptor', () => {
               name: defaultFrontendName,
             },
             spec: {
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
               bundleSegments: [
                 {
                   bundleId: bundleName,
@@ -441,7 +457,7 @@ describe('NavigationInterceptor', () => {
         })),
       };
 
-      const expectedResult: NavItem[] = [{ ...baseNavItems[0], title: `${baseNavItems[0].title} changed` }];
+      const expectedResult: DirectNavItem[] = [{ ...baseNavItems[0], title: `${baseNavItems[0].title} changed` }];
 
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
       expect(result).toEqual(expectedResult);
@@ -475,6 +491,9 @@ describe('NavigationInterceptor', () => {
               name: frontendName,
             },
             spec: {
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
               navigationSegments: [
                 {
                   segmentId: segmentOneId,
@@ -601,7 +620,7 @@ describe('NavigationInterceptor', () => {
         ],
       };
 
-      const expectedResult: NavItem[] = [
+      const expectedResult: DirectNavItem[] = [
         {
           title: 'Link one',
           href: '/link-one',
