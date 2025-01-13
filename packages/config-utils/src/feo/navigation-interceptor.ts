@@ -44,11 +44,12 @@ function handleNestedNav(
   bSegmentCache: typeof bundleSegmentsCache,
   nSegmentCache: typeof navSegmentCache,
   bundleId: string,
-  currentFrontendName: string
+  currentFrontendName: string,
+  parentSegment: BundleSegment
 ): DirectNavItem {
   const { routes, navItems, ...segmentItem } = segmentMatch;
-  let parsedRoutes = originalNavItem.routes;
-  let parsedNavItems = originalNavItem.navItems;
+  let parsedRoutes: DirectNavItem[] | undefined = originalNavItem.routes;
+  let parsedNavItems: DirectNavItem[] | undefined = originalNavItem.navItems;
   if (parsedRoutes) {
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     parsedRoutes = parseNavItems(parsedRoutes, bSegmentCache, nSegmentCache, bundleId, currentFrontendName);
@@ -60,6 +61,7 @@ function handleNestedNav(
   return {
     ...originalNavItem,
     ...segmentItem,
+    position: parentSegment.position,
     routes: parsedRoutes,
     navItems: parsedNavItems,
   };
@@ -103,9 +105,10 @@ function parseNavItems(
       // replaces the attributes on matched items
       const { id, bundleSegmentRef } = navItem;
       if (navItem.frontendRef === currentFrontendName && bundleSegmentRef && relevantSegments[bundleSegmentRef]) {
+        const parentSegment = relevantSegments[bundleSegmentRef];
         const segmentItemMatch = findMatchingSegmentItem(relevantSegments[bundleSegmentRef].navItems, id);
         if (segmentItemMatch && !hasSegmentRef(segmentItemMatch)) {
-          return handleNestedNav(segmentItemMatch, navItem, bSegmentCache, nSegmentCache, bundleId, currentFrontendName);
+          return handleNestedNav(segmentItemMatch, navItem, bSegmentCache, nSegmentCache, bundleId, currentFrontendName, parentSegment);
         }
       }
     }
@@ -163,7 +166,29 @@ const substituteLocalNav = (frontendCRD: FrontendCRD, nav: Nav, bundleName: stri
       }
     });
 
-    res = parseNavItems(nav.navItems, bundleSegmentsCache, navSegmentCache, bundleName, obj.metadata.name);
+    const missingSegments: BundleSegment[] = [...(obj.spec.bundleSegments || [])].filter((segment) => {
+      if (segment.bundleId !== bundleName) {
+        return false;
+      }
+      return !nav.navItems.find((navItem) => {
+        return navItem.bundleSegmentRef === segment.segmentId;
+      });
+    });
+    const missingNavItems: DirectNavItem[] = missingSegments
+      .map((segment) => segment.navItems.map((navItem) => ({ ...navItem, position: segment.position })))
+      .flat();
+    const parseInput = [...nav.navItems, ...missingNavItems];
+    // handle top level missing bundle segments and sorting of them
+    res = parseNavItems(parseInput, bundleSegmentsCache, navSegmentCache, bundleName, obj.metadata.name);
+  });
+
+  // order top level segments based on position
+  res.sort((a, b) => {
+    if (typeof a.position !== 'number' || typeof b.position !== 'number') {
+      return 0;
+    }
+
+    return a.position - b.position;
   });
   return res;
 };
