@@ -26,6 +26,10 @@ export interface DownloadButtonProps extends Omit<DropdownProps, 'onSelect' | 't
    * Determines if the button is disabled or not
    */
   isDisabled?: boolean;
+  itemTexts?: {
+    csv?: string;
+    json?: string;
+  };
 }
 
 /**
@@ -37,6 +41,10 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
   onSelect = () => undefined,
   isDisabled,
   tooltipText = 'Export data',
+  itemTexts = {
+    csv: undefined,
+    json: undefined,
+  },
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,19 +77,19 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
               component="button"
               onClick={(event) => onSelect(event, 'csv')}
               isDisabled={isDisabled}
-              aria-label="Export to CSV"
+              aria-label={itemTexts.csv || 'Export to CSV'}
             >
-              Export to CSV
+              {itemTexts.csv || 'Export to CSV'}
             </DropdownItem>
             <DropdownItem
-              aria-label="Export to JSON"
+              aria-label={itemTexts.json || 'Export to JSON'}
               key="download-json"
               ouiaId="DownloadJSON"
               component="button"
               onClick={(event) => onSelect(event, 'json')}
               isDisabled={isDisabled}
             >
-              Export to JSON
+              {itemTexts.json || 'Export to JSON'}
             </DropdownItem>
             {extraItems}
           </DropdownList>

@@ -74,5 +74,15 @@ describe('DownloadButton component', () => {
       });
       expect(onSelect.mock.calls.length).toBe(0);
     });
+
+    it('should allow customising the dropdown text', async () => {
+      const itemText = 'Export all items to CSV';
+      render(<DownloadButton itemTexts={{ csv: itemText }} />);
+      await act(async () => {
+        userEvent.click(screen.getByRole('button', { name: 'Export' }));
+      });
+
+      expect(await screen.findByText(itemText)).toBeInTheDocument();
+    });
   });
 });
