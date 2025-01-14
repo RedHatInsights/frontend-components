@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.1.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.1.0...@redhat-cloud-services/frontend-components-5.1.1) (2025-01-14)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.6`
+
+### Bug Fixes
+
+* replace [@use](https://github.com/use) with [@forward](https://github.com/forward) for SCSS modules ([86ab817](https://github.com/RedHatInsights/frontend-components/commit/86ab81791ca6f739f1a689713a0ca304162ebdfd))
+
 ## [5.1.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.0.5...@redhat-cloud-services/frontend-components-5.1.0) (2025-01-14)
 
 
