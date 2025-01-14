@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.1.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-4.1.7...@redhat-cloud-services/frontend-components-notifications-4.1.8) (2025-01-14)
+
+
+### Bug Fixes
+
+* **notifications:** use latest version of fec packages ([241ba26](https://github.com/RedHatInsights/frontend-components/commit/241ba26231c2f2388507d64a9c0482eab3e73d84))
+
 ## [4.1.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-4.1.6...@redhat-cloud-services/frontend-components-notifications-4.1.7) (2025-01-14)
 
 ### Dependency Updates
