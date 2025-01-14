@@ -3,6 +3,6 @@
     "include": ["index.js", "lib/**/*.js"],
     "rootDir": "./src",
     "compilerOptions": {
-        "declaration": true,
+        "declaration": false,
     }
 }
