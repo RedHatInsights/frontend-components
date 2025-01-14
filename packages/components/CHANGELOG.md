@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.1.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.0.5...@redhat-cloud-services/frontend-components-5.1.0) (2025-01-14)
+
+
+### Features
+
+* **compoments:** allow custom item texts for DownloadButton ([#2140](https://github.com/RedHatInsights/frontend-components/issues/2140)) ([318e044](https://github.com/RedHatInsights/frontend-components/commit/318e044f35aaf7bd92110f7c61d2304a17ea7e03))
+
 ## [5.0.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.0.4...@redhat-cloud-services/frontend-components-5.0.5) (2025-01-13)
 
 ### Dependency Updates
