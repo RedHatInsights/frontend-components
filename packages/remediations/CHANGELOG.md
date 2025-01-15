@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.2.20](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-remediations-3.2.19...@redhat-cloud-services/frontend-components-remediations-3.2.20) (2025-01-15)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components` updated to version `5.1.2`
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.7`
+
+### Bug Fixes
+
+* **deps:** use latest version of fec packages ([922dcf6](https://github.com/RedHatInsights/frontend-components/commit/922dcf6795942109d75c77273b546ca7f726b2a8))
+
 ## [3.2.19](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-remediations-3.2.18...@redhat-cloud-services/frontend-components-remediations-3.2.19) (2025-01-14)
 
 ### Dependency Updates
