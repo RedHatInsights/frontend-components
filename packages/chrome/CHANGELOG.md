@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.15](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/chrome-1.0.14...@redhat-cloud-services/chrome-1.0.15) (2025-01-15)
+
+
+### Bug Fixes
+
+* **deps:** use latest version of fec packages ([922dcf6](https://github.com/RedHatInsights/frontend-components/commit/922dcf6795942109d75c77273b546ca7f726b2a8))
+
 ## [1.0.14](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/chrome-1.0.13...@redhat-cloud-services/chrome-1.0.14) (2025-01-13)
 
 ### Dependency Updates
