@@ -28,7 +28,7 @@
     "react-intl": "^6.4.4"
   },
   "optionalDependencies": {
-    "@redhat-cloud-services/frontend-components-utilities": "^4.0.13"
+    "@redhat-cloud-services/frontend-components-utilities": "^5.0.4"
   },
   "devDependencies": {
     "@formatjs/cli": "^6.1.3",
