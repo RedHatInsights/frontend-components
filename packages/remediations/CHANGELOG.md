@@ -2,6 +2,11 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.2.21](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-remediations-3.2.20...@redhat-cloud-services/frontend-components-remediations-3.2.21) (2025-01-16)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components` updated to version `5.1.3`
 ## [3.2.20](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-remediations-3.2.19...@redhat-cloud-services/frontend-components-remediations-3.2.20) (2025-01-15)
 
 ### Dependency Updates
