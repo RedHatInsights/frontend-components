@@ -4,7 +4,7 @@ import { EmptyState } from '@patternfly/react-core/dist/dynamic/components/Empty
 import { EmptyStateBody } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
 import { EmptyStateHeader } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
 import { EmptyStateVariant } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
-import { ModalProps } from '@patternfly/react-core/dist/dynamic/next/components/Modal';
+import { ModalProps } from '@patternfly/react-core/dist/dynamic/components/Modal';
 import { Pagination } from '@patternfly/react-core/dist/dynamic/components/Pagination';
 // FIXME: Deal with table after
 import { Table, TableBody, TableHeader, TableProps } from '@patternfly/react-table/deprecated';
