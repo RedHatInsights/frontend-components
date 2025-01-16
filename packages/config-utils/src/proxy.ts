@@ -241,6 +241,9 @@ const proxy = ({
 
         return null;
       },
+      ...(agent && {
+        agent,
+      }),
     });
   }
 
