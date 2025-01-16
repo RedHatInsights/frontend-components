@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.1.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.1.2...@redhat-cloud-services/frontend-components-5.1.3) (2025-01-16)
+
+
+### Bug Fixes
+
+* **tagmodal:** revert the PF5/Modal import path change ([#2147](https://github.com/RedHatInsights/frontend-components/issues/2147)) ([8da9e97](https://github.com/RedHatInsights/frontend-components/commit/8da9e977367b848f09a956b42ee76994f44dab20))
+
 ## [5.1.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.1.1...@redhat-cloud-services/frontend-components-5.1.2) (2025-01-15)
 
 ### Dependency Updates
