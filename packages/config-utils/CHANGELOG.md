@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.0.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.0.5...@redhat-cloud-services/frontend-components-config-utilities-4.0.6) (2025-01-16)
+
+
+### Bug Fixes
+
+* **config-utils:** 403 cors - add back headers and origin fix for stage env ([7e28f6a](https://github.com/RedHatInsights/frontend-components/commit/7e28f6a3856781863876324a8d1b8cc40047c97e))
+
 ## [4.0.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.0.4...@redhat-cloud-services/frontend-components-config-utilities-4.0.5) (2025-01-16)
 
 
