@@ -65,12 +65,14 @@ describe('NavigationInterceptor', () => {
           expandable: true,
           bundleSegmentRef: bundleSegmentName,
           frontendRef: internalFrontendName,
+          position: 100,
           routes: [
             {
               id: 'nested-one',
               href: '/nested/one',
               title: 'Nested one',
               bundleSegmentRef: bundleSegmentName,
+              position: 100,
               frontendRef: internalFrontendName,
             },
           ],
@@ -81,11 +83,13 @@ describe('NavigationInterceptor', () => {
           href: undefined,
           bundleSegmentRef: bundleSegmentName,
           frontendRef: internalFrontendName,
+          position: 100,
           navItems: [
             {
               id: 'nested-one',
               href: '/nested/one',
               title: 'Nested one',
+              position: 100,
               bundleSegmentRef: bundleSegmentName,
               frontendRef: internalFrontendName,
             },
@@ -97,11 +101,13 @@ describe('NavigationInterceptor', () => {
         if (isNestedRoute) {
           changedNavItem = {
             ...internalNavItem,
+            position: 100,
             routes: [
               {
                 id: 'nested-one',
                 href: '/nested/one',
                 title: internalNavItem?.routes?.[0]?.title + ' changed',
+                position: 100,
                 bundleSegmentRef: bundleSegmentName,
                 frontendRef: internalFrontendName,
               },
@@ -116,11 +122,13 @@ describe('NavigationInterceptor', () => {
         } else if (isNestedNav) {
           changedNavItem = {
             ...internalNavItem,
+            position: 100,
             navItems: [
               {
                 id: 'nested-one',
                 href: '/nested/one',
                 title: internalNavItem?.navItems?.[0]?.title + ' changed',
+                position: 100,
                 bundleSegmentRef: bundleSegmentName,
                 frontendRef: internalFrontendName,
               },
@@ -135,12 +143,13 @@ describe('NavigationInterceptor', () => {
         } else {
           changedNavItem = {
             ...internalNavItem,
+            position: 100,
             title: internalNavItem.title + ' changed',
           };
           internalNavItem.title = internalNavItem.title + ' classic';
         }
       } else {
-        changedNavItem = internalNavItem;
+        changedNavItem = { ...internalNavItem, position: 100 };
       }
       return {
         frontendCRD: createLocalCRD(changedNavItem, internalFrontendName),
@@ -624,6 +633,7 @@ describe('NavigationInterceptor', () => {
         {
           title: 'Link one',
           href: '/link-one',
+          position: 100,
           id: 'link-one',
           bundleSegmentRef: bundleSegmentOneId,
           frontendRef: frontendName,
@@ -634,6 +644,7 @@ describe('NavigationInterceptor', () => {
           id: 'expandable',
           bundleSegmentRef: bundleSegmentOneId,
           frontendRef: frontendName,
+          position: 100,
           routes: [
             {
               id: 'segment-one-link-one',

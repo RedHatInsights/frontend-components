@@ -82,6 +82,7 @@ export type DirectNavItem = {
   bundleSegmentRef?: string;
   segmentRef?: SegmentRef;
   segmentId?: string;
+  position?: number;
 };
 
 export type Nav = {
@@ -89,6 +90,8 @@ export type Nav = {
   id: string;
   navItems: DirectNavItem[];
 };
+
+export type GeneratedBundles = Nav[];
 
 export type BundleSegment = {
   segmentId: string;
@@ -131,6 +134,7 @@ export type CRDObject = {
     searchEntries?: ChromeStaticSearchEntry[];
     serviceTiles?: ServiceTile[];
     widgetRegistry?: ChromeWidgetEntry[];
+    feoConfigEnabled?: boolean;
   };
 };
 
