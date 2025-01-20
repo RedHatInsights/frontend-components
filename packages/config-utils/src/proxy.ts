@@ -7,10 +7,12 @@ import path from 'path';
 import type { Configuration } from 'webpack-dev-server';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import cookieTransform from './cookieTransform';
-import { matchNavigationRequest } from './feo/check-outgoing-requests';
+import { isInterceptAbleRequest, matchNavigationRequest } from './feo/check-outgoing-requests';
 import { hasFEOFeaturesEnabled, readFrontendCRD } from './feo/crd-check';
 import navigationInterceptor from './feo/navigation-interceptor';
-import { GeneratedBundles } from './feo/feo-types';
+import { FrontendCRD, GeneratedBundles } from './feo/feo-types';
+import { modifyRequest } from './feo/modify-response';
+import { LogType, fecLogger } from '.';
 
 const defaultReposDir = path.join(__dirname, 'repos');
 
@@ -136,8 +138,17 @@ const proxy = ({
   // will be used once the interceptor is ready
   frontendCRDPath = path.resolve(process.cwd(), 'deploy/frontend.yaml'),
 }: ProxyOptions) => {
-  const frontendCrd = readFrontendCRD(frontendCRDPath);
-  const FEOFeaturesEnabled = hasFEOFeaturesEnabled(frontendCrd);
+  let frontendCrd: FrontendCRD;
+  let FEOFeaturesEnabled = false;
+  try {
+    frontendCrd = readFrontendCRD(frontendCRDPath);
+    FEOFeaturesEnabled = hasFEOFeaturesEnabled(frontendCrd);
+  } catch (e) {
+    fecLogger(
+      LogType.warn,
+      `FEO features are not enabled. Unable to find frontend CRD file at ${frontendCRDPath}. If you want FEO features for local development, make sure to have a "deploy/frontend.yaml" file in your project or specify its location via "frontendCRDPath" attribute.`
+    );
+  }
   const proxy: ProxyConfigItem[] = [];
   const majorEnv = env.split('-')[0];
   const defaultLocalAppHost = process.env.LOCAL_APP_HOST || majorEnv + '.foo.redhat.com';
@@ -204,7 +215,7 @@ const proxy = ({
       changeOrigin: true,
       autoRewrite: true,
       onProxyReq: (proxyReq, req) => {
-        if (matchNavigationRequest(req.url)) {
+        if (isInterceptAbleRequest(req.url)) {
           // necessary to avoid gzip encoding and issues with parsing the json body
           proxyReq.setHeader('accept-encoding', 'gzip;q=0,deflate,sdch');
         }
@@ -213,7 +224,7 @@ const proxy = ({
         // this should reading the aggregated bundles filed generated from chrome service
         // The functionality is disabled until the interceptor is ready
         // eslint-disable-next-line no-constant-condition
-        if (matchNavigationRequest(req.url)) {
+        if (isInterceptAbleRequest(req.url)) {
           // stub the original write function
           const _write = res.write;
           let body = '';
@@ -223,17 +234,14 @@ const proxy = ({
 
           res.write = function () {
             try {
-              const objectToModify = JSON.parse(body) as GeneratedBundles;
-              const resultBundles: GeneratedBundles = [];
               if (FEOFeaturesEnabled) {
-                // these will be filled in chrome service once migration is ready to start
-                objectToModify.forEach((bundle) => {
-                  const navItems = navigationInterceptor(frontendCrd, bundle, bundle.id);
-                  resultBundles.push({ ...bundle, navItems });
-                });
+                const payload = modifyRequest(body, req.url, frontendCrd);
+                // content length is necessary to update to prevent JSON parsing errors in browser
+                res.setHeader('content-length', payload.length);
+                _write.call(res, payload, 'utf8');
+              } else {
+                _write.call(res, body, 'utf8');
               }
-              const payload = JSON.stringify(resultBundles);
-              _write.call(res, payload, 'utf8');
               return true;
             } catch {
               // wait for all the chunks to arrive

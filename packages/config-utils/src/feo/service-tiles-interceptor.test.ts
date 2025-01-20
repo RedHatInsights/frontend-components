@@ -1,4 +1,4 @@
-import { FrontendCRD, ServiceCategory } from './feo-types';
+import { FrontendCRD, ServicesTilesResponseEntry } from './feo-types';
 import serviceTilesInterceptor from './service-tiles-interceptor';
 
 describe('Service tiles interceptor', () => {
@@ -38,13 +38,16 @@ describe('Service tiles interceptor', () => {
         },
       ],
     };
-    const remoteServiceTiles: ServiceCategory[] = [
+    const remoteServiceTiles: ServicesTilesResponseEntry[] = [
       {
         id: 'section-1',
-        groups: [
+        description: 'section 1',
+        icon: 'icon',
+        links: [
           {
             id: 'group-1',
-            tiles: [
+            title: 'Group 1',
+            links: [
               {
                 section: 'section-1',
                 group: 'group-1',
@@ -63,10 +66,13 @@ describe('Service tiles interceptor', () => {
       },
       {
         id: 'section-2',
-        groups: [
+        description: 'section 2',
+        icon: 'icon',
+        links: [
           {
             id: 'group-1',
-            tiles: [
+            title: 'Group 1',
+            links: [
               {
                 section: 'section-2',
                 group: 'group-1',
@@ -78,14 +84,17 @@ describe('Service tiles interceptor', () => {
         ],
       },
     ];
-    const expectedServiceTiles: ServiceCategory[] = [
+    const expectedServiceTiles: ServicesTilesResponseEntry[] = [
       {
         id: 'section-1',
-        groups: [
+        description: 'section 1',
+        icon: 'icon',
+        links: [
           {
+            title: 'Group 1',
             id: 'group-1',
-            tiles: [
-              remoteServiceTiles[0].groups[0].tiles[0],
+            links: [
+              remoteServiceTiles[0].links[0].links[0],
               {
                 section: 'section-1',
                 group: 'group-1',
@@ -104,11 +113,14 @@ describe('Service tiles interceptor', () => {
       },
       {
         id: 'section-2',
-        groups: [
+        description: 'section 2',
+        icon: 'icon',
+        links: [
           {
+            title: 'Group 1',
             id: 'group-1',
-            tiles: [
-              remoteServiceTiles[1].groups[0].tiles[0],
+            links: [
+              remoteServiceTiles[1].links[0].links[0],
               {
                 section: 'section-2',
                 group: 'group-1',
