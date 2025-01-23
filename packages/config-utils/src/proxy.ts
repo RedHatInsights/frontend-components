@@ -6,11 +6,13 @@ import express from 'express';
 import path from 'path';
 import type { Configuration } from 'webpack-dev-server';
 import { HttpsProxyAgent } from 'https-proxy-agent';
+import chokidar from 'chokidar';
 import cookieTransform from './cookieTransform';
 import { matchNavigationRequest } from './feo/check-outgoing-requests';
 import { hasFEOFeaturesEnabled, readFrontendCRD } from './feo/crd-check';
 import navigationInterceptor from './feo/navigation-interceptor';
 import { GeneratedBundles } from './feo/feo-types';
+import fecLogger, { LogType } from './fec-logger';
 
 const defaultReposDir = path.join(__dirname, 'repos');
 
@@ -136,11 +138,29 @@ const proxy = ({
   // will be used once the interceptor is ready
   frontendCRDPath = path.resolve(process.cwd(), 'deploy/frontend.yaml'),
 }: ProxyOptions) => {
-  const frontendCrd = readFrontendCRD(frontendCRDPath);
-  const FEOFeaturesEnabled = hasFEOFeaturesEnabled(frontendCrd);
+  const frontendCrdRef = { current: readFrontendCRD(frontendCRDPath) };
+  const FEOFeaturesEnabled = hasFEOFeaturesEnabled(frontendCrdRef.current);
   const proxy: ProxyConfigItem[] = [];
   const majorEnv = env.split('-')[0];
   const defaultLocalAppHost = process.env.LOCAL_APP_HOST || majorEnv + '.foo.redhat.com';
+
+  if (FEOFeaturesEnabled) {
+    fecLogger(LogType.info, 'Watching frontend CRC file for changes');
+    const watcher = chokidar.watch(frontendCRDPath).on('change', () => {
+      fecLogger(LogType.info, 'Frontend CRD has changed, reloading the file');
+      frontendCrdRef.current = readFrontendCRD(frontendCRDPath);
+    });
+
+    // close the watcher on webserver shutdown
+    process.on('SIGTERM', () => {
+      fecLogger(LogType.info, 'Closing frontend CRD watcher');
+      watcher.close();
+    });
+    process.on('SIGINT', () => {
+      fecLogger(LogType.info, 'Closing frontend CRD watcher');
+      watcher.close();
+    });
+  }
 
   if (target === '') {
     target += 'https://';
@@ -228,7 +248,7 @@ const proxy = ({
               if (FEOFeaturesEnabled) {
                 // these will be filled in chrome service once migration is ready to start
                 objectToModify.forEach((bundle) => {
-                  const navItems = navigationInterceptor(frontendCrd, bundle, bundle.id);
+                  const navItems = navigationInterceptor(frontendCrdRef.current, bundle, bundle.id);
                   resultBundles.push({ ...bundle, navItems });
                 });
               }
