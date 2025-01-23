@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.2.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.1.3...@redhat-cloud-services/frontend-components-5.2.0) (2025-01-23)
+
+
+### Features
+
+* add single select filter component ([00bcfd8](https://github.com/RedHatInsights/frontend-components/commit/00bcfd816dfe0413bf1e16315c6401b054900fb1))
+
 ## [5.1.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.1.2...@redhat-cloud-services/frontend-components-5.1.3) (2025-01-16)
 
 
