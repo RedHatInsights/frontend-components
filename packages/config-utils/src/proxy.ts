@@ -132,8 +132,6 @@ const proxy = ({
   bounceProd = false,
   useAgent = true,
   localApps = process.env.LOCAL_APPS,
-  // should be just a mock, if not passed, the interceptor will not start
-  // will be used once the interceptor is ready
   frontendCRDPath = path.resolve(process.cwd(), 'deploy/frontend.yaml'),
 }: ProxyOptions) => {
   const frontendCrd = readFrontendCRD(frontendCRDPath);
