@@ -9,7 +9,7 @@ Import FilterInput from this package. The `type` of input can be `radio` or `che
 
 ```JSX
 import React from 'react';
-import { FilterInput } from '@redhat-cloud-services/frontend-components';
+import { FilterInput } from '@redhat-cloud-services/frontend-components/Filters';
 
 class YourCmp extends React.Component {
   render() {
@@ -38,7 +38,7 @@ Import FilterDropdown from this package.
 
 ```JSX
 import React from 'react';
-import { FilterDropdown } from '@redhat-cloud-services/frontend-components';
+import { FilterDropdown } from '@redhat-cloud-services/frontend-components/Filters';
 
 class YourCmp extends React.Component {
   render() {
@@ -53,4 +53,3 @@ class YourCmp extends React.Component {
   }
 }
 ```
-

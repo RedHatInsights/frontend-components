@@ -294,7 +294,7 @@ class SomeCmp extends Component {
 }
 ```
 
-### *) Custom component
+### 5) Custom component
 If you want to display some custom component, for instance color picker, date picker or something more complicated you can use this type.
 
 ```JSX
@@ -321,3 +321,51 @@ class SomeCmp extends Component {
 {
     children: Proptypes.node
 }
+```
+
+### 6) Single select component
+This component is similiar to `Radio` with a slight variation that you can select only one value. Props passed to this component are same as with `Radio`.
+```JSX
+import React, { Component, useState } from 'react';
+import { ConditionalFilter, conditionalFilterType } from '@redhat-cloud-services/frontend-components';
+
+class SomeCmp extends Component {
+    render() {
+        const [ value, onChange ] = useState();
+        return (
+            <ConditionalFilter items={[{
+                type: conditionalFilterType.singleSelect,
+                label: 'Single Select',
+                value: 'singleSelect',
+                filterValues: {
+                    onChange: (event, value) => onChange(value),
+                    value,
+                    items: [
+                        { label: 'First value', value: 'first' },
+                        { label: 'Second value', value: 'second' },
+                        { label: 'Third value', value: 'third' }
+                    ],
+                    placeholder: 'placeholder'
+                }
+            }]}
+            />
+        );
+    }
+}
+```
+* `onChange` - callback has parameters `event`, `selection` where `selection` is curently selected value.
+* Props - passed from `filterValues`
+```JS
+{
+    onChange: PropTypes.func,
+    value: PropTypes.oneOfType([ PropTypes.string, PropTypes.shape({
+        label: PropTypes.node,
+        value: PropTypes.string
+    }) ]),
+    placeholder: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.string,
+        label: PropTypes.node
+    }))
+}
+```

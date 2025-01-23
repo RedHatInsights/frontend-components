@@ -9,6 +9,8 @@ export { default as CheckboxFilter } from './CheckboxFilter';
 export type { CheckboxFilterProps } from './CheckboxFilter';
 export { default as RadioFilter } from './RadioFilter';
 export type { RadioFilterProps } from './RadioFilter';
+export { default as SingleSelectFilter } from './SingleSelectFilter';
+export type { SingleSelectFilterProps } from './SingleSelectFilter';
 export { default as TextFilter } from './TextFilter';
 export type { TextFilterProps, FilterItem, FilterValue } from './TextFilter';
 export { default as GroupType } from './groupType';
