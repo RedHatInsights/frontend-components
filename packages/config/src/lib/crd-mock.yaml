@@ -1,0 +1,32 @@
+
+apiVersion: v1
+kind: Template
+metadata:
+  name: mock-frontend
+objects:
+  - apiVersion: cloud.redhat.com/v1alpha1
+    kind: Frontend
+    metadata:
+      name: mock-frontend
+    spec:
+      API:
+        versions:
+          - v1
+      envName: ${ENV_NAME}
+      title: Mock app
+      deploymentRepo: https://github.com/RedHatInsights/mock
+      frontend:
+        paths:
+          - /apps/mock-app
+      image: ${IMAGE}:${IMAGE_TAG}
+      module:
+        manifestLocation: '/apps/mock/fed-mods.json'
+        modules: []
+
+parameters:
+  - name: ENV_NAME
+    required: true
+  - name: IMAGE_TAG
+    required: true
+  - name: IMAGE
+    value: quay.io/cloudservices/foo
