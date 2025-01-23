@@ -1,0 +1,675 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Frontend operator CRD CI validation schema",
+  "$defs": {
+    "parameter": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "apiCatalogEntry": {
+      "type": "object",
+      "properties": {
+        "versions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "frontend": {
+      "type": "object",
+      "properties": {
+        "paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "paths"
+      ],
+      "additionalProperties": false
+    },
+    "visibilityPermissions": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string"
+        },
+        "apps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "args": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "method"
+      ],
+      "additionalProperties": false
+    },
+    "supportCaseConfig": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "product": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "product"
+      ],
+      "additionalProperties": false
+    },
+    "scalprumModuleRoute": {
+      "type": "object",
+      "properties": {
+        "pathname": {
+          "type": "string"
+        },
+        "exact": {
+          "type": "boolean"
+        },
+        "props": {
+          "type": "object"
+        },
+        "supportCaseData": {
+          "$ref": "#/$defs/supportCaseConfig"
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/visibilityPermissions"
+          }
+        }
+      },
+      "required": [
+        "pathname"
+      ],
+      "additionalProperties": false
+    },
+    "moduleEntryConfig": {
+      "type": "object",
+      "properties": {
+        "supportCaseData": {
+          "$ref": "#/$defs/supportCaseConfig"
+        },
+        "ssoScopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "scalprumModuleEntry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "routes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scalprumModuleRoute"
+          }
+        },
+        "moduleConfig": {
+          "$ref": "#/$defs/moduleEntryConfig"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "analytics": {
+      "type": "object",
+      "properties": {
+        "APIKey": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "APIKey"
+      ],
+      "additionalProperties": false
+    },
+    "directNavItem": {
+      "type": "object",
+      "properties": {
+        "isHidden": {
+          "type": "boolean"
+        },
+        "expandable": {
+          "type": "boolean"
+        },
+        "href": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "isExternal": {
+          "type": "boolean"
+        },
+        "product": {
+          "type": "string"
+        },
+        "notifier": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "isBeta": {
+          "type": "boolean"
+        },
+        "navItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/navItem"
+          }
+        },
+        "routes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/navItem"
+          }
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/visibilityPermissions"
+          }
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "additionalProperties": false
+    },
+    "navItemSegmentRef": {
+      "type": "object",
+      "properties": {
+        "segmentRef": {
+          "type": "object",
+          "properties": {
+            "frontendName": {
+              "type": "string"
+            },
+            "segmentId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "frontendName",
+            "segmentId"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "segmentRef"
+      ],
+      "additionalProperties": false
+    },
+    "navItem": {
+      "oneOf": [{
+        "$ref": "#/$defs/directNavItem"
+      }, {
+        "$ref": "#/$defs/navItemSegmentRef"
+      }]
+    },
+    "bundleSegment": {
+      "type": "object",
+      "properties": {
+        "segmentId": {
+          "type": "string"
+        },
+        "bundleId": {
+          "type": "string"
+        },
+        "navItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/navItem"
+          }
+        },
+        "position": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "segmentId",
+        "bundleId",
+        "navItems",
+        "position"
+      ],
+      "additionalProperties": false
+    },
+    "navigationSegment": {
+      "type": "object",
+      "properties": {
+        "segmentId": {
+          "type": "string"
+        },
+        "navItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/navItem"
+          }
+        }
+      },
+      "required": [
+        "segmentId"
+      ],
+      "additionalProperties": false
+    },
+    "searchEntry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "alt_title": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isExternal": {
+          "type": "boolean"
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/visibilityPermissions"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "href",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "serviceTile": {
+      "type": "object",
+      "properties": {
+        "section": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "isExternal": {
+          "type": "boolean"
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/visibilityPermissions"
+          }
+        }
+      },
+      "required": [
+        "section",
+        "group",
+        "id",
+        "href",
+        "title",
+        "description",
+        "icon"
+      ],
+      "additionalProperties": false
+    },
+    "widgetHeaderLink": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "href"
+      ],
+      "additionalProperties": false
+    },
+    "widgetConfig": {
+      "type": "object",
+      "properties": {
+        "icon": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/visibilityPermissions"
+          }
+        },
+        "headerLink": {
+          "$ref": "#/$defs/widgetHeaderLink"
+        }
+      },
+      "required": [
+        "icon",
+        "title"
+      ],
+      "additionalProperties": true
+    },
+    "widgetVariant": {
+      "type": "object",
+      "properties": {
+        "w": {
+          "type": "number"
+        },
+        "h": {
+          "type": "number"
+        },
+        "maxH": {
+          "type": "number"
+        },
+        "minH": {
+          "type": "number"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "widgetDefaults": {
+      "type": "object",
+      "properties": {
+        "sm": {
+          "$ref": "#/$defs/widgetVariant"
+        },
+        "md": {
+          "$ref": "#/$defs/widgetVariant"
+        },
+        "lg": {
+          "$ref": "#/$defs/widgetVariant"
+        },
+        "xl": {
+          "$ref": "#/$defs/widgetVariant"
+        }
+      },
+      "required": [
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "additionalProperties": false
+    },
+    "widgetEntry": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "config": {
+          "$ref": "#/$defs/widgetConfig"
+        },
+        "defaults": {
+          "$ref": "#/$defs/widgetDefaults"
+        }
+      },
+      "required": [
+        "scope",
+        "module",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "frontendSpec": {
+      "type": "object",
+      "properties": {
+        "envName": {
+          "type": "string",
+          "const": "${ENV_NAME}"
+        },
+        "deploymentRepo": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string",
+          "const": "${IMAGE}:${IMAGE_TAG}"
+        },
+        "API": {
+          "$ref": "#/$defs/apiCatalogEntry"
+        },
+        "frontend": {
+          "$ref": "#/$defs/frontend"
+        },
+        "feoConfigEnabled": {
+          "type": "boolean"
+        },
+        "akamaiCacheBustDisable": {
+          "type": "boolean"
+        },
+        "akamaiCacheBustPaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "module": {
+          "type": "object",
+          "properties": {
+            "manifestLocation": {
+              "type": "string"
+            },
+            "defaultDocumentTitle": {
+              "type": "string"
+            },
+            "modules": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/scalprumModuleEntry"
+              }
+            },
+            "moduleConfig": {
+              "$ref": "#/$defs/moduleEntryConfig"
+            },
+            "config": {
+              "type": "object",
+              "deprecated": true,
+              "description": "Deprecated. Use moduleConfig instead."
+            },
+            "analytics": {
+              "$ref": "#/$defs/analytics"
+            }
+          },
+          "required": [
+            "manifestLocation"
+          ],
+          "additionalProperties": false
+        },
+        "bundleSegments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bundleSegment"
+          }
+        },
+        "navigationSegments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/navigationSegment"
+          }
+        },
+        "searchEntries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/searchEntry"
+          }
+        },
+        "serviceTiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/serviceTile"
+          }
+        },
+        "widgetRegistry": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/widgetEntry"
+          }
+        }
+      },
+      "required": [
+        "envName",
+        "deploymentRepo",
+        "title",
+        "image",
+        "frontend",
+        "module"
+      ],
+      "additionalProperties": false
+    },
+    "frObject": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "const": "cloud.redhat.com/v1alpha1"
+        },
+        "kind": {
+          "type": "string",
+          "const": "Frontend"
+        },
+        "metadata": {
+          "$ref": "#/$defs/metadata"
+        },
+        "spec": {
+          "$ref": "#/$defs/frontendSpec"
+        }
+      },
+      "required": [
+        "apiVersion",
+        "kind",
+        "metadata",
+        "spec"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "const": "Template"
+    },
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/frObject"
+      },
+      "minItems": 1,
+      "maxItems": 1
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/parameter"
+      }
+    }
+  },
+  "required": [
+    "apiVersion",
+    "parameters",
+    "kind",
+    "metadata",
+    "objects"
+  ],
+  "additionalProperties": false
+}
