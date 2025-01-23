@@ -24,6 +24,8 @@ const { config: webpackConfig, plugins } = config({
   ...externalConfig,
   /** Do not use HMR for production builds */
   hotReload: false,
+  /** Do configure/inti webpack dev server */
+  deploymentBuild: true,
 });
 
 const frontendCrd = readFrontendCRD(frontendCRDPath);

@@ -55,6 +55,8 @@ export interface CreateConfigOptions extends CommonConfigOptions {
   blockLegacyChrome?: boolean;
   devtool?: Configuration['devtool'];
   _unstableSpdy?: boolean;
+  frontendCRDPath?: string;
+  deploymentBuild?: boolean;
 }
 
 export const createConfig = ({
@@ -101,6 +103,8 @@ export const createConfig = ({
   devtool = false,
   // enables SPDY as a dev server
   _unstableSpdy = false,
+  frontendCRDPath = path.resolve(rootFolder, 'deploy/frontend.yaml'),
+  deploymentBuild = false,
 }: CreateConfigOptions): Configuration => {
   if (typeof _unstableHotReload !== 'undefined') {
     fecLogger(LogType.warn, `The _unstableHotReload option in shared webpack config is deprecated. Use hotReload config instead.`);
@@ -269,56 +273,59 @@ export const createConfig = ({
         ...resolve.fallback,
       },
     },
-    devServer: {
-      static: {
-        directory: `${rootFolder || ''}/dist`,
-      },
-      port: devServerPort,
-      server: _unstableSpdy ? 'spdy' : https || Boolean(useProxy) ? 'https' : 'http',
-      host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
-      hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
-      liveReload: !internalHotReload,
-      allowedHosts: 'all',
-      // https://github.com/bripkens/connect-history-api-fallback
-      historyApiFallback: {
-        // We should really implement the same logic as cloud-services-config
-        //
-        // Until then let known api calls fall through instead of returning /index.html
-        // for easier `fetch` debugging
-        rewrites: [
-          { from: /^\/api/, to: '/404.html' },
-          { from: /^\/config/, to: '/404.html' },
-        ],
-        verbose: Boolean(proxyVerbose),
-        disableDotRule: true,
-      },
-      devMiddleware: {
-        writeToDisk: true,
-      },
-      client,
-      ...proxy({
-        env,
-        localChrome,
-        keycloakUri,
-        customProxy,
-        routes,
-        routesPath,
-        useProxy,
-        proxyURL,
-        standalone,
+    ...(!deploymentBuild && {
+      devServer: {
+        static: {
+          directory: `${rootFolder || ''}/dist`,
+        },
         port: devServerPort,
-        reposDir,
-        appUrl,
-        publicPath,
-        proxyVerbose,
-        target,
-        registry,
-        bounceProd,
-        useAgent,
-        useDevBuild,
-        blockLegacyChrome,
-      }),
-    },
+        server: _unstableSpdy ? 'spdy' : https || Boolean(useProxy) ? 'https' : 'http',
+        host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
+        hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
+        liveReload: !internalHotReload,
+        allowedHosts: 'all',
+        // https://github.com/bripkens/connect-history-api-fallback
+        historyApiFallback: {
+          // We should really implement the same logic as cloud-services-config
+          //
+          // Until then let known api calls fall through instead of returning /index.html
+          // for easier `fetch` debugging
+          rewrites: [
+            { from: /^\/api/, to: '/404.html' },
+            { from: /^\/config/, to: '/404.html' },
+          ],
+          verbose: Boolean(proxyVerbose),
+          disableDotRule: true,
+        },
+        devMiddleware: {
+          writeToDisk: true,
+        },
+        client,
+        ...proxy({
+          env,
+          localChrome,
+          keycloakUri,
+          customProxy,
+          routes,
+          routesPath,
+          useProxy,
+          proxyURL,
+          standalone,
+          port: devServerPort,
+          reposDir,
+          appUrl,
+          publicPath,
+          proxyVerbose,
+          target,
+          registry,
+          bounceProd,
+          useAgent,
+          useDevBuild,
+          blockLegacyChrome,
+          frontendCRDPath,
+        }),
+      },
+    }),
   };
 };
 
