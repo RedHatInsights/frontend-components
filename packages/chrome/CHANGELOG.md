@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.16](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/chrome-1.0.15...@redhat-cloud-services/chrome-1.0.16) (2025-01-27)
+
+
+### Bug Fixes
+
+* **build:** fix release postTarget nested dependencies ([4895cd2](https://github.com/RedHatInsights/frontend-components/commit/4895cd2eba32336a220ddec442916858400ebb3e))
+
 ## [1.0.15](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/chrome-1.0.14...@redhat-cloud-services/chrome-1.0.15) (2025-01-15)
 
 
