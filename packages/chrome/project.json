@@ -17,7 +17,7 @@
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages", "build:bundles"],
+      "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components",

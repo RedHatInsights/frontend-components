@@ -18,14 +18,14 @@
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": ["^build:styles", "build:bundles"],
+      "dependsOn": ["^build:styles"],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
         "sourceDir": "packages/testing"
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages", "build:bundles"],
+      "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
@@ -39,7 +39,7 @@
       }
     },
     "transform:scss": {
-      "dependsOn": ["^transform:scss", "build:bundles"],
+      "dependsOn": ["^transform:scss"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-testing"
