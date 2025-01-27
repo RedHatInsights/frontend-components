@@ -20,7 +20,11 @@
       "inputs": ["default", "{workspaceRoot}/.eslintrc.js", "{workspaceRoot}/.eslintignore", "{workspaceRoot}/eslint.config.js"]
     },
     "test:unit": {
-      "dependsOn": ["^test"],
+      "dependsOn": ["^test:unit"],
+      "cache": true
+    },   
+    "test:component": {
+      "dependsOn": ["^test:component"],
       "cache": true
     },   
     "version": {
