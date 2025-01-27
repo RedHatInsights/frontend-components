@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.11](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-advisor-components-2.0.10...@redhat-cloud-services/frontend-components-advisor-components-2.0.11) (2025-01-27)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components` updated to version `5.2.1`
+
+### Bug Fixes
+
+* **build:** fix release postTarget nested dependencies ([4895cd2](https://github.com/RedHatInsights/frontend-components/commit/4895cd2eba32336a220ddec442916858400ebb3e))
+
 ## [2.0.10](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-advisor-components-2.0.9...@redhat-cloud-services/frontend-components-advisor-components-2.0.10) (2025-01-23)
 
 ### Dependency Updates
