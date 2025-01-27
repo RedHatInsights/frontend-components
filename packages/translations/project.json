@@ -30,14 +30,14 @@
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": ["^build:styles", "build:bundles"],
+      "dependsOn": ["^build:styles"],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-translations",
         "sourceDir": "packages/translations"
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages", "build:bundles"],
+      "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-translations",
@@ -45,7 +45,7 @@
       }
     },
     "transform:scss": {
-      "dependsOn": ["^transform:scss", "build:bundles"],
+      "dependsOn": ["^transform:scss"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-translations"
@@ -58,8 +58,12 @@
       }
     },
     "build": {
-      "executor": "nx:noop",
-      "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": ["nx run @redhat-cloud-services/frontend-components-translations:build:bundles", "nx run @redhat-cloud-services/frontend-components-translations:build:styles", "nx run @redhat-cloud-services/frontend-components-translations:build:packages", "nx run @redhat-cloud-services/frontend-components-translations:transform:scss"]
+      },
+      "dependsOn": ["^build"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",

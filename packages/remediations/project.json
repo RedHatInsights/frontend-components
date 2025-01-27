@@ -18,14 +18,14 @@
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": ["^build:styles", "build:bundles"],
+      "dependsOn": ["^build:styles"],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations",
         "sourceDir": "packages/remediations"
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages", "build:bundles"],
+      "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations",
@@ -39,15 +39,19 @@
       }
     },
     "transform:scss": {
-      "dependsOn": ["^transform:scss", "build:bundles"],
+      "dependsOn": ["^transform:scss"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations"
       }
     },
     "build": {
-      "executor": "nx:noop",
-      "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": ["nx run @redhat-cloud-services/frontend-components-remediations:build:bundles", "nx run @redhat-cloud-services/frontend-components-remediations:build:styles", "nx run @redhat-cloud-services/frontend-components-remediations:build:packages", "nx run @redhat-cloud-services/frontend-components-remediations:transform:scss"]
+      },
+      "dependsOn": ["^build"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",
