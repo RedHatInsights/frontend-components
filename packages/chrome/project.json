@@ -31,8 +31,12 @@
       }
     },
     "build": {
-      "executor": "nx:noop",
-      "dependsOn": ["^build", "build:packages"]
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": ["nx run @redhat-cloud-services/chrome:build:bundles", "nx run @redhat-cloud-services/chrome:build:packages"]
+      },
+      "dependsOn": ["^build"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",

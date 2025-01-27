@@ -46,8 +46,12 @@
       }
     },
     "build": {
-      "executor": "nx:noop",
-      "dependsOn": ["^build", "build:styles", "build:packages", "transform:scss"]
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": ["nx run @redhat-cloud-services/rule-components:build:bundles", "nx run @redhat-cloud-services/rule-components:build:styles", "nx run @redhat-cloud-services/rule-components:build:packages", "nx run @redhat-cloud-services/rule-components:transform:scss"]
+      },
+      "dependsOn": ["^build"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",
