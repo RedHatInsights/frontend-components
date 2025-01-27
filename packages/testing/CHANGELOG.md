@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-testing-0.1.3...@redhat-cloud-services/frontend-components-testing-0.1.4) (2025-01-27)
+
+
+### Bug Fixes
+
+* **build:** fix release postTarget nested dependencies ([4895cd2](https://github.com/RedHatInsights/frontend-components/commit/4895cd2eba32336a220ddec442916858400ebb3e))
+
 ## [0.1.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-testing-0.1.2...@redhat-cloud-services/frontend-components-testing-0.1.3) (2024-12-02)
 
 ## [0.1.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-testing-0.1.2...@redhat-cloud-services/frontend-components-testing-0.1.3) (2024-12-02)
