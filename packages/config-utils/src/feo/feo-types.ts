@@ -107,16 +107,6 @@ export type ServiceTile = {
   frontendRef: string;
 };
 
-export type ServiceGroup = {
-  id: string;
-  tiles: ServiceTile[];
-};
-
-export type ServiceCategory = {
-  id: string;
-  groups: ServiceGroup[];
-};
-
 export type ChromeWidgetEntry = {
   scope: string;
   module: string;
@@ -140,4 +130,18 @@ export type CRDObject = {
 
 export type FrontendCRD = {
   objects: CRDObject[];
+};
+
+export type ServicesTilesGroupResponseEntry = {
+  id: string;
+  isGroup?: boolean;
+  title: string;
+  links: ServiceTile[];
+};
+
+export type ServicesTilesResponseEntry = {
+  description: string;
+  icon: string;
+  id: string;
+  links: ServicesTilesGroupResponseEntry[];
 };

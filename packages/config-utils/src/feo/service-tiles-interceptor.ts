@@ -1,6 +1,6 @@
-import { FrontendCRD, ServiceCategory, ServiceTile } from './feo-types';
+import { FrontendCRD, ServiceTile, ServicesTilesResponseEntry } from './feo-types';
 
-function serviceTilesInterceptor(serviceCategories: ServiceCategory[], frontendCrd: FrontendCRD): ServiceCategory[] {
+function serviceTilesInterceptor(serviceCategories: ServicesTilesResponseEntry[], frontendCrd: FrontendCRD): ServicesTilesResponseEntry[] {
   const frontendRef = frontendCrd.objects[0].metadata.name;
   let result = [...serviceCategories];
 
@@ -23,16 +23,16 @@ function serviceTilesInterceptor(serviceCategories: ServiceCategory[], frontendC
     }, {}) ?? {};
 
   result = result.map((category) => {
-    const newGroups = category.groups.map((group) => {
-      const newTiles = group.tiles.filter((tile) => tile.frontendRef !== frontendRef);
+    const newGroups = category.links.map((group) => {
+      const newTiles = group.links.filter((tile) => tile.frontendRef !== frontendRef);
       return {
         ...group,
-        tiles: [...newTiles, ...(frontendCategories[category.id]?.[group.id] ?? [])],
+        links: [...newTiles, ...(frontendCategories[category.id]?.[group.id] ?? [])],
       };
     });
     return {
       ...category,
-      groups: newGroups,
+      links: newGroups,
     };
   });
 

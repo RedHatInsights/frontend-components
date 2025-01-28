@@ -73,7 +73,8 @@
         "push": true,
         "preset": "conventionalcommits",
         "commitMessageFormat": "chore: bump {projectName} to {version} [skip ci]"
-      }
+      },
+      "dependsOn": ["^version"]
     },
     "github": {
       "executor": "@jscutlery/semver:github",
