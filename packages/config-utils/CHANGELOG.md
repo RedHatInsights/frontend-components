@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.1.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.2...@redhat-cloud-services/frontend-components-config-utilities-4.1.3) (2025-01-28)
+
+
+### Bug Fixes
+
+* **proxy:** deflate gziped responses ([129b276](https://github.com/RedHatInsights/frontend-components/commit/129b276d8f821b1b2efdb515b9466125414679af))
+
 ## [4.1.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.1...@redhat-cloud-services/frontend-components-config-utilities-4.1.2) (2025-01-28)
 
 
