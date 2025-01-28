@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.1.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.1...@redhat-cloud-services/frontend-components-config-utilities-4.1.2) (2025-01-28)
+
+
+### Bug Fixes
+
+* **config-utils:** enable minor config files proxy interception ([e9cb4f5](https://github.com/RedHatInsights/frontend-components/commit/e9cb4f57520b1f0f117b74b4bd60103503e1a0bb))
+
 ## [4.1.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.0...@redhat-cloud-services/frontend-components-config-utilities-4.1.1) (2025-01-28)
 
 
