@@ -234,12 +234,6 @@ const proxy = ({
       secure: false,
       changeOrigin: true,
       autoRewrite: true,
-      onProxyReq: (proxyReq, req) => {
-        if (isInterceptAbleRequest(req.url)) {
-          // necessary to avoid gzip encoding and issues with parsing the json body
-          proxyReq.setHeader('accept-encoding', 'gzip;q=0,deflate,sdch');
-        }
-      },
       onProxyRes: (proxyRes, req, res) => {
         // this should reading the aggregated bundles filed generated from chrome service
         // The functionality is disabled until the interceptor is ready
@@ -319,15 +313,21 @@ const proxy = ({
 
         return null;
       },
-      ...(agent && {
-        agent,
-        headers: {
-          // Staging Akamai CORS gives 403s for non-GET requests from non-origin hosts
-          Host: target.replace('https://', ''),
-          // Origin format is protocol://hostname:port only, remove any trailing slash
-          Origin: target.replace(/\/$/, ''),
-        },
-      }),
+      ...(agent
+        ? {
+            agent,
+            headers: {
+              // Set FEO gzip headers here to prevent issues with setting headers after response was closed
+              'accept-encoding': 'gzip;q=0,deflate,sdch',
+              // Staging Akamai CORS gives 403s for non-GET requests from non-origin hosts
+              Host: target.replace('https://', ''),
+              // Origin format is protocol://hostname:port only, remove any trailing slash
+              Origin: target.replace(/\/$/, ''),
+            },
+          }
+        : {
+            'accept-encoding': 'gzip;q=0,deflate,sdch',
+          }),
     });
   }
 
