@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/eslint-config-redhat-cloud-services",
-    "version": "2.0.10",
+    "version": "2.0.11",
     "description": "Recommended eslint configuration used in cloud.redhat.com frontend apps.",
     "keywords": [
         "eslint",

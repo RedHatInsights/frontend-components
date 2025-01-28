@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.11](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/eslint-config-redhat-cloud-services-2.0.10...@redhat-cloud-services/eslint-config-redhat-cloud-services-2.0.11) (2025-01-28)
+
 ## [2.0.10](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/eslint-config-redhat-cloud-services-2.0.9...@redhat-cloud-services/eslint-config-redhat-cloud-services-2.0.10) (2025-01-14)
 
 
