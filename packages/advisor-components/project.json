@@ -83,7 +83,8 @@
       "options": {
         "push": true,
         "preset": "conventionalcommits",
-        "commitMessageFormat": "chore: bump {projectName} to {version} [skip ci]"
+        "commitMessageFormat": "chore: bump {projectName} to {version} [skip ci]",
+        "trackDeps": true
       },
       "dependsOn": ["^version"]
     },
