@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.4.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.4.0...@redhat-cloud-services/frontend-components-config-6.4.1) (2025-01-28)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-config-utilities` updated to version `4.1.1`
+
+### Bug Fixes
+
+* **config-utils:** watch for frontend CRD changes in proxy ([77a8ffe](https://github.com/RedHatInsights/frontend-components/commit/77a8ffeec9285ad65fbb9de82b54d346365d54ae))
+
 ## [6.4.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.3.8...@redhat-cloud-services/frontend-components-config-6.4.0) (2025-01-28)
 
 ### Dependency Updates
