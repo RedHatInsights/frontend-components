@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-testing-0.1.4...@redhat-cloud-services/frontend-components-testing-0.1.5) (2025-01-28)
+
 ## [0.1.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-testing-0.1.3...@redhat-cloud-services/frontend-components-testing-0.1.4) (2025-01-27)
 
 
