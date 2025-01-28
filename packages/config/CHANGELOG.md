@@ -2,6 +2,12 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.4.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.4.2...@redhat-cloud-services/frontend-components-config-6.4.3) (2025-01-28)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-config-utilities` updated to version `4.1.3`
+* `@redhat-cloud-services/tsc-transform-imports` updated to version `1.0.23`
 ## [6.4.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.4.1...@redhat-cloud-services/frontend-components-config-6.4.2) (2025-01-28)
 
 ### Dependency Updates
