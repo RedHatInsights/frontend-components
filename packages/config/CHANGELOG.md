@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.4.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.3.8...@redhat-cloud-services/frontend-components-config-6.4.0) (2025-01-28)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-config-utilities` updated to version `4.1.0`
+
+### Features
+
+* **config:** enable frontend CRD validation ([f8f477b](https://github.com/RedHatInsights/frontend-components/commit/f8f477b4798cb12ea7750106845d8813408965fe))
+* **feo:** enable crd path configuration option ([3183360](https://github.com/RedHatInsights/frontend-components/commit/3183360c83bcf9226493bd73109eb899de92e92b))
+
 ## [6.3.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.3.7...@redhat-cloud-services/frontend-components-config-6.3.8) (2025-01-16)
 
 ### Dependency Updates
