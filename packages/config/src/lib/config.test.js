@@ -1,6 +1,8 @@
 import config from './createConfig';
+import path from 'path';
+const crdMockPath = path.resolve(__dirname, './crd-mock.yaml');
 
-const configBuilder = (c) => config({ rootFolder: '', ...c });
+const configBuilder = (c) => config({ rootFolder: '', frontendCRDPath: crdMockPath, ...c });
 
 describe('should create dummy config with no options', () => {
   const { mode, optimization, entry, output, devServer } = config({
@@ -9,6 +11,7 @@ describe('should create dummy config with no options', () => {
     appName: 'Fooapp',
     env: 'stage-stable',
     publicPath: 'foo/bar',
+    frontendCRDPath: crdMockPath,
   });
 
   const { mode: prodMode } = configBuilder({ mode: 'production' });

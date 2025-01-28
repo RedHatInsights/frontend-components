@@ -1,4 +1,7 @@
 const { fecLogger, LogType } = require('@redhat-cloud-services/frontend-components-config-utilities');
+import path from 'path';
+import { hasFEOFeaturesEnabled, readFrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo/crd-check';
+import validateFrontendCrd from '@redhat-cloud-services/frontend-components-config-utilities/feo/validate-frontend-crd';
 import FECConfiguration from '../lib/fec.config';
 import config from '../lib/index';
 import commonPlugins from './webpack.plugins';
@@ -6,13 +9,30 @@ const fecConfig: FECConfiguration = require(process.env.FEC_CONFIG_PATH!);
 
 type Configuration = import('webpack').Configuration;
 
-const { plugins: externalPlugins = [], interceptChromeConfig, routes, hotReload, appUrl, ...externalConfig } = fecConfig;
+const rootFolder = process.env.FEC_ROOT_DIR || process.cwd();
+const {
+  plugins: externalPlugins = [],
+  interceptChromeConfig,
+  routes,
+  hotReload,
+  appUrl,
+  frontendCRDPath = path.resolve(rootFolder, 'deploy/frontend.yaml'),
+  ...externalConfig
+} = fecConfig;
 const { config: webpackConfig, plugins } = config({
-  rootFolder: process.env.FEC_ROOT_DIR || process.cwd(),
+  rootFolder,
   ...externalConfig,
   /** Do not use HMR for production builds */
   hotReload: false,
+  /** Do configure/inti webpack dev server */
+  deploymentBuild: true,
 });
+
+const frontendCrd = readFrontendCRD(frontendCRDPath);
+const feoEnabled = hasFEOFeaturesEnabled(frontendCrd);
+if (feoEnabled) {
+  validateFrontendCrd(frontendCrd);
+}
 
 plugins.push(...commonPlugins, ...externalPlugins);
 

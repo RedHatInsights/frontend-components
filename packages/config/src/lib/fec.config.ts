@@ -13,6 +13,7 @@ export interface FECConfiguration
   debug?: boolean;
   chromeHost?: string;
   chromePort?: number;
+  frontendCRDPath?: string;
 }
 
 export default FECConfiguration;
