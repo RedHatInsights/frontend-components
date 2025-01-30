@@ -231,6 +231,7 @@
         }
       },
       "required": [
+        "id",
         "title"
       ],
       "additionalProperties": false

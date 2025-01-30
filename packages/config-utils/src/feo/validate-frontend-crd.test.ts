@@ -55,6 +55,7 @@ describe('Validate FrontEnd CRD', () => {
     const mixedNavItem = {
       title: 'A mixed nav item',
       href: '/foo/bar',
+      id: 'test-id',
       segmentRef: {
         segmentId: 'test-segment',
         frontendName: 'test-frontend',
@@ -62,6 +63,7 @@ describe('Validate FrontEnd CRD', () => {
     };
     const validDirectNavItem = {
       title: 'A valid nav item',
+      id: 'valid-id',
       href: '/foo/bar',
     };
     const validNavSegment = {
