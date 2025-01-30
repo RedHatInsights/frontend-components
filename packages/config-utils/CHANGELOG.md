@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.1.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.3...@redhat-cloud-services/frontend-components-config-utilities-4.1.4) (2025-01-30)
+
+
+### Bug Fixes
+
+* **config-utils:** add ID to required list of direct nav items ([0588a25](https://github.com/RedHatInsights/frontend-components/commit/0588a256d5078f0bb9a3297d14b480cd45fa71a6))
+
 ## [4.1.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.2...@redhat-cloud-services/frontend-components-config-utilities-4.1.3) (2025-01-28)
 
 
