@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.2.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.3...@redhat-cloud-services/frontend-components-5.2.4) (2025-02-07)
+
+
+### Bug Fixes
+
+* **Shield:** remove Unknown question mark icon ([2095f46](https://github.com/RedHatInsights/frontend-components/commit/2095f46cf9571100d0291d04ddeaedfe754d8e14))
+
 ## [5.2.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.2...@redhat-cloud-services/frontend-components-5.2.3) (2025-01-28)
 
 ### Dependency Updates
