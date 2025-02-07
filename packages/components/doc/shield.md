@@ -12,12 +12,10 @@ Import Shield from this package.
 import React from 'react';
 import { Shield } from '@redhat-cloud-services/frontend-components';
 
-class YourCmp extends React.Component {
-  render() {
+const YourCmp = () => {
     return (
         <Shield impact={'Critical'} hasTooltip={true} size={'md'} />
     )
-  }
 }
 ```
 
@@ -32,6 +30,7 @@ You can also use all the props from Patternfly Tooltip component - [Documentatio
         propTypes.number
     ]),
     hasTooltip: propTypes.bool,
+    disableQuestionIcon: propTypes.bool
     tooltipPosition: propTypes.string, // top, (right), bottom, left
     tooltipPrefix: propTypes.string,
     title: propTypes.string,

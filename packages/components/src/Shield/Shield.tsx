@@ -11,10 +11,17 @@ export interface ShieldProps {
   impact: keyof typeof impactList | 'N/A';
   hasLabel?: boolean;
   hasTooltip?: boolean;
+  disableQuestionIcon?: boolean;
   size?: IconComponentProps['size'];
 }
 
-const Shield: React.FunctionComponent<ShieldProps> = ({ impact = 'N/A', hasLabel = false, size = 'md', hasTooltip = true }) => {
+const Shield: React.FunctionComponent<ShieldProps> = ({
+  impact = 'N/A',
+  hasLabel = false,
+  size = 'md',
+  hasTooltip = true,
+  disableQuestionIcon = false,
+}) => {
   const attributes = impactList?.[impact as keyof typeof impactList] ?? impactList.Unknown;
   const badgeProps: SVGIconProps = {
     'aria-hidden': 'false',
@@ -22,7 +29,11 @@ const Shield: React.FunctionComponent<ShieldProps> = ({ impact = 'N/A', hasLabel
     color: attributes.color,
   };
 
-  const badge = <Icon size={size}>{attributes.title === 'Unknown' ? <QuestionIcon {...badgeProps} /> : <SecurityIcon {...badgeProps} />}</Icon>;
+  const badge = (
+    <Icon size={size}>
+      {attributes.title === 'Unknown' ? disableQuestionIcon ? null : <QuestionIcon {...badgeProps} /> : <SecurityIcon {...badgeProps} />}
+    </Icon>
+  );
 
   const body = (
     <span>
