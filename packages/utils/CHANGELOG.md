@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.0.11](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-5.0.10...@redhat-cloud-services/frontend-components-utilities-5.0.11) (2025-02-10)
+
+
+### Bug Fixes
+
+* add version ranges for react-redux 8.x.x and 9.x.x ([#2159](https://github.com/RedHatInsights/frontend-components/issues/2159)) ([5d32d44](https://github.com/RedHatInsights/frontend-components/commit/5d32d44ec06c723d0efaa8ab2cc4f6a9c73c7805))
+
 ## [5.0.10](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-5.0.9...@redhat-cloud-services/frontend-components-utilities-5.0.10) (2025-01-28)
 
 ### Dependency Updates
