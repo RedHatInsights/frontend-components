@@ -212,7 +212,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                         ref={toggleRef}
                         onClick={() => setIsOpen((prev) => !prev)}
                         isExpanded={isOpen}
-                        data-ouia-component-id="ConditionalFilterToggle"
+                        ouiaId="ConditionalFilterToggle"
                       >
                         <Icon size="md">
                           <FilterIcon />
