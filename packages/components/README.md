@@ -124,7 +124,7 @@ transform: (importName) =>`@redhat-cloud-services/frontend-components/esm/${FECM
 
 This set up should work with most applications but individual apps may have dependency conflicts.
 In this example Insights-Inventory-Frontend will be used 
-- In FEC, navigate to packages/components -> here run `npm link`
+- In FEC, `npm i && npm run build` -> cd dist/@redhat-cloud-services/frontend-components -> here run `npm link`
 - In Inventory root, run `npm link @redhat-cloud-services/frontend-components`
 - Verify it actually linked with  `ls -l node_modules/@redhat-cloud-services/frontend-components`
 - In Inventorys fec.config.js , attach
