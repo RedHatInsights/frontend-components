@@ -188,7 +188,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
             <button
               aria-expanded="false"
               class="pf-v5-c-menu-toggle"
-              data-ouia-component-id="OUIA-Generated-MenuToggle-1"
+              data-ouia-component-id="BulkSelect"
               data-ouia-component-type="PF5/MenuToggle"
               data-ouia-safe="true"
               type="button"
@@ -933,7 +933,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
             <button
               aria-expanded="false"
               class="pf-v5-c-menu-toggle"
-              data-ouia-component-id="OUIA-Generated-MenuToggle-3"
+              data-ouia-component-id="BulkSelect"
               data-ouia-component-type="PF5/MenuToggle"
               data-ouia-safe="true"
               type="button"
@@ -1173,7 +1173,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
             <button
               aria-expanded="false"
               class="pf-v5-c-menu-toggle"
-              data-ouia-component-id="OUIA-Generated-MenuToggle-5"
+              data-ouia-component-id="BulkSelect"
               data-ouia-component-type="PF5/MenuToggle"
               data-ouia-safe="true"
               type="button"
