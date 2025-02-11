@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.2.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.5...@redhat-cloud-services/frontend-components-5.2.6) (2025-02-11)
+
+
+### Bug Fixes
+
+* **components:** conditionalfilter ouia id ([a37195a](https://github.com/RedHatInsights/frontend-components/commit/a37195aae183b5e3083653a0c6636327b3d21085))
+
 ## [5.2.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.4...@redhat-cloud-services/frontend-components-5.2.5) (2025-02-10)
 
 ### Dependency Updates
