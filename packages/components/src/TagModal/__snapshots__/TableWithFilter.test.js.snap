@@ -260,7 +260,7 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
             <button
               aria-expanded="false"
               class="pf-v5-c-menu-toggle"
-              data-ouia-component-id="OUIA-Generated-MenuToggle-2"
+              data-ouia-component-id="BulkSelect"
               data-ouia-component-type="PF5/MenuToggle"
               data-ouia-safe="true"
               type="button"
@@ -771,7 +771,7 @@ exports[`TableWithFilter should render with data and bulk select without calcula
             <button
               aria-expanded="false"
               class="pf-v5-c-menu-toggle"
-              data-ouia-component-id="OUIA-Generated-MenuToggle-1"
+              data-ouia-component-id="BulkSelect"
               data-ouia-component-type="PF5/MenuToggle"
               data-ouia-safe="true"
               type="button"

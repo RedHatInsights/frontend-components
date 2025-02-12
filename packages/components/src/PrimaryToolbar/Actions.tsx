@@ -146,7 +146,7 @@ const Actions: React.FunctionComponent<ActionsProps> = ({
                 variant="plain"
                 onClick={() => setIsOpen((prev) => !prev)}
                 isExpanded={isOpen}
-                data-ouia-component-id="BulkActionsToggle"
+                ouiaId="BulkActionsToggle"
               >
                 <EllipsisVIcon />
               </MenuToggle>

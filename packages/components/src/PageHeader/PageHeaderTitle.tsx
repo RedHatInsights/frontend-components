@@ -31,8 +31,8 @@ const PageHeaderTitle: React.FC<PageHeaderTitleProps> = ({ className, title, act
           className={pageHeaderTitleClasses}
           widget-type="InsightsPageHeaderTitle"
           data-ouia-component-type={ouiaComponentType}
-          data-ouia-component-id={ouiaFinalId}
-          data-ouia-safe={ouiaSafe}
+          ouiaId={ouiaFinalId}
+          ouiaSafe={ouiaSafe}
           {...props}
         >
           {title}
