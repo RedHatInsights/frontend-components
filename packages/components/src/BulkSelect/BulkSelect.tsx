@@ -66,7 +66,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
         <Dropdown
           onSelect={() => onToggle(false)}
           onOpenChange={(isOpen: boolean) => setIsOpen(isOpen)}
-          data-ouia-component-id={dropdownOuiaId ?? 'BulkSelect'}
+          ouiaId={dropdownOuiaId ?? 'BulkSelect'}
           {...props}
           className={classnames(className, 'ins-c-bulk-select')}
           ouiaSafe={ouiaSafe}
@@ -77,7 +77,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
               isExpanded={isOpen}
               ref={toggleRef}
               onClick={() => setIsOpen((prev) => !prev)}
-              data-ouia-component-id={dropdownOuiaId ?? 'BulkSelect'}
+              ouiaId={dropdownOuiaId ?? 'BulkSelect'}
             >
               {toggleProps?.children ? (
                 toggleProps?.children

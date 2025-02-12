@@ -39,13 +39,7 @@ const TableToolbar: React.FunctionComponent<TableToolbarProps> = ({
 
   return (
     <Fragment>
-      <Toolbar
-        className={tableToolbarClasses}
-        data-ouia-component-type={ouiaComponentType}
-        data-ouia-component-id={ouiaFinalId}
-        data-ouia-safe={ouiaSafe}
-        {...props}
-      >
+      <Toolbar className={tableToolbarClasses} data-ouia-component-type={ouiaComponentType} ouiaId={ouiaFinalId} ouiaSafe={ouiaSafe} {...props}>
         {children}
       </Toolbar>
       {((results && results >= 0) || (selected && selected >= 0)) && (
