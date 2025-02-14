@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.2.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.6...@redhat-cloud-services/frontend-components-5.2.7) (2025-02-14)
+
+
+### Bug Fixes
+
+* **components:** fix all outdated OUIA props passing ([0013e65](https://github.com/RedHatInsights/frontend-components/commit/0013e65958803ece733f26ab5cd9cdc0a40cfa51))
+
 ## [5.2.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.5...@redhat-cloud-services/frontend-components-5.2.6) (2025-02-11)
 
 
