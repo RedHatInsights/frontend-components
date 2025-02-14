@@ -2,6 +2,11 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.1.19](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-4.1.18...@redhat-cloud-services/frontend-components-notifications-4.1.19) (2025-02-14)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components` updated to version `5.2.8`
 ## [4.1.18](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-4.1.17...@redhat-cloud-services/frontend-components-notifications-4.1.18) (2025-02-14)
 
 ### Dependency Updates
