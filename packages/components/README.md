@@ -120,6 +120,21 @@ transform: (importName) =>`@redhat-cloud-services/frontend-components/${FECMappe
 transform: (importName) =>`@redhat-cloud-services/frontend-components/esm/${FECMapper[importName] || importName}`,
 
 ```
+## Running with another applicaiton
+
+This set up should work with most applications but individual apps may have dependency conflicts.
+In this example Insights-Inventory-Frontend will be used 
+- In FEC, `npm i && npm run build` -> cd dist/@redhat-cloud-services/frontend-components -> here run `npm link`
+- In Inventory root, run `npm link @redhat-cloud-services/frontend-components`
+- Verify it actually linked with  `ls -l node_modules/@redhat-cloud-services/frontend-components`
+- In Inventorys fec.config.js , attach
+  `resolve: {
+    modules: ['...', resolve(__dirname, 'node_modules'), 'node_modules'],
+  },`
+after module federation (FEC packages are looking for node modules in its own context and not the actual app, this overrides it)
+-  `npm run build`In Inventory
+-  `npm run start:proxy` also in Inventory -> Done
+
 
 ## Documentation Links
 
