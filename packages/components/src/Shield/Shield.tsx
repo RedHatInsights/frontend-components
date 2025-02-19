@@ -29,11 +29,18 @@ const Shield: React.FunctionComponent<ShieldProps> = ({
     color: attributes.color,
   };
 
-  const badge = (
-    <Icon size={size}>
-      {attributes.title === 'Unknown' ? disableQuestionIcon ? null : <QuestionIcon {...badgeProps} /> : <SecurityIcon {...badgeProps} />}
-    </Icon>
-  );
+  const badge =
+    attributes.title === 'Unknown' ? (
+      disableQuestionIcon ? null : (
+        <Icon size={size}>
+          <QuestionIcon {...badgeProps} />
+        </Icon>
+      )
+    ) : (
+      <Icon size={size}>
+        <SecurityIcon {...badgeProps} />
+      </Icon>
+    );
 
   const body = (
     <span>
