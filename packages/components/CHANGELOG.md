@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.2.9](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.8...@redhat-cloud-services/frontend-components-5.2.9) (2025-02-19)
+
+
+### Bug Fixes
+
+* **Shield:** fix shield spacing without QuestionIcon ([d04296a](https://github.com/RedHatInsights/frontend-components/commit/d04296ae66e46035de5ba2bccf015215545e02c4))
+
 ## [5.2.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.7...@redhat-cloud-services/frontend-components-5.2.8) (2025-02-14)
 
 ## [5.2.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.6...@redhat-cloud-services/frontend-components-5.2.7) (2025-02-14)
