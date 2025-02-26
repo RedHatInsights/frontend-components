@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.1.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.4...@redhat-cloud-services/frontend-components-config-utilities-4.1.5) (2025-02-26)
+
+
+### Bug Fixes
+
+* **proxy:** gate feo proxy interceptors ([ed9c32f](https://github.com/RedHatInsights/frontend-components/commit/ed9c32fecf326fac4335ca9c7e393ed828a38a89))
+
 ## [4.1.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.3...@redhat-cloud-services/frontend-components-config-utilities-4.1.4) (2025-01-30)
 
 

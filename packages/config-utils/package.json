@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-config-utilities",
-  "version": "4.1.4",
+  "version": "4.1.5",
   "description": "Utilities for shared config used in Red Hat Cloud Services project.",
   "main": "index.js",
   "types": "index.d.ts",
