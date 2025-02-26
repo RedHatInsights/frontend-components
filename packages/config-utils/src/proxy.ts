@@ -238,7 +238,7 @@ const proxy = ({
         // this should reading the aggregated bundles filed generated from chrome service
         // The functionality is disabled until the interceptor is ready
         // eslint-disable-next-line no-constant-condition
-        if (isInterceptAbleRequest(req.url)) {
+        if (FEOFeaturesEnabled && frontendCrdRef.current && isInterceptAbleRequest(req.url)) {
           // stub the original write function
           const _write = res.write;
           let body = '';
@@ -248,14 +248,10 @@ const proxy = ({
 
           res.write = function () {
             try {
-              if (FEOFeaturesEnabled && frontendCrdRef.current) {
-                const payload = modifyRequest(body, req.url, frontendCrdRef.current);
-                // content length is necessary to update to prevent JSON parsing errors in browser
-                res.setHeader('content-length', payload.length);
-                _write.call(res, payload, 'utf8');
-              } else {
-                _write.call(res, body, 'utf8');
-              }
+              const payload = modifyRequest(body, req.url, frontendCrdRef.current!);
+              // content length is necessary to update to prevent JSON parsing errors in browser
+              res.setHeader('content-length', payload.length);
+              _write.call(res, payload, 'utf8');
               return true;
             } catch {
               // wait for all the chunks to arrive
