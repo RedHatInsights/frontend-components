@@ -2,6 +2,11 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.2.29](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/rule-components-3.2.28...@redhat-cloud-services/rule-components-3.2.29) (2025-02-27)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components` updated to version `5.2.10`
 ## [3.2.28](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/rule-components-3.2.27...@redhat-cloud-services/rule-components-3.2.28) (2025-02-19)
 
 ### Dependency Updates
