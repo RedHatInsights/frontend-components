@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.2.10](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.9...@redhat-cloud-services/frontend-components-5.2.10) (2025-02-27)
+
+
+### Bug Fixes
+
+* **components:** groupFilterConstants remove key ([f140fce](https://github.com/RedHatInsights/frontend-components/commit/f140fce2662bace3bf4854e9425de3ff2e54b9be))
+
 ## [5.2.9](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.8...@redhat-cloud-services/frontend-components-5.2.9) (2025-02-19)
 
 
