@@ -40,7 +40,7 @@ const TemplateProcessor: React.FC<TemplateProcessorProps> = ({ template, definit
       allowedAttributes: { '*': ['href', 'target', 'class', 'style', 'rel'] },
       allowedSchemes: ['https'], // links must lead only to https://access.redhat.com/
       transformTags: {
-        ul: simpleTransform('ul', { class: 'pf-v5-c-list', style: 'font-size: inherit' }),
+        ul: simpleTransform('ul', { class: 'pf-v6-c-list', style: 'font-size: inherit' }),
         a: simpleTransform('a', { rel: 'noopener noreferrer', target: '_blank' }),
       },
     });

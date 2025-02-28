@@ -6,7 +6,8 @@
     "strict": true,
     "noPropertyAccessFromIndexSignature": false,
     "noFallthroughCasesInSwitch": true,
-    "allowJs": true
+    "allowJs": true,
+    "noImplicitAny": false
   },
   "files": [],
   "include": [],

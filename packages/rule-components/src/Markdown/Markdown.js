@@ -5,7 +5,7 @@ import doT from 'dot';
 import { marked } from 'marked';
 import sanitizeHtml from 'sanitize-html';
 
-marked.Renderer.prototype.link = ({ href, title, text }) => {
+marked.Renderer.prototype.link = ({ href, text }) => {
   return `<a href="${href}" rel="noopener noreferrer" target="_blank" class="ins-c-rule__link-in-description">${text}</a>`;
 };
 
@@ -21,7 +21,7 @@ const Markdown = ({ template, definitions }) => {
       ul() {
         return {
           tagName: 'ul',
-          attribs: { class: 'pf-v5-c-list' },
+          attribs: { class: 'pf-v6-c-list' },
         };
       },
     },
@@ -40,7 +40,7 @@ const Markdown = ({ template, definitions }) => {
         className="ins-c-rule__markdown"
         dangerouslySetInnerHTML={{
           __html: compiledMd
-            .replace(/<ul>/gim, `<ul class="pf-v5-c-list" style="font-size: inherit">`)
+            .replace(/<ul>/gim, `<ul class="pf-v6-c-list" style="font-size: inherit">`)
             .replace(/<a>/gim, `<a rel="noopener noreferrer" target="_blank">`)
             .replace(/<\/a>/gim, ` ${externalLinkIcon}</a>`),
         }}

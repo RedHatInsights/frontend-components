@@ -1,8 +1,8 @@
 import React from 'react';
 import { Badge } from '@patternfly/react-core/dist/dynamic/components/Badge';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
-import { Chip } from '@patternfly/react-core/dist/dynamic/components/Chip';
-import { ChipGroup } from '@patternfly/react-core/dist/dynamic/components/Chip';
+import { Chip } from '@patternfly/react-core/dist/dynamic/deprecated/components/Chip';
+import { ChipGroup } from '@patternfly/react-core/dist/dynamic/deprecated/components/Chip';
 import classNames from 'classnames';
 import './filter-chips.scss';
 

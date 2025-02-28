@@ -3,10 +3,10 @@
 exports[`Skeleton component should render correctly - lg 1`] = `
 <div>
   <div
-    class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__lg"
+    class="pf-v6-c-skeleton ins-c-skeleton ins-c-skeleton__lg"
   >
     <span
-      class="pf-v5-screen-reader"
+      class="pf-v6-screen-reader"
     />
   </div>
 </div>
@@ -15,10 +15,10 @@ exports[`Skeleton component should render correctly - lg 1`] = `
 exports[`Skeleton component should render correctly - md 1`] = `
 <div>
   <div
-    class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__md"
+    class="pf-v6-c-skeleton ins-c-skeleton ins-c-skeleton__md"
   >
     <span
-      class="pf-v5-screen-reader"
+      class="pf-v6-screen-reader"
     />
   </div>
 </div>
@@ -27,10 +27,10 @@ exports[`Skeleton component should render correctly - md 1`] = `
 exports[`Skeleton component should render correctly - sm 1`] = `
 <div>
   <div
-    class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__sm"
+    class="pf-v6-c-skeleton ins-c-skeleton ins-c-skeleton__sm"
   >
     <span
-      class="pf-v5-screen-reader"
+      class="pf-v6-screen-reader"
     />
   </div>
 </div>
@@ -39,10 +39,10 @@ exports[`Skeleton component should render correctly - sm 1`] = `
 exports[`Skeleton component should render correctly - xs 1`] = `
 <div>
   <div
-    class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__xs"
+    class="pf-v6-c-skeleton ins-c-skeleton ins-c-skeleton__xs"
   >
     <span
-      class="pf-v5-screen-reader"
+      class="pf-v6-screen-reader"
     />
   </div>
 </div>
@@ -51,10 +51,10 @@ exports[`Skeleton component should render correctly - xs 1`] = `
 exports[`Skeleton component should render correctly as dark 1`] = `
 <div>
   <div
-    class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__md ins-m-dark"
+    class="pf-v6-c-skeleton ins-c-skeleton ins-c-skeleton__md ins-m-dark"
   >
     <span
-      class="pf-v5-screen-reader"
+      class="pf-v6-screen-reader"
     />
   </div>
 </div>
@@ -63,10 +63,10 @@ exports[`Skeleton component should render correctly as dark 1`] = `
 exports[`Skeleton component should render correctly without size 1`] = `
 <div>
   <div
-    class="pf-v5-c-skeleton ins-c-skeleton ins-c-skeleton__md"
+    class="pf-v6-c-skeleton ins-c-skeleton ins-c-skeleton__md"
   >
     <span
-      class="pf-v5-screen-reader"
+      class="pf-v6-screen-reader"
     />
   </div>
 </div>

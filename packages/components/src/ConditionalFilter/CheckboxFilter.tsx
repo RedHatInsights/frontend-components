@@ -63,7 +63,7 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({ items = 
     >
       {placeholder}
       {value.length > 0 && (
-        <Badge className="pf-v5-u-ml-sm" isRead>
+        <Badge className="pf-v6-u-ml-sm" isRead>
           {value.length}
         </Badge>
       )}
@@ -79,6 +79,7 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({ items = 
       onSelect={(event, value) => onSelect(event, value)}
       isOpen={isExpanded}
       ouiaId={placeholder}
+      popperProps={{ appendTo: 'inline' }}
     >
       <SelectList aria-label="Options menu">
         {items.map(({ value: optionValue, onClick, label, id, ...item }, key) => (

@@ -13,7 +13,7 @@ export const Main: React.FC<MainProps> = ({ children, className, ...props }) => 
     console.error(`Using deprecated "Main" component. Do not use it. Either remove it from your JSX or replace it by "section" HTML element.`);
   }, []);
   return (
-    <section {...props} className={`${classNames(className, 'pf-v5-l-page__main-section pf-v5-c-page__main-section')}`}>
+    <section {...props} className={`${classNames(className, 'pf-v6-l-page__main-section pf-v6-c-page__main-section')}`}>
       {children}
     </section>
   );

@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, GridItem, Stack, StackItem, Text, Title } from '@patternfly/react-core';
+import { Content } from '@patternfly/react-core/dist/dynamic/components/Content';
+import { Title } from '@patternfly/react-core/dist/dynamic/components/Title';
+import { Grid } from '@patternfly/react-core/dist/dynamic/layouts/Grid';
+import { GridItem } from '@patternfly/react-core/dist/dynamic/layouts/Grid';
+import { Stack } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
+import { StackItem } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
 import RuleFeedback, { feedback } from './RuleFeedback';
 import Markdown from '../Markdown';
 import { totalRiskMeta } from './constants';
@@ -30,7 +35,7 @@ const ReportDetails = ({
               <StackItem>{title}</StackItem>
               {createdAt && (
                 <StackItem>
-                  <Text>Published date: {createdAt}</Text>
+                  <Content component="p">Published date: {createdAt}</Content>
                 </StackItem>
               )}
             </Stack>

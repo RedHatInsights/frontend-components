@@ -68,6 +68,7 @@ const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({
       isOpen={isOpen}
       ouiaId={ouiaId}
       ouiaSafe={ouiaSafe}
+      popperProps={{ appendTo: 'inline' }}
     >
       {filterCategories.map(
         (data, index) =>

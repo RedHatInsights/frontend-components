@@ -55,7 +55,7 @@ InventoryDetail.propTypes = {
 
 InventoryDetail.defaultProps = {
   fallback: (
-    <Bullseye className="pf-v5-u-p-lg">
+    <Bullseye className="pf-v6-u-p-lg">
       <Spinner size="xl" />
     </Bullseye>
   ),

@@ -189,7 +189,7 @@ export const getMenuItems = (
   const result =
     items.map((item: GroupFilterItem, index: number) => ({
       ...item,
-      className: `${item?.className || 'pf-v5-u-pl-sm'}`,
+      className: `${item?.className || 'pf-v6-u-pl-sm'}`,
       value: String(item.value || item.id || index),
       onClick: (event: React.FormEvent | React.MouseEventHandler, treeViewItem?: TreeViewItem, checked?: boolean) => {
         const params: [
@@ -263,7 +263,7 @@ export const getGroupMenuItems = (
       const artificialGroupItem: GroupFilterItem = {
         value: value || '',
         id: id || '',
-        className: 'pf-v5-u-pl-xs',
+        className: 'pf-v6-u-pl-xs',
         ...group,
         type: group.type || GroupType.plain,
       } as GroupFilterItem;

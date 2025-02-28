@@ -42,7 +42,7 @@ export function columnName2UrlParam(name) {
  * @param {string} columnTitle - column title string
  */
 export function tableIsSortedBy(columnTitle) {
-  return cy.get('table').find(`th[data-label="${columnTitle}"]`).should('have.class', 'pf-v5-c-table__sort pf-m-selected');
+  return cy.get('table').find(`th[data-label="${columnTitle}"]`).should('have.class', 'pf-v6-c-table__sort pf-m-selected');
 }
 /**
  * - Check the empty state message by the passed string parameter.

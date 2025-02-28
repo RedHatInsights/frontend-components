@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './tagModal.scss';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
-import { Modal } from '@patternfly/react-core/dist/dynamic/components/Modal';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from '@patternfly/react-core/dist/dynamic/components/Modal';
 import { Tab } from '@patternfly/react-core/dist/dynamic/components/Tabs';
 import { TabTitleText } from '@patternfly/react-core/dist/dynamic/components/Tabs';
 import { Tabs } from '@patternfly/react-core/dist/dynamic/components/Tabs';
@@ -117,61 +117,65 @@ class TagModal extends Component<
         {...props}
         className={classNames('ins-c-tag-modal', className)}
         isOpen={isOpen}
-        title={title || `Tags for ${systemName}`}
         onClose={() => toggleModal(undefined, false)}
         variant="medium"
-        {...(onApply && {
-          actions: [
-            <Button
-              key="confirm"
-              variant="primary"
-              isDisabled={
-                isTabbed ? Object.values(selected || {}).every((values) => !values || values?.length === 0) : !selected || selected?.length === 0
-              }
-              onClick={(e) => {
-                onApply();
-                toggleModal(e, true);
-              }}
-            >
-              Apply {isTabbed ? 'selected' : 'tags'}
-            </Button>,
-            <Button key="cancel" variant="link" onClick={(e) => toggleModal(e, false)}>
-              Cancel
-            </Button>,
-          ],
-        })}
       >
-        {isTabbed ? (
-          <Tabs activeKey={this.state.activeTabKey} onSelect={this.handleTabClick}>
-            {tabNames.map((item, key) => (
-              <Tab key={key} eventKey={key} title={<TabTitleText>All {item}</TabTitleText>}>
-                {this.renderTable(
-                  rows?.[key] as IRow[],
-                  columns?.[key] as ICell[],
-                  (pagination as TableWithFilterPagination[])?.[key],
-                  (loaded as boolean[])?.[key],
-                  (filters as ConditionalFilterItem[][])?.[key],
-                  (selected as IRow[][])?.[key],
-                  (onSelect as unknown as ((selected?: IRow[]) => void)[])?.[key],
-                  (onUpdateData as unknown as ((pagination: TableWithFilterPagination) => number)[])?.[key],
-                  (bulkSelect as BulkSelectProps[])?.[key]
-                )}
-              </Tab>
-            ))}
-          </Tabs>
-        ) : (
-          this.renderTable(
-            rows,
-            columns as ICell[],
-            pagination as TableWithFilterPagination,
-            loaded as boolean,
-            filters as ConditionalFilterItem[],
-            selected as IRow[],
-            onSelect as TableWithFilterProps['onSelect'],
-            onUpdateData as TableWithFilterProps['onUpdateData'],
-            bulkSelect as BulkSelectProps
-          )
-        )}
+        <ModalHeader title={title || `Tags for ${systemName}`} />
+        <ModalBody>
+          {isTabbed ? (
+            <Tabs activeKey={this.state.activeTabKey} onSelect={this.handleTabClick}>
+              {tabNames.map((item, key) => (
+                <Tab key={key} eventKey={key} title={<TabTitleText>All {item}</TabTitleText>}>
+                  {this.renderTable(
+                    rows?.[key] as IRow[],
+                    columns?.[key] as ICell[],
+                    (pagination as TableWithFilterPagination[])?.[key],
+                    (loaded as boolean[])?.[key],
+                    (filters as ConditionalFilterItem[][])?.[key],
+                    (selected as IRow[][])?.[key],
+                    (onSelect as unknown as ((selected?: IRow[]) => void)[])?.[key],
+                    (onUpdateData as unknown as ((pagination: TableWithFilterPagination) => number)[])?.[key],
+                    (bulkSelect as BulkSelectProps[])?.[key]
+                  )}
+                </Tab>
+              ))}
+            </Tabs>
+          ) : (
+            this.renderTable(
+              rows,
+              columns as ICell[],
+              pagination as TableWithFilterPagination,
+              loaded as boolean,
+              filters as ConditionalFilterItem[],
+              selected as IRow[],
+              onSelect as TableWithFilterProps['onSelect'],
+              onUpdateData as TableWithFilterProps['onUpdateData'],
+              bulkSelect as BulkSelectProps
+            )
+          )}
+        </ModalBody>
+        <ModalFooter>
+          {onApply && (
+            <>
+              <Button
+                key="confirm"
+                variant="primary"
+                isDisabled={
+                  isTabbed ? Object.values(selected || {}).every((values) => !values || values?.length === 0) : !selected || selected?.length === 0
+                }
+                onClick={(e) => {
+                  onApply();
+                  toggleModal(e, true);
+                }}
+              >
+                Apply {isTabbed ? 'selected' : 'tags'}
+              </Button>
+              <Button key="cancel" variant="link" onClick={(e) => toggleModal(e, false)}>
+                Cancel
+              </Button>
+            </>
+          )}
+        </ModalFooter>
       </Modal>
     );
   }
