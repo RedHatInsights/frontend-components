@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.23](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-1.0.22...@redhat-cloud-services/types-1.0.23) (2025-02-28)
+
+
+### Bug Fixes
+
+* **types:** add drawer actions to chrome API ([621dd36](https://github.com/RedHatInsights/frontend-components/commit/621dd3617dd47de9d2e09d8345ffd3d636420c99))
+
 ## [1.0.22](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-1.0.21...@redhat-cloud-services/types-1.0.22) (2025-02-28)
 
 
