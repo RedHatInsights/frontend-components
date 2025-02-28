@@ -2,6 +2,11 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.0.13](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-5.0.12...@redhat-cloud-services/frontend-components-utilities-5.0.13) (2025-02-28)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/types` updated to version `1.0.23`
 ## [5.0.12](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-5.0.11...@redhat-cloud-services/frontend-components-utilities-5.0.12) (2025-02-28)
 
 ### Dependency Updates
