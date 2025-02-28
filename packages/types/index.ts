@@ -133,6 +133,12 @@ export type ChromeWsEventListener<T> = (event: ChromeWsPayload<T>) => void;
 export type UnSubscribeFromChromeWsEvent = () => void;
 export type AddChromeWsEventListener = <T>(type: ChromeWsEventTypes, listener: ChromeWsEventListener<T>) => UnSubscribeFromChromeWsEvent;
 
+export type DrawerPanelActions = {
+  setDrawerPanelContent: (data: { scope: string; module: string } & Record<string, unknown>) => void;
+  toggleDrawerPanel: () => void;
+  toggleDrawerContent: (data: { scope: string; module: string } & Record<string, unknown>) => void;
+};
+
 export interface ChromeAPI {
   /** @deprecated will be removed from useChrome hook */
   $internal: any;
