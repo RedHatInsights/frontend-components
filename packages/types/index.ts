@@ -277,6 +277,7 @@ export interface ChromeAPI {
   ) => T;
   enablePackagesDebug: () => void;
   requestPdf: (options: PDFRequestOptions) => Promise<void>;
+  drawerActions: DrawerPanelActions;
 }
 
 declare global {
