@@ -98,7 +98,7 @@ const federatedModules = ({
   /**
    * Make sure the unleash proxy client is a singleton
    */
-  if (dependencies['@unleash/proxy-client-react']) {
+  if (dependencies['@unleash/proxy-client-react'] && !sharedDeps['@unleash/proxy-client-react']) {
     sharedDeps['@unleash/proxy-client-react'] = {
       singleton: true,
       eager: false,
