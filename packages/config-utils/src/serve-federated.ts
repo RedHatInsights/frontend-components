@@ -26,7 +26,7 @@ function federate(argv: Record<string, any>, cwd: string) {
 
       concurrently([
         `${WEBPACK_PATH} --config ${configPath} --watch --output-path ${path.join(outputPath, config.output.publicPath)}`,
-        `${HTTP_SERVER_PATH} ${outputPath} -p ${argv.port || 8003} -c-1 -a ::`,
+        `${HTTP_SERVER_PATH} ${outputPath} -p ${argv.port || 8003} -c-1 -a :: --cors=*`,
       ]);
     });
   } catch (error) {
