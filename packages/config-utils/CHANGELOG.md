@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.1.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.5...@redhat-cloud-services/frontend-components-config-utilities-4.1.6) (2025-03-03)
+
+
+### Bug Fixes
+
+* **config-utils:** disable cors checking on serve-federated dev server ([fcf4ad4](https://github.com/RedHatInsights/frontend-components/commit/fcf4ad43e7aad8dcdb5c3ce0a57bf8dbc2b7cf48))
+* **config:** allow overriding unleash module sharing config ([d1cb75c](https://github.com/RedHatInsights/frontend-components/commit/d1cb75c20f03886a8f30498af0d2394b94171be3))
+
 ## [4.1.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.4...@redhat-cloud-services/frontend-components-config-utilities-4.1.5) (2025-02-26)
 
 
