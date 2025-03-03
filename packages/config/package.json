@@ -38,7 +38,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "concurrently": "^7.4.0",
     "css-loader": "^5.2.7",
-    "express": "^4.19.2",
+    "express": "^4.21.2",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "git-revision-webpack-plugin": "^5.0.0",
     "glob": "^7.2.3",
