@@ -2,6 +2,26 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.12...@redhat-cloud-services/frontend-components-6.0.0) (2025-03-05)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.0.0`
+* `@redhat-cloud-services/types` updated to version `1.0.24`
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** upgrade PatternFly to v6
+
+### Features
+
+* **deps:** upgrade PatternFly to v6 ([bb48cda](https://github.com/RedHatInsights/frontend-components/commit/bb48cdabd98f05bd8bcd0e330ef27025a50b5274))
+
+
+### Bug Fixes
+
+* using new modal component ([1489612](https://github.com/RedHatInsights/frontend-components/commit/1489612a0a0986b517dd0647fc72f084fbdc00ac))
+
 ## [5.2.12](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.11...@redhat-cloud-services/frontend-components-5.2.12) (2025-02-28)
 
 ### Dependency Updates
