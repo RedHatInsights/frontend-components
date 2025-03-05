@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-translations-3.2.22...@redhat-cloud-services/frontend-components-translations-4.0.0) (2025-03-05)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.0.1`
+
+### ⚠ BREAKING CHANGES
+
+* pf6 chrome, translations, and types
+
+### Features
+
+* pf6 chrome, translations, and types ([d30e02c](https://github.com/RedHatInsights/frontend-components/commit/d30e02cc4059b89ed3d0b2726773d8ef0fdff395))
+
 ## [3.2.22](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-translations-3.2.21...@redhat-cloud-services/frontend-components-translations-3.2.22) (2025-03-05)
 
 ### Dependency Updates
