@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-4.1.23...@redhat-cloud-services/frontend-components-notifications-5.0.0) (2025-03-05)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.0.0`
+* `@redhat-cloud-services/frontend-components` updated to version `6.0.0`
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** upgrade PatternFly to v6
+
+### Features
+
+* **deps:** upgrade PatternFly to v6 ([bb48cda](https://github.com/RedHatInsights/frontend-components/commit/bb48cdabd98f05bd8bcd0e330ef27025a50b5274))
+
 ## [4.1.23](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-4.1.22...@redhat-cloud-services/frontend-components-notifications-4.1.23) (2025-02-28)
 
 ### Dependency Updates
