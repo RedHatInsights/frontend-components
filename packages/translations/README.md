@@ -1,6 +1,6 @@
 # RedHat Cloud Services frontend components - translations
 
-This package is for setting [react-intl](https://www.npmjs.com/package/react-intl) with default messages translated accross entire platform. For futher understanding how to pass messages and such follow up `react-intl` documentation.
+This package is for setting [react-intl](https://www.npmjs.com/package/react-intl) with default messages translated accross the entire platform. For futher understanding how to pass messages and such follow up `react-intl` documentation.
 
 
 ## Usage
