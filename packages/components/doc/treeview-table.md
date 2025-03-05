@@ -74,7 +74,7 @@ export const myCmp = () => {
             }
         ]
     return <Table
-        className="pf-m-expandable pf-v5-c-treeview"
+        className="pf-m-expandable pf-v6-c-treeview"
         rowWrapper={TreeRowWrapper}
         aria-label="Simple Table"
         cells={columns}

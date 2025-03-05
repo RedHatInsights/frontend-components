@@ -1,18 +1,24 @@
 .ins-c-skeleton {
-  &__xs { width: 16% !important; }
-  &__sm { width: 33% !important; }
-  &__md { width: 66% !important; }
-  &__lg { width: 100% !important; }
+  &__xs {
+    width: 16% !important;
+  }
+
+  &__sm {
+    width: 33% !important;
+  }
+
+  &__md {
+    width: 66% !important;
+  }
+
+  &__lg {
+    width: 100% !important;
+  }
+
   &.ins-m-dark {
-    --pf-v5-c-skeleton--BackgroundColor: var(--pf-v5-global--palette--black-600);
-    --pf-v5-c-skeleton--after--LinearGradientColorStop1: var(
-      --pf-v5-global--palette--black-600
-    );
-    --pf-v5-c-skeleton--after--LinearGradientColorStop2: var(
-      --pf-v5-global--palette--black-500
-    );
-    --pf-v5-c-skeleton--after--LinearGradientColorStop3: var(
-      --pf-v5-global--palette--black-600
-    );
+    --pf-v6-c-skeleton--BackgroundColor: var(--pf-t--color--black);
+    --pf-v6-c-skeleton--after--LinearGradientColorStop1: var(--pf-t--color--black);
+    --pf-v6-c-skeleton--after--LinearGradientColorStop2: var(--pf-t--color--gray--90);
+    --pf-v6-c-skeleton--after--LinearGradientColorStop3: var(--pf-t--color--black);
   }
 }

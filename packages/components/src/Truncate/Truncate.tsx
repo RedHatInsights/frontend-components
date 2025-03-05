@@ -75,7 +75,7 @@ const Truncate: React.FunctionComponent<TruncateProps> = ({
       {!hideExpandText && textOverflow && (
         <StackItem
           className={classNames({
-            'pf-v5-u-mt-sm': spaceBetween,
+            'pf-v6-u-mt-sm': spaceBetween,
           })}
         >
           {showText === false ? expandButton : collapseButton}

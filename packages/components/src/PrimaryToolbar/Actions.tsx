@@ -147,10 +147,10 @@ const Actions: React.FunctionComponent<ActionsProps> = ({
                 onClick={() => setIsOpen((prev) => !prev)}
                 isExpanded={isOpen}
                 ouiaId="BulkActionsToggle"
-              >
-                <EllipsisVIcon />
-              </MenuToggle>
+                icon={<EllipsisVIcon />}
+              />
             )}
+            popperProps={{ appendTo: 'inline' }}
           >
             <DropdownList>{dropdownItems}</DropdownList>
           </Dropdown>

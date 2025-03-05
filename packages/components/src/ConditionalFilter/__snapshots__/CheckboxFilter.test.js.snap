@@ -5,25 +5,25 @@ exports[`Checkbox render should render correctly - disabled 1`] = `
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle pf-m-full-width pf-m-disabled"
+    class="pf-v6-c-menu-toggle pf-m-full-width pf-m-disabled"
     data-ouia-component-id="OUIA-Generated-MenuToggle-2"
-    data-ouia-component-type="PF5/MenuToggle"
+    data-ouia-component-type="PF6/MenuToggle"
     data-ouia-safe="true"
     disabled=""
     type="button"
   >
     <span
-      class="pf-v5-c-menu-toggle__text"
+      class="pf-v6-c-menu-toggle__text"
     />
     <span
-      class="pf-v5-c-menu-toggle__controls"
+      class="pf-v6-c-menu-toggle__controls"
     >
       <span
-        class="pf-v5-c-menu-toggle__toggle-icon"
+        class="pf-v6-c-menu-toggle__toggle-icon"
       >
         <svg
           aria-hidden="true"
-          class="pf-v5-svg"
+          class="pf-v6-svg"
           fill="currentColor"
           height="1em"
           role="img"
@@ -45,24 +45,24 @@ exports[`Checkbox render should render correctly 1`] = `
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle pf-m-full-width"
+    class="pf-v6-c-menu-toggle pf-m-full-width"
     data-ouia-component-id="OUIA-Generated-MenuToggle-1"
-    data-ouia-component-type="PF5/MenuToggle"
+    data-ouia-component-type="PF6/MenuToggle"
     data-ouia-safe="true"
     type="button"
   >
     <span
-      class="pf-v5-c-menu-toggle__text"
+      class="pf-v6-c-menu-toggle__text"
     />
     <span
-      class="pf-v5-c-menu-toggle__controls"
+      class="pf-v6-c-menu-toggle__controls"
     >
       <span
-        class="pf-v5-c-menu-toggle__toggle-icon"
+        class="pf-v6-c-menu-toggle__toggle-icon"
       >
         <svg
           aria-hidden="true"
-          class="pf-v5-svg"
+          class="pf-v6-svg"
           fill="currentColor"
           height="1em"
           role="img"
@@ -84,26 +84,26 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle pf-m-full-width"
+    class="pf-v6-c-menu-toggle pf-m-full-width"
     data-ouia-component-id="OUIA-Generated-MenuToggle-7"
-    data-ouia-component-type="PF5/MenuToggle"
+    data-ouia-component-type="PF6/MenuToggle"
     data-ouia-safe="true"
     type="button"
   >
     <span
-      class="pf-v5-c-menu-toggle__text"
+      class="pf-v6-c-menu-toggle__text"
     >
       some placeholder
     </span>
     <span
-      class="pf-v5-c-menu-toggle__controls"
+      class="pf-v6-c-menu-toggle__controls"
     >
       <span
-        class="pf-v5-c-menu-toggle__toggle-icon"
+        class="pf-v6-c-menu-toggle__toggle-icon"
       >
         <svg
           aria-hidden="true"
-          class="pf-v5-svg"
+          class="pf-v6-svg"
           fill="currentColor"
           height="1em"
           role="img"
@@ -125,24 +125,24 @@ exports[`Checkbox render should render correctly with items 1`] = `
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle pf-m-full-width"
+    class="pf-v6-c-menu-toggle pf-m-full-width"
     data-ouia-component-id="OUIA-Generated-MenuToggle-3"
-    data-ouia-component-type="PF5/MenuToggle"
+    data-ouia-component-type="PF6/MenuToggle"
     data-ouia-safe="true"
     type="button"
   >
     <span
-      class="pf-v5-c-menu-toggle__text"
+      class="pf-v6-c-menu-toggle__text"
     />
     <span
-      class="pf-v5-c-menu-toggle__controls"
+      class="pf-v6-c-menu-toggle__controls"
     >
       <span
-        class="pf-v5-c-menu-toggle__toggle-icon"
+        class="pf-v6-c-menu-toggle__toggle-icon"
       >
         <svg
           aria-hidden="true"
-          class="pf-v5-svg"
+          class="pf-v6-svg"
           fill="currentColor"
           height="1em"
           role="img"
@@ -164,30 +164,30 @@ exports[`Checkbox render should render correctly with items and default object v
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle pf-m-full-width"
+    class="pf-v6-c-menu-toggle pf-m-full-width"
     data-ouia-component-id="OUIA-Generated-MenuToggle-5"
-    data-ouia-component-type="PF5/MenuToggle"
+    data-ouia-component-type="PF6/MenuToggle"
     data-ouia-safe="true"
     type="button"
   >
     <span
-      class="pf-v5-c-menu-toggle__text"
+      class="pf-v6-c-menu-toggle__text"
     >
       <span
-        class="pf-v5-c-badge pf-m-read pf-v5-u-ml-sm"
+        class="pf-v6-c-badge pf-m-read pf-v6-u-ml-sm"
       >
         1
       </span>
     </span>
     <span
-      class="pf-v5-c-menu-toggle__controls"
+      class="pf-v6-c-menu-toggle__controls"
     >
       <span
-        class="pf-v5-c-menu-toggle__toggle-icon"
+        class="pf-v6-c-menu-toggle__toggle-icon"
       >
         <svg
           aria-hidden="true"
-          class="pf-v5-svg"
+          class="pf-v6-svg"
           fill="currentColor"
           height="1em"
           role="img"
@@ -209,30 +209,30 @@ exports[`Checkbox render should render correctly with items and default value 1`
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle pf-m-full-width"
+    class="pf-v6-c-menu-toggle pf-m-full-width"
     data-ouia-component-id="OUIA-Generated-MenuToggle-4"
-    data-ouia-component-type="PF5/MenuToggle"
+    data-ouia-component-type="PF6/MenuToggle"
     data-ouia-safe="true"
     type="button"
   >
     <span
-      class="pf-v5-c-menu-toggle__text"
+      class="pf-v6-c-menu-toggle__text"
     >
       <span
-        class="pf-v5-c-badge pf-m-read pf-v5-u-ml-sm"
+        class="pf-v6-c-badge pf-m-read pf-v6-u-ml-sm"
       >
         1
       </span>
     </span>
     <span
-      class="pf-v5-c-menu-toggle__controls"
+      class="pf-v6-c-menu-toggle__controls"
     >
       <span
-        class="pf-v5-c-menu-toggle__toggle-icon"
+        class="pf-v6-c-menu-toggle__toggle-icon"
       >
         <svg
           aria-hidden="true"
-          class="pf-v5-svg"
+          class="pf-v6-svg"
           fill="currentColor"
           height="1em"
           role="img"
@@ -254,24 +254,24 @@ exports[`Checkbox render should render correctly with items and selected value 1
   <button
     aria-expanded="false"
     aria-label="Options menu"
-    class="pf-v5-c-menu-toggle pf-m-full-width"
+    class="pf-v6-c-menu-toggle pf-m-full-width"
     data-ouia-component-id="OUIA-Generated-MenuToggle-6"
-    data-ouia-component-type="PF5/MenuToggle"
+    data-ouia-component-type="PF6/MenuToggle"
     data-ouia-safe="true"
     type="button"
   >
     <span
-      class="pf-v5-c-menu-toggle__text"
+      class="pf-v6-c-menu-toggle__text"
     />
     <span
-      class="pf-v5-c-menu-toggle__controls"
+      class="pf-v6-c-menu-toggle__controls"
     >
       <span
-        class="pf-v5-c-menu-toggle__toggle-icon"
+        class="pf-v6-c-menu-toggle__toggle-icon"
       >
         <svg
           aria-hidden="true"
-          class="pf-v5-svg"
+          class="pf-v6-svg"
           fill="currentColor"
           height="1em"
           role="img"
