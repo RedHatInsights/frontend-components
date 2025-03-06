@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-notifications",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Notifications portal to show toast notifications for RedHat Cloud Services project.",
   "browser": "index.js",
   "module": "esm/index.js",
