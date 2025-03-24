@@ -14,6 +14,9 @@ describe('module-interceptor', () => {
             name: moduleName,
           },
           spec: {
+            frontend: {
+              paths: ['/'],
+            },
             module: newEntry,
           },
         },
@@ -44,6 +47,9 @@ describe('module-interceptor', () => {
             name: moduleName,
           },
           spec: {
+            frontend: {
+              paths: ['/'],
+            },
             module: newEntry,
           },
         },

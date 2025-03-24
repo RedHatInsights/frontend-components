@@ -125,6 +125,9 @@ export type CRDObject = {
     serviceTiles?: ServiceTile[];
     widgetRegistry?: ChromeWidgetEntry[];
     feoConfigEnabled?: boolean;
+    frontend: {
+      paths: string[];
+    };
   };
 };
 

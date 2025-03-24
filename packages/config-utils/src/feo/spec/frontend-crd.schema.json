@@ -51,7 +51,8 @@
           "items": {
             "type": "string"
           },
-          "minItems": 1
+          "minItems": 1,
+          "maxItems": 1
         }
       },
       "required": [

@@ -93,4 +93,10 @@ describe('Validate FrontEnd CRD', () => {
       `Frontend CRD validation failed! must NOT have additional properties, must NOT have additional properties, must match exactly one schema in oneOf`
     );
   });
+
+  test('should only allow one frontend.paths entry', () => {
+    const crd = cloneDeep(crdBase) as FrontendCRD;
+    crd.objects[0].spec.frontend.paths = ['/foo/bar', '/baz'];
+    expect(() => validateFrontEndCrd(crd)).toThrowError(`must NOT have more than 1 items`);
+  });
 });

@@ -11,6 +11,9 @@ describe('SearchInterceptor', () => {
             name: frontendName,
           },
           spec: {
+            frontend: {
+              paths: ['/'],
+            },
             module: {
               manifestLocation: 'location',
             },
