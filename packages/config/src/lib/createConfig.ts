@@ -254,7 +254,7 @@ export const createConfig = ({
     },
     resolve: {
       ...resolve,
-      extensions: ['.ts', '.tsx', '.mjs', '.js', '.scss', ...(resolve.extensions, [])],
+      extensions: ['.ts', '.tsx', '.mjs', '.js', '.jsx', '.scss', ...(resolve.extensions || [])],
       alias: {
         ...(bundlePfModules
           ? {}
