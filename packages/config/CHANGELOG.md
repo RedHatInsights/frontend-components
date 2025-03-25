@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.4.9](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.4.8...@redhat-cloud-services/frontend-components-config-6.4.9) (2025-03-25)
+
+
+### Bug Fixes
+
+* **config:** add jsx to resolve extensions ([22a0899](https://github.com/RedHatInsights/frontend-components/commit/22a089953effec9371f411d06f4cc8ca055e07ee))
+
 ## [6.4.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.4.7...@redhat-cloud-services/frontend-components-config-6.4.8) (2025-03-17)
 
 
