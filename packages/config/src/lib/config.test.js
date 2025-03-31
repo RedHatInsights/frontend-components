@@ -10,7 +10,6 @@ describe('should create dummy config with no options', () => {
     appEntry: '/foo/bar',
     appName: 'Fooapp',
     env: 'stage-stable',
-    publicPath: 'foo/bar',
     frontendCRDPath: crdMockPath,
   });
 
@@ -35,7 +34,6 @@ describe('should create dummy config with no options', () => {
     expect(output).toEqual({
       filename: expect.stringMatching(/js\/\[name\]\.\[contenthash\]\.js/),
       path: '/dist',
-      publicPath: 'foo/bar',
       chunkFilename: expect.stringMatching(/js\/\[name\]\.\[contenthash\]\.js/),
     });
   });
@@ -95,10 +93,13 @@ test('appEntry correctly set', () => {
 });
 
 describe('publicPath', () => {
-  const { output } = configBuilder({ publicPath: 'test-value' });
-
-  test('output', () => {
-    expect(output.publicPath).toBe('test-value');
+  test('should ignore unknown public path', () => {
+    const { output } = configBuilder({ publicPath: 'test-value' });
+    expect(output.publicPath).toBe(undefined);
+  });
+  test('should propagate public path auto', () => {
+    const { output } = configBuilder({ publicPath: 'auto' });
+    expect(output.publicPath).toBe('auto');
   });
 });
 
