@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.0.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.2...@redhat-cloud-services/frontend-components-6.0.3) (2025-04-01)
+
+
+### Bug Fixes
+
+* **ConditionFilter:** only pass allowed props to React.Fragment in custom filter ([127e0e3](https://github.com/RedHatInsights/frontend-components/commit/127e0e37bea54c5d49c1e3fde1b642f13c524a13))
+
 ## [6.0.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.1...@redhat-cloud-services/frontend-components-6.0.2) (2025-03-06)
 
 ### Dependency Updates
