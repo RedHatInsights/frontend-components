@@ -155,7 +155,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
       const C = typeMapper.custom;
       // make sure no invalid props are passed to the Fragment element which is mapped to the custom component
       const { key, children } = activeItem.filterValues;
-      return <C key={key} children={children} />;
+      return <C key={key}>{children}</C>;
     } else {
       throw new Error(`Invalid conditional filter component type! Expected one of ${Object.keys(conditionalFilterType)}, got ${activeItem.type}.`);
     }

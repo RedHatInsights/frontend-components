@@ -1,6 +1,9 @@
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
+import path from 'path';
 import createConfig, { CreateConfigOptions } from './createConfig';
 import createPlugins, { CreatePluginsOptions } from './createPlugins';
+import { hasFEOFeaturesEnabled, readFrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo/crd-check';
+import { FrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo/feo-types';
 const { sync } = require('glob');
 export * from './createConfig';
 export * from './createPlugins';
@@ -29,12 +32,13 @@ const getAppEntry = (rootFolder: string, isProd?: boolean) => {
   return `${rootFolder}/${entries[0]}`;
 };
 
-type FecConfigurationOptions = Omit<CreateConfigOptions, 'publicPath' | 'appEntry' | 'appName'> &
-  CreatePluginsOptions & {
+type FecConfigurationOptions = Omit<CreateConfigOptions, 'publicPath' | 'appEntry' | 'appName' | 'cdnPath'> &
+  Omit<CreatePluginsOptions, 'cdnPath'> & {
     deployment?: string;
     debug?: boolean;
     appEntry?: string;
     blockLegacyChrome?: boolean;
+    publicPath?: 'auto';
   };
 
 const createFecConfig = (
@@ -54,8 +58,27 @@ const createFecConfig = (
     gitBranch = 'main';
   }
   const appDeployment = typeof configurations.deployment === 'string' ? configurations.deployment : configurations.deployment || 'apps';
+  const { frontendCRDPath = path.resolve(configurations.rootFolder, 'deploy/frontend.yaml') } = configurations;
 
-  const publicPath = `/${appDeployment}/${insights.appname}/`;
+  const frontendCrdRef: { current?: FrontendCRD } = { current: undefined };
+  let FEOFeaturesEnabled = false;
+  try {
+    frontendCrdRef.current = readFrontendCRD(frontendCRDPath);
+    FEOFeaturesEnabled = hasFEOFeaturesEnabled(frontendCrdRef.current);
+  } catch (e) {
+    fecLogger(
+      LogType.warn,
+      `FEO features are not enabled. Unable to find frontend CRD file at ${frontendCRDPath}. If you want FEO features for local development, make sure to have a "deploy/frontend.yaml" file in your project or specify its location via "frontendCRDPath" attribute.`
+    );
+  }
+  let cdnPath: string;
+  // Could be written on a single line, but this is nice and readable
+  if (FEOFeaturesEnabled && configurations.publicPath === 'auto' && frontendCrdRef.current) {
+    // All service should eventually use this path
+    cdnPath = `${frontendCrdRef.current?.objects[0]?.spec.frontend.paths[0]}/`.replace(/\/\//, '/');
+  } else {
+    cdnPath = `/${appDeployment}/${insights.appname}/`;
+  }
   const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
   const generateSourceMaps = !isProd;
 
@@ -66,7 +89,7 @@ const createFecConfig = (
     fecLogger(LogType.debug, `Current branch: ${gitBranch}`);
     !generateSourceMaps && fecLogger(LogType.debug, `Source map generation for "${gitBranch}" deployment has been disabled.`);
     fecLogger(LogType.debug, `Using deployments: ${appDeployment}`);
-    fecLogger(LogType.debug, `Public path: ${publicPath}`);
+    fecLogger(LogType.debug, `CDN path: ${cdnPath}`);
     fecLogger(LogType.debug, `App entry: ${appEntry}`);
     fecLogger(LogType.debug, `Use proxy: ${configurations.useProxy ? 'true' : 'false'}`);
     if (!(configurations.useProxy || configurations.standalone)) {
@@ -81,7 +104,8 @@ const createFecConfig = (
   return {
     config: createConfig({
       ...configurations,
-      publicPath,
+      cdnPath,
+      publicPath: configurations.publicPath,
       appEntry,
       appName: insights.appname,
     }),

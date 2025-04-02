@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 import searchIgnoredStyles from '@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles';
 
@@ -22,7 +21,8 @@ export interface CommonConfigOptions {
 export type FrontendEnv = 'stage-stable' | 'prod-stable';
 export interface CreateConfigOptions extends CommonConfigOptions {
   port?: number;
-  publicPath: string;
+  publicPath?: 'auto';
+  cdnPath: string;
   appEntry: string;
   https?: boolean;
   mode?: Configuration['mode'];
@@ -61,6 +61,7 @@ export interface CreateConfigOptions extends CommonConfigOptions {
 
 export const createConfig = ({
   port,
+  cdnPath,
   publicPath,
   appEntry,
   rootFolder,
@@ -114,15 +115,6 @@ export const createConfig = ({
 
   const outputPath = `${rootFolder || ''}/dist`;
 
-  const copyTemplate = (chromePath: string) => {
-    const template = fs.readFileSync(`${chromePath}/index.html`, { encoding: 'utf-8' });
-    if (!fs.existsSync(outputPath)) {
-      fs.mkdirSync(outputPath);
-    }
-
-    fs.writeFileSync(`${outputPath}/index.html`, template);
-  };
-
   const devServerPort = typeof port === 'number' ? port : useProxy || standalone ? 1337 : 8002;
   return {
     mode: mode || (isProd ? 'production' : 'development'),
@@ -150,7 +142,7 @@ export const createConfig = ({
     output: {
       filename: filenameMask,
       path: outputPath,
-      publicPath,
+      publicPath: publicPath === 'auto' ? publicPath : cdnPath,
       chunkFilename: filenameMask,
     },
     ...(internalHotReload
@@ -299,6 +291,7 @@ export const createConfig = ({
         },
         devMiddleware: {
           writeToDisk: true,
+          publicPath: cdnPath,
         },
         client,
         ...proxy({
@@ -314,7 +307,7 @@ export const createConfig = ({
           port: devServerPort,
           reposDir,
           appUrl,
-          publicPath,
+          publicPath: cdnPath,
           proxyVerbose,
           target,
           registry,

@@ -17,6 +17,11 @@ export function validateFECConfig(cwd: string) {
     fecLogger(LogType.error, 'Missing config "appUrl" in fec.config.js');
     throw 'fec.config.js validation failed, missing "appUrl" config';
   }
+
+  if (config.publicPath && config.publicPath !== 'auto') {
+    fecLogger(LogType.error, 'Invalid config "publicPath" in fec.config.js, must be empty or set to "auto"');
+    throw 'fec.config.js validation failed, "publicPath" must be empty or set to "auto"';
+  }
   process.env.FEC_CONFIG_PATH = configPath;
 }
 
