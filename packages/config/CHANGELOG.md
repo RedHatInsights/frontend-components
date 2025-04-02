@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.5.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.4.10...@redhat-cloud-services/frontend-components-config-6.5.0) (2025-04-02)
+
+
+### Features
+
+* **config:** enable automated public path build ([8518473](https://github.com/RedHatInsights/frontend-components/commit/85184739246b56e6bb79e1d57358e408606201be))
+
 ## [6.4.10](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.4.9...@redhat-cloud-services/frontend-components-config-6.4.10) (2025-04-02)
 
 ### Dependency Updates
