@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.2.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.6...@redhat-cloud-services/frontend-components-config-utilities-4.2.0) (2025-04-02)
+
+
+### Features
+
+* **config-utils:** enable webpack public path auto setting ([6036ee9](https://github.com/RedHatInsights/frontend-components/commit/6036ee91ab54883d01d63c9cdd67e9644f776194))
+
 ## [4.1.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.5...@redhat-cloud-services/frontend-components-config-utilities-4.1.6) (2025-03-03)
 
 
