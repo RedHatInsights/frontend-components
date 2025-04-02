@@ -19,6 +19,9 @@ describe('NavigationInterceptor', () => {
               name: frontendName,
             },
             spec: {
+              frontend: {
+                paths: ['/'],
+              },
               module: {
                 manifestLocation: 'http://localhost:3000/manifest.json',
               },
@@ -207,6 +210,9 @@ describe('NavigationInterceptor', () => {
               name: defaultFrontendName,
             },
             spec: {
+              frontend: {
+                paths: ['/'],
+              },
               module: {
                 manifestLocation: 'http://localhost:3000/manifest.json',
               },
@@ -275,6 +281,9 @@ describe('NavigationInterceptor', () => {
               name: defaultFrontendName,
             },
             spec: {
+              frontend: {
+                paths: ['/'],
+              },
               module: {
                 manifestLocation: 'http://localhost:3000/manifest.json',
               },
@@ -367,6 +376,9 @@ describe('NavigationInterceptor', () => {
               name: defaultFrontendName,
             },
             spec: {
+              frontend: {
+                paths: ['/'],
+              },
               module: {
                 manifestLocation: 'http://localhost:3000/manifest.json',
               },
@@ -433,6 +445,9 @@ describe('NavigationInterceptor', () => {
               name: defaultFrontendName,
             },
             spec: {
+              frontend: {
+                paths: ['/'],
+              },
               module: {
                 manifestLocation: 'http://localhost:3000/manifest.json',
               },
@@ -500,6 +515,9 @@ describe('NavigationInterceptor', () => {
               name: frontendName,
             },
             spec: {
+              frontend: {
+                paths: ['/'],
+              },
               module: {
                 manifestLocation: 'http://localhost:3000/manifest.json',
               },

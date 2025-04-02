@@ -11,6 +11,9 @@ describe('Service tiles interceptor', () => {
             name: frontendName,
           },
           spec: {
+            frontend: {
+              paths: ['/'],
+            },
             module: {
               manifestLocation: 'location',
             },

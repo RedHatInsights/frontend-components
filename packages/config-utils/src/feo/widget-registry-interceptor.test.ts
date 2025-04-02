@@ -16,6 +16,9 @@ describe('Widget registry interceptor', () => {
             name: 'name',
           },
           spec: {
+            frontend: {
+              paths: ['/'],
+            },
             module: {
               manifestLocation: 'location',
             },
