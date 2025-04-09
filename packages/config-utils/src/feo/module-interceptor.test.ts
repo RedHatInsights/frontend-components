@@ -6,6 +6,7 @@ describe('module-interceptor', () => {
     const moduleName = 'module-name';
     const newEntry: ChromeModule = {
       manifestLocation: 'new-location',
+      cdnPath: '/',
     };
     const frontendCRD: FrontendCRD = {
       objects: [
@@ -39,6 +40,7 @@ describe('module-interceptor', () => {
     const moduleName = 'module-name';
     const newEntry: ChromeModule = {
       manifestLocation: 'new-location',
+      cdnPath: '/',
     };
     const frontendCRD: FrontendCRD = {
       objects: [

@@ -34,6 +34,7 @@ type ChromeModuleAnalytics = {
 
 export type ChromeModule = {
   manifestLocation: string;
+  cdnPath?: string;
   defaultDocumentTitle?: string;
   /**
    * @deprecated
