@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.2.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.2.0...@redhat-cloud-services/frontend-components-config-utilities-4.2.1) (2025-04-09)
+
+
+### Bug Fixes
+
+* **config:** add missing CDN path mapping to module interceptor ([2230ef3](https://github.com/RedHatInsights/frontend-components/commit/2230ef31c15bb1330d27abc2e6832e35cf41fe92))
+
 ## [4.2.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.1.6...@redhat-cloud-services/frontend-components-config-utilities-4.2.0) (2025-04-02)
 
 
