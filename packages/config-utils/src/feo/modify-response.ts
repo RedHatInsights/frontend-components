@@ -1,29 +1,37 @@
 import fecLogger, { LogType } from '../fec-logger';
-import { matchNavigationRequest, matchSearchIndexRequest, matchServiceTilesRequest } from './check-outgoing-requests';
-import { ChromeStaticSearchEntry, FrontendCRD, GeneratedBundles, ServicesTilesResponseEntry } from './feo-types';
+import { matchNavigationRequest, matchSearchIndexRequest, matchServiceTilesRequest, matchModulesRequest} from './check-outgoing-requests';
+import { ChromeModuleRegistry, ChromeStaticSearchEntry, FrontendCRD, GeneratedBundles, ServicesTilesResponseEntry } from './feo-types';
+import moduleInterceptor from './module-interceptor';
 import navigationInterceptor from './navigation-interceptor';
 import searchInterceptor from './search-interceptor';
 import serviceTilesInterceptor from './service-tiles-interceptor';
 
 function isGeneratedBundles(
-  body: GeneratedBundles | ChromeStaticSearchEntry[] | ServicesTilesResponseEntry[],
+  body: GeneratedBundles | ChromeStaticSearchEntry[] | ServicesTilesResponseEntry[] | ChromeModuleRegistry,
   url: string
 ): body is GeneratedBundles {
   return matchNavigationRequest(url);
 }
 
 function isSearchIndex(
-  body: GeneratedBundles | ChromeStaticSearchEntry[] | ServicesTilesResponseEntry[],
+  body: GeneratedBundles | ChromeStaticSearchEntry[] | ServicesTilesResponseEntry[] | ChromeModuleRegistry,
   url: string
 ): body is ChromeStaticSearchEntry[] {
   return matchSearchIndexRequest(url);
 }
 
 function isServiceTiles(
-  body: GeneratedBundles | ChromeStaticSearchEntry[] | ServicesTilesResponseEntry[],
+  body: GeneratedBundles | ChromeStaticSearchEntry[] | ServicesTilesResponseEntry[] | ChromeModuleRegistry,
   url: string
 ): body is ServicesTilesResponseEntry[] {
   return matchServiceTilesRequest(url);
+}
+
+function isModules(
+  body: GeneratedBundles | ChromeStaticSearchEntry[] | ServicesTilesResponseEntry[] | ChromeModuleRegistry,
+  url: string
+): body is ChromeModuleRegistry {
+  return matchModulesRequest(url);
 }
 
 export function modifyRequest(body: string, url: string, frontendCrd: FrontendCRD): string {
@@ -46,6 +54,10 @@ export function modifyRequest(body: string, url: string, frontendCrd: FrontendCR
     } else if (isServiceTiles(objectToModify, url)) {
       const staticServicesTiles = objectToModify as ServicesTilesResponseEntry[];
       const result = serviceTilesInterceptor(staticServicesTiles, frontendCrd);
+      payload = JSON.stringify(result);
+    } else if (isModules(objectToModify, url)) {
+      const modules = objectToModify as ChromeModuleRegistry;
+      const result = moduleInterceptor(modules, frontendCrd);
       payload = JSON.stringify(result);
     }
     return payload;
