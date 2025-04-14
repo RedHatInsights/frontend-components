@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.3.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.2.1...@redhat-cloud-services/frontend-components-config-utilities-4.3.0) (2025-04-14)
+
+
+### Features
+
+* **config-utils:** use the module interceptor when using local proxy ([7745c95](https://github.com/RedHatInsights/frontend-components/commit/7745c951d2830cc771d8c90298a27f199cbd3dcb))
+
 ## [4.2.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.2.0...@redhat-cloud-services/frontend-components-config-utilities-4.2.1) (2025-04-09)
 
 
