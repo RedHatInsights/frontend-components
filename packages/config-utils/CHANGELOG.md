@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.3.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.3.0...@redhat-cloud-services/frontend-components-config-utilities-4.3.1) (2025-04-15)
+
+
+### Bug Fixes
+
+* **feo:** adjust module name in interceptor ([cc66090](https://github.com/RedHatInsights/frontend-components/commit/cc66090400d52c57ee2956085880855c529de06b))
+
 ## [4.3.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.2.1...@redhat-cloud-services/frontend-components-config-utilities-4.3.0) (2025-04-14)
 
 
