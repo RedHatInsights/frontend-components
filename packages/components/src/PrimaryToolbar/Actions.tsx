@@ -1,4 +1,3 @@
-/* eslint-disable rulesdir/forbid-pf-relative-imports */
 import React, { Fragment, useState } from 'react';
 import {
   Button,

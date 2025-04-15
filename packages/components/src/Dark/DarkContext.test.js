@@ -8,7 +8,7 @@ describe('DarkContext', () => {
     const { container } = render(
       <Dark>
         <div id="isPresent" />
-      </Dark>
+      </Dark>,
     );
 
     expect(container).toMatchSnapshot();
@@ -19,7 +19,7 @@ describe('DarkContext', () => {
     const { container } = render(
       <Dark>
         <DarkContext.Consumer>{(value) => <div value={value} id="consumer" />}</DarkContext.Consumer>
-      </Dark>
+      </Dark>,
     );
     expect(container).toMatchSnapshot();
   });

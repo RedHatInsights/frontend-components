@@ -68,7 +68,7 @@ function createCRCApp(values, targetFolder) {
         console.log(`create-crc-app process exited with code ${code}`);
       } else {
         console.log(
-          `New console.redhat.ui has been created!\n\ncd into the ${targetFolder} directory and start coding!\n\n Please run "npm run patch:hosts" to enable development enviroment in your browser.\n\n Run "npm run dev" command to start development environment.`
+          `New console.redhat.ui has been created!\n\ncd into the ${targetFolder} directory and start coding!\n\n Please run "npm run patch:hosts" to enable development enviroment in your browser.\n\n Run "npm run dev" command to start development environment.`,
         );
       }
     });

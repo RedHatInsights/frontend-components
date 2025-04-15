@@ -37,7 +37,7 @@ describe('TableToolbar component', () => {
     const { container } = render(
       <TableToolbar results={1} selected={1}>
         Some
-      </TableToolbar>
+      </TableToolbar>,
     );
     expect(container).toMatchSnapshot();
   });

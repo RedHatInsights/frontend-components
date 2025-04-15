@@ -120,7 +120,7 @@ describe('FilterChips component', () => {
               },
             ],
           },
-        ]
+        ],
       );
       expect(onDelete).toHaveBeenCalledTimes(1);
     });

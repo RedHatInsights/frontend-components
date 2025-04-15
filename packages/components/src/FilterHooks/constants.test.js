@@ -101,7 +101,7 @@ describe('constructValues', () => {
           },
         },
       },
-      'namespace'
+      'namespace',
     );
     expect(result).toMatchObject([
       {
@@ -125,7 +125,7 @@ describe('constructValues', () => {
           },
         },
       },
-      'namespace'
+      'namespace',
     );
     expect(result).toMatchObject([
       {
@@ -146,7 +146,7 @@ describe('constructValues', () => {
           value: 'someValue',
         },
       },
-      'namespace'
+      'namespace',
     );
     expect(result).toMatchObject([
       {
@@ -169,7 +169,7 @@ describe('constructValues', () => {
           },
         },
       },
-      'namespace'
+      'namespace',
     );
     expect(result).toMatchObject([
       {
@@ -192,7 +192,7 @@ describe('constructValues', () => {
           },
         },
       },
-      'namespace'
+      'namespace',
     );
     expect(result.length).toBe(0);
     expect(result).toMatchObject([]);
