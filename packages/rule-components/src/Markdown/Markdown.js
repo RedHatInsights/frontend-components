@@ -47,7 +47,7 @@ const Markdown = ({ template, definitions }) => {
       />
     );
   } catch (error) {
-    console.warn(error, definitions, template); // eslint-disable-line no-console
+    console.warn(error, definitions, template);
     return (
       <React.Fragment>
         {' '}

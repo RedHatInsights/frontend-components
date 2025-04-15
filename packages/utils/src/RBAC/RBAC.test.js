@@ -593,7 +593,7 @@ describe('RBAC utilities', () => {
     });
     it('returns true for star permissions', () => {
       expect(
-        hasAllPermissions(['cost-management:rate:*', 'cost-management:*:write', '*:*:*', '*:*:write', 'some-app:*:*'], requiredPermissions)
+        hasAllPermissions(['cost-management:rate:*', 'cost-management:*:write', '*:*:*', '*:*:write', 'some-app:*:*'], requiredPermissions),
       ).toBe(true);
     });
     it('returns false for missing permissions', () => {

@@ -1,4 +1,4 @@
-/* global cy, Cypress */
+/* global cy */
 //to make Cypress commands available you need to initialize them in the file where you import them
 //import { findElementByOuiaId } from 'x';
 //findElementByOuiaId()

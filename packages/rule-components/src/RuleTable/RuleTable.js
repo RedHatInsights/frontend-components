@@ -67,7 +67,7 @@ class RuleTable extends Component {
               [deleteItem.type]: activefilter.filter((item) => item !== chipToDelete.value),
             },
           },
-          () => this.onUpdate()
+          () => this.onUpdate(),
         );
       } else {
         delete filterValues[deleteItem.type];
@@ -98,7 +98,7 @@ class RuleTable extends Component {
           [type]: value,
         },
       },
-      () => this.onUpdate(true)
+      () => this.onUpdate(true),
     );
   };
 
@@ -168,8 +168,8 @@ class RuleTable extends Component {
                 calculateActiveFilters(
                   filterItems.find(({ filterKey }) => filterKey === key),
                   value,
-                  key
-                )
+                  key,
+                ),
               )
               .filter(Boolean),
             onDelete: this.onFilterDelete,
@@ -197,24 +197,24 @@ class RuleTable extends Component {
                   ],
                 }))
               : data.length > 0
-              ? flatten(createRows(data, columns, expanded, detail)).filter(Boolean)
-              : [
-                  {
-                    heightAuto: true,
-                    cells: [
-                      {
-                        props: { colSpan: columns.length + Boolean(actions) },
-                        title: (
-                          <Bullseye>
-                            <EmptyState headingLevel="h2" icon={emptyStateIcon} titleText={<>{emptyStateTitle}</>} variant={EmptyStateVariant.sm}>
-                              <EmptyStateBody>{emptyStateDescription}</EmptyStateBody>
-                            </EmptyState>
-                          </Bullseye>
-                        ),
-                      },
-                    ],
-                  },
-                ]
+                ? flatten(createRows(data, columns, expanded, detail)).filter(Boolean)
+                : [
+                    {
+                      heightAuto: true,
+                      cells: [
+                        {
+                          props: { colSpan: columns.length + Boolean(actions) },
+                          title: (
+                            <Bullseye>
+                              <EmptyState headingLevel="h2" icon={emptyStateIcon} titleText={<>{emptyStateTitle}</>} variant={EmptyStateVariant.sm}>
+                                <EmptyStateBody>{emptyStateDescription}</EmptyStateBody>
+                              </EmptyState>
+                            </Bullseye>
+                          ),
+                        },
+                      ],
+                    },
+                  ]
           }
           {...(!isLoading && detail && data.length > 0 && { onCollapse: this.onCollapse })}
         >
@@ -240,7 +240,7 @@ RuleTable.propTypes = {
     data: PropTypes.arrayOf(
       PropTypes.shape({
         [PropTypes.string]: PropTypes.any,
-      })
+      }),
     ),
   }),
   isLoading: PropTypes.bool,
@@ -249,7 +249,7 @@ RuleTable.propTypes = {
       title: PropTypes.node,
       selector: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string), PropTypes.func]),
       disableSort: PropTypes.bool,
-    })
+    }),
   ),
   sort: PropTypes.string,
   emptyStateTitle: PropTypes.node,
@@ -262,7 +262,7 @@ RuleTable.propTypes = {
     PropTypes.shape({
       title: PropTypes.node,
       onClick: PropTypes.func,
-    })
+    }),
   ),
   sortBy: PropTypes.shape({
     index: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

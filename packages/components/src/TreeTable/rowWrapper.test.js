@@ -17,7 +17,7 @@ describe('TreeTable RowWrapper', () => {
           point: { size: 2 },
           posinset: 1,
         }}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -31,7 +31,7 @@ describe('TreeTable RowWrapper', () => {
           point: { size: 2 },
           posinset: 1,
         }}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });

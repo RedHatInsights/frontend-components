@@ -85,7 +85,7 @@ describe('ConditionalFilter', () => {
 
     it('should render correctly with config - each item as disabled', () => {
       const { container } = render(
-        <ConditionalFilter {...initialProps} items={config.map((item) => ({ ...item, filterValues: { ...item.filterValues, isDisabled: true } }))} />
+        <ConditionalFilter {...initialProps} items={config.map((item) => ({ ...item, filterValues: { ...item.filterValues, isDisabled: true } }))} />,
       );
       expect(container).toMatchSnapshot();
     });
@@ -292,7 +292,7 @@ describe('ConditionalFilter', () => {
           ],
         },
         'rhel-7',
-        'rhel-7'
+        'rhel-7',
       );
     });
   });

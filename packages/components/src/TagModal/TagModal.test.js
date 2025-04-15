@@ -13,7 +13,7 @@ describe('TagModal', () => {
           ['key', 'value'],
           ['thing', 'otherthing'],
         ]}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -22,7 +22,7 @@ describe('TagModal', () => {
     const { container } = render(
       <TagModal loaded isOpen={true} systemName={'paul.localhost.com'}>
         <h1>I am a child component</h1>
-      </TagModal>
+      </TagModal>,
     );
     expect(container).toMatchSnapshot();
   });
@@ -38,7 +38,7 @@ describe('TagModal', () => {
           ['thing', 'otherthing'],
         ]}
         onApply={jest.fn()}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -55,7 +55,7 @@ describe('TagModal', () => {
         ]}
         selected={['thing']}
         onApply={jest.fn()}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -70,7 +70,7 @@ describe('TagModal', () => {
           ['key', 'value'],
           ['thing', 'otherthing'],
         ]}
-      />
+      />,
     );
 
     screen.getByRole('heading', {
@@ -88,7 +88,7 @@ describe('TagModal', () => {
           ['key', 'value'],
           ['thing', 'otherthing'],
         ]}
-      />
+      />,
     );
 
     screen.getByRole('heading', {
@@ -106,7 +106,7 @@ describe('Two tables', () => {
         tabNames={['something', 'another']}
         rows={[[['something']], [['another']]]}
         columns={[[{ title: 'one' }], [{ title: 'two' }]]}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -120,7 +120,7 @@ describe('Two tables', () => {
         loaded={[true, true]}
         rows={[[['something']], [['another']]]}
         columns={[[{ title: 'one' }], [{ title: 'two' }]]}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -135,7 +135,7 @@ describe('Two tables', () => {
         rows={[[['something']], [['another']]]}
         columns={[[{ title: 'one' }], [{ title: 'two' }]]}
         onApply={jest.fn()}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -151,7 +151,7 @@ describe('Two tables', () => {
         columns={[[{ title: 'one' }], [{ title: 'two' }]]}
         selected={[['thing']]}
         onApply={jest.fn()}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });

@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider as ReactIntlProvider } from 'react-intl';
 import { LOCALSTORAGE_KEY } from '../utils';

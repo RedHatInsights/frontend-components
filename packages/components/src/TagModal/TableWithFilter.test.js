@@ -20,7 +20,7 @@ describe('TableWithFilter', () => {
             page: 1,
           }}
           onUpdateData={onUpdateData}
-        />
+        />,
       );
       expect(container).toMatchSnapshot();
     });
@@ -41,7 +41,7 @@ describe('TableWithFilter', () => {
             page: 1,
           }}
           onUpdateData={onUpdateData}
-        />
+        />,
       );
       expect(container).toMatchSnapshot();
     });
@@ -54,7 +54,7 @@ describe('TableWithFilter', () => {
           columns={[{ title: 'something' }]}
           filters={[{ type: 'text', something: '1' }]}
           onUpdateData={onUpdateData}
-        />
+        />,
       );
       expect(container).toMatchSnapshot();
     });
@@ -73,7 +73,7 @@ describe('TableWithFilter', () => {
           onUpdateData={onUpdateData}
           onSelect={onSelect}
           selected={[]}
-        />
+        />,
       );
       expect(container).toMatchSnapshot();
     });
@@ -94,7 +94,7 @@ describe('TableWithFilter', () => {
           onSelect={onSelect}
           calculateChecked={calculateChecked}
           selected={[]}
-        />
+        />,
       );
       expect(container).toMatchSnapshot();
       expect(calculateChecked).toHaveBeenCalled();

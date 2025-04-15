@@ -15,7 +15,7 @@ global.insights = {
         () =>
           new Promise((resolve) => {
             setTimeout(resolve, 1);
-          })
+          }),
       ),
       logout: jest.fn(),
     },

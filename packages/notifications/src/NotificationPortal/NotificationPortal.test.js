@@ -25,7 +25,7 @@ describe('Notification portal', () => {
       </Provider>,
       {
         container: document.body,
-      }
+      },
     );
     expect(document.body.innerHTML).toBe('');
   });
@@ -48,7 +48,7 @@ describe('Notification portal', () => {
       </Provider>,
       {
         container: document.body,
-      }
+      },
     );
     expect(container).toMatchSnapshot();
   });
@@ -71,7 +71,7 @@ describe('Notification portal', () => {
       </Provider>,
       {
         container: document.body,
-      }
+      },
     );
     expect(container).toMatchSnapshot();
   });
@@ -106,7 +106,7 @@ describe('Notification portal', () => {
       </Provider>,
       {
         container: document.body,
-      }
+      },
     );
     expect(container).toMatchSnapshot();
   });
@@ -129,7 +129,7 @@ describe('Notification portal', () => {
       </Provider>,
       {
         container: document.body,
-      }
+      },
     );
     container.querySelector('button').click();
     expect(modifiedStore.getActions()).toEqual([
@@ -158,7 +158,7 @@ describe('Notification portal', () => {
       </Provider>,
       {
         container: document.body,
-      }
+      },
     );
     container.querySelector('button').click();
     expect(dismiss).toHaveBeenCalledWith('store notification');
@@ -181,7 +181,7 @@ describe('Notification portal', () => {
       </Provider>,
       {
         container: document.body,
-      }
+      },
     );
     const paginationItems = container.querySelectorAll('.ins-c-pagination__clear-all');
     paginationItems[paginationItems.length - 1].click();

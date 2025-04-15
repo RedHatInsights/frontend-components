@@ -16,7 +16,7 @@ describe('CullingInformation', () => {
     const { container } = render(
       <CullingInformation stale={staleDate} currDate={currdate} culled={cullDate} staleWarning={warningDate}>
         Some children
-      </CullingInformation>
+      </CullingInformation>,
     );
     expect(container).toMatchSnapshot();
   });
@@ -25,7 +25,7 @@ describe('CullingInformation', () => {
     const { container } = render(
       <CullingInformation stale={staleDate} currDate={currdate} culled={currdate} staleWarning={warningDate}>
         Some children
-      </CullingInformation>
+      </CullingInformation>,
     );
     expect(container).toMatchSnapshot();
   });
@@ -34,7 +34,7 @@ describe('CullingInformation', () => {
     const { container } = render(
       <CullingInformation stale={staleDate} culled={cullDate} staleWarning={warningDate} currDate={new Date('Tue Jan 28 2020')}>
         Some children
-      </CullingInformation>
+      </CullingInformation>,
     );
     expect(container).toMatchSnapshot();
   });
@@ -43,7 +43,7 @@ describe('CullingInformation', () => {
     const { container } = render(
       <CullingInformation stale={staleDate} culled={cullDate} staleWarning={warningDate} currDate={new Date('Tue Jan 21 2020')}>
         Some children
-      </CullingInformation>
+      </CullingInformation>,
     );
     expect(container).toMatchSnapshot();
   });

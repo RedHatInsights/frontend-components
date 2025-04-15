@@ -1,7 +1,0 @@
-{
-  "extends": ["../../.eslintrc.js"],
-  "ignorePatterns": ["!**/*", "**/*.yaml"],
-  "rules": {
-    "@typescript-eslint/no-var-requires": "off"
-  }
-}

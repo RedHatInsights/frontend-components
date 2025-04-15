@@ -1,3 +1,4 @@
+import React from 'react';
 import { render } from '@testing-library/react';
 
 import IntlProvider from './Provider';
@@ -6,7 +7,7 @@ describe('provider', () => {
     const { container } = render(
       <IntlProvider>
         <div>Test</div>
-      </IntlProvider>
+      </IntlProvider>,
     );
     expect(container).toMatchSnapshot();
   });
@@ -16,7 +17,7 @@ describe('provider', () => {
       const { container } = render(
         <IntlProvider messages={{ 'some.msg': 'Message' }}>
           <div>Test</div>
-        </IntlProvider>
+        </IntlProvider>,
       );
       expect(container).toMatchSnapshot();
     });
@@ -35,7 +36,7 @@ describe('provider', () => {
         const { container } = render(
           <IntlProvider messages={translations}>
             <div>Test</div>
-          </IntlProvider>
+          </IntlProvider>,
         );
         expect(container).toMatchSnapshot();
       });
@@ -44,7 +45,7 @@ describe('provider', () => {
         const { container } = render(
           <IntlProvider messages={translations} locale="cs">
             <div>Test</div>
-          </IntlProvider>
+          </IntlProvider>,
         );
         expect(container).toMatchSnapshot();
       });
