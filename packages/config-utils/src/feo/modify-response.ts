@@ -1,5 +1,5 @@
 import fecLogger, { LogType } from '../fec-logger';
-import { matchNavigationRequest, matchSearchIndexRequest, matchServiceTilesRequest, matchModulesRequest} from './check-outgoing-requests';
+import { matchModulesRequest, matchNavigationRequest, matchSearchIndexRequest, matchServiceTilesRequest } from './check-outgoing-requests';
 import { ChromeModuleRegistry, ChromeStaticSearchEntry, FrontendCRD, GeneratedBundles, ServicesTilesResponseEntry } from './feo-types';
 import moduleInterceptor from './module-interceptor';
 import navigationInterceptor from './navigation-interceptor';
