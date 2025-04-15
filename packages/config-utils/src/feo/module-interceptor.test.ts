@@ -1,3 +1,4 @@
+import jsVarName from '../jsVarName';
 import { ChromeModule, ChromeModuleRegistry, FrontendCRD } from './feo-types';
 import moduleInterceptor from './module-interceptor';
 
@@ -24,12 +25,12 @@ describe('module-interceptor', () => {
       ],
     };
     const remoteModuleRegistry: ChromeModuleRegistry = {
-      [moduleName]: {
+      [jsVarName(moduleName)]: {
         manifestLocation: 'old-location',
       },
     };
     const expectedResult: ChromeModuleRegistry = {
-      [moduleName]: newEntry,
+      [jsVarName(moduleName)]: newEntry,
     };
 
     const result = moduleInterceptor(remoteModuleRegistry, frontendCRD);
@@ -60,7 +61,7 @@ describe('module-interceptor', () => {
     const remoteModuleRegistry: ChromeModuleRegistry = {};
 
     const expectedResult: ChromeModuleRegistry = {
-      [moduleName]: newEntry,
+      [jsVarName(moduleName)]: newEntry,
     };
 
     const result = moduleInterceptor(remoteModuleRegistry, frontendCRD);
