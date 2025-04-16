@@ -6,6 +6,7 @@ require('@testing-library/jest-dom');
 const { expect } = require('@jest/globals');
 const matchers = require('@testing-library/jest-dom/dist/matchers');
 const MutationObserver = require('mutation-observer');
+const crypto = require('crypto');
 
 // ensure the expect is picked up from jest not cypress
 global.expect = expect;
@@ -14,6 +15,15 @@ global.expect.extend(matchers);
 global.SVGPathElement = function () {};
 // real MutationObserver polyfill for JSDOM
 global.MutationObserver = MutationObserver;
+
+// Crypto object polyfill for JSDOM
+global.window.crypto = {
+  ...crypto,
+}
+// in case the cryto package is mangled and the method does not exist
+if(!global.window.crypto.randomUUID) {
+  global.window.crypto.randomUUID = () => Date.now().toString(36) + Math.random().toString(36).slice(2);
+}
 
 
 

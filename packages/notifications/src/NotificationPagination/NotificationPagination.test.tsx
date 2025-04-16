@@ -1,4 +1,3 @@
-import React from 'react';
 import NotificationPagination from './NotificationPagination';
 import { act, render, screen } from '@testing-library/react';
 
