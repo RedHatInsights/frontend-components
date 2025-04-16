@@ -1,7 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { Alert, AlertActionCloseButton, AlertProps, Content, ContentVariants } from '@patternfly/react-core';
-import { CloseIcon } from '@patternfly/react-icons';
+import { Alert } from '@patternfly/react-core/dist/dynamic/components/Alert';
+import { AlertActionCloseButton } from '@patternfly/react-core/dist/dynamic/components/Alert';
+import { AlertProps } from '@patternfly/react-core/dist/dynamic/components/Alert';
+import { Content } from '@patternfly/react-core/dist/dynamic/components/Content';
+import { ContentVariants } from '@patternfly/react-core/dist/dynamic/components/Content';
 import './notification.scss';
+import { NotificationID } from '../state';
 
 export interface NotificationProps {
   /**
@@ -15,11 +19,11 @@ export interface NotificationProps {
   /**
    * Function called after dismiss action is triggered. (id) => void
    */
-  onDismiss: (id: number | string) => void;
+  onDismiss: (id: NotificationID) => void;
   /**
    * Unique ID
    */
-  id: number | string;
+  id: NotificationID;
   /**
    * Alert variant. <a href="https://www.patternfly.org/v4/components/alert#types" target="_blank">More info.</a>
    */
@@ -98,13 +102,7 @@ const Notification: React.ComponentType<NotificationProps> = ({
       id={`${id}`}
       title={typeof title === 'string' ? title.replace(/<\/?[^>]+(>|$)/g, '') : title}
       {...rest}
-      actionClose={
-        dismissable ? (
-          <AlertActionCloseButton aria-label="close-notification" variant="plain" onClick={handleDismiss}>
-            <CloseIcon />
-          </AlertActionCloseButton>
-        ) : null
-      }
+      actionClose={dismissable ? <AlertActionCloseButton aria-label="close-notification" variant="plain" onClick={handleDismiss} /> : null}
       onMouseEnter={clearDismissTimeout}
       onMouseLeave={setDismissTimeout}
     >
