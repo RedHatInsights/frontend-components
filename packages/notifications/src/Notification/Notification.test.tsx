@@ -1,14 +1,14 @@
-import React from 'react';
-import { act } from 'react-dom/test-utils';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import Notification, { NotificationProps } from './Notification';
-import { AlertVariant } from '@patternfly/react-core';
+import { AlertVariant } from '@patternfly/react-core/dist/dynamic/components/Alert';
 import userEvent from '@testing-library/user-event';
 
 describe('Notification component', () => {
   let initialProps: NotificationProps;
   beforeEach(() => {
     initialProps = {
+      // We need a deterministic string, not random UUID
+      // @ts-ignore
       id: 'Foo',
       title: 'Bar',
       description: 'description',

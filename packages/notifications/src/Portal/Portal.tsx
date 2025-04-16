@@ -6,9 +6,10 @@ import NotificationPagination from '../NotificationPagination';
 import { AlertProps } from '@patternfly/react-core/dist/dynamic/components/Alert';
 
 import './portal.scss';
+import { NotificationID } from '../state';
 
 export type PortalNotificationConfig = {
-  id: string | number;
+  id: NotificationID;
   title: React.ReactNode;
   variant: AlertProps['variant'];
   description?: React.ReactNode;
@@ -17,7 +18,7 @@ export type PortalNotificationConfig = {
 
 export interface PortalProps {
   notifications?: PortalNotificationConfig[];
-  removeNotification?: (id: number | string) => void;
+  removeNotification?: (id: NotificationID) => void;
   onClearAll?: () => void;
   rootId?: string;
 }
@@ -44,7 +45,7 @@ const Portal: React.ComponentType<PortalProps> = ({ notifications = [], removeNo
             <NotificationPagination onSetPage={onSetPage} count={notifications.length} page={page} onClearAll={onClearAll} />
           )}
           {slicedNotifications.map((props) => (
-            <Notification onDismiss={removeNotification} key={`${props.id}`} {...props} />
+            <Notification onDismiss={removeNotification} key={props.id} {...props} />
           ))}
         </div>,
         rootId ? document.getElementById(rootId) || document.body : document.body
