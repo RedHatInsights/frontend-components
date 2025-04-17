@@ -26,6 +26,7 @@ export declare type PDFRequestPayload = {
   module: string;
   importName?: string;
   fetchDataParams?: Record<string, any>;
+  additionalData?: Record<string, any>;
 };
 
 export declare type PDFRequestOptions = {
