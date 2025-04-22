@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-2.0.0...@redhat-cloud-services/types-2.0.1) (2025-04-22)
+
+
+### Bug Fixes
+
+* including additionalData param ([607818e](https://github.com/RedHatInsights/frontend-components/commit/607818eccff857f52ad79b593fd625b7b4f6bc97))
+
 ## [2.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-1.0.24...@redhat-cloud-services/types-2.0.0) (2025-03-05)
 
 
