@@ -14,13 +14,13 @@ describe('FilterInput component', () => {
         type="radio"
         value="value"
         filters={{ param: 'value' }}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
   it('should render a checkbox input', () => {
     const { container } = render(
-      <FilterInput aria-label="label" id="id" label="label" addRemoveFilters={jest.fn()} param="param" type="checkbox" value="value" />
+      <FilterInput aria-label="label" id="id" label="label" addRemoveFilters={jest.fn()} param="param" type="checkbox" value="value" />,
     );
     expect(container).toMatchSnapshot();
   });

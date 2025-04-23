@@ -139,7 +139,6 @@ describe('PrimaryToolbar', () => {
     });
 
     it('wrong actionsConfig', () => {
-      // eslint-disable-next-line no-unused-vars
       const { actionsConfig, ...rest } = config;
       const { container } = render(<PrimaryToolbar {...rest} />);
       expect(container).toMatchSnapshot();

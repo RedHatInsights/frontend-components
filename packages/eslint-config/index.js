@@ -1,37 +1,55 @@
+const globals = require('globals');
+const { defineConfig } = require('eslint/config');
+const reactPlugin = require('eslint-plugin-react');
 const rulesDirPlugin = require('eslint-plugin-rulesdir');
+const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+const babelParser = require('@babel/eslint-parser');
 const path = require('path');
 rulesDirPlugin.RULES_DIR = path.resolve(__dirname, './lib/rules');
 
-module.exports = {
-  parser: '@babel/eslint-parser',
-  env: {
-    browser: true,
-    node: true,
-    es6: true,
-    jasmine: true,
-    jest: true,
+// fix bad global names
+const patchedBrowserGlobals = {
+  ...globals.browser,
+};
+// Fixes issues with version mismatch between eslint-plugin-react and eslint
+// https://github.com/sindresorhus/globals/pull/184
+delete patchedBrowserGlobals['AudioWorkletGlobalScope '];
+patchedBrowserGlobals['AudioWorkletGlobalScope'] = 'readonly';
+
+module.exports = defineConfig(eslintPluginPrettierRecommended, reactPlugin.configs.flat.recommended, {
+  plugins: {
+    rulesdir: rulesDirPlugin,
   },
   settings: {
     react: {
       version: 'detect',
     },
   },
-  plugins: ['prettier', 'rulesdir'],
-  extends: ['eslint:recommended', 'prettier', 'plugin:prettier/recommended', 'plugin:react/recommended'],
   rules: {
     'no-unused-vars': ['error', { ignoreRestSiblings: true }],
     'prettier/prettier': ['error', { singleQuote: true }],
     'rulesdir/disallow-fec-relative-imports': 2,
     'rulesdir/deprecated-packages': 1,
     'rulesdir/no-chrome-api-call-from-window': 2,
-    'rulesdir/forbid-pf-relative-imports': 1,
     'rulesdir/disallow-pf-migrated-components': 1,
   },
-  globals: {
-    CRC_APP_NAME: 'readonly',
+  languageOptions: {
+    globals: {
+      ...patchedBrowserGlobals,
+      ...globals.node,
+      ...globals.jasmine,
+      ...globals.jest,
+      ...globals.es6,
+      CRC_APP_NAME: 'readonly',
+    },
+    parser: babelParser,
+    parserOptions: {
+      requireConfigFile: false,
+      ecmaVersion: 7,
+      sourceType: 'module',
+      babelOptions: {
+        presets: ['@babel/preset-react'],
+      },
+    },
   },
-  parserOptions: {
-    ecmaVersion: 7,
-    sourceType: 'module',
-  },
-};
+});

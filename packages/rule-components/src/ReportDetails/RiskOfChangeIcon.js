@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
 import PropTypes from 'prop-types';
 import { SecurityIcon } from '@patternfly/react-icons/dist/dynamic/icons/security-icon';
 
@@ -44,6 +44,7 @@ function RiskOfChangeIcon({ value, ...props }) {
   const label = riskOfChangeMeta[value - 1] && riskOfChangeMeta[value - 1].label;
   return (
     <div className={`ins-c-rule__battery battery ins-c-rule__severity-level-${value}`}>
+      {/* eslint-disable-next-line react/no-unknown-property */}
       <i widget-type="InsightsBattery" widget-id={label} {...props}>
         <SecurityIcon className="ins-c-risk-of-change__icon" />
       </i>

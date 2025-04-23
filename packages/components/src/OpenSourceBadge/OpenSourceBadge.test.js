@@ -15,7 +15,7 @@ describe('OpenSourceBadge component', () => {
       userEvent.click(
         screen.getByRole('button', {
           name: /about open services/i,
-        })
+        }),
       );
       await screen.findByRole('dialog', {
         name: /about open source/i,

@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import { Title } from '@patternfly/react-core/dist/dynamic/components/Title';
 import { TitleProps } from '@patternfly/react-core/dist/dynamic/components/Title';
-// eslint-disable-next-line rulesdir/forbid-pf-relative-imports
 import { useOUIAId } from '@patternfly/react-core';
 import { Flex } from '@patternfly/react-core/dist/dynamic/layouts/Flex';
 import { FlexItem } from '@patternfly/react-core/dist/dynamic/layouts/Flex';

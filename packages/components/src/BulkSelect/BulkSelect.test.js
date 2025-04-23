@@ -21,7 +21,7 @@ describe('BulkSelect', () => {
           },
         ]}
         id="some-id"
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -35,7 +35,7 @@ describe('BulkSelect', () => {
             onClick: jest.fn(),
           },
         ]}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -50,7 +50,7 @@ describe('BulkSelect', () => {
           },
         ]}
         checked={null}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -71,7 +71,7 @@ describe('BulkSelect', () => {
             onClick: jest.fn(),
           },
         ]}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -95,7 +95,7 @@ describe('BulkSelect', () => {
             },
           ]}
           onSelect={onSelect}
-        />
+        />,
       );
       await act(async () => {
         await userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
@@ -113,7 +113,7 @@ describe('BulkSelect', () => {
               onClick: jest.fn(),
             },
           ]}
-        />
+        />,
       );
       await act(async () => {
         await userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
@@ -136,7 +136,7 @@ describe('BulkSelect', () => {
             },
           ]}
           onSelect={onSelect}
-        />
+        />,
       );
       await act(async () => {
         await userEvent.click(screen.getByRole('checkbox', { name: 'Select all' }));
@@ -160,7 +160,7 @@ describe('BulkSelect', () => {
             },
           ]}
           isDisabled={true}
-        />
+        />,
       );
       expect(screen.getByRole('button', { expanded: false })).toBeDisabled();
     });
@@ -177,7 +177,7 @@ describe('BulkSelect', () => {
           toggleProps={{
             children: ['10 selected'],
           }}
-        />
+        />,
       );
 
       expect(screen.getByRole('button', { name: '10 selected' })).toBeInTheDocument();

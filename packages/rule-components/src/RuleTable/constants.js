@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 export const severity = {
   low: 'Low',
   moderate: 'Moderate',

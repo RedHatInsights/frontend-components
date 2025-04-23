@@ -146,7 +146,7 @@ describe('Group - component', () => {
             showMoreOptions={{
               variant: 'default',
             }}
-          />
+          />,
         );
         expect(container).toMatchSnapshot();
       });
@@ -161,7 +161,7 @@ describe('Group - component', () => {
                 className: 'some-test-class',
               },
             }}
-          />
+          />,
         );
         expect(container).toMatchSnapshot();
       });
@@ -203,7 +203,7 @@ describe('Group - component', () => {
             },
             ...groups,
           ]}
-        />
+        />,
       );
       expect(container).toMatchSnapshot();
     });

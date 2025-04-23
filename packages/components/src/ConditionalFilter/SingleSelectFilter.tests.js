@@ -8,7 +8,6 @@ const items = [
   { value: 'op2', label: 'option 2' },
   { value: 'op3', label: 'option 3' },
 ];
-const filterId = 'my-filter';
 const setFilterData = jest.fn();
 
 describe('SingleSelectFilter component', () => {
@@ -19,8 +18,8 @@ describe('SingleSelectFilter component', () => {
       userEvent.click(
         screen.getByRole('button', {
           name: /option 1/i,
-        })
-      )
+        }),
+      ),
     );
 
     const option1 = screen.getByRole('option', {
@@ -36,17 +35,17 @@ describe('SingleSelectFilter component', () => {
     expect(
       within(option1).getByRole('img', {
         hidden: true,
-      })
+      }),
     ).toBeTruthy();
     expect(
       within(option2).queryByRole('img', {
         hidden: true,
-      })
+      }),
     ).toBeFalsy();
     expect(
       within(option3).queryByRole('img', {
         hidden: true,
-      })
+      }),
     ).toBeFalsy();
 
     await waitFor(() => userEvent.click(option2));

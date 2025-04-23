@@ -59,7 +59,7 @@ describe('Notifications middleware', () => {
               detail: 'Longer detailed description of error message',
             },
           ],
-        })
+        }),
       )
       .catch(() => {
         expect(initialProps.store.getActions()).toEqual(expectedActions);
@@ -92,7 +92,7 @@ describe('Notifications middleware', () => {
             title: 'Error',
             detail: 'Longer detailed description of error message',
           },
-        ])
+        ]),
       )
       .catch(() => {
         expect(initialProps.store.getActions()).toEqual(expectedActions);
@@ -527,7 +527,7 @@ describe('Notifications middleware', () => {
         requestMock(true, {
           fooKey: 'Second title option',
           barKey: 'Second description option',
-        })
+        }),
       )
       .catch(() => {
         expect(store.getActions()).toEqual(expectedActions);
@@ -565,7 +565,7 @@ describe('Notifications middleware', () => {
           title: 'Title',
           description: 'Description',
           sentryId: 'some-sentry-UUID',
-        })
+        }),
       )
       .catch(() => {
         expect(store.getActions()).toEqual(expectedActions);

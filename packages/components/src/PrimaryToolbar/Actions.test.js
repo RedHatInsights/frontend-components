@@ -67,7 +67,7 @@ describe('Actions - component', () => {
               },
             },
           ]}
-        />
+        />,
       );
       screen.getByText('some label').click();
       expect(onClick).toHaveBeenCalled();

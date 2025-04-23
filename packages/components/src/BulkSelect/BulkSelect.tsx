@@ -1,6 +1,5 @@
 import React, { Fragment, useRef, useState } from 'react';
 import classnames from 'classnames';
-// eslint-disable-next-line rulesdir/forbid-pf-relative-imports
 import {
   Checkbox,
   Dropdown,
