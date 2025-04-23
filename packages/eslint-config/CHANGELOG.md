@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/eslint-config-redhat-cloud-services-2.0.12...@redhat-cloud-services/eslint-config-redhat-cloud-services-3.0.0) (2025-04-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint:** upgrade eslint package to version 9
+
+### Miscellaneous Chores
+
+* **eslint:** upgrade eslint package to version 9 ([20d606b](https://github.com/RedHatInsights/frontend-components/commit/20d606b23b99ff5cb3a798f20043b177f96a99cc))
+
 ## [2.0.12](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/eslint-config-redhat-cloud-services-2.0.11...@redhat-cloud-services/eslint-config-redhat-cloud-services-2.0.12) (2025-01-28)
 
 ## [2.0.11](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/eslint-config-redhat-cloud-services-2.0.10...@redhat-cloud-services/eslint-config-redhat-cloud-services-2.0.11) (2025-01-28)
