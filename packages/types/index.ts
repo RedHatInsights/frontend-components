@@ -167,7 +167,9 @@ export interface ChromeAPI {
   auth: {
     doOffline?: () => void;
     getOfflineToken: () => Promise<any>;
+    /** @deprecated Use the refreshToken property instead */
     getRefreshToken: () => Promise<string>;
+    /** @deprecated Use the token property instead */
     getToken: () => Promise<string | undefined>;
     getUser: () => Promise<ChromeUser | void>;
     login: () => Promise<any>;
@@ -175,6 +177,8 @@ export interface ChromeAPI {
     /** @deprecated will be removed from useChrome hook */
     qe: any;
     reAuthWithScopes: (...scopes: string[]) => Promise<void>;
+    token: string;
+    refreshToken: string;
   };
   createCase: (fields: Record<string, unknown>) => void;
   enable: {
