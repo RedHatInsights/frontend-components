@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-2.0.2...@redhat-cloud-services/types-2.0.3) (2025-04-28)
+
+
+### Bug Fixes
+
+* **types:** add tokens to chrome API ([#2203](https://github.com/RedHatInsights/frontend-components/issues/2203)) ([6620aec](https://github.com/RedHatInsights/frontend-components/commit/6620aecdfa61b8b3e642ab4a516be2f44ae56ebf))
+
 ## [2.0.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-2.0.1...@redhat-cloud-services/types-2.0.2) (2025-04-23)
 
 ## [2.0.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-2.0.0...@redhat-cloud-services/types-2.0.1) (2025-04-22)
