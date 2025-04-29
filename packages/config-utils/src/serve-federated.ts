@@ -7,8 +7,6 @@ import { LogType, fecLogger } from '.';
 
 function federate(argv: Record<string, any>, cwd: string) {
   let configPath: string = argv.config || './node_modules/@redhat-cloud-services/frontend-components-config/bin/prod.webpack.config.js';
-  const WEBPACK_PATH = path.resolve(cwd, './node_modules/.bin/webpack');
-  const HTTP_SERVER_PATH = path.resolve(cwd, './node_modules/.bin/http-server');
   if (typeof configPath !== 'string') {
     console.error('Invalid webpack config path!');
     process.exit(1);
@@ -53,8 +51,8 @@ function federate(argv: Record<string, any>, cwd: string) {
       const outputPath = config.output.path;
 
       concurrently([
-        `${WEBPACK_PATH} --config ${configPath} --watch --output-path ${path.join(outputPath, cdnPath)}`,
-        `${HTTP_SERVER_PATH} ${outputPath} -p ${argv.port || 8003} -c-1 -a :: --cors=*`,
+        `npm exec -- webpack --config ${configPath} --watch --output-path ${path.join(outputPath, cdnPath)}`,
+        `npm exec -- http-server ${outputPath} -p ${argv.port || 8003} -c-1 -a :: --cors=*`,
       ]);
     });
   } catch (error) {
