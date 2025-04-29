@@ -1,46 +1,41 @@
 # Notifications
 
-This is a global notifications component, with defined PF4 styling. Notifications are controlled via Redux. There is also a redux middleware, that includes for custom async actions notifications.
+> This doc is for version 6. If you want to migrate to v6 check the [migration doc](./migration.md).
+If you want the old documentation [check this link](https://github.com/RedHatInsights/frontend-components/blob/pf4%405/packages/notifications/doc/notifications.md).
+
+This is a global notifications component, with defined PF styling.
 
 ## Basic notifications usage
 
-Add `NotificationsPortal` component and add `notifications` reducer to your store (in the example below is used the insings redux registry).
+Add `NotificationsProvider` component to the top of your application
 
 ```JSX
 import React, { Fragment } from 'react'
-import { Provider } from 'react-redux'
-import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/Registry';
-import NotificationsPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationsPortal';
-import { notificationsReducer } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import NotificationsProvider from '@redhat-cloud-services/frontend-components-notifications/NotificationsProvider';
 
-const registry = getRegistry()
-registry.register({ notifications: notificationsReducer })
 
 const App = () => (
-  <Provider store={registry.getStore()}>
-    <Fragment>
-        <NotificationsPortal />
-    </Fragment>
-  </Provider>
+  <NotificationsProvider>
+    <Component />
+  </NotificationsProvider>
 )
 ```
 
-To add notifications, you can simply dispatch `addNotification` action somewhere in your app.
+To add notifications, you can call `useAddNotification` hook to add a function to add new notification.
 
 ```JSX
 import React from 'react';
-import { useDispatch } from 'react-redux'
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications/hooks';
 
 const MagicButton = ({ addNotification }) => {
-  const dispatch = useDispatch()
+  const addNotification = useAddNotification()
   return (
     <button
-        onClick={() => dispatch(addNotification({
+        onClick={() => addNotification({
           variant: 'success',
           title: 'Notification title',
           description: 'notification description'
-        }))}
+        })}
     >
       Add notification
     </button>
@@ -52,7 +47,7 @@ export default MagicButton
 ```
 
 ## Notification options
-Visuals for notifications are defined by Patternfly-4. You can check the [patternfly-react#alert](http://patternfly-react.surge.sh/patternfly-4/components/alert).
+Visuals for notifications are defined by Patternfly-4. You can check the [patternfly-react#alert](https://www.patternfly.org/components/alert).
 We provide additional options, that can help you control your notifications
 ```javascript
 {
@@ -65,223 +60,78 @@ We provide additional options, that can help you control your notifications
 }
 ```
 
-### Notifications actions
+### Notifications state API
 
-There are 3 supported actions for notifications:
+There are 3 supported API functions for notifications:
 - addNotifications: adds new notification
 - removeNotification: removes notifications. It requires notification ID
 - clearNotifications: removes all notifications
 
 in most of the cases you should be fine with just `addNotification` and `clearNotifications`. We advise not to use `removeNotification` and use default behaviour.
 
-```javascript
-import { addNotification, removeNotification, clearNotificationsaddNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
-```
+```jsx
+import { useNotifications } from '@redhat-cloud-services/frontend-components-notifications/hooks';
 
-You can also acces the action types for these actions.
-```javascript
-import { ADD_NOTIFICATION, REMOVE_NOTIFICATION, CLEAR_NOTIFICATIONS } from '@redhat-cloud-services/frontend-components-notifications/redux';
-```
+const Cmp = () => {
+  const { addNotification, removeNotification, clearNotifications, notifications } = useNotifications();
 
-## Notifications middleware
-We also support automatic notifications control for redux async actions. Insights are using [redux-promise-middleware](https://github.com/pburtchaell/redux-promise-middleware) for async actions, so the middleware is built for that, but can be modified.
-
-Promise middleware adds 3 stages for each async action:
-```javascript
-type: 'FOO_PENDING',
-type: 'FOO_FULFILLED',
-type: 'FOO_REJECTED'
-```
-
-Notifications middleware is checking actions for these suffixes and if defined, it will create a notification.
-
-### Configuration.
-Like in the basic example, you must add your reducer and notifications container. On to of that, you must add the middleware to your store:
-
-```JSX
-import promiseMiddleware from 'redux-promise-middleware'
-import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/Registry';
-import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/notificationsMiddleware';
-import notificationsReducer from '@redhat-cloud-services/frontend-components-notifications/redux';
-
-const registry = getRegistry({}, [promiseMiddleware(), notificationsMiddleware()]);
-registry.register({ notifications: notificationsReducer })
-
-// rest of the config is the same as in basic example
-
-```
-
-Note: make sure that you add the notifications middleware after the promise middleware. Order does matter! That is how redux middleware works.
-
-After this, the middleware will automatically dispatch actions, if your promise is rejected.
-
-### Define notifications for actions
-
-Now you can add additional informations to your actions, where you can define what notification will show, per action stage.
-
-You can add meta object with notifications property. In there you define your notifications. Notification object has the same attributes as in examplse above.
-
-```javascript
-export const asyncAction = data => ({
-  type: 'FOO',
-  payload: asyncHandler(data) // this function must return promise
-  meta: {
-    notifications: {
-      pending: {
-        variant: 'info',
-        title: 'Request is pending',
-      },
-      fulfilled: {
-        variant: 'success',
-        title: 'Request is done',
-      },
-      rejected: {
-        variant: 'danger',
-        title: 'Request has failed',
-      },
-    }
-  }
-})
-```
-
-As you can see, you have 3 action stages avaiable:
-
-- pending
-  - this notification is send right after you create the request
-- fulfilled
-  - this one si created once the promise is resolved
-- rejected
-  - this one si created if the promise is rejected
-  - overrides the default error notification
-
-All of these are optional. You can use none, or all of them.
-
-### Customization
-
-There are several configuration options, that will apply on all notifications (can be ovveriden in action definition).
-
-Configuration options:
-
-```javascript
-defaultOptions = {
-  dispatchDefaultFailure: true, // automatic error notifications
-  pendingSuffix: '_PENDING', // pending state action suffix
-  fulfilledSuffix: '_FULFILLED', // fulfilled state action suffix
-  rejectedSuffix: '_REJECTED', // rejected state action suffix
-  autoDismiss: true,  // autoDismiss pending and success notifications
-  dismissDelay: 5000,  // autoDismiss delay in ms
-  errorTitleKey: 'title', // path to notification title in error response
-  errorDescriptionKey: 'detail' // path to notification description in error response
-}
-
-const registry = new ReducerRegistry({}, [..., notificationsMiddleware({...defaultOptions})]);
-
-```
-
-**Some useful options**
-
-1. Turning off automatic error notifications
-This will turn of error notifications globally. But you can still define error notification in async action.
-
-```javascript
-notificationsMiddleware({ dispatchDefaultFailure: false })
-```
-
-2. Turn off error notification only for specific action, you can do following:
-
-```javascript
-// some async action
-export const asyncAction = data => ({
-  type: 'FOO',
-  payload: asyncHandler(data) // this function must return promise
-  meta: {
-    noError: true, // turns of automatic notification
-    notifications: {
-      fulfilled: {
-        variant: 'success',
-        title: 'Request is done',
-      },
-    }
-  }
-})
-```
-
-Note that if use noError: true flag, custom error notification will be still dispatched if defined.
-
-2. Specify text of automatic error notification.
-
-Currently there is no unified format for error API responses (there is a candidate: https://jsonapi.org/format/#fetching-pagination, but that can change).So you can specify, where is your error title and description.
-
-
-Lets say we have this response format:
-
-```javascript
-// error response format
-{
-  body: {
-    heading: 'Some error title',
-    description: 'Some error description'
-  }
-}
-```
-We can configure middleware to accept it:
-
-```javascript
-notificationsMiddleware({
-  errorTitleKey: 'body.heading',
-  errorDescriptionKey: 'body.description',
-})
-```
-
-
-There might be also an situation when different APIs returns different error responses. You can configure multiple key paths to your error message.
-
-Lets say that our two endpoints have different error response structures:
-
-```javascript
-// Endpoint A
-{
-  errorTitle: 'Error',
-  errorDescription: 'Description'
-}
-// Endpoint B
-{
-  error: {
-    title: 'Error',
-    description: 'Description'
-  }
+  return (
+    ...
+  )
 }
 ```
 
-We can tell the middleware that it should look for different keys in response:
+### using notifications store outside of React context
 
-```javascript
-notificationsMiddleware({
-  errorTitleKey: ['errorTitle', 'error.title'],
-  errorDescriptionKey: ['errorDescription', 'error.description'],
-})
+In case you need to access the notifications API outside a React component,  you can create a custom notification store and cal it in any JS code. In order to link this custom store and your React components, this custom store has to be passed a prop to your `NotificationsProvider`.
+
+```jsx
+import { createStore } from '@redhat-cloud-services/frontend-components-notifications/state';
+import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications/hooks';
+
+const store = createStore()
+
+const Child = () => {
+  const addNotification = useAddNotification()
+
+  return (
+    <button onClick={() => {
+      // call from React context
+      addNotification({
+        // ...
+      })
+      // call directly the store
+      store.addNotification({
+        // ...
+      })
+    }}>Add notification</button>
+  )
+}
+
+const AppRoot = () => {
+  return (
+    <NotificationsProvider store={store}>
+      <Child />
+    </NotificationsProvider>
+  )
+}
 ```
 
-If you happen to have an error response that matches more paths, the first match will be chosen (order is equal to the order of items in array).
+## Testing setup
 
-3. More notification object customization.
-You can pass a function as a value to `notifications`. The function will receive dispatched action's payload and it's expected to return a notification object.
+This package uses the [`crypto`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto) Api to generate IDs for the notification items. Some environments, including JSDom use for jest testing might not include this API. You can mock it in your jest setup test file:
 
-```javascript
-// some async action
-export const asyncAction = data => ({
-  type: 'FOO',
-  payload: asyncHandler(data) // this function must return promise
-  meta: {
-    notifications: {
-      rejected: (payload) => ({ // transform payload to a notification object
-          variant: 'danger',
-          title: 'Custom title',
-          dismissDelay: 8000,
-          dismissable: false,
-          description: payload.error
-      }),
-    }
-  }
-})
+```js
+const crypto = require('crypto');
+
+// Crypto object polyfill for JSDOM
+global.window.crypto = {
+  ...crypto,
+}
+// in case the crypto package is mangled or the method does not exist
+if(!global.window.crypto.randomUUID) {
+  global.window.crypto.randomUUID = () => Date.now().toString(36) + Math.random().toString(36).slice(2);
+}
 ```
+
+The format of the return value is not important. It has to be unique.
