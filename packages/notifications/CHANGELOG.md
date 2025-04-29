@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-5.0.7...@redhat-cloud-services/frontend-components-notifications-6.0.0) (2025-04-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **notifications:** remove redux dependency from notifications package
+
+### Features
+
+* **notifications:** remove redux dependency from notifications package ([bcb0074](https://github.com/RedHatInsights/frontend-components/commit/bcb0074fa81cf1b1ed64fa4fc619ed74de3cd1ab))
+
 ## [5.0.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-5.0.6...@redhat-cloud-services/frontend-components-notifications-5.0.7) (2025-04-28)
 
 ### Dependency Updates
