@@ -7,6 +7,7 @@ import waitOn from 'wait-on';
 const CONTAINER_PORT = 8000;
 const CONTAINER_NAME = 'fec-chrome-local';
 const IMAGE_REPO = 'quay.io/redhat-services-prod/hcc-platex-services-tenant/insights-chrome';
+const IMAGE_REPO_DEV = 'quay.io/redhat-services-prod/hcc-platex-services-tenant/insights-chrome-dev';
 const LATEST_IMAGE_TAG = 'latest';
 const GRAPHQL_ENDPOINT = 'https://app-interface.apps.rosa.appsrep09ue1.03r5.p3.openshiftapps.com/graphql';
 
@@ -116,13 +117,13 @@ async function getProdRelease() {
   }
 }
 
-function pullImage(tag: string) {
-  execSync(`${execBin} pull ${IMAGE_REPO}:${tag}`, {
+function pullImage(repo: string, tag: string) {
+  execSync(`${execBin} pull ${repo}:${tag}`, {
     stdio: 'inherit',
   });
 }
 
-async function startServer(tag: string, serverPort: number) {
+async function startServer(image: string, tag: string, serverPort: number) {
   return new Promise<void>((resolve, reject) => {
     try {
       execSync(`${execBin} stop ${CONTAINER_NAME}`, {
@@ -134,7 +135,7 @@ async function startServer(tag: string, serverPort: number) {
     } catch (error) {
       fecLogger(LogType.info, 'No existing chrome container found');
     }
-    const runCommand = `${execBin} run -p ${serverPort}:${CONTAINER_PORT} --name ${CONTAINER_NAME} ${IMAGE_REPO}:${tag}`;
+    const runCommand = `${execBin} run -p ${serverPort}:${CONTAINER_PORT} --name ${CONTAINER_NAME} ${image}:${tag}`;
     const child = spawn(runCommand, [], {
       stdio: 'ignore',
       shell: true,
@@ -168,13 +169,16 @@ async function serveChrome(distPath: string, host: string, onError: (error: Erro
   fecLogger(LogType.info, 'Starting chrome server...');
   execBin = checkContainerRuntime();
   let tag: string;
+  let image: string;
   if (isProd) {
     tag = await getProdRelease();
+    image = IMAGE_REPO;
   } else {
     tag = LATEST_IMAGE_TAG;
+    image = IMAGE_REPO_DEV;
   }
-  pullImage(tag);
-  startServer(tag, serverPort).catch((error) => {
+  pullImage(image, tag);
+  startServer(image, tag, serverPort).catch((error) => {
     onError(error);
     process.exit(1);
   });
