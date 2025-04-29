@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.3.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.3.2...@redhat-cloud-services/frontend-components-config-utilities-4.3.3) (2025-04-29)
+
+
+### Bug Fixes
+
+* make webpack/http-server bin lookup compatible with monorepo setup ([d410200](https://github.com/RedHatInsights/frontend-components/commit/d41020060028c10237319e626e00cecc930738bf))
+
 ## [4.3.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.3.1...@redhat-cloud-services/frontend-components-config-utilities-4.3.2) (2025-04-23)
 
 ## [4.3.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.3.0...@redhat-cloud-services/frontend-components-config-utilities-4.3.1) (2025-04-15)
