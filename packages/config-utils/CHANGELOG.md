@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.3.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.3.3...@redhat-cloud-services/frontend-components-config-utilities-4.3.4) (2025-05-05)
+
+
+### Bug Fixes
+
+* **proxy:** always use copied html template for development ([f684b0d](https://github.com/RedHatInsights/frontend-components/commit/f684b0d3ebe9e151840d95a02c5b323314f5b8d6))
+
 ## [4.3.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.3.2...@redhat-cloud-services/frontend-components-config-utilities-4.3.3) (2025-04-29)
 
 
