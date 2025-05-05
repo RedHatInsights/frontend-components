@@ -156,10 +156,22 @@ function copyIndex(path: string) {
     // create dist directory if it doesn't exist
     fs.mkdirSync(path, { recursive: true });
   }
-  const copyCommand = `${execBin} cp ${CONTAINER_NAME}:/opt/app-root/src/build/stable/index.html ${path}`;
-  execSync(copyCommand, {
-    stdio: 'inherit',
-  });
+  const copyCommandSrc = `${execBin} cp ${CONTAINER_NAME}:/opt/app-root/src/build/stable/index.html ${path}`;
+  try {
+    execSync(copyCommandSrc, {
+      stdio: 'inherit',
+    });
+  } catch (error) {
+    fecLogger(LogType.warn, `${copyCommandSrc} non-zero exit code`);
+  }
+  const copyCommandSrv = `${execBin} cp ${CONTAINER_NAME}:/srv/dist/index.html ${path}`;
+  try {
+    execSync(copyCommandSrv, {
+      stdio: 'inherit',
+    });
+  } catch (error) {
+    fecLogger(LogType.warn, `${copyCommandSrv} non-zero exit code`);
+  }
 }
 
 async function serveChrome(distPath: string, host: string, onError: (error: Error) => void, isProd = false, serverPort = 9999) {
