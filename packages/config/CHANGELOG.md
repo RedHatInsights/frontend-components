@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.5.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.5.7...@redhat-cloud-services/frontend-components-config-6.5.8) (2025-05-05)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-config-utilities` updated to version `4.3.4`
+
+### Bug Fixes
+
+* **config:** add fec support for using dev chrome image ([47e3908](https://github.com/RedHatInsights/frontend-components/commit/47e3908d3ceba6eb124a426d14ea3a4e5be9f27c))
+* **config:** update copy index to use both src and srv container dirs ([458567b](https://github.com/RedHatInsights/frontend-components/commit/458567b4dff3ed7e6735a581225dceabc484400d))
+
 ## [6.5.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.5.6...@redhat-cloud-services/frontend-components-config-6.5.7) (2025-04-29)
 
 ## [6.5.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.5.5...@redhat-cloud-services/frontend-components-config-6.5.6) (2025-04-29)
