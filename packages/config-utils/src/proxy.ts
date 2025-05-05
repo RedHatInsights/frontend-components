@@ -103,6 +103,7 @@ export type ProxyOptions = {
   target?: string;
   keycloakUri?: string;
   registry?: ((...args: any[]) => void)[];
+  /** @deprecated Is now turned on by default */
   isChrome?: boolean;
   onBeforeSetupMiddleware?: (opts: { chromePath?: string }) => void;
   bounceProd?: boolean;
@@ -130,7 +131,6 @@ const proxy = ({
   proxyVerbose,
   useCloud = false,
   target = '',
-  isChrome = false,
   bounceProd = false,
   useAgent = true,
   localApps = process.env.LOCAL_APPS,
@@ -275,10 +275,10 @@ const proxy = ({
       target,
       bypass: async (req, res) => {
         /**
-         * Bypass any HTML requests if using chrome
+         * Bypass any HTML to the root URL
          * Serves as a historyApiFallback when refreshing on any other URL than '/'
          */
-        if (isChrome && !req.url.match(/\/api\//) && !req.url.match(/\./) && req.headers.accept?.includes('text/html')) {
+        if (!req.url.match(/\/api\//) && !req.url.match(/\./) && req.headers.accept?.includes('text/html')) {
           return '/';
         }
 
