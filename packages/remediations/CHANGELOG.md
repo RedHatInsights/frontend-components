@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.0.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-remediations-4.0.7...@redhat-cloud-services/frontend-components-remediations-4.0.8) (2025-05-07)
+
+
+### Bug Fixes
+
+* **remediations:** remove unused redux dependency ([8608ff8](https://github.com/RedHatInsights/frontend-components/commit/8608ff896c9bbe79baab4623b02d91a60b45c37f))
+
 ## [4.0.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-remediations-4.0.6...@redhat-cloud-services/frontend-components-remediations-4.0.7) (2025-04-28)
 
 ### Dependency Updates
