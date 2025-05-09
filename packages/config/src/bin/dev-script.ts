@@ -15,7 +15,7 @@ async function setEnv(cwd: string) {
         type: 'list',
         name: 'clouddotEnv',
         message: 'Which platform environment you want to use?',
-        choices: ['stage', 'prod'],
+        choices: ['stage', 'prod', 'dev'],
       },
     ])
     .then((answers) => {
@@ -57,7 +57,7 @@ async function devScript(
       configPath = resolve(__dirname, './dev.webpack.config.js');
     }
 
-    const clouddotEnvOptions = ['stage', 'prod'];
+    const clouddotEnvOptions = ['stage', 'prod', 'dev'];
     if (argv?.clouddotEnv) {
       if (clouddotEnvOptions.includes(argv.clouddotEnv)) {
         process.env.CLOUDOT_ENV = argv.clouddotEnv;
@@ -82,7 +82,7 @@ async function devScript(
     let interceptorProcess: ReturnType<typeof spawn> | undefined = undefined;
 
     if (!chromeHost) {
-      chromeHost = `${process.env.CLOUDOT_ENV === 'prod' ? 'prod' : 'stage'}.foo.redhat.com`;
+      chromeHost = `${process.env.CLOUDOT_ENV ?? 'stage'}.foo.redhat.com`;
     }
 
     process.env.FEC_CHROME_HOST = chromeHost;

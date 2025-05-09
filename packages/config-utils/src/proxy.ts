@@ -175,13 +175,13 @@ const proxy = ({
 
   if (target === '') {
     target += 'https://';
-    if (!['prod', 'stage'].includes(majorEnv)) {
+    if (!['prod', 'stage', 'dev'].includes(majorEnv)) {
       target += majorEnv + '.';
     }
 
     target += useCloud ? 'cloud' : 'console';
-    if (majorEnv === 'stage') {
-      target += '.stage';
+    if (['stage', 'dev'].includes(majorEnv)) {
+      target += `.${majorEnv}`;
     }
 
     target += '.redhat.com/';
@@ -331,7 +331,8 @@ const proxy = ({
     ...(proxy.length > 0 && { proxy }),
     onListening(server) {
       if (useProxy) {
-        const host = useProxy ? `${majorEnv}.foo.redhat.com` : 'localhost';
+        // Dev is just a prod but SSO does not allow dev.foo.redhat.com origin
+        const host = useProxy ? `${majorEnv === 'dev' ? 'prod' : majorEnv}.foo.redhat.com` : 'localhost';
         const origin = `https://${host}:${server.options.port}`;
         console.log('App should run on:');
 
