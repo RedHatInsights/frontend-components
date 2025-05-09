@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.3.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.3.4...@redhat-cloud-services/frontend-components-config-utilities-4.3.5) (2025-05-09)
+
+
+### Bug Fixes
+
+* **proxy:** enable console.dev proxy target ([d42f107](https://github.com/RedHatInsights/frontend-components/commit/d42f1072fb8eab47db9386d6e620d729b2af4645))
+
 ## [4.3.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.3.3...@redhat-cloud-services/frontend-components-config-utilities-4.3.4) (2025-05-05)
 
 
