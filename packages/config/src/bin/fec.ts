@@ -14,7 +14,7 @@ const { fecLogger, LogType } = require('@redhat-cloud-services/frontend-componen
 
 function patchHosts() {
   const command = `
-    for host in prod.foo.redhat.com stage.foo.redhat.com qa.foo.redhat.com ci.foo.redhat.com
+    for host in prod.foo.redhat.com stage.foo.redhat.com qa.foo.redhat.com ci.foo.redhat.com ephemeral.foo.redhat.com
 do
     grep -q $host /etc/hosts 2>/dev/null
     if [ $? -ne 0 ]
@@ -116,7 +116,7 @@ const argv = yargs
     });
   })
   .option('clouddotEnv', {
-    describe: "Set platform environment ['stage', 'prod']",
+    describe: "Set platform environment ['stage', 'prod', 'ephemeral']",
     type: 'string',
   })
   .example('$0 dev --clouddotEnv=stage', 'Example of usage in non-interactive environments')

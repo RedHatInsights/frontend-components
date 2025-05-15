@@ -191,10 +191,11 @@ const proxy = ({
 
   const isProd = env.startsWith('prod');
   const isStage = env.startsWith('stage');
+  const isEphemeral = env.startsWith('ephemeral');
 
   const shouldBounceProdRequests = isProd && bounceProd && !useAgent;
 
-  if (isStage || (isProd && useAgent)) {
+  if (isStage || isEphemeral || (isProd && useAgent)) {
     // stage is deployed with Akamai which requires a corporate proxy
     agent = new HttpsProxyAgent(proxyURL);
   }
@@ -203,6 +204,10 @@ const proxy = ({
     // stage-stable branches don't exist in build repos
     // Currently stage pulls from QA
     env = env.replace('stage', 'qa');
+  }
+
+  if (isEphemeral) {
+    env = env.replace('ephemeral', 'qa');
   }
 
   if (!Array.isArray(appUrl)) {

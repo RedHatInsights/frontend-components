@@ -1,7 +1,7 @@
 import axios from 'axios';
 import fs from 'fs';
 import { execSync, spawn } from 'child_process';
-import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { fecLogger, LogType } from '@redhat-cloud-services/frontend-components-config-utilities';
 import waitOn from 'wait-on';
 
 const CONTAINER_PORT = 8000;
@@ -126,9 +126,11 @@ function pullImage(repo: string, tag: string) {
 async function startServer(image: string, tag: string, serverPort: number) {
   return new Promise<void>((resolve, reject) => {
     try {
+      fecLogger(LogType.debug, `Stop existing ${CONTAINER_NAME}`);
       execSync(`${execBin} stop ${CONTAINER_NAME}`, {
         stdio: 'inherit',
       });
+      fecLogger(LogType.debug, `Remove existing ${CONTAINER_NAME}`);
       execSync(`${execBin} rm ${CONTAINER_NAME}`, {
         stdio: 'inherit',
       });
@@ -136,6 +138,7 @@ async function startServer(image: string, tag: string, serverPort: number) {
       fecLogger(LogType.info, 'No existing chrome container found');
     }
     const runCommand = `${execBin} run -p ${serverPort}:${CONTAINER_PORT} --name ${CONTAINER_NAME} ${image}:${tag}`;
+    fecLogger(LogType.debug, `Spawn ${runCommand}`);
     const child = spawn(runCommand, [], {
       stdio: 'ignore',
       shell: true,
