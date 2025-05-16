@@ -15,11 +15,20 @@ async function setEnv(cwd: string) {
         type: 'list',
         name: 'clouddotEnv',
         message: 'Which platform environment you want to use?',
-        choices: ['stage', 'prod', 'dev'],
+        choices: ['stage', 'prod', 'dev', 'ephemeral'],
       },
     ])
-    .then((answers) => {
+    .then(async (answers) => {
       const { clouddotEnv } = answers;
+
+      if (clouddotEnv === 'ephemeral') {
+        const answer = await inquirer.prompt([{
+          type: 'input',
+          name: 'clouddotEnv',
+          message: 'Please provide the gateway route of your ephemeral environment:',
+        }]);
+        process.env.EPHEMERAL_TARGET = answer.clouddotEnv
+      }
       process.env.CLOUDOT_ENV = clouddotEnv ? clouddotEnv : 'stage';
       process.env.FEC_ROOT_DIR = cwd;
     });
@@ -57,7 +66,7 @@ async function devScript(
       configPath = resolve(__dirname, './dev.webpack.config.js');
     }
 
-    const clouddotEnvOptions = ['stage', 'prod', 'dev'];
+    const clouddotEnvOptions = ['stage', 'prod', 'dev', 'ephemeral'];
     if (argv?.clouddotEnv) {
       if (clouddotEnvOptions.includes(argv.clouddotEnv)) {
         process.env.CLOUDOT_ENV = argv.clouddotEnv;

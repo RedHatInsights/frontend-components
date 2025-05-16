@@ -18,7 +18,7 @@ export interface CommonConfigOptions {
   hotReload?: boolean;
   useFileHash?: boolean;
 }
-export type FrontendEnv = 'stage-stable' | 'prod-stable' | 'dev-stable';
+export type FrontendEnv = 'stage-stable' | 'prod-stable' | 'dev-stable' |'ephemeral-stable';
 export interface CreateConfigOptions extends CommonConfigOptions {
   port?: number;
   publicPath?: 'auto';

@@ -1,20 +1,28 @@
 #!/usr/bin/env node
-const { execSync } = require('child_process');
 import serveStatic from '@redhat-cloud-services/frontend-components-config-utilities/serve-federated';
-const fs = require('fs');
-const path = require('path');
+const { fecLogger, LogType } = require('@redhat-cloud-services/frontend-components-config-utilities');
 import yargs from 'yargs';
 // to force TS to copy the file
 import './tsconfig.template.json';
 import { validateFECConfig } from './common';
 
+const { lookup } = require('dns');
+const { promisify } = require('util');
+const { execSync } = require('child_process');
+
+const fs = require('fs');
+const path = require('path');
+
 const devScript = require('./dev-script');
 const buildScript = require('./build-script');
-const { fecLogger, LogType } = require('@redhat-cloud-services/frontend-components-config-utilities');
+
+const promisifiedLookup = promisify(lookup);
+
+const hosts = ['prod.foo.redhat.com', 'stage.foo.redhat.com', 'qa.foo.redhat.com', 'ci.foo.redhat.com', 'ephemeral.foo.redhat.com'];
 
 function patchHosts() {
   const command = `
-    for host in prod.foo.redhat.com stage.foo.redhat.com qa.foo.redhat.com ci.foo.redhat.com
+    for host in ${hosts.join(' ')} 
 do
     grep -q $host /etc/hosts 2>/dev/null
     if [ $? -ne 0 ]
@@ -33,6 +41,19 @@ done
 }
 
 const cwd = process.cwd();
+
+async function checkHostname(hostname: string) {
+  try {
+    await promisifiedLookup(hostname);
+  } catch {
+    return hostname;
+  }
+}
+
+async function checkHosts(): Promise<string[]> {
+  const missingHosts = await Promise.allSettled<string | undefined>(hosts.map(checkHostname));
+  return missingHosts.filter((v) => v.status === 'fulfilled').filter(v => v.value !== undefined).map(v => v.value!);
+}
 
 function checkDependencies() {
   const requiredDependencies = ['typescript', 'ts-patch', '@redhat-cloud-services/tsc-transform-imports'];
@@ -59,6 +80,7 @@ function checkDependencies() {
 
   return missingDependencies;
 }
+
 function patchTs(dependencies: string) {
   const usesYarn = fs.existsSync(path.resolve(cwd, 'yarn.lock'));
   if (dependencies.length > 0) {
@@ -116,7 +138,7 @@ const argv = yargs
     });
   })
   .option('clouddotEnv', {
-    describe: "Set platform environment ['stage', 'prod']",
+    describe: "Set platform environment ['stage', 'prod', 'ephemeral']",
     type: 'string',
   })
   .example('$0 dev --clouddotEnv=stage', 'Example of usage in non-interactive environments')
@@ -137,10 +159,17 @@ const scripts: { [name: string]: (...args: any[]) => void } = {
 
 const args = [argv, cwd];
 
-function run() {
+async function run() {
   const missingDependencies = checkDependencies();
   if (missingDependencies.length > 0) {
     patchTs(missingDependencies.join(' '));
+  }
+  const missingHosts = await checkHosts();
+  if (missingHosts.length > 0) {
+    fecLogger(LogType.warn,`Found missing hosts`);
+    fecLogger(LogType.warn,`\`fec dev\` will likely not work correctly. Please consider running \`fec patch-etc-hosts\` to fix the problem.`);
+    fecLogger(LogType.warn, `Missing hosts`);
+    fecLogger(LogType.warn, missingHosts.join(' '));
   }
   if (!(argv as any)._.length || (argv as any)._.length === 0) {
     console.error('Script name must be specified. Run fec --help for more information.');
@@ -150,4 +179,4 @@ function run() {
   scripts[(argv as any)._[0]](...args);
 }
 
-run();
+void run();

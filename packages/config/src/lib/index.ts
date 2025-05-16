@@ -108,6 +108,7 @@ const createFecConfig = (
       publicPath: configurations.publicPath,
       appEntry,
       appName: insights.appname,
+      target: process.env.EPHEMERAL_TARGET ?? ''
     }),
     plugins: createPlugins({
       ...configurations,
