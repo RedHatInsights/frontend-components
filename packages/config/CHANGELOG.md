@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.6.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.5.10...@redhat-cloud-services/frontend-components-config-6.6.0) (2025-05-16)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-config-utilities` updated to version `4.4.0`
+
+### Features
+
+* add support for proxying to a custom ephemeral environment ([#2211](https://github.com/RedHatInsights/frontend-components/issues/2211)) ([eab0447](https://github.com/RedHatInsights/frontend-components/commit/eab0447b59c551a84dc5c9b79eca2e957634d87f))
+
 ## [6.5.10](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.5.9...@redhat-cloud-services/frontend-components-config-6.5.10) (2025-05-09)
 
 ### Dependency Updates
