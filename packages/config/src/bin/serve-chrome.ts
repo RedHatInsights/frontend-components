@@ -6,7 +6,6 @@ import waitOn from 'wait-on';
 
 const CONTAINER_PORT = 8000;
 const CONTAINER_NAME = 'fec-chrome-local';
-const IMAGE_REPO = 'quay.io/redhat-services-prod/hcc-platex-services-tenant/insights-chrome';
 const IMAGE_REPO_DEV = 'quay.io/redhat-services-prod/hcc-platex-services-tenant/insights-chrome-dev';
 const LATEST_IMAGE_TAG = 'latest';
 const GRAPHQL_ENDPOINT = 'https://app-interface.apps.rosa.appsrep09ue1.03r5.p3.openshiftapps.com/graphql';
@@ -187,7 +186,7 @@ async function serveChrome(distPath: string, host: string, onError: (error: Erro
   let image: string;
   if (isProd) {
     tag = await getProdRelease();
-    image = IMAGE_REPO;
+    image = IMAGE_REPO_DEV;
   } else {
     tag = LATEST_IMAGE_TAG;
     image = IMAGE_REPO_DEV;
