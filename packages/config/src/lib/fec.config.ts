@@ -8,6 +8,7 @@ export interface FECConfiguration
   appName: never;
   appUrl: string | string[] | (string | RegExp)[];
   plugins?: WebpackPluginDefinition[];
+  /** @deprecated dynamic FEO config is automatically intercepted locally as of @redhat-cloud-services/frontend-components-config >= 6.5.4 and @redhat-cloud-services/frontend-components-config-utilities >= 4.3.1 */
   interceptChromeConfig?: boolean;
   moduleFederation: Omit<FederatedModulesConfig, 'root' | 'separateRuntime'>;
   debug?: boolean;
