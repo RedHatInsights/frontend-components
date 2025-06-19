@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.1.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-6.0.5...@redhat-cloud-services/frontend-components-utilities-6.1.0) (2025-06-19)
+
+
+### Features
+
+* **CVSS score:** improve clarity ([281d5b6](https://github.com/RedHatInsights/frontend-components/commit/281d5b642b647232d40fd4244f7a2a865befc0d9))
+
 ## [6.0.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-6.0.4...@redhat-cloud-services/frontend-components-utilities-6.0.5) (2025-04-28)
 
 ### Dependency Updates
