@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.6.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.1...@redhat-cloud-services/frontend-components-config-6.6.2) (2025-06-19)
+
+
+### Bug Fixes
+
+* **config:** use dev image for local fec development against prod ([7d4b0cd](https://github.com/RedHatInsights/frontend-components/commit/7d4b0cd436389067abb2b4154cb443e8fc90ea6e))
+
 ## [6.6.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.1...@redhat-cloud-services/frontend-components-config-6.6.2) (2025-05-30)
 
 
