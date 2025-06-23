@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.6.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.1...@redhat-cloud-services/frontend-components-config-6.6.2) (2025-06-23)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-config-utilities` updated to version `4.4.1`
+
+### Bug Fixes
+
+* **config:** cleanup config readme and release new version ([a0c5822](https://github.com/RedHatInsights/frontend-components/commit/a0c5822dcdafb95f335f9c5daafbd9b56e2ab137))
+* **config:** use dev image for local fec development against prod ([7d4b0cd](https://github.com/RedHatInsights/frontend-components/commit/7d4b0cd436389067abb2b4154cb443e8fc90ea6e))
+
 ## [6.6.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.1...@redhat-cloud-services/frontend-components-config-6.6.2) (2025-06-19)
 
 
