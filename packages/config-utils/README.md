@@ -16,7 +16,7 @@
 
 ## Chrome render loader
 
-When using chrome 2 and user refreshes a page on your application you may end up with 2 instances of your application in virtual DOM. This loader prevents it by wrapping your app in condition to check if chrome 2 config is enabled.
+When using chrome 2 and user refreshes a page on your application you may end up with 2 instances of your application in the virtual DOM. This loader prevents it by wrapping your app in condition to check if chrome 2 config is enabled.
 
 The appName should be same as is `insights.appname` in your `package.json`.
 
