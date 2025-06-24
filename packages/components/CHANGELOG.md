@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.0.9](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.8...@redhat-cloud-services/frontend-components-6.0.9) (2025-06-24)
+
+
+### Bug Fixes
+
+* **toolbar:** fix filter chip spacing after PF6 upgrade ([3267d12](https://github.com/RedHatInsights/frontend-components/commit/3267d1262bb7ae4392c98f1a90ede9a3db7090d9))
+
 ## [6.0.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.7...@redhat-cloud-services/frontend-components-6.0.8) (2025-06-19)
 
 ### Dependency Updates
