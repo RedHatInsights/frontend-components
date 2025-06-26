@@ -159,7 +159,6 @@ exports[`Actions - component should render actionObject as first action 1`] = `
     class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button
-      aria-disabled="false"
       class="pf-v6-c-button pf-m-primary"
       data-ouia-component-id="Some title"
       data-ouia-component-type="PF6/Button"

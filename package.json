@@ -115,6 +115,7 @@
     "lint": "nx run-many -t lint --exclude={{name}}",
     "serve:demo": "nx run demo:serve",
     "test:unit": "nx run-many -t test:unit --exclude=demo",
+    "test:unit:update": "nx run-many -t test:unit --exclude=demo --updateSnapshot",
     "test:component": "nx run-many -t test:component --exclude=demo --parallel=1",
     "prepare": "husky"
   },
