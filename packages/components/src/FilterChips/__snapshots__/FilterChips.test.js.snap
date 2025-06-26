@@ -56,7 +56,6 @@ exports[`FilterChips component should render 1`] = `
                 class="pf-v6-c-label__actions"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Close Chip 1,"
                   class="pf-v6-c-button pf-m-plain pf-m-no-padding"
                   data-ouia-component-id="OUIA-Generated-Button-plain-1"
@@ -113,7 +112,6 @@ exports[`FilterChips component should render 1`] = `
                 class="pf-v6-c-label__actions"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Close Chip 2,[object Object]"
                   class="pf-v6-c-button pf-m-plain pf-m-no-padding"
                   data-ouia-component-id="OUIA-Generated-Button-plain-2"
@@ -181,7 +179,6 @@ exports[`FilterChips component should render 1`] = `
                 class="pf-v6-c-label__actions"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Close Chip 3,"
                   class="pf-v6-c-button pf-m-plain pf-m-no-padding"
                   data-ouia-component-id="OUIA-Generated-Button-plain-3"
@@ -249,7 +246,6 @@ exports[`FilterChips component should render 1`] = `
                 class="pf-v6-c-label__actions"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Close Chip 4,"
                   class="pf-v6-c-button pf-m-plain pf-m-no-padding"
                   data-ouia-component-id="OUIA-Generated-Button-plain-4"
@@ -282,7 +278,6 @@ exports[`FilterChips component should render 1`] = `
       </div>
     </div>
     <button
-      aria-disabled="false"
       class="pf-v6-c-button pf-m-link"
       data-ouia-component-id="ClearFilters"
       data-ouia-component-type="PF6/Button"
@@ -347,7 +342,6 @@ exports[`FilterChips component should render group delete 1`] = `
                 class="pf-v6-c-label__actions"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Close Chip 1,"
                   class="pf-v6-c-button pf-m-plain pf-m-no-padding"
                   data-ouia-component-id="OUIA-Generated-Button-plain-9"
@@ -404,7 +398,6 @@ exports[`FilterChips component should render group delete 1`] = `
                 class="pf-v6-c-label__actions"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Close Chip 2,[object Object]"
                   class="pf-v6-c-button pf-m-plain pf-m-no-padding"
                   data-ouia-component-id="OUIA-Generated-Button-plain-10"
@@ -439,7 +432,6 @@ exports[`FilterChips component should render group delete 1`] = `
         class="pf-v6-c-label-group__close"
       >
         <button
-          aria-disabled="false"
           aria-label="Close chip group"
           aria-labelledby="remove_group_pf-random-id-6 pf-random-id-6"
           class="pf-v6-c-button pf-m-plain pf-m-no-padding"
@@ -505,7 +497,6 @@ exports[`FilterChips component should render group delete 1`] = `
                 class="pf-v6-c-label__actions"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Close Chip 3,"
                   class="pf-v6-c-button pf-m-plain pf-m-no-padding"
                   data-ouia-component-id="OUIA-Generated-Button-plain-12"
@@ -573,7 +564,6 @@ exports[`FilterChips component should render group delete 1`] = `
                 class="pf-v6-c-label__actions"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Close Chip 4,"
                   class="pf-v6-c-button pf-m-plain pf-m-no-padding"
                   data-ouia-component-id="OUIA-Generated-Button-plain-13"
@@ -606,7 +596,6 @@ exports[`FilterChips component should render group delete 1`] = `
       </div>
     </div>
     <button
-      aria-disabled="false"
       class="pf-v6-c-button pf-m-link"
       data-ouia-component-id="ClearFilters"
       data-ouia-component-type="PF6/Button"
@@ -671,7 +660,6 @@ exports[`FilterChips component should render with custom delete message 1`] = `
                 class="pf-v6-c-label__actions"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Close Chip 1,"
                   class="pf-v6-c-button pf-m-plain pf-m-no-padding"
                   data-ouia-component-id="OUIA-Generated-Button-plain-5"
@@ -728,7 +716,6 @@ exports[`FilterChips component should render with custom delete message 1`] = `
                 class="pf-v6-c-label__actions"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Close Chip 2,[object Object]"
                   class="pf-v6-c-button pf-m-plain pf-m-no-padding"
                   data-ouia-component-id="OUIA-Generated-Button-plain-6"
@@ -796,7 +783,6 @@ exports[`FilterChips component should render with custom delete message 1`] = `
                 class="pf-v6-c-label__actions"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Close Chip 3,"
                   class="pf-v6-c-button pf-m-plain pf-m-no-padding"
                   data-ouia-component-id="OUIA-Generated-Button-plain-7"
@@ -864,7 +850,6 @@ exports[`FilterChips component should render with custom delete message 1`] = `
                 class="pf-v6-c-label__actions"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Close Chip 4,"
                   class="pf-v6-c-button pf-m-plain pf-m-no-padding"
                   data-ouia-component-id="OUIA-Generated-Button-plain-8"
@@ -897,7 +882,6 @@ exports[`FilterChips component should render with custom delete message 1`] = `
       </div>
     </div>
     <button
-      aria-disabled="false"
       class="pf-v6-c-button pf-m-link"
       data-ouia-component-id="ClearFilters"
       data-ouia-component-type="PF6/Button"

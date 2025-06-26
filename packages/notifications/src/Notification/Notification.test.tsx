@@ -103,7 +103,9 @@ describe('Notification component', () => {
     act(() => {
       userEvent.unhover(screen.getByText('Bar'));
     });
-    expect(timeoutSpy).toHaveBeenCalledTimes(3);
+
+    // "unhover" is calling setTimeout twice. Introduced on @patternfly/react-core" 6.2.2, through the add animation feature: https://github.com/patternfly/patternfly-react/commit/74dd258abb9f329dc2fc3fcaaa6fc4de460fc088
+    expect(timeoutSpy).toHaveBeenCalledTimes(4);
     timeoutSpy.mockRestore();
   });
 });
