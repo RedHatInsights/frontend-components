@@ -394,7 +394,6 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
                 class="pf-v6-c-pagination__nav-control"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Go to previous page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="previous"
@@ -427,7 +426,6 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
                 class="pf-v6-c-pagination__nav-control"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Go to next page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="next"
@@ -621,7 +619,6 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
           class="pf-v6-c-pagination__nav-control pf-m-first"
         >
           <button
-            aria-disabled="false"
             aria-label="Go to first page"
             class="pf-v6-c-button pf-m-plain"
             data-action="first"
@@ -654,7 +651,6 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
           class="pf-v6-c-pagination__nav-control"
         >
           <button
-            aria-disabled="false"
             aria-label="Go to previous page"
             class="pf-v6-c-button pf-m-plain"
             data-action="previous"
@@ -706,7 +702,6 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
           class="pf-v6-c-pagination__nav-control"
         >
           <button
-            aria-disabled="false"
             aria-label="Go to next page"
             class="pf-v6-c-button pf-m-plain"
             data-action="next"
@@ -738,7 +733,6 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
           class="pf-v6-c-pagination__nav-control pf-m-last"
         >
           <button
-            aria-disabled="false"
             aria-label="Go to last page"
             class="pf-v6-c-button pf-m-plain"
             data-action="last"
@@ -938,7 +932,6 @@ exports[`TableWithFilter should render with data and bulk select without calcula
                 class="pf-v6-c-pagination__nav-control"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Go to previous page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="previous"
@@ -971,7 +964,6 @@ exports[`TableWithFilter should render with data and bulk select without calcula
                 class="pf-v6-c-pagination__nav-control"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Go to next page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="next"
@@ -1165,7 +1157,6 @@ exports[`TableWithFilter should render with data and bulk select without calcula
           class="pf-v6-c-pagination__nav-control pf-m-first"
         >
           <button
-            aria-disabled="false"
             aria-label="Go to first page"
             class="pf-v6-c-button pf-m-plain"
             data-action="first"
@@ -1198,7 +1189,6 @@ exports[`TableWithFilter should render with data and bulk select without calcula
           class="pf-v6-c-pagination__nav-control"
         >
           <button
-            aria-disabled="false"
             aria-label="Go to previous page"
             class="pf-v6-c-button pf-m-plain"
             data-action="previous"
@@ -1250,7 +1240,6 @@ exports[`TableWithFilter should render with data and bulk select without calcula
           class="pf-v6-c-pagination__nav-control"
         >
           <button
-            aria-disabled="false"
             aria-label="Go to next page"
             class="pf-v6-c-button pf-m-plain"
             data-action="next"
@@ -1282,7 +1271,6 @@ exports[`TableWithFilter should render with data and bulk select without calcula
           class="pf-v6-c-pagination__nav-control pf-m-last"
         >
           <button
-            aria-disabled="false"
             aria-label="Go to last page"
             class="pf-v6-c-button pf-m-plain"
             data-action="last"
@@ -1487,7 +1475,6 @@ exports[`TableWithFilter should render with data and filters 1`] = `
                 class="pf-v6-c-pagination__nav-control"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Go to previous page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="previous"
@@ -1520,7 +1507,6 @@ exports[`TableWithFilter should render with data and filters 1`] = `
                 class="pf-v6-c-pagination__nav-control"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Go to next page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="next"
@@ -1716,7 +1702,6 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
                 class="pf-v6-c-pagination__nav-control"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Go to previous page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="previous"
@@ -1749,7 +1734,6 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
                 class="pf-v6-c-pagination__nav-control"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Go to next page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="next"
@@ -1915,7 +1899,6 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
           class="pf-v6-c-pagination__nav-control pf-m-first"
         >
           <button
-            aria-disabled="false"
             aria-label="Go to first page"
             class="pf-v6-c-button pf-m-plain"
             data-action="first"
@@ -1948,7 +1931,6 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
           class="pf-v6-c-pagination__nav-control"
         >
           <button
-            aria-disabled="false"
             aria-label="Go to previous page"
             class="pf-v6-c-button pf-m-plain"
             data-action="previous"
@@ -2000,7 +1982,6 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
           class="pf-v6-c-pagination__nav-control"
         >
           <button
-            aria-disabled="false"
             aria-label="Go to next page"
             class="pf-v6-c-button pf-m-plain"
             data-action="next"
@@ -2032,7 +2013,6 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
           class="pf-v6-c-pagination__nav-control pf-m-last"
         >
           <button
-            aria-disabled="false"
             aria-label="Go to last page"
             class="pf-v6-c-button pf-m-plain"
             data-action="last"

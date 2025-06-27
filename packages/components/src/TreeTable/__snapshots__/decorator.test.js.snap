@@ -23,7 +23,6 @@ exports[`TreeTable decorator should render correctly - with data tree collapsed 
       class="pf-v6-c-treeview__toggle"
     >
       <button
-        aria-disabled="false"
         class="pf-v6-c-button pf-m-plain"
         data-ouia-component-id="OUIA-Generated-Button-plain-1"
         data-ouia-component-type="PF6/Button"
@@ -67,7 +66,6 @@ exports[`TreeTable decorator should render correctly - with data tree opened 1`]
       class="pf-v6-c-treeview__toggle"
     >
       <button
-        aria-disabled="false"
         class="pf-v6-c-button pf-m-plain"
         data-ouia-component-id="OUIA-Generated-Button-plain-2"
         data-ouia-component-type="PF6/Button"

@@ -47,7 +47,6 @@ exports[`Not connected component should render 1`] = `
         class="pf-v6-c-empty-state__footer"
       >
         <a
-          aria-disabled="false"
           class="pf-v6-c-button pf-m-primary pf-v6-u-mt-lg"
           data-ouia-component-id="OUIA-Generated-Button-primary-1"
           data-ouia-component-type="PF6/Button"
