@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.1.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.9...@redhat-cloud-services/frontend-components-6.1.0) (2025-06-30)
+
+
+### Features
+
+* updating to patternfly 6.2.2 ([84fd736](https://github.com/RedHatInsights/frontend-components/commit/84fd73673b826a732267e5ed8f7eba87c2add683))
+
 ## [6.0.9](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.8...@redhat-cloud-services/frontend-components-6.0.9) (2025-06-24)
 
 
