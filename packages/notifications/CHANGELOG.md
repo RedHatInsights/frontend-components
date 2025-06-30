@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.1.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-6.0.2...@redhat-cloud-services/frontend-components-notifications-6.1.0) (2025-06-30)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components` updated to version `6.1.0`
+
+### Features
+
+* updating to patternfly 6.2.2 ([84fd736](https://github.com/RedHatInsights/frontend-components/commit/84fd73673b826a732267e5ed8f7eba87c2add683))
+
 ## [6.0.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-6.0.1...@redhat-cloud-services/frontend-components-notifications-6.0.2) (2025-06-24)
 
 ### Dependency Updates
