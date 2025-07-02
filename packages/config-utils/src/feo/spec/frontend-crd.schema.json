@@ -32,6 +32,26 @@
       ],
       "additionalProperties": false
     },
+    "apiSpecInfo": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Publicly hosted API spec, i.e. console.redhat.com/api/name/v1/openapi.json"
+        },
+        "bundleLabels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "url",
+        "bundleLabels"
+      ],
+      "additionalProperties": false
+    },
     "apiCatalogEntry": {
       "type": "object",
       "properties": {
@@ -39,9 +59,17 @@
           "type": "array",
           "items": {
             "type": "string"
+          },
+          "description": "DEPRECATED in favor of specs"
+        },
+        "specs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/apiSpecInfo"
           }
         }
-      }
+      },
+      "additionalProperties": false
     },
     "frontend": {
       "type": "object",
