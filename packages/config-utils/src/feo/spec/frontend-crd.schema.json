@@ -60,7 +60,7 @@
           "items": {
             "type": "string"
           },
-          "description": "DEPRECATED in favor of specs"
+          "description": "DEPRECATED soon in favor of specs"
         },
         "specs": {
           "type": "array",
@@ -69,7 +69,10 @@
           }
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": [
+        "versions" 
+      ]
     },
     "frontend": {
       "type": "object",
