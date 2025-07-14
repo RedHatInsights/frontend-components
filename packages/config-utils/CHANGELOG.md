@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.5.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.4.1...@redhat-cloud-services/frontend-components-config-utilities-4.5.0) (2025-07-14)
+
+
+### Features
+
+* changing to require version till swap ([0848cec](https://github.com/RedHatInsights/frontend-components/commit/0848cec225bcf639012532224ed1a3d771d0d91f))
+* frontend-crd spec update with API version info ([f967f89](https://github.com/RedHatInsights/frontend-components/commit/f967f89d1cdcdc328cadfdd09c944b20fa6f43fb))
+
 ## [4.4.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.4.0...@redhat-cloud-services/frontend-components-config-utilities-4.4.1) (2025-06-23)
 
 
