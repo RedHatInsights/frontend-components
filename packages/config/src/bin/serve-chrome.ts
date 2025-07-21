@@ -5,12 +5,12 @@ import { fecLogger, LogType } from '@redhat-cloud-services/frontend-components-c
 import waitOn from 'wait-on';
 
 const CONTAINER_PORT = 8000;
-const CONTAINER_NAME = 'fec-chrome-local';
+export const CONTAINER_NAME = 'fec-chrome-local';
 const IMAGE_REPO_DEV = 'quay.io/redhat-services-prod/hcc-platex-services-tenant/insights-chrome-dev';
 const LATEST_IMAGE_TAG = 'latest';
 const GRAPHQL_ENDPOINT = 'https://app-interface.apps.rosa.appsrep09ue1.03r5.p3.openshiftapps.com/graphql';
 
-type ContainerRuntime = 'docker' | 'podman';
+export type ContainerRuntime = 'docker' | 'podman';
 let execBin: ContainerRuntime | undefined = undefined;
 
 const APPS_QUERY = `{
@@ -46,7 +46,7 @@ const APPS_QUERY = `{
 
 // const checkoutCommand = `git archive --remote=${chromeDeploymentConfig.repo}  HEAD ${chromeDeploymentConfig.deployFile} |  tar xvf - -C ${chromeDeploymentConfig.tarTarget}`;
 
-function checkContainerRuntime(): ContainerRuntime {
+export function checkContainerRuntime(): ContainerRuntime {
   try {
     if (execSync('which podman').toString().trim().length > 0) {
       return 'podman';
