@@ -1,38 +1,12 @@
 /* eslint-disable no-console */
-import inquirer from 'inquirer';
 const { resolve } = require('path');
 import { spawn } from 'child_process';
 import treeKill from 'tree-kill';
-import { getWebpackConfigPath, validateFECConfig } from './common';
+import { getWebpackConfigPath, setEnv, validateFECConfig } from './common';
 import serveChrome from './serve-chrome';
 import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
+
 const DEFAULT_CHROME_SERVER_PORT = 9998;
-
-async function setEnv(cwd: string) {
-  return inquirer
-    .prompt([
-      {
-        type: 'list',
-        name: 'clouddotEnv',
-        message: 'Which platform environment you want to use?',
-        choices: ['stage', 'prod', 'dev', 'ephemeral'],
-      },
-    ])
-    .then(async (answers) => {
-      const { clouddotEnv } = answers;
-
-      if (clouddotEnv === 'ephemeral') {
-        const answer = await inquirer.prompt([{
-          type: 'input',
-          name: 'clouddotEnv',
-          message: 'Please provide the gateway route of your ephemeral environment:',
-        }]);
-        process.env.EPHEMERAL_TARGET = answer.clouddotEnv
-      }
-      process.env.CLOUDOT_ENV = clouddotEnv ? clouddotEnv : 'stage';
-      process.env.FEC_ROOT_DIR = cwd;
-    });
-}
 
 async function devScript(
   argv: {

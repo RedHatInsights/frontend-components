@@ -1,4 +1,7 @@
-import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
+import inquirer from 'inquirer';
+import { FrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo/feo-types';
+import { fecLogger, LogType } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { hasFEOFeaturesEnabled, readFrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo/crd-check';
 
 const { resolve } = require('path');
 const { statSync } = require('fs');
@@ -45,5 +48,63 @@ export function getWebpackConfigPath(path: string, cwd: string) {
   }
 }
 
+export async function setEnv(cwd: string) {
+  return inquirer
+    .prompt([
+      {
+        type: 'list',
+        name: 'clouddotEnv',
+        message: 'Which platform environment you want to use?',
+        choices: ['stage', 'prod', 'dev', 'ephemeral'],
+      },
+    ])
+    .then(async (answers) => {
+      const { clouddotEnv } = answers;
+
+      if (clouddotEnv === 'ephemeral') {
+        const answer = await inquirer.prompt([
+          {
+            type: 'input',
+            name: 'clouddotEnv',
+            message: 'Please provide the gateway route of your ephemeral environment:',
+          },
+        ]);
+        process.env.EPHEMERAL_TARGET = answer.clouddotEnv;
+      }
+      process.env.CLOUDOT_ENV = clouddotEnv ? clouddotEnv : 'stage';
+      process.env.FEC_ROOT_DIR = cwd;
+    });
+}
+
+export function getCdnPath(fecConfig: any, webpackConfig: any, cwd: string): string {
+  let cdnPath: string;
+  const { insights } = require(`${cwd}/package.json`);
+  const frontendCRDPath = fecConfig.frontendCRDPath ?? `${cwd}/deploy/frontend.yaml`;
+  const frontendCRDRef: { current?: FrontendCRD } = { current: undefined };
+  let FEOFeaturesEnabled = false;
+
+  try {
+    frontendCRDRef.current = readFrontendCRD(frontendCRDPath);
+    FEOFeaturesEnabled = hasFEOFeaturesEnabled(frontendCRDRef.current);
+  } catch (e) {
+    fecLogger(
+      LogType.warn,
+      `FEO features are not enabled. Unable to find frontend CRD file at ${frontendCRDPath}. If you want FEO features for local development, make sure to have a "deploy/frontend.yaml" file in your project or specify its location via "frontendCRDPath" attribute.`,
+    );
+  }
+
+  if (FEOFeaturesEnabled && fecConfig.publicPath === 'auto' && frontendCRDRef.current) {
+    cdnPath = `${frontendCRDRef.current?.objects[0]?.spec.frontend.paths[0]}/`.replace(/\/\//, '/');
+  } else if (fecConfig.publicPath === 'auto') {
+    cdnPath = `/${fecConfig.deployment || 'apps'}/${insights.appname}/`;
+  } else {
+    cdnPath = webpackConfig.output.publicPath;
+  }
+
+  return cdnPath ?? '';
+}
+
 module.exports.validateFECConfig = validateFECConfig;
 module.exports.getWebpackConfigPath = getWebpackConfigPath;
+module.exports.setEnv = setEnv;
+module.exports.getCdnPath = getCdnPath;
