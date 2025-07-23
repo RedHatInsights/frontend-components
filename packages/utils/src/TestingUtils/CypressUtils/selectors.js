@@ -1,32 +1,32 @@
 export const ouiaId = (id) => `[data-ouia-component-id="${id}"]`;
 
-/** PF5 OUIA */
-export const BUTTON = '[data-ouia-component-type="PF5/Button"]';
-export const DROPDOWN = '[data-ouia-component-type="PF5/Dropdown"]';
-export const DROPDOWN_TOGGLE = '[data-ouia-component-type="PF5/DropdownToggle"]';
-export const DROPDOWN_ITEM = '[data-ouia-component-type="PF5/DropdownItem"]';
-export const CHIP = '[data-ouia-component-type="PF5/Chip"]';
-export const CHIP_GROUP = 'div[data-ouia-component-type="PF5/ChipGroup"]';
-export const MENU = '[data-ouia-component-type="PF5/Menu"]';
-export const MENU_TOGGLE_CHECKBOX = '[data-ouia-component-type="PF5/MenuToggleCheckbox"]';
-export const MODAL_CONTENT = '[data-ouia-component-type="PF5/ModalContent"]';
-export const CHECKBOX = '[data-ouia-component-type="PF5/Checkbox"]';
-export const TITLE = '[data-ouia-component-type="PF5/Title"]';
-export const PAGINATION = '[data-ouia-component-type="PF5/Pagination"]';
-export const TEXT_INPUT = '[data-ouia-component-type="PF5/TextInput"]';
-export const TOOLBAR = '[data-ouia-component-type="PF5/Toolbar"]';
-export const TABLE = '[data-ouia-component-type="PF5/Table"]';
-export const TABLE_HEADER = 'thead [data-ouia-component-type="PF5/TableRow"]';
-export const TABLE_ROW = 'tbody [data-ouia-component-type="PF5/TableRow"]';
-export const TABLE_ROW_CHECKBOX = 'tbody [data-ouia-component-type="PF5/TableRow"] input';
-export const EMPTY_STATE = '[data-ouia-component-type="PF5/EmptyState"]';
-export const CARD = '[data-ouia-component-type="PF5/Card"]';
-export const BREADCRUMB = '[data-ouia-component-type="PF5/Breadcrumb"]';
-export const TAB_CONTENT = '[data-ouia-component-type="PF5/TabContent"]';
-export const TAB_BUTTON = '[data-ouia-component-type="PF5/TabButton"]';
-export const ALERT = '[data-ouia-component-type="PF5/Alert"]';
+/** PF6 OUIA */
+export const BUTTON = '[data-ouia-component-type="PF6/Button"]';
+export const DROPDOWN = '[data-ouia-component-type="PF6/Dropdown"]';
+export const DROPDOWN_TOGGLE = '[data-ouia-component-type="PF6/DropdownToggle"]';
+export const DROPDOWN_ITEM = '[data-ouia-component-type="PF6/DropdownItem"]';
+export const CHIP = '[data-ouia-component-type="PF6/Chip"]';
+export const CHIP_GROUP = 'div[data-ouia-component-type="PF6/ChipGroup"]';
+export const MENU = '[data-ouia-component-type="PF6/Menu"]';
+export const MENU_TOGGLE_CHECKBOX = '[data-ouia-component-type="PF6/MenuToggleCheckbox"]';
+export const MODAL_CONTENT = '[data-ouia-component-type="PF6/ModalContent"]';
+export const CHECKBOX = '[data-ouia-component-type="PF6/Checkbox"]';
+export const TITLE = '[data-ouia-component-type="PF6/Title"]';
+export const PAGINATION = '[data-ouia-component-type="PF6/Pagination"]';
+export const TEXT_INPUT = '[data-ouia-component-type="PF6/TextInput"]';
+export const TOOLBAR = '[data-ouia-component-type="PF6/Toolbar"]';
+export const TABLE = '[data-ouia-component-type="PF6/Table"]';
+export const TABLE_HEADER = 'thead [data-ouia-component-type="PF6/TableRow"]';
+export const TABLE_ROW = 'tbody [data-ouia-component-type="PF6/TableRow"]';
+export const TABLE_ROW_CHECKBOX = 'tbody [data-ouia-component-type="PF6/TableRow"] input';
+export const EMPTY_STATE = '[data-ouia-component-type="PF6/EmptyState"]';
+export const CARD = '[data-ouia-component-type="PF6/Card"]';
+export const BREADCRUMB = '[data-ouia-component-type="PF6/Breadcrumb"]';
+export const TAB_CONTENT = '[data-ouia-component-type="PF6/TabContent"]';
+export const TAB_BUTTON = '[data-ouia-component-type="PF6/TabButton"]';
+export const ALERT = '[data-ouia-component-type="PF6/Alert"]';
 
-/** PF5 classes */
+/** PF6 classes */
 export const MENU_TOGGLE = '.pf-v6-c-menu-toggle';
 export const MENU_LIST = '.pf-v6-c-menu__list';
 export const MENU_TOGGLE_TEXT = '.pf-v6-c-menu-toggle__text';
