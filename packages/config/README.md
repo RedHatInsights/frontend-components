@@ -587,8 +587,10 @@ moduleFederation: {
   debug?: boolean,
   moduleName?: string,
   useFileHash?: boolean,
+  separateRuntime?: boolean,
   exclude?: string[],
-  eager?: boolean, // deprecated
+  /** @deprecated */
+  eager?: boolean,
   pluginMetadata?: object,
   extensions?: object[],
 }
@@ -598,6 +600,7 @@ moduleFederation: {
 - `debug`: Enable debug logging for federation.
 - `moduleName`: Name of the federated module (defaults to app name).
 - `useFileHash`: Whether to use content hashes in filenames.
+- `separateRuntime`: Use a separate runtime chunk for the federated module.
 - `exclude`: Array of package names to exclude from sharing.
 - `pluginMetadata`, `extensions`: Advanced, for plugin authors.
 
@@ -614,6 +617,7 @@ moduleFederation: {
     },
   ],
   debug: true,
+  separateRuntime: false,
 }
 ```
 
