@@ -571,3 +571,198 @@ const { config: webpackConfig, plugins } = config({
 });
 
 ```
+
+## Detailed Option Reference
+
+### `moduleFederation`
+Type: `object` (see below)
+
+Configures Webpack Module Federation for your app. This enables exposing and sharing modules between microfrontends.
+
+**Structure:**
+```
+moduleFederation: {
+  exposes?: { [module: string]: string },
+  shared?: { [module: string]: WebpackSharedConfig }[],
+  debug?: boolean,
+  moduleName?: string,
+  useFileHash?: boolean,
+  exclude?: string[],
+  eager?: boolean, // deprecated
+  pluginMetadata?: object,
+  extensions?: object[],
+}
+```
+- `exposes`: Map of module names to file paths to expose via federation.
+- `shared`: Array of objects specifying shared dependencies. Each key is a module name, value is a config object (see below).
+- `debug`: Enable debug logging for federation.
+- `moduleName`: Name of the federated module (defaults to app name).
+- `useFileHash`: Whether to use content hashes in filenames.
+- `exclude`: Array of package names to exclude from sharing.
+- `pluginMetadata`, `extensions`: Advanced, for plugin authors.
+
+**Example:**
+```js
+moduleFederation: {
+  exposes: {
+    './MyComponent': './src/components/MyComponent',
+  },
+  shared: [
+    {
+      react: { singleton: true, requiredVersion: '^18.0.0' },
+      'react-dom': { singleton: true, requiredVersion: '^18.0.0' },
+    },
+  ],
+  debug: true,
+}
+```
+
+**Shared Dependency Config (`WebpackSharedConfig`):**
+- `singleton`: boolean — Only one version allowed at runtime.
+- `requiredVersion`: string — Version range required.
+- `eager`: boolean — Load eagerly (not recommended).
+- `import`: boolean — Whether to import the module.
+
+---
+
+### `plugins`
+Type: `array` of Webpack plugins or plugin factories
+
+Additional Webpack plugins to include in your build. Each entry can be a plugin instance or a function that receives the Webpack compiler.
+
+**Example:**
+```js
+plugins: [
+  new MyCustomWebpackPlugin(),
+  (compiler) => { /* custom logic */ },
+]
+```
+
+---
+
+### `customProxy`
+Type: `array` of objects
+
+Additional proxy configurations, passed directly to Webpack Dev Server's `proxy` option. Each object should follow [Webpack Dev Server proxy config](https://webpack.js.org/configuration/dev-server/#devserverproxy).
+
+**Example:**
+```js
+customProxy: [
+  {
+    context: ['/api'],
+    target: 'https://qa.cloud.redhat.com',
+    secure: false,
+    changeOrigin: true,
+  },
+]
+```
+
+---
+
+### `routes`
+Type: `object`
+
+Map of additional routes to serve or proxy. Each key is a route path, value is a proxy config object.
+
+**Example:**
+```js
+routes: {
+  '/config/main.yml': { host: 'http://127.0.0.1:8889' },
+}
+```
+
+---
+
+### `routesPath`
+Type: `string`
+
+Path to a JS file exporting additional routes (same structure as `routes`).
+
+**Example:**
+```js
+routesPath: './spandx.config.js'
+```
+
+Where `spandx.config.js` exports:
+```js
+module.exports = {
+  routes: {
+    '/api': { host: 'PORTAL_BACKEND_MARKER' },
+    '/config': { host: 'http://127.0.0.1:8889' },
+  }
+}
+```
+
+---
+
+### `cacheConfig`
+Type: `object`
+
+Advanced. Partial Webpack [cache configuration](https://webpack.js.org/configuration/cache/). Used if `useCache: true`.
+
+**Example:**
+```js
+cacheConfig: {
+  type: 'filesystem',
+  cacheDirectory: './.cache',
+}
+```
+
+---
+
+### `client`
+Type: `object`
+
+Advanced. Webpack Dev Server [client configuration](https://webpack.js.org/configuration/dev-server/#devserverclient).
+
+**Example:**
+```js
+client: {
+  overlay: false,
+}
+```
+
+---
+
+### `registry`
+Type: `array` of functions
+
+Express middleware to register before Webpack or standalone services. Each function receives `{ app, server, compiler, standaloneConfig }`.
+
+**Example:**
+```js
+registry: [
+  ({ app }) => app.get('/config/main.yml', (_req, res) => res.send('custom config')),
+]
+```
+
+---
+
+### `resolve`
+Type: `object`
+
+Advanced. Webpack [resolve options](https://webpack.js.org/configuration/resolve/).
+
+**Example:**
+```js
+resolve: {
+  extensions: ['.js', '.jsx', '.ts', '.tsx'],
+}
+```
+
+---
+
+### `nodeModulesDirectories`
+Type: `array` of strings
+
+Additional directories to search for node modules (useful in monorepos).
+
+**Example:**
+```js
+nodeModulesDirectories: [
+  './node_modules',
+  '../shared/node_modules',
+]
+```
+
+---
