@@ -37,6 +37,97 @@
     - [Run servers](#run-servers)
 - [include PF css modules in your bundle](#include-pf-css-modules-in-your-bundle)
 
+# FEC CLI Tool
+
+The FEC CLI tool provides commands to streamline development, building, and serving of Red Hat Cloud Services frontend applications. It is available after installing `@redhat-cloud-services/frontend-components-config`.
+
+## Usage
+
+Add to your `package.json` scripts:
+
+```json
+{
+  "scripts": {
+    "start:dev": "fec dev",
+    "build": "fec build",
+    "serve:static": "fec static",
+    "patch-hosts": "fec patch-etc-hosts"
+  }
+}
+```
+
+Or run directly:
+
+```sh
+npx fec <command> [options]
+```
+
+## Commands
+
+| Command              | Description                                                                                 |
+|----------------------|---------------------------------------------------------------------------------------------|
+| `dev [webpack-config]`   | Start the development server. Options: `--port/-p` (default: 1337)                        |
+| `build [webpack-config]` | Build the production bundle.                                                              |
+| `static [config]`        | Serve webpack output without the webpack server. Options: `--port/-p` (default: 8003)     |
+| `patch-etc-hosts`        | Patch `/etc/hosts` to allow development hosts. May require `sudo`.                        |
+| `patch-ts`               | Install and patch TypeScript dependencies if missing.                                     |
+
+### Global Options
+
+- `--clouddotEnv` — Set platform environment (`stage`, `prod`, `ephemeral`).
+
+### Examples
+
+```sh
+fec dev --clouddotEnv=stage
+fec static --port 9000
+sudo fec patch-etc-hosts
+```
+
+---
+
+# fec.config.js Options
+
+The `fec.config.js` file configures the behavior of the FEC CLI and webpack setup. Place it in your project root.
+
+## Example
+
+```js
+module.exports = {
+  appUrl: 'https://stage.foo.redhat.com',
+  debug: true,
+  useProxy: true,
+  proxyVerbose: true,
+  interceptChromeConfig: true, // Deprecated
+  plugins: [],
+  _unstableHotReload: process.env.HOT === 'true',
+};
+```
+
+## Common Options
+
+| Option                 | Type                        | Description                                                                                   |
+|------------------------|-----------------------------|-----------------------------------------------------------------------------------------------|
+| `appUrl`               | string \| string[] \| RegExp[] | **Required.** The URL(s) or regex patterns for your app.                                      |
+| `debug`                | boolean                     | Enable debug mode.                                                                            |
+| `useProxy`             | boolean                     | Enable webpack proxy for local development.                                                    |
+| `proxyVerbose`         | boolean                     | Enable verbose proxy logging.                                                                  |
+| `interceptChromeConfig`| boolean                     | (Deprecated) Intercept dynamic FEO config locally.                                             |
+| `plugins`              | array                       | Additional webpack plugins.                                                                    |
+| `_unstableHotReload`   | boolean                     | Enable hot reload (experimental).                                                              |
+| `moduleFederation`     | object                      | Module federation configuration (see FederatedModulesConfig).                                  |
+| `chromeHost`           | string                      | Host for local chrome.                                                                         |
+| `chromePort`           | number                      | Port for local chrome.                                                                         |
+| `frontendCRDPath`      | string                      | Path to frontend CRD YAML.                                                                     |
+| `customProxy`          | array                       | Additional custom proxy configurations.                                                        |
+| `routes`               | object                      | Additional routes to serve or proxy.                                                           |
+| `routesPath`           | string                      | Path to a file exporting additional routes.                                                    |
+| ...                    |                             | See the README below for more advanced and legacy options.                                     |
+
+For a full list and details, see the [Webpack 5](#webpack-5) and [useProxy](#useproxy) sections below.
+
+---
+
 ## Webpack 5
 
 In order to use the new version of webpack and its federated modules you'll have to change your run script to use new [`webpack serve`](https://webpack.js.org/configuration/dev-server/).
