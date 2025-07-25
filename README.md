@@ -12,6 +12,7 @@ Monorepo of Red Hat Cloud services Components for applications in a React.js env
 * [sources](https://github.com/RedHatInsights/sources-ui/) - Sources Wizard component was moved to Sources UI repository (it's also stored here in `sources_backup` branch)
 * [testing](https://github.com/RedHatInsights/frontend-components/tree/master/packages/testing) - Testing utilities.
 * [advisor-components](https://github.com/RedHatInsights/frontend-components/tree/master/packages/advisor-components#readme) - a library of Advisor components (rule content, report details, charts, etc.).
+* [config](https://github.com/RedHatInsights/frontend-components/tree/master/packages/config#readme) - webpack config, CLI, and configuration documentation for Red Hat Cloud Services frontend apps
 
 
 ## [Please read our contribution guide](./CONTRIBUTING.md)
