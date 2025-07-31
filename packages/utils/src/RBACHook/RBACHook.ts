@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { RBACContext, UsePermissionsState, doesHavePermissions, getRBAC, hasAllPermissions } from '../RBAC';
-import { Access } from '@redhat-cloud-services/rbac-client';
+import { Access } from '@redhat-cloud-services/rbac-client/types';
 
 export function usePermissions(
   appName: string,
