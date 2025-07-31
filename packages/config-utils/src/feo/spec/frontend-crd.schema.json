@@ -222,7 +222,7 @@
         "title": {
           "type": "string"
         },
-        "group": {
+        "groupId": {
           "type": "string"
         },
         "id": {
