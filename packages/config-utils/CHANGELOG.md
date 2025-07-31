@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.5.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.5.0...@redhat-cloud-services/frontend-components-config-utilities-4.5.1) (2025-07-31)
+
+
+### Bug Fixes
+
+* **config-utils:** updating frontend-crd.schema.json to use correct name for the groupId key ([f2ed41e](https://github.com/RedHatInsights/frontend-components/commit/f2ed41e9d0ed693015851fc03faa3e92a74d03a4))
+
 ## [4.5.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.4.1...@redhat-cloud-services/frontend-components-config-utilities-4.5.0) (2025-07-14)
 
 
