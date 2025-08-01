@@ -2,9 +2,18 @@ import { FrontendCRD, ServicesTilesResponseEntry } from './feo-types';
 import serviceTilesInterceptor from './service-tiles-interceptor';
 
 describe('Service tiles interceptor', () => {
-  it('should replace service tiles with the ones from the frontendCRD', () => {
-    const frontendName = 'frontendName';
-    const frontendCrd: FrontendCRD = {
+  // Declare mock variables outside beforeEach for shared access
+  let frontendName: string;
+  let frontendCrd: FrontendCRD;
+  let remoteServiceTiles: ServicesTilesResponseEntry[];
+
+  beforeEach(() => {
+    // Clear all mocks to ensure test isolation
+    jest.clearAllMocks();
+    
+    // Initialize/reset test data with default values
+    frontendName = 'frontendName';
+    frontendCrd = {
       objects: [
         {
           metadata: {
@@ -41,7 +50,7 @@ describe('Service tiles interceptor', () => {
         },
       ],
     };
-    const remoteServiceTiles: ServicesTilesResponseEntry[] = [
+    remoteServiceTiles = [
       {
         id: 'section-1',
         description: 'section 1',
@@ -87,6 +96,10 @@ describe('Service tiles interceptor', () => {
         ],
       },
     ];
+  });
+
+  it('should replace service tiles with the ones from the frontendCRD', () => {
+    // Arrange - Setup test data (mocks already configured in beforeEach)
     const expectedServiceTiles: ServicesTilesResponseEntry[] = [
       {
         id: 'section-1',
@@ -136,7 +149,10 @@ describe('Service tiles interceptor', () => {
       },
     ];
 
+    // Act - Execute the function under test
     const result = serviceTilesInterceptor(remoteServiceTiles, frontendCrd);
+    
+    // Assert - Verify behavior
     expect(result).toEqual(expectedServiceTiles);
   });
 });

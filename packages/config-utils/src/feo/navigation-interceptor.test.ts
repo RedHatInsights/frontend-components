@@ -3,14 +3,26 @@ import navigationInterceptor from './navigation-interceptor';
 
 describe('NavigationInterceptor', () => {
   describe('bundle segments', () => {
-    const bundleName = 'testing-bundle';
-    const defaultFrontendName = 'testing-frontend';
-    const bundleSegmentName = 'testing-bundle-segment';
-    const baseNavItem: DirectNavItem = {
-      id: 'link-one',
-      href: '/link-one',
-      title: 'Link one',
-    };
+    // Declare shared variables outside beforeEach for shared access
+    let bundleName: string;
+    let defaultFrontendName: string;
+    let bundleSegmentName: string;
+    let baseNavItem: DirectNavItem;
+
+    beforeEach(() => {
+      // Clear all mocks to ensure test isolation
+      jest.clearAllMocks();
+      
+      // Initialize/reset test data with default values
+      bundleName = 'testing-bundle';
+      defaultFrontendName = 'testing-frontend';
+      bundleSegmentName = 'testing-bundle-segment';
+      baseNavItem = {
+        id: 'link-one',
+        href: '/link-one',
+        title: 'Link one',
+      };
+    });
     function createLocalCRD({ bundleSegmentRef, frontendRef, ...navItem }: DirectNavItem, frontendName: string): FrontendCRD {
       return {
         objects: [
@@ -188,19 +200,33 @@ describe('NavigationInterceptor', () => {
   });
 
   describe('navigation segments', () => {
-    const bundleName = 'testing-bundle';
-    const defaultFrontendName = 'testing-frontend';
-    const bundleSegmentName = 'testing-bundle-segment';
-    const navSegmentId = 'testing-nav-segment-id';
-    const baseSegmentRef: SegmentRef = {
-      frontendName: defaultFrontendName,
-      segmentId: navSegmentId,
-    };
-    const baseNavItem: DirectNavItem = {
-      id: 'link-one',
-      href: '/link-one',
-      title: 'Link one',
-    };
+    // Declare shared variables outside beforeEach for shared access
+    let bundleName: string;
+    let defaultFrontendName: string;
+    let bundleSegmentName: string;
+    let navSegmentId: string;
+    let baseSegmentRef: SegmentRef;
+    let baseNavItem: DirectNavItem;
+
+    beforeEach(() => {
+      // Clear all mocks to ensure test isolation
+      jest.clearAllMocks();
+      
+      // Initialize/reset test data with default values
+      bundleName = 'testing-bundle';
+      defaultFrontendName = 'testing-frontend';
+      bundleSegmentName = 'testing-bundle-segment';
+      navSegmentId = 'testing-nav-segment-id';
+      baseSegmentRef = {
+        frontendName: defaultFrontendName,
+        segmentId: navSegmentId,
+      };
+      baseNavItem = {
+        id: 'link-one',
+        href: '/link-one',
+        title: 'Link one',
+      };
+    });
 
     it('should replace top level nav segment data', () => {
       const frontendCRD: FrontendCRD = {
@@ -253,14 +279,7 @@ describe('NavigationInterceptor', () => {
     });
 
     it('should replace one segment ref with multiple navItems', () => {
-      const bundleName = 'testing-bundle';
-      const defaultFrontendName = 'testing-frontend';
-      const bundleSegmentName = 'testing-bundle-segment';
-      const navSegmentId = 'testing-nav-segment-id';
-      const baseSegmentRef: SegmentRef = {
-        frontendName: defaultFrontendName,
-        segmentId: navSegmentId,
-      };
+      // Arrange - Setup test data (base data already configured in beforeEach)
       const baseNavItems: DirectNavItem[] = [
         {
           id: 'link-one',
@@ -343,19 +362,15 @@ describe('NavigationInterceptor', () => {
         })),
       ];
 
+      // Act - Execute the function under test
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
+      
+      // Assert - Verify behavior
       expect(result).toEqual(expectedResult);
     });
 
     it('should replace remote segment with one item with multiple items', () => {
-      const bundleName = 'testing-bundle';
-      const defaultFrontendName = 'testing-frontend';
-      const bundleSegmentName = 'testing-bundle-segment';
-      const navSegmentId = 'testing-nav-segment-id';
-      const baseSegmentRef: SegmentRef = {
-        frontendName: defaultFrontendName,
-        segmentId: navSegmentId,
-      };
+      // Arrange - Setup test data (base data already configured in beforeEach)
       const baseNavItems: DirectNavItem[] = [
         {
           id: 'link-one',
@@ -412,19 +427,15 @@ describe('NavigationInterceptor', () => {
         title: `${title} changed`,
       }));
 
+      // Act - Execute the function under test
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
+      
+      // Assert - Verify behavior
       expect(result).toEqual(expectedResult);
     });
 
     it('should replace remote segment with multiple items with one item', () => {
-      const bundleName = 'testing-bundle';
-      const defaultFrontendName = 'testing-frontend';
-      const bundleSegmentName = 'testing-bundle-segment';
-      const navSegmentId = 'testing-nav-segment-id';
-      const baseSegmentRef: SegmentRef = {
-        frontendName: defaultFrontendName,
-        segmentId: navSegmentId,
-      };
+      // Arrange - Setup test data (base data already configured in beforeEach)
       const baseNavItems: DirectNavItem[] = [
         {
           id: 'link-one',
@@ -483,15 +494,30 @@ describe('NavigationInterceptor', () => {
 
       const expectedResult: DirectNavItem[] = [{ ...baseNavItems[0], title: `${baseNavItems[0].title} changed` }];
 
+      // Act - Execute the function under test
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
+      
+      // Assert - Verify behavior
       expect(result).toEqual(expectedResult);
     });
   });
 
   describe('replacement of both navigation and bundle segments', () => {
+    // Declare shared variables outside beforeEach for shared access
+    let frontendName: string;
+    let bundleId: string;
+
+    beforeEach(() => {
+      // Clear all mocks to ensure test isolation
+      jest.clearAllMocks();
+      
+      // Initialize/reset test data with default values
+      frontendName = 'test-frontend';
+      bundleId = 'test-bundle-id';
+    });
+
     it('should handle complex and deeply nested replacements', () => {
-      const frontendName = 'test-frontend';
-      const bundleId = 'test-bundle-id';
+      // Arrange - Setup test data (base data already configured in beforeEach)
       const bundleSegmentOneId = 'bundle-segment-one-id';
       const segmentOneId = 'segment-one-id';
       const segmentRefOne: SegmentRef = {
@@ -695,7 +721,10 @@ describe('NavigationInterceptor', () => {
         },
       ];
 
+      // Act - Execute the function under test
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleId);
+      
+      // Assert - Verify behavior
       expect(result).toEqual(expectedResult);
     });
   });
