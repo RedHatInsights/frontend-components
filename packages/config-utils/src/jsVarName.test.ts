@@ -1,6 +1,11 @@
 import jsVarName from './jsVarName';
 
 describe('jsVarName', () => {
+  beforeEach(() => {
+    // Clear all mocks to ensure test isolation
+    jest.clearAllMocks();
+  });
+
   // Test data array with input, expected output, and description
   const testCases = [
     // Dashed strings to camelCase
@@ -47,8 +52,14 @@ describe('jsVarName', () => {
 
   // Documentation validation test
   it('should match documentation examples', () => {
+    // Arrange - Setup test data
     // This validates our documentation is accurate
-    const varName = jsVarName('my-app-name');
+    const input = 'my-app-name';
+    
+    // Act - Execute the function under test
+    const varName = jsVarName(input);
+    
+    // Assert - Verify behavior
     expect(varName).toBe('myAppName');
     expect(typeof varName).toBe('string');
     expect(varName.length).toBeGreaterThan(0);

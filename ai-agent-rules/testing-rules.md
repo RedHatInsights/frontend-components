@@ -279,25 +279,104 @@ CypressError: Timed out retrying: Expected to find element: '[data-testid="total
 
 ### Jest Test Structure
 
-#### Standard Test Structure
+#### Standard Test Structure with Setup/Teardown
 ```typescript
 describe('UtilityFunction', () => {
+  // Declare mock variables outside beforeEach for shared access
+  let mockDependency: jest.Mocked<SomeDependency>;
+  let mockObject: Partial<SomeType>;
+
   beforeEach(() => {
-    // Setup
+    // Clear all mocks to ensure test isolation
+    jest.clearAllMocks();
+    
+    // Initialize/reset mock objects and dependencies
+    mockDependency = {
+      method: jest.fn()
+    } as any;
+
+    mockObject = {
+      property: 'default value'
+    };
+  });
+
+  afterEach(() => {
+    // Optional: Clean up resources if needed
+    // jest.restoreAllMocks(); // Use sparingly
   });
 
   it('should handle normal case', () => {
-    // Arrange
-    // Act  
-    // Assert
+    // Arrange - Setup test data (mocks already configured in beforeEach)
+    mockDependency.method.mockReturnValue('expected result');
+    
+    // Act - Execute the function under test
+    const result = utilityFunction(mockObject);
+    
+    // Assert - Verify behavior and calls
+    expect(result).toBe('expected result');
+    expect(mockDependency.method).toHaveBeenCalledWith(mockObject);
   });
 
   it('should handle edge case', () => {
-    // Test edge cases
+    // Arrange
+    mockObject.property = undefined;
+    
+    // Act & Assert
+    expect(() => utilityFunction(mockObject)).toThrow('Invalid input');
   });
 
   it('should handle error case', () => {
-    // Test error scenarios
+    // Arrange
+    mockDependency.method.mockImplementation(() => {
+      throw new Error('Dependency failed');
+    });
+    
+    // Act & Assert
+    expect(() => utilityFunction(mockObject)).toThrow('Dependency failed');
+  });
+});
+```
+
+#### Key Setup/Teardown Patterns:
+
+**Always use `beforeEach` for:**
+- `jest.clearAllMocks()` to ensure test isolation
+- Initializing mock objects and dependencies
+- Setting up default test data that most tests will use
+- Resetting module state between tests
+
+**Use `afterEach` sparingly for:**
+- Cleaning up external resources (files, network connections)
+- Resetting global state that tests might modify
+- **Avoid `jest.restoreAllMocks()` unless absolutely necessary**
+
+**Mock Declaration Pattern:**
+```typescript
+describe('ComponentName', () => {
+  // ✅ GOOD: Declare mocks outside beforeEach for type safety and shared access
+  let mockRequest: Partial<ExpressRequest>;
+  let mockResponse: Partial<Response>;
+  let mockDependency: jest.Mocked<typeof SomeDependency>;
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    
+    // Initialize with common defaults
+    mockRequest = {
+      headers: {},
+      body: {}
+    };
+
+    mockResponse = {
+      json: jest.fn(),
+      status: jest.fn().mockReturnThis()
+    } as any;
+  });
+
+  // Tests can override defaults as needed
+  it('should handle specific case', () => {
+    mockRequest.headers = { 'custom-header': 'value' };
+    // Test continues with modified mock...
   });
 });
 ```
@@ -343,17 +422,88 @@ describe('jsVarName', () => {
 - Reduces repetitive code
 
 ### Cypress Component Test Structure
+
+#### Standard Cypress Component Test with Setup
 ```typescript
 describe('ComponentName', () => {
+  // Declare shared test data and props
+  let defaultProps: ComponentProps;
+  let mockCallbacks: Record<string, any>;
+
+  beforeEach(() => {
+    // Setup default props that most tests will use
+    defaultProps = {
+      title: 'Test Title',
+      isVisible: true,
+      data: [{ id: 1, name: 'Item 1' }]
+    };
+
+    // Setup mock callbacks
+    mockCallbacks = {
+      onSubmit: cy.stub().as('onSubmit'),
+      onChange: cy.stub().as('onChange'),
+      onClose: cy.stub().as('onClose')
+    };
+  });
+
   it('should render with default props', () => {
-    cy.mount(<ComponentName />);
+    cy.mount(<ComponentName {...defaultProps} />);
     cy.get('[data-testid="component"]').should('be.visible');
+    cy.contains(defaultProps.title).should('be.visible');
   });
 
   it('should handle user interactions', () => {
-    cy.mount(<ComponentName onSubmit={cy.stub().as('onSubmit')} />);
+    cy.mount(<ComponentName {...defaultProps} {...mockCallbacks} />);
     cy.get('button').click();
     cy.get('@onSubmit').should('have.been.called');
+  });
+
+  it('should handle edge case with modified props', () => {
+    // Override defaults for specific test case
+    const propsWithEmptyData = { ...defaultProps, data: [] };
+    cy.mount(<ComponentName {...propsWithEmptyData} {...mockCallbacks} />);
+    cy.get('[data-testid="empty-state"]').should('be.visible');
+  });
+});
+```
+
+#### Cypress Setup/Teardown Patterns:
+
+**Use `beforeEach` for:**
+- Setting up default component props
+- Creating stub functions with aliases
+- Initializing test data
+- Setting up mock API responses with `cy.intercept()`
+
+**Use `afterEach` for:**
+- Cleaning up any global state
+- Resetting intercepted routes if needed
+
+**Component Mounting Patterns:**
+```typescript
+describe('ComponentWithProviders', () => {
+  let defaultProps: ComponentProps;
+  let mockStore: any;
+
+  beforeEach(() => {
+    // Setup Redux store or context providers
+    mockStore = configureStore({
+      reducer: { feature: mockReducer },
+      preloadedState: { feature: { items: [] } }
+    });
+
+    defaultProps = {
+      title: 'Test Component'
+    };
+  });
+
+  it('should render with providers', () => {
+    cy.mount(
+      <Provider store={mockStore}>
+        <ComponentWithProviders {...defaultProps} />
+      </Provider>
+    );
+    cy.get('[data-testid="component"]').should('be.visible');
   });
 });
 ```

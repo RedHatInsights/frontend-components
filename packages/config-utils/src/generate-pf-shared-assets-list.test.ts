@@ -10,10 +10,15 @@ const mockGlob = glob as jest.Mocked<typeof glob>;
 const mockFs = fs as jest.Mocked<typeof fs>;
 
 describe('generatePFSharedAssetsList', () => {
+  // Declare mock variables outside beforeEach for shared access
+  let mockConsoleLog: jest.SpyInstance;
+
   beforeEach(() => {
+    // Clear all mocks to ensure test isolation
     jest.clearAllMocks();
-    // Suppress console warnings for clean test output
-    jest.spyOn(console, 'log').mockImplementation(() => {});
+    
+    // Initialize/reset mock objects and dependencies
+    mockConsoleLog = jest.spyOn(console, 'log').mockImplementation(() => {});
   });
 
   afterEach(() => {
@@ -21,7 +26,7 @@ describe('generatePFSharedAssetsList', () => {
   });
 
   it('should return dynamic modules for valid PatternFly versions', () => {
-    // Mock package.json with valid PF versions
+    // Arrange - Setup test data (mocks already configured in beforeEach)
     const mockPackageJson = {
       dependencies: {
         '@patternfly/react-core': '^5.2.0',
@@ -40,8 +45,10 @@ describe('generatePFSharedAssetsList', () => {
         '/test/node_modules/@patternfly/react-icons/dist/dynamic/ArrowIcon/package.json'
       ]);
 
+    // Act - Execute the function under test
     const result = generatePFSharedAssetsList('/test');
 
+    // Assert - Verify behavior
     expect(result).toEqual({
       '@patternfly/react-core/dist/dynamic/Button': {
         requiredVersion: '^5.2.0'
@@ -56,6 +63,7 @@ describe('generatePFSharedAssetsList', () => {
   });
 
   it('should return empty object for unsupported PatternFly core version', () => {
+    // Arrange - Setup test data (mocks already configured in beforeEach)
     const mockPackageJson = {
       dependencies: {
         '@patternfly/react-core': '^4.9.0', // Unsupported version
@@ -64,16 +72,19 @@ describe('generatePFSharedAssetsList', () => {
     };
     mockFs.readFileSync.mockReturnValue(JSON.stringify(mockPackageJson));
 
+    // Act - Execute the function under test
     const result = generatePFSharedAssetsList('/test');
 
+    // Assert - Verify behavior
     expect(result).toEqual({});
-    expect(console.log).toHaveBeenCalledWith(
+    expect(mockConsoleLog).toHaveBeenCalledWith(
       expect.anything(), // First arg is chalk.yellow('[fec]')
       expect.stringContaining('Unsupported @patternfly packages version')
     );
   });
 
   it('should return empty object for unsupported PatternFly icons version', () => {
+    // Arrange - Setup test data (mocks already configured in beforeEach)
     const mockPackageJson = {
       dependencies: {
         '@patternfly/react-core': '^5.2.0',
@@ -85,13 +96,14 @@ describe('generatePFSharedAssetsList', () => {
     const result = generatePFSharedAssetsList('/test');
 
     expect(result).toEqual({});
-    expect(console.log).toHaveBeenCalledWith(
+    expect(mockConsoleLog).toHaveBeenCalledWith(
       expect.anything(), // First arg is chalk.yellow('[fec]')
       expect.stringContaining('Unsupported @patternfly packages version')
     );
   });
 
   it('should check devDependencies if not found in dependencies', () => {
+    // Arrange - Setup test data (mocks already configured in beforeEach)
     const mockPackageJson = {
       dependencies: {},
       devDependencies: {
@@ -106,18 +118,20 @@ describe('generatePFSharedAssetsList', () => {
 
     expect(result).toEqual({});
     // Should not log unsupported version warnings
-    expect(console.log).not.toHaveBeenCalledWith(
+    expect(mockConsoleLog).not.toHaveBeenCalledWith(
       expect.stringContaining('Unsupported @patternfly packages version')
     );
   });
 
   it('should throw error when root directory is not provided', () => {
+    // Act & Assert - Execute the function under test and verify error behavior
     expect(() => generatePFSharedAssetsList('')).toThrow(
       'Provide a directory of your node_modules to find dynamic modules'
     );
   });
 
   it('should handle version numbers with different formats', () => {
+    // Arrange - Setup test data (mocks already configured in beforeEach)
     const mockPackageJson = {
       dependencies: {
         '@patternfly/react-core': '5.2.0', // Without caret
@@ -131,12 +145,13 @@ describe('generatePFSharedAssetsList', () => {
 
     expect(result).toEqual({});
     // Should not log warnings for valid versions
-    expect(console.log).not.toHaveBeenCalledWith(
+    expect(mockConsoleLog).not.toHaveBeenCalledWith(
       expect.stringContaining('Unsupported @patternfly packages version')
     );
   });
 
   it('should handle version with no numeric characters', () => {
+    // Arrange - Setup test data (mocks already configured in beforeEach)
     const mockPackageJson = {
       dependencies: {
         '@patternfly/react-core': 'invalid-version', // This becomes "500" after regex, passes check
@@ -153,6 +168,7 @@ describe('generatePFSharedAssetsList', () => {
   });
 
   it('should generate correct glob patterns', () => {
+    // Arrange - Setup test data (mocks already configured in beforeEach)
     const mockPackageJson = {
       dependencies: {
         '@patternfly/react-core': '^5.2.0',
@@ -162,8 +178,10 @@ describe('generatePFSharedAssetsList', () => {
     mockFs.readFileSync.mockReturnValue(JSON.stringify(mockPackageJson));
     mockGlob.sync.mockReturnValue([]);
 
+    // Act - Execute the function under test
     generatePFSharedAssetsList('/custom/root');
 
+    // Assert - Verify behavior
     expect(mockGlob.sync).toHaveBeenCalledWith(
       '/custom/root/node_modules/@patternfly/react-core/dist/dynamic/*/**/package.json'
     );
@@ -173,6 +191,7 @@ describe('generatePFSharedAssetsList', () => {
   });
 
   it('should throw error when unable to extract module name', () => {
+    // Arrange - Setup test data (mocks already configured in beforeEach)
     const mockPackageJson = {
       dependencies: {
         '@patternfly/react-core': '^5.2.0',
@@ -186,6 +205,7 @@ describe('generatePFSharedAssetsList', () => {
       .mockReturnValueOnce(['/package.json']) // Path without node_modules
       .mockReturnValueOnce([]);
 
+    // Act & Assert - Execute the function under test and verify error behavior
     expect(() => generatePFSharedAssetsList('/test')).toThrow(
       'Unable to get module name from: /package.json'
     );
@@ -193,6 +213,7 @@ describe('generatePFSharedAssetsList', () => {
 
   // Test documented functionality from our documentation
   it('should match documentation behavior', () => {
+    // Arrange - Setup test data (mocks already configured in beforeEach)
     // This validates our documentation is accurate
     const mockPackageJson = {
       dependencies: {
@@ -205,8 +226,10 @@ describe('generatePFSharedAssetsList', () => {
       '/test/node_modules/@patternfly/react-core/dist/dynamic/Button/package.json'
     ]);
 
+    // Act - Execute the function under test
     const result = generatePFSharedAssetsList('/test');
 
+    // Assert - Verify behavior
     // Verify it returns module definitions with versions
     expect(typeof result).toBe('object');
     expect(result).not.toBeNull();
