@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-6.1.1...@redhat-cloud-services/frontend-components-utilities-7.0.0) (2025-08-04)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/types` updated to version `3.0.0`
+
+### ⚠ BREAKING CHANGES
+
+* updating rbac-client to newer js-client
+
+### Miscellaneous Chores
+
+* updating rbac-client to newer js-client ([ded6e1b](https://github.com/RedHatInsights/frontend-components/commit/ded6e1b37aaabb8ad561bdb7eba3a4a4b16a1975))
+
 ## [6.1.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-6.1.0...@redhat-cloud-services/frontend-components-utilities-6.1.1) (2025-07-23)
 
 ## [6.1.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-6.0.5...@redhat-cloud-services/frontend-components-utilities-6.1.0) (2025-06-19)
