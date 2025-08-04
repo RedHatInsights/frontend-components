@@ -25,6 +25,7 @@ export declare type PDFRequestPayload = {
   scope: string;
   module: string;
   importName?: string;
+  landscape?: boolean;
   fetchDataParams?: Record<string, any>;
   additionalData?: Record<string, any>;
 };
