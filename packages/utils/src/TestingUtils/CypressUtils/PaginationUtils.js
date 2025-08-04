@@ -1,5 +1,5 @@
 /* global cy */
-import { MENU_ITEM, MENU_TOGGLE, PAGINATION, PAGINATION_TOP } from './selectors';
+import { MENU, MENU_ITEM, MENU_TOGGLE, PAGINATION, PAGINATION_TOP } from './selectors';
 
 const DEFAULT_ROW_COUNT = 20;
 const PAGINATION_VALUES = [10, 20, 50, 100];
@@ -39,7 +39,7 @@ export function checkPaginationTotal(n) {
  */
 export function checkPaginationValues(expectedValues) {
   cy.get(PAGINATION_TOP).find(MENU_TOGGLE).click();
-  cy.get(PAGINATION_TOP)
+  cy.get(MENU)
     .find(MENU_ITEM)
     .each(($el, index) => {
       cy.wrap($el).should('have.text', `${expectedValues[index]} per page`);
@@ -60,7 +60,7 @@ export function checkPaginationValues(expectedValues) {
  */
 export function changePagination(paginationValue) {
   cy.get(PAGINATION_TOP).find(MENU_TOGGLE).click();
-  return cy.get(PAGINATION_TOP).find(MENU_ITEM).contains(`${paginationValue}`).click();
+  return cy.get(MENU).find(MENU_ITEM).contains(`${paginationValue}`).click();
 }
 
 export { DEFAULT_ROW_COUNT, PAGINATION_VALUES, SORTING_ORDERS };
