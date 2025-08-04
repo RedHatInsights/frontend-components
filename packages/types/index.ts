@@ -1,6 +1,6 @@
 import { QuickStart, QuickStartCatalogPage } from '@patternfly/quickstarts';
 import { History } from 'history';
-import { Access } from '@redhat-cloud-services/rbac-client';
+import { Access } from '@redhat-cloud-services/rbac-client/types';
 import { AnalyticsBrowser } from '@segment/analytics-next';
 import { Method } from 'axios';
 import type { AxiosRequestConfig } from 'axios';
