@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-3.0.0...@redhat-cloud-services/types-3.0.1) (2025-08-05)
+
 ## [3.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-2.0.3...@redhat-cloud-services/types-3.0.0) (2025-08-04)
 
 
