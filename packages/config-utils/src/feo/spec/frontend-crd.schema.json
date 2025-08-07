@@ -571,6 +571,9 @@
             "type": "string"
           }
         },
+        "pushCacheEnabled": {
+          "type": "boolean"
+        },
         "module": {
           "type": "object",
           "properties": {
