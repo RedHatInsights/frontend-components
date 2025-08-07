@@ -2,6 +2,11 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.6.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.7...@redhat-cloud-services/frontend-components-config-6.6.8) (2025-08-07)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-config-utilities` updated to version `4.6.0`
 ## [6.6.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.6...@redhat-cloud-services/frontend-components-config-6.6.7) (2025-08-06)
 
 ### Dependency Updates
