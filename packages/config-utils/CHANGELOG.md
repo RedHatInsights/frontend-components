@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.6.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.5.2...@redhat-cloud-services/frontend-components-config-utilities-4.6.0) (2025-08-07)
+
+
+### Features
+
+* adding the pushCacheEnabled variable to frontend resources ([63aad7e](https://github.com/RedHatInsights/frontend-components/commit/63aad7eb8cfc727d28bbdf63e3e88980584d77dc))
+
 ## [4.5.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.5.1...@redhat-cloud-services/frontend-components-config-utilities-4.5.2) (2025-08-06)
 
 ## [4.5.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.5.0...@redhat-cloud-services/frontend-components-config-utilities-4.5.1) (2025-07-31)
