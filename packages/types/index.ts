@@ -121,6 +121,11 @@ declare function OnChromeEvent<K extends 'APP_NAVIGATION' | 'NAVIGATION_TOGGLE' 
 
 export type EnableTopicsArgs = [{ names: string[]; append?: boolean }] | string[];
 
+export interface NavItemPermission {
+  method?: string;
+  args?: string[];
+}
+
 export type ChromeWsEventTypes = 'com.redhat.console.notifications.drawer';
 export type ChromeWsPayload<T> = {
   data: T;
@@ -133,6 +138,27 @@ export type ChromeWsPayload<T> = {
 export type ChromeWsEventListener<T> = (event: ChromeWsPayload<T>) => void;
 export type UnSubscribeFromChromeWsEvent = () => void;
 export type AddChromeWsEventListener = <T>(type: ChromeWsEventTypes, listener: ChromeWsEventListener<T>) => UnSubscribeFromChromeWsEvent;
+
+export type SearchDataType = 'help-docs' | 'quickstarts' | 'general' | string;
+
+export interface SearchEntry {
+  id: string;
+  title: string;
+  description: string;
+  pathname: string;
+  bundleTitle: string;
+  altTitle?: string[];
+  type: SearchDataType;
+  permissions?: NavItemPermission[];
+}
+
+export interface ChromeSearchAPI {
+  fillStore: (type: SearchDataType, data: SearchEntry[]) => Promise<void>;
+  query: (term: string, type?: SearchDataType, env?: string, limit?: number) => Promise<SearchEntry[]>;
+  getAvailableTypes: () => SearchDataType[];
+  clearType: (type: SearchDataType) => Promise<void>;
+  getCachedData: (type: SearchDataType) => SearchEntry[] | undefined;
+}
 
 export type DrawerPanelActions = {
   setDrawerPanelContent: (data: { scope: string; module: string } & Record<string, unknown>) => void;
@@ -283,6 +309,7 @@ export interface ChromeAPI {
   enablePackagesDebug: () => void;
   requestPdf: (options: PDFRequestOptions) => Promise<void>;
   drawerActions: DrawerPanelActions;
+  search?: ChromeSearchAPI;
 }
 
 declare global {
