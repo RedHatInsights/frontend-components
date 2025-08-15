@@ -200,6 +200,9 @@
       "properties": {
         "APIKey": {
           "type": "string"
+        },
+        "APIKeyDev": {
+          "type": "string"
         }
       },
       "required": [
