@@ -2,6 +2,63 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.6.9](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.8...@redhat-cloud-services/frontend-components-config-6.6.9) (2025-08-07)
+
+
+### Bug Fixes
+
+* **config:** bump config utilities package to 4.6.0 ([34c0a50](https://github.com/RedHatInsights/frontend-components/commit/34c0a50c8d46991081565010841b580871d1aee9))
+
+## [6.6.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.7...@redhat-cloud-services/frontend-components-config-6.6.8) (2025-08-07)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-config-utilities` updated to version `4.6.0`
+## [6.6.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.6...@redhat-cloud-services/frontend-components-config-6.6.7) (2025-08-06)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-config-utilities` updated to version `4.5.2`
+## [6.6.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.5...@redhat-cloud-services/frontend-components-config-6.6.6) (2025-07-31)
+
+
+### Bug Fixes
+
+* **config:** bump config utilities package ([37293eb](https://github.com/RedHatInsights/frontend-components/commit/37293ebe1c6b572371d91ef9b7d4080a560c8a98))
+
+## [6.6.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.4...@redhat-cloud-services/frontend-components-config-6.6.5) (2025-07-31)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-config-utilities` updated to version `4.5.1`
+## [6.6.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.3...@redhat-cloud-services/frontend-components-config-6.6.4) (2025-07-14)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-config-utilities` updated to version `4.5.0`
+## [6.6.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.2...@redhat-cloud-services/frontend-components-config-6.6.3) (2025-07-08)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/tsc-transform-imports` updated to version `1.0.25`
+## [6.6.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.1...@redhat-cloud-services/frontend-components-config-6.6.2) (2025-06-23)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-config-utilities` updated to version `4.4.1`
+
+### Bug Fixes
+
+* **config:** cleanup config readme and release new version ([a0c5822](https://github.com/RedHatInsights/frontend-components/commit/a0c5822dcdafb95f335f9c5daafbd9b56e2ab137))
+* **config:** use dev image for local fec development against prod ([7d4b0cd](https://github.com/RedHatInsights/frontend-components/commit/7d4b0cd436389067abb2b4154cb443e8fc90ea6e))
+
+## [6.6.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.1...@redhat-cloud-services/frontend-components-config-6.6.2) (2025-06-19)
+
+
+### Bug Fixes
+
+* **config:** use dev image for local fec development against prod ([7d4b0cd](https://github.com/RedHatInsights/frontend-components/commit/7d4b0cd436389067abb2b4154cb443e8fc90ea6e))
+
 ## [6.6.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.1...@redhat-cloud-services/frontend-components-config-6.6.2) (2025-05-30)
 
 

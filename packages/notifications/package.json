@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-notifications",
-  "version": "6.0.0",
+  "version": "6.1.5",
   "description": "Notifications portal to show toast notifications for RedHat Cloud Services project.",
   "browser": "index.js",
   "module": "esm/index.js",
@@ -26,8 +26,8 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@redhat-cloud-services/frontend-components-utilities": "^6.0.0",
-    "@redhat-cloud-services/frontend-components": "^6.0.0"
+    "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
+    "@redhat-cloud-services/frontend-components": "^7.0.0"
   },
   "devDependencies": {
     "glob": "10.3.3",

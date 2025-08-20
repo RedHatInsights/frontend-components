@@ -2,6 +2,36 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.0.10](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-translations-4.0.9...@redhat-cloud-services/frontend-components-translations-4.0.10) (2025-08-07)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.3`
+## [4.0.9](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-translations-4.0.8...@redhat-cloud-services/frontend-components-translations-4.0.9) (2025-08-05)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.2`
+## [4.0.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-translations-4.0.7...@redhat-cloud-services/frontend-components-translations-4.0.8) (2025-08-04)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.1`
+## [4.0.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-translations-4.0.6...@redhat-cloud-services/frontend-components-translations-4.0.7) (2025-08-04)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.0`
+## [4.0.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-translations-4.0.5...@redhat-cloud-services/frontend-components-translations-4.0.6) (2025-07-23)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.1.1`
+## [4.0.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-translations-4.0.4...@redhat-cloud-services/frontend-components-translations-4.0.5) (2025-06-19)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.1.0`
 ## [4.0.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-translations-4.0.3...@redhat-cloud-services/frontend-components-translations-4.0.4) (2025-04-28)
 
 ### Dependency Updates

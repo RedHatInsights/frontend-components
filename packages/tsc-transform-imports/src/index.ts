@@ -212,17 +212,21 @@ const transformer: ts.TransformerFactory<ts.Node> = (context) => (rootNode) => {
     // handle absolute icons import paths
     if (isDynamic && ts.isImportDeclaration(node) && /@patternfly\/react-(icons|tokens)/.test(node.moduleSpecifier.getText())) {
       if (ts.isImportDeclaration(node) && /@patternfly\/.*\/dist\/esm/.test(node.moduleSpecifier.getText())) {
+        const moduleSpecifier = node.moduleSpecifier
+          .getFullText()
+          .replace(/"/g, '')
+          .replace(/'/g, '');
+
+        if (!node.moduleSpecifier.getText().includes('react-tokens')) {
+          moduleSpecifier.replace(/dist\/esm/, 'dist/dynamic');
+        }
+
         return factory.updateImportDeclaration(
           node,
           node.modifiers,
           node.importClause,
           factory.createStringLiteral(
-            node.moduleSpecifier
-              .getFullText()
-              .replace(/"/g, '')
-              .replace(/'/g, '')
-              .replace(/dist\/esm/, 'dist/dynamic')
-              .trim(),
+            moduleSpecifier.trim(),
             true
           ),
           undefined

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
 import { Spinner } from '@patternfly/react-core/dist/dynamic/components/Spinner';
-import { Access } from '@redhat-cloud-services/rbac-client';
+import { Access } from '@redhat-cloud-services/rbac-client/types';
 
 import {
   RBACContext,

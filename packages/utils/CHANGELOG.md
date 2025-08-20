@@ -2,6 +2,38 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.0.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-7.0.2...@redhat-cloud-services/frontend-components-utilities-7.0.3) (2025-08-07)
+
+## [7.0.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-7.0.1...@redhat-cloud-services/frontend-components-utilities-7.0.2) (2025-08-05)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/types` updated to version `3.0.1`
+## [7.0.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-7.0.0...@redhat-cloud-services/frontend-components-utilities-7.0.1) (2025-08-04)
+
+## [7.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-6.1.1...@redhat-cloud-services/frontend-components-utilities-7.0.0) (2025-08-04)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/types` updated to version `3.0.0`
+
+### ⚠ BREAKING CHANGES
+
+* updating rbac-client to newer js-client
+
+### Miscellaneous Chores
+
+* updating rbac-client to newer js-client ([ded6e1b](https://github.com/RedHatInsights/frontend-components/commit/ded6e1b37aaabb8ad561bdb7eba3a4a4b16a1975))
+
+## [6.1.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-6.1.0...@redhat-cloud-services/frontend-components-utilities-6.1.1) (2025-07-23)
+
+## [6.1.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-6.0.5...@redhat-cloud-services/frontend-components-utilities-6.1.0) (2025-06-19)
+
+
+### Features
+
+* **CVSS score:** improve clarity ([281d5b6](https://github.com/RedHatInsights/frontend-components/commit/281d5b642b647232d40fd4244f7a2a865befc0d9))
+
 ## [6.0.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-6.0.4...@redhat-cloud-services/frontend-components-utilities-6.0.5) (2025-04-28)
 
 ### Dependency Updates

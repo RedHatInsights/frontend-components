@@ -2,6 +2,57 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.1.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-6.1.4...@redhat-cloud-services/frontend-components-notifications-6.1.5) (2025-08-07)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.3`
+* `@redhat-cloud-services/frontend-components` updated to version `7.0.3`
+## [6.1.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-6.1.3...@redhat-cloud-services/frontend-components-notifications-6.1.4) (2025-08-05)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.2`
+* `@redhat-cloud-services/frontend-components` updated to version `7.0.2`
+## [6.1.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-6.1.2...@redhat-cloud-services/frontend-components-notifications-6.1.3) (2025-08-04)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.1`
+* `@redhat-cloud-services/frontend-components` updated to version `7.0.1`
+## [6.1.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-6.1.1...@redhat-cloud-services/frontend-components-notifications-6.1.2) (2025-08-04)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.0`
+* `@redhat-cloud-services/frontend-components` updated to version `7.0.0`
+## [6.1.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-6.1.0...@redhat-cloud-services/frontend-components-notifications-6.1.1) (2025-07-23)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.1.1`
+* `@redhat-cloud-services/frontend-components` updated to version `6.1.1`
+## [6.1.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-6.0.2...@redhat-cloud-services/frontend-components-notifications-6.1.0) (2025-06-30)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components` updated to version `6.1.0`
+
+### Features
+
+* updating to patternfly 6.2.2 ([84fd736](https://github.com/RedHatInsights/frontend-components/commit/84fd73673b826a732267e5ed8f7eba87c2add683))
+
+## [6.0.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-6.0.1...@redhat-cloud-services/frontend-components-notifications-6.0.2) (2025-06-24)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components` updated to version `6.0.9`
+## [6.0.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-6.0.0...@redhat-cloud-services/frontend-components-notifications-6.0.1) (2025-06-19)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.1.0`
+* `@redhat-cloud-services/frontend-components` updated to version `6.0.8`
 ## [6.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-notifications-5.0.7...@redhat-cloud-services/frontend-components-notifications-6.0.0) (2025-04-29)
 
 

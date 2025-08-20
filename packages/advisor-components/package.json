@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-advisor-components",
-  "version": "3.0.7",
+  "version": "3.0.15",
   "description": "Components to be used in Advisor applications and integrations.",
   "main": "index.js",
   "module": "esm/index.js",
@@ -27,7 +27,7 @@
     "react-router-dom": "^5.0.0 || ^6.0.0"
   },
   "dependencies": {
-    "@redhat-cloud-services/frontend-components": "^6.0.0",
+    "@redhat-cloud-services/frontend-components": "^7.0.0",
     "dot": "^1.1.3",
     "lodash": "^4.17.21",
     "marked": "14.1.2",

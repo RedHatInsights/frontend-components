@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-remediations",
-  "version": "4.0.8",
+  "version": "4.0.16",
   "description": "Remediations components for RedHat Cloud Services project.",
   "main": "index.js",
   "module": "esm/index.js",
@@ -29,8 +29,8 @@
   "dependencies": {
     "@data-driven-forms/pf4-component-mapper": "^4.0.0",
     "@data-driven-forms/react-form-renderer": "^4.0.0",
-    "@redhat-cloud-services/frontend-components": "^6.0.0",
-    "@redhat-cloud-services/frontend-components-utilities": "^6.0.0",
+    "@redhat-cloud-services/frontend-components": "^7.0.0",
+    "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
     "urijs": "^1.19.11"
   }
 }

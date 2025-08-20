@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/chrome-2.0.6...@redhat-cloud-services/chrome-2.0.7) (2025-08-07)
+
+## [2.0.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/chrome-2.0.5...@redhat-cloud-services/chrome-2.0.6) (2025-08-05)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/types` updated to version `3.0.1`
+## [2.0.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/chrome-2.0.4...@redhat-cloud-services/chrome-2.0.5) (2025-08-04)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/types` updated to version `3.0.0`
 ## [2.0.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/chrome-2.0.3...@redhat-cloud-services/chrome-2.0.4) (2025-04-28)
 
 ### Dependency Updates

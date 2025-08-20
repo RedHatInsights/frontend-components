@@ -2,6 +2,37 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.6.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.5.2...@redhat-cloud-services/frontend-components-config-utilities-4.6.0) (2025-08-07)
+
+
+### Features
+
+* adding the pushCacheEnabled variable to frontend resources ([63aad7e](https://github.com/RedHatInsights/frontend-components/commit/63aad7eb8cfc727d28bbdf63e3e88980584d77dc))
+
+## [4.5.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.5.1...@redhat-cloud-services/frontend-components-config-utilities-4.5.2) (2025-08-06)
+
+## [4.5.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.5.0...@redhat-cloud-services/frontend-components-config-utilities-4.5.1) (2025-07-31)
+
+
+### Bug Fixes
+
+* **config-utils:** updating frontend-crd.schema.json to use correct name for the groupId key ([f2ed41e](https://github.com/RedHatInsights/frontend-components/commit/f2ed41e9d0ed693015851fc03faa3e92a74d03a4))
+
+## [4.5.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.4.1...@redhat-cloud-services/frontend-components-config-utilities-4.5.0) (2025-07-14)
+
+
+### Features
+
+* changing to require version till swap ([0848cec](https://github.com/RedHatInsights/frontend-components/commit/0848cec225bcf639012532224ed1a3d771d0d91f))
+* frontend-crd spec update with API version info ([f967f89](https://github.com/RedHatInsights/frontend-components/commit/f967f89d1cdcdc328cadfdd09c944b20fa6f43fb))
+
+## [4.4.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.4.0...@redhat-cloud-services/frontend-components-config-utilities-4.4.1) (2025-06-23)
+
+
+### Bug Fixes
+
+* **config-utils:** update readme and release new version ([a7f89ab](https://github.com/RedHatInsights/frontend-components/commit/a7f89ab1140036d7df6c1565008464865fe365de))
+
 ## [4.4.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.3.5...@redhat-cloud-services/frontend-components-config-utilities-4.4.0) (2025-05-16)
 
 

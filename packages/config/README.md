@@ -39,7 +39,7 @@
 
 ## Webpack 5
 
-In order to use the new version of webpack and its federated medules you'll have to change your run script to use new [`webpack serve`](https://webpack.js.org/configuration/dev-server/).
+In order to use the new version of webpack and its federated modules you'll have to change your run script to use new [`webpack serve`](https://webpack.js.org/configuration/dev-server/).
 ```JS
 > webpack-dev-server -> webpack serve
 ```

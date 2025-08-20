@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Access, ResourceDefinition, ResourceDefinitionFilterOperationEnum } from '@redhat-cloud-services/rbac-client';
+import { Access, ResourceDefinition, ResourceDefinitionFilterOperationEqualOperationEnum, ResourceDefinitionFilterOperationInOperationEnum } from '@redhat-cloud-services/rbac-client/types';
 import type { ChromeAPI } from '@redhat-cloud-services/types';
 
 declare global {
@@ -33,7 +33,7 @@ function extractResourceDefinitionValues(rds: ResourceDefinition[]) {
   return rds.reduce((acc: string[], cur: ResourceDefinition) => {
     const { key, operation, value } = cur.attributeFilter;
 
-    if (operation === ResourceDefinitionFilterOperationEnum.In) {
+    if (operation === ResourceDefinitionFilterOperationInOperationEnum.In) {
       return [
         ...acc,
         ...(Array.isArray(value) ? value.map((value) => (value === null ? 'null' : value)).toString() : value)
@@ -42,7 +42,7 @@ function extractResourceDefinitionValues(rds: ResourceDefinition[]) {
       ];
     }
 
-    if (operation === ResourceDefinitionFilterOperationEnum.Equal) {
+    if (operation === ResourceDefinitionFilterOperationEqualOperationEnum.Equal) {
       return [...acc, `${key}:${value}`];
     }
 

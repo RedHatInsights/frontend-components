@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components",
-  "version": "6.0.7",
+  "version": "7.0.3",
   "description": "Common components for RedHat Cloud Services project.",
   "main": "index.js",
   "module": "esm/index.js",
@@ -37,8 +37,8 @@
     "react-router-dom": "^5.0.0 || ^6.0.0"
   },
   "dependencies": {
-    "@redhat-cloud-services/frontend-components-utilities": "^6.0.0",
-    "@redhat-cloud-services/types": "^2.0.0",
+    "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
+    "@redhat-cloud-services/types": "^3.0.0",
     "@patternfly/react-component-groups": "^6.0.0",
     "@scalprum/core": "^0.8.1",
     "@scalprum/react-core": "^0.9.1",

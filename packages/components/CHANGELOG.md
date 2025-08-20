@@ -2,6 +2,61 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.0.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.2...@redhat-cloud-services/frontend-components-7.0.3) (2025-08-07)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.3`
+## [7.0.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.1...@redhat-cloud-services/frontend-components-7.0.2) (2025-08-05)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.2`
+* `@redhat-cloud-services/types` updated to version `3.0.1`
+## [7.0.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.0...@redhat-cloud-services/frontend-components-7.0.1) (2025-08-04)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.1`
+## [7.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.1.1...@redhat-cloud-services/frontend-components-7.0.0) (2025-08-04)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.0`
+* `@redhat-cloud-services/types` updated to version `3.0.0`
+
+### ⚠ BREAKING CHANGES
+
+* updating rbac-client to newer js-client
+
+### Miscellaneous Chores
+
+* updating rbac-client to newer js-client ([ded6e1b](https://github.com/RedHatInsights/frontend-components/commit/ded6e1b37aaabb8ad561bdb7eba3a4a4b16a1975))
+
+## [6.1.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.1.0...@redhat-cloud-services/frontend-components-6.1.1) (2025-07-23)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.1.1`
+## [6.1.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.9...@redhat-cloud-services/frontend-components-6.1.0) (2025-06-30)
+
+
+### Features
+
+* updating to patternfly 6.2.2 ([84fd736](https://github.com/RedHatInsights/frontend-components/commit/84fd73673b826a732267e5ed8f7eba87c2add683))
+
+## [6.0.9](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.8...@redhat-cloud-services/frontend-components-6.0.9) (2025-06-24)
+
+
+### Bug Fixes
+
+* **toolbar:** fix filter chip spacing after PF6 upgrade ([3267d12](https://github.com/RedHatInsights/frontend-components/commit/3267d1262bb7ae4392c98f1a90ede9a3db7090d9))
+
+## [6.0.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.7...@redhat-cloud-services/frontend-components-6.0.8) (2025-06-19)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.1.0`
 ## [6.0.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.6...@redhat-cloud-services/frontend-components-6.0.7) (2025-04-28)
 
 ### Dependency Updates
