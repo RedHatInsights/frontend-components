@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.7.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.6.0...@redhat-cloud-services/frontend-components-config-utilities-4.7.0) (2025-08-20)
+
+
+### Features
+
+* update frontend-crd.schema.json to add APIKeyDev in analytics ([4533c25](https://github.com/RedHatInsights/frontend-components/commit/4533c25e950bdec31b0ebf12b797a5b62b51275b))
+
 ## [4.6.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.5.2...@redhat-cloud-services/frontend-components-config-utilities-4.6.0) (2025-08-07)
 
 
