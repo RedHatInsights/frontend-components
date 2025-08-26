@@ -122,7 +122,7 @@ declare function OnChromeEvent<K extends 'APP_NAVIGATION' | 'NAVIGATION_TOGGLE' 
 
 export type EnableTopicsArgs = [{ names: string[]; append?: boolean }] | string[];
 
-export interface NavItemPermission {
+export interface SearchPermissionCheck {
   method?: string;
   args?: string[];
 }
@@ -150,7 +150,7 @@ export interface SearchEntry {
   bundleTitle: string;
   altTitle?: string[];
   type: SearchDataType;
-  permissions?: NavItemPermission[];
+  permissions?: SearchPermissionCheck[];
 }
 
 export interface ChromeSearchAPI {
