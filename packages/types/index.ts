@@ -122,11 +122,6 @@ declare function OnChromeEvent<K extends 'APP_NAVIGATION' | 'NAVIGATION_TOGGLE' 
 
 export type EnableTopicsArgs = [{ names: string[]; append?: boolean }] | string[];
 
-export interface SearchPermissionCheck {
-  method?: string;
-  args?: string[];
-}
-
 export type ChromeWsEventTypes = 'com.redhat.console.notifications.drawer';
 export type ChromeWsPayload<T> = {
   data: T;
@@ -140,17 +135,18 @@ export type ChromeWsEventListener<T> = (event: ChromeWsPayload<T>) => void;
 export type UnSubscribeFromChromeWsEvent = () => void;
 export type AddChromeWsEventListener = <T>(type: ChromeWsEventTypes, listener: ChromeWsEventListener<T>) => UnSubscribeFromChromeWsEvent;
 
-export type SearchDataType = 'help-docs' | 'quickstarts' | 'general' | string;
+export type SearchDataType = 'legacy' | 'generated';
 
 export interface SearchEntry {
   id: string;
   title: string;
   description: string;
+  uri: string;
   pathname: string;
   bundleTitle: string;
   altTitle?: string[];
+  icon?: string;
   type: SearchDataType;
-  permissions?: SearchPermissionCheck[];
 }
 
 export interface ChromeSearchAPI {
