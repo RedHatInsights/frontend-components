@@ -14,6 +14,7 @@ const fs = require('fs');
 const path = require('path');
 
 const devScript = require('./dev-script');
+const devProxyScript = require('./dev-proxy-script');
 const buildScript = require('./build-script');
 
 const promisifiedLookup = promisify(lookup);
@@ -131,6 +132,14 @@ const argv = yargs
         default: 1337,
       });
   })
+  .command('dev-proxy', 'Start development proxy', (yargs) => {
+    yargs.option('port', {
+      type: 'number',
+      alias: 'p',
+      describe: 'Proxy server port',
+      default: 1337,
+    });
+  })
   .command('build', 'Build production bundle', (yargs) => {
     yargs.positional('webpack-config', {
       type: 'string',
@@ -153,6 +162,9 @@ const scripts: { [name: string]: (...args: any[]) => void } = {
   dev: (argv: any, cwd: string) => {
     devScript(argv, cwd);
   },
+  'dev-proxy': (argv: any, cwd: string) => {
+    devProxyScript(argv, cwd);
+  },
   build: buildScript,
   'patch-ts': () => patchTs(checkDependencies().join(' ')),
 };
@@ -166,8 +178,8 @@ async function run() {
   }
   const missingHosts = await checkHosts();
   if (missingHosts.length > 0) {
-    fecLogger(LogType.warn,`Found missing hosts`);
-    fecLogger(LogType.warn,`\`fec dev\` will likely not work correctly. Please consider running \`fec patch-etc-hosts\` to fix the problem.`);
+    fecLogger(LogType.warn, `Found missing hosts`);
+    fecLogger(LogType.warn, `\`fec dev\` will likely not work correctly. Please consider running \`fec patch-etc-hosts\` to fix the problem.`);
     fecLogger(LogType.warn, `Missing hosts`);
     fecLogger(LogType.warn, missingHosts.join(' '));
   }
