@@ -135,6 +135,28 @@ export type ChromeWsEventListener<T> = (event: ChromeWsPayload<T>) => void;
 export type UnSubscribeFromChromeWsEvent = () => void;
 export type AddChromeWsEventListener = <T>(type: ChromeWsEventTypes, listener: ChromeWsEventListener<T>) => UnSubscribeFromChromeWsEvent;
 
+export type SearchDataType = 'legacy' | 'generated';
+
+export interface SearchEntry {
+  id: string;
+  title: string;
+  description: string;
+  uri: string;
+  pathname: string;
+  bundleTitle: string;
+  altTitle?: string[];
+  icon?: string;
+  type: SearchDataType;
+}
+
+export interface ChromeSearchAPI {
+  fillStore: (type: SearchDataType, data: SearchEntry[]) => Promise<void>;
+  query: (term: string, type?: SearchDataType, env?: string, limit?: number) => Promise<SearchEntry[]>;
+  getAvailableTypes: () => SearchDataType[];
+  clearType: (type: SearchDataType) => Promise<void>;
+  getCachedData: (type: SearchDataType) => SearchEntry[] | undefined;
+}
+
 export type DrawerPanelActions = {
   setDrawerPanelContent: (data: { scope: string; module: string } & Record<string, unknown>) => void;
   toggleDrawerPanel: () => void;
@@ -284,6 +306,7 @@ export interface ChromeAPI {
   enablePackagesDebug: () => void;
   requestPdf: (options: PDFRequestOptions) => Promise<void>;
   drawerActions: DrawerPanelActions;
+  search?: ChromeSearchAPI;
 }
 
 declare global {
