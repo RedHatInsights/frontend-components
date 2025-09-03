@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.2.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-3.1.0...@redhat-cloud-services/types-3.2.0) (2025-09-03)
+
+
+### Features
+
+* **types:** add permission checks to search entries in SearchAPI ([2d31219](https://github.com/RedHatInsights/frontend-components/commit/2d31219e5372addc9e5a64ebf07545bf84e9885f))
+
 ## [3.1.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-3.0.1...@redhat-cloud-services/types-3.1.0) (2025-08-27)
 
 
