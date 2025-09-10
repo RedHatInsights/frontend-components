@@ -140,27 +140,36 @@ export type ChromeWsEventListener<T> = (event: ChromeWsPayload<T>) => void;
 export type UnSubscribeFromChromeWsEvent = () => void;
 export type AddChromeWsEventListener = <T>(type: ChromeWsEventTypes, listener: ChromeWsEventListener<T>) => UnSubscribeFromChromeWsEvent;
 
-export type SearchDataType = 'legacy' | 'generated';
+export type SearchDataType = 'services' | 'quickstarts';
 
-export interface SearchEntry {
-  id: string;
+export type SearchEntry = {
   title: string;
-  description: string;
   uri: string;
   pathname: string;
+  description: string;
+  icon?: string;
+  id: string;
   bundleTitle: string;
   altTitle?: string[];
-  icon?: string;
   type: SearchDataType;
-  permissions?: SearchNavItemPermission[];
+};
+
+export enum ReleaseEnv {
+  STABLE = 'STABLE',
+  PREVIEW = 'PREVIEW',
 }
 
+export type ResultItem = {
+  title: string;
+  description: string;
+  bundleTitle: string;
+  pathname: string;
+  id: string;
+};
+
 export interface ChromeSearchAPI {
-  fillStore: (type: SearchDataType, data: SearchEntry[]) => Promise<void>;
-  query: (term: string, type?: SearchDataType, env?: string, limit?: number) => Promise<SearchEntry[]>;
-  getAvailableTypes: () => SearchDataType[];
-  clearType: (type: SearchDataType) => Promise<void>;
-  getCachedData: (type: SearchDataType) => SearchEntry[] | undefined;
+  query: (term: string, type: SearchDataType, env?: ReleaseEnv) => Promise<ResultItem[]>;
+  insert: (data: SearchEntry) => Promise<void>;
 }
 
 export type DrawerPanelActions = {
