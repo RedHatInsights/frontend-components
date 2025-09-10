@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.2.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-3.2.0...@redhat-cloud-services/types-3.2.1) (2025-09-10)
+
+
+### Bug Fixes
+
+* refine types for ChromeSearchAPI ([aa8a9b0](https://github.com/RedHatInsights/frontend-components/commit/aa8a9b0c9fb7017042e5ee4e2a626e5e7292422d))
+
 ## [3.2.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-3.1.0...@redhat-cloud-services/types-3.2.0) (2025-09-03)
 
 
