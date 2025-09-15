@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/nodejs-16
+FROM registry.access.redhat.com/ubi9/nodejs-22
 USER root
 WORKDIR /docs
 COPY ./packages /docs/packages
