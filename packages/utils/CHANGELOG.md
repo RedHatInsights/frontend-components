@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.0.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-7.0.6...@redhat-cloud-services/frontend-components-utilities-7.0.7) (2025-09-16)
+
+
+### Bug Fixes
+
+* security update axios to 1.12.2 ([912b295](https://github.com/RedHatInsights/frontend-components/commit/912b295a975329eb60ae347b36d15c9950da5514))
+
 ## [7.0.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-utilities-7.0.5...@redhat-cloud-services/frontend-components-utilities-7.0.6) (2025-09-10)
 
 ### Dependency Updates
