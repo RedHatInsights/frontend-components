@@ -2,6 +2,39 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## 1.0.0 (2025-09-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* updating rbac-client to newer js-client
+* pf6 chrome, translations, and types
+
+### Features
+
+* add debugger API functions ([0f5dd7f](https://github.com/RedHatInsights/frontend-components/commit/0f5dd7fbbb18114aa7decfbf424d9603434adc9d))
+* **ChromeAPI:** add search API ([8aaa6ae](https://github.com/RedHatInsights/frontend-components/commit/8aaa6ae1fba726fc3c46b169c8c1f13351a4851e))
+* pf6 chrome, translations, and types ([d30e02c](https://github.com/RedHatInsights/frontend-components/commit/d30e02cc4059b89ed3d0b2726773d8ef0fdff395))
+* **types:** add permission checks to search entries in SearchAPI ([2d31219](https://github.com/RedHatInsights/frontend-components/commit/2d31219e5372addc9e5a64ebf07545bf84e9885f))
+
+
+### Bug Fixes
+
+* build task dependencies ([8befda3](https://github.com/RedHatInsights/frontend-components/commit/8befda343018907dd34760286b67a8093127d3db))
+* including additionalData param ([607818e](https://github.com/RedHatInsights/frontend-components/commit/607818eccff857f52ad79b593fd625b7b4f6bc97))
+* refine types for ChromeSearchAPI ([aa8a9b0](https://github.com/RedHatInsights/frontend-components/commit/aa8a9b0c9fb7017042e5ee4e2a626e5e7292422d))
+* **types:** add drawer actions to chrome API ([ffa5183](https://github.com/RedHatInsights/frontend-components/commit/ffa5183c09a88f303b70c343cc90ccab9c1874f2))
+* **types:** add drawer actions to chrome API ([621dd36](https://github.com/RedHatInsights/frontend-components/commit/621dd3617dd47de9d2e09d8345ffd3d636420c99))
+* **types:** add drawer actions to ChromeAPI ([0dec7c6](https://github.com/RedHatInsights/frontend-components/commit/0dec7c6ccfb28d4c502505ae24b5e24b18e37dc4))
+* **types:** add tokens to chrome API ([#2203](https://github.com/RedHatInsights/frontend-components/issues/2203)) ([6620aec](https://github.com/RedHatInsights/frontend-components/commit/6620aecdfa61b8b3e642ab4a516be2f44ae56ebf))
+* **types:** export chrome user ([#2141](https://github.com/RedHatInsights/frontend-components/issues/2141)) ([fa9e018](https://github.com/RedHatInsights/frontend-components/commit/fa9e01870b828a8f96bb622050ef411a5fd13e7c))
+* **types:** trigger release ([e26fd83](https://github.com/RedHatInsights/frontend-components/commit/e26fd8367f312b8515b0728f32f6972959385292))
+
+
+### Miscellaneous Chores
+
+* updating rbac-client to newer js-client ([ded6e1b](https://github.com/RedHatInsights/frontend-components/commit/ded6e1b37aaabb8ad561bdb7eba3a4a4b16a1975))
+
 ## [3.2.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-3.2.0...@redhat-cloud-services/types-3.2.1) (2025-09-10)
 
 
