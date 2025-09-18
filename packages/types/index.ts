@@ -321,6 +321,9 @@ export interface ChromeAPI {
   enablePackagesDebug: () => void;
   requestPdf: (options: PDFRequestOptions) => Promise<void>;
   drawerActions: DrawerPanelActions;
+  useVirtualAssistant?: () => {
+    openVA: (message: string) => void
+  };
   search?: ChromeSearchAPI;
 }
 
