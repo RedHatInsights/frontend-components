@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.3.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-3.2.1...@redhat-cloud-services/types-3.3.0) (2025-09-18)
+
+
+### Features
+
+* **useVA:** add use VA to chrome API ([5830429](https://github.com/RedHatInsights/frontend-components/commit/5830429722f32f35cad266cd9d9431c11f0e48c1))
+
 ## [3.2.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-3.2.0...@redhat-cloud-services/types-3.2.1) (2025-09-10)
 
 
