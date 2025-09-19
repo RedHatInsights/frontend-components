@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.7.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.12...@redhat-cloud-services/frontend-components-config-6.7.0) (2025-09-19)
+
+
+### Features
+
+* **config:** add new dev-proxy cmd to fec bin ([a3105d1](https://github.com/RedHatInsights/frontend-components/commit/a3105d121b7c8dc1a1bc0bed5f029b71c0fbe3a2))
+
 ## [6.6.12](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-6.6.11...@redhat-cloud-services/frontend-components-config-6.6.12) (2025-09-16)
 
 
