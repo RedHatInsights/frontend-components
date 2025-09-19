@@ -37,9 +37,9 @@
     "react-router-dom": "^5.0.0 || ^6.0.0"
   },
   "dependencies": {
+    "@patternfly/react-component-groups": "^6.0.0",
     "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
     "@redhat-cloud-services/types": "^3.0.0",
-    "@patternfly/react-component-groups": "^6.0.0",
     "@scalprum/core": "^0.8.1",
     "@scalprum/react-core": "^0.9.1",
     "classnames": "^2.2.5",

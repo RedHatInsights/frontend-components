@@ -70,9 +70,7 @@
     "test:component": {
       "executor": "@nx/cypress:cypress",
       "options": {
-        "cypressConfig": "packages/components/cypres.config.ts",
-        "tsConfig": "packages/components/tsconfig.cy.json",
-        "devServerTarget": "my-react-app:build",
+        "cypressConfig": "packages/components/cypress.config.ts",
         "testingType": "component",
         "skipServe": true
       }
