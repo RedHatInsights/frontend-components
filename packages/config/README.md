@@ -30,6 +30,7 @@
 - [fec node scripts](#fec-node-scripts)
   - [Usage](#usage-1)
   - [Patch etc hosts](#patch-etc-hosts)
+  - [Dev proxy](#dev-proxy)
   - [Static](#static)
     - [Inventory example](#inventory-example)
     - [In inventory UI repository changes](#in-inventory-ui-repository-changes)
@@ -379,6 +380,52 @@ Use binary in your `package.json` scripts section:
 
 ## Patch etc hosts
 This is a required step for first time setup. It will allow your localhost to map to [env].foo.redhat.com. This is required to run only once on your machine. **Your OS may require running the script as sudo**!
+
+## Dev proxy
+
+A script that starts up a complete development environment with webpack build, static asset serving and a containerized development proxy for environment proxying.
+This command provides an alternative to the traditional webpack dev server approach by using a customized Caddy server container to handle proxy routing, which should be more reliable and faster due to HTTP2 support and better websocket handling.
+The used containerized proxy and its documentation can be found in this repo: [frontend-development-proxy](https://github.com/RedHatInsights/frontend-development-proxy).
+
+**Usage:**
+```bash
+fec dev-proxy [options]
+```
+
+**Options:**
+- `--port, -p`: Proxy server port (default: 1337)
+- `--staticPort, -sp`: Static assets server port (default: 8003)
+- `--clouddotEnv`: Set platform environment ('stage', 'prod', 'dev', 'ephemeral')
+
+**Requirements:**
+- Docker or Podman installed and available
+- Valid FEC configuration file (fec.config.js)
+- Network access to Red Hat proxy services (for stage environments)
+
+**Example:**
+```bash
+# Start development proxy on default ports
+fec dev-proxy
+
+# Start with custom port and target stage environment
+fec dev-proxy --port 3000 --clouddotEnv stage
+
+# Start with custom static assets port
+fec dev-proxy --staticPort 9000
+```
+
+The command will:
+1. Pull and start the development proxy container
+2. Start webpack in watch mode to build your assets
+3. Serve static assets via http-server
+4. Configure routing based on your FEC config (configuration is the same as for the dev command, [Custom routes](#custom-routes))
+5. Start a local Chrome UI server _(this can be disabled by setting `SPAFallback` var to `false` in the FEC config)_
+6. Display the development URL when ready
+
+Your application will be available at `https://[env].foo.redhat.com:[port]` where `[env]` is determined by your configuration or the `--clouddotEnv` flag.
+
+**Limitations:**
+This command currently doesn't work in DinD environments. The new proxy can still be used there when launched manually with different network settings for running alongside frontends started with the static command. [1](https://github.com/RedHatInsights/frontend-development-proxy?tab=readme-ov-file#dind-docker-in-docker-ci)
 
 ## Static
 

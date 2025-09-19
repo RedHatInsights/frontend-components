@@ -91,10 +91,12 @@ const createFecConfig = (
     fecLogger(LogType.debug, `Using deployments: ${appDeployment}`);
     fecLogger(LogType.debug, `CDN path: ${cdnPath}`);
     fecLogger(LogType.debug, `App entry: ${appEntry}`);
-    fecLogger(LogType.debug, `Use proxy: ${configurations.useProxy ? 'true' : 'false'}`);
-    if (!(configurations.useProxy || configurations.standalone)) {
-      fecLogger(LogType.warn, 'Insights-proxy is deprecated in favor of "useProxy" or "standalone".');
-      fecLogger(LogType.warn, 'See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
+    if (!process.env.FEC_DEV_PROXY) {
+      fecLogger(LogType.debug, `Use proxy: ${configurations.useProxy ? 'true' : 'false'}`);
+      if (!(configurations.useProxy || configurations.standalone)) {
+        fecLogger(LogType.warn, 'Insights-proxy is deprecated in favor of "useProxy" or "standalone".');
+        fecLogger(LogType.warn, 'See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
+      }
     }
 
     console.groupEnd();
