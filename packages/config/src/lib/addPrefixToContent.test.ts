@@ -1,23 +1,6 @@
 import addPrefixToContent from './addPrefixToContent';
+import { words } from 'lodash';
 
-expect.extend({
-  toEqualIgnoringWhitespace(received, expected) {
-    const normalize = (str: string) => str.replace(/\s+/g, '');
-    const pass = normalize(received) === normalize(expected);
-
-    if (pass) {
-      return {
-        message: () => `expected ${received} not to equal (ignoring whitespace) ${expected}`,
-        pass: true,
-      };
-    } else {
-      return {
-        message: () => `expected ${received} to equal (ignoring whitespace) ${expected}`,
-        pass: false,
-      };
-    }
-  },
-});
 
 describe('shouldnt prefix nested selectors', () => {
   test('should add prefix above content', () => {
@@ -34,14 +17,14 @@ describe('shouldnt prefix nested selectors', () => {
                 }
             }
         }`;
-    expect(addPrefixToContent(content, prefix)).toEqualIgnoringWhitespace(output);
+    expect(words(addPrefixToContent(content, prefix))).toEqual(words(output));
   });
 
   test('should handle multiple top-level selectors in one string', () => {
     const content = `.learningResources-learningResources{overflow-y:auto}.widget-learning-resources{column-width:300px}`;
     const prefix = '.learningResources, .learning-resources';
     const output = `.learningResources, .learning-resources { .learningResources-learningResources {overflow-y:auto}}.learningResources, .learning-resources { .widget-learning-resources {column-width:300px}}`;
-    expect(addPrefixToContent(content, prefix)).toEqualIgnoringWhitespace(output);
+    expect(words(addPrefixToContent(content, prefix))).toEqual(words(output));
   });
 
   test('should ignore nested selector containing prefix', () => {
@@ -61,7 +44,7 @@ describe('shouldnt prefix nested selectors', () => {
             }
         }
     }`;
-    expect(addPrefixToContent(content, prefix)).toEqualIgnoringWhitespace(output);
+    expect(words(addPrefixToContent(content, prefix))).toEqual(words(output));
   });
 
   test('should handle deeply nested selectors with various properties and pseudo-classes', () => {
@@ -170,6 +153,6 @@ describe('shouldnt prefix nested selectors', () => {
       }
     }
     `;
-    expect(addPrefixToContent(content, prefix)).toEqualIgnoringWhitespace(output);
+    expect(words(addPrefixToContent(content, prefix))).toEqual(words(output));
   });
 });
