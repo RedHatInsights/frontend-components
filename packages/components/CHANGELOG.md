@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.0.9](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.8...@redhat-cloud-services/frontend-components-7.0.9) (2025-09-22)
+
+
+### Bug Fixes
+
+* resolve ibutsu job error ([f96dbd0](https://github.com/RedHatInsights/frontend-components/commit/f96dbd071fdf07b94fa0b74303dc54a86fbcfebe))
+
 ## [7.0.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.7...@redhat-cloud-services/frontend-components-7.0.8) (2025-09-18)
 
 ### Dependency Updates
