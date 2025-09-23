@@ -85,7 +85,7 @@ describe('calculateSelected - treeView', () => {
 
   it('should calculate selected properly, checked = false', () => {
     const result = calculateSelected({ '': { item1: true, item2: true } })('treeView', '', tree, false);
-    const expectedResult = { '': { item1: false, item2: false } };
+    const expectedResult = { '': { '': false, item1: false, item2: false } };
     expect(result).toEqual(expectedResult);
   });
 

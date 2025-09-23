@@ -127,12 +127,8 @@ export const isChecked = (
   itemValue: string | number,
   id: string | undefined,
   tagValue: string | undefined,
-  propSelected: Record<string, Record<string, boolean | GroupItem>>
+  selected: Record<string, Record<string, boolean | GroupItem>>
 ) => {
-  const selected = {
-    ...propSelected,
-  };
-
   if (typeof selected[groupValue] === 'undefined') {
     return false;
   }
@@ -147,10 +143,10 @@ export const isChecked = (
       }
     }
 
-    return Boolean(group.isSelected);
+    return group.isSelected;
   }
 
-  return Boolean(selected[groupValue][itemValue]);
+  return selected[groupValue][itemValue];
 };
 
 export type FilterMenuItemOnChange = (
@@ -210,7 +206,8 @@ export const getMenuItems = (
           string
         ] = [
           event,
-          calculateSelected(groupType || item.type, groupValue, (groupType || item.type) === GroupType.treeView ? treeViewItem : item.value, checked),
+          // @ts-ignore
+          calculateSelected(groupType || item.type, groupValue, (groupType || item.type) === GroupType.treeView ? treeViewItem : item.value, (event.target as HTMLInputElement)?.checked || checked ),
           {
             value: groupValue,
             id: (groupId || item.id) as string,
@@ -281,10 +278,27 @@ export const getGroupMenuItems = (
   return result.filter(({ noFilter, items = [] }) => !noFilter || items.length > 0);
 };
 
+const isGroupSelected = (selectedCount, groupItemCount) => {
+  if (selectedCount === 0) {
+    return false
+  }
+
+  if (selectedCount < groupItemCount) {
+    return null
+  }
+
+  if (selectedCount === groupItemCount) {
+    return true
+  }
+}
+
 export const calculateSelected =
-  (selectedTags: Record<string, Record<string, GroupItem | boolean>>) =>
+  (selectedTags: Record<string, Record<string, GroupItem | boolean>>, groups?: Group[]) =>
   (type = GroupType.button, groupKey = '', value: TreeViewItem | string = '', checked = false) => {
     const activeGroup = selectedTags?.[groupKey];
+    const groupItems = groups?.find(({label}) => label === groupKey)?.items
+    const groupItemsCount = groupItems?.length
+    const activeGroupGroupValue = value === groupKey ? checked : undefined
     const children =
       type === GroupType.treeView
         ? [value as TreeViewItem].reduce(function iter(acc: TreeViewItem[], curr: TreeViewItem): TreeViewItem[] {
@@ -298,6 +312,25 @@ export const calculateSelected =
         : [];
 
     const itemKeys = type === GroupType.treeView ? children.map((item: TreeViewItem) => item.id) : [String(value)];
+    const itemKeysCount = itemKeys.filter((key) => key !== groupKey).length
+
+    if ( activeGroupGroupValue === true || activeGroupGroupValue === false) {
+      const result = groupItems?.map(({value}) => value).reduce((result, itemValue) => ({
+        ...result,
+        [groupKey]: {
+          ...result[groupKey],
+          [itemValue]: activeGroupGroupValue
+        }
+      }), selectedTags|| {})
+
+      return {
+        ...result,
+        [groupKey]: {
+          ...result?.[groupKey] || {},
+          [groupKey]: activeGroupGroupValue
+        }
+      }
+    }
 
     if (activeGroup) {
       let result = selectedTags;
@@ -324,10 +357,18 @@ export const calculateSelected =
           };
         }
       });
-      return result;
+      const selectedItemsCount = Object.entries(result[groupKey]).filter(([key ,value]) => key !== groupKey && Boolean(value) === true).length
+
+      return {
+        ...result,
+        [groupKey]: {
+          ...result[groupKey],
+          [groupKey]: isGroupSelected(selectedItemsCount, groupItemsCount)
+        }
+      };
     }
 
-    return itemKeys.reduce(
+    const result = itemKeys.reduce(
       (acc, curr) => ({
         ...acc,
         [groupKey]: {
@@ -337,17 +378,26 @@ export const calculateSelected =
       }),
       selectedTags
     );
+    const selectedItemsCount = Object.entries(result[groupKey]).filter(([key,value]) =>  key !== groupKey && Boolean(value) === true).length
+
+    return {
+      ...result,
+      [groupKey]: {
+        ...result[groupKey],
+        [groupKey]: isGroupSelected(selectedItemsCount, groupItemsCount)
+      }
+    };
   };
 
 const areAllChildrenChecked = (dataItem: TreeViewItem, groupKey: string, selected: Record<string, Record<string, boolean | GroupItem>>): boolean =>
   dataItem.children
     ? dataItem.children.every((child: TreeViewItem) => areAllChildrenChecked(child, groupKey, selected))
-    : isChecked(groupKey, dataItem.id || '', undefined, undefined, selected);
+    : isChecked(groupKey, dataItem.id || '', undefined, undefined, selected) || false;
 
 const areSomeChildrenChecked = (dataItem: TreeViewItem, groupKey: string, selected: Record<string, Record<string, boolean | GroupItem>>): boolean =>
   dataItem.children
     ? dataItem.children.some((child: TreeViewItem) => areSomeChildrenChecked(child, groupKey, selected))
-    : isChecked(groupKey, dataItem.id || '', undefined, undefined, selected);
+    : isChecked(groupKey, dataItem.id || '', undefined, undefined, selected) || false;
 
 export const mapTree = (item: TreeViewItem, groupKey: string, selected: Record<string, Record<string, boolean | GroupItem>>): TreeViewItem => {
   const hasCheck = areAllChildrenChecked(item, groupKey, selected);
