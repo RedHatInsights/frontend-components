@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.12](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/chrome-2.0.11...@redhat-cloud-services/chrome-2.0.12) (2025-09-23)
+
+
+### Bug Fixes
+
+* **favorites:** ensure favorite services are visible ([8bf52ed](https://github.com/RedHatInsights/frontend-components/commit/8bf52ed54b23894d4fcc3e00a4d9844d21d5824c))
+
 ## [2.0.11](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/chrome-2.0.10...@redhat-cloud-services/chrome-2.0.11) (2025-09-18)
 
 ### Dependency Updates
