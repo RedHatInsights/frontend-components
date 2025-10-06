@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.13](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/chrome-2.0.12...@redhat-cloud-services/chrome-2.0.13) (2025-10-06)
+
 ## [2.0.12](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/chrome-2.0.11...@redhat-cloud-services/chrome-2.0.12) (2025-09-23)
 
 
