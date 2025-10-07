@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.3.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-3.3.0...@redhat-cloud-services/types-3.3.1) (2025-10-07)
+
+
+### Bug Fixes
+
+* **rhcloud-42449:** update rbac client inside other packages ([d78ade5](https://github.com/RedHatInsights/frontend-components/commit/d78ade5be64703a1efc20aed27b2c1c0ddef0dc2))
+
 ## [3.3.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/types-3.2.1...@redhat-cloud-services/types-3.3.0) (2025-09-18)
 
 
