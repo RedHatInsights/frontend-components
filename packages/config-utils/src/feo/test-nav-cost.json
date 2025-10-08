@@ -1,0 +1,75 @@
+
+{
+  "id": "openshift",
+  "navItems": [
+    {
+      "bundleSegmentRef": "openshift",
+      "frontendRef": "openshift",
+      "groupId": "cluster-management",
+      "id": "cluster-management",
+      "navItems": [
+        {
+          "bundleSegmentRef": "openshift",
+          "expandable": true,
+          "frontendRef": "cost-management",
+          "id": "cost-management.nav",
+          "routes": [
+            {
+              "href": "/openshift/cost-management",
+              "id": "cost-management.overview",
+              "title": "Overview"
+            },
+            {
+              "href": "/openshift/cost-management/systems",
+              "id": "cost-management.systems",
+              "title": "Systems"
+            },
+            {
+              "href": "/openshift/cost-management/optimizations",
+              "id": "cost-management.optimizations",
+              "title": "Optimizations"
+            },
+            {
+              "href": "/openshift/cost-management/ocp",
+              "id": "cost-management.ocp",
+              "title": "OpenShift"
+            },
+            {
+              "href": "/openshift/cost-management/aws",
+              "id": "cost-management.aws",
+              "title": "Amazon Web Services"
+            },
+            {
+              "href": "/openshift/cost-management/gcp",
+              "id": "cost-management.gcp",
+              "title": "Google Cloud Platform"
+            },
+            {
+              "href": "/openshift/cost-management/azure",
+              "id": "cost-management.azure",
+              "title": "Microsoft Azure"
+            },
+            {
+              "href": "/openshift/cost-management/explorer",
+              "id": "cost-management.explorer",
+              "title": "Cost Explorer"
+            },
+            {
+              "href": "/openshift/cost-management/settings",
+              "id": "cost-management.settings",
+              "title": "Settings"
+            }
+          ],
+          "segmentRef": {
+            "frontendName": "cost-management",
+            "segmentId": "cost-management"
+          },
+          "title": "Cost Management"
+        }
+      ],
+      "position": 100,
+      "title": "Cluster Management"
+    }
+  ],
+  "title": "OpenShift"
+}
