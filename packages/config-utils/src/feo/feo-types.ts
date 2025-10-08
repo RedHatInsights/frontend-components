@@ -78,6 +78,7 @@ export type DirectNavItem = {
   expandable?: boolean;
   // should be removed
   appId?: string;
+  groupId?: string;
   routes?: DirectNavItem[];
   navItems?: DirectNavItem[];
   bundleSegmentRef?: string;

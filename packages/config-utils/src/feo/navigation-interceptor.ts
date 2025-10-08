@@ -110,6 +110,9 @@ function parseNavItems(
         if (segmentItemMatch && !hasSegmentRef(segmentItemMatch)) {
           return handleNestedNav(segmentItemMatch, navItem, bSegmentCache, nSegmentCache, bundleId, currentFrontendName, parentSegment);
         }
+      } else if (typeof navItem.groupId === 'string' && navItem.groupId.length > 0) {
+        navItem.navItems = parseNavItems(navItem.navItems || [], bSegmentCache, nSegmentCache, bundleId, currentFrontendName);
+        return navItem;
       }
     }
     return navItem;

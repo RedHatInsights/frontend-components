@@ -1,6 +1,8 @@
 import { DirectNavItem, FrontendCRD, Nav, SegmentRef } from './feo-types';
 import navigationInterceptor from './navigation-interceptor';
 
+import costNav from './test-nav-cost.json';
+
 describe('NavigationInterceptor', () => {
   describe('bundle segments', () => {
     // Declare shared variables outside beforeEach for shared access
@@ -726,6 +728,60 @@ describe('NavigationInterceptor', () => {
       
       // Assert - Verify behavior
       expect(result).toEqual(expectedResult);
+    });
+
+    it('should replace navigation segments', () => {
+      const frontendName = 'cost-management';
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: {
+              name: frontendName,
+            },
+            spec: {
+              frontend: {
+                paths: ['/'],
+              },
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
+              navigationSegments: [
+                {
+                  "segmentId": "cost-management",
+                  "navItems": [
+                      {
+                          "id": "cost-management.nav",
+                          "title": "Cost Management changed",
+                          "expandable": true,
+                          "routes": [
+                              {
+                                  "id": "cost-management.overview",
+                                  "title": "Overview changed",
+                                  "href": "/openshift/cost-management",
+                              },
+                              {
+                                  "id": "cost-management.systems",
+                                  "title": "Systems",
+                                  "href": "/openshift/cost-management/systems",
+                              },
+                          ]
+                      }
+                  ]
+                }
+              ],
+            },
+          },
+        ],
+      };
+
+      const remoteNav: Nav = costNav;
+      const result = navigationInterceptor(frontendCRD, remoteNav, bundleId);
+      const rootData = result[0].navItems?.find((item) => item.id === 'cost-management.nav');
+      expect(rootData).toBeDefined();
+      expect(rootData?.title).toEqual('Cost Management changed');
+      const rootRoutes = rootData?.routes;
+      expect(rootRoutes).toBeDefined();
+      expect(rootRoutes?.[0].title).toEqual('Overview changed');
     });
   });
 });
