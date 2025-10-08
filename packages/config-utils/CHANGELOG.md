@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.7.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.7.0...@redhat-cloud-services/frontend-components-config-utilities-4.7.1) (2025-10-08)
+
+
+### Bug Fixes
+
+* **feo-interceptors:** handle nav groups replacement ([#2248](https://github.com/RedHatInsights/frontend-components/issues/2248)) ([d97f7d5](https://github.com/RedHatInsights/frontend-components/commit/d97f7d5e941cff112297b070536e50ca1ddc541b))
+
 ## [4.7.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-config-utilities-4.6.0...@redhat-cloud-services/frontend-components-config-utilities-4.7.0) (2025-08-20)
 
 
