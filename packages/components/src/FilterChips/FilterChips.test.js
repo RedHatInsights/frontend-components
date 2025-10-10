@@ -98,6 +98,9 @@ describe('FilterChips component', () => {
           {
             name: 'Chip 1',
           },
+          {
+            name: 'Chip 2',
+          },
         ],
       };
       const { container } = render(<FilterChips filters={[...filters, newGroup]} onDeleteGroup={onDelete} />);

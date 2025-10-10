@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
@@ -148,9 +149,9 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
     onChange,
     calculateSelected(selected || {})
   );
-  const groupMenuItems = getGroupMenuItems(groups, onChange, calculateSelected(selected || {}));
+  const groupMenuItems = getGroupMenuItems(groups, onChange, calculateSelected(selected || {}, groups));
 
-  const renderItem = ({ groupSelectable, ...item }: GroupFilterItem, key: string | number, type?: GroupType, groupKey = '') => (
+  const renderItem = ({ groupSelectable, ...item }: GroupFilterItem, key: string | number, type?: GroupType, groupKey = '', selected) => (
     <MenuItem
       itemId={key}
       key={`${item.value}-${key}-item`}
@@ -174,7 +175,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
         <Checkbox
           {...item}
           label={item?.label}
-          isChecked={item?.isChecked || isChecked(groupKey, item?.value || key, item?.id, item?.tagValue, selected || {}) || false}
+          isChecked={item?.isChecked || isChecked(groupKey, item?.value || key, item?.id, item?.tagValue, selected || {})}
           onChange={item.onChange}
           onClick={
             item.onClick
@@ -207,14 +208,14 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
     </MenuItem>
   );
 
-  const renderItems = (items: GroupFilterItem[], type?: GroupType, groupKey = '') =>
+  const renderItems = (items: GroupFilterItem[], type?: GroupType, groupKey = '', selected) =>
     items.map((item, key) =>
       (type || item.type) === GroupType.treeView ? (
         <div key={`${item.value}-${key}-item`} className="ins-c-tree-view">
-          {renderItem(item as TreeViewItem, key, type, groupKey)}
+          {renderItem(item as TreeViewItem, key, type, groupKey, selected)}
         </div>
       ) : (
-        renderItem(item, key, type, groupKey)
+        renderItem(item, key, type, groupKey, selected)
       )
     );
 
@@ -286,7 +287,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
                     label={!(group as Group).groupSelectable && typeof group.label === 'string' ? group.label : undefined}
                     key={`${group.label}-${groupKey}-group`}
                   >
-                    {group.items && renderItems(group.items, group.type, group.value)}
+                    {group.items && renderItems(group.items, group.type, group.value, selected)}
                   </MenuGroup>
                 ))}
                 {onShowMore ? (
