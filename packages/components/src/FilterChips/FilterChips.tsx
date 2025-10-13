@@ -50,7 +50,7 @@ const FilterChips: React.FunctionComponent<FilterChipsProps> = ({
     <ChipGroup
       key={`group_${group.category}`}
       categoryName={String(group.category) || ' '}
-      {...(onDeleteGroup && {
+      {...(group.chips.length > 1 && onDeleteGroup && {
         isClosable: true,
         onClick: (event) => {
           event.stopPropagation();
