@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.0.12](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.11...@redhat-cloud-services/frontend-components-7.0.12) (2025-10-13)
+
+
+### Bug Fixes
+
+* **FilterChips:** only show group delete with multiple items ([7e54f57](https://github.com/RedHatInsights/frontend-components/commit/7e54f57a4d41a8fcdc0f58a12179fd730325d573))
+* **group-filter:** restore proper groupSelectable behaviour ([caf7b96](https://github.com/RedHatInsights/frontend-components/commit/caf7b96420f0a55fbda9a80e29c50674aedfac95))
+
 ## [7.0.11](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.10...@redhat-cloud-services/frontend-components-7.0.11) (2025-10-07)
 
 ### Dependency Updates
