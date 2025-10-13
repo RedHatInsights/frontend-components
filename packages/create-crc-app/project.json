@@ -1,0 +1,10 @@
+{
+  "name": "create-crc-app",
+  "targets": {
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "{projectRoot}"
+      }
+    }
+  }
+}
