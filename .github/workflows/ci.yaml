@@ -123,4 +123,3 @@ jobs:
           npm_token: ${{ secrets.NPM_TOKEN }}
           gh_name: ${{ secrets.BOT_NAME }}
           gh_email: ${{ secrets.BOT_EMAIL }}
-          gh_repository: ${{ github.repository }}
