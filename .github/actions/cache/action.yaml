@@ -9,4 +9,4 @@ runs:
       with:
         path: | 
           **/node_modules
-        key: install-cache-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        key: install-cache-${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}

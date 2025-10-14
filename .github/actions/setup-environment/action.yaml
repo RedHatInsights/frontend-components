@@ -1,0 +1,25 @@
+name: Setup Environment
+description: Setup Node.js and cache dependencies consistently
+# Note: All workflows using this action should use runs-on: ubuntu-24.04
+runs:
+  using: "composite"
+  steps:
+    - name: Show Node.js environment info
+      shell: bash
+      run: |
+        echo "=== Pre-installed Node.js versions ==="
+        ls -la /opt/hostedtoolcache/node/ 2>/dev/null || ls -la /opt/acttoolcache/node/ 2>/dev/null || echo "No pre-installed Node versions found"
+        echo "=== Current default Node.js ==="
+        which node && node --version || echo "No default Node.js found"
+        echo "=== .nvmrc content ==="
+        cat .nvmrc 2>/dev/null || echo "No .nvmrc file found"
+    - uses: actions/setup-node@v5
+      with:
+        node-version-file: '.nvmrc'
+    - name: Show final Node.js version
+      shell: bash
+      run: |
+        echo "=== Final Node.js version after setup ==="
+        which node && node --version
+        npm --version
+    - uses: './.github/actions/cache'

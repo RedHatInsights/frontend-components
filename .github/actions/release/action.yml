@@ -13,18 +13,10 @@ inputs:
   gh_email:
     description: 'Github email'
     required: true
-  gh_repository:
-    description: 'Github repository'
-    required: true
 runs:
   using: "composite"
   steps:
-    - name: Use Node.js 22.x
-      uses: actions/setup-node@v4
-      with:
-        node-version: '22'
-    - uses: nrwl/nx-set-shas@v4
-    - uses: './.github/actions/cache'
+    - uses: './.github/actions/setup-environment'
     - name: Install deps
       shell: bash
       run: npm i
@@ -33,26 +25,24 @@ runs:
       run: |
         git config user.name "${{ inputs.gh_name }}"
         git config user.email "${{ inputs.gh_email }}"
-        git remote set-url origin https://${{ inputs.gh_token }}@github.com/${{ inputs.gh_repository }}
-    - name: Build
-      shell: bash
-      run: npx nx run-many -t build --exclude=demo,
     - name: Set publish config
       env:
         NPM_TOKEN: ${{ inputs.npm_token }}
       shell: bash
       run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
-    - name: Version
+    - name: Release version
       shell: bash
       env:
-        # skip the git hooks 
-        HUSKY: 0
         GH_TOKEN: ${{ inputs.gh_token }}
         GITHUB_TOKEN: ${{ inputs.gh_token }}
-      run: npx nx affected --base=last-release --parallel=1 --baseBranch=master --target=version --trackDeps --postTargets=build,deploy,github --exclude=@redhat-cloud-services/executors,demo
-    - name: Tag last-release
+        # Disable legacy peer deps to ensure proper dependency resolution
+        # See: https://github.com/nrwl/nx/issues/22066#issuecomment-2576366862
+        # See: https://github.com/nrwl/nx/blob/5ea2e47acfa9d175546daa922ce40905533f1074/packages/nx/src/utils/package-manager.ts#L207-L213
+        npm_config_legacy_peer_deps: false
+      run: npx nx release version
+    - name: Release publish
       shell: bash
-      run: |
-        git tag -f last-release
-        git push origin last-release --force --no-verify
+      env:
+        NPM_TOKEN: ${{ inputs.npm_token }}
+      run: npx nx release publish
   

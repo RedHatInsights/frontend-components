@@ -32,6 +32,20 @@
     }
   },
   "defaultBase": "origin/master",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "production": [
+      "default",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/eslint.config.js",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/test-setup.[jt]s"
+    ],
+    "sharedGlobals": []
+  },
   "plugins": [
     {
       "plugin": "@nx/eslint/plugin",
@@ -80,6 +94,33 @@
       }
     }
   ],
+  "release": {
+    "projects": ["packages/*"],
+    "projectsRelationship": "independent",
+    "version": {
+      "git": {
+        "commit": true,
+        "tag": true,
+        "push": true,
+        "commitMessage": "chore(release): publish\n\n{releaseNotes}"
+      },
+      "preVersionCommand": "npx nx run-many -t build --exclude=demo,",
+      "conventionalCommits": true,
+      "preserveLocalDependencyProtocols": false,
+      "versionActionsOptions": {
+        "skipLockFileUpdate": false
+      },
+      "manifestRootsToUpdate": [
+        "{projectRoot}",
+        "{projectRoot}/dist"
+      ]
+    },
+    "changelog": {
+      "workspaceChangelog": false,
+      "projectChangelogs": false
+    },
+    "releaseTagPattern": "{projectName}-{version}"
+  },
   "generators": {
     "@nx/react": {
       "application": {

@@ -9,59 +9,50 @@ on:
 
 jobs:
   install:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: nrwl/nx-set-shas@v4
-      - uses: './.github/actions/cache'
+      - uses: './.github/actions/setup-environment'
       - uses: './.github/actions/cypress-cache'
       - name: Install dependencies
         run: npm i
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: install
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Use Node.js 22.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 22.x
+      - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@v4
-      - uses: './.github/actions/cache'
       - name: Build
         run: npm run build
   unit-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [install]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Use Node.js 22.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 22.x
+      - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@v4
-      - uses: './.github/actions/cache'
       - name: Run unit tests
         run: npm run test:unit
   component-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: install
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@v4
-      - uses: './.github/actions/cache'
       - uses: './.github/actions/cypress-cache'
       - name: Install deps
         shell: bash
@@ -70,27 +61,27 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           command: npx nx affected -t test:component --exclude=demo --configuration=ci --parallel=1
-  lint: 
-    runs-on: ubuntu-latest
+  lint:
+    runs-on: ubuntu-24.04
     needs: install
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@v4
-      - uses: './.github/actions/cache'
       - name: Lint
         run: npx nx affected -t test:lint --exclude=demo
   commitlint:
     needs: [install]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: './.github/actions/cache'
+      - uses: './.github/actions/setup-environment'
       - name: install
         shell: bash
         run: npm i
@@ -103,23 +94,22 @@ jobs:
         if: github.event_name == 'pull_request'
         run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
   check-circular-imports:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: install
-    steps: 
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: './.github/actions/cache'
+      - uses: './.github/actions/setup-environment'
+      - uses: nrwl/nx-set-shas@v4
       - name: install
         shell: bash
         run: npm i
-      - uses: nrwl/nx-set-shas@v4
-      - uses: './.github/actions/cache'
       - name: Check circular imports
         run: npx nx affected -t test:circular-dependencies --exclude=demo
   release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [install, build, unit-test, component-test, lint, commitlint, check-circular-imports]
     if: github.event_name != 'pull_request'
     steps:
