@@ -1,6 +1,6 @@
 {
     "name": "create-crc-app",
-    "private": false,
+    "private": true,
     "publishConfig": {
         "access": "public"
     },
