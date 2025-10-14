@@ -95,7 +95,7 @@
     }
   ],
   "release": {
-    "projects": ["packages/*"],
+    "projects": ["packages/*", "!packages/create-crc-app", "!packages/executors"],
     "projectsRelationship": "independent",
     "version": {
       "git": {
