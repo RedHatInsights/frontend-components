@@ -1,10 +1,5 @@
 {
   "name": "create-crc-app",
-  "targets": {
-    "nx-release-publish": {
-      "options": {
-        "packageRoot": "{projectRoot}"
-      }
-    }
-  }
+  "tags": ["scope:private"],
+  "targets": {}
 }
