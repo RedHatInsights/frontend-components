@@ -65,7 +65,7 @@ module.exports = {
            * Determine correct variable for direct import
            */
 
-          let variables = context.getDeclaredVariables(codePath);
+          let variables = context.sourceCode.getDeclaredVariables();
           let varName = 'Unknown';
           if (variables.length > 0) {
             varName = variables[0].name;
