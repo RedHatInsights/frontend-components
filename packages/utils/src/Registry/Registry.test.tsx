@@ -11,6 +11,7 @@ it('getRegistry', () => {
 
 it('registry decorator', () => {
   class App extends React.Component {
+    // @ts-ignore
     render() {
       return 'app';
     }

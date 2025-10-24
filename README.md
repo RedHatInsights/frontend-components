@@ -4,6 +4,7 @@ Monorepo of Red Hat Cloud services Components for applications in a React.js env
 
 ## Packages
 * [utils](https://github.com/RedHatInsights/frontend-components/tree/master/packages/utils#readme) - library that has utilities functions
+  * [Shared State Management](packages/utils/doc/shared-state.md) - Lightweight state management for Scalprum modules
 * [charts](https://github.com/RedHatInsights/frontend-components/tree/master/packages/charts#readme) - small group of general charts
 * [components](https://github.com/RedHatInsights/frontend-components/tree/master/packages/components#readme) - series of common components
 * [notifications](https://github.com/RedHatInsights/frontend-components/tree/master/packages/notifications#readme) - common component to display toast notifications
