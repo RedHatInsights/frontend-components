@@ -82,6 +82,7 @@ import parseCvssScore from '@redhat-cloud-services/frontend-components-utilities
   * [debounce](doc/debounce.md)
   * [cypress](doc/Cypress.md)
   * [RBAC](doc/RBAC.md)
+  * [shared-state](doc/shared-state.md) - Lightweight state management for Scalprum modules
 
 Additionaly it exports these utilities
 * AsyncComponent - class to load component via async calls
