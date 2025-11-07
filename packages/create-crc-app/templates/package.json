@@ -1,6 +1,6 @@
 {
   "name": "{{name}}",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "engines": {
     "node": ">=16.0.0",
@@ -22,7 +22,7 @@
   "dependencies": {
     "@patternfly/react-core": "^6.0.0",
     "@patternfly/react-table": "^6.0.0",
-    "@redhat-cloud-services/frontend-components": "^7.0.0",
+    "@redhat-cloud-services/frontend-components": "^7.0.13",
     "@redhat-cloud-services/frontend-components-notifications": "^5.0.0",
     "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
     "classnames": "^2.3.1",
