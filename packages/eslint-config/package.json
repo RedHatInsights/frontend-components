@@ -9,18 +9,18 @@
   ],
   "scripts": {},
   "dependencies": {
-    "@babel/eslint-parser": "^7.27.0",
-    "@babel/preset-react": "^7.26.3",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-prettier": "^5.2.6",
+    "@babel/eslint-parser": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-rulesdir": "^0.2.2",
-    "globals": "^16.0.0",
-    "prettier": "^3.5.3"
+    "globals": "^16.5.0",
+    "prettier": "^3.6.2"
   },
   "peerDependencies": {
-    "@babel/core": "^7.14.0",
-    "eslint": "^9.24.0"
+    "@babel/core": "^7.28.5",
+    "eslint": "^9.39.1"
   },
   "license": "Apache",
   "publishConfig": {
