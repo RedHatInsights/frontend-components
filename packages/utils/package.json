@@ -23,25 +23,25 @@
     "@patternfly/react-table": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^7.0.0 || ^8.0.0 || ^9.0.0",
-    "react-router-dom": "^5.0.0 || ^6.0.0"
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^6.30.1"
   },
   "dependencies": {
-    "@redhat-cloud-services/rbac-client": "^4.2.3",
-    "@redhat-cloud-services/types": "^3.0.0",
-    "@sentry/browser": "^7.119.1",
+    "@redhat-cloud-services/rbac-client": "^4.2.5",
+    "@redhat-cloud-services/types": "^3.3.1",
+    "@sentry/browser": "^7.120.4",
     "awesome-debounce-promise": "^2.1.0",
-    "axios": "^1.12.2",
+    "axios": "^1.13.2",
     "commander": "^2.20.3",
     "mkdirp": "^1.0.4",
-    "p-map": "^7.0.2",
-    "react-content-loader": "^6.2.0"
+    "p-map": "^7.0.4",
+    "react-content-loader": "^6.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
     "glob": "10.3.3",
-    "react-intl": "^6.6.8",
-    "redux-mock-store": "^1.5.4"
+    "react-intl": "^6.8.9",
+    "redux-mock-store": "^1.5.5"
   },
   "sideEffects": false
 }

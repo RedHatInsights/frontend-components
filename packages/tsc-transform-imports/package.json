@@ -8,7 +8,7 @@
     "glob": "10.3.3"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.9.3"
   },
   "scripts": {}
 }
