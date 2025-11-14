@@ -26,11 +26,11 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
-    "@redhat-cloud-services/frontend-components": "^7.0.13"
+    "@redhat-cloud-services/frontend-components": "^7.0.13",
+    "@redhat-cloud-services/frontend-components-utilities": "^7.0.9"
   },
   "devDependencies": {
     "glob": "10.3.3",
-    "typescript": "^5.0.0"
+    "typescript": "^5.9.3"
   }
 }
