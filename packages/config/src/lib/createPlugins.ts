@@ -11,24 +11,10 @@ const { glob } = require('glob');
 const path = require('path');
 
 export type WebpackPluginDefinition = undefined | null | false | '' | 0 | ((this: Compiler, compiler: Compiler) => void) | WebpackPluginInstance;
-
-export interface SentryConfig {
-  org: string;
-  project: string;
-  release?: string;
-  urlPrefix?: string;
-  include?: string;
-  ignore?: string[];
-  inject?: boolean;
-  cleanArtifacts?: boolean;
-  rewrite?: boolean;
-}
-
 export interface CreatePluginsOptions extends CommonConfigOptions {
   generateSourceMaps?: boolean;
   plugins?: WebpackPluginDefinition[];
   definePlugin?: Record<string, any>;
-  initSentry?: SentryConfig;
 }
 
 export const createPlugins = ({
@@ -40,7 +26,6 @@ export const createPlugins = ({
   _unstableHotReload,
   hotReload,
   useFileHash = true,
-  initSentry,
 }: CreatePluginsOptions) => {
   if (!rootFolder) {
     fecLogger(LogType.error, 'rootFolder is required attribute for the createPlugins function!');
@@ -84,25 +69,19 @@ export const createPlugins = ({
     ...(plugins || []),
     ...(internalHotReload ? [new ReactRefreshWebpackPlugin()] : []),
     // Put the sentry plugin at the end of the plugins array
-    ...(process.env.ENABLE_SENTRY && initSentry
+    ...(process.env.ENABLE_SENTRY
       ? [
           sentryWebpackPlugin({
             ...(process.env.SENTRY_AUTH_TOKEN && {
               authToken: process.env.SENTRY_AUTH_TOKEN,
             }),
-            org: initSentry.org,
-            project: initSentry.project,
+            org: process.env.SENTRY_ORG,
+            project: process.env.SENTRY_PROJECT,
             release: process.env.SENTRY_RELEASE,
-            urlPrefix: initSentry.urlPrefix,
-            include: initSentry.include,
-            ignore: initSentry.ignore,
-            inject: initSentry.inject,
-            cleanArtifacts: initSentry.cleanArtifacts ,
-            rewrite: initSentry.rewrite ,
             moduleMetadata: ({ release }: { release: string }) => ({
               dsn: process.env.SENTRY_DSN,
-              org: initSentry.org,
-              project: initSentry.project,
+              org: process.env.SENTRY_ORG,
+              project: process.env.SENTRY_PROJECT,
               release,
             }),
           }),
