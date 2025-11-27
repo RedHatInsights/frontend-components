@@ -3,7 +3,7 @@ import fs from 'fs';
 import concurrently from 'concurrently';
 import { hasFEOFeaturesEnabled, readFrontendCRD } from './feo/crd-check';
 import { FrontendCRD } from './feo/feo-types';
-import { LogType, fecLogger } from '.';
+import fecLogger, { LogType } from './fec-logger';
 
 function federate(argv: Record<string, any>, cwd: string) {
   let configPath: string = argv.config || './node_modules/@redhat-cloud-services/frontend-components-config/bin/prod.webpack.config.js';
@@ -62,4 +62,3 @@ function federate(argv: Record<string, any>, cwd: string) {
 }
 
 export default federate;
-module.exports = federate;

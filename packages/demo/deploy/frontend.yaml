@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: frontend-components-demo-app
+objects:
+  - apiVersion: cloud.redhat.com/v1alpha1
+    kind: Frontend
+    metadata:
+      name: demo
+    spec:
+      envName: ${ENV_NAME}
+      title: Frontend Components Demo App
+      deploymentRepo: https://github.com/RedHatInsights/frontend-components
+      frontend:
+        paths:
+          - /apps/demo
+      image: ${IMAGE}:${IMAGE_TAG}
+      module:
+        manifestLocation: "/apps/demo/fed-mods.json"
+        modules:
+          - id: "demo"
+            module: "./RootApp"
+            routes:
+              - pathname: /apps/demo
+
+parameters:
+  - name: ENV_NAME
+    required: true
+  - name: IMAGE_TAG
+    required: true
+  - name: IMAGE
+    value: quay.io/cloudservices/frontend-components-demo-app

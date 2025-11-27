@@ -2,8 +2,39 @@
   "name": "@redhat-cloud-services/frontend-components-config-utilities",
   "version": "4.7.1",
   "description": "Utilities for shared config used in Red Hat Cloud Services project.",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./feo/crd-check": {
+      "types": "./dist/feo/crd-check.d.ts",
+      "default": "./dist/feo/crd-check.js"
+    },
+    "./feo/feo-types": {
+      "types": "./dist/feo/feo-types.d.ts",
+      "default": "./dist/feo/feo-types.js"
+    },
+    "./feo/validate-frontend-crd": {
+      "types": "./dist/feo/validate-frontend-crd.d.ts",
+      "default": "./dist/feo/validate-frontend-crd.js"
+    },
+    "./search-ignored-styles": {
+      "types": "./dist/search-ignored-styles.d.ts",
+      "default": "./dist/search-ignored-styles.js"
+    },
+    "./feo/*": {
+      "types": "./dist/feo/*.d.ts",
+      "default": "./dist/feo/*"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },

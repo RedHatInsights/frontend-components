@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import serveStatic from '@redhat-cloud-services/frontend-components-config-utilities/serve-federated';
-const { fecLogger, LogType } = require('@redhat-cloud-services/frontend-components-config-utilities');
+import { serveFederated, fecLogger, LogType } from '@redhat-cloud-services/frontend-components-config-utilities';
 import yargs from 'yargs';
 // to force TS to copy the file
 import './tsconfig.template.json';
@@ -163,7 +162,7 @@ const argv = yargs
 const scripts: { [name: string]: (...args: any[]) => void } = {
   static: (argv: any, cwd: string) => {
     validateFECConfig(cwd);
-    serveStatic(argv, cwd);
+    serveFederated(argv, cwd);
   },
   'patch-etc-hosts': patchHosts,
   dev: (argv: any, cwd: string) => {

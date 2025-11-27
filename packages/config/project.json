@@ -11,7 +11,7 @@
       "options": {
         "rootDir": "packages/config/src",
         "main": "packages/config/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-config",
+        "outputPath": "packages/config/dist",
         "tsConfig": "packages/config/tsconfig.build.json"
       }
     },
@@ -55,7 +55,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-config",
+        "distFolderPath": "packages/config/dist",
         "access": "public"
       },
       "dependsOn": ["build"]
