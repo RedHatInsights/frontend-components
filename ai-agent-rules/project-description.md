@@ -41,7 +41,6 @@ This repository contains **frontend-components**, a monorepo that creates common
 
 #### Development Tools
 - **`packages/testing/`** - Testing utilities and helpers
-- **`packages/create-crc-app/`** - CLI tool for creating new console applications
 - **`packages/executors/`** - NX executors for build processes
 - **`packages/translations/`** - Internationalization utilities
 

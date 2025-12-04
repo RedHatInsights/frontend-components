@@ -1,8 +1,13 @@
 # Claude Code Configuration
 
+Important principles:
+
+- keep it simple stupid (KISS)
+- don't repeat yourself (DRY)
+
 ## Claude Context
 
-Please read `@tmp/CLAUDE.md` located at`tmp/CLAUDE.md` for context.
+@tmp/CLAUDE.md
 
 ## Working Directory
 
