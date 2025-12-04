@@ -2,9 +2,9 @@
   "name": "@redhat-cloud-services/rule-components",
   "version": "4.0.24",
   "description": "Components to be used when showing rule information",
-  "main": "index.js",
-  "module": "esm/index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "sideEffects": [
     "./**/*.css",
     "./**/*.scss"

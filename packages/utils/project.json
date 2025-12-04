@@ -11,7 +11,7 @@
       "options": {
         "rootDir": "packages/utils/src",
         "main": "packages/utils/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-utilities",
+        "outputPath": "packages/utils/dist",
         "cjsTsConfig": "packages/utils/tsconfig.cjs.json",
         "esmTsConfig": "packages/utils/tsconfig.esm.json"
       }
@@ -20,7 +20,7 @@
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
       "dependsOn": ["^build:styles"],
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-utilities",
+        "outputPath": "packages/utils/dist",
         "sourceDir": "packages/utils"
       }
     },
@@ -28,7 +28,7 @@
       "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-utilities",
+        "outputPath": "packages/utils/dist",
         "forceTypes": true
       }
     },
@@ -36,7 +36,7 @@
       "dependsOn": ["^transform:scss"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-utilities"
+        "outputPath": "packages/utils"
       }
     },
     "check-circular-imports": {
@@ -87,7 +87,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-utilities",
+        "distFolderPath": "packages/utils/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

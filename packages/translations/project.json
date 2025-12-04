@@ -11,19 +11,19 @@
       "options": {
         "rootDir": "packages/translations/src",
         "main": "packages/translations/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-translations",
+        "outputPath": "packages/translations/dist",
         "cjsTsConfig": "packages/translations/tsconfig.cjs.json",
         "esmTsConfig": "packages/translations/tsconfig.esm.json",
         "assets": [
           {
             "glob": "**/*",
             "input": "packages/translations/src/locales",
-            "output": "dist/@redhat-cloud-services/frontend-components-translations/locales"
+            "output": "packages/translations/dist/locales"
           },
           {
             "glob": "**/*",
             "input": "packages/translations/src/locales",
-            "output": "dist/@redhat-cloud-services/frontend-components-translations/esm/locales"
+            "output": "packages/translations/dist/esm/locales"
           }
         ]
       }
@@ -32,7 +32,7 @@
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
       "dependsOn": ["^build:styles"],
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-translations",
+        "outputPath": "packages/translations/dist",
         "sourceDir": "packages/translations"
       }
     },
@@ -40,7 +40,7 @@
       "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-translations",
+        "outputPath": "packages/translations/dist",
         "forceTypes": true
       }
     },
@@ -99,7 +99,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-translations",
+        "distFolderPath": "packages/translations/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

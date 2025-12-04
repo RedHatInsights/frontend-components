@@ -11,7 +11,7 @@
       "options": {
         "rootDir": "packages/notifications/src",
         "main": "packages/notifications/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications",
+        "outputPath": "packages/notifications/dist",
         "cjsTsConfig": "packages/notifications/tsconfig.cjs.json",
         "esmTsConfig": "packages/notifications/tsconfig.esm.json"
       }
@@ -20,7 +20,7 @@
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
       "dependsOn": ["^build:styles"],
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications",
+        "outputPath": "packages/notifications/dist",
         "sourceDir": "packages/notifications"
       }
     },
@@ -28,7 +28,7 @@
       "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications",
+        "outputPath": "packages/notifications/dist",
         "forceTypes": true
       }
     },
@@ -87,7 +87,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-notifications",
+        "distFolderPath": "packages/notifications/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

@@ -10,7 +10,7 @@
       "dependsOn": ["^build"],
       "options": {
         "main": "packages/eslint-config/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/eslint-config-redhat-cloud-services",
+        "outputPath": "packages/eslint-config/dist",
         "tsConfig": "packages/eslint-config/tsconfig.json",
         "assets": ["README.md"]
       }
@@ -42,7 +42,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/eslint-config-redhat-cloud-services",
+        "distFolderPath": "packages/eslint-config/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

@@ -11,7 +11,7 @@
       "options": {
         "rootDir": "packages/testing/src",
         "main": "packages/testing/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
+        "outputPath": "packages/testing/dist",
         "cjsTsConfig": "packages/testing/tsconfig.cjs.json",
         "esmTsConfig": "packages/testing/tsconfig.esm.json"
       }
@@ -20,7 +20,7 @@
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
       "dependsOn": ["^build:styles"],
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
+        "outputPath": "packages/testing/dist",
         "sourceDir": "packages/testing"
       }
     },
@@ -28,7 +28,7 @@
       "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
+        "outputPath": "packages/testing/dist",
         "forceTypes": true
       }
     },
@@ -80,7 +80,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-testing",
+        "distFolderPath": "packages/testing/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

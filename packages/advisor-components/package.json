@@ -2,8 +2,8 @@
   "name": "@redhat-cloud-services/frontend-components-advisor-components",
   "version": "3.0.24",
   "description": "Components to be used in Advisor applications and integrations.",
-  "main": "index.js",
-  "module": "esm/index.js",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
   "publishConfig": {
     "access": "public"
   },

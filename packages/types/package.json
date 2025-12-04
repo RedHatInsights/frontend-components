@@ -2,8 +2,8 @@
   "name": "@redhat-cloud-services/types",
   "description": "TypeScript definitions for @redhat-cloud-services common typings.",
   "version": "3.3.1",
-  "main": "index.d.ts",
-  "types": "index.d.ts",
+  "main": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },

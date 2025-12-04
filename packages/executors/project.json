@@ -9,20 +9,21 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/executors",
+        "rootDir": "packages/executors/src",
         "main": "packages/executors/src/index.ts",
+        "outputPath": "packages/executors/dist",
         "tsConfig": "packages/executors/tsconfig.lib.json",
         "assets": [
           "packages/executors/*.md",
           {
-            "input": "./packages/executors/src",
+            "input": "./packages/executors/src/executors",
             "glob": "**/!(*.ts)",
-            "output": "./src"
+            "output": "./executors"
           },
           {
-            "input": "./packages/executors/src",
+            "input": "./packages/executors/src/executors",
             "glob": "**/*.d.ts",
-            "output": "./src"
+            "output": "./executors"
           },
           {
             "input": "./packages/executors",

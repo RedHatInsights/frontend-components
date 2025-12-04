@@ -1,8 +1,6 @@
-import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import { PrimaryToolbar, CriticalBattery } from '@redhat-cloud-services/frontend-components';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
-import CriticalBattery from '@redhat-cloud-services/frontend-components/Battery/CriticalBattery';
-import { RuleDetails } from '@redhat-cloud-services/frontend-components-advisor-components/RuleDetails';
-import { AdvisorProduct } from '@redhat-cloud-services/frontend-components-advisor-components/types';
+import { RuleDetails, AdvisorProduct } from '@redhat-cloud-services/frontend-components-advisor-components';
 
 const MyCmp = () => {
   return (

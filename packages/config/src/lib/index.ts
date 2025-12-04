@@ -1,9 +1,7 @@
-import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { LogType, fecLogger, hasFEOFeaturesEnabled, readFrontendCRD, FrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities';
 import path from 'path';
 import createConfig, { CreateConfigOptions } from './createConfig';
 import createPlugins, { CreatePluginsOptions } from './createPlugins';
-import { hasFEOFeaturesEnabled, readFrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo/crd-check';
-import { FrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo/feo-types';
 const { sync } = require('glob');
 export * from './createConfig';
 export * from './createPlugins';

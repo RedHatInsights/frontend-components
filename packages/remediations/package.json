@@ -2,8 +2,9 @@
   "name": "@redhat-cloud-services/frontend-components-remediations",
   "version": "4.0.25",
   "description": "Remediations components for RedHat Cloud Services project.",
-  "main": "index.js",
-  "module": "esm/index.js",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },

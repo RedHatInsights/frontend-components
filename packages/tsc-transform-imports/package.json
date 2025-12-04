@@ -2,8 +2,8 @@
   "name": "@redhat-cloud-services/tsc-transform-imports",
   "version": "1.0.26",
   "description": "TypeScript compiler transform for optimizing imports in Red Hat Cloud Services projects.",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "glob": "10.3.3"
   },

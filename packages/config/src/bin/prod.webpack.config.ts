@@ -1,7 +1,6 @@
 const { fecLogger, LogType } = require('@redhat-cloud-services/frontend-components-config-utilities');
 import path from 'path';
-import { hasFEOFeaturesEnabled, readFrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo/crd-check';
-import validateFrontendCrd from '@redhat-cloud-services/frontend-components-config-utilities/feo/validate-frontend-crd';
+import { hasFEOFeaturesEnabled, readFrontendCRD, validateFrontendCrd } from '@redhat-cloud-services/frontend-components-config-utilities';
 import FECConfiguration from '../lib/fec.config';
 import config from '../lib/index';
 import commonPlugins from './webpack.plugins';

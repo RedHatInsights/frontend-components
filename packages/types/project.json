@@ -10,7 +10,7 @@
       "dependsOn": ["^build"],
       "options": {
         "main": "packages/types/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/types",
+        "outputPath": "packages/types/dist",
         "tsConfig": "packages/types/tsconfig.json"
       }
     },
@@ -41,7 +41,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/types",
+        "distFolderPath": "packages/types/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

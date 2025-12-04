@@ -11,7 +11,7 @@
       "options": {
         "rootDir": "packages/remediations/src",
         "main": "packages/remediations/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations",
+        "outputPath": "packages/remediations/dist",
         "cjsTsConfig": "packages/remediations/tsconfig.cjs.json",
         "esmTsConfig": "packages/remediations/tsconfig.esm.json"
       }
@@ -20,7 +20,7 @@
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
       "dependsOn": ["^build:styles"],
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations",
+        "outputPath": "packages/remediations/dist",
         "sourceDir": "packages/remediations"
       }
     },
@@ -28,7 +28,7 @@
       "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations",
+        "outputPath": "packages/remediations/dist",
         "forceTypes": true
       }
     },
@@ -88,7 +88,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-remediations",
+        "distFolderPath": "packages/remediations/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

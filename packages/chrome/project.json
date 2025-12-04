@@ -11,7 +11,7 @@
       "options": {
         "rootDir": "packages/chrome/src",
         "main": "packages/chrome/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/chrome",
+        "outputPath": "packages/chrome/dist",
         "cjsTsConfig": "packages/chrome/tsconfig.cjs.json",
         "esmTsConfig": "packages/chrome/tsconfig.esm.json"
       }
@@ -20,7 +20,7 @@
       "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components",
+        "outputPath": "packages/chrome/dist",
         "forceTypes": true
       }
     },
@@ -72,7 +72,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/chrome",
+        "distFolderPath": "packages/chrome/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

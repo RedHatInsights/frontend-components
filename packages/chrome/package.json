@@ -2,9 +2,9 @@
   "name": "@redhat-cloud-services/chrome",
   "version": "2.0.15",
   "description": "Chrome functions for RedHat Hybrid cloud console.",
-  "main": "index.js",
-  "typings": "index.d.ts",
-  "module": "esm/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/esm/index.js",
   "publishConfig": {
     "access": "public"
   },

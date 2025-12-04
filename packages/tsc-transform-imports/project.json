@@ -10,7 +10,7 @@
       "options": {
         "rootDir": "packages/tsc-transform-imports/src",
         "main": "packages/tsc-transform-imports/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/tsc-transform-imports",
+        "outputPath": "packages/tsc-transform-imports/dist",
         "tsConfig": "packages/tsc-transform-imports/tsconfig.json"
       }
     },
@@ -47,7 +47,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/tsc-transform-imports",
+        "distFolderPath": "packages/tsc-transform-imports/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

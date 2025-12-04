@@ -11,7 +11,7 @@
       "options": {
         "rootDir": "packages/components/src",
         "main": "packages/components/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components",
+        "outputPath": "packages/components/dist",
         "cjsTsConfig": "packages/components/tsconfig.cjs.json",
         "esmTsConfig": "packages/components/tsconfig.esm.json"
       }
@@ -20,7 +20,7 @@
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
       "dependsOn": ["^build:styles"],
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components",
+        "outputPath": "packages/components/dist",
         "sourceDir": "packages/components"
       }
     },
@@ -28,7 +28,7 @@
       "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components",
+        "outputPath": "packages/components/dist",
         "forceTypes": true
       }
     },

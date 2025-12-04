@@ -11,7 +11,7 @@
       "options": {
         "rootDir": "packages/rule-components/src",
         "main": "packages/rule-components/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/rule-components",
+        "outputPath": "packages/rule-components/dist",
         "cjsTsConfig": "packages/rule-components/tsconfig.cjs.json",
         "esmTsConfig": "packages/rule-components/tsconfig.esm.json"
       }
@@ -20,7 +20,7 @@
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
       "dependsOn": ["^build:styles"],
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/rule-components",
+        "outputPath": "packages/rule-components/dist",
         "sourceDir": "packages/rule-components"
       }
     },
@@ -28,7 +28,7 @@
       "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/rule-components",
+        "outputPath": "packages/rule-components/dist",
         "forceTypes": true
       }
     },
@@ -88,7 +88,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/rule-components",
+        "distFolderPath": "packages/rule-components/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

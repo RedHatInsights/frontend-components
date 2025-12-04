@@ -1,5 +1,5 @@
 {
-  "name": "frontend-components-demo-app",
+  "name": "@redhat-cloud-services/frontend-components-demo-app",
   "version": "0.0.1",
   "private": true,
   "insights": {
@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@patternfly/react-core": "^6.2.2",
+    "@redhat-cloud-services/frontend-components": "*",
+    "@redhat-cloud-services/frontend-components-advisor-components": "*",
     "@redhat-cloud-services/frontend-components-config-utilities": "^4.7.1",
     "react": "18.3.1",
     "react-dom": "18.3.1"

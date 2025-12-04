@@ -1,0 +1,32 @@
+{
+  "name": "@redhat-cloud-services/frontend-components-demo-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/demo/src",
+  "projectType": "application",
+  "tags": ["scope:demo"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "command": "npx fec build",
+        "cwd": "packages/demo",
+        "outputPath": "packages/demo/dist"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx fec dev",
+        "cwd": "packages/demo"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/demo/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}
