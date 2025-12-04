@@ -1,9 +1,18 @@
 {
   "$schema": "http://json-schema.org/schema",
   "version": 2,
-  "title": "Builder executor",
-  "description": "",
+  "title": "Build Styles executor",
+  "description": "Compiles SCSS files to CSS using Dart Sass with workspace package resolution",
   "type": "object",
-  "properties": {},
-  "required": []
+  "properties": {
+    "outputPath": {
+      "type": "string",
+      "description": "Path where compiled CSS files will be written"
+    },
+    "sourceDir": {
+      "type": "string",
+      "description": "Source directory containing SCSS files to compile"
+    }
+  },
+  "required": ["outputPath", "sourceDir"]
 }

@@ -68,8 +68,23 @@ async function buildStyle(file: string, outputDir: string, currentProjectRoot: s
                   if (!repoPackage) {
                     throw new Error(`Invalid package: ${url}`);
                   }
-                  const r = new URL(`file://${projectRoot}/dist/@redhat-cloud-services/${repoPackage}`);
-                  return r;
+                  // Use workspace node_modules symlinks for @redhat-cloud-services packages
+                  const nodeModulesPath = path.join(projectRoot, 'node_modules', '@redhat-cloud-services', repoPackage);
+
+                  // Try exact path first (already includes .scss extension from import)
+                  if (fs.existsSync(nodeModulesPath)) {
+                    return new URL(`file://${nodeModulesPath}`);
+                  }
+
+                  // If no extension, try adding .scss
+                  if (!nodeModulesPath.endsWith('.scss')) {
+                    const scssPath = `${nodeModulesPath}.scss`;
+                    if (fs.existsSync(scssPath)) {
+                      return new URL(`file://${scssPath}`);
+                    }
+                  }
+
+                  throw new Error(`Unable to resolve SCSS import: ${url} (tried ${nodeModulesPath})`);
                 }
                 // from node_modules
                 const repoPackage = url.split('~').pop();

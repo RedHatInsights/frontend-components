@@ -1,4 +1,4 @@
-@import './styles/all';
-@import './styles/helpers';
-@import './styles/mixins';
-@import './styles/variables';
+@forward './styles/_all';
+@forward './styles/_helpers';
+@forward './styles/_mixins';
+@forward './styles/_variables';

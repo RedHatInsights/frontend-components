@@ -1,5 +1,5 @@
-@use '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins' as m;
-@import '~@redhat-cloud-services/frontend-components-utilities/styles/_variables';
+@use '~@redhat-cloud-services/frontend-components-utilities/src/styles/_mixins' as m;
+@use '~@redhat-cloud-services/frontend-components-utilities/src/styles/_variables' as *;
 
 .ins-c-rule__report-detail {
   padding: var(--pf-t--global--spacer--md) 40px;
