@@ -2,9 +2,10 @@ import { ExecutorContext } from '@nx/devkit';
 import { tscExecutor } from '@nx/js/src/executors/tsc/tsc.impl';
 import { copyAssets } from '@nx/js';
 import { ExecutorOptions as TscExecutorOptions } from '@nx/js/src/utils/schema';
-import { existsSync, unlink } from 'fs';
+import { existsSync, unlink, readFileSync, writeFileSync } from 'fs';
 import { z } from 'zod';
 import { promisify } from 'util';
+import path from 'path';
 
 const asyncUnlink = promisify(unlink);
 
@@ -20,6 +21,40 @@ async function removeEsmPackageJson(esmOutputPath: string) {
   const esmPackageJsonPath = `${esmOutputPath}/package.json`;
   if (existsSync(esmPackageJsonPath)) {
     return asyncUnlink(esmPackageJsonPath);
+  }
+}
+
+function transformPackageJsonForPublishing(packageJson: any): any {
+  const transformed = { ...packageJson };
+
+  // Strip "dist/" prefixes from entry points for publishing
+  if (transformed.main && transformed.main.startsWith('dist/')) {
+    transformed.main = transformed.main.replace(/^dist\//, '');
+  }
+
+  if (transformed.module && transformed.module.startsWith('dist/')) {
+    transformed.module = transformed.module.replace(/^dist\//, '');
+  }
+
+  if (transformed.types && transformed.types.startsWith('dist/')) {
+    transformed.types = transformed.types.replace(/^dist\//, '');
+  }
+
+  if (transformed.typings && transformed.typings.startsWith('dist/')) {
+    transformed.typings = transformed.typings.replace(/^dist\//, '');
+  }
+
+  return transformed;
+}
+
+async function copyPackageJsonWithTransform(sourcePath: string, outputPath: string) {
+  try {
+    const sourcePackageJson = JSON.parse(readFileSync(sourcePath, 'utf-8'));
+    const transformedPackageJson = transformPackageJsonForPublishing(sourcePackageJson);
+    const destinationPath = path.join(outputPath, 'package.json');
+    writeFileSync(destinationPath, JSON.stringify(transformedPackageJson, null, 2));
+  } catch (error) {
+    throw new Error(`Failed to copy and transform package.json: ${error}`);
   }
 }
 
@@ -62,7 +97,16 @@ export default async function runExecutor(options: BuilderExecutorSchemaType, co
     return executionResult;
   }
   await removeEsmPackageJson(esmOutputDir);
-  await copyAssets({ outputPath: options.outputPath, assets: [`${currentProjectRoot}/package.json`, ...(options.assets ?? [])] }, context as any);
+
+  // Copy and transform main package.json with stripped dist/ prefixes for publishing
+  // Note: This only affects the main package.json - nested package.json files for granular imports
+  // are handled separately by build-packages executor and already have correct entry points
+  await copyPackageJsonWithTransform(`${currentProjectRoot}/package.json`, options.outputPath);
+
+  // Copy other assets normally (excluding package.json since we handled it above)
+  if (options.assets && options.assets.length > 0) {
+    await copyAssets({ outputPath: options.outputPath, assets: options.assets }, context as any);
+  }
 
   return executionResult;
 }
