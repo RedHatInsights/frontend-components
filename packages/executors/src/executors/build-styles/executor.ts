@@ -64,27 +64,59 @@ async function buildStyle(file: string, outputDir: string, currentProjectRoot: s
             findFileUrl: (url) => {
               if (url.startsWith('~')) {
                 if (url.startsWith('~@redhat-cloud-services')) {
-                  const repoPackage = url.split('~@redhat-cloud-services/').pop();
-                  if (!repoPackage) {
+                  const fullPath = url.split('~@redhat-cloud-services/').pop();
+                  if (!fullPath) {
                     throw new Error(`Invalid package: ${url}`);
                   }
+
+                  // Split package name from file path
+                  // e.g., "frontend-components-utilities/styles/_mixins" -> ["frontend-components-utilities", "styles/_mixins"]
+                  const pathParts = fullPath.split('/');
+                  const packageName = pathParts[0]; // "frontend-components-utilities"
+                  const filePath = pathParts.slice(1).join('/'); // "styles/_mixins"
+
                   // Use workspace node_modules symlinks for @redhat-cloud-services packages
-                  const nodeModulesPath = path.join(projectRoot, 'node_modules', '@redhat-cloud-services', repoPackage);
+                  const nodeModulesPath = path.join(projectRoot, 'node_modules', '@redhat-cloud-services', packageName);
+
+                  // Check if this is a workspace symlink by testing if it's a symlink
+                  try {
+                    const symlinkStat = fs.lstatSync(nodeModulesPath, { throwIfNoEntry: false });
+                    if (symlinkStat?.isSymbolicLink()) {
+                      // For workspace packages, append /dist to the resolved path
+                      const distPath = path.join(nodeModulesPath, 'dist', filePath);
+                      if (fs.existsSync(distPath)) {
+                        return new URL(`file://${distPath}`);
+                      }
+
+                      // Also try with .scss extension if not already present
+                      if (!distPath.endsWith('.scss')) {
+                        const distScssPath = `${distPath}.scss`;
+                        if (fs.existsSync(distScssPath)) {
+                          return new URL(`file://${distScssPath}`);
+                        }
+                      }
+                    }
+                  } catch (error) {
+                    // If lstat fails, continue with external package logic
+                  }
+
+                  // Fallback to external package logic for full path
+                  const fullNodeModulesPath = path.join(projectRoot, 'node_modules', '@redhat-cloud-services', fullPath);
 
                   // Try exact path first (already includes .scss extension from import)
-                  if (fs.existsSync(nodeModulesPath)) {
-                    return new URL(`file://${nodeModulesPath}`);
+                  if (fs.existsSync(fullNodeModulesPath)) {
+                    return new URL(`file://${fullNodeModulesPath}`);
                   }
 
                   // If no extension, try adding .scss
-                  if (!nodeModulesPath.endsWith('.scss')) {
-                    const scssPath = `${nodeModulesPath}.scss`;
+                  if (!fullNodeModulesPath.endsWith('.scss')) {
+                    const scssPath = `${fullNodeModulesPath}.scss`;
                     if (fs.existsSync(scssPath)) {
                       return new URL(`file://${scssPath}`);
                     }
                   }
 
-                  throw new Error(`Unable to resolve SCSS import: ${url} (tried ${nodeModulesPath})`);
+                  throw new Error(`Unable to resolve SCSS import: ${url} (tried workspace and ${fullNodeModulesPath})`);
                 }
                 // from node_modules
                 const repoPackage = url.split('~').pop();
