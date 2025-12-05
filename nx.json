@@ -77,7 +77,7 @@
       "options": {
         "targetName": "e2e",
         "openTargetName": "open-cypress",
-        "componentTestingTargetName": "component-test",
+        "componentTestingTargetName": "test:component",
         "ciTargetName": "e2e-ci"
       }
     },
