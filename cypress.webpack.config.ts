@@ -30,7 +30,11 @@ const myGenerator = asGenerator((item: unknown, ...rest) => {
 });
 
 function localAliasHoisting() {
-  const localPackages = glob.sync(path.resolve(__dirname, 'packages/*')).reduce((acc, curr) => {
+  // Since this config file is at project root, __dirname gives us the project root
+  // This is more reliable than process.cwd() which depends on where the command was run
+  const projectRoot = __dirname;
+  const packagesPattern = path.resolve(projectRoot, 'packages/*');
+  const localPackages = glob.sync(packagesPattern).reduce((acc, curr) => {
     const pck = JSON.parse(readFileSync(path.resolve(curr, 'package.json'), 'utf-8'));
     acc[pck.name] = curr + '/src';
     return acc
@@ -92,8 +96,9 @@ export default {
                       const segments = repoPackage.split('/');
                       const sourcePackage = localPackages[`${segments[0]}/${segments[1]}`];
                       if(sourcePackage) {
-                        // resolve local packages to local directory
-                        return new URL(`file://${path.resolve(sourcePackage, ...segments.slice(2))}`);
+                        // resolve local packages to src directory
+                        const pathSegments = segments.slice(2);
+                        return new URL(`file://${path.resolve(sourcePackage, ...pathSegments)}`);
                       }
                     }
 
