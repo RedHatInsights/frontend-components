@@ -7,6 +7,7 @@ export * from './serve-federated';
 export * from './generate-pf-shared-assets-list';
 export * from './babel-transform-imports';
 export * from './fec-logger';
+export * from './scss-workspace-importer';
 
 export { default as cookieTransform } from './cookieTransform';
 export { default as federatedModules } from './federated-modules';

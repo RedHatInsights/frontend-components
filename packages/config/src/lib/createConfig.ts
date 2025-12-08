@@ -1,6 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-import { LogType, ProxyOptions, fecLogger, proxy, searchIgnoredStyles } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { LogType, ProxyOptions, fecLogger, proxy, searchIgnoredStyles, createScssWorkspaceImporter } from '@redhat-cloud-services/frontend-components-config-utilities';
 import addPrefixToContent from './addPrefixToContent';
 type Configuration = import('webpack').Configuration;
 type CacheOptions = import('webpack').FileCacheOptions | import('webpack').MemoryCacheOptions;
@@ -215,6 +215,7 @@ export const createConfig = ({
                 },
                 sassOptions: {
                   silenceDeprecations: ['legacy-js-api'],
+                  importers: [createScssWorkspaceImporter(rootFolder)],
                 },
               },
             },
@@ -223,6 +224,7 @@ export const createConfig = ({
               options: {
                 sassOptions: {
                   silenceDeprecations: ['legacy-js-api'],
+                  importers: [createScssWorkspaceImporter(rootFolder)],
                 },
               },
             },
