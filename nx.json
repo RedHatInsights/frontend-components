@@ -3,7 +3,7 @@
   "targetDefaults": {
     "nx-release-publish": {
       "options": {
-        "packageRoot": "dist/{projectName}"
+        "packageRoot": "{projectRoot}/dist"
       }
     },
     "build": {
@@ -95,7 +95,7 @@
     }
   ],
   "release": {
-    "projects": ["packages/*", "!packages/executors"],
+    "projects": ["packages/*", "!packages/executors", "!packages/demo"],
     "projectsRelationship": "independent",
     "version": {
       "git": {
@@ -104,7 +104,7 @@
         "push": true,
         "commitMessage": "chore(release): publish\n\n{releaseNotes}"
       },
-      "preVersionCommand": "npx nx run-many -t build --exclude=demo,",
+      "preVersionCommand": "npx nx run-many -t build --exclude=@redhat-cloud-services/frontend-components-demo-app",
       "conventionalCommits": true,
       "preserveLocalDependencyProtocols": false,
       "versionActionsOptions": {
