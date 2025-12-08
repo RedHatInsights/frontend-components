@@ -10,6 +10,7 @@
 - [Reviews](#reviews)
 - [Release process](#release-process)
 - [Local development](#local-development)
+  - [Import patterns](#import-patterns)
 - [Docs](#docs)
 
 ## Type of packages
@@ -109,7 +110,22 @@ npm run serve:demo
 
 You can then open the browser on `http://localhost:4200/` address.
 
-The source of the demo page is available in `examples/demo/src/app/app.tsx` file. Please do not commit changes to this file.
+The source of the demo page is available in `packages/demo/src/app/app.tsx` file. Please do not commit changes to this file.
+
+### Import patterns
+
+When importing frontend-components packages **within this monorepo workspace**, use barrel imports:
+
+```typescript
+// ✅ CORRECT: Use barrel imports for monorepo development
+import { PrimaryToolbar, CriticalBattery } from '@redhat-cloud-services/frontend-components';
+import { debounce } from '@redhat-cloud-services/frontend-components-utilities';
+
+// ❌ INCORRECT: Granular imports don't work in workspace development
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+```
+
+Granular imports only work for published packages consumed by external applications.
 
 ## Docs
 
