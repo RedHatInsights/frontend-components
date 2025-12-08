@@ -8,7 +8,7 @@ Important principles:
 ## Claude Context
 
 @CHANGELOG.md
-@CONTRIBUTING.jd
+@CONTRIBUTING.md
 @tmp/CLAUDE.md
 
 ## Working Directory
