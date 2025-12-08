@@ -24,7 +24,10 @@
     "url": "https://github.com/RedHatInsights/frontend-components/issues"
   },
   "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/config#readme",
-  "scripts": {},
+  "scripts": {
+    "build": "tsc -b && chmod +x dist/bin/fec.js",
+    "prepublishOnly": "chmod +x dist/bin/fec.js"
+  },
   "dependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "@redhat-cloud-services/frontend-components-config-utilities": "^4.7.1",

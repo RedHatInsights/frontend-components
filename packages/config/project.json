@@ -6,13 +6,11 @@
   "tags": ["scope:build"],
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "nx:run-commands",
       "dependsOn": ["^build"],
       "options": {
-        "rootDir": "packages/config/src",
-        "main": "packages/config/src/index.ts",
-        "outputPath": "packages/config/dist",
-        "tsConfig": "packages/config/tsconfig.build.json"
+        "cwd": "packages/config",
+        "command": "npm run build"
       }
     },
     "check-circular-imports": {
