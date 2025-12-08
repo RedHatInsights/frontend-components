@@ -13,7 +13,7 @@ import BullseyeIcon from '@patternfly/react-icons/dist/dynamic/icons/bullseye-ic
 import InfoCircleIcon from '@patternfly/react-icons/dist/dynamic/icons/info-circle-icon';
 import LightbulbIcon from '@patternfly/react-icons/dist/dynamic/icons/lightbulb-icon';
 import ThumbsUpIcon from '@patternfly/react-icons/dist/dynamic/icons/thumbs-up-icon';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 
 import { RuleContentOcp, RuleContentRhel } from '../types';
 import { TemplateProcessor } from '../TemplateProcessor';

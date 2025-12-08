@@ -1,4 +1,4 @@
-import { InsightsLabel } from '@redhat-cloud-services/frontend-components';
+import { InsightsLabel } from '@redhat-cloud-services/frontend-components/InsightsLabel';
 
 export const totalRiskMeta = [
   {

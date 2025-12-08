@@ -1,5 +1,6 @@
 import React from 'react';
-import { Shield } from '@redhat-cloud-services/frontend-components';
+import { Shield } from '@redhat-cloud-services/frontend-components/Shield';
+
 import { riskOfChange } from '../RuleTable/constants';
 
 export default ({ onChange, value, ...props } = { onChange: () => undefined }) => ({
