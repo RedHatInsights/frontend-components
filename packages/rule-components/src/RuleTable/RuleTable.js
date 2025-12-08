@@ -8,9 +8,7 @@ import { EmptyState } from '@patternfly/react-core/dist/dynamic/components/Empty
 import { EmptyStateBody } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
 import { EmptyStateVariant } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
 import SearchIcon from '@patternfly/react-icons/dist/dynamic/icons/search-icon';
-import { Skeleton } from '@redhat-cloud-services/frontend-components/Skeleton';
-import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
-import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import { Skeleton, TableToolbar, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
 import { Pagination, PaginationVariant } from '@patternfly/react-core/dist/dynamic/components/Pagination';
 import flatten from 'lodash/flatten';
 import debounce from 'lodash/debounce';
