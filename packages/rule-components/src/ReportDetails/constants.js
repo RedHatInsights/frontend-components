@@ -1,4 +1,6 @@
-import { InsightsLabel } from '@redhat-cloud-services/frontend-components/InsightsLabel';
+/* eslint-disable rulesdir/disallow-fec-relative-imports */
+import { InsightsLabel } from '@redhat-cloud-services/frontend-components';
+/* eslint-enable rulesdir/disallow-fec-relative-imports */
 
 export const totalRiskMeta = [
   {

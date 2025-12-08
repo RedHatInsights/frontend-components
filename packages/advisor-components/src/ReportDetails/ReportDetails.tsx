@@ -13,7 +13,9 @@ import BullseyeIcon from '@patternfly/react-icons/dist/dynamic/icons/bullseye-ic
 import InfoCircleIcon from '@patternfly/react-icons/dist/dynamic/icons/info-circle-icon';
 import LightbulbIcon from '@patternfly/react-icons/dist/dynamic/icons/lightbulb-icon';
 import ThumbsUpIcon from '@patternfly/react-icons/dist/dynamic/icons/thumbs-up-icon';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
+/* eslint-disable @redhat-cloud-services/disallow-fec-relative-imports */
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+/* eslint-enable @redhat-cloud-services/disallow-fec-relative-imports */
 
 import { RuleContentOcp, RuleContentRhel } from '../types';
 import { TemplateProcessor } from '../TemplateProcessor';

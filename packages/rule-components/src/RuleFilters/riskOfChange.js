@@ -1,5 +1,7 @@
 import React from 'react';
-import { Shield } from '@redhat-cloud-services/frontend-components/Shield';
+/* eslint-disable rulesdir/disallow-fec-relative-imports */
+import { Shield } from '@redhat-cloud-services/frontend-components';
+/* eslint-enable rulesdir/disallow-fec-relative-imports */
 
 import { riskOfChange } from '../RuleTable/constants';
 

@@ -11,8 +11,9 @@ import { Content } from '@patternfly/react-core/dist/dynamic/components/Content'
 import { ContentVariants } from '@patternfly/react-core/dist/dynamic/components/Content';
 import ExternalLinkAltIcon from '@patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon';
 
-import InsightsLabel from '@redhat-cloud-services/frontend-components/InsightsLabel';
-import { SeverityLine } from '@redhat-cloud-services/frontend-components/SeverityLine';
+/* eslint-disable @redhat-cloud-services/disallow-fec-relative-imports */
+import { InsightsLabel, SeverityLine } from '@redhat-cloud-services/frontend-components';
+/* eslint-enable @redhat-cloud-services/disallow-fec-relative-imports */
 
 import RebootRequired from '../RebootRequired/RebootRequired';
 import RuleRating from '../RuleRating/RuleRating';
