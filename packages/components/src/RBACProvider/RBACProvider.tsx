@@ -3,15 +3,13 @@ import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
 import { Spinner } from '@patternfly/react-core/dist/dynamic/components/Spinner';
 import { Access } from '@redhat-cloud-services/rbac-client/types';
 
-/* eslint-disable @redhat-cloud-services/disallow-fec-relative-imports */
 import {
   RBACContext,
   doesHavePermissions,
   getRBAC,
   hasAllPermissions,
   initialPermissions,
-} from '@redhat-cloud-services/frontend-components-utilities';
-/* eslint-enable @redhat-cloud-services/disallow-fec-relative-imports */
+} from '@redhat-cloud-services/frontend-components-utilities/RBAC';
 
 const hasAccessWithUserPermissions = (userPermissions: (Access | string)[], checkResourceDefinitions: boolean) => {
   return (requiredPermissions: (Access | string)[], checkAll?: boolean, checkResourceDefinitionsOverride?: boolean): boolean => {
