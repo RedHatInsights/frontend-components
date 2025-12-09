@@ -11,14 +11,32 @@
         "sourceDir": "packages/config-utils/src"
       }
     },
-    "build": {
-      "executor": "@nx/js:tsc",
+    "build:bundles": {
+      "dependsOn": ["^build:bundles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/config-utils/src",
         "main": "packages/config-utils/src/index.ts",
         "outputPath": "packages/config-utils/dist",
-        "tsConfig": "packages/config-utils/tsconfig.json"
+        "cjsTsConfig": "packages/config-utils/tsconfig.cjs.json",
+        "esmTsConfig": "packages/config-utils/tsconfig.esm.json"
       }
+    },
+    "build:packages": {
+      "dependsOn": ["^build:packages"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
+      "options": {
+        "outputPath": "packages/config-utils/dist",
+        "forceTypes": true
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": ["nx run @redhat-cloud-services/frontend-components-config-utilities:build:bundles", "nx run @redhat-cloud-services/frontend-components-config-utilities:build:packages"]
+      },
+      "dependsOn": ["^build"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",

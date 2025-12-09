@@ -1,4 +1,5 @@
-import { LogType, fecLogger, hasFEOFeaturesEnabled, readFrontendCRD, FrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities';
+import fecLogger, { LogType } from '@redhat-cloud-services/frontend-components-config-utilities/fec-logger';
+import { hasFEOFeaturesEnabled, readFrontendCRD, FrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo';
 import path from 'path';
 import createConfig, { CreateConfigOptions } from './createConfig';
 import createPlugins, { CreatePluginsOptions } from './createPlugins';

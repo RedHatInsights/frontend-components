@@ -1,6 +1,9 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-import { LogType, ProxyOptions, fecLogger, proxy, searchIgnoredStyles, createScssWorkspaceImporter } from '@redhat-cloud-services/frontend-components-config-utilities';
+import fecLogger, { LogType } from '@redhat-cloud-services/frontend-components-config-utilities/fec-logger';
+import proxy, { ProxyOptions } from '@redhat-cloud-services/frontend-components-config-utilities/proxy';
+import searchIgnoredStyles from '@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles';
+import { createScssWorkspaceImporter } from '@redhat-cloud-services/frontend-components-config-utilities/scss-workspace-importer';
 import addPrefixToContent from './addPrefixToContent';
 type Configuration = import('webpack').Configuration;
 type CacheOptions = import('webpack').FileCacheOptions | import('webpack').MemoryCacheOptions;

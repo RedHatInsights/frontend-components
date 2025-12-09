@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { serveFederated, fecLogger, LogType } from '@redhat-cloud-services/frontend-components-config-utilities';
+import serveFederated from '@redhat-cloud-services/frontend-components-config-utilities/serve-federated';
+import fecLogger, { LogType } from '@redhat-cloud-services/frontend-components-config-utilities/fec-logger';
 import yargs from 'yargs';
 // to force TS to copy the file
 import './tsconfig.template.json';

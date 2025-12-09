@@ -18,8 +18,5 @@ export { default as generatePFSharedAssetsList } from './generate-pf-shared-asse
 export { default as babelTransformImports } from './babel-transform-imports';
 export { default as fecLogger } from './fec-logger';
 export { default as searchIgnoredStyles } from './search-ignored-styles';
-export { default as validateFrontendCrd } from './feo/validate-frontend-crd';
-
 // Export FEO functions and types for barrel import access
-export * from './feo/crd-check';
-export * from './feo/feo-types';
+export * from './feo';

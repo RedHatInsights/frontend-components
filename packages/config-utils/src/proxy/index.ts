@@ -7,12 +7,12 @@ import path from 'path';
 import type { Configuration } from 'webpack-dev-server';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import chokidar from 'chokidar';
-import cookieTransform from './cookieTransform';
-import { isInterceptAbleRequest, matchNavigationRequest } from './feo/check-outgoing-requests';
-import { hasFEOFeaturesEnabled, readFrontendCRD } from './feo/crd-check';
-import fecLogger, { LogType } from './fec-logger';
-import { modifyRequest } from './feo/modify-response';
-import { FrontendCRD } from './feo/feo-types';
+import cookieTransform from '../cookieTransform';
+import { isInterceptAbleRequest, matchNavigationRequest } from '../feo/check-outgoing-requests';
+import { hasFEOFeaturesEnabled, readFrontendCRD } from '../feo/crd-check';
+import fecLogger, { LogType } from '../fec-logger';
+import { modifyRequest } from '../feo/modify-response';
+import { FrontendCRD } from '../feo/feo-types';
 
 const defaultReposDir = path.join(__dirname, 'repos');
 
