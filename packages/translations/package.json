@@ -33,5 +33,24 @@
   "devDependencies": {
     "@formatjs/cli": "^6.1.3",
     "glob": "10.3.3"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./intlHelper": {
+      "types": "./dist/intlHelper/index.d.ts",
+      "import": "./dist/esm/intlHelper/index.js",
+      "require": "./dist/intlHelper/index.js"
+    },
+    "./Provider": {
+      "types": "./dist/Provider/index.d.ts",
+      "import": "./dist/esm/Provider/index.js",
+      "require": "./dist/Provider/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
   }
 }

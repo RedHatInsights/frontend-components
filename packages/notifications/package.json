@@ -32,5 +32,49 @@
   "devDependencies": {
     "glob": "10.3.3",
     "typescript": "^5.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./state": {
+      "types": "./dist/state/index.d.ts",
+      "import": "./dist/esm/state/index.js",
+      "require": "./dist/state/index.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "import": "./dist/esm/hooks/index.js",
+      "require": "./dist/hooks/index.js"
+    },
+    "./Portal": {
+      "types": "./dist/Portal/index.d.ts",
+      "import": "./dist/esm/Portal/index.js",
+      "require": "./dist/Portal/index.js"
+    },
+    "./NotificationsProvider": {
+      "types": "./dist/NotificationsProvider/index.d.ts",
+      "import": "./dist/esm/NotificationsProvider/index.js",
+      "require": "./dist/NotificationsProvider/index.js"
+    },
+    "./NotificationPortal": {
+      "types": "./dist/NotificationPortal/index.d.ts",
+      "import": "./dist/esm/NotificationPortal/index.js",
+      "require": "./dist/NotificationPortal/index.js"
+    },
+    "./NotificationPagination": {
+      "types": "./dist/NotificationPagination/index.d.ts",
+      "import": "./dist/esm/NotificationPagination/index.js",
+      "require": "./dist/NotificationPagination/index.js"
+    },
+    "./Notification": {
+      "types": "./dist/Notification/index.d.ts",
+      "import": "./dist/esm/Notification/index.js",
+      "require": "./dist/Notification/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
   }
 }

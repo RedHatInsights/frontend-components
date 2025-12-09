@@ -33,5 +33,34 @@
     "react-dom": "^18.2.0",
     "marked": "^14.1.2",
     "sanitize-html": "^2.13.1"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./RuleTable": {
+      "types": "./dist/RuleTable/index.d.ts",
+      "import": "./dist/esm/RuleTable/index.js",
+      "require": "./dist/RuleTable/index.js"
+    },
+    "./RuleFilters": {
+      "types": "./dist/RuleFilters/index.d.ts",
+      "import": "./dist/esm/RuleFilters/index.js",
+      "require": "./dist/RuleFilters/index.js"
+    },
+    "./ReportDetails": {
+      "types": "./dist/ReportDetails/index.d.ts",
+      "import": "./dist/esm/ReportDetails/index.js",
+      "require": "./dist/ReportDetails/index.js"
+    },
+    "./Markdown": {
+      "types": "./dist/Markdown/index.d.ts",
+      "import": "./dist/esm/Markdown/index.js",
+      "require": "./dist/Markdown/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
   }
 }

@@ -43,5 +43,49 @@
     "eslint-plugin-cypress": "^4.2.1",
     "sass-loader": "^16.0.2",
     "style-loader": "^3.3.1"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./ViewAffectedLink": {
+      "types": "./dist/ViewAffectedLink/index.d.ts",
+      "import": "./dist/esm/ViewAffectedLink/index.js",
+      "require": "./dist/ViewAffectedLink/index.js"
+    },
+    "./TemplateProcessor": {
+      "types": "./dist/TemplateProcessor/index.d.ts",
+      "import": "./dist/esm/TemplateProcessor/index.js",
+      "require": "./dist/TemplateProcessor/index.js"
+    },
+    "./RuleRating": {
+      "types": "./dist/RuleRating/index.d.ts",
+      "import": "./dist/esm/RuleRating/index.js",
+      "require": "./dist/RuleRating/index.js"
+    },
+    "./RuleDetails": {
+      "types": "./dist/RuleDetails/index.d.ts",
+      "import": "./dist/esm/RuleDetails/index.js",
+      "require": "./dist/RuleDetails/index.js"
+    },
+    "./RuleDescription": {
+      "types": "./dist/RuleDescription/index.d.ts",
+      "import": "./dist/esm/RuleDescription/index.js",
+      "require": "./dist/RuleDescription/index.js"
+    },
+    "./ReportDetails": {
+      "types": "./dist/ReportDetails/index.d.ts",
+      "import": "./dist/esm/ReportDetails/index.js",
+      "require": "./dist/ReportDetails/index.js"
+    },
+    "./RebootRequired": {
+      "types": "./dist/RebootRequired/index.d.ts",
+      "import": "./dist/esm/RebootRequired/index.js",
+      "require": "./dist/RebootRequired/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
   }
 }

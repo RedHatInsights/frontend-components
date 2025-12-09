@@ -44,5 +44,104 @@
     "react-intl": "^6.6.8",
     "redux-mock-store": "^1.5.4"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./useSuspenseLoader": {
+      "types": "./dist/useSuspenseLoader/index.d.ts",
+      "import": "./dist/esm/useSuspenseLoader/index.js",
+      "require": "./dist/useSuspenseLoader/index.js"
+    },
+    "./usePromiseQueue": {
+      "types": "./dist/usePromiseQueue/index.d.ts",
+      "import": "./dist/esm/usePromiseQueue/index.js",
+      "require": "./dist/usePromiseQueue/index.js"
+    },
+    "./useInventory": {
+      "types": "./dist/useInventory/index.d.ts",
+      "import": "./dist/esm/useInventory/index.js",
+      "require": "./dist/useInventory/index.js"
+    },
+    "./useInsightsNavigate": {
+      "types": "./dist/useInsightsNavigate/index.d.ts",
+      "import": "./dist/esm/useInsightsNavigate/index.js",
+      "require": "./dist/useInsightsNavigate/index.js"
+    },
+    "./useFetchBatched": {
+      "types": "./dist/useFetchBatched/index.d.ts",
+      "import": "./dist/esm/useFetchBatched/index.js",
+      "require": "./dist/useFetchBatched/index.js"
+    },
+    "./useExportPDF": {
+      "types": "./dist/useExportPDF/index.d.ts",
+      "import": "./dist/esm/useExportPDF/index.js",
+      "require": "./dist/useExportPDF/index.js"
+    },
+    "./parseCvssScore": {
+      "types": "./dist/parseCvssScore/index.d.ts",
+      "import": "./dist/esm/parseCvssScore/index.js",
+      "require": "./dist/parseCvssScore/index.js"
+    },
+    "./interceptors": {
+      "types": "./dist/interceptors/index.d.ts",
+      "import": "./dist/esm/interceptors/index.js",
+      "require": "./dist/interceptors/index.js"
+    },
+    "./helpers": {
+      "types": "./dist/helpers/index.d.ts",
+      "import": "./dist/esm/helpers/index.js",
+      "require": "./dist/helpers/index.js"
+    },
+    "./debounce": {
+      "types": "./dist/debounce/index.d.ts",
+      "import": "./dist/esm/debounce/index.js",
+      "require": "./dist/debounce/index.js"
+    },
+    "./TestingUtils": {
+      "types": "./dist/TestingUtils/index.d.ts",
+      "import": "./dist/esm/TestingUtils/index.js",
+      "require": "./dist/TestingUtils/index.js"
+    },
+    "./RowLoader": {
+      "types": "./dist/RowLoader/index.d.ts",
+      "import": "./dist/esm/RowLoader/index.js",
+      "require": "./dist/RowLoader/index.js"
+    },
+    "./RouterParams": {
+      "types": "./dist/RouterParams/index.d.ts",
+      "import": "./dist/esm/RouterParams/index.js",
+      "require": "./dist/RouterParams/index.js"
+    },
+    "./Registry": {
+      "types": "./dist/Registry/index.d.ts",
+      "import": "./dist/esm/Registry/index.js",
+      "require": "./dist/Registry/index.js"
+    },
+    "./ReducerRegistry": {
+      "types": "./dist/ReducerRegistry/index.d.ts",
+      "import": "./dist/esm/ReducerRegistry/index.js",
+      "require": "./dist/ReducerRegistry/index.js"
+    },
+    "./RBACHook": {
+      "types": "./dist/RBACHook/index.d.ts",
+      "import": "./dist/esm/RBACHook/index.js",
+      "require": "./dist/RBACHook/index.js"
+    },
+    "./RBAC": {
+      "types": "./dist/RBAC/index.d.ts",
+      "import": "./dist/esm/RBAC/index.js",
+      "require": "./dist/RBAC/index.js"
+    },
+    "./MiddlewareListener": {
+      "types": "./dist/MiddlewareListener/index.d.ts",
+      "import": "./dist/esm/MiddlewareListener/index.js",
+      "require": "./dist/MiddlewareListener/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  }
 }

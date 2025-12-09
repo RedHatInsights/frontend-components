@@ -54,5 +54,254 @@
     "glob": "10.3.3",
     "sass-loader": "^16.0.2",
     "style-loader": "^3.3.1"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./useScreenSize": {
+      "types": "./dist/useScreenSize/index.d.ts",
+      "import": "./dist/esm/useScreenSize/index.js",
+      "require": "./dist/useScreenSize/index.js"
+    },
+    "./usePendoFeedback": {
+      "types": "./dist/usePendoFeedback/index.d.ts",
+      "import": "./dist/esm/usePendoFeedback/index.js",
+      "require": "./dist/usePendoFeedback/index.js"
+    },
+    "./useChrome": {
+      "types": "./dist/useChrome/index.d.ts",
+      "import": "./dist/esm/useChrome/index.js",
+      "require": "./dist/useChrome/index.js"
+    },
+    "./Unavailable": {
+      "types": "./dist/Unavailable/index.d.ts",
+      "import": "./dist/esm/Unavailable/index.js",
+      "require": "./dist/Unavailable/index.js"
+    },
+    "./Truncate": {
+      "types": "./dist/Truncate/index.d.ts",
+      "import": "./dist/esm/Truncate/index.js",
+      "require": "./dist/Truncate/index.js"
+    },
+    "./TreeTable": {
+      "types": "./dist/TreeTable/index.d.ts",
+      "import": "./dist/esm/TreeTable/index.js",
+      "require": "./dist/TreeTable/index.js"
+    },
+    "./TagModal": {
+      "types": "./dist/TagModal/index.d.ts",
+      "import": "./dist/esm/TagModal/index.js",
+      "require": "./dist/TagModal/index.js"
+    },
+    "./TagCount": {
+      "types": "./dist/TagCount/index.d.ts",
+      "import": "./dist/esm/TagCount/index.js",
+      "require": "./dist/TagCount/index.js"
+    },
+    "./TableToolbar": {
+      "types": "./dist/TableToolbar/index.d.ts",
+      "import": "./dist/esm/TableToolbar/index.js",
+      "require": "./dist/TableToolbar/index.js"
+    },
+    "./TabLayout": {
+      "types": "./dist/TabLayout/index.d.ts",
+      "import": "./dist/esm/TabLayout/index.js",
+      "require": "./dist/TabLayout/index.js"
+    },
+    "./Spinner": {
+      "types": "./dist/Spinner/index.d.ts",
+      "import": "./dist/esm/Spinner/index.js",
+      "require": "./dist/Spinner/index.js"
+    },
+    "./SkeletonTable": {
+      "types": "./dist/SkeletonTable/index.d.ts",
+      "import": "./dist/esm/SkeletonTable/index.js",
+      "require": "./dist/SkeletonTable/index.js"
+    },
+    "./Skeleton": {
+      "types": "./dist/Skeleton/index.d.ts",
+      "import": "./dist/esm/Skeleton/index.js",
+      "require": "./dist/Skeleton/index.js"
+    },
+    "./SimpleTableFilter": {
+      "types": "./dist/SimpleTableFilter/index.d.ts",
+      "import": "./dist/esm/SimpleTableFilter/index.js",
+      "require": "./dist/SimpleTableFilter/index.js"
+    },
+    "./Shield": {
+      "types": "./dist/Shield/index.d.ts",
+      "import": "./dist/esm/Shield/index.js",
+      "require": "./dist/Shield/index.js"
+    },
+    "./SeverityLine": {
+      "types": "./dist/SeverityLine/index.d.ts",
+      "import": "./dist/esm/SeverityLine/index.js",
+      "require": "./dist/SeverityLine/index.js"
+    },
+    "./Section": {
+      "types": "./dist/Section/index.d.ts",
+      "import": "./dist/esm/Section/index.js",
+      "require": "./dist/Section/index.js"
+    },
+    "./Reboot": {
+      "types": "./dist/Reboot/index.d.ts",
+      "import": "./dist/esm/Reboot/index.js",
+      "require": "./dist/Reboot/index.js"
+    },
+    "./RBACProvider": {
+      "types": "./dist/RBACProvider/index.d.ts",
+      "import": "./dist/esm/RBACProvider/index.js",
+      "require": "./dist/RBACProvider/index.js"
+    },
+    "./PrimaryToolbar": {
+      "types": "./dist/PrimaryToolbar/index.d.ts",
+      "import": "./dist/esm/PrimaryToolbar/index.js",
+      "require": "./dist/PrimaryToolbar/index.js"
+    },
+    "./PageHeader": {
+      "types": "./dist/PageHeader/index.d.ts",
+      "import": "./dist/esm/PageHeader/index.js",
+      "require": "./dist/PageHeader/index.js"
+    },
+    "./Ouia": {
+      "types": "./dist/Ouia/index.d.ts",
+      "import": "./dist/esm/Ouia/index.js",
+      "require": "./dist/Ouia/index.js"
+    },
+    "./OpenSourceBadge": {
+      "types": "./dist/OpenSourceBadge/index.d.ts",
+      "import": "./dist/esm/OpenSourceBadge/index.js",
+      "require": "./dist/OpenSourceBadge/index.js"
+    },
+    "./NotConnected": {
+      "types": "./dist/NotConnected/index.d.ts",
+      "import": "./dist/esm/NotConnected/index.js",
+      "require": "./dist/NotConnected/index.js"
+    },
+    "./NotAuthorized": {
+      "types": "./dist/NotAuthorized/index.d.ts",
+      "import": "./dist/esm/NotAuthorized/index.js",
+      "require": "./dist/NotAuthorized/index.js"
+    },
+    "./NoRegisteredSystems": {
+      "types": "./dist/NoRegisteredSystems/index.d.ts",
+      "import": "./dist/esm/NoRegisteredSystems/index.js",
+      "require": "./dist/NoRegisteredSystems/index.js"
+    },
+    "./Maintenance": {
+      "types": "./dist/Maintenance/index.d.ts",
+      "import": "./dist/esm/Maintenance/index.js",
+      "require": "./dist/Maintenance/index.js"
+    },
+    "./Main": {
+      "types": "./dist/Main/index.d.ts",
+      "import": "./dist/esm/Main/index.js",
+      "require": "./dist/Main/index.js"
+    },
+    "./Inventory": {
+      "types": "./dist/Inventory/index.d.ts",
+      "import": "./dist/esm/Inventory/index.js",
+      "require": "./dist/Inventory/index.js"
+    },
+    "./InvalidObject": {
+      "types": "./dist/InvalidObject/index.d.ts",
+      "import": "./dist/esm/InvalidObject/index.js",
+      "require": "./dist/InvalidObject/index.js"
+    },
+    "./InsightsLink": {
+      "types": "./dist/InsightsLink/index.d.ts",
+      "import": "./dist/esm/InsightsLink/index.js",
+      "require": "./dist/InsightsLink/index.js"
+    },
+    "./InsightsLabel": {
+      "types": "./dist/InsightsLabel/index.d.ts",
+      "import": "./dist/esm/InsightsLabel/index.js",
+      "require": "./dist/InsightsLabel/index.js"
+    },
+    "./Filters": {
+      "types": "./dist/Filters/index.d.ts",
+      "import": "./dist/esm/Filters/index.js",
+      "require": "./dist/Filters/index.js"
+    },
+    "./FilterHooks": {
+      "types": "./dist/FilterHooks/index.d.ts",
+      "import": "./dist/esm/FilterHooks/index.js",
+      "require": "./dist/FilterHooks/index.js"
+    },
+    "./FilterChips": {
+      "types": "./dist/FilterChips/index.d.ts",
+      "import": "./dist/esm/FilterChips/index.js",
+      "require": "./dist/FilterChips/index.js"
+    },
+    "./ErrorState": {
+      "types": "./dist/ErrorState/index.d.ts",
+      "import": "./dist/esm/ErrorState/index.js",
+      "require": "./dist/ErrorState/index.js"
+    },
+    "./ErrorBoundary": {
+      "types": "./dist/ErrorBoundary/index.d.ts",
+      "import": "./dist/esm/ErrorBoundary/index.js",
+      "require": "./dist/ErrorBoundary/index.js"
+    },
+    "./EmptyTable": {
+      "types": "./dist/EmptyTable/index.d.ts",
+      "import": "./dist/esm/EmptyTable/index.js",
+      "require": "./dist/EmptyTable/index.js"
+    },
+    "./DownloadButton": {
+      "types": "./dist/DownloadButton/index.d.ts",
+      "import": "./dist/esm/DownloadButton/index.js",
+      "require": "./dist/DownloadButton/index.js"
+    },
+    "./DateFormat": {
+      "types": "./dist/DateFormat/index.d.ts",
+      "import": "./dist/esm/DateFormat/index.js",
+      "require": "./dist/DateFormat/index.js"
+    },
+    "./Dark": {
+      "types": "./dist/Dark/index.d.ts",
+      "import": "./dist/esm/Dark/index.js",
+      "require": "./dist/Dark/index.js"
+    },
+    "./CullingInfo": {
+      "types": "./dist/CullingInfo/index.d.ts",
+      "import": "./dist/esm/CullingInfo/index.js",
+      "require": "./dist/CullingInfo/index.js"
+    },
+    "./ConditionalFilter": {
+      "types": "./dist/ConditionalFilter/index.d.ts",
+      "import": "./dist/esm/ConditionalFilter/index.js",
+      "require": "./dist/ConditionalFilter/index.js"
+    },
+    "./BulkSelect": {
+      "types": "./dist/BulkSelect/index.d.ts",
+      "import": "./dist/esm/BulkSelect/index.js",
+      "require": "./dist/BulkSelect/index.js"
+    },
+    "./Breadcrumbs": {
+      "types": "./dist/Breadcrumbs/index.d.ts",
+      "import": "./dist/esm/Breadcrumbs/index.js",
+      "require": "./dist/Breadcrumbs/index.js"
+    },
+    "./Battery": {
+      "types": "./dist/Battery/index.d.ts",
+      "import": "./dist/esm/Battery/index.js",
+      "require": "./dist/Battery/index.js"
+    },
+    "./AsyncComponent": {
+      "types": "./dist/AsyncComponent/index.d.ts",
+      "import": "./dist/esm/AsyncComponent/index.js",
+      "require": "./dist/AsyncComponent/index.js"
+    },
+    "./Ansible": {
+      "types": "./dist/Ansible/index.d.ts",
+      "import": "./dist/esm/Ansible/index.js",
+      "require": "./dist/Ansible/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
   }
 }

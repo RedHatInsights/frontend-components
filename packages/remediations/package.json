@@ -33,5 +33,24 @@
     "@redhat-cloud-services/frontend-components": "^7.0.13",
     "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
     "urijs": "^1.19.11"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./RemediationWizard": {
+      "types": "./dist/RemediationWizard/index.d.ts",
+      "import": "./dist/esm/RemediationWizard/index.js",
+      "require": "./dist/RemediationWizard/index.js"
+    },
+    "./RemediationButton": {
+      "types": "./dist/RemediationButton/index.d.ts",
+      "import": "./dist/esm/RemediationButton/index.js",
+      "require": "./dist/RemediationButton/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
   }
 }
