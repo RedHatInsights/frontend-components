@@ -20,11 +20,11 @@
       "inputs": ["default", "{workspaceRoot}/.eslintrc.js", "{workspaceRoot}/.eslintignore", "{workspaceRoot}/eslint.config.js"]
     },
     "test:unit": {
-      "dependsOn": ["^test:unit"],
+      "dependsOn": ["^test:unit", "@redhat-cloud-services/frontend-components-testing:build"],
       "cache": true
-    },   
+    },
     "test:component": {
-      "dependsOn": ["^test:component"],
+      "dependsOn": ["^test:component", "@redhat-cloud-services/frontend-components-testing:build"],
       "cache": true
     },   
     "version": {
