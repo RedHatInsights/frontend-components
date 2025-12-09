@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import useChrome from '../useChrome';
-import { buildInsightsPath } from '@redhat-cloud-services/frontend-components-utilities/helpers/urlPathHelpers';
+import { helpers } from '@redhat-cloud-services/frontend-components-utilities';
 interface InsightsLinkProps {
   to: LinkProps['to'];
   app: string;
@@ -10,7 +10,7 @@ interface InsightsLinkProps {
 
 const InsightsLink: React.FC<React.PropsWithChildren<InsightsLinkProps>> = ({ to, app, preview, ...props }) => {
   const chrome = useChrome();
-  const toPath = buildInsightsPath(chrome, app, to, preview);
+  const toPath = helpers.buildInsightsPath(chrome, app, to, preview);
 
   return (
     <Link to={toPath} {...props}>
