@@ -33,5 +33,39 @@
     "@types/react": "^18.0.0",
     "glob": "10.3.3"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./useVisitedBundles": {
+      "types": "./dist/useVisitedBundles/index.d.ts",
+      "import": "./dist/esm/useVisitedBundles/index.js",
+      "require": "./dist/useVisitedBundles/index.js"
+    },
+    "./useLastVisited": {
+      "types": "./dist/useLastVisited/index.d.ts",
+      "import": "./dist/esm/useLastVisited/index.js",
+      "require": "./dist/useLastVisited/index.js"
+    },
+    "./useFavoritePages": {
+      "types": "./dist/useFavoritePages/index.d.ts",
+      "import": "./dist/esm/useFavoritePages/index.js",
+      "require": "./dist/useFavoritePages/index.js"
+    },
+    "./ChromeProvider": {
+      "types": "./dist/ChromeProvider/index.d.ts",
+      "import": "./dist/esm/ChromeProvider/index.js",
+      "require": "./dist/ChromeProvider/index.js"
+    },
+    "./ChromeContext": {
+      "types": "./dist/ChromeContext/index.d.ts",
+      "import": "./dist/esm/ChromeContext/index.js",
+      "require": "./dist/ChromeContext/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  }
 }

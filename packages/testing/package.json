@@ -27,5 +27,19 @@
   "bugs": {
     "url": "https://github.com/RedHatInsights/frontend-components/issues"
   },
-  "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/testing#readme"
+  "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/testing#readme",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./OuiaSelectors": {
+      "types": "./dist/OuiaSelectors/index.d.ts",
+      "import": "./dist/esm/OuiaSelectors/index.js",
+      "require": "./dist/OuiaSelectors/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  }
 }
