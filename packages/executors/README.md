@@ -1,11 +1,34 @@
-# build-utils
+# Frontend Components Executors
 
-This library was generated with [Nx](https://nx.dev).
+Custom Nx executors for building frontend-components packages.
+
+## Quick Decision Guide
+
+| Package Structure | Use This | Example |
+|-------------------|----------|---------|
+| `src/ComponentA/`, `src/ComponentB/` | `build-packages` | frontend-components |
+| `src/index.ts`, `src/util.ts` | `@nx/js:tsc` | types, eslint-config |
+| Custom build needs | `nx:run-commands` | config (uses FEC) |
+
+## build-packages Executor
+
+**When:** Directory-based components/utilities
+**Gets:** Auto-generated exports field + granular imports
+
+```typescript
+// Enables both patterns:
+import { Button } from '@pkg';              // barrel import
+import { Button } from '@pkg/Button';       // granular import
+```
+
+**Structure:**
+```
+src/
+├── Button/index.ts
+├── Card/index.ts
+└── index.ts        // barrel exports
+```
 
 ## Building
 
-Run `nx build build-utils` to build the library.
-
-## Running unit tests
-
-Run `nx test build-utils` to execute the unit tests via [Jest](https://jestjs.io).
+Run `npx nx run @redhat-cloud-services/frontend-components-executors:build` to build this library.

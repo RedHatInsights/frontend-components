@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [Type of packages](#type-of-packages)
+- [Build executor selection](#build-executor-selection)
 - [Git account requirements](#git-account-requirements)
 - [Testing](#testing)
 - [Commit messages](#commit-messages)
@@ -20,6 +21,24 @@ This project contains packages that are tied to the console.redhat.com site. Thi
 If you are looking for a place to publish an application specific packages, please consider using your own project or preferably use module federation to share common code your service(s). The platform experience team will be happy to help you with setting up your project, including building and publishing. But the team does not have capacity to maintain service specific projects. 
 
 If you are looking for generic Patternfly components, we encourage you to look at [Patternfly extensions documentation](https://www.patternfly.org/extensions/about-extensions).
+
+## Build executor selection
+
+Choose the right build executor for your package:
+
+| Structure | Executor | Granular Imports |
+|-----------|----------|------------------|
+| Directory-based components | `build-packages` | ✅ |
+| Flat files | `@nx/js:tsc` | ❌ |
+| Custom build | `nx:run-commands` | ❌ |
+
+**Use `build-packages` when:**
+- Package has `src/ComponentA/`, `src/ComponentB/` structure
+- Want granular imports: `import { Button } from '@pkg/Button'`
+
+**Use `@nx/js:tsc` when:**
+- Simple flat structure: `src/index.ts`, `src/util.ts`
+- Examples: `types`, `eslint-config`
 
 ## Git account requirements
 
@@ -114,18 +133,20 @@ The source of the demo page is available in `packages/demo/src/app/app.tsx` file
 
 ### Import patterns
 
-When importing frontend-components packages **within this monorepo workspace**, use barrel imports:
+Both import patterns work in workspace and published packages:
 
 ```typescript
-// ✅ CORRECT: Use barrel imports for monorepo development
+// ✅ Barrel imports (always work)
 import { PrimaryToolbar, CriticalBattery } from '@redhat-cloud-services/frontend-components';
 import { debounce } from '@redhat-cloud-services/frontend-components-utilities';
 
-// ❌ INCORRECT: Granular imports don't work in workspace development
+// ✅ Granular imports (auto-generated exports field)
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import { debounce } from '@redhat-cloud-services/frontend-components-utilities/debounce';
 ```
 
-Granular imports only work for published packages consumed by external applications.
+**Use granular imports for:** Better tree-shaking, importing single components
+**Use barrel imports for:** Multiple imports from same package
 
 ## Docs
 
