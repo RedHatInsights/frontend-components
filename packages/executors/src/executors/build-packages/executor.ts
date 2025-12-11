@@ -1,3 +1,12 @@
+/**
+ * Build Packages Executor
+ *
+ * Generates nested package.json files and exports field for granular imports in directory-based packages.
+ * - Scans src/* directories (e.g., src/Section/, src/Ansible/)
+ * - Creates dist/Section/package.json, dist/Ansible/package.json for granular imports
+ * - Auto-generates package.json exports field enabling both barrel and granular imports
+ */
+
 import { ExecutorContext } from '@nx/devkit';
 import { z } from 'zod';
 import fse from 'fs-extra';
