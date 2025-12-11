@@ -1,3 +1,11 @@
+/**
+ * Builder Executor
+ *
+ * Builds TypeScript packages with dual CJS/ESM output and transforms package.json for publishing.
+ * - Compiles TypeScript to both CommonJS (dist/) and ES Modules (dist/esm/)
+ * - Automatically strips "dist/" prefixes from package.json entry points for npm publishing
+ */
+
 import { ExecutorContext } from '@nx/devkit';
 import { tscExecutor } from '@nx/js/src/executors/tsc/tsc.impl';
 import { copyAssets } from '@nx/js';
@@ -24,24 +32,53 @@ async function removeEsmPackageJson(esmOutputPath: string) {
   }
 }
 
-function transformPackageJsonForPublishing(packageJson: any): any {
+/**
+  * Strip "dist/" prefixes from entry points defined in published package.json
+  */
+export function transformPackageJsonForPublishing(packageJson: any): any {
+
   const transformed = { ...packageJson };
 
-  // Strip "dist/" prefixes from entry points for publishing
-  if (transformed.main && transformed.main.startsWith('dist/')) {
-    transformed.main = transformed.main.replace(/^dist\//, '');
+  const distPrefixRegex = /^.?\/?dist/;
+
+  // main field
+  if (transformed.main && distPrefixRegex.test(transformed.main)) {
+    transformed.main = transformed.main.replace(/dist\//, '');
+    if( ! transformed.main.startsWith('./') ) {
+      transformed.main = `./${transformed.main}`;
+    }
   }
 
-  if (transformed.module && transformed.module.startsWith('dist/')) {
-    transformed.module = transformed.module.replace(/^dist\//, '');
+  // browser field
+  if (transformed.browser && distPrefixRegex.test(transformed.browser)) {
+    transformed.browser = transformed.browser.replace(/dist\//, '');
+    if( ! transformed.browser.startsWith('./') ) {
+      transformed.browser = `./${transformed.browser}`;
+    }
   }
 
-  if (transformed.types && transformed.types.startsWith('dist/')) {
-    transformed.types = transformed.types.replace(/^dist\//, '');
+  // module field
+  if (transformed.module && distPrefixRegex.test(transformed.module)) {
+    transformed.module = transformed.module.replace(/dist\//, '');
+    if( ! transformed.module.startsWith('./') ) {
+      transformed.module = `./${transformed.module}`;
+    }
   }
 
-  if (transformed.typings && transformed.typings.startsWith('dist/')) {
-    transformed.typings = transformed.typings.replace(/^dist\//, '');
+  // types field
+  if (transformed.types && distPrefixRegex.test(transformed.types)) {
+    transformed.types = transformed.types.replace(/dist\//, '');
+    if( ! transformed.types.startsWith('./') ) {
+      transformed.types = `./${transformed.types}`;
+    }
+  }
+
+  // typings field
+  if (transformed.typings && distPrefixRegex.test(transformed.typings)) {
+    transformed.typings = transformed.typings.replace(/dist\//, '');
+    if( ! transformed.typings.startsWith('./') ) {
+      transformed.typings = `./${transformed.typings}`;
+    }
   }
 
   return transformed;
