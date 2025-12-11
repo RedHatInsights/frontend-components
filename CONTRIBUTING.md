@@ -148,6 +148,57 @@ import { debounce } from '@redhat-cloud-services/frontend-components-utilities/d
 **Use granular imports for:** Better tree-shaking, importing single components
 **Use barrel imports for:** Multiple imports from same package
 
+#### Barrel vs Granular imports
+
+**Barrel imports** import from the package root:
+- Resolve to `dist/index.js` via package.json `"main"` field
+- Work in both published packages and workspace symlinks (no special configuration needed)
+- Components are re-exported in the barrel file:
+  ```typescript
+  // src/index.ts (barrel file)
+  export { Section } from './Section';
+  export { Ansible } from './Ansible';
+  export { PrimaryToolbar } from './PrimaryToolbar';
+  ```
+- Example: `import { Section } from '@pkg'` → resolves to `dist/index.js`
+
+**Granular imports** import from specific subpaths:
+- **Published packages:** Resolve via nested package.json files (e.g., `dist/Section/package.json`)
+- **Workspace symlinks:** Resolve via exports field in main package.json (nested package.json files don't work due to symlink resolution)
+- Example: `import { Section } from '@pkg/Section'` → resolves to `dist/Section/index.js`
+
+#### How granular imports work
+
+Packages with directory-based structures (using `build-packages` executor) support granular imports through a dual-resolution strategy:
+
+**Published packages (npm registry):**
+- Nested package.json files enable granular imports
+- Example: `dist/Section/package.json` allows `import { Section } from '@pkg/Section'`
+- npm's module resolution naturally finds nested package.json files
+
+**Workspace packages (symlinked):**
+- Nested package.json files alone don't work due to symlink resolution
+- Exports field in main package.json is required
+- Workspace symlinks (`node_modules/@pkg` → `packages/pkg/`) prevent Node.js from traversing nested package.json files
+- The auto-generated exports field maps granular import paths:
+  ```json
+  {
+    "exports": {
+      "./Section": {
+        "types": "./dist/Section/index.d.ts",
+        "import": "./dist/esm/Section/index.js",
+        "require": "./dist/Section/index.js"
+      }
+    }
+  }
+  ```
+
+**Why both are needed:**
+- Nested package.json files: Required for published packages on npm
+- Exports field: Required for workspace symlink resolution during local development
+
+This dual approach ensures granular imports work identically in both workspace development and published package consumption.
+
 ## Docs
 
 Please add your documentation to the `docs` directory.
