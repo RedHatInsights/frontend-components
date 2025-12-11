@@ -4,6 +4,7 @@
   "description": "TypeScript compiler transform for optimizing imports in Red Hat Cloud Services projects.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "modules": "dist/esm/index.js",
   "dependencies": {
     "glob": "10.3.3"
   },
