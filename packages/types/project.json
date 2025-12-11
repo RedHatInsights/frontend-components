@@ -6,12 +6,14 @@
   "tags": ["scope:public"],
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "dependsOn": ["^build"],
       "options": {
-        "main": "packages/types/index.ts",
+        "rootDir": "packages/types/src",
+        "main": "packages/types/src/index.ts",
         "outputPath": "packages/types/dist",
-        "tsConfig": "packages/types/tsconfig.json"
+        "cjsTsConfig": "packages/types/tsconfig.json",
+        "esmTsConfig": "packages/types/tsconfig.json"
       }
     },
     "lint": {
