@@ -21,6 +21,7 @@ module.exports = {
     "@redhat-cloud-services/frontend-components/(.*)": ["<rootDir>/../../packages/components/src/$1"],
     "@redhat-cloud-services/frontend-components-utilities/(.*)": ["<rootDir>/../../packages/utils/src/$1"],
     "@redhat-cloud-services/frontend-components-config-utilities/(.*)": ["<rootDir>/../../packages/config-utils/src/$1"],
+    "@redhat-cloud-services/frontend-components-executors/(.*)": ["<rootDir>/../../packages/executors/src/$1"],
   },
   transform: {
     '^.+\\.tsx?$': ['ts-jest', {
