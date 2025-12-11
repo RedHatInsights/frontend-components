@@ -22,23 +22,18 @@ If you are looking for a place to publish an application specific packages, plea
 
 If you are looking for generic Patternfly components, we encourage you to look at [Patternfly extensions documentation](https://www.patternfly.org/extensions/about-extensions).
 
-## Build executor selection
+## Build executors
 
-Choose the right build executor for your package:
+| Package Structure | Primary Executors | Features |
+|-------------------|----------|----------|
+| Directory-based (src/ComponentA/, src/ComponentB/) | `builder` + `build-packages` | Dual CJS/ESM output + auto-generated nested package.json/exports for granular imports |
+| Flat structure (src/index.ts, src/util.ts) | `builder` | Dual CJS/ESM output + automatic package.json transformation |
 
-| Structure | Executor | Granular Imports |
-|-----------|----------|------------------|
-| Directory-based components | `build-packages` | ✅ |
-| Flat files | `@nx/js:tsc` | ❌ |
-| Custom build | `nx:run-commands` | ❌ |
-
-**Use `build-packages` when:**
-- Package has `src/ComponentA/`, `src/ComponentB/` structure
-- Want granular imports: `import { Button } from '@pkg/Button'`
-
-**Use `@nx/js:tsc` when:**
-- Simple flat structure: `src/index.ts`, `src/util.ts`
-- Examples: `types`, `eslint-config`
+**Granular imports** (directory-based packages only):
+```typescript
+import { Section } from '@pkg';           // Barrel import
+import { Section } from '@pkg/Section';   // Granular import
+```
 
 ## Git account requirements
 
