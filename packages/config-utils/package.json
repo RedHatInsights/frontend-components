@@ -54,11 +54,6 @@
       "import": "./dist/esm/search-ignored-styles/index.js",
       "require": "./dist/search-ignored-styles/index.js"
     },
-    "./scss-workspace-importer": {
-      "types": "./dist/scss-workspace-importer/index.d.ts",
-      "import": "./dist/esm/scss-workspace-importer/index.js",
-      "require": "./dist/scss-workspace-importer/index.js"
-    },
     "./proxy": {
       "types": "./dist/proxy/index.d.ts",
       "import": "./dist/esm/proxy/index.js",

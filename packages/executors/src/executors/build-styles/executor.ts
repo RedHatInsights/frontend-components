@@ -1,3 +1,12 @@
+/**
+ * Build Styles Executor
+ *
+ * Compiles and copies SCSS/CSS files for packages.
+ * - Compiles SCSS to CSS using Sass
+ * - Copies raw SCSS files to dist for downstream consumers
+ * - Resolves SCSS imports via workspace symlinks to dist folders (e.g., @redhat-cloud-services/frontend-components-utilities/styles → packages/utils/dist/styles)
+ */
+
 import { ExecutorContext } from '@nx/devkit';
 import { z } from 'zod';
 import fs from 'fs';
@@ -5,7 +14,7 @@ import { glob } from 'glob';
 import path from 'path';
 import util from 'util';
 import sass from 'sass';
-import { createScssWorkspaceImporter } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { createScssWorkspaceImporter } from './scss-workspace-importer';
 
 const asyncWriteFile = util.promisify(fs.writeFile);
 const asyncCopyFile = util.promisify(fs.copyFile);
