@@ -5,7 +5,7 @@
   "projectType": "library",
   "tags": ["scope:private"],
   "targets": {
-    "build": {
+    "compile": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
@@ -37,6 +37,17 @@
           }
         ]
       }
+    },
+    "transform-package-json": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["compile"],
+      "options": {
+        "command": "node packages/executors/scripts/transform-package-json.js"
+      }
+    },
+    "build": {
+      "executor": "nx:noop",
+      "dependsOn": ["transform-package-json"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",
