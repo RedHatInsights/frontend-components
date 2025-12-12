@@ -35,6 +35,40 @@ import { Section } from '@pkg';           // Barrel import
 import { Section } from '@pkg/Section';   // Granular import
 ```
 
+### Package.json configuration
+
+All packages must include specific fields for ecosystem compatibility:
+
+```json
+{
+  "type": "commonjs",              // REQUIRED - Node.js, webpack, rspack requirement
+  "main": "dist/index.js",         // CJS entry point
+  "module": "dist/esm/index.js",   // ESM entry point (dual builds only)
+  "types": "dist/index.d.ts"       // TypeScript definitions
+}
+```
+
+**Package.json fields by scenario:**
+
+| Scenario | `type` | `main` | `module` | `types` |
+|----------|--------|--------|----------|---------|
+| **CJS-only package** | `"commonjs"` | ✅ Required | ❌ Omit | ✅ Required |
+| **Dual CJS/ESM package** | `"commonjs"` | ✅ Required | ✅ Required | ✅ Required |
+| **CLI package** | `"commonjs"` | ✅ Required | Optional | Optional |
+
+**Project.json build configuration:**
+
+| Scenario | `cjsTsConfig` | `esmTsConfig` |
+|----------|---------------|---------------|
+| **CJS-only package** | ✅ Required | ❌ Omit |
+| **Dual CJS/ESM package** | ✅ Required | ✅ Required |
+| **CLI package** | ✅ Required | ❌ Omit |
+
+**Why these requirements:**
+- Build system validates source `package.json` for bundler compatibility
+- Published packages auto-generate modern `exports` field for Node.js compliance
+- Two-stage approach: source simplicity + published standards
+
 ## Git account requirements
 
 For security reasons, it is mandatory that accounts that want to contribute to this repository have the following settings:
