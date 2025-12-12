@@ -11,8 +11,7 @@
         "rootDir": "packages/tsc-transform-imports/src",
         "main": "packages/tsc-transform-imports/src/index.ts",
         "outputPath": "packages/tsc-transform-imports/dist",
-        "cjsTsConfig": "packages/tsc-transform-imports/tsconfig.json",
-        "esmTsConfig": "packages/tsc-transform-imports/tsconfig.json"
+        "cjsTsConfig": "packages/tsc-transform-imports/tsconfig.json"
       }
     },
     "check-circular-imports": {

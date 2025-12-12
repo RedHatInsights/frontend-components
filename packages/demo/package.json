@@ -1,6 +1,7 @@
 {
   "name": "@redhat-cloud-services/frontend-components-demo-app",
   "version": "0.0.1",
+  "type": "commonjs",
   "private": true,
   "insights": {
     "appname": "demo"

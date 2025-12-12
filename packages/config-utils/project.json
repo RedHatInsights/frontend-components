@@ -18,8 +18,7 @@
         "rootDir": "packages/config-utils/src",
         "main": "packages/config-utils/src/index.ts",
         "outputPath": "packages/config-utils/dist",
-        "cjsTsConfig": "packages/config-utils/tsconfig.cjs.json",
-        "esmTsConfig": "packages/config-utils/tsconfig.esm.json"
+        "cjsTsConfig": "packages/config-utils/tsconfig.cjs.json"
       }
     },
     "build:packages": {

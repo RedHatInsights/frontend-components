@@ -6,8 +6,8 @@ Custom Nx executors for building frontend-components packages.
 
 | Package Structure | Use This | Example |
 |-------------------|----------|---------|
-| `src/ComponentA/`, `src/ComponentB/` | `build-packages` | frontend-components |
-| `src/index.ts`, `src/util.ts` | `@nx/js:tsc` | types, eslint-config |
+| `src/ComponentA/`, `src/ComponentB/` | `builder` + `build-packages` | frontend-components |
+| `src/index.ts`, `src/util.ts` | `builder` | types, tsc-transform-imports |
 | Custom build needs | `nx:run-commands` | config (uses FEC) |
 
 ## build-packages Executor

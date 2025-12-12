@@ -18,7 +18,7 @@ import path from 'path';
 const asyncUnlink = promisify(unlink);
 
 const BuilderExecutorSchema = z.object({
-  esmTsConfig: z.string(),
+  esmTsConfig: z.string().optional(),
   cjsTsConfig: z.string(),
   outputPath: z.string(),
 });
@@ -57,6 +57,24 @@ export function transformPackageJsonForPublishing(packageJson: any): any {
     }
   }
 
+  // bin field (can be string or object)
+  if (transformed.bin) {
+    if (typeof transformed.bin === 'string' && distPrefixRegex.test(transformed.bin)) {
+      transformed.bin = transformed.bin.replace(/dist\//, '');
+      if( ! transformed.bin.startsWith('./') ) {
+        transformed.bin = `./${transformed.bin}`;
+      }
+    } else if (typeof transformed.bin === 'object') {
+      // Handle object bin field (e.g., { "fec": "./dist/bin/fec.js" })
+      for (const [key, value] of Object.entries(transformed.bin)) {
+        if (typeof value === 'string' && distPrefixRegex.test(value)) {
+          const transformedValue = value.replace(/dist\//, '');
+          transformed.bin[key] = transformedValue.startsWith('./') ? transformedValue : `./${transformedValue}`;
+        }
+      }
+    }
+  }
+
   // module field
   if (transformed.module && distPrefixRegex.test(transformed.module)) {
     transformed.module = transformed.module.replace(/dist\//, '');
@@ -84,9 +102,96 @@ export function transformPackageJsonForPublishing(packageJson: any): any {
   return transformed;
 }
 
-async function copyPackageJsonWithTransform(sourcePath: string, outputPath: string) {
+/**
+ * Validate package.json configuration for frontend-components build process
+ *
+ * This validates SOURCE package.json files that serve as build inputs.
+ * The build system automatically handles modern standards:
+ * - build-packages executor generates exports field from component structure
+ * - builder executor transforms dist/ paths to relative paths
+ * - Final published package.json meets all ecosystem requirements
+ *
+ * @param packageJson Source package.json content
+ * @param hasEsmBuild Whether package uses dual CJS/ESM build
+ */
+export function validatePackageJsonConfiguration(packageJson: any, hasEsmBuild: boolean) {
+  // Require explicit type field (ecosystem consensus: Node.js, webpack, rspack)
+  if (!packageJson.type) {
+    throw new Error(
+      'Missing required "type" field. All ecosystems (Node.js, webpack, rspack) ' +
+      'recommend explicit declaration. Use "type": "commonjs" for dual CJS/ESM builds.'
+    );
+  }
+
+  // Validate type field values
+  if (!['module', 'commonjs'].includes(packageJson.type)) {
+    throw new Error('"type" field must be "module" or "commonjs"');
+  }
+
+  // Browser field validation - require main field
+  if (packageJson.browser && !packageJson.main) {
+    throw new Error(
+      'Found "browser" field without "main" field. Options:\n' +
+      '1. Add "main" field as fallback\n' +
+      '2. Migrate to exports field with browser condition:\n' +
+      '   { "exports": { "browser": "./browser.js", "node": "./main.js" } }'
+    );
+  }
+
+  // Dual build validation (CJS + ESM)
+  if (hasEsmBuild) {
+    if (!packageJson.main) {
+      throw new Error(
+        `No "main" field found in package.json. ` +
+        `Add a "main" field pointing to your CJS entry point (e.g., "./dist/index.js").`
+      );
+    }
+    if (!packageJson.module) {
+      throw new Error(
+        `ESM build requested but no "module" field found in package.json. ` +
+        `Add a "module" field pointing to your ESM entry point (e.g., "./dist/esm/index.js") ` +
+        `or remove esmTsConfig to skip ESM build.`
+      );
+    }
+    if (packageJson.type === 'module') {
+      throw new Error(
+        `Dual packages should not use "type": "module". ` +
+        `Remove the "type" field or set it to "commonjs" for maximum compatibility.`
+      );
+    }
+  }
+  // CJS-only build validation
+  else {
+    if (!packageJson.main) {
+      throw new Error(
+        `No "main" field found in package.json. ` +
+        `Add a "main" field pointing to your entry point (e.g., "./dist/index.js").`
+      );
+    }
+    if (packageJson.module) {
+      throw new Error(
+        `"module" field found in CJS-only package. ` +
+        `Remove the "module" field or add esmTsConfig to enable dual builds.`
+      );
+    }
+  }
+
+  // CLI packages should use commonjs for compatibility
+  if (packageJson.bin && packageJson.type === 'module') {
+    throw new Error(
+      `CLI packages should use "type": "commonjs" for maximum Node.js compatibility. ` +
+      `Change "type" to "commonjs" or remove it.`
+    );
+  }
+}
+
+async function copyPackageJsonWithTransform(sourcePath: string, outputPath: string, validateEsm: boolean = false) {
   try {
     const sourcePackageJson = JSON.parse(readFileSync(sourcePath, 'utf-8'));
+
+    // Validate package.json configuration
+    validatePackageJsonConfiguration(sourcePackageJson, validateEsm);
+
     const transformedPackageJson = transformPackageJsonForPublishing(sourcePackageJson);
     const destinationPath = path.join(outputPath, 'package.json');
     writeFileSync(destinationPath, JSON.stringify(transformedPackageJson, null, 2));
@@ -126,19 +231,29 @@ export default async function runExecutor(options: BuilderExecutorSchemaType, co
   const { cjsTsConfig, esmTsConfig, ...tscOptions } = options;
   const esmOutputDir = options.outputPath + '/esm';
   const cjsTscOptions: TscExecutorOptions = { clean: false, ...tscOptions, tsConfig: cjsTsConfig };
-  const esmTscOptions: TscExecutorOptions = { clean: false, ...tscOptions, outputPath: esmOutputDir, tsConfig: esmTsConfig };
+
+  const tscExecutors = [tscExecutor(cjsTscOptions, context as any)];
+
+  if (esmTsConfig) {
+    const esmTscOptions: TscExecutorOptions = { clean: false, ...tscOptions, outputPath: esmOutputDir, tsConfig: esmTsConfig };
+    tscExecutors.push(tscExecutor(esmTscOptions, context as any));
+  }
+
   let executionResult = { success: false };
-  const results = await Promise.all([tscExecutor(cjsTscOptions, context as any), tscExecutor(esmTscOptions, context as any)]);
+  const results = await Promise.all(tscExecutors);
   executionResult = await resolveExecutors(...results);
   if (!executionResult.success) {
     return executionResult;
   }
-  await removeEsmPackageJson(esmOutputDir);
+
+  if (esmTsConfig) {
+    await removeEsmPackageJson(esmOutputDir);
+  }
 
   // Copy and transform main package.json with stripped dist/ prefixes for publishing
   // Note: This only affects the main package.json - nested package.json files for granular imports
   // are handled separately by build-packages executor and already have correct entry points
-  await copyPackageJsonWithTransform(`${currentProjectRoot}/package.json`, options.outputPath);
+  await copyPackageJsonWithTransform(`${currentProjectRoot}/package.json`, options.outputPath, !!esmTsConfig);
 
   // Copy other assets normally (excluding package.json since we handled it above)
   if (options.assets && options.assets.length > 0) {
