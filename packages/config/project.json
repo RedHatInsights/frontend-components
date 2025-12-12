@@ -6,12 +6,37 @@
   "tags": ["scope:build"],
   "targets": {
     "build": {
-      "executor": "nx:run-commands",
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "dependsOn": ["^build"],
       "options": {
-        "cwd": "packages/config",
-        "command": "npm run build"
+        "rootDir": "packages/config/src",
+        "main": "packages/config/src/lib/index.ts",
+        "outputPath": "packages/config/dist",
+        "cjsTsConfig": "packages/config/tsconfig.build.json",
+        "assets": [
+          {
+            "input": "packages/config/src/bin",
+            "glob": "tsconfig.template.json",
+            "output": "./bin"
+          },
+          {
+            "input": "packages/config/src/lib",
+            "glob": "crd-mock.yaml",
+            "output": "./lib"
+          }
+        ]
       }
+    },
+    "make-executable": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "chmod +x packages/config/dist/bin/fec.js"
+      }
+    },
+    "build-complete": {
+      "executor": "nx:noop",
+      "dependsOn": ["make-executable"]
     },
     "check-circular-imports": {
       "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
@@ -56,7 +81,7 @@
         "distFolderPath": "packages/config/dist",
         "access": "public"
       },
-      "dependsOn": ["build"]
+      "dependsOn": ["build-complete"]
     },
     "tagRelease": {
       "executor": "nx:run-commands",
