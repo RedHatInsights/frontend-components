@@ -67,6 +67,9 @@ export default {
                 },
               },
             },
+            module: {
+              type: 'commonjs',
+            },
           },
         },
       },
