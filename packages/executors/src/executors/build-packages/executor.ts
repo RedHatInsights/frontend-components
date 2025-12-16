@@ -34,6 +34,12 @@ async function copyTypings(files: string[], dest: string) {
   return Promise.all(cmds);
 }
 
+/**
+ * Generate nested package.json files + update main workspace exports field
+ *
+ * Creates dist/Component/package.json for each component (no exports field)
+ * Then updates main workspace package.json with exports field for symlink resolution
+ */
 async function generatePackages(options: RunOptions, packageJsonPath: string) {
   const componentInfos: ComponentInfo[] = [];
 
