@@ -36,8 +36,8 @@ async function run(files: string[]) {
         }
         content = content.replaceAll(/(?<=^import )'\.\/(?=.*\.scss)/gm, `'../${prefix}/`);
       }
-      content = content.replace(/\.scss(?=('))/, '.css');
-      content = content.replace(/\.scss(?=("\)))/, '.css');
+      content = content.replace(/\.scss(?=('))/g, '.css');
+      content = content.replace(/\.scss(?=("\)))/g, '.css');
       cmds.push(asyncWriteFile(file, content));
     }
   });
