@@ -36,7 +36,7 @@
       "dependsOn": ["^transform:scss"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-advisor-components"
+        "outputPath": "packages/advisor-components/dist"
       }
     },
     "check-circular-imports": {
@@ -98,7 +98,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-advisor-components",
+        "distFolderPath": "packages/advisor-components/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

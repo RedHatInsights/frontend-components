@@ -36,7 +36,7 @@
       "dependsOn": ["^transform:scss"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications"
+        "outputPath": "packages/notifications/dist"
       }
     },
     "check-circular-imports": {

@@ -42,7 +42,7 @@
       "dependsOn": ["^transform:scss"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing"
+        "outputPath": "packages/testing/dist"
       }
     },
     "build": {

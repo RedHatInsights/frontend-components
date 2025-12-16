@@ -18,12 +18,7 @@
           {
             "glob": "**/*",
             "input": "packages/translations/src/locales",
-            "output": "packages/translations/dist/locales"
-          },
-          {
-            "glob": "**/*",
-            "input": "packages/translations/src/locales",
-            "output": "packages/translations/dist/esm/locales"
+            "output": "./locales"
           }
         ]
       }
@@ -48,7 +43,7 @@
       "dependsOn": ["^transform:scss"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-translations"
+        "outputPath": "packages/translations/dist"
       }
     },
     "check-circular-imports": {

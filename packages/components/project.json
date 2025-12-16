@@ -36,7 +36,7 @@
       "dependsOn": ["^transform:scss"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components"
+        "outputPath": "packages/components/dist"
       }
     },
     "check-circular-imports": {
@@ -95,7 +95,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/frontend-components",
+        "distFolderPath": "packages/components/dist",
         "access": "public"
       },
       "dependsOn": ["build"]
