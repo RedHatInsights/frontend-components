@@ -17,8 +17,8 @@
       }
     },
     "build:styles": {
-      "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
       "dependsOn": ["^build:styles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
       "options": {
         "outputPath": "packages/utils/dist",
         "sourceDir": "packages/utils"
