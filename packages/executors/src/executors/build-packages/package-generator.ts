@@ -20,7 +20,7 @@ export type RunOptions = {
 
 export type PackageJsonContent = {
   main: string;
-  module: string;
+  module?: string;
   typings?: string;
 };
 
@@ -58,13 +58,18 @@ export async function generatePackageFile(file: string, options: RunOptions): Pr
 
   /**
    * Prevent creating package.json for directories with no JS files (like CSS directories)
+   * Check for CJS first, then ESM as fallback
    */
-  if (!esmSource) {
+  if (!cjsSource && !esmSource) {
     return null;
   }
 
-  esmSource = esmSource.replace(/\/index\.js$/, '');
-  cjsSource = cjsSource.replace(/\/index\.js$/, '');
+  if (esmSource) {
+    esmSource = esmSource.replace(/\/index\.js$/, '');
+  }
+  if (cjsSource) {
+    cjsSource = cjsSource.replace(/\/index\.js$/, '');
+  }
 
   const packagePath = file.split('/src/').pop();
   if (!packagePath) {
@@ -73,11 +78,15 @@ export async function generatePackageFile(file: string, options: RunOptions): Pr
 
   const destFile = `${path.resolve(options.outputRoot, packagePath)}/package.json`;
 
-  const esmRelative = path.relative(cjsSource, esmSource) + '/index.js';
   const content: PackageJsonContent = {
     main: 'index.js',
-    module: esmRelative,
   };
+
+  // Only add module field if ESM build exists
+  if (esmSource && cjsSource) {
+    const esmRelative = path.relative(cjsSource, esmSource) + '/index.js';
+    content.module = esmRelative;
+  }
 
   const typings = glob.sync(`${options.root}/src/${fileName}/*.d.ts`);
   const cmds = [];
