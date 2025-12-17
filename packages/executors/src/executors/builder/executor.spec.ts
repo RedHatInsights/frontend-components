@@ -2,13 +2,14 @@ import { transformPackageJsonForPublishing, validatePackageJsonConfiguration } f
 
 describe('Builder Executor', () => {
   describe('transformPackageJsonForPublishing', () => {
+
     it('should strip "dist/" prefix from entry points', () => {
       const input = {
         name: 'test-package',
         main: 'dist/index.js',
         module: 'dist/esm/index.js',
         types: 'dist/index.d.ts',
-        typings: 'dist/typings.d.ts'
+        typings: 'dist/typings.d.ts',
       };
 
       const result = transformPackageJsonForPublishing(input);
@@ -18,7 +19,7 @@ describe('Builder Executor', () => {
         main: './index.js',
         module: './esm/index.js',
         types: './index.d.ts',
-        typings: './typings.d.ts'
+        typings: './typings.d.ts',
       });
     });
 
@@ -28,7 +29,7 @@ describe('Builder Executor', () => {
         main: './dist/index.js',
         module: './dist/esm/index.js',
         types: './dist/index.d.ts',
-        typings: './dist/typings.d.ts'
+        typings: './dist/typings.d.ts',
       };
 
       const result = transformPackageJsonForPublishing(input);
@@ -38,7 +39,7 @@ describe('Builder Executor', () => {
         main: './index.js',
         module: './esm/index.js',
         types: './index.d.ts',
-        typings: './typings.d.ts'
+        typings: './typings.d.ts',
       });
     });
 

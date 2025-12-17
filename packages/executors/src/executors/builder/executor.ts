@@ -43,36 +43,28 @@ export function transformPackageJsonForPublishing(packageJson: any): any {
   const transformed = { ...packageJson };
 
   const distPrefixRegex = /^.?\/?dist/;
+  const distReplacementRegex = /.?\/?dist\//;
+  const replacementString = './';
 
   // main field
   if (transformed.main && distPrefixRegex.test(transformed.main)) {
-    transformed.main = transformed.main.replace(/dist\//, '');
-    if( ! transformed.main.startsWith('./') ) {
-      transformed.main = `./${transformed.main}`;
-    }
+    transformed.main = transformed.main.replace( distReplacementRegex, replacementString );
   }
 
   // browser field
   if (transformed.browser && distPrefixRegex.test(transformed.browser)) {
-    transformed.browser = transformed.browser.replace(/dist\//, '');
-    if( ! transformed.browser.startsWith('./') ) {
-      transformed.browser = `./${transformed.browser}`;
-    }
+    transformed.browser = transformed.browser.replace( distReplacementRegex, replacementString );
   }
 
   // bin field (can be string or object)
   if (transformed.bin) {
     if (typeof transformed.bin === 'string' && distPrefixRegex.test(transformed.bin)) {
-      transformed.bin = transformed.bin.replace(/dist\//, '');
-      if( ! transformed.bin.startsWith('./') ) {
-        transformed.bin = `./${transformed.bin}`;
-      }
+      transformed.bin = transformed.bin.replace( distReplacementRegex, replacementString );
     } else if (typeof transformed.bin === 'object') {
       // Handle object bin field (e.g., { "fec": "./dist/bin/fec.js" })
       for (const [key, value] of Object.entries(transformed.bin)) {
         if (typeof value === 'string' && distPrefixRegex.test(value)) {
-          const transformedValue = value.replace(/dist\//, '');
-          transformed.bin[key] = transformedValue.startsWith('./') ? transformedValue : `./${transformedValue}`;
+          transformed.bin[key] = value.replace( distReplacementRegex, replacementString );
         }
       }
     }
@@ -80,26 +72,17 @@ export function transformPackageJsonForPublishing(packageJson: any): any {
 
   // module field
   if (transformed.module && distPrefixRegex.test(transformed.module)) {
-    transformed.module = transformed.module.replace(/dist\//, '');
-    if( ! transformed.module.startsWith('./') ) {
-      transformed.module = `./${transformed.module}`;
-    }
+    transformed.module = transformed.module.replace( distReplacementRegex, replacementString );
   }
 
   // types field
   if (transformed.types && distPrefixRegex.test(transformed.types)) {
-    transformed.types = transformed.types.replace(/dist\//, '');
-    if( ! transformed.types.startsWith('./') ) {
-      transformed.types = `./${transformed.types}`;
-    }
+    transformed.types = transformed.types.replace( distReplacementRegex, replacementString );
   }
 
   // typings field
   if (transformed.typings && distPrefixRegex.test(transformed.typings)) {
-    transformed.typings = transformed.typings.replace(/dist\//, '');
-    if( ! transformed.typings.startsWith('./') ) {
-      transformed.typings = `./${transformed.typings}`;
-    }
+    transformed.typings = transformed.typings.replace( distReplacementRegex, replacementString);
   }
 
   // Remove exports field from published package.json
