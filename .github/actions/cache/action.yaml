@@ -12,7 +12,7 @@ runs:
         restore-keys: |
           npm-cache-${{ runner.os }}-
 
-    # Install dependencies with npm ci (proper for CI)
+    # Install dependencies with npm install (avoids npm version mismatch issue)
     - name: Install dependencies
       shell: bash
-      run: npm ci --ignore-scripts
+      run: npm install --ignore-scripts
