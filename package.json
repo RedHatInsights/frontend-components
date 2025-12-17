@@ -111,7 +111,7 @@
   "scripts": {
     "nx": "nx",
     "watch": "nx run-many --target=build --watch",
-    "build": "nx run-many --target=build --parallel=1",
+    "build": "nx run-many --target=build",
     "check-circular-imports": "nx run-many -t check-circular-imports --exclude=@redhat-cloud-services/frontend-components-demo-app",
     "lint": "nx run-many -t lint --exclude={{name}}",
     "serve:demo": "nx run @redhat-cloud-services/frontend-components-demo-app:start",

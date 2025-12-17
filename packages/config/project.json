@@ -6,6 +6,17 @@
   "tags": ["scope:build"],
   "targets": {
     "build": {
+      "executor": "nx:noop",
+      "dependsOn": ["make-executable"]
+    },
+    "make-executable": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["compile"],
+      "options": {
+        "command": "chmod +x packages/config/dist/bin/fec.js"
+      }
+    },
+    "compile": {
       "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "dependsOn": ["^build"],
       "options": {
@@ -26,17 +37,6 @@
           }
         ]
       }
-    },
-    "make-executable": {
-      "executor": "nx:run-commands",
-      "dependsOn": ["build"],
-      "options": {
-        "command": "chmod +x packages/config/dist/bin/fec.js"
-      }
-    },
-    "build-complete": {
-      "executor": "nx:noop",
-      "dependsOn": ["make-executable"]
     },
     "check-circular-imports": {
       "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
@@ -81,7 +81,7 @@
         "distFolderPath": "packages/config/dist",
         "access": "public"
       },
-      "dependsOn": ["build-complete"]
+      "dependsOn": ["build"]
     },
     "tagRelease": {
       "executor": "nx:run-commands",

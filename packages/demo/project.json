@@ -8,6 +8,12 @@
     "build": {
       "executor": "nx:run-commands",
       "outputs": ["{options.outputPath}"],
+      "dependsOn": [
+        "@redhat-cloud-services/frontend-components-executors:build-scss-importer",
+        "@redhat-cloud-services/frontend-components-config:build",
+        "@redhat-cloud-services/frontend-components:build",
+        "@redhat-cloud-services/frontend-components-advisor-components:build"
+      ],
       "options": {
         "command": "npx fec build",
         "cwd": "packages/demo",
@@ -16,6 +22,12 @@
     },
     "start": {
       "executor": "nx:run-commands",
+      "dependsOn": [
+        "@redhat-cloud-services/frontend-components-executors:build-scss-importer",
+        "@redhat-cloud-services/frontend-components-config:build",
+        "@redhat-cloud-services/frontend-components:build",
+        "@redhat-cloud-services/frontend-components-advisor-components:build"
+      ],
       "options": {
         "command": "npx fec dev",
         "cwd": "packages/demo"
