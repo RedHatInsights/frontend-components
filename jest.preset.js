@@ -18,10 +18,14 @@ module.exports = {
     '^p-all$': 'jest-mock',
     // this needs to be done con link the local packages during jest runtime without the necessity of rebuilding the packages
     // this should make local testing more reliable because the packages will not require a rebuild to be tested
-    "@redhat-cloud-services/frontend-components/(.*)": ["<rootDir>/../../packages/components/src/$1"],
-    "@redhat-cloud-services/frontend-components-utilities/(.*)": ["<rootDir>/../../packages/utils/src/$1"],
-    "@redhat-cloud-services/frontend-components-config-utilities/(.*)": ["<rootDir>/../../packages/config-utils/src/$1"],
-    "@redhat-cloud-services/frontend-components-executors/(.*)": ["<rootDir>/../../packages/executors/src/$1"],
+    "@redhat-cloud-services/frontend-components$": "<rootDir>/../../packages/components/src/index.ts",
+    "@redhat-cloud-services/frontend-components/(.*)": "<rootDir>/../../packages/components/src/$1",
+    "@redhat-cloud-services/frontend-components-utilities$": "<rootDir>/../../packages/utils/src/index.ts",
+    "@redhat-cloud-services/frontend-components-utilities/(.*)": "<rootDir>/../../packages/utils/src/$1",
+    "@redhat-cloud-services/frontend-components-config-utilities$": "<rootDir>/../../packages/config-utils/src/index.ts",
+    "@redhat-cloud-services/frontend-components-config-utilities/(.*)": "<rootDir>/../../packages/config-utils/src/$1",
+    "@redhat-cloud-services/frontend-components-executors$": "<rootDir>/../../packages/executors/src/index.ts",
+    "@redhat-cloud-services/frontend-components-executors/(.*)": "<rootDir>/../../packages/executors/src/$1",
   },
   transform: {
     '^.+\\.tsx?$': ['ts-jest', {

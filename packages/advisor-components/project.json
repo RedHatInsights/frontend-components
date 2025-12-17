@@ -71,7 +71,7 @@
     "test:component": {
       "executor": "@nx/cypress:cypress",
       "options": {
-        "cypressConfig": "packages/advisor-components/cypres.config.ts",
+        "cypressConfig": "packages/advisor-components/cypress.config.ts",
         "tsConfig": "packages/advisor-components/tsconfig.cy.json",
         "devServerTarget": "my-react-app:build",
         "testingType": "component",
