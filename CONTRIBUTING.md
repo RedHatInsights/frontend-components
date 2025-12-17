@@ -228,6 +228,21 @@ Packages with directory-based structures (using `build-packages` executor) suppo
 
 This dual approach ensures granular imports work identically in both workspace development and published package consumption.
 
+### Executors Package Architecture
+
+The `packages/executors/` package itself **does not require building** for normal use:
+
+- **Executors run from TypeScript source** via ts-node
+- **Private package** - never published to npm
+- **No build step needed** for executor functionality
+
+**Exception:** The SCSS workspace importer component requires building for demo app usage:
+```bash
+npx nx run @redhat-cloud-services/frontend-components-executors:build-scss-importer
+```
+
+This builds automatically when building the demo app, no manual intervention needed.
+
 ## Docs
 
 Please add your documentation to the `docs` directory.

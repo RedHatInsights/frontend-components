@@ -5,9 +5,6 @@
   "type": "commonjs",
   "main": "./dist/lib/index.js",
   "types": "./dist/lib/index.d.ts",
-  "files": [
-    "/dist"
-  ],
   "bin": {
     "fec": "./dist/bin/fec.js"
   },
