@@ -16,8 +16,7 @@
       ],
       "options": {
         "command": "npx fec build",
-        "cwd": "packages/demo",
-        "outputPath": "packages/demo/dist"
+        "cwd": "packages/demo"
       }
     },
     "start": {
