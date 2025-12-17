@@ -5,49 +5,17 @@
   "projectType": "library",
   "tags": ["scope:private"],
   "targets": {
-    "compile": {
+    "build-scss-importer": {
       "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{options.outputPath}/executors/build-styles/scss-workspace-importer.js"],
       "options": {
         "rootDir": "packages/executors/src",
-        "main": "packages/executors/src/index.ts",
+        "main": "packages/executors/src/executors/build-styles/scss-workspace-importer.ts",
         "outputPath": "packages/executors/dist",
-        "tsConfig": "packages/executors/tsconfig.lib.json",
-        "assets": [
-          "packages/executors/*.md",
-          {
-            "input": "./packages/executors/src/executors",
-            "glob": "**/!(*.ts)",
-            "output": "./executors"
-          },
-          {
-            "input": "./packages/executors/src/executors",
-            "glob": "**/*.d.ts",
-            "output": "./executors"
-          },
-          {
-            "input": "./packages/executors",
-            "glob": "generators.json",
-            "output": "."
-          },
-          {
-            "input": "./packages/executors",
-            "glob": "executors.json",
-            "output": "."
-          }
-        ]
+        "tsConfig": "packages/executors/tsconfig.scss-importer.json",
+        "updateBuildableProjectDepsInPackageJson": false,
+        "buildableProjectDepsInPackageJsonType": "dependencies"
       }
-    },
-    "transform-package-json": {
-      "executor": "nx:run-commands",
-      "dependsOn": ["compile"],
-      "options": {
-        "command": "node packages/executors/scripts/transform-package-json.js"
-      }
-    },
-    "build": {
-      "executor": "nx:noop",
-      "dependsOn": ["transform-package-json"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",

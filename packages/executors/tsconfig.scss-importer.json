@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": true,
+    "types": ["node"],
+    "rootDir": "./src"
+  },
+  "include": [
+    "src/executors/build-styles/scss-workspace-importer.ts"
+  ],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"]
+}
