@@ -33,7 +33,7 @@ class SassLoaderWorkspaceImporterPlugin {
 
 module.exports = {
   // REQUIRED: App URL routing configuration
-  appUrl: '/apps/demo',
+  appUrl: '/staging/demo',
 
   // REQUIRED: Module Federation configuration (FEC mandates this)
   moduleFederation: {

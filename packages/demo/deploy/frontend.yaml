@@ -10,6 +10,7 @@ objects:
     spec:
       envName: ${ENV_NAME}
       title: Frontend Components Demo App
+      feoConfigEnabled: true
       deploymentRepo: https://github.com/RedHatInsights/frontend-components
       frontend:
         paths:
@@ -21,7 +22,7 @@ objects:
           - id: "demo"
             module: "./RootApp"
             routes:
-              - pathname: /apps/demo
+              - pathname: /staging/demo
 
 parameters:
   - name: ENV_NAME
