@@ -7,7 +7,15 @@
   "targets": {
     "build": {
       "executor": "nx:noop",
-      "dependsOn": ["make-executable"]
+      "dependsOn": ["link-binary"]
+    },
+    "link-binary": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["make-executable"],
+      "options": {
+        "command": "npm rebuild",
+        "cwd": "{workspaceRoot}"
+      }
     },
     "make-executable": {
       "executor": "nx:run-commands",
