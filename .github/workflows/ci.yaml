@@ -17,8 +17,6 @@ jobs:
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
       - uses: './.github/actions/cypress-cache'
-      - name: Install dependencies
-        run: npm i
   build:
     runs-on: ubuntu-24.04
     needs: install
@@ -54,13 +52,10 @@ jobs:
       - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@v4
       - uses: './.github/actions/cypress-cache'
-      - name: Install deps
-        shell: bash
-        run: npm i
       - name: Run component tests
         uses: cypress-io/github-action@v6
         with:
-          command: npx nx affected -t test:component --exclude=demo --configuration=ci --parallel=1
+          command: npx nx affected -t test:component --outputStyle=static
   lint:
     runs-on: ubuntu-24.04
     needs: install
@@ -72,7 +67,7 @@ jobs:
       - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@v4
       - name: Lint
-        run: npx nx affected -t test:lint --exclude=demo
+        run: npx nx affected -t test:lint --outputStyle=static
   commitlint:
     needs: [install]
     runs-on: ubuntu-24.04
@@ -82,9 +77,6 @@ jobs:
         with:
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
-      - name: install
-        shell: bash
-        run: npm i
       - name: Validate current commit on push
         shell: bash
         if: github.event_name == 'push'
@@ -103,11 +95,8 @@ jobs:
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@v4
-      - name: install
-        shell: bash
-        run: npm i
       - name: Check circular imports
-        run: npx nx affected -t test:circular-dependencies --exclude=demo
+        run: npx nx affected -t test:circular-dependencies --outputStyle=static
   release:
     runs-on: ubuntu-24.04
     needs: [install, build, unit-test, component-test, lint, commitlint, check-circular-imports]

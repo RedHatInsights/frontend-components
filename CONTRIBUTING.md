@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [Type of packages](#type-of-packages)
+- [Build executor selection](#build-executor-selection)
 - [Git account requirements](#git-account-requirements)
 - [Testing](#testing)
 - [Commit messages](#commit-messages)
@@ -10,6 +11,7 @@
 - [Reviews](#reviews)
 - [Release process](#release-process)
 - [Local development](#local-development)
+  - [Import patterns](#import-patterns)
 - [Docs](#docs)
 
 ## Type of packages
@@ -19,6 +21,53 @@ This project contains packages that are tied to the console.redhat.com site. Thi
 If you are looking for a place to publish an application specific packages, please consider using your own project or preferably use module federation to share common code your service(s). The platform experience team will be happy to help you with setting up your project, including building and publishing. But the team does not have capacity to maintain service specific projects. 
 
 If you are looking for generic Patternfly components, we encourage you to look at [Patternfly extensions documentation](https://www.patternfly.org/extensions/about-extensions).
+
+## Build executors
+
+| Package Structure | Primary Executors | Features |
+|-------------------|----------|----------|
+| Directory-based (src/ComponentA/, src/ComponentB/) | `builder` + `build-packages` | Dual CJS/ESM output + auto-generated nested package.json/exports for granular imports |
+| Flat structure (src/index.ts, src/util.ts) | `builder` | Dual CJS/ESM output + automatic package.json transformation |
+
+**Granular imports** (directory-based packages only):
+```typescript
+import { Section } from '@pkg';           // Barrel import
+import { Section } from '@pkg/Section';   // Granular import
+```
+
+### Package.json configuration
+
+All packages must include specific fields for ecosystem compatibility:
+
+```json
+{
+  "type": "commonjs",              // REQUIRED - Node.js, webpack, rspack requirement
+  "main": "dist/index.js",         // CJS entry point
+  "module": "dist/esm/index.js",   // ESM entry point (dual builds only)
+  "types": "dist/index.d.ts"       // TypeScript definitions
+}
+```
+
+**Package.json fields by scenario:**
+
+| Scenario | `type` | `main` | `module` | `types` |
+|----------|--------|--------|----------|---------|
+| **CJS-only package** | `"commonjs"` | ✅ Required | ❌ Omit | ✅ Required |
+| **Dual CJS/ESM package** | `"commonjs"` | ✅ Required | ✅ Required | ✅ Required |
+| **CLI package** | `"commonjs"` | ✅ Required | Optional | Optional |
+
+**Project.json build configuration:**
+
+| Scenario | `cjsTsConfig` | `esmTsConfig` |
+|----------|---------------|---------------|
+| **CJS-only package** | ✅ Required | ❌ Omit |
+| **Dual CJS/ESM package** | ✅ Required | ✅ Required |
+| **CLI package** | ✅ Required | ❌ Omit |
+
+**Why these requirements:**
+- Build system validates source `package.json` for bundler compatibility
+- Published packages auto-generate modern `exports` field for Node.js compliance
+- Two-stage approach: source simplicity + published standards
 
 ## Git account requirements
 
@@ -109,7 +158,90 @@ npm run serve:demo
 
 You can then open the browser on `http://localhost:4200/` address.
 
-The source of the demo page is available in `examples/demo/src/app/app.tsx` file. Please do not commit changes to this file.
+The source of the demo page is available in `packages/demo/src/app/app.tsx` file. Please do not commit changes to this file.
+
+### Import patterns
+
+Both import patterns work in workspace and published packages:
+
+```typescript
+// ✅ Barrel imports (always work)
+import { PrimaryToolbar, CriticalBattery } from '@redhat-cloud-services/frontend-components';
+import { debounce } from '@redhat-cloud-services/frontend-components-utilities';
+
+// ✅ Granular imports (auto-generated exports field)
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import { debounce } from '@redhat-cloud-services/frontend-components-utilities/debounce';
+```
+
+**Use granular imports for:** Better tree-shaking, importing single components
+**Use barrel imports for:** Multiple imports from same package
+
+#### Barrel vs Granular imports
+
+**Barrel imports** import from the package root:
+- Resolve to `dist/index.js` via package.json `"main"` field
+- Work in both published packages and workspace symlinks (no special configuration needed)
+- Components are re-exported in the barrel file:
+  ```typescript
+  // src/index.ts (barrel file)
+  export { Section } from './Section';
+  export { Ansible } from './Ansible';
+  export { PrimaryToolbar } from './PrimaryToolbar';
+  ```
+- Example: `import { Section } from '@pkg'` → resolves to `dist/index.js`
+
+**Granular imports** import from specific subpaths:
+- **Published packages:** Resolve via nested package.json files (e.g., `dist/Section/package.json`)
+- **Workspace symlinks:** Resolve via exports field in main package.json (nested package.json files don't work due to symlink resolution)
+- Example: `import { Section } from '@pkg/Section'` → resolves to `dist/Section/index.js`
+
+#### How granular imports work
+
+Packages with directory-based structures (using `build-packages` executor) support granular imports through a dual-resolution strategy:
+
+**Published packages (npm registry):**
+- Nested package.json files enable granular imports
+- Example: `dist/Section/package.json` allows `import { Section } from '@pkg/Section'`
+- npm's module resolution naturally finds nested package.json files
+
+**Workspace packages (symlinked):**
+- Nested package.json files alone don't work due to symlink resolution
+- Exports field in main package.json is required
+- Workspace symlinks (`node_modules/@pkg` → `packages/pkg/`) prevent Node.js from traversing nested package.json files
+- The auto-generated exports field maps granular import paths:
+  ```json
+  {
+    "exports": {
+      "./Section": {
+        "types": "./dist/Section/index.d.ts",
+        "import": "./dist/esm/Section/index.js",
+        "require": "./dist/Section/index.js"
+      }
+    }
+  }
+  ```
+
+**Why both are needed:**
+- Nested package.json files: Required for published packages on npm
+- Exports field: Required for workspace symlink resolution during local development
+
+This dual approach ensures granular imports work identically in both workspace development and published package consumption.
+
+### Executors Package Architecture
+
+The `packages/executors/` package itself **does not require building** for normal use:
+
+- **Executors run from TypeScript source** via ts-node
+- **Private package** - never published to npm
+- **No build step needed** for executor functionality
+
+**Exception:** The SCSS workspace importer component requires building for demo app usage:
+```bash
+npx nx run @redhat-cloud-services/frontend-components-executors:build-scss-importer
+```
+
+This builds automatically when building the demo app, no manual intervention needed.
 
 ## Docs
 

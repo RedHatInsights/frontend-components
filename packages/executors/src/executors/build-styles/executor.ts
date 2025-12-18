@@ -1,3 +1,12 @@
+/**
+ * Build Styles Executor
+ *
+ * Compiles and copies SCSS/CSS files for packages.
+ * - Compiles SCSS to CSS using Sass
+ * - Copies raw SCSS files to dist for downstream consumers
+ * - Resolves SCSS imports via workspace symlinks to dist folders (e.g., @redhat-cloud-services/frontend-components-utilities/styles → packages/utils/dist/styles)
+ */
+
 import { ExecutorContext } from '@nx/devkit';
 import { z } from 'zod';
 import fs from 'fs';
@@ -5,6 +14,7 @@ import { glob } from 'glob';
 import path from 'path';
 import util from 'util';
 import sass from 'sass';
+import { createScssWorkspaceImporter } from './scss-workspace-importer';
 
 const asyncWriteFile = util.promisify(fs.writeFile);
 const asyncCopyFile = util.promisify(fs.copyFile);
@@ -64,12 +74,9 @@ async function buildStyle(file: string, outputDir: string, currentProjectRoot: s
             findFileUrl: (url) => {
               if (url.startsWith('~')) {
                 if (url.startsWith('~@redhat-cloud-services')) {
-                  const repoPackage = url.split('~@redhat-cloud-services/').pop();
-                  if (!repoPackage) {
-                    throw new Error(`Invalid package: ${url}`);
-                  }
-                  const r = new URL(`file://${projectRoot}/dist/@redhat-cloud-services/${repoPackage}`);
-                  return r;
+                  // Use shared workspace resolver for @redhat-cloud-services packages
+                  const workspaceImporter = createScssWorkspaceImporter(projectRoot);
+                  return workspaceImporter.findFileUrl(url);
                 }
                 // from node_modules
                 const repoPackage = url.split('~').pop();

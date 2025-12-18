@@ -6,12 +6,12 @@
   "tags": ["scope:build"],
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/tsc-transform-imports/src",
         "main": "packages/tsc-transform-imports/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/tsc-transform-imports",
-        "tsConfig": "packages/tsc-transform-imports/tsconfig.json"
+        "outputPath": "packages/tsc-transform-imports/dist",
+        "cjsTsConfig": "packages/tsc-transform-imports/tsconfig.json"
       }
     },
     "check-circular-imports": {
@@ -47,7 +47,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/tsc-transform-imports",
+        "distFolderPath": "packages/tsc-transform-imports/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

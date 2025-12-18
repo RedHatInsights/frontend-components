@@ -6,12 +6,13 @@
   "tags": ["scope:public"],
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "dependsOn": ["^build"],
       "options": {
-        "main": "packages/types/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/types",
-        "tsConfig": "packages/types/tsconfig.json"
+        "rootDir": "packages/types/src",
+        "main": "packages/types/src/index.ts",
+        "outputPath": "packages/types/dist",
+        "cjsTsConfig": "packages/types/tsconfig.json"
       }
     },
     "lint": {
@@ -41,7 +42,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/types",
+        "distFolderPath": "packages/types/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

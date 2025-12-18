@@ -378,6 +378,30 @@ Use binary in your `package.json` scripts section:
 }
 ```
 
+## Workspace Binary Symlinks
+
+**Problem**: npm workspace timing issue - `npm install` tries to create binary symlinks before packages are built, so `npx fec` fails with "could not determine executable to run".
+
+**Root cause**: npm's binary linking phase runs before build, but workspace packages generate binaries during build.
+
+**Solution**: This package includes a `link-binary` target that runs `npm rebuild` from workspace root after the binary is built.
+
+**Build chain**: `compile → make-executable → link-binary → build`
+
+**For other packages with built binaries**:
+```json
+{
+  "link-binary": {
+    "executor": "nx:run-commands",
+    "dependsOn": ["your-build-step"],
+    "options": {
+      "command": "npm rebuild",
+      "cwd": "{workspaceRoot}"
+    }
+  }
+}
+```
+
 ## Patch etc hosts
 This is a required step for first time setup. It will allow your localhost to map to [env].foo.redhat.com. This is required to run only once on your machine. **Your OS may require running the script as sudo**!
 

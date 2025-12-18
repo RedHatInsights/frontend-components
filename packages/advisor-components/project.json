@@ -11,7 +11,7 @@
       "options": {
         "rootDir": "packages/advisor-components/src",
         "main": "packages/advisor-components/src/index.ts",
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-advisor-components",
+        "outputPath": "packages/advisor-components/dist",
         "cjsTsConfig": "packages/advisor-components/tsconfig.cjs.json",
         "esmTsConfig": "packages/advisor-components/tsconfig.esm.json"
       }
@@ -20,7 +20,7 @@
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
       "dependsOn": ["^build:styles"],
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-advisor-components",
+        "outputPath": "packages/advisor-components/dist",
         "sourceDir": "packages/advisor-components"
       }
     },
@@ -28,7 +28,7 @@
       "dependsOn": ["^build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-advisor-components",
+        "outputPath": "packages/advisor-components/dist",
         "forceTypes": true
       }
     },
@@ -36,7 +36,7 @@
       "dependsOn": ["^transform:scss"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components-advisor-components"
+        "outputPath": "packages/advisor-components/dist"
       }
     },
     "check-circular-imports": {
@@ -71,7 +71,7 @@
     "test:component": {
       "executor": "@nx/cypress:cypress",
       "options": {
-        "cypressConfig": "packages/advisor-components/cypres.config.ts",
+        "cypressConfig": "packages/advisor-components/cypress.config.ts",
         "tsConfig": "packages/advisor-components/tsconfig.cy.json",
         "devServerTarget": "my-react-app:build",
         "testingType": "component",
@@ -98,7 +98,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-advisor-components",
+        "distFolderPath": "packages/advisor-components/dist",
         "access": "public"
       },
       "dependsOn": ["build"]

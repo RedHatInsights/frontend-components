@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { OuiaDataAttributes, WithOuia } from './index';
 import React from 'react';
 

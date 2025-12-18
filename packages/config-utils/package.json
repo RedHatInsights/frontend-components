@@ -2,8 +2,9 @@
   "name": "@redhat-cloud-services/frontend-components-config-utilities",
   "version": "4.7.1",
   "description": "Utilities for shared config used in Red Hat Cloud Services project.",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -17,9 +18,7 @@
     "url": "https://github.com/RedHatInsights/frontend-components/issues"
   },
   "homepage": "https://github.com/RedHatInsights/frontend-components#readme",
-  "scripts": {
-    "build": "tsc"
-  },
+  "scripts": {},
   "peerDependencies": {
     "webpack": "^5.0.0"
   },
@@ -38,5 +37,39 @@
     "@types/jws": "^3.2.5",
     "@types/node-fetch": "^2.6.4",
     "glob": "10.3.3"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./serve-federated": {
+      "types": "./dist/serve-federated/index.d.ts",
+      "import": "./dist/esm/serve-federated/index.js",
+      "require": "./dist/serve-federated/index.js"
+    },
+    "./search-ignored-styles": {
+      "types": "./dist/search-ignored-styles/index.d.ts",
+      "import": "./dist/esm/search-ignored-styles/index.js",
+      "require": "./dist/search-ignored-styles/index.js"
+    },
+    "./proxy": {
+      "types": "./dist/proxy/index.d.ts",
+      "import": "./dist/esm/proxy/index.js",
+      "require": "./dist/proxy/index.js"
+    },
+    "./feo": {
+      "types": "./dist/feo/index.d.ts",
+      "import": "./dist/esm/feo/index.js",
+      "require": "./dist/feo/index.js"
+    },
+    "./fec-logger": {
+      "types": "./dist/fec-logger/index.d.ts",
+      "import": "./dist/esm/fec-logger/index.js",
+      "require": "./dist/fec-logger/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
   }
 }

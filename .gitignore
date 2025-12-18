@@ -44,6 +44,9 @@ ibutsu-report
 .nx/workspace-data
 tmp
 
+# TypeScript build info
+*.tsbuildinfo
+
 packages/docs/pages/fec
 
 .cache_1rcnss

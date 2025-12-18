@@ -7,6 +7,7 @@ export * as interceptors from './interceptors';
 export { default as MiddlewareListener } from './MiddlewareListener';
 export { default as parseCvssScore } from './parseCvssScore';
 export * as RBAC from './RBAC';
+export * from './RBAC';
 export * as RBACHook from './RBACHook';
 export { default as ReducerRegistry } from './ReducerRegistry';
 export * as reduxHelpers from './ReducerRegistry';

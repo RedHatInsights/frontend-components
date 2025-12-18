@@ -1,0 +1,13 @@
+import { StrictMode } from 'react';
+import * as ReactDOM from 'react-dom/client';
+import '@patternfly/react-core/dist/styles/base.css';
+
+import App from './app/app';
+console.log("==== Hello world! ====");
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);

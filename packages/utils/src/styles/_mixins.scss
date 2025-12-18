@@ -1,4 +1,7 @@
 @use "sass:math";
+@use "sass:meta";
+@use "sass:list";
+@use "sass:string";
 
 // Convert px to rem
 // =================================================================/
@@ -15,30 +18,30 @@
     // For each property value, if it's in rem or px, derive both rem and
     // px values for it and add those to the end of the appropriate buffer.
     // Ensure all pixel values are rounded to the nearest pixel.
-    @if type-of($value) == number and not unitless($value) and (unit($value) == px) {
+    @if meta.type-of($value) == number and not math.is-unitless($value) and (math.unit($value) == px) {
 
       // px value given - calculate rem value from font-size
       $new-rem-value: math.div($value, $font-size);
-      $px-values: join($px-values, round($value));
-      $rem-values: join($rem-values, unquote("#{$new-rem-value}rem"));
+      $px-values: list.join($px-values, math.round($value));
+      $rem-values: list.join($rem-values, string.unquote("#{$new-rem-value}rem"));
 
-    } @else if type-of($value) == number and not unitless($value) and (unit($value) == '%') {
+    } @else if meta.type-of($value) == number and not math.is-unitless($value) and (math.unit($value) == '%') {
 
       // % value given - don't add px or rem
-      $px-values: join($px-values, unquote(#{$value}));
-      $rem-values: join($rem-values, unquote(#{$value}));
+      $px-values: list.join($px-values, string.unquote(#{$value}));
+      $rem-values: list.join($rem-values, string.unquote(#{$value}));
 
     } @else if $value == auto {
 
       // auto - don't add px or rem
-      $px-values: join($px-values, auto);
-      $rem-values: join($rem-values, auto);
+      $px-values: list.join($px-values, auto);
+      $rem-values: list.join($rem-values, auto);
 
     } @else {
 
       // unitless value - use those directly as rem and calculate the px-fallback
-      $px-values: join($px-values, round($value * $font-size));
-      $rem-values: join($rem-values, unquote("#{$value}rem"));
+      $px-values: list.join($px-values, math.round($value * $font-size));
+      $rem-values: list.join($rem-values, string.unquote("#{$value}rem"));
     }
   }
 

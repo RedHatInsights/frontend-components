@@ -1,6 +1,6 @@
 {
     "extends": "../../tsconfig.base.json",
-    "include": ["index.ts"],
+    "include": ["src/**/*"],
     "compilerOptions": {
         "declaration": true,
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import parseCvssScore from './parseCvssScore';
+import parseCvssScore from './parseCvssScore.tsx';
 import { render } from '@testing-library/react';
 
 describe('parseCvssScore', () => {

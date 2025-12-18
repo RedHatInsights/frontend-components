@@ -1,0 +1,43 @@
+{
+  "name": "@redhat-cloud-services/frontend-components-demo-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/demo/src",
+  "projectType": "application",
+  "tags": ["scope:demo"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": [
+        "@redhat-cloud-services/frontend-components-executors:build-scss-importer",
+        "@redhat-cloud-services/frontend-components-config:build",
+        "@redhat-cloud-services/frontend-components:build",
+        "@redhat-cloud-services/frontend-components-advisor-components:build"
+      ],
+      "options": {
+        "command": "npx fec build",
+        "cwd": "packages/demo"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "@redhat-cloud-services/frontend-components-executors:build-scss-importer",
+        "@redhat-cloud-services/frontend-components-config:build",
+        "@redhat-cloud-services/frontend-components:build",
+        "@redhat-cloud-services/frontend-components-advisor-components:build"
+      ],
+      "options": {
+        "command": "npx fec dev",
+        "cwd": "packages/demo"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/demo/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@redhat-cloud-services/frontend-components-demo-app",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "private": true,
+  "insights": {
+    "appname": "demo"
+  },
+  "scripts": {
+    "start": "fec dev",
+    "build": "fec build",
+    "start:webpack": "fec dev",
+    "start:rspack": "USE_RSPACK=true fec dev",
+    "build:webpack": "fec build",
+    "build:rspack": "USE_RSPACK=true fec build",
+    "postinstall": "ts-patch install"
+  },
+  "dependencies": {
+    "@patternfly/react-core": "^6.2.2",
+    "@redhat-cloud-services/frontend-components": "*",
+    "@redhat-cloud-services/frontend-components-advisor-components": "*",
+    "@redhat-cloud-services/frontend-components-config-utilities": "^4.7.1",
+    "@redhat-cloud-services/frontend-components-utilities": "^7.0.9",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@redhat-cloud-services/frontend-components-config": "^6.7.4",
+    "@redhat-cloud-services/tsc-transform-imports": "^1.0.26",
+    "ts-patch": "^3.3.0",
+    "typescript": "^5.0.0"
+  }
+}
