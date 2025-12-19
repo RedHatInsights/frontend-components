@@ -30,7 +30,6 @@
     "@redhat-cloud-services/frontend-components": "^7.0.13"
   },
   "devDependencies": {
-    "glob": "10.3.3",
     "typescript": "^5.0.0"
   }
 }
