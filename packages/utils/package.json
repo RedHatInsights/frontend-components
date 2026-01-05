@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-utilities",
-  "version": "7.0.15",
+  "version": "7.0.16",
   "description": "Util functions for RedHat Cloud Services project.",
   "main": "index.js",
   "module": "esm/index.js",
