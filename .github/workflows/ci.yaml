@@ -1,4 +1,6 @@
 name: Frontend components CI pipeline
+permissions:
+  id-token: write
 on:
   pull_request:
     branches:
@@ -120,6 +122,5 @@ jobs:
       - uses: './.github/actions/release'
         with:
           gh_token: ${{ secrets.GH_BOT_TOKEN }}
-          npm_token: ${{ secrets.NPM_TOKEN }}
           gh_name: ${{ secrets.BOT_NAME }}
           gh_email: ${{ secrets.BOT_EMAIL }}
