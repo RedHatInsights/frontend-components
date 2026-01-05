@@ -30,8 +30,7 @@
   },
   "devDependencies": {
     "@redhat-cloud-services/types": "^3.0.0",
-    "@types/react": "^18.0.0",
-    "glob": "10.3.3"
+    "@types/react": "^18.0.0"
   },
   "sideEffects": false
 }

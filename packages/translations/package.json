@@ -31,7 +31,6 @@
     "@redhat-cloud-services/frontend-components-utilities": "^7.0.0"
   },
   "devDependencies": {
-    "@formatjs/cli": "^6.1.3",
-    "glob": "10.3.3"
+    "@formatjs/cli": "^6.1.3"
   }
 }
