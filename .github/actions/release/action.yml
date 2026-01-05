@@ -1,9 +1,6 @@
 name: Release job
 description: build affected packages and publish them to npm
 inputs:
-  npm_token:
-    description: 'NPM token'
-    required: true
   gh_token:
     description: 'Github token'
     required: true
@@ -25,11 +22,6 @@ runs:
       run: |
         git config user.name "${{ inputs.gh_name }}"
         git config user.email "${{ inputs.gh_email }}"
-    - name: Set publish config
-      env:
-        NPM_TOKEN: ${{ inputs.npm_token }}
-      shell: bash
-      run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
     - name: Release version
       shell: bash
       env:
@@ -42,7 +34,5 @@ runs:
       run: npx nx release version
     - name: Release publish
       shell: bash
-      env:
-        NPM_TOKEN: ${{ inputs.npm_token }}
       run: npx nx release publish
   
