@@ -111,8 +111,7 @@
         "skipLockFileUpdate": false
       },
       "manifestRootsToUpdate": [
-        "{projectRoot}",
-        "{projectRoot}/dist"
+        "{projectRoot}"
       ]
     },
     "changelog": {
