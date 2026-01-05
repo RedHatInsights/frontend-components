@@ -10,5 +10,14 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/RedHatInsights/frontend-components/issues"
+  },
+  "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/tsc-transform-imports#readme",
   "scripts": {}
 }

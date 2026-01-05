@@ -22,7 +22,15 @@
     "@babel/core": "^7.14.0",
     "eslint": "^9.24.0"
   },
-  "license": "Apache",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/RedHatInsights/frontend-components/issues"
+  },
+  "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/eslint-config#readme",
   "publishConfig": {
     "access": "public"
   }
