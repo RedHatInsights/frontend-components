@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-testing",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Testing utilities for RedHat Cloud Services project.",
   "main": "index.js",
   "module": "esm/index.js",
