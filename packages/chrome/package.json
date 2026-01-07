@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/chrome",
-  "version": "2.0.24",
+  "version": "2.0.25",
   "description": "Chrome functions for RedHat Hybrid cloud console.",
   "main": "index.js",
   "typings": "index.d.ts",
