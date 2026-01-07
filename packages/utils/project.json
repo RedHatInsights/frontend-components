@@ -67,23 +67,6 @@
         "jestConfig": "packages/utils/jest.config.ts"
       }
     },
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "push": true,
-        "preset": "conventionalcommits",
-        "commitMessageFormat": "chore: bump {projectName} to {version} [skip ci]",
-        "trackDeps": true
-      },
-      "dependsOn": ["^version"]
-    },
-    "github": {
-      "executor": "@jscutlery/semver:github",
-      "options": {
-        "tag": "${tag}",
-        "notesFile": "packages/utils/CHANGELOG.md"
-      }
-    },
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
