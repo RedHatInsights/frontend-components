@@ -68,6 +68,9 @@ export declare type ChromeUser = {
       is_org_admin: boolean;
       locale: string;
     };
+    organization?: {
+      name?: string;
+    };
   };
 };
 
