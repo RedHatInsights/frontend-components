@@ -50,14 +50,75 @@ function handleNestedNav(
   const { routes, navItems, ...segmentItem } = segmentMatch;
   let parsedRoutes: DirectNavItem[] | undefined = originalNavItem.routes;
   let parsedNavItems: DirectNavItem[] | undefined = originalNavItem.navItems;
-  if (parsedRoutes) {
+
+  // Merge local segment routes with remote routes
+  if (routes && routes.length > 0) {
+    // Start with remote routes (originalNavItem.routes) as base
+    const remoteRoutes = originalNavItem.routes || [];
+
+    // Create a map of remote routes by ID for efficient lookup
+    const remoteRoutesMap = new Map(remoteRoutes.map(route => [route.id, route]));
+
+    // Start with local routes and merge with remote properties
+    const mergedRoutes = routes.map(localRoute => {
+      if (localRoute.id && remoteRoutesMap.has(localRoute.id)) {
+        const remoteRoute = remoteRoutesMap.get(localRoute.id)!;
+        // Merge: remote properties as base, local properties override
+        return { ...remoteRoute, ...localRoute };
+      }
+      return localRoute;
+    });
+
+    // Add remote routes that don't exist in local routes
+    remoteRoutes.forEach(remoteRoute => {
+      if (remoteRoute.id && !routes.some(localRoute => localRoute.id === remoteRoute.id)) {
+        mergedRoutes.push(remoteRoute);
+      }
+    });
+
+    // Process the merged routes recursively
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    parsedRoutes = parseNavItems(mergedRoutes, bSegmentCache, nSegmentCache, bundleId, currentFrontendName);
+  } else if (parsedRoutes) {
+    // No local routes, just process remote routes
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     parsedRoutes = parseNavItems(parsedRoutes, bSegmentCache, nSegmentCache, bundleId, currentFrontendName);
   }
-  if (parsedNavItems) {
+
+  // Merge local segment navItems with remote navItems (similar logic)
+  if (navItems && navItems.length > 0) {
+    // Start with remote navItems (originalNavItem.navItems) as base
+    const remoteNavItems = originalNavItem.navItems || [];
+
+    // Create a map of remote navItems by ID for efficient lookup
+    const remoteNavItemsMap = new Map(remoteNavItems.map(navItem => [navItem.id, navItem]));
+
+    // Start with local navItems and merge with remote properties
+    const mergedNavItems = navItems.map(localNavItem => {
+      if (localNavItem.id && remoteNavItemsMap.has(localNavItem.id)) {
+        const remoteNavItem = remoteNavItemsMap.get(localNavItem.id)!;
+        // Merge: remote properties as base, local properties override
+        return { ...remoteNavItem, ...localNavItem };
+      }
+      return localNavItem;
+    });
+
+    // Add remote navItems that don't exist in local navItems
+    remoteNavItems.forEach(remoteNavItem => {
+      if (remoteNavItem.id && !navItems.some(localNavItem => localNavItem.id === remoteNavItem.id)) {
+        mergedNavItems.push(remoteNavItem);
+      }
+    });
+
+    // Process the merged navItems recursively
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    parsedNavItems = parseNavItems(mergedNavItems, bSegmentCache, nSegmentCache, bundleId, currentFrontendName);
+  } else if (parsedNavItems) {
+    // No local navItems, just process remote navItems
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     parsedNavItems = parseNavItems(parsedNavItems, bSegmentCache, nSegmentCache, bundleId, currentFrontendName);
   }
+
   return {
     ...originalNavItem,
     ...segmentItem,

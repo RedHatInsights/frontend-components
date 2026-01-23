@@ -784,4 +784,436 @@ describe('NavigationInterceptor', () => {
       expect(rootRoutes?.[0].title).toEqual('Overview changed');
     });
   });
+
+  describe('Adding new nested items', () => {
+    it('should add new items to bundle segment navItems routes', () => {
+      const bundleName = 'iam';
+      const frontendName = 'rbac';
+
+      // This simulates the user's actual RBAC frontend.yaml configuration
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: {
+              name: frontendName,
+            },
+            spec: {
+              frontend: {
+                paths: ['/apps/rbac'],
+              },
+              module: {
+                manifestLocation: 'http://localhost:3000/manifest.json',
+              },
+              bundleSegments: [
+                {
+                  bundleId: bundleName,
+                  segmentId: 'module-rbac-ui',
+                  position: 100,
+                  navItems: [
+                    {
+                      id: 'access-management',
+                      title: 'Access Management',
+                      expandable: true,
+                      routes: [
+                        {
+                          id: 'users-and-groups',
+                          title: 'Users and GroupsXZ', // Modified existing item
+                          href: '/iam/access-management/users-and-groups',
+                          permissions: [{ method: 'isOrgAdmin' }],
+                        },
+                        {
+                          id: 'foobar', // NEW item that should appear but doesn't
+                          title: 'AAA',
+                          href: '/iam/access-management/users-and-groups',
+                          permissions: [{ method: 'isOrgAdmin' }],
+                        },
+                        {
+                          id: 'roles',
+                          title: 'Roles',
+                          href: '/iam/access-management/roles',
+                          permissions: [{ method: 'isOrgAdmin' }],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      };
+
+      // This simulates the remote navigation response
+      const remoteNav: Nav = {
+        id: bundleName,
+        title: 'IAM Bundle',
+        navItems: [
+          {
+            id: 'access-management',
+            title: 'Access Management',
+            expandable: true,
+            bundleSegmentRef: 'module-rbac-ui',
+            frontendRef: frontendName,
+            routes: [
+              {
+                id: 'users-and-groups',
+                title: 'Users and Groups', // Original title
+                href: '/iam/access-management/users-and-groups',
+                permissions: [{ method: 'isOrgAdmin' }],
+              },
+              {
+                id: 'roles',
+                title: 'Roles',
+                href: '/iam/access-management/roles',
+                permissions: [{ method: 'isOrgAdmin' }],
+              },
+              // Note: 'foobar' item is NOT in the remote response
+            ],
+          },
+        ],
+      };
+
+      const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
+
+      // The bundle segment should match and modify the access-management item
+      const accessMgmt = result.find(item => item.id === 'access-management');
+      expect(accessMgmt).toBeDefined();
+      expect(accessMgmt?.title).toBe('Access Management');
+
+      // The modified title should work
+      const usersAndGroups = accessMgmt?.routes?.find(route => route.id === 'users-and-groups');
+      expect(usersAndGroups).toBeDefined();
+      expect(usersAndGroups?.title).toBe('Users and GroupsXZ'); // Modified title should work
+
+      // The new item should now appear (fix working!)
+      const foobarItem = accessMgmt?.routes?.find(route => route.id === 'foobar');
+      expect(foobarItem).toBeDefined(); // NEW item now appears
+      expect(foobarItem?.title).toBe('AAA');
+      expect(foobarItem?.href).toBe('/iam/access-management/users-and-groups');
+      expect(foobarItem?.permissions).toEqual([{ method: 'isOrgAdmin' }]);
+
+      // The existing roles item should still be there
+      const rolesItem = accessMgmt?.routes?.find(route => route.id === 'roles');
+      expect(rolesItem).toBeDefined();
+      expect(rolesItem?.title).toBe('Roles');
+
+      // All items should be present: modified item, new item, and existing items
+      expect(accessMgmt?.routes).toHaveLength(3); // Should include all 3 items
+    });
+
+    it('should handle pure addition when remote item has no routes', () => {
+      const bundleName = 'iam';
+      const frontendName = 'rbac';
+
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: { name: frontendName },
+            spec: {
+              frontend: { paths: ['/apps/rbac'] },
+              module: { manifestLocation: '/apps/rbac/fed-mods.json' },
+              bundleSegments: [
+                {
+                  bundleId: bundleName,
+                  segmentId: 'test-segment',
+                  position: 100,
+                  navItems: [
+                    {
+                      id: 'empty-container',
+                      title: 'Empty Container',
+                      expandable: true,
+                      routes: [
+                        { id: 'new-item1', title: 'New Item 1', href: '/new1' },
+                        { id: 'new-item2', title: 'New Item 2', href: '/new2' },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      };
+
+      const remoteNav: Nav = {
+        id: bundleName,
+        title: 'Test Bundle',
+        navItems: [
+          {
+            id: 'empty-container',
+            title: 'Empty Container',
+            expandable: true,
+            bundleSegmentRef: 'test-segment',
+            frontendRef: frontendName,
+            // No routes in remote - pure addition scenario
+          },
+        ],
+      };
+
+      const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
+      const container = result.find(item => item.id === 'empty-container');
+
+      expect(container).toBeDefined();
+      expect(container?.routes).toHaveLength(2);
+      expect(container?.routes?.find(r => r.id === 'new-item1')).toBeDefined();
+      expect(container?.routes?.find(r => r.id === 'new-item2')).toBeDefined();
+    });
+
+    it('should handle pure passthrough when local segment has no routes', () => {
+      const bundleName = 'iam';
+      const frontendName = 'rbac';
+
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: { name: frontendName },
+            spec: {
+              frontend: { paths: ['/apps/rbac'] },
+              module: { manifestLocation: '/apps/rbac/fed-mods.json' },
+              bundleSegments: [
+                {
+                  bundleId: bundleName,
+                  segmentId: 'test-segment',
+                  position: 100,
+                  navItems: [
+                    {
+                      id: 'passthrough-container',
+                      title: 'Modified Title', // Only title change, no routes
+                      expandable: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      };
+
+      const remoteNav: Nav = {
+        id: bundleName,
+        title: 'Test Bundle',
+        navItems: [
+          {
+            id: 'passthrough-container',
+            title: 'Original Title',
+            expandable: true,
+            bundleSegmentRef: 'test-segment',
+            frontendRef: frontendName,
+            routes: [
+              { id: 'remote-item1', title: 'Remote Item 1', href: '/remote1' },
+              { id: 'remote-item2', title: 'Remote Item 2', href: '/remote2' },
+            ],
+          },
+        ],
+      };
+
+      const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
+      const container = result.find(item => item.id === 'passthrough-container');
+
+      expect(container).toBeDefined();
+      expect(container?.title).toBe('Modified Title'); // Local title wins
+      expect(container?.routes).toHaveLength(2); // Remote routes preserved
+      expect(container?.routes?.find(r => r.id === 'remote-item1')).toBeDefined();
+      expect(container?.routes?.find(r => r.id === 'remote-item2')).toBeDefined();
+    });
+
+    it('should handle conflict resolution - local properties win over remote', () => {
+      const bundleName = 'iam';
+      const frontendName = 'rbac';
+
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: { name: frontendName },
+            spec: {
+              frontend: { paths: ['/apps/rbac'] },
+              module: { manifestLocation: '/apps/rbac/fed-mods.json' },
+              bundleSegments: [
+                {
+                  bundleId: bundleName,
+                  segmentId: 'test-segment',
+                  position: 100,
+                  navItems: [
+                    {
+                      id: 'conflict-container',
+                      title: 'Container',
+                      expandable: true,
+                      routes: [
+                        {
+                          id: 'conflicting-item',
+                          title: 'Local Title',
+                          href: '/local-href',
+                          description: 'Local description',
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      };
+
+      const remoteNav: Nav = {
+        id: bundleName,
+        title: 'Test Bundle',
+        navItems: [
+          {
+            id: 'conflict-container',
+            title: 'Container',
+            expandable: true,
+            bundleSegmentRef: 'test-segment',
+            frontendRef: frontendName,
+            routes: [
+              {
+                id: 'conflicting-item',
+                title: 'Remote Title',
+                href: '/remote-href',
+                icon: 'remote-icon',
+              },
+            ],
+          },
+        ],
+      };
+
+      const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
+      const container = result.find(item => item.id === 'conflict-container');
+      const conflictingItem = container?.routes?.find(r => r.id === 'conflicting-item');
+
+      expect(conflictingItem).toBeDefined();
+      expect(conflictingItem?.title).toBe('Local Title'); // Local wins
+      expect(conflictingItem?.href).toBe('/local-href'); // Local wins
+      expect(conflictingItem?.description).toBe('Local description'); // Local only
+      expect(conflictingItem?.icon).toBe('remote-icon'); // Remote preserved when not in local
+    });
+
+    it('should maintain ordering with mixed new and existing items', () => {
+      const bundleName = 'iam';
+      const frontendName = 'rbac';
+
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: { name: frontendName },
+            spec: {
+              frontend: { paths: ['/apps/rbac'] },
+              module: { manifestLocation: '/apps/rbac/fed-mods.json' },
+              bundleSegments: [
+                {
+                  bundleId: bundleName,
+                  segmentId: 'test-segment',
+                  position: 100,
+                  navItems: [
+                    {
+                      id: 'ordered-container',
+                      title: 'Container',
+                      expandable: true,
+                      routes: [
+                        { id: 'local-first', title: 'Local First', href: '/first' },
+                        { id: 'existing-middle', title: 'Modified Middle', href: '/middle' }, // Modify existing
+                        { id: 'local-last', title: 'Local Last', href: '/last' },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      };
+
+      const remoteNav: Nav = {
+        id: bundleName,
+        title: 'Test Bundle',
+        navItems: [
+          {
+            id: 'ordered-container',
+            title: 'Container',
+            expandable: true,
+            bundleSegmentRef: 'test-segment',
+            frontendRef: frontendName,
+            routes: [
+              { id: 'existing-middle', title: 'Original Middle', href: '/middle' },
+              { id: 'remote-extra', title: 'Remote Extra', href: '/extra' },
+            ],
+          },
+        ],
+      };
+
+      const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
+      const container = result.find(item => item.id === 'ordered-container');
+
+      expect(container?.routes).toHaveLength(4);
+
+      // Check that local ordering is preserved and remote items are added at the end
+      const routes = container?.routes || [];
+      expect(routes[0].id).toBe('local-first');
+      expect(routes[1].id).toBe('existing-middle');
+      expect(routes[1].title).toBe('Modified Middle'); // Local modification
+      expect(routes[2].id).toBe('local-last');
+      expect(routes[3].id).toBe('remote-extra');
+    });
+
+    it('should preserve remote items not present in local (not removal)', () => {
+      const bundleName = 'iam';
+      const frontendName = 'rbac';
+
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: { name: frontendName },
+            spec: {
+              frontend: { paths: ['/apps/rbac'] },
+              module: { manifestLocation: '/apps/rbac/fed-mods.json' },
+              bundleSegments: [
+                {
+                  bundleId: bundleName,
+                  segmentId: 'test-segment',
+                  position: 100,
+                  navItems: [
+                    {
+                      id: 'partial-container',
+                      title: 'Container',
+                      expandable: true,
+                      routes: [
+                        { id: 'local-item', title: 'Local Item', href: '/local' },
+                        // Note: 'remote-only-item' is NOT defined here
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      };
+
+      const remoteNav: Nav = {
+        id: bundleName,
+        title: 'Test Bundle',
+        navItems: [
+          {
+            id: 'partial-container',
+            title: 'Container',
+            expandable: true,
+            bundleSegmentRef: 'test-segment',
+            frontendRef: frontendName,
+            routes: [
+              { id: 'remote-only-item', title: 'Remote Only', href: '/remote-only' },
+              { id: 'another-remote', title: 'Another Remote', href: '/another' },
+            ],
+          },
+        ],
+      };
+
+      const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
+      const container = result.find(item => item.id === 'partial-container');
+
+      expect(container?.routes).toHaveLength(3);
+      expect(container?.routes?.find(r => r.id === 'local-item')).toBeDefined(); // Local added
+      expect(container?.routes?.find(r => r.id === 'remote-only-item')).toBeDefined(); // Remote preserved
+      expect(container?.routes?.find(r => r.id === 'another-remote')).toBeDefined(); // Remote preserved
+    });
+  });
 });
