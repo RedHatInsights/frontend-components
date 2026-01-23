@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/rule-components",
-  "version": "4.0.39",
+  "version": "4.0.40",
   "description": "Components to be used when showing rule information",
   "main": "index.js",
   "module": "esm/index.js",
