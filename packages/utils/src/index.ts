@@ -22,3 +22,4 @@ export * from './usePromiseQueue';
 export * from './useFetchBatched';
 export * from './useSuspenseLoader';
 export * from './TestingUtils/JestUtils';
+export * from './kesselPermissions';
