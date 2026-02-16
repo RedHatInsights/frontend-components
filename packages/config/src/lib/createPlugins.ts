@@ -6,11 +6,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const { sentryWebpackPlugin } = require('@sentry/webpack-plugin');
 const { glob } = require('glob');
 const path = require('path');
 
 export type WebpackPluginDefinition = undefined | null | false | '' | 0 | ((this: Compiler, compiler: Compiler) => void) | WebpackPluginInstance;
-
 export interface CreatePluginsOptions extends CommonConfigOptions {
   generateSourceMaps?: boolean;
   plugins?: WebpackPluginDefinition[];
@@ -68,6 +68,25 @@ export const createPlugins = ({
     ...(hasTsConfig ? [new ForkTsCheckerWebpackPlugin()] : []),
     ...(plugins || []),
     ...(internalHotReload ? [new ReactRefreshWebpackPlugin()] : []),
+    // Put the sentry plugin at the end of the plugins array
+    ...(process.env.ENABLE_SENTRY
+      ? [
+          sentryWebpackPlugin({
+            ...(process.env.SENTRY_AUTH_TOKEN && {
+              authToken: process.env.SENTRY_AUTH_TOKEN,
+            }),
+            org: process.env.SENTRY_ORG,
+            project: process.env.SENTRY_PROJECT,
+            release: process.env.SENTRY_RELEASE,
+            moduleMetadata: ({ release }: { release: string }) => ({
+              dsn: process.env.SENTRY_DSN,
+              org: process.env.SENTRY_ORG,
+              project: process.env.SENTRY_PROJECT,
+              release,
+            }),
+          }),
+        ]
+      : []),
   ];
 };
 
