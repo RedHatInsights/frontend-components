@@ -24,7 +24,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^7.0.0 || ^8.0.0 || ^9.0.0",
-    "react-router-dom": "^5.0.0 || ^6.0.0"
+    "react-router-dom": "^5.0.0 || ^6.0.0",
+    "@project-kessel/react-kessel-access-check": "^0.3.1"
   },
   "dependencies": {
     "@redhat-cloud-services/rbac-client": "^4.2.3",
@@ -38,10 +39,16 @@
     "react-content-loader": "^6.2.0"
   },
   "devDependencies": {
+    "@project-kessel/react-kessel-access-check": "^0.3.1",
     "@types/react": "^18.0.0",
     "glob": "10.5.0",
     "react-intl": "^6.6.8",
     "redux-mock-store": "^1.5.4"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "peerDependenciesMeta": {
+    "@project-kessel/react-kessel-access-check": {
+      "optional": true
+    }
+  }
 }
