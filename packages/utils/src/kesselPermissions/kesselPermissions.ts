@@ -2,7 +2,7 @@ import type {
   SelfAccessCheckResourceWithRelation,
   SelfAccessCheckParams as SingleSelfAccessCheckParams,
   BulkSelfAccessCheckNestedRelationsParams,
-} from '@project-kessel/react-kessel-access-check';
+} from '@project-kessel/react-kessel-access-check/types';
 
 export type PermissionMap = Record<string, string>;
 
