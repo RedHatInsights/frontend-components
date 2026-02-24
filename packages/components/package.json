@@ -34,7 +34,7 @@
     "react-content-loader": "^6.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^7.0.0 || ^8.0.0 || ^9.0.0",
-    "react-router-dom": "^5.0.0 || ^6.0.0"
+    "react-router-dom": "^6.0.0 || ^7.0.0"
   },
   "dependencies": {
     "@patternfly/react-component-groups": "^6.0.0",

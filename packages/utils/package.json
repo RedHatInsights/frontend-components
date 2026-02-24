@@ -24,7 +24,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^7.0.0 || ^8.0.0 || ^9.0.0",
-    "react-router-dom": "^5.0.0 || ^6.0.0",
+    "react-router-dom": "^6.0.0 || ^7.0.0",
+    "redux": "^4.0.0 || ^5.0.0",
     "@project-kessel/react-kessel-access-check": "^0.3.1"
   },
   "dependencies": {
