@@ -1,7 +1,7 @@
 /* eslint-disable rulesdir/no-chrome-api-call-from-window */
 import { useMemo } from 'react';
 import axios from 'axios';
-import { captureException, configureScope } from '@sentry/browser';
+import { captureException, getIsolationScope } from '@sentry/browser';
 
 export class HttpError extends Error {
   description: string;
@@ -48,9 +48,7 @@ export const interceptor401 = interceptor401WithChrome();
 
 export function interceptor500(error: any) {
   if (error.response && error.response.status >= 500 && error.response.status < 600) {
-    configureScope((scope) => {
-      scope.setTag('request_id', error.response.req_id);
-    });
+    getIsolationScope().setTag('request_id', error.response?.req_id);
   }
 
   throw error;
