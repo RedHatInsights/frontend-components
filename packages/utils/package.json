@@ -21,14 +21,14 @@
   "peerDependencies": {
     "@patternfly/react-core": "^6.0.0",
     "@patternfly/react-table": "^6.0.0",
+    "@project-kessel/react-kessel-access-check": "^0.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^7.0.0 || ^8.0.0 || ^9.0.0",
-    "react-router-dom": "^5.0.0 || ^6.0.0",
-    "@project-kessel/react-kessel-access-check": "^0.4.0"
+    "react-router-dom": "^5.0.0 || ^6.0.0"
   },
   "dependencies": {
-    "@redhat-cloud-services/rbac-client": "^4.2.3",
+    "@redhat-cloud-services/rbac-client": "^6.0.1",
     "@redhat-cloud-services/types": "^3.0.0",
     "@sentry/browser": "^7.119.1",
     "awesome-debounce-promise": "^2.1.0",
