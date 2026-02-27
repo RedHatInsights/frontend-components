@@ -97,13 +97,13 @@
   "release": {
     "projects": ["packages/*", "!packages/create-crc-app", "!packages/executors"],
     "projectsRelationship": "independent",
+    "git": {
+      "commit": true,
+      "tag": true,
+      "push": true,
+      "commitMessage": "chore(release): publish\n\n{releaseNotes}"
+    },
     "version": {
-      "git": {
-        "commit": true,
-        "tag": true,
-        "push": true,
-        "commitMessage": "chore(release): publish\n\n{releaseNotes}"
-      },
       "preVersionCommand": "npx nx run-many -t build --exclude=demo,",
       "conventionalCommits": true,
       "preserveLocalDependencyProtocols": false,
@@ -114,6 +114,9 @@
         "{projectRoot}",
         "dist/{projectName}"
       ]
+    },
+    "conventionalCommits": {
+        "useCommitScope": false
     },
     "changelog": {
       "workspaceChangelog": false,
