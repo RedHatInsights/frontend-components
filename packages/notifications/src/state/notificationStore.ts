@@ -1,6 +1,11 @@
 import { AlertProps } from '@patternfly/react-core/dist/dynamic/components/Alert';
 
-export type NotificationID = ReturnType<typeof window.crypto.randomUUID>;
+/**
+ * Widened from ReturnType<typeof window.crypto.randomUUID> (UUID template literal).
+ * The store generates UUIDs internally, but Portal accepts caller-provided IDs
+ * via props and has no UUID requirement.
+ */
+export type NotificationID = string;
 
 export type NotificationConfig = {
   id: NotificationID;
