@@ -14,6 +14,8 @@ export type PortalNotificationConfig = {
   variant: AlertProps['variant'];
   description?: React.ReactNode;
   dismissable?: boolean;
+  autoDismiss?: boolean;
+  dismissDelay?: number;
 };
 
 export interface PortalProps {
