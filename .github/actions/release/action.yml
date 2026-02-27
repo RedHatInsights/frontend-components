@@ -31,5 +31,5 @@ runs:
         # See: https://github.com/nrwl/nx/issues/22066#issuecomment-2576366862
         # See: https://github.com/nrwl/nx/blob/5ea2e47acfa9d175546daa922ce40905533f1074/packages/nx/src/utils/package-manager.ts#L207-L213
         npm_config_legacy_peer_deps: false
-      run: npx nx release
+      run: npx nx release --yes
   
