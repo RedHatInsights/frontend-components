@@ -8,6 +8,8 @@ export type NotificationConfig = {
   variant: AlertProps['variant'];
   description?: React.ReactNode;
   dismissable?: boolean;
+  autoDismiss?: boolean;
+  dismissDelay?: number;
 };
 
 type AddNotification = (config: Omit<NotificationConfig, 'id'>) => void;
