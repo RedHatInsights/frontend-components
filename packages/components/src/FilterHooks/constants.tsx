@@ -47,7 +47,11 @@ export type AllTag = {
 
 export function constructValues(groupValue: GroupValue, groupKey: string) {
   return Object.entries(groupValue || {}).reduce<ConstructValuesItem[]>((acc, curr) => {
-    const [key, { isSelected, group, value, item }] = curr;
+    const [key, entry] = curr;
+    if (entry == null || typeof entry !== 'object' || !('isSelected' in entry)) {
+      return acc;
+    }
+    const { isSelected, group, value, item } = entry;
     if (isSelected) {
       const { key: tagKey, value: tagValue } = item?.meta?.tag || {
         key: item?.tagKey || groupKey,

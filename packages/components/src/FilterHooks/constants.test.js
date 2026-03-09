@@ -203,6 +203,22 @@ describe('constructValues', () => {
     expect(result.length).toBe(0);
     expect(result).toMatchObject([]);
   });
+
+  it('should skip null or invalid entries in group value', () => {
+    const result = constructValues(
+      {
+        valid: {
+          isSelected: true,
+          item: { tagKey: 'k', tagValue: 'v' },
+        },
+        nullEntry: null,
+        undefinedEntry: undefined,
+      },
+      'namespace',
+    );
+    expect(result).toHaveLength(1);
+    expect(result[0]).toMatchObject({ key: 'valid', tagKey: 'k', value: 'v' });
+  });
 });
 
 describe('constructGroups', () => {
