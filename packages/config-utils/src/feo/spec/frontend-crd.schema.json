@@ -468,7 +468,6 @@
         }
       },
       "required": [
-        "icon",
         "title"
       ],
       "additionalProperties": true
@@ -495,25 +494,20 @@
     "widgetDefaults": {
       "type": "object",
       "properties": {
-        "sm": {
-          "$ref": "#/$defs/widgetVariant"
+        "w": {
+          "type": "number"
         },
-        "md": {
-          "$ref": "#/$defs/widgetVariant"
+        "h": {
+          "type": "number"
         },
-        "lg": {
-          "$ref": "#/$defs/widgetVariant"
+        "maxH": {
+          "type": "number"
         },
-        "xl": {
-          "$ref": "#/$defs/widgetVariant"
+        "minH": {
+          "type": "number"
         }
       },
-      "required": [
-        "sm",
-        "md",
-        "lg",
-        "xl"
-      ],
+      "required": [],
       "additionalProperties": false
     },
     "widgetEntry": {
@@ -523,6 +517,12 @@
           "type": "string"
         },
         "module": {
+          "type": "string"
+        },
+        "importName": {
+          "type": "string"
+        },
+        "featureFlag": {
           "type": "string"
         },
         "config": {
@@ -563,13 +563,13 @@
           "description": "The minimum height of the widget in the grid",
           "minimum": 1
         },
-        "x": {
+        "cx": {
           "type": "number",
           "description": "The x position of the widget in the grid",
           "minimum": 0,
           "maximum": 3
         },
-        "y": {
+        "cy": {
           "type": "number",
           "description": "The y position of the widget in the grid",
           "minimum": 0
@@ -581,10 +581,6 @@
         "static": {
           "type": "boolean",
           "description": "Whether the widget is locked in the grid"
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the widget"
         }
       }
     },
@@ -597,11 +593,11 @@
           "items": {
             "type": "object",
             "$ref": "#/$defs/templateConfigItem",
-            "required": ["w", "h", "x", "y", "i"],
+            "required": ["w", "h", "cx", "cy", "i"],
             "allOf": [
               {
                 "properties": {
-                  "x": {
+                  "cx": {
                     "type": "number",
                     "minimum": 0,
                     "exclusiveMaximum": 1
@@ -621,11 +617,11 @@
           "items": {
             "type": "object",
             "$ref": "#/$defs/templateConfigItem",
-            "required": ["w", "h", "x", "y", "i"],
+            "required": ["w", "h", "cx", "cy", "i"],
             "allOf": [
               {
                 "properties": {
-                  "x": {
+                  "cx": {
                     "type": "number",
                     "minimum": 0,
                     "exclusiveMaximum": 2
@@ -645,11 +641,11 @@
           "items": {
             "type": "object",
             "$ref": "#/$defs/templateConfigItem",
-            "required": ["w", "h", "x", "y", "i"],
+            "required": ["w", "h", "cx", "cy", "i"],
             "allOf": [
               {
                 "properties": {
-                  "x": {
+                  "cx": {
                     "type": "number",
                     "minimum": 0,
                     "exclusiveMaximum": 3
@@ -669,7 +665,7 @@
           "items": {
             "type": "object",
             "$ref": "#/$defs/templateConfigItem",
-            "required": ["w", "h", "x", "y", "i"]
+            "required": ["w", "h", "cx", "cy", "i"]
           }
         }
       }
@@ -795,7 +791,10 @@
           }
         },
         "baseWidgetLayouts": {
-          "$ref": "#/$defs/baseWidgetLayouts"
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseWidgetLayouts"
+          }
         }
       },
       "required": [
