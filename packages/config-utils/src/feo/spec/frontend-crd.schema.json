@@ -539,6 +539,161 @@
       ],
       "additionalProperties": false
     },
+    "templateConfigItem": {
+      "type": "object",
+      "properties": {
+        "w": {
+          "type": "number",
+          "description": "The width of the widget in the grid",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "h": {
+          "type": "number",
+          "description": "The height of the widget in the grid",
+          "minimum": 1
+        },
+        "maxH": {
+          "type": "number",
+          "description": "The maximum height of the widget in the grid",
+          "minimum": 1
+        },
+        "minH": {
+          "type": "number",
+          "description": "The minimum height of the widget in the grid",
+          "minimum": 1
+        },
+        "x": {
+          "type": "number",
+          "description": "The x position of the widget in the grid",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "y": {
+          "type": "number",
+          "description": "The y position of the widget in the grid",
+          "minimum": 0
+        },
+        "i": {
+          "type": "string",
+          "description": "The unique identifier of the widget"
+        },
+        "static": {
+          "type": "boolean",
+          "description": "Whether the widget is locked in the grid"
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the widget"
+        }
+      }
+    },
+    "baseWidgetLayoutsTemplateConfig": {
+      "type": "object",
+      "required": ["sm", "md", "lg", "xl"],
+      "properties": {
+        "sm": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/$defs/templateConfigItem",
+            "required": ["w", "h", "x", "y", "i"],
+            "allOf": [
+              {
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "exclusiveMaximum": 1
+                  },
+                  "w": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "md": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/$defs/templateConfigItem",
+            "required": ["w", "h", "x", "y", "i"],
+            "allOf": [
+              {
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "exclusiveMaximum": 2
+                  },
+                  "w": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 2
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "lg": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/$defs/templateConfigItem",
+            "required": ["w", "h", "x", "y", "i"],
+            "allOf": [
+              {
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "exclusiveMaximum": 3
+                  },
+                  "w": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 3
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "xl": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/$defs/templateConfigItem",
+            "required": ["w", "h", "x", "y", "i"]
+          }
+        }
+      }
+    },
+    "baseWidgetLayouts": {
+      "title": "Base widget layout configurations",
+      "description": "A dashboard definition for widgets",
+      "type": "object",
+      "required": ["name", "displayName", "templateConfig"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the dashboard template"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name of the dashboard template"
+        },
+        "templateConfig": {
+          "$ref": "#/$defs/baseWidgetLayoutsTemplateConfig",
+          "description": "The configuration of the dashboard template"
+        }
+      }
+    },
     "frontendSpec": {
       "type": "object",
       "properties": {
@@ -638,6 +793,9 @@
           "items": {
             "$ref": "#/$defs/widgetEntry"
           }
+        },
+        "baseWidgetLayouts": {
+          "$ref": "#/$defs/baseWidgetLayouts"
         }
       },
       "required": [
