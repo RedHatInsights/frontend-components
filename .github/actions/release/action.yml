@@ -39,5 +39,8 @@ runs:
       # createRelease (GitHub/GitLab releases) is enabled. Since we use createReleaseInGitHub: false,
       # we push manually here so that the version bumps in package.json reach the remote and
       # nacho-bot can create PRs in consuming repos.
+      # HUSKY=0 disables pre-push hooks in CI — tests are run separately by the CI pipeline.
+      env:
+        HUSKY: '0'
       run: git push --follow-tags
   
