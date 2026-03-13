@@ -16,7 +16,7 @@ yarn add @redhat-cloud-services/frontend-components-utilities
 ```
 
 
-This package is dependent on [@redhat-cloud-services/frontend-components](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components) it will automatically installed trough direct dependencies.
+This package is dependent on [@redhat-cloud-services/frontend-components](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components). It will automatically be installed through direct dependencies.
 
 ## Migration guide
 ### v2 -> v3
