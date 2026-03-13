@@ -1,3 +1,13 @@
+## 7.0.40 (2026-03-13)
+
+### 🩹 Fixes
+
+- **utils:** correct spelling in README ([5f412992](https://github.com/RedHatInsights/frontend-components/commit/5f412992))
+
+### ❤️ Thank You
+
+- Charles Mulder
+
 # Changelog
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).

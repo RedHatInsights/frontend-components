@@ -1,3 +1,9 @@
+## 4.0.47 (2026-03-13)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.0.40
+
 # Changelog
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).

@@ -1,3 +1,10 @@
+## 4.0.56 (2026-03-13)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components to 7.0.45
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.0.40
+
 ## 4.0.55 (2026-03-13)
 
 ### 🧱 Updated Dependencies
