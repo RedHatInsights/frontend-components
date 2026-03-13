@@ -1,3 +1,14 @@
+## 7.0.44 (2026-03-13)
+
+### 🩹 Fixes
+
+- **RHINENG-24564:** fix Sentry Error when selecting a tag ([#2281](https://github.com/RedHatInsights/frontend-components/pull/2281))
+
+### ❤️ Thank You
+
+- zhamilya @computercamplove
+- Zhamilya Abikenova @computercamplove
+
 # Changelog
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).

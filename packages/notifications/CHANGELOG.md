@@ -1,3 +1,19 @@
+## 6.2.0 (2026-03-13)
+
+### 🚀 Features
+
+- **notifications:** widen NotificationID from UUID template literal to string ([3077a130](https://github.com/RedHatInsights/frontend-components/commit/3077a130))
+- **notifications:** add autoDismiss and dismissDelay to NotificationConfig type ([918a7da2](https://github.com/RedHatInsights/frontend-components/commit/918a7da2))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components to 7.0.44
+
+### ❤️ Thank You
+
+- Charles Mulder
+- Claude Opus 4.6
+
 # Changelog
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
