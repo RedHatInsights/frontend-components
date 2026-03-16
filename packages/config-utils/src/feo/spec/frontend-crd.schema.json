@@ -582,11 +582,13 @@
           "type": "boolean",
           "description": "Whether the widget is locked in the grid"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "baseWidgetLayoutsTemplateConfig": {
       "type": "object",
       "required": ["sm", "md", "lg", "xl"],
+      "additionalProperties": false,
       "properties": {
         "sm": {
           "type": "array",
@@ -594,6 +596,7 @@
             "type": "object",
             "$ref": "#/$defs/templateConfigItem",
             "required": ["w", "h", "cx", "cy", "i"],
+            "additionalProperties": false,
             "allOf": [
               {
                 "properties": {
@@ -618,6 +621,7 @@
             "type": "object",
             "$ref": "#/$defs/templateConfigItem",
             "required": ["w", "h", "cx", "cy", "i"],
+            "additionalProperties": false,
             "allOf": [
               {
                 "properties": {
@@ -642,6 +646,7 @@
             "type": "object",
             "$ref": "#/$defs/templateConfigItem",
             "required": ["w", "h", "cx", "cy", "i"],
+            "additionalProperties": false,
             "allOf": [
               {
                 "properties": {
@@ -665,7 +670,8 @@
           "items": {
             "type": "object",
             "$ref": "#/$defs/templateConfigItem",
-            "required": ["w", "h", "cx", "cy", "i"]
+            "required": ["w", "h", "cx", "cy", "i"],
+            "additionalProperties": false
           }
         }
       }
@@ -675,6 +681,7 @@
       "description": "A dashboard definition for widgets",
       "type": "object",
       "required": ["name", "displayName", "templateConfig"],
+      "additionalProperties": false,
       "properties": {
         "name": {
           "type": "string",
