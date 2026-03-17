@@ -84,6 +84,7 @@ export declare type VisibilityFunctions = {
   isHidden: () => true;
   withEmail: (toHave: string) => Promise<boolean>;
   loosePermissions: (permissions: string[]) => Promise<boolean>;
+  loosePermissionsKessel: (relations: string[]) => Promise<boolean>;
   hasPermissions: (permissions: string[]) => Promise<boolean>;
   hasLocalStorage: (key: string, value: any) => boolean;
   hasCookie: (key: string, value: any) => boolean;
