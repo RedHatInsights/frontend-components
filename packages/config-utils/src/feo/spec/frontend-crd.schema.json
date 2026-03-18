@@ -593,12 +593,11 @@
         "sm": {
           "type": "array",
           "items": {
-            "type": "object",
-            "$ref": "#/$defs/templateConfigItem",
-            "required": ["w", "h", "cx", "cy", "i"],
-            "additionalProperties": false,
             "allOf": [
+              { "$ref": "#/$defs/templateConfigItem" },
               {
+                "type": "object",
+                "required": ["w", "h", "cx", "cy", "i"],
                 "properties": {
                   "cx": {
                     "type": "number",
@@ -618,12 +617,11 @@
         "md": {
           "type": "array",
           "items": {
-            "type": "object",
-            "$ref": "#/$defs/templateConfigItem",
-            "required": ["w", "h", "cx", "cy", "i"],
-            "additionalProperties": false,
             "allOf": [
+              { "$ref": "#/$defs/templateConfigItem" },
               {
+                "type": "object",
+                "required": ["w", "h", "cx", "cy", "i"],
                 "properties": {
                   "cx": {
                     "type": "number",
@@ -643,12 +641,11 @@
         "lg": {
           "type": "array",
           "items": {
-            "type": "object",
-            "$ref": "#/$defs/templateConfigItem",
-            "required": ["w", "h", "cx", "cy", "i"],
-            "additionalProperties": false,
             "allOf": [
+              { "$ref": "#/$defs/templateConfigItem" },
               {
+                "type": "object",
+                "required": ["w", "h", "cx", "cy", "i"],
                 "properties": {
                   "cx": {
                     "type": "number",
@@ -668,10 +665,13 @@
         "xl": {
           "type": "array",
           "items": {
-            "type": "object",
-            "$ref": "#/$defs/templateConfigItem",
-            "required": ["w", "h", "cx", "cy", "i"],
-            "additionalProperties": false
+            "allOf": [
+              { "$ref": "#/$defs/templateConfigItem" },
+              {
+                "type": "object",
+                "required": ["w", "h", "cx", "cy", "i"]
+              }
+            ]
           }
         }
       }
