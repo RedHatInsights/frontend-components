@@ -1,3 +1,22 @@
+## 6.8.0 (2026-03-18)
+
+### 🚀 Features
+
+- **RHINENG-15592:** create shared sentry plugin ([c5a5d494](https://github.com/RedHatInsights/frontend-components/commit/c5a5d494))
+
+### 🩹 Fixes
+
+- **config:** lazy-load @sentry/webpack-plugin to fix unit tests ([ee6a160c](https://github.com/RedHatInsights/frontend-components/commit/ee6a160c))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.8.0
+
+### ❤️ Thank You
+
+- Adonis Puente
+- Riccardo Forina
+
 # Changelog
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).

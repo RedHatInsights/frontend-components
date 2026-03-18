@@ -1,3 +1,14 @@
+## 4.8.0 (2026-03-18)
+
+### 🚀 Features
+
+- adding support for  key in the fronted-crd.schema.json ([#2282](https://github.com/RedHatInsights/frontend-components/pull/2282))
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- Tahmid Efaz
+
 # Changelog
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).

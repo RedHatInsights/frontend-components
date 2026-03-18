@@ -1,3 +1,13 @@
+## 3.4.0 (2026-03-18)
+
+### 🚀 Features
+
+- **types:** add loosePermissionsKessel to VisibilityFunctions ([a5ab99fb](https://github.com/RedHatInsights/frontend-components/commit/a5ab99fb))
+
+### ❤️ Thank You
+
+- Riccardo Forina
+
 # Changelog
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).

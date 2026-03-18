@@ -1,3 +1,9 @@
+## 2.1.0 (2026-03-18)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/types to 3.4.0
+
 # Changelog
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
