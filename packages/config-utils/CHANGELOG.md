@@ -1,3 +1,13 @@
+## 4.8.1 (2026-03-18)
+
+### 🩹 Fixes
+
+- restructure baseWidgetLayoutsTemplateConfig schema to fix additionalProperties validation ([3c00b95c](https://github.com/RedHatInsights/frontend-components/commit/3c00b95c))
+
+### ❤️ Thank You
+
+- tahmidefaz
+
 ## 4.8.0 (2026-03-18)
 
 ### 🚀 Features
