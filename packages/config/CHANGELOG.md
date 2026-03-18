@@ -1,3 +1,18 @@
+## 6.8.3 (2026-03-18)
+
+### 🩹 Fixes
+
+- **config:** bump config package with the schema fix ([1529348e](https://github.com/RedHatInsights/frontend-components/commit/1529348e))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/tsc-transform-imports to 1.0.57
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.8.2
+
+### ❤️ Thank You
+
+- tahmidefaz
+
 ## 6.8.2 (2026-03-18)
 
 ### 🧱 Updated Dependencies
