@@ -1,3 +1,13 @@
+## 6.8.1 (2026-03-18)
+
+### 🩹 Fixes
+
+- **config:** bump package ([577bd7b6](https://github.com/RedHatInsights/frontend-components/commit/577bd7b6))
+
+### ❤️ Thank You
+
+- Tahmid Efaz
+
 ## 6.8.0 (2026-03-18)
 
 ### 🚀 Features
