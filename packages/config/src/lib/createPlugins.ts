@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const { sentryWebpackPlugin } = require('@sentry/webpack-plugin');
 const { glob } = require('glob');
 const path = require('path');
 
@@ -71,7 +70,7 @@ export const createPlugins = ({
     // Put the sentry plugin at the end of the plugins array
     ...(process.env.ENABLE_SENTRY
       ? [
-          sentryWebpackPlugin({
+          require('@sentry/webpack-plugin').sentryWebpackPlugin({
             ...(process.env.SENTRY_AUTH_TOKEN && {
               authToken: process.env.SENTRY_AUTH_TOKEN,
             }),
