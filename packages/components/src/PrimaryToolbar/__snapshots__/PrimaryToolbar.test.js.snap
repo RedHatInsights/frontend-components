@@ -657,8 +657,6 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                 <ul
                   aria-labelledby="pf-random-id-0"
                   class="pf-v6-c-label-group__list"
-                  data-ouia-component-type="PF6/ChipGroup"
-                  data-ouia-safe="true"
                   role="list"
                 >
                   <li
@@ -666,16 +664,12 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                   >
                     <span
                       class="pf-v6-c-label pf-m-outline"
-                      data-ouia-component-id="OUIA-Generated-Chip-1"
-                      data-ouia-component-type="PF6/Chip"
-                      data-ouia-safe="true"
                     >
                       <span
                         class="pf-v6-c-label__content"
                       >
                         <span
                           class="pf-v6-c-label__text"
-                          style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                         >
                           something
                         </span>
@@ -717,16 +711,12 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                   >
                     <span
                       class="pf-v6-c-label pf-m-outline"
-                      data-ouia-component-id="OUIA-Generated-Chip-2"
-                      data-ouia-component-type="PF6/Chip"
-                      data-ouia-safe="true"
                     >
                       <span
                         class="pf-v6-c-label__content"
                       >
                         <span
                           class="pf-v6-c-label__text"
-                          style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                         >
                           something 2
                         </span>
@@ -782,8 +772,6 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                 <ul
                   aria-labelledby="pf-random-id-1"
                   class="pf-v6-c-label-group__list"
-                  data-ouia-component-type="PF6/ChipGroup"
-                  data-ouia-safe="true"
                   role="list"
                 >
                   <li
@@ -791,16 +779,12 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                   >
                     <span
                       class="pf-v6-c-label pf-m-outline"
-                      data-ouia-component-id="OUIA-Generated-Chip-3"
-                      data-ouia-component-type="PF6/Chip"
-                      data-ouia-safe="true"
                     >
                       <span
                         class="pf-v6-c-label__content"
                       >
                         <span
                           class="pf-v6-c-label__text"
-                          style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                         >
                           One chip
                         </span>
@@ -847,10 +831,8 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                 class="pf-v6-c-label-group__main"
               >
                 <ul
-                  aria-label="Chip group category"
+                  aria-label="Label group category"
                   class="pf-v6-c-label-group__list"
-                  data-ouia-component-type="PF6/ChipGroup"
-                  data-ouia-safe="true"
                   role="list"
                 >
                   <li
@@ -858,16 +840,12 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                   >
                     <span
                       class="pf-v6-c-label pf-m-outline"
-                      data-ouia-component-id="OUIA-Generated-Chip-4"
-                      data-ouia-component-type="PF6/Chip"
-                      data-ouia-safe="true"
                     >
                       <span
                         class="pf-v6-c-label__content"
                       >
                         <span
                           class="pf-v6-c-label__text"
-                          style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                         >
                           Something else
                         </span>
@@ -1651,8 +1629,6 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                 <ul
                   aria-labelledby="pf-random-id-3"
                   class="pf-v6-c-label-group__list"
-                  data-ouia-component-type="PF6/ChipGroup"
-                  data-ouia-safe="true"
                   role="list"
                 >
                   <li
@@ -1660,16 +1636,12 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                   >
                     <span
                       class="pf-v6-c-label pf-m-outline"
-                      data-ouia-component-id="OUIA-Generated-Chip-5"
-                      data-ouia-component-type="PF6/Chip"
-                      data-ouia-safe="true"
                     >
                       <span
                         class="pf-v6-c-label__content"
                       >
                         <span
                           class="pf-v6-c-label__text"
-                          style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                         >
                           something
                         </span>
@@ -1711,16 +1683,12 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                   >
                     <span
                       class="pf-v6-c-label pf-m-outline"
-                      data-ouia-component-id="OUIA-Generated-Chip-6"
-                      data-ouia-component-type="PF6/Chip"
-                      data-ouia-safe="true"
                     >
                       <span
                         class="pf-v6-c-label__content"
                       >
                         <span
                           class="pf-v6-c-label__text"
-                          style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                         >
                           something 2
                         </span>
@@ -1776,8 +1744,6 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                 <ul
                   aria-labelledby="pf-random-id-4"
                   class="pf-v6-c-label-group__list"
-                  data-ouia-component-type="PF6/ChipGroup"
-                  data-ouia-safe="true"
                   role="list"
                 >
                   <li
@@ -1785,16 +1751,12 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                   >
                     <span
                       class="pf-v6-c-label pf-m-outline"
-                      data-ouia-component-id="OUIA-Generated-Chip-7"
-                      data-ouia-component-type="PF6/Chip"
-                      data-ouia-safe="true"
                     >
                       <span
                         class="pf-v6-c-label__content"
                       >
                         <span
                           class="pf-v6-c-label__text"
-                          style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                         >
                           One chip
                         </span>
@@ -1841,10 +1803,8 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                 class="pf-v6-c-label-group__main"
               >
                 <ul
-                  aria-label="Chip group category"
+                  aria-label="Label group category"
                   class="pf-v6-c-label-group__list"
-                  data-ouia-component-type="PF6/ChipGroup"
-                  data-ouia-safe="true"
                   role="list"
                 >
                   <li
@@ -1852,16 +1812,12 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                   >
                     <span
                       class="pf-v6-c-label pf-m-outline"
-                      data-ouia-component-id="OUIA-Generated-Chip-8"
-                      data-ouia-component-type="PF6/Chip"
-                      data-ouia-safe="true"
                     >
                       <span
                         class="pf-v6-c-label__content"
                       >
                         <span
                           class="pf-v6-c-label__text"
-                          style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                         >
                           Something else
                         </span>

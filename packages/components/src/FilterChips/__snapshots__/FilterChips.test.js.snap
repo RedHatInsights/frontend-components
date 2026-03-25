@@ -29,8 +29,6 @@ exports[`FilterChips component should render 1`] = `
         <ul
           aria-labelledby="pf-random-id-0"
           class="pf-v6-c-label-group__list"
-          data-ouia-component-type="PF6/ChipGroup"
-          data-ouia-safe="true"
           role="list"
         >
           <li
@@ -38,16 +36,12 @@ exports[`FilterChips component should render 1`] = `
           >
             <span
               class="pf-v6-c-label pf-m-outline"
-              data-ouia-component-id="OUIA-Generated-Chip-1"
-              data-ouia-component-type="PF6/Chip"
-              data-ouia-safe="true"
             >
               <span
                 class="pf-v6-c-label__content"
               >
                 <span
                   class="pf-v6-c-label__text"
-                  style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                 >
                   Chip 1
                 </span>
@@ -89,16 +83,12 @@ exports[`FilterChips component should render 1`] = `
           >
             <span
               class="pf-v6-c-label pf-m-outline"
-              data-ouia-component-id="OUIA-Generated-Chip-2"
-              data-ouia-component-type="PF6/Chip"
-              data-ouia-safe="true"
             >
               <span
                 class="pf-v6-c-label__content"
               >
                 <span
                   class="pf-v6-c-label__text"
-                  style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                 >
                   Chip 2
                   <span
@@ -150,10 +140,8 @@ exports[`FilterChips component should render 1`] = `
         class="pf-v6-c-label-group__main"
       >
         <ul
-          aria-label="Chip group category"
+          aria-label="Label group category"
           class="pf-v6-c-label-group__list"
-          data-ouia-component-type="PF6/ChipGroup"
-          data-ouia-safe="true"
           role="list"
         >
           <li
@@ -161,16 +149,12 @@ exports[`FilterChips component should render 1`] = `
           >
             <span
               class="pf-v6-c-label pf-m-outline"
-              data-ouia-component-id="OUIA-Generated-Chip-3"
-              data-ouia-component-type="PF6/Chip"
-              data-ouia-safe="true"
             >
               <span
                 class="pf-v6-c-label__content"
               >
                 <span
                   class="pf-v6-c-label__text"
-                  style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                 >
                   Chip 3
                 </span>
@@ -217,10 +201,8 @@ exports[`FilterChips component should render 1`] = `
         class="pf-v6-c-label-group__main"
       >
         <ul
-          aria-label="Chip group category"
+          aria-label="Label group category"
           class="pf-v6-c-label-group__list"
-          data-ouia-component-type="PF6/ChipGroup"
-          data-ouia-safe="true"
           role="list"
         >
           <li
@@ -228,16 +210,12 @@ exports[`FilterChips component should render 1`] = `
           >
             <span
               class="pf-v6-c-label pf-m-outline"
-              data-ouia-component-id="OUIA-Generated-Chip-4"
-              data-ouia-component-type="PF6/Chip"
-              data-ouia-safe="true"
             >
               <span
                 class="pf-v6-c-label__content"
               >
                 <span
                   class="pf-v6-c-label__text"
-                  style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                 >
                   Chip 4
                 </span>
@@ -315,8 +293,6 @@ exports[`FilterChips component should render group delete 1`] = `
         <ul
           aria-labelledby="pf-random-id-6"
           class="pf-v6-c-label-group__list"
-          data-ouia-component-type="PF6/ChipGroup"
-          data-ouia-safe="true"
           role="list"
         >
           <li
@@ -324,16 +300,12 @@ exports[`FilterChips component should render group delete 1`] = `
           >
             <span
               class="pf-v6-c-label pf-m-outline"
-              data-ouia-component-id="OUIA-Generated-Chip-9"
-              data-ouia-component-type="PF6/Chip"
-              data-ouia-safe="true"
             >
               <span
                 class="pf-v6-c-label__content"
               >
                 <span
                   class="pf-v6-c-label__text"
-                  style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                 >
                   Chip 1
                 </span>
@@ -375,16 +347,12 @@ exports[`FilterChips component should render group delete 1`] = `
           >
             <span
               class="pf-v6-c-label pf-m-outline"
-              data-ouia-component-id="OUIA-Generated-Chip-10"
-              data-ouia-component-type="PF6/Chip"
-              data-ouia-safe="true"
             >
               <span
                 class="pf-v6-c-label__content"
               >
                 <span
                   class="pf-v6-c-label__text"
-                  style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                 >
                   Chip 2
                   <span
@@ -432,7 +400,7 @@ exports[`FilterChips component should render group delete 1`] = `
         class="pf-v6-c-label-group__close"
       >
         <button
-          aria-label="Close chip group"
+          aria-label="Close label group"
           aria-labelledby="remove_group_pf-random-id-6 pf-random-id-6"
           class="pf-v6-c-button pf-m-plain pf-m-small"
           data-ouia-component-id="OUIA-Generated-Button-plain-11"
@@ -468,10 +436,8 @@ exports[`FilterChips component should render group delete 1`] = `
         class="pf-v6-c-label-group__main"
       >
         <ul
-          aria-label="Chip group category"
+          aria-label="Label group category"
           class="pf-v6-c-label-group__list"
-          data-ouia-component-type="PF6/ChipGroup"
-          data-ouia-safe="true"
           role="list"
         >
           <li
@@ -479,16 +445,12 @@ exports[`FilterChips component should render group delete 1`] = `
           >
             <span
               class="pf-v6-c-label pf-m-outline"
-              data-ouia-component-id="OUIA-Generated-Chip-11"
-              data-ouia-component-type="PF6/Chip"
-              data-ouia-safe="true"
             >
               <span
                 class="pf-v6-c-label__content"
               >
                 <span
                   class="pf-v6-c-label__text"
-                  style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                 >
                   Chip 3
                 </span>
@@ -535,10 +497,8 @@ exports[`FilterChips component should render group delete 1`] = `
         class="pf-v6-c-label-group__main"
       >
         <ul
-          aria-label="Chip group category"
+          aria-label="Label group category"
           class="pf-v6-c-label-group__list"
-          data-ouia-component-type="PF6/ChipGroup"
-          data-ouia-safe="true"
           role="list"
         >
           <li
@@ -546,16 +506,12 @@ exports[`FilterChips component should render group delete 1`] = `
           >
             <span
               class="pf-v6-c-label pf-m-outline"
-              data-ouia-component-id="OUIA-Generated-Chip-12"
-              data-ouia-component-type="PF6/Chip"
-              data-ouia-safe="true"
             >
               <span
                 class="pf-v6-c-label__content"
               >
                 <span
                   class="pf-v6-c-label__text"
-                  style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                 >
                   Chip 4
                 </span>
@@ -633,8 +589,6 @@ exports[`FilterChips component should render with custom delete message 1`] = `
         <ul
           aria-labelledby="pf-random-id-3"
           class="pf-v6-c-label-group__list"
-          data-ouia-component-type="PF6/ChipGroup"
-          data-ouia-safe="true"
           role="list"
         >
           <li
@@ -642,16 +596,12 @@ exports[`FilterChips component should render with custom delete message 1`] = `
           >
             <span
               class="pf-v6-c-label pf-m-outline"
-              data-ouia-component-id="OUIA-Generated-Chip-5"
-              data-ouia-component-type="PF6/Chip"
-              data-ouia-safe="true"
             >
               <span
                 class="pf-v6-c-label__content"
               >
                 <span
                   class="pf-v6-c-label__text"
-                  style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                 >
                   Chip 1
                 </span>
@@ -693,16 +643,12 @@ exports[`FilterChips component should render with custom delete message 1`] = `
           >
             <span
               class="pf-v6-c-label pf-m-outline"
-              data-ouia-component-id="OUIA-Generated-Chip-6"
-              data-ouia-component-type="PF6/Chip"
-              data-ouia-safe="true"
             >
               <span
                 class="pf-v6-c-label__content"
               >
                 <span
                   class="pf-v6-c-label__text"
-                  style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                 >
                   Chip 2
                   <span
@@ -754,10 +700,8 @@ exports[`FilterChips component should render with custom delete message 1`] = `
         class="pf-v6-c-label-group__main"
       >
         <ul
-          aria-label="Chip group category"
+          aria-label="Label group category"
           class="pf-v6-c-label-group__list"
-          data-ouia-component-type="PF6/ChipGroup"
-          data-ouia-safe="true"
           role="list"
         >
           <li
@@ -765,16 +709,12 @@ exports[`FilterChips component should render with custom delete message 1`] = `
           >
             <span
               class="pf-v6-c-label pf-m-outline"
-              data-ouia-component-id="OUIA-Generated-Chip-7"
-              data-ouia-component-type="PF6/Chip"
-              data-ouia-safe="true"
             >
               <span
                 class="pf-v6-c-label__content"
               >
                 <span
                   class="pf-v6-c-label__text"
-                  style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                 >
                   Chip 3
                 </span>
@@ -821,10 +761,8 @@ exports[`FilterChips component should render with custom delete message 1`] = `
         class="pf-v6-c-label-group__main"
       >
         <ul
-          aria-label="Chip group category"
+          aria-label="Label group category"
           class="pf-v6-c-label-group__list"
-          data-ouia-component-type="PF6/ChipGroup"
-          data-ouia-safe="true"
           role="list"
         >
           <li
@@ -832,16 +770,12 @@ exports[`FilterChips component should render with custom delete message 1`] = `
           >
             <span
               class="pf-v6-c-label pf-m-outline"
-              data-ouia-component-id="OUIA-Generated-Chip-8"
-              data-ouia-component-type="PF6/Chip"
-              data-ouia-safe="true"
             >
               <span
                 class="pf-v6-c-label__content"
               >
                 <span
                   class="pf-v6-c-label__text"
-                  style="--pf-v6-c-label__text--MaxWidth: 16ch;"
                 >
                   Chip 4
                 </span>
