@@ -1,3 +1,13 @@
+## 7.2.0 (2026-03-27)
+
+### 🚀 Features
+
+- **Chips:** replace deprecated Chip component with Label ([eec9da14](https://github.com/RedHatInsights/frontend-components/commit/eec9da14))
+
+### ❤️ Thank You
+
+- LightOfHeaven1994
+
 ## 7.1.1 (2026-03-18)
 
 ### 🧱 Updated Dependencies
