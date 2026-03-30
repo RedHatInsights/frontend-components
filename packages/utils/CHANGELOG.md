@@ -1,3 +1,13 @@
+## 7.2.0 (2026-03-30)
+
+### 🚀 Features
+
+- **utils:** trigger kessel-sdk update release ([14258f1d](https://github.com/RedHatInsights/frontend-components/commit/14258f1d))
+
+### ❤️ Thank You
+
+- LightOfHeaven1994
+
 ## 7.1.1 (2026-03-18)
 
 ### 🧱 Updated Dependencies
