@@ -5,7 +5,7 @@ import sanitize, { simpleTransform } from 'sanitize-html';
 
 interface TemplateProcessorProps {
   template: string;
-  definitions: Record<string, string | number>;
+  definitions: Record<string, unknown>;
   onError?: (e: Error) => void;
 }
 
@@ -34,7 +34,7 @@ const TemplateProcessor: React.FC<TemplateProcessorProps> = ({ template, definit
   );
 
   try {
-    const compiledDot = Object.keys(definitions).length !== 0 ? doT.template(template, DOT_SETTINGS)(definitions) : template;
+    const compiledDot = doT.template(template, DOT_SETTINGS)(definitions);
     const compiledMd = marked(compiledDot, { async: false });
     const sanitized = sanitize(compiledMd, {
       allowedAttributes: { '*': ['href', 'target', 'class', 'style', 'rel'] },
@@ -50,7 +50,7 @@ const TemplateProcessor: React.FC<TemplateProcessorProps> = ({ template, definit
         dangerouslySetInnerHTML={{
           __html: sanitized.replace(
             /<\/a>/gim,
-            ` <i class="fas fa-external-link-alt"></i></a>` // add an icon to external links
+            ` <i class="fas fa-external-link-alt"></i></a>`, // add an icon to external links
           ),
         }}
       />

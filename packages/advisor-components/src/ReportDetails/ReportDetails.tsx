@@ -7,6 +7,7 @@ import { Card } from '@patternfly/react-core/dist/dynamic/components/Card';
 import { CardBody } from '@patternfly/react-core/dist/dynamic/components/Card';
 import { CardHeader } from '@patternfly/react-core/dist/dynamic/components/Card';
 import { Divider } from '@patternfly/react-core/dist/dynamic/components/Divider';
+import { ExpandableSection } from '@patternfly/react-core/dist/dynamic/components/ExpandableSection';
 import { Stack } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
 import { StackItem } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
 import BullseyeIcon from '@patternfly/react-icons/dist/dynamic/icons/bullseye-icon';
@@ -21,7 +22,7 @@ import { ExternalLink } from '../common';
 
 interface Report {
   rule: RuleContentRhel | RuleContentOcp;
-  details: Record<string, string | number>;
+  details: Record<string, unknown>;
   resolution: string;
 }
 
@@ -47,7 +48,14 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({
   isProd,
 }) => {
   const { rule, details, resolution } = report;
+  // remove conflict_compliance_policies_enabled from details to avoid rendering it in templates
+  const { conflict_compliance_policies_enabled, ...filteredDetails } = details;
   const [error, setError] = useState<Error | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const onToggle = (_event: any, isExpanded: boolean) => {
+    setIsExpanded(isExpanded);
+  };
 
   const handleError = (e: Error) => {
     if (error === null) {
@@ -80,7 +88,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({
                 <BullseyeIcon className="ins-c-report-details__icon" />
                 <strong>Detected issues</strong>
               </CardHeader>
-              <CardBody>{rule.reason && <TemplateProcessor template={rule.reason} definitions={details} onError={handleError} />}</CardBody>
+              <CardBody>{rule.reason && <TemplateProcessor template={rule.reason} definitions={filteredDetails} onError={handleError} />}</CardBody>
             </Card>
           </StackItem>
           <Divider />
@@ -90,7 +98,35 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({
                 <ThumbsUpIcon className="ins-c-report-details__icon" />
                 <strong>Steps to resolve</strong>
               </CardHeader>
-              <CardBody>{resolution && <TemplateProcessor template={resolution} definitions={details} onError={handleError} />}</CardBody>
+              <CardBody>
+                {conflict_compliance_policies_enabled ? (
+                  <>
+                    <Alert isInline variant="warning" title="To maintain compliance, ignore or disable this recommendation">
+                      <p>
+                        The resolution of this Advisor recommendation conflicts with a rule defined in the Compliance service. Applying this
+                        remediation may impact your compliance status.
+                      </p>
+                      {typeof conflict_compliance_policies_enabled === 'object' && (
+                        <ul style={{ paddingLeft: 0, listStyle: 'none' }}>
+                          {Object.keys(conflict_compliance_policies_enabled as Record<string, unknown>).map((policy) => (
+                            <li key={policy}>Conflicting policy: {policy}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </Alert>
+                    <ExpandableSection
+                      isExpanded={isExpanded}
+                      onToggle={onToggle}
+                      toggleText={isExpanded ? 'Hide remediation steps' : 'I understand the risks, show remediation steps'}
+                      isIndented
+                    >
+                      {resolution && <TemplateProcessor template={resolution} definitions={filteredDetails} onError={handleError} />}
+                    </ExpandableSection>
+                  </>
+                ) : (
+                  resolution && <TemplateProcessor template={resolution} definitions={filteredDetails} onError={handleError} />
+                )}
+              </CardBody>
             </Card>
           </StackItem>
           {kbaDetail.publishedTitle !== 'N/A' && (
@@ -128,7 +164,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({
                     <InfoCircleIcon className="ins-c-report-details__icon" />
                     <strong>Additional info</strong>
                   </CardHeader>
-                  <CardBody>{<TemplateProcessor template={rule.more_info} definitions={details} onError={handleError} />}</CardBody>
+                  <CardBody>{<TemplateProcessor template={rule.more_info} definitions={filteredDetails} onError={handleError} />}</CardBody>
                 </Card>
               </StackItem>
             </React.Fragment>
