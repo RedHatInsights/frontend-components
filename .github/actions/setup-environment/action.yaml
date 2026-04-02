@@ -17,11 +17,11 @@ runs:
       with:
         node-version-file: '.nvmrc'
         registry-url: 'https://registry.npmjs.org'
-    - name: Update npm for trusted publishing
+    - name: Verify npm version
       shell: bash
       run: |
-        echo "=== Updating npm to support trusted publishing ==="
-        npm install -g npm@latest
+        echo "=== Verifying npm version (npm >=9.5.0 required for provenance) ==="
+        npm --version
     - name: Show final Node.js version
       shell: bash
       run: |
