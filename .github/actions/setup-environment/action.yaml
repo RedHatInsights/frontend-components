@@ -21,6 +21,10 @@ runs:
       shell: bash
       run: |
         echo "=== Updating npm to support trusted publishing ==="
+        # Node 22.22.2 bundles a broken npm (missing promise-retry); going straight to
+        # npm@latest fails. Bootstrap via 10.9.8 first — see https://github.com/nodejs/node/issues/62425
+        # and https://github.com/npm/cli/issues/9151 — remove the first line once fixed upstream.
+        npm install -g npm@10.9.8
         npm install -g npm@latest
     - name: Show final Node.js version
       shell: bash
