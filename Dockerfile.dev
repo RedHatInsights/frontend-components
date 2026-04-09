@@ -1,4 +1,4 @@
-FROM registry.redhat.io/ubi8/nodejs-16
+FROM registry.redhat.io/ubi9/nodejs-22
 USER root
 WORKDIR /docs
 COPY ./packages/components /docs/packages/components
