@@ -5,6 +5,7 @@ import yargs from 'yargs';
 // to force TS to copy the file
 import './tsconfig.template.json';
 import { validateFECConfig } from './common';
+import { checkTsConfig } from './fec-utils';
 
 const { lookup } = require('dns');
 const { promisify } = require('util');
@@ -183,6 +184,7 @@ async function run() {
   if (missingDependencies.length > 0) {
     patchTs(missingDependencies.join(' '));
   }
+  checkTsConfig(cwd);
   const missingHosts = await checkHosts();
   if (missingHosts.length > 0) {
     fecLogger(LogType.warn, `Found missing hosts`);
