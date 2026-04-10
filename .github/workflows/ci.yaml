@@ -1,6 +1,6 @@
 name: Frontend components CI pipeline
 permissions:
-  id-token: write
+  contents: read
 on:
   pull_request:
     branches:
@@ -114,6 +114,9 @@ jobs:
     runs-on: ubuntu-24.04
     needs: [install, build, unit-test, component-test, lint, commitlint, check-circular-imports]
     if: github.event_name != 'pull_request'
+    permissions:
+      contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
