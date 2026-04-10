@@ -14,9 +14,6 @@ runs:
   using: "composite"
   steps:
     - uses: './.github/actions/setup-environment'
-    - name: Upgrade npm for OIDC trusted publishing
-      shell: bash
-      run: npm install -g npm@latest
     - name: Install deps
       shell: bash
       run: npm i
