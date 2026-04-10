@@ -8,6 +8,7 @@ export type FilterChip = {
   name: string;
   isRead?: boolean;
   count?: number;
+  icon?: React.ReactNode;
 };
 
 export type FilterChipGroup = {
@@ -62,6 +63,7 @@ const FilterChips: React.FunctionComponent<FilterChipsProps> = ({
       {group.chips.map((chip) => (
         <Label
           key={chip.name}
+          icon={chip.icon}
           variant="outline"
           onClose={(event) => {
             event.stopPropagation();
@@ -91,6 +93,7 @@ const FilterChips: React.FunctionComponent<FilterChipsProps> = ({
           >
             <Label
               variant="outline"
+              icon={chip.icon}
               onClose={(event) => {
                 event.stopPropagation();
                 onDelete(event, [chip]);

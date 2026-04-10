@@ -1,6 +1,6 @@
 import React from 'react';
 import FilterChips from './FilterChips';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 const filters = [
   {
@@ -126,6 +126,25 @@ describe('FilterChips component', () => {
         ],
       );
       expect(onDelete).toHaveBeenCalledTimes(1);
+    });
+
+    it('passes icon through to grouped chips', () => {
+      const groupedIcon = <span data-testid="grouped-chip-icon">icon</span>;
+      render(
+        <FilterChips
+          showDeleteButton={false}
+          filters={[
+            {
+              category: 'Severity',
+              chips: [{ name: 'High', icon: groupedIcon }, { name: 'Medium' }],
+            },
+          ]}
+        />,
+      );
+
+      expect(screen.getByTestId('grouped-chip-icon')).toBeInTheDocument();
+      expect(screen.getByText('High')).toBeInTheDocument();
+      expect(screen.getByText('Medium')).toBeInTheDocument();
     });
   });
 });
