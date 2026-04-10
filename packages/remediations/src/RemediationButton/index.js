@@ -34,6 +34,8 @@ const RemediationButton = React.forwardRef((props, ref) => <BaseRemediationButto
 RemediationButton.propTypes = {
   /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
   fallback: PropTypes.node,
+  /** Optional tooltip text when the user may remediate; shown after permission/selection checks. */
+  buttonTooltipContent: PropTypes.string,
 };
 
 RemediationButton.defaultProps = {
