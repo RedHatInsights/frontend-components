@@ -1,3 +1,17 @@
+## 3.4.0 (2026-04-10)
+
+### 🚀 Features
+
+- **RHINENG-24047:** compliance conflict note in Advisor ([31de8406](https://github.com/RedHatInsights/frontend-components/commit/31de8406))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components to 7.3.1
+
+### ❤️ Thank You
+
+- Mark Huth
+
 ## 3.3.0 (2026-03-30)
 
 ### 🧱 Updated Dependencies

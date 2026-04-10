@@ -1,3 +1,7 @@
+## 4.8.3 (2026-04-10)
+
+This was a version bump only for @redhat-cloud-services/frontend-components-config-utilities to align it with other projects, there were no code changes.
+
 ## 4.8.2 (2026-03-18)
 
 This was a version bump only for @redhat-cloud-services/frontend-components-config-utilities to align it with other projects, there were no code changes.

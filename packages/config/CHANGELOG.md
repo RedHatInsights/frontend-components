@@ -1,3 +1,18 @@
+## 6.8.4 (2026-04-10)
+
+### 🩹 Fixes
+
+- **config:** bump webpack-dev-server to 5.2.3 ([#2299](https://github.com/RedHatInsights/frontend-components/pull/2299))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/tsc-transform-imports to 1.0.58
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.8.3
+
+### ❤️ Thank You
+
+- Řehoř
+
 ## 6.8.3 (2026-03-18)
 
 ### 🩹 Fixes

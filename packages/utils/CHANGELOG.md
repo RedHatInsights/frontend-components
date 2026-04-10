@@ -1,3 +1,9 @@
+## 7.2.1 (2026-04-10)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/types to 3.4.2
+
 ## 7.2.0 (2026-03-30)
 
 ### 🚀 Features

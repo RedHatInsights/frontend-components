@@ -1,3 +1,18 @@
+## 7.3.1 (2026-04-10)
+
+### 🩹 Fixes
+
+- **FilterChips:** allow passing icons to filter labels ([042384d2](https://github.com/RedHatInsights/frontend-components/commit/042384d2))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.2.1
+- Updated @redhat-cloud-services/types to 3.4.2
+
+### ❤️ Thank You
+
+- LightOfHeaven1994
+
 ## 7.3.0 (2026-03-30)
 
 ### 🧱 Updated Dependencies

@@ -1,3 +1,7 @@
+## 3.4.2 (2026-04-10)
+
+This was a version bump only for @redhat-cloud-services/types to align it with other projects, there were no code changes.
+
 ## 3.4.1 (2026-03-18)
 
 This was a version bump only for @redhat-cloud-services/types to align it with other projects, there were no code changes.
