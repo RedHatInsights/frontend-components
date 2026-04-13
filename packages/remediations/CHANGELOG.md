@@ -1,3 +1,13 @@
+## 4.4.0 (2026-04-13)
+
+### 🚀 Features
+
+- **RHINENG-24090:** allow other apps to pass Rem button tooltip content ([fd2dab64](https://github.com/RedHatInsights/frontend-components/commit/fd2dab64))
+
+### ❤️ Thank You
+
+- LightOfHeaven1994
+
 ## 4.3.1 (2026-04-10)
 
 ### 🧱 Updated Dependencies
