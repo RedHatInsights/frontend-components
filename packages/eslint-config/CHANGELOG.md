@@ -1,3 +1,7 @@
+## 3.1.0 (2026-04-23)
+
+This was a version bump only for @redhat-cloud-services/eslint-config-redhat-cloud-services to align it with other projects, there were no code changes.
+
 ## 3.0.33 (2026-04-10)
 
 This was a version bump only for @redhat-cloud-services/eslint-config-redhat-cloud-services to align it with other projects, there were no code changes.
