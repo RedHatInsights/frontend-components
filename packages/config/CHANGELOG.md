@@ -1,3 +1,19 @@
+## 6.9.1 (2026-04-24)
+
+### 🩹 Fixes
+
+- **config:** require config-utilities ^4.9.0 for shared module alignment ([17cf1a4e](https://github.com/RedHatInsights/frontend-components/commit/17cf1a4e))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/tsc-transform-imports to 1.1.1
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.9.1
+
+### ❤️ Thank You
+
+- Charles Mulder
+- Claude Sonnet 4.5
+
 ## 6.9.0 (2026-04-23)
 
 ### 🚀 Features

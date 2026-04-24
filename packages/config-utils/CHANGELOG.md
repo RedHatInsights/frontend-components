@@ -1,3 +1,7 @@
+## 4.9.1 (2026-04-24)
+
+This was a version bump only for @redhat-cloud-services/frontend-components-config-utilities to align it with other projects, there were no code changes.
+
 ## 4.9.0 (2026-04-23)
 
 ### 🚀 Features
