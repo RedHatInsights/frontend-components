@@ -5,7 +5,17 @@ import { hasFEOFeaturesEnabled, readFrontendCRD } from './feo/crd-check';
 import { FrontendCRD } from './feo/feo-types';
 import { LogType, fecLogger } from '.';
 
+/**
+ * Serves federated modules for local development via `fec static` command.
+ *
+ * Runs webpack in watch mode and serves output via http-server. Used when developing
+ * federated modules that will be consumed by insights-chrome.
+ *
+ * This is NOT used for production builds - see build-script.ts for `fec build`.
+ */
 function federate(argv: Record<string, any>, cwd: string) {
+  // Disable file hashing for static mode — content hashes are unnecessary during local development
+  process.env.FEC_STATIC = 'true';
   let configPath: string = argv.config || './node_modules/@redhat-cloud-services/frontend-components-config/bin/prod.webpack.config.js';
   if (typeof configPath !== 'string') {
     console.error('Invalid webpack config path!');

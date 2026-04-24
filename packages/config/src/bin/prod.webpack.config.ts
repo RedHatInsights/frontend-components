@@ -19,14 +19,22 @@ const {
   frontendCRDPath = path.resolve(rootFolder, 'deploy/frontend.yaml'),
   ...externalConfig
 } = fecConfig;
+const isFecStatic = process.env.FEC_STATIC?.toLowerCase() === 'true';
 const { config: webpackConfig, plugins } = config({
   rootFolder,
+  // Disable file hashing when FEC_STATIC=true (set by `fec static` command for local dev).
+  // Allows user override via fec.config.js (externalConfig spread comes after).
+  ...(isFecStatic ? { useFileHash: false } : {}),
   ...externalConfig,
   /** Do not use HMR for production builds */
   hotReload: false,
   /** Do configure/inti webpack dev server */
   deploymentBuild: true,
 });
+
+if (isFecStatic) {
+  fecLogger(LogType.info, 'FEC_STATIC=true: disabling file hashing (useFileHash=false)');
+}
 
 const frontendCrd = readFrontendCRD(frontendCRDPath);
 const feoEnabled = hasFEOFeaturesEnabled(frontendCrd);
