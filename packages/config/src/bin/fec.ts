@@ -146,6 +146,10 @@ const argv = yargs
         alias: 'sp',
         describe: 'Static assets server port',
         default: 8003,
+      })
+      .option('iop', {
+        type: 'boolean',
+        describe: 'Enable IOP mode and pass IOP=true to frontend-development-proxy',
       });
   })
   .command('build', 'Build production bundle', (yargs) => {

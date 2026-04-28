@@ -11,11 +11,13 @@ import serveChrome, { checkContainerRuntime, CONTAINER_NAME as CHROME_CONTAINTER
 const PROXY_URL = 'http://squid.corp.redhat.com:3128';
 const DEFAULT_LOCAL_ROUTE = 'host.docker.internal';
 const DEFAULT_CHROME_SERVER_PORT = 9998;
-const LATEST_IMAGE_TAG = 'latest';
+const DEFAULT_DEV_PROXY_IMAGE_TAG = 'latest';
 
 const DEV_PROXY_CONTAINER_PORT = 1337;
 const DEV_PROXY_CONTAINER_NAME = 'frontend-development-proxy';
+const LOCAL_PROXY_IMAGE_REPO = 'localhost/frontend-development-proxy:latest'
 const DEV_PROXY_IMAGE_REPO = `quay.io/redhat-user-workloads/hcc-platex-services-tenant/${DEV_PROXY_CONTAINER_NAME}`;
+const IOP_CUSTOM_ROUTES_CONTAINER_PATH = '/config/custom_routes.iop.json';
 
 let execBin: ContainerRuntime | undefined = undefined;
 let debug: boolean = false;
@@ -23,6 +25,18 @@ let debug: boolean = false;
 interface RouteConfig {
   url: string;
   is_chrome?: boolean;
+}
+
+function shouldEnableIOP(argv: { iop?: boolean }) {
+  if (typeof argv.iop === 'boolean') {
+    return argv.iop;
+  }
+
+  if (process.env.IOP === 'true') {
+    return true;
+  }
+
+  return (process.env.npm_lifecycle_event || '').toLowerCase() === 'iop';
 }
 
 function fecLogger(logType: LogType, ...data: any[]) {
@@ -62,9 +76,17 @@ function stopContainer(containerName: string) {
   }
 }
 
-function pullImage(containerName: string, repo: string, tag: string) {
+function pullImage(containerName: string, imageRef: string) {
   fecLogger(LogType.info, `Pulling the container: ${containerName}`);
-  execSync(`${execBin} pull ${repo}:${tag}`, debug ? { stdio: 'inherit' } : { stdio: [] });
+  execSync(`${execBin} pull ${imageRef}`, debug ? { stdio: 'inherit' } : { stdio: [] });
+}
+
+function getDevProxyImageRef() {
+  if (process.env.FEC_DEV_PROXY_IMAGE) {
+    return process.env.FEC_DEV_PROXY_IMAGE;
+  }
+
+  return `${DEV_PROXY_IMAGE_REPO}:${DEFAULT_DEV_PROXY_IMAGE_TAG}`;
 }
 
 function createRoutesConfig(fecConfig: any, cdnPath: string, port: string, SPAFallback: boolean, filename: string = 'routes.json'): string {
@@ -149,6 +171,7 @@ async function devProxyScript(
     chromeServerPort?: number | string;
     clouddotEnv?: string;
     config?: any;
+    iop?: boolean;
     port?: string;
     staticPort?: string;
   },
@@ -208,8 +231,12 @@ async function devProxyScript(
   execBin = checkContainerRuntime();
   stopContainer(DEV_PROXY_CONTAINER_NAME);
   stopContainer(CHROME_CONTAINTER_NAME);
-  pullImage(DEV_PROXY_CONTAINER_NAME, DEV_PROXY_IMAGE_REPO, LATEST_IMAGE_TAG);
+  const devProxyImageRef = getDevProxyImageRef();
+  if (process.env.FEC_DEV_PROXY_SKIP_PULL !== 'true') {
+    pullImage(DEV_PROXY_CONTAINER_NAME, devProxyImageRef);
+  }
   removeContainer(DEV_PROXY_CONTAINER_NAME);
+  removeContainer(CHROME_CONTAINTER_NAME);
 
   // Exec
   let commands: Command[] = [];
@@ -234,6 +261,24 @@ async function devProxyScript(
   try {
     const outputPath = webpackConfig.output.path;
     const proxyEnvVar = process.env.HCC_ENV === 'stage' ? '-e HTTPS_PROXY=$RH_PROXY_URL' : '';
+    const iopEnabled = shouldEnableIOP(argv);
+    const iopEnvVar = iopEnabled ? '-e IOP=true' : '';
+    const iopCustomRoutesHostPath = process.env.FEC_IOP_CUSTOM_ROUTES_PATH;
+    const iopCustomRoutesEnvVar = iopEnabled ? `-e LOCAL_CUSTOM_ROUTES_PATH=${IOP_CUSTOM_ROUTES_CONTAINER_PATH}` : '';
+    let iopCustomRoutesMountVar = '';
+    if (iopEnabled) {
+      if (iopCustomRoutesHostPath && fs.existsSync(iopCustomRoutesHostPath)) {
+        iopCustomRoutesMountVar = `-v "${iopCustomRoutesHostPath}:${IOP_CUSTOM_ROUTES_CONTAINER_PATH}:ro,Z"`;
+        fecLogger(LogType.info, `Mounting IOP custom routes from ${iopCustomRoutesHostPath}`);
+      } else if (iopCustomRoutesHostPath) {
+        fecLogger(
+          LogType.warn,
+          `FEC_IOP_CUSTOM_ROUTES_PATH is set, but file was not found at "${iopCustomRoutesHostPath}". Falling back to default IOP routes.`,
+        );
+      } else {
+        fecLogger(LogType.warn, 'IOP mode enabled without FEC_IOP_CUSTOM_ROUTES_PATH. Falling back to default IOP routes.');
+      }
+    }
     const proxyVerbose = fecConfig?.proxyVerbose ? `&& ${execBin} logs -f ${DEV_PROXY_CONTAINER_NAME}` : '';
     const appUrl = fecConfig?.appUrl;
 
@@ -275,7 +320,7 @@ async function devProxyScript(
           prefixColor: 'bgGreen',
         },
         {
-          command: `${execBin} run -d -e HCC_ENV=${process.env.HCC_ENV} -e HCC_ENV_URL=${process.env.HCC_ENV_URL} ${proxyEnvVar} -p ${argv.port || 1337}:${DEV_PROXY_CONTAINER_PORT} -v "${routesConfigPath}:/config/routes.json:ro,Z" --name ${DEV_PROXY_CONTAINER_NAME} ${DEV_PROXY_IMAGE_REPO}:${LATEST_IMAGE_TAG} ${proxyVerbose}`,
+          command: `${execBin} run -d -e HCC_ENV=${process.env.HCC_ENV} -e HCC_ENV_URL=${process.env.HCC_ENV_URL} ${proxyEnvVar} ${iopEnvVar} ${iopCustomRoutesEnvVar} -p ${argv.port || 1337}:${DEV_PROXY_CONTAINER_PORT} -v "${routesConfigPath}:/config/routes.json:ro,Z" ${iopCustomRoutesMountVar} --name ${DEV_PROXY_CONTAINER_NAME} ${devProxyImageRef} ${proxyVerbose}`,
           name: 'PROXY',
           env: { RH_PROXY_URL: PROXY_URL },
           prefixColor: 'bgMagenta',
