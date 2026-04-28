@@ -396,6 +396,7 @@ fec dev-proxy [options]
 - `--port, -p`: Proxy server port (default: 1337)
 - `--staticPort, -sp`: Static assets server port (default: 8003)
 - `--clouddotEnv`: Set platform environment ('stage', 'prod', 'dev', 'ephemeral')
+- `--iop`: Enable IOP mode and pass `IOP=true` to the `frontend-development-proxy` container
 
 **Requirements:**
 - Docker or Podman installed and available
@@ -412,7 +413,14 @@ fec dev-proxy --port 3000 --clouddotEnv stage
 
 # Start with custom static assets port
 fec dev-proxy --staticPort 9000
+
+# Enable IOP mode explicitly
+fec dev-proxy --iop
 ```
+
+If you prefer an npm script command like `npm run IOP`, this package auto-detects the npm lifecycle event and forwards `IOP=true` to `frontend-development-proxy` when the script name is `IOP`.
+To provide IOP-specific custom routes to the proxy container, set `FEC_IOP_CUSTOM_ROUTES_PATH` to an absolute path. In IOP mode, `fec dev-proxy` will mount this file to `/config/custom_routes.iop.json` and set `LOCAL_CUSTOM_ROUTES_PATH=/config/custom_routes.iop.json`.
+By default, `fec dev-proxy` uses `quay.io/redhat-user-workloads/hcc-platex-services-tenant/frontend-development-proxy:latest`. For local image testing, set `FEC_DEV_PROXY_IMAGE` (for example `localhost/frontend-development-proxy:latest`). If you do not want `fec dev-proxy` to pull the image before startup, set `FEC_DEV_PROXY_SKIP_PULL=true`.
 
 The command will:
 1. Pull and start the development proxy container
