@@ -1,3 +1,17 @@
+## 6.9.2 (2026-04-29)
+
+### 🩹 Fixes
+
+- **config:** default useFileHash to false in fec static ([a4d0db1b](https://github.com/RedHatInsights/frontend-components/commit/a4d0db1b))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.9.2
+
+### ❤️ Thank You
+
+- Charles Mulder
+
 ## 6.9.1 (2026-04-24)
 
 ### 🩹 Fixes
