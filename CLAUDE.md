@@ -96,6 +96,15 @@ Releases are **fully automated** — the commit type directly controls whether p
 4. If a commit includes both source code changes and non-code changes (e.g., a new feature plus updated docs), use `feat:` or `fix:` — the release is warranted by the code change.
 5. The commit scope (e.g., `feat(utils):`) is informational only and does not affect which packages are released. Nx determines affected packages by which files were changed, not by the scope.
 
+### Package Dependency Updates (config ↔ config-utils)
+
+When changes to `config-utils` are required by `config` package:
+
+1. **Initial PR**: Release both packages together (commit triggers releases for both)
+2. **Follow-up PR**: Pin config-utils version in `packages/config/package.json` after release
+
+**Note**: Don't pin version in initial PR — CI install happens before release, causing npm install failure for unreleased versions.
+
 ## Testing Strategy
 
 ### Component Testing (Preferred)
