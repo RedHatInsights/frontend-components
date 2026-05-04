@@ -203,6 +203,12 @@
         },
         "APIKeyDev": {
           "type": "string"
+        },
+        "autocaptureAPIKey": {
+          "type": "string"
+        },
+        "autocaptureAPIKeyDev": {
+          "type": "string"
         }
       },
       "required": [
