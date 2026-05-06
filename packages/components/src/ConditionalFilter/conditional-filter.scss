@@ -1,6 +1,10 @@
 @use '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins.scss' as m;
 
 .ins-c-conditional-filter {
+  &__split-items-space {
+    gap: var(--pf-t--global--spacer--xs);
+  }
+
   input {
     outline: none;
   }
@@ -73,6 +77,10 @@
     background: none;
     .pf-v6-c-menu__item-text{ color: var(--pf-t--global--color--brand--default); }
   }
+}
+
+.pf-v6-c-menu__item-check ~ .pf-v6-c-menu__item-select-icon {
+  display: none;
 }
 
 @media only screen and (max-width: 768px) {

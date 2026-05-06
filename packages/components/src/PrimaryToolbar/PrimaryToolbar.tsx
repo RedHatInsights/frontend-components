@@ -100,7 +100,7 @@ const PrimaryToolbar: React.FunctionComponent<React.PropsWithChildren<PrimaryToo
       id={id ? `${id}` : 'ins-primary-data-toolbar'}
       ouiaId="PrimaryToolbar"
     >
-      <ToolbarContent>
+      <ToolbarContent alignItems="center">
         {(expandAll || bulkSelect || filterConfig || dedicatedAction) && (
           <ToolbarGroup className="ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg" variant="filter-group">
             {expandAll && (

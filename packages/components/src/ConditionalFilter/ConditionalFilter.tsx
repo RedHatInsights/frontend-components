@@ -166,7 +166,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   return (
     <Wrapper>
       {isMobile && (
-        <ToolbarGroup className="ins-c-conditional-filter mobile">
+        <ToolbarGroup className="ins-c-conditional-filter mobile" gap={{ default: 'gapXs' }}>
           {items.map((activeItem, key) => (
             <ToolbarItem key={key}>{getActiveComponent(activeItem)}</ToolbarItem>
           ))}
@@ -192,7 +192,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
             </div>
           ) : (
             <Split
-              className={classNames('ins-c-conditional-filter', {
+              className={classNames('ins-c-conditional-filter', 'ins-c-conditional-filter__split-items-space', {
                 desktop: isMobile,
               })}
             >
