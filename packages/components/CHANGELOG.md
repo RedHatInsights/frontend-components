@@ -1,3 +1,13 @@
+## 7.4.2 (2026-05-07)
+
+### 🩹 Fixes
+
+- **SPUR:** fix styling for Toolbar items ([94d04cff](https://github.com/RedHatInsights/frontend-components/commit/94d04cff))
+
+### ❤️ Thank You
+
+- LightOfHeaven1994
+
 ## 7.4.1 (2026-04-24)
 
 ### 🧱 Updated Dependencies
