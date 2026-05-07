@@ -81,7 +81,7 @@ export interface ConditionalFilterProps<R extends HTMLElement = NonNullable<any>
   items: ConditionalFilterItem[];
   id?: string;
   isDisabled?: boolean;
-  innerRef?: React.RefObject<R>;
+  innerRef?: React.RefObject<R | null>;
 }
 
 const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({

@@ -51,7 +51,7 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
 
   const internalOnSelect = () => setIsOpen((prev) => !prev);
 
-  const conditionallyTooltip = (children: React.ReactElement) => {
+  const conditionallyTooltip = (children: React.ReactElement<any>) => {
     return <React.Fragment>{tooltipText ? <Tooltip content={tooltipText}>{children}</Tooltip> : children}</React.Fragment>;
   };
 
