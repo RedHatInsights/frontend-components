@@ -30,6 +30,9 @@ export type ChromeEntryModule = {
 
 type ChromeModuleAnalytics = {
   APIKey: string;
+  APIKeyDev?: string;
+  autocaptureAPIKey?: string;
+  autocaptureAPIKeyDev?: string;
 };
 
 export type ChromeModule = {
