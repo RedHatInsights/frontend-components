@@ -1,3 +1,14 @@
+## 4.10.0 (2026-05-07)
+
+### 🚀 Features
+
+- **config-utils:** add autocapture API key fields to analytics schema ([84b44e23](https://github.com/RedHatInsights/frontend-components/commit/84b44e23))
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
 ## 4.9.2 (2026-04-29)
 
 ### 🩹 Fixes
