@@ -107,7 +107,8 @@ async function devScript(
       }
     }
 
-    webpackProcess = spawn(`npm exec -- webpack serve -c ${configPath}`, [], {
+    // Ensure ipv4 DNS is hit first to avoid ENOTFOUND errors on systems where IPv6 is preferred but non-functional
+    webpackProcess = spawn(`NODE_OPTIONS=--dns-result-order=ipv4first npm exec -- webpack serve -c ${configPath}`, [], {
       stdio: [process.stdout, process.stdout, process.stdout],
       cwd,
       shell: true,
