@@ -13,7 +13,7 @@ exports[`PrimaryToolbar should render custom className 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       />
     </div>
     <div
@@ -41,7 +41,7 @@ exports[`PrimaryToolbar should render custom id 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       />
     </div>
     <div
@@ -70,7 +70,7 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -149,7 +149,7 @@ exports[`PrimaryToolbar should render no data 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       />
     </div>
     <div
@@ -177,7 +177,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -238,7 +238,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
             class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
           >
             <div
-              class="pf-v6-l-split ins-c-conditional-filter"
+              class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
             >
               <div
                 class="pf-v6-l-split__item"
@@ -927,7 +927,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -1012,7 +1012,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -1021,7 +1021,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
             class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
           >
             <div
-              class="pf-v6-l-split ins-c-conditional-filter"
+              class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
             >
               <div
                 class="pf-v6-l-split__item"
@@ -1167,7 +1167,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -1228,7 +1228,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
             class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
           >
             <div
-              class="pf-v6-l-split ins-c-conditional-filter"
+              class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
             >
               <div
                 class="pf-v6-l-split__item"

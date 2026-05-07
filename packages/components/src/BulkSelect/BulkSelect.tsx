@@ -110,7 +110,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
                   'ins-c-bulk-select__selected': !hasError,
                 })}
               >
-                MenuItemected
+                {`${count} selected`}
               </DropdownItem>
             )}
             {items.map((oneItem, key) => (

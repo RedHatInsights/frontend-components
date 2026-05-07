@@ -3,7 +3,7 @@
 exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
 <div>
   <div
-    class="pf-v6-l-split ins-c-conditional-filter"
+    class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
   >
     <div
       class="pf-v6-l-split__item"
@@ -180,7 +180,7 @@ exports[`ConditionalFilter render should render correctly 1`] = `
 exports[`ConditionalFilter render should render correctly checkbox with value checkbox-filter 1`] = `
 <div>
   <div
-    class="pf-v6-l-split ins-c-conditional-filter"
+    class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
   >
     <div
       class="pf-v6-l-split__item"
@@ -295,7 +295,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
 exports[`ConditionalFilter render should render correctly no value with value  1`] = `
 <div>
   <div
-    class="pf-v6-l-split ins-c-conditional-filter"
+    class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
   >
     <div
       class="pf-v6-l-split__item"
@@ -418,7 +418,7 @@ exports[`ConditionalFilter render should render correctly no value with value  1
 exports[`ConditionalFilter render should render correctly radio filter with value radio-filter 1`] = `
 <div>
   <div
-    class="pf-v6-l-split ins-c-conditional-filter"
+    class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
   >
     <div
       class="pf-v6-l-split__item"
@@ -533,7 +533,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
 exports[`ConditionalFilter render should render correctly simple text 1 with value simple-text-1 1`] = `
 <div>
   <div
-    class="pf-v6-l-split ins-c-conditional-filter"
+    class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
   >
     <div
       class="pf-v6-l-split__item"
@@ -656,7 +656,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
 exports[`ConditionalFilter render should render correctly simple text 2 with value simple-text-2 1`] = `
 <div>
   <div
-    class="pf-v6-l-split ins-c-conditional-filter"
+    class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
   >
     <div
       class="pf-v6-l-split__item"
@@ -779,7 +779,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
 exports[`ConditionalFilter render should render correctly with config - each item as disabled 1`] = `
 <div>
   <div
-    class="pf-v6-l-split ins-c-conditional-filter"
+    class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
   >
     <div
       class="pf-v6-l-split__item"
@@ -903,7 +903,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
 exports[`ConditionalFilter render should render correctly with config 1`] = `
 <div>
   <div
-    class="pf-v6-l-split ins-c-conditional-filter"
+    class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
   >
     <div
       class="pf-v6-l-split__item"
@@ -1026,7 +1026,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
 exports[`ConditionalFilter render should render correctly with one filter 1`] = `
 <div>
   <div
-    class="pf-v6-l-split ins-c-conditional-filter"
+    class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
   >
     <div
       class="pf-v6-l-split__item pf-m-fill"
@@ -1084,7 +1084,7 @@ exports[`ConditionalFilter render should render correctly with one filter 1`] = 
 exports[`ConditionalFilter render should render correctly with with the active label hidden 1`] = `
 <div>
   <div
-    class="pf-v6-l-split ins-c-conditional-filter"
+    class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
   >
     <div
       class="pf-v6-l-split__item"

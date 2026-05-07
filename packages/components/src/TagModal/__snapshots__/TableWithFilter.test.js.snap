@@ -13,7 +13,7 @@ exports[`TableWithFilter should render loading and pagination 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__item ins-c-primary-toolbar__pagination"
@@ -249,7 +249,7 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -787,7 +787,7 @@ exports[`TableWithFilter should render with data and bulk select without calcula
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -1325,7 +1325,7 @@ exports[`TableWithFilter should render with data and filters 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -1334,7 +1334,7 @@ exports[`TableWithFilter should render with data and filters 1`] = `
             class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
           >
             <div
-              class="pf-v6-l-split ins-c-conditional-filter"
+              class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
             >
               <div
                 class="pf-v6-l-split__item pf-m-fill"
@@ -1613,7 +1613,7 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__item ins-c-primary-toolbar__pagination"
