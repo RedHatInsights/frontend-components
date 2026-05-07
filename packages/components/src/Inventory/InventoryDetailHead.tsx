@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, type JSX } from 'react';
 import { ScalprumComponent } from '@scalprum/react-core';
 import { useStore } from 'react-redux';
 import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
