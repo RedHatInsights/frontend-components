@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import DownloadButton from './DownloadButton';
 import { DropdownItem } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 
 const extraItems = [<DropdownItem key="extra-1" component="button"></DropdownItem>];
 
