@@ -1,3 +1,15 @@
+## 6.10.1 (2026-05-11)
+
+### 🩹 Fixes
+
+- **config:** use env option for NODE_OPTIONS instead of shell prefix ([d2636e27](https://github.com/RedHatInsights/frontend-components/commit/d2636e27))
+- **config:** add ipv4-first DNS resolution to webpack dev server ([521501c5](https://github.com/RedHatInsights/frontend-components/commit/521501c5))
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
 ## 6.10.0 (2026-05-07)
 
 ### 🧱 Updated Dependencies
