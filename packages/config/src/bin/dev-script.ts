@@ -107,20 +107,24 @@ async function devScript(
       }
     }
 
-    // Ensure ipv4 DNS is hit first to avoid ENOTFOUND errors on systems where IPv6 is preferred but non-functional
-    webpackProcess = spawn(`NODE_OPTIONS=--dns-result-order=ipv4first npm exec -- webpack serve -c ${configPath}`, [], {
+    // Merge --dns-result-order=ipv4first with any existing NODE_OPTIONS to avoid ENOTFOUND errors
+    // on systems where IPv6 is preferred but non-functional
+    const mergedNodeOptions = [process.env.NODE_OPTIONS, '--dns-result-order=ipv4first'].filter(Boolean).join(' ');
+
+    webpackProcess = spawn(`npm exec -- webpack serve -c ${configPath}`, [], {
       stdio: [process.stdout, process.stdout, process.stdout],
       cwd,
       shell: true,
+      env: { ...process.env, NODE_OPTIONS: mergedNodeOptions },
     });
     if (fecConfig.interceptChromeConfig === true) {
       const interceptorServerPath = resolve(__dirname, './csc-interceptor-server.js');
       const interceptorServerArgs = [interceptorServerPath];
-      // Ensure ipv4 DNS is hit first. Currently there are issues with IPV4
-      interceptorProcess = spawn('NODE_OPTIONS=--dns-result-order=ipv4first node', interceptorServerArgs, {
+      interceptorProcess = spawn('node', interceptorServerArgs, {
         stdio: [process.stdout, process.stdout, process.stdout],
         cwd,
         shell: true,
+        env: { ...process.env, NODE_OPTIONS: mergedNodeOptions },
       });
     }
   } catch (error) {
