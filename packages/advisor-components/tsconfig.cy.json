@@ -7,6 +7,6 @@
   "include": [
     "./cypress/**/*.tsx",
     "./cypress/**/*.ts",
-    "./cypress/**/*.js",
+    "./cypress/**/*.js"
   ]
 }

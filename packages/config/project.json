@@ -7,7 +7,7 @@
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "@redhat-cloud-services/frontend-components-config-utilities:build"],
       "options": {
         "rootDir": "packages/config/src",
         "main": "packages/config/src/index.ts",
