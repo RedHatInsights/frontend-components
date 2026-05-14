@@ -6,13 +6,14 @@ import { Spinner } from '@patternfly/react-core/dist/dynamic/components/Spinner'
 import InventoryLoadError from './InventoryLoadError';
 import classNames from 'classnames';
 import WithHistory from './WithHistory';
+import { History } from 'history';
 
 interface BaseInventoryDetailProps {
   fallback?: React.ReactNode;
-  innerRef?: React.Ref<any>;
-  component?: string;
+  innerRef?: React.Ref<unknown>;
+  component?: keyof JSX.IntrinsicElements;
   className?: string;
-  history?: any;
+  history?: History;
 }
 
 const BaseInventoryDetail: React.FC<BaseInventoryDetailProps> = ({
@@ -28,7 +29,7 @@ const BaseInventoryDetail: React.FC<BaseInventoryDetailProps> = ({
   ...props
 }) => {
   const store = useStore();
-  const Component = component as keyof JSX.IntrinsicElements;
+  const Component = component;
   return (
     <Component className={classNames(className, 'inventory')}>
       <Suspense fallback={fallback}>
@@ -38,7 +39,7 @@ const BaseInventoryDetail: React.FC<BaseInventoryDetailProps> = ({
           appName="inventory"
           module="./InventoryDetail"
           scope="inventory"
-          ErrorComponent={<InventoryLoadError component="InventoryDetailHead" {...props} />}
+          ErrorComponent={<InventoryLoadError component="InventoryDetail" {...props} />}
           ref={innerRef}
           {...props}
         />
@@ -51,7 +52,7 @@ export interface InventoryDetailProps {
   /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
   fallback?: React.ReactNode;
   /** Optional wrapper component */
-  component?: string;
+  component?: keyof JSX.IntrinsicElements;
   /** Optional classname applied to wrapper component */
   className?: string;
 }
@@ -61,13 +62,13 @@ export interface InventoryDetailProps {
  *
  * This component shows complete inventory detail with system info and app's detail in tab(s).
  */
-const InventoryDetail = React.forwardRef<any, InventoryDetailProps>((props, ref) => (
+const InventoryDetail = React.forwardRef<unknown, InventoryDetailProps>((props, ref) => (
   <BaseInventoryDetail innerRef={ref} {...props} />
 ));
 
 InventoryDetail.displayName = 'InventoryDetail';
 
-const CompatibilityWrapper = React.forwardRef<any, InventoryDetailProps>((props, ref) => (
+const CompatibilityWrapper = React.forwardRef<unknown, InventoryDetailProps>((props, ref) => (
   <WithHistory innerRef={ref} Component={InventoryDetail} {...props} />
 ));
 

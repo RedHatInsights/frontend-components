@@ -6,13 +6,14 @@ import { Spinner } from '@patternfly/react-core/dist/dynamic/components/Spinner'
 import InventoryLoadError from './InventoryLoadError';
 import classNames from 'classnames';
 import WithHistory from './WithHistory';
+import { History } from 'history';
 
 interface BaseInventoryDetailHeadProps {
   fallback?: React.ReactNode;
   innerRef?: React.Ref<unknown>;
-  component?: string;
+  component?: keyof JSX.IntrinsicElements;
   className?: string;
-  history?: any;
+  history?: History;
 }
 
 const BaseInventoryDetailHead: React.FC<BaseInventoryDetailHeadProps> = ({
@@ -28,7 +29,7 @@ const BaseInventoryDetailHead: React.FC<BaseInventoryDetailHeadProps> = ({
   ...props
 }) => {
   const store = useStore();
-  const Component = component as keyof JSX.IntrinsicElements;
+  const Component = component;
   return (
     <Component className={classNames(className, 'inventory')}>
       <Suspense fallback={fallback}>
@@ -51,7 +52,7 @@ export interface InventoryDetailHeadProps {
   /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
   fallback?: React.ReactNode;
   /** Optional wrapper component */
-  component?: string;
+  component?: keyof JSX.IntrinsicElements;
   /** Optional classname applied to wrapper component */
   className?: string;
 }
