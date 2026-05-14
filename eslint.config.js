@@ -36,9 +36,8 @@ module.exports = defineConfig(
       '!packages/docs/**/*.js',
       '!packages/*/src/**/*.js',
       'src/SmartComponents/SamplePage/',
-      'node_modules',
-      '**/*',
-      '!eslint.config.js',
+      'dist/',
+      '**/node_modules/',
     ],
     plugins: {
       rulesdir: rulesDirPlugin,
@@ -49,7 +48,6 @@ module.exports = defineConfig(
       react: reactPlugin,
       json: jsonPlugin,
     },
-    extends: ['json/recommended'],
     languageOptions: {
       globals: {
         insights: 'readonly',
@@ -111,4 +109,5 @@ module.exports = defineConfig(
       cypress: require('eslint-plugin-cypress'),
     },
   },
+  jsonPlugin.configs.recommended,
 );
