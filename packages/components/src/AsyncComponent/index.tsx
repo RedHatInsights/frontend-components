@@ -13,7 +13,7 @@ export type AsyncComponentProps<T extends object = object> = {
   /** Optional scope, if not passed appName is used. */
   scope: string;
   /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
-  fallback?: React.ReactElement;
+  fallback?: React.ReactElement<any>;
   /** Optional wrapper component */
   component?: keyof JSX.IntrinsicElements;
 } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> &
