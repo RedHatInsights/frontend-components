@@ -6,13 +6,14 @@ import { Spinner } from '@patternfly/react-core/dist/dynamic/components/Spinner'
 import InventoryLoadError from './InventoryLoadError';
 import classNames from 'classnames';
 import WithHistory from './WithHistory';
+import { History } from 'history';
 
 interface BaseInvTableProps {
   fallback?: React.ReactNode;
-  innerRef?: React.Ref<HTMLElement>;
-  component?: string;
+  innerRef?: React.Ref<unknown>;
+  component?: keyof JSX.IntrinsicElements;
   className?: string;
-  history?: any;
+  history?: History;
 }
 
 const BaseInvTable: React.FC<BaseInvTableProps> = ({
@@ -28,7 +29,7 @@ const BaseInvTable: React.FC<BaseInvTableProps> = ({
   ...props
 }) => {
   const store = useStore();
-  const Component = component as keyof JSX.IntrinsicElements;
+  const Component = component;
   return (
     <Component className={classNames(className, 'inventory')}>
       <Suspense fallback={fallback}>
@@ -51,7 +52,7 @@ export interface InventoryTableProps {
   /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
   fallback?: React.ReactNode;
   /** Optional wrapper component */
-  component?: string;
+  component?: keyof JSX.IntrinsicElements;
   /** Optional classname applied to wrapper component */
   className?: string;
 }
@@ -61,13 +62,13 @@ export interface InventoryTableProps {
  *
  * This component shows systems table connected to redux.
  */
-const InvTable = React.forwardRef<HTMLElement, InventoryTableProps>((props, ref) => (
+const InvTable = React.forwardRef<unknown, InventoryTableProps>((props, ref) => (
   <BaseInvTable innerRef={ref} {...props} />
 ));
 
 InvTable.displayName = 'InvTable';
 
-const CompatibilityWrapper = React.forwardRef<HTMLElement, InventoryTableProps>((props, ref) => (
+const CompatibilityWrapper = React.forwardRef<unknown, InventoryTableProps>((props, ref) => (
   <WithHistory innerRef={ref} Component={InvTable} {...props} />
 ));
 
