@@ -23,11 +23,11 @@
     "test:unit": {
       "dependsOn": ["^test:unit"],
       "cache": true
-    },   
+    },
     "test:component": {
       "dependsOn": ["^test:component"],
       "cache": true
-    },   
+    },
     "version": {
       "dependsOn": ["^version"]
     }
@@ -110,13 +110,10 @@
       "versionActionsOptions": {
         "skipLockFileUpdate": false
       },
-      "manifestRootsToUpdate": [
-        "{projectRoot}",
-        "dist/{projectName}"
-      ]
+      "manifestRootsToUpdate": ["{projectRoot}", "dist/{projectName}"]
     },
     "conventionalCommits": {
-        "useCommitScope": false
+      "useCommitScope": false
     },
     "changelog": {
       "workspaceChangelog": false,
@@ -143,5 +140,6 @@
         "linter": "eslint"
       }
     }
-  }
+  },
+  "analytics": false
 }

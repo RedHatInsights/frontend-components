@@ -30,7 +30,32 @@ This is a monorepo of Red Hat Cloud Services components for React.js application
 
 ### Prerequisites
 
-Node and npm versions are defined in `package.json` (engines field) and `.nvmrc`.
+Recommended node and npm versions are defined in `package.json` (`packageManager` field) and `.nvmrc`.
+Minimum node and npm versions are defined in `package.json` (engines field).
+
+**Before running npm commands, ensure correct versions:**
+
+```bash
+# Check required Node version
+cat .nvmrc
+
+# Check current Node version
+node --version
+
+# Switch to required Node version
+nvm use
+
+# Check required npm version
+grep packageManager package.json
+
+# Check current npm version
+npm --version
+
+# Enable required npm version (run after each nvm use)
+corepack enable npm
+```
+
+**Note:** `corepack enable npm` must be run once per Node version, so run it after switching Node versions with `nvm use`.
 
 ### Installation
 

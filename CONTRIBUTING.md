@@ -4,6 +4,7 @@
 
 - [Type of packages](#type-of-packages)
 - [Git account requirements](#git-account-requirements)
+- [Prerequisites](#prerequisites)
 - [Testing](#testing)
 - [Commit messages](#commit-messages)
 - [PR checks](#pr-checks)
@@ -96,6 +97,40 @@ Many contributors already have rights to review and merge pull requests. Dues to
 ## Release process
 
 The release process is fully automated and triggered after a pull request is merged. We rely on the conventional commit specification to update package version numbers.
+
+## Prerequisites
+
+This project requires specific Node.js and npm versions defined in `.nvmrc` and `package.json` (`packageManager` field).
+
+### Setting up Node.js and npm
+
+**Before running npm commands:**
+
+```bash
+# Check required Node version
+cat .nvmrc
+
+# Check current Node version
+node --version
+
+# Switch to required Node version
+nvm use
+
+# Check required npm version
+grep packageManager package.json
+
+# Check current npm version
+npm --version
+
+# Enable required npm version (run after each nvm use)
+corepack enable npm
+```
+
+**Note:** `corepack enable npm` must be run once per Node version, so run it after switching Node versions with `nvm use`.
+
+**Recommended tools:**
+- [nvm](https://github.com/nvm-sh/nvm) or [fnm](https://github.com/Schniz/fnm) for Node version management
+- [corepack](https://nodejs.org/api/corepack.html) (included with Node.js 16.9+) for npm version management
 
 ## Local development
 

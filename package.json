@@ -2,9 +2,10 @@
   "name": "@redhat-cloud-services/source",
   "version": "0.0.1",
   "engines": {
-    "node": ">=24.0.0",
+    "node": ">=20.0.0",
     "npm": ">=11.0.0"
   },
+  "packageManager": "npm@11.14.1",
   "private": true,
   "workspaces": [
     "packages/chrome",

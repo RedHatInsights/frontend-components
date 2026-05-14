@@ -13,5 +13,6 @@ Monorepo of Red Hat Cloud services Components for applications in a React.js env
 * [testing](https://github.com/RedHatInsights/frontend-components/tree/master/packages/testing) - Testing utilities.
 * [advisor-components](https://github.com/RedHatInsights/frontend-components/tree/master/packages/advisor-components#readme) - a library of Advisor components (rule content, report details, charts, etc.).
 
+## Contributing
 
-## [Please read our contribution guide](./CONTRIBUTING.md)
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for development setup, testing guidelines, and contribution workflow.
