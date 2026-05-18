@@ -1,3 +1,17 @@
+## 2.2.2 (2026-05-18)
+
+### 🩹 Fixes
+
+- **components:** update @scalprum packages and enforce Node 24/npm 11 requirements ([60db421d](https://github.com/RedHatInsights/frontend-components/commit/60db421d))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/types to 3.5.2
+
+### ❤️ Thank You
+
+- Charles Mulder
+
 ## 2.2.1 (2026-04-24)
 
 ### 🧱 Updated Dependencies

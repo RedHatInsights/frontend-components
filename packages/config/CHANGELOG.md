@@ -1,3 +1,18 @@
+## 6.10.2 (2026-05-18)
+
+### 🩹 Fixes
+
+- **components:** update @scalprum packages and enforce Node 24/npm 11 requirements ([60db421d](https://github.com/RedHatInsights/frontend-components/commit/60db421d))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/tsc-transform-imports to 1.1.2
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.10.1
+
+### ❤️ Thank You
+
+- Charles Mulder
+
 ## 6.10.1 (2026-05-11)
 
 ### 🩹 Fixes

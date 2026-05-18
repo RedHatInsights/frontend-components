@@ -1,3 +1,18 @@
+## 7.4.3 (2026-05-18)
+
+### 🩹 Fixes
+
+- **components:** update @scalprum packages and enforce Node 24/npm 11 requirements ([60db421d](https://github.com/RedHatInsights/frontend-components/commit/60db421d))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.3.2
+- Updated @redhat-cloud-services/types to 3.5.2
+
+### ❤️ Thank You
+
+- Charles Mulder
+
 ## 7.4.2 (2026-05-07)
 
 ### 🩹 Fixes

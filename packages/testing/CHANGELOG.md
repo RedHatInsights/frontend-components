@@ -1,3 +1,13 @@
+## 1.1.2 (2026-05-18)
+
+### 🩹 Fixes
+
+- **components:** update @scalprum packages and enforce Node 24/npm 11 requirements ([60db421d](https://github.com/RedHatInsights/frontend-components/commit/60db421d))
+
+### ❤️ Thank You
+
+- Charles Mulder
+
 ## 1.1.1 (2026-04-24)
 
 This was a version bump only for @redhat-cloud-services/frontend-components-testing to align it with other projects, there were no code changes.
