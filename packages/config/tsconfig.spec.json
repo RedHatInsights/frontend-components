@@ -6,8 +6,8 @@
     "types": ["jest", "node"],
     "paths": {
       "@redhat-cloud-services/frontend-components-config-utilities": ["packages/config-utils/src"],
-      "@redhat-cloud-services/frontend-components-config-utilities/*": ["packages/config-utils/src/*"],
-    },
+      "@redhat-cloud-services/frontend-components-config-utilities/*": ["packages/config-utils/src/*"]
+    }
   },
   "include": [
     "jest.config.ts",

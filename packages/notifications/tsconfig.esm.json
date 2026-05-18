@@ -6,7 +6,7 @@
       "types": ["node"],
       "module": "ES2015",
       "target": "ES5",
-      "rootDir": "./src",
+      "rootDir": "./src"
     },
     "include": ["./src/**/*.ts"],
     "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts", "src/**/*.test.tsx", "src/**/*.test.jsx"]

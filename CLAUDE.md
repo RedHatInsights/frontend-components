@@ -30,10 +30,7 @@ This is a monorepo of Red Hat Cloud Services components for React.js application
 
 ### Prerequisites
 
-```bash
-node >= 20.0.0
-npm >= 8.0.0
-```
+Node and npm versions are defined in `package.json` (engines field) and `.nvmrc`.
 
 ### Installation
 
