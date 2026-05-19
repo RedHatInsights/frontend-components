@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import WithHistory from './WithHistory';
 import { History } from 'history';
 
-interface BaseInvTableProps {
+interface BaseInvTableProps extends Record<string, unknown> {
   fallback?: React.ReactNode;
   innerRef?: React.Ref<unknown>;
   component?: keyof JSX.IntrinsicElements;
@@ -48,7 +48,7 @@ const BaseInvTable: React.FC<BaseInvTableProps> = ({
   );
 };
 
-export interface InventoryTableProps {
+export interface InventoryTableProps extends Record<string, unknown> {
   /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
   fallback?: React.ReactNode;
   /** Optional wrapper component */

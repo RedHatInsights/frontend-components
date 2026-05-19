@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import WithHistory from './WithHistory';
 import { History } from 'history';
 
-interface BaseDetailWrapperProps {
+interface BaseDetailWrapperProps extends Record<string, unknown> {
   fallback?: React.ReactNode;
   innerRef?: React.Ref<unknown>;
   component?: keyof JSX.IntrinsicElements;
@@ -48,7 +48,7 @@ const BaseDetailWrapper: React.FC<BaseDetailWrapperProps> = ({
   );
 };
 
-export interface DetailWrapperProps {
+export interface DetailWrapperProps extends Record<string, unknown> {
   /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
   fallback?: React.ReactNode;
   /** Optional wrapper component */
