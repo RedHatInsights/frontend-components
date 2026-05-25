@@ -78,4 +78,14 @@ describe('Notification Store', () => {
     expect(callback1).toHaveBeenCalledTimes(1);
     expect(callback2).toHaveBeenCalledTimes(2);
   });
+
+  it('should remove notifications after clearNotifications', () => {
+    const store = createStore();
+    store.addNotification({ title: 'Before clear', variant: 'info' });
+    store.clearNotifications();
+    store.addNotification({ title: 'After clear', variant: 'success' });
+    const id = store.getNotifications()[0].id;
+    store.removeNotification(id);
+    expect(store.getNotifications()).toHaveLength(0);
+  });
 });
