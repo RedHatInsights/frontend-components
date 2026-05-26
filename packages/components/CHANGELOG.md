@@ -1,3 +1,17 @@
+## 7.6.0 (2026-05-26)
+
+### 🚀 Features
+
+- **components:** widen React peer deps, remove prop-types ([0f15133c](https://github.com/RedHatInsights/frontend-components/commit/0f15133c))
+
+### 🩹 Fixes
+
+- **components:** add explicit ReactElement<any> for React 19 type changes ([c2816565](https://github.com/RedHatInsights/frontend-components/commit/c2816565))
+
+### ❤️ Thank You
+
+- Charles Mulder
+
 ## 7.5.0 (2026-05-26)
 
 ### 🚀 Features
