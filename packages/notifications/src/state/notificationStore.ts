@@ -40,7 +40,7 @@ export function createStore() {
     }
   };
   const clearNotifications = () => {
-    store.notifications = [];
+    notifications.length = 0;
   };
   const subscribe = (callback: () => void) => {
     const id = window.crypto.randomUUID();
