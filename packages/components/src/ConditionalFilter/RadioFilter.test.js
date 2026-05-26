@@ -2,7 +2,7 @@ import React from 'react';
 import Radio from './RadioFilter';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 
 const config = {
   items: [

@@ -21,7 +21,7 @@ const relativeTimeTable = [
 
 const exact = (value: Date) => value.toUTCString().split(',')[1].slice(0, -7).trim();
 
-export const addTooltip = (date: React.ReactNode, element?: React.ReactElement, tooltipProps?: TooltipProps, extraTitle: React.ReactNode = '') => (
+export const addTooltip = (date: React.ReactNode, element?: React.ReactElement<any>, tooltipProps?: TooltipProps, extraTitle: React.ReactNode = '') => (
   <Tooltip
     {...tooltipProps}
     content={

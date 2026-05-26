@@ -1,5 +1,5 @@
 import React from 'react';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 import Actions, { actionPropsGenerator, overflowActionsMapper } from './Actions';
 import { render, screen } from '@testing-library/react';
 
