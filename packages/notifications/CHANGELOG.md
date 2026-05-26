@@ -1,3 +1,13 @@
+## 6.6.4 (2026-05-26)
+
+### 🩹 Fixes
+
+- **RHINENG-24556:** fix remove after clearNotifications ([391b8bba](https://github.com/RedHatInsights/frontend-components/commit/391b8bba))
+
+### ❤️ Thank You
+
+- Anastasiia Surai
+
 ## 6.6.3 (2026-05-18)
 
 ### 🩹 Fixes
