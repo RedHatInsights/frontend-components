@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 
-const RemediationLoadError = ({ component, ...props }) => {
+export interface RemediationLoadErrorProps {
+  component?: string;
+}
+
+const RemediationLoadError = ({ component, ...props }: RemediationLoadErrorProps) => {
   useEffect(() => {
     console.error(`Unable to load remedaitions component. Failed to load ${component}.`, props);
   }, []);
@@ -12,10 +15,6 @@ const RemediationLoadError = ({ component, ...props }) => {
       <code>More info can be found in browser console output.</code>
     </div>
   );
-};
-
-RemediationLoadError.propTypes = {
-  component: PropTypes.string,
 };
 
 export default RemediationLoadError;
