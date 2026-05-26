@@ -1,3 +1,20 @@
+## 7.5.0 (2026-05-26)
+
+### 🚀 Features
+
+- **components:** convert Inventory components to TypeScript ([75cce9cf](https://github.com/RedHatInsights/frontend-components/commit/75cce9cf))
+
+### 🩹 Fixes
+
+- add accessibility label to spinner ([a4ea5cbe](https://github.com/RedHatInsights/frontend-components/commit/a4ea5cbe))
+- **components:** allow arbitrary props in Inventory component types ([89c40935](https://github.com/RedHatInsights/frontend-components/commit/89c40935))
+- **components:** improve type safety and error reporting in Inventory components ([f77c1250](https://github.com/RedHatInsights/frontend-components/commit/f77c1250))
+
+### ❤️ Thank You
+
+- Charles Mulder
+- NachoBot
+
 ## 7.4.3 (2026-05-18)
 
 ### 🩹 Fixes
