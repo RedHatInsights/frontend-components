@@ -19,7 +19,7 @@ interface BaseInventoryDetailProps extends Record<string, unknown> {
 const BaseInventoryDetail: React.FC<BaseInventoryDetailProps> = ({
   fallback = (
     <Bullseye className="pf-v6-u-p-lg">
-      <Spinner size="xl" />
+      <Spinner size="xl" aria-label="Loading" />
     </Bullseye>
   ),
   component = 'section',

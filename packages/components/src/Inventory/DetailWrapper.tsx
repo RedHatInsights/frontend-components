@@ -19,7 +19,7 @@ interface BaseDetailWrapperProps extends Record<string, unknown> {
 const BaseDetailWrapper: React.FC<BaseDetailWrapperProps> = ({
   fallback = (
     <Bullseye className="pf-v6-u-p-lg">
-      <Spinner size="xl" />
+      <Spinner size="xl" aria-label="Loading" />
     </Bullseye>
   ),
   component = 'section',
