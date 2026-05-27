@@ -1216,4 +1216,178 @@ describe('NavigationInterceptor', () => {
       expect(container?.routes?.find(r => r.id === 'another-remote')).toBeDefined(); // Remote preserved
     });
   });
+
+  describe('Adding new top-level items to existing bundle segment', () => {
+    it('should include new top-level nav items from a partially-referenced bundle segment', () => {
+      const bundleName = 'iam';
+      const frontendName = 'rbac';
+
+      // CRD has a bundle segment with two top-level items:
+      // 'access-management' (exists in remote) and 'new-section' (NOT in remote)
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: { name: frontendName },
+            spec: {
+              frontend: { paths: ['/apps/rbac'] },
+              module: { manifestLocation: '/apps/rbac/fed-mods.json' },
+              bundleSegments: [
+                {
+                  bundleId: bundleName,
+                  segmentId: 'module-rbac-ui',
+                  position: 100,
+                  navItems: [
+                    {
+                      id: 'access-management',
+                      title: 'Access Management',
+                      expandable: true,
+                      routes: [
+                        { id: 'users', title: 'Users', href: '/iam/users' },
+                      ],
+                    },
+                    {
+                      id: 'new-section',
+                      title: 'New Section',
+                      href: '/iam/new-section',
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      };
+
+      // Remote nav only has 'access-management' referencing this segment
+      const remoteNav: Nav = {
+        id: bundleName,
+        title: 'IAM Bundle',
+        navItems: [
+          {
+            id: 'access-management',
+            title: 'Access Management',
+            expandable: true,
+            bundleSegmentRef: 'module-rbac-ui',
+            frontendRef: frontendName,
+            routes: [
+              { id: 'users', title: 'Users', href: '/iam/users' },
+            ],
+          },
+        ],
+      };
+
+      const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
+
+      // Both items should be present
+      const accessMgmt = result.find(item => item.id === 'access-management');
+      expect(accessMgmt).toBeDefined();
+
+      const newSection = result.find(item => item.id === 'new-section');
+      expect(newSection).toBeDefined();
+      expect(newSection?.title).toBe('New Section');
+      expect(newSection?.href).toBe('/iam/new-section');
+      expect(newSection?.position).toBe(100);
+    });
+
+    it('should include multiple new top-level items alongside existing ones', () => {
+      const bundleName = 'settings';
+      const frontendName = 'my-app';
+
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: { name: frontendName },
+            spec: {
+              frontend: { paths: ['/apps/my-app'] },
+              module: { manifestLocation: '/apps/my-app/fed-mods.json' },
+              bundleSegments: [
+                {
+                  bundleId: bundleName,
+                  segmentId: 'my-app-segment',
+                  position: 200,
+                  navItems: [
+                    { id: 'existing-nav', title: 'Existing', href: '/settings/existing' },
+                    { id: 'new-nav-1', title: 'New Nav 1', href: '/settings/new1' },
+                    { id: 'new-nav-2', title: 'New Nav 2', href: '/settings/new2' },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      };
+
+      const remoteNav: Nav = {
+        id: bundleName,
+        title: 'Settings',
+        navItems: [
+          {
+            id: 'existing-nav',
+            title: 'Existing',
+            href: '/settings/existing',
+            bundleSegmentRef: 'my-app-segment',
+            frontendRef: frontendName,
+          },
+        ],
+      };
+
+      const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
+
+      expect(result.find(item => item.id === 'existing-nav')).toBeDefined();
+      expect(result.find(item => item.id === 'new-nav-1')).toBeDefined();
+      expect(result.find(item => item.id === 'new-nav-1')?.title).toBe('New Nav 1');
+      expect(result.find(item => item.id === 'new-nav-2')).toBeDefined();
+      expect(result.find(item => item.id === 'new-nav-2')?.title).toBe('New Nav 2');
+      // All should have the segment's position
+      expect(result.find(item => item.id === 'new-nav-1')?.position).toBe(200);
+      expect(result.find(item => item.id === 'new-nav-2')?.position).toBe(200);
+    });
+
+    it('should not duplicate items that already exist in remote nav', () => {
+      const bundleName = 'iam';
+      const frontendName = 'rbac';
+
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: { name: frontendName },
+            spec: {
+              frontend: { paths: ['/apps/rbac'] },
+              module: { manifestLocation: '/apps/rbac/fed-mods.json' },
+              bundleSegments: [
+                {
+                  bundleId: bundleName,
+                  segmentId: 'module-rbac-ui',
+                  position: 100,
+                  navItems: [
+                    { id: 'item-a', title: 'Item A', href: '/iam/a' },
+                    { id: 'item-b', title: 'Item B', href: '/iam/b' },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      };
+
+      // Both items exist in remote — no new items should be added
+      const remoteNav: Nav = {
+        id: bundleName,
+        title: 'IAM',
+        navItems: [
+          { id: 'item-a', title: 'Item A', href: '/iam/a', bundleSegmentRef: 'module-rbac-ui', frontendRef: frontendName },
+          { id: 'item-b', title: 'Item B', href: '/iam/b', bundleSegmentRef: 'module-rbac-ui', frontendRef: frontendName },
+        ],
+      };
+
+      const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
+
+      // Should have exactly 2 items, no duplicates
+      const itemACount = result.filter(item => item.id === 'item-a').length;
+      const itemBCount = result.filter(item => item.id === 'item-b').length;
+      expect(itemACount).toBe(1);
+      expect(itemBCount).toBe(1);
+      expect(result).toHaveLength(2);
+    });
+  });
 });

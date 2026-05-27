@@ -39,6 +39,32 @@ function getRequestBundle(requestUrl: string) {
   return bundle === 'rhel' ? 'insights' : bundle;
 }
 
+type NavTreeItem = {
+  href?: string;
+  routes?: unknown[];
+  navItems?: unknown[];
+};
+
+function isNavTreeItem(value: unknown): value is NavTreeItem {
+  return !!value && typeof value === 'object';
+}
+
+function matchesBundle(item: unknown, bundle: string): boolean {
+  if (!isNavTreeItem(item)) {
+    return false;
+  }
+  if (typeof item.href === 'string' && item.href.includes(bundle)) {
+    return true;
+  }
+  if (Array.isArray(item.routes) && item.routes.some((route) => matchesBundle(route, bundle))) {
+    return true;
+  }
+  if (Array.isArray(item.navItems) && item.navItems.some((navItem) => matchesBundle(navItem, bundle))) {
+    return true;
+  }
+  return false;
+}
+
 app.get('*', async (req, res, next) => {
   try {
     const reqUrl = BASE_URL + req.url.replace('/api/chrome-service/v1', '');
@@ -47,7 +73,10 @@ app.get('*', async (req, res, next) => {
       const requestBundle = getRequestBundle(req.url);
       /** handle nav json */
       const payload = schema.data;
-      payload.navItems = [...payload.navItems, ...navItems.filter(({ href }: { href: string }) => requestBundle && href.includes(requestBundle))];
+      payload.navItems = [
+        ...payload.navItems,
+        ...navItems.filter((item: unknown) => Boolean(requestBundle) && matchesBundle(item, requestBundle as string)),
+      ];
       res.json(payload);
       res.end();
       return;
