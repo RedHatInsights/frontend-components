@@ -241,6 +241,28 @@ const substituteLocalNav = (frontendCRD: FrontendCRD, nav: Nav, bundleName: stri
     const missingNavItems: DirectNavItem[] = missingSegments
       .map((segment) => segment.navItems.map((navItem) => ({ ...navItem, position: segment.position })))
       .flat();
+
+    // Also find individual new items from segments that are already partially present in remote nav.
+    // Without this, new top-level items added to an existing bundle segment are silently dropped.
+    const presentSegments = [...(obj.spec.bundleSegments || [])].filter((segment) => {
+      if (segment.bundleId !== bundleName) {
+        return false;
+      }
+      return nav.navItems.some((navItem) => navItem.bundleSegmentRef === segment.segmentId);
+    });
+    presentSegments.forEach((segment) => {
+      segment.navItems.forEach((segmentNavItem) => {
+        // Skip segment refs — handled by segment replacement logic
+        if (segmentNavItem.segmentRef) return;
+        // Skip items without an id (can't match)
+        if (!segmentNavItem.id) return;
+        // Add items that have no matching remote nav item
+        if (!nav.navItems.some((remoteItem) => remoteItem.id === segmentNavItem.id)) {
+          missingNavItems.push({ ...segmentNavItem, position: segment.position });
+        }
+      });
+    });
+
     const parseInput = [...nav.navItems, ...missingNavItems];
     // handle top level missing bundle segments and sorting of them
     res = parseNavItems(parseInput, bundleSegmentsCache, navSegmentCache, bundleName, obj.metadata.name);
