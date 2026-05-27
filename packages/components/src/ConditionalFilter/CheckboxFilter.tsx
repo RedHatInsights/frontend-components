@@ -86,7 +86,7 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({ items = 
           <SelectOption
             hasCheckbox
             isSelected={value.includes(optionValue)}
-            {...omit(item, 'onChange')}
+            {...omit(item, 'onChange', 'isChecked')}
             key={id || key}
             value={String(optionValue || id || key)}
             onClick={(e) => {

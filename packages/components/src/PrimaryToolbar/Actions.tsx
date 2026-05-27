@@ -45,9 +45,11 @@ function isActionObject(node: React.ReactNode | ActionObject): node is ActionObj
 
 export const overflowActionsMapper = (action: ActionsType, key: string | number) => {
   const internalAction = action as ActionObject;
+  const rawOverflowProps = React.isValidElement(action) ? {} : internalAction.props || {};
+  const { key: _key, ...restOverflowProps } = rawOverflowProps;
   return (
     <DropdownItem
-      {...internalAction.props}
+      {...restOverflowProps}
       className="ins-c-primary-toolbar__overflow-actions"
       key={internalAction.value || internalAction.key || `${key}-overflow`}
       component={(internalAction.props && internalAction.props.component) || React.isValidElement(internalAction.label || action) ? 'div' : 'button'}
@@ -65,10 +67,12 @@ export const actionPropsGenerator = (action: ActionsType, key: string | number) 
       ? (e: MouseEvent | React.MouseEvent<any, MouseEvent> | React.KeyboardEvent<Element>) => (action as { onClick?: any })?.onClick(e, action, key)
       : undefined;
 
+  const rawActionProps = React.isValidElement(action) ? {} : ((action as ActionObject)?.props || {});
+  const { key: _key, ...restActionProps } = rawActionProps;
   return {
-    ...(action as ActionObject)?.props,
+    ...restActionProps,
     onClick,
-    component: (action as ActionObject)?.props?.component || (React.isValidElement((action as ActionObject).label || action) ? 'div' : 'button'),
+    component: (!React.isValidElement(action) && (action as ActionObject)?.props?.component) || (React.isValidElement((action as ActionObject).label || action) ? 'div' : 'button'),
     children: (typeof action === 'object' && action !== null ? (action as { label?: React.ReactNode })?.label : action) as React.ReactNode,
   };
 };

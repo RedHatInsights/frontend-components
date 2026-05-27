@@ -97,7 +97,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   const breakpointConstant = parseInt(t_global_breakpoint_md.value.replace('px', ''));
   const updateFilterViewport = (width: number) => width <= breakpointConstant;
   const [isOpen, setIsOpen] = useState(false);
-  const [stateValue, setStateValue] = useState<number | string>();
+  const [stateValue, setStateValue] = useState<number | string>('');
   const [isMobile, setIsMobile] = useState(updateFilterViewport(window.innerWidth));
   const resizeListener = useRef((event: Event) => {
     setIsMobile(updateFilterViewport((event?.target as Window).innerWidth));

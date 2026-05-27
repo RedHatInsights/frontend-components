@@ -12,7 +12,7 @@ describe('OpenSourceBadge component', () => {
 
     it('popover', async () => {
       render(<OpenSourceBadge repositoryURL={'https://example.com'} />);
-      userEvent.click(
+      await userEvent.click(
         screen.getByRole('button', {
           name: /about open services/i,
         }),
