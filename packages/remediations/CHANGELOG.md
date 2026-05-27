@@ -1,3 +1,17 @@
+## 4.8.0 (2026-05-27)
+
+### 🚀 Features
+
+- **remediations:** convert to TypeScript ([3a556869](https://github.com/RedHatInsights/frontend-components/commit/3a556869))
+
+### 🩹 Fixes
+
+- **remediations:** add useEffect deps to RemediationLoadError ([6e79f708](https://github.com/RedHatInsights/frontend-components/commit/6e79f708))
+
+### ❤️ Thank You
+
+- Charles Mulder
+
 ## 4.7.0 (2026-05-26)
 
 ### 🧱 Updated Dependencies
