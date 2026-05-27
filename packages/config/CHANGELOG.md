@@ -1,3 +1,19 @@
+## 6.10.3 (2026-05-27)
+
+### 🩹 Fixes
+
+- **config:** replace explicit any with unknown + type guard in matchesBundle ([1680b8ed](https://github.com/RedHatInsights/frontend-components/commit/1680b8ed))
+- **config:** guard against nav items without href in csc-interceptor-server ([efe66db7](https://github.com/RedHatInsights/frontend-components/commit/efe66db7))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.10.2
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
 ## 6.10.2 (2026-05-18)
 
 ### 🩹 Fixes

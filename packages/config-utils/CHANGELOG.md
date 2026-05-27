@@ -1,3 +1,14 @@
+## 4.10.2 (2026-05-27)
+
+### 🩹 Fixes
+
+- **config-utils:** add new top-level items from partially-referenced bundle segments ([f59cbbbc](https://github.com/RedHatInsights/frontend-components/commit/f59cbbbc))
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
 ## 4.10.1 (2026-05-18)
 
 ### 🩹 Fixes
