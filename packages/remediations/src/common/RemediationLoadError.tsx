@@ -7,7 +7,7 @@ export interface RemediationLoadErrorProps {
 const RemediationLoadError = ({ component, ...props }: RemediationLoadErrorProps) => {
   useEffect(() => {
     console.error(`Unable to load remediations component. Failed to load ${component}.`, props);
-  }, []);
+  }, [component, props]);
   return (
     <div>
       <h1>Unable to load remediations component</h1>
