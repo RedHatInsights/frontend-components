@@ -39,6 +39,20 @@ function getRequestBundle(requestUrl: string) {
   return bundle === 'rhel' ? 'insights' : bundle;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function matchesBundle(item: any, bundle: string): boolean {
+  if (typeof item.href === 'string' && item.href.includes(bundle)) {
+    return true;
+  }
+  if (Array.isArray(item.routes) && item.routes.some((route: any) => matchesBundle(route, bundle))) {
+    return true;
+  }
+  if (Array.isArray(item.navItems) && item.navItems.some((navItem: any) => matchesBundle(navItem, bundle))) {
+    return true;
+  }
+  return false;
+}
+
 app.get('*', async (req, res, next) => {
   try {
     const reqUrl = BASE_URL + req.url.replace('/api/chrome-service/v1', '');
@@ -47,7 +61,7 @@ app.get('*', async (req, res, next) => {
       const requestBundle = getRequestBundle(req.url);
       /** handle nav json */
       const payload = schema.data;
-      payload.navItems = [...payload.navItems, ...navItems.filter(({ href }: { href: string }) => requestBundle && href.includes(requestBundle))];
+      payload.navItems = [...payload.navItems, ...navItems.filter((item: any) => requestBundle && matchesBundle(item, requestBundle))];
       res.json(payload);
       res.end();
       return;
