@@ -4,6 +4,8 @@ const reactPlugin = require('eslint-plugin-react');
 const rulesDirPlugin = require('eslint-plugin-rulesdir');
 const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
 const babelParser = require('@babel/eslint-parser');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const tsParser = require('@typescript-eslint/parser');
 const path = require('path');
 rulesDirPlugin.RULES_DIR = path.resolve(__dirname, './lib/rules');
 
@@ -15,6 +17,9 @@ const patchedBrowserGlobals = {
 // https://github.com/sindresorhus/globals/pull/184
 delete patchedBrowserGlobals['AudioWorkletGlobalScope '];
 patchedBrowserGlobals['AudioWorkletGlobalScope'] = 'readonly';
+
+const REACT_FC_BAN_MESSAGE =
+  'Prefer inline props typing: (props: PropsType) => JSX.Element. React.FC is deprecated in React 18 because it implicitly includes children.';
 
 module.exports = defineConfig(eslintPluginPrettierRecommended, reactPlugin.configs.flat.recommended, {
   plugins: {
@@ -51,5 +56,28 @@ module.exports = defineConfig(eslintPluginPrettierRecommended, reactPlugin.confi
         presets: ['@babel/preset-react'],
       },
     },
+  },
+}, {
+  files: ['**/*.ts', '**/*.tsx'],
+  plugins: {
+    '@typescript-eslint': tsPlugin,
+  },
+  languageOptions: {
+    parser: tsParser,
+    parserOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      ecmaFeatures: { jsx: true },
+    },
+  },
+  rules: {
+    '@typescript-eslint/no-restricted-types': ['warn', {
+      types: {
+        FC: { message: REACT_FC_BAN_MESSAGE },
+        'React.FC': { message: REACT_FC_BAN_MESSAGE },
+        FunctionComponent: { message: REACT_FC_BAN_MESSAGE },
+        'React.FunctionComponent': { message: REACT_FC_BAN_MESSAGE },
+      },
+    }],
   },
 });
