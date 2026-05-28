@@ -68,7 +68,7 @@ class ExtensionsPlugin implements WebpackPluginInstance {
         disableStaticPlugins: [...(this.plugin.disableStaticPlugins || [])],
         extensions: [...(this.plugin.extensions || [])],
       },
-      this.options
+      this.options,
     ).apply(compiler);
   }
 }

@@ -37,7 +37,7 @@ const usePromiseQueue = (concurrency = DEFAULT_CONCURRENT_PROMISES) => {
 
       return results;
     },
-    [concurrency]
+    [concurrency],
   );
 
   return {

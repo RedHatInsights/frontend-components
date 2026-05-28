@@ -16,7 +16,7 @@ export interface CheckboxFilterProps {
   onChange: (
     e: React.MouseEvent | React.ChangeEvent | React.FormEvent<HTMLInputElement> | undefined,
     newSelection: CheckboxFilterValue[],
-    selection?: CheckboxFilterValue
+    selection?: CheckboxFilterValue,
   ) => void;
   /** Optional list of selected values. */
   value?: CheckboxFilterValue[];

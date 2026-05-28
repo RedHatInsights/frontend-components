@@ -30,7 +30,7 @@ const TemplateProcessor: React.FC<TemplateProcessorProps> = ({ template, definit
     JSON.stringify(definitions ?? {})
       .replace(/\*/g, '\\\\*')
       .replace(/~/g, '\\\\~')
-      .replace(/\b_|_\b/g, '\\\\_') // we don't want to escape python variables (e.g. `pydata.bad_rpms`) so match only border '_'
+      .replace(/\b_|_\b/g, '\\\\_'), // we don't want to escape python variables (e.g. `pydata.bad_rpms`) so match only border '_'
   );
 
   try {

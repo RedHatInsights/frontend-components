@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { parse, ParseError } from 'jsonc-parser';
+import { ParseError, parse } from 'jsonc-parser';
 import fecLogger, { LogType } from '@redhat-cloud-services/frontend-components-config-utilities/fec-logger';
 
 type TsConfigJson = { extends?: string; compilerOptions?: { jsx?: string } };
@@ -27,10 +27,7 @@ export function checkTsConfig(cwd: string, logger = fecLogger): void {
     if (jsx !== 'react-jsx') {
       logger(LogType.warn, 'Your tsconfig.json has "jsx": "' + (jsx ?? '<not set>') + '".');
       logger(LogType.warn, 'React 19 requires "jsx": "react-jsx" to use the automatic JSX transform.');
-      logger(
-        LogType.warn,
-        "Without it, react/jsx-runtime will not be used and React internals may conflict with chrome's React singleton."
-      );
+      logger(LogType.warn, "Without it, react/jsx-runtime will not be used and React internals may conflict with chrome's React singleton.");
       logger(LogType.warn, 'Update compilerOptions.jsx to "react-jsx" in your tsconfig.json.');
     }
   } catch {

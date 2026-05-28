@@ -53,7 +53,7 @@ const start = (env: { analyze?: string }): Configuration => {
 
       plugins.push(new BundleAnalyzerPlugin());
     }
-  } catch {} // eslint-disable-line
+  } catch {}
 
   return {
     ...webpackConfig,

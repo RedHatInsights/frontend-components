@@ -88,7 +88,7 @@ function guessComponentModule(nameBinding: string) {
   const sourceFile = sourceGlob ? glob.sync(sourceGlob) : [];
   if (sourceFile.length < 1) {
     throw new Error(
-      `Unable to find source file for module ${nameBinding}! The module likely does not have unique file as is included within another file. Please add the entry into the COMPONENTS_CACHE in FEC repository`
+      `Unable to find source file for module ${nameBinding}! The module likely does not have unique file as is included within another file. Please add the entry into the COMPONENTS_CACHE in FEC repository`,
     );
   }
   const moduleSource: string[] = sourceFile[0].split('esm').pop()?.split('/') || [];

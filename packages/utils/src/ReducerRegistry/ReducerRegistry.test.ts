@@ -62,7 +62,7 @@ describe('applyReducerHash', () => {
       {
         one: (state = {}) => ({ ...state, changed: 'f' }),
       },
-      {}
+      {},
     )({ default: 'not changed' }, { type: 'two' });
     expect(changedState).toMatchObject({ default: 'not changed' });
   });
@@ -75,7 +75,7 @@ describe('dispatchActionsToStore', () => {
       {
         one: () => ({ type: 'test' }),
       },
-      { dispatch } as unknown as Store
+      { dispatch } as unknown as Store,
     );
     actions.one();
     expect(dispatch).toHaveBeenLastCalledWith({ type: 'test' });
@@ -87,7 +87,7 @@ describe('dispatchActionsToStore', () => {
         one: () => ({ type: 'test' }),
         two: (data) => ({ type: 'another', payload: data }),
       },
-      { dispatch } as unknown as Store
+      { dispatch } as unknown as Store,
     );
     actions.two({ rows: [] });
     expect(dispatch).toHaveBeenLastCalledWith({

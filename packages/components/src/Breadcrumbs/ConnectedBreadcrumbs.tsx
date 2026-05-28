@@ -43,7 +43,7 @@ const ConnectedBreadcrumbs: React.FunctionComponent<ConnectedBreadcrumbsProps> =
   return (
     <Breadcrumbs
       {...props}
-      items={mappedBreadcrumbs.slice(0, -1).map((item) => ({ title: item, navigate: item } as unknown as BreadcrumbItem))}
+      items={mappedBreadcrumbs.slice(0, -1).map((item) => ({ title: item, navigate: item }) as unknown as BreadcrumbItem)}
       onNavigate={onNavigate}
       current={mappedBreadcrumbs.slice(-1)[0]}
     />

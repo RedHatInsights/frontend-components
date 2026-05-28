@@ -31,7 +31,6 @@ module.exports = defineConfig(
       'doc/',
       'node_modules/',
       'packages/*/node_modules/**',
-      'packages/*/node_modules/*',
       'packages/*/**/*.js',
       '!packages/eslint-config/**/*.js',
       '!packages/config/*.js',

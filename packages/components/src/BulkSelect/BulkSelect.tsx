@@ -21,7 +21,7 @@ export type BulkSelectItem = {
   onClick?: (
     event: MouseEvent | React.MouseEvent<any, MouseEvent> | React.KeyboardEvent<Element>,
     oneItem: BulkSelectItem,
-    key: string | number
+    key: string | number,
   ) => void;
 };
 

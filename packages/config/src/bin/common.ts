@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
 import { FrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo/feo-types';
-import { fecLogger, LogType } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 import { hasFEOFeaturesEnabled, readFrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo/crd-check';
 
 const { resolve } = require('path');

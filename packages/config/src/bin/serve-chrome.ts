@@ -1,7 +1,7 @@
 import axios from 'axios';
 import fs from 'fs';
 import { execSync, spawn } from 'child_process';
-import { fecLogger, LogType } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { LogType, fecLogger } from '@redhat-cloud-services/frontend-components-config-utilities';
 import waitOn from 'wait-on';
 
 const CONTAINER_PORT = 8000;

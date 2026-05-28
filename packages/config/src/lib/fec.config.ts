@@ -3,7 +3,8 @@ import { CreateConfigOptions } from './createConfig';
 import { CreatePluginsOptions, WebpackPluginDefinition } from './createPlugins';
 
 export interface FECConfiguration
-  extends Partial<Omit<CreateConfigOptions, 'appUrl' | 'appName' | 'env' | 'rootFolder'>>,
+  extends
+    Partial<Omit<CreateConfigOptions, 'appUrl' | 'appName' | 'env' | 'rootFolder'>>,
     Partial<Omit<CreatePluginsOptions, 'rootFolder' | 'appName'>> {
   appName: never;
   appUrl: string | string[] | (string | RegExp)[];

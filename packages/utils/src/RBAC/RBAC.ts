@@ -1,5 +1,10 @@
 import { createContext } from 'react';
-import { Access, ResourceDefinition, ResourceDefinitionFilterOperationEqualOperationEnum, ResourceDefinitionFilterOperationInOperationEnum } from '@redhat-cloud-services/rbac-client/types';
+import {
+  Access,
+  ResourceDefinition,
+  ResourceDefinitionFilterOperationEqualOperationEnum,
+  ResourceDefinitionFilterOperationInOperationEnum,
+} from '@redhat-cloud-services/rbac-client/types';
 import type { ChromeAPI } from '@redhat-cloud-services/types';
 
 declare global {
@@ -19,7 +24,6 @@ export async function getRBAC(applicationName = '', disableCache = false): Promi
   const insights = window.insights;
   const user = await insights?.chrome?.auth?.getUser();
   return {
-    // eslint-disable-next-line camelcase
     isOrgAdmin: user?.identity?.user?.is_org_admin || false,
     permissions: (await insights?.chrome?.getUserPermissions(applicationName, disableCache)) || null,
   };
@@ -60,7 +64,7 @@ function verifyResourceDefinitions(userRds: ResourceDefinition[], requestedRds: 
 function checkRequestedPermission(
   userPermissions: (Access | string)[],
   requestedPermission: Access | string,
-  checkResourceDefinitions: boolean
+  checkResourceDefinitions: boolean,
 ): boolean {
   return userPermissions.some((userPermission: Access | string) => {
     const requestedPermissionArray = (isAccessType(requestedPermission) ? requestedPermission.permission : requestedPermission).split(':');
@@ -103,7 +107,7 @@ function checkRequestedPermission(
 export function doesHavePermissions(
   userPermissions: (Access | string)[],
   permissionList: (Access | string)[],
-  checkResourceDefinitions: boolean
+  checkResourceDefinitions: boolean,
 ): boolean {
   if (!userPermissions) {
     return false;
@@ -116,7 +120,7 @@ export function doesHavePermissions(
 export function hasAllPermissions(
   userPermissions: (Access | string)[],
   permissionList: (Access | string)[],
-  checkResourceDefinitions: boolean
+  checkResourceDefinitions: boolean,
 ): boolean {
   if (!userPermissions) {
     return false;

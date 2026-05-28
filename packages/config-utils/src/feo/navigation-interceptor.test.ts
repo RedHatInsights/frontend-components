@@ -14,7 +14,7 @@ describe('NavigationInterceptor', () => {
     beforeEach(() => {
       // Clear all mocks to ensure test isolation
       jest.clearAllMocks();
-      
+
       // Initialize/reset test data with default values
       bundleName = 'testing-bundle';
       defaultFrontendName = 'testing-frontend';
@@ -69,7 +69,7 @@ describe('NavigationInterceptor', () => {
         isNestedRoute,
         isNestedNav,
         frontendName,
-      }: { shouldChange?: boolean; isNestedRoute?: boolean; isNestedNav?: boolean; frontendName?: string } = {}
+      }: { shouldChange?: boolean; isNestedRoute?: boolean; isNestedNav?: boolean; frontendName?: string } = {},
     ) {
       const internalFrontendName = frontendName ?? defaultFrontendName;
       let internalNavItem: DirectNavItem = { ...navItem };
@@ -213,7 +213,7 @@ describe('NavigationInterceptor', () => {
     beforeEach(() => {
       // Clear all mocks to ensure test isolation
       jest.clearAllMocks();
-      
+
       // Initialize/reset test data with default values
       bundleName = 'testing-bundle';
       defaultFrontendName = 'testing-frontend';
@@ -366,7 +366,7 @@ describe('NavigationInterceptor', () => {
 
       // Act - Execute the function under test
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
-      
+
       // Assert - Verify behavior
       expect(result).toEqual(expectedResult);
     });
@@ -431,7 +431,7 @@ describe('NavigationInterceptor', () => {
 
       // Act - Execute the function under test
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
-      
+
       // Assert - Verify behavior
       expect(result).toEqual(expectedResult);
     });
@@ -498,7 +498,7 @@ describe('NavigationInterceptor', () => {
 
       // Act - Execute the function under test
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
-      
+
       // Assert - Verify behavior
       expect(result).toEqual(expectedResult);
     });
@@ -512,7 +512,7 @@ describe('NavigationInterceptor', () => {
     beforeEach(() => {
       // Clear all mocks to ensure test isolation
       jest.clearAllMocks();
-      
+
       // Initialize/reset test data with default values
       frontendName = 'test-frontend';
       bundleId = 'test-bundle-id';
@@ -725,7 +725,7 @@ describe('NavigationInterceptor', () => {
 
       // Act - Execute the function under test
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleId);
-      
+
       // Assert - Verify behavior
       expect(result).toEqual(expectedResult);
     });
@@ -747,27 +747,27 @@ describe('NavigationInterceptor', () => {
               },
               navigationSegments: [
                 {
-                  "segmentId": "cost-management",
-                  "navItems": [
-                      {
-                          "id": "cost-management.nav",
-                          "title": "Cost Management changed",
-                          "expandable": true,
-                          "routes": [
-                              {
-                                  "id": "cost-management.overview",
-                                  "title": "Overview changed",
-                                  "href": "/openshift/cost-management",
-                              },
-                              {
-                                  "id": "cost-management.systems",
-                                  "title": "Systems",
-                                  "href": "/openshift/cost-management/systems",
-                              },
-                          ]
-                      }
-                  ]
-                }
+                  segmentId: 'cost-management',
+                  navItems: [
+                    {
+                      id: 'cost-management.nav',
+                      title: 'Cost Management changed',
+                      expandable: true,
+                      routes: [
+                        {
+                          id: 'cost-management.overview',
+                          title: 'Overview changed',
+                          href: '/openshift/cost-management',
+                        },
+                        {
+                          id: 'cost-management.systems',
+                          title: 'Systems',
+                          href: '/openshift/cost-management/systems',
+                        },
+                      ],
+                    },
+                  ],
+                },
               ],
             },
           },
@@ -876,24 +876,24 @@ describe('NavigationInterceptor', () => {
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
 
       // The bundle segment should match and modify the access-management item
-      const accessMgmt = result.find(item => item.id === 'access-management');
+      const accessMgmt = result.find((item) => item.id === 'access-management');
       expect(accessMgmt).toBeDefined();
       expect(accessMgmt?.title).toBe('Access Management');
 
       // The modified title should work
-      const usersAndGroups = accessMgmt?.routes?.find(route => route.id === 'users-and-groups');
+      const usersAndGroups = accessMgmt?.routes?.find((route) => route.id === 'users-and-groups');
       expect(usersAndGroups).toBeDefined();
       expect(usersAndGroups?.title).toBe('Users and GroupsXZ'); // Modified title should work
 
       // The new item should now appear (fix working!)
-      const foobarItem = accessMgmt?.routes?.find(route => route.id === 'foobar');
+      const foobarItem = accessMgmt?.routes?.find((route) => route.id === 'foobar');
       expect(foobarItem).toBeDefined(); // NEW item now appears
       expect(foobarItem?.title).toBe('AAA');
       expect(foobarItem?.href).toBe('/iam/access-management/users-and-groups');
       expect(foobarItem?.permissions).toEqual([{ method: 'isOrgAdmin' }]);
 
       // The existing roles item should still be there
-      const rolesItem = accessMgmt?.routes?.find(route => route.id === 'roles');
+      const rolesItem = accessMgmt?.routes?.find((route) => route.id === 'roles');
       expect(rolesItem).toBeDefined();
       expect(rolesItem?.title).toBe('Roles');
 
@@ -951,12 +951,12 @@ describe('NavigationInterceptor', () => {
       };
 
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
-      const container = result.find(item => item.id === 'empty-container');
+      const container = result.find((item) => item.id === 'empty-container');
 
       expect(container).toBeDefined();
       expect(container?.routes).toHaveLength(2);
-      expect(container?.routes?.find(r => r.id === 'new-item1')).toBeDefined();
-      expect(container?.routes?.find(r => r.id === 'new-item2')).toBeDefined();
+      expect(container?.routes?.find((r) => r.id === 'new-item1')).toBeDefined();
+      expect(container?.routes?.find((r) => r.id === 'new-item2')).toBeDefined();
     });
 
     it('should handle pure passthrough when local segment has no routes', () => {
@@ -1008,13 +1008,13 @@ describe('NavigationInterceptor', () => {
       };
 
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
-      const container = result.find(item => item.id === 'passthrough-container');
+      const container = result.find((item) => item.id === 'passthrough-container');
 
       expect(container).toBeDefined();
       expect(container?.title).toBe('Modified Title'); // Local title wins
       expect(container?.routes).toHaveLength(2); // Remote routes preserved
-      expect(container?.routes?.find(r => r.id === 'remote-item1')).toBeDefined();
-      expect(container?.routes?.find(r => r.id === 'remote-item2')).toBeDefined();
+      expect(container?.routes?.find((r) => r.id === 'remote-item1')).toBeDefined();
+      expect(container?.routes?.find((r) => r.id === 'remote-item2')).toBeDefined();
     });
 
     it('should handle conflict resolution - local properties win over remote', () => {
@@ -1078,8 +1078,8 @@ describe('NavigationInterceptor', () => {
       };
 
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
-      const container = result.find(item => item.id === 'conflict-container');
-      const conflictingItem = container?.routes?.find(r => r.id === 'conflicting-item');
+      const container = result.find((item) => item.id === 'conflict-container');
+      const conflictingItem = container?.routes?.find((r) => r.id === 'conflicting-item');
 
       expect(conflictingItem).toBeDefined();
       expect(conflictingItem?.title).toBe('Local Title'); // Local wins
@@ -1142,7 +1142,7 @@ describe('NavigationInterceptor', () => {
       };
 
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
-      const container = result.find(item => item.id === 'ordered-container');
+      const container = result.find((item) => item.id === 'ordered-container');
 
       expect(container?.routes).toHaveLength(4);
 
@@ -1208,12 +1208,12 @@ describe('NavigationInterceptor', () => {
       };
 
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
-      const container = result.find(item => item.id === 'partial-container');
+      const container = result.find((item) => item.id === 'partial-container');
 
       expect(container?.routes).toHaveLength(3);
-      expect(container?.routes?.find(r => r.id === 'local-item')).toBeDefined(); // Local added
-      expect(container?.routes?.find(r => r.id === 'remote-only-item')).toBeDefined(); // Remote preserved
-      expect(container?.routes?.find(r => r.id === 'another-remote')).toBeDefined(); // Remote preserved
+      expect(container?.routes?.find((r) => r.id === 'local-item')).toBeDefined(); // Local added
+      expect(container?.routes?.find((r) => r.id === 'remote-only-item')).toBeDefined(); // Remote preserved
+      expect(container?.routes?.find((r) => r.id === 'another-remote')).toBeDefined(); // Remote preserved
     });
   });
 
@@ -1241,9 +1241,7 @@ describe('NavigationInterceptor', () => {
                       id: 'access-management',
                       title: 'Access Management',
                       expandable: true,
-                      routes: [
-                        { id: 'users', title: 'Users', href: '/iam/users' },
-                      ],
+                      routes: [{ id: 'users', title: 'Users', href: '/iam/users' }],
                     },
                     {
                       id: 'new-section',
@@ -1269,9 +1267,7 @@ describe('NavigationInterceptor', () => {
             expandable: true,
             bundleSegmentRef: 'module-rbac-ui',
             frontendRef: frontendName,
-            routes: [
-              { id: 'users', title: 'Users', href: '/iam/users' },
-            ],
+            routes: [{ id: 'users', title: 'Users', href: '/iam/users' }],
           },
         ],
       };
@@ -1279,10 +1275,10 @@ describe('NavigationInterceptor', () => {
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
 
       // Both items should be present
-      const accessMgmt = result.find(item => item.id === 'access-management');
+      const accessMgmt = result.find((item) => item.id === 'access-management');
       expect(accessMgmt).toBeDefined();
 
-      const newSection = result.find(item => item.id === 'new-section');
+      const newSection = result.find((item) => item.id === 'new-section');
       expect(newSection).toBeDefined();
       expect(newSection?.title).toBe('New Section');
       expect(newSection?.href).toBe('/iam/new-section');
@@ -1333,14 +1329,14 @@ describe('NavigationInterceptor', () => {
 
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
 
-      expect(result.find(item => item.id === 'existing-nav')).toBeDefined();
-      expect(result.find(item => item.id === 'new-nav-1')).toBeDefined();
-      expect(result.find(item => item.id === 'new-nav-1')?.title).toBe('New Nav 1');
-      expect(result.find(item => item.id === 'new-nav-2')).toBeDefined();
-      expect(result.find(item => item.id === 'new-nav-2')?.title).toBe('New Nav 2');
+      expect(result.find((item) => item.id === 'existing-nav')).toBeDefined();
+      expect(result.find((item) => item.id === 'new-nav-1')).toBeDefined();
+      expect(result.find((item) => item.id === 'new-nav-1')?.title).toBe('New Nav 1');
+      expect(result.find((item) => item.id === 'new-nav-2')).toBeDefined();
+      expect(result.find((item) => item.id === 'new-nav-2')?.title).toBe('New Nav 2');
       // All should have the segment's position
-      expect(result.find(item => item.id === 'new-nav-1')?.position).toBe(200);
-      expect(result.find(item => item.id === 'new-nav-2')?.position).toBe(200);
+      expect(result.find((item) => item.id === 'new-nav-1')?.position).toBe(200);
+      expect(result.find((item) => item.id === 'new-nav-2')?.position).toBe(200);
     });
 
     it('should not duplicate items that already exist in remote nav', () => {
@@ -1383,8 +1379,8 @@ describe('NavigationInterceptor', () => {
       const result = navigationInterceptor(frontendCRD, remoteNav, bundleName);
 
       // Should have exactly 2 items, no duplicates
-      const itemACount = result.filter(item => item.id === 'item-a').length;
-      const itemBCount = result.filter(item => item.id === 'item-b').length;
+      const itemACount = result.filter((item) => item.id === 'item-a').length;
+      const itemBCount = result.filter((item) => item.id === 'item-b').length;
       expect(itemACount).toBe(1);
       expect(itemBCount).toBe(1);
       expect(result).toHaveLength(2);

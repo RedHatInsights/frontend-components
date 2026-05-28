@@ -10,7 +10,7 @@ describe('SearchInterceptor', () => {
   beforeEach(() => {
     // Clear all mocks to ensure test isolation
     jest.clearAllMocks();
-    
+
     // Initialize/reset test data with default values
     frontendName = 'frontendName';
     frontendCRD = {
@@ -67,10 +67,10 @@ describe('SearchInterceptor', () => {
   it('should replace search entries with the ones from the frontendCRD', () => {
     // Arrange - Setup test data (mocks already configured in beforeEach)
     const expectedSearchEntries: ChromeStaticSearchEntry[] = [remoteSearchEntries[0], ...(frontendCRD.objects[0].spec.searchEntries ?? [])];
-    
+
     // Act - Execute the function under test
     const result = searchInterceptor(remoteSearchEntries, frontendCRD);
-    
+
     // Assert - Verify behavior
     expect(result).toEqual(expectedSearchEntries);
   });

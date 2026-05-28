@@ -51,12 +51,12 @@ class ExtensionsMapper {
                     ...this.plugin,
                   },
                   null,
-                  2
-                )
-              )
-            )
+                  2,
+                ),
+              ),
+            ),
           );
-        }
+        },
       );
 
       // Update plugin-entry.js file
@@ -81,7 +81,7 @@ class ExtensionsMapper {
 
             return newSource;
           });
-        }
+        },
       );
     });
   }

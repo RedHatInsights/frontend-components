@@ -48,17 +48,18 @@ const FilterChips: React.FunctionComponent<FilterChipsProps> = ({
     <LabelGroup
       key={`group_${group.category}`}
       categoryName={String(group.category) || ' '}
-      {...(group.chips.length > 1 && onDeleteGroup && {
-        isClosable: true,
-        onClick: (event) => {
-          event.stopPropagation();
-          onDeleteGroup(
-            event,
-            [group],
-            groups.filter((_item, key) => key !== groupKey)
-          );
-        },
-      })}
+      {...(group.chips.length > 1 &&
+        onDeleteGroup && {
+          isClosable: true,
+          onClick: (event) => {
+            event.stopPropagation();
+            onDeleteGroup(
+              event,
+              [group],
+              groups.filter((_item, key) => key !== groupKey),
+            );
+          },
+        })}
     >
       {group.chips.map((chip) => (
         <Label
@@ -88,9 +89,7 @@ const FilterChips: React.FunctionComponent<FilterChipsProps> = ({
       {groupedFilters}
       {plainFilters &&
         plainFilters.map((chip) => (
-          <LabelGroup 
-            key={`group_plain_chip_${chip.name}`}
-          >
+          <LabelGroup key={`group_plain_chip_${chip.name}`}>
             <Label
               variant="outline"
               icon={chip.icon}

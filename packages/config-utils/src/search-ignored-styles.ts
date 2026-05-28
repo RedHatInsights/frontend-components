@@ -22,7 +22,7 @@ const searchIgnoredStyles = (root: string, ...paths: string[]) => {
         ...acc,
         [curr]: false,
       }),
-      {}
+      {},
     );
   if (Object.keys(result).length === 0) {
     logWarning(`No PF CSS assets found!

@@ -74,7 +74,7 @@ jobs:
       - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@v4
       - name: Lint
-        run: npx nx affected -t test:lint --exclude=demo --outputStyle=static
+        run: npx nx affected -t lint --exclude=demo --outputStyle=static
   commitlint:
     needs: [install]
     runs-on: ubuntu-24.04

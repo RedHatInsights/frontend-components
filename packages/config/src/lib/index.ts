@@ -42,7 +42,7 @@ type FecConfigurationOptions = Omit<CreateConfigOptions, 'publicPath' | 'appEntr
   };
 
 const createFecConfig = (
-  configurations: FecConfigurationOptions
+  configurations: FecConfigurationOptions,
 ): {
   config: ReturnType<typeof createConfig>;
   plugins: ReturnType<typeof createPlugins>;
@@ -68,7 +68,7 @@ const createFecConfig = (
   } catch (e) {
     fecLogger(
       LogType.warn,
-      `FEO features are not enabled. Unable to find frontend CRD file at ${frontendCRDPath}. If you want FEO features for local development, make sure to have a "deploy/frontend.yaml" file in your project or specify its location via "frontendCRDPath" attribute.`
+      `FEO features are not enabled. Unable to find frontend CRD file at ${frontendCRDPath}. If you want FEO features for local development, make sure to have a "deploy/frontend.yaml" file in your project or specify its location via "frontendCRDPath" attribute.`,
     );
   }
   let cdnPath: string;
@@ -100,7 +100,6 @@ const createFecConfig = (
     }
 
     console.groupEnd();
-    /* eslint-enable no-console */
   }
 
   return {
@@ -110,7 +109,7 @@ const createFecConfig = (
       publicPath: configurations.publicPath,
       appEntry,
       appName: insights.appname,
-      target: process.env.EPHEMERAL_TARGET ?? ''
+      target: process.env.EPHEMERAL_TARGET ?? '',
     }),
     plugins: createPlugins({
       ...configurations,

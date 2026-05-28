@@ -10,7 +10,7 @@ describe('Widget registry interceptor', () => {
   beforeEach(() => {
     // Clear all mocks to ensure test isolation
     jest.clearAllMocks();
-    
+
     // Initialize/reset test data with default values
     frontendName = 'name';
     widgetEntries = [

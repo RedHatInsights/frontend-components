@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import React from 'react';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
 import AngleRightIcon from '@patternfly/react-icons/dist/dynamic/icons/angle-right-icon';

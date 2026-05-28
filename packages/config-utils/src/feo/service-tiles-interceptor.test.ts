@@ -10,7 +10,7 @@ describe('Service tiles interceptor', () => {
   beforeEach(() => {
     // Clear all mocks to ensure test isolation
     jest.clearAllMocks();
-    
+
     // Initialize/reset test data with default values
     frontendName = 'frontendName';
     frontendCrd = {
@@ -151,7 +151,7 @@ describe('Service tiles interceptor', () => {
 
     // Act - Execute the function under test
     const result = serviceTilesInterceptor(remoteServiceTiles, frontendCrd);
-    
+
     // Assert - Verify behavior
     expect(result).toEqual(expectedServiceTiles);
   });

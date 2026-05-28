@@ -18,7 +18,7 @@ const _ouiaSearchFunction = (
   base: HTMLElement,
   componentType: string,
   componentId: string | undefined,
-  options: OuiaSearchOptions
+  options: OuiaSearchOptions,
 ): Array<OuiaSelectableElement> => {
   let selector = `[data-ouia-component-type="${componentType}"]`;
   if (componentId) {
@@ -33,7 +33,6 @@ const _ouiaSearchFunction = (
     throw new Error(`There is not any element with the type: ${componentType} and the id ${componentId}`);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   return Array.from(result).map((r) => ouiaSelectorsFor(r));
 };
 

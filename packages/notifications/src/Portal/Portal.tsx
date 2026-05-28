@@ -50,7 +50,7 @@ const Portal: React.ComponentType<PortalProps> = ({ notifications = [], removeNo
             <Notification onDismiss={removeNotification} key={props.id} {...props} />
           ))}
         </div>,
-        rootId ? document.getElementById(rootId) || document.body : document.body
+        rootId ? document.getElementById(rootId) || document.body : document.body,
       );
 };
 

@@ -6,8 +6,13 @@ import RemediationButton from './index';
 const mockScalprumComponentFn = jest.fn((_props: Record<string, unknown>) => <div data-testid="scalprum-mock">Mock</div>);
 const mockScalprumComponent = React.forwardRef((props: any, ref: any) => {
   mockScalprumComponentFn({ ...props, ref });
-  return <div data-testid="scalprum-mock" ref={ref}>Mock</div>;
+  return (
+    <div data-testid="scalprum-mock" ref={ref}>
+      Mock
+    </div>
+  );
 });
+mockScalprumComponent.displayName = 'MockScalprumComponent';
 
 jest.mock('@scalprum/react-core', () => ({
   get ScalprumComponent() {

@@ -1,4 +1,4 @@
-import React, { Suspense, type JSX } from 'react';
+import React, { type JSX, Suspense } from 'react';
 import { ScalprumComponent } from '@scalprum/react-core';
 import { useStore } from 'react-redux';
 import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
@@ -62,15 +62,11 @@ export interface AppInfoProps extends Record<string, unknown> {
  *
  * This component shows tab(s) with detail information about selected system.
  */
-const AppInfo = React.forwardRef<unknown, AppInfoProps>((props, ref) => (
-  <BaseAppInfo innerRef={ref} {...props} />
-));
+const AppInfo = React.forwardRef<unknown, AppInfoProps>((props, ref) => <BaseAppInfo innerRef={ref} {...props} />);
 
 AppInfo.displayName = 'AppInfo';
 
-const CompatibilityWrapper = React.forwardRef<unknown, AppInfoProps>((props, ref) => (
-  <WithHistory innerRef={ref} Component={AppInfo} {...props} />
-));
+const CompatibilityWrapper = React.forwardRef<unknown, AppInfoProps>((props, ref) => <WithHistory innerRef={ref} Component={AppInfo} {...props} />);
 
 CompatibilityWrapper.displayName = 'AppInfoCompatibilityWrapper';
 

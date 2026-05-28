@@ -53,8 +53,8 @@ const TagWithDialog: React.FC<TagWithDialogProps> = React.forwardRef(
       ),
       ...props
     },
-    ref
-  ) => <BaseTagWithDialog innerRef={ref} component={component} fallback={fallback} {...props} />
+    ref,
+  ) => <BaseTagWithDialog innerRef={ref} component={component} fallback={fallback} {...props} />,
 );
 
 const CompatiblityWrapper = (props: any, ref: any) => <WithHistory innerRef={ref} Component={TagWithDialog} {...props} />;

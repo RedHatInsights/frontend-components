@@ -18,7 +18,7 @@ export interface CommonConfigOptions {
   hotReload?: boolean;
   useFileHash?: boolean;
 }
-export type FrontendEnv = 'stage-stable' | 'prod-stable' | 'dev-stable' |'ephemeral-stable';
+export type FrontendEnv = 'stage-stable' | 'prod-stable' | 'dev-stable' | 'ephemeral-stable';
 export interface CreateConfigOptions extends CommonConfigOptions {
   port?: number;
   publicPath?: 'auto';
@@ -194,7 +194,7 @@ export const createConfig = ({
                   loaderContext: {
                     resourcePath: string;
                     rootContext: string;
-                  }
+                  },
                 ) {
                   const { resourcePath, rootContext } = loaderContext;
                   if (stripAllPfStyles && resourcePath.includes('node_modules') && resourcePath.includes('@patternfly/react-styles')) {

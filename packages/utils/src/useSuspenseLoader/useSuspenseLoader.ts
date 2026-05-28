@@ -51,7 +51,7 @@ const baseCacheValue = {
 function useSuspenseLoader<R, T extends Array<unknown>>(
   asyncMethod: (...args: T) => Promise<R>,
   afterResolve?: (result: R) => void,
-  afterReject?: (error: unknown) => void
+  afterReject?: (error: unknown) => void,
 ) {
   const storage = useRef(new Map<string, LoaderCache<R>>());
   const [, setRender] = useState(0);
@@ -67,7 +67,7 @@ function useSuspenseLoader<R, T extends Array<unknown>>(
         throw loaderCache.error;
       }
       // desult will always have a type here
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
       if (loaderCache?.resolved) return loaderCache.result!;
       if (loaderCache?.promise) {
         throw loaderCache.promise;
@@ -78,7 +78,7 @@ function useSuspenseLoader<R, T extends Array<unknown>>(
         storage.current.set(cacheKey, { ...baseCacheValue });
       }
       // cache will always exist here because it was created in the previous step
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
       loaderCache = storage.current.get(cacheKey)!;
       loaderCache.promise = asyncMethod(...args)
         .then((res) => {

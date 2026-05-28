@@ -24,7 +24,6 @@ const RouterParamsInternal = (props: RouterParamsProps) => {
   useEffect(() => {
     // This will not work in router v6. Route does not pass `match` to child element.
     try {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       if (matchPath(pathname, { path: props?.match?.path, exact: true })) {
         onPathChange({
