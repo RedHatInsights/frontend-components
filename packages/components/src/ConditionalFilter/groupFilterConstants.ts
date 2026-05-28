@@ -187,9 +187,9 @@ export const getMenuItems = (
       ...item,
       className: `${item?.className || 'pf-v6-u-pl-sm'}`,
       value: String(item.value || item.id || index),
-      onClick: (event: React.FormEvent | React.MouseEventHandler, treeViewItem?: TreeViewItem, checked?: boolean) => {
+      onClick: (event: React.FormEvent | React.MouseEvent, treeViewItem?: TreeViewItem, checked?: boolean) => {
         const params: [
-          React.FormEvent | React.MouseEventHandler,
+          React.FormEvent | React.MouseEvent,
           Record<string, Record<string, GroupItem | boolean>>,
           {
             value: string;
