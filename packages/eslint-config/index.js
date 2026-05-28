@@ -71,6 +71,9 @@ module.exports = defineConfig(eslintPluginPrettierRecommended, reactPlugin.confi
     },
   },
   rules: {
+    'no-unused-vars': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
     '@typescript-eslint/no-restricted-types': ['warn', {
       types: {
         FC: { message: REACT_FC_BAN_MESSAGE },
