@@ -1,6 +1,6 @@
 import './RuleRating.scss';
 
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import debounce from 'lodash/debounce';
 
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
@@ -31,8 +31,14 @@ const RuleRating: React.FC<RuleRatingProps> = ({ messages, ruleId, ruleRating, o
       onVoteClick(ruleId, calculatedRating);
       setSubmitted(false);
     }, DEBOUNCE_TIMEOUT),
-    [],
+    [onVoteClick, ruleId],
   );
+
+  useEffect(() => {
+    return () => {
+      triggerCallback.cancel();
+    };
+  }, [triggerCallback]);
 
   const updateRuleRating = (newRating: Rating) => {
     const calculatedRating = rating === newRating ? 0 : newRating;
