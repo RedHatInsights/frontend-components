@@ -23,7 +23,7 @@ type ActionObject = {
   onClick?: (
     event: MouseEvent | React.MouseEvent<any, MouseEvent> | React.KeyboardEvent<Element>,
     action: ActionObject,
-    key: string | number
+    key: string | number,
   ) => void;
   props?: { [key: string]: any; className?: string };
 };

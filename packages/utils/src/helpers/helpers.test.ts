@@ -48,7 +48,7 @@ describe('mergeArraysByKey', () => {
           },
         ],
       ],
-      'key'
+      'key',
     );
     expect(result.length).toBe(3);
     expect(result).toEqual(expect.arrayContaining([expect.objectContaining({ key: '1', value: '7' })]));
@@ -106,7 +106,7 @@ describe('getBaseName', () => {
   ].map(([pathName, baseName]) =>
     it(`should return ${baseName} for ${pathName}`, () => {
       expect(getBaseName(pathName)).toBe(baseName);
-    })
+    }),
   );
 
   it('should work with long url', () => {
@@ -142,7 +142,7 @@ describe('generateFilter', () => {
         some: [1, 2],
       },
       undefined,
-      { arrayEnhancer: 'contains' }
+      { arrayEnhancer: 'contains' },
     );
     expect(result).toMatchObject({
       'filter[some][contains][]': [1, 2],
@@ -188,7 +188,7 @@ describe('generateFilter', () => {
           value: 'value',
         },
       },
-      ''
+      '',
     );
     expect(result).toMatchObject({
       '[actual][value]': 'value',

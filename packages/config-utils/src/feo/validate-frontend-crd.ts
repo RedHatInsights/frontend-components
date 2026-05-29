@@ -37,7 +37,7 @@ Frontend CRD validation error:
       console.groupEnd();
     });
     const errorMessages = validate.errors?.map((error) => error.message).join(', ');
-    throw new Error(`Frontend CRD validation failed! ${errorMessages?.length ?? 0 > 0 ? errorMessages : 'Unable to validate frontend CRD'}`);
+    throw new Error(`Frontend CRD validation failed! ${(errorMessages?.length ?? 0 > 0) ? errorMessages : 'Unable to validate frontend CRD'}`);
   }
 }
 

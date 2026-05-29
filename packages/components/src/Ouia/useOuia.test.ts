@@ -6,7 +6,7 @@ describe('useOuia', () => {
     const { result } = renderHook(() =>
       useOuia({
         type: 'Helper',
-      })
+      }),
     );
     expect(result.current).toHaveProperty('data-ouia-component-type', 'Helper');
   });
@@ -16,7 +16,7 @@ describe('useOuia', () => {
       useOuia({
         type: 'Helper',
         module: 'MyLib',
-      })
+      }),
     );
     expect(result.current).toHaveProperty('data-ouia-component-type', 'MyLib/Helper');
   });
@@ -25,7 +25,7 @@ describe('useOuia', () => {
     const { result } = renderHook(() =>
       useOuia({
         type: 'Helper',
-      })
+      }),
     );
     expect(result.current).toHaveProperty('data-ouia-safe', true);
   });
@@ -35,7 +35,7 @@ describe('useOuia', () => {
       useOuia({
         type: 'Helper',
         ouiaSafe: true,
-      })
+      }),
     );
     expect(result.current).toHaveProperty('data-ouia-safe', true);
   });
@@ -45,7 +45,7 @@ describe('useOuia', () => {
       useOuia({
         type: 'Helper',
         ouiaSafe: false,
-      })
+      }),
     );
     expect(result.current).toHaveProperty('data-ouia-safe', false);
   });
@@ -54,7 +54,7 @@ describe('useOuia', () => {
     const { result } = renderHook(() =>
       useOuia({
         type: 'Helper',
-      })
+      }),
     );
     expect(result.current).not.toHaveProperty('data-ouia-component-id');
   });
@@ -64,7 +64,7 @@ describe('useOuia', () => {
       useOuia({
         type: 'Helper',
         ouiaId: 'foobar',
-      })
+      }),
     );
     expect(result.current).toHaveProperty('data-ouia-component-id', 'foobar');
   });

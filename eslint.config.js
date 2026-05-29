@@ -30,6 +30,7 @@ module.exports = defineConfig(
       'src/demoData',
       'doc/',
       'node_modules/',
+      'packages/*/node_modules/**',
       'packages/*/**/*.js',
       '!packages/eslint-config/**/*.js',
       '!packages/config/*.js',
@@ -37,7 +38,6 @@ module.exports = defineConfig(
       '!packages/*/src/**/*.js',
       'src/SmartComponents/SamplePage/',
       'dist/',
-      '**/node_modules/',
     ],
     plugins: {
       rulesdir: rulesDirPlugin,

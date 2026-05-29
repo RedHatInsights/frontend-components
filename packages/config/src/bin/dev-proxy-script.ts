@@ -4,9 +4,9 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import treeKill from 'tree-kill';
-import { fecLogger as fecLoggerDefault, LogType } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { LogType, fecLogger as fecLoggerDefault } from '@redhat-cloud-services/frontend-components-config-utilities';
 import { getCdnPath, setEnv, validateFECConfig } from './common';
-import serveChrome, { checkContainerRuntime, CONTAINER_NAME as CHROME_CONTAINTER_NAME, ContainerRuntime } from './serve-chrome';
+import serveChrome, { CONTAINER_NAME as CHROME_CONTAINTER_NAME, ContainerRuntime, checkContainerRuntime } from './serve-chrome';
 
 const PROXY_URL = 'http://squid.corp.redhat.com:3128';
 const DEFAULT_LOCAL_ROUTE = 'host.docker.internal';

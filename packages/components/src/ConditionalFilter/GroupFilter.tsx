@@ -147,7 +147,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
   const menuItems = getMenuItems(
     items?.map((item) => (item.type === GroupType.treeView ? convertTreeItem(item) : item)) || [],
     onChange,
-    calculateSelected(selected || {})
+    calculateSelected(selected || {}),
   );
   const groupMenuItems = getGroupMenuItems(groups, onChange, calculateSelected(selected || {}, groups));
 
@@ -216,7 +216,7 @@ const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
         </div>
       ) : (
         renderItem(item, key, type, groupKey, selected)
-      )
+      ),
     );
 
   const hasFocus = document.activeElement === inputRef.current || document.activeElement === toggleRef.current;

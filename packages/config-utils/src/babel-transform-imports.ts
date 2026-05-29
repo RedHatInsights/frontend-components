@@ -30,7 +30,7 @@ function findIconInRoots(roots: string[], icon: string) {
     .flat()?.[0];
   if (!location) {
     throw new Error(
-      `Cannot find source files for the ${icon} icon. Expected filename ${nameSpecifier}. It is possible the icon name does not match the filename pattern. You can look for the source file and add a new entry to the "iconMapper" object in your babel.config.js.`
+      `Cannot find source files for the ${icon} icon. Expected filename ${nameSpecifier}. It is possible the icon name does not match the filename pattern. You can look for the source file and add a new entry to the "iconMapper" object in your babel.config.js.`,
     );
   }
 
@@ -75,7 +75,7 @@ function findPfRoots(roots: string[], importName: string) {
 
   if (!componentSource) {
     throw new Error(
-      `Unable to find source file for ${importName}! Please find a source file for the component and add it to "moduleOverrides" argument of the createPfReactTransform babel plugin.`
+      `Unable to find source file for ${importName}! Please find a source file for the component and add it to "moduleOverrides" argument of the createPfReactTransform babel plugin.`,
     );
   }
 
@@ -107,7 +107,7 @@ function populateCoreCache(roots: string[], moduleOverrides: { [importName: stri
       const exists = roots.map((root) => glob.sync(`${root}/node_modules/${expectedPath}`.replace(/\/\//, '/'))).flat().length > 0;
       if (!exists) {
         throw new Error(
-          `No module found at ${expectedPath} while trying to resolve module overrides! Please verify that ${pathPartial} matches the desired ${importName} component source file path.`
+          `No module found at ${expectedPath} while trying to resolve module overrides! Please verify that ${pathPartial} matches the desired ${importName} component source file path.`,
         );
       }
 

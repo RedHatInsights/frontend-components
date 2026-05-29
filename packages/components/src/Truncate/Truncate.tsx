@@ -24,7 +24,7 @@ export interface TruncateProps {
 /**
  * @deprecated Do not use deprecated Truncate import, use an example from @patternfly/react-component-groups migration guide instead
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 const Truncate: React.FunctionComponent<TruncateProps> = ({
   text = '',
   length = 150,

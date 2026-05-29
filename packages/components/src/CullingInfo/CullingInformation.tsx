@@ -45,7 +45,7 @@ const CullingInformation: React.FunctionComponent<CullingInformation> = ({
             'ins-c-inventory__culling-warning': isWarn,
             'ins-c-inventory__culling-danger': isError,
           },
-          className
+          className,
         )}
       >
         {isWarn && <ExclamationTriangleIcon />}
@@ -64,7 +64,7 @@ const CullingInformation: React.FunctionComponent<CullingInformation> = ({
               'ins-c-inventory__culling-warning': isWarn,
               'ins-c-inventory__culling-danger': isError,
             },
-            className
+            className,
           )}
         >
           {isError && <ExclamationCircleIcon />}

@@ -9,8 +9,8 @@ jest.mock('@redhat-cloud-services/frontend-components-config-utilities', () => (
 const mockFecConfig = {
   appUrl: '/test',
   moduleFederation: {
-    exposes: { './RootApp': './src/entry.tsx' }
-  }
+    exposes: { './RootApp': './src/entry.tsx' },
+  },
 };
 
 describe('webpack.plugins FEC_STATIC env var handling', () => {
@@ -40,7 +40,7 @@ describe('webpack.plugins FEC_STATIC env var handling', () => {
     expect(federatedModules).toHaveBeenCalledWith(
       expect.objectContaining({
         useFileHash: true,
-      })
+      }),
     );
   });
 
@@ -54,7 +54,7 @@ describe('webpack.plugins FEC_STATIC env var handling', () => {
     expect(federatedModules).toHaveBeenCalledWith(
       expect.objectContaining({
         useFileHash: false,
-      })
+      }),
     );
   });
 
@@ -68,7 +68,7 @@ describe('webpack.plugins FEC_STATIC env var handling', () => {
     expect(federatedModules).toHaveBeenCalledWith(
       expect.objectContaining({
         useFileHash: true,
-      })
+      }),
     );
   });
 
@@ -82,7 +82,7 @@ describe('webpack.plugins FEC_STATIC env var handling', () => {
     expect(federatedModules).toHaveBeenCalledWith(
       expect.objectContaining({
         useFileHash: false,
-      })
+      }),
     );
   });
 
@@ -96,7 +96,7 @@ describe('webpack.plugins FEC_STATIC env var handling', () => {
     expect(federatedModules).toHaveBeenCalledWith(
       expect.objectContaining({
         useFileHash: true,
-      })
+      }),
     );
   });
 
@@ -110,7 +110,7 @@ describe('webpack.plugins FEC_STATIC env var handling', () => {
     expect(federatedModules).toHaveBeenCalledWith(
       expect.objectContaining({
         useFileHash: false,
-      })
+      }),
     );
   });
 });

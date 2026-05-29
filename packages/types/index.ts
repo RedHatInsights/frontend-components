@@ -121,7 +121,7 @@ export type OnEventCallbacks = {
 
 declare function OnChromeEvent<K extends 'APP_NAVIGATION' | 'NAVIGATION_TOGGLE' | 'GLOBAL_FILTER_UPDATE'>(
   event: K,
-  callback: OnEventCallbacks[K]
+  callback: OnEventCallbacks[K],
 ): undefined | (() => void) | (() => undefined) | (() => boolean);
 
 export type EnableTopicsArgs = [{ names: string[]; append?: boolean }] | string[];
@@ -320,13 +320,13 @@ export interface ChromeAPI {
           };
         };
       };
-    }) => T
+    }) => T,
   ) => T;
   enablePackagesDebug: () => void;
   requestPdf: (options: PDFRequestOptions) => Promise<void>;
   drawerActions: DrawerPanelActions;
   useVirtualAssistant?: () => {
-    openVA: (message: string) => void
+    openVA: (message: string) => void;
   };
   search?: ChromeSearchAPI;
 }

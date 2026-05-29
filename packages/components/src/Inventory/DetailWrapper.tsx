@@ -1,4 +1,4 @@
-import React, { Suspense, type JSX } from 'react';
+import React, { type JSX, Suspense } from 'react';
 import { ScalprumComponent } from '@scalprum/react-core';
 import { useStore } from 'react-redux';
 import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
@@ -62,9 +62,7 @@ export interface DetailWrapperProps extends Record<string, unknown> {
  *
  * This component wraps entire system detail in order to show loading state and drawer (if enabled).
  */
-const DetailWrapper = React.forwardRef<unknown, DetailWrapperProps>((props, ref) => (
-  <BaseDetailWrapper innerRef={ref} {...props} />
-));
+const DetailWrapper = React.forwardRef<unknown, DetailWrapperProps>((props, ref) => <BaseDetailWrapper innerRef={ref} {...props} />);
 
 DetailWrapper.displayName = 'DetailWrapper';
 

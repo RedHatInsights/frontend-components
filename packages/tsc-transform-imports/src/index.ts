@@ -28,7 +28,7 @@ function loadModuleMap(roots: string[]): Map<string, string> | undefined {
   const loaded: unknown = JSON.parse(
     fs.readFileSync(path, {
       encoding: 'utf-8',
-    })
+    }),
   );
 
   if (typeof loaded !== 'object' || loaded === undefined || loaded === null) {
@@ -60,7 +60,7 @@ function findComponentModuleUncached(nameBinding: string): string {
       // Fail loudly if a path in the map does not exist on disk.
       if (foundPath === undefined) {
         throw new Error(
-          `@patternfly/react-core/dist/dynamic-modules.json contains path "${mapPath}" for "${nameBinding}", but no such file exists in ${CORE_DIRECTORIES}.`
+          `@patternfly/react-core/dist/dynamic-modules.json contains path "${mapPath}" for "${nameBinding}", but no such file exists in ${CORE_DIRECTORIES}.`,
         );
       }
 
@@ -106,7 +106,7 @@ function iconImportLiteral(icon: string) {
     return ICONS_CACHE[icon];
   } else {
     throw new Error(
-      `Cannot find source files for the ${icon} icon. Expected filename ${assumedImportName}. It is possible the icon name does not match the filename pattern. You can look for the source file and add a new entry to the ICONS_NAME_FIX in the @redhat-cloud-services/tsc-transform-imports package.`
+      `Cannot find source files for the ${icon} icon. Expected filename ${assumedImportName}. It is possible the icon name does not match the filename pattern. You can look for the source file and add a new entry to the ICONS_NAME_FIX in the @redhat-cloud-services/tsc-transform-imports package.`,
     );
   }
 }
@@ -118,7 +118,7 @@ function createIconDynamicImports(nodeFactory: ts.NodeFactory, iconNames: string
     return nodeFactory.createImportDeclaration(
       undefined,
       nodeFactory.createImportClause(false, nodeFactory.createIdentifier(icon), undefined),
-      nodeFactory.createStringLiteral(importLiteral)
+      nodeFactory.createStringLiteral(importLiteral),
     );
   });
   return imports;
@@ -161,11 +161,11 @@ function createDynamicReactCoreImports(nodeFactory: ts.NodeFactory, node: ts.Imp
         false,
         undefined,
         nodeFactory.createNamedImports(
-          nameBindings.map((nameBinding) => nodeFactory.createImportSpecifier(false, undefined, nodeFactory.createIdentifier(nameBinding)))
-        )
+          nameBindings.map((nameBinding) => nodeFactory.createImportSpecifier(false, undefined, nodeFactory.createIdentifier(nameBinding))),
+        ),
       ),
       nodeFactory.createStringLiteral(`@patternfly/react-core/dist/dynamic/${importPartial}`),
-      node.assertClause
+      node.assertClause,
     );
     importNodes.push(importNode);
   });
@@ -212,10 +212,7 @@ const transformer: ts.TransformerFactory<ts.Node> = (context) => (rootNode) => {
     // handle absolute icons import paths
     if (isDynamic && ts.isImportDeclaration(node) && /@patternfly\/react-(icons|tokens)/.test(node.moduleSpecifier.getText())) {
       if (ts.isImportDeclaration(node) && /@patternfly\/.*\/dist\/esm/.test(node.moduleSpecifier.getText())) {
-        const moduleSpecifier = node.moduleSpecifier
-          .getFullText()
-          .replace(/"/g, '')
-          .replace(/'/g, '');
+        const moduleSpecifier = node.moduleSpecifier.getFullText().replace(/"/g, '').replace(/'/g, '');
 
         if (!node.moduleSpecifier.getText().includes('react-tokens')) {
           moduleSpecifier.replace(/dist\/esm/, 'dist/dynamic');
@@ -225,11 +222,8 @@ const transformer: ts.TransformerFactory<ts.Node> = (context) => (rootNode) => {
           node,
           node.modifiers,
           node.importClause,
-          factory.createStringLiteral(
-            moduleSpecifier.trim(),
-            true
-          ),
-          undefined
+          factory.createStringLiteral(moduleSpecifier.trim(), true),
+          undefined,
         );
       }
     }

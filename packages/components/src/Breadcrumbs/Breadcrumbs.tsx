@@ -29,7 +29,7 @@ const Breadcrumbs: React.FunctionComponent<BreadcrumbsProps> = ({
 }) => {
   console.warn(
     "Breadcrumbs from FE component shouldn't be used anymore. \
-Instead use https://patternfly-react.surge.sh/documentation/react/components/breadcrumb from PF repository."
+Instead use https://patternfly-react.surge.sh/documentation/react/components/breadcrumb from PF repository.",
   );
   return (
     <Breadcrumb className={classnames('ins-c-breadcrumbs', className)} {...props}>

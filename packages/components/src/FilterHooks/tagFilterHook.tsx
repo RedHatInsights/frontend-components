@@ -21,7 +21,7 @@ type UseTagsFilter = (
   onShowMoreClick?: (...args: any[]) => void,
   reducer?: [Record<string, { [key: string]: GroupValue }>, (...args: any[]) => any] | [Record<string, { [key: string]: GroupValue }>],
   itemText?: string,
-  showMoreTitle?: React.ReactNode
+  showMoreTitle?: React.ReactNode,
 ) => {
   filter: any;
   chips: any;
@@ -39,7 +39,7 @@ export const useTagsFilter: UseTagsFilter = (
   // @ts-ignore
   [globalState, dispatch] = [tagsFilterState],
   itemText = 'item',
-  showMoreTitle
+  showMoreTitle,
 ) => {
   const [state, setState] = useState<{
     allTags: AllTag[];
@@ -72,7 +72,7 @@ export const useTagsFilter: UseTagsFilter = (
       group: Record<string, unknown>,
       item: FilterHookGroupItem,
       groupKey: string,
-      itemKey: string
+      itemKey: string,
     ) => {
       if (item.meta) {
         const isSelected = !!newSelection[groupKey][itemKey];

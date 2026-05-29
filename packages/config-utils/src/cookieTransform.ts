@@ -31,7 +31,7 @@ function cookieTransform(
     user: any;
     internal: any;
     identity: any;
-  }
+  },
 ) {
   const { cookie, authorization } = req.headers;
   const match = cookie?.match(/cs_jwt=([^;]+)/) || authorization?.match(/^Bearer (.*)$/);

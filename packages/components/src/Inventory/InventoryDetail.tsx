@@ -1,4 +1,4 @@
-import React, { Suspense, type JSX } from 'react';
+import React, { type JSX, Suspense } from 'react';
 import { ScalprumComponent } from '@scalprum/react-core';
 import { useStore } from 'react-redux';
 import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
@@ -62,9 +62,7 @@ export interface InventoryDetailProps extends Record<string, unknown> {
  *
  * This component shows complete inventory detail with system info and app's detail in tab(s).
  */
-const InventoryDetail = React.forwardRef<unknown, InventoryDetailProps>((props, ref) => (
-  <BaseInventoryDetail innerRef={ref} {...props} />
-));
+const InventoryDetail = React.forwardRef<unknown, InventoryDetailProps>((props, ref) => <BaseInventoryDetail innerRef={ref} {...props} />);
 
 InventoryDetail.displayName = 'InventoryDetail';
 

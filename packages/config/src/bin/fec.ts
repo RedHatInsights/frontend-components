@@ -54,7 +54,10 @@ async function checkHostname(hostname: string) {
 
 async function checkHosts(): Promise<string[]> {
   const missingHosts = await Promise.allSettled<string | undefined>(hosts.map(checkHostname));
-  return missingHosts.filter((v) => v.status === 'fulfilled').filter(v => v.value !== undefined).map(v => v.value!);
+  return missingHosts
+    .filter((v) => v.status === 'fulfilled')
+    .filter((v) => v.value !== undefined)
+    .map((v) => v.value!);
 }
 
 function checkDependencies() {

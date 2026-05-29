@@ -41,9 +41,7 @@ const BaseRemediationWizard = ({
  *
  * This component shows remediations button with wizard.
  */
-const RemediationWizard = React.forwardRef<unknown, RemediationWizardProps>((props, ref) => (
-  <BaseRemediationWizard innerRef={ref} {...props} />
-));
+const RemediationWizard = React.forwardRef<unknown, RemediationWizardProps>((props, ref) => <BaseRemediationWizard innerRef={ref} {...props} />);
 
 RemediationWizard.displayName = 'RemediationWizard';
 

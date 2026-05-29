@@ -4,7 +4,7 @@ import type * as http from 'http';
 
 // Mock jws module
 jest.mock('jws', () => ({
-  decode: jest.fn()
+  decode: jest.fn(),
 }));
 
 import jws from 'jws';
@@ -17,13 +17,13 @@ describe('cookieTransform', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    
+
     mockProxyReq = {
-      setHeader: jest.fn()
+      setHeader: jest.fn(),
     } as any;
 
     mockReq = {
-      headers: {}
+      headers: {},
     };
 
     mockRes = {} as Response;
@@ -40,28 +40,25 @@ describe('cookieTransform', () => {
       is_org_admin: false,
       is_internal: false,
       account_id: '54321',
-      auth_time: 1234567890
+      auth_time: 1234567890,
     };
 
     mockReq.headers = {
-      cookie: 'cs_jwt=mockjwttoken'
+      cookie: 'cs_jwt=mockjwttoken',
     };
 
     mockJws.decode.mockReturnValue({
-      payload: mockPayload
+      payload: mockPayload,
     } as any);
 
     cookieTransform(mockProxyReq, mockReq as ExpressRequest, mockRes as Response, {
       user: {},
       internal: {},
-      identity: {}
+      identity: {},
     });
 
     expect(mockJws.decode).toHaveBeenCalledWith('mockjwttoken');
-    expect(mockProxyReq.setHeader).toHaveBeenCalledWith(
-      'x-rh-identity',
-      expect.any(String)
-    );
+    expect(mockProxyReq.setHeader).toHaveBeenCalledWith('x-rh-identity', expect.any(String));
 
     // Verify the header contains expected structure
     const headerCall = mockProxyReq.setHeader.mock.calls[0];
@@ -76,7 +73,7 @@ describe('cookieTransform', () => {
         hybrid: { is_entitled: true },
         migrations: { is_entitled: true },
         ansible: { is_entitled: true },
-        cost_management: { is_entitled: true }
+        cost_management: { is_entitled: true },
       },
       identity: {
         type: 'User',
@@ -92,13 +89,13 @@ describe('cookieTransform', () => {
           is_org_admin: false,
           is_internal: false,
           locale: 'en-US',
-          user_id: '54321'
+          user_id: '54321',
         },
         internal: {
           org_id: '67890',
-          auth_time: 1234567890
-        }
-      }
+          auth_time: 1234567890,
+        },
+      },
     });
   });
 
@@ -113,21 +110,21 @@ describe('cookieTransform', () => {
       is_org_admin: false,
       is_internal: false,
       account_id: '54321',
-      auth_time: 1234567890
+      auth_time: 1234567890,
     };
 
     mockReq.headers = {
-      authorization: 'Bearer mockjwttoken'
+      authorization: 'Bearer mockjwttoken',
     };
 
     mockJws.decode.mockReturnValue({
-      payload: mockPayload
+      payload: mockPayload,
     } as any);
 
     cookieTransform(mockProxyReq, mockReq as ExpressRequest, mockRes as Response, {
       user: {},
       internal: {},
-      identity: {}
+      identity: {},
     });
 
     expect(mockJws.decode).toHaveBeenCalledWith('mockjwttoken');
@@ -136,7 +133,7 @@ describe('cookieTransform', () => {
 
   it('should use custom entitlements when provided', () => {
     const customEntitlements: { [sku: string]: Entitlement } = {
-      'custom-service': { is_entitled: true, is_trial: true }
+      'custom-service': { is_entitled: true, is_trial: true },
     };
 
     const mockPayload = {
@@ -149,22 +146,22 @@ describe('cookieTransform', () => {
       is_org_admin: false,
       is_internal: false,
       account_id: '54321',
-      auth_time: 1234567890
+      auth_time: 1234567890,
     };
 
     mockReq.headers = {
-      cookie: 'cs_jwt=mockjwttoken'
+      cookie: 'cs_jwt=mockjwttoken',
     };
 
     mockJws.decode.mockReturnValue({
-      payload: mockPayload
+      payload: mockPayload,
     } as any);
 
     cookieTransform(mockProxyReq, mockReq as ExpressRequest, mockRes as Response, {
       entitlements: customEntitlements,
       user: {},
       internal: {},
-      identity: {}
+      identity: {},
     });
 
     const headerCall = mockProxyReq.setHeader.mock.calls[0];
@@ -185,21 +182,21 @@ describe('cookieTransform', () => {
       is_org_admin: false,
       is_internal: false,
       account_id: '54321',
-      auth_time: 1234567890
+      auth_time: 1234567890,
     };
 
     mockReq.headers = {
-      cookie: 'cs_jwt=mockjwttoken'
+      cookie: 'cs_jwt=mockjwttoken',
     };
 
     mockJws.decode.mockReturnValue({
-      payload: mockPayload
+      payload: mockPayload,
     } as any);
 
     cookieTransform(mockProxyReq, mockReq as ExpressRequest, mockRes as Response, {
       user: { custom_field: 'custom_value' },
       internal: { custom_internal: 'internal_value' },
-      identity: { custom_identity: 'identity_value' }
+      identity: { custom_identity: 'identity_value' },
     });
 
     const headerCall = mockProxyReq.setHeader.mock.calls[0];
@@ -217,7 +214,7 @@ describe('cookieTransform', () => {
     cookieTransform(mockProxyReq, mockReq as ExpressRequest, mockRes as Response, {
       user: {},
       internal: {},
-      identity: {}
+      identity: {},
     });
 
     expect(mockJws.decode).not.toHaveBeenCalled();
@@ -226,7 +223,7 @@ describe('cookieTransform', () => {
 
   it('should do nothing when JWT decode fails', () => {
     mockReq.headers = {
-      cookie: 'cs_jwt=invalidtoken'
+      cookie: 'cs_jwt=invalidtoken',
     };
 
     mockJws.decode.mockReturnValue(null);
@@ -234,7 +231,7 @@ describe('cookieTransform', () => {
     cookieTransform(mockProxyReq, mockReq as ExpressRequest, mockRes as Response, {
       user: {},
       internal: {},
-      identity: {}
+      identity: {},
     });
 
     expect(mockJws.decode).toHaveBeenCalledWith('invalidtoken');
@@ -252,28 +249,28 @@ describe('cookieTransform', () => {
       is_org_admin: false,
       is_internal: false,
       account_id: '54321',
-      auth_time: 1234567890
+      auth_time: 1234567890,
     };
 
     mockReq.headers = {
-      cookie: 'other=value; cs_jwt=mockjwttoken; another=value'
+      cookie: 'other=value; cs_jwt=mockjwttoken; another=value',
     };
 
     mockJws.decode.mockReturnValue({
-      payload: mockPayload
+      payload: mockPayload,
     } as any);
 
     cookieTransform(mockProxyReq, mockReq as ExpressRequest, mockRes as Response, {
       user: {},
       internal: {},
-      identity: {}
+      identity: {},
     });
 
     expect(mockJws.decode).toHaveBeenCalledWith('mockjwttoken');
     expect(mockProxyReq.setHeader).toHaveBeenCalled();
   });
 
-  // Test documented functionality from our documentation  
+  // Test documented functionality from our documentation
   it('should match documentation behavior', () => {
     // This validates our documentation is accurate
     const mockPayload = {
@@ -286,29 +283,26 @@ describe('cookieTransform', () => {
       is_org_admin: false,
       is_internal: false,
       account_id: '54321',
-      auth_time: 1234567890
+      auth_time: 1234567890,
     };
 
     mockReq.headers = {
-      cookie: 'cs_jwt=mocktoken'
+      cookie: 'cs_jwt=mocktoken',
     };
 
     mockJws.decode.mockReturnValue({
-      payload: mockPayload
+      payload: mockPayload,
     } as any);
 
     // Test example from documentation
     cookieTransform(mockProxyReq, mockReq as ExpressRequest, mockRes as Response, {
       user: { username: 'testuser' },
       internal: { org_id: '123' },
-      identity: { custom: 'data' }
+      identity: { custom: 'data' },
     });
 
     // Verify x-rh-identity header is set
-    expect(mockProxyReq.setHeader).toHaveBeenCalledWith(
-      'x-rh-identity',
-      expect.any(String)
-    );
+    expect(mockProxyReq.setHeader).toHaveBeenCalledWith('x-rh-identity', expect.any(String));
 
     // Verify structure matches documentation
     const headerCall = mockProxyReq.setHeader.mock.calls[0];

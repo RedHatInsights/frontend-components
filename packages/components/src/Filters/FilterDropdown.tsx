@@ -94,7 +94,7 @@ const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({
                 ))}
               </SelectList>
             </SelectGroup>
-          )
+          ),
       )}
     </Select>
   );

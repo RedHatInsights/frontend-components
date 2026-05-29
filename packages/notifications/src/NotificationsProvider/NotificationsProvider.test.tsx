@@ -19,7 +19,7 @@ describe('NotificationsProvider', () => {
     render(
       <NotificationsProvider>
         <DummyComponent />
-      </NotificationsProvider>
+      </NotificationsProvider>,
     );
 
     expect(screen.getByText('Dummy Component')).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe('NotificationsProvider', () => {
     render(
       <NotificationsProvider>
         <DummyComponent />
-      </NotificationsProvider>
+      </NotificationsProvider>,
     );
 
     const addButton = screen.getByText('Add Notification');
@@ -49,7 +49,7 @@ describe('NotificationsProvider', () => {
     render(
       <NotificationsProvider>
         <DummyComponent />
-      </NotificationsProvider>
+      </NotificationsProvider>,
     );
 
     const addButton = screen.getByText('Add Notification');
@@ -72,7 +72,7 @@ describe('NotificationsProvider', () => {
     render(
       <NotificationsProvider>
         <DummyComponent />
-      </NotificationsProvider>
+      </NotificationsProvider>,
     );
 
     const addButton = screen.getByText('Add Notification');
@@ -94,7 +94,7 @@ describe('NotificationsProvider', () => {
     render(
       <NotificationsProvider store={store}>
         <DummyComponent />
-      </NotificationsProvider>
+      </NotificationsProvider>,
     );
 
     const addButton = screen.getByText('Add Notification');

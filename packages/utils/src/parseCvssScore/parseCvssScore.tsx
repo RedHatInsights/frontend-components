@@ -9,7 +9,12 @@ function parseCvssScore(cvssV2?: string | number, cvssV3?: string | number, with
     (cvssV2 && (
       <Tooltip content={v2Tooltip} position={'left'}>
         <span>
-          {`${parseFloat(cvssV2 as string).toFixed(1)}`} {withLabels && <Label variant="outline" isCompact>CVSS 2.0</Label>}
+          {`${parseFloat(cvssV2 as string).toFixed(1)}`}{' '}
+          {withLabels && (
+            <Label variant="outline" isCompact>
+              CVSS 2.0
+            </Label>
+          )}
         </span>
       </Tooltip>
     )) || (

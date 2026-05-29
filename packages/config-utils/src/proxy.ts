@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 // Webpack proxy and express config for `useProxy: true` or `standalone: true`
 import { execSync } from 'child_process';
 import fetch from 'node-fetch';
@@ -26,7 +25,7 @@ const checkLocalAppHost = (appName: string, hostUrl: string, port: number | stri
         port +
         '` in the ' +
         appName +
-        " application directory to start it's webpack dev server and the bundle is built.\n"
+        " application directory to start it's webpack dev server and the bundle is built.\n",
     );
 
     return false;
@@ -41,7 +40,7 @@ const buildRoutes = (
   routes: {
     [route: string]: ProxyConfigItem & { host?: string };
   },
-  target: string
+  target: string,
 ) =>
   Object.entries(routes || {}).map(([route, redirect]) => {
     const currTarget = typeof redirect === 'object' ? redirect.host : redirect;
@@ -82,7 +81,7 @@ const buildLocalAppRoutes = (localApps: string | string[], defaultLocalAppHost: 
         process.exit();
       }
     }, {}),
-    target
+    target,
   );
 
 export type ProxyOptions = {
@@ -144,7 +143,7 @@ const proxy = ({
   } catch (e) {
     fecLogger(
       LogType.warn,
-      `FEO features are not enabled. Unable to find frontend CRD file at ${frontendCRDPath}. If you want FEO features for local development, make sure to have a "deploy/frontend.yaml" file in your project or specify its location via "frontendCRDPath" attribute.`
+      `FEO features are not enabled. Unable to find frontend CRD file at ${frontendCRDPath}. If you want FEO features for local development, make sure to have a "deploy/frontend.yaml" file in your project or specify its location via "frontendCRDPath" attribute.`,
     );
   }
   const proxy: ProxyConfigItem[] = [];
@@ -242,7 +241,7 @@ const proxy = ({
       onProxyRes: (proxyRes, req, res) => {
         // this should reading the aggregated bundles filed generated from chrome service
         // The functionality is disabled until the interceptor is ready
-        // eslint-disable-next-line no-constant-condition
+
         if (FEOFeaturesEnabled && frontendCrdRef.current && isInterceptAbleRequest(req.url)) {
           // stub the original write function
           const _write = res.write;

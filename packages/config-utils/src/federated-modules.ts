@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { relative, resolve } from 'path';
 import { DynamicRemotePlugin, EncodedExtension, PluginBuildMetadata, WebpackSharedConfig } from '@openshift/dynamic-plugin-sdk-webpack';
 import jsVarName from './jsVarName';
@@ -92,7 +91,7 @@ const getRootPackage = (key: string): string => {
 export const createSharedDeps = (
   include: { [module: string]: WebpackSharedConfig },
   dependencies: { [pkg: string]: string },
-  exclude: string[]
+  exclude: string[],
 ): { [module: string]: WebpackSharedConfig } =>
   Object.entries(include)
     .filter(([key]) => dependencies[getRootPackage(key)] && !exclude.includes(key))
@@ -115,7 +114,7 @@ export const applyImpliedDeps = (
   sharedDeps: Record<string, WebpackSharedConfig>,
   include: Record<string, WebpackSharedConfig>,
   dependencies: Record<string, string>,
-  impliedDeps: Record<string, string[]>
+  impliedDeps: Record<string, string[]>,
 ): Record<string, WebpackSharedConfig> => {
   const result = { ...sharedDeps };
   for (const [trigger, targets] of Object.entries(impliedDeps)) {
@@ -141,7 +140,7 @@ export const mergeSharedDeps = (
   sharedDeps: Record<string, WebpackSharedConfig>,
   shared: Record<string, WebpackSharedConfig>[],
   chromeProvided: Record<string, WebpackSharedConfig>,
-  logger = fecLogger
+  logger = fecLogger,
 ): Record<string, WebpackSharedConfig> => {
   return shared.reduce((acc, dep) => {
     // Chrome-provided modules cannot be configured by tenants — filter and warn
@@ -152,7 +151,7 @@ export const mergeSharedDeps = (
           return false;
         }
         return true;
-      })
+      }),
     );
     if (!hasVersionSpecified(tenantOnly)) {
       const invalidDeps = Object.entries(tenantOnly)
@@ -188,9 +187,7 @@ const federatedModules = ({
   const { chromeProvided, defaultShared, impliedDeps } = createIncludes();
   const include = { ...chromeProvided, ...defaultShared };
 
-  const { dependencies = {}, insights } = depsProp
-    ? { dependencies: depsProp, insights: undefined }
-    : require(resolve(root, './package.json')) || {};
+  const { dependencies = {}, insights } = depsProp ? { dependencies: depsProp, insights: undefined } : require(resolve(root, './package.json')) || {};
   const appName = moduleName || (insights && jsVarName(insights.appname));
   const filename = `${appName}.${useFileHash ? `[contenthash].` : ''}js`;
 

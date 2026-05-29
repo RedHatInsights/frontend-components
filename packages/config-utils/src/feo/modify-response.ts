@@ -8,28 +8,28 @@ import serviceTilesInterceptor from './service-tiles-interceptor';
 
 function isGeneratedBundles(
   body: GeneratedBundles | ChromeStaticSearchEntry[] | ServicesTilesResponseEntry[] | ChromeModuleRegistry,
-  url: string
+  url: string,
 ): body is GeneratedBundles {
   return matchNavigationRequest(url);
 }
 
 function isSearchIndex(
   body: GeneratedBundles | ChromeStaticSearchEntry[] | ServicesTilesResponseEntry[] | ChromeModuleRegistry,
-  url: string
+  url: string,
 ): body is ChromeStaticSearchEntry[] {
   return matchSearchIndexRequest(url);
 }
 
 function isServiceTiles(
   body: GeneratedBundles | ChromeStaticSearchEntry[] | ServicesTilesResponseEntry[] | ChromeModuleRegistry,
-  url: string
+  url: string,
 ): body is ServicesTilesResponseEntry[] {
   return matchServiceTilesRequest(url);
 }
 
 function isModules(
   body: GeneratedBundles | ChromeStaticSearchEntry[] | ServicesTilesResponseEntry[] | ChromeModuleRegistry,
-  url: string
+  url: string,
 ): body is ChromeModuleRegistry {
   return matchModulesRequest(url);
 }

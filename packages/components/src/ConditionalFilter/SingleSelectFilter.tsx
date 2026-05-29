@@ -17,7 +17,7 @@ export interface SingleSelectFilterProps {
   onChange: (
     e: React.MouseEvent | React.ChangeEvent | React.FormEvent<HTMLInputElement> | undefined,
     newSelection: string | FilterValue | (string | FilterValue)[],
-    selection?: string | FilterValue
+    selection?: string | FilterValue,
   ) => void;
   /** Optional select value placeholder. */
   placeholder?: string;

@@ -31,7 +31,7 @@ const RuleRating: React.FC<RuleRatingProps> = ({ messages, ruleId, ruleRating, o
       onVoteClick(ruleId, calculatedRating);
       setSubmitted(false);
     }, DEBOUNCE_TIMEOUT),
-    []
+    [],
   );
 
   const updateRuleRating = (newRating: Rating) => {
@@ -42,7 +42,7 @@ const RuleRating: React.FC<RuleRatingProps> = ({ messages, ruleId, ruleRating, o
       triggerCallback(calculatedRating);
       setRating(calculatedRating);
     } catch (error) {
-      console.error(error); // eslint-disable-line no-console
+      console.error(error);
     }
   };
 

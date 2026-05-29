@@ -1,7 +1,7 @@
 import type {
+  BulkSelfAccessCheckNestedRelationsParams,
   SelfAccessCheckResourceWithRelation,
   SelfAccessCheckParams as SingleSelfAccessCheckParams,
-  BulkSelfAccessCheckNestedRelationsParams,
 } from '@project-kessel/react-kessel-access-check/types';
 
 export type PermissionMap = Record<string, string>;
@@ -28,12 +28,7 @@ export type SelfAccessCheckParams =
   | BulkSelfAccessCheckNestedRelationsParams
   | { resources: SelfAccessCheckResourceWithRelation[] };
 
-
-function buildKesselResource(
-  resourceId: string,
-  relation: string,
-  options: Required<KesselResourceOptions>
-): SelfAccessCheckResourceWithRelation {
+function buildKesselResource(resourceId: string, relation: string, options: Required<KesselResourceOptions>): SelfAccessCheckResourceWithRelation {
   return {
     id: resourceId,
     type: options.resourceType,
@@ -45,7 +40,7 @@ function buildKesselResource(
 function getResourcesForIds(
   resourceIdOrIds: string | string[] | undefined,
   relations: string[],
-  options: Required<KesselResourceOptions>
+  options: Required<KesselResourceOptions>,
 ): SelfAccessCheckResourceWithRelation[] {
   if (!resourceIdOrIds || relations.length === 0) {
     return [];
@@ -54,16 +49,14 @@ function getResourcesForIds(
   if (ids.length === 0) {
     return [];
   }
-  return ids.flatMap((resourceId) =>
-    relations.map((relation) => buildKesselResource(resourceId, relation, options))
-  );
+  return ids.flatMap((resourceId) => relations.map((relation) => buildKesselResource(resourceId, relation, options)));
 }
 
 function mapPermissionsToKessel(
   permissionMap: PermissionMap,
   requiredPermissions: string[],
   resourceIdOrIds: string | string[] | undefined,
-  options: Required<KesselResourceOptions>
+  options: Required<KesselResourceOptions>,
 ): SelfAccessCheckResourceWithRelation[] {
   const relations = requiredPermissions
     .map((perm) => {
@@ -81,14 +74,12 @@ function mapPermissionsToKessel(
 function requiredPermissionsToKesselResources(
   requiredPermissions: string[],
   resourceIdOrIds: string | string[] | undefined,
-  options: Required<KesselResourceOptions>
+  options: Required<KesselResourceOptions>,
 ): SelfAccessCheckResourceWithRelation[] {
   return getResourcesForIds(resourceIdOrIds, requiredPermissions, options);
 }
 
-function buildSelfAccessCheckParams(
-  resources: SelfAccessCheckResourceWithRelation[]
-): SelfAccessCheckParams {
+function buildSelfAccessCheckParams(resources: SelfAccessCheckResourceWithRelation[]): SelfAccessCheckParams {
   if (resources.length === 1) {
     const resource = resources[0];
     return {
@@ -109,23 +100,12 @@ function buildSelfAccessCheckParams(
  * @param params - Options object: permissionMap (optional), requiredPermissions, resourceIdOrIds, options (optional resourceType/reporter).
  * @returns Params for useSelfAccessCheck.
  */
-export function getKesselAccessCheckParams(
-  params: GetKesselAccessCheckParamsOptions
-): SelfAccessCheckParams {
+export function getKesselAccessCheckParams(params: GetKesselAccessCheckParamsOptions): SelfAccessCheckParams {
   const { permissionMap, requiredPermissions, resourceIdOrIds, options } = params;
   const resolvedOptions = { ...DEFAULT_RESOURCE_OPTIONS, ...options };
   const resources =
     permissionMap !== undefined
-      ? mapPermissionsToKessel(
-          permissionMap,
-          requiredPermissions,
-          resourceIdOrIds,
-          resolvedOptions
-        )
-      : requiredPermissionsToKesselResources(
-          requiredPermissions,
-          resourceIdOrIds,
-          resolvedOptions
-        );
+      ? mapPermissionsToKessel(permissionMap, requiredPermissions, resourceIdOrIds, resolvedOptions)
+      : requiredPermissionsToKesselResources(requiredPermissions, resourceIdOrIds, resolvedOptions);
   return buildSelfAccessCheckParams(resources);
 }

@@ -12,7 +12,7 @@ describe('module-interceptor', () => {
   beforeEach(() => {
     // Clear all mocks to ensure test isolation
     jest.clearAllMocks();
-    
+
     // Initialize/reset test data with default values
     moduleName = 'module-name';
     newEntry = {

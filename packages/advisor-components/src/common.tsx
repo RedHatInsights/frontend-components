@@ -4,7 +4,6 @@ import intersection from 'lodash/intersection';
 
 import { RuleContentRhel, TopicRhel } from './types';
 
-// eslint-disable-next-line no-undef
 export const barDividedList = (list: JSX.Element[]) =>
   list.map((element, index) => (
     <React.Fragment key={index}>
@@ -20,8 +19,8 @@ export const topicLinks = (rule: RuleContentRhel, topics: TopicRhel[], Link: any
           (topic) =>
             intersection(topic.tag.split(' '), rule.tags.split(' ')).length && (
               <Link key={topic.slug} to={`/topics/${topic.slug}`}>{`${topic.name}`}</Link>
-            )
-        )
+            ),
+        ),
       )
     : [];
 

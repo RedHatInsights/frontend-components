@@ -19,7 +19,7 @@ const useFetchBatched = () => {
       const pages = Math.ceil(list.length / batchSize) || 1;
 
       const results = resolve(
-        [...new Array(pages)].map((_, pageIdx) => () => fetchFunction(list.slice(batchSize * pageIdx, batchSize * (pageIdx + 1))))
+        [...new Array(pages)].map((_, pageIdx) => () => fetchFunction(list.slice(batchSize * pageIdx, batchSize * (pageIdx + 1)))),
       );
 
       return results;

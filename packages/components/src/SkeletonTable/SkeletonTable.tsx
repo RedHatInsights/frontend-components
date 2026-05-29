@@ -4,7 +4,7 @@ import SkeletonTablePF, { SkeletonTableProps } from '@patternfly/react-component
 /**
  * @deprecated Do not use deprecated SkeletonTable import, the component has been moved to @patternfly/react-component-groups
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 const SkeletonTable: React.FunctionComponent<SkeletonTableProps> = (props) => <SkeletonTablePF {...props} />;
 
 export default SkeletonTable;

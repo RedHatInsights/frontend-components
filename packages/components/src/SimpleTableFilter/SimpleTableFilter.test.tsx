@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SimpleTableFilter from './SimpleTableFilter';
-import { act } from "react";
+import { act } from 'react';
 
 describe('SimpleTableFilter component', () => {
   describe('should render correctly', () => {
@@ -34,7 +34,7 @@ describe('SimpleTableFilter component', () => {
             title: 'Filter options',
             items: [{ value: 'one', title: 'one' }],
           }}
-        />
+        />,
       );
       expect(container).toMatchSnapshot();
     });
@@ -60,7 +60,7 @@ describe('SimpleTableFilter component', () => {
               items: [{ value: 'one', title: 'one' }],
             }}
             onOptionSelect={onOptionSelect}
-          />
+          />,
         );
 
         act(() => {
@@ -82,7 +82,7 @@ describe('SimpleTableFilter component', () => {
               title: 'Filter by',
               items: [{ value: 'one', title: 'one' }],
             }}
-          />
+          />,
         );
         act(() => {
           screen.getByRole('button', { expanded: false }).click();
@@ -108,7 +108,7 @@ describe('SimpleTableFilter component', () => {
               items: [{ value: 'one', title: 'one' }],
             }}
             onFilterChange={onFilterChange}
-          />
+          />,
         );
         userEvent.type(screen.getByLabelText('simple-table-filter'), '1');
         expect(onFilterChange).toHaveBeenCalledTimes(1);
@@ -123,7 +123,7 @@ describe('SimpleTableFilter component', () => {
               title: 'Filter by',
               items: [{ value: 'one', title: 'one' }],
             }}
-          />
+          />,
         );
         act(() => {
           userEvent.type(screen.getByLabelText('simple-table-filter'), '1');
@@ -139,7 +139,7 @@ describe('SimpleTableFilter component', () => {
               items: [{ value: 'one', title: 'one' }],
             }}
             onFilterChange={onFilterChange}
-          />
+          />,
         );
 
         act(() => {
@@ -163,7 +163,7 @@ describe('SimpleTableFilter component', () => {
               items: [{ value: 'one', title: 'one' }],
             }}
             onFilterChange={onFilterChange}
-          />
+          />,
         );
 
         act(() => {
@@ -197,7 +197,7 @@ describe('SimpleTableFilter component', () => {
             }}
             onButtonClick={onButtonClick}
             onFilterChange={onFilterChange}
-          />
+          />,
         );
         act(() => {
           userEvent.type(screen.getByLabelText('simple-table-filter'), '1');
@@ -216,7 +216,7 @@ describe('SimpleTableFilter component', () => {
               title: 'Filter by',
               items: [{ value: 'one', title: 'one' }],
             }}
-          />
+          />,
         );
 
         act(() => {
@@ -235,7 +235,7 @@ describe('SimpleTableFilter component', () => {
             }}
             onFilterChange={onFilterChange}
             onButtonClick={onButtonClick}
-          />
+          />,
         );
 
         act(() => {

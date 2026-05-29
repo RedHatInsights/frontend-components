@@ -62,14 +62,14 @@ const getDynamicModules = (root: string) => {
             requiredVersion,
           },
         };
-      }, {})
+      }, {}),
     )
     .reduce(
       (acc, curr) => ({
         ...acc,
         ...curr,
       }),
-      {}
+      {},
     );
 
   return modules;

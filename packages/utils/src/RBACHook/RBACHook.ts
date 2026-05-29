@@ -7,7 +7,7 @@ export function usePermissions(
   permissionsList: (Access | string)[],
   disableCache?: boolean,
   checkAll?: boolean,
-  checkResourceDefinitions = false
+  checkResourceDefinitions = false,
 ): UsePermissionsState {
   const [permissions, setPermissions] = useState<UsePermissionsState>({
     isLoading: true,
@@ -42,7 +42,7 @@ export function usePermissions(
 export const usePermissionsWithContext = (
   requiredPermissions: (Access | string)[],
   checkAll?: boolean,
-  checkResourceDefinitionsOverride?: boolean
+  checkResourceDefinitionsOverride?: boolean,
 ) => {
   const { hasAccess, ...permissionState } = useContext(RBACContext);
 

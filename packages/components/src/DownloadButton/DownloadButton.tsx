@@ -99,7 +99,7 @@ const DownloadButton: React.FunctionComponent<DownloadButtonProps> = ({
             </DropdownItem>
             {extraItems}
           </DropdownList>
-        </Dropdown>
+        </Dropdown>,
       )}
     </React.Fragment>
   );

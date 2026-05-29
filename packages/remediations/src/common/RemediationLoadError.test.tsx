@@ -21,18 +21,12 @@ describe('RemediationLoadError', () => {
 
   it('logs console.error with component name', () => {
     render(<RemediationLoadError component="RemediationButton" />);
-    expect(consoleErrorSpy).toHaveBeenCalledWith(
-      'Unable to load remediations component. Failed to load RemediationButton.',
-      {}
-    );
+    expect(consoleErrorSpy).toHaveBeenCalledWith('Unable to load remediations component. Failed to load RemediationButton.', {});
   });
 
   it('logs console.error with additional props', () => {
     const extraProps = { foo: 'bar', baz: 123 };
     render(<RemediationLoadError component="RemediationWizard" {...extraProps} />);
-    expect(consoleErrorSpy).toHaveBeenCalledWith(
-      'Unable to load remediations component. Failed to load RemediationWizard.',
-      extraProps
-    );
+    expect(consoleErrorSpy).toHaveBeenCalledWith('Unable to load remediations component. Failed to load RemediationWizard.', extraProps);
   });
 });

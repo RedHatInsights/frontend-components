@@ -24,7 +24,7 @@ describe('ChromeProvider', () => {
       await render(
         <MemoryRouter>
           <ChromeProvider />
-        </MemoryRouter>
+        </MemoryRouter>,
       );
     });
 
@@ -69,7 +69,7 @@ describe('ChromeProvider', () => {
             </Routes>
             <ChromeProvider />
           </MemoryRouter>
-        </ScalprumContext.Provider>
+        </ScalprumContext.Provider>,
       );
     });
     // change location
@@ -111,7 +111,7 @@ describe('ChromeProvider', () => {
           >
             <ChromeProvider />
           </ScalprumContext.Provider>
-        </MemoryRouter>
+        </MemoryRouter>,
       );
     });
 

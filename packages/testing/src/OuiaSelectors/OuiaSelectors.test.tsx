@@ -18,7 +18,7 @@ describe('OuiaSelectors', () => {
           <div data-ouia-component-type="my-component" data-ouia-component-id="c2">
             <div data-ouia-component-type="foobar" />
           </div>
-        </div>
+        </div>,
       );
       expect(() => ouiaSelectors.getByOuia('foobar')).toThrowError();
     });
@@ -29,7 +29,7 @@ describe('OuiaSelectors', () => {
           <div data-ouia-component-type="foobar" id="me" />
           <div data-ouia-component-type="foobar-2" />
           <div data-ouia-component-type="foobar-3" />
-        </div>
+        </div>,
       );
       expect(ouiaSelectors.getByOuia('foobar')).toHaveAttribute('id', 'me');
     });
@@ -45,7 +45,7 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar" />
             <div data-ouia-component-type="foobar" data-ouia-component-id="baz" />
           </div>
-        </div>
+        </div>,
       );
       expect(() => ouiaSelectors.getByOuia('foobar', 'baz')).toThrowError();
     });
@@ -62,7 +62,7 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar-2" data-ouia-component-id="baz" />
           </div>
           <div data-ouia-component-type="foobar" />
-        </div>
+        </div>,
       );
       expect(ouiaSelectors.getByOuia('foobar', 'baz')).toHaveAttribute('id', 'me');
     });
@@ -79,7 +79,7 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar" data-ouia-component-id="baz" />
           </div>
           <div data-ouia-component-type="foobar" />
-        </div>
+        </div>,
       );
       const result = ouiaSelectors.getByOuia('my-component', 'c1').getByOuia('foobar');
       const result2 = ouiaSelectors.getByOuia('my-component', 'c2').getAllByOuia('foobar');
@@ -104,7 +104,7 @@ describe('OuiaSelectors', () => {
           <div data-ouia-component-type="my-component" data-ouia-component-id="c2">
             <div data-ouia-component-type="foobar" />
           </div>
-        </div>
+        </div>,
       );
       expect(() => ouiaSelectors.queryByOuia('foobar')).toThrowError();
     });
@@ -115,7 +115,7 @@ describe('OuiaSelectors', () => {
           <div data-ouia-component-type="foobar" id="me" />
           <div data-ouia-component-type="foobar-2" />
           <div data-ouia-component-type="foobar-3" />
-        </div>
+        </div>,
       );
       expect(ouiaSelectors.queryByOuia('foobar')).toHaveAttribute('id', 'me');
     });
@@ -131,7 +131,7 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar" />
             <div data-ouia-component-type="foobar" data-ouia-component-id="baz" />
           </div>
-        </div>
+        </div>,
       );
       expect(() => ouiaSelectors.queryByOuia('foobar', 'baz')).toThrowError();
     });
@@ -148,7 +148,7 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar-2" data-ouia-component-id="baz" />
           </div>
           <div data-ouia-component-type="foobar" />
-        </div>
+        </div>,
       );
       expect(ouiaSelectors.queryByOuia('foobar', 'baz')).toHaveAttribute('id', 'me');
     });
@@ -169,7 +169,7 @@ describe('OuiaSelectors', () => {
           <div data-ouia-component-type="my-component" data-ouia-component-id="c2">
             <div data-ouia-component-type="foobar" />
           </div>
-        </div>
+        </div>,
       );
       expect(ouiaSelectors.getAllByOuia('foobar')).toHaveLength(2);
     });
@@ -180,7 +180,7 @@ describe('OuiaSelectors', () => {
           <div data-ouia-component-type="foobar" id="me" />
           <div data-ouia-component-type="foobar-2" />
           <div data-ouia-component-type="foobar-3" />
-        </div>
+        </div>,
       );
       const result = ouiaSelectors.getAllByOuia('foobar');
       expect(result).toHaveLength(1);
@@ -198,7 +198,7 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar" />
             <div data-ouia-component-type="foobar" data-ouia-component-id="baz" />
           </div>
-        </div>
+        </div>,
       );
 
       const result = ouiaSelectors.getAllByOuia('foobar', 'baz');
@@ -217,7 +217,7 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar-2" data-ouia-component-id="baz" />
           </div>
           <div data-ouia-component-type="foobar" />
-        </div>
+        </div>,
       );
 
       const results = ouiaSelectors.getAllByOuia('foobar', 'baz');
@@ -240,7 +240,7 @@ describe('OuiaSelectors', () => {
           <div data-ouia-component-type="my-component" data-ouia-component-id="c2">
             <div data-ouia-component-type="foobar" />
           </div>
-        </div>
+        </div>,
       );
       expect(ouiaSelectors.queryAllByOuia('foobar')).toHaveLength(2);
     });
@@ -251,7 +251,7 @@ describe('OuiaSelectors', () => {
           <div data-ouia-component-type="foobar" id="me" />
           <div data-ouia-component-type="foobar-2" />
           <div data-ouia-component-type="foobar-3" />
-        </div>
+        </div>,
       );
       const result = ouiaSelectors.queryAllByOuia('foobar');
       expect(result).toHaveLength(1);
@@ -269,7 +269,7 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar" />
             <div data-ouia-component-type="foobar" data-ouia-component-id="baz" />
           </div>
-        </div>
+        </div>,
       );
 
       const result = ouiaSelectors.queryAllByOuia('foobar', 'baz');
@@ -288,7 +288,7 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar-2" data-ouia-component-id="baz" />
           </div>
           <div data-ouia-component-type="foobar" />
-        </div>
+        </div>,
       );
 
       const results = ouiaSelectors.queryAllByOuia('foobar', 'baz');
@@ -309,12 +309,9 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar-2" data-ouia-component-id="baz" />
           </div>
           <div data-ouia-component-type="foobar" />
-        </div>
+        </div>,
       );
-      expect(
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        ouiaSelectorsFor(document.getElementById('my-element')!).getByOuia('foobar')
-      ).toHaveAttribute('id', '31415');
+      expect(ouiaSelectorsFor(document.getElementById('my-element')!).getByOuia('foobar')).toHaveAttribute('id', '31415');
     });
 
     it('Has getAllByOuia', () => {
@@ -329,12 +326,9 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar-2" data-ouia-component-id="baz" />
           </div>
           <div data-ouia-component-type="foobar" />
-        </div>
+        </div>,
       );
-      expect(
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        ouiaSelectorsFor(document.getElementById('my-element')!).getAllByOuia('foobar')
-      ).toHaveLength(1);
+      expect(ouiaSelectorsFor(document.getElementById('my-element')!).getAllByOuia('foobar')).toHaveLength(1);
     });
 
     it('Has queryByOuia', () => {
@@ -349,12 +343,9 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar-2" data-ouia-component-id="baz" />
           </div>
           <div data-ouia-component-type="foobar" />
-        </div>
+        </div>,
       );
-      expect(
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        ouiaSelectorsFor(document.getElementById('my-element')!).queryByOuia('foobar')
-      ).toHaveAttribute('id', '31415');
+      expect(ouiaSelectorsFor(document.getElementById('my-element')!).queryByOuia('foobar')).toHaveAttribute('id', '31415');
     });
 
     it('Has queryAllByOuia', () => {
@@ -369,12 +360,9 @@ describe('OuiaSelectors', () => {
             <div data-ouia-component-type="foobar-2" data-ouia-component-id="baz" />
           </div>
           <div data-ouia-component-type="foobar" />
-        </div>
+        </div>,
       );
-      expect(
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        ouiaSelectorsFor(document.getElementById('my-element')!).queryAllByOuia('foobar4')
-      ).toHaveLength(0);
+      expect(ouiaSelectorsFor(document.getElementById('my-element')!).queryAllByOuia('foobar4')).toHaveLength(0);
     });
   });
 });

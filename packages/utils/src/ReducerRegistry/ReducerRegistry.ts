@@ -16,7 +16,7 @@ export function dispatchActionsToStore<T extends Record<string, ActionCreator<an
       ...acc,
       [curr]: (...passTrough: any) => store && store.dispatch(actions[curr](...passTrough)),
     }),
-    {} as T
+    {} as T,
   );
 }
 

@@ -13,7 +13,7 @@ describe('searchIgnoredStyles', () => {
   beforeEach(() => {
     // Clear all mocks to ensure test isolation
     jest.clearAllMocks();
-    
+
     // Initialize/reset mock objects and dependencies
     mockConsoleLog = jest.spyOn(console, 'log').mockImplementation(() => {});
   });
@@ -26,7 +26,7 @@ describe('searchIgnoredStyles', () => {
     // Arrange - Setup test data (mocks already configured in beforeEach)
     mockGlob.sync.mockReturnValue([
       '/test/node_modules/@patternfly/react-styles/css/components/Button/button.css',
-      '/test/node_modules/@patternfly/react-styles/css/utilities/Spacing/spacing.css'
+      '/test/node_modules/@patternfly/react-styles/css/utilities/Spacing/spacing.css',
     ]);
 
     // Act - Execute the function under test
@@ -35,7 +35,7 @@ describe('searchIgnoredStyles', () => {
     // Assert - Verify behavior
     expect(result).toEqual({
       '/test/node_modules/@patternfly/react-styles/css/components/Button/button.css': false,
-      '/test/node_modules/@patternfly/react-styles/css/utilities/Spacing/spacing.css': false
+      '/test/node_modules/@patternfly/react-styles/css/utilities/Spacing/spacing.css': false,
     });
   });
 
@@ -73,9 +73,7 @@ describe('searchIgnoredStyles', () => {
     searchIgnoredStyles('/test');
 
     // Assert - Verify behavior
-    expect(mockConsoleLog).toHaveBeenCalledWith(
-      expect.stringContaining('No PF CSS assets found!')
-    );
+    expect(mockConsoleLog).toHaveBeenCalledWith(expect.stringContaining('No PF CSS assets found!'));
   });
 
   it('should handle multiple CSS files from different paths', () => {
@@ -92,7 +90,7 @@ describe('searchIgnoredStyles', () => {
     expect(result).toEqual({
       '/test/node_modules/@patternfly/react-styles/css/button.css': false,
       '/path1/@patternfly/react-styles/css/form.css': false,
-      '/path2/@patternfly/react-styles/css/table.css': false
+      '/path2/@patternfly/react-styles/css/table.css': false,
     });
   });
 
@@ -126,9 +124,7 @@ describe('searchIgnoredStyles', () => {
   it('should match documentation behavior', () => {
     // Arrange - Setup test data (mocks already configured in beforeEach)
     // This validates our documentation is accurate
-    mockGlob.sync.mockReturnValue([
-      '/test/node_modules/@patternfly/react-styles/css/components/Button/button.css'
-    ]);
+    mockGlob.sync.mockReturnValue(['/test/node_modules/@patternfly/react-styles/css/components/Button/button.css']);
 
     // Act - Execute the function under test
     const result = searchIgnoredStyles('/test');
@@ -137,14 +133,14 @@ describe('searchIgnoredStyles', () => {
     // Verify it returns a webpack alias object
     expect(typeof result).toBe('object');
     expect(result).not.toBeNull();
-    
+
     // Verify CSS files are mapped to false (ignored)
-    Object.values(result).forEach(value => {
+    Object.values(result).forEach((value) => {
       expect(value).toBe(false);
     });
 
     // Verify paths contain PatternFly styles
-    Object.keys(result).forEach(key => {
+    Object.keys(result).forEach((key) => {
       expect(key).toContain('@patternfly/react-styles');
       expect(key).toContain('.css');
     });

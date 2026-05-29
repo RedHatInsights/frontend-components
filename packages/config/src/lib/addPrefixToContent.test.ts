@@ -1,7 +1,6 @@
 import addPrefixToContent from './addPrefixToContent';
 import { words } from 'lodash';
 
-
 describe('shouldnt prefix nested selectors', () => {
   test('should add prefix above content', () => {
     const content = `.foo {

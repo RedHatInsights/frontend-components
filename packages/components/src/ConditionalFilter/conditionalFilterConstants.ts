@@ -24,7 +24,7 @@ export const typeMapper = {
 };
 
 export function identifyComponent<
-  T extends TextFilterProps | CheckboxFilterProps | RadioFilterProps | GroupFilterProps | SingleSelectFilterProps | Record<string, any>
+  T extends TextFilterProps | CheckboxFilterProps | RadioFilterProps | GroupFilterProps | SingleSelectFilterProps | Record<string, any>,
 >(type: keyof typeof conditionalFilterType, props: T): props is T {
   return true;
 }

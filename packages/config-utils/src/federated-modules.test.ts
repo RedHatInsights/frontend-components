@@ -1,12 +1,11 @@
-import { createIncludes, createSharedDeps, applyImpliedDeps, mergeSharedDeps, default as federatedModules } from './federated-modules';
+import { applyImpliedDeps, createIncludes, createSharedDeps, default as federatedModules, mergeSharedDeps } from './federated-modules';
 import { DynamicRemotePlugin, WebpackSharedConfig } from '@openshift/dynamic-plugin-sdk-webpack';
 
 jest.mock('@openshift/dynamic-plugin-sdk-webpack', () => ({
   DynamicRemotePlugin: jest.fn(),
 }));
 
-const getSharedModules = () =>
-  (DynamicRemotePlugin as jest.Mock).mock.calls[0][0].sharedModules;
+const getSharedModules = () => (DynamicRemotePlugin as jest.Mock).mock.calls[0][0].sharedModules;
 
 describe('createIncludes', () => {
   describe('chromeProvided', () => {
@@ -136,14 +135,19 @@ describe('federatedModules', () => {
   });
 
   it('ignores chrome-provided modules in shared[] and keeps auto-generated config', () => {
-    federatedModules({ root, moduleName, dependencies: { react: '^18.3.1' }, shared: [{ react: { version: '^19.0.0', singleton: false, eager: true } }] });
+    federatedModules({
+      root,
+      moduleName,
+      dependencies: { react: '^18.3.1' },
+      shared: [{ react: { version: '^19.0.0', singleton: false, eager: true } }],
+    });
     expect(getSharedModules()['react']).toMatchObject({ singleton: true, eager: false, import: false, requiredVersion: '^18.3.1' });
   });
 
   it('throws when a tenant shared entry is missing version', () => {
-    expect(() =>
-      federatedModules({ root, moduleName, dependencies: { react: '^18.3.1' }, shared: [{ 'my-lib': { singleton: true } }] })
-    ).toThrow('Some of your shared dependencies do not have version specified');
+    expect(() => federatedModules({ root, moduleName, dependencies: { react: '^18.3.1' }, shared: [{ 'my-lib': { singleton: true } }] })).toThrow(
+      'Some of your shared dependencies do not have version specified',
+    );
   });
 
   it('adds @scalprum/react-core and @scalprum/core implicitly when @redhat-cloud-services/frontend-components is in deps', () => {
@@ -196,15 +200,15 @@ describe('mergeSharedDeps', () => {
   });
 
   it('throws when a tenant shared entry is missing version', () => {
-    expect(() =>
-      mergeSharedDeps(base, [{ 'my-lib': { singleton: true } }], chromeProvided)
-    ).toThrow('Some of your shared dependencies do not have version specified');
+    expect(() => mergeSharedDeps(base, [{ 'my-lib': { singleton: true } }], chromeProvided)).toThrow(
+      'Some of your shared dependencies do not have version specified',
+    );
   });
 
   it('throws when a tenant shared entry has requiredVersion but not version', () => {
-    expect(() =>
-      mergeSharedDeps(base, [{ 'my-lib': { singleton: true, requiredVersion: '^1.0.0' } }], chromeProvided)
-    ).toThrow('Some of your shared dependencies do not have version specified');
+    expect(() => mergeSharedDeps(base, [{ 'my-lib': { singleton: true, requiredVersion: '^1.0.0' } }], chromeProvided)).toThrow(
+      'Some of your shared dependencies do not have version specified',
+    );
   });
 
   it('accepts tenant shared entry when version is set', () => {
@@ -213,9 +217,7 @@ describe('mergeSharedDeps', () => {
   });
 
   it('includes the names of offending modules in the error message', () => {
-    expect(() =>
-      mergeSharedDeps(base, [{ 'my-lib': { singleton: true }, 'other-lib': { singleton: true } }], chromeProvided)
-    ).toThrow('my-lib');
+    expect(() => mergeSharedDeps(base, [{ 'my-lib': { singleton: true }, 'other-lib': { singleton: true } }], chromeProvided)).toThrow('my-lib');
   });
 
   it('returns base unchanged when shared array is empty', () => {
@@ -230,11 +232,7 @@ describe('mergeSharedDeps', () => {
   });
 
   it('ignores chrome-provided modules in shared[] entirely, preserving auto-generated config', () => {
-    const result = mergeSharedDeps(
-      base,
-      [{ react: { version: '^19.0.0', singleton: false, eager: true } }],
-      chromeProvided
-    );
+    const result = mergeSharedDeps(base, [{ react: { version: '^19.0.0', singleton: false, eager: true } }], chromeProvided);
     expect(result['react']).toEqual(base['react']);
   });
 
@@ -250,7 +248,7 @@ describe('mergeSharedDeps', () => {
       base,
       [{ react: { version: '^19.0.0' }, zustand: { singleton: true, version: '^4.0.0' } }],
       chromeProvided,
-      logger
+      logger,
     );
     expect(result['react']).toEqual(base['react']);
     expect(result['zustand']).toMatchObject({ singleton: true, version: '^4.0.0' });

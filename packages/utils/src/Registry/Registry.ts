@@ -29,7 +29,7 @@ export function registryDecorator() {
 export function getRegistry<T extends Record<string, unknown>>(
   initialState: T = {} as T,
   middleware: Middleware[] = [],
-  composeEnhancersDefault?: typeof compose
+  composeEnhancersDefault?: typeof compose,
 ) {
   return init(initialState, middleware, composeEnhancersDefault);
 }

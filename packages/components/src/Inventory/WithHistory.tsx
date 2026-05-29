@@ -18,7 +18,7 @@ const WithChromeHistory = ({ Component, ...props }) => {
 const WithHistory = ({ Component, ...props }, ref) => {
   const HistoryComponent = useMemo(
     () => (typeof reactRouter.useHistory === 'function' ? WithReactRouterHistory : WithChromeHistory),
-    [Component, props]
+    [Component, props],
   );
 
   return <HistoryComponent innerRef={ref} Component={Component} {...props} />;

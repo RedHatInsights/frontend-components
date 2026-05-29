@@ -25,8 +25,8 @@ const bundles = Array.from(
     fecModules.modules
       .map(({ routes }) => routes)
       .flat()
-      .map(({ pathname }) => pathname.split('/')[1])
-  )
+      .map(({ pathname }) => pathname.split('/')[1]),
+  ),
 );
 
 const app = express();

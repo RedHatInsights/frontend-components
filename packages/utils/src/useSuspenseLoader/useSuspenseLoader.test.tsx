@@ -57,7 +57,7 @@ describe('useSuspenseLoader', () => {
       () =>
         new Promise((resolve) => {
           setTimeout(() => resolve(currentProps.curr), 100);
-        })
+        }),
     );
 
     const { rerender } = render(<CacheComponent loaderFunc={mockCall} funcArgs={[props1]} />);

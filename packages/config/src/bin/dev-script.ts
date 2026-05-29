@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const { resolve } = require('path');
 import { spawn } from 'child_process';
 import treeKill from 'tree-kill';
@@ -15,7 +14,7 @@ async function devScript(
     port?: string;
     chromeServerPort?: number | string;
   },
-  cwd: string
+  cwd: string,
 ) {
   try {
     let localChrome = false;
@@ -49,7 +48,7 @@ async function devScript(
         console.error(
           'Incorrect argument value:\n--clouddotEnv must be one of: [',
           clouddotEnvOptions.toString(),
-          ']\nRun fec --help for more information.'
+          ']\nRun fec --help for more information.',
         );
         process.exit(1);
       }
@@ -95,7 +94,7 @@ async function devScript(
           chromeHost,
           handleServerError,
           process.env.CLOUDOT_ENV === 'prod',
-          parseInt(process.env.FEC_CHROME_PORT!)
+          parseInt(process.env.FEC_CHROME_PORT!),
         ).catch((error) => {
           fecLogger(LogType.error, 'Chrome server stopped!');
           handleServerError(error);

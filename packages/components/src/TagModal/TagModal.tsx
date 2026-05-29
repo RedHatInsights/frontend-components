@@ -14,8 +14,10 @@ import { BulkSelectProps } from '../BulkSelect';
 export type OnSelectRow = (selected?: IRow[]) => void;
 export type OnUpdateData = (pagination: TableWithFilterPagination) => number | undefined;
 
-export interface TagModalProps
-  extends Omit<TableWithFilterProps, 'onSelect' | 'columns' | 'pagination' | 'loaded' | 'filters' | 'onUpdateData' | 'bulkSelect'> {
+export interface TagModalProps extends Omit<
+  TableWithFilterProps,
+  'onSelect' | 'columns' | 'pagination' | 'loaded' | 'filters' | 'onUpdateData' | 'bulkSelect'
+> {
   title: string;
   systemName?: string;
   className?: string;
@@ -67,7 +69,7 @@ class TagModal extends Component<
     selected: IRow[],
     onSelect?: (selected?: IRow[] | undefined) => void,
     onUpdateData: (pagination: TableWithFilterPagination) => number | undefined = () => undefined,
-    bulkSelect?: BulkSelectProps
+    bulkSelect?: BulkSelectProps,
   ) => (
     <TableWithFilter
       {...this.props}
@@ -135,7 +137,7 @@ class TagModal extends Component<
                     (selected as IRow[][])?.[key],
                     (onSelect as unknown as ((selected?: IRow[]) => void)[])?.[key],
                     (onUpdateData as unknown as ((pagination: TableWithFilterPagination) => number)[])?.[key],
-                    (bulkSelect as BulkSelectProps[])?.[key]
+                    (bulkSelect as BulkSelectProps[])?.[key],
                   )}
                 </Tab>
               ))}
@@ -150,7 +152,7 @@ class TagModal extends Component<
               selected as IRow[],
               onSelect as TableWithFilterProps['onSelect'],
               onUpdateData as TableWithFilterProps['onUpdateData'],
-              bulkSelect as BulkSelectProps
+              bulkSelect as BulkSelectProps,
             )
           )}
         </ModalBody>

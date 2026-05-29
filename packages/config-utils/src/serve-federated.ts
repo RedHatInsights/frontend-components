@@ -35,12 +35,12 @@ function federate(argv: Record<string, any>, cwd: string) {
   } catch (e) {
     fecLogger(
       LogType.warn,
-      `FEO features are not enabled. Unable to find frontend CRD file at ${frontendCRDPath}. If you want FEO features for local development, make sure to have a "deploy/frontend.yaml" file in your project or specify its location via "frontendCRDPath" attribute.`
+      `FEO features are not enabled. Unable to find frontend CRD file at ${frontendCRDPath}. If you want FEO features for local development, make sure to have a "deploy/frontend.yaml" file in your project or specify its location via "frontendCRDPath" attribute.`,
     );
   }
   try {
     fs.statSync(configPath);
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+
     let config = require(configPath);
     if (typeof config === 'function') {
       config = config(process.env);

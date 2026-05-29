@@ -66,7 +66,7 @@ describe('useVisitedBundles', () => {
         visitedBundles: {
           insights: true,
         },
-      })
+      }),
     );
 
     // first API call
