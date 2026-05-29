@@ -56,14 +56,30 @@ const RuleRating: React.FC<RuleRatingProps> = ({ messages, ruleId, ruleRating, o
     <span className="ratingSpanOverride">
       {messages.ruleHelpful}
       <Button
-        icon={<Icon size="md">{rating === 1 ? <ThumbsUpIcon className="ins-c-like" /> : <OutlinedThumbsUpIcon />}</Icon>}
+        icon={
+          <Icon size="md">
+            {rating === 1 ? (
+              <ThumbsUpIcon className="ins-c-like" data-testid="thumbs-up-filled" />
+            ) : (
+              <OutlinedThumbsUpIcon data-testid="thumbs-up-outlined" />
+            )}
+          </Icon>
+        }
         variant="plain"
         aria-label="thumbs-up"
         onClick={() => updateRuleRating(1)}
         ouiaId="thumbsUp"
       />
       <Button
-        icon={<Icon size="md">{rating === -1 ? <ThumbsDownIcon className="ins-c-dislike" /> : <OutlinedThumbsDownIcon />}</Icon>}
+        icon={
+          <Icon size="md">
+            {rating === -1 ? (
+              <ThumbsDownIcon className="ins-c-dislike" data-testid="thumbs-down-filled" />
+            ) : (
+              <OutlinedThumbsDownIcon data-testid="thumbs-down-outlined" />
+            )}
+          </Icon>
+        }
         variant="plain"
         aria-label="thumbs-down"
         onClick={() => updateRuleRating(-1)}
