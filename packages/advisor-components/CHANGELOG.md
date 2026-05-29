@@ -1,3 +1,18 @@
+## 3.8.0 (2026-05-29)
+
+### 🚀 Features
+
+- **eslint-config:** warn against React.FC and React.FunctionComponent usage ([#2324](https://github.com/RedHatInsights/frontend-components/pull/2324))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components to 7.7.0
+
+### ❤️ Thank You
+
+- Charles Mulder
+- platex-rehor-bot
+
 ## 3.7.0 (2026-05-26)
 
 ### 🧱 Updated Dependencies

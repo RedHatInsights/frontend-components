@@ -1,3 +1,14 @@
+## 1.2.0 (2026-05-29)
+
+### 🚀 Features
+
+- **eslint-config:** warn against React.FC and React.FunctionComponent usage ([#2324](https://github.com/RedHatInsights/frontend-components/pull/2324))
+
+### ❤️ Thank You
+
+- Charles Mulder
+- platex-rehor-bot
+
 ## 1.1.2 (2026-05-18)
 
 ### 🩹 Fixes

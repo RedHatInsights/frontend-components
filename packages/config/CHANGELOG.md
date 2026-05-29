@@ -1,3 +1,19 @@
+## 6.11.0 (2026-05-29)
+
+### 🚀 Features
+
+- **eslint-config:** warn against React.FC and React.FunctionComponent usage ([#2324](https://github.com/RedHatInsights/frontend-components/pull/2324))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/tsc-transform-imports to 1.2.0
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.11.0
+
+### ❤️ Thank You
+
+- Charles Mulder
+- platex-rehor-bot
+
 ## 6.10.3 (2026-05-27)
 
 ### 🩹 Fixes
