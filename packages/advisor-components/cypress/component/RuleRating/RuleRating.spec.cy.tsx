@@ -2,14 +2,23 @@ import messages from '../../fixtures/messages.json';
 import RuleRating, { DEBOUNCE_TIMEOUT } from '../../../src/RuleRating/RuleRating';
 import { Rating } from '../../../src/types';
 
-const defaultProps = {
-  ruleId: 'test-rule-1',
-  ruleRating: 0 as Rating,
-  onVoteClick: cy.stub().as('onVoteClick'),
-  messages,
-};
-
 describe('RuleRating', () => {
+  let defaultProps: {
+    ruleId: string;
+    ruleRating: Rating;
+    onVoteClick: ReturnType<typeof cy.stub>;
+    messages: typeof messages;
+  };
+
+  beforeEach(() => {
+    defaultProps = {
+      ruleId: 'test-rule-1',
+      ruleRating: 0 as Rating,
+      onVoteClick: cy.stub().as('onVoteClick'),
+      messages,
+    };
+  });
+
   it('renders the component with helpful text', () => {
     cy.mount(<RuleRating {...defaultProps} />);
     cy.contains(messages.ruleHelpful);
