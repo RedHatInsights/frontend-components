@@ -211,7 +211,7 @@ export const getMenuItems = (
             groupType || item.type,
             groupValue,
             (groupType || item.type) === GroupType.treeView ? treeViewItem : item.value,
-            (event.target as HTMLInputElement)?.checked || checked,
+            (event.target as HTMLInputElement)?.checked ?? checked,
           ),
           {
             value: groupValue,
