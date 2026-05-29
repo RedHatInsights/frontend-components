@@ -1,3 +1,9 @@
+## 6.11.2 (2026-05-29)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/tsc-transform-imports to 1.2.1
+
 ## 6.11.1 (2026-05-29)
 
 ### 🧱 Updated Dependencies

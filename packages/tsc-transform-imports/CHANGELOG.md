@@ -1,3 +1,14 @@
+## 1.2.1 (2026-05-29)
+
+### 🩹 Fixes
+
+- **tsc-transform-imports:** assign discarded replace result for ESM path rewrite ([450bf39c](https://github.com/RedHatInsights/frontend-components/commit/450bf39c))
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
 ## 1.2.0 (2026-05-29)
 
 ### 🚀 Features
