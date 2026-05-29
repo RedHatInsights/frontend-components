@@ -1,3 +1,14 @@
+## 7.7.1 (2026-05-29)
+
+### 🩹 Fixes
+
+- **components,config-utils:** fix nullish coalescing and operator precedence bugs ([66dc319c](https://github.com/RedHatInsights/frontend-components/commit/66dc319c))
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
 ## 7.7.0 (2026-05-29)
 
 ### 🚀 Features
