@@ -1,0 +1,13 @@
+# Default owners for everything in the repo
+* @RedHatInsights/experience-services-committers
+
+# All GitHub configuration requires review from admins
+# This prevents unauthorized modifications to CI/CD pipelines, custom actions, and repo processes
+.github/** @RedHatInsights/experience-services-admins
+
+# All Konflux tekton configuration changes review from admins
+#.tekton/** @RedHatInsights/experience-services-admins
+
+# CODEOWNERS file itself requires admin review to prevent bypass attacks
+# Must come after wildcard so this rule takes precedence (last match wins)
+CODEOWNERS @RedHatInsights/experience-services-admins
