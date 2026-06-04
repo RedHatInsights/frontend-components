@@ -1,6 +1,6 @@
 # frontend-components
 
-Monorepo of Red Hat Cloud services Components for applications in a React.js environment.
+Monorepo of Red Hat Cloud Services components for applications in a React.js environment.
 
 ## Packages
 * [utils](https://github.com/RedHatInsights/frontend-components/tree/master/packages/utils#readme) - library that has utilities functions
