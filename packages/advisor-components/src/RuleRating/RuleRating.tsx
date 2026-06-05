@@ -52,13 +52,6 @@ const RuleRating: React.FC<RuleRatingProps> = ({ messages, ruleId, ruleRating, o
     }
   };
 
-  const handleKeyDown = (newRating: Rating) => (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      updateRuleRating(newRating);
-    }
-  };
-
   return (
     <span className="ratingSpanOverride">
       {messages.ruleHelpful}
@@ -75,7 +68,6 @@ const RuleRating: React.FC<RuleRatingProps> = ({ messages, ruleId, ruleRating, o
         variant="plain"
         aria-label="thumbs-up"
         onClick={() => updateRuleRating(1)}
-        onKeyDown={handleKeyDown(1)}
         ouiaId="thumbsUp"
       />
       <Button
@@ -91,7 +83,6 @@ const RuleRating: React.FC<RuleRatingProps> = ({ messages, ruleId, ruleRating, o
         variant="plain"
         aria-label="thumbs-down"
         onClick={() => updateRuleRating(-1)}
-        onKeyDown={handleKeyDown(-1)}
         ouiaId="thumbsDown"
       />
       {submitted && messages.feedbackThankYou}
