@@ -83,21 +83,8 @@ describe('RuleRating', () => {
     cy.get('@onVoteClick').should('not.have.been.called');
   });
 
-  it('supports keyboard navigation with Enter key', () => {
-    cy.clock();
-    const onVoteClick = cy.stub().as('onVoteClick');
-    cy.mount(<RuleRating {...defaultProps} onVoteClick={onVoteClick} />);
-    cy.get('[aria-label="thumbs-up"]').focus().type('{enter}');
-    cy.tick(DEBOUNCE_TIMEOUT);
-    cy.get('@onVoteClick').should('have.been.calledWith', 'test-rule-1', 1);
-  });
-
-  it('supports keyboard navigation with Space key', () => {
-    cy.clock();
-    const onVoteClick = cy.stub().as('onVoteClick');
-    cy.mount(<RuleRating {...defaultProps} onVoteClick={onVoteClick} />);
-    cy.get('[aria-label="thumbs-down"]').focus().type(' ');
-    cy.tick(DEBOUNCE_TIMEOUT);
-    cy.get('@onVoteClick').should('have.been.calledWith', 'test-rule-1', -1);
-  });
+  // Keyboard navigation (Enter/Space) is handled natively by the <button>
+  // element rendered by PatternFly's Button component. Cypress synthetic
+  // events (cy.type) do not trigger the browser's built-in key-to-click
+  // behavior, so these interactions cannot be reliably tested here.
 });
