@@ -17,7 +17,8 @@
         "rootDir": "packages/config-utils/src",
         "main": "packages/config-utils/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-config-utilities",
-        "tsConfig": "packages/config-utils/tsconfig.json"
+        "tsConfig": "packages/config-utils/tsconfig.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
       }
     },
     "lint": {

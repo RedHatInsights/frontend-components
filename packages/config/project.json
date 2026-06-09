@@ -12,7 +12,8 @@
         "rootDir": "packages/config/src",
         "main": "packages/config/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-config",
-        "tsConfig": "packages/config/tsconfig.build.json"
+        "tsConfig": "packages/config/tsconfig.build.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
       }
     },
     "check-circular-imports": {

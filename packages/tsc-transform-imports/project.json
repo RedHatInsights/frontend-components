@@ -11,7 +11,8 @@
         "rootDir": "packages/tsc-transform-imports/src",
         "main": "packages/tsc-transform-imports/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/tsc-transform-imports",
-        "tsConfig": "packages/tsc-transform-imports/tsconfig.json"
+        "tsConfig": "packages/tsc-transform-imports/tsconfig.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
       }
     },
     "check-circular-imports": {

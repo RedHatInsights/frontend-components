@@ -1,9 +1,0 @@
-!/index.js
-!/index.css
-!/esm
-!/cjs
-src/
-.babelrc
-babel.config.js
-doc/
-config/

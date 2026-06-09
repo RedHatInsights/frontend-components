@@ -8,6 +8,9 @@
 # All Konflux tekton configuration changes review from admins
 #.tekton/** @RedHatInsights/experience-services-admins
 
+# Protect .npmignore - package publish contents control
+.npmignore @RedHatInsights/experience-services-admins
+
 # CODEOWNERS file itself requires admin review to prevent bypass attacks
 # Must come after wildcard so this rule takes precedence (last match wins)
 CODEOWNERS @RedHatInsights/experience-services-admins

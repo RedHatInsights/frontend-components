@@ -13,7 +13,8 @@
         "main": "packages/testing/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
         "cjsTsConfig": "packages/testing/tsconfig.cjs.json",
-        "esmTsConfig": "packages/testing/tsconfig.esm.json"
+        "esmTsConfig": "packages/testing/tsconfig.esm.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
       }
     },
     "build:styles": {

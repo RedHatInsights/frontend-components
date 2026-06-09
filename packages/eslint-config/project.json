@@ -12,7 +12,7 @@
         "main": "packages/eslint-config/index.ts",
         "outputPath": "dist/@redhat-cloud-services/eslint-config-redhat-cloud-services",
         "tsConfig": "packages/eslint-config/tsconfig.json",
-        "assets": ["README.md"]
+        "assets": ["README.md", { "input": ".", "glob": ".npmignore", "output": "." }]
       }
     },
     "test:unit": {

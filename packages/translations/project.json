@@ -18,13 +18,14 @@
           {
             "glob": "**/*",
             "input": "packages/translations/src/locales",
-            "output": "dist/@redhat-cloud-services/frontend-components-translations/locales"
+            "output": "locales"
           },
           {
             "glob": "**/*",
             "input": "packages/translations/src/locales",
-            "output": "dist/@redhat-cloud-services/frontend-components-translations/esm/locales"
-          }
+            "output": "esm/locales"
+          },
+          { "input": ".", "glob": ".npmignore", "output": "." }
         ]
       }
     },
