@@ -110,6 +110,17 @@ jobs:
         run: npm i
       - name: Check circular imports
         run: npx nx affected -t test:circular-dependencies --exclude=demo --outputStyle=static
+  codeowners-test:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Test CODEOWNERS protection
+        run: |
+          echo "=========================================="
+          echo "CODEOWNERS Security Test"
+          echo "=========================================="
+          echo "This job tests that .github/** requires admin approval"
+          echo "If you can modify this file without admin review, CODEOWNERS is not working!"
+          echo "=========================================="
   release:
     runs-on: ubuntu-24.04
     needs: [install, build, unit-test, component-test, lint, commitlint, check-circular-imports]
