@@ -102,6 +102,21 @@ When changes to `config-utils` are required by `config` package:
 
 **Note**: Don't pin version in initial PR — CI install happens before release, causing npm install failure for unreleased versions.
 
+### Package Publishing (.npmignore)
+
+All packages use a **single root `.npmignore` file** that is automatically copied to each package's `dist/` folder during build. This ensures consistent npm package contents across all packages.
+
+**How it works:**
+1. Root `.npmignore` defines patterns for files to exclude from published packages (test files, source maps, etc.)
+2. Each package's `project.json` includes: `"assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]`
+3. On build, Nx copies root `.npmignore` → `dist/@redhat-cloud-services/{package}/.npmignore`
+4. When published, npm uses this file to filter package contents
+
+**Maintenance:**
+- **Never** create per-package `.npmignore` files — update the root file only
+- Root `.npmignore` is protected in `CODEOWNERS` (requires `@RedHatInsights/console-framework-leads` approval)
+- Test changes with `npm pack` in a package's dist folder before publishing
+
 ## Testing Strategy
 
 ### Component Testing (Preferred)
