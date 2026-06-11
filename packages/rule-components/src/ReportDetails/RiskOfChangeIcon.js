@@ -44,7 +44,6 @@ function RiskOfChangeIcon({ value, ...props }) {
   const label = riskOfChangeMeta[value - 1] && riskOfChangeMeta[value - 1].label;
   return (
     <div className={`ins-c-rule__battery battery ins-c-rule__severity-level-${value}`}>
-      {}
       <i widget-type="InsightsBattery" widget-id={label} {...props}>
         <SecurityIcon className="ins-c-risk-of-change__icon" />
       </i>
