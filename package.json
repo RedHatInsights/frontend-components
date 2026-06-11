@@ -63,9 +63,9 @@
     "@types/sanitize-html": "^2.16.0",
     "@typescript-eslint/eslint-plugin": "^8.53.1",
     "@typescript-eslint/parser": "^8.53.1",
-    "@vitejs/plugin-react": "^4.7.0",
-    "@vitest/coverage-v8": "^1.6.1",
-    "@vitest/ui": "^1.6.1",
+    "@vitejs/plugin-react": "^6.0.2",
+    "@vitest/coverage-v8": "^4.1.8",
+    "@vitest/ui": "^4.1.8",
     "concurrently": "^7.6.0",
     "cypress": "^13.17.0",
     "dotenv": "^10.0.0",
@@ -102,8 +102,8 @@
     "ts-node": "^10.9.2",
     "ts-patch": "^3.3.0",
     "typescript": "^5.9.3",
-    "vite": "^5.4.21",
-    "vitest": "^1.6.1",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.8",
     "whatwg-fetch": "^3.6.20"
   },
   "scripts": {
