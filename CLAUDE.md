@@ -114,7 +114,7 @@ All packages use a **single root `.npmignore` file** that is automatically copie
 
 **Maintenance:**
 - **Never** create per-package `.npmignore` files — update the root file only
-- Root `.npmignore` is protected in `CODEOWNERS` (requires `@RedHatInsights/console-framework-leads` approval)
+- Root `.npmignore` is protected in `CODEOWNERS` (requires `@RedHatInsights/experience-services-admins` approval)
 - Test changes with `npm pack` in a package's dist folder before publishing
 
 ## Testing Strategy
