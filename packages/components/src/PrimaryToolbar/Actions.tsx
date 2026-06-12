@@ -21,10 +21,11 @@ type ActionObject = {
   label: React.ReactNode;
   value?: number | string;
   onClick?: (
-    event: MouseEvent | React.MouseEvent<any, MouseEvent> | React.KeyboardEvent<Element>,
+    event: MouseEvent | React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<Element>,
     action: ActionObject,
     key: string | number
   ) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- passthrough props spread into PF DropdownItem; `unknown` breaks JSX spreading
   props?: { [key: string]: any; className?: string };
 };
 
@@ -47,6 +48,7 @@ function isActionObject(node: React.ReactNode | ActionObject): node is ActionObj
  * Extract props from an action, stripping the `key` prop to avoid React warnings.
  * Uses isActionObject() guard to safely handle primitives (string/number/boolean).
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- passthrough props spread into PF DropdownItem; `unknown` breaks JSX spreading
 function extractActionProps(action: ActionsType): { props: Record<string, any>; isElement: boolean; isObject: boolean } {
   const isElement = React.isValidElement(action);
   const isObject = !isElement && isActionObject(action);
@@ -79,14 +81,14 @@ export const actionPropsGenerator = (action: ActionsType, key: string | number) 
   const actionObj = isObject ? (action as ActionObject) : undefined;
 
   const onClick = actionObj?.onClick
-    ? (e: MouseEvent | React.MouseEvent<any, MouseEvent> | React.KeyboardEvent<Element>) => actionObj.onClick!(e, actionObj, key)
+    ? (e: MouseEvent | React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<Element>) => actionObj.onClick!(e, actionObj, key)
     : undefined;
 
   return {
     ...actionProps,
     onClick,
     component: actionProps.component || (React.isValidElement(actionObj?.label || action) ? 'div' : 'button'),
-    children: (isObject ? actionObj?.label : isElement ? undefined : action) as React.ReactNode,
+    children: (isObject ? actionObj?.label : action) as React.ReactNode,
   };
 };
 

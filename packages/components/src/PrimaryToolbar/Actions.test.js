@@ -95,7 +95,9 @@ describe('Actions - component', () => {
         await screen.getByRole('button', { expanded: false }).click();
       });
       act(() => {
-        screen.getByText('Some button').click();
+        // "Some button" appears in both toolbar (standalone) and dropdown (element action).
+        // Click the standalone toolbar button to verify onSelect is not triggered.
+        screen.getAllByText('Some button')[0].click();
       });
       expect(onSelect).not.toHaveBeenCalled();
     });
