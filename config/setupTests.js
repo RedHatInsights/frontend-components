@@ -56,4 +56,42 @@ jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useLayoutEffect: jest.requireActual('react').useEffect,
 }));
+
+// Suppress known PatternFly-internal console warnings/errors that cannot be fixed
+// from consuming code. These are tracked upstream in PatternFly and do not indicate
+// issues in our components.
+const originalConsoleError = console.error;
+const originalConsoleWarn = console.warn;
+
+const suppressedPatterns = [
+  // PF Toolbar passes ouiaSafe prop to DOM div (PF internal)
+  /ouiaSafe/,
+  // PF Popper/Popover have internal async state updates that fire outside act()
+  /inside a test was not wrapped in act/,
+  // PF typeahead MenuToggle nests a clear <button> inside the toggle <button>
+  /cannot appear as a descendant of/,
+  // react-intl IntlProvider uses legacy defaultProps pattern
+  /Support for defaultProps will be removed/,
+];
+
+// React may pass format strings with %s placeholders or pre-formatted messages.
+// Join all args to match against the full message content.
+const matchesSuppressed = (args) => {
+  const message = args.map(String).join(' ');
+  return suppressedPatterns.some((pattern) => pattern.test(message));
+};
+
+console.error = (...args) => {
+  if (matchesSuppressed(args)) {
+    return;
+  }
+  originalConsoleError(...args);
+};
+
+console.warn = (...args) => {
+  if (matchesSuppressed(args)) {
+    return;
+  }
+  originalConsoleWarn(...args);
+};
 Element.prototype.scrollTo = () => {};

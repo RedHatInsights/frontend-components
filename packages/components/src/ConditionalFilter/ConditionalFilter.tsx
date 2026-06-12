@@ -186,7 +186,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                 isDisabled={isDisabled}
                 onChange={(e) => onChangeCallback(e as FormEvent<HTMLInputElement>, (e.target as HTMLInputElement).value)}
                 placeholder={placeholder}
-                value={currentValue ? String(currentValue) : undefined}
+                value={onChange ? (value ? String(value) : undefined) : String(stateValue)}
                 widget-type="InsightsInput"
               />
             </div>
