@@ -90,7 +90,7 @@ describe('Actions - component', () => {
 
     it('should NOT call onSelect', async () => {
       const onSelect = jest.fn();
-      render(<Actions actions={actions} />);
+      render(<Actions actions={actions} onSelect={onSelect} />);
       await act(async () => {
         await screen.getByRole('button', { expanded: false }).click();
       });
