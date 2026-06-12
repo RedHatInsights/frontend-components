@@ -12,14 +12,17 @@ exports[`Truncate component should render correctly block clicking on expand tog
         widget-type="InsightsTruncateBlock"
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
       </span>
     </div>
     <div
       class="pf-v6-l-stack__item"
     >
       <button
-        class="pf-v6-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-collapse-button"
         data-ouia-component-id="OUIA-Generated-Button-link-11"
         data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
@@ -28,7 +31,7 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
         <span
           class="pf-v6-c-button__text"
         >
-          Custom expand
+          Custom collapse
         </span>
       </button>
     </div>
@@ -48,14 +51,17 @@ exports[`Truncate component should render correctly block clicking on expand tog
         widget-type="InsightsTruncateBlock"
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
       </span>
     </div>
     <div
       class="pf-v6-l-stack__item"
     >
       <button
-        class="pf-v6-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-collapse-button"
         data-ouia-component-id="OUIA-Generated-Button-link-14"
         data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
@@ -64,7 +70,7 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
         <span
           class="pf-v6-c-button__text"
         >
-          Custom expand
+          Custom collapse
         </span>
       </button>
     </div>
@@ -84,14 +90,17 @@ exports[`Truncate component should render correctly block custom button titles 1
         widget-type="InsightsTruncateBlock"
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
       </span>
     </div>
     <div
       class="pf-v6-l-stack__item"
     >
       <button
-        class="pf-v6-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-collapse-button"
         data-ouia-component-id="OUIA-Generated-Button-link-13"
         data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
@@ -100,7 +109,7 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
         <span
           class="pf-v6-c-button__text"
         >
-          Custom expand
+          Custom collapse
         </span>
       </button>
     </div>
@@ -120,14 +129,17 @@ exports[`Truncate component should render correctly block custom button titles 2
         widget-type="InsightsTruncateBlock"
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
       </span>
     </div>
     <div
       class="pf-v6-l-stack__item"
     >
       <button
-        class="pf-v6-c-button pf-m-link ins-c-expand-button"
+        class="pf-v6-c-button pf-m-link ins-c-collapse-button"
         data-ouia-component-id="OUIA-Generated-Button-link-16"
         data-ouia-component-type="PF6/Button"
         data-ouia-safe="true"
@@ -136,7 +148,7 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
         <span
           class="pf-v6-c-button__text"
         >
-          Custom expand
+          Custom collapse
         </span>
       </button>
     </div>
@@ -316,10 +328,13 @@ exports[`Truncate component should render correctly inline clicking on expand to
     widget-type="InsightsTruncateInline"
   >
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
   </span>
   <button
-    class="pf-v6-c-button pf-m-link ins-c-expand-button"
+    class="pf-v6-c-button pf-m-link ins-c-collapse-button"
     data-ouia-component-id="OUIA-Generated-Button-link-3"
     data-ouia-component-type="PF6/Button"
     data-ouia-safe="true"
@@ -328,7 +343,7 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
     <span
       class="pf-v6-c-button__text"
     >
-      Custom expand
+      Custom collapse
     </span>
   </button>
 </div>
@@ -341,10 +356,13 @@ exports[`Truncate component should render correctly inline clicking on expand to
     widget-type="InsightsTruncateInline"
   >
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
   </span>
   <button
-    class="pf-v6-c-button pf-m-link ins-c-expand-button"
+    class="pf-v6-c-button pf-m-link ins-c-collapse-button"
     data-ouia-component-id="OUIA-Generated-Button-link-6"
     data-ouia-component-type="PF6/Button"
     data-ouia-safe="true"
@@ -353,7 +371,7 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
     <span
       class="pf-v6-c-button__text"
     >
-      Custom expand
+      Custom collapse
     </span>
   </button>
 </div>
@@ -366,10 +384,13 @@ exports[`Truncate component should render correctly inline custom button titles 
     widget-type="InsightsTruncateInline"
   >
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
   </span>
   <button
-    class="pf-v6-c-button pf-m-link ins-c-expand-button"
+    class="pf-v6-c-button pf-m-link ins-c-collapse-button"
     data-ouia-component-id="OUIA-Generated-Button-link-5"
     data-ouia-component-type="PF6/Button"
     data-ouia-safe="true"
@@ -378,7 +399,7 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
     <span
       class="pf-v6-c-button__text"
     >
-      Custom expand
+      Custom collapse
     </span>
   </button>
 </div>
@@ -391,10 +412,13 @@ exports[`Truncate component should render correctly inline custom button titles 
     widget-type="InsightsTruncateInline"
   >
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-et dolore magna aliqua. Ut enim ad minim veniam, q...
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
   </span>
   <button
-    class="pf-v6-c-button pf-m-link ins-c-expand-button"
+    class="pf-v6-c-button pf-m-link ins-c-collapse-button"
     data-ouia-component-id="OUIA-Generated-Button-link-8"
     data-ouia-component-type="PF6/Button"
     data-ouia-safe="true"
@@ -403,7 +427,7 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...
     <span
       class="pf-v6-c-button__text"
     >
-      Custom expand
+      Custom collapse
     </span>
   </button>
 </div>

@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import ErrorBoundaryPF from '@patternfly/react-component-groups/dist/dynamic/ErrorBoundary';
 import useSuspenseLoader from './useSuspenseLoader';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 
 const DummyComponent = ({ loader, funcArgs }: { funcArgs?: unknown[]; loader: ReturnType<typeof useSuspenseLoader>['loader'] }) => {
   const data = loader(funcArgs);

@@ -97,7 +97,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   const breakpointConstant = parseInt(t_global_breakpoint_md.value.replace('px', ''));
   const updateFilterViewport = (width: number) => width <= breakpointConstant;
   const [isOpen, setIsOpen] = useState(false);
-  const [stateValue, setStateValue] = useState<number | string>();
+  const [stateValue, setStateValue] = useState<number | string>('');
   const [isMobile, setIsMobile] = useState(updateFilterViewport(window.innerWidth));
   const resizeListener = useRef((event: Event) => {
     setIsMobile(updateFilterViewport((event?.target as Window).innerWidth));
@@ -186,7 +186,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
                 isDisabled={isDisabled}
                 onChange={(e) => onChangeCallback(e as FormEvent<HTMLInputElement>, (e.target as HTMLInputElement).value)}
                 placeholder={placeholder}
-                value={currentValue ? String(currentValue) : undefined}
+                value={onChange ? (value ? String(value) : undefined) : String(stateValue)}
                 widget-type="InsightsInput"
               />
             </div>

@@ -21,10 +21,11 @@ type ActionObject = {
   label: React.ReactNode;
   value?: number | string;
   onClick?: (
-    event: MouseEvent | React.MouseEvent<any, MouseEvent> | React.KeyboardEvent<Element>,
+    event: MouseEvent | React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<Element>,
     action: ActionObject,
     key: string | number,
   ) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- passthrough props spread into PF DropdownItem; `unknown` breaks JSX spreading
   props?: { [key: string]: any; className?: string };
 };
 
@@ -43,33 +44,51 @@ function isActionObject(node: React.ReactNode | ActionObject): node is ActionObj
   return (node as ActionObject).label !== undefined;
 }
 
+/**
+ * Extract props from an action, stripping the `key` prop to avoid React warnings.
+ * Uses isActionObject() guard to safely handle primitives (string/number/boolean).
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- passthrough props spread into PF DropdownItem; `unknown` breaks JSX spreading
+function extractActionProps(action: ActionsType): { props: Record<string, any>; isElement: boolean; isObject: boolean } {
+  const isElement = React.isValidElement(action);
+  const isObject = !isElement && isActionObject(action);
+  if (!isObject) {
+    return { props: {}, isElement, isObject };
+  }
+  const { key: _key, ...rest } = (action as ActionObject).props || {};
+  return { props: rest, isElement, isObject };
+}
+
 export const overflowActionsMapper = (action: ActionsType, key: string | number) => {
-  const internalAction = action as ActionObject;
+  const { props: actionProps, isObject } = extractActionProps(action);
+  const actionObj = isObject ? (action as ActionObject) : undefined;
+
   return (
     <DropdownItem
-      {...internalAction.props}
+      {...actionProps}
       className="ins-c-primary-toolbar__overflow-actions"
-      key={internalAction.value || internalAction.key || `${key}-overflow`}
-      component={(internalAction.props && internalAction.props.component) || React.isValidElement(internalAction.label || action) ? 'div' : 'button'}
-      onClick={(e) => internalAction.onClick && internalAction.onClick(e, internalAction, key)}
+      key={actionObj?.value || actionObj?.key || `${key}-overflow`}
+      component={actionProps.component || (React.isValidElement(actionObj?.label || action) ? 'div' : 'button')}
+      onClick={(e) => actionObj?.onClick?.(e, actionObj, key)}
     >
-      {/* FIXME: fix typings */}
-      {internalAction.label || (action as React.ReactNode)}
+      {actionObj?.label || (action as React.ReactNode)}
     </DropdownItem>
   );
 };
 
 export const actionPropsGenerator = (action: ActionsType, key: string | number) => {
-  const onClick =
-    typeof action === 'object' && action !== null && typeof (action as { onClick?: any })?.onClick === 'function'
-      ? (e: MouseEvent | React.MouseEvent<any, MouseEvent> | React.KeyboardEvent<Element>) => (action as { onClick?: any })?.onClick(e, action, key)
-      : undefined;
+  const { props: actionProps, isElement, isObject } = extractActionProps(action);
+  const actionObj = isObject ? (action as ActionObject) : undefined;
+
+  const onClick = actionObj?.onClick
+    ? (e: MouseEvent | React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<Element>) => actionObj.onClick!(e, actionObj, key)
+    : undefined;
 
   return {
-    ...(action as ActionObject)?.props,
+    ...actionProps,
     onClick,
-    component: (action as ActionObject)?.props?.component || (React.isValidElement((action as ActionObject).label || action) ? 'div' : 'button'),
-    children: (typeof action === 'object' && action !== null ? (action as { label?: React.ReactNode })?.label : action) as React.ReactNode,
+    component: actionProps.component || (React.isValidElement(actionObj?.label || action) ? 'div' : 'button'),
+    children: (isObject ? actionObj?.label : action) as React.ReactNode,
   };
 };
 

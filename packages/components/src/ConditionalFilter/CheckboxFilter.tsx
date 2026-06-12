@@ -6,7 +6,6 @@ import { SelectList } from '@patternfly/react-core/dist/dynamic/components/Selec
 import { SelectOption } from '@patternfly/react-core/dist/dynamic/components/Select';
 import { SelectProps } from '@patternfly/react-core/dist/dynamic/components/Select';
 
-import omit from 'lodash/omit';
 import { FilterItem, FilterValue, isFilterValue } from './TextFilter';
 
 export type CheckboxFilterValue = undefined | string | number | boolean | FilterValue;
@@ -82,11 +81,11 @@ const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({ items = 
       popperProps={{ appendTo: 'inline' }}
     >
       <SelectList aria-label="Options menu">
-        {items.map(({ value: optionValue, onClick, label, id, ...item }, key) => (
+        {items.map(({ value: optionValue, onClick, label, id, onChange: _onChange, isChecked: _isChecked, ...item }, key) => (
           <SelectOption
             hasCheckbox
             isSelected={value.includes(optionValue)}
-            {...omit(item, 'onChange')}
+            {...item}
             key={id || key}
             value={String(optionValue || id || key)}
             onClick={(e) => {

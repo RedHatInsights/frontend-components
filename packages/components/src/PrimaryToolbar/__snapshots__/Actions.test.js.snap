@@ -70,7 +70,13 @@ exports[`Actions - component API should update open 1`] = `
               >
                 <span
                   class="pf-v6-c-menu__item-text"
-                />
+                >
+                  <button
+                    tabindex="0"
+                  >
+                    Some button
+                  </button>
+                </span>
               </span>
             </div>
           </li>
@@ -84,7 +90,7 @@ exports[`Actions - component API should update open 1`] = `
             <button
               class="pf-v6-c-menu__item"
               role="menuitem"
-              tabindex="0"
+              tabindex="-1"
               type="button"
             >
               <span

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { act } from 'react';
 import Truncate from './Truncate';
 import { render } from '@testing-library/react';
 
@@ -24,7 +24,9 @@ describe('Truncate component', () => {
 
         it('clicking on expand toggles to collapse', () => {
           const { container } = render(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-          container.querySelectorAll('.ins-c-expand-button')[0].click();
+          act(() => {
+            container.querySelectorAll('.ins-c-expand-button')[0].click();
+          });
           expect(container).toMatchSnapshot();
         });
 
@@ -35,13 +37,17 @@ describe('Truncate component', () => {
 
         it('custom button titles', () => {
           const { container } = render(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-          container.querySelectorAll('.ins-c-expand-button')[0].click();
+          act(() => {
+            container.querySelectorAll('.ins-c-expand-button')[0].click();
+          });
           expect(container).toMatchSnapshot();
         });
 
         it('clicking on expand toggles to collapse', () => {
           const { container } = render(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-          container.querySelectorAll('.ins-c-expand-button')[0].click();
+          act(() => {
+            container.querySelectorAll('.ins-c-expand-button')[0].click();
+          });
           expect(container).toMatchSnapshot();
         });
 
@@ -52,7 +58,9 @@ describe('Truncate component', () => {
 
         it('custom button titles', () => {
           const { container } = render(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-          container.querySelectorAll('.ins-c-expand-button')[0].click();
+          act(() => {
+            container.querySelectorAll('.ins-c-expand-button')[0].click();
+          });
           expect(container).toMatchSnapshot();
         });
 

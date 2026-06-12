@@ -64,7 +64,6 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
     data-ouia-component-type="PF6/Toolbar"
     data-ouia-safe="true"
     id="ins-primary-data-toolbar"
-    usemobilelayout="[object Object]"
   >
     <div
       class="pf-v6-c-toolbar__content"

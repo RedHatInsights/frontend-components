@@ -4,6 +4,10 @@ import userEvent from '@testing-library/user-event';
 import Breadcrumbs from './Breadcrumbs';
 
 describe('Breadcrumbs component', () => {
+  // Suppress intentional deprecation warning from the component
+  beforeAll(() => jest.spyOn(console, 'warn').mockImplementation(() => {}));
+  afterAll(() => jest.restoreAllMocks());
+
   const onNavigate = jest.fn();
   const items = [
     { title: 'First', navigate: 'first' },
