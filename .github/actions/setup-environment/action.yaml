@@ -13,7 +13,7 @@ runs:
         which node && node --version || echo "No default Node.js found"
         echo "=== .nvmrc content ==="
         cat .nvmrc 2>/dev/null || echo "No .nvmrc file found"
-    - uses: actions/setup-node@v5
+    - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
       with:
         node-version-file: '.nvmrc'
         registry-url: 'https://registry.npmjs.org'
