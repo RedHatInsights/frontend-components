@@ -13,7 +13,8 @@
         "main": "packages/chrome/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/chrome",
         "cjsTsConfig": "packages/chrome/tsconfig.cjs.json",
-        "esmTsConfig": "packages/chrome/tsconfig.esm.json"
+        "esmTsConfig": "packages/chrome/tsconfig.esm.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
       }
     },
     "build:packages": {

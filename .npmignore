@@ -1,14 +1,8 @@
-.DS_Store
-.idea
-.gitignore
-.config
-.vscode
-node_modules
-src
-static
-.babelrc
-.eslintrc
-.firebaserc
-.prettierignore
-.travis.yml
-yarn.lock
+# Source maps (not needed by consumers)
+*.js.map
+
+# Test files (should not be in dist, but defensive)
+*.test.*
+*.spec.*
+__snapshots__/
+__mocks__/

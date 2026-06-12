@@ -13,7 +13,8 @@
         "main": "packages/remediations/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-remediations",
         "cjsTsConfig": "packages/remediations/tsconfig.cjs.json",
-        "esmTsConfig": "packages/remediations/tsconfig.esm.json"
+        "esmTsConfig": "packages/remediations/tsconfig.esm.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
       }
     },
     "build:styles": {

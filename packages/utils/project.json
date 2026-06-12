@@ -13,7 +13,8 @@
         "main": "packages/utils/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-utilities",
         "cjsTsConfig": "packages/utils/tsconfig.cjs.json",
-        "esmTsConfig": "packages/utils/tsconfig.esm.json"
+        "esmTsConfig": "packages/utils/tsconfig.esm.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
       }
     },
     "build:styles": {

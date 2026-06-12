@@ -1,4 +1,0 @@
-.eslintrc
-src/**/*.ts
-src/**/*.tsx
-tsconfig.json

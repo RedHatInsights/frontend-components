@@ -13,7 +13,8 @@
         "main": "packages/notifications/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications",
         "cjsTsConfig": "packages/notifications/tsconfig.cjs.json",
-        "esmTsConfig": "packages/notifications/tsconfig.esm.json"
+        "esmTsConfig": "packages/notifications/tsconfig.esm.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
       }
     },
     "build:styles": {

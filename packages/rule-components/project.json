@@ -13,7 +13,8 @@
         "main": "packages/rule-components/src/index.ts",
         "outputPath": "dist/@redhat-cloud-services/rule-components",
         "cjsTsConfig": "packages/rule-components/tsconfig.cjs.json",
-        "esmTsConfig": "packages/rule-components/tsconfig.esm.json"
+        "esmTsConfig": "packages/rule-components/tsconfig.esm.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
       }
     },
     "build:styles": {

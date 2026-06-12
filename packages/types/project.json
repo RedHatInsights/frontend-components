@@ -11,7 +11,8 @@
       "options": {
         "main": "packages/types/index.ts",
         "outputPath": "dist/@redhat-cloud-services/types",
-        "tsConfig": "packages/types/tsconfig.json"
+        "tsConfig": "packages/types/tsconfig.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
       }
     },
     "lint": {
