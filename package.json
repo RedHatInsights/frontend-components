@@ -63,7 +63,7 @@
     "@typescript-eslint/eslint-plugin": "^8.53.1",
     "@typescript-eslint/parser": "^8.53.1",
     "concurrently": "^7.6.0",
-    "cypress": "^13.17.0",
+    "cypress": "^15.17.0",
     "dotenv": "^10.0.0",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
