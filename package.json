@@ -36,7 +36,6 @@
     "@nx/jest": "^22.3.3",
     "@nx/js": "^22.3.3",
     "@nx/react": "^22.3.3",
-    "@nx/vite": "^22.3.3",
     "@nx/web": "^22.3.3",
     "@nx/webpack": "^22.3.3",
     "@openshift/dynamic-plugin-sdk-webpack": "^4.1.0",
@@ -63,9 +62,6 @@
     "@types/sanitize-html": "^2.16.0",
     "@typescript-eslint/eslint-plugin": "^8.53.1",
     "@typescript-eslint/parser": "^8.53.1",
-    "@vitejs/plugin-react": "^4.7.0",
-    "@vitest/coverage-v8": "^1.6.1",
-    "@vitest/ui": "^1.6.1",
     "concurrently": "^7.6.0",
     "cypress": "^13.17.0",
     "dotenv": "^10.0.0",
@@ -102,8 +98,6 @@
     "ts-node": "^10.9.2",
     "ts-patch": "^3.3.0",
     "typescript": "^5.9.3",
-    "vite": "^5.4.21",
-    "vitest": "^1.6.1",
     "whatwg-fetch": "^3.6.20"
   },
   "scripts": {
