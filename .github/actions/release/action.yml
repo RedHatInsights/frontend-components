@@ -16,7 +16,7 @@ runs:
     - uses: './.github/actions/setup-environment'
     - name: Install deps
       shell: bash
-      run: npm i
+      run: npm ci
     - name: git config
       shell: bash
       run: |
