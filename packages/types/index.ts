@@ -4,6 +4,7 @@ import { Access } from '@redhat-cloud-services/rbac-client/types';
 import { AnalyticsBrowser } from '@segment/analytics-next';
 import { Method } from 'axios';
 import type { AxiosRequestConfig } from 'axios';
+import type { NavigateOptions } from 'react-router-dom';
 
 export declare type HelpTopicLink = {
   href: string;
@@ -18,6 +19,12 @@ export declare type HelpTopic = {
   tags: string[];
   content: string;
   links?: HelpTopicLink[];
+};
+
+export declare type BreadcrumbSegment = {
+  pathname: string;
+  title: string;
+  options?: NavigateOptions;
 };
 
 export declare type PDFRequestPayload = {
@@ -329,6 +336,8 @@ export interface ChromeAPI {
     openVA: (message: string) => void;
   };
   search?: ChromeSearchAPI;
+  useBreadcrumb: (pathname: string, title: string, options?: NavigateOptions) => void;
+  useBreadcrumbs: (breadcrumbs: BreadcrumbSegment[]) => void;
 }
 
 declare global {
