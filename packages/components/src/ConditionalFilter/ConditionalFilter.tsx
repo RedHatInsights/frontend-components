@@ -49,6 +49,7 @@ export type ConditionalFilterItem = {
   label?: ReactNode;
   placeholder?: string;
   value?: string;
+  default?: boolean;
 } & (
   | {
       type: 'checkbox';
@@ -84,6 +85,22 @@ export interface ConditionalFilterProps<R extends HTMLElement = NonNullable<any>
   innerRef?: React.RefObject<R | null>;
 }
 
+const resolveActiveItem = (items: ConditionalFilterItem[], currentValue?: number | string) => {
+  if (!items?.length) {
+    return undefined;
+  }
+
+  if (currentValue !== undefined && currentValue !== '') {
+    const matched = items.find((item, key) => item.value === currentValue || key === Number(currentValue));
+
+    if (matched) {
+      return matched;
+    }
+  }
+
+  return items.find((item) => item.default) || items[0];
+};
+
 const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   hideLabel = false,
   id = 'default-input',
@@ -112,7 +129,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   }, []);
 
   const currentValue = onChange ? value : stateValue;
-  const activeItem = items && items.length && (items.find((item, key) => item.value === currentValue || key === Number(currentValue)) || items[0]);
+  const activeItem = resolveActiveItem(items, currentValue);
   const onChangeDefault = (_e: FormEvent<HTMLInputElement>, value: number | string) => setStateValue(value);
   const onChangeCallback = onChange || onChangeDefault;
 
