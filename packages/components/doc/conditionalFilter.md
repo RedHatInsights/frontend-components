@@ -10,6 +10,8 @@ If you do not pass any items to this component Text filter will be rendered by d
 
 You can control which filter is active by passing `onChange` and `value` (you have to pass both props, otherwise state values will be used).
 
+You can also mark a filter item with `default: true` to select it when no `value` is set. If no item is marked as default, the first item is used.
+
 There are 3 components predesigned for you to use, plus one custom definition component if you need to use something completely different.
 
 ### 1) Textual component

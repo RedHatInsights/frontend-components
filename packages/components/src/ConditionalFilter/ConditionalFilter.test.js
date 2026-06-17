@@ -160,6 +160,51 @@ describe('ConditionalFilter', () => {
       expect(onChange).toHaveBeenCalled();
     });
 
+    it('should select the item marked as default when uncontrolled', () => {
+      const items = [
+        {
+          label: 'Operating system',
+          value: 'operating-system-filter',
+          type: 'text',
+          filterValues: { placeholder: 'Filter by operating system' },
+        },
+        {
+          label: 'Name',
+          value: 'name-filter',
+          type: 'text',
+          default: true,
+          filterValues: { placeholder: 'Filter by name' },
+        },
+        {
+          label: 'Compliance',
+          type: 'checkbox',
+          filterValues: { items: [] },
+        },
+      ];
+
+      render(<ConditionalFilter {...initialProps} items={items} />);
+      expect(screen.getByRole('button', { name: 'Conditional filter toggle' })).toHaveTextContent('Name');
+    });
+
+    it('should fall back to the first item when no default is set', () => {
+      const items = [
+        {
+          label: 'Operating system',
+          value: 'operating-system-filter',
+          type: 'text',
+          filterValues: { placeholder: 'Filter by operating system' },
+        },
+        {
+          label: 'Compliance',
+          type: 'checkbox',
+          filterValues: { items: [] },
+        },
+      ];
+
+      render(<ConditionalFilter {...initialProps} items={items} />);
+      expect(screen.getByRole('button', { name: 'Conditional filter toggle' })).toHaveTextContent('Operating system');
+    });
+
     it('should update state on select', async () => {
       render(<ConditionalFilter {...initialProps} items={config} />);
       act(() => {
