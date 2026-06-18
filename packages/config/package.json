@@ -48,7 +48,7 @@
     "http-server": "^14.0.0",
     "https-proxy-agent": "^5.0.1",
     "inquirer": "^8.2.4",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.2.0",
     "jsonc-parser": "^3.3.1",
     "jws": "^4.0.0",
     "lodash": "^4.17.21",
