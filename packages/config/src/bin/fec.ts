@@ -153,6 +153,10 @@ const argv = yargs
       .option('iop', {
         type: 'boolean',
         describe: 'Enable IOP mode and pass IOP=true to frontend-development-proxy',
+      })
+      .option('hccEnvUrl', {
+        type: 'string',
+        describe: 'Override HCC_ENV_URL for the proxy container (useful with IOP mode). Same as exporting HCC_ENV_URL before running.',
       });
   })
   .command('build', 'Build production bundle', (yargs) => {
