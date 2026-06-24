@@ -22,9 +22,6 @@ runs:
       run: |
         git config user.name "${{ inputs.gh_name }}"
         git config user.email "${{ inputs.gh_email }}"
-    - name: Remove _authToken so npm uses OIDC for trusted publishing
-      shell: bash
-      run: npm config delete //registry.npmjs.org/:_authToken
     - name: Release
       shell: bash
       env:
