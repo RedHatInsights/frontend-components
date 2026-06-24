@@ -16,7 +16,7 @@ runs:
     - uses: './.github/actions/setup-environment'
     - name: Install deps
       shell: bash
-      run: npm i
+      run: npm ci
     - name: git config
       shell: bash
       run: |
@@ -34,7 +34,10 @@ runs:
         # See: https://github.com/nrwl/nx/issues/22066#issuecomment-2576366862
         # See: https://github.com/nrwl/nx/blob/5ea2e47acfa9d175546daa922ce40905533f1074/packages/nx/src/utils/package-manager.ts#L207-L213
         npm_config_legacy_peer_deps: false
-      run: npx nx release --yes --provenance
+        # https://docs.npmjs.com/generating-provenance-statements#using-third-party-package-publishing-tools
+        # https://philna.sh/blog/2026/01/28/trusted-publishing-npm/
+        NPM_CONFIG_PROVENANCE: true
+      run: npx nx release --yes
     - name: Push release commit and tags
       shell: bash
       # nx release (unified command) creates the git commit and tags locally but does not push them,
