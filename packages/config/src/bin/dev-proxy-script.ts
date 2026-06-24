@@ -15,7 +15,8 @@ const LATEST_IMAGE_TAG = 'latest';
 
 const DEV_PROXY_CONTAINER_PORT = 1337;
 const DEV_PROXY_CONTAINER_NAME = 'frontend-development-proxy';
-const DEV_PROXY_IMAGE_REPO = process.env.FEC_DEV_PROXY_IMAGE || `quay.io/redhat-user-workloads/hcc-platex-services-tenant/${DEV_PROXY_CONTAINER_NAME}`;
+const DEV_PROXY_IMAGE_REPO =
+  process.env.FEC_DEV_PROXY_IMAGE || `quay.io/redhat-user-workloads/hcc-platex-services-tenant/${DEV_PROXY_CONTAINER_NAME}`;
 const DEV_PROXY_IMAGE_TAG = process.env.FEC_DEV_PROXY_IMAGE?.includes(':') ? '' : `:${LATEST_IMAGE_TAG}`;
 const IOP_CUSTOM_ROUTES_CONTAINER_PATH = '/config/custom_routes.iop.json';
 
@@ -161,8 +162,7 @@ async function configureEnvVars(fecConfig: any, argv: any, cwd: string) {
   }
 
   const hccEnvSuffix = process.env.HCC_ENV === 'prod' ? '' : `${process.env.HCC_ENV}.`;
-  const defaultHccEnvUrl =
-    process.env.HCC_ENV === 'ephemeral' ? process.env.EPHEMERAL_TARGET : `https://console.${hccEnvSuffix}redhat.com`;
+  const defaultHccEnvUrl = process.env.HCC_ENV === 'ephemeral' ? process.env.EPHEMERAL_TARGET : `https://console.${hccEnvSuffix}redhat.com`;
 
   const cliHccEnvUrl = argv?.hccEnvUrl ?? argv?.['hcc-env-url'];
   if (cliHccEnvUrl) {
@@ -279,14 +279,20 @@ async function devProxyScript(
     const iopCustomRoutesEnvVar = iopEnabled ? `-e LOCAL_CUSTOM_ROUTES_PATH=${IOP_CUSTOM_ROUTES_CONTAINER_PATH}` : '';
     let iopCustomRoutesMountVar = '';
     if (iopEnabled) {
-      if (iopCustomRoutesHostPath && fs.existsSync(iopCustomRoutesHostPath)) {
-        iopCustomRoutesMountVar = `-v "${iopCustomRoutesHostPath}:${IOP_CUSTOM_ROUTES_CONTAINER_PATH}:ro,Z"`;
-        fecLogger(LogType.info, `Mounting IOP custom routes from ${iopCustomRoutesHostPath}`);
-      } else if (iopCustomRoutesHostPath) {
-        fecLogger(
-          LogType.warn,
-          `FEC_IOP_CUSTOM_ROUTES_PATH is set, but file was not found at "${iopCustomRoutesHostPath}". Falling back to default IOP routes.`,
-        );
+      if (iopCustomRoutesHostPath) {
+        // Validate absolute path
+        if (!path.isAbsolute(iopCustomRoutesHostPath)) {
+          fecLogger(LogType.warn, `FEC_IOP_CUSTOM_ROUTES_PATH should be an absolute path, got: ${iopCustomRoutesHostPath}`);
+        }
+        if (fs.existsSync(iopCustomRoutesHostPath)) {
+          iopCustomRoutesMountVar = `-v "${iopCustomRoutesHostPath}:${IOP_CUSTOM_ROUTES_CONTAINER_PATH}:ro,z"`;
+          fecLogger(LogType.info, `Mounting IOP custom routes from ${iopCustomRoutesHostPath}`);
+        } else {
+          fecLogger(
+            LogType.warn,
+            `FEC_IOP_CUSTOM_ROUTES_PATH is set, but file was not found at "${iopCustomRoutesHostPath}". Falling back to default IOP routes.`,
+          );
+        }
       } else {
         fecLogger(LogType.warn, 'IOP mode enabled without FEC_IOP_CUSTOM_ROUTES_PATH. Falling back to default IOP routes.');
       }
@@ -332,7 +338,7 @@ async function devProxyScript(
           prefixColor: 'bgGreen',
         },
         {
-          command: `${execBin} run -d -e HCC_ENV=${process.env.HCC_ENV} -e HCC_ENV_URL=${process.env.HCC_ENV_URL} ${proxyEnvVar} ${iopEnvVar} ${iopCustomRoutesEnvVar} -p ${argv.port || 1337}:${DEV_PROXY_CONTAINER_PORT} -v "${routesConfigPath}:/config/routes.json:ro,Z" ${iopCustomRoutesMountVar} --name ${DEV_PROXY_CONTAINER_NAME} ${DEV_PROXY_IMAGE_REPO}${DEV_PROXY_IMAGE_TAG} ${proxyVerbose}`,
+          command: `${execBin} run -d -e HCC_ENV=${process.env.HCC_ENV} -e HCC_ENV_URL=${process.env.HCC_ENV_URL} ${proxyEnvVar} ${iopEnvVar} ${iopCustomRoutesEnvVar} -p ${argv.port || 1337}:${DEV_PROXY_CONTAINER_PORT} -v "${routesConfigPath}:/config/routes.json:ro,z" ${iopCustomRoutesMountVar} --name ${DEV_PROXY_CONTAINER_NAME} ${DEV_PROXY_IMAGE_REPO}${DEV_PROXY_IMAGE_TAG} ${proxyVerbose}`,
           name: 'PROXY',
           env: { RH_PROXY_URL: PROXY_URL },
           prefixColor: 'bgMagenta',
