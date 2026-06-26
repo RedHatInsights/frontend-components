@@ -252,60 +252,56 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
         class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
-          class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
+          class="pf-v6-c-toolbar__item"
         >
-          <div
-            class="pf-v6-c-toolbar__item"
+          <button
+            aria-expanded="false"
+            class="pf-v6-c-menu-toggle"
+            data-ouia-component-id="BulkSelect"
+            data-ouia-component-type="PF6/MenuToggle"
+            data-ouia-safe="true"
+            type="button"
           >
-            <button
-              aria-expanded="false"
-              class="pf-v6-c-menu-toggle"
-              data-ouia-component-id="BulkSelect"
-              data-ouia-component-type="PF6/MenuToggle"
-              data-ouia-safe="true"
-              type="button"
+            <span
+              class="pf-v6-c-menu-toggle__text"
+            >
+              <label
+                class="pf-v6-c-check pf-m-standalone"
+              >
+                <input
+                  aria-invalid="false"
+                  aria-label="Select all"
+                  class="pf-v6-c-check__input"
+                  data-ouia-component-id="BulkSelectCheckbox"
+                  data-ouia-component-type="PF6/MenuToggleCheckbox"
+                  data-ouia-safe="true"
+                  name="toggle-checkbox"
+                  type="checkbox"
+                />
+              </label>
+            </span>
+            <span
+              class="pf-v6-c-menu-toggle__controls"
             >
               <span
-                class="pf-v6-c-menu-toggle__text"
+                class="pf-v6-c-menu-toggle__toggle-icon"
               >
-                <label
-                  class="pf-v6-c-check pf-m-standalone"
+                <svg
+                  aria-hidden="true"
+                  class="pf-v6-svg"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  width="1em"
                 >
-                  <input
-                    aria-invalid="false"
-                    aria-label="Select all"
-                    class="pf-v6-c-check__input"
-                    data-ouia-component-id="BulkSelectCheckbox"
-                    data-ouia-component-type="PF6/MenuToggleCheckbox"
-                    data-ouia-safe="true"
-                    name="toggle-checkbox"
-                    type="checkbox"
+                  <path
+                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
                   />
-                </label>
+                </svg>
               </span>
-              <span
-                class="pf-v6-c-menu-toggle__controls"
-              >
-                <span
-                  class="pf-v6-c-menu-toggle__toggle-icon"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="pf-v6-svg"
-                    fill="currentColor"
-                    height="1em"
-                    role="img"
-                    viewBox="0 0 320 512"
-                    width="1em"
-                  >
-                    <path
-                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                    />
-                  </svg>
-                </span>
-              </span>
-            </button>
-          </div>
+            </span>
+          </button>
         </div>
         <div
           class="pf-v6-c-toolbar__item ins-c-primary-toolbar__pagination"
@@ -790,60 +786,56 @@ exports[`TableWithFilter should render with data and bulk select without calcula
         class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
-          class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
+          class="pf-v6-c-toolbar__item"
         >
-          <div
-            class="pf-v6-c-toolbar__item"
+          <button
+            aria-expanded="false"
+            class="pf-v6-c-menu-toggle"
+            data-ouia-component-id="BulkSelect"
+            data-ouia-component-type="PF6/MenuToggle"
+            data-ouia-safe="true"
+            type="button"
           >
-            <button
-              aria-expanded="false"
-              class="pf-v6-c-menu-toggle"
-              data-ouia-component-id="BulkSelect"
-              data-ouia-component-type="PF6/MenuToggle"
-              data-ouia-safe="true"
-              type="button"
+            <span
+              class="pf-v6-c-menu-toggle__text"
+            >
+              <label
+                class="pf-v6-c-check pf-m-standalone"
+              >
+                <input
+                  aria-invalid="false"
+                  aria-label="Select all"
+                  class="pf-v6-c-check__input"
+                  data-ouia-component-id="BulkSelectCheckbox"
+                  data-ouia-component-type="PF6/MenuToggleCheckbox"
+                  data-ouia-safe="true"
+                  name="toggle-checkbox"
+                  type="checkbox"
+                />
+              </label>
+            </span>
+            <span
+              class="pf-v6-c-menu-toggle__controls"
             >
               <span
-                class="pf-v6-c-menu-toggle__text"
+                class="pf-v6-c-menu-toggle__toggle-icon"
               >
-                <label
-                  class="pf-v6-c-check pf-m-standalone"
+                <svg
+                  aria-hidden="true"
+                  class="pf-v6-svg"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  width="1em"
                 >
-                  <input
-                    aria-invalid="false"
-                    aria-label="Select all"
-                    class="pf-v6-c-check__input"
-                    data-ouia-component-id="BulkSelectCheckbox"
-                    data-ouia-component-type="PF6/MenuToggleCheckbox"
-                    data-ouia-safe="true"
-                    name="toggle-checkbox"
-                    type="checkbox"
+                  <path
+                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
                   />
-                </label>
+                </svg>
               </span>
-              <span
-                class="pf-v6-c-menu-toggle__controls"
-              >
-                <span
-                  class="pf-v6-c-menu-toggle__toggle-icon"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="pf-v6-svg"
-                    fill="currentColor"
-                    height="1em"
-                    role="img"
-                    viewBox="0 0 320 512"
-                    width="1em"
-                  >
-                    <path
-                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                    />
-                  </svg>
-                </span>
-              </span>
-            </button>
-          </div>
+            </span>
+          </button>
         </div>
         <div
           class="pf-v6-c-toolbar__item ins-c-primary-toolbar__pagination"
@@ -1328,63 +1320,59 @@ exports[`TableWithFilter should render with data and filters 1`] = `
         class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
-          class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
+          class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
         >
           <div
-            class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
+            class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
           >
             <div
-              class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
+              class="pf-v6-l-split__item pf-m-fill"
+              data-ouia-component-id="ConditionalFilter"
             >
-              <div
-                class="pf-v6-l-split__item pf-m-fill"
-                data-ouia-component-id="ConditionalFilter"
+              <span
+                class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
               >
+                <input
+                  aria-invalid="false"
+                  aria-label="text input"
+                  data-ouia-component-id="ConditionalFilter"
+                  data-ouia-component-type="PF6/TextInput"
+                  data-ouia-safe="true"
+                  placeholder="Filter by undefined"
+                  type="text"
+                  value=""
+                  widget-type="InsightsInput"
+                />
                 <span
-                  class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
+                  class="pf-v6-c-form-control__utilities"
                 >
-                  <input
-                    aria-invalid="false"
-                    aria-label="text input"
-                    data-ouia-component-id="ConditionalFilter"
-                    data-ouia-component-type="PF6/TextInput"
-                    data-ouia-safe="true"
-                    placeholder="Filter by undefined"
-                    type="text"
-                    value=""
-                    widget-type="InsightsInput"
-                  />
                   <span
-                    class="pf-v6-c-form-control__utilities"
+                    class="pf-v6-c-form-control__icon"
                   >
                     <span
-                      class="pf-v6-c-form-control__icon"
+                      class="pf-v6-c-icon pf-m-md ins-c-search-icon"
                     >
                       <span
-                        class="pf-v6-c-icon pf-m-md ins-c-search-icon"
+                        class="pf-v6-c-icon__content"
                       >
-                        <span
-                          class="pf-v6-c-icon__content"
+                        <svg
+                          aria-hidden="true"
+                          class="pf-v6-svg"
+                          fill="currentColor"
+                          height="1em"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          width="1em"
                         >
-                          <svg
-                            aria-hidden="true"
-                            class="pf-v6-svg"
-                            fill="currentColor"
-                            height="1em"
-                            role="img"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                          >
-                            <path
-                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                            />
-                          </svg>
-                        </span>
+                          <path
+                            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                          />
+                        </svg>
                       </span>
                     </span>
                   </span>
                 </span>
-              </div>
+              </span>
             </div>
           </div>
         </div>

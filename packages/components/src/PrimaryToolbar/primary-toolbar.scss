@@ -17,13 +17,6 @@
   .ins-m-actions--empty {
     display: none;
   }
-  .ins-c-primary-toolbar__group-filter {
-    flex-grow: initial;
-    align-items: center;
-    .ins-c-primary-toolbar__filter {
-      flex: initial;
-    }
-  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -39,13 +32,6 @@
     }
     .ins-c-primary-toolbar__overflow-actions, .ins-c-primary-toolbar__overflow-actions-separator {
       display: block;
-    }
-    .ins-c-primary-toolbar__group-filter {
-      margin-right: 0;
-      flex-grow: 1;
-      .ins-c-primary-toolbar__filter {
-        flex: 1;
-      }
     }
     .ins-m-actions--empty {
       display: block;
