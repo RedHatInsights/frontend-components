@@ -42,7 +42,7 @@ const BaseTagWithDialog = (props: TagWithDialogProps & { innerRef?: React.Ref<HT
  *
  * This component shows systems table connected to redux.
  */
-const TagWithDialog = React.forwardRef(
+const TagWithDialog = React.forwardRef<HTMLElement, TagWithDialogProps>(
   (
     {
       component = 'section',
