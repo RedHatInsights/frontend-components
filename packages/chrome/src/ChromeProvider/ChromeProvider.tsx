@@ -137,7 +137,7 @@ const useLastVisitedLocalStorage = (providerState: ReturnType<typeof chromeState
   }, [pathname]);
 };
 
-const ChromeProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
+const ChromeProvider = ({ children }: React.PropsWithChildren) => {
   const isMounted = useRef(false);
   const [initialRequest, setInitialRequest] = useState(false);
   const providerState = useRef<ReturnType<typeof chromeState>>();
