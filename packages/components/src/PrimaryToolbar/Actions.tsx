@@ -92,13 +92,13 @@ export const actionPropsGenerator = (action: ActionsType, key: string | number) 
   };
 };
 
-const Actions: React.FunctionComponent<ActionsProps> = ({
+const Actions = ({
   actions = [],
   overflowActions = [],
   onSelect = () => undefined,
-  dropdownProps = {},
+  dropdownProps = {} as DropdownProps,
   exportConfig,
-}) => {
+}: ActionsProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = (isOpen: boolean) => setIsOpen(isOpen);

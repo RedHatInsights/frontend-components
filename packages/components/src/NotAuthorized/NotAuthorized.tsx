@@ -4,7 +4,7 @@ import UnauthorizedAccess, { UnauthorizedAccessProps } from '@patternfly/react-c
 /**
  * @deprecated Do not use deprecated NotAuthorized import, the component has been moved to @patternfly/react-component-groups
  */
-const NotAuthorized: React.FunctionComponent<UnauthorizedAccessProps> = ({
+const NotAuthorized = ({
   bodyText = (
     <>
       Contact your organization administrator(s) for more information or visit&nbsp;<a href={`./iam/my-user-access`}>My User Access</a>&nbsp;to learn
@@ -12,6 +12,6 @@ const NotAuthorized: React.FunctionComponent<UnauthorizedAccessProps> = ({
     </>
   ),
   ...props
-}) => <UnauthorizedAccess {...props} bodyText={bodyText} />;
+}: UnauthorizedAccessProps) => <UnauthorizedAccess {...props} bodyText={bodyText} />;
 
 export default NotAuthorized;

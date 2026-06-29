@@ -13,7 +13,7 @@ export interface OpenSourceBadgeProps {
   repositoriesURL: string;
 }
 
-const OpenSourceBadge: React.FunctionComponent<OpenSourceBadgeProps> = ({ repositoriesURL }) => {
+const OpenSourceBadge = ({ repositoriesURL }: OpenSourceBadgeProps) => {
   return (
     <>
       <Popover

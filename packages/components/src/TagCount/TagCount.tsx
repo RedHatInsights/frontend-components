@@ -11,6 +11,6 @@ export interface TagCountProps extends ButtonProps {
  * @deprecated Do not use deprecated TagCount import, the component has been moved to @patternfly/react-component-groups
  */
 
-const TagCount: React.FunctionComponent<TagCountProps> = ({ onTagClick, ...props }) => <TagCountPF onClick={onTagClick} iconSize="md" {...props} />;
+const TagCount = ({ onTagClick, ...props }: TagCountProps) => <TagCountPF onClick={onTagClick} iconSize="md" {...props} />;
 
 export default TagCount;

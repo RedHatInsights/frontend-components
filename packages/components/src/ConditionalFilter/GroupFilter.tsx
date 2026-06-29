@@ -80,7 +80,7 @@ export type GroupFilterProps = {
  *
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
-const GroupFilter: React.FunctionComponent<GroupFilterProps> = (props) => {
+const GroupFilter = (props: GroupFilterProps) => {
   const {
     className,
     filterBy = '',

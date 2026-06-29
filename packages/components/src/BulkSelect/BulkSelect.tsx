@@ -40,7 +40,7 @@ export interface BulkSelectProps {
   listOuiaId?: string;
 }
 
-const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
+const BulkSelect = ({
   id,
   isDisabled = false,
   items = [],
@@ -51,7 +51,7 @@ const BulkSelect: React.FunctionComponent<BulkSelectProps> = ({
   className,
   ouiaSafe = true,
   ...props
-}) => {
+}: BulkSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { current: hasError } = useRef(false);
 

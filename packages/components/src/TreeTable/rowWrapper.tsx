@@ -10,7 +10,7 @@ export interface TreeRowWrapperProps {
   rows?: TreeTableRow[];
 }
 
-const TreeRowWrapper: React.FunctionComponent<TreeRowWrapperProps> = (props) => {
+const TreeRowWrapper = (props: TreeRowWrapperProps) => {
   const { className } = props;
   const { level, isTreeOpen, point, posinset } = props.row || {};
   return (
@@ -19,8 +19,7 @@ const TreeRowWrapper: React.FunctionComponent<TreeRowWrapperProps> = (props) => 
       aria-level={level === undefined ? 1 : level + 1}
       aria-posinset={posinset}
       aria-setsize={point ? point.size : 0}
-      className={classnames({
-        className,
+      className={classnames(className, {
         'pf-m-expandable': isTreeOpen === true || isTreeOpen === false,
         'pf-m-expanded': isTreeOpen === true,
       })}

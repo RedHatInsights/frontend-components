@@ -7,8 +7,6 @@ const isBeta = () => (window.location.pathname.split('/')[1] === 'beta' ? '/beta
 /**
  * @deprecated Do not use deprecated InvalidObject import, the component has been moved to @patternfly/react-component-groups
  */
-const InvalidObject: React.FunctionComponent<MissingPageProps> = (props) => (
-  <MissingPage toHomePageUrl={`${window.location.origin}${isBeta()}`} {...props} />
-);
+const InvalidObject = (props: MissingPageProps) => <MissingPage toHomePageUrl={`${window.location.origin}${isBeta()}`} {...props} />;
 
 export default InvalidObject;

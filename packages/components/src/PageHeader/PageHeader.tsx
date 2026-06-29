@@ -14,13 +14,7 @@ export interface PageHeaderProps {
 /**
  * This is a page header that mimics the patternfly layout for a header section
  */
-const PageHeader: React.FunctionComponent<React.PropsWithChildren<PageHeaderProps>> = ({
-  className,
-  children,
-  ouiaId,
-  ouiaSafe = true,
-  ...props
-}) => {
+const PageHeader = ({ className, children, ouiaId, ouiaSafe = true, ...props }: React.PropsWithChildren<PageHeaderProps>) => {
   const pageHeaderClasses = classNames(
     className,
     'pf-v6-l-page-header',

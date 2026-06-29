@@ -11,7 +11,7 @@ interface RebootRequiredProps {
   messages: RuleDetailsMessages;
 }
 
-const RebootRequired: React.FC<RebootRequiredProps> = ({ messages, rebootRequired }) => (
+const RebootRequired = ({ messages, rebootRequired }: RebootRequiredProps) => (
   <span className="system-reboot-message">
     <Icon>
       <PowerOffIcon className={rebootRequired ? 'reboot-required-icon' : 'no-reboot-required-icon'} />

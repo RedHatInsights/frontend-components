@@ -12,7 +12,7 @@ export interface SkeletonProps extends Omit<PFSkeletonProps, 'size'> {
   isDark?: boolean;
 }
 
-const Skeleton: React.FunctionComponent<SkeletonProps> = ({ size = SkeletonSize.md, isDark = false, className, ...props }) => (
+const Skeleton = ({ size = SkeletonSize.md, isDark = false, className, ...props }: SkeletonProps) => (
   <PFSkeleton className={classNames('ins-c-skeleton', `ins-c-skeleton__${size}`, { [`ins-m-dark`]: isDark }, className)} {...props} />
 );
 

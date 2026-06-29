@@ -16,7 +16,7 @@ export interface ConnectedBreadcrumbsProps extends BreadcrumbsProps {
  *
  * Use <a href="https://www.patternfly.org/v4/components/breadcrumb" target="_blank">Breadcrumbs</a> from PF repository.
  */
-const ConnectedBreadcrumbs: React.FunctionComponent<ConnectedBreadcrumbsProps> = (props) => {
+const ConnectedBreadcrumbs = (props: ConnectedBreadcrumbsProps) => {
   const history = useHistory();
   const location = useLocation();
   const match = useRouteMatch();

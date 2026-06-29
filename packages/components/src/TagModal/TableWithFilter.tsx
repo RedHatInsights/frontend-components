@@ -42,7 +42,7 @@ export interface TableWithFilterProps extends Omit<Partial<ModalProps>, 'rows' |
   bulkSelect?: BulkSelectProps;
 }
 
-const TableWithFilter: React.FC<TableWithFilterProps> = ({
+const TableWithFilter = ({
   rows = [],
   onSelect,
   selected = [],
@@ -60,7 +60,7 @@ const TableWithFilter: React.FC<TableWithFilterProps> = ({
   tableProps,
   entityName = 'tags',
   bulkSelect,
-}) => {
+}: TableWithFilterProps) => {
   const onRowSelect = ({ isSelected, rowId }: { isSelected?: boolean; rowId: number }) => {
     const currRow = rows?.[rowId];
     if (currRow && onSelect) {

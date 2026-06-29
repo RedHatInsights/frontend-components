@@ -101,7 +101,7 @@ const resolveActiveItem = (items: ConditionalFilterItem[], currentValue?: number
   return items.find((item) => item.default) || items[0];
 };
 
-const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
+const ConditionalFilter = ({
   hideLabel = false,
   id = 'default-input',
   isDisabled = false,
@@ -110,7 +110,7 @@ const ConditionalFilter: React.FunctionComponent<ConditionalFilterProps> = ({
   placeholder,
   value = '',
   innerRef,
-}) => {
+}: ConditionalFilterProps) => {
   const breakpointConstant = parseInt(t_global_breakpoint_md.value.replace('px', ''));
   const updateFilterViewport = (width: number) => width <= breakpointConstant;
   const [isOpen, setIsOpen] = useState(false);

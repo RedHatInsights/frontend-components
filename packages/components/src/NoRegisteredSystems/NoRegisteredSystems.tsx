@@ -12,11 +12,11 @@ export interface NoRegisteredSystemsProps {
   buttonText?: React.ReactNode;
 }
 
-const NoRegisteredSystems: React.FC<NoRegisteredSystemsProps> = ({
+const NoRegisteredSystems = ({
   titleText = 'Do more with your Red Hat Enterprise Linux environment',
   bodyText = 'Connect your systems to keep your Red Hat environment running efficiently, with security and compliance with various standards.',
   buttonText = 'Learn more about connecting your systems',
-}) => (
+}: NoRegisteredSystemsProps) => (
   <EmptyState headingLevel="h5" icon={DisconnectedIcon} titleText={titleText}>
     <EmptyStateBody>{bodyText}</EmptyStateBody>
     <EmptyStateFooter>

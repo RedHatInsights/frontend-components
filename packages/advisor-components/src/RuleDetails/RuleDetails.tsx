@@ -40,7 +40,7 @@ export interface RuleDetailsProps {
   ViewAffectedLink?: React.ReactNode;
 }
 
-const RuleDetails: React.FC<RuleDetailsProps> = ({
+const RuleDetails = ({
   messages,
   product,
   header,
@@ -53,7 +53,7 @@ const RuleDetails: React.FC<RuleDetailsProps> = ({
   knowledgebaseUrl,
   Topics,
   ViewAffectedLink,
-}) => (
+}: RuleDetailsProps) => (
   <Flex
     className="ins-c-rule-details"
     flexWrap={{ default: 'nowrap' }}

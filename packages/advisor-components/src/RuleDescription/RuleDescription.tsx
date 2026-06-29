@@ -13,7 +13,7 @@ interface RuleDescriptionProps {
   isDetailsPage: boolean;
 }
 
-const RuleDescription: React.FC<RuleDescriptionProps> = ({ product, rule, isDetailsPage }) => (
+const RuleDescription = ({ product, rule, isDetailsPage }: RuleDescriptionProps) => (
   <React.Fragment>
     {(rule.generic || (rule as RuleContentRhel).summary) && (
       <span className={product === AdvisorProduct.ocp || isDetailsPage ? 'ins-c-generic__override' : ''}>

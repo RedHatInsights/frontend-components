@@ -16,7 +16,7 @@ interface BaseAppInfoProps extends Record<string, unknown> {
   history?: History;
 }
 
-const BaseAppInfo: React.FC<BaseAppInfoProps> = ({
+const BaseAppInfo = ({
   fallback = (
     <Bullseye className="pf-v6-u-p-lg">
       <Spinner size="xl" aria-label="Loading" />
@@ -27,7 +27,7 @@ const BaseAppInfo: React.FC<BaseAppInfoProps> = ({
   history,
   innerRef,
   ...props
-}) => {
+}: BaseAppInfoProps) => {
   const store = useStore();
   const Component = component;
   return (

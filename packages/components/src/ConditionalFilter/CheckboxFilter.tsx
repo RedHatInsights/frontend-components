@@ -34,7 +34,7 @@ export interface CheckboxFilterProps {
  *
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
-const CheckboxFilter: React.FunctionComponent<CheckboxFilterProps> = ({ items = [], value = [], onChange, isDisabled = false, ...props }) => {
+const CheckboxFilter = ({ items = [], value = [], onChange, isDisabled = false, ...props }: CheckboxFilterProps) => {
   const { placeholder, className } = props;
   const [isExpanded, setExpanded] = useState(false);
 

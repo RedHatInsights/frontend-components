@@ -16,7 +16,7 @@ interface BaseDetailWrapperProps extends Record<string, unknown> {
   history?: History;
 }
 
-const BaseDetailWrapper: React.FC<BaseDetailWrapperProps> = ({
+const BaseDetailWrapper = ({
   fallback = (
     <Bullseye className="pf-v6-u-p-lg">
       <Spinner size="xl" aria-label="Loading" />
@@ -27,7 +27,7 @@ const BaseDetailWrapper: React.FC<BaseDetailWrapperProps> = ({
   history,
   innerRef,
   ...props
-}) => {
+}: BaseDetailWrapperProps) => {
   const store = useStore();
   const Component = component;
   return (

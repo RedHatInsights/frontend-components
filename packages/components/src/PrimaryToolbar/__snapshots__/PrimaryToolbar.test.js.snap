@@ -444,6 +444,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
           class="pf-v6-c-toolbar__item ins-c-primary-toolbar__sort-by"
         >
           <button
+            aria-label="Sort descending"
             class="pf-v6-c-button pf-m-plain"
             data-ouia-component-id="OUIA-Generated-Button-plain-1"
             data-ouia-component-type="PF6/Button"
@@ -1416,6 +1417,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
           class="pf-v6-c-toolbar__item ins-c-primary-toolbar__sort-by"
         >
           <button
+            aria-label="Sort descending"
             class="pf-v6-c-button pf-m-plain"
             data-ouia-component-id="OUIA-Generated-Button-plain-8"
             data-ouia-component-type="PF6/Button"

@@ -16,7 +16,7 @@ interface BaseInvTableProps extends Record<string, unknown> {
   history?: History;
 }
 
-const BaseInvTable: React.FC<BaseInvTableProps> = ({
+const BaseInvTable = ({
   fallback = (
     <Bullseye className="pf-v6-u-p-lg">
       <Spinner size="xl" aria-label="Loading" />
@@ -27,7 +27,7 @@ const BaseInvTable: React.FC<BaseInvTableProps> = ({
   history,
   innerRef,
   ...props
-}) => {
+}: BaseInvTableProps) => {
   const store = useStore();
   const Component = component;
   return (

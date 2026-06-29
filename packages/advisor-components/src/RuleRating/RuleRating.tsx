@@ -22,7 +22,7 @@ interface RuleRatingProps {
   messages: RuleDetailsMessages;
 }
 
-const RuleRating: React.FC<RuleRatingProps> = ({ messages, ruleId, ruleRating, onVoteClick }) => {
+const RuleRating = ({ messages, ruleId, ruleRating, onVoteClick }: RuleRatingProps) => {
   const [rating, setRating] = useState(ruleRating);
   const [submitted, setSubmitted] = useState(false);
 

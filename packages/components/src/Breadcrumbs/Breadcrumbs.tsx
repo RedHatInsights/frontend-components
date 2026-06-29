@@ -20,13 +20,7 @@ export interface BreadcrumbsProps extends BreadcrumbProps {
  *
  * Use <a href="https://www.patternfly.org/v4/components/breadcrumb" target="_blank">Breadcrumbs</a> from PF repository.
  */
-const Breadcrumbs: React.FunctionComponent<BreadcrumbsProps> = ({
-  items = [],
-  current = null,
-  className = '',
-  onNavigate = () => undefined,
-  ...props
-}) => {
+const Breadcrumbs = ({ items = [], current = null, className = '', onNavigate = () => undefined, ...props }: BreadcrumbsProps) => {
   console.warn(
     "Breadcrumbs from FE component shouldn't be used anymore. \
 Instead use https://patternfly-react.surge.sh/documentation/react/components/breadcrumb from PF repository.",

@@ -33,7 +33,7 @@ export interface FilterDropdownProps {
 
 const ouiaStateId = getDefaultOUIAId('RHI/FilterDropdown');
 
-const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({
+const FilterDropdown = ({
   hideCategories,
   filters,
   filterCategories,
@@ -43,7 +43,7 @@ const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({
   addFilter,
   removeFilter,
   ...props
-}) => {
+}: FilterDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const addRemoveFilters = (selectedValue?: string | number, filterName?: string, type?: string, isChecked?: boolean) => {

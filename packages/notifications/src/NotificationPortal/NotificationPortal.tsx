@@ -16,7 +16,7 @@ const NotificationPortalBase = ({ clearNotifications: propsClear, ...props }: No
   return <Portal notifications={notifications} removeNotification={removeNotif} onClearAll={propsClear || onClearAll} {...props} />;
 };
 
-export const NotificationPortal: React.FC<NotificationPortalProps> = ({ silent = true, ...props }) => {
+export const NotificationPortal = ({ silent = true, ...props }: NotificationPortalProps) => {
   return (
     <ErrorBoundary headerTitle="Notifications portal" silent={silent}>
       <NotificationPortalBase {...props} />

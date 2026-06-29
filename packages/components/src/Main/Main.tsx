@@ -8,7 +8,7 @@ export type InternalMainProps = MainProps;
 /**
  * @deprecated Do not use this component, use HTML section tag
  */
-export const Main: React.FC<MainProps> = ({ children, className, ...props }) => {
+export const Main = ({ children, className, ...props }: MainProps) => {
   useEffect(() => {
     console.error(`Using deprecated "Main" component. Do not use it. Either remove it from your JSX or replace it by "section" HTML element.`);
   }, []);

@@ -58,7 +58,7 @@ function isPrimaryToolbarExpandAllObject(node: React.ReactNode | PrimaryToolbarE
   return !React.isValidElement(node);
 }
 
-const PrimaryToolbar: React.FunctionComponent<React.PropsWithChildren<PrimaryToolbarProps>> = ({
+const PrimaryToolbar = ({
   id,
   className,
   toggleIsExpanded = () => undefined,
@@ -74,7 +74,7 @@ const PrimaryToolbar: React.FunctionComponent<React.PropsWithChildren<PrimaryToo
   expandAll,
   useMobileLayout: _useMobileLayout,
   ...props
-}) => {
+}: React.PropsWithChildren<PrimaryToolbarProps>) => {
   const overflowActions = [
     ...(sortByConfig
       ? [

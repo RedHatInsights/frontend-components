@@ -4,7 +4,7 @@ import React from 'react';
 
 const testId = 'helper';
 
-const Helper: React.FunctionComponent = () => {
+const Helper = () => {
   return <div data-testid={testId} />;
 };
 
@@ -27,7 +27,7 @@ describe('WithOuia', () => {
   });
 
   it('Can have a component wrapper', () => {
-    const Custom: React.FunctionComponent<React.PropsWithChildren<OuiaDataAttributes>> = (props) => {
+    const Custom = (props: React.PropsWithChildren<OuiaDataAttributes>) => {
       return <ul {...props}>{props.children}</ul>;
     };
 

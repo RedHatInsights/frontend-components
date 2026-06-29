@@ -8,7 +8,7 @@ export interface SpinnerProps {
   className?: string;
 }
 
-const Spinner: React.FunctionComponent<SpinnerProps> = ({ centered, className, ...props }) => {
+const Spinner = ({ centered, className, ...props }: SpinnerProps) => {
   const spinnerClasses = classNames('ins-c-spinner', { [`ins-m-center`]: centered }, className);
 
   return (

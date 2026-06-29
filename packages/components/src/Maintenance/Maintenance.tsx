@@ -20,7 +20,7 @@ export interface MaintenanceProps extends Omit<EmptyStateProps, 'children' | 'ti
   className?: string;
 }
 
-const Maintenance: React.FunctionComponent<MaintenanceProps> = ({
+const Maintenance = ({
   utcStartTime = '10am',
   utcEndTime = '12am',
   startTime = '6am',
@@ -30,7 +30,7 @@ const Maintenance: React.FunctionComponent<MaintenanceProps> = ({
   redirectLink = 'https://status.redhat.com/incidents',
   className,
   ...props
-}) => {
+}: MaintenanceProps) => {
   const emptyStateClassName = classNames(className, 'ins-c-empty-state__maintenance');
 
   return (
