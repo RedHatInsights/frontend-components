@@ -3,6 +3,7 @@
 exports[`PrimaryToolbar should render desc direction 1`] = `
 <div>
   <button
+    aria-label="Sort ascending"
     class="pf-v6-c-button pf-m-plain"
     data-ouia-component-id="OUIA-Generated-Button-plain-2"
     data-ouia-component-type="PF6/Button"
@@ -41,6 +42,7 @@ exports[`PrimaryToolbar should render desc direction 1`] = `
 exports[`PrimaryToolbar should render no data 1`] = `
 <div>
   <button
+    aria-label="Sort descending"
     class="pf-v6-c-button pf-m-plain"
     data-ouia-component-id="OUIA-Generated-Button-plain-1"
     data-ouia-component-type="PF6/Button"

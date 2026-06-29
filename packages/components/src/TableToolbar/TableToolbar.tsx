@@ -33,10 +33,10 @@ const TableToolbar = ({ isFooter = false, results, className, selected, children
       <Toolbar className={tableToolbarClasses} data-ouia-component-type={ouiaComponentType} ouiaId={ouiaFinalId} ouiaSafe={ouiaSafe} {...props}>
         {children}
       </Toolbar>
-      {((results && results >= 0) || (selected && selected >= 0)) && (
+      {(results != null || selected != null) && (
         <div className="ins-c-table__toolbar-results">
-          {results && results >= 0 && <span className="ins-c-table__toolbar-results-count"> {generateCount(results)} </span>}
-          {selected && selected >= 0 && <span className="ins-c-table__toolbar-results-selected"> {selected} Selected </span>}
+          {results != null && results >= 0 && <span className="ins-c-table__toolbar-results-count"> {generateCount(results)} </span>}
+          {selected != null && selected >= 0 && <span className="ins-c-table__toolbar-results-selected"> {selected} Selected </span>}
         </div>
       )}
     </Fragment>

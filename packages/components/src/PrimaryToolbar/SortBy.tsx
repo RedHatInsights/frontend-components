@@ -18,6 +18,7 @@ const SortBy = ({ direction = SortByDirection.asc, onSortChange = () => undefine
   <Button
     icon={<Icon size="md">{direction === SortByDirection.asc ? <SortAmountUpIcon /> : <SortAmountDownIcon />}</Icon>}
     variant="plain"
+    aria-label={direction === SortByDirection.asc ? 'Sort descending' : 'Sort ascending'}
     onClick={(e) => onSortChange(e, flipDirection(direction))}
   />
 );
