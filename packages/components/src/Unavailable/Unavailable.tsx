@@ -5,8 +5,6 @@ import UnavailableContent, { UnavailableContentProps } from '@patternfly/react-c
  * @deprecated Do not use deprecated UnavailableContent import, the component has been moved to @patternfly/react-component-groups
  */
 
-const Unavailable: React.FunctionComponent<UnavailableContentProps> = (props) => (
-  <UnavailableContent statusPageUrl="https://status.redhat.com/" {...props} />
-);
+const Unavailable = (props: UnavailableContentProps) => <UnavailableContent statusPageUrl="https://status.redhat.com/" {...props} />;
 
 export default Unavailable;

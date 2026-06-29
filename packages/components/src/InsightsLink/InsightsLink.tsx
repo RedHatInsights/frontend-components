@@ -8,7 +8,7 @@ interface InsightsLinkProps {
   preview: boolean;
 }
 
-const InsightsLink: React.FC<React.PropsWithChildren<InsightsLinkProps>> = ({ to, app, preview, ...props }) => {
+const InsightsLink = ({ to, app, preview, ...props }: React.PropsWithChildren<InsightsLinkProps>) => {
   const chrome = useChrome();
   const toPath = buildInsightsPath(chrome, app, to, preview);
 

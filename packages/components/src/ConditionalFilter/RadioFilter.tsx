@@ -33,7 +33,7 @@ export interface RadioFilterProps {
  *
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
-const RadioFilter: React.FunctionComponent<RadioFilterProps> = ({ items = [], onChange = () => undefined, isDisabled = false, ...props }) => {
+const RadioFilter = ({ items = [], onChange = () => undefined, isDisabled = false, ...props }: RadioFilterProps) => {
   const { placeholder, className, value } = props;
   const [isExpanded, setExpanded] = useState(false);
 

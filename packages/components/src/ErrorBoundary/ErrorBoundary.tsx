@@ -6,8 +6,6 @@ import { DefaultErrorMessage } from '../ErrorState';
  * @deprecated Do not use deprecated ErrorBoundary import, the component has been moved to @patternfly/react-component-groups
  */
 
-const ErrorBoundary: React.FunctionComponent<ErrorBoundaryProps> = (props) => (
-  <ErrorBoundaryPF defaultErrorDescription={<DefaultErrorMessage />} {...props} />
-);
+const ErrorBoundary = (props: ErrorBoundaryProps) => <ErrorBoundaryPF defaultErrorDescription={<DefaultErrorMessage />} {...props} />;
 
 export default ErrorBoundary;

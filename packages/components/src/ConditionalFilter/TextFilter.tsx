@@ -45,7 +45,7 @@ export interface TextFilterProps extends Omit<TextInputProps, 'onChange'> {
  *
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
-const TextFilter: React.FunctionComponent<TextFilterProps> = ({ customIcon = <SearchIcon />, isDisabled = false, className, innerRef, ...props }) => {
+const TextFilter = ({ customIcon = <SearchIcon />, isDisabled = false, className, innerRef, ...props }: TextFilterProps) => {
   return (
     <Fragment>
       <TextInput

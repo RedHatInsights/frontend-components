@@ -18,7 +18,7 @@ export interface CullingInformation extends TooltipProps {
   render?: Render;
 }
 
-const CullingInformation: React.FunctionComponent<CullingInformation> = ({
+const CullingInformation = ({
   culled = new Date(0),
   className,
   staleWarning = new Date(0),
@@ -27,7 +27,7 @@ const CullingInformation: React.FunctionComponent<CullingInformation> = ({
   children,
   render,
   ...props
-}) => {
+}: CullingInformation) => {
   if (new Date(currDate).valueOf() - new Date(stale).valueOf() < 0) {
     return render
       ? render({

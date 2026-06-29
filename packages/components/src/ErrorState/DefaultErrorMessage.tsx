@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DefaultErrorMessage: React.FunctionComponent = () => {
+const DefaultErrorMessage = () => {
   const redirectLink = 'https://access.redhat.com/support';
   const statusLink = 'https://status.redhat.com';
 

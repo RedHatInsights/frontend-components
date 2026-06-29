@@ -24,7 +24,7 @@ export interface DateFormatProps {
  * A component that formats date to a unified CRC format.
  * Relative date format adds a tooltip with a full date string.
  */
-const DateFormat: React.FunctionComponent<DateFormatProps> = ({ date, type = 'relative', extraTitle, tooltipProps }) => {
+const DateFormat = ({ date, type = 'relative', extraTitle, tooltipProps }: DateFormatProps) => {
   const dateObj = date instanceof Date ? date : new Date(date);
   const invalid = date === undefined || date === null || dateObj.toString() === 'Invalid Date';
   const dateType = invalid ? 'invalid' : type;

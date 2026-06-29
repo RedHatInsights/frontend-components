@@ -16,7 +16,7 @@ export type TagWithDialogProps = Omit<AsyncComponentProps, ExcludeModulesKeys>;
  *
  * This component is used to manipulate with inventory tags.
  */
-const BaseTagWithDialog: React.FC<TagWithDialogProps & { innerRef?: React.Ref<HTMLElement>; history?: unknown; store?: unknown }> = (props) => {
+const BaseTagWithDialog = (props: TagWithDialogProps & { innerRef?: React.Ref<HTMLElement>; history?: unknown; store?: unknown }) => {
   const store = useStore();
   const Cmp = props.component ?? 'section';
   const SCProps: ScalprumComponentProps<ChromeAPI, TagWithDialogProps> = {
@@ -42,7 +42,7 @@ const BaseTagWithDialog: React.FC<TagWithDialogProps & { innerRef?: React.Ref<HT
  *
  * This component shows systems table connected to redux.
  */
-const TagWithDialog: React.FC<TagWithDialogProps> = React.forwardRef(
+const TagWithDialog = React.forwardRef(
   (
     {
       component = 'section',

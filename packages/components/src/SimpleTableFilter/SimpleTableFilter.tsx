@@ -32,7 +32,7 @@ export interface SimpleFilterProps extends React.DetailedHTMLProps<React.HTMLAtt
   searchIcon?: boolean;
 }
 
-const SimpleFilter: React.FC<SimpleFilterProps> = ({
+const SimpleFilter = ({
   options,
   className,
   placeholder = 'Search items',
@@ -42,7 +42,7 @@ const SimpleFilter: React.FC<SimpleFilterProps> = ({
   onOptionSelect,
   searchIcon = true,
   ...props
-}) => {
+}: SimpleFilterProps) => {
   const [activeFilter, setActiveFilter] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<undefined | SimpleFilterOptionItem>();

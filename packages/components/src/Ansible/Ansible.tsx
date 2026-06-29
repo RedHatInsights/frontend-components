@@ -5,6 +5,6 @@ import AnsiblePF, { AnsibleProps } from '@patternfly/react-component-groups/dist
  * @deprecated Do not use deprecated Ansible import, the component has been moved to @patternfly/react-component-groups
  */
 
-const Ansible: React.FunctionComponent<AnsibleProps> = (props) => <AnsiblePF {...props} />;
+const Ansible = (props: AnsibleProps) => <AnsiblePF {...props} />;
 
 export default Ansible;

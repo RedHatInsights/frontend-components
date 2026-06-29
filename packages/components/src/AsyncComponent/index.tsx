@@ -23,7 +23,7 @@ type BaseAsyncComponentProps = AsyncComponentProps & {
   innerRef: React.MutableRefObject<HTMLElement | null> | ((instance: HTMLElement | null) => void) | null;
 };
 
-const BaseAsyncComponent: React.FunctionComponent<BaseAsyncComponentProps> = ({
+const BaseAsyncComponent = ({
   scope,
   module,
   fallback = (
@@ -35,7 +35,7 @@ const BaseAsyncComponent: React.FunctionComponent<BaseAsyncComponentProps> = ({
   className,
   component: Cmp = 'section',
   ...props
-}) => {
+}: BaseAsyncComponentProps) => {
   const SCProps: ScalprumComponentProps<ChromeAPI, Omit<AsyncComponentProps, 'component'>> = {
     className,
     module,

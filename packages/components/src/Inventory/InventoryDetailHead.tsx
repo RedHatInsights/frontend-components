@@ -16,7 +16,7 @@ interface BaseInventoryDetailHeadProps extends Record<string, unknown> {
   history?: History;
 }
 
-const BaseInventoryDetailHead: React.FC<BaseInventoryDetailHeadProps> = ({
+const BaseInventoryDetailHead = ({
   fallback = (
     <Bullseye className="pf-v6-u-p-lg">
       <Spinner size="xl" aria-label="Loading" />
@@ -27,7 +27,7 @@ const BaseInventoryDetailHead: React.FC<BaseInventoryDetailHeadProps> = ({
   history,
   innerRef,
   ...props
-}) => {
+}: BaseInventoryDetailHeadProps) => {
   const store = useStore();
   const Component = component;
   return (

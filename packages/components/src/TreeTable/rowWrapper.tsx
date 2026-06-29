@@ -10,7 +10,7 @@ export interface TreeRowWrapperProps {
   rows?: TreeTableRow[];
 }
 
-const TreeRowWrapper: React.FunctionComponent<TreeRowWrapperProps> = (props) => {
+const TreeRowWrapper = (props: TreeRowWrapperProps) => {
   const { className } = props;
   const { level, isTreeOpen, point, posinset } = props.row || {};
   return (

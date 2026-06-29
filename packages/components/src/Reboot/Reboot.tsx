@@ -9,7 +9,7 @@ export interface RebootProps extends React.DetailedHTMLProps<React.HTMLAttribute
   red?: boolean;
 }
 
-const Reboot: React.FC<RebootProps> = ({ red, className, ...props }) => {
+const Reboot = ({ red, className, ...props }: RebootProps) => {
   const rebootIconClasses = classNames('ins-c-reboot', { [`ins-m-red`]: red }, className);
 
   return (

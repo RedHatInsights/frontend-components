@@ -12,11 +12,11 @@ export interface NotConnectedProps {
   buttonText?: React.ReactNode;
 }
 
-const NotConnected: React.FC<NotConnectedProps> = ({
+const NotConnected = ({
   titleText = 'This system isn’t connected to Insights yet',
   bodyText = 'To get started, activate the Insights client for this system.',
   buttonText = 'Learn how to activate the Insights client',
-}) => (
+}: NotConnectedProps) => (
   <EmptyState headingLevel="h5" icon={DisconnectedIcon} titleText={titleText}>
     <EmptyStateBody>{bodyText}</EmptyStateBody>
     <EmptyStateFooter>

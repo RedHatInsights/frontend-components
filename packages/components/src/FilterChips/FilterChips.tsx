@@ -35,14 +35,14 @@ function isPlainFilterChip(group: FilterChipsFilter): group is FilterChip {
   return !isFilterChipGroup(group);
 }
 
-const FilterChips: React.FunctionComponent<FilterChipsProps> = ({
+const FilterChips = ({
   className,
   filters = [],
   onDelete = () => undefined,
   deleteTitle = 'Clear filters',
   showDeleteButton,
   onDeleteGroup,
-}) => {
+}: FilterChipsProps) => {
   const groups: FilterChipGroup[] = filters.filter(isFilterChipGroup);
   const groupedFilters = groups.map((group, groupKey) => (
     <LabelGroup

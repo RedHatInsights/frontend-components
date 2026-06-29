@@ -14,7 +14,7 @@ export interface SortByProps {
   onSortChange?: (event: MouseEvent | React.MouseEvent<any, MouseEvent> | KeyboardEvent<Element>, direction: SortByDirection) => void;
 }
 
-const SortBy: React.FunctionComponent<SortByProps> = ({ direction = SortByDirection.asc, onSortChange = () => undefined }) => (
+const SortBy = ({ direction = SortByDirection.asc, onSortChange = () => undefined }: SortByProps) => (
   <Button
     icon={<Icon size="md">{direction === SortByDirection.asc ? <SortAmountUpIcon /> : <SortAmountDownIcon />}</Icon>}
     variant="plain"

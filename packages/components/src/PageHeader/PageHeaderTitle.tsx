@@ -16,7 +16,7 @@ export interface PageHeaderTitleProps extends Omit<TitleProps, 'title' | 'headin
 /**
  * This is the title section of the pageHeader
  */
-const PageHeaderTitle: React.FC<PageHeaderTitleProps> = ({ className, title, actionsContent, ouiaId, ouiaSafe = true, ...props }) => {
+const PageHeaderTitle = ({ className, title, actionsContent, ouiaId, ouiaSafe = true, ...props }: PageHeaderTitleProps) => {
   const pageHeaderTitleClasses = classNames(className);
   const ouiaComponentType = 'RHI/Header';
   const ouiaFinalId = useOUIAId(ouiaComponentType, ouiaId, ouiaSafe as unknown as string);

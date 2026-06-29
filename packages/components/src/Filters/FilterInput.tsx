@@ -14,7 +14,7 @@ export interface FilterInputProps {
   type?: string;
 }
 
-const FilterInput: React.FC<FilterInputProps> = ({ addRemoveFilters, param = '', filters = {}, type = 'checkbox', value, id, label }) => {
+const FilterInput = ({ addRemoveFilters, param = '', filters = {}, type = 'checkbox', value, id, label }: FilterInputProps) => {
   const [checked, setChecked] = useState(false);
   useEffect(() => {
     if (type !== 'radio') {

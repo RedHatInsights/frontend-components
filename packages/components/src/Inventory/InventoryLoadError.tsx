@@ -4,7 +4,7 @@ export interface InventoryLoadErrorProps {
   component?: string;
 }
 
-const InventoryLoadError: React.FunctionComponent<InventoryLoadErrorProps> = ({ component, ...props }) => {
+const InventoryLoadError = ({ component, ...props }: InventoryLoadErrorProps) => {
   useEffect(() => {
     console.error(`Unable to load inventory component. Failed to load ${component}.`, props);
   }, []);

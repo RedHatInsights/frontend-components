@@ -25,7 +25,7 @@ export interface TruncateProps {
  * @deprecated Do not use deprecated Truncate import, use an example from @patternfly/react-component-groups migration guide instead
  */
 
-const Truncate: React.FunctionComponent<TruncateProps> = ({
+const Truncate = ({
   text = '',
   length = 150,
   expandText = 'Read more',
@@ -35,7 +35,7 @@ const Truncate: React.FunctionComponent<TruncateProps> = ({
   className,
   inline,
   spaceBetween,
-}) => {
+}: TruncateProps) => {
   const truncateClasses = classNames('ins-c-truncate', className, { [`is-inline`]: inline }, { [`is-block`]: !inline });
   const trimmedText = text.substring(0, length);
   const textOverflow = text.length > length;

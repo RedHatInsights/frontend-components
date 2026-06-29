@@ -32,12 +32,7 @@ export interface SingleSelectFilterProps {
  *
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
-const SingleSelectFilter: React.FunctionComponent<SingleSelectFilterProps> = ({
-  items = [],
-  onChange = () => undefined,
-  isDisabled = false,
-  ...props
-}) => {
+const SingleSelectFilter = ({ items = [], onChange = () => undefined, isDisabled = false, ...props }: SingleSelectFilterProps) => {
   const { placeholder, className, value } = props;
   const [isExpanded, setExpanded] = useState(false);
 

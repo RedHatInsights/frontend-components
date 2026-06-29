@@ -23,16 +23,7 @@ function generateCount(results: number) {
   }
 }
 
-const TableToolbar: React.FunctionComponent<TableToolbarProps> = ({
-  isFooter = false,
-  results,
-  className,
-  selected,
-  children,
-  ouiaId,
-  ouiaSafe = true,
-  ...props
-}) => {
+const TableToolbar = ({ isFooter = false, results, className, selected, children, ouiaId, ouiaSafe = true, ...props }: TableToolbarProps) => {
   const tableToolbarClasses = classNames('ins-c-table__toolbar', { [`ins-m-footer`]: isFooter }, className);
   const ouiaComponentType = 'RHI/TableToolbar';
   const ouiaFinalId = useOUIAId(ouiaComponentType, ouiaId, ouiaSafe as unknown as string);
