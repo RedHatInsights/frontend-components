@@ -37,7 +37,7 @@ interface ReportDetailsProps {
   isProd: boolean;
 }
 
-const ReportDetails: React.FC<ReportDetailsProps> = ({
+const ReportDetails = ({
   report,
   kbaDetail = {
     publishedTitle: 'N/A',
@@ -46,7 +46,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({
   },
   kbaLoading,
   isProd,
-}) => {
+}: ReportDetailsProps) => {
   const { rule, details, resolution } = report;
   // remove conflict_compliance_policies_enabled from details to avoid rendering it in templates
   const { conflict_compliance_policies_enabled, ...filteredDetails } = details;

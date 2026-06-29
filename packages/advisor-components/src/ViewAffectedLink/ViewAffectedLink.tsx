@@ -13,7 +13,7 @@ interface ViewAffectedLinkProps {
   linkComponent: any;
 }
 
-const ViewAffectedLink: React.FC<ViewAffectedLinkProps> = ({ messages, product, rule, linkComponent: Link }) => (
+const ViewAffectedLink = ({ messages, product, rule, linkComponent: Link }: ViewAffectedLinkProps) => (
   <React.Fragment>
     {product === AdvisorProduct.ocp
       ? (rule as RuleContentOcp).impacted_clusters_count > 0 && (

@@ -24,7 +24,7 @@ const walkTokens = (token: Token) => {
 
 marked.use({ walkTokens });
 
-const TemplateProcessor: React.FC<TemplateProcessorProps> = ({ template, definitions, onError }) => {
+const TemplateProcessor = ({ template, definitions, onError }: TemplateProcessorProps) => {
   // we don't want to apply html styling to data so it is necessary to eacape all special characters ('*', '_', '~')
   definitions = JSON.parse(
     JSON.stringify(definitions ?? {})
