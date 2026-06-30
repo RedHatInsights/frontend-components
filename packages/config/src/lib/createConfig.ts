@@ -116,6 +116,18 @@ export const createConfig = ({
   const outputPath = `${rootFolder || ''}/dist`;
 
   const devServerPort = typeof port === 'number' ? port : useProxy || standalone ? 1337 : 8002;
+
+  // Determine dev server protocol: SPDY for experimental HTTP/2 push, HTTPS with
+  // restricted ALPN when proxying (prevents HTTP/2 stream truncation of large
+  // binary responses), plain HTTPS when explicitly enabled, or HTTP as default.
+  const devServerServer = _unstableSpdy
+    ? 'spdy'
+    : Boolean(useProxy)
+      ? { type: 'https' as const, options: { ALPNProtocols: ['http/1.1'] } }
+      : https
+        ? 'https'
+        : 'http';
+
   return {
     mode: mode || (isProd ? 'production' : 'development'),
     devtool: devtool,
@@ -271,17 +283,7 @@ export const createConfig = ({
           directory: `${rootFolder || ''}/dist`,
         },
         port: devServerPort,
-        // When useProxy is enabled, restrict ALPN to HTTP/1.1 to prevent HTTP/2
-        // negotiation that truncates large binary responses proxied from HTTP/1.1
-        // backends. Without this, the HTTP/2 framing can cancel streams mid-transfer,
-        // causing partial downloads (e.g., PDFs cut to ~10% of expected size).
-        server: _unstableSpdy
-          ? 'spdy'
-          : https || Boolean(useProxy)
-            ? Boolean(useProxy)
-              ? { type: 'https' as const, options: { ALPNProtocols: ['http/1.1'] } }
-              : 'https'
-            : 'http',
+        server: devServerServer,
         host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
         hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
         liveReload: !internalHotReload,
