@@ -1,4 +1,12 @@
-import { applyImpliedDeps, createIncludes, createSharedDeps, default as federatedModules, mergeSharedDeps } from './federated-modules';
+import {
+  applyImpliedDeps,
+  bundleChromeSharedLocally,
+  createIncludes,
+  createSharedDeps,
+  default as federatedModules,
+  mergeSharedDeps,
+} from './federated-modules';
+import * as resolveSharedImport from './resolve-shared-import';
 import { DynamicRemotePlugin, WebpackSharedConfig } from '@openshift/dynamic-plugin-sdk-webpack';
 
 jest.mock('@openshift/dynamic-plugin-sdk-webpack', () => ({
@@ -176,6 +184,44 @@ describe('federatedModules', () => {
     });
     expect(getSharedModules()['@unleash/proxy-client-react']).toMatchObject({ singleton: true, requiredVersion: '^1.0.0' });
   });
+
+  it('bundles chrome-provided shared modules locally when bundleChromeShared is true', () => {
+    const resolveSpy = jest.spyOn(resolveSharedImport, 'resolveSharedImportPath').mockReturnValue('/fake/root/node_modules/react/index.js');
+
+    federatedModules({
+      root,
+      moduleName,
+      dependencies: { react: '^18.3.1' },
+      bundleChromeShared: true,
+    });
+
+    expect(getSharedModules()['react']).toMatchObject({
+      singleton: true,
+      eager: true,
+      import: '/fake/root/node_modules/react/index.js',
+      requiredVersion: '^18.3.1',
+    });
+
+    resolveSpy.mockRestore();
+  });
+
+  it('supports deprecated eager flag as an alias for bundleChromeShared', () => {
+    const resolveSpy = jest.spyOn(resolveSharedImport, 'resolveSharedImportPath').mockReturnValue('/fake/root/node_modules/react/index.js');
+
+    federatedModules({
+      root,
+      moduleName,
+      dependencies: { react: '^18.3.1' },
+      eager: true,
+    });
+
+    expect(getSharedModules()['react']).toMatchObject({
+      eager: true,
+      import: '/fake/root/node_modules/react/index.js',
+    });
+
+    resolveSpy.mockRestore();
+  });
 });
 
 describe('mergeSharedDeps', () => {
@@ -327,5 +373,55 @@ describe('applyImpliedDeps', () => {
     const sharedDeps = Object.freeze(createSharedDeps(include, { react: '^18.3.1' }, [])) as Record<string, WebpackSharedConfig>;
     const deps = { react: '^18.3.1', '@redhat-cloud-services/frontend-components': '^5.0.0' };
     expect(() => applyImpliedDeps(sharedDeps, include, deps, impliedDeps)).not.toThrow();
+  });
+});
+
+describe('bundleChromeSharedLocally', () => {
+  const root = '/fake/root';
+
+  it('rewrites import:false modules to eager local imports', () => {
+    const resolveSpy = jest.spyOn(resolveSharedImport, 'resolveSharedImportPath').mockReturnValue('/fake/root/node_modules/react/index.js');
+
+    const result = bundleChromeSharedLocally(root, {
+      react: { singleton: true, eager: false, import: false, requiredVersion: '^18.3.1' },
+    });
+
+    expect(result['react']).toEqual({
+      singleton: true,
+      eager: true,
+      import: '/fake/root/node_modules/react/index.js',
+      requiredVersion: '^18.3.1',
+    });
+
+    resolveSpy.mockRestore();
+  });
+
+  it('leaves modules unchanged when import path cannot be resolved', () => {
+    const resolveSpy = jest.spyOn(resolveSharedImport, 'resolveSharedImportPath').mockReturnValue(null);
+
+    const config = { singleton: true, eager: false, import: false as const, requiredVersion: '^1.0.0' };
+    const input = { '@redhat-cloud-services/chrome': config };
+    const result = bundleChromeSharedLocally(root, input);
+
+    expect(result['@redhat-cloud-services/chrome']).toEqual(config);
+
+    resolveSpy.mockRestore();
+  });
+
+  it('does not rewrite modules that are already eager with a local import', () => {
+    const resolveSpy = jest.spyOn(resolveSharedImport, 'resolveSharedImportPath');
+
+    const config = {
+      singleton: true,
+      eager: true,
+      import: '/already/bundled.js',
+      requiredVersion: '^18.3.1',
+    };
+    const result = bundleChromeSharedLocally(root, { react: config });
+
+    expect(result['react']).toEqual(config);
+    expect(resolveSpy).not.toHaveBeenCalled();
+
+    resolveSpy.mockRestore();
   });
 });
