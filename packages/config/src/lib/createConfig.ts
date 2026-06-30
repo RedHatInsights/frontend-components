@@ -271,7 +271,17 @@ export const createConfig = ({
           directory: `${rootFolder || ''}/dist`,
         },
         port: devServerPort,
-        server: _unstableSpdy ? 'spdy' : https || Boolean(useProxy) ? 'https' : 'http',
+        // When useProxy is enabled, restrict ALPN to HTTP/1.1 to prevent HTTP/2
+        // negotiation that truncates large binary responses proxied from HTTP/1.1
+        // backends. Without this, the HTTP/2 framing can cancel streams mid-transfer,
+        // causing partial downloads (e.g., PDFs cut to ~10% of expected size).
+        server: _unstableSpdy
+          ? 'spdy'
+          : https || Boolean(useProxy)
+            ? Boolean(useProxy)
+              ? { type: 'https' as const, options: { ALPNProtocols: ['http/1.1'] } }
+              : 'https'
+            : 'http',
         host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
         hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
         liveReload: !internalHotReload,
