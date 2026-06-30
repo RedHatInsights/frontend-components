@@ -396,6 +396,13 @@ fec dev-proxy [options]
 - `--port, -p`: Proxy server port (default: 1337)
 - `--staticPort, -sp`: Static assets server port (default: 8003)
 - `--clouddotEnv`: Set platform environment ('stage', 'prod', 'dev', 'ephemeral')
+- `--iop`: Enable IOP (Insights on Premises) mode for Satellite/Foreman development
+
+**Environment Variables:**
+- `FEC_DEV_PROXY_IMAGE`: Use a custom proxy container image instead of pulling from quay.io (applies to all modes)
+  - Example: `FEC_DEV_PROXY_IMAGE=localhost/frontend-development-proxy:local`
+  - If the image includes a tag, it will be used as-is; otherwise `:latest` is appended
+  - Skips `podman pull` when set, allowing local proxy changes to be tested
 
 **Requirements:**
 - Docker or Podman installed and available
@@ -412,7 +419,23 @@ fec dev-proxy --port 3000 --clouddotEnv stage
 
 # Start with custom static assets port
 fec dev-proxy --staticPort 9000
+
+# Enable IOP mode explicitly
+fec dev-proxy --iop
 ```
+
+### IOP (Insights on Premises) Mode
+
+IOP mode is designed for local development against Satellite/Foreman instances. It can be enabled three ways:
+- `--iop` flag: `fec dev-proxy --iop`
+- `IOP=true` environment variable
+- npm script named "iop": `npm run iop` (auto-detected)
+
+**IOP-Specific Environment Variables:**
+- `FEC_IOP_CUSTOM_ROUTES_PATH`: Absolute path to custom routes file for IOP mode
+  - Example: `FEC_IOP_CUSTOM_ROUTES_PATH=$(pwd)/custom_routes.json`
+  - Mounted to `/config/custom_routes.iop.json` in the container
+  - Allows overriding specific app routes while proxying others to the IOP instance
 
 The command will:
 1. Pull and start the development proxy container
