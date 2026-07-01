@@ -102,34 +102,30 @@ const PrimaryToolbar = ({
       ouiaId="PrimaryToolbar"
     >
       <ToolbarContent alignItems="center">
-        {(expandAll || bulkSelect || filterConfig || dedicatedAction) && (
-          <ToolbarGroup className="ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg" variant="filter-group">
-            {expandAll && (
-              <ToolbarItem>
-                {isPrimaryToolbarExpandAllObject(expandAll) ? (
-                  <Button
-                    icon={<ToolbarExpandIconWrapper>{expandAll.isAllExpanded ? <AngleDownIcon /> : <AngleRightIcon />}</ToolbarExpandIconWrapper>}
-                    {...expandAll.buttonProps}
-                    variant="plain"
-                    aria-label={`${expandAll.isAllExpanded ? 'Collapse' : 'Expand'} all`}
-                    onClick={(e) => expandAll.onClick(e, !expandAll.isAllExpanded)}
-                    ouiaId="ExpandCollapseAll"
-                    isDisabled={expandAll.isDisabled}
-                  />
-                ) : (
-                  expandAll
-                )}
-              </ToolbarItem>
+        {expandAll && (
+          <ToolbarItem>
+            {isPrimaryToolbarExpandAllObject(expandAll) ? (
+              <Button
+                icon={<ToolbarExpandIconWrapper>{expandAll.isAllExpanded ? <AngleDownIcon /> : <AngleRightIcon />}</ToolbarExpandIconWrapper>}
+                {...expandAll.buttonProps}
+                variant="plain"
+                aria-label={`${expandAll.isAllExpanded ? 'Collapse' : 'Expand'} all`}
+                onClick={(e) => expandAll.onClick(e, !expandAll.isAllExpanded)}
+                ouiaId="ExpandCollapseAll"
+                isDisabled={expandAll.isDisabled}
+              />
+            ) : (
+              expandAll
             )}
-            {bulkSelect && <ToolbarItem>{React.isValidElement(bulkSelect) ? bulkSelect : <BulkSelect {...bulkSelect} />}</ToolbarItem>}
-            {filterConfig && (
-              <ToolbarItem className="ins-c-primary-toolbar__filter">
-                {React.isValidElement(filterConfig) ? filterConfig : <ConditionalFilter {...filterConfig} />}
-              </ToolbarItem>
-            )}
-            {dedicatedAction && <ToolbarItem>{dedicatedAction}</ToolbarItem>}
-          </ToolbarGroup>
+          </ToolbarItem>
         )}
+        {bulkSelect && <ToolbarItem>{React.isValidElement(bulkSelect) ? bulkSelect : <BulkSelect {...bulkSelect} />}</ToolbarItem>}
+        {filterConfig && (
+          <ToolbarItem className="ins-c-primary-toolbar__filter">
+            {React.isValidElement(filterConfig) ? filterConfig : <ConditionalFilter {...filterConfig} />}
+          </ToolbarItem>
+        )}
+        {dedicatedAction && <ToolbarItem>{dedicatedAction}</ToolbarItem>}
         {React.isValidElement(actionsConfig)
           ? actionsConfig
           : ((actionsConfig && actionsConfig.actions && actionsConfig.actions.length > 0) || sortByConfig || exportConfig) && (
