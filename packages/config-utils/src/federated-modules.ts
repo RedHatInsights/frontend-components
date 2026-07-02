@@ -2,6 +2,7 @@ import { relative, resolve } from 'path';
 import { DynamicRemotePlugin, EncodedExtension, PluginBuildMetadata, WebpackSharedConfig } from '@openshift/dynamic-plugin-sdk-webpack';
 import jsVarName from './jsVarName';
 import fecLogger, { LogType } from './fec-logger';
+import { resolveSharedImportPath } from './resolve-shared-import';
 
 const defaultPluginMetaDataJSON = {
   version: '1.0.0',
@@ -65,13 +66,48 @@ export type FederatedModulesConfig = {
   separateRuntime?: boolean;
   exclude?: string[];
   /**
-   *  @deprecated
-   * Using eager loading will bloat your build output
+   * Bundle chrome-provided shared modules from local node_modules instead of
+   * expecting insights-chrome as the module federation host (e.g. IoP iframe).
+   */
+  bundleChromeShared?: boolean;
+  /**
+   * @deprecated Use bundleChromeShared instead.
    */
   eager?: boolean;
   pluginMetadata?: PluginBuildMetadata;
   extensions?: EncodedExtension[];
 };
+
+/**
+ * Rewrites chrome-provided shared modules (import: false) to eager local imports.
+ * Used when the app runs without insights-chrome as federation host.
+ */
+export const bundleChromeSharedLocally = (
+  root: string,
+  sharedModules: Record<string, WebpackSharedConfig> = {},
+): Record<string, WebpackSharedConfig> =>
+  Object.fromEntries(
+    Object.entries(sharedModules).map(([moduleName, config]) => {
+      if (config.import !== false && config.eager === true) {
+        return [moduleName, config];
+      }
+
+      const importPath = resolveSharedImportPath(root, moduleName);
+
+      if (!importPath) {
+        return [moduleName, config];
+      }
+
+      return [
+        moduleName,
+        {
+          ...config,
+          eager: true,
+          import: importPath,
+        },
+      ];
+    }),
+  );
 
 const getRootPackage = (key: string): string => {
   if (key.startsWith('@')) {
@@ -181,6 +217,8 @@ const federatedModules = ({
   useFileHash = true,
   separateRuntime = false,
   exclude = [],
+  bundleChromeShared = false,
+  eager = false,
   pluginMetadata,
   extensions = [],
 }: FederatedModulesConfig): DynamicRemotePlugin => {
@@ -198,6 +236,10 @@ const federatedModules = ({
   sharedDeps = applyImpliedDeps(sharedDeps, include, dependencies, impliedDeps);
   sharedDeps = mergeSharedDeps(sharedDeps, shared, chromeProvided);
 
+  if (bundleChromeShared || eager) {
+    sharedDeps = bundleChromeSharedLocally(root, sharedDeps);
+  }
+
   if (debug) {
     console.log('Using package at path: ', resolve(root, './package.json'));
     console.log('Using appName: ', appName);
@@ -206,6 +248,9 @@ const federatedModules = ({
     console.log('Number of merged shared modules is: ', Object.keys(sharedDeps).length);
     if (exclude.length > 0) {
       console.log('Excluding default packages', exclude);
+    }
+    if (bundleChromeShared || eager) {
+      console.log('Bundling chrome-provided shared modules from local node_modules');
     }
   }
 
