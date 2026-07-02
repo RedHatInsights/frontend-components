@@ -196,21 +196,63 @@ This configuration will redirect all API requests to QA environment, so you can 
 
 #### Running multiple local (frontend) applications
 
-With the proxy enabled it is possible to run multiple frontend applications together using one proxy and webpack dev servers for each other application via passing a `LOCAL_APPS` variable.
+**Use Case:** When you need to test how changes in one app (e.g., Advisor) work when consumed by another app (e.g., Inventory), you can run both apps locally.
 
-```
-$ LOCAL_APPS=APP_NAME:APP_PORT[~APP_PROTOCOL] npm run start:proxy
-```
+##### Prerequisites
+- Both apps cloned locally
+- Both apps' dependencies installed (`npm install`)
 
-##### Steps to run multiple applications
+##### Steps
 
-1) Choose a "main application", which will run the proxy and proxy all other applications, for example Inventory and open a terminal in it's directory
-2) Open another terminal in any other application that you want to run with the Inventory, for example Advisor and start it's webpack dev server with `npm run start`
-3) Ensure the dev server is started and make not of it's addresses and port it is listening to. (This example assumes it runs on port `8002`)
-3.1) You can repeat this process for any application you want to run the Inventory with.
-4) With this information now, in the terminal for Inventory you can start the proxy and pass applications via the `LOCAL_APPS` variable, like `LOCAL_APPS=advisor:2002 npm run start:proxy`
-4.1) You can pass multiple applications as a comma separated list, like `LOCAL_APPS=advisor:8002,compliance:8003 npm run start:proxy`
-5) With this you should be able to see any changes in both Inventroy and Advisor via the usual `https://stage.foo.redhat.com:1337`.
+1. **Configure the consuming app to point to the local source app**
+
+   In the app that will consume the changes (e.g., `insights-inventory-frontend`), edit `fec.config.js`:
+
+   ```javascript
+   module.exports = {
+     // ... other config
+     routes: {
+       '/apps/advisor/': {
+         host: 'http://localhost:8004',
+       },
+     },
+     // ... rest of config
+   };
+   ```
+
+   **Key Points:**
+   - The route path (`/apps/advisor/`) should match the app you want to consume locally
+   - The `host` should point to the port where you'll run the source app
+   - You can add multiple routes to test multiple apps simultaneously
+
+2. **Start the source app (the one with changes)**
+
+   Open a terminal in the source app (e.g., Advisor):
+   ```bash
+   cd ~/path/to/insights-advisor-frontend
+   npm run static -- --port=8004
+   ```
+
+   The port number should match what you configured in step 1.
+
+3. **Start the consuming app**
+
+   Open a new terminal in the consuming app (e.g., Inventory):
+   ```bash
+   cd ~/path/to/insights-inventory-frontend
+   npm run start:proxy
+   ```
+
+4. **Test your changes**
+
+   Navigate to the consuming app in your browser. It will now load the source app's code from your local dev server instead of the deployed version.
+
+##### Troubleshooting
+
+- **CORS errors**: Make sure both apps are running and ports are correct
+- **Changes not reflecting**: Clear browser cache or do a hard refresh (Ctrl+Shift+R)
+- **404 errors**: Verify the route path matches the app's actual route in production
+- **Port conflicts**: If a port is already in use, choose a different port number
 
 #### Env
 A hyphenated string in the form of (stage|prod)-stable. Used to determine the proxy target (such as ci.console.redhat.com or console.stage.redhat.com) and branch to checkout of build repos. If "stage" is specific qa is used as the branch.
