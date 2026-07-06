@@ -24,6 +24,17 @@ jobs:
 
       - name: Download Artifact
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        id: download
+        with:
+          name: storybook-static
+          path: storybook-static
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Retry Download Artifact
+        if: steps.download.outcome == 'failure'
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: storybook-static
           path: storybook-static
@@ -48,21 +59,11 @@ jobs:
             if (prs && prs.length > 0) {
               return prs[0].number;
             }
-            const head_sha = context.payload.workflow_run.head_sha;
-            const { data: pulls } = await github.rest.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              sort: 'updated',
-              direction: 'desc',
-              per_page: 10,
-            });
-            const matched = pulls.find(pr => pr.head.sha === head_sha);
-            return matched ? matched.number : '';
+            return null;
 
       - name: Find existing comment
         id: find-comment
-        if: steps.find-pr.outputs.result && steps.find-pr.outputs.result != ''
+        if: steps.find-pr.outputs.result && steps.find-pr.outputs.result != 'null'
         uses: peter-evans/find-comment@v3
         with:
           issue-number: ${{ steps.find-pr.outputs.result }}
@@ -70,7 +71,7 @@ jobs:
           body-includes: '<!-- chromatic-build -->'
 
       - name: Comment on PR
-        if: steps.find-pr.outputs.result && steps.find-pr.outputs.result != ''
+        if: steps.find-pr.outputs.result && steps.find-pr.outputs.result != 'null'
         uses: peter-evans/create-or-update-comment@v4
         with:
           comment-id: ${{ steps.find-comment.outputs.comment-id }}

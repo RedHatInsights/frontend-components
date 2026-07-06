@@ -19,11 +19,15 @@ function localAliasHoisting() {
 
 const localPackages = localAliasHoisting();
 
+function escapeRegExp(str: string) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function importVariants(url: string) {
   const parsedUrl = path.parse(url);
   if (parsedUrl.dir && !parsedUrl.ext) {
-    const moduleName = url.split('/').pop();
-    return [`${url.replace(new RegExp(`${moduleName}$`), `_${moduleName}`)}.scss`, `${url}.scss`];
+    const moduleName = url.split('/').pop()!;
+    return [`${url.replace(new RegExp(`${escapeRegExp(moduleName)}$`), `_${moduleName}`)}.scss`, `${url}.scss`];
   }
   return [url];
 }

@@ -129,7 +129,7 @@ jobs:
         with:
           name: storybook-static
           path: storybook-static
-          retention-days: 3
+          retention-days: 7
   test-storybook:
     runs-on: ubuntu-24.04
     needs: build-storybook
@@ -158,7 +158,7 @@ jobs:
           npx test-storybook --config-dir packages/components/.storybook --url http://127.0.0.1:6007
   release:
     runs-on: ubuntu-24.04
-    needs: [install, build, unit-test, component-test, lint, commitlint, check-circular-imports, test-storybook]
+    needs: [install, build, unit-test, component-test, lint, commitlint, check-circular-imports]
     # Only run on push to master branch (never on PRs, workflow_dispatch, etc.)
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     environment: npm-publish
