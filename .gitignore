@@ -16,6 +16,7 @@ packages/config-utils/repos
 # production
 .env
 dist
+storybook-static
 /demo/assets
 /**/build
 npm-debug.log*
