@@ -98,7 +98,14 @@
     "ts-node": "^10.9.2",
     "ts-patch": "^3.3.0",
     "typescript": "^5.9.3",
-    "whatwg-fetch": "^3.6.20"
+    "whatwg-fetch": "^3.6.20",
+    "storybook": "^10.4.0",
+    "@storybook/react-webpack5": "^10.4.0",
+    "@storybook/addon-webpack5-compiler-swc": "^4.0.0",
+    "@storybook/addon-docs": "^10.4.0",
+    "@storybook/addon-a11y": "^10.4.0",
+    "@storybook/test-runner": "^0.24.0",
+    "chromatic": "^17.0.0"
   },
   "scripts": {
     "nx": "nx",

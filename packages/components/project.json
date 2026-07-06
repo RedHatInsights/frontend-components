@@ -76,6 +76,27 @@
         "skipServe": true
       }
     },
+    "storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx storybook dev -p 6006 --config-dir packages/components/.storybook",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "build-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx storybook build --config-dir packages/components/.storybook -o dist/storybook/components",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "test:storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx storybook build --config-dir packages/components/.storybook -o dist/storybook/components && npx concurrently -k -s first -n 'server,test' 'npx http-server dist/storybook/components -p 6007 -s' 'npx wait-on http://127.0.0.1:6007 && npx test-storybook --config-dir packages/components/.storybook --url http://127.0.0.1:6007'",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {

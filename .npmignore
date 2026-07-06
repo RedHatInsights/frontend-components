@@ -6,3 +6,7 @@
 *.spec.*
 __snapshots__/
 __mocks__/
+
+# Storybook files (development only)
+*.stories.*
+.storybook/

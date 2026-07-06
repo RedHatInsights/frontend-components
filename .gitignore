@@ -27,7 +27,6 @@ yarn-error.log*
 /Utilities/
 /charts/
 coverage
-.storybook
 lerna-debug.log
 .DS_Store
 packages/**/package-lock.json
