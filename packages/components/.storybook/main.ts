@@ -52,12 +52,14 @@ const config: StorybookConfig = {
               importers: [
                 {
                   findFileUrl(url: string) {
-                    if (url.startsWith('~@redhat-cloud-services')) {
-                      const repoPackage = url.split('~').pop()!;
+                    if (url.startsWith('~')) {
+                      const repoPackage = url.slice(1);
                       const segments = repoPackage.split('/');
-                      const sourcePackage = localPackages[`${segments[0]}/${segments[1]}`];
+                      const scopedName = segments[0].startsWith('@') ? `${segments[0]}/${segments[1]}` : segments[0];
+                      const sourcePackage = localPackages[scopedName];
                       if (sourcePackage) {
-                        return new URL(`file://${path.resolve(sourcePackage, ...segments.slice(2))}`);
+                        const rest = segments[0].startsWith('@') ? segments.slice(2) : segments.slice(1);
+                        return new URL(`file://${path.resolve(sourcePackage, ...rest)}`);
                       }
                     }
 

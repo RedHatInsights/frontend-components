@@ -154,7 +154,7 @@ jobs:
           CI: true
         run: |
           npx http-server storybook-static -p 6007 -s &
-          npx wait-on http://127.0.0.1:6007
+          npx wait-on --timeout 60000 http://127.0.0.1:6007
           npx test-storybook --config-dir packages/components/.storybook --url http://127.0.0.1:6007
   release:
     runs-on: ubuntu-24.04
