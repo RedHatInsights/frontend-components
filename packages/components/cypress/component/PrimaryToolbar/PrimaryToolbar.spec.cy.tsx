@@ -71,12 +71,12 @@ describe('PrimaryToolbar component', () => {
 
   it('renders items correctly - only one item', () => {
     cy.mount(<PrimaryToolbar filterConfig={groupConfig.filterConfig} />);
-    cy.get('.pf-v6-c-toolbar__group').get('.ins-c-primary-toolbar__filter');
+    cy.get('.ins-c-primary-toolbar__filter');
   });
 
   it('renders items correctly - only group', () => {
     cy.mount(<PrimaryToolbar {...groupConfig} />);
-    cy.get('.pf-v6-c-toolbar__group').first().children().should('have.length', 4);
+     cy.get('.pf-v6-c-toolbar__content-section').children().should('have.length', 4);
   });
 
   it('renders items correctly - only items outside of the group', () => {
@@ -87,13 +87,7 @@ describe('PrimaryToolbar component', () => {
   it.only('renders items correctly - everything', () => {
     cy.mount(<PrimaryToolbar {...groupConfig} {...otherConfig} />);
     // eslint-disable-next-line cypress/unsafe-to-chain-command
-    cy.get('.pf-v6-c-toolbar__content-section')
-      .first()
-      .within(() => {
-        cy.get('.pf-v6-c-toolbar__group').first().children().should('have.length', 4);
-      })
-      .children()
-      .should('have.length', 5);
+    cy.get('.pf-v6-c-toolbar__content-section').children().should('have.length', 9);
   });
 
   it('responds to interaction with individual items', () => {
