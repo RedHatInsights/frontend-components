@@ -31,7 +31,7 @@ runs:
         git config user.name "${{ inputs.gh_name }}"
         git config user.email "${{ inputs.gh_email }}"
         git config commit.gpgsign true
-        git config user.signingkey $(gpg --list-secret-keys --keyid-format LONG | grep sec | awk '{print $2}' | cut -d'/' -f2)
+        git config user.signingkey $(gpg --list-secret-keys --with-colons | awk -F: '/^sec:/ {print $5; exit}')
     - name: Release
       shell: bash
       env:
