@@ -16,6 +16,7 @@ packages/config-utils/repos
 # production
 .env
 dist
+storybook-static
 /demo/assets
 /**/build
 npm-debug.log*
@@ -27,7 +28,6 @@ yarn-error.log*
 /Utilities/
 /charts/
 coverage
-.storybook
 lerna-debug.log
 .DS_Store
 packages/**/package-lock.json
