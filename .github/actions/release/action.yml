@@ -10,6 +10,9 @@ inputs:
   gh_email:
     description: 'Github email'
     required: true
+  gpg_private_key:
+    description: 'GPG private key for signing commits (passphrase-less)'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -17,11 +20,18 @@ runs:
     - name: Install deps
       shell: bash
       run: npm ci
+    - name: Import GPG key
+      shell: bash
+      run: |
+        echo "${{ inputs.gpg_private_key }}" | base64 -d | gpg --batch --import
+        gpg --list-secret-keys --keyid-format LONG
     - name: git config
       shell: bash
       run: |
         git config user.name "${{ inputs.gh_name }}"
         git config user.email "${{ inputs.gh_email }}"
+        git config commit.gpgsign true
+        git config user.signingkey $(gpg --list-secret-keys --keyid-format LONG | grep sec | awk '{print $2}' | cut -d'/' -f2)
     - name: Release
       shell: bash
       env:
