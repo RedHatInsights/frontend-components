@@ -39,3 +39,4 @@ export * from './ErrorBoundary';
 export * from './RBACProvider';
 export * from './OpenSourceBadge';
 export * from './SeverityLine';
+export * from './TableView';
