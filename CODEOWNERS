@@ -12,7 +12,12 @@
 # All Konflux tekton configuration changes review from admins
 #.tekton/** @RedHatInsights/experience-services-admins
 
-# Protect .npmignore - package publish contents control
+# Protect npm configuration and lifecycle scripts from supply chain attacks
+# Root package.json contains prepare/postinstall scripts that execute during npm install
+# .npmrc controls registry settings and install behavior
+# .npmignore controls published package contents
+package.json @RedHatInsights/experience-services-admins
+.npmrc @RedHatInsights/experience-services-admins
 .npmignore @RedHatInsights/experience-services-admins
 
 # CODEOWNERS file itself requires admin review to prevent bypass attacks
