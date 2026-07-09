@@ -1,0 +1,15 @@
+name: Handle stale issues and PRs
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run daily at midnight UTC
+  workflow_dispatch: # Allow manual triggers
+
+jobs:
+  call-stale-workflow:
+    uses: RedHatInsights/shared-workflows/.github/workflows/stale.yml@master
+    # Optional: customize inputs
+    # with:
+    #   days-before-stale: 60
+    #   days-before-close: 5
+    #   exempt-issue-labels: "work-in-progress, in-progress, in-review, help-wanted, blocked, wip, depfu, dependabot, dependencies"
