@@ -1,3 +1,18 @@
+## 2.4.0 (2026-07-09)
+
+### 🩹 Fixes
+
+- **chrome:** remove React.FC type annotation ([a554c179](https://github.com/RedHatInsights/frontend-components/commit/a554c179))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/types to 3.7.0
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
 ## 2.3.0 (2026-05-29)
 
 ### 🚀 Features

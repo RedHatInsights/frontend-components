@@ -1,3 +1,37 @@
+## 7.10.0 (2026-07-09)
+
+### 🚀 Features
+
+- **components:** add TableView component with stories [RHCLOUD-48969] ([#2367](https://github.com/RedHatInsights/frontend-components/pull/2367))
+- **conditional-filter:** add ability to pass preselected filter ([78054ef8](https://github.com/RedHatInsights/frontend-components/commit/78054ef8))
+
+### 🩹 Fixes
+
+- address CodeRabbit review feedback ([b03cb94a](https://github.com/RedHatInsights/frontend-components/commit/b03cb94a))
+- fix PrimaryToolbar item spacing ([#2361](https://github.com/RedHatInsights/frontend-components/pull/2361))
+- address review feedback from PR #2366 ([#2366](https://github.com/RedHatInsights/frontend-components/issues/2366))
+- address CodeRabbit review feedback ([ce16453b](https://github.com/RedHatInsights/frontend-components/commit/ce16453b))
+- **components:** align items in primary toolbar filter group ([#2360](https://github.com/RedHatInsights/frontend-components/pull/2360))
+- **components:** address review feedback for type safety, a11y, and bug fixes ([587d697a](https://github.com/RedHatInsights/frontend-components/commit/587d697a))
+- **components:** add type annotations to TagWithDialog forwardRef ([1b285446](https://github.com/RedHatInsights/frontend-components/commit/1b285446))
+- **components:** remove React.FC and React.FunctionComponent type annotations ([fe95c22c](https://github.com/RedHatInsights/frontend-components/commit/fe95c22c))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.5.0
+- Updated @redhat-cloud-services/types to 3.7.0
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- Claude Opus 4.6 (1M context)
+- Claude Sonnet 4.5
+- Jakub Dugovič @Dugowitch
+- LightOfHeaven1994
+- Oliver Pacut
+- platex-rehor-bot
+- Riccardo Forina
+
 ## 7.7.1 (2026-05-29)
 
 ### 🩹 Fixes

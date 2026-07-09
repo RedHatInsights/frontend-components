@@ -1,3 +1,19 @@
+## 4.10.0 (2026-07-09)
+
+### 🩹 Fixes
+
+- **rule-components:** remove empty JSX expression from RiskOfChangeIcon ([#2327](https://github.com/RedHatInsights/frontend-components/pull/2327))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components to 7.10.0
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.5.0
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- Řehoř
+
 ## 4.7.1 (2026-05-29)
 
 ### 🧱 Updated Dependencies

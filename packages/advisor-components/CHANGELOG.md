@@ -1,3 +1,24 @@
+## 3.10.0 (2026-07-09)
+
+### 🩹 Fixes
+
+- **advisor-components:** remove React.FC type annotations ([d12c8eb2](https://github.com/RedHatInsights/frontend-components/commit/d12c8eb2))
+- **advisor:** remove untestable keyboard nav tests from RuleRating ([bf162a78](https://github.com/RedHatInsights/frontend-components/commit/bf162a78))
+- **advisor:** remove redundant onKeyDown handlers from RuleRating ([9e13d3fd](https://github.com/RedHatInsights/frontend-components/commit/9e13d3fd))
+- **advisor:** add explicit keyboard event handlers for rating buttons ([4712c9a7](https://github.com/RedHatInsights/frontend-components/commit/4712c9a7))
+- **advisor:** use data-testid selectors and deterministic timing in tests ([e8357634](https://github.com/RedHatInsights/frontend-components/commit/e8357634))
+- **advisor:** move cy.stub() inside beforeEach in RuleRating test ([cee8dcff](https://github.com/RedHatInsights/frontend-components/commit/cee8dcff))
+- **advisor-components:** fix stale closure and missing cleanup in RuleRating debounce ([aea7c8bc](https://github.com/RedHatInsights/frontend-components/commit/aea7c8bc))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components to 7.10.0
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
 ## 3.8.1 (2026-05-29)
 
 ### 🧱 Updated Dependencies

@@ -1,3 +1,7 @@
+## 3.7.0 (2026-07-09)
+
+This was a version bump only for @redhat-cloud-services/types to align it with other projects, there were no code changes.
+
 ## 3.6.0 (2026-05-29)
 
 ### 🚀 Features

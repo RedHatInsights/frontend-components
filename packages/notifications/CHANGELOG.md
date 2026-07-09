@@ -1,3 +1,19 @@
+## 6.11.0 (2026-07-09)
+
+### 🩹 Fixes
+
+- **notifications:** remove React.FC type annotation ([a4d26d96](https://github.com/RedHatInsights/frontend-components/commit/a4d26d96))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components to 7.10.0
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.5.0
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
 ## 6.9.1 (2026-05-29)
 
 ### 🧱 Updated Dependencies
