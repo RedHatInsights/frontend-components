@@ -5,6 +5,10 @@
 # This prevents unauthorized modifications to CI/CD pipelines, custom actions, and repo processes
 .github/** @RedHatInsights/experience-services-admins
 
+# Protect Git hooks from supply chain attacks
+# Husky hooks execute during npm install and git operations with user permissions
+.husky/** @RedHatInsights/experience-services-admins
+
 # All Konflux tekton configuration changes review from admins
 #.tekton/** @RedHatInsights/experience-services-admins
 
