@@ -196,29 +196,51 @@ npx nx graph
 
 ## Deployment & Release
 
-### Release Process
+### How Nx Calculates Package Versions
 
-**Fully automated** on merge to `master`:
+**Source of truth is git tags, NOT `package.json`.**
+With `conventionalCommits: true`, Nx reads the current version from the latest matching git tag. The `package.json` version field is an *output* of `nx release`, not an input.
 
-1. CI runs: build, tests, lint, circular dependency checks
-2. Conventional commits determine version bumps
-3. Changelogs generated per package
-4. Git tags created: `{packageName}-{version}`
-5. Packages published to npm
+**Tag pattern**: `{projectName}-{version}` (configured in `nx.json` line 114)
+- Example: `@redhat-cloud-services/frontend-components-7.10.0`, `@redhat-cloud-services/chrome-2.4.0`
+- Note: uses `-` separator, not the Nx default `@` for independent projects
 
-**Version Control**: Independent package versioning (per-package semver)
+**Version bump calculation** (per package):
+1. Find the latest git tag matching `{projectName}-*` with valid semver
+2. Get all commits from that tag to HEAD
+3. Filter to commits whose **file changes** touch the package (same logic as `nx affected` -- commit scope is ignored, see `useCommitScope: false`)
+4. Apply conventional-commit bump rules (see [Commit Message & Release Rules](#commit-message--release-rules-important-for-ai-tools) above)
+5. Highest bump across all matching commits wins
+6. **No matching `feat`/`fix` commits = package is skipped entirely** -- no bump, no publish
 
-### CI Pipeline
+**What `package.json` version means**: Updated by `nx release` in both `{projectRoot}/package.json` and `dist/{projectName}/package.json`. It reflects the last released version, not the source for calculating the next one.
 
-GitHub Actions (`.github/workflows/ci.yaml`):
-- Install dependencies
-- Build packages
-- Unit tests
-- Component tests (Cypress)
-- Lint
-- Commitlint validation
-- Circular dependency check
-- Release (on push to master)
+### Release Pipeline (on merge to `master`)
+
+**Gate jobs** (all must pass before release runs):
+install, build, unit-test, component-test, lint, commitlint, check-circular-imports
+
+**Release sequence** (`npx nx release --yes`):
+1. **Pre-version build**: `npx nx run-many -t build --exclude=demo,` -- ensures `dist/` exists
+2. **Version**: for each package: find latest tag --> git log since tag --> parse conventional commits --> calculate bump --> update `package.json` (source + dist) + `package-lock.json` + `CHANGELOG.md`
+3. **Git**: GPG-signed commit `chore(release): publish` with release notes + per-package tags
+4. **Publish**: each bumped package from `dist/{projectName}` to npm with provenance (OIDC)
+5. **Push**: `HUSKY=0 git push --follow-tags`
+
+**Additional behaviors**:
+- `preserveLocalDependencyProtocols: false` -- `workspace:*` refs resolved to concrete versions during release
+- `skipLockFileUpdate: false` -- `package-lock.json` updated in the release commit
+- Bot account (NachoBot) with GPG signing handles the release commit
+- `npm-publish` environment provides `contents: write` + `id-token: write` permissions
+
+### Key Config Files
+
+| File | Purpose |
+|------|---------|
+| `nx.json` (lines 87-115) | Nx release configuration |
+| `.github/workflows/ci.yaml` | CI pipeline definition |
+| `.github/actions/release/action.yml` | Release composite action |
+| `.commitlintrc.js` | Commit message validation rules |
 
 ## Browser Compatibility
 
