@@ -7,7 +7,7 @@ on:
 
 jobs:
   call-stale-workflow:
-    uses: RedHatInsights/shared-workflows/.github/workflows/stale.yml@master
+    uses: RedHatInsights/shared-workflows/.github/workflows/stale.yml@c7a98838b91e581bbc4e3e7607416b73e8a46787 # Pin to specific commit for security
     # Optional: customize inputs
     # with:
     #   days-before-stale: 60
