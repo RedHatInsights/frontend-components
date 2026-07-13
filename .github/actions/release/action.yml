@@ -31,6 +31,9 @@ runs:
         git config user.email "${{ inputs.gh_email }}"
         git config commit.gpgsign true
         git config user.signingkey $(gpg --list-secret-keys --with-colons "${{ inputs.gh_email }}" | awk -F: '/^sec:/ {print $5; exit}')
+    - name: Verify version consistency
+      shell: bash
+      run: bash .github/scripts/verify-versions.sh
     - name: Release
       shell: bash
       env:
