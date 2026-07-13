@@ -1,3 +1,10 @@
+## 7.10.1 (2026-07-13)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.5.1
+- Updated @redhat-cloud-services/types to 3.7.1
+
 ## 7.10.0 (2026-07-09)
 
 ### 🚀 Features
