@@ -7,6 +7,9 @@
 #
 # Exit 0: all versions aligned
 # Exit 1: at least one mismatch detected
+#
+# Note: When running locally in a fork, ensure tags are synced first:
+#   git fetch upstream --tags
 
 set -euo pipefail
 
@@ -21,11 +24,6 @@ printf '\n'
 for dir in "$REPO_ROOT"/packages/*/; do
   dirname="$(basename "$dir")"
 
-  # Skip executors -- not released (matches nx.json release.projects exclusion)
-  if [[ "$dirname" == "executors" ]]; then
-    continue
-  fi
-
   pkg_json="$dir/package.json"
   if [[ ! -f "$pkg_json" ]]; then
     continue
@@ -35,6 +33,12 @@ for dir in "$REPO_ROOT"/packages/*/; do
   # avoids jq dependency and handles edge cases better than grep/sed)
   pkg="$(node -p "require('$pkg_json').name")"
   disk_ver="$(node -p "require('$pkg_json').version")"
+
+  # Skip private packages — they are not published to npm or tagged
+  private="$(node -p "require('$pkg_json').private || false")"
+  if [[ "$private" == "true" ]]; then
+    continue
+  fi
 
   # --- Git tag version ---
   # Tag pattern from nx.json: {projectName}-{version} where projectName = npm package name
