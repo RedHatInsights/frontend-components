@@ -90,7 +90,7 @@
     "git": {
       "commit": true,
       "tag": true,
-      "commitMessage": "chore(release): publish\n\n{releaseNotes}"
+      "commitMessage": "chore(versions): package.json version sync + changelog [skip ci]\n\n{releaseNotes}"
     },
     "version": {
       "preVersionCommand": "npx nx run-many -t build --exclude=demo,",
