@@ -56,7 +56,7 @@ for dir in "$REPO_ROOT"/packages/*/; do
   [[ -z "$tag_ver" ]] && tag_ver="NONE"
 
   # --- npm registry version ---
-  npm_ver="$(npm view "$pkg" version 2>/dev/null)" || true
+  npm_ver="$(npm view "$pkg" version --fetch-timeout=10000 2>/dev/null)" || true
   [[ -z "$npm_ver" ]] && npm_ver="NOT_ON_NPM"
 
   # --- Compare ---
