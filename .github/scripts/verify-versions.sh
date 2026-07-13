@@ -47,7 +47,7 @@ for dir in "$REPO_ROOT"/packages/*/; do
   # After stripping "${pkg}-", the utilities tags become "utilities-4.12.0" which does NOT
   # start with a digit, so grep '^[0-9]' filters them out.
   tag_ver="$(
-    git tag --list "${pkg}-*" \
+    git tag --merged HEAD --list "${pkg}-*" \
       | sed "s|^${pkg}-||" \
       | grep '^[0-9]' \
       | sort -V \
