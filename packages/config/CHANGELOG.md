@@ -1,3 +1,14 @@
+## 6.13.0 (2026-07-14)
+
+### 🚀 Features
+
+- **config:** pass through HCC_ENV/HCC_ENV_URL in dev-proxy IOP flow ([25b4bfc0](https://github.com/RedHatInsights/frontend-components/commit/25b4bfc0))
+- **config:** add IOP-aware dev-proxy env and custom routes mount support ([cdc5ce67](https://github.com/RedHatInsights/frontend-components/commit/cdc5ce67))
+
+### ❤️ Thank You
+
+- Adonis Puente
+
 ## 6.12.2 (2026-07-14)
 
 ### 🩹 Fixes
