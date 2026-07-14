@@ -133,6 +133,8 @@ async function configureEnvVars(fecConfig: any, argv: any, cwd: string) {
       );
     }
     process.env.HCC_ENV = argv?.clouddotEnv;
+    process.env.CLOUDOT_ENV = argv?.clouddotEnv;
+    process.env.FEC_ROOT_DIR = cwd;
   } else {
     await setEnv(cwd);
     process.env.HCC_ENV = process.env.CLOUDOT_ENV;
