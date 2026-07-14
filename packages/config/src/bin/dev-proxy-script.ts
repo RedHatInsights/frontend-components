@@ -15,7 +15,10 @@ const LATEST_IMAGE_TAG = 'latest';
 
 const DEV_PROXY_CONTAINER_PORT = 1337;
 const DEV_PROXY_CONTAINER_NAME = 'frontend-development-proxy';
-const DEV_PROXY_IMAGE_REPO = `quay.io/redhat-user-workloads/hcc-platex-services-tenant/${DEV_PROXY_CONTAINER_NAME}`;
+const DEV_PROXY_IMAGE_REPO =
+  process.env.FEC_DEV_PROXY_IMAGE || `quay.io/redhat-user-workloads/hcc-platex-services-tenant/${DEV_PROXY_CONTAINER_NAME}`;
+const DEV_PROXY_IMAGE_TAG = process.env.FEC_DEV_PROXY_IMAGE?.includes(':') ? '' : `:${LATEST_IMAGE_TAG}`;
+const IOP_CUSTOM_ROUTES_CONTAINER_PATH = '/config/custom_routes.iop.json';
 
 let execBin: ContainerRuntime | undefined = undefined;
 let debug: boolean = false;
@@ -23,6 +26,18 @@ let debug: boolean = false;
 interface RouteConfig {
   url: string;
   is_chrome?: boolean;
+}
+
+function shouldEnableIOP(argv: { iop?: boolean }) {
+  if (typeof argv.iop === 'boolean') {
+    return argv.iop;
+  }
+
+  if (process.env.IOP === 'true') {
+    return true;
+  }
+
+  return (process.env.npm_lifecycle_event || '').toLowerCase() === 'iop';
 }
 
 function fecLogger(logType: LogType, ...data: any[]) {
@@ -126,21 +141,37 @@ function createRoutesConfig(fecConfig: any, cdnPath: string, port: string, SPAFa
 
 async function configureEnvVars(fecConfig: any, argv: any, cwd: string) {
   const clouddotEnvOptions = ['stage', 'prod', 'dev', 'ephemeral'];
+  const initialHccEnv = process.env.HCC_ENV;
+  const initialHccEnvUrl = process.env.HCC_ENV_URL;
+
   if (argv?.clouddotEnv) {
     if (!clouddotEnvOptions.includes(argv?.clouddotEnv)) {
       throw Error(
         `Incorrect argument value:\n--clouddotEnv must be one of: [${clouddotEnvOptions.toString()}]\nRun fec --help for more information.`,
       );
     }
-    process.env.HCC_ENV = argv?.clouddotEnv;
-    process.env.CLOUDOT_ENV = argv?.clouddotEnv;
-    process.env.FEC_ROOT_DIR = cwd;
+    process.env.HCC_ENV = argv.clouddotEnv;
+    process.env.CLOUDOT_ENV = argv.clouddotEnv;
+    process.env.FEC_ROOT_DIR = process.env.FEC_ROOT_DIR ?? cwd;
+  } else if (initialHccEnv !== undefined) {
+    process.env.CLOUDOT_ENV = process.env.CLOUDOT_ENV ?? initialHccEnv;
+    process.env.FEC_ROOT_DIR = process.env.FEC_ROOT_DIR ?? cwd;
   } else {
     await setEnv(cwd);
-    process.env.HCC_ENV = process.env.CLOUDOT_ENV;
+    process.env.HCC_ENV = process.env.CLOUDOT_ENV!;
   }
+
   const hccEnvSuffix = process.env.HCC_ENV === 'prod' ? '' : `${process.env.HCC_ENV}.`;
-  process.env.HCC_ENV_URL = process.env.HCC_ENV === 'ephemeral' ? process.env.EPHEMERAL_TARGET : `https://console.${hccEnvSuffix}redhat.com`;
+  const defaultHccEnvUrl = process.env.HCC_ENV === 'ephemeral' ? process.env.EPHEMERAL_TARGET : `https://console.${hccEnvSuffix}redhat.com`;
+
+  const cliHccEnvUrl = argv?.hccEnvUrl ?? argv?.['hcc-env-url'];
+  if (cliHccEnvUrl) {
+    process.env.HCC_ENV_URL = cliHccEnvUrl;
+  } else if (initialHccEnvUrl !== undefined) {
+    process.env.HCC_ENV_URL = initialHccEnvUrl;
+  } else {
+    process.env.HCC_ENV_URL = defaultHccEnvUrl;
+  }
 
   process.env.FEC_CHROME_HOST = fecConfig?.chromeHost ?? '127.0.0.1';
   process.env.FEC_CHROME_PORT = fecConfig?.chromePort ?? DEFAULT_CHROME_SERVER_PORT;
@@ -151,12 +182,15 @@ async function devProxyScript(
     chromeServerPort?: number | string;
     clouddotEnv?: string;
     config?: any;
+    hccEnvUrl?: string;
+    iop?: boolean;
     port?: string;
     staticPort?: string;
   },
   cwd: string,
 ) {
   let SPAFallback = true;
+  let iopEnabled = false;
   let fecConfig: any = {};
   let webpackConfig;
   const webpackConfigPath: string =
@@ -173,6 +207,16 @@ async function devProxyScript(
     fecLogger(LogType.error, 'Failed to get the FEC config:', error);
     process.exit(1);
   }
+  // Process environment variables before webpack config load (webpack reads CLOUDOT_ENV / FEC_ROOT_DIR)
+  try {
+    SPAFallback = fecConfig?.SPAFallback ?? true;
+    iopEnabled = shouldEnableIOP(argv);
+    await configureEnvVars(fecConfig, argv, cwd);
+  } catch (error) {
+    fecLogger(LogType.error, 'Failed to setup environment from args and config:', error);
+    process.exit(1);
+  }
+
   try {
     fs.statSync(webpackConfigPath);
     webpackConfig = require(webpackConfigPath);
@@ -182,15 +226,6 @@ async function devProxyScript(
     webpackConfig = await webpackConfig;
   } catch (error) {
     fecLogger(LogType.error, 'Failed to get the Webpack config:', error);
-    process.exit(1);
-  }
-
-  // Process environment variables, SPA fallback
-  try {
-    SPAFallback = fecConfig?.SPAFallback ?? true;
-    await configureEnvVars(fecConfig, argv, cwd);
-  } catch (error) {
-    fecLogger(LogType.error, 'Failed to setup environment from args and config:', error);
     process.exit(1);
   }
 
@@ -210,7 +245,10 @@ async function devProxyScript(
   execBin = checkContainerRuntime();
   stopContainer(DEV_PROXY_CONTAINER_NAME);
   stopContainer(CHROME_CONTAINTER_NAME);
-  pullImage(DEV_PROXY_CONTAINER_NAME, DEV_PROXY_IMAGE_REPO, LATEST_IMAGE_TAG);
+  // Skip pulling if using a local image
+  if (!process.env.FEC_DEV_PROXY_IMAGE) {
+    pullImage(DEV_PROXY_CONTAINER_NAME, DEV_PROXY_IMAGE_REPO, LATEST_IMAGE_TAG);
+  }
   removeContainer(DEV_PROXY_CONTAINER_NAME);
 
   // Exec
@@ -236,6 +274,29 @@ async function devProxyScript(
   try {
     const outputPath = webpackConfig.output.path;
     const proxyEnvVar = process.env.HCC_ENV === 'stage' ? '-e HTTPS_PROXY=$RH_PROXY_URL' : '';
+    const iopEnvVar = iopEnabled ? '-e IOP=true' : '';
+    const iopCustomRoutesHostPath = process.env.FEC_IOP_CUSTOM_ROUTES_PATH;
+    const iopCustomRoutesEnvVar = iopEnabled ? `-e LOCAL_CUSTOM_ROUTES_PATH=${IOP_CUSTOM_ROUTES_CONTAINER_PATH}` : '';
+    let iopCustomRoutesMountVar = '';
+    if (iopEnabled) {
+      if (iopCustomRoutesHostPath) {
+        // Validate absolute path
+        if (!path.isAbsolute(iopCustomRoutesHostPath)) {
+          fecLogger(LogType.warn, `FEC_IOP_CUSTOM_ROUTES_PATH should be an absolute path, got: ${iopCustomRoutesHostPath}`);
+        }
+        if (fs.existsSync(iopCustomRoutesHostPath)) {
+          iopCustomRoutesMountVar = `-v "${iopCustomRoutesHostPath}:${IOP_CUSTOM_ROUTES_CONTAINER_PATH}:ro,z"`;
+          fecLogger(LogType.info, `Mounting IOP custom routes from ${iopCustomRoutesHostPath}`);
+        } else {
+          fecLogger(
+            LogType.warn,
+            `FEC_IOP_CUSTOM_ROUTES_PATH is set, but file was not found at "${iopCustomRoutesHostPath}". Falling back to default IOP routes.`,
+          );
+        }
+      } else {
+        fecLogger(LogType.warn, 'IOP mode enabled without FEC_IOP_CUSTOM_ROUTES_PATH. Falling back to default IOP routes.');
+      }
+    }
     const proxyVerbose = fecConfig?.proxyVerbose ? `&& ${execBin} logs -f ${DEV_PROXY_CONTAINER_NAME}` : '';
     const appUrl = fecConfig?.appUrl;
 
@@ -277,7 +338,7 @@ async function devProxyScript(
           prefixColor: 'bgGreen',
         },
         {
-          command: `${execBin} run -d -e HCC_ENV=${process.env.HCC_ENV} -e HCC_ENV_URL=${process.env.HCC_ENV_URL} ${proxyEnvVar} -p ${argv.port || 1337}:${DEV_PROXY_CONTAINER_PORT} -v "${routesConfigPath}:/config/routes.json:ro,Z" --name ${DEV_PROXY_CONTAINER_NAME} ${DEV_PROXY_IMAGE_REPO}:${LATEST_IMAGE_TAG} ${proxyVerbose}`,
+          command: `${execBin} run -d -e HCC_ENV=${process.env.HCC_ENV} -e HCC_ENV_URL=${process.env.HCC_ENV_URL} ${proxyEnvVar} ${iopEnvVar} ${iopCustomRoutesEnvVar} -p ${argv.port || 1337}:${DEV_PROXY_CONTAINER_PORT} -v "${routesConfigPath}:/config/routes.json:ro,z" ${iopCustomRoutesMountVar} --name ${DEV_PROXY_CONTAINER_NAME} ${DEV_PROXY_IMAGE_REPO}${DEV_PROXY_IMAGE_TAG} ${proxyVerbose}`,
           name: 'PROXY',
           env: { RH_PROXY_URL: PROXY_URL },
           prefixColor: 'bgMagenta',
