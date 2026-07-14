@@ -1,3 +1,14 @@
+## 6.12.2 (2026-07-14)
+
+### 🩹 Fixes
+
+- **config:** set CLOUDOT_ENV when --clouddotEnv CLI flag is used ([#2378](https://github.com/RedHatInsights/frontend-components/pull/2378))
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- Řehoř
+
 ## 6.12.1 (2026-07-13)
 
 ### 🧱 Updated Dependencies
