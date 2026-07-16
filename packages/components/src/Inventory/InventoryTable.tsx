@@ -41,6 +41,7 @@ const BaseInvTable = ({
           scope="inventory"
           ErrorComponent={<InventoryLoadError component="InventoryTable" {...props} />}
           ref={innerRef}
+          fallback={fallback}
           {...props}
         />
       </Suspense>

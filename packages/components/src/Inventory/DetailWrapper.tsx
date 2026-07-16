@@ -41,6 +41,7 @@ const BaseDetailWrapper = ({
           scope="inventory"
           ErrorComponent={<InventoryLoadError component="DetailWrapper" {...props} />}
           ref={innerRef}
+          fallback={fallback}
           {...props}
         />
       </Suspense>
