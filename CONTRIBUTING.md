@@ -83,6 +83,31 @@ Jest snapshot testing might seems like a quick and easy solution to test your Re
 
 This repository is using the [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) message format. Please follow the specification.
 
+### Scope requirements
+
+Because this repo uses `useCommitScope: true` for Nx versioning, **versioning commits** (`feat`, `fix`, or commits with a `!` breaking-change marker) must use the **full Nx project name** as the scope:
+
+```
+# ✅ Correct — full project name
+feat(@redhat-cloud-services/frontend-components-utilities): add helper
+
+# ✅ Correct — non-versioning type, short scope is fine
+chore(utils): update docs
+
+# ✅ Correct — area scope, allowed for any type
+feat(deps): upgrade PatternFly
+
+# ✅ Correct — no scope
+feat: global change
+
+# ❌ Wrong — short scope with versioning type
+feat(utils): add helper
+```
+
+This ensures Nx gives the scoped package the correct version bump (minor/patch/major) while capping transitive dependents at patch — preventing version inflation.
+
+Run `npx nx show projects` to see valid project names.
+
 ## PR checks
 
 Pr checks in this project are mandatory due to the automated release process. The repository is using [husky](https://typicode.github.io/husky/) to run some of the checks before changes are pushed.
