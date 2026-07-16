@@ -41,6 +41,7 @@ const BaseAppInfo = ({
           scope="inventory"
           ErrorComponent={<InventoryLoadError component="AppInfo" {...props} />}
           ref={innerRef}
+          fallback={fallback}
           {...props}
         />
       </Suspense>
