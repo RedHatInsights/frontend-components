@@ -1,3 +1,13 @@
+## 7.10.2 (2026-07-16)
+
+### 🩹 Fixes
+
+- **components:** pass Inventory fallback to ScalprumComponent ([#2380](https://github.com/RedHatInsights/frontend-components/pull/2380))
+
+### ❤️ Thank You
+
+- Egor Shamardin @LightOfHeaven1994
+
 ## 7.10.1 (2026-07-13)
 
 ### 🧱 Updated Dependencies
