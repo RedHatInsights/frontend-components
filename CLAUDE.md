@@ -81,9 +81,9 @@ Demo source: `examples/demo/src/app/app.tsx` (do not commit changes)
 
 Releases are **fully automated** — the commit type directly controls whether packages are published to npm. Choose the commit type carefully:
 
-- **`feat:`** → triggers a **minor** version bump for every package whose files were changed in the commit
-- **`fix:`** → triggers a **patch** version bump for every package whose files were changed
-- **`feat!:` or `BREAKING CHANGE:` footer** → triggers a **major** version bump
+- **`feat:`** → triggers a **minor** version bump for the scoped package (with `useCommitScope: true`, only the package whose scope matches the commit scope gets the full bump; changed dependents are capped at **patch**)
+- **`fix:`** → triggers a **patch** version bump for the scoped package (same scope-filtering applies)
+- **`feat!:` or `BREAKING CHANGE:` footer** → triggers a **major** version bump for the scoped package
 - **`chore:`, `docs:`, `ci:`, `refactor:`, `test:`** → **no release triggered**
 
 **Rules when committing:**
@@ -92,7 +92,7 @@ Releases are **fully automated** — the commit type directly controls whether p
 3. Use `chore:` or `docs:` for changes that do **not** affect package source code — documentation (`CLAUDE.md`, `README.md`), CI config, linting config, or tooling setup — even if the files live inside a `packages/*/` directory.
 4. If a commit includes both source code changes and non-code changes (e.g., a new feature plus updated docs), use `feat:` or `fix:` — the release is warranted by the code change.
 5. **Commit scope rules** (`useCommitScope: true` in `nx.json`):
-   - For **versioning commits** (`feat`, `fix`, or `!` breaking change): scope **must** be the full Nx project name (e.g., `feat(@redhat-cloud-services/frontend-components-utilities): ...`). Short scopes like `feat(utils):` will be rejected by commitlint.
+   - For **versioning commits** (`feat`, `fix`, `!` breaking change, or commits with a `BREAKING CHANGE:` footer): scope **must** be the full Nx project name (e.g., `feat(@redhat-cloud-services/frontend-components-utilities): ...`). Short scopes like `feat(utils):` will be rejected by commitlint.
    - For **non-versioning commits** (`chore`, `docs`, `ci`, `refactor`, `test`): short scopes are fine (e.g., `chore(utils): ...`).
    - **Area scopes** (`deps`, `ci`, `readme`, `docs`, `versions`, `release`) are allowed for any commit type.
    - **No scope** is always allowed — Nx uses file changes to determine affected packages.

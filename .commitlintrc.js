@@ -30,10 +30,12 @@ module.exports = {
     {
       rules: {
         'scope-full-name-for-versioning': (parsed) => {
-          const { type, scope, header } = parsed;
+          const { type, scope, header, notes } = parsed;
 
-          // Detect breaking change marker in raw header as fallback
-          const isBreaking = !!(header && header.includes('!:'));
+          // Detect breaking change: header `!:` marker OR BREAKING CHANGE footer
+          const isBreaking =
+            !!(header && header.includes('!:')) ||
+            !!(notes && notes.some((n) => n.title === 'BREAKING CHANGE'));
           const isVersioningType = ['feat', 'fix'].includes(type);
 
           // Non-versioning, non-breaking commits can use any scope

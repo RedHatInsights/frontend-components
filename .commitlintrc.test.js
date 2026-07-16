@@ -86,6 +86,20 @@ describe('commitlint scope-full-name-for-versioning', () => {
       expect(result.valid).toBe(true);
     });
 
+    it('BREAKING CHANGE footer with full project name', async () => {
+      const result = await lintMessage(
+        'chore(@redhat-cloud-services/frontend-components): change\n\nBREAKING CHANGE: removed API'
+      );
+      expect(result.valid).toBe(true);
+    });
+
+    it('BREAKING CHANGE footer with no scope', async () => {
+      const result = await lintMessage(
+        'refactor: rewrite internals\n\nBREAKING CHANGE: new API'
+      );
+      expect(result.valid).toBe(true);
+    });
+
     it('chore(versions) automated commit', async () => {
       const result = await lintMessage(
         'chore(versions): package.json version sync'
@@ -147,6 +161,16 @@ describe('commitlint scope-full-name-for-versioning', () => {
     it('feat with made-up scope', async () => {
       const result = await lintMessage('feat(my-package): something');
       expect(result.valid).toBe(false);
+    });
+
+    it('BREAKING CHANGE footer with short scope', async () => {
+      const result = await lintMessage(
+        'chore(utils): change\n\nBREAKING CHANGE: removed old API'
+      );
+      expect(result.valid).toBe(false);
+      expect(result.errors[0].message).toContain(
+        'must be a full Nx project name'
+      );
     });
   });
 });

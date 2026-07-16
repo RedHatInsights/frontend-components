@@ -85,9 +85,9 @@ This repository is using the [Conventional commits](https://www.conventionalcomm
 
 ### Scope requirements
 
-Because this repo uses `useCommitScope: true` for Nx versioning, **versioning commits** (`feat`, `fix`, or commits with a `!` breaking-change marker) must use the **full Nx project name** as the scope:
+Because this repo uses `useCommitScope: true` for Nx versioning, **versioning commits** (`feat`, `fix`, commits with a `!` breaking-change marker, or commits with a `BREAKING CHANGE:` footer) must use the **full Nx project name** as the scope:
 
-```
+```text
 # ✅ Correct — full project name
 feat(@redhat-cloud-services/frontend-components-utilities): add helper
 
