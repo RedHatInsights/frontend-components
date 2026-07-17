@@ -88,6 +88,8 @@ jobs:
       - name: install
         shell: bash
         run: npm ci
+      - name: Test commitlint config
+        run: NODE_OPTIONS="--experimental-vm-modules" npx jest --config=commitlint.jest.config.js
       - name: Validate current commit on push
         shell: bash
         if: github.event_name == 'push'
