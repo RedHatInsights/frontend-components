@@ -244,7 +244,7 @@ install, build, unit-test, component-test, lint, commitlint, check-circular-impo
 | `nx.json` (lines 87-115) | Nx release configuration |
 | `.github/workflows/ci.yaml` | CI pipeline definition |
 | `.github/actions/release/action.yml` | Release composite action |
-| `.commitlintrc.js` | Commit message validation rules |
+| `commitlint.config.js` | Commit message validation rules |
 
 ## Browser Compatibility
 
