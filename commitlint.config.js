@@ -14,9 +14,6 @@ function getNxProjects() {
 
 const validProjects = new Set(getNxProjects());
 
-/** Area scopes allowed for any commit type (including feat/fix). */
-const AREA_SCOPES = ['deps', 'ci', 'readme', 'docs', 'versions', 'release'];
-
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   defaultIgnores: true,
@@ -70,7 +67,6 @@ module.exports = {
           const scopes = resolvedScope.split(',');
           for (const s of scopes) {
             const trimmed = s.trim();
-            if (AREA_SCOPES.includes(trimmed)) continue;
             if (!validProjects.has(trimmed)) {
               const commitType = isBreaking ? 'breaking (!)/feat/fix' : 'feat/fix';
               const hint = trimmed.startsWith('@redhat-cloud-services/')

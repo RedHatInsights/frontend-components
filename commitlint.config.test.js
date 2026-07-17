@@ -71,12 +71,6 @@ describe('commitlint scope-full-name-for-versioning', () => {
       expect(result.valid).toBe(true);
     });
 
-    it('feat with area scope (deps)', async () => {
-      const result = await lintMessage('feat(deps): add new dep');
-      expect(result.valid).toBe(true);
-    });
-
-
     it('BREAKING CHANGE footer with full project name', async () => {
       const result = await lintMessage(
         'chore(@redhat-cloud-services/frontend-components): change\n\nBREAKING CHANGE: removed API'
@@ -89,17 +83,16 @@ describe('commitlint scope-full-name-for-versioning', () => {
       expect(result.valid).toBe(true);
     });
 
-    it('chore(versions) automated commit', async () => {
-      const result = await lintMessage(
-        'chore(versions): package.json version sync'
-      );
+    it('chore with no scope (non-versioning)', async () => {
+      const result = await lintMessage('chore: rewrite internals');
       expect(result.valid).toBe(true);
     });
 
-    it('chore(release) automated commit', async () => {
-      const result = await lintMessage('chore(release): publish');
+    it('tests with no scope (non-versioning)', async () => {
+      const result = await lintMessage('tests: rewrite internals');
       expect(result.valid).toBe(true);
     });
+
 
     it('ci with short scope', async () => {
       const result = await lintMessage('ci(lint): update config');
@@ -111,19 +104,24 @@ describe('commitlint scope-full-name-for-versioning', () => {
       expect(result.valid).toBe(true);
     });
 
-    it('feat with ci area scope', async () => {
-      const result = await lintMessage('feat(ci): add workflow');
-      expect(result.valid).toBe(true);
-    });
-
-    it('fix with docs area scope', async () => {
-      const result = await lintMessage('fix(docs): typo');
-      expect(result.valid).toBe(true);
-    });
   });
 
   // ── Should FAIL ──────────────────────────────────────────────────────
   describe('invalid commits', () => {
+
+    it('feat with area scope (deps)', async () => {
+      const result = await lintMessage('feat(deps): upgrade PatternFly');
+      expect(result.valid).toBe(false);
+      expect(result.errors[0].message).toContain(
+        'must be a full Nx project name'
+      );
+    });
+
+    it('fix with area scope (ci)', async () => {
+      const result = await lintMessage('fix(ci): update workflow');
+      expect(result.valid).toBe(false);
+    });
+
     it('feat with short scope', async () => {
       const result = await lintMessage('feat(utils): add endpoint');
       expect(result.valid).toBe(false);

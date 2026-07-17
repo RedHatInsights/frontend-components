@@ -88,23 +88,27 @@ This repository is using the [Conventional commits](https://www.conventionalcomm
 Because this repo uses `useCommitScope: true` for Nx versioning, **versioning commits** (`feat`, `fix`, commits with a `!` breaking-change marker, or commits with a `BREAKING CHANGE:` footer) must use the **full Nx project name** as the scope:
 
 ```text
-# ✅ Correct — full project name
+# ✅ Correct — full project name for versioning commits
 feat(@redhat-cloud-services/frontend-components-utilities): add helper
+fix(@redhat-cloud-services/chrome): handle error
 
-# ✅ Correct — non-versioning type, short scope is fine
+# ✅ Correct — non-versioning type, any scope or no scope
 chore(utils): update docs
+chore(deps): upgrade PatternFly
+docs(readme): add examples
+ci(lint): update config
+refactor: clean up
 
-# ✅ Correct — area scope, allowed for any type
-feat(deps): upgrade PatternFly
-
-# ✅ Correct — no scope
-feat: global change
-
-# ❌ Wrong — short scope with versioning type
+# ❌ Wrong — versioning type without full project name
 feat(utils): add helper
+feat(deps): upgrade PatternFly
+fix(ci): update workflow
+feat: global change
 ```
 
-This ensures Nx gives the scoped package the correct version bump (minor/patch/major) while capping transitive dependents at patch — preventing version inflation.
+**Commitlint enforces**: `feat`, `fix`, and breaking commits (`!` or `BREAKING CHANGE:` footer) **must** use a full Nx project name as scope. Non-versioning types (`chore`, `docs`, `ci`, `refactor`, `test`) can use any scope or no scope.
+
+**Why**: With `useCommitScope: true`, Nx matches the scope to a project name for version bumps. A scope that doesn't match (e.g., `deps`, `ci`) silently caps the bump at patch — the commit type's intent is lost.
 
 Run `npx nx show projects` to see valid project names.
 
