@@ -83,7 +83,7 @@ Releases are **fully automated** — the commit type directly controls whether p
 
 - **`feat:`** → triggers a **minor** version bump for the scoped package (with `useCommitScope: true`, only the package whose scope matches the commit scope gets the full bump; changed dependents are capped at **patch**)
 - **`fix:`** → triggers a **patch** version bump for the scoped package (same scope-filtering applies)
-- **`feat!:` or `BREAKING CHANGE:` footer** → triggers a **major** version bump for the scoped package
+- **`<type>!:` (any type with `!`) or `BREAKING CHANGE:` footer** → triggers a **major** version bump for the scoped package
 - **`chore:`, `docs:`, `ci:`, `refactor:`, `test:`** → **no release triggered**
 
 **Rules when committing:**
