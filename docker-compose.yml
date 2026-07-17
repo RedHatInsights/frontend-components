@@ -1,0 +1,12 @@
+version: '3'
+services:
+  docs:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    command: sh -c "export CYPRESS_CACHE_FOLDER=/docs/packages/docs/.cache && npm i && npm run generate:components && npm run watch"
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/docs
+      - /docs/packages/docs/node_modules

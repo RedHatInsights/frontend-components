@@ -1,0 +1,533 @@
+## 7.10.2 (2026-07-16)
+
+### 🩹 Fixes
+
+- **components:** pass Inventory fallback to ScalprumComponent ([#2380](https://github.com/RedHatInsights/frontend-components/pull/2380))
+
+### ❤️ Thank You
+
+- Egor Shamardin @LightOfHeaven1994
+
+## 7.10.1 (2026-07-13)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.5.1
+- Updated @redhat-cloud-services/types to 3.7.1
+
+## 7.10.0 (2026-07-09)
+
+### 🚀 Features
+
+- **components:** add TableView component with stories [RHCLOUD-48969] ([#2367](https://github.com/RedHatInsights/frontend-components/pull/2367))
+- **conditional-filter:** add ability to pass preselected filter ([78054ef8](https://github.com/RedHatInsights/frontend-components/commit/78054ef8))
+
+### 🩹 Fixes
+
+- address CodeRabbit review feedback ([b03cb94a](https://github.com/RedHatInsights/frontend-components/commit/b03cb94a))
+- fix PrimaryToolbar item spacing ([#2361](https://github.com/RedHatInsights/frontend-components/pull/2361))
+- address review feedback from PR #2366 ([#2366](https://github.com/RedHatInsights/frontend-components/issues/2366))
+- address CodeRabbit review feedback ([ce16453b](https://github.com/RedHatInsights/frontend-components/commit/ce16453b))
+- **components:** align items in primary toolbar filter group ([#2360](https://github.com/RedHatInsights/frontend-components/pull/2360))
+- **components:** address review feedback for type safety, a11y, and bug fixes ([587d697a](https://github.com/RedHatInsights/frontend-components/commit/587d697a))
+- **components:** add type annotations to TagWithDialog forwardRef ([1b285446](https://github.com/RedHatInsights/frontend-components/commit/1b285446))
+- **components:** remove React.FC and React.FunctionComponent type annotations ([fe95c22c](https://github.com/RedHatInsights/frontend-components/commit/fe95c22c))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.5.0
+- Updated @redhat-cloud-services/types to 3.7.0
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- Claude Opus 4.6 (1M context)
+- Claude Sonnet 4.5
+- Jakub Dugovič @Dugowitch
+- LightOfHeaven1994
+- Oliver Pacut
+- platex-rehor-bot
+- Riccardo Forina
+
+## 7.7.1 (2026-05-29)
+
+### 🩹 Fixes
+
+- **components,config-utils:** fix nullish coalescing and operator precedence bugs ([66dc319c](https://github.com/RedHatInsights/frontend-components/commit/66dc319c))
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
+## 7.7.0 (2026-05-29)
+
+### 🚀 Features
+
+- **eslint-config:** warn against React.FC and React.FunctionComponent usage ([#2324](https://github.com/RedHatInsights/frontend-components/pull/2324))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.4.0
+- Updated @redhat-cloud-services/types to 3.6.0
+
+### ❤️ Thank You
+
+- Charles Mulder
+- platex-rehor-bot
+
+## 7.6.0 (2026-05-26)
+
+### 🚀 Features
+
+- **components:** widen React peer deps, remove prop-types ([0f15133c](https://github.com/RedHatInsights/frontend-components/commit/0f15133c))
+
+### 🩹 Fixes
+
+- **components:** add explicit ReactElement<any> for React 19 type changes ([c2816565](https://github.com/RedHatInsights/frontend-components/commit/c2816565))
+
+### ❤️ Thank You
+
+- Charles Mulder
+
+## 7.5.0 (2026-05-26)
+
+### 🚀 Features
+
+- **components:** convert Inventory components to TypeScript ([75cce9cf](https://github.com/RedHatInsights/frontend-components/commit/75cce9cf))
+
+### 🩹 Fixes
+
+- add accessibility label to spinner ([a4ea5cbe](https://github.com/RedHatInsights/frontend-components/commit/a4ea5cbe))
+- **components:** allow arbitrary props in Inventory component types ([89c40935](https://github.com/RedHatInsights/frontend-components/commit/89c40935))
+- **components:** improve type safety and error reporting in Inventory components ([f77c1250](https://github.com/RedHatInsights/frontend-components/commit/f77c1250))
+
+### ❤️ Thank You
+
+- Charles Mulder
+- NachoBot
+
+## 7.4.3 (2026-05-18)
+
+### 🩹 Fixes
+
+- **components:** update @scalprum packages and enforce Node 24/npm 11 requirements ([60db421d](https://github.com/RedHatInsights/frontend-components/commit/60db421d))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.3.2
+- Updated @redhat-cloud-services/types to 3.5.2
+
+### ❤️ Thank You
+
+- Charles Mulder
+
+## 7.4.2 (2026-05-07)
+
+### 🩹 Fixes
+
+- **SPUR:** fix styling for Toolbar items ([94d04cff](https://github.com/RedHatInsights/frontend-components/commit/94d04cff))
+
+### ❤️ Thank You
+
+- LightOfHeaven1994
+
+## 7.4.1 (2026-04-24)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.3.1
+- Updated @redhat-cloud-services/types to 3.5.1
+
+## 7.4.0 (2026-04-23)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.3.0
+- Updated @redhat-cloud-services/types to 3.5.0
+
+## 7.3.1 (2026-04-10)
+
+### 🩹 Fixes
+
+- **FilterChips:** allow passing icons to filter labels ([042384d2](https://github.com/RedHatInsights/frontend-components/commit/042384d2))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.2.1
+- Updated @redhat-cloud-services/types to 3.4.2
+
+### ❤️ Thank You
+
+- LightOfHeaven1994
+
+## 7.3.0 (2026-03-30)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.2.0
+
+## 7.2.0 (2026-03-27)
+
+### 🚀 Features
+
+- **Chips:** replace deprecated Chip component with Label ([eec9da14](https://github.com/RedHatInsights/frontend-components/commit/eec9da14))
+
+### ❤️ Thank You
+
+- LightOfHeaven1994
+
+## 7.1.1 (2026-03-18)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.1.1
+- Updated @redhat-cloud-services/types to 3.4.1
+
+## 7.1.0 (2026-03-18)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.1.0
+- Updated @redhat-cloud-services/types to 3.4.0
+
+## 7.0.45 (2026-03-13)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.0.40
+
+## 7.0.44 (2026-03-13)
+
+### 🩹 Fixes
+
+- **RHINENG-24564:** fix Sentry Error when selecting a tag ([#2281](https://github.com/RedHatInsights/frontend-components/pull/2281))
+
+### ❤️ Thank You
+
+- zhamilya @computercamplove
+- Zhamilya Abikenova @computercamplove
+
+# Changelog
+
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [7.0.12](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.11...@redhat-cloud-services/frontend-components-7.0.12) (2025-10-13)
+
+
+### Bug Fixes
+
+* **FilterChips:** only show group delete with multiple items ([7e54f57](https://github.com/RedHatInsights/frontend-components/commit/7e54f57a4d41a8fcdc0f58a12179fd730325d573))
+* **group-filter:** restore proper groupSelectable behaviour ([caf7b96](https://github.com/RedHatInsights/frontend-components/commit/caf7b96420f0a55fbda9a80e29c50674aedfac95))
+
+## [7.0.11](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.10...@redhat-cloud-services/frontend-components-7.0.11) (2025-10-07)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.9`
+* `@redhat-cloud-services/types` updated to version `3.3.1`
+## [7.0.10](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.9...@redhat-cloud-services/frontend-components-7.0.10) (2025-10-06)
+
+## [7.0.9](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.8...@redhat-cloud-services/frontend-components-7.0.9) (2025-09-22)
+
+
+### Bug Fixes
+
+* resolve ibutsu job error ([f96dbd0](https://github.com/RedHatInsights/frontend-components/commit/f96dbd071fdf07b94fa0b74303dc54a86fbcfebe))
+
+## [7.0.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.7...@redhat-cloud-services/frontend-components-7.0.8) (2025-09-18)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.8`
+* `@redhat-cloud-services/types` updated to version `3.3.0`
+## [7.0.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.6...@redhat-cloud-services/frontend-components-7.0.7) (2025-09-16)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.7`
+## [7.0.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.5...@redhat-cloud-services/frontend-components-7.0.6) (2025-09-10)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.6`
+* `@redhat-cloud-services/types` updated to version `3.2.1`
+## [7.0.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.4...@redhat-cloud-services/frontend-components-7.0.5) (2025-09-03)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.5`
+* `@redhat-cloud-services/types` updated to version `3.2.0`
+## [7.0.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.3...@redhat-cloud-services/frontend-components-7.0.4) (2025-08-27)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.4`
+* `@redhat-cloud-services/types` updated to version `3.1.0`
+## [7.0.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.2...@redhat-cloud-services/frontend-components-7.0.3) (2025-08-07)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.3`
+## [7.0.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.1...@redhat-cloud-services/frontend-components-7.0.2) (2025-08-05)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.2`
+* `@redhat-cloud-services/types` updated to version `3.0.1`
+## [7.0.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-7.0.0...@redhat-cloud-services/frontend-components-7.0.1) (2025-08-04)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.1`
+## [7.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.1.1...@redhat-cloud-services/frontend-components-7.0.0) (2025-08-04)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `7.0.0`
+* `@redhat-cloud-services/types` updated to version `3.0.0`
+
+### ⚠ BREAKING CHANGES
+
+* updating rbac-client to newer js-client
+
+### Miscellaneous Chores
+
+* updating rbac-client to newer js-client ([ded6e1b](https://github.com/RedHatInsights/frontend-components/commit/ded6e1b37aaabb8ad561bdb7eba3a4a4b16a1975))
+
+## [6.1.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.1.0...@redhat-cloud-services/frontend-components-6.1.1) (2025-07-23)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.1.1`
+## [6.1.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.9...@redhat-cloud-services/frontend-components-6.1.0) (2025-06-30)
+
+
+### Features
+
+* updating to patternfly 6.2.2 ([84fd736](https://github.com/RedHatInsights/frontend-components/commit/84fd73673b826a732267e5ed8f7eba87c2add683))
+
+## [6.0.9](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.8...@redhat-cloud-services/frontend-components-6.0.9) (2025-06-24)
+
+
+### Bug Fixes
+
+* **toolbar:** fix filter chip spacing after PF6 upgrade ([3267d12](https://github.com/RedHatInsights/frontend-components/commit/3267d1262bb7ae4392c98f1a90ede9a3db7090d9))
+
+## [6.0.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.7...@redhat-cloud-services/frontend-components-6.0.8) (2025-06-19)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.1.0`
+## [6.0.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.6...@redhat-cloud-services/frontend-components-6.0.7) (2025-04-28)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.0.5`
+* `@redhat-cloud-services/types` updated to version `2.0.3`
+## [6.0.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.5...@redhat-cloud-services/frontend-components-6.0.6) (2025-04-23)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.0.4`
+* `@redhat-cloud-services/types` updated to version `2.0.2`
+## [6.0.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.4...@redhat-cloud-services/frontend-components-6.0.5) (2025-04-22)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.0.3`
+* `@redhat-cloud-services/types` updated to version `2.0.1`
+## [6.0.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.3...@redhat-cloud-services/frontend-components-6.0.4) (2025-04-02)
+
+
+### Bug Fixes
+
+* **components:** do not pass children as a prop ([11f50be](https://github.com/RedHatInsights/frontend-components/commit/11f50be4f755995bf2e7878b58fd0e8f428e13f7))
+
+## [6.0.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.2...@redhat-cloud-services/frontend-components-6.0.3) (2025-04-01)
+
+
+### Bug Fixes
+
+* **ConditionFilter:** only pass allowed props to React.Fragment in custom filter ([127e0e3](https://github.com/RedHatInsights/frontend-components/commit/127e0e37bea54c5d49c1e3fde1b642f13c524a13))
+
+## [6.0.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.1...@redhat-cloud-services/frontend-components-6.0.2) (2025-03-06)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.0.2`
+## [6.0.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-6.0.0...@redhat-cloud-services/frontend-components-6.0.1) (2025-03-05)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.0.1`
+* `@redhat-cloud-services/types` updated to version `2.0.0`
+## [6.0.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.12...@redhat-cloud-services/frontend-components-6.0.0) (2025-03-05)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `6.0.0`
+* `@redhat-cloud-services/types` updated to version `1.0.24`
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** upgrade PatternFly to v6
+
+### Features
+
+* **deps:** upgrade PatternFly to v6 ([bb48cda](https://github.com/RedHatInsights/frontend-components/commit/bb48cdabd98f05bd8bcd0e330ef27025a50b5274))
+
+
+### Bug Fixes
+
+* using new modal component ([1489612](https://github.com/RedHatInsights/frontend-components/commit/1489612a0a0986b517dd0647fc72f084fbdc00ac))
+
+## [5.2.12](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.11...@redhat-cloud-services/frontend-components-5.2.12) (2025-02-28)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.13`
+* `@redhat-cloud-services/types` updated to version `1.0.23`
+## [5.2.11](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.10...@redhat-cloud-services/frontend-components-5.2.11) (2025-02-28)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.12`
+* `@redhat-cloud-services/types` updated to version `1.0.22`
+## [5.2.10](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.9...@redhat-cloud-services/frontend-components-5.2.10) (2025-02-27)
+
+
+### Bug Fixes
+
+* **components:** groupFilterConstants remove key ([f140fce](https://github.com/RedHatInsights/frontend-components/commit/f140fce2662bace3bf4854e9425de3ff2e54b9be))
+
+## [5.2.9](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.8...@redhat-cloud-services/frontend-components-5.2.9) (2025-02-19)
+
+
+### Bug Fixes
+
+* **Shield:** fix shield spacing without QuestionIcon ([d04296a](https://github.com/RedHatInsights/frontend-components/commit/d04296ae66e46035de5ba2bccf015215545e02c4))
+
+## [5.2.8](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.7...@redhat-cloud-services/frontend-components-5.2.8) (2025-02-14)
+
+## [5.2.7](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.6...@redhat-cloud-services/frontend-components-5.2.7) (2025-02-14)
+
+
+### Bug Fixes
+
+* **components:** fix all outdated OUIA props passing ([0013e65](https://github.com/RedHatInsights/frontend-components/commit/0013e65958803ece733f26ab5cd9cdc0a40cfa51))
+
+## [5.2.6](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.5...@redhat-cloud-services/frontend-components-5.2.6) (2025-02-11)
+
+
+### Bug Fixes
+
+* **components:** conditionalfilter ouia id ([a37195a](https://github.com/RedHatInsights/frontend-components/commit/a37195aae183b5e3083653a0c6636327b3d21085))
+
+## [5.2.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.4...@redhat-cloud-services/frontend-components-5.2.5) (2025-02-10)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.11`
+
+### Bug Fixes
+
+* add version ranges for react-redux 8.x.x and 9.x.x ([#2159](https://github.com/RedHatInsights/frontend-components/issues/2159)) ([5d32d44](https://github.com/RedHatInsights/frontend-components/commit/5d32d44ec06c723d0efaa8ab2cc4f6a9c73c7805))
+
+## [5.2.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.3...@redhat-cloud-services/frontend-components-5.2.4) (2025-02-07)
+
+
+### Bug Fixes
+
+* **Shield:** remove Unknown question mark icon ([2095f46](https://github.com/RedHatInsights/frontend-components/commit/2095f46cf9571100d0291d04ddeaedfe754d8e14))
+
+## [5.2.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.2...@redhat-cloud-services/frontend-components-5.2.3) (2025-01-28)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.10`
+* `@redhat-cloud-services/types` updated to version `1.0.21`
+## [5.2.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.1...@redhat-cloud-services/frontend-components-5.2.2) (2025-01-28)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.9`
+* `@redhat-cloud-services/types` updated to version `1.0.20`
+## [5.2.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.2.0...@redhat-cloud-services/frontend-components-5.2.1) (2025-01-27)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.8`
+
+### Bug Fixes
+
+* **build:** fix release postTarget nested dependencies ([4895cd2](https://github.com/RedHatInsights/frontend-components/commit/4895cd2eba32336a220ddec442916858400ebb3e))
+
+## [5.2.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.1.3...@redhat-cloud-services/frontend-components-5.2.0) (2025-01-23)
+
+
+### Features
+
+* add single select filter component ([00bcfd8](https://github.com/RedHatInsights/frontend-components/commit/00bcfd816dfe0413bf1e16315c6401b054900fb1))
+
+## [5.1.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.1.2...@redhat-cloud-services/frontend-components-5.1.3) (2025-01-16)
+
+
+### Bug Fixes
+
+* **tagmodal:** revert the PF5/Modal import path change ([#2147](https://github.com/RedHatInsights/frontend-components/issues/2147)) ([8da9e97](https://github.com/RedHatInsights/frontend-components/commit/8da9e977367b848f09a956b42ee76994f44dab20))
+
+## [5.1.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.1.1...@redhat-cloud-services/frontend-components-5.1.2) (2025-01-15)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.7`
+
+### Bug Fixes
+
+* **deps:** use latest version of fec packages ([922dcf6](https://github.com/RedHatInsights/frontend-components/commit/922dcf6795942109d75c77273b546ca7f726b2a8))
+
+## [5.1.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.1.0...@redhat-cloud-services/frontend-components-5.1.1) (2025-01-14)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.6`
+
+### Bug Fixes
+
+* replace [@use](https://github.com/use) with [@forward](https://github.com/forward) for SCSS modules ([86ab817](https://github.com/RedHatInsights/frontend-components/commit/86ab81791ca6f739f1a689713a0ca304162ebdfd))
+
+## [5.1.0](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.0.5...@redhat-cloud-services/frontend-components-5.1.0) (2025-01-14)
+
+
+### Features
+
+* **compoments:** allow custom item texts for DownloadButton ([#2140](https://github.com/RedHatInsights/frontend-components/issues/2140)) ([318e044](https://github.com/RedHatInsights/frontend-components/commit/318e044f35aaf7bd92110f7c61d2304a17ea7e03))
+
+## [5.0.5](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.0.4...@redhat-cloud-services/frontend-components-5.0.5) (2025-01-13)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.5`
+* `@redhat-cloud-services/types` updated to version `1.0.19`
+## [5.0.4](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.0.3...@redhat-cloud-services/frontend-components-5.0.4) (2024-12-17)
+
+## [5.0.3](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.0.2...@redhat-cloud-services/frontend-components-5.0.3) (2024-12-13)
+
+
+### Bug Fixes
+
+* **components:** update AsyncComponent TS interface ([2b4d604](https://github.com/RedHatInsights/frontend-components/commit/2b4d60486c189c33dd79893e0d1626b84d19db78))
+
+## [5.0.2](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.0.1...@redhat-cloud-services/frontend-components-5.0.2) (2024-12-02)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.4`
+* `@redhat-cloud-services/types` updated to version `1.0.18`
+## [5.0.1](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/frontend-components-5.0.0...@redhat-cloud-services/frontend-components-5.0.1) (2024-11-22)
+
+### Dependency Updates
+
+* `@redhat-cloud-services/frontend-components-utilities` updated to version `5.0.3`
+* `@redhat-cloud-services/types` updated to version `1.0.17`

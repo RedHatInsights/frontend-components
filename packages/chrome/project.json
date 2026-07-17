@@ -1,0 +1,71 @@
+{
+  "name": "@redhat-cloud-services/chrome",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/chrome",
+  "projectType": "library",
+  "tags": ["scope:public"],
+  "targets": {
+    "build:bundles": {
+      "dependsOn": ["^build:bundles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
+      "options": {
+        "rootDir": "packages/chrome/src",
+        "main": "packages/chrome/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/chrome",
+        "cjsTsConfig": "packages/chrome/tsconfig.cjs.json",
+        "esmTsConfig": "packages/chrome/tsconfig.esm.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
+      }
+    },
+    "build:packages": {
+      "dependsOn": ["^build:packages"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components",
+        "forceTypes": true
+      }
+    },
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/chrome/src"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": ["nx run @redhat-cloud-services/chrome:build:bundles", "nx run @redhat-cloud-services/chrome:build:packages"]
+      },
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/chrome/src/**/*", "packages/chrome/package.json"]
+      }
+    },
+    "test:unit": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/chrome/jest.config.ts"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/chrome",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
+    },
+    "tagRelease": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "git push --tags"
+      }
+    }
+  }
+}

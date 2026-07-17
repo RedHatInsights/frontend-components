@@ -1,0 +1,12 @@
+# Source maps (not needed by consumers)
+*.js.map
+
+# Test files (should not be in dist, but defensive)
+*.test.*
+*.spec.*
+__snapshots__/
+__mocks__/
+
+# Storybook files (development only)
+*.stories.*
+.storybook/

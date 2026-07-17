@@ -1,0 +1,105 @@
+@use '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins' as m;
+@import '~@redhat-cloud-services/frontend-components-utilities/styles/_variables';
+
+.ins-c-rule__report-detail {
+  padding: var(--pf-t--global--spacer--md) 40px;
+
+  .ins-c-rule__report-detail-actions {
+    text-align: right;
+  }
+
+  .ins-c-rule__report-detail-link {
+    margin-bottom: var(--pf-t--global--spacer--xs);
+    margin-left: var(--pf-t--global--spacer--form-element);
+  }
+
+  .ins-c-rule__risk-detail-title {
+    margin-bottom: var(--pf-t--global--spacer--sm);
+    font-weight: var(pf-t--global--font--weight--body);
+  }
+
+  .ins-c-rule__risk-detail-description-text {
+    color: var(--pf-t--global--background--color--secondary--default);
+    size: var(--pf-chart-global--FontSize--sm);
+  }
+
+  p > .ins-c-rule__link-in-description:only-child {
+    display: block;
+    margin-top: var(--pf-v6-l-stack--m-gutter--MarginBottom);
+  }
+
+  .ins-c-rule__rule-feedback-like-button, .ins-c-rule__rule-feedback-dislike-button {
+    padding: 0 var(--pf-t--global--spacer--sm);
+  }
+
+  .ins-c-rule__risk-description {
+    .ins-c-rule__battery {
+      .label, .ins-c-risk-of-change__label {
+        font-weight: 400;
+      }
+    }
+
+    // change color of icons and text according to current severity
+    .ins-c-rule__severity-level-1 {
+      .ins-c-risk-of-change__label, .ins-c-risk-of-change__icon, .label {
+        color: var(--pf-t--global--background--color--secondary--default);
+      }
+    }
+
+    .ins-c-rule__severity-level-2 {
+      .ins-c-risk-of-change__label, .ins-c-risk-of-change__icon, .label {
+        color: var(--pf-t--global--color--status--warning--default);
+      }
+    }
+
+    .ins-c-rule__severity-level-3 {
+      .ins-c-risk-of-change__label, .ins-c-risk-of-change__icon, .label {
+        color: var(--ins-color--orange);
+      }
+    }
+
+    .ins-c-rule__severity-level-4 {
+      .ins-c-risk-of-change__label, .ins-c-risk-of-change__icon, .label {
+        color: var(--pf-t--global--color--status--danger--default);
+      }
+    }
+  }
+
+  .ins-c-risk-of-change__icon {
+    font-size: 28px;
+  }
+
+  ol {
+      @include m.rem('margin-top', 10px);
+      @include m.rem('margin-left', 15px);
+  }
+
+  p + pre, ul + pre { @include m.rem('margin-bottom', 20px); }
+
+  .pf-v6-c-list { @include m.rem('margin', 5px 0); }
+
+  .pf-v6-c-button.pf-m-link {
+    padding-left: 0;
+  }
+
+}
+
+.ins-c-rule__remediating-modal {
+  ol {
+    @include m.rem('margin-top', 10px);
+    @include m.rem('margin-left', 15px);
+  }
+
+  p + pre, ul + pre { @include m.rem('margin-bottom', 20px); }
+
+  .pf-v6-c-list { @include m.rem('margin', 5px 0); }
+
+  .ins-c-rule__modal-content {
+    margin-top: 24px;
+  }
+}
+
+.ins-c-rule__markdown code {
+  white-space: pre-wrap;
+}
+

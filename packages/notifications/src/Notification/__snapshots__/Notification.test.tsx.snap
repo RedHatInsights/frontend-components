@@ -1,0 +1,411 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification component should render correctly 1`] = `
+<div>
+  <div
+    class="pf-v6-c-alert pf-m-success notification-item"
+    data-ouia-component-id="OUIA-Generated-Alert-success-1"
+    data-ouia-component-type="PF6/Alert"
+    data-ouia-safe="true"
+    id="Foo"
+  >
+    <div
+      class="pf-v6-c-alert__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-v6-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+        />
+      </svg>
+    </div>
+    <h4
+      class="pf-v6-c-alert__title"
+    >
+      <span
+        class="pf-v6-screen-reader"
+      >
+        Success alert:
+      </span>
+      Bar
+    </h4>
+    <div
+      class="pf-v6-c-alert__description"
+    >
+      <div
+        class="pf-v6-c-content"
+        data-ouia-component-id="OUIA-Generated-Content-1"
+        data-ouia-component-type="PF6/Content"
+        data-ouia-safe="true"
+        data-pf-content="true"
+      >
+        <small
+          class="pf-v6-c-content--small sentry-mask data-hj-suppress"
+          data-ouia-component-id="OUIA-Generated-Content-2"
+          data-ouia-component-type="PF6/Content"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          description
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Notification component should render correctly with HTML description 1`] = `
+<div>
+  <div
+    class="pf-v6-c-alert pf-m-success notification-item"
+    data-ouia-component-id="OUIA-Generated-Alert-success-4"
+    data-ouia-component-type="PF6/Alert"
+    data-ouia-safe="true"
+    id="Foo"
+  >
+    <div
+      class="pf-v6-c-alert__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-v6-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+        />
+      </svg>
+    </div>
+    <h4
+      class="pf-v6-c-alert__title"
+    >
+      <span
+        class="pf-v6-screen-reader"
+      >
+        Success alert:
+      </span>
+      Bar
+    </h4>
+    <div
+      class="pf-v6-c-alert__description"
+    >
+      <div
+        class="pf-v6-c-content"
+        data-ouia-component-id="OUIA-Generated-Content-9"
+        data-ouia-component-type="PF6/Content"
+        data-ouia-safe="true"
+        data-pf-content="true"
+      >
+        <small
+          class="pf-v6-c-content--small sentry-mask data-hj-suppress"
+          data-ouia-component-id="OUIA-Generated-Content-10"
+          data-ouia-component-type="PF6/Content"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          Some textanother
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Notification component should render correctly with HTML title 1`] = `
+<div>
+  <div
+    class="pf-v6-c-alert pf-m-success notification-item"
+    data-ouia-component-id="OUIA-Generated-Alert-success-5"
+    data-ouia-component-type="PF6/Alert"
+    data-ouia-safe="true"
+    id="Foo"
+  >
+    <div
+      class="pf-v6-c-alert__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-v6-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+        />
+      </svg>
+    </div>
+    <h4
+      class="pf-v6-c-alert__title"
+    >
+      <span
+        class="pf-v6-screen-reader"
+      >
+        Success alert:
+      </span>
+      Some textanother
+    </h4>
+    <div
+      class="pf-v6-c-alert__description"
+    >
+      <div
+        class="pf-v6-c-content"
+        data-ouia-component-id="OUIA-Generated-Content-11"
+        data-ouia-component-type="PF6/Content"
+        data-ouia-safe="true"
+        data-pf-content="true"
+      >
+        <small
+          class="pf-v6-c-content--small sentry-mask data-hj-suppress"
+          data-ouia-component-id="OUIA-Generated-Content-12"
+          data-ouia-component-type="PF6/Content"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          description
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Notification component should render correctly with dismiss button 1`] = `
+<div>
+  <div
+    class="pf-v6-c-alert pf-m-success notification-item"
+    data-ouia-component-id="OUIA-Generated-Alert-success-6"
+    data-ouia-component-type="PF6/Alert"
+    data-ouia-safe="true"
+    id="Foo"
+  >
+    <div
+      class="pf-v6-c-alert__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-v6-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+        />
+      </svg>
+    </div>
+    <h4
+      class="pf-v6-c-alert__title"
+    >
+      <span
+        class="pf-v6-screen-reader"
+      >
+        Success alert:
+      </span>
+      Bar
+    </h4>
+    <div
+      class="pf-v6-c-alert__action"
+    >
+      <button
+        aria-label="close-notification"
+        class="pf-v6-c-button pf-m-plain"
+        data-ouia-component-id="OUIA-Generated-Button-plain-1"
+        data-ouia-component-type="PF6/Button"
+        data-ouia-safe="true"
+        type="button"
+      >
+        <span
+          class="pf-v6-c-button__icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="pf-v6-svg"
+            fill="currentColor"
+            height="1em"
+            role="img"
+            viewBox="0 0 352 512"
+            width="1em"
+          >
+            <path
+              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <div
+      class="pf-v6-c-alert__description"
+    >
+      <div
+        class="pf-v6-c-content"
+        data-ouia-component-id="OUIA-Generated-Content-13"
+        data-ouia-component-type="PF6/Content"
+        data-ouia-safe="true"
+        data-pf-content="true"
+      >
+        <small
+          class="pf-v6-c-content--small sentry-mask data-hj-suppress"
+          data-ouia-component-id="OUIA-Generated-Content-14"
+          data-ouia-component-type="PF6/Content"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Notification component should render correctly with sentryId 1`] = `
+<div>
+  <div
+    class="pf-v6-c-alert pf-m-success notification-item"
+    data-ouia-component-id="OUIA-Generated-Alert-success-3"
+    data-ouia-component-type="PF6/Alert"
+    data-ouia-safe="true"
+    id="Foo"
+  >
+    <div
+      class="pf-v6-c-alert__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-v6-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+        />
+      </svg>
+    </div>
+    <h4
+      class="pf-v6-c-alert__title"
+    >
+      <span
+        class="pf-v6-screen-reader"
+      >
+        Success alert:
+      </span>
+      Bar
+    </h4>
+    <div
+      class="pf-v6-c-alert__description"
+    >
+      <div
+        class="pf-v6-c-content"
+        data-ouia-component-id="OUIA-Generated-Content-5"
+        data-ouia-component-type="PF6/Content"
+        data-ouia-safe="true"
+        data-pf-content="true"
+      >
+        <small
+          class="pf-v6-c-content--small sentry-mask data-hj-suppress"
+          data-ouia-component-id="OUIA-Generated-Content-6"
+          data-ouia-component-type="PF6/Content"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          description
+        </small>
+      </div>
+      <div
+        class="pf-v6-c-content"
+        data-ouia-component-id="OUIA-Generated-Content-7"
+        data-ouia-component-type="PF6/Content"
+        data-ouia-safe="true"
+        data-pf-content="true"
+      >
+        <small
+          class="pf-v6-c-content--small"
+          data-ouia-component-id="OUIA-Generated-Content-8"
+          data-ouia-component-type="PF6/Content"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          Tracking Id: 
+          some-UUID
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Notification component should render correctly without description 1`] = `
+<div>
+  <div
+    class="pf-v6-c-alert pf-m-success notification-item"
+    data-ouia-component-id="OUIA-Generated-Alert-success-2"
+    data-ouia-component-type="PF6/Alert"
+    data-ouia-safe="true"
+    id="Foo"
+  >
+    <div
+      class="pf-v6-c-alert__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-v6-svg"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+        />
+      </svg>
+    </div>
+    <h4
+      class="pf-v6-c-alert__title"
+    >
+      <span
+        class="pf-v6-screen-reader"
+      >
+        Success alert:
+      </span>
+      Bar
+    </h4>
+    <div
+      class="pf-v6-c-alert__description"
+    >
+      <div
+        class="pf-v6-c-content"
+        data-ouia-component-id="OUIA-Generated-Content-3"
+        data-ouia-component-type="PF6/Content"
+        data-ouia-safe="true"
+        data-pf-content="true"
+      >
+        <small
+          class="pf-v6-c-content--small sentry-mask data-hj-suppress"
+          data-ouia-component-id="OUIA-Generated-Content-4"
+          data-ouia-component-type="PF6/Content"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

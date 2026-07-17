@@ -1,0 +1,27 @@
+@use '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins.scss' as m;
+
+section.ins-l-content {
+  padding: var(--pf-t--global--spacer--lg);
+}
+
+section.ins-l-button-group {
+  > * { display: inline; }
+  * + * { @include m.rem('margin-left', 5px); }
+  @include m.rem('margin', 24px 0);
+}
+
+section.ins-l-icon-group {
+  * + * { margin-left: 10px; }
+}
+
+section.ins-l-icon-group__with-major {
+  * + * { margin-left: 7.5px; }
+  .ins-battery:last-of-type {
+    padding-left: 15px;
+    border-left: 2px solid #eaeaea;
+    span.label{
+      font-weight: 500;
+      margin: 0 10px;
+    }
+  }
+}

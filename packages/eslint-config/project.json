@@ -1,0 +1,48 @@
+{
+  "name": "@redhat-cloud-services/eslint-config-redhat-cloud-services",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/eslint-config",
+  "projectType": "library",
+  "tags": ["scope:public"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build"],
+      "options": {
+        "main": "packages/eslint-config/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/eslint-config-redhat-cloud-services",
+        "tsConfig": "packages/eslint-config/tsconfig.json",
+        "assets": ["README.md", { "input": ".", "glob": ".npmignore", "output": "." }]
+      }
+    },
+    "test:unit": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/eslint-config"],
+      "options": {
+        "jestConfig": "packages/eslint-config/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/eslint-config/**/*.ts", "packages/eslint-config/package.json"]
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/eslint-config-redhat-cloud-services",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
+    },
+    "tagRelease": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "git push --tags"
+      }
+    }
+  }
+}

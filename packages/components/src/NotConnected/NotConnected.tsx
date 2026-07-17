@@ -1,0 +1,37 @@
+import React from 'react';
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { EmptyState } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateBody } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+import { EmptyStateFooter } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
+
+import DisconnectedIcon from '@patternfly/react-icons/dist/dynamic/icons/disconnected-icon';
+
+export interface NotConnectedProps {
+  titleText?: React.ReactNode;
+  bodyText?: React.ReactNode;
+  buttonText?: React.ReactNode;
+}
+
+const NotConnected = ({
+  titleText = 'This system isn’t connected to Insights yet',
+  bodyText = 'To get started, activate the Insights client for this system.',
+  buttonText = 'Learn how to activate the Insights client',
+}: NotConnectedProps) => (
+  <EmptyState headingLevel="h5" icon={DisconnectedIcon} titleText={titleText}>
+    <EmptyStateBody>{bodyText}</EmptyStateBody>
+    <EmptyStateFooter>
+      <Button
+        variant="primary"
+        component="a"
+        href="https://access.redhat.com/products/red-hat-insights/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="pf-v6-u-mt-lg"
+      >
+        {buttonText}
+      </Button>
+    </EmptyStateFooter>
+  </EmptyState>
+);
+
+export default NotConnected;

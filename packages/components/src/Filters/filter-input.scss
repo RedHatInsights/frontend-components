@@ -1,0 +1,7 @@
+.ins-c-filter-input__checkbox {
+  // ensure the entire item is clickable
+  display: flex !important;
+  > label {
+    flex: 1;
+  }
+}

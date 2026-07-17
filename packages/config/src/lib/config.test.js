@@ -1,0 +1,206 @@
+import config from './createConfig';
+import path from 'path';
+const crdMockPath = path.resolve(__dirname, './crd-mock.yaml');
+
+const configBuilder = (c) => config({ rootFolder: '', frontendCRDPath: crdMockPath, ...c });
+
+describe('should create dummy config with no options', () => {
+  const { mode, optimization, entry, output, devServer } = config({
+    rootFolder: '',
+    appEntry: '/foo/bar',
+    appName: 'Fooapp',
+    env: 'stage-stable',
+    frontendCRDPath: crdMockPath,
+  });
+
+  const { mode: prodMode } = configBuilder({ mode: 'production' });
+  test('mode', () => {
+    expect(mode).toBe('development');
+  });
+
+  test('prodMode', () => {
+    expect(prodMode).toBe('production');
+  });
+
+  test('optimization', () => {
+    expect(optimization).toEqual(undefined);
+  });
+
+  test('entry', () => {
+    expect(entry).toEqual({ App: '/foo/bar' });
+  });
+
+  test('output', () => {
+    expect(output).toEqual({
+      filename: expect.stringMatching(/js\/\[name\]\.\[contenthash\]\.js/),
+      path: '/dist',
+      chunkFilename: expect.stringMatching(/js\/\[name\]\.\[contenthash\]\.js/),
+    });
+  });
+
+  test('devServer', () => {
+    expect(devServer).toEqual({
+      setupMiddlewares: expect.any(Function),
+      onListening: expect.any(Function),
+      static: {
+        directory: '/dist',
+      },
+      server: 'http',
+      host: '0.0.0.0',
+      port: 8002,
+      hot: false,
+      liveReload: true,
+      allowedHosts: 'all',
+      historyApiFallback: {
+        rewrites: [
+          { from: /^\/api/, to: '/404.html' },
+          { from: /^\/config/, to: '/404.html' },
+        ],
+        verbose: false,
+        disableDotRule: true,
+      },
+      client: {
+        overlay: false,
+      },
+      devMiddleware: {
+        writeToDisk: true,
+      },
+    });
+  });
+});
+
+describe('rootFolder', () => {
+  const { output, devServer } = configBuilder({ rootFolder: '/some' });
+  test('output', () => {
+    expect(output.path).toBe('/some/dist');
+  });
+
+  test('devServer', () => {
+    expect(devServer.static.directory).toBe('/some/dist');
+  });
+});
+
+describe('module rules', () => {
+  test('length', () => {
+    const { module } = configBuilder({ appEntry: 'testEntry', appName: 'someName' });
+    expect(module.rules.length).toBe(4);
+  });
+});
+
+test('appEntry correctly set', () => {
+  const { entry } = configBuilder({ appEntry: 'testEntry' });
+  expect(entry).toEqual({ App: 'testEntry' });
+});
+
+describe('publicPath', () => {
+  test('should ignore unknown public path', () => {
+    const { output } = configBuilder({ publicPath: 'test-value' });
+    expect(output.publicPath).toBe(undefined);
+  });
+  test('should propagate public path auto', () => {
+    const { output } = configBuilder({ publicPath: 'auto' });
+    expect(output.publicPath).toBe('auto');
+  });
+});
+
+describe('port', () => {
+  const { devServer } = configBuilder({ port: 1000 });
+
+  test('devServer', () => {
+    expect(devServer.port).toBe(1000);
+  });
+});
+
+test('https', () => {
+  const { devServer } = configBuilder({ https: true });
+  // Without mkcert .pem files, falls back to 'https' string
+  expect(devServer.server).toBe('https');
+});
+
+describe('mkcert certificate detection', () => {
+  const fs = require('fs');
+  const originalExistsSync = fs.existsSync;
+  const originalReadFileSync = fs.readFileSync;
+
+  afterEach(() => {
+    fs.existsSync = originalExistsSync;
+    fs.readFileSync = originalReadFileSync;
+  });
+
+  test('uses mkcert certs when .pem files exist in rootFolder', () => {
+    const certContent = Buffer.from('mock-cert');
+    const keyContent = Buffer.from('mock-key');
+    fs.existsSync = jest.fn((filePath) => {
+      if (filePath.includes('stage.foo.redhat.com.pem') || filePath.includes('stage.foo.redhat.com-key.pem')) {
+        return true;
+      }
+      return originalExistsSync(filePath);
+    });
+    fs.readFileSync = jest.fn((filePath) => {
+      if (filePath.includes('stage.foo.redhat.com-key.pem')) return keyContent;
+      if (filePath.includes('stage.foo.redhat.com.pem')) return certContent;
+      return originalReadFileSync(filePath);
+    });
+
+    const { devServer } = configBuilder({ https: true, rootFolder: '/app' });
+    expect(devServer.server).toEqual({
+      type: 'https',
+      options: {
+        cert: certContent,
+        key: keyContent,
+      },
+    });
+  });
+
+  test('falls back to https string when .pem files are missing', () => {
+    fs.existsSync = jest.fn((filePath) => {
+      if (filePath.includes('stage.foo.redhat.com')) return false;
+      return originalExistsSync(filePath);
+    });
+
+    const { devServer } = configBuilder({ https: true, rootFolder: '/app' });
+    expect(devServer.server).toBe('https');
+  });
+
+  test('does not check for .pem files when server is http', () => {
+    fs.existsSync = jest.fn((filePath) => {
+      if (filePath.includes('stage.foo.redhat.com')) {
+        throw new Error('Should not check for .pem files in http mode');
+      }
+      return originalExistsSync(filePath);
+    });
+
+    const { devServer } = configBuilder({ https: false, useProxy: false, rootFolder: '/app' });
+    expect(devServer.server).toBe('http');
+  });
+
+  test('uses mkcert certs when useProxy is true', () => {
+    const certContent = Buffer.from('mock-cert');
+    const keyContent = Buffer.from('mock-key');
+    fs.existsSync = jest.fn((filePath) => {
+      if (filePath.includes('stage.foo.redhat.com.pem') || filePath.includes('stage.foo.redhat.com-key.pem')) {
+        return true;
+      }
+      return originalExistsSync(filePath);
+    });
+    fs.readFileSync = jest.fn((filePath) => {
+      if (filePath.includes('stage.foo.redhat.com-key.pem')) return keyContent;
+      if (filePath.includes('stage.foo.redhat.com.pem')) return certContent;
+      return originalReadFileSync(filePath);
+    });
+
+    const { devServer } = configBuilder({ useProxy: true, rootFolder: '/app' });
+    expect(devServer.server).toEqual({
+      type: 'https',
+      options: {
+        cert: certContent,
+        key: keyContent,
+      },
+    });
+  });
+});
+
+test('noFileHash', () => {
+  const { output } = configBuilder({ useFileHash: false });
+  expect(output.filename).toBe('js/[name].js');
+});
