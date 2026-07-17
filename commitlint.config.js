@@ -43,9 +43,14 @@ module.exports = {
             return [true];
           }
 
-          // No scope is fine — Nx uses file changes to determine affected packages
+          // Scope required for versioning commits
           if (!scope) {
-            return [true];
+            const commitType = isBreaking ? 'breaking (!)/feat/fix' : 'feat/fix';
+            return [
+              false,
+              `Scope required for ${commitType} commits.\n` +
+                `Use: ${type}(@redhat-cloud-services/utilities): ...`
+            ];
           }
 
           // Extract scope from raw header as fallback when parser strips it
@@ -68,11 +73,12 @@ module.exports = {
             if (AREA_SCOPES.includes(trimmed)) continue;
             if (!validProjects.has(trimmed)) {
               const commitType = isBreaking ? 'breaking (!)/feat/fix' : 'feat/fix';
+              const hint = trimmed.startsWith('@redhat-cloud-services/')
+                ? `Project "${trimmed}" not found. Run: npx nx show projects`
+                : `Use full project name like: ${type}(@redhat-cloud-services/utilities)${isBreaking ? '!' : ''}: ...`;
               return [
                 false,
-                `Scope "${trimmed}" must be a full Nx project name for ${commitType} commits.\n` +
-                  `Use: ${type}(@redhat-cloud-services/<package>)${isBreaking ? '!' : ''}: ...\n` +
-                  `Not: ${type}(${trimmed})${isBreaking ? '!' : ''}: ...`,
+                `Scope "${trimmed}" must be a full Nx project name for ${commitType} commits.\n${hint}`,
               ];
             }
           }

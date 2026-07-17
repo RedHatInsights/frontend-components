@@ -5,7 +5,7 @@
  * Run with: NODE_OPTIONS="--experimental-vm-modules" npx jest --config '{}' .commitlintrc.test.js
  */
 
-const config = require('./.commitlintrc');
+const config = require('./commitlint.config');
 
 /**
  * The default @commitlint/lint parser does not support the conventional
@@ -76,15 +76,6 @@ describe('commitlint scope-full-name-for-versioning', () => {
       expect(result.valid).toBe(true);
     });
 
-    it('feat with no scope', async () => {
-      const result = await lintMessage('feat: global change');
-      expect(result.valid).toBe(true);
-    });
-
-    it('breaking fix! with no scope', async () => {
-      const result = await lintMessage('fix!: breaking fix');
-      expect(result.valid).toBe(true);
-    });
 
     it('BREAKING CHANGE footer with full project name', async () => {
       const result = await lintMessage(
@@ -93,10 +84,8 @@ describe('commitlint scope-full-name-for-versioning', () => {
       expect(result.valid).toBe(true);
     });
 
-    it('BREAKING CHANGE footer with no scope', async () => {
-      const result = await lintMessage(
-        'refactor: rewrite internals\n\nBREAKING CHANGE: new API'
-      );
+    it('refactor with no scope (non-versioning)', async () => {
+      const result = await lintMessage('refactor: rewrite internals');
       expect(result.valid).toBe(true);
     });
 
@@ -141,6 +130,7 @@ describe('commitlint scope-full-name-for-versioning', () => {
       expect(result.errors[0].message).toContain(
         'must be a full Nx project name'
       );
+      expect(result.errors[0].message).toContain('Use full project name like');
     });
 
     it('fix with short scope', async () => {
@@ -158,9 +148,31 @@ describe('commitlint scope-full-name-for-versioning', () => {
       expect(result.valid).toBe(false);
     });
 
-    it('feat with made-up scope', async () => {
+    it('feat with made-up scope (short)', async () => {
       const result = await lintMessage('feat(my-package): something');
       expect(result.valid).toBe(false);
+    });
+
+    it('feat with made-up scope (full name)', async () => {
+      const result = await lintMessage(
+        'feat(@redhat-cloud-services/nonexistent): something'
+      );
+      expect(result.valid).toBe(false);
+      expect(result.errors[0].message).toContain('not found');
+    });
+
+    it('feat with no scope', async () => {
+      const result = await lintMessage('feat: global change');
+      expect(result.valid).toBe(false);
+      expect(result.errors[0].message).toContain('Scope required');
+    });
+
+    it('BREAKING CHANGE footer with no scope', async () => {
+      const result = await lintMessage(
+        'refactor: rewrite\n\nBREAKING CHANGE: new API'
+      );
+      expect(result.valid).toBe(false);
+      expect(result.errors[0].message).toContain('Scope required');
     });
 
     it('BREAKING CHANGE footer with short scope', async () => {
