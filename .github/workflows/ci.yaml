@@ -1,0 +1,181 @@
+name: Frontend components CI pipeline
+permissions:
+  contents: read
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  install:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - uses: './.github/actions/setup-environment'
+      - uses: './.github/actions/cypress-cache'
+      - name: Install dependencies
+        run: npm ci
+  build:
+    runs-on: ubuntu-24.04
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
+      - uses: './.github/actions/setup-environment'
+      - uses: nrwl/nx-set-shas@3e9ad7370203c1e93d109be57f3b72eb0eb511b1 # v4
+      - name: Build
+        run: npm run build
+  unit-test:
+    runs-on: ubuntu-24.04
+    needs: [install]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
+      - uses: './.github/actions/setup-environment'
+      - uses: nrwl/nx-set-shas@3e9ad7370203c1e93d109be57f3b72eb0eb511b1 # v4
+      - name: Run unit tests
+        run: npm run test:unit
+  component-test:
+    runs-on: ubuntu-24.04
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
+      - uses: './.github/actions/setup-environment'
+      - uses: nrwl/nx-set-shas@3e9ad7370203c1e93d109be57f3b72eb0eb511b1 # v4
+      - uses: './.github/actions/cypress-cache'
+      - name: Install deps
+        shell: bash
+        run: npm ci
+      - name: Run component tests
+        uses: cypress-io/github-action@be1bab96b388bbd9ce3887e397d373c8557e15af # v6.9.2
+        with:
+          command: npx nx affected -t test:component --exclude=demo --outputStyle=static --parallel=1
+  lint:
+    runs-on: ubuntu-24.04
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
+      - uses: './.github/actions/setup-environment'
+      - uses: nrwl/nx-set-shas@3e9ad7370203c1e93d109be57f3b72eb0eb511b1 # v4
+      - name: Lint
+        run: npx nx affected -t lint --exclude=demo --outputStyle=static
+  commitlint:
+    needs: [install]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
+      - uses: './.github/actions/setup-environment'
+      - name: install
+        shell: bash
+        run: npm ci
+      - name: Test commitlint config
+        run: NODE_OPTIONS="--experimental-vm-modules" npx jest --config=commitlint.jest.config.js
+      - name: Validate current commit on push
+        shell: bash
+        if: github.event_name == 'push'
+        run: npx commitlint --from HEAD~1 --to HEAD --verbose
+      - name: Validate PR commits
+        shell: bash
+        if: github.event_name == 'pull_request'
+        run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
+  check-circular-imports:
+    runs-on: ubuntu-24.04
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
+      - uses: './.github/actions/setup-environment'
+      - uses: nrwl/nx-set-shas@3e9ad7370203c1e93d109be57f3b72eb0eb511b1 # v4
+      - name: install
+        shell: bash
+        run: npm ci
+      - name: Check circular imports
+        run: npx nx affected -t test:circular-dependencies --exclude=demo --outputStyle=static
+  build-storybook:
+    runs-on: ubuntu-24.04
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: './.github/actions/setup-environment'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Storybook
+        run: npx nx run @redhat-cloud-services/frontend-components:build-storybook
+      - name: Upload Storybook artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: storybook-static
+          path: storybook-static
+          retention-days: 7
+  test-storybook:
+    runs-on: ubuntu-24.04
+    needs: build-storybook
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: './.github/actions/setup-environment'
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Download Storybook artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: storybook-static
+          path: storybook-static
+      - name: Run Storybook tests
+        env:
+          CI: true
+        run: |
+          npx http-server storybook-static -p 6007 -s &
+          npx wait-on --timeout 60000 http://127.0.0.1:6007
+          npx test-storybook --config-dir packages/components/.storybook --url http://127.0.0.1:6007
+  release:
+    runs-on: ubuntu-24.04
+    needs: [install, build, unit-test, component-test, lint, commitlint, check-circular-imports]
+    # Only run on push to master branch (never on PRs, workflow_dispatch, etc.)
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    environment: npm-publish
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_BOT_TOKEN }}
+      - uses: './.github/actions/release'
+        with:
+          gh_token: ${{ secrets.GH_BOT_TOKEN }}
+          gh_name: ${{ secrets.BOT_NAME }}
+          gh_email: ${{ secrets.BOT_EMAIL }}
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}

@@ -1,0 +1,14 @@
+{
+  "en": {
+    "default.cancel": "Cancel",
+    "default.save": "Save",
+    "default.delete": "Delete",
+    "default.remove": "Remove"
+  },
+  "cs": {
+    "default.cancel": "Zrušit",
+    "default.save": "Save",
+    "default.delete": "Smazat",
+    "default.remove": "Odstranit"
+  }
+}

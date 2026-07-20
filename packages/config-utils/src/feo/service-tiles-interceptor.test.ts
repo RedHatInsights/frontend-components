@@ -1,0 +1,158 @@
+import { FrontendCRD, ServicesTilesResponseEntry } from './feo-types';
+import serviceTilesInterceptor from './service-tiles-interceptor';
+
+describe('Service tiles interceptor', () => {
+  // Declare mock variables outside beforeEach for shared access
+  let frontendName: string;
+  let frontendCrd: FrontendCRD;
+  let remoteServiceTiles: ServicesTilesResponseEntry[];
+
+  beforeEach(() => {
+    // Clear all mocks to ensure test isolation
+    jest.clearAllMocks();
+
+    // Initialize/reset test data with default values
+    frontendName = 'frontendName';
+    frontendCrd = {
+      objects: [
+        {
+          metadata: {
+            name: frontendName,
+          },
+          spec: {
+            frontend: {
+              paths: ['/'],
+            },
+            module: {
+              manifestLocation: 'location',
+            },
+            serviceTiles: [
+              {
+                section: 'section-1',
+                group: 'group-1',
+                id: 'id-1',
+                frontendRef: frontendName,
+              },
+              {
+                section: 'section-1',
+                group: 'group-1',
+                id: 'id-2',
+                frontendRef: frontendName,
+              },
+              {
+                section: 'section-2',
+                group: 'group-1',
+                id: 'id-3',
+                frontendRef: frontendName,
+              },
+            ],
+          },
+        },
+      ],
+    };
+    remoteServiceTiles = [
+      {
+        id: 'section-1',
+        description: 'section 1',
+        icon: 'icon',
+        links: [
+          {
+            id: 'group-1',
+            title: 'Group 1',
+            links: [
+              {
+                section: 'section-1',
+                group: 'group-1',
+                id: 'otherFrontend',
+                frontendRef: 'otherFrontend',
+              },
+              {
+                section: 'section-1',
+                group: 'group-1',
+                id: 'id-2',
+                frontendRef: frontendName,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'section-2',
+        description: 'section 2',
+        icon: 'icon',
+        links: [
+          {
+            id: 'group-1',
+            title: 'Group 1',
+            links: [
+              {
+                section: 'section-2',
+                group: 'group-1',
+                id: 'otherFrontend',
+                frontendRef: 'otherFrontend',
+              },
+            ],
+          },
+        ],
+      },
+    ];
+  });
+
+  it('should replace service tiles with the ones from the frontendCRD', () => {
+    // Arrange - Setup test data (mocks already configured in beforeEach)
+    const expectedServiceTiles: ServicesTilesResponseEntry[] = [
+      {
+        id: 'section-1',
+        description: 'section 1',
+        icon: 'icon',
+        links: [
+          {
+            title: 'Group 1',
+            id: 'group-1',
+            links: [
+              remoteServiceTiles[0].links[0].links[0],
+              {
+                section: 'section-1',
+                group: 'group-1',
+                id: 'id-1',
+                frontendRef: frontendName,
+              },
+              {
+                section: 'section-1',
+                group: 'group-1',
+                id: 'id-2',
+                frontendRef: frontendName,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'section-2',
+        description: 'section 2',
+        icon: 'icon',
+        links: [
+          {
+            title: 'Group 1',
+            id: 'group-1',
+            links: [
+              remoteServiceTiles[1].links[0].links[0],
+              {
+                section: 'section-2',
+                group: 'group-1',
+                id: 'id-3',
+                frontendRef: frontendName,
+              },
+            ],
+          },
+        ],
+      },
+    ];
+
+    // Act - Execute the function under test
+    const result = serviceTilesInterceptor(remoteServiceTiles, frontendCrd);
+
+    // Assert - Verify behavior
+    expect(result).toEqual(expectedServiceTiles);
+  });
+});

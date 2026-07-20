@@ -1,0 +1,39 @@
+{
+  "name": "@redhat-cloud-services/eslint-config-redhat-cloud-services",
+  "version": "3.3.1",
+  "description": "Recommended eslint configuration used in cloud.redhat.com frontend apps.",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "@babel/eslint-parser": "^7.27.0",
+    "@babel/preset-react": "^7.26.3",
+    "@typescript-eslint/eslint-plugin": "^8.53.1",
+    "@typescript-eslint/parser": "^8.53.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-rulesdir": "^0.2.2",
+    "globals": "^16.0.0",
+    "prettier": "^3.5.3"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.14.0",
+    "eslint": "^9.24.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/RedHatInsights/frontend-components/issues"
+  },
+  "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/eslint-config#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}

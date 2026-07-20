@@ -1,0 +1,40 @@
+{
+  "name": "@redhat-cloud-services/types",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/types",
+  "projectType": "library",
+  "tags": ["scope:public"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "dependsOn": ["^build"],
+      "options": {
+        "main": "packages/types/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/types",
+        "tsConfig": "packages/types/tsconfig.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/types/**/*.ts", "packages/types/package.json"]
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/types",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
+    },
+    "tagRelease": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "git push --tags"
+      }
+    }
+  }
+}

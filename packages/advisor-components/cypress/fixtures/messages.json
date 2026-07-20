@@ -1,0 +1,16 @@
+{
+  "systemReboot": "System reboot is required.",
+  "knowledgebaseArticle": "Knowledgebase article",
+  "topicRelatedToRule": "Topics related to this recommendation",
+  "totalRisk": "Total risk",
+  "rulesDetailsTotalRiskBody": "The total risk of this remediation is low, based on the combination of likelihood and impact to remediate.",
+  "likelihoodLevel": "Low likelihood",
+  "likelihoodDescription": "The likelihood that this will be a problem is low.",
+  "impactLevel": "Low impact",
+  "impactDescription": "he impact of the problem would be low if it occurred.",
+  "riskOfChange": "Risk of change",
+  "riskOfChangeText": "The risk of change is low, because the change takes very little time to implement and there is minimal impact to system operations.",
+  "riskOfChangeLabel": "Low",
+  "ruleHelpful": "Is this recommendation helpful?",
+  "feedbackThankYou": "Thank you for your feedback!"
+}

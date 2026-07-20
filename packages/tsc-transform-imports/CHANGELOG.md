@@ -1,0 +1,72 @@
+## 1.3.1 (2026-07-13)
+
+This was a version bump only for @redhat-cloud-services/tsc-transform-imports to align it with other projects, there were no code changes.
+
+## 1.3.0 (2026-07-09)
+
+This was a version bump only for @redhat-cloud-services/tsc-transform-imports to align it with other projects, there were no code changes.
+
+## 1.2.1 (2026-05-29)
+
+### 🩹 Fixes
+
+- **tsc-transform-imports:** assign discarded replace result for ESM path rewrite ([450bf39c](https://github.com/RedHatInsights/frontend-components/commit/450bf39c))
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
+## 1.2.0 (2026-05-29)
+
+### 🚀 Features
+
+- **eslint-config:** warn against React.FC and React.FunctionComponent usage ([#2324](https://github.com/RedHatInsights/frontend-components/pull/2324))
+
+### ❤️ Thank You
+
+- Charles Mulder
+- platex-rehor-bot
+
+## 1.1.2 (2026-05-18)
+
+This was a version bump only for @redhat-cloud-services/tsc-transform-imports to align it with other projects, there were no code changes.
+
+## 1.1.1 (2026-04-24)
+
+This was a version bump only for @redhat-cloud-services/tsc-transform-imports to align it with other projects, there were no code changes.
+
+## 1.1.0 (2026-04-23)
+
+This was a version bump only for @redhat-cloud-services/tsc-transform-imports to align it with other projects, there were no code changes.
+
+## 1.0.58 (2026-04-10)
+
+This was a version bump only for @redhat-cloud-services/tsc-transform-imports to align it with other projects, there were no code changes.
+
+## 1.0.57 (2026-03-18)
+
+This was a version bump only for @redhat-cloud-services/tsc-transform-imports to align it with other projects, there were no code changes.
+
+# Changelog
+
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [1.0.25](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/tsc-transform-imports-1.0.24...@redhat-cloud-services/tsc-transform-imports-1.0.25) (2025-07-08)
+
+
+### Bug Fixes
+
+* **tsc-transform-imports:** update transformer logic to avoid converting react-tokens esm to dynamic ([b97ab13](https://github.com/RedHatInsights/frontend-components/commit/b97ab13084de429eeb76a62b2fcd3d7af58f52c3))
+
+## [1.0.24](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/tsc-transform-imports-1.0.23...@redhat-cloud-services/tsc-transform-imports-1.0.24) (2025-04-23)
+
+## [1.0.23](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/tsc-transform-imports-1.0.22...@redhat-cloud-services/tsc-transform-imports-1.0.23) (2025-01-28)
+
+## [1.0.22](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/tsc-transform-imports-1.0.21...@redhat-cloud-services/tsc-transform-imports-1.0.22) (2025-01-28)
+
+## [1.0.21](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/tsc-transform-imports-1.0.20...@redhat-cloud-services/tsc-transform-imports-1.0.21) (2024-11-22)
+
+## [1.0.20](https://github.com/RedHatInsights/frontend-components/compare/@redhat-cloud-services/tsc-transform-imports-1.0.19...@redhat-cloud-services/tsc-transform-imports-1.0.20) (2024-11-22)
+
+## [1.0.20](https://github.com/Hyperkid123/frontend-components/compare/@redhat-cloud-services/tsc-transform-imports-1.0.19...@redhat-cloud-services/tsc-transform-imports-1.0.20) (2024-11-19)
