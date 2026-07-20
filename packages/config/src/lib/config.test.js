@@ -200,6 +200,116 @@ describe('mkcert certificate detection', () => {
   });
 });
 
+describe('mkcert certificate detection (integration - real filesystem)', () => {
+  const fs = require('fs');
+  const os = require('os');
+  let tmpDir;
+
+  beforeEach(() => {
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fec-config-test-'));
+  });
+
+  afterEach(() => {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
+  test('loads real .pem files from rootFolder without mocks', () => {
+    const certContent = 'test-certificate-content-for-integration-test';
+    const keyContent = 'test-key-content-for-integration-test';
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com.pem'), certContent);
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com-key.pem'), keyContent);
+
+    const { devServer } = config({
+      rootFolder: tmpDir,
+      https: true,
+      frontendCRDPath: crdMockPath,
+    });
+
+    expect(devServer.server).toEqual({
+      type: 'https',
+      options: {
+        cert: Buffer.from(certContent),
+        key: Buffer.from(keyContent),
+      },
+    });
+  });
+
+  test('falls back to https string when no .pem files exist on disk', () => {
+    const { devServer } = config({
+      rootFolder: tmpDir,
+      https: true,
+      frontendCRDPath: crdMockPath,
+    });
+
+    expect(devServer.server).toBe('https');
+  });
+
+  test('requires both cert and key files (only cert present)', () => {
+    const certContent = 'test-certificate-content-for-integration-test';
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com.pem'), certContent);
+    // key file intentionally missing
+
+    const { devServer } = config({
+      rootFolder: tmpDir,
+      https: true,
+      frontendCRDPath: crdMockPath,
+    });
+
+    expect(devServer.server).toBe('https');
+  });
+
+  test('requires both cert and key files (only key present)', () => {
+    const keyContent = 'test-key-content-for-integration-test';
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com-key.pem'), keyContent);
+    // cert file intentionally missing
+
+    const { devServer } = config({
+      rootFolder: tmpDir,
+      https: true,
+      frontendCRDPath: crdMockPath,
+    });
+
+    expect(devServer.server).toBe('https');
+  });
+
+  test('loads real .pem files via useProxy path (implicit https)', () => {
+    const certContent = 'test-certificate-content-for-integration-test';
+    const keyContent = 'test-key-content-for-integration-test';
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com.pem'), certContent);
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com-key.pem'), keyContent);
+
+    const { devServer } = config({
+      rootFolder: tmpDir,
+      useProxy: true,
+      frontendCRDPath: crdMockPath,
+    });
+
+    expect(devServer.server).toEqual({
+      type: 'https',
+      options: {
+        cert: Buffer.from(certContent),
+        key: Buffer.from(keyContent),
+      },
+    });
+  });
+
+  test('does not attempt cert detection in http mode', () => {
+    const certContent = 'test-certificate-content-for-integration-test';
+    const keyContent = 'test-key-content-for-integration-test';
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com.pem'), certContent);
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com-key.pem'), keyContent);
+
+    const { devServer } = config({
+      rootFolder: tmpDir,
+      https: false,
+      useProxy: false,
+      frontendCRDPath: crdMockPath,
+    });
+
+    expect(devServer.server).toBe('http');
+  });
+});
+
 test('noFileHash', () => {
   const { output } = configBuilder({ useFileHash: false });
   expect(output.filename).toBe('js/[name].js');
