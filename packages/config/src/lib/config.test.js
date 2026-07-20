@@ -113,7 +113,91 @@ describe('port', () => {
 
 test('https', () => {
   const { devServer } = configBuilder({ https: true });
+  // Without mkcert .pem files, falls back to 'https' string
   expect(devServer.server).toBe('https');
+});
+
+describe('mkcert certificate detection', () => {
+  const fs = require('fs');
+  const originalExistsSync = fs.existsSync;
+  const originalReadFileSync = fs.readFileSync;
+
+  afterEach(() => {
+    fs.existsSync = originalExistsSync;
+    fs.readFileSync = originalReadFileSync;
+  });
+
+  test('uses mkcert certs when .pem files exist in rootFolder', () => {
+    const certContent = Buffer.from('mock-cert');
+    const keyContent = Buffer.from('mock-key');
+    fs.existsSync = jest.fn((filePath) => {
+      if (filePath.includes('stage.foo.redhat.com.pem') || filePath.includes('stage.foo.redhat.com-key.pem')) {
+        return true;
+      }
+      return originalExistsSync(filePath);
+    });
+    fs.readFileSync = jest.fn((filePath) => {
+      if (filePath.includes('stage.foo.redhat.com-key.pem')) return keyContent;
+      if (filePath.includes('stage.foo.redhat.com.pem')) return certContent;
+      return originalReadFileSync(filePath);
+    });
+
+    const { devServer } = configBuilder({ https: true, rootFolder: '/app' });
+    expect(devServer.server).toEqual({
+      type: 'https',
+      options: {
+        cert: certContent,
+        key: keyContent,
+      },
+    });
+  });
+
+  test('falls back to https string when .pem files are missing', () => {
+    fs.existsSync = jest.fn((filePath) => {
+      if (filePath.includes('stage.foo.redhat.com')) return false;
+      return originalExistsSync(filePath);
+    });
+
+    const { devServer } = configBuilder({ https: true, rootFolder: '/app' });
+    expect(devServer.server).toBe('https');
+  });
+
+  test('does not check for .pem files when server is http', () => {
+    fs.existsSync = jest.fn((filePath) => {
+      if (filePath.includes('stage.foo.redhat.com')) {
+        throw new Error('Should not check for .pem files in http mode');
+      }
+      return originalExistsSync(filePath);
+    });
+
+    const { devServer } = configBuilder({ https: false, useProxy: false, rootFolder: '/app' });
+    expect(devServer.server).toBe('http');
+  });
+
+  test('uses mkcert certs when useProxy is true', () => {
+    const certContent = Buffer.from('mock-cert');
+    const keyContent = Buffer.from('mock-key');
+    fs.existsSync = jest.fn((filePath) => {
+      if (filePath.includes('stage.foo.redhat.com.pem') || filePath.includes('stage.foo.redhat.com-key.pem')) {
+        return true;
+      }
+      return originalExistsSync(filePath);
+    });
+    fs.readFileSync = jest.fn((filePath) => {
+      if (filePath.includes('stage.foo.redhat.com-key.pem')) return keyContent;
+      if (filePath.includes('stage.foo.redhat.com.pem')) return certContent;
+      return originalReadFileSync(filePath);
+    });
+
+    const { devServer } = configBuilder({ useProxy: true, rootFolder: '/app' });
+    expect(devServer.server).toEqual({
+      type: 'https',
+      options: {
+        cert: certContent,
+        key: keyContent,
+      },
+    });
+  });
 });
 
 test('noFileHash', () => {

@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 import searchIgnoredStyles from '@redhat-cloud-services/frontend-components-config-utilities/search-ignored-styles';
 
@@ -116,6 +117,41 @@ export const createConfig = ({
   const outputPath = `${rootFolder || ''}/dist`;
 
   const devServerPort = typeof port === 'number' ? port : useProxy || standalone ? 1337 : 8002;
+
+  // Determine dev server HTTPS configuration.
+  // If mkcert-generated .pem files exist in the consumer app's root folder,
+  // use them for locally-trusted certificates (avoids Chrome ERR_TOO_MANY_RETRIES).
+  let serverConfig: string | { type: string; options: { cert: Buffer; key: Buffer } } = _unstableSpdy
+    ? 'spdy'
+    : https || Boolean(useProxy)
+      ? 'https'
+      : 'http';
+
+  if (serverConfig === 'https') {
+    const certFile = path.resolve(rootFolder, 'stage.foo.redhat.com.pem');
+    const keyFile = path.resolve(rootFolder, 'stage.foo.redhat.com-key.pem');
+    if (fs.existsSync(certFile) && fs.existsSync(keyFile)) {
+      serverConfig = {
+        type: 'https',
+        options: {
+          cert: fs.readFileSync(certFile),
+          key: fs.readFileSync(keyFile),
+        },
+      };
+      fecLogger(LogType.info, 'Using locally-trusted mkcert certificate for dev server.');
+    } else {
+      fecLogger(
+        LogType.warn,
+        'Using self-signed certificate for dev server.\n' +
+          'Firefox is recommended for local development (no cert setup needed).\n' +
+          'If using Chrome and seeing ERR_TOO_MANY_RETRIES, install mkcert and generate certs:\n' +
+          '  mkcert -install\n' +
+          '  mkcert stage.foo.redhat.com\n' +
+          'Place stage.foo.redhat.com.pem and stage.foo.redhat.com-key.pem in your app root folder.',
+      );
+    }
+  }
+
   return {
     mode: mode || (isProd ? 'production' : 'development'),
     devtool: devtool,
@@ -271,7 +307,7 @@ export const createConfig = ({
           directory: `${rootFolder || ''}/dist`,
         },
         port: devServerPort,
-        server: _unstableSpdy ? 'spdy' : https || Boolean(useProxy) ? 'https' : 'http',
+        server: serverConfig,
         host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
         hot: internalHotReload, // Use livereload instead of HMR which is spotty with federated modules
         liveReload: !internalHotReload,
