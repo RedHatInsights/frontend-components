@@ -81,9 +81,9 @@ Demo source: `examples/demo/src/app/app.tsx` (do not commit changes)
 
 Releases are **fully automated** — the commit type directly controls whether packages are published to npm. Choose the commit type carefully:
 
-- **`feat:`** → triggers a **minor** version bump for every package whose files were changed in the commit
-- **`fix:`** → triggers a **patch** version bump for every package whose files were changed
-- **`feat!:` or `BREAKING CHANGE:` footer** → triggers a **major** version bump
+- **`feat:`** → triggers a **minor** version bump for the scoped package (with `useCommitScope: true`, only the package whose scope matches the commit scope gets the full bump; changed dependents are capped at **patch**)
+- **`fix:`** → triggers a **patch** version bump for the scoped package (same scope-filtering applies)
+- **`<type>!:` (any type with `!`) or `BREAKING CHANGE:` footer** → triggers a **major** version bump for the scoped package
 - **`chore:`, `docs:`, `ci:`, `refactor:`, `test:`** → **no release triggered**
 
 **Rules when committing:**
@@ -91,7 +91,9 @@ Releases are **fully automated** — the commit type directly controls whether p
 2. Use `fix:` when fixing a bug in package source code.
 3. Use `chore:` or `docs:` for changes that do **not** affect package source code — documentation (`CLAUDE.md`, `README.md`), CI config, linting config, or tooling setup — even if the files live inside a `packages/*/` directory.
 4. If a commit includes both source code changes and non-code changes (e.g., a new feature plus updated docs), use `feat:` or `fix:` — the release is warranted by the code change.
-5. The commit scope (e.g., `feat(utils):`) is informational only and does not affect which packages are released. Nx determines affected packages by which files were changed, not by the scope.
+5. **Commit scope rules** (`useCommitScope: true` in `nx.json`):
+   - For **versioning commits** (`feat`, `fix`, `!` breaking change, or commits with a `BREAKING CHANGE:` footer): scope **must** be the full Nx project name (e.g., `feat(@redhat-cloud-services/frontend-components-utilities): ...`). Short scopes like `feat(utils):` or area scopes like `feat(deps):` will be rejected by commitlint.
+   - For **non-versioning commits** (`chore`, `docs`, `ci`, `refactor`, `test`): any scope or no scope is fine (e.g., `chore(utils): ...`, `chore(deps): ...`).
 
 ### Package Dependency Updates (config ↔ config-utils)
 
@@ -208,7 +210,7 @@ With `conventionalCommits: true`, Nx reads the current version from the latest m
 **Version bump calculation** (per package):
 1. Find the latest git tag matching `{projectName}-*` with valid semver
 2. Get all commits from that tag to HEAD
-3. Filter to commits whose **file changes** touch the package (same logic as `nx affected` -- commit scope is ignored, see `useCommitScope: false`)
+3. Filter to commits whose **scope matches the project name** (`useCommitScope: true`). The scoped package gets the full bump (minor/patch/major); dependent packages whose files changed but weren't in the scope get capped at **patch**.
 4. Apply conventional-commit bump rules (see [Commit Message & Release Rules](#commit-message--release-rules-important-for-ai-tools) above)
 5. Highest bump across all matching commits wins
 6. **No matching `feat`/`fix` commits = package is skipped entirely** -- no bump, no publish
@@ -240,7 +242,7 @@ install, build, unit-test, component-test, lint, commitlint, check-circular-impo
 | `nx.json` (lines 87-115) | Nx release configuration |
 | `.github/workflows/ci.yaml` | CI pipeline definition |
 | `.github/actions/release/action.yml` | Release composite action |
-| `.commitlintrc.js` | Commit message validation rules |
+| `commitlint.config.js` | Commit message validation rules |
 
 ## Browser Compatibility
 
