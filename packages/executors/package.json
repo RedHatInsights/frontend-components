@@ -15,6 +15,7 @@
   "typings": "./src/index.d.ts",
   "executors": "./executors.json",
   "devDependencies": {
-    "@types/fs-extra": "^11.0.4"
+    "@types/fs-extra": "^11.0.4",
+    "@types/semver": "^7.5.8"
   }
 }
