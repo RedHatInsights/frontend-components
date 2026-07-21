@@ -32,11 +32,21 @@ runs:
         git config commit.gpgsign true
         git config tag.gpgsign true
         git config user.signingkey $(gpg --list-secret-keys --with-colons "${{ inputs.gh_email }}" | awk -F: '/^sec:/ {print $5; exit}')
+    - name: Fast-forward to latest master
+      shell: bash
+      # Checkout is pinned to github.sha. If a prior release pushed commits/tags while this job
+      # was queued, those tags won't be reachable from our stale HEAD. Both verify-versions.sh and
+      # nx release use --merged HEAD for tag resolution, so HEAD must be current. This rebase is
+      # always a fast-forward (no local commits yet).
+      run: |
+        git fetch origin master
+        git rebase origin/master
     - name: Verify version consistency
       shell: bash
       run: bash .github/scripts/verify-versions.sh
     - name: Release
       shell: bash
+      # Skip publish to avoid orphaned npm versions if push fails.
       env:
         GH_TOKEN: ${{ inputs.gh_token }}
         GITHUB_TOKEN: ${{ inputs.gh_token }}
@@ -47,7 +57,7 @@ runs:
         # https://docs.npmjs.com/generating-provenance-statements#using-third-party-package-publishing-tools
         # https://philna.sh/blog/2026/01/28/trusted-publishing-npm/
         NPM_CONFIG_PROVENANCE: true
-      run: npx nx release --yes
+      run: npx nx release --skip-publish
     - name: Push release commit and tags
       shell: bash
       # nx release (unified command) creates the git commit and tags locally but does not push them,
@@ -55,8 +65,23 @@ runs:
       # createRelease (GitHub/GitLab releases) is enabled. Since we use createReleaseInGitHub: false,
       # we push manually here so that the version bumps in package.json reach the remote and
       # nacho-bot can create PRs in consuming repos.
+      # Rebase before push: if a PR merged to master while nx release was running, the version
+      # commit needs to be on top of latest master to avoid non-fast-forward rejection. This rebase
+      # replays only the single version commit created by nx release (merge commit that triggered
+      # this workflow is always an ancestor of origin/master).
       # HUSKY=0 disables pre-push hooks in CI — tests are run separately by the CI pipeline.
       env:
         HUSKY: '0'
-      run: git push --follow-tags
-  
+      run: |
+        git fetch origin master
+        git rebase origin/master
+        git push --follow-tags
+    - name: Publish to npm
+      shell: bash
+      # Publish only after push succeeds to prevent orphaned npm versions.
+      # If push failed, re-running this job is safe — no npm versions published yet.
+      # https://docs.npmjs.com/generating-provenance-statements#using-third-party-package-publishing-tools
+      # https://philna.sh/blog/2026/01/28/trusted-publishing-npm/
+      env:
+        NPM_CONFIG_PROVENANCE: true
+      run: npx nx release publish

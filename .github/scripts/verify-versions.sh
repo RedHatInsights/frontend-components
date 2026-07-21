@@ -82,6 +82,10 @@ done
 echo ""
 if [[ $mismatch -ne 0 ]]; then
   echo "Version verification FAILED. Fix mismatches before releasing."
+  echo ""
+  echo "If disk and tag match but npm is behind, a prior npm publish likely failed."
+  echo "Pull latest main with tags, build, and run 'npx nx release publish' to recover."
+  echo "Subsequent releases will remain blocked until the missing version is published."
   exit 1
 else
   echo "All package versions are aligned across disk, git tags, and npm registry."
