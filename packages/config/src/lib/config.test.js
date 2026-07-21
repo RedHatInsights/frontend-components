@@ -371,23 +371,75 @@ describe('custom sslCert/sslKey options', () => {
     fs.writeFileSync(certPath, 'custom-cert');
     fs.writeFileSync(keyPath, 'custom-key');
 
+    try {
+      const { devServer } = config({
+        rootFolder: tmpDir,
+        https: true,
+        sslCert: certPath,
+        sslKey: keyPath,
+        frontendCRDPath: crdMockPath,
+      });
+
+      expect(devServer.server).toEqual({
+        type: 'https',
+        options: {
+          cert: Buffer.from('custom-cert'),
+          key: Buffer.from('custom-key'),
+        },
+      });
+    } finally {
+      fs.rmSync(customDir, { recursive: true, force: true });
+    }
+  });
+
+  test('falls back to auto-detection when only sslCert is provided (not sslKey)', () => {
+    // Place default mkcert files in rootFolder — these should be used, not the custom cert
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com.pem'), 'auto-cert');
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com-key.pem'), 'auto-key');
+    const certPath = path.join(tmpDir, 'custom-only.pem');
+    fs.writeFileSync(certPath, 'custom-cert-only');
+
     const { devServer } = config({
       rootFolder: tmpDir,
       https: true,
       sslCert: certPath,
+      // sslKey intentionally omitted
+      frontendCRDPath: crdMockPath,
+    });
+
+    // Should use auto-detected mkcert files, not the lone custom cert
+    expect(devServer.server).toEqual({
+      type: 'https',
+      options: {
+        cert: Buffer.from('auto-cert'),
+        key: Buffer.from('auto-key'),
+      },
+    });
+  });
+
+  test('falls back to auto-detection when only sslKey is provided (not sslCert)', () => {
+    // Place default mkcert files in rootFolder — these should be used, not the custom key
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com.pem'), 'auto-cert');
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com-key.pem'), 'auto-key');
+    const keyPath = path.join(tmpDir, 'custom-only-key.pem');
+    fs.writeFileSync(keyPath, 'custom-key-only');
+
+    const { devServer } = config({
+      rootFolder: tmpDir,
+      https: true,
+      // sslCert intentionally omitted
       sslKey: keyPath,
       frontendCRDPath: crdMockPath,
     });
 
+    // Should use auto-detected mkcert files, not the lone custom key
     expect(devServer.server).toEqual({
       type: 'https',
       options: {
-        cert: Buffer.from('custom-cert'),
-        key: Buffer.from('custom-key'),
+        cert: Buffer.from('auto-cert'),
+        key: Buffer.from('auto-key'),
       },
     });
-
-    fs.rmSync(customDir, { recursive: true, force: true });
   });
 
   test('custom paths work with useProxy', () => {

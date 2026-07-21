@@ -134,9 +134,13 @@ export const createConfig = ({
       : 'http';
 
   if (serverConfig === 'https') {
-    // Priority: explicit sslCert/sslKey options > auto-detected mkcert files in rootFolder
-    const certFile = sslCert ? path.resolve(sslCert) : path.resolve(rootFolder, 'stage.foo.redhat.com.pem');
-    const keyFile = sslKey ? path.resolve(sslKey) : path.resolve(rootFolder, 'stage.foo.redhat.com-key.pem');
+    // sslCert and sslKey must be provided together to avoid mixing unrelated cert/key sources.
+    const useCustomPaths = Boolean(sslCert) && Boolean(sslKey);
+    if ((sslCert || sslKey) && !useCustomPaths) {
+      fecLogger(LogType.warn, 'Both sslCert and sslKey must be provided together. Falling back to auto-detection/self-signed certificate.');
+    }
+    const certFile = useCustomPaths ? path.resolve(sslCert as string) : path.resolve(rootFolder, 'stage.foo.redhat.com.pem');
+    const keyFile = useCustomPaths ? path.resolve(sslKey as string) : path.resolve(rootFolder, 'stage.foo.redhat.com-key.pem');
     if (fs.existsSync(certFile) && fs.existsSync(keyFile)) {
       serverConfig = {
         type: 'https',
@@ -145,8 +149,8 @@ export const createConfig = ({
           key: fs.readFileSync(keyFile),
         },
       };
-      fecLogger(LogType.info, `Using ${sslCert ? 'custom' : 'locally-trusted mkcert'} certificate for dev server.`);
-    } else if (sslCert || sslKey) {
+      fecLogger(LogType.info, `Using ${useCustomPaths ? 'custom' : 'locally-trusted mkcert'} certificate for dev server.`);
+    } else if (useCustomPaths) {
       fecLogger(
         LogType.warn,
         `Custom SSL certificate files not found:\n` +
