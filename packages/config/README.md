@@ -20,6 +20,7 @@
       - [useAgent](#useagent)
       - [bounceProd](#bounceprod)
         - [Running PROD proxy without VPN](#running-prod-proxy-without-vpn)
+  - [Local development SSL setup](#local-development-ssl-setup)
   - [standalone](#standalone)
     - [Usage](#usage)
       - [Simple](#simple)
@@ -290,6 +291,54 @@ const config = {
 ```
 
 Now, you can access PROD env without being connected to Red Hat VPN.
+
+## Local development SSL setup
+
+The dev server at `https://stage.foo.redhat.com:1337` uses a self-signed certificate by default.
+**Firefox** handles self-signed certificates gracefully and works without additional setup.
+
+**Chrome** users may encounter `ERR_TOO_MANY_RETRIES` errors when loading webpack chunks due to
+SSL handshake failures with self-signed certificates. To fix this, generate a locally-trusted
+certificate using [mkcert](https://github.com/FiloSottile/mkcert):
+
+1. Install mkcert following the [official installation guide](https://github.com/FiloSottile/mkcert#installation).
+
+2. Install the local CA (one-time setup):
+
+   ```sh
+   mkcert -install
+   ```
+
+3. Generate the certificate in your app's root folder:
+
+   ```sh
+   cd /path/to/your-app
+   mkcert -cert-file stage.foo.redhat.com.pem -key-file stage.foo.redhat.com-key.pem stage.foo.redhat.com
+   ```
+
+The webpack config automatically detects `stage.foo.redhat.com.pem` and `stage.foo.redhat.com-key.pem`
+in your app's root folder (`rootFolder`) and uses them for the dev server when `useProxy: true` or
+`https: true` is set. If the files are not found, it falls back to a self-signed certificate and logs
+setup instructions.
+
+**Security note:** mkcert creates a local Certificate Authority trusted by your browser.
+Keep your machine secure — if malware accesses the CA key (`~/.local/share/mkcert/`),
+it could intercept HTTPS traffic. Remove with `mkcert -uninstall` when not needed.
+
+The `.pem` files should be added to your app's `.gitignore`. If you generate or renew them while the
+dev server is running, restart it to pick up the new certificates.
+
+### Troubleshooting
+
+**`ERR_CERT_DATE_INVALID` or certificate expired errors**
+
+The mkcert certificate has expired (valid for ~2 years from generation). Regenerate it:
+
+```sh
+mkcert -cert-file stage.foo.redhat.com.pem -key-file stage.foo.redhat.com-key.pem stage.foo.redhat.com
+```
+
+Then restart the dev server.
 
 ## standalone
 A way to run cloud.redhat.com apps from `localhost` offline.
