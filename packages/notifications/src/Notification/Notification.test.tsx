@@ -46,8 +46,9 @@ describe('Notification component', () => {
   });
 
   it('should render correctly with action links', () => {
-    const { container } = render(<Notification {...initialProps} actionLinks={<a href="/export">View export</a>} />);
-    expect(container).toMatchSnapshot();
+    render(<Notification {...initialProps} actionLinks={<a href="/export">View export</a>} />);
+    const link = screen.getByRole('link', { name: 'View export' });
+    expect(link).toHaveAttribute('href', '/export');
   });
 
   it('should render correctly with dismiss button', () => {
