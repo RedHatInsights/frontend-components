@@ -1,3 +1,13 @@
+## 2.4.2 (2026-07-21)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/chrome:** bump for scalprum peer update ([fe87c357](https://github.com/RedHatInsights/frontend-components/commit/fe87c357))
+
+### ❤️ Thank You
+
+- Charles Mulder
+
 ## 2.4.1 (2026-07-13)
 
 ### 🧱 Updated Dependencies

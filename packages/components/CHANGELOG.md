@@ -1,3 +1,13 @@
+## 7.10.3 (2026-07-21)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components:** bump for scalprum peer update ([66d8e30c](https://github.com/RedHatInsights/frontend-components/commit/66d8e30c))
+
+### ❤️ Thank You
+
+- Charles Mulder
+
 ## 7.10.2 (2026-07-16)
 
 ### 🩹 Fixes

@@ -1,3 +1,18 @@
+## 6.11.3 (2026-07-21)
+
+### 🚀 Features
+
+- **notifications:** add actionLinks prop ([#2386](https://github.com/RedHatInsights/frontend-components/pull/2386))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components to 7.10.3
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- Řehoř
+
 ## 6.11.2 (2026-07-16)
 
 ### 🧱 Updated Dependencies
