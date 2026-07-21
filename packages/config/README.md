@@ -20,6 +20,7 @@
       - [useAgent](#useagent)
       - [bounceProd](#bounceprod)
         - [Running PROD proxy without VPN](#running-prod-proxy-without-vpn)
+  - [Local development SSL setup](#local-development-ssl-setup)
   - [standalone](#standalone)
     - [Usage](#usage)
       - [Simple](#simple)
@@ -290,6 +291,84 @@ const config = {
 ```
 
 Now, you can access PROD env without being connected to Red Hat VPN.
+
+## Local development SSL setup
+
+The dev server at `https://stage.foo.redhat.com:1337` uses a self-signed certificate by default.
+**Firefox** handles self-signed certificates gracefully and works without additional setup.
+
+**Chrome** users may encounter `ERR_TOO_MANY_RETRIES` errors when loading webpack chunks due to
+SSL handshake failures with self-signed certificates. To fix this, generate a locally-trusted
+certificate using [mkcert](https://github.com/FiloSottile/mkcert):
+
+1. Install mkcert following the [official installation guide](https://github.com/FiloSottile/mkcert#installation).
+
+2. Install the local CA (one-time setup):
+
+   ```sh
+   mkcert -install
+   ```
+
+3. Generate the certificate in your app's root folder:
+
+   ```sh
+   cd /path/to/your-app
+   mkcert -cert-file stage.foo.redhat.com.pem -key-file stage.foo.redhat.com-key.pem stage.foo.redhat.com
+   ```
+
+The webpack config automatically detects `stage.foo.redhat.com.pem` and `stage.foo.redhat.com-key.pem`
+in your app's root folder (`rootFolder`) and uses them for the dev server when `useProxy: true` or
+`https: true` is set. If the files are not found, it falls back to a self-signed certificate and logs
+setup instructions.
+
+### Custom certificate paths
+
+If your certificates are in a different location (e.g. a shared directory or your home folder), you
+can provide explicit paths via the `sslCert` and `sslKey` options in your webpack config:
+
+```javascript
+const { config } = require('@redhat-cloud-services/frontend-components-config');
+
+const { config: webpackConfig, plugins } = config({
+  rootFolder: resolve(__dirname, '../'),
+  useProxy: true,
+  sslCert: '/home/user/certs/stage.foo.redhat.com.pem',
+  sslKey: '/home/user/certs/stage.foo.redhat.com-key.pem',
+});
+```
+
+Or in `fec.config.js`:
+
+```javascript
+module.exports = {
+  appUrl: '/apps/my-app',
+  sslCert: '/home/user/certs/stage.foo.redhat.com.pem',
+  sslKey: '/home/user/certs/stage.foo.redhat.com-key.pem',
+};
+```
+
+When `sslCert` and `sslKey` are provided, they take priority over the auto-detected files in
+`rootFolder`. If the specified files are not found, the config falls back to a self-signed
+certificate and logs the missing paths.
+
+**Security note:** mkcert creates a local Certificate Authority trusted by your browser.
+Keep your machine secure — if malware accesses the CA key (`~/.local/share/mkcert/`),
+it could intercept HTTPS traffic. Remove with `mkcert -uninstall` when not needed.
+
+The `.pem` files should be added to your app's `.gitignore`. If you generate or renew them while the
+dev server is running, restart it to pick up the new certificates.
+
+### Troubleshooting
+
+**`ERR_CERT_DATE_INVALID` or certificate expired errors**
+
+The mkcert certificate has expired (valid for ~2 years from generation). Regenerate it:
+
+```sh
+mkcert -cert-file stage.foo.redhat.com.pem -key-file stage.foo.redhat.com-key.pem stage.foo.redhat.com
+```
+
+Then restart the dev server.
 
 ## standalone
 A way to run cloud.redhat.com apps from `localhost` offline.
