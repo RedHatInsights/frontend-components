@@ -214,6 +214,7 @@ With `conventionalCommits: true`, Nx reads the current version from the latest m
 4. Apply conventional-commit bump rules (see [Commit Message & Release Rules](#commit-message--release-rules-important-for-ai-tools) above)
 5. Highest bump across all matching commits wins
 6. **No matching `feat`/`fix` commits = package is skipped entirely** -- no bump, no publish
+7. Nx requires **actual file changes** in the package directory for versioning commits (`feat`/`fix`). Empty commits with correct scope/type are **ignored** -- Nx reports "No files changed as a result of running versioning" and skips publishing. To force a release, touch a real file (e.g., add whitespace to `src/index.ts`).
 
 **What `package.json` version means**: Updated by `nx release` in both `{projectRoot}/package.json` and `dist/{projectName}/package.json`. It reflects the last released version, not the source for calculating the next one.
 
