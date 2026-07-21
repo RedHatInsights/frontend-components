@@ -79,6 +79,17 @@ describe('Notification Store', () => {
     expect(callback2).toHaveBeenCalledTimes(2);
   });
 
+  it('should store actionLinks in notification config', () => {
+    const store = createStore();
+    store.addNotification({
+      title: 'Export complete',
+      variant: 'success',
+      actionLinks: 'View export',
+    });
+    expect(store.getNotifications()).toHaveLength(1);
+    expect(store.getNotifications()[0].actionLinks).toBe('View export');
+  });
+
   it('should remove notifications after clearNotifications', () => {
     const store = createStore();
     store.addNotification({ title: 'Before clear', variant: 'info' });

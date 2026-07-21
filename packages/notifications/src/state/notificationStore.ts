@@ -15,6 +15,11 @@ export type NotificationConfig = {
   dismissable?: boolean;
   autoDismiss?: boolean;
   dismissDelay?: number;
+  /**
+   * Action links displayed beneath the notification title and description.
+   * Use PatternFly AlertActionLink components or any valid ReactNode.
+   */
+  actionLinks?: React.ReactNode;
 };
 
 type AddNotification = (config: Omit<NotificationConfig, 'id'>) => void;

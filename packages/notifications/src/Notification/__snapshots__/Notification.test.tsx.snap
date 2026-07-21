@@ -187,7 +187,7 @@ exports[`Notification component should render correctly with dismiss button 1`] 
 <div>
   <div
     class="pf-v6-c-alert pf-m-success notification-item"
-    data-ouia-component-id="OUIA-Generated-Alert-success-6"
+    data-ouia-component-id="OUIA-Generated-Alert-success-7"
     data-ouia-component-type="PF6/Alert"
     data-ouia-safe="true"
     id="Foo"
@@ -254,14 +254,14 @@ exports[`Notification component should render correctly with dismiss button 1`] 
     >
       <div
         class="pf-v6-c-content"
-        data-ouia-component-id="OUIA-Generated-Content-13"
+        data-ouia-component-id="OUIA-Generated-Content-15"
         data-ouia-component-type="PF6/Content"
         data-ouia-safe="true"
         data-pf-content="true"
       >
         <small
           class="pf-v6-c-content--small sentry-mask data-hj-suppress"
-          data-ouia-component-id="OUIA-Generated-Content-14"
+          data-ouia-component-id="OUIA-Generated-Content-16"
           data-ouia-component-type="PF6/Content"
           data-ouia-safe="true"
           data-pf-content="true"
