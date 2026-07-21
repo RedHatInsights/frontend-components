@@ -48,6 +48,11 @@ export interface NotificationProps {
    * Unique sentry error ID.
    */
   sentryId?: string;
+  /**
+   * Action links displayed beneath the notification title and description.
+   * Use PatternFly AlertActionLink components or any valid ReactNode.
+   */
+  actionLinks?: React.ReactNode;
 }
 
 /**
@@ -69,6 +74,7 @@ const Notification: React.ComponentType<NotificationProps> = ({
   sentryId,
   requestId,
   autoDismiss = true,
+  actionLinks,
   id,
   ...rest
 }) => {
@@ -103,6 +109,7 @@ const Notification: React.ComponentType<NotificationProps> = ({
       title={typeof title === 'string' ? title.replace(/<\/?[^>]+(>|$)/g, '') : title}
       {...rest}
       actionClose={dismissable ? <AlertActionCloseButton aria-label="close-notification" variant="plain" onClick={handleDismiss} /> : null}
+      actionLinks={actionLinks}
       onMouseEnter={clearDismissTimeout}
       onMouseLeave={setDismissTimeout}
     >
