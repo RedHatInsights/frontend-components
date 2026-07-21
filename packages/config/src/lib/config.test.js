@@ -310,6 +310,112 @@ describe('mkcert certificate detection (integration - real filesystem)', () => {
   });
 });
 
+describe('custom sslCert/sslKey options', () => {
+  const fs = require('fs');
+  const os = require('os');
+  let tmpDir;
+
+  beforeEach(() => {
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fec-config-ssl-'));
+  });
+
+  afterEach(() => {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
+  test('uses custom cert and key paths when sslCert/sslKey provided', () => {
+    const certContent = 'custom-cert-content';
+    const keyContent = 'custom-key-content';
+    const certPath = path.join(tmpDir, 'my-cert.pem');
+    const keyPath = path.join(tmpDir, 'my-key.pem');
+    fs.writeFileSync(certPath, certContent);
+    fs.writeFileSync(keyPath, keyContent);
+
+    const { devServer } = config({
+      rootFolder: '/nonexistent',
+      https: true,
+      sslCert: certPath,
+      sslKey: keyPath,
+      frontendCRDPath: crdMockPath,
+    });
+
+    expect(devServer.server).toEqual({
+      type: 'https',
+      options: {
+        cert: Buffer.from(certContent),
+        key: Buffer.from(keyContent),
+      },
+    });
+  });
+
+  test('falls back to https string when custom cert path does not exist', () => {
+    const { devServer } = config({
+      rootFolder: tmpDir,
+      https: true,
+      sslCert: '/nonexistent/cert.pem',
+      sslKey: '/nonexistent/key.pem',
+      frontendCRDPath: crdMockPath,
+    });
+
+    expect(devServer.server).toBe('https');
+  });
+
+  test('custom paths take priority over rootFolder auto-detection', () => {
+    // Place default mkcert files in rootFolder
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com.pem'), 'auto-cert');
+    fs.writeFileSync(path.join(tmpDir, 'stage.foo.redhat.com-key.pem'), 'auto-key');
+    // Place custom certs elsewhere
+    const customDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fec-custom-ssl-'));
+    const certPath = path.join(customDir, 'custom.pem');
+    const keyPath = path.join(customDir, 'custom-key.pem');
+    fs.writeFileSync(certPath, 'custom-cert');
+    fs.writeFileSync(keyPath, 'custom-key');
+
+    const { devServer } = config({
+      rootFolder: tmpDir,
+      https: true,
+      sslCert: certPath,
+      sslKey: keyPath,
+      frontendCRDPath: crdMockPath,
+    });
+
+    expect(devServer.server).toEqual({
+      type: 'https',
+      options: {
+        cert: Buffer.from('custom-cert'),
+        key: Buffer.from('custom-key'),
+      },
+    });
+
+    fs.rmSync(customDir, { recursive: true, force: true });
+  });
+
+  test('custom paths work with useProxy', () => {
+    const certContent = 'proxy-cert';
+    const keyContent = 'proxy-key';
+    const certPath = path.join(tmpDir, 'proxy-cert.pem');
+    const keyPath = path.join(tmpDir, 'proxy-key.pem');
+    fs.writeFileSync(certPath, certContent);
+    fs.writeFileSync(keyPath, keyContent);
+
+    const { devServer } = config({
+      rootFolder: '/nonexistent',
+      useProxy: true,
+      sslCert: certPath,
+      sslKey: keyPath,
+      frontendCRDPath: crdMockPath,
+    });
+
+    expect(devServer.server).toEqual({
+      type: 'https',
+      options: {
+        cert: Buffer.from(certContent),
+        key: Buffer.from(keyContent),
+      },
+    });
+  });
+});
+
 test('noFileHash', () => {
   const { output } = configBuilder({ useFileHash: false });
   expect(output.filename).toBe('js/[name].js');

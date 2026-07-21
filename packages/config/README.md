@@ -321,6 +321,36 @@ in your app's root folder (`rootFolder`) and uses them for the dev server when `
 `https: true` is set. If the files are not found, it falls back to a self-signed certificate and logs
 setup instructions.
 
+### Custom certificate paths
+
+If your certificates are in a different location (e.g. a shared directory or your home folder), you
+can provide explicit paths via the `sslCert` and `sslKey` options in your webpack config:
+
+```javascript
+const { config } = require('@redhat-cloud-services/frontend-components-config');
+
+const { config: webpackConfig, plugins } = config({
+  rootFolder: resolve(__dirname, '../'),
+  useProxy: true,
+  sslCert: '/home/user/certs/stage.foo.redhat.com.pem',
+  sslKey: '/home/user/certs/stage.foo.redhat.com-key.pem',
+});
+```
+
+Or in `fec.config.js`:
+
+```javascript
+module.exports = {
+  appUrl: '/apps/my-app',
+  sslCert: '/home/user/certs/stage.foo.redhat.com.pem',
+  sslKey: '/home/user/certs/stage.foo.redhat.com-key.pem',
+};
+```
+
+When `sslCert` and `sslKey` are provided, they take priority over the auto-detected files in
+`rootFolder`. If the specified files are not found, the config falls back to a self-signed
+certificate and logs the missing paths.
+
 **Security note:** mkcert creates a local Certificate Authority trusted by your browser.
 Keep your machine secure — if malware accesses the CA key (`~/.local/share/mkcert/`),
 it could intercept HTTPS traffic. Remove with `mkcert -uninstall` when not needed.
