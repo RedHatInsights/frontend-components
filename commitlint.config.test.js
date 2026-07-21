@@ -104,6 +104,26 @@ describe('commitlint scope-full-name-for-versioning', () => {
       expect(result.valid).toBe(true);
     });
 
+    it('fix with area scope (deps)', async () => {
+      const result = await lintMessage('fix(deps): bump axios');
+      expect(result.valid).toBe(true);
+    });
+
+    it('fix with short scope (ci)', async () => {
+      const result = await lintMessage('fix(ci): update workflow');
+      expect(result.valid).toBe(true);
+    });
+
+    it('fix with short scope (components)', async () => {
+      const result = await lintMessage('fix(components): handle error');
+      expect(result.valid).toBe(true);
+    });
+
+    it('fix with no scope', async () => {
+      const result = await lintMessage('fix: update');
+      expect(result.valid).toBe(true);
+    });
+
   });
 
   // ── Should FAIL ──────────────────────────────────────────────────────
@@ -117,11 +137,6 @@ describe('commitlint scope-full-name-for-versioning', () => {
       );
     });
 
-    it('fix with area scope (ci)', async () => {
-      const result = await lintMessage('fix(ci): update workflow');
-      expect(result.valid).toBe(false);
-    });
-
     it('feat with short scope', async () => {
       const result = await lintMessage('feat(utils): add endpoint');
       expect(result.valid).toBe(false);
@@ -129,11 +144,6 @@ describe('commitlint scope-full-name-for-versioning', () => {
         'must be a full Nx project name'
       );
       expect(result.errors[0].message).toContain('Use full project name like');
-    });
-
-    it('fix with short scope', async () => {
-      const result = await lintMessage('fix(components): handle error');
-      expect(result.valid).toBe(false);
     });
 
     it('breaking chore with short scope', async () => {
