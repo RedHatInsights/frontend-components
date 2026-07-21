@@ -85,12 +85,18 @@ This repository is using the [Conventional commits](https://www.conventionalcomm
 
 ### Scope requirements
 
-Because this repo uses `useCommitScope: true` for Nx versioning, **versioning commits** (`feat`, `fix`, commits with a `!` breaking-change marker, or commits with a `BREAKING CHANGE:` footer) must use the **full Nx project name** as the scope:
+Because this repo uses `useCommitScope: true` for Nx versioning, **`feat` commits and breaking changes** must use the **full Nx project name** as the scope. **`fix` commits** can use any scope or no scope — all `fix` commits result in patch bumps regardless of scope, so full project names provide no additional versioning benefit.
 
 ```text
-# ✅ Correct — full project name for versioning commits
+# ✅ Correct — full project name for feat/breaking commits
 feat(@redhat-cloud-services/frontend-components-utilities): add helper
+feat(@redhat-cloud-services/chrome)!: remove v1
+
+# ✅ Correct — fix with any scope or no scope
 fix(@redhat-cloud-services/chrome): handle error
+fix(deps): bump axios
+fix(ci): update workflow
+fix: quick patch
 
 # ✅ Correct — non-versioning type, any scope or no scope
 chore(utils): update docs
@@ -99,18 +105,23 @@ docs(readme): add examples
 ci(lint): update config
 refactor: clean up
 
-# ❌ Wrong — versioning type without full project name
+# ❌ Wrong — feat without full project name
 feat(utils): add helper
 feat(deps): upgrade PatternFly
-fix(ci): update workflow
 feat: global change
 ```
 
-**Commitlint enforces**: `feat`, `fix`, and breaking commits (`!` or `BREAKING CHANGE:` footer) **must** use a full Nx project name as scope. Non-versioning types (`chore`, `docs`, `ci`, `refactor`, `test`) can use any scope or no scope.
+**Commitlint enforces**: `feat` and breaking commits (`!` or `BREAKING CHANGE:` footer) **must** use a full Nx project name as scope. `fix` and non-versioning types (`chore`, `docs`, `ci`, `refactor`, `test`) can use any scope or no scope.
 
-**Why**: With `useCommitScope: true`, Nx matches the scope to a project name for version bumps. A scope that doesn't match (e.g., `deps`, `ci`) silently caps the bump at patch — the commit type's intent is lost.
+**Why**: With `useCommitScope: true`, Nx matches the scope to a project name for version bumps. For `feat` this matters (minor bump targeting a specific package), but `fix` always results in a patch bump, so scope flexibility is allowed.
 
 Run `npx nx show projects` to see valid project names.
+
+### Dependency updates
+
+Production dependency updates are automated via [Renovate](https://docs.renovatebot.com/). Renovate opens PRs with the commit prefix `fix(deps):`, which triggers automatic patch releases for affected packages. Dev dependency updates use the `chore(deps-dev):` prefix and do not trigger releases.
+
+The Renovate configuration extends the shared frontend preset from `RedHatInsights/shared-workflows`.
 
 ## PR checks
 

@@ -1,4 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>RedHatInsights/shared-workflows//renovate/frontend"]
+  "extends": ["github>RedHatInsights/shared-workflows//renovate/frontend"],
+  "commitMessagePrefix": "fix(deps):",
+  "packageRules": [
+    {
+      "matchDepTypes": ["devDependencies"],
+      "commitMessagePrefix": "chore(deps-dev):"
+    }
+  ]
 }

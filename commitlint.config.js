@@ -33,16 +33,16 @@ module.exports = {
           const isBreaking =
             !!(header && header.includes('!:')) ||
             !!(notes && notes.some((n) => n.title === 'BREAKING CHANGE'));
-          const isVersioningType = ['feat', 'fix'].includes(type);
+          const isVersioningType = type === 'feat';
 
           // Non-versioning, non-breaking commits can use any scope
           if (!isBreaking && !isVersioningType) {
             return [true];
           }
 
-          // Scope required for versioning commits
+          // Scope required for feat and breaking commits
           if (!scope) {
-            const commitType = isBreaking ? 'breaking (!)/feat/fix' : 'feat/fix';
+            const commitType = isBreaking ? 'breaking (!)/feat' : 'feat';
             return [
               false,
               `Scope required for ${commitType} commits.\n` +
@@ -68,7 +68,7 @@ module.exports = {
           for (const s of scopes) {
             const trimmed = s.trim();
             if (!validProjects.has(trimmed)) {
-              const commitType = isBreaking ? 'breaking (!)/feat/fix' : 'feat/fix';
+              const commitType = isBreaking ? 'breaking (!)/feat' : 'feat';
               const hint = trimmed.startsWith('@redhat-cloud-services/')
                 ? `Project "${trimmed}" not found. Run: npx nx show projects`
                 : `Use full project name like: ${type}(@redhat-cloud-services/utilities)${isBreaking ? '!' : ''}: ...`;

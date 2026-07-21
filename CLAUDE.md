@@ -92,7 +92,8 @@ Releases are **fully automated** — the commit type directly controls whether p
 3. Use `chore:` or `docs:` for changes that do **not** affect package source code — documentation (`CLAUDE.md`, `README.md`), CI config, linting config, or tooling setup — even if the files live inside a `packages/*/` directory.
 4. If a commit includes both source code changes and non-code changes (e.g., a new feature plus updated docs), use `feat:` or `fix:` — the release is warranted by the code change.
 5. **Commit scope rules** (`useCommitScope: true` in `nx.json`):
-   - For **versioning commits** (`feat`, `fix`, `!` breaking change, or commits with a `BREAKING CHANGE:` footer): scope **must** be the full Nx project name (e.g., `feat(@redhat-cloud-services/frontend-components-utilities): ...`). Short scopes like `feat(utils):` or area scopes like `feat(deps):` will be rejected by commitlint.
+   - For **`feat` and breaking change commits** (`!` marker or `BREAKING CHANGE:` footer): scope **must** be the full Nx project name (e.g., `feat(@redhat-cloud-services/frontend-components-utilities): ...`). Short scopes like `feat(utils):` or area scopes like `feat(deps):` will be rejected by commitlint.
+   - For **`fix` commits**: any scope or no scope is fine (e.g., `fix(deps): ...`, `fix(ci): ...`, `fix: ...`). All `fix` commits result in patch bumps regardless of scope.
    - For **non-versioning commits** (`chore`, `docs`, `ci`, `refactor`, `test`): any scope or no scope is fine (e.g., `chore(utils): ...`, `chore(deps): ...`).
 
 ### Package Dependency Updates (config ↔ config-utils)
