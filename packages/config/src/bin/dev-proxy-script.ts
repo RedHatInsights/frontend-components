@@ -84,7 +84,14 @@ function pullImage(containerName: string, repo: string, tag: string) {
   execSync(`${execBin} pull ${repo}:${tag}`, debug ? { stdio: 'inherit' } : { stdio: [] });
 }
 
-function createRoutesConfig(fecConfig: any, cdnPath: string, port: string, SPAFallback: boolean, filename: string = 'routes.json', interceptorPort?: number): string {
+function createRoutesConfig(
+  fecConfig: any,
+  cdnPath: string,
+  port: string,
+  SPAFallback: boolean,
+  filename: string = 'routes.json',
+  interceptorPort?: number,
+): string {
   let routes: Map<string, RouteConfig> = new Map();
 
   let fecRoutes = fecConfig?.routes || undefined;
@@ -237,12 +244,16 @@ async function devProxyScript(
     const crd = readFrontendCRD(frontendCRDPath);
     if (hasFEOFeaturesEnabled(crd)) {
       fecLogger(LogType.info, 'FEO features enabled, starting CRD interceptor server for dev-proxy mode');
-      interceptorServer = await startCRDInterceptorServer({
-        frontendCRDPath,
-        port: CRD_INTERCEPTOR_PORT,
-        debug,
-      });
-      interceptorPort = CRD_INTERCEPTOR_PORT;
+      try {
+        interceptorServer = await startCRDInterceptorServer({
+          frontendCRDPath,
+          port: CRD_INTERCEPTOR_PORT,
+          debug,
+        });
+        interceptorPort = CRD_INTERCEPTOR_PORT;
+      } catch (interceptorError) {
+        fecLogger(LogType.error, 'FEO is enabled but the CRD interceptor server failed to start:', interceptorError);
+      }
     }
   } catch (e) {
     fecLogger(LogType.debug, 'FEO features not available for CRD interception in dev-proxy mode');

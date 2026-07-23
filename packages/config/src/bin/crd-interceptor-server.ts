@@ -46,7 +46,7 @@ interface CRDInterceptorOptions {
 export async function startCRDInterceptorServer(options: CRDInterceptorOptions): Promise<http.Server> {
   const { frontendCRDPath, port = CRD_INTERCEPTOR_PORT, debug = false } = options;
 
-  const log = (logType: LogType, ...data: any[]) => {
+  const log = (logType: LogType, ...data: unknown[]) => {
     if (logType === LogType.debug && !debug) return;
     fecLogger(logType, ...data);
   };
@@ -59,14 +59,17 @@ export async function startCRDInterceptorServer(options: CRDInterceptorOptions):
     log(LogType.warn, `CRD interceptor: Unable to read frontend CRD at ${frontendCRDPath}`);
   }
 
-  const watcher = chokidar.watch(frontendCRDPath).on('change', () => {
-    log(LogType.info, 'CRD interceptor: Frontend CRD changed, reloading');
-    try {
-      frontendCrdRef.current = readFrontendCRD(frontendCRDPath);
-    } catch (error) {
-      log(LogType.error, 'CRD interceptor: Error reloading CRD', error);
-    }
-  });
+  const watcher = chokidar
+    .watch(frontendCRDPath)
+    .on('error', (error) => log(LogType.error, 'CRD interceptor: Watcher error', error))
+    .on('change', () => {
+      log(LogType.info, 'CRD interceptor: Frontend CRD changed, reloading');
+      try {
+        frontendCrdRef.current = readFrontendCRD(frontendCRDPath);
+      } catch (error) {
+        log(LogType.error, 'CRD interceptor: Error reloading CRD', error);
+      }
+    });
 
   const hccEnvUrl = process.env.HCC_ENV_URL!;
   const isStage = process.env.HCC_ENV === 'stage';
@@ -74,6 +77,19 @@ export async function startCRDInterceptorServer(options: CRDInterceptorOptions):
 
   const server = http.createServer((req, res) => {
     const url = req.url || '/';
+
+    // Reject absolute URLs and non-interceptable paths
+    if (url.startsWith('//') || url.startsWith('http')) {
+      res.writeHead(400, { 'content-type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Absolute URLs not allowed' }));
+      return;
+    }
+    const pathname = url.split('?')[0];
+    if (!INTERCEPTABLE_PATHS.includes(pathname)) {
+      res.writeHead(404, { 'content-type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Path not interceptable' }));
+      return;
+    }
 
     if (!frontendCrdRef.current) {
       log(LogType.warn, `CRD interceptor: No CRD loaded, proxying ${url} without modification`);
@@ -103,6 +119,7 @@ export async function startCRDInterceptorServer(options: CRDInterceptorOptions):
         // HttpsProxyAgent v5 extends agent-base Agent, not https.Agent,
         // but is fully compatible at runtime
         agent: agent as https.Agent | undefined,
+        timeout: 15000,
       },
       (proxyRes) => {
         let body = '';
@@ -130,6 +147,7 @@ export async function startCRDInterceptorServer(options: CRDInterceptorOptions):
       },
     );
 
+    proxyReq.on('timeout', () => proxyReq.destroy(new Error('Upstream request timed out')));
     proxyReq.on('error', (error) => {
       log(LogType.error, `CRD interceptor: Upstream request failed for ${url}`, error);
       res.writeHead(502, { 'content-type': 'application/json' });
@@ -147,8 +165,8 @@ export async function startCRDInterceptorServer(options: CRDInterceptorOptions):
   process.on('SIGINT', cleanup);
 
   return new Promise((resolve, reject) => {
-    server.listen(port, () => {
-      log(LogType.info, `CRD interceptor server listening on port ${port}`);
+    server.listen(port, '127.0.0.1', () => {
+      log(LogType.info, `CRD interceptor server listening on 127.0.0.1:${port}`);
       resolve(server);
     });
     server.on('error', reject);
@@ -161,7 +179,7 @@ function proxyPassthrough(
   res: http.ServerResponse,
   hccEnvUrl: string,
   agent: HttpsProxyAgent | undefined,
-  log: (logType: LogType, ...data: any[]) => void,
+  log: (logType: LogType, ...data: unknown[]) => void,
 ) {
   const upstreamUrl = new URL(url, hccEnvUrl);
 
@@ -173,6 +191,7 @@ function proxyPassthrough(
       method: req.method,
       headers: { ...req.headers, host: upstreamUrl.hostname },
       agent: agent as https.Agent | undefined,
+      timeout: 15000,
     },
     (proxyRes) => {
       res.writeHead(proxyRes.statusCode || 200, proxyRes.headers);
@@ -180,6 +199,7 @@ function proxyPassthrough(
     },
   );
 
+  proxyReq.on('timeout', () => proxyReq.destroy(new Error('Upstream request timed out')));
   proxyReq.on('error', (error) => {
     log(LogType.error, `CRD interceptor: Passthrough request failed for ${url}`, error);
     res.writeHead(502);
