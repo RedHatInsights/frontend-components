@@ -1,3 +1,14 @@
+## 6.13.1 (2026-07-23)
+
+### 🚀 Features
+
+- **config:** add mkcert certificate support ([#2384](https://github.com/RedHatInsights/frontend-components/pull/2384))
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- Řehoř
+
 ## 6.13.0 (2026-07-14)
 
 ### 🚀 Features
