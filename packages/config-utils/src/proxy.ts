@@ -136,6 +136,8 @@ const proxy = ({
   frontendCRDPath = path.resolve(process.cwd(), 'deploy/frontend.yaml'),
 }: ProxyOptions) => {
   const frontendCrdRef: { current?: FrontendCRD } = { current: undefined };
+  // Callback set by onListening to trigger browser reload from the CRD watcher
+  let triggerReload: (() => void) | undefined;
   let FEOFeaturesEnabled = false;
   try {
     frontendCrdRef.current = readFrontendCRD(frontendCRDPath);
@@ -156,6 +158,10 @@ const proxy = ({
       fecLogger(LogType.info, 'Frontend CRD has changed, reloading the file');
       try {
         frontendCrdRef.current = readFrontendCRD(frontendCRDPath);
+        // Trigger browser reload AFTER the in-memory CRD is updated so that
+        // subsequent requests read the new navigation data (avoids race with
+        // an independent watchFiles trigger).
+        triggerReload?.();
       } catch (error) {
         fecLogger(LogType.error, 'Error reloading frontend CRD file', error);
       }
@@ -238,6 +244,14 @@ const proxy = ({
       secure: false,
       changeOrigin: true,
       autoRewrite: true,
+      onProxyReq: (proxyReq, req) => {
+        // Strip conditional request headers for intercepted FEO responses to
+        // prevent 304 responses that would bypass CRD content modifications
+        if (FEOFeaturesEnabled && frontendCrdRef.current && isInterceptAbleRequest(req.url)) {
+          proxyReq.removeHeader('if-none-match');
+          proxyReq.removeHeader('if-modified-since');
+        }
+      },
       onProxyRes: (proxyRes, req, res) => {
         // this should reading the aggregated bundles filed generated from chrome service
         // The functionality is disabled until the interceptor is ready
@@ -339,12 +353,16 @@ const proxy = ({
 
   const config: Configuration = {
     ...(proxy.length > 0 && { proxy }),
-    // Watch the frontend CRD file so webpack-dev-server triggers a full
-    // page reload when it changes.  The chokidar watcher above updates
-    // frontendCrdRef.current in memory; this ensures the browser
-    // re-fetches navigation data with the updated CRD.
-    ...(FEOFeaturesEnabled && { watchFiles: [frontendCRDPath] }),
     onListening(server) {
+      // Provide reload trigger to the CRD chokidar watcher so it can
+      // refresh the browser AFTER the in-memory CRD has been updated.
+      if (FEOFeaturesEnabled) {
+        triggerReload = () => {
+          if (server.webSocketServer?.clients) {
+            server.sendMessage(server.webSocketServer.clients, 'content-changed');
+          }
+        };
+      }
       if (useProxy) {
         // Dev is just a prod but SSO does not allow dev.foo.redhat.com origin
         const host = useProxy ? `${majorEnv === 'dev' ? 'prod' : majorEnv}.foo.redhat.com` : 'localhost';
