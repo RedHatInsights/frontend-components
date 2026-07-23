@@ -7,7 +7,7 @@ import type { Configuration } from 'webpack-dev-server';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import chokidar from 'chokidar';
 import cookieTransform from './cookieTransform';
-import { isInterceptAbleRequest, matchNavigationRequest } from './feo/check-outgoing-requests';
+import { isInterceptAbleRequest } from './feo/check-outgoing-requests';
 import { hasFEOFeaturesEnabled, readFrontendCRD } from './feo/crd-check';
 import fecLogger, { LogType } from './fec-logger';
 import { modifyRequest } from './feo/modify-response';
@@ -243,6 +243,12 @@ const proxy = ({
         // The functionality is disabled until the interceptor is ready
 
         if (FEOFeaturesEnabled && frontendCrdRef.current && isInterceptAbleRequest(req.url)) {
+          // Prevent browser from caching intercepted responses so that
+          // CRD changes are reflected on page reload without stale data
+          res.removeHeader('etag');
+          res.removeHeader('last-modified');
+          res.setHeader('cache-control', 'no-store, no-cache, must-revalidate');
+
           // stub the original write function
           const _write = res.write;
           let body = '';
@@ -333,6 +339,11 @@ const proxy = ({
 
   const config: Configuration = {
     ...(proxy.length > 0 && { proxy }),
+    // Watch the frontend CRD file so webpack-dev-server triggers a full
+    // page reload when it changes.  The chokidar watcher above updates
+    // frontendCrdRef.current in memory; this ensures the browser
+    // re-fetches navigation data with the updated CRD.
+    ...(FEOFeaturesEnabled && { watchFiles: [frontendCRDPath] }),
     onListening(server) {
       if (useProxy) {
         // Dev is just a prod but SSO does not allow dev.foo.redhat.com origin
