@@ -15,6 +15,9 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 mismatch=0
+registry_error=0
+npm_stderr_file="$(mktemp)"
+trap 'rm -f "$npm_stderr_file"' EXIT  # clean up temp file on exit
 # Column widths for alignment
 printf "%-60s %-12s %-12s %-15s %s\n" "PACKAGE" "DISK" "GIT TAG" "NPM" "STATUS"
 printf '%.0s-' {1..110}
@@ -56,13 +59,25 @@ for dir in "$REPO_ROOT"/packages/*/; do
   [[ -z "$tag_ver" ]] && tag_ver="NONE"
 
   # --- npm registry version ---
-  npm_ver="$(npm view "$pkg" version --fetch-timeout=10000 2>/dev/null)" || true
-  [[ -z "$npm_ver" ]] && npm_ver="NOT_ON_NPM"
+  npm_ver="$(npm view "$pkg" version --fetch-timeout=10000 2>"$npm_stderr_file")" && npm_rc=0 || npm_rc=$?
+  if [[ $npm_rc -ne 0 ]]; then
+    if grep -q 'E404' "$npm_stderr_file"; then
+      npm_ver="NOT_ON_NPM"
+    else
+      npm_ver="REGISTRY_ERROR"
+    fi
+  fi
 
   # --- Compare ---
   if [[ "$disk_ver" == "$tag_ver" && "$disk_ver" == "$npm_ver" ]]; then
     status="OK"
     marker="✓"
+  elif [[ "$npm_ver" == "REGISTRY_ERROR" ]]; then
+    status="REGISTRY_ERROR"
+    marker="✗"
+    mismatch=1
+    registry_error=1
+    echo "::error::${pkg}: npm registry lookup failed (timeout, auth, or outage). Cannot verify npm version."
   elif [[ "$tag_ver" == "NONE" && "$npm_ver" == "NOT_ON_NPM" ]]; then
     # New package: no tag, not published. Flag as informational but still a mismatch.
     status="NEW_PACKAGE"
@@ -82,6 +97,16 @@ done
 echo ""
 if [[ $mismatch -ne 0 ]]; then
   echo "Version verification FAILED. Fix mismatches before releasing."
+  if [[ $registry_error -ne 0 ]]; then
+    echo ""
+    echo "npm registry lookup failed for one or more packages. Check registry status,"
+    echo "network connectivity, and npm authentication before re-running."
+  else
+    echo ""
+    echo "If disk and tag match but npm is behind, a prior npm publish likely failed."
+    echo "Pull latest main with tags, build, and run 'npx nx release publish' to recover."
+    echo "Subsequent releases will remain blocked until the missing version is published."
+  fi
   exit 1
 else
   echo "All package versions are aligned across disk, git tags, and npm registry."
