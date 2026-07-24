@@ -1,3 +1,22 @@
+## 6.14.0 (2026-07-24)
+
+### 🚀 Features
+
+- **@redhat-cloud-services/frontend-components-config:** add CRD interception to dev-proxy mode ([2dca5ade](https://github.com/RedHatInsights/frontend-components/commit/2dca5ade))
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components-config:** harden CRD interceptor ([282c2cd0](https://github.com/RedHatInsights/frontend-components/commit/282c2cd0))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.12.2
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
 ## 6.13.1 (2026-07-23)
 
 ### 🚀 Features

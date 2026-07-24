@@ -1,3 +1,15 @@
+## 4.12.2 (2026-07-24)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components-config-utilities:** prevent stale CRD responses ([1e8e37d8](https://github.com/RedHatInsights/frontend-components/commit/1e8e37d8))
+- **@redhat-cloud-services/frontend-components-config-utilities:** reload nav on CRD change ([4aad0a3d](https://github.com/RedHatInsights/frontend-components/commit/4aad0a3d))
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- platex-rehor-bot
+
 ## 4.12.1 (2026-07-13)
 
 This was a version bump only for @redhat-cloud-services/frontend-components-config-utilities to align it with other projects, there were no code changes.
