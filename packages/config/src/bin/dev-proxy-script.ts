@@ -5,7 +5,9 @@ import os from 'os';
 import path from 'path';
 import treeKill from 'tree-kill';
 import { LogType, fecLogger as fecLoggerDefault } from '@redhat-cloud-services/frontend-components-config-utilities';
+import { hasFEOFeaturesEnabled, readFrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo/crd-check';
 import { getCdnPath, setEnv, validateFECConfig } from './common';
+import startCRDInterceptorServer, { CRD_INTERCEPTOR_PORT, INTERCEPTABLE_PATHS } from './crd-interceptor-server';
 import serveChrome, { CONTAINER_NAME as CHROME_CONTAINTER_NAME, ContainerRuntime, checkContainerRuntime } from './serve-chrome';
 
 const PROXY_URL = 'http://squid.corp.redhat.com:3128';
@@ -82,7 +84,14 @@ function pullImage(containerName: string, repo: string, tag: string) {
   execSync(`${execBin} pull ${repo}:${tag}`, debug ? { stdio: 'inherit' } : { stdio: [] });
 }
 
-function createRoutesConfig(fecConfig: any, cdnPath: string, port: string, SPAFallback: boolean, filename: string = 'routes.json'): string {
+function createRoutesConfig(
+  fecConfig: any,
+  cdnPath: string,
+  port: string,
+  SPAFallback: boolean,
+  filename: string = 'routes.json',
+  interceptorPort?: number,
+): string {
   let routes: Map<string, RouteConfig> = new Map();
 
   let fecRoutes = fecConfig?.routes || undefined;
@@ -129,6 +138,14 @@ function createRoutesConfig(fecConfig: any, cdnPath: string, port: string, SPAFa
         routes.set(`${handle}*`, { url: host });
       }
     });
+
+  // Add CRD interceptor routes so Caddy directs chrome-service API
+  // requests to the local interceptor instead of straight to stage
+  if (interceptorPort) {
+    INTERCEPTABLE_PATHS.forEach((interceptPath) => {
+      routes.set(interceptPath, { url: `${DEFAULT_LOCAL_ROUTE}:${interceptorPort}` });
+    });
+  }
 
   const tempDir = os.tmpdir();
   const tempFilePath = path.join(tempDir, filename);
@@ -217,6 +234,31 @@ async function devProxyScript(
     process.exit(1);
   }
 
+  // Check if FEO features are enabled and start CRD interceptor server
+  // so that dev-proxy mode can apply local CRD changes to chrome-service
+  // API responses (navigation, search, modules, service tiles)
+  let interceptorPort: number | undefined;
+  let interceptorServer: import('http').Server | undefined;
+  const frontendCRDPath = fecConfig.frontendCRDPath ?? path.resolve(cwd, 'deploy/frontend.yaml');
+  try {
+    const crd = readFrontendCRD(frontendCRDPath);
+    if (hasFEOFeaturesEnabled(crd)) {
+      fecLogger(LogType.info, 'FEO features enabled, starting CRD interceptor server for dev-proxy mode');
+      try {
+        interceptorServer = await startCRDInterceptorServer({
+          frontendCRDPath,
+          port: CRD_INTERCEPTOR_PORT,
+          debug,
+        });
+        interceptorPort = CRD_INTERCEPTOR_PORT;
+      } catch (interceptorError) {
+        fecLogger(LogType.error, 'FEO is enabled but the CRD interceptor server failed to start:', interceptorError);
+      }
+    }
+  } catch (e) {
+    fecLogger(LogType.debug, 'FEO features not available for CRD interception in dev-proxy mode');
+  }
+
   try {
     fs.statSync(webpackConfigPath);
     webpackConfig = require(webpackConfigPath);
@@ -235,7 +277,7 @@ async function devProxyScript(
   const staticPort = argv.staticPort ?? '8003';
   try {
     cdnPath = getCdnPath(fecConfig, webpackConfig, cwd);
-    routesConfigPath = createRoutesConfig(fecConfig, cdnPath, staticPort, SPAFallback);
+    routesConfigPath = createRoutesConfig(fecConfig, cdnPath, staticPort, SPAFallback, 'routes.json', interceptorPort);
   } catch (error) {
     fecLogger(LogType.error, 'Failed to generate the proxy routes config:', error);
     process.exit(1);
@@ -263,6 +305,9 @@ async function devProxyScript(
     });
     if (waitOnProcess?.pid) {
       treeKill(waitOnProcess.pid, 'SIGKILL');
+    }
+    if (interceptorServer) {
+      interceptorServer.close();
     }
     stopContainer(DEV_PROXY_CONTAINER_NAME);
     if (SPAFallback) {

@@ -7,7 +7,7 @@ import type { Configuration } from 'webpack-dev-server';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import chokidar from 'chokidar';
 import cookieTransform from './cookieTransform';
-import { isInterceptAbleRequest, matchNavigationRequest } from './feo/check-outgoing-requests';
+import { isInterceptAbleRequest } from './feo/check-outgoing-requests';
 import { hasFEOFeaturesEnabled, readFrontendCRD } from './feo/crd-check';
 import fecLogger, { LogType } from './fec-logger';
 import { modifyRequest } from './feo/modify-response';
@@ -136,6 +136,8 @@ const proxy = ({
   frontendCRDPath = path.resolve(process.cwd(), 'deploy/frontend.yaml'),
 }: ProxyOptions) => {
   const frontendCrdRef: { current?: FrontendCRD } = { current: undefined };
+  // Callback set by onListening to trigger browser reload from the CRD watcher
+  let triggerReload: (() => void) | undefined;
   let FEOFeaturesEnabled = false;
   try {
     frontendCrdRef.current = readFrontendCRD(frontendCRDPath);
@@ -156,6 +158,10 @@ const proxy = ({
       fecLogger(LogType.info, 'Frontend CRD has changed, reloading the file');
       try {
         frontendCrdRef.current = readFrontendCRD(frontendCRDPath);
+        // Trigger browser reload AFTER the in-memory CRD is updated so that
+        // subsequent requests read the new navigation data (avoids race with
+        // an independent watchFiles trigger).
+        triggerReload?.();
       } catch (error) {
         fecLogger(LogType.error, 'Error reloading frontend CRD file', error);
       }
@@ -238,11 +244,25 @@ const proxy = ({
       secure: false,
       changeOrigin: true,
       autoRewrite: true,
+      onProxyReq: (proxyReq, req) => {
+        // Strip conditional request headers for intercepted FEO responses to
+        // prevent 304 responses that would bypass CRD content modifications
+        if (FEOFeaturesEnabled && frontendCrdRef.current && isInterceptAbleRequest(req.url)) {
+          proxyReq.removeHeader('if-none-match');
+          proxyReq.removeHeader('if-modified-since');
+        }
+      },
       onProxyRes: (proxyRes, req, res) => {
         // this should reading the aggregated bundles filed generated from chrome service
         // The functionality is disabled until the interceptor is ready
 
         if (FEOFeaturesEnabled && frontendCrdRef.current && isInterceptAbleRequest(req.url)) {
+          // Prevent browser from caching intercepted responses so that
+          // CRD changes are reflected on page reload without stale data
+          res.removeHeader('etag');
+          res.removeHeader('last-modified');
+          res.setHeader('cache-control', 'no-store, no-cache, must-revalidate');
+
           // stub the original write function
           const _write = res.write;
           let body = '';
@@ -334,6 +354,15 @@ const proxy = ({
   const config: Configuration = {
     ...(proxy.length > 0 && { proxy }),
     onListening(server) {
+      // Provide reload trigger to the CRD chokidar watcher so it can
+      // refresh the browser AFTER the in-memory CRD has been updated.
+      if (FEOFeaturesEnabled) {
+        triggerReload = () => {
+          if (server.webSocketServer?.clients) {
+            server.sendMessage(server.webSocketServer.clients, 'content-changed');
+          }
+        };
+      }
       if (useProxy) {
         // Dev is just a prod but SSO does not allow dev.foo.redhat.com origin
         const host = useProxy ? `${majorEnv === 'dev' ? 'prod' : majorEnv}.foo.redhat.com` : 'localhost';
