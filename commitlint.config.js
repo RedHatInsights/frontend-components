@@ -21,6 +21,7 @@ module.exports = {
     'scope-case': [0],
     'body-max-length': [0],
     'body-max-line-length': [0],
+    'header-max-length': [2, 'always', 256],
     'scope-full-name-for-versioning': [2, 'always'],
   },
   plugins: [
