@@ -63,7 +63,7 @@ function stopContainer(containerName: string) {
   try {
     let isRunning: boolean = true;
     try {
-      execSync(`${execBin} inspect -f '{{.State.Running}}' ${containerName}\n`).toString().trim().toLowerCase() === 'true';
+      isRunning = execSync(`${execBin} inspect -f '{{.State.Running}}' ${containerName}\n`).toString().trim().toLowerCase() === 'true';
     } catch (error) {
       isRunning = false;
     }
@@ -254,22 +254,54 @@ async function devProxyScript(
   // Exec
   let commands: Command[] = [];
   let waitOnProcess: ReturnType<typeof exec> | undefined = undefined;
+  let shuttingDown = false;
 
-  const cleanup = () => {
-    commands.forEach((cmd) => {
-      if (cmd.pid) {
-        treeKill(cmd.pid, 'SIGKILL');
+  const cleanup = (onComplete?: () => void) => {
+    const pids = [
+      ...commands.map((cmd) => cmd.pid).filter((pid): pid is number => typeof pid === 'number'),
+      ...(waitOnProcess?.pid ? [waitOnProcess.pid] : []),
+    ];
+
+    const finish = () => {
+      stopContainer(DEV_PROXY_CONTAINER_NAME);
+      removeContainer(DEV_PROXY_CONTAINER_NAME);
+      if (SPAFallback) {
+        stopContainer(CHROME_CONTAINTER_NAME);
+        removeContainer(CHROME_CONTAINTER_NAME);
       }
+      console.log('\n');
+      onComplete?.();
+    };
+
+    if (pids.length === 0) {
+      finish();
+      return;
+    }
+
+    let remaining = pids.length;
+    pids.forEach((pid) => {
+      treeKill(pid, 'SIGKILL', () => {
+        remaining -= 1;
+        if (remaining === 0) {
+          finish();
+        }
+      });
     });
-    if (waitOnProcess?.pid) {
-      treeKill(waitOnProcess.pid, 'SIGKILL');
-    }
-    stopContainer(DEV_PROXY_CONTAINER_NAME);
-    if (SPAFallback) {
-      stopContainer(CHROME_CONTAINTER_NAME);
-    }
-    console.log('\n');
   };
+
+  // Register before spawning children so a signal during startup still cleans up
+  const shutdown = (exitCode = 0) => {
+    if (shuttingDown) {
+      return;
+    }
+    shuttingDown = true;
+    cleanup(() => {
+      process.exit(exitCode);
+    });
+  };
+
+  process.on('SIGINT', () => shutdown(0));
+  process.on('SIGTERM', () => shutdown(0));
 
   try {
     const outputPath = webpackConfig.output.path;
@@ -304,8 +336,7 @@ async function devProxyScript(
       if (SPAFallback) {
         const handleServerError = (error: Error) => {
           fecLogger(LogType.error, error);
-          cleanup();
-          process.exit(1);
+          shutdown(1);
         };
 
         await serveChrome(
@@ -366,14 +397,8 @@ async function devProxyScript(
     );
 
     result.then(
-      () => {
-        cleanup();
-        process.exit(0);
-      },
-      () => {
-        cleanup();
-        process.exit(0);
-      },
+      () => shutdown(0),
+      () => shutdown(0),
     );
   } catch (error) {
     fecLogger(LogType.error, error);
