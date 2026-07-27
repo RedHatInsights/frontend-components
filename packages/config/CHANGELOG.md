@@ -1,3 +1,17 @@
+## 6.14.1 (2026-07-27)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components-config-utilities,@redhat-cloud-services/frontend-components-config:** revert reload nav on CRD change ([#2395](https://github.com/RedHatInsights/frontend-components/pull/2395))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.12.3
+
+### ❤️ Thank You
+
+- Karel Hala @karelhala
+
 ## 6.14.0 (2026-07-24)
 
 ### 🚀 Features
