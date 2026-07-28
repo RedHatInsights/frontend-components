@@ -1,3 +1,10 @@
+## 6.14.2 (2026-07-28)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/tsc-transform-imports to 1.3.2
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.12.4
+
 ## 6.14.1 (2026-07-27)
 
 ### 🩹 Fixes

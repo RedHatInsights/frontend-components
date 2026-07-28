@@ -1,3 +1,18 @@
+## 7.10.4 (2026-07-28)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components:** update scalprum core to ^0.10.1 ([#2396](https://github.com/RedHatInsights/frontend-components/pull/2396))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.5.2
+- Updated @redhat-cloud-services/types to 3.7.2
+
+### ❤️ Thank You
+
+- Charles Mulder
+
 ## 7.10.3 (2026-07-21)
 
 ### 🩹 Fixes

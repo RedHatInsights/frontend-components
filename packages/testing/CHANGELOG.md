@@ -1,3 +1,7 @@
+## 1.3.2 (2026-07-28)
+
+This was a version bump only for @redhat-cloud-services/frontend-components-testing to align it with other projects, there were no code changes.
+
 ## 1.3.1 (2026-07-13)
 
 This was a version bump only for @redhat-cloud-services/frontend-components-testing to align it with other projects, there were no code changes.
