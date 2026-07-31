@@ -1,3 +1,14 @@
+## 4.5.3 (2026-07-31)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components-translations:** replace defaultProps with JS default parameter ([#2399](https://github.com/RedHatInsights/frontend-components/pull/2399))
+
+### ❤️ Thank You
+
+- Claude Opus 4.6
+- Řehoř
+
 ## 4.5.2 (2026-07-28)
 
 ### 🧱 Updated Dependencies
