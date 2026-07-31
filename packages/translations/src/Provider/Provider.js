@@ -4,7 +4,7 @@ import { IntlProvider as ReactIntlProvider } from 'react-intl';
 import { LOCALSTORAGE_KEY } from '../utils';
 import translatedMessages from '../locales/data.json';
 
-const IntlProvider = ({ locale, messages, ...props }) => {
+const IntlProvider = ({ locale = null, messages, ...props }) => {
   const language = locale || localStorage.getItem(LOCALSTORAGE_KEY) || navigator.language.split(/[-_]/)[0] || 'en';
   return (
     <ReactIntlProvider
@@ -21,10 +21,6 @@ const IntlProvider = ({ locale, messages, ...props }) => {
 IntlProvider.propTypes = {
   locale: PropTypes.string,
   messages: PropTypes.object,
-};
-
-IntlProvider.defaultProps = {
-  locale: null,
 };
 
 export default IntlProvider;
