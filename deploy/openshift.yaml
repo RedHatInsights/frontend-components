@@ -39,8 +39,9 @@ spec:
       containers:
       - image: quay.io/cloudservices/frontend-docs:latest
         # TODO: Pin to a digest or immutable tag once the image is
-        # published to quay.io/cloudservices (e.g. :sha-<commit>).
-        imagePullPolicy: IfNotPresent
+        # published to quay.io/cloudservices (e.g. :sha-<commit>),
+        # then switch imagePullPolicy back to IfNotPresent.
+        imagePullPolicy: Always
         name: frontend-docs
         ports:
         - containerPort: 3000
