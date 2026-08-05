@@ -1,3 +1,13 @@
+## 6.14.3 (2026-08-05)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components-config:** clean up properly with CTRL+C ([#2397](https://github.com/RedHatInsights/frontend-components/pull/2397))
+
+### ❤️ Thank You
+
+- Adonis Puente @adonispuente
+
 ## 6.14.2 (2026-07-28)
 
 ### 🧱 Updated Dependencies
