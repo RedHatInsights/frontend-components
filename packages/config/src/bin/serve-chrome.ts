@@ -136,7 +136,7 @@ async function startServer(image: string, tag: string, serverPort: number) {
     } catch (error) {
       fecLogger(LogType.info, 'No existing chrome container found');
     }
-    const runCommand = `${execBin} run -p ${serverPort}:${CONTAINER_PORT} --name ${CONTAINER_NAME} ${image}:${tag}`;
+    const runCommand = `${execBin} run --rm -p ${serverPort}:${CONTAINER_PORT} --name ${CONTAINER_NAME} ${image}:${tag}`;
     fecLogger(LogType.debug, `Spawn ${runCommand}`);
     const child = spawn(runCommand, [], {
       stdio: 'ignore',

@@ -3,7 +3,6 @@ import concurrently, { Command } from 'concurrently';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
-import treeKill from 'tree-kill';
 import { LogType, fecLogger as fecLoggerDefault } from '@redhat-cloud-services/frontend-components-config-utilities';
 import { getCdnPath, setEnv, validateFECConfig } from './common';
 import serveChrome, { CONTAINER_NAME as CHROME_CONTAINTER_NAME, ContainerRuntime, checkContainerRuntime } from './serve-chrome';
@@ -22,6 +21,26 @@ const IOP_CUSTOM_ROUTES_CONTAINER_PATH = '/config/custom_routes.iop.json';
 
 let execBin: ContainerRuntime | undefined = undefined;
 let debug: boolean = false;
+
+function killProcessTree(pid: number) {
+  try {
+    const children = execSync(`pgrep -P ${pid}`, { encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'] })
+      .trim()
+      .split('\n')
+      .filter(Boolean)
+      .map(Number);
+    for (const child of children) {
+      killProcessTree(child);
+    }
+  } catch (_) {
+    // pgrep exits 1 when no children found
+  }
+  try {
+    process.kill(pid, 'SIGKILL');
+  } catch (_) {
+    // process already dead
+  }
+}
 
 interface RouteConfig {
   url: string;
@@ -63,7 +82,7 @@ function stopContainer(containerName: string) {
   try {
     let isRunning: boolean = true;
     try {
-      execSync(`${execBin} inspect -f '{{.State.Running}}' ${containerName}\n`).toString().trim().toLowerCase() === 'true';
+      isRunning = execSync(`${execBin} inspect -f '{{.State.Running}}' ${containerName}\n`).toString().trim().toLowerCase() === 'true';
     } catch (error) {
       isRunning = false;
     }
@@ -258,18 +277,30 @@ async function devProxyScript(
   const cleanup = () => {
     commands.forEach((cmd) => {
       if (cmd.pid) {
-        treeKill(cmd.pid, 'SIGKILL');
+        killProcessTree(cmd.pid);
       }
     });
     if (waitOnProcess?.pid) {
-      treeKill(waitOnProcess.pid, 'SIGKILL');
+      killProcessTree(waitOnProcess.pid);
     }
     stopContainer(DEV_PROXY_CONTAINER_NAME);
+    removeContainer(DEV_PROXY_CONTAINER_NAME);
     if (SPAFallback) {
       stopContainer(CHROME_CONTAINTER_NAME);
+      removeContainer(CHROME_CONTAINTER_NAME);
     }
     console.log('\n');
   };
+
+  const handleSignal = () => {
+    process.off('SIGINT', handleSignal);
+    process.off('SIGTERM', handleSignal);
+    cleanup();
+    process.exit(0);
+  };
+
+  process.on('SIGINT', handleSignal);
+  process.on('SIGTERM', handleSignal);
 
   try {
     const outputPath = webpackConfig.output.path;
@@ -338,7 +369,7 @@ async function devProxyScript(
           prefixColor: 'bgGreen',
         },
         {
-          command: `${execBin} run -d -e HCC_ENV=${process.env.HCC_ENV} -e HCC_ENV_URL=${process.env.HCC_ENV_URL} ${proxyEnvVar} ${iopEnvVar} ${iopCustomRoutesEnvVar} -p ${argv.port || 1337}:${DEV_PROXY_CONTAINER_PORT} -v "${routesConfigPath}:/config/routes.json:ro,z" ${iopCustomRoutesMountVar} --name ${DEV_PROXY_CONTAINER_NAME} ${DEV_PROXY_IMAGE_REPO}${DEV_PROXY_IMAGE_TAG} ${proxyVerbose}`,
+          command: `${execBin} run --rm -d -e HCC_ENV=${process.env.HCC_ENV} -e HCC_ENV_URL=${process.env.HCC_ENV_URL} ${proxyEnvVar} ${iopEnvVar} ${iopCustomRoutesEnvVar} -p ${argv.port || 1337}:${DEV_PROXY_CONTAINER_PORT} -v "${routesConfigPath}:/config/routes.json:ro,z" ${iopCustomRoutesMountVar} --name ${DEV_PROXY_CONTAINER_NAME} ${DEV_PROXY_IMAGE_REPO}${DEV_PROXY_IMAGE_TAG} ${proxyVerbose}`,
           name: 'PROXY',
           env: { RH_PROXY_URL: PROXY_URL },
           prefixColor: 'bgMagenta',
@@ -372,7 +403,7 @@ async function devProxyScript(
       },
       () => {
         cleanup();
-        process.exit(0);
+        process.exit(1);
       },
     );
   } catch (error) {
