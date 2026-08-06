@@ -37,7 +37,10 @@ spec:
         app: frontend-docs
     spec:
       containers:
-      - image: quay.io/lphiri/frontend-docs:latest
+      - image: quay.io/cloudservices/frontend-docs:latest
+        # TODO: Pin to a digest or immutable tag once the image is
+        # published to quay.io/cloudservices (e.g. :sha-<commit>),
+        # then switch imagePullPolicy back to IfNotPresent.
         imagePullPolicy: Always
         name: frontend-docs
         ports:
@@ -45,6 +48,21 @@ spec:
           protocol: TCP
         - containerPort: 8080
           protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
+          capabilities:
+            drop:
+              - ALL
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
