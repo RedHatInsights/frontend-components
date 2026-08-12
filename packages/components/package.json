@@ -29,6 +29,7 @@
     "@patternfly/react-data-view": "^6.0.0",
     "@patternfly/react-table": "^6.0.0",
     "@patternfly/react-tokens": "^6.0.0",
+    "@scalprum/react-core": "^0.13.1",
     "lodash": "^4.17.15",
     "react": "^18.0.0 || ^19.0.0",
     "react-content-loader": "^6.2.0",
@@ -40,8 +41,6 @@
     "@patternfly/react-component-groups": "^6.0.0",
     "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
     "@redhat-cloud-services/types": "^3.0.0",
-    "@scalprum/core": "^0.10.1",
-    "@scalprum/react-core": "^0.13.1",
     "classnames": "^2.2.5",
     "sanitize-html": "^2.13.1"
   },
