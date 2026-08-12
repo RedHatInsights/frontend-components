@@ -1,3 +1,18 @@
+## 7.10.5 (2026-08-12)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components:** move @scalprum/react-core to peerDependencies, drop unused @scalprum/core dependency ([092150e4](https://github.com/RedHatInsights/frontend-components/commit/092150e4))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.5.3
+- Updated @redhat-cloud-services/types to 3.7.3
+
+### ❤️ Thank You
+
+- Charles Mulder
+
 ## 7.10.4 (2026-07-28)
 
 ### 🩹 Fixes
