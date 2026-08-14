@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeTable RowWrapper should render correctly - no data 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr
+        aria-level="1"
+        aria-setsize="0"
+        class="pf-v6-c-table__tr"
+        data-ouia-component-id="OUIA-Generated-TableRow-1"
+        data-ouia-component-type="PF6/TableRow"
+        data-ouia-safe="true"
+      />
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`TreeTable RowWrapper should render correctly - with data 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr
+        aria-level="1"
+        aria-posinset="1"
+        aria-setsize="2"
+        class="pf-v6-c-table__tr pf-m-expandable pf-m-expanded"
+        data-ouia-component-id="OUIA-Generated-TableRow-2"
+        data-ouia-component-type="PF6/TableRow"
+        data-ouia-safe="true"
+      />
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`TreeTable RowWrapper should render correctly - with data collapsed 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr
+        aria-level="1"
+        aria-posinset="1"
+        aria-setsize="2"
+        class="pf-v6-c-table__tr pf-m-expandable"
+        data-ouia-component-id="OUIA-Generated-TableRow-3"
+        data-ouia-component-type="PF6/TableRow"
+        data-ouia-safe="true"
+      />
+    </tbody>
+  </table>
+</div>
+`;

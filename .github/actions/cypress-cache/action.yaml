@@ -1,0 +1,11 @@
+name: Cypress runner cache
+description: Retrieve and cache the cypress runner
+runs:
+  using: "composite"
+  steps:
+    # cache cypress runner
+    - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+      id: cypress-cache
+      with:
+        path: ~/.cache/Cypress
+        key: cypress-runner-cache-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}

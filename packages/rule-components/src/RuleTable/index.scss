@@ -1,0 +1,42 @@
+.rhcs-c-rules-table {
+    .ins-c-table__toolbar.ins-m-footer .pf-v6-c-pagination.pf-m-footer {
+        margin-left: auto;
+    }
+
+    .pf-v6-c-select__menu .pf-v6-c-check__label .ins-battery svg {
+        height: var(--pf-t--global--font--size--xl);
+    }
+
+    // align items vertically
+    .pf-v6-c-table {
+        td {
+            vertical-align: middle;
+        }
+
+        // fix toggle
+        .pf-v6-c-table__toggle {
+            padding-top: 0;
+
+            .pf-v6-c-button {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+    }
+
+    .pf-v6-c-data-toolbar__content {
+        position: relative;
+        padding-right: var(--pf-v6-c-data-toolbar__content--PaddingRight);
+        padding-left: var(--pf-v6-c-data-toolbar__content--PaddingLeft);
+    }
+
+    .ins-c-primary-toolbar {
+        padding: var(--pf-t--global--spacer--md);
+    }
+
+    .pf-v6-c-empty-state {
+        flex-direction: column;
+    }
+}
+

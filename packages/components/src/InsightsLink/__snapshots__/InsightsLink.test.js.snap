@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InsightsLink component under / should render a link to /preview with a given path 1`] = `
+<div>
+  Mocked Link
+</div>
+`;
+
+exports[`InsightsLink component under / should render a link to a different app in preview when given 1`] = `
+<div>
+  Mocked Link
+</div>
+`;
+
+exports[`InsightsLink component under / should render a link with a given path 1`] = `
+<div>
+  Mocked Link
+</div>
+`;
+
+exports[`InsightsLink component under /preview should render a /preview link 1`] = `
+<div>
+  Mocked Link
+</div>
+`;
+
+exports[`InsightsLink component under /preview should render a link to non /preview 1`] = `
+<div>
+  Mocked Link
+</div>
+`;

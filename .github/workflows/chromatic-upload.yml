@@ -1,0 +1,21 @@
+name: Chromatic Upload
+
+on:
+  workflow_run:
+    workflows: ["Frontend components CI pipeline"]
+    types: [completed]
+
+concurrency:
+  group: chromatic-${{ github.event.workflow_run.head_repository.full_name }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: write
+
+jobs:
+  chromatic:
+    uses: RedHatInsights/experience-ui-governance/.github/workflows/reusable-chromatic.yml@9225c3b62440c8624c333f55ec16573fd605ede1 # main
+    secrets:
+      chromatic-project-token: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

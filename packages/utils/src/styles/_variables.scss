@@ -1,0 +1,42 @@
+:root {
+    --ins-color--orange: #ec7a08;
+}
+
+// Spacing
+$ins-padding: var(--pf-t--global--spacer--lg);
+$ins-margin: var(--pf-t--global--spacer--xl);
+$ins-gutter: var(--pf-t--global--spacer--md);
+
+// Font Size
+$ins-fontSize: var(--pf-t--global--font--size--md);
+$ins-fontSize--sm: var(--pf-t--global--font--size--sm);
+$ins-fontSize--lg: var(--pf-t--global--font--size--lg);
+$ins-fontSize--xl: var(--pf-t--global--font--size--xl);
+
+// Borders
+$ins-borderRadius: var(--pf-t--global--border--radius--small);
+$ins-borderRadius--round: var(--pf-t--global--border--radius--large);
+
+// Grid breakpoints
+$ins-break--xs: var(--pf-t--global--breakpoint--xs);
+$ins-break--sm: var(--pf-t--global--breakpoint--sm);
+$ins-break--md: var(--pf-t--global--breakpoint--md);
+$ins-break--lg: var(--pf-t--global--breakpoint--lg);
+$ins-break--xl: var(--pf-t--global--breakpoint--xl);
+
+// Colors
+$ins-color--red: var(--pf-t--global--color--status--danger--default);
+$ins-color--critical: $ins-color--red;
+
+$ins-color--orange: var(--ins-color--orange);
+$ins-color--high: $ins-color--orange;
+
+$ins-color--yellow: var(--pf-t--global--color--status--warning--default);
+$ins-color--medium: $ins-color--yellow;
+
+$ins-color--green: var(--pf-t--global--color--status--success--default);
+$ins-color--low: $ins-color--green;
+
+$ins-color--blue: var(--pf-t--global--color--status--info--default);
+
+$ins-color--gray: var(--pf-t--global--text--color--disabled);

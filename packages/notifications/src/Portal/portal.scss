@@ -1,0 +1,20 @@
+.notifications-portal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2000;
+}
+
+@media only screen and (max-width: 600px) {
+  .notifications-portal{
+    margin: 0;
+    width: initial;
+  }
+} 
+
+@media only screen and (min-width: 768px) {
+  .notifications-portal {
+    margin: 30px;
+    width: 708px;
+  }
+}

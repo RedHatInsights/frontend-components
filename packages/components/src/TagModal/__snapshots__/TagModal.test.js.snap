@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagModal renders the modal open with row of tags 1`] = `
+<div
+  aria-hidden="true"
+/>
+`;
+
+exports[`TagModal renders the modal with a child component 1`] = `
+<div
+  aria-hidden="true"
+/>
+`;
+
+exports[`TagModal should render modal with disabled button 1`] = `
+<div
+  aria-hidden="true"
+/>
+`;
+
+exports[`TagModal should render modal with enabled button 1`] = `
+<div
+  aria-hidden="true"
+/>
+`;
+
+exports[`Two tables should render modal with disabled button 1`] = `
+<div
+  aria-hidden="true"
+/>
+`;
+
+exports[`Two tables should render modal with enabled button 1`] = `
+<div
+  aria-hidden="true"
+/>
+`;
+
+exports[`Two tables should render two tables 1`] = `
+<div
+  aria-hidden="true"
+/>
+`;
+
+exports[`Two tables should render two tables in loading state 1`] = `
+<div
+  aria-hidden="true"
+/>
+`;

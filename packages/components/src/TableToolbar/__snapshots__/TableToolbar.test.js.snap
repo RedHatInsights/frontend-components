@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableToolbar component should render 1`] = `
+<div>
+  <div
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe="true"
+    id="pf-random-id-0"
+  >
+    Some
+    <div
+      class="pf-v6-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v6-c-toolbar__group"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TableToolbar component should render a footer 1`] = `
+<div>
+  <div
+    class="pf-v6-c-toolbar ins-c-table__toolbar ins-m-footer"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-8"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe="true"
+    id="pf-random-id-7"
+  >
+    Footer
+    <div
+      class="pf-v6-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v6-c-toolbar__group"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TableToolbar component should render with results and selection of 1 1`] = `
+<div>
+  <div
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-7"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe="true"
+    id="pf-random-id-6"
+  >
+    Some
+    <div
+      class="pf-v6-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v6-c-toolbar__group"
+      />
+    </div>
+  </div>
+  <div
+    class="ins-c-table__toolbar-results"
+  >
+    <span
+      class="ins-c-table__toolbar-results-count"
+    >
+       
+      1 Result
+       
+    </span>
+    <span
+      class="ins-c-table__toolbar-results-selected"
+    >
+       
+      1
+       Selected 
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TableToolbar component should render with results greater than 1 1`] = `
+<div>
+  <div
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-4"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe="true"
+    id="pf-random-id-3"
+  >
+    Some
+    <div
+      class="pf-v6-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v6-c-toolbar__group"
+      />
+    </div>
+  </div>
+  <div
+    class="ins-c-table__toolbar-results"
+  >
+    <span
+      class="ins-c-table__toolbar-results-count"
+    >
+       
+      2 Results
+       
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TableToolbar component should render with results of 0 1`] = `
+<div>
+  <div
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-2"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe="true"
+    id="pf-random-id-1"
+  >
+    Some
+    <div
+      class="pf-v6-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v6-c-toolbar__group"
+      />
+    </div>
+  </div>
+  <div
+    class="ins-c-table__toolbar-results"
+  >
+    <span
+      class="ins-c-table__toolbar-results-count"
+    >
+       
+      0 Results
+       
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TableToolbar component should render with results of 1 1`] = `
+<div>
+  <div
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-3"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe="true"
+    id="pf-random-id-2"
+  >
+    Some
+    <div
+      class="pf-v6-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v6-c-toolbar__group"
+      />
+    </div>
+  </div>
+  <div
+    class="ins-c-table__toolbar-results"
+  >
+    <span
+      class="ins-c-table__toolbar-results-count"
+    >
+       
+      1 Result
+       
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TableToolbar component should render with selection of 0 1`] = `
+<div>
+  <div
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-5"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe="true"
+    id="pf-random-id-4"
+  >
+    Some
+    <div
+      class="pf-v6-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v6-c-toolbar__group"
+      />
+    </div>
+  </div>
+  <div
+    class="ins-c-table__toolbar-results"
+  >
+    <span
+      class="ins-c-table__toolbar-results-selected"
+    >
+       
+      0
+       Selected 
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TableToolbar component should render with selection of 1 1`] = `
+<div>
+  <div
+    class="pf-v6-c-toolbar ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-6"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe="true"
+    id="pf-random-id-5"
+  >
+    Some
+    <div
+      class="pf-v6-c-toolbar__content pf-m-hidden"
+      hidden=""
+    >
+      <div
+        class="pf-v6-c-toolbar__group"
+      />
+    </div>
+  </div>
+  <div
+    class="ins-c-table__toolbar-results"
+  >
+    <span
+      class="ins-c-table__toolbar-results-selected"
+    >
+       
+      1
+       Selected 
+    </span>
+  </div>
+</div>
+`;

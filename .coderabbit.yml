@@ -1,0 +1,175 @@
+language: en-US
+early_access: false
+enable_free_tier: true
+
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  high_level_summary_placeholder: "@coderabbitai summary"
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    ignore_title_keywords:
+      - "WIP"
+      - "DO NOT REVIEW"
+    drafts: false
+    base_branches:
+      - master
+
+  path_filters:
+    - "!**/node_modules/**"
+    - "!**/dist/**"
+    - "!**/*.snap"
+    - "!**/CHANGELOG.md"
+    - "!**/package-lock.json"
+
+  path_instructions:
+    - path: "packages/*/src/**/*.{ts,tsx}"
+      instructions: |
+        Review for:
+
+        **TypeScript Quality**
+        - Flag use of 'any' types - suggest specific types or 'unknown' with type guards
+        - Ensure proper type inference is used
+        - Check for missing return types on functions
+        - Verify generic types are properly constrained
+
+        **React Best Practices**
+        - Check useEffect dependency arrays for missing dependencies
+        - Flag unnecessary React.memo usage (measure first)
+        - Verify hooks are called at top level, not in conditions
+        - Check for prop drilling - suggest context or composition
+        - Ensure loading and error states are handled
+
+        **PatternFly Usage**
+        - Verify PatternFly components are used correctly per documentation
+        - Flag custom CSS overrides - suggest using PF tokens instead
+        - Check for proper PatternFly prop usage
+        - Ensure accessibility features from PF are utilized
+
+        **Accessibility**
+        - Verify ARIA labels exist for interactive elements without visible text
+        - Check keyboard navigation is supported (tab order, enter/space handlers)
+        - Flag images without alt text
+        - Ensure color is not the only means of conveying information
+        - Check focus management for modals/drawers
+
+        **Performance**
+        - Flag large bundle imports - suggest direct imports for tree-shaking
+        - Check for unnecessary re-renders (missing memoization)
+        - Identify expensive operations in render functions
+        - Suggest lazy loading for heavy components
+
+        **Security**
+        - Flag dangerouslySetInnerHTML usage - verify sanitization
+        - Check for XSS vulnerabilities in user input rendering
+        - Verify external data is validated before use
+        - Flag hardcoded secrets or tokens
+
+        **Breaking Changes**
+        - Identify changes to exported APIs, types, or component props
+        - Flag removal of props or functions from public interfaces
+        - Note changes in function signatures or return types
+
+    - path: "packages/*/cypress/**/*.cy.{ts,tsx}"
+      instructions: |
+        Review Cypress component tests for:
+
+        **Selector Strategy**
+        - Use data-testid attributes, not CSS classes or implementation details
+        - Flag brittle selectors (nth-child, complex CSS)
+        - Suggest semantic selectors when possible
+
+        **Test Quality**
+        - Tests should verify user behavior, not implementation
+        - Check for proper waiting strategies (not arbitrary cy.wait(ms))
+        - Verify tests are deterministic (no race conditions)
+        - Flag tests that depend on previous test state
+
+        **Accessibility Testing**
+        - Suggest adding keyboard navigation tests
+        - Verify ARIA attributes are tested where relevant
+        - Check that focus management is tested
+
+        **Best Practices**
+        - Tests should be independent and isolated
+        - Avoid testing library internals
+        - Use proper Cypress commands (not direct DOM manipulation)
+        - Check for good test descriptions
+
+    - path: "packages/**/*.test.{ts,tsx}"
+      instructions: |
+        Review Jest/RTL tests for:
+
+        **Test Structure**
+        - Follow AAA pattern (Arrange, Act, Assert)
+        - Tests should be readable without looking at implementation
+        - Use descriptive test names
+
+        **React Testing Library**
+        - Use screen queries, not container queries
+        - Query by accessible roles/labels, not test IDs when possible
+        - Flag waitFor with empty callbacks
+        - Avoid testing implementation details (state, internal functions)
+
+        **Mocking**
+        - Mocks should be scoped to individual tests
+        - Flag over-mocking (testing mocks, not actual code)
+        - Verify mocks are reset between tests
+
+        **Coverage**
+        - Ensure edge cases are tested
+        - Check error states are covered
+        - Verify loading states are tested
+        - Flag missing tests for critical paths
+
+    - path: "packages/config/**/*"
+      instructions: |
+        Review webpack configuration changes for:
+
+        **Build Impact**
+        - Flag changes that could increase bundle size
+        - Check for proper tree-shaking configuration
+        - Verify module federation settings are correct
+
+        **Security**
+        - Ensure no sensitive data in webpack config
+        - Check proxy configurations for security issues
+        - Verify external dependencies are trusted
+
+        **Breaking Changes**
+        - Note changes that affect consuming applications
+        - Flag changes to public webpack utilities
+        - Check for backwards compatibility
+
+    - path: "packages/eslint-config/**/*"
+      instructions: |
+        Review ESLint config changes for:
+
+        **Rule Changes**
+        - Explain reasoning for new rules
+        - Check if rules are too restrictive for productivity
+        - Verify security-related rules are not disabled
+        - Flag rules that conflict with Prettier
+
+        **Impact**
+        - Consider impact on existing codebase
+        - Suggest gradual rollout for breaking rule changes
+        - Check for consistent rule application
+
+    - path: "**/*.md"
+      instructions: |
+        Review documentation for:
+        - Accuracy and clarity
+        - Broken links
+        - Code examples that are correct and tested
+        - Proper formatting
+        - Up-to-date information (not outdated)
+
+chat:
+  auto_reply: true

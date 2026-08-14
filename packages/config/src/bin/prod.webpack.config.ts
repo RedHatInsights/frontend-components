@@ -1,0 +1,65 @@
+const { fecLogger, LogType } = require('@redhat-cloud-services/frontend-components-config-utilities');
+import path from 'path';
+import { hasFEOFeaturesEnabled, readFrontendCRD } from '@redhat-cloud-services/frontend-components-config-utilities/feo/crd-check';
+import validateFrontendCrd from '@redhat-cloud-services/frontend-components-config-utilities/feo/validate-frontend-crd';
+import FECConfiguration from '../lib/fec.config';
+import config from '../lib/index';
+import commonPlugins from './webpack.plugins';
+const fecConfig: FECConfiguration = require(process.env.FEC_CONFIG_PATH!);
+
+type Configuration = import('webpack').Configuration;
+
+const rootFolder = process.env.FEC_ROOT_DIR || process.cwd();
+const {
+  plugins: externalPlugins = [],
+  interceptChromeConfig,
+  routes,
+  hotReload,
+  appUrl,
+  frontendCRDPath = path.resolve(rootFolder, 'deploy/frontend.yaml'),
+  ...externalConfig
+} = fecConfig;
+const isFecStatic = process.env.FEC_STATIC?.toLowerCase() === 'true';
+const { config: webpackConfig, plugins } = config({
+  rootFolder,
+  // Disable file hashing when FEC_STATIC=true (set by `fec static` command for local dev).
+  // Allows user override via fec.config.js (externalConfig spread comes after).
+  ...(isFecStatic ? { useFileHash: false } : {}),
+  ...externalConfig,
+  /** Do not use HMR for production builds */
+  hotReload: false,
+  /** Do configure/inti webpack dev server */
+  deploymentBuild: true,
+});
+
+if (isFecStatic) {
+  fecLogger(LogType.info, 'FEC_STATIC=true: disabling file hashing (useFileHash=false)');
+}
+
+const frontendCrd = readFrontendCRD(frontendCRDPath);
+const feoEnabled = hasFEOFeaturesEnabled(frontendCrd);
+if (feoEnabled) {
+  validateFrontendCrd(frontendCrd);
+}
+
+plugins.push(...commonPlugins, ...externalPlugins);
+
+const start = (env: { analyze?: string }): Configuration => {
+  try {
+    const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+    if (BundleAnalyzerPlugin && env && env.analyze === 'true') {
+      fecLogger(LogType.warn, `Webpack Bundle Analyzer support will be is deprecated and will be removed in the next major release.`);
+
+      plugins.push(new BundleAnalyzerPlugin());
+    }
+  } catch {}
+
+  return {
+    ...webpackConfig,
+    plugins,
+  };
+};
+
+export default start;
+module.exports = start;

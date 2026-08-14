@@ -1,0 +1,115 @@
+{
+  "name": "@redhat-cloud-services/frontend-components",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/components",
+  "projectType": "library",
+  "tags": ["scope:public"],
+  "targets": {
+    "build:bundles": {
+      "dependsOn": ["^build:bundles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
+      "options": {
+        "rootDir": "packages/components/src",
+        "main": "packages/components/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components",
+        "cjsTsConfig": "packages/components/tsconfig.cjs.json",
+        "esmTsConfig": "packages/components/tsconfig.esm.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
+      }
+    },
+    "build:styles": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
+      "dependsOn": ["^build:styles"],
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components",
+        "sourceDir": "packages/components"
+      }
+    },
+    "build:packages": {
+      "dependsOn": ["^build:packages"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components",
+        "forceTypes": true
+      }
+    },
+    "transform:scss": {
+      "dependsOn": ["^transform:scss"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components"
+      }
+    },
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/components/src"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": ["nx run @redhat-cloud-services/frontend-components:build:bundles", "nx run @redhat-cloud-services/frontend-components:build:styles", "nx run @redhat-cloud-services/frontend-components:build:packages", "nx run @redhat-cloud-services/frontend-components:transform:scss"]
+      },
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/components/src/**/*", "packages/components/package.json"]
+      }
+    },
+    "test:unit": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/components/jest.config.ts"
+      }
+    },
+    "test:component": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "packages/components/cypress.config.ts",
+        "testingType": "component",
+        "skipServe": true
+      }
+    },
+    "storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx storybook dev -p 6006 --config-dir packages/components/.storybook",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "build-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx storybook build --config-dir packages/components/.storybook -o storybook-static",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "test:storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx storybook build --config-dir packages/components/.storybook -o storybook-static && npx concurrently -k -s first -n 'server,test' 'npx http-server storybook-static -p 6007 -s' 'npx wait-on http://127.0.0.1:6007 && npx test-storybook --config-dir packages/components/.storybook --url http://127.0.0.1:6007'",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/frontend-components",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
+    },
+    "tagRelease": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "git push --tags"
+      }
+    }
+  }
+}

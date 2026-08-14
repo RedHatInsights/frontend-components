@@ -1,0 +1,21 @@
+.ins-tab-layout {
+  > .ins-tabs {
+
+    div {
+      display: inline-block;
+      margin-right: 30px;
+      text-align: center;
+      cursor: pointer;
+      color: var(--pf-t--global--text--color--link--default);
+
+      &.active {
+        border-bottom: 3px var(--pf-t--global--text--color--link--default) solid;
+      }
+
+      &:hover {
+        color: var(--pf-t--global--text--color--link--default--hover);
+        border-bottom: 3px var(--pf-t--global--text--color--link--default--hover) solid;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.ins-c-tagfilter {
+  .ins-c-tagfilter__option label {
+    display: flex;
+    width: 100%;
+    .ins-c-tagfilter__option-value {
+      max-width: 12.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .pf-v6-c-badge {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .pf-v6-c-select__menu-group-title:empty { display: none; }
+
+  .pf-v6-c-select__menu > div { padding-top: 0; }
+
+  &.pf-m-expanded { width: 18.75rem !important; }
+}

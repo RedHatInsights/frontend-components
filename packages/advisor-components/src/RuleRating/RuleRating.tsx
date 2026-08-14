@@ -1,0 +1,93 @@
+import './RuleRating.scss';
+
+import React, { useCallback, useEffect, useState } from 'react';
+import debounce from 'lodash/debounce';
+
+import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
+import { Icon } from '@patternfly/react-core/dist/dynamic/components/Icon';
+import OutlinedThumbsDownIcon from '@patternfly/react-icons/dist/dynamic/icons/outlined-thumbs-down-icon';
+import OutlinedThumbsUpIcon from '@patternfly/react-icons/dist/dynamic/icons/outlined-thumbs-up-icon';
+import ThumbsDownIcon from '@patternfly/react-icons/dist/dynamic/icons/thumbs-down-icon';
+import ThumbsUpIcon from '@patternfly/react-icons/dist/dynamic/icons/thumbs-up-icon';
+
+import { Rating } from '../types';
+import { RuleDetailsMessages } from '../RuleDetails/RuleDetailsMessages';
+
+export const DEBOUNCE_TIMEOUT = 2000;
+
+interface RuleRatingProps {
+  ruleId: string;
+  ruleRating: Rating;
+  onVoteClick: (ruleId: string, calculatedRating: Rating) => unknown;
+  messages: RuleDetailsMessages;
+}
+
+const RuleRating = ({ messages, ruleId, ruleRating, onVoteClick }: RuleRatingProps) => {
+  const [rating, setRating] = useState(ruleRating);
+  const [submitted, setSubmitted] = useState(false);
+
+  const triggerCallback = useCallback(
+    debounce((calculatedRating) => {
+      onVoteClick(ruleId, calculatedRating);
+      setSubmitted(false);
+    }, DEBOUNCE_TIMEOUT),
+    [onVoteClick, ruleId],
+  );
+
+  useEffect(() => {
+    return () => {
+      triggerCallback.cancel();
+    };
+  }, [triggerCallback]);
+
+  const updateRuleRating = (newRating: Rating) => {
+    const calculatedRating = rating === newRating ? 0 : newRating;
+
+    try {
+      setSubmitted(true);
+      triggerCallback(calculatedRating);
+      setRating(calculatedRating);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <span className="ratingSpanOverride">
+      {messages.ruleHelpful}
+      <Button
+        icon={
+          <Icon size="md">
+            {rating === 1 ? (
+              <ThumbsUpIcon className="ins-c-like" data-testid="thumbs-up-filled" />
+            ) : (
+              <OutlinedThumbsUpIcon data-testid="thumbs-up-outlined" />
+            )}
+          </Icon>
+        }
+        variant="plain"
+        aria-label="thumbs-up"
+        onClick={() => updateRuleRating(1)}
+        ouiaId="thumbsUp"
+      />
+      <Button
+        icon={
+          <Icon size="md">
+            {rating === -1 ? (
+              <ThumbsDownIcon className="ins-c-dislike" data-testid="thumbs-down-filled" />
+            ) : (
+              <OutlinedThumbsDownIcon data-testid="thumbs-down-outlined" />
+            )}
+          </Icon>
+        }
+        variant="plain"
+        aria-label="thumbs-down"
+        onClick={() => updateRuleRating(-1)}
+        ouiaId="thumbsDown"
+      />
+      {submitted && messages.feedbackThankYou}
+    </span>
+  );
+};
+
+export default RuleRating;

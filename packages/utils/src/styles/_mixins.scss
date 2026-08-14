@@ -1,0 +1,79 @@
+@use "sass:math";
+
+// Convert px to rem
+// =================================================================/
+@mixin rem($property, $values) {
+
+  // Create a couple of empty lists as output buffers.
+  $font-size: 16px;
+  $px-values: ();
+  $rem-values: ();
+
+  // Loop through the $values list
+  @each $value in $values {
+
+    // For each property value, if it's in rem or px, derive both rem and
+    // px values for it and add those to the end of the appropriate buffer.
+    // Ensure all pixel values are rounded to the nearest pixel.
+    @if type-of($value) == number and not unitless($value) and (unit($value) == px) {
+
+      // px value given - calculate rem value from font-size
+      $new-rem-value: math.div($value, $font-size);
+      $px-values: join($px-values, round($value));
+      $rem-values: join($rem-values, unquote("#{$new-rem-value}rem"));
+
+    } @else if type-of($value) == number and not unitless($value) and (unit($value) == '%') {
+
+      // % value given - don't add px or rem
+      $px-values: join($px-values, unquote(#{$value}));
+      $rem-values: join($rem-values, unquote(#{$value}));
+
+    } @else if $value == auto {
+
+      // auto - don't add px or rem
+      $px-values: join($px-values, auto);
+      $rem-values: join($rem-values, auto);
+
+    } @else {
+
+      // unitless value - use those directly as rem and calculate the px-fallback
+      $px-values: join($px-values, round($value * $font-size));
+      $rem-values: join($rem-values, unquote("#{$value}rem"));
+    }
+  }
+
+  // output the converted rules
+  #{$property}: $px-values;
+  #{$property}: $rem-values;
+
+}
+
+
+
+// Generate font-size in rem
+// =================================================================/
+@mixin font-size($size, $line: $size * 1.4) {
+  font-size: ($size);
+  font-size: math.div($size, $ins-fontSize) + rem;
+
+  @if $line == 1 {
+    line-height: 1;
+
+  } @else if $line != null {
+    line-height: $line;
+    line-height: math.div($line, $ins-fontSize) + rem;
+  }
+}
+
+
+
+// Generate transition
+// =================================================================/
+@mixin transition($property) {
+
+  transition: $property 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -o-transition: $property 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -ms-transition: $property 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: $property 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition: $property 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}

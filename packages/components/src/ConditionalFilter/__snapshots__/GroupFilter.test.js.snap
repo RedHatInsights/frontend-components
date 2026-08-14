@@ -1,0 +1,469 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Group - component render should render correctly 1`] = `
+<div>
+  <div>
+    <div
+      style="display: contents;"
+    >
+      <button
+        aria-expanded="false"
+        aria-label="Group filter"
+        class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-default-1"
+        data-ouia-component-type="PF6/MenuToggle"
+        data-ouia-safe="true"
+        type="button"
+      >
+        <span
+          class="pf-v6-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v6-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v6-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Group - component render should render correctly placeholder 1`] = `
+<div>
+  <div>
+    <div
+      style="display: contents;"
+    >
+      <button
+        aria-expanded="false"
+        aria-label="Group filter"
+        class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-default-9"
+        data-ouia-component-type="PF6/MenuToggle"
+        data-ouia-safe="true"
+        type="button"
+      >
+        <span
+          class="pf-v6-c-menu-toggle__text"
+        >
+          some placeholder
+        </span>
+        <span
+          class="pf-v6-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v6-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v6-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Group - component render should render correctly with items - isDisabled 1`] = `
+<div>
+  <div>
+    <div
+      style="display: contents;"
+    >
+      <button
+        aria-expanded="false"
+        aria-label="Group filter"
+        class="pf-v6-c-menu-toggle pf-m-disabled ins-c-group-menu-toggle"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-default-7"
+        data-ouia-component-type="PF6/MenuToggle"
+        data-ouia-safe="true"
+        disabled=""
+        type="button"
+      >
+        <span
+          class="pf-v6-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v6-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v6-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Group - component render should render correctly with items 1`] = `
+<div>
+  <div>
+    <div
+      style="display: contents;"
+    >
+      <button
+        aria-expanded="false"
+        aria-label="Group filter"
+        class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-default-2"
+        data-ouia-component-type="PF6/MenuToggle"
+        data-ouia-safe="true"
+        type="button"
+      >
+        <span
+          class="pf-v6-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v6-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v6-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Group - component render should render correctly with items and default value 1`] = `
+<div>
+  <div>
+    <div
+      style="display: contents;"
+    >
+      <button
+        aria-expanded="false"
+        aria-label="Group filter"
+        class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-default-8"
+        data-ouia-component-type="PF6/MenuToggle"
+        data-ouia-safe="true"
+        type="button"
+      >
+        <span
+          class="pf-v6-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v6-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v6-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Group - component render should render correctly with items and selected value 1`] = `
+<div>
+  <div>
+    <div
+      style="display: contents;"
+    >
+      <button
+        aria-expanded="false"
+        aria-label="Group filter"
+        class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-default-11"
+        data-ouia-component-type="PF6/MenuToggle"
+        data-ouia-safe="true"
+        type="button"
+      >
+        <span
+          class="pf-v6-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v6-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v6-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Group - component render should render correctly with selectable group 1`] = `
+<div>
+  <div>
+    <div
+      style="display: contents;"
+    >
+      <button
+        aria-expanded="false"
+        aria-label="Group filter"
+        class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-default-10"
+        data-ouia-component-type="PF6/MenuToggle"
+        data-ouia-safe="true"
+        type="button"
+      >
+        <span
+          class="pf-v6-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v6-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v6-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Group - component render show more should render correctly with items and custom props 1`] = `
+<div>
+  <div>
+    <div
+      style="display: contents;"
+    >
+      <button
+        aria-expanded="false"
+        aria-label="Group filter"
+        class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-default-6"
+        data-ouia-component-type="PF6/MenuToggle"
+        data-ouia-safe="true"
+        type="button"
+      >
+        <span
+          class="pf-v6-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v6-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v6-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Group - component render show more should render correctly with items and custom text 1`] = `
+<div>
+  <div>
+    <div
+      style="display: contents;"
+    >
+      <button
+        aria-expanded="false"
+        aria-label="Group filter"
+        class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-default-4"
+        data-ouia-component-type="PF6/MenuToggle"
+        data-ouia-safe="true"
+        type="button"
+      >
+        <span
+          class="pf-v6-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v6-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v6-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Group - component render show more should render correctly with items and default text 1`] = `
+<div>
+  <div>
+    <div
+      style="display: contents;"
+    >
+      <button
+        aria-expanded="false"
+        aria-label="Group filter"
+        class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-default-3"
+        data-ouia-component-type="PF6/MenuToggle"
+        data-ouia-safe="true"
+        type="button"
+      >
+        <span
+          class="pf-v6-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v6-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v6-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Group - component render show more should render correctly with items and different variant 1`] = `
+<div>
+  <div>
+    <div
+      style="display: contents;"
+    >
+      <button
+        aria-expanded="false"
+        aria-label="Group filter"
+        class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
+        data-ouia-component-id="OUIA-Generated-MenuToggle-default-5"
+        data-ouia-component-type="PF6/MenuToggle"
+        data-ouia-safe="true"
+        type="button"
+      >
+        <span
+          class="pf-v6-c-menu-toggle__controls"
+        >
+          <span
+            class="pf-v6-c-menu-toggle__toggle-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v6-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 320 512"
+              width="1em"
+            >
+              <path
+                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

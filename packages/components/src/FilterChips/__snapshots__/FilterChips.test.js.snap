@@ -1,0 +1,835 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterChips component should render - no data 1`] = `
+<div>
+  <span
+    class="ins-c-chip-filters"
+  />
+</div>
+`;
+
+exports[`FilterChips component should render 1`] = `
+<div>
+  <span
+    class="ins-c-chip-filters"
+  >
+    <div
+      class="pf-v6-c-label-group pf-m-category"
+    >
+      <div
+        class="pf-v6-c-label-group__main"
+      >
+        <span
+          aria-hidden="true"
+          class="pf-v6-c-label-group__label"
+          id="pf-random-id-0"
+        >
+          Group 1
+        </span>
+        <ul
+          aria-labelledby="pf-random-id-0"
+          class="pf-v6-c-label-group__list"
+          role="list"
+        >
+          <li
+            class="pf-v6-c-label-group__list-item"
+          >
+            <span
+              class="pf-v6-c-label pf-m-outline"
+            >
+              <span
+                class="pf-v6-c-label__content"
+              >
+                <span
+                  class="pf-v6-c-label__text"
+                >
+                  Chip 1
+                </span>
+              </span>
+              <span
+                class="pf-v6-c-label__actions"
+              >
+                <button
+                  aria-label="Close Chip 1,"
+                  class="pf-v6-c-button pf-m-plain pf-m-no-padding"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-1"
+                  data-ouia-component-type="PF6/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <span
+                    class="pf-v6-c-button__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      viewBox="0 0 352 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </span>
+            </span>
+          </li>
+          <li
+            class="pf-v6-c-label-group__list-item"
+          >
+            <span
+              class="pf-v6-c-label pf-m-outline"
+            >
+              <span
+                class="pf-v6-c-label__content"
+              >
+                <span
+                  class="pf-v6-c-label__text"
+                >
+                  Chip 2
+                  <span
+                    class="pf-v6-c-badge pf-m-unread"
+                  >
+                    3
+                  </span>
+                </span>
+              </span>
+              <span
+                class="pf-v6-c-label__actions"
+              >
+                <button
+                  aria-label="Close Chip 2,[object Object]"
+                  class="pf-v6-c-button pf-m-plain pf-m-no-padding"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-2"
+                  data-ouia-component-type="PF6/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <span
+                    class="pf-v6-c-button__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      viewBox="0 0 352 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="pf-v6-c-label-group"
+    >
+      <div
+        class="pf-v6-c-label-group__main"
+      >
+        <ul
+          aria-label="Label group category"
+          class="pf-v6-c-label-group__list"
+          role="list"
+        >
+          <li
+            class="pf-v6-c-label-group__list-item"
+          >
+            <span
+              class="pf-v6-c-label pf-m-outline"
+            >
+              <span
+                class="pf-v6-c-label__content"
+              >
+                <span
+                  class="pf-v6-c-label__text"
+                >
+                  Chip 3
+                </span>
+              </span>
+              <span
+                class="pf-v6-c-label__actions"
+              >
+                <button
+                  aria-label="Close Chip 3,"
+                  class="pf-v6-c-button pf-m-plain pf-m-no-padding"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-3"
+                  data-ouia-component-type="PF6/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <span
+                    class="pf-v6-c-button__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      viewBox="0 0 352 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="pf-v6-c-label-group"
+    >
+      <div
+        class="pf-v6-c-label-group__main"
+      >
+        <ul
+          aria-label="Label group category"
+          class="pf-v6-c-label-group__list"
+          role="list"
+        >
+          <li
+            class="pf-v6-c-label-group__list-item"
+          >
+            <span
+              class="pf-v6-c-label pf-m-outline"
+            >
+              <span
+                class="pf-v6-c-label__content"
+              >
+                <span
+                  class="pf-v6-c-label__text"
+                >
+                  Chip 4
+                </span>
+              </span>
+              <span
+                class="pf-v6-c-label__actions"
+              >
+                <button
+                  aria-label="Close Chip 4,"
+                  class="pf-v6-c-button pf-m-plain pf-m-no-padding"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-4"
+                  data-ouia-component-type="PF6/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <span
+                    class="pf-v6-c-button__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      viewBox="0 0 352 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button
+      class="pf-v6-c-button pf-m-link"
+      data-ouia-component-id="ClearFilters"
+      data-ouia-component-type="PF6/Button"
+      data-ouia-safe="true"
+      type="button"
+    >
+      <span
+        class="pf-v6-c-button__text"
+      >
+        Clear filters
+      </span>
+    </button>
+  </span>
+</div>
+`;
+
+exports[`FilterChips component should render group delete 1`] = `
+<div>
+  <span
+    class="ins-c-chip-filters"
+  >
+    <div
+      class="pf-v6-c-label-group pf-m-category"
+    >
+      <div
+        class="pf-v6-c-label-group__main"
+      >
+        <span
+          aria-hidden="true"
+          class="pf-v6-c-label-group__label"
+          id="pf-random-id-6"
+        >
+          Group 1
+        </span>
+        <ul
+          aria-labelledby="pf-random-id-6"
+          class="pf-v6-c-label-group__list"
+          role="list"
+        >
+          <li
+            class="pf-v6-c-label-group__list-item"
+          >
+            <span
+              class="pf-v6-c-label pf-m-outline"
+            >
+              <span
+                class="pf-v6-c-label__content"
+              >
+                <span
+                  class="pf-v6-c-label__text"
+                >
+                  Chip 1
+                </span>
+              </span>
+              <span
+                class="pf-v6-c-label__actions"
+              >
+                <button
+                  aria-label="Close Chip 1,"
+                  class="pf-v6-c-button pf-m-plain pf-m-no-padding"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-9"
+                  data-ouia-component-type="PF6/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <span
+                    class="pf-v6-c-button__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      viewBox="0 0 352 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </span>
+            </span>
+          </li>
+          <li
+            class="pf-v6-c-label-group__list-item"
+          >
+            <span
+              class="pf-v6-c-label pf-m-outline"
+            >
+              <span
+                class="pf-v6-c-label__content"
+              >
+                <span
+                  class="pf-v6-c-label__text"
+                >
+                  Chip 2
+                  <span
+                    class="pf-v6-c-badge pf-m-unread"
+                  >
+                    3
+                  </span>
+                </span>
+              </span>
+              <span
+                class="pf-v6-c-label__actions"
+              >
+                <button
+                  aria-label="Close Chip 2,[object Object]"
+                  class="pf-v6-c-button pf-m-plain pf-m-no-padding"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-10"
+                  data-ouia-component-type="PF6/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <span
+                    class="pf-v6-c-button__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      viewBox="0 0 352 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="pf-v6-c-label-group__close"
+      >
+        <button
+          aria-label="Close label group"
+          aria-labelledby="remove_group_pf-random-id-6 pf-random-id-6"
+          class="pf-v6-c-button pf-m-plain pf-m-small"
+          data-ouia-component-id="OUIA-Generated-Button-plain-11"
+          data-ouia-component-type="PF6/Button"
+          data-ouia-safe="true"
+          id="remove_group_pf-random-id-6"
+          type="button"
+        >
+          <span
+            class="pf-v6-c-button__icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="pf-v6-svg"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              viewBox="0 0 352 512"
+              width="1em"
+            >
+              <path
+                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="pf-v6-c-label-group"
+    >
+      <div
+        class="pf-v6-c-label-group__main"
+      >
+        <ul
+          aria-label="Label group category"
+          class="pf-v6-c-label-group__list"
+          role="list"
+        >
+          <li
+            class="pf-v6-c-label-group__list-item"
+          >
+            <span
+              class="pf-v6-c-label pf-m-outline"
+            >
+              <span
+                class="pf-v6-c-label__content"
+              >
+                <span
+                  class="pf-v6-c-label__text"
+                >
+                  Chip 3
+                </span>
+              </span>
+              <span
+                class="pf-v6-c-label__actions"
+              >
+                <button
+                  aria-label="Close Chip 3,"
+                  class="pf-v6-c-button pf-m-plain pf-m-no-padding"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-12"
+                  data-ouia-component-type="PF6/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <span
+                    class="pf-v6-c-button__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      viewBox="0 0 352 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="pf-v6-c-label-group"
+    >
+      <div
+        class="pf-v6-c-label-group__main"
+      >
+        <ul
+          aria-label="Label group category"
+          class="pf-v6-c-label-group__list"
+          role="list"
+        >
+          <li
+            class="pf-v6-c-label-group__list-item"
+          >
+            <span
+              class="pf-v6-c-label pf-m-outline"
+            >
+              <span
+                class="pf-v6-c-label__content"
+              >
+                <span
+                  class="pf-v6-c-label__text"
+                >
+                  Chip 4
+                </span>
+              </span>
+              <span
+                class="pf-v6-c-label__actions"
+              >
+                <button
+                  aria-label="Close Chip 4,"
+                  class="pf-v6-c-button pf-m-plain pf-m-no-padding"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-13"
+                  data-ouia-component-type="PF6/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <span
+                    class="pf-v6-c-button__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      viewBox="0 0 352 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button
+      class="pf-v6-c-button pf-m-link"
+      data-ouia-component-id="ClearFilters"
+      data-ouia-component-type="PF6/Button"
+      data-ouia-safe="true"
+      type="button"
+    >
+      <span
+        class="pf-v6-c-button__text"
+      >
+        Clear filters
+      </span>
+    </button>
+  </span>
+</div>
+`;
+
+exports[`FilterChips component should render with custom delete message 1`] = `
+<div>
+  <span
+    class="ins-c-chip-filters"
+  >
+    <div
+      class="pf-v6-c-label-group pf-m-category"
+    >
+      <div
+        class="pf-v6-c-label-group__main"
+      >
+        <span
+          aria-hidden="true"
+          class="pf-v6-c-label-group__label"
+          id="pf-random-id-3"
+        >
+          Group 1
+        </span>
+        <ul
+          aria-labelledby="pf-random-id-3"
+          class="pf-v6-c-label-group__list"
+          role="list"
+        >
+          <li
+            class="pf-v6-c-label-group__list-item"
+          >
+            <span
+              class="pf-v6-c-label pf-m-outline"
+            >
+              <span
+                class="pf-v6-c-label__content"
+              >
+                <span
+                  class="pf-v6-c-label__text"
+                >
+                  Chip 1
+                </span>
+              </span>
+              <span
+                class="pf-v6-c-label__actions"
+              >
+                <button
+                  aria-label="Close Chip 1,"
+                  class="pf-v6-c-button pf-m-plain pf-m-no-padding"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-5"
+                  data-ouia-component-type="PF6/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <span
+                    class="pf-v6-c-button__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      viewBox="0 0 352 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </span>
+            </span>
+          </li>
+          <li
+            class="pf-v6-c-label-group__list-item"
+          >
+            <span
+              class="pf-v6-c-label pf-m-outline"
+            >
+              <span
+                class="pf-v6-c-label__content"
+              >
+                <span
+                  class="pf-v6-c-label__text"
+                >
+                  Chip 2
+                  <span
+                    class="pf-v6-c-badge pf-m-unread"
+                  >
+                    3
+                  </span>
+                </span>
+              </span>
+              <span
+                class="pf-v6-c-label__actions"
+              >
+                <button
+                  aria-label="Close Chip 2,[object Object]"
+                  class="pf-v6-c-button pf-m-plain pf-m-no-padding"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-6"
+                  data-ouia-component-type="PF6/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <span
+                    class="pf-v6-c-button__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      viewBox="0 0 352 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="pf-v6-c-label-group"
+    >
+      <div
+        class="pf-v6-c-label-group__main"
+      >
+        <ul
+          aria-label="Label group category"
+          class="pf-v6-c-label-group__list"
+          role="list"
+        >
+          <li
+            class="pf-v6-c-label-group__list-item"
+          >
+            <span
+              class="pf-v6-c-label pf-m-outline"
+            >
+              <span
+                class="pf-v6-c-label__content"
+              >
+                <span
+                  class="pf-v6-c-label__text"
+                >
+                  Chip 3
+                </span>
+              </span>
+              <span
+                class="pf-v6-c-label__actions"
+              >
+                <button
+                  aria-label="Close Chip 3,"
+                  class="pf-v6-c-button pf-m-plain pf-m-no-padding"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-7"
+                  data-ouia-component-type="PF6/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <span
+                    class="pf-v6-c-button__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      viewBox="0 0 352 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="pf-v6-c-label-group"
+    >
+      <div
+        class="pf-v6-c-label-group__main"
+      >
+        <ul
+          aria-label="Label group category"
+          class="pf-v6-c-label-group__list"
+          role="list"
+        >
+          <li
+            class="pf-v6-c-label-group__list-item"
+          >
+            <span
+              class="pf-v6-c-label pf-m-outline"
+            >
+              <span
+                class="pf-v6-c-label__content"
+              >
+                <span
+                  class="pf-v6-c-label__text"
+                >
+                  Chip 4
+                </span>
+              </span>
+              <span
+                class="pf-v6-c-label__actions"
+              >
+                <button
+                  aria-label="Close Chip 4,"
+                  class="pf-v6-c-button pf-m-plain pf-m-no-padding"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-8"
+                  data-ouia-component-type="PF6/Button"
+                  data-ouia-safe="true"
+                  type="button"
+                >
+                  <span
+                    class="pf-v6-c-button__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      viewBox="0 0 352 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button
+      class="pf-v6-c-button pf-m-link"
+      data-ouia-component-id="ClearFilters"
+      data-ouia-component-type="PF6/Button"
+      data-ouia-safe="true"
+      type="button"
+    >
+      <span
+        class="pf-v6-c-button__text"
+      >
+        <div>
+          Some delete title
+        </div>
+      </span>
+    </button>
+  </span>
+</div>
+`;

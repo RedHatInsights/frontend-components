@@ -1,0 +1,25 @@
+# Default owners for everything in the repo
+* @RedHatInsights/experience-services-committers
+
+# All GitHub configuration requires review from admins
+# This prevents unauthorized modifications to CI/CD pipelines, custom actions, and repo processes
+.github/** @RedHatInsights/experience-services-admins
+
+# Protect Git hooks from supply chain attacks
+# Husky hooks execute during npm install and git operations with user permissions
+.husky/** @RedHatInsights/experience-services-admins
+
+# All Konflux tekton configuration changes review from admins
+#.tekton/** @RedHatInsights/experience-services-admins
+
+# Protect npm configuration and lifecycle scripts from supply chain attacks
+# Root package.json contains prepare/postinstall scripts that execute during npm install
+# .npmrc controls registry settings and install behavior
+# .npmignore controls published package contents
+package.json @RedHatInsights/experience-services-admins
+.npmrc @RedHatInsights/experience-services-admins
+.npmignore @RedHatInsights/experience-services-admins
+
+# CODEOWNERS file itself requires admin review to prevent bypass attacks
+# Must come after wildcard so this rule takes precedence (last match wins)
+CODEOWNERS @RedHatInsights/experience-services-admins

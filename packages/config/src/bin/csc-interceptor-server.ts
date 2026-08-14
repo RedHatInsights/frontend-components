@@ -1,0 +1,101 @@
+const path = require('path');
+const axios = require('axios');
+const fs = require('fs');
+const jsyaml = require('js-yaml');
+
+import express from 'express';
+import { jsVarName } from '@redhat-cloud-services/frontend-components-config-utilities';
+
+const cwd = process.cwd();
+const pgk = require(path.resolve(cwd, './package.json'));
+
+const appname = jsVarName(pgk.insights.appname);
+const moduleName = jsVarName(appname);
+
+const frontendDeployConfig = jsyaml.load(fs.readFileSync(path.resolve(cwd, './deploy/frontend.yaml')));
+const frontendSpec = frontendDeployConfig.objects[0];
+const navItems = frontendSpec.spec.navItems;
+const fecModules: {
+  modules: {
+    routes: { pathname: string }[];
+  }[];
+} = frontendSpec.spec.module;
+const bundles = Array.from(
+  new Set(
+    fecModules.modules
+      .map(({ routes }) => routes)
+      .flat()
+      .map(({ pathname }) => pathname.split('/')[1]),
+  ),
+);
+
+const app = express();
+const port = 9999;
+
+const BASE_URL = 'https://raw.githubusercontent.com/RedHatInsights/chrome-service-backend/main';
+
+function getRequestBundle(requestUrl: string) {
+  const bundle = requestUrl.split('/').pop()?.split('-').shift();
+  return bundle === 'rhel' ? 'insights' : bundle;
+}
+
+type NavTreeItem = {
+  href?: string;
+  routes?: unknown[];
+  navItems?: unknown[];
+};
+
+function isNavTreeItem(value: unknown): value is NavTreeItem {
+  return !!value && typeof value === 'object';
+}
+
+function matchesBundle(item: unknown, bundle: string): boolean {
+  if (!isNavTreeItem(item)) {
+    return false;
+  }
+  if (typeof item.href === 'string' && item.href.includes(bundle)) {
+    return true;
+  }
+  if (Array.isArray(item.routes) && item.routes.some((route) => matchesBundle(route, bundle))) {
+    return true;
+  }
+  if (Array.isArray(item.navItems) && item.navItems.some((navItem) => matchesBundle(navItem, bundle))) {
+    return true;
+  }
+  return false;
+}
+
+app.get('*', async (req, res, next) => {
+  try {
+    const reqUrl = BASE_URL + req.url.replace('/api/chrome-service/v1', '');
+    const schema = await axios.get(reqUrl);
+    if (req.url.includes('-navigation.json') && bundles.some((bundle) => req.url.includes(bundle))) {
+      const requestBundle = getRequestBundle(req.url);
+      /** handle nav json */
+      const payload = schema.data;
+      payload.navItems = [
+        ...payload.navItems,
+        ...navItems.filter((item: unknown) => Boolean(requestBundle) && matchesBundle(item, requestBundle as string)),
+      ];
+      res.json(payload);
+      res.end();
+      return;
+    } else if (req.url.includes('fed-modules.json')) {
+      /** handle fed-modules */
+      const payload = schema.data;
+      payload[moduleName] = fecModules;
+      res.json(payload);
+      res.end();
+      return;
+    }
+    res.json(schema.data);
+    res.end();
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+app.listen(port, () => {
+  console.log('csc-intercept-server is running on port ' + port);
+});

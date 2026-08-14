@@ -1,0 +1,79 @@
+{
+  "name": "@redhat-cloud-services/frontend-components-testing",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/testing",
+  "projectType": "library",
+  "tags": ["scope:public"],
+  "targets": {
+    "build:bundles": {
+      "dependsOn": ["^build:bundles"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:builder",
+      "options": {
+        "rootDir": "packages/testing/src",
+        "main": "packages/testing/src/index.ts",
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
+        "cjsTsConfig": "packages/testing/tsconfig.cjs.json",
+        "esmTsConfig": "packages/testing/tsconfig.esm.json",
+        "assets": [{ "input": ".", "glob": ".npmignore", "output": "." }]
+      }
+    },
+    "build:styles": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
+      "dependsOn": ["^build:styles"],
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
+        "sourceDir": "packages/testing"
+      }
+    },
+    "build:packages": {
+      "dependsOn": ["^build:packages"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
+        "forceTypes": true
+      }
+    },
+    "check-circular-imports": {
+      "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
+      "options": {
+        "sourceDir": "packages/testing/src"
+      }
+    },
+    "transform:scss": {
+      "dependsOn": ["^transform:scss"],
+      "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
+      "options": {
+        "outputPath": "dist/@redhat-cloud-services/frontend-components-testing"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": ["nx run @redhat-cloud-services/frontend-components-testing:build:bundles", "nx run @redhat-cloud-services/frontend-components-testing:build:styles", "nx run @redhat-cloud-services/frontend-components-testing:build:packages", "nx run @redhat-cloud-services/frontend-components-testing:transform:scss"]
+      },
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/testing/src/**/*", "packages/testing/package.json"]
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "distFolderPath": "dist/@redhat-cloud-services/frontend-components-testing",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
+    },
+    "tagRelease": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "git push --tags"
+      }
+    }
+  }
+}
