@@ -24,9 +24,7 @@ export interface GetKesselAccessCheckParamsOptions {
 }
 
 export type SelfAccessCheckParams =
-  | SingleSelfAccessCheckParams
-  | BulkSelfAccessCheckNestedRelationsParams
-  | { resources: SelfAccessCheckResourceWithRelation[] };
+  SingleSelfAccessCheckParams | BulkSelfAccessCheckNestedRelationsParams | { resources: SelfAccessCheckResourceWithRelation[] };
 
 function buildKesselResource(resourceId: string, relation: string, options: Required<KesselResourceOptions>): SelfAccessCheckResourceWithRelation {
   return {

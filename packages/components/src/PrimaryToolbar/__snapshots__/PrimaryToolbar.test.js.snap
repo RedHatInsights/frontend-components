@@ -215,11 +215,11 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                   fill="currentColor"
                   height="1em"
                   role="img"
-                  viewBox="0 0 320 512"
+                  viewBox="0 0 20 20"
                   width="1em"
                 >
                   <path
-                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    d="m17.65 8.76-6.674 5.72a1.496 1.496 0 0 1-.976.365c-.347 0-.694-.122-.978-.366l-6.673-5.72A1 1 0 0 1 3 7h14a1 1 0 0 1 .65 1.76Z"
                   />
                 </svg>
               </span>
@@ -259,12 +259,24 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                         fill="currentColor"
                         height="1em"
                         role="img"
-                        viewBox="0 0 512 512"
                         width="1em"
                       >
-                        <path
-                          d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-                        />
+                        <svg
+                          class="pf-v6-icon-default"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                          />
+                        </svg>
+                        <svg
+                          class="pf-v6-icon-rh-ui"
+                          viewBox="0 0 32 32"
+                        >
+                          <path
+                            d="M28.5 2h-25C2.673 2 2 2.673 2 3.5V7c0 .265.105.52.293.707L12 17.414V30a1 1 0 0 0 1.316.949l6-2A1 1 0 0 0 20 28V17.414l9.707-9.707A1 1 0 0 0 30 7V3.5c0-.827-.673-1.5-1.5-1.5ZM28 6.586l-9.707 9.707A1 1 0 0 0 18 17v10.279l-4 1.333V16.999a.997.997 0 0 0-.293-.707L4 6.586V4h24v2.586Z"
+                          />
+                        </svg>
                       </svg>
                     </span>
                   </span>
@@ -286,11 +298,11 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
-                      viewBox="0 0 320 512"
+                      viewBox="0 0 20 20"
                       width="1em"
                     >
                       <path
-                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                        d="m17.65 8.76-6.674 5.72a1.496 1.496 0 0 1-.976.365c-.347 0-.694-.122-.978-.366l-6.673-5.72A1 1 0 0 1 3 7h14a1 1 0 0 1 .65 1.76Z"
                       />
                     </svg>
                   </span>
@@ -333,12 +345,24 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                           fill="currentColor"
                           height="1em"
                           role="img"
-                          viewBox="0 0 512 512"
                           width="1em"
                         >
-                          <path
-                            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                          />
+                          <svg
+                            class="pf-v6-icon-default"
+                            viewBox="0 0 512 512"
+                          >
+                            <path
+                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                            />
+                          </svg>
+                          <svg
+                            class="pf-v6-icon-rh-ui"
+                            viewBox="0 0 32 32"
+                          >
+                            <path
+                              d="m30.796 29.205-8.557-8.557A11.945 11.945 0 0 0 25 13c0-6.617-5.383-12-12-12S1 6.383 1 13s5.383 12 12 12c2.904 0 5.57-1.038 7.648-2.761l8.556 8.556a1.122 1.122 0 0 0 1.592 0 1.127 1.127 0 0 0 0-1.591ZM3 13C3 7.486 7.486 3 13 3s10 4.486 10 10-4.486 10-10 10S3 18.514 3 13Z"
+                            />
+                          </svg>
                         </svg>
                       </span>
                     </span>
@@ -353,7 +377,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         >
           <button
             class="pf-v6-c-button pf-m-primary"
-            data-ouia-component-id="OUIA-Generated-Button-primary-1"
+            data-ouia-component-id="OUIA-Generated-Button-primary-:ri:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -376,7 +400,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
               aria-expanded="false"
               aria-label="Export"
               class="pf-v6-c-menu-toggle pf-m-plain"
-              data-ouia-component-id="OUIA-Generated-MenuToggle-plain-1"
+              data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:rn:"
               data-ouia-component-type="PF6/MenuToggle"
               data-ouia-safe="true"
               type="button"
@@ -390,12 +414,24 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                   fill="currentColor"
                   height="1em"
                   role="img"
-                  viewBox="0 0 1024 1024"
                   width="1em"
                 >
-                  <path
-                    d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
-                  />
+                  <svg
+                    class="pf-v6-icon-default"
+                    viewBox="0 0 1024 1024"
+                  >
+                    <path
+                      d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
+                    />
+                  </svg>
+                  <svg
+                    class="pf-v6-icon-rh-ui"
+                    viewBox="0 0 32 32"
+                  >
+                    <path
+                      d="M30 3.5V11a1 1 0 1 1-2 0V4H4v24h7a1 1 0 1 1 0 2H3.5c-.827 0-1.5-.673-1.5-1.5v-25C2 2.673 2.673 2 3.5 2h25c.827 0 1.5.673 1.5 1.5ZM29 17a1 1 0 0 0-1 1v8.586L14.707 13.293a.999.999 0 1 0-1.414 1.414L26.586 28H18a1 1 0 1 0 0 2h10.5c.827 0 1.5-.673 1.5-1.5V18a1 1 0 0 0-1-1Z"
+                    />
+                  </svg>
                 </svg>
               </span>
             </button>
@@ -422,12 +458,24 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                 fill="currentColor"
                 height="1em"
                 role="img"
-                viewBox="0 0 192 512"
                 width="1em"
               >
-                <path
-                  d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-                />
+                <svg
+                  class="pf-v6-icon-default"
+                  viewBox="0 0 192 512"
+                >
+                  <path
+                    d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+                  />
+                </svg>
+                <svg
+                  class="pf-v6-icon-rh-ui"
+                  viewBox="0 0 32 32"
+                >
+                  <path
+                    d="M16 9c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4Zm0-6c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2Zm0 9c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4Zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2Zm0 5c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4Zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2Z"
+                  />
+                </svg>
               </svg>
             </span>
           </button>
@@ -438,7 +486,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
           <button
             aria-label="Sort descending"
             class="pf-v6-c-button pf-m-plain"
-            data-ouia-component-id="OUIA-Generated-Button-plain-1"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:rs:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -504,7 +552,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                 aria-expanded="false"
                 aria-haspopup="listbox"
                 class="pf-v6-c-menu-toggle pf-m-plain pf-m-text"
-                data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-1"
+                data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:rv:"
                 data-ouia-component-type="PF6/MenuToggle"
                 data-ouia-safe="true"
                 id="options-menu-top-toggle"
@@ -538,11 +586,11 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
-                      viewBox="0 0 320 512"
+                      viewBox="0 0 20 20"
                       width="1em"
                     >
                       <path
-                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                        d="m17.65 8.76-6.674 5.72a1.496 1.496 0 0 1-.976.365c-.347 0-.694-.122-.978-.366l-6.673-5.72A1 1 0 0 1 3 7h14a1 1 0 0 1 .65 1.76Z"
                       />
                     </svg>
                   </span>
@@ -560,7 +608,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                   aria-label="Go to previous page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="previous"
-                  data-ouia-component-id="OUIA-Generated-Button-plain-2"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-:r10:"
                   data-ouia-component-type="PF6/Button"
                   data-ouia-safe="true"
                   disabled=""
@@ -575,12 +623,24 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
-                      viewBox="0 0 256 512"
                       width="1em"
                     >
-                      <path
-                        d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-                      />
+                      <svg
+                        class="pf-v6-icon-default"
+                        viewBox="0 0 256 512"
+                      >
+                        <path
+                          d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+                        />
+                      </svg>
+                      <svg
+                        class="pf-v6-icon-rh-ui"
+                        viewBox="0 0 32 32"
+                      >
+                        <path
+                          d="M21 30a.997.997 0 0 1-.707-.293L7.647 17.061a1.501 1.501 0 0 1 0-2.121L20.293 2.293a.999.999 0 1 1 1.414 1.414L9.414 16l12.293 12.293A.999.999 0 0 1 21 30Z"
+                        />
+                      </svg>
                     </svg>
                   </span>
                 </button>
@@ -592,7 +652,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                   aria-label="Go to next page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="next"
-                  data-ouia-component-id="OUIA-Generated-Button-plain-3"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-:r11:"
                   data-ouia-component-type="PF6/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -606,12 +666,24 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
-                      viewBox="0 0 256 512"
                       width="1em"
                     >
-                      <path
-                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-                      />
+                      <svg
+                        class="pf-v6-icon-default"
+                        viewBox="0 0 256 512"
+                      >
+                        <path
+                          d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                        />
+                      </svg>
+                      <svg
+                        class="pf-v6-icon-rh-ui"
+                        viewBox="0 0 32 32"
+                      >
+                        <path
+                          d="M11 30a.999.999 0 0 1-.707-1.707L22.586 16 10.293 3.707a.999.999 0 1 1 1.414-1.414l12.646 12.646a1.501 1.501 0 0 1 0 2.121L11.707 29.706a.997.997 0 0 1-.707.293Z"
+                        />
+                      </svg>
                     </svg>
                   </span>
                 </button>
@@ -642,12 +714,12 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                 <span
                   aria-hidden="true"
                   class="pf-v6-c-label-group__label"
-                  id="pf-random-id-0"
+                  id="pf-random-id-:r12:"
                 >
                   Some
                 </span>
                 <ul
-                  aria-labelledby="pf-random-id-0"
+                  aria-labelledby="pf-random-id-:r12:"
                   class="pf-v6-c-label-group__list"
                   role="list"
                 >
@@ -672,7 +744,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                         <button
                           aria-label="Close something,"
                           class="pf-v6-c-button pf-m-plain pf-m-no-padding"
-                          data-ouia-component-id="OUIA-Generated-Button-plain-4"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-:r13:"
                           data-ouia-component-type="PF6/Button"
                           data-ouia-safe="true"
                           type="button"
@@ -686,11 +758,11 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                               fill="currentColor"
                               height="1em"
                               role="img"
-                              viewBox="0 0 352 512"
+                              viewBox="0 0 20 20"
                               width="1em"
                             >
                               <path
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                d="M17.8 16.2 11.59 10l6.21-6.21c.42-.46.39-1.17-.07-1.59-.43-.4-1.09-.4-1.52 0l-6.2 6.2-6.22-6.19c-.44-.44-1.15-.44-1.59 0-.44.44-.44 1.15 0 1.59l6.2 6.21-6.2 6.2c-.42.46-.39 1.17.07 1.59.43.4 1.09.4 1.52 0L10 11.59l6.2 6.2c.44.44 1.15.44 1.59 0 .44-.45.44-1.16 0-1.6Z"
                               />
                             </svg>
                           </span>
@@ -719,7 +791,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                         <button
                           aria-label="Close something 2,"
                           class="pf-v6-c-button pf-m-plain pf-m-no-padding"
-                          data-ouia-component-id="OUIA-Generated-Button-plain-5"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-:r14:"
                           data-ouia-component-type="PF6/Button"
                           data-ouia-safe="true"
                           type="button"
@@ -733,11 +805,11 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                               fill="currentColor"
                               height="1em"
                               role="img"
-                              viewBox="0 0 352 512"
+                              viewBox="0 0 20 20"
                               width="1em"
                             >
                               <path
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                d="M17.8 16.2 11.59 10l6.21-6.21c.42-.46.39-1.17-.07-1.59-.43-.4-1.09-.4-1.52 0l-6.2 6.2-6.22-6.19c-.44-.44-1.15-.44-1.59 0-.44.44-.44 1.15 0 1.59l6.2 6.21-6.2 6.2c-.42.46-.39 1.17.07 1.59.43.4 1.09.4 1.52 0L10 11.59l6.2 6.2c.44.44 1.15.44 1.59 0 .44-.45.44-1.16 0-1.6Z"
                               />
                             </svg>
                           </span>
@@ -757,12 +829,12 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                 <span
                   aria-hidden="true"
                   class="pf-v6-c-label-group__label"
-                  id="pf-random-id-1"
+                  id="pf-random-id-:r15:"
                 >
                   Another
                 </span>
                 <ul
-                  aria-labelledby="pf-random-id-1"
+                  aria-labelledby="pf-random-id-:r15:"
                   class="pf-v6-c-label-group__list"
                   role="list"
                 >
@@ -787,7 +859,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                         <button
                           aria-label="Close One chip,"
                           class="pf-v6-c-button pf-m-plain pf-m-no-padding"
-                          data-ouia-component-id="OUIA-Generated-Button-plain-6"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-:r16:"
                           data-ouia-component-type="PF6/Button"
                           data-ouia-safe="true"
                           type="button"
@@ -801,11 +873,11 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                               fill="currentColor"
                               height="1em"
                               role="img"
-                              viewBox="0 0 352 512"
+                              viewBox="0 0 20 20"
                               width="1em"
                             >
                               <path
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                d="M17.8 16.2 11.59 10l6.21-6.21c.42-.46.39-1.17-.07-1.59-.43-.4-1.09-.4-1.52 0l-6.2 6.2-6.22-6.19c-.44-.44-1.15-.44-1.59 0-.44.44-.44 1.15 0 1.59l6.2 6.21-6.2 6.2c-.42.46-.39 1.17.07 1.59.43.4 1.09.4 1.52 0L10 11.59l6.2 6.2c.44.44 1.15.44 1.59 0 .44-.45.44-1.16 0-1.6Z"
                               />
                             </svg>
                           </span>
@@ -848,7 +920,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                         <button
                           aria-label="Close Something else,"
                           class="pf-v6-c-button pf-m-plain pf-m-no-padding"
-                          data-ouia-component-id="OUIA-Generated-Button-plain-7"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-:r18:"
                           data-ouia-component-type="PF6/Button"
                           data-ouia-safe="true"
                           type="button"
@@ -862,11 +934,11 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
                               fill="currentColor"
                               height="1em"
                               role="img"
-                              viewBox="0 0 352 512"
+                              viewBox="0 0 20 20"
                               width="1em"
                             >
                               <path
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                d="M17.8 16.2 11.59 10l6.21-6.21c.42-.46.39-1.17-.07-1.59-.43-.4-1.09-.4-1.52 0l-6.2 6.2-6.22-6.19c-.44-.44-1.15-.44-1.59 0-.44.44-.44 1.15 0 1.59l6.2 6.21-6.2 6.2c-.42.46-.39 1.17.07 1.59.43.4 1.09.4 1.52 0L10 11.59l6.2 6.2c.44.44 1.15.44 1.59 0 .44-.45.44-1.16 0-1.6Z"
                               />
                             </svg>
                           </span>
@@ -962,11 +1034,11 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
                   fill="currentColor"
                   height="1em"
                   role="img"
-                  viewBox="0 0 320 512"
+                  viewBox="0 0 20 20"
                   width="1em"
                 >
                   <path
-                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    d="m17.65 8.76-6.674 5.72a1.496 1.496 0 0 1-.976.365c-.347 0-.694-.122-.978-.366l-6.673-5.72A1 1 0 0 1 3 7h14a1 1 0 0 1 .65 1.76Z"
                   />
                 </svg>
               </span>
@@ -1035,12 +1107,24 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
                         fill="currentColor"
                         height="1em"
                         role="img"
-                        viewBox="0 0 512 512"
                         width="1em"
                       >
-                        <path
-                          d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-                        />
+                        <svg
+                          class="pf-v6-icon-default"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                          />
+                        </svg>
+                        <svg
+                          class="pf-v6-icon-rh-ui"
+                          viewBox="0 0 32 32"
+                        >
+                          <path
+                            d="M28.5 2h-25C2.673 2 2 2.673 2 3.5V7c0 .265.105.52.293.707L12 17.414V30a1 1 0 0 0 1.316.949l6-2A1 1 0 0 0 20 28V17.414l9.707-9.707A1 1 0 0 0 30 7V3.5c0-.827-.673-1.5-1.5-1.5ZM28 6.586l-9.707 9.707A1 1 0 0 0 18 17v10.279l-4 1.333V16.999a.997.997 0 0 0-.293-.707L4 6.586V4h24v2.586Z"
+                          />
+                        </svg>
                       </svg>
                     </span>
                   </span>
@@ -1062,11 +1146,11 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
-                      viewBox="0 0 320 512"
+                      viewBox="0 0 20 20"
                       width="1em"
                     >
                       <path
-                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                        d="m17.65 8.76-6.674 5.72a1.496 1.496 0 0 1-.976.365c-.347 0-.694-.122-.978-.366l-6.673-5.72A1 1 0 0 1 3 7h14a1 1 0 0 1 .65 1.76Z"
                       />
                     </svg>
                   </span>
@@ -1109,12 +1193,24 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
                           fill="currentColor"
                           height="1em"
                           role="img"
-                          viewBox="0 0 512 512"
                           width="1em"
                         >
-                          <path
-                            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                          />
+                          <svg
+                            class="pf-v6-icon-default"
+                            viewBox="0 0 512 512"
+                          >
+                            <path
+                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                            />
+                          </svg>
+                          <svg
+                            class="pf-v6-icon-rh-ui"
+                            viewBox="0 0 32 32"
+                          >
+                            <path
+                              d="m30.796 29.205-8.557-8.557A11.945 11.945 0 0 0 25 13c0-6.617-5.383-12-12-12S1 6.383 1 13s5.383 12 12 12c2.904 0 5.57-1.038 7.648-2.761l8.556 8.556a1.122 1.122 0 0 0 1.592 0 1.127 1.127 0 0 0 0-1.591ZM3 13C3 7.486 7.486 3 13 3s10 4.486 10 10-4.486 10-10 10S3 18.514 3 13Z"
+                            />
+                          </svg>
                         </svg>
                       </span>
                     </span>
@@ -1194,11 +1290,11 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                   fill="currentColor"
                   height="1em"
                   role="img"
-                  viewBox="0 0 320 512"
+                  viewBox="0 0 20 20"
                   width="1em"
                 >
                   <path
-                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    d="m17.65 8.76-6.674 5.72a1.496 1.496 0 0 1-.976.365c-.347 0-.694-.122-.978-.366l-6.673-5.72A1 1 0 0 1 3 7h14a1 1 0 0 1 .65 1.76Z"
                   />
                 </svg>
               </span>
@@ -1238,12 +1334,24 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                         fill="currentColor"
                         height="1em"
                         role="img"
-                        viewBox="0 0 512 512"
                         width="1em"
                       >
-                        <path
-                          d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-                        />
+                        <svg
+                          class="pf-v6-icon-default"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                          />
+                        </svg>
+                        <svg
+                          class="pf-v6-icon-rh-ui"
+                          viewBox="0 0 32 32"
+                        >
+                          <path
+                            d="M28.5 2h-25C2.673 2 2 2.673 2 3.5V7c0 .265.105.52.293.707L12 17.414V30a1 1 0 0 0 1.316.949l6-2A1 1 0 0 0 20 28V17.414l9.707-9.707A1 1 0 0 0 30 7V3.5c0-.827-.673-1.5-1.5-1.5ZM28 6.586l-9.707 9.707A1 1 0 0 0 18 17v10.279l-4 1.333V16.999a.997.997 0 0 0-.293-.707L4 6.586V4h24v2.586Z"
+                          />
+                        </svg>
                       </svg>
                     </span>
                   </span>
@@ -1265,11 +1373,11 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
-                      viewBox="0 0 320 512"
+                      viewBox="0 0 20 20"
                       width="1em"
                     >
                       <path
-                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                        d="m17.65 8.76-6.674 5.72a1.496 1.496 0 0 1-.976.365c-.347 0-.694-.122-.978-.366l-6.673-5.72A1 1 0 0 1 3 7h14a1 1 0 0 1 .65 1.76Z"
                       />
                     </svg>
                   </span>
@@ -1312,12 +1420,24 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                           fill="currentColor"
                           height="1em"
                           role="img"
-                          viewBox="0 0 512 512"
                           width="1em"
                         >
-                          <path
-                            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                          />
+                          <svg
+                            class="pf-v6-icon-default"
+                            viewBox="0 0 512 512"
+                          >
+                            <path
+                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                            />
+                          </svg>
+                          <svg
+                            class="pf-v6-icon-rh-ui"
+                            viewBox="0 0 32 32"
+                          >
+                            <path
+                              d="m30.796 29.205-8.557-8.557A11.945 11.945 0 0 0 25 13c0-6.617-5.383-12-12-12S1 6.383 1 13s5.383 12 12 12c2.904 0 5.57-1.038 7.648-2.761l8.556 8.556a1.122 1.122 0 0 0 1.592 0 1.127 1.127 0 0 0 0-1.591ZM3 13C3 7.486 7.486 3 13 3s10 4.486 10 10-4.486 10-10 10S3 18.514 3 13Z"
+                            />
+                          </svg>
                         </svg>
                       </span>
                     </span>
@@ -1337,7 +1457,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
               aria-expanded="false"
               aria-label="Export"
               class="pf-v6-c-menu-toggle pf-m-plain"
-              data-ouia-component-id="OUIA-Generated-MenuToggle-plain-3"
+              data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r2g:"
               data-ouia-component-type="PF6/MenuToggle"
               data-ouia-safe="true"
               type="button"
@@ -1351,12 +1471,24 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                   fill="currentColor"
                   height="1em"
                   role="img"
-                  viewBox="0 0 1024 1024"
                   width="1em"
                 >
-                  <path
-                    d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
-                  />
+                  <svg
+                    class="pf-v6-icon-default"
+                    viewBox="0 0 1024 1024"
+                  >
+                    <path
+                      d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
+                    />
+                  </svg>
+                  <svg
+                    class="pf-v6-icon-rh-ui"
+                    viewBox="0 0 32 32"
+                  >
+                    <path
+                      d="M30 3.5V11a1 1 0 1 1-2 0V4H4v24h7a1 1 0 1 1 0 2H3.5c-.827 0-1.5-.673-1.5-1.5v-25C2 2.673 2.673 2 3.5 2h25c.827 0 1.5.673 1.5 1.5ZM29 17a1 1 0 0 0-1 1v8.586L14.707 13.293a.999.999 0 1 0-1.414 1.414L26.586 28H18a1 1 0 1 0 0 2h10.5c.827 0 1.5-.673 1.5-1.5V18a1 1 0 0 0-1-1Z"
+                    />
+                  </svg>
                 </svg>
               </span>
             </button>
@@ -1383,12 +1515,24 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                 fill="currentColor"
                 height="1em"
                 role="img"
-                viewBox="0 0 192 512"
                 width="1em"
               >
-                <path
-                  d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-                />
+                <svg
+                  class="pf-v6-icon-default"
+                  viewBox="0 0 192 512"
+                >
+                  <path
+                    d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+                  />
+                </svg>
+                <svg
+                  class="pf-v6-icon-rh-ui"
+                  viewBox="0 0 32 32"
+                >
+                  <path
+                    d="M16 9c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4Zm0-6c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2Zm0 9c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4Zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2Zm0 5c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4Zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2Z"
+                  />
+                </svg>
               </svg>
             </span>
           </button>
@@ -1399,7 +1543,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
           <button
             aria-label="Sort descending"
             class="pf-v6-c-button pf-m-plain"
-            data-ouia-component-id="OUIA-Generated-Button-plain-8"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r2l:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -1465,7 +1609,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                 aria-expanded="false"
                 aria-haspopup="listbox"
                 class="pf-v6-c-menu-toggle pf-m-plain pf-m-text"
-                data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-2"
+                data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r2o:"
                 data-ouia-component-type="PF6/MenuToggle"
                 data-ouia-safe="true"
                 id="options-menu-top-toggle"
@@ -1499,11 +1643,11 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
-                      viewBox="0 0 320 512"
+                      viewBox="0 0 20 20"
                       width="1em"
                     >
                       <path
-                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                        d="m17.65 8.76-6.674 5.72a1.496 1.496 0 0 1-.976.365c-.347 0-.694-.122-.978-.366l-6.673-5.72A1 1 0 0 1 3 7h14a1 1 0 0 1 .65 1.76Z"
                       />
                     </svg>
                   </span>
@@ -1521,7 +1665,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                   aria-label="Go to previous page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="previous"
-                  data-ouia-component-id="OUIA-Generated-Button-plain-9"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-:r2p:"
                   data-ouia-component-type="PF6/Button"
                   data-ouia-safe="true"
                   disabled=""
@@ -1536,12 +1680,24 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
-                      viewBox="0 0 256 512"
                       width="1em"
                     >
-                      <path
-                        d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-                      />
+                      <svg
+                        class="pf-v6-icon-default"
+                        viewBox="0 0 256 512"
+                      >
+                        <path
+                          d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+                        />
+                      </svg>
+                      <svg
+                        class="pf-v6-icon-rh-ui"
+                        viewBox="0 0 32 32"
+                      >
+                        <path
+                          d="M21 30a.997.997 0 0 1-.707-.293L7.647 17.061a1.501 1.501 0 0 1 0-2.121L20.293 2.293a.999.999 0 1 1 1.414 1.414L9.414 16l12.293 12.293A.999.999 0 0 1 21 30Z"
+                        />
+                      </svg>
                     </svg>
                   </span>
                 </button>
@@ -1553,7 +1709,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                   aria-label="Go to next page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="next"
-                  data-ouia-component-id="OUIA-Generated-Button-plain-10"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-:r2q:"
                   data-ouia-component-type="PF6/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -1567,12 +1723,24 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
-                      viewBox="0 0 256 512"
                       width="1em"
                     >
-                      <path
-                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-                      />
+                      <svg
+                        class="pf-v6-icon-default"
+                        viewBox="0 0 256 512"
+                      >
+                        <path
+                          d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                        />
+                      </svg>
+                      <svg
+                        class="pf-v6-icon-rh-ui"
+                        viewBox="0 0 32 32"
+                      >
+                        <path
+                          d="M11 30a.999.999 0 0 1-.707-1.707L22.586 16 10.293 3.707a.999.999 0 1 1 1.414-1.414l12.646 12.646a1.501 1.501 0 0 1 0 2.121L11.707 29.706a.997.997 0 0 1-.707.293Z"
+                        />
+                      </svg>
                     </svg>
                   </span>
                 </button>
@@ -1603,12 +1771,12 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                 <span
                   aria-hidden="true"
                   class="pf-v6-c-label-group__label"
-                  id="pf-random-id-3"
+                  id="pf-random-id-:r2r:"
                 >
                   Some
                 </span>
                 <ul
-                  aria-labelledby="pf-random-id-3"
+                  aria-labelledby="pf-random-id-:r2r:"
                   class="pf-v6-c-label-group__list"
                   role="list"
                 >
@@ -1633,7 +1801,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                         <button
                           aria-label="Close something,"
                           class="pf-v6-c-button pf-m-plain pf-m-no-padding"
-                          data-ouia-component-id="OUIA-Generated-Button-plain-11"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-:r2s:"
                           data-ouia-component-type="PF6/Button"
                           data-ouia-safe="true"
                           type="button"
@@ -1647,11 +1815,11 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                               fill="currentColor"
                               height="1em"
                               role="img"
-                              viewBox="0 0 352 512"
+                              viewBox="0 0 20 20"
                               width="1em"
                             >
                               <path
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                d="M17.8 16.2 11.59 10l6.21-6.21c.42-.46.39-1.17-.07-1.59-.43-.4-1.09-.4-1.52 0l-6.2 6.2-6.22-6.19c-.44-.44-1.15-.44-1.59 0-.44.44-.44 1.15 0 1.59l6.2 6.21-6.2 6.2c-.42.46-.39 1.17.07 1.59.43.4 1.09.4 1.52 0L10 11.59l6.2 6.2c.44.44 1.15.44 1.59 0 .44-.45.44-1.16 0-1.6Z"
                               />
                             </svg>
                           </span>
@@ -1680,7 +1848,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                         <button
                           aria-label="Close something 2,"
                           class="pf-v6-c-button pf-m-plain pf-m-no-padding"
-                          data-ouia-component-id="OUIA-Generated-Button-plain-12"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-:r2t:"
                           data-ouia-component-type="PF6/Button"
                           data-ouia-safe="true"
                           type="button"
@@ -1694,11 +1862,11 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                               fill="currentColor"
                               height="1em"
                               role="img"
-                              viewBox="0 0 352 512"
+                              viewBox="0 0 20 20"
                               width="1em"
                             >
                               <path
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                d="M17.8 16.2 11.59 10l6.21-6.21c.42-.46.39-1.17-.07-1.59-.43-.4-1.09-.4-1.52 0l-6.2 6.2-6.22-6.19c-.44-.44-1.15-.44-1.59 0-.44.44-.44 1.15 0 1.59l6.2 6.21-6.2 6.2c-.42.46-.39 1.17.07 1.59.43.4 1.09.4 1.52 0L10 11.59l6.2 6.2c.44.44 1.15.44 1.59 0 .44-.45.44-1.16 0-1.6Z"
                               />
                             </svg>
                           </span>
@@ -1718,12 +1886,12 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                 <span
                   aria-hidden="true"
                   class="pf-v6-c-label-group__label"
-                  id="pf-random-id-4"
+                  id="pf-random-id-:r2u:"
                 >
                   Another
                 </span>
                 <ul
-                  aria-labelledby="pf-random-id-4"
+                  aria-labelledby="pf-random-id-:r2u:"
                   class="pf-v6-c-label-group__list"
                   role="list"
                 >
@@ -1748,7 +1916,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                         <button
                           aria-label="Close One chip,"
                           class="pf-v6-c-button pf-m-plain pf-m-no-padding"
-                          data-ouia-component-id="OUIA-Generated-Button-plain-13"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-:r2v:"
                           data-ouia-component-type="PF6/Button"
                           data-ouia-safe="true"
                           type="button"
@@ -1762,11 +1930,11 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                               fill="currentColor"
                               height="1em"
                               role="img"
-                              viewBox="0 0 352 512"
+                              viewBox="0 0 20 20"
                               width="1em"
                             >
                               <path
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                d="M17.8 16.2 11.59 10l6.21-6.21c.42-.46.39-1.17-.07-1.59-.43-.4-1.09-.4-1.52 0l-6.2 6.2-6.22-6.19c-.44-.44-1.15-.44-1.59 0-.44.44-.44 1.15 0 1.59l6.2 6.21-6.2 6.2c-.42.46-.39 1.17.07 1.59.43.4 1.09.4 1.52 0L10 11.59l6.2 6.2c.44.44 1.15.44 1.59 0 .44-.45.44-1.16 0-1.6Z"
                               />
                             </svg>
                           </span>
@@ -1809,7 +1977,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                         <button
                           aria-label="Close Something else,"
                           class="pf-v6-c-button pf-m-plain pf-m-no-padding"
-                          data-ouia-component-id="OUIA-Generated-Button-plain-14"
+                          data-ouia-component-id="OUIA-Generated-Button-plain-:r31:"
                           data-ouia-component-type="PF6/Button"
                           data-ouia-safe="true"
                           type="button"
@@ -1823,11 +1991,11 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
                               fill="currentColor"
                               height="1em"
                               role="img"
-                              viewBox="0 0 352 512"
+                              viewBox="0 0 20 20"
                               width="1em"
                             >
                               <path
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                d="M17.8 16.2 11.59 10l6.21-6.21c.42-.46.39-1.17-.07-1.59-.43-.4-1.09-.4-1.52 0l-6.2 6.2-6.22-6.19c-.44-.44-1.15-.44-1.59 0-.44.44-.44 1.15 0 1.59l6.2 6.21-6.2 6.2c-.42.46-.39 1.17.07 1.59.43.4 1.09.4 1.52 0L10 11.59l6.2 6.2c.44.44 1.15.44 1.59 0 .44-.45.44-1.16 0-1.6Z"
                               />
                             </svg>
                           </span>
