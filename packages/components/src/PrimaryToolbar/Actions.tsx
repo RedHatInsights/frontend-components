@@ -25,7 +25,7 @@ type ActionObject = {
     action: ActionObject,
     key: string | number,
   ) => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- passthrough props spread into PF DropdownItem; `unknown` breaks JSX spreading
+
   props?: { [key: string]: any; className?: string };
 };
 
@@ -48,7 +48,7 @@ function isActionObject(node: React.ReactNode | ActionObject): node is ActionObj
  * Extract props from an action, stripping the `key` prop to avoid React warnings.
  * Uses isActionObject() guard to safely handle primitives (string/number/boolean).
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- passthrough props spread into PF DropdownItem; `unknown` breaks JSX spreading
+
 function extractActionProps(action: ActionsType): { props: Record<string, any>; isElement: boolean; isObject: boolean } {
   const isElement = React.isValidElement(action);
   const isObject = !isElement && isActionObject(action);
