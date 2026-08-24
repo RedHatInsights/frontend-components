@@ -31,7 +31,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
-      - uses: nrwl/nx-set-shas@3e9ad7370203c1e93d109be57f3b72eb0eb511b1 # v4
+      - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5
       - name: Build
         run: npm run build
   unit-test:
@@ -43,7 +43,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
-      - uses: nrwl/nx-set-shas@3e9ad7370203c1e93d109be57f3b72eb0eb511b1 # v4
+      - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5
       - name: Run unit tests
         run: npm run test:unit
   component-test:
@@ -55,7 +55,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
-      - uses: nrwl/nx-set-shas@3e9ad7370203c1e93d109be57f3b72eb0eb511b1 # v4
+      - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5
       - uses: './.github/actions/cypress-cache'
       - name: Install deps
         shell: bash
@@ -73,7 +73,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
-      - uses: nrwl/nx-set-shas@3e9ad7370203c1e93d109be57f3b72eb0eb511b1 # v4
+      - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5
       - name: Lint
         run: npx nx affected -t lint --exclude=demo --outputStyle=static
   commitlint:
@@ -107,7 +107,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
-      - uses: nrwl/nx-set-shas@3e9ad7370203c1e93d109be57f3b72eb0eb511b1 # v4
+      - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5
       - name: install
         shell: bash
         run: npm ci
