@@ -16,6 +16,11 @@ runs:
     - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
       with:
         node-version-file: '.nvmrc'
+    - name: Enable Corepack and activate pinned npm version
+      shell: bash
+      run: |
+        corepack enable npm
+        corepack install
     - name: Verify npm version
       shell: bash
       run: |

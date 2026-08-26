@@ -53,9 +53,7 @@ export function getBaseName(pathname: string, level = 2) {
 }
 
 export type FilterData<T = Record<string, unknown | string | Date | ((...args: unknown[]) => unknown)>> =
-  | object
-  | null
-  | Record<string, unknown | string | Date | ((...args: unknown[]) => unknown) | T>;
+  object | null | Record<string, unknown | string | Date | ((...args: unknown[]) => unknown) | T>;
 
 export const generateFilter = (data: FilterData, path = 'filter', options?: { arrayEnhancer: string }): Record<string, string> =>
   Object.entries(data || {}).reduce((acc, [key, value]) => {

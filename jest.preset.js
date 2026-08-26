@@ -8,6 +8,12 @@ module.exports = {
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy',
     '^lodash-es$': 'lodash',
+    // @patternfly/react-component-groups CJS build incorrectly requires from
+    // @patternfly/react-core/dist/esm (ESM syntax), redirect to CJS-compatible dist/js
+    '@patternfly/react-core/dist/esm/(.*)': '<rootDir>/../../node_modules/@patternfly/react-core/dist/js/$1',
+    // sanitize-html@2.x bundles 6 pure-ESM nested packages that Jest cannot parse.
+    // Swap it for a lightweight identity-function stub — tests do not need real sanitization.
+    '^sanitize-html$': '<rootDir>/../../config/mocks/sanitize-html.js',
     customReact: 'react',
     reactRedux: 'react-redux',
     PFReactCore: '@patternfly/react-core',

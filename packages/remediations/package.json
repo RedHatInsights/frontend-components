@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-remediations",
-  "version": "4.11.5",
+  "version": "4.11.6",
   "description": "Remediations components for RedHat Cloud Services project.",
   "main": "index.js",
   "module": "esm/index.js",
@@ -19,16 +19,16 @@
   },
   "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/remediations#readme",
   "peerDependencies": {
-    "@patternfly/react-core": "^6.0.0",
-    "@patternfly/react-icons": "^6.0.0",
-    "@patternfly/react-table": "^6.0.0",
-    "prop-types": "^15.6.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@patternfly/react-core": "^6.6.1",
+    "@patternfly/react-icons": "^6.6.1",
+    "@patternfly/react-table": "^6.6.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "dependencies": {
-    "@data-driven-forms/pf4-component-mapper": "^4.0.0",
-    "@data-driven-forms/react-form-renderer": "^4.0.0",
+    "@data-driven-forms/pf4-component-mapper": "^4.2.0",
+    "@data-driven-forms/react-form-renderer": "^4.2.0",
     "@redhat-cloud-services/frontend-components": "^7.0.13",
     "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
     "urijs": "^1.19.11"
