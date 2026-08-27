@@ -1,3 +1,13 @@
+## 7.10.7 (2026-08-27)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components:** improve bulkSelect ([#2422](https://github.com/RedHatInsights/frontend-components/pull/2422))
+
+### ❤️ Thank You
+
+- Jakub Dugovič @Dugowitch
+
 ## 7.10.6 (2026-08-24)
 
 ### 🩹 Fixes

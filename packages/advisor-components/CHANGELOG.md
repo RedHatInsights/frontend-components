@@ -1,3 +1,9 @@
+## 3.10.7 (2026-08-27)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components to 7.10.7
+
 ## 3.10.6 (2026-08-24)
 
 ### 🩹 Fixes
