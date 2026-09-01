@@ -2,13 +2,12 @@
 
 :root {
     --ins-c-table-toolbar--PaddingVertical: 16px;
-    --ins-c-table-toolbar--PaddingHorizontal: 32px;
 }
 
 .ins-c-table__toolbar, .ins-c-table__toolbar-results {
   background: var(--pf-t--global--background--color--primary--default);
   border-bottom: 1px solid var(--pf-t--global--background--color--secondary--default);
-  padding: var(--ins-c-table-toolbar--PaddingVertical) var(--ins-c-table-toolbar--PaddingHorizontal);
+  padding: var(--ins-c-table-toolbar--PaddingVertical) 0;
 }
 
 .ins-c-table__toolbar.ins-m-footer { border-top: 1px solid var(--pf-t--global--background--color--secondary--default); }
