@@ -1,3 +1,13 @@
+## 7.10.8 (2026-09-02)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components:** fix bottom pagination margin ([91275986](https://github.com/RedHatInsights/frontend-components/commit/91275986))
+
+### ❤️ Thank You
+
+- Jakub Dugovič @Dugowitch
+
 ## 7.10.7 (2026-08-27)
 
 ### 🩹 Fixes
