@@ -6,6 +6,20 @@
     {
       "matchDepTypes": ["devDependencies"],
       "commitMessagePrefix": "chore(deps-dev):"
+    },
+    {
+      "description": "Update Node.js version in .nvmrc and package.json engines.node",
+      "matchManagers": ["nvm", "npm"],
+      "matchDepNames": ["node"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": false
+    },
+    {
+      "description": "Update npm version in package.json (engines.npm and packageManager)",
+      "matchManagers": ["npm"],
+      "matchDepNames": ["npm"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": false
     }
   ]
 }
