@@ -1,3 +1,30 @@
+## 7.10.9 (2026-09-03)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.5.5
+- Updated @redhat-cloud-services/types to 3.7.5
+
+## 7.10.8 (2026-09-02)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components:** fix bottom pagination margin ([91275986](https://github.com/RedHatInsights/frontend-components/commit/91275986))
+
+### ❤️ Thank You
+
+- Jakub Dugovič @Dugowitch
+
+## 7.10.7 (2026-08-27)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components:** improve bulkSelect ([#2422](https://github.com/RedHatInsights/frontend-components/pull/2422))
+
+### ❤️ Thank You
+
+- Jakub Dugovič @Dugowitch
+
 ## 7.10.6 (2026-08-24)
 
 ### 🩹 Fixes

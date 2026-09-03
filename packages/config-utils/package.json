@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-config-utilities",
-  "version": "4.12.6",
+  "version": "4.12.7",
   "description": "Utilities for shared config used in Red Hat Cloud Services project.",
   "main": "index.js",
   "types": "index.d.ts",
@@ -21,14 +21,14 @@
     "build": "tsc"
   },
   "peerDependencies": {
-    "webpack": "^5.109.2"
+    "webpack": "^5.110.2"
   },
   "dependencies": {
     "@openshift/dynamic-plugin-sdk-webpack": "^4.1.0",
     "ajv": "^8.20.0",
     "chalk": "^4.1.2",
     "chokidar": "^4.0.3",
-    "js-yaml": "^4.3.1",
+    "js-yaml": "^4.3.2",
     "node-fetch": "2.7.0"
   },
   "devDependencies": {

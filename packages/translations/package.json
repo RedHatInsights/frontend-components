@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-translations",
-  "version": "4.5.5",
+  "version": "4.5.6",
   "description": "Translations package for RedHat Cloud Services project.",
   "main": "index.js",
   "module": "esm/index.js",
@@ -31,6 +31,6 @@
     "@redhat-cloud-services/frontend-components-utilities": "^7.0.0"
   },
   "devDependencies": {
-    "@formatjs/cli": "^6.16.19"
+    "@formatjs/cli": "^6.16.22"
   }
 }

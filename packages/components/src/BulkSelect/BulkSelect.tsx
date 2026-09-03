@@ -77,25 +77,28 @@ const BulkSelect = ({
               ref={toggleRef}
               onClick={() => setIsOpen((prev) => !prev)}
               ouiaId={dropdownOuiaId ?? 'BulkSelect'}
+              splitButtonItems={
+                !toggleProps?.children
+                  ? [
+                      <MenuToggleCheckbox
+                        key={'split-checkbox-with-text'}
+                        id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
+                        aria-label="Select all"
+                        onChange={(checked, event) => {
+                          setIsOpen(false);
+                          onSelect?.(checked, event);
+                        }}
+                        isDisabled={isDisabled}
+                        isChecked={checked}
+                        ouiaId={checkboxOuiaId ?? 'BulkSelectCheckbox'}
+                      >
+                        {!hasError && count ? `${count} selected` : ''}
+                      </MenuToggleCheckbox>,
+                    ]
+                  : []
+              }
             >
-              {toggleProps?.children ? (
-                toggleProps?.children
-              ) : (
-                <Fragment key="split-checkbox">
-                  <MenuToggleCheckbox
-                    id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
-                    aria-label="Select all"
-                    onChange={(checked, event) => {
-                      setIsOpen(false);
-                      onSelect?.(checked, event);
-                    }}
-                    isChecked={checked}
-                    ouiaId={checkboxOuiaId ?? 'BulkSelectCheckbox'}
-                  >
-                    {!hasError && count ? `${count} selected` : ''}
-                  </MenuToggleCheckbox>
-                </Fragment>
-              )}
+              {toggleProps?.children}
             </MenuToggle>
           )}
           isOpen={isOpen}
