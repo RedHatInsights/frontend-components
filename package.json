@@ -2,8 +2,8 @@
   "name": "@redhat-cloud-services/source",
   "version": "0.0.1",
   "engines": {
-    "node": ">=24.0.0",
-    "npm": ">=11.0.0"
+    "node": ">=24.19.0",
+    "npm": ">=11.19.1"
   },
   "packageManager": "npm@11.19.1",
   "private": true,
