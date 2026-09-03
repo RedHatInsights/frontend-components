@@ -22,6 +22,8 @@
       "matchManagers": ["nvm", "npm"],
       "matchDepNames": ["node"],
       "matchUpdateTypes": ["minor", "patch"],
+      "semanticCommitType": "chore",
+      "semanticCommitScope": "node",
       "automerge": false
     },
     {
@@ -29,6 +31,8 @@
       "matchManagers": ["npm"],
       "matchDepNames": ["npm"],
       "matchUpdateTypes": ["minor", "patch"],
+      "semanticCommitType": "chore",
+      "semanticCommitScope": "npm",
       "automerge": false
     }
   ]
