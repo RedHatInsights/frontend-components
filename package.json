@@ -2,7 +2,7 @@
   "name": "@redhat-cloud-services/source",
   "version": "0.0.1",
   "engines": {
-    "node": ">=24.19.0",
+    "node": ">=24.20.0",
     "npm": ">=11.19.1"
   },
   "packageManager": "npm@11.19.1",
