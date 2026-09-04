@@ -5,84 +5,18 @@ on:
     workflows: ["Frontend components CI pipeline"]
     types: [completed]
 
+concurrency:
+  group: chromatic-${{ github.event.workflow_run.head_repository.full_name }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
-  pull-requests: write
   actions: read
+  pull-requests: write
 
 jobs:
-  upload:
-    runs-on: ubuntu-24.04
-    if: >
-      github.event.workflow_run.conclusion == 'success' &&
-      (github.event.workflow_run.event == 'pull_request' || github.event.workflow_run.event == 'push')
-    steps:
-      - name: Checkout Base Repository
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-
-      - name: Download Artifact
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
-        id: download
-        with:
-          name: storybook-static
-          path: storybook-static
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-        continue-on-error: true
-
-      - name: Retry Download Artifact
-        if: steps.download.outcome == 'failure'
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
-        with:
-          name: storybook-static
-          path: storybook-static
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish to Chromatic
-        id: chromatic
-        uses: chromaui/action@c93e0bc3a63aa176e14a75b61a31847cbfdd341c # v11.27.0
-        with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: storybook-static
-          autoAcceptChanges: ${{ github.event.workflow_run.event == 'push' }}
-
-      - name: Find PR number
-        id: find-pr
-        if: github.event.workflow_run.event == 'pull_request'
-        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
-        with:
-          script: |
-            const prs = context.payload.workflow_run.pull_requests;
-            if (prs && prs.length > 0) {
-              return prs[0].number;
-            }
-            return null;
-
-      - name: Find existing comment
-        id: find-comment
-        if: steps.find-pr.outputs.result && steps.find-pr.outputs.result != 'null'
-        uses: peter-evans/find-comment@b30e6a3c0ed37e7c023ccd3f1db5c6c0b0c23aad # v4
-        with:
-          issue-number: ${{ steps.find-pr.outputs.result }}
-          comment-author: 'github-actions[bot]'
-          body-includes: '<!-- chromatic-build -->'
-
-      - name: Comment on PR
-        if: steps.find-pr.outputs.result && steps.find-pr.outputs.result != 'null'
-        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4
-        with:
-          comment-id: ${{ steps.find-comment.outputs.comment-id }}
-          issue-number: ${{ steps.find-pr.outputs.result }}
-          edit-mode: replace
-          body: |
-            <!-- chromatic-build -->
-            ### Chromatic Build
-
-            | | Link |
-            |---|---|
-            | Storybook | ${{ steps.chromatic.outputs.storybookUrl }} |
-            | Build | ${{ steps.chromatic.outputs.buildUrl }} |
+  chromatic:
+    uses: RedHatInsights/shared-workflows/.github/workflows/reusable-chromatic.yml@fdaa8fa249caa5c09ef9661f8b4222ae9125095d # main
+    
+    secrets:
+      chromatic-project-token: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
