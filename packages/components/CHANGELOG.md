@@ -1,3 +1,18 @@
+## 7.10.11 (2026-09-07)
+
+### 🩹 Fixes
+
+- **deps:** update npm minor and patch dependencies ([#2427](https://github.com/RedHatInsights/frontend-components/pull/2427))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.5.7
+- Updated @redhat-cloud-services/types to 3.7.7
+
+### ❤️ Thank You
+
+- Charles Mulder @charlesmulder
+
 ## 7.10.10 (2026-09-04)
 
 ### 🧱 Updated Dependencies

@@ -1,3 +1,9 @@
+## 7.5.7 (2026-09-07)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/types to 3.7.7
+
 ## 7.5.6 (2026-09-04)
 
 ### 🧱 Updated Dependencies

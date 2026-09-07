@@ -1,3 +1,18 @@
+## 6.14.8 (2026-09-07)
+
+### 🩹 Fixes
+
+- **deps:** update npm minor and patch dependencies ([#2427](https://github.com/RedHatInsights/frontend-components/pull/2427))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/tsc-transform-imports to 1.3.7
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.12.9
+
+### ❤️ Thank You
+
+- Charles Mulder @charlesmulder
+
 ## 6.14.7 (2026-09-04)
 
 ### 🩹 Fixes

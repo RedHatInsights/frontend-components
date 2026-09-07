@@ -1,3 +1,7 @@
+## 1.3.7 (2026-09-07)
+
+This was a version bump only for @redhat-cloud-services/tsc-transform-imports to align it with other projects, there were no code changes.
+
 ## 1.3.6 (2026-09-04)
 
 This was a version bump only for @redhat-cloud-services/tsc-transform-imports to align it with other projects, there were no code changes.

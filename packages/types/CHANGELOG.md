@@ -1,3 +1,7 @@
+## 3.7.7 (2026-09-07)
+
+This was a version bump only for @redhat-cloud-services/types to align it with other projects, there were no code changes.
+
 ## 3.7.6 (2026-09-04)
 
 This was a version bump only for @redhat-cloud-services/types to align it with other projects, there were no code changes.
