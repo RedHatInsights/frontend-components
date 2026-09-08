@@ -35,6 +35,7 @@ const config = federatedModules({
 | useFileHash | boolean | `true` | Include content hash in filename |
 | separateRuntime | boolean | `false` | Use separate runtime |
 | exclude | string[] | `[]` | Packages to exclude from sharing |
+| bundleChromeShared | boolean | `false` | Bundle chrome-provided shared modules from local `node_modules` (no insights-chrome host) |
 | eager | boolean | `false` | ⚠️ Deprecated - Load modules eagerly |
 | pluginMetadata | PluginBuildMetadata | auto-generated | Plugin metadata configuration |
 | extensions | EncodedExtension[] | `[]` | Dynamic plugin extensions |
@@ -75,6 +76,19 @@ const config = federatedModules({
 ```
 
 *Pattern verified from: `src/federated-modules.ts:76-87`*
+
+### Standalone builds without insights-chrome
+
+When the app runs without insights-chrome as the module federation host (e.g. an IoP iframe on Satellite), enable local bundling of chrome-provided shared modules:
+
+```typescript
+const config = federatedModules({
+  root: __dirname,
+  bundleChromeShared: true,
+});
+```
+
+This rewrites `import: false` shared entries to eager imports from the app's `node_modules`, then drops remaining host-consumed shares. Those become normal webpack dependencies instead of Module Federation shares.
 
 ## proxy
 
