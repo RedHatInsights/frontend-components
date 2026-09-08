@@ -1,3 +1,13 @@
+## 4.13.0 (2026-09-08)
+
+### 🚀 Features
+
+- **@redhat-cloud-services/frontend-components-config-utilities:** support hostless MF builds ([#2363](https://github.com/RedHatInsights/frontend-components/pull/2363))
+
+### ❤️ Thank You
+
+- Egor Shamardin @LightOfHeaven1994
+
 ## 4.12.9 (2026-09-07)
 
 This was a version bump only for @redhat-cloud-services/frontend-components-config-utilities to align it with other projects, there were no code changes.
