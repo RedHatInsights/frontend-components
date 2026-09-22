@@ -1,3 +1,13 @@
+## 4.13.1 (2026-09-22)
+
+### 🩹 Fixes
+
+- **deps:** update npm minor and patch dependencies ([#2430](https://github.com/RedHatInsights/frontend-components/pull/2430))
+
+### ❤️ Thank You
+
+- Charles Mulder @charlesmulder
+
 ## 4.13.0 (2026-09-08)
 
 ### 🚀 Features
