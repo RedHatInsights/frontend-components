@@ -18,22 +18,37 @@
       "semanticCommitScope": "ci"
     },
     {
-      "description": "Update Node.js version in .nvmrc and package.json engines.node",
-      "matchManagers": ["nvm", "npm"],
+      "description": "Handle Node.js updates in .nvmrc (latest dev toolchain)",
+      "matchManagers": ["nvm"],
       "matchDepNames": ["node"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "enabled": true,
       "semanticCommitType": "chore",
       "semanticCommitScope": "node",
       "automerge": false
     },
     {
-      "description": "Update npm version in package.json (engines.npm and packageManager)",
+      "description": "Disable engines.node updates (pinned to MintMaker's minimum supported version)",
+      "matchManagers": ["npm"],
+      "matchDepNames": ["node"],
+      "matchDepTypes": ["engines"],
+      "enabled": false
+    },
+    {
+      "description": "Handle npm packageManager updates (latest dev toolchain)",
       "matchManagers": ["npm"],
       "matchDepNames": ["npm"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchDepTypes": ["packageManager"],
+      "enabled": true,
       "semanticCommitType": "chore",
       "semanticCommitScope": "npm",
       "automerge": false
+    },
+    {
+      "description": "Disable engines.npm updates (pinned to MintMaker's minimum supported version)",
+      "matchManagers": ["npm"],
+      "matchDepNames": ["npm"],
+      "matchDepTypes": ["engines"],
+      "enabled": false
     }
   ]
 }
