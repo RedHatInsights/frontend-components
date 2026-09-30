@@ -62,9 +62,12 @@ jobs:
       - name: Install deps
         shell: bash
         run: npm ci
+      - name: Install Cypress Binary
+        run: npx cypress install
       - name: Run component tests
         uses: cypress-io/github-action@01e3b659a495b41649cdd0aa82e1d1624e26520b # v7.4.4
         with:
+          install: false
           command: npx nx affected -t test:component --exclude=demo --outputStyle=static --parallel=1
   lint:
     runs-on: ubuntu-24.04
