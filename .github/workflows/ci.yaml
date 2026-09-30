@@ -22,6 +22,8 @@ jobs:
       - uses: './.github/actions/cypress-cache'
       - name: Install dependencies
         run: npm ci
+      - name: Install Cypress Binary
+        run: npx cypress install
   build:
     runs-on: ubuntu-24.04
     needs: install
