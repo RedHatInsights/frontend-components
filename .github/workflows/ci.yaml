@@ -11,7 +11,7 @@ on:
 
 jobs:
   install:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -22,8 +22,10 @@ jobs:
       - uses: './.github/actions/cypress-cache'
       - name: Install dependencies
         run: npm ci
+      - name: Install Cypress Binary
+        run: npx cypress install
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     needs: install
     steps:
       - name: Checkout
@@ -32,10 +34,12 @@ jobs:
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5
+      - name: Install dependencies
+        run: npm ci
       - name: Build
         run: npm run build
   unit-test:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     needs: [install]
     steps:
       - name: Checkout
@@ -44,6 +48,8 @@ jobs:
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5
+      - name: Install dependencies
+        run: npm ci
       - name: Run unit tests
         run: npm run test:unit
   component-test:
@@ -60,12 +66,15 @@ jobs:
       - name: Install deps
         shell: bash
         run: npm ci
+      - name: Install Cypress Binary
+        run: npx cypress install
       - name: Run component tests
         uses: cypress-io/github-action@01e3b659a495b41649cdd0aa82e1d1624e26520b # v7.4.4
         with:
+          install: false
           command: npx nx affected -t test:component --exclude=demo --outputStyle=static --parallel=1
   lint:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     needs: install
     steps:
       - name: Checkout
@@ -74,11 +83,13 @@ jobs:
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5
+      - name: Install dependencies
+        run: npm ci
       - name: Lint
         run: npx nx affected -t lint --exclude=demo --outputStyle=static
   commitlint:
     needs: [install]
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -99,7 +110,7 @@ jobs:
         if: github.event_name == 'pull_request'
         run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
   check-circular-imports:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     needs: install
     steps:
       - name: Checkout
@@ -114,7 +125,7 @@ jobs:
       - name: Check circular imports
         run: npx nx affected -t test:circular-dependencies --exclude=demo --outputStyle=static
   build-storybook:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     needs: install
     steps:
       - name: Checkout
@@ -160,7 +171,7 @@ jobs:
           npx wait-on --timeout 60000 http://127.0.0.1:6007
           npx test-storybook --config-dir packages/components/.storybook --url http://127.0.0.1:6007
   release:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     needs: [install, build, unit-test, component-test, lint, commitlint, check-circular-imports]
     # Only run on push to master branch (never on PRs, workflow_dispatch, etc.)
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
