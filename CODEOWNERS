@@ -1,25 +1,32 @@
+# ============================================================
+# APPROVE-BY-DEFAULT
+# Everything defaults to the committers team. Sensitive/high-
+# blast-radius paths are explicitly escalated to admins below.
+# Last match wins — admin rules must stay below the wildcard.
+# ============================================================
+
 # Default owners for everything in the repo
-* @RedHatInsights/experience-services-committers
+* @RedHatInsights/experience-services-committers @RedHatInsights/experience-ui-committers
 
-# All GitHub configuration requires review from admins
-# This prevents unauthorized modifications to CI/CD pipelines, custom actions, and repo processes
-.github/** @RedHatInsights/experience-services-admins
+# --- CI / GitHub configuration ---
+/.github/ @RedHatInsights/experience-services-package-admins
+/.tekton/ @RedHatInsights/experience-services-package-admins
 
-# Protect Git hooks from supply chain attacks
-# Husky hooks execute during npm install and git operations with user permissions
-.husky/** @RedHatInsights/experience-services-admins
+# --- Git hooks & commit tooling ---
+/.husky/ @RedHatInsights/experience-services-package-admins
+/commitlint.config.js @RedHatInsights/experience-services-package-admins
+/commitlint.config.test.js @RedHatInsights/experience-services-package-admins
+/commitlint.jest.config.js @RedHatInsights/experience-services-package-admins
 
-# All Konflux tekton configuration changes review from admins
-#.tekton/** @RedHatInsights/experience-services-admins
+# --- Package lifecycle, publish & dependency control ---
+/package.json @RedHatInsights/experience-services-package-admins
+/package-lock.json @RedHatInsights/experience-services-package-admins
+/.npmrc @RedHatInsights/experience-services-package-admins
+/.npmignore @RedHatInsights/experience-services-package-admins
+/renovate.json @RedHatInsights/experience-services-package-admins
 
-# Protect npm configuration and lifecycle scripts from supply chain attacks
-# Root package.json contains prepare/postinstall scripts that execute during npm install
-# .npmrc controls registry settings and install behavior
-# .npmignore controls published package contents
-package.json @RedHatInsights/experience-services-admins
-.npmrc @RedHatInsights/experience-services-admins
-.npmignore @RedHatInsights/experience-services-admins
+# --- Build / task orchestration ---
+/nx.json @RedHatInsights/experience-services-package-admins
 
-# CODEOWNERS file itself requires admin review to prevent bypass attacks
-# Must come after wildcard so this rule takes precedence (last match wins)
-CODEOWNERS @RedHatInsights/experience-services-admins
+# --- Security policy & self-protection ---
+/CODEOWNERS @RedHatInsights/experience-services-package-admins
