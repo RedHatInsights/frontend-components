@@ -21,7 +21,8 @@
     "build": "tsc"
   },
   "peerDependencies": {
-    "webpack": "^5.111.1"
+    "webpack": "^5.111.1",
+	"webpack-dev-server": "^5.2.6"
   },
   "dependencies": {
     "@openshift/dynamic-plugin-sdk-webpack": "^4.1.0",
