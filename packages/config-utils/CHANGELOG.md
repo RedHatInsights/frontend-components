@@ -1,3 +1,13 @@
+## 4.13.2 (2026-10-01)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components-config-utilities:** add webpack-dev-server to peerDependencies RHCLOUD-51805 ([2d8b8829](https://github.com/RedHatInsights/frontend-components/commit/2d8b8829))
+
+### ❤️ Thank You
+
+- Charles Mulder @charlesmulder
+
 ## 4.13.1 (2026-09-22)
 
 ### 🩹 Fixes
