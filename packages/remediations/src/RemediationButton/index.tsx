@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { ScalprumComponent } from '@scalprum/react-core';
+import { ScalprumComponent, ScalprumComponentProps } from '@scalprum/react-core';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 import RemediationLoadError from '../common/RemediationLoadError';
 
@@ -24,16 +24,17 @@ const BaseRemediationButton = ({
   innerRef,
   ...props
 }: BaseRemediationButtonProps) => {
+  const SCProps: ScalprumComponentProps = {
+    appName: 'remediations',
+    module: './RemediationButton',
+    scope: 'remediations',
+    ErrorComponent: <RemediationLoadError component="RemediationButton" {...props} />,
+    ref: innerRef,
+    ...props,
+  };
   return (
     <Suspense fallback={fallback}>
-      <ScalprumComponent
-        appName="remediations"
-        module="./RemediationButton"
-        scope="remediations"
-        ErrorComponent={<RemediationLoadError component="RemediationButton" {...props} />}
-        ref={innerRef}
-        {...props}
-      />
+      <ScalprumComponent {...SCProps} />
     </Suspense>
   );
 };
