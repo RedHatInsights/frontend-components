@@ -1,5 +1,5 @@
 import React, { type JSX, Suspense } from 'react';
-import { ScalprumComponent } from '@scalprum/react-core';
+import { ScalprumComponent, ScalprumComponentProps } from '@scalprum/react-core';
 import { useStore } from 'react-redux';
 import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
 import { Spinner } from '@patternfly/react-core/dist/dynamic/components/Spinner';
@@ -30,20 +30,21 @@ const BaseInvTable = ({
 }: BaseInvTableProps) => {
   const store = useStore();
   const Component = component;
+  const SCProps: ScalprumComponentProps<{}, Record<string, unknown>> = {
+    history,
+    store,
+    appName: 'inventory',
+    module: './InventoryTable',
+    scope: 'inventory',
+    ErrorComponent: <InventoryLoadError component="InventoryTable" {...props} />,
+    ref: innerRef,
+    fallback,
+    ...props,
+  };
   return (
     <Component className={classNames(className, 'inventory')}>
       <Suspense fallback={fallback}>
-        <ScalprumComponent
-          history={history}
-          store={store}
-          appName="inventory"
-          module="./InventoryTable"
-          scope="inventory"
-          ErrorComponent={<InventoryLoadError component="InventoryTable" {...props} />}
-          ref={innerRef}
-          fallback={fallback}
-          {...props}
-        />
+        <ScalprumComponent {...SCProps} />
       </Suspense>
     </Component>
   );
