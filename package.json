@@ -52,7 +52,7 @@
     "@storybook/addon-docs": "^10.6.1",
     "@storybook/addon-webpack5-compiler-swc": "^4.0.3",
     "@storybook/react-webpack5": "^10.6.1",
-    "@storybook/test-runner": "^0.24.5",
+    "@storybook/test-runner": "^0.26.0",
     "@swc-node/register": "^1.12.1",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^5.17.0",
