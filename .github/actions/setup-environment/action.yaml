@@ -1,5 +1,5 @@
 name: Setup Environment
-description: Setup Node.js and cache dependencies consistently
+description: Setup Node.js and cache npm packages (not node_modules) consistently
 # Note: Compatible with runs-on: ubuntu-24.04 or ubuntu-slim.
 # Jobs that need a real browser (Cypress/Playwright) should stay on ubuntu-24.04.
 runs:
@@ -17,6 +17,7 @@ runs:
     - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
       with:
         node-version-file: '.nvmrc'
+        cache: 'npm'
     - name: Enable Corepack and activate pinned npm version
       shell: bash
       run: |
@@ -33,4 +34,3 @@ runs:
         echo "=== Final Node.js version after setup ==="
         which node && node --version
         npm --version
-    - uses: './.github/actions/cache'
