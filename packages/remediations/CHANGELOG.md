@@ -1,3 +1,18 @@
+## 4.11.14 (2026-10-05)
+
+### 🩹 Fixes
+
+- **RHCLOUD-51863:** update scalprum/react-core ([#2435](https://github.com/RedHatInsights/frontend-components/pull/2435))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components to 7.10.14
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.5.10
+
+### ❤️ Thank You
+
+- Charles Mulder @charlesmulder
+
 ## 4.11.13 (2026-10-01)
 
 ### 🧱 Updated Dependencies

@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-remediations",
-  "version": "4.11.13",
+  "version": "4.11.14",
   "description": "Remediations components for RedHat Cloud Services project.",
   "main": "index.js",
   "module": "esm/index.js",
@@ -25,7 +25,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-	"@scalprum/react-core": "^0.14.1"
+    "@scalprum/react-core": "^0.14.1"
   },
   "dependencies": {
     "@data-driven-forms/pf4-component-mapper": "^4.2.0",
