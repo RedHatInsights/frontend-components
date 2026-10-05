@@ -5,6 +5,10 @@
   "projectType": "library",
   "tags": ["scope:public"],
   "targets": {
+    "build:bundles:tsc": {
+      "executor": "@nx/js:tsc",
+      "options": { "outputPath": "dist/@redhat-cloud-services/frontend-components-notifications" }
+    },
     "build:bundles": {
       "dependsOn": ["^build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:builder",
