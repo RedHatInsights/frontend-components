@@ -10,7 +10,7 @@
       "options": { "outputPath": "dist/@redhat-cloud-services/frontend-components-testing" }
     },
     "build:bundles": {
-      "dependsOn": ["^build:bundles"],
+      "dependsOn": ["^build:bundles", "^build"],
       "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/testing/src",
@@ -23,14 +23,14 @@
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": ["^build:styles"],
+      "dependsOn": ["^build:styles", "build:bundles"],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
         "sourceDir": "packages/testing"
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages"],
+      "dependsOn": ["^build:packages", "build:styles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-testing",
@@ -44,19 +44,16 @@
       }
     },
     "transform:scss": {
-      "dependsOn": ["^transform:scss"],
+      "dependsOn": ["^transform:scss", "build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/frontend-components-testing"
       }
     },
     "build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": ["nx run @redhat-cloud-services/frontend-components-testing:build:bundles", "nx run @redhat-cloud-services/frontend-components-testing:build:styles", "nx run @redhat-cloud-services/frontend-components-testing:build:packages", "nx run @redhat-cloud-services/frontend-components-testing:transform:scss"]
-      },
-      "dependsOn": ["^build"]
+      "executor": "nx:noop",
+      "dependsOn": ["^build", "transform:scss"],
+      "cache": false
     },
     "lint": {
       "executor": "@nx/eslint:lint",

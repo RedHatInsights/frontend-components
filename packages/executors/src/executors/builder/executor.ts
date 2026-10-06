@@ -18,6 +18,7 @@ export interface BuilderExecutorSchemaType extends z.infer<typeof BuilderExecuto
   main: string;
   rootDir?: string;
   assets?: BundleAssets;
+  clean?: boolean;
 }
 
 async function removeEsmPackageJson(esmOutputPath: string) {
@@ -27,10 +28,16 @@ async function removeEsmPackageJson(esmOutputPath: string) {
   }
 }
 
-async function compileBundle(options: BuilderExecutorSchemaType, context: ExecutorContext, projectName: string, tsConfig: string, outputPath: string) {
+async function compileBundle(
+  options: BuilderExecutorSchemaType,
+  context: ExecutorContext,
+  projectName: string,
+  tsConfig: string,
+  outputPath: string,
+) {
   const { cjsTsConfig, esmTsConfig, ...tscOptions } = options;
   const target = { project: projectName, target: 'build:bundles:tsc' };
-  const results = await runExecutor(target, { ...tscOptions, clean: false, tsConfig, outputPath }, context);
+  const results = await runExecutor(target, { ...tscOptions, clean: tscOptions.clean ?? false, tsConfig, outputPath }, context);
   for await (const result of results) {
     if (!result.success) {
       return false;
