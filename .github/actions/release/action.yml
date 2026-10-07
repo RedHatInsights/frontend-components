@@ -36,11 +36,11 @@ runs:
       shell: bash
       # Checkout is pinned to github.sha. If a prior release pushed commits/tags while this job
       # was queued, those tags won't be reachable from our stale HEAD. Both verify-versions.sh and
-      # nx release use --merged HEAD for tag resolution, so HEAD must be current. This rebase is
-      # always a fast-forward (no local commits yet).
+      # nx release use --merged HEAD for tag resolution, so HEAD must be current. No release commit
+      # exists yet, so advance only when the update is a fast-forward.
       run: |
         git fetch origin master
-        git rebase origin/master
+        git merge --ff-only origin/master
     - name: Verify version consistency
       shell: bash
       run: bash .github/scripts/verify-versions.sh
@@ -60,22 +60,14 @@ runs:
       run: npx nx release --skip-publish
     - name: Push release commit and tags
       shell: bash
-      # nx release (unified command) creates the git commit and tags locally but does not push them,
-      # regardless of the release.git.push setting in nx.json. It only pushes automatically when
-      # createRelease (GitHub/GitLab releases) is enabled. Since we use createReleaseInGitHub: false,
-      # we push manually here so that the version bumps in package.json reach the remote and
-      # nacho-bot can create PRs in consuming repos.
-      # Rebase before push: if a PR merged to master while nx release was running, the version
-      # commit needs to be on top of latest master to avoid non-fast-forward rejection. This rebase
-      # replays only the single version commit created by nx release (merge commit that triggered
-      # this workflow is always an ancestor of origin/master).
+      # nx release creates a release commit and tags locally. Treat that commit as immutable:
+      # rebasing it can leave signed tags pointing at its old hash. If master advanced during
+      # release calculation, this atomic push fails and the attempt must be restarted from master.
+      # --follow-tags pushes annotated release tags; --atomic prevents a commit-only push.
       # HUSKY=0 disables pre-push hooks in CI — tests are run separately by the CI pipeline.
       env:
         HUSKY: '0'
-      run: |
-        git fetch origin master
-        git rebase origin/master
-        git push --follow-tags
+      run: git push --atomic --follow-tags origin HEAD:master
     - name: Publish to npm
       shell: bash
       # Publish only after push succeeds to prevent orphaned npm versions.
