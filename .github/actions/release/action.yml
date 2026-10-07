@@ -16,6 +16,14 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Fast-forward to latest master
+      shell: bash
+      # Checkout is pinned to github.sha. Advance before setup and npm ci so dependencies match
+      # the current commit. Both verify-versions.sh and nx release use --merged HEAD for tag
+      # resolution; no release commit exists yet, so only a fast-forward is allowed.
+      run: |
+        git fetch origin master
+        git merge --ff-only origin/master
     - uses: './.github/actions/setup-environment'
     - name: Install deps
       shell: bash
@@ -32,15 +40,6 @@ runs:
         git config commit.gpgsign true
         git config tag.gpgsign true
         git config user.signingkey $(gpg --list-secret-keys --with-colons "${{ inputs.gh_email }}" | awk -F: '/^sec:/ {print $5; exit}')
-    - name: Fast-forward to latest master
-      shell: bash
-      # Checkout is pinned to github.sha. If a prior release pushed commits/tags while this job
-      # was queued, those tags won't be reachable from our stale HEAD. Both verify-versions.sh and
-      # nx release use --merged HEAD for tag resolution, so HEAD must be current. No release commit
-      # exists yet, so advance only when the update is a fast-forward.
-      run: |
-        git fetch origin master
-        git merge --ff-only origin/master
     - name: Verify version consistency
       shell: bash
       run: bash .github/scripts/verify-versions.sh
