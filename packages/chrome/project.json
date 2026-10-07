@@ -5,8 +5,12 @@
   "projectType": "library",
   "tags": ["scope:public"],
   "targets": {
+    "build:bundles:tsc": {
+      "executor": "@nx/js:tsc",
+      "options": { "outputPath": "dist/@redhat-cloud-services/chrome" }
+    },
     "build:bundles": {
-      "dependsOn": ["^build:bundles"],
+      "dependsOn": ["^build:bundles", "^build"],
       "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/chrome/src",
@@ -18,10 +22,10 @@
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages"],
+      "dependsOn": ["^build:packages", "build:bundles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
-        "outputPath": "dist/@redhat-cloud-services/frontend-components",
+        "outputPath": "dist/@redhat-cloud-services/chrome",
         "forceTypes": true
       }
     },
@@ -32,12 +36,9 @@
       }
     },
     "build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": ["nx run @redhat-cloud-services/chrome:build:bundles", "nx run @redhat-cloud-services/chrome:build:packages"]
-      },
-      "dependsOn": ["^build"]
+      "executor": "nx:noop",
+      "dependsOn": ["^build", "build:packages"],
+      "cache": false
     },
     "lint": {
       "executor": "@nx/eslint:lint",

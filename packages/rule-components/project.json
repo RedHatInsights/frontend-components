@@ -5,8 +5,12 @@
   "projectType": "library",
   "tags": ["scope:public"],
   "targets": {
+    "build:bundles:tsc": {
+      "executor": "@nx/js:tsc",
+      "options": { "outputPath": "dist/@redhat-cloud-services/rule-components" }
+    },
     "build:bundles": {
-      "dependsOn": ["^build:bundles"],
+      "dependsOn": ["^build:bundles", "^build"],
       "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/rule-components/src",
@@ -19,14 +23,14 @@
     },
     "build:styles": {
       "executor": "@redhat-cloud-services/frontend-components-executors:build-styles",
-      "dependsOn": ["^build:styles"],
+      "dependsOn": ["^build:styles", "build:bundles"],
       "options": {
         "outputPath": "dist/@redhat-cloud-services/rule-components",
         "sourceDir": "packages/rule-components"
       }
     },
     "build:packages": {
-      "dependsOn": ["^build:packages"],
+      "dependsOn": ["^build:packages", "build:styles"],
       "executor": "@redhat-cloud-services/frontend-components-executors:build-packages",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/rule-components",
@@ -34,7 +38,7 @@
       }
     },
     "transform:scss": {
-      "dependsOn": ["^transform:scss"],
+      "dependsOn": ["^transform:scss", "build:packages"],
       "executor": "@redhat-cloud-services/frontend-components-executors:transform-scss",
       "options": {
         "outputPath": "dist/@redhat-cloud-services/rule-components"
@@ -47,12 +51,9 @@
       }
     },
     "build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": ["nx run @redhat-cloud-services/rule-components:build:bundles", "nx run @redhat-cloud-services/rule-components:build:styles", "nx run @redhat-cloud-services/rule-components:build:packages", "nx run @redhat-cloud-services/rule-components:transform:scss"]
-      },
-      "dependsOn": ["^build"]
+      "executor": "nx:noop",
+      "dependsOn": ["^build", "transform:scss"],
+      "cache": false
     },
     "lint": {
       "executor": "@nx/eslint:lint",
