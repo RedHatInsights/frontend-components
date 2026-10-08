@@ -19,6 +19,17 @@ function validateFrontendCrd(crd: FrontendCRD | string) {
   const validator = new Ajv({
     strict: true,
   });
+  // Ajv has no built-in BCP 47 format; use Intl instead of a partial locale regex.
+  validator.addFormat('bcp47', {
+    type: 'string',
+    validate: (locale: string) => {
+      try {
+        return Intl.getCanonicalLocales(locale).length === 1;
+      } catch {
+        return false;
+      }
+    },
+  });
   const crdInternal = typeof crd === 'string' ? readCrdYaml(crd) : crd;
   // Remove $schema from the json as this is unknown to ajv
   // @ts-ignore

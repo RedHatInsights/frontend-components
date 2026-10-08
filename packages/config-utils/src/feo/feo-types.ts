@@ -127,6 +127,7 @@ export type CRDObject = {
     navigationSegments?: DirectNavItem[];
     module: ChromeModule;
     searchEntries?: ChromeStaticSearchEntry[];
+    locales?: Record<string, Record<string, string>>;
     serviceTiles?: ServiceTile[];
     widgetRegistry?: ChromeWidgetEntry[];
     feoConfigEnabled?: boolean;
