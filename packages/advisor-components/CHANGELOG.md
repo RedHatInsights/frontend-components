@@ -1,3 +1,9 @@
+## 3.10.15 (2026-10-09)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components to 7.10.15
+
 ## 3.10.14 (2026-10-05)
 
 ### 🧱 Updated Dependencies

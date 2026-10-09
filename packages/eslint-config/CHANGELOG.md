@@ -1,3 +1,13 @@
+## 3.3.11 (2026-10-09)
+
+### 🩹 Fixes
+
+- **deps:** update npm minor and patch dependencies ([#2436](https://github.com/RedHatInsights/frontend-components/pull/2436))
+
+### ❤️ Thank You
+
+- Charles Mulder @charlesmulder
+
 ## 3.3.10 (2026-10-05)
 
 This was a version bump only for @redhat-cloud-services/eslint-config-redhat-cloud-services to align it with other projects, there were no code changes.
