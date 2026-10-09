@@ -147,6 +147,49 @@ describe('Validate FrontEnd CRD', () => {
     expect(() => validateFrontEndCrd(crd)).toThrowError('must NOT have additional properties');
   });
 
+  test('accepts optional locale message maps, including zh-CN', () => {
+    const crd = cloneDeep(crdBase) as FrontendCRD;
+    crd.objects[0].spec.locales = {
+      'zh-CN': {
+        'searchEntries.rbac-roles.title': '角色',
+        'bundleSegments.iam.module-rbac-ui.navItems.overview.title': '概览',
+      },
+      fr: { 'search.roles.title': 'Rôles' },
+    };
+
+    expect(() => validateFrontEndCrd(crdBase)).not.toThrow();
+    expect(() => validateFrontEndCrd(crd)).not.toThrow();
+  });
+
+  test('accepts locale tags with Unicode extensions', () => {
+    const crd = cloneDeep(crdBase) as FrontendCRD;
+    crd.objects[0].spec.locales = {
+      'en-US-u-nu-latn': { 'search.roles.title': 'Roles' },
+    };
+
+    expect(() => validateFrontEndCrd(crd)).not.toThrow();
+  });
+
+  test.each([
+    ['array instead of locale map', ['角色'], 'must be object'],
+    ['string instead of message map', { 'zh-CN': '角色' }, 'must be object'],
+    ['number instead of translation', { 'zh-CN': { 'searchEntries.roles.title': 42 } }, 'must be string'],
+    ['invalid locale tag', { zh_CN: { 'searchEntries.roles.title': '角色' } }, 'must match format "bcp47"'],
+    ['invalid numeric locale subtag', { 'fr-12': { 'search.roles.title': 'Rôles' } }, 'must match format "bcp47"'],
+  ])('rejects %s', (_name, locales, reason) => {
+    const crd = cloneDeep(crdBase) as FrontendCRD;
+    (crd.objects[0].spec as any).locales = locales;
+
+    expect(() => validateFrontEndCrd(crd)).toThrowError(reason);
+  });
+
+  test('should reject unknown Frontend spec fields', () => {
+    const crd = cloneDeep(crdBase) as FrontendCRD;
+    (crd.objects[0].spec as any).unknownField = true;
+
+    expect(() => validateFrontEndCrd(crd)).toThrowError('must NOT have additional properties');
+  });
+
   test('should only allow one frontend.paths entry', () => {
     // Arrange - Setup test data (mocks already configured in beforeEach)
     const crd = cloneDeep(crdBase) as FrontendCRD;
