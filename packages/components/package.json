@@ -42,7 +42,7 @@
     "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
     "@redhat-cloud-services/types": "^3.0.0",
     "classnames": "^2.5.1",
-    "sanitize-html": "^2.17.7"
+    "sanitize-html": "^2.18.0"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.8.4",
