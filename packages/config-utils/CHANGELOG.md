@@ -1,3 +1,14 @@
+## 4.13.5 (2026-10-13)
+
+### 🩹 Fixes
+
+- **config-utils:** keep resolved segment order for RHCLOUD-52106 ([#2452](https://github.com/RedHatInsights/frontend-components/pull/2452))
+
+### ❤️ Thank You
+
+- gpt-6.1-sol
+- Petr Šimon @petrsimon
+
 ## 4.13.4 (2026-10-09)
 
 This was a version bump only for @redhat-cloud-services/frontend-components-config-utilities to align it with other projects, there were no code changes.
