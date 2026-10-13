@@ -38,6 +38,45 @@ function findMatchingSegmentItem(navItems: DirectNavItem[], matchId: string): Di
   return match;
 }
 
+/**
+ * Merges nested navigation items in local order, expanding matching segment refs in place.
+ * Explicit local IDs keep their own positions and override remote properties; remote items
+ * with IDs that match neither a local ID nor a segment ref are appended.
+ */
+function mergeNestedItems(localItems: DirectNavItem[], remoteItems: DirectNavItem[]): DirectNavItem[] {
+  const remoteById = new Map(remoteItems.map((item) => [item.id, item]));
+  /** Matches segment refs by both frontend name and segment ID. */
+  const sameSegmentRef = (local: DirectNavItem, remote: DirectNavItem) =>
+    hasSegmentRef(local) &&
+    hasSegmentRef(remote) &&
+    local.segmentRef.segmentId === remote.segmentRef.segmentId &&
+    local.segmentRef.frontendName === remote.segmentRef.frontendName;
+
+  const merged = localItems.flatMap((local) => {
+    if (hasSegmentRef(local)) {
+      const resolved = remoteItems.filter((remote) => sameSegmentRef(local, remote));
+      if (resolved.length > 0) {
+        return resolved.filter((remote) => !remote.id || !localItems.some((item) => !hasSegmentRef(item) && item.id === remote.id));
+      }
+    }
+    if (local.id && remoteById.has(local.id)) {
+      return [{ ...remoteById.get(local.id), ...local }];
+    }
+    return [local];
+  });
+
+  remoteItems.forEach((remote) => {
+    if (remote.id && !localItems.some((local) => local.id === remote.id || sameSegmentRef(local, remote))) {
+      merged.push(remote);
+    }
+  });
+  return merged;
+}
+
+/**
+ * Applies local segment properties to a remote item and recursively resolves its merged
+ * routes and navItems, using the parent bundle segment's position for top-level ordering.
+ */
 function handleNestedNav(
   segmentMatch: DirectNavItem,
   originalNavItem: DirectNavItem,
@@ -53,32 +92,7 @@ function handleNestedNav(
 
   // Merge local segment routes with remote routes
   if (routes && routes.length > 0) {
-    // Start with remote routes (originalNavItem.routes) as base
-    const remoteRoutes = originalNavItem.routes || [];
-
-    // Create a map of remote routes by ID for efficient lookup
-    const remoteRoutesMap = new Map(remoteRoutes.map((route) => [route.id, route]));
-
-    // Start with local routes and merge with remote properties
-    const mergedRoutes = routes.map((localRoute) => {
-      if (localRoute.id && remoteRoutesMap.has(localRoute.id)) {
-        const remoteRoute = remoteRoutesMap.get(localRoute.id)!;
-        // Merge: remote properties as base, local properties override
-        return { ...remoteRoute, ...localRoute };
-      }
-      return localRoute;
-    });
-
-    // Add remote routes that don't exist in local routes
-    remoteRoutes.forEach((remoteRoute) => {
-      if (remoteRoute.id && !routes.some((localRoute) => localRoute.id === remoteRoute.id)) {
-        mergedRoutes.push(remoteRoute);
-      }
-    });
-
-    // Process the merged routes recursively
-
-    parsedRoutes = parseNavItems(mergedRoutes, bSegmentCache, nSegmentCache, bundleId, currentFrontendName);
+    parsedRoutes = parseNavItems(mergeNestedItems(routes, originalNavItem.routes || []), bSegmentCache, nSegmentCache, bundleId, currentFrontendName);
   } else if (parsedRoutes) {
     // No local routes, just process remote routes
 
@@ -87,32 +101,13 @@ function handleNestedNav(
 
   // Merge local segment navItems with remote navItems (similar logic)
   if (navItems && navItems.length > 0) {
-    // Start with remote navItems (originalNavItem.navItems) as base
-    const remoteNavItems = originalNavItem.navItems || [];
-
-    // Create a map of remote navItems by ID for efficient lookup
-    const remoteNavItemsMap = new Map(remoteNavItems.map((navItem) => [navItem.id, navItem]));
-
-    // Start with local navItems and merge with remote properties
-    const mergedNavItems = navItems.map((localNavItem) => {
-      if (localNavItem.id && remoteNavItemsMap.has(localNavItem.id)) {
-        const remoteNavItem = remoteNavItemsMap.get(localNavItem.id)!;
-        // Merge: remote properties as base, local properties override
-        return { ...remoteNavItem, ...localNavItem };
-      }
-      return localNavItem;
-    });
-
-    // Add remote navItems that don't exist in local navItems
-    remoteNavItems.forEach((remoteNavItem) => {
-      if (remoteNavItem.id && !navItems.some((localNavItem) => localNavItem.id === remoteNavItem.id)) {
-        mergedNavItems.push(remoteNavItem);
-      }
-    });
-
-    // Process the merged navItems recursively
-
-    parsedNavItems = parseNavItems(mergedNavItems, bSegmentCache, nSegmentCache, bundleId, currentFrontendName);
+    parsedNavItems = parseNavItems(
+      mergeNestedItems(navItems, originalNavItem.navItems || []),
+      bSegmentCache,
+      nSegmentCache,
+      bundleId,
+      currentFrontendName,
+    );
   } else if (parsedNavItems) {
     // No local navItems, just process remote navItems
 
