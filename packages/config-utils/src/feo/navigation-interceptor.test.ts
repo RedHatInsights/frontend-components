@@ -349,6 +349,57 @@ describe('NavigationInterceptor', () => {
       ]);
     });
 
+    it('keeps an explicitly positioned local item when it also resolves a segment ref', () => {
+      const segmentRef = { frontendName: 'other-frontend', segmentId: 'other-segment' };
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: { name: 'local-frontend' },
+            spec: {
+              frontend: { paths: ['/'] },
+              module: { manifestLocation: 'http://localhost:3000/manifest.json' },
+              bundleSegments: [
+                {
+                  bundleId: 'bundle',
+                  segmentId: 'local-segment',
+                  position: 100,
+                  navItems: [
+                    {
+                      id: 'group',
+                      title: 'Group',
+                      routes: [{ segmentRef }, { id: 'middle', title: 'Middle' }, { id: 'advisor', title: 'Local advisor' }],
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      };
+      const remoteNav: Nav = {
+        id: 'bundle',
+        navItems: [
+          {
+            id: 'group',
+            title: 'Group',
+            frontendRef: 'local-frontend',
+            bundleSegmentRef: 'local-segment',
+            routes: [
+              { id: 'advisor', title: 'Remote advisor', segmentRef },
+              { id: 'middle', title: 'Middle' },
+            ],
+          },
+        ],
+      };
+
+      const result = navigationInterceptor(frontendCRD, remoteNav, 'bundle');
+
+      expect(result[0].routes?.map(({ id, title }) => ({ id, title }))).toEqual([
+        { id: 'middle', title: 'Middle' },
+        { id: 'advisor', title: 'Local advisor' },
+      ]);
+    });
+
     it('should replace top level nav segment data', () => {
       const frontendCRD: FrontendCRD = {
         objects: [

@@ -38,8 +38,14 @@ function findMatchingSegmentItem(navItems: DirectNavItem[], matchId: string): Di
   return match;
 }
 
+/**
+ * Merges nested navigation items in local order, expanding matching segment refs in place.
+ * Explicit local IDs keep their own positions and override remote properties; remote items
+ * with IDs that match neither a local ID nor a segment ref are appended.
+ */
 function mergeNestedItems(localItems: DirectNavItem[], remoteItems: DirectNavItem[]): DirectNavItem[] {
   const remoteById = new Map(remoteItems.map((item) => [item.id, item]));
+  /** Matches segment refs by both frontend name and segment ID. */
   const sameSegmentRef = (local: DirectNavItem, remote: DirectNavItem) =>
     hasSegmentRef(local) &&
     hasSegmentRef(remote) &&
@@ -49,7 +55,9 @@ function mergeNestedItems(localItems: DirectNavItem[], remoteItems: DirectNavIte
   const merged = localItems.flatMap((local) => {
     if (hasSegmentRef(local)) {
       const resolved = remoteItems.filter((remote) => sameSegmentRef(local, remote));
-      if (resolved.length > 0) return resolved;
+      if (resolved.length > 0) {
+        return resolved.filter((remote) => !remote.id || !localItems.some((item) => !hasSegmentRef(item) && item.id === remote.id));
+      }
     }
     if (local.id && remoteById.has(local.id)) {
       return [{ ...remoteById.get(local.id), ...local }];
@@ -65,6 +73,10 @@ function mergeNestedItems(localItems: DirectNavItem[], remoteItems: DirectNavIte
   return merged;
 }
 
+/**
+ * Applies local segment properties to a remote item and recursively resolves its merged
+ * routes and navItems, using the parent bundle segment's position for top-level ordering.
+ */
 function handleNestedNav(
   segmentMatch: DirectNavItem,
   originalNavItem: DirectNavItem,
