@@ -230,6 +230,125 @@ describe('NavigationInterceptor', () => {
       };
     });
 
+    it('preserves the order of resolved remote segments when local routes contain segment refs', () => {
+      const advisorRef = { frontendName: 'ocp-advisor', segmentId: 'openshift-ocp-advisor' };
+      const costRef = { frontendName: 'cost-management', segmentId: 'cost-management' };
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: { name: 'openshift' },
+            spec: {
+              frontend: { paths: ['/openshift'] },
+              module: { manifestLocation: 'http://localhost:3000/manifest.json' },
+              bundleSegments: [
+                {
+                  bundleId: 'openshift',
+                  segmentId: 'openshift',
+                  position: 100,
+                  navItems: [
+                    {
+                      id: 'fleet-management',
+                      title: 'Fleet management',
+                      routes: [
+                        { id: 'dashboard', title: 'Dashboard' },
+                        { id: 'clusters', title: 'Clusters' },
+                        { segmentRef: advisorRef },
+                        { id: 'vulnerability-dashboard', title: 'Vulnerability dashboard' },
+                        { segmentRef: costRef },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      };
+      const remoteNav: Nav = {
+        id: 'openshift',
+        navItems: [
+          {
+            id: 'fleet-management',
+            title: 'Fleet management',
+            frontendRef: 'openshift',
+            bundleSegmentRef: 'openshift',
+            routes: [
+              { id: 'dashboard', title: 'Dashboard' },
+              { id: 'clusters', title: 'Clusters' },
+              { id: 'advisor', title: 'Advisor', segmentRef: advisorRef },
+              { id: 'vulnerability-dashboard', title: 'Vulnerability dashboard' },
+              { id: 'cost-management.nav', title: 'Cost Management', segmentRef: costRef },
+            ],
+          },
+        ],
+      };
+
+      const result = navigationInterceptor(frontendCRD, remoteNav, 'openshift');
+
+      expect(result[0].routes?.map(({ id, title }) => ({ id, title }))).toEqual([
+        { id: 'dashboard', title: 'Dashboard' },
+        { id: 'clusters', title: 'Clusters' },
+        { id: 'advisor', title: 'Advisor' },
+        { id: 'vulnerability-dashboard', title: 'Vulnerability dashboard' },
+        { id: 'cost-management.nav', title: 'Cost Management' },
+      ]);
+    });
+
+    it('replaces segment refs in nested navItems without moving their resolved items', () => {
+      const segmentRef = { frontendName: 'other-frontend', segmentId: 'other-segment' };
+      const frontendCRD: FrontendCRD = {
+        objects: [
+          {
+            metadata: { name: 'local-frontend' },
+            spec: {
+              frontend: { paths: ['/'] },
+              module: { manifestLocation: 'http://localhost:3000/manifest.json' },
+              bundleSegments: [
+                {
+                  bundleId: 'bundle',
+                  segmentId: 'local-segment',
+                  position: 100,
+                  navItems: [
+                    {
+                      id: 'group',
+                      title: 'Group',
+                      navItems: [{ id: 'before', title: 'Before' }, { segmentRef }, { id: 'after', title: 'After' }],
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      };
+      const remoteNav: Nav = {
+        id: 'bundle',
+        navItems: [
+          {
+            id: 'group',
+            title: 'Group',
+            frontendRef: 'local-frontend',
+            bundleSegmentRef: 'local-segment',
+            navItems: [
+              { id: 'before', title: 'Before' },
+              { id: 'remote-one', title: 'Remote one', segmentRef },
+              { id: 'remote-two', title: 'Remote two', segmentRef },
+              { id: 'after', title: 'After' },
+            ],
+          },
+        ],
+      };
+
+      const result = navigationInterceptor(frontendCRD, remoteNav, 'bundle');
+
+      expect(result[0].navItems?.map(({ id, title }) => ({ id, title }))).toEqual([
+        { id: 'before', title: 'Before' },
+        { id: 'remote-one', title: 'Remote one' },
+        { id: 'remote-two', title: 'Remote two' },
+        { id: 'after', title: 'After' },
+      ]);
+    });
+
     it('should replace top level nav segment data', () => {
       const frontendCRD: FrontendCRD = {
         objects: [
