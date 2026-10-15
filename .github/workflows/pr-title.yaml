@@ -5,7 +5,11 @@ on:
   pull_request:
     branches:
       - master
-    types: [opened, edited, reopened]
+    types: [opened, edited, reopened, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   pr-title-lint:
@@ -15,7 +19,6 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-          fetch-depth: 0
       - uses: './.github/actions/setup-environment'
       - name: Install
         shell: bash
