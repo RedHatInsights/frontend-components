@@ -49,6 +49,12 @@
       "matchDepNames": ["npm"],
       "matchDepTypes": ["engines"],
       "enabled": false
+    },
+    {
+      "description": "Lock file maintenance does not require a package release",
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "semanticCommitType": "chore",
+      "semanticCommitScope": "deps"
     }
   ]
 }
