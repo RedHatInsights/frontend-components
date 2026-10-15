@@ -178,14 +178,14 @@ describe('Validate FrontEnd CRD', () => {
     ['invalid numeric locale subtag', { 'fr-12': { 'search.roles.title': 'Rôles' } }, 'must match format "bcp47"'],
   ])('rejects %s', (_name, locales, reason) => {
     const crd = cloneDeep(crdBase) as FrontendCRD;
-    (crd.objects[0].spec as any).locales = locales;
+    Object.assign(crd.objects[0].spec, { locales });
 
     expect(() => validateFrontEndCrd(crd)).toThrowError(reason);
   });
 
   test('should reject unknown Frontend spec fields', () => {
     const crd = cloneDeep(crdBase) as FrontendCRD;
-    (crd.objects[0].spec as any).unknownField = true;
+    Object.assign(crd.objects[0].spec, { unknownField: true });
 
     expect(() => validateFrontEndCrd(crd)).toThrowError('must NOT have additional properties');
   });
