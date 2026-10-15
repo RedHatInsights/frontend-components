@@ -729,6 +729,19 @@
         "feoConfigEnabled": {
           "type": "boolean"
         },
+        "locales": {
+          "type": "object",
+          "description": "Generated translations keyed by locale and stable message ID",
+          "propertyNames": {
+            "format": "bcp47"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        },
         "akamaiCacheBustDisable": {
           "type": "boolean"
         },
