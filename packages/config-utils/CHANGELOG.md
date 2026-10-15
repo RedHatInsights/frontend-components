@@ -1,3 +1,13 @@
+## 4.14.0 (2026-10-15)
+
+### 🚀 Features
+
+- **@redhat-cloud-services/frontend-components-config-utilities:** allow Frontend locales ([1e894abc](https://github.com/RedHatInsights/frontend-components/commit/1e894abc))
+
+### ❤️ Thank You
+
+- Petr Šimon
+
 ## 4.13.5 (2026-10-13)
 
 ### 🩹 Fixes
