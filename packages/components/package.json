@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.8.4",
-    "@patternfly/patternfly": "^6.6.1",
+    "@patternfly/patternfly": "^6.7.0",
     "@types/react": "^18.3.31",
     "css-loader": "^6.11.0",
     "eslint-plugin-cypress": "^4.3.0",
