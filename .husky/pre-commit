@@ -1,0 +1,14 @@
+# Scan staged changes for secrets with rh-pre-commit.
+# Supports the installs from the rh-pre-commit README: binaries on PATH
+# (e.g. the RPM install) and the quickstart.sh venv.
+# Warn (but don't block) when it's not installed, e.g. in CI or for
+# contributors without access to Red Hat internal tooling.
+if command -v rh-pre-commit >/dev/null 2>&1; then
+  rh-pre-commit || exit 1
+# quickstart.sh venv install location
+elif [ -x "$HOME/.local/share/rh-pre-commit/venv/bin/rh-pre-commit" ]; then
+  "$HOME/.local/share/rh-pre-commit/venv/bin/rh-pre-commit" || exit 1
+else
+  echo "WARNING: rh-pre-commit is not installed, skipping secret scan." >&2
+  echo "Install it and make sure the binary is on your PATH: https://gitlab.cee.redhat.com/infosec-public/developer-workbench/tools/-/tree/main/rh-pre-commit" >&2
+fi
