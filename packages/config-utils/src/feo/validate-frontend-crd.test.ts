@@ -4,8 +4,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import { load } from 'js-yaml';
 
 // Copied from tests/fixtures/localization/frontend.yaml in RedHatInsights/frontend-operator,
-// the Frontend that the operator CRD accepts for the same locales feature. `module.moduleID` is
-// omitted: the operator CRD has it but this package's schema does not (unrelated to locales).
+// the Frontend that the operator CRD accepts for the same locales feature.
 const operatorFrontendFixture = `
 apiVersion: cloud.redhat.com/v1alpha1
 kind: Frontend
@@ -22,6 +21,7 @@ spec:
       - /apps/rbac
   module:
     manifestLocation: /apps/rbac/fed-mods.json
+    moduleID: rbac
     defaultDocumentTitle: User Access
   bundleSegments:
     - bundleId: iam
@@ -217,6 +217,20 @@ describe('Validate FrontEnd CRD', () => {
 
     // Act & Assert - Execute the function under test and verify behavior
     expect(() => validateFrontEndCrd(crd)).not.toThrow();
+  });
+
+  test('should accept module.moduleID', () => {
+    const crd = cloneDeep(crdBase) as FrontendCRD;
+    crd.objects[0].spec.module.moduleID = 'activation-keys';
+
+    expect(() => validateFrontEndCrd(crd)).not.toThrow();
+  });
+
+  test('should reject unknown module properties', () => {
+    const crd = cloneDeep(crdBase) as FrontendCRD;
+    (crd as any).objects[0].spec.module.moduleId = 'wrong-case';
+
+    expect(() => validateFrontEndCrd(crd)).toThrowError('must NOT have additional properties');
   });
 
   test('should reject analytics with unknown properties', () => {

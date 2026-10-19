@@ -37,6 +37,10 @@ type ChromeModuleAnalytics = {
 
 export type ChromeModule = {
   manifestLocation: string;
+  /**
+   * Name the module is registered under in fed-modules.json. Defaults to the Frontend name in camelCase.
+   */
+  moduleID?: string;
   cdnPath?: string;
   defaultDocumentTitle?: string;
   /**
