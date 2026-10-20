@@ -1,5 +1,5 @@
 import { useContext, useEffect, useReducer } from 'react';
-import { NotificationsContext } from '../NotificationsProvider';
+import { NotificationsContext } from '../NotificationsProvider/NotificationsContext';
 
 function useNotificationsInternal() {
   const { addNotification, removeNotification, clearNotifications, subscribe, getNotifications } = useContext(NotificationsContext);
