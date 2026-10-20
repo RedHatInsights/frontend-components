@@ -1,3 +1,13 @@
+## 6.11.16 (2026-10-20)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components-notifications:** break NotificationPortal circular import ([92d04d82](https://github.com/RedHatInsights/frontend-components/commit/92d04d82))
+
+### ❤️ Thank You
+
+- Petr Šimon
+
 ## 6.11.15 (2026-10-09)
 
 ### 🧱 Updated Dependencies

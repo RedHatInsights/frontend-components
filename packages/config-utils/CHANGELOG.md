@@ -1,3 +1,13 @@
+## 4.14.1 (2026-10-20)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components-config-utilities:** break serve-federated circular import ([5575ce28](https://github.com/RedHatInsights/frontend-components/commit/5575ce28))
+
+### ❤️ Thank You
+
+- Petr Šimon
+
 ## 4.14.0 (2026-10-15)
 
 ### 🚀 Features
