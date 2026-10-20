@@ -1,16 +1,9 @@
-import { PropsWithChildren, createContext, useMemo } from 'react';
+import { PropsWithChildren, useMemo } from 'react';
 import { NotificationsStore, createStore } from '../state';
 import NotificationPortal from '../NotificationPortal';
+import { NotificationsContext } from './NotificationsContext';
 
-export const NotificationsContext = createContext<NotificationsStore>({
-  addNotification: () => undefined,
-  removeNotification: () => undefined,
-  clearNotifications: () => undefined,
-  subscribe: () => () => undefined,
-  getNotifications() {
-    return [];
-  },
-});
+export { NotificationsContext };
 
 export type NotificationsProviderProps = {
   store?: NotificationsStore;

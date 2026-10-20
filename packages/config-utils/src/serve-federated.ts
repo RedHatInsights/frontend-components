@@ -3,7 +3,7 @@ import fs from 'fs';
 import concurrently from 'concurrently';
 import { hasFEOFeaturesEnabled, readFrontendCRD } from './feo/crd-check';
 import { FrontendCRD } from './feo/feo-types';
-import { LogType, fecLogger } from '.';
+import fecLogger, { LogType } from './fec-logger';
 
 /**
  * Serves federated modules for local development via `fec static` command.
