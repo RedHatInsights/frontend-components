@@ -123,7 +123,7 @@ jobs:
         shell: bash
         run: npm ci
       - name: Check circular imports
-        run: npx nx affected -t test:circular-dependencies --exclude=demo --outputStyle=static
+        run: npx nx affected -t check-circular-imports --exclude=demo --outputStyle=static
   build-storybook:
     runs-on: ubuntu-slim
     needs: install
