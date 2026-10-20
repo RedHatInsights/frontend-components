@@ -82,9 +82,7 @@ spec:
 `;
 
 // The operator CRD (api/v1alpha1/locale_types.go) is the source of truth for the locales rules.
-const repeat = (char: string, count: number) => char.repeat(count);
-const numberedKeys = (count: number, prefix = 'key') =>
-  Object.fromEntries(Array.from({ length: count }, (_value, index) => [`${prefix}${index}`, 'v']));
+const numberedKeys = (count: number) => Object.fromEntries(Array.from({ length: count }, (_value, index) => [`key${index}`, 'v']));
 
 describe('Validate FrontEnd CRD', () => {
   // Declare mock variables outside beforeEach for shared access
@@ -228,7 +226,7 @@ describe('Validate FrontEnd CRD', () => {
 
   test('should reject unknown module properties', () => {
     const crd = cloneDeep(crdBase) as FrontendCRD;
-    (crd as any).objects[0].spec.module.moduleId = 'wrong-case';
+    Object.assign(crd.objects[0].spec.module, { moduleId: 'wrong-case' });
 
     expect(() => validateFrontEndCrd(crd)).toThrowError('must NOT have additional properties');
   });
@@ -377,19 +375,19 @@ describe('Validate FrontEnd CRD', () => {
     });
 
     test('accepts a 256 character key', () => {
-      expect(() => validateFrontEndCrd(setLocales({ fr: { [repeat('k', 256)]: 'x' } }))).not.toThrow();
+      expect(() => validateFrontEndCrd(setLocales({ fr: { ['k'.repeat(256)]: 'x' } }))).not.toThrow();
     });
 
     test('rejects a 257 character key', () => {
-      expect(() => validateFrontEndCrd(setLocales({ fr: { [repeat('k', 257)]: 'x' } }))).toThrowError('message keys must be at most 256 characters');
+      expect(() => validateFrontEndCrd(setLocales({ fr: { ['k'.repeat(257)]: 'x' } }))).toThrowError('message keys must be at most 256 characters');
     });
 
     test('accepts a 4096 character value', () => {
-      expect(() => validateFrontEndCrd(setLocales({ fr: { 'a.b': repeat('é', 4096) } }))).not.toThrow();
+      expect(() => validateFrontEndCrd(setLocales({ fr: { 'a.b': 'é'.repeat(4096) } }))).not.toThrow();
     });
 
     test('rejects a 4097 character value', () => {
-      expect(() => validateFrontEndCrd(setLocales({ fr: { 'a.b': repeat('é', 4097) } }))).toThrowError(
+      expect(() => validateFrontEndCrd(setLocales({ fr: { 'a.b': 'é'.repeat(4097) } }))).toThrowError(
         '/objects/0/spec/locales/fr/a.b: message values must be at most 4096 characters',
       );
     });
