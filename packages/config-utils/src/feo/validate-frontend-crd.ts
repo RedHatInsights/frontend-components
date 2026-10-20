@@ -22,9 +22,11 @@ function readCrdYaml(pathToCrd: string): FrontendCRD {
  */
 const LOCALE_ID_RULE = /\/locales\/propertyNames\/(pattern|maxLength|not)$/;
 const MESSAGE_KEY_RULE = /\/locales\/additionalProperties\/propertyNames\/(pattern|maxLength)$/;
+const LOCALE_PROPERTY_NAMES = /\/locales(\/additionalProperties)?\/propertyNames$/;
 
-function describePropertyNameError(error: ErrorObject, propertyName: string): string | undefined {
+function describePropertyNameError(error: ErrorObject): string | undefined {
   const where = error.instancePath;
+  const { propertyName } = error;
   if (LOCALE_ID_RULE.test(error.schemaPath)) {
     if (error.keyword === 'not') {
       return `${where}: locale "${propertyName}": English is the source language and must not be listed as a translation`;
@@ -61,29 +63,18 @@ function describeLocaleError(error: ErrorObject): string | undefined {
 }
 
 /**
- * Ajv reports a failing property name as the failed keyword (pattern, maxLength, not)
- * followed by a generic `propertyNames` error that carries the offending name.
- * Fold each pair into one error that names the entry and states the rule.
+ * Ajv reports a failing property name as the failed keyword (pattern, maxLength, not),
+ * which carries the offending name in `propertyName`, followed by a generic
+ * `propertyNames` error. Every locale property-name rule is described above, so the
+ * generic locale `propertyNames` errors are dropped.
  */
 function improveLocaleErrors(errors: ErrorObject[]): ErrorObject[] {
-  const result: ErrorObject[] = [];
-  let pending: ErrorObject[] = [];
-  errors.forEach((error) => {
-    if (error.keyword === 'propertyNames') {
-      const message = pending.map((sub) => describePropertyNameError(sub, error.params.propertyName)).find(Boolean);
-      if (message) {
-        result.push({ ...error, message });
-      } else {
-        result.push(...pending, error);
-      }
-      pending = [];
-    } else if (error.schemaPath.includes('/propertyNames/')) {
-      pending.push(error);
-    } else {
-      result.push({ ...error, message: describeLocaleError(error) ?? error.message });
-    }
-  });
-  return [...result, ...pending];
+  return errors
+    .filter((error) => !(error.keyword === 'propertyNames' && LOCALE_PROPERTY_NAMES.test(error.schemaPath)))
+    .map((error) => {
+      const message = error.propertyName === undefined ? describeLocaleError(error) : describePropertyNameError(error);
+      return { ...error, message: message ?? error.message };
+    });
 }
 
 function validateFrontendCrd(pathToCrd: string): void;
