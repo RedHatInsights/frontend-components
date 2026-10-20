@@ -7,6 +7,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
   >
     <button
       aria-expanded="true"
+      aria-haspopup="menu"
       aria-label="Export"
       class="pf-v6-c-menu-toggle pf-m-expanded pf-m-plain"
       data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:rj:"
@@ -148,6 +149,7 @@ exports[`DownloadButton component should render CSV and JSON by default 1`] = `
   >
     <button
       aria-expanded="false"
+      aria-haspopup="menu"
       aria-label="Export"
       class="pf-v6-c-menu-toggle pf-m-plain"
       data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r4:"
@@ -196,6 +198,7 @@ exports[`DownloadButton component should render custom items 1`] = `
   >
     <button
       aria-expanded="false"
+      aria-haspopup="menu"
       aria-label="Export"
       class="pf-v6-c-menu-toggle pf-m-plain"
       data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r9:"
@@ -244,6 +247,7 @@ exports[`DownloadButton component should render disabled 1`] = `
   >
     <button
       aria-expanded="false"
+      aria-haspopup="menu"
       aria-label="Export"
       class="pf-v6-c-menu-toggle pf-m-plain"
       data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:re:"

@@ -8,7 +8,7 @@ exports[`OpenSourceBadge component should render badge 1`] = `
     <button
       aria-label="About Open Services"
       class="pf-v6-c-button pf-m-plain pf-v6-u-pl-sm open-source-badge"
-      data-ouia-component-id="OUIA-Generated-Button-plain-:r1:"
+      data-ouia-component-id="OUIA-Generated-Button-plain-:r2:"
       data-ouia-component-type="PF6/Button"
       data-ouia-safe="true"
       type="button"

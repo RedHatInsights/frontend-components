@@ -40,6 +40,7 @@ exports[`BulkSelect should render correctly - null checked 1`] = `
     </label>
     <button
       aria-expanded="false"
+      aria-haspopup="menu"
       class="pf-v6-c-menu-toggle__button"
       data-ouia-component-id="BulkSelect"
       data-ouia-component-type="PF6/MenuToggle"
@@ -100,6 +101,7 @@ exports[`BulkSelect should render correctly 1`] = `
     </label>
     <button
       aria-expanded="false"
+      aria-haspopup="menu"
       class="pf-v6-c-menu-toggle__button"
       data-ouia-component-id="BulkSelect"
       data-ouia-component-type="PF6/MenuToggle"
@@ -153,6 +155,7 @@ exports[`BulkSelect should render correctly 2`] = `
     </label>
     <button
       aria-expanded="false"
+      aria-haspopup="menu"
       class="pf-v6-c-menu-toggle__button"
       data-ouia-component-id="BulkSelect"
       data-ouia-component-type="PF6/MenuToggle"
@@ -206,6 +209,7 @@ exports[`BulkSelect should render custom props 1`] = `
     </label>
     <button
       aria-expanded="false"
+      aria-haspopup="menu"
       class="pf-v6-c-menu-toggle__button"
       data-ouia-component-id="BulkSelect"
       data-ouia-component-type="PF6/MenuToggle"
