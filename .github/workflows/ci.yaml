@@ -194,7 +194,9 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          persist-credentials: false
+          # The release action pushes the release commit and tags over HTTPS in a later step;
+          # the token must stay in .git/config for that push to authenticate.
+          persist-credentials: true
           fetch-depth: 0
           token: ${{ secrets.GH_BOT_TOKEN }}
       - uses: './.github/actions/release'
