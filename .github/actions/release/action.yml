@@ -21,6 +21,7 @@ runs:
       # Checkout is pinned to github.sha. Advance before setup and npm ci so dependencies match
       # the current commit. Both verify-versions.sh and nx release use --merged HEAD for tag
       # resolution; no release commit exists yet, so only a fast-forward is allowed.
+      # The unauthenticated fetch works because the repository is public.
       run: |
         git fetch origin master
         git merge --ff-only origin/master
@@ -64,9 +65,12 @@ runs:
       # release calculation, this atomic push fails and the attempt must be restarted from master.
       # --follow-tags pushes annotated release tags; --atomic prevents a commit-only push.
       # HUSKY=0 disables pre-push hooks in CI — tests are run separately by the CI pipeline.
+      # The bot token is exposed only to this step, via the push URL — never persisted in git
+      # config, so dependency and build scripts in earlier steps cannot see it.
       env:
         HUSKY: '0'
-      run: git push --atomic --follow-tags origin HEAD:master
+        GH_BOT_TOKEN: ${{ inputs.gh_token }}
+      run: git push --atomic --follow-tags "https://x-access-token:${GH_BOT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
     - name: Publish to npm
       shell: bash
       # Publish only after push succeeds to prevent orphaned npm versions.

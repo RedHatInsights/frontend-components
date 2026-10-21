@@ -189,16 +189,15 @@ jobs:
       cancel-in-progress: false
       queue: max
     permissions:
-      contents: write
-      id-token: write
+      contents: read     # Git writes use the bot token in the release action, not GITHUB_TOKEN
+      id-token: write    # npm trusted publishing (OIDC) and provenance
     steps:
+      # No bot token and no persisted credentials: dependency and build scripts running in
+      # later steps must not see it. The push step in the release action brings its own token.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # The release action pushes the release commit and tags over HTTPS in a later step;
-          # the token must stay in .git/config for that push to authenticate.
-          persist-credentials: true
+          persist-credentials: false
           fetch-depth: 0
-          token: ${{ secrets.GH_BOT_TOKEN }}
       - uses: './.github/actions/release'
         with:
           gh_token: ${{ secrets.GH_BOT_TOKEN }}
