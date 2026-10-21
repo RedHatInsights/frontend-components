@@ -18,7 +18,7 @@ Please do not report security vulnerabilities through public GitHub issues.
 To report a vulnerability privately through GitHub:
 
 1. Navigate to the repository's main page on GitHub.
-2. Click the **Security** tab.
+2. Click **Security and quality** (in the dropdown if it is not shown).
 3. Click **Report a vulnerability** to open the advisory form.
 4. Fill in the details (description, steps to reproduce, potential impact) and click **Submit report**.
 
