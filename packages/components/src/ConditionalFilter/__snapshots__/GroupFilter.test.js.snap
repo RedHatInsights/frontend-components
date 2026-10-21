@@ -8,6 +8,7 @@ exports[`Group - component render should render correctly 1`] = `
     >
       <button
         aria-expanded="false"
+        aria-haspopup="menu"
         aria-label="Group filter"
         class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
         data-ouia-component-id="OUIA-Generated-MenuToggle-default-:r1:"
@@ -50,6 +51,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
     >
       <button
         aria-expanded="false"
+        aria-haspopup="menu"
         aria-label="Group filter"
         class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
         data-ouia-component-id="OUIA-Generated-MenuToggle-default-:rh:"
@@ -97,6 +99,7 @@ exports[`Group - component render should render correctly with items - isDisable
     >
       <button
         aria-expanded="false"
+        aria-haspopup="menu"
         aria-label="Group filter"
         class="pf-v6-c-menu-toggle pf-m-disabled ins-c-group-menu-toggle"
         data-ouia-component-id="OUIA-Generated-MenuToggle-default-:rd:"
@@ -140,6 +143,7 @@ exports[`Group - component render should render correctly with items 1`] = `
     >
       <button
         aria-expanded="false"
+        aria-haspopup="menu"
         aria-label="Group filter"
         class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
         data-ouia-component-id="OUIA-Generated-MenuToggle-default-:r3:"
@@ -182,6 +186,7 @@ exports[`Group - component render should render correctly with items and default
     >
       <button
         aria-expanded="false"
+        aria-haspopup="menu"
         aria-label="Group filter"
         class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
         data-ouia-component-id="OUIA-Generated-MenuToggle-default-:rf:"
@@ -224,6 +229,7 @@ exports[`Group - component render should render correctly with items and selecte
     >
       <button
         aria-expanded="false"
+        aria-haspopup="menu"
         aria-label="Group filter"
         class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
         data-ouia-component-id="OUIA-Generated-MenuToggle-default-:rl:"
@@ -266,6 +272,7 @@ exports[`Group - component render should render correctly with selectable group 
     >
       <button
         aria-expanded="false"
+        aria-haspopup="menu"
         aria-label="Group filter"
         class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
         data-ouia-component-id="OUIA-Generated-MenuToggle-default-:rj:"
@@ -308,6 +315,7 @@ exports[`Group - component render show more should render correctly with items a
     >
       <button
         aria-expanded="false"
+        aria-haspopup="menu"
         aria-label="Group filter"
         class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
         data-ouia-component-id="OUIA-Generated-MenuToggle-default-:rb:"
@@ -350,6 +358,7 @@ exports[`Group - component render show more should render correctly with items a
     >
       <button
         aria-expanded="false"
+        aria-haspopup="menu"
         aria-label="Group filter"
         class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
         data-ouia-component-id="OUIA-Generated-MenuToggle-default-:r7:"
@@ -392,6 +401,7 @@ exports[`Group - component render show more should render correctly with items a
     >
       <button
         aria-expanded="false"
+        aria-haspopup="menu"
         aria-label="Group filter"
         class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
         data-ouia-component-id="OUIA-Generated-MenuToggle-default-:r5:"
@@ -434,6 +444,7 @@ exports[`Group - component render show more should render correctly with items a
     >
       <button
         aria-expanded="false"
+        aria-haspopup="menu"
         aria-label="Group filter"
         class="pf-v6-c-menu-toggle ins-c-group-menu-toggle"
         data-ouia-component-id="OUIA-Generated-MenuToggle-default-:r9:"
