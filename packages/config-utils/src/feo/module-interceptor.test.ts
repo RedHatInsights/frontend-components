@@ -67,4 +67,20 @@ describe('module-interceptor', () => {
     // Assert - Verify behavior
     expect(result).toEqual(expectedResult);
   });
+
+  it('should register the entry under module.moduleID when set', () => {
+    remoteModuleRegistry = {
+      'activation-keys': {
+        manifestLocation: 'old-location',
+      },
+    };
+    frontendCRD.objects[0].metadata.name = 'activation-keys';
+    frontendCRD.objects[0].spec.module = { ...newEntry, moduleID: 'activation-keys' };
+
+    const result = moduleInterceptor(remoteModuleRegistry, frontendCRD);
+
+    expect(result).toEqual({
+      'activation-keys': { ...newEntry, moduleID: 'activation-keys' },
+    });
+  });
 });

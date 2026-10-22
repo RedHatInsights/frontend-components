@@ -730,15 +730,27 @@
           "type": "boolean"
         },
         "locales": {
+          "$comment": "Mirrors the LocaleCatalogs/LocaleMessages/LocaleMessage validation in api/v1alpha1/locale_types.go of RedHatInsights/frontend-operator, which is the source of truth. Keep these rules in sync with the operator CRD, and the messages in validate-frontend-crd.ts with its XValidation messages.",
           "type": "object",
           "description": "Generated translations keyed by locale and stable message ID",
+          "maxProperties": 32,
           "propertyNames": {
-            "format": "bcp47"
+            "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$",
+            "maxLength": 16,
+            "not": {
+              "const": "en"
+            }
           },
           "additionalProperties": {
             "type": "object",
+            "maxProperties": 2048,
+            "propertyNames": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*([.][A-Za-z0-9][A-Za-z0-9_-]*)*$",
+              "maxLength": 256
+            },
             "additionalProperties": {
-              "type": "string"
+              "type": "string",
+              "maxLength": 4096
             }
           }
         },
@@ -759,6 +771,10 @@
           "properties": {
             "manifestLocation": {
               "type": "string"
+            },
+            "moduleID": {
+              "type": "string",
+              "description": "Name the module is registered under in fed-modules.json. Defaults to the Frontend name in camelCase."
             },
             "defaultDocumentTitle": {
               "type": "string"
