@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/advisor-components#readme",
   "peerDependencies": {
-    "@patternfly/react-core": "^6.6.1",
-    "@patternfly/react-icons": "^6.6.1",
+    "@patternfly/react-core": "^6.7.0",
+    "@patternfly/react-icons": "^6.7.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -34,7 +34,7 @@
     "react-markdown": "^8.0.7",
     "rehype-raw": "^6.1.1",
     "rehype-sanitize": "^5.0.1",
-    "sanitize-html": "^2.17.7"
+    "sanitize-html": "^2.18.1"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^3.11.0",
