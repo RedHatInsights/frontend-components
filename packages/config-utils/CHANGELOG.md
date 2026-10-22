@@ -1,3 +1,15 @@
+## 4.14.2 (2026-10-22)
+
+### 🩹 Fixes
+
+- **@redhat-cloud-services/frontend-components-config-utilities:** register proxied module under module.moduleID ([ecbb5399](https://github.com/RedHatInsights/frontend-components/commit/ecbb5399))
+- **@redhat-cloud-services/frontend-components-config-utilities:** allow module.moduleID ([50c86a2c](https://github.com/RedHatInsights/frontend-components/commit/50c86a2c))
+- **@redhat-cloud-services/frontend-components-config-utilities:** match operator CRD locale rules ([f036c143](https://github.com/RedHatInsights/frontend-components/commit/f036c143))
+
+### ❤️ Thank You
+
+- Petr Šimon
+
 ## 4.14.1 (2026-10-20)
 
 ### 🩹 Fixes
