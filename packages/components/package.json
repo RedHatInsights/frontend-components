@@ -52,6 +52,6 @@
     "eslint-plugin-cypress": "^4.3.0",
     "sass-loader": "^16.0.8",
     "style-loader": "^3.3.4",
-    "webpack-dev-server": "^5.2.6"
+    "webpack-dev-server": "^5.2.7"
   }
 }
