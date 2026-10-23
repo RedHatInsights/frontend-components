@@ -1,3 +1,7 @@
+## 4.14.4 (2026-10-23)
+
+This was a version bump only for @redhat-cloud-services/frontend-components-config-utilities to align it with other projects, there were no code changes.
+
 ## 4.14.3 (2026-10-23)
 
 ### 🩹 Fixes

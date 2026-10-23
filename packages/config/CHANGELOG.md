@@ -1,3 +1,14 @@
+## 6.14.19 (2026-10-23)
+
+### 🩹 Fixes
+
+- **deps:** update dependency sass to ^1.106.0 ([#2465](https://github.com/RedHatInsights/frontend-components/pull/2465))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/tsc-transform-imports to 1.3.13
+- Updated @redhat-cloud-services/frontend-components-config-utilities to 4.14.4
+
 ## 6.14.18 (2026-10-23)
 
 ### 🩹 Fixes
