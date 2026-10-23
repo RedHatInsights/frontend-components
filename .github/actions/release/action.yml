@@ -66,12 +66,15 @@ runs:
       # release calculation, this atomic push fails and the attempt must be restarted from master.
       # --follow-tags pushes annotated release tags; --atomic prevents a commit-only push.
       # HUSKY=0 disables pre-push hooks in CI — tests are run separately by the CI pipeline.
+      # -c core.hooksPath=/dev/null hard-disables all hooks for this invocation (command-line
+      # config overrides any tampered .git/config): npm ci installs husky hooks, and this is the
+      # only step that runs with the bot token in its environment.
       # The bot token is exposed only to this step, via the push URL — never persisted in git
       # config, so dependency and build scripts in earlier steps cannot see it.
       env:
         HUSKY: '0'
         GH_BOT_TOKEN: ${{ inputs.gh_token }}
-      run: git push --atomic --follow-tags "https://x-access-token:${GH_BOT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
+      run: git -c core.hooksPath=/dev/null push --atomic --follow-tags "https://x-access-token:${GH_BOT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
     - name: Publish to npm
       shell: bash
       # Publish only after push succeeds to prevent orphaned npm versions.
