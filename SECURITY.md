@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Only the latest code on the default branch (`main`) is actively supported with security fixes.
+Only the latest code on the default branch (`master`) is actively supported with security fixes.
 
 | Version | Supported          |
 | ------- | ------------------ |
