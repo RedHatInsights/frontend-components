@@ -11,11 +11,12 @@ on:
 
 jobs:
   install:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 0
           fetch-tags: true
       - uses: './.github/actions/setup-environment'
@@ -31,6 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@e602fada7ad5987b0f7b1905e7a99ea1c661514c # v5
@@ -39,12 +41,13 @@ jobs:
       - name: Build
         run: npm run build
   unit-test:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-24.04
     needs: [install]
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@e602fada7ad5987b0f7b1905e7a99ea1c661514c # v5
@@ -59,6 +62,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@e602fada7ad5987b0f7b1905e7a99ea1c661514c # v5
@@ -74,12 +78,13 @@ jobs:
           install: false
           command: npx nx affected -t test:component --exclude=demo --outputStyle=static --parallel=1
   lint:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-24.04
     needs: install
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@e602fada7ad5987b0f7b1905e7a99ea1c661514c # v5
@@ -89,11 +94,12 @@ jobs:
         run: npx nx affected -t lint --exclude=demo --outputStyle=static
   commitlint:
     needs: [install]
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
       - name: install
@@ -110,12 +116,13 @@ jobs:
         if: github.event_name == 'pull_request'
         run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
   check-circular-imports:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-24.04
     needs: install
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 0
       - uses: './.github/actions/setup-environment'
       - uses: nrwl/nx-set-shas@e602fada7ad5987b0f7b1905e7a99ea1c661514c # v5
@@ -125,7 +132,7 @@ jobs:
       - name: Check circular imports
         run: npx nx affected -t check-circular-imports --exclude=demo --outputStyle=static
   build-storybook:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-24.04
     needs: install
     steps:
       - name: Checkout
@@ -171,7 +178,7 @@ jobs:
           npx wait-on --timeout 60000 http://127.0.0.1:6007
           npx test-storybook --config-dir packages/components/.storybook --url http://127.0.0.1:6007
   release:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-24.04
     needs: [install, build, unit-test, component-test, lint, commitlint, check-circular-imports]
     # Only run on push to master branch (never on PRs, workflow_dispatch, etc.)
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
@@ -182,13 +189,15 @@ jobs:
       cancel-in-progress: false
       queue: max
     permissions:
-      contents: write
-      id-token: write
+      contents: read     # Git writes use the bot token in the release action, not GITHUB_TOKEN
+      id-token: write    # npm trusted publishing (OIDC) and provenance
     steps:
+      # No bot token and no persisted credentials: dependency and build scripts running in
+      # later steps must not see it. The push step in the release action brings its own token.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 0
-          token: ${{ secrets.GH_BOT_TOKEN }}
       - uses: './.github/actions/release'
         with:
           gh_token: ${{ secrets.GH_BOT_TOKEN }}
