@@ -33,7 +33,7 @@ function importVariants(url: string) {
 }
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(ts|tsx)'],
+  stories: ['../src/**/*.stories.@(ts|tsx)', '../../notifications/src/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-docs', '@storybook/addon-a11y', '@storybook/addon-webpack5-compiler-swc'],
   framework: '@storybook/react-webpack5',
   webpackFinal: async (config) => {
