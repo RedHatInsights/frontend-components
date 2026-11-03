@@ -135,3 +135,11 @@ if(!global.window.crypto.randomUUID) {
 ```
 
 The format of the return value is not important. It has to be unique.
+
+## Multiple consumers on one page
+
+Independent notification consumers can coexist on a single page — for example the platform shell and an application each rendering their own `Portal` or `NotificationsProvider`. All instances mount into one shared root element (`<div id="notifications-root">`, created lazily in `document.body` and pinned to the top-right corner by the package styles). Inside that root the instances stack in normal flow instead of covering each other.
+
+The root is discovered through the DOM rather than module state, so it is shared even between the separate package copies loaded by the shell and by each application, and across version skew: instances from updated package versions join the shared stack, while instances from older versions keep the previous behavior (their own fixed-position portal).
+
+Passing the `rootId` prop opts an individual instance out of the shared root: it mounts into the element with that id instead, with the legacy fixed-position styling.

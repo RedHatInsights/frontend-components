@@ -1,3 +1,28 @@
+/**
+ * The shared root every Portal instance renders into by default. It carries
+ * the fixed positioning that the per-instance wrappers used to apply to
+ * themselves; the instances inside it are normal flow and stack vertically.
+ */
+#notifications-root {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2000;
+}
+
+/**
+ * Instances inside the shared root participate in normal flow: they stack
+ * instead of covering each other. z-index does not apply to static elements,
+ * so the root's stacking order governs the whole stack.
+ */
+#notifications-root .notifications-portal {
+  position: static;
+}
+
+/**
+ * Legacy positioning for instances that do not mount into the shared root
+ * (an explicit `rootId` target): unchanged from the previous behavior.
+ */
 .notifications-portal {
   position: fixed;
   top: 0;
@@ -6,11 +31,11 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .notifications-portal{
+  .notifications-portal {
     margin: 0;
     width: initial;
   }
-} 
+}
 
 @media only screen and (min-width: 768px) {
   .notifications-portal {
