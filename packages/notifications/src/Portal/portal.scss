@@ -3,11 +3,21 @@
  * the fixed positioning that the per-instance wrappers used to apply to
  * themselves; the instances inside it are normal flow and stack vertically.
  */
-#notifications-root {
+[data-notifications-root] {
   position: fixed;
   top: 0;
   right: 0;
   z-index: 2000;
+  /**
+   * Several consumers can fill the viewport (each instance shows up to five
+   * notifications before paginating), so cap the stack to the viewport and
+   * clip the overflow: the stack must never become scrollable, because a
+   * scrollable fixed overlay causes unwanted scroll behavior in the shell.
+   * Notifications beyond the fold stay hidden until earlier ones are
+   * dismissed, which shrinks the stack and reveals them.
+   */
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 /**
@@ -15,7 +25,7 @@
  * instead of covering each other. z-index does not apply to static elements,
  * so the root's stacking order governs the whole stack.
  */
-#notifications-root .notifications-portal {
+[data-notifications-root] .notifications-portal {
   position: static;
 }
 

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { expect, waitFor } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import Portal from './Portal';
 import NotificationsProvider from '../NotificationsProvider/NotificationsProvider';
 import { useNotifications } from '../hooks/useNotifications';
@@ -84,6 +84,83 @@ export const ShellAndApplicationStacks: Story = {
       // vertical: one stack must end before the other begins.
       const verticallyOverlapping = shellRect.top < appRect.bottom && appRect.top < shellRect.bottom;
       expect(verticallyOverlapping).toBe(false);
+    });
+  },
+};
+
+/**
+ * An independent consumer with its own dismissable notifications.
+ */
+const Stack = ({ stackId, title, count, lastTitle }: { stackId: string; title: string; count: number; lastTitle?: string }) => {
+  const [notifications, setNotifications] = useState(() =>
+    Array.from({ length: count }, (_, index) => ({
+      id: `${stackId}-${index}`,
+      variant: 'info' as const,
+      dismissable: true,
+      autoDismiss: false,
+      title: index === count - 1 && lastTitle ? lastTitle : `${title} ${index + 1} of ${count}`,
+    })),
+  );
+  return (
+    <Portal
+      notifications={notifications}
+      removeNotification={(id) => setNotifications((previous) => previous.filter((notification) => notification.id !== id))}
+    />
+  );
+};
+
+/**
+ * Four consumers with five notifications each — twenty notifications in one
+ * shared stack. Today the console mounts at most two consumers (the shell
+ * plus one application), but nothing guarantees that, and the shared root
+ * must degrade safely when the combined stack overflows the viewport: the
+ * stack is clipped, never scrollable, and dismissing notifications shrinks
+ * it until the ones hidden under the fold come into view.
+ */
+export const OverflowingStacks: Story = {
+  name: 'Four consumers, five notifications each',
+  render: () => (
+    <>
+      <Stack stackId="shell" title="Shell notice" count={5} />
+      <Stack stackId="application-a" title="Application A toast" count={5} />
+      <Stack stackId="application-b" title="Application B toast" count={5} />
+      <Stack stackId="application-c" title="Application C toast" count={5} lastTitle="Bottom of the last stack" />
+    </>
+  ),
+  play: async ({ step }) => {
+    const user = userEvent.setup();
+
+    await step('twenty notifications across four stacks', async () => {
+      await waitFor(() => {
+        expect(document.querySelectorAll('.notifications-portal')).toHaveLength(4);
+        expect(document.querySelectorAll('button[aria-label="close-notification"]')).toHaveLength(20);
+      });
+    });
+
+    await step('the combined stack overflows the viewport', async () => {
+      const root = document.querySelector('[data-notifications-root]');
+      expect(root).not.toBeNull();
+      expect(root!.scrollHeight).toBeGreaterThan(root!.clientHeight);
+      // The last notification is hidden below the visible area.
+      const bottom = within(document.body).getByText('Bottom of the last stack');
+      expect(bottom.getBoundingClientRect().bottom).toBeGreaterThan(window.innerHeight);
+    });
+
+    await step('dismissing notifications reveals the hidden ones', async () => {
+      // Dismiss the topmost notification until the bottom one is in view.
+      // If the stack never reveals it, the loop exhausts and the final
+      // assertion fails.
+      for (let dismissed = 0; dismissed < 20; dismissed++) {
+        const bottom = within(document.body).queryByText('Bottom of the last stack');
+        if (bottom && bottom.getBoundingClientRect().bottom <= window.innerHeight) {
+          break;
+        }
+        const closeButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('button[aria-label="close-notification"]'));
+        expect(closeButtons.length).toBeGreaterThan(0);
+        await user.click(closeButtons[0]);
+      }
+      const bottom = within(document.body).getByText('Bottom of the last stack');
+      expect(bottom.getBoundingClientRect().bottom).toBeLessThanOrEqual(window.innerHeight);
     });
   },
 };

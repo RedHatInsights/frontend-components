@@ -142,4 +142,4 @@ Independent notification consumers can coexist on a single page — for example 
 
 The root is discovered through the DOM rather than module state, so it is shared even between the separate package copies loaded by the shell and by each application, and across version skew: instances from updated package versions join the shared stack, while instances from older versions keep the previous behavior (their own fixed-position portal).
 
-Passing the `rootId` prop opts an individual instance out of the shared root: it mounts into the element with that id instead, with the legacy fixed-position styling.
+Passing the `rootId` prop opts an individual instance out of the shared root: it mounts into the element with that id instead, with the legacy fixed-position styling. If no element with that id exists, the instance mounts into `document.body`. Pointing `rootId` at the shared root itself does not opt out: the instance joins the shared stack like any other. The shared stack is capped to the viewport height and clipped when the combined notifications exceed it: it is never scrollable, and notifications beyond the fold stay hidden until earlier ones are dismissed.

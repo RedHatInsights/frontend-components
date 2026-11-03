@@ -22,14 +22,20 @@ import { NotificationID } from '../state';
  * copies keep their previous behavior.
  */
 const SHARED_ROOT_ID = 'notifications-root';
+const SHARED_ROOT_ATTRIBUTE = 'data-notifications-root';
 
 function getSharedRoot(): HTMLElement {
-  const existing = document.getElementById(SHARED_ROOT_ID);
+  // Look up by the package-owned attribute rather than the id: an unrelated
+  // host element squatting on the id must be neither adopted as the shared
+  // root nor repositioned by the shared-root styles.
+  const existing = document.querySelector<HTMLElement>(`[${SHARED_ROOT_ATTRIBUTE}]`);
   if (existing) {
     return existing;
   }
   const root = document.createElement('div');
+  // The id is for devtools visibility; the attribute is the adoption marker.
   root.id = SHARED_ROOT_ID;
+  root.setAttribute(SHARED_ROOT_ATTRIBUTE, '');
   document.body.appendChild(root);
   return root;
 }
