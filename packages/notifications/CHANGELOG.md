@@ -1,3 +1,17 @@
+## 6.11.19 (2026-11-04)
+
+### 🩹 Fixes
+
+- **notifications:** inert clipped notifications and drop the shared root id ([94e2d1de](https://github.com/RedHatInsights/frontend-components/commit/94e2d1de))
+- **notifications:** pause auto-dismiss while a notification is out of view ([e509b15f](https://github.com/RedHatInsights/frontend-components/commit/e509b15f))
+- **notifications:** let clicks pass through the shared root's margins ([72457077](https://github.com/RedHatInsights/frontend-components/commit/72457077))
+- **notifications:** mark the shared root and clip its overflow ([6cb315e7](https://github.com/RedHatInsights/frontend-components/commit/6cb315e7))
+- **notifications:** stack multiple portal instances in one shared root ([8cd9d1b0](https://github.com/RedHatInsights/frontend-components/commit/8cd9d1b0))
+
+### ❤️ Thank You
+
+- Riccardo Forina
+
 ## 6.11.18 (2026-10-23)
 
 ### 🧱 Updated Dependencies
