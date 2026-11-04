@@ -229,7 +229,7 @@ export const AutoDismissBelowTheFold: Story = {
        * clipping viewport for the stack, and the story only controls where
        * the fold is, not how the package clips or gates visibility.
        */}
-      <style>{'#notifications-root { max-height: 320px; }'}</style>
+      <style>{'[data-notifications-root] { max-height: 320px; }'}</style>
       <Stack stackId="persistent-shell" title="Persistent shell notice" count={5} />
       <Stack stackId="persistent-app" title="Persistent application notice" count={5} />
       <AutoDismissingNotice />
@@ -247,6 +247,9 @@ export const AutoDismissBelowTheFold: Story = {
       // which is what the overflow hides and the visibility gating observes.
       const fold = () => document.querySelector('[data-notifications-root]')!.getBoundingClientRect().bottom;
       expect(findTarget()!.getBoundingClientRect().top).toBeGreaterThanOrEqual(fold());
+      // While hidden, the notification is inert: out of the tab order and
+      // the accessibility tree, so focus cannot scroll the clipped stack.
+      expect(findTarget()!.closest('.notification-item')!.inert).toBe(true);
     });
 
     await step('the countdown does not run while it is hidden', async () => {
@@ -268,6 +271,8 @@ export const AutoDismissBelowTheFold: Story = {
         await user.click(closeButtons[0]);
       }
       expect(findTarget()!.getBoundingClientRect().bottom).toBeLessThanOrEqual(fold());
+      // Revealed notifications rejoin the tab order.
+      expect(findTarget()!.closest('.notification-item')!.inert).toBe(false);
     });
 
     await step('it dismisses itself once visible', async () => {

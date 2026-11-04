@@ -21,7 +21,6 @@ import { NotificationID } from '../state';
  * including version skew: updated copies join the shared stack while older
  * copies keep their previous behavior.
  */
-const SHARED_ROOT_ID = 'notifications-root';
 const SHARED_ROOT_ATTRIBUTE = 'data-notifications-root';
 
 function getSharedRoot(): HTMLElement {
@@ -33,8 +32,9 @@ function getSharedRoot(): HTMLElement {
     return existing;
   }
   const root = document.createElement('div');
-  // The id is for devtools visibility; the attribute is the adoption marker.
-  root.id = SHARED_ROOT_ID;
+  // The attribute is the adoption marker and the element's only identity:
+  // no id is set, so a host page using the id "notifications-root" can never
+  // collide with it or capture a rootId lookup.
   root.setAttribute(SHARED_ROOT_ATTRIBUTE, '');
   document.body.appendChild(root);
   return root;

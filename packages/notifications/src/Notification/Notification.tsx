@@ -118,9 +118,18 @@ const Notification: React.ComponentType<NotificationProps> = ({
     if (!element) {
       return;
     }
-    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting));
+    const observer = new IntersectionObserver(([entry]) => {
+      // Clipped notifications leave the tab order and the accessibility
+      // tree: overflow: hidden still allows focus to scroll the shared root,
+      // which would shove the visible notifications out of view.
+      element.inert = !entry.isIntersecting;
+      setIsVisible(entry.isIntersecting);
+    });
     observer.observe(element);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      element.inert = false;
+    };
   }, [id]);
 
   useEffect(() => {
