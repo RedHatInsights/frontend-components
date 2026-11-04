@@ -1,3 +1,45 @@
+/**
+ * The shared root every Portal instance renders into by default. It carries
+ * the fixed positioning that the per-instance wrappers used to apply to
+ * themselves; the instances inside it are normal flow and stack vertically.
+ */
+[data-notifications-root] {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2000;
+  /**
+   * The root's rectangle spans the instances' outer margins and the gaps
+   * between stacks. Those areas are transparent and must not block the page
+   * beneath — the shell's header controls sit under the top-right corner.
+   */
+  pointer-events: none;
+  /**
+   * Several consumers can fill the viewport (each instance shows up to five
+   * notifications before paginating), so cap the stack to the viewport and
+   * clip the overflow: the stack must never become scrollable, because a
+   * scrollable fixed overlay causes unwanted scroll behavior in the shell.
+   * Notifications beyond the fold stay hidden until earlier ones are
+   * dismissed, which shrinks the stack and reveals them.
+   */
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+/**
+ * Instances inside the shared root participate in normal flow: they stack
+ * instead of covering each other. z-index does not apply to static elements,
+ * so the root's stacking order governs the whole stack.
+ */
+[data-notifications-root] .notifications-portal {
+  position: static;
+  pointer-events: auto;
+}
+
+/**
+ * Legacy positioning for instances that do not mount into the shared root
+ * (an explicit `rootId` target): unchanged from the previous behavior.
+ */
 .notifications-portal {
   position: fixed;
   top: 0;
@@ -6,11 +48,11 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .notifications-portal{
+  .notifications-portal {
     margin: 0;
     width: initial;
   }
-} 
+}
 
 @media only screen and (min-width: 768px) {
   .notifications-portal {

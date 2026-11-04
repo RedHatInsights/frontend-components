@@ -8,6 +8,38 @@ import { AlertProps } from '@patternfly/react-core/dist/dynamic/components/Alert
 import './portal.scss';
 import { NotificationID } from '../state';
 
+/**
+ * The single fixed-position root every Portal instance renders into by
+ * default. Multiple independent consumers share one page — the shell
+ * (insights-chrome) and each application mount their own Portal — and the
+ * per-instance wrappers used to pin themselves to the same viewport corner,
+ * covering each other. Mounting into one shared root lets the instances
+ * stack in normal flow inside it instead.
+ *
+ * The root is found through the DOM rather than module state so that the
+ * separate package copies loaded by the shell and by applications share it,
+ * including version skew: updated copies join the shared stack while older
+ * copies keep their previous behavior.
+ */
+const SHARED_ROOT_ATTRIBUTE = 'data-notifications-root';
+
+function getSharedRoot(): HTMLElement {
+  // Look up by the package-owned attribute rather than the id: an unrelated
+  // host element squatting on the id must be neither adopted as the shared
+  // root nor repositioned by the shared-root styles.
+  const existing = document.querySelector<HTMLElement>(`[${SHARED_ROOT_ATTRIBUTE}]`);
+  if (existing) {
+    return existing;
+  }
+  const root = document.createElement('div');
+  // The attribute is the adoption marker and the element's only identity:
+  // no id is set, so a host page using the id "notifications-root" can never
+  // collide with it or capture a rootId lookup.
+  root.setAttribute(SHARED_ROOT_ATTRIBUTE, '');
+  document.body.appendChild(root);
+  return root;
+}
+
 export type PortalNotificationConfig = {
   id: NotificationID;
   title: React.ReactNode;
@@ -55,7 +87,7 @@ const Portal: React.ComponentType<PortalProps> = ({ notifications = [], removeNo
             <Notification onDismiss={removeNotification} key={props.id} {...props} />
           ))}
         </div>,
-        rootId ? document.getElementById(rootId) || document.body : document.body,
+        rootId ? document.getElementById(rootId) || document.body : getSharedRoot(),
       );
 };
 
