@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Alert } from '@patternfly/react-core/dist/dynamic/components/Alert';
 import { AlertActionCloseButton } from '@patternfly/react-core/dist/dynamic/components/Alert';
 import { AlertProps } from '@patternfly/react-core/dist/dynamic/components/Alert';
@@ -79,13 +79,15 @@ const Notification: React.ComponentType<NotificationProps> = ({
   ...rest
 }) => {
   const dismissTimeout = useRef<any>();
-  const isHovered = useRef(false);
-  // Starts optimistic so that without IntersectionObserver support (jsdom,
-  // older browsers) the timer keeps its previous unconditional behavior.
-  const [isVisible, setIsVisible] = useState(true);
 
   const handleDismiss = () => {
     onDismiss(id);
+  };
+
+  const setDismissTimeout = () => {
+    if (autoDismiss) {
+      dismissTimeout.current = setTimeout(() => handleDismiss(), dismissDelay);
+    }
   };
 
   const clearDismissTimeout = () => {
@@ -94,48 +96,12 @@ const Notification: React.ComponentType<NotificationProps> = ({
     }
   };
 
-  const setDismissTimeout = () => {
-    clearDismissTimeout();
-    if (autoDismiss && isVisible && !isHovered.current) {
-      dismissTimeout.current = setTimeout(() => handleDismiss(), dismissDelay);
-    }
-  };
-
-  /**
-   * The auto-dismiss countdown runs only while the notification is actually
-   * visible. Notifications clipped under the fold of the shared root are
-   * reported as not intersecting, so they must not expire before the user
-   * can see them: dismissing the earlier notifications reveals them, and
-   * only then does their lifetime start ticking.
-   */
-  useEffect(() => {
-    if (typeof IntersectionObserver === 'undefined') {
-      return;
-    }
-    // PatternFly's Alert does not forward refs, so locate the rendered
-    // element through the id this component puts on it.
-    const element = document.getElementById(`${id}`);
-    if (!element) {
-      return;
-    }
-    const observer = new IntersectionObserver(([entry]) => {
-      // Clipped notifications leave the tab order and the accessibility
-      // tree: overflow: hidden still allows focus to scroll the shared root,
-      // which would shove the visible notifications out of view.
-      element.inert = !entry.isIntersecting;
-      setIsVisible(entry.isIntersecting);
-    });
-    observer.observe(element);
-    return () => {
-      observer.disconnect();
-      element.inert = false;
-    };
-  }, [id]);
-
   useEffect(() => {
     setDismissTimeout();
-    return clearDismissTimeout;
-  }, [isVisible]);
+    return () => {
+      clearDismissTimeout();
+    };
+  }, []);
   return (
     <Alert
       className="notification-item"
@@ -144,14 +110,8 @@ const Notification: React.ComponentType<NotificationProps> = ({
       {...rest}
       actionClose={dismissable ? <AlertActionCloseButton aria-label="close-notification" variant="plain" onClick={handleDismiss} /> : null}
       actionLinks={actionLinks}
-      onMouseEnter={() => {
-        isHovered.current = true;
-        clearDismissTimeout();
-      }}
-      onMouseLeave={() => {
-        isHovered.current = false;
-        setDismissTimeout();
-      }}
+      onMouseEnter={clearDismissTimeout}
+      onMouseLeave={setDismissTimeout}
     >
       <Content>
         <Content className="sentry-mask data-hj-suppress" component={ContentVariants.small}>

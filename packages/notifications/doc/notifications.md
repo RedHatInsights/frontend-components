@@ -1,7 +1,7 @@
 # Notifications
 
 > This doc is for version 6. If you want to migrate to v6 check the [migration doc](./migration.md).
-If you want the old documentation [check this link](https://github.com/RedHatInsights/frontend-components/blob/pf4%405/packages/notifications/doc/notifications.md).
+> If you want the old documentation [check this link](https://github.com/RedHatInsights/frontend-components/blob/pf4%405/packages/notifications/doc/notifications.md).
 
 This is a global notifications component, with defined PF styling.
 
@@ -47,8 +47,10 @@ export default MagicButton
 ```
 
 ## Notification options
+
 Visuals for notifications are defined by Patternfly-4. You can check the [patternfly-react#alert](https://www.patternfly.org/components/alert).
 We provide additional options, that can help you control your notifications
+
 ```javascript
 {
   title: string,
@@ -63,6 +65,7 @@ We provide additional options, that can help you control your notifications
 ### Notifications state API
 
 There are 3 supported API functions for notifications:
+
 - addNotifications: adds new notification
 - removeNotification: removes notifications. It requires notification ID
 - clearNotifications: removes all notifications
@@ -83,38 +86,42 @@ const Cmp = () => {
 
 ### using notifications store outside of React context
 
-In case you need to access the notifications API outside a React component,  you can create a custom notification store and cal it in any JS code. In order to link this custom store and your React components, this custom store has to be passed a prop to your `NotificationsProvider`.
+In case you need to access the notifications API outside a React component, you can create a custom notification store and cal it in any JS code. In order to link this custom store and your React components, this custom store has to be passed a prop to your `NotificationsProvider`.
 
 ```jsx
 import { createStore } from '@redhat-cloud-services/frontend-components-notifications/state';
 import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications/hooks';
 
-const store = createStore()
+const store = createStore();
 
 const Child = () => {
-  const addNotification = useAddNotification()
+  const addNotification = useAddNotification();
 
   return (
-    <button onClick={() => {
-      // call from React context
-      addNotification({
-        // ...
-      })
-      // call directly the store
-      store.addNotification({
-        // ...
-      })
-    }}>Add notification</button>
-  )
-}
+    <button
+      onClick={() => {
+        // call from React context
+        addNotification({
+          // ...
+        });
+        // call directly the store
+        store.addNotification({
+          // ...
+        });
+      }}
+    >
+      Add notification
+    </button>
+  );
+};
 
 const AppRoot = () => {
   return (
     <NotificationsProvider store={store}>
       <Child />
     </NotificationsProvider>
-  )
-}
+  );
+};
 ```
 
 ## Testing setup
@@ -127,9 +134,9 @@ const crypto = require('crypto');
 // Crypto object polyfill for JSDOM
 global.window.crypto = {
   ...crypto,
-}
+};
 // in case the crypto package is mangled or the method does not exist
-if(!global.window.crypto.randomUUID) {
+if (!global.window.crypto.randomUUID) {
   global.window.crypto.randomUUID = () => Date.now().toString(36) + Math.random().toString(36).slice(2);
 }
 ```
@@ -142,4 +149,4 @@ Independent notification consumers can coexist on a single page — for example 
 
 The root is discovered through the DOM rather than module state, so it is shared even between the separate package copies loaded by the shell and by each application, and across version skew: instances from updated package versions join the shared stack, while instances from older versions keep the previous behavior (their own fixed-position portal).
 
-Passing the `rootId` prop opts an individual instance out of the shared root: it mounts into the element with that id instead, with the legacy fixed-position styling. If no element with that id exists, the instance mounts into `document.body`. The shared root carries no id — it is identified solely by its `data-notifications-root` attribute — so it cannot collide with, or be targeted through, ids used by the host page. The shared stack is capped to the viewport height and clipped when the combined notifications exceed it: it is never scrollable, notifications beyond the fold stay hidden until earlier ones are dismissed, and while hidden they are inert (out of the tab order and the accessibility tree).
+Passing the `rootId` prop opts an individual instance out of the shared root: it mounts into the element with that id instead, with the legacy fixed-position styling. If no element with that id exists, the instance mounts into `document.body`. The shared root carries no id — it is identified solely by its `data-notifications-root` attribute — so it cannot collide with, or be targeted through, ids used by the host page. The shared stack is capped to the viewport height and clipped when the combined notifications exceed it: it is never scrollable, and notifications beyond the fold stay hidden until earlier ones are dismissed.
