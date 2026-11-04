@@ -58,6 +58,7 @@ const AppToast = () => {
 export const ShellAndApplicationStacks: Story = {
   render: () => (
     <>
+      <HeaderLikeControl />
       <ShellNotice />
       <NotificationsProvider>
         <AppToast />
@@ -85,8 +86,32 @@ export const ShellAndApplicationStacks: Story = {
       const verticallyOverlapping = shellRect.top < appRect.bottom && appRect.top < shellRect.bottom;
       expect(verticallyOverlapping).toBe(false);
     });
+
+    await step('clicks pass through the transparent margins', async () => {
+      // The control sits inside the shared root's rectangle but outside any
+      // notification, in the 30px margin frame. The root must not capture
+      // pointer events there: the control's own center must be the hit target.
+      const root = document.querySelector('[data-notifications-root]');
+      const control = within(document.body).getByRole('button', { name: 'Underlying corner control' });
+      const controlRect = control.getBoundingClientRect();
+      expect(root!.getBoundingClientRect().right).toBeGreaterThanOrEqual(controlRect.right);
+      expect(root!.getBoundingClientRect().top).toBeLessThanOrEqual(controlRect.top);
+      const hit = document.elementFromPoint(controlRect.left + controlRect.width / 2, controlRect.top + controlRect.height / 2);
+      expect(hit === control || control.contains(hit as Node)).toBe(true);
+    });
   },
 };
+
+/**
+ * A control sitting in the top-right corner, under the notification stack's
+ * transparent margin — like the header controls in the shell. Clicks must
+ * reach it through the margin; the shared root must not capture them.
+ */
+const HeaderLikeControl = () => (
+  <button style={{ position: 'fixed', top: 5, right: 5, zIndex: 1 }} onClick={() => undefined}>
+    Underlying corner control
+  </button>
+);
 
 /**
  * An independent consumer with its own dismissable notifications.

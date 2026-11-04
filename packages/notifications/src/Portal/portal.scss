@@ -9,6 +9,12 @@
   right: 0;
   z-index: 2000;
   /**
+   * The root's rectangle spans the instances' outer margins and the gaps
+   * between stacks. Those areas are transparent and must not block the page
+   * beneath — the shell's header controls sit under the top-right corner.
+   */
+  pointer-events: none;
+  /**
    * Several consumers can fill the viewport (each instance shows up to five
    * notifications before paginating), so cap the stack to the viewport and
    * clip the overflow: the stack must never become scrollable, because a
@@ -27,6 +33,7 @@
  */
 [data-notifications-root] .notifications-portal {
   position: static;
+  pointer-events: auto;
 }
 
 /**
