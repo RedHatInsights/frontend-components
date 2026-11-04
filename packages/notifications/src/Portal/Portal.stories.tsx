@@ -189,3 +189,94 @@ export const OverflowingStacks: Story = {
     });
   },
 };
+
+/**
+ * A stateful consumer with a single auto-dismissing notification, so the
+ * auto-dismiss actually removes it from the stack.
+ */
+const AutoDismissingNotice = () => {
+  const [notifications, setNotifications] = useState(() => [
+    {
+      id: 'auto-dismiss-below-fold',
+      variant: 'danger' as const,
+      dismissable: true,
+      autoDismiss: true,
+      dismissDelay: 1500,
+      title: 'Auto-dismissing notice below the fold',
+    },
+  ]);
+  return (
+    <Portal
+      notifications={notifications}
+      removeNotification={(id) => setNotifications((previous) => previous.filter((notification) => notification.id !== id))}
+    />
+  );
+};
+
+/**
+ * An auto-dismissing notification pushed under the fold by earlier stacks.
+ * The countdown must not run while the notification is hidden: it survives
+ * past its dismissDelay below the fold, becomes visible when the earlier
+ * notifications are dismissed, and only then dismisses itself.
+ */
+export const AutoDismissBelowTheFold: Story = {
+  name: 'Auto-dismiss below the fold',
+  render: () => (
+    <>
+      {/*
+       * Pin the shared root's height so the fold sits at a deterministic
+       * 320px regardless of the viewport this story runs in: the root is the
+       * clipping viewport for the stack, and the story only controls where
+       * the fold is, not how the package clips or gates visibility.
+       */}
+      <style>{'#notifications-root { max-height: 320px; }'}</style>
+      <Stack stackId="persistent-shell" title="Persistent shell notice" count={5} />
+      <Stack stackId="persistent-app" title="Persistent application notice" count={5} />
+      <AutoDismissingNotice />
+    </>
+  ),
+  play: async ({ step }) => {
+    const user = userEvent.setup();
+    const findTarget = () => within(document.body).queryByText('Auto-dismissing notice below the fold');
+
+    await step('the auto-dismissing notification starts below the fold', async () => {
+      await waitFor(() => {
+        expect(findTarget()).not.toBeNull();
+      });
+      // Below the fold means beyond the shared root's visible (clipped) box,
+      // which is what the overflow hides and the visibility gating observes.
+      const fold = () => document.querySelector('[data-notifications-root]')!.getBoundingClientRect().bottom;
+      expect(findTarget()!.getBoundingClientRect().top).toBeGreaterThanOrEqual(fold());
+    });
+
+    await step('the countdown does not run while it is hidden', async () => {
+      // Longer than its dismissDelay: a running countdown would have
+      // dismissed it by now.
+      await new Promise((resolve) => setTimeout(resolve, 2500));
+      expect(findTarget()).not.toBeNull();
+    });
+
+    await step('dismissing the earlier notifications reveals it', async () => {
+      const fold = () => document.querySelector('[data-notifications-root]')!.getBoundingClientRect().bottom;
+      for (let dismissed = 0; dismissed < 11; dismissed++) {
+        const target = findTarget();
+        if (target && target.getBoundingClientRect().bottom <= fold()) {
+          break;
+        }
+        const closeButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('button[aria-label="close-notification"]'));
+        expect(closeButtons.length).toBeGreaterThan(0);
+        await user.click(closeButtons[0]);
+      }
+      expect(findTarget()!.getBoundingClientRect().bottom).toBeLessThanOrEqual(fold());
+    });
+
+    await step('it dismisses itself once visible', async () => {
+      await waitFor(
+        () => {
+          expect(findTarget()).toBeNull();
+        },
+        { timeout: 4000 },
+      );
+    });
+  },
+};
