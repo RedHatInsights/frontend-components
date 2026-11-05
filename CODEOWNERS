@@ -18,12 +18,17 @@
 /commitlint.config.test.js @RedHatInsights/experience-services-package-admins
 /commitlint.jest.config.js @RedHatInsights/experience-services-package-admins
 
+# --- Node toolchain ---
+/.nvmrc @RedHatInsights/experience-services-package-admins
+
 # --- Package lifecycle, publish & dependency control ---
 /package.json @RedHatInsights/experience-services-package-admins
 /package-lock.json @RedHatInsights/experience-services-package-admins
 /.npmrc @RedHatInsights/experience-services-package-admins
 /.npmignore @RedHatInsights/experience-services-package-admins
 /renovate.json @RedHatInsights/experience-services-package-admins
+/packages/*/package.json @RedHatInsights/experience-services-package-admins
+/packages/*/project.json @RedHatInsights/experience-services-package-admins
 
 # --- Build / task orchestration ---
 /nx.json @RedHatInsights/experience-services-package-admins
