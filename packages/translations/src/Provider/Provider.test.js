@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { FormattedMessage } from 'react-intl';
 
 import IntlProvider from './Provider';
 describe('provider', () => {
@@ -27,8 +28,8 @@ describe('provider', () => {
         en: {
           'some.msg': 'Message',
         },
-        cs: {
-          'some.msg': 'Zpráva',
+        fr: {
+          'some.msg': 'Message en français',
         },
       };
 
@@ -41,13 +42,13 @@ describe('provider', () => {
         expect(container).toMatchSnapshot();
       });
 
-      test('cs-locale', () => {
+      test('fr-locale', () => {
         const { container } = render(
-          <IntlProvider messages={translations} locale="cs">
-            <div>Test</div>
+          <IntlProvider messages={translations} locale="fr">
+            <FormattedMessage id="some.msg" />
           </IntlProvider>,
         );
-        expect(container).toMatchSnapshot();
+        expect(container.textContent).toBe('Message en français');
       });
     });
   });

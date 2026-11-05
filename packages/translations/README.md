@@ -63,8 +63,8 @@ These messages should be object with ids of messages, you can either pass plain 
     "en": {
         "appp.greetings": "Hello {name}"
     },
-    "cs": {
-        "app.greetings": "Vítejte {name}"
+    "fr": {
+        "app.greetings": "Bonjour {name}"
     }
 }
 ```
@@ -84,7 +84,7 @@ class App extends Component {
 
     render() {
         return (
-            <IntlProvider locale="cs">
+            <IntlProvider locale="fr">
                 <NotificationsPortal />
                 <Routes childProps={this.props} />
             </IntlProvider>
