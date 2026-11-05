@@ -5,12 +5,21 @@
   "projectType": "library",
   "tags": ["scope:public"],
   "targets": {
+    "generate:locales": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "inputs": ["default", "{workspaceRoot}/locales/*.json"],
+      "options": {
+        "command": "node packages/translations/generate-runtime-catalog.cjs"
+      }
+    },
     "build:bundles:tsc": {
       "executor": "@nx/js:tsc",
       "options": { "outputPath": "dist/@redhat-cloud-services/frontend-components-translations" }
     },
     "build:bundles": {
-      "dependsOn": ["^build:bundles", "^build"],
+      "dependsOn": ["^build:bundles", "^build", "generate:locales"],
+      "inputs": ["production", "{workspaceRoot}/locales/*.json"],
       "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/translations/src",
@@ -29,6 +38,8 @@
             "input": "packages/translations/src/locales",
             "output": "esm/locales"
           },
+          { "input": "packages/translations/src/generated", "glob": "*.json", "output": "generated" },
+          { "input": "packages/translations/src/generated", "glob": "*.json", "output": "esm/generated" },
           { "input": ".", "glob": ".npmignore", "output": "." }
         ]
       }
@@ -57,6 +68,7 @@
       }
     },
     "check-circular-imports": {
+      "dependsOn": ["generate:locales"],
       "executor": "@redhat-cloud-services/frontend-components-executors:check-circular-imports",
       "options": {
         "sourceDir": "packages/translations/src"
@@ -75,6 +87,8 @@
       }
     },
     "test:unit": {
+      "dependsOn": ["^test:unit", "generate:locales"],
+      "inputs": ["default", "{workspaceRoot}/locales/*.json"],
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {

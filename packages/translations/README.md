@@ -3,6 +3,12 @@
 This package is for setting [react-intl](https://www.npmjs.com/package/react-intl) with default messages translated accross the entire platform. For futher understanding how to pass messages and such follow up `react-intl` documentation.
 
 
+## Runtime catalogs
+
+`locales/translations.json` supplies English defaults. Delivered `locales/<locale>.json` files are aggregated automatically before this package's Nx build and unit tests. The generated `src/generated/data.json` is not committed; missing target files are allowed until delivery. Both `IntlProvider` and the `translatedMessages` export use this generated catalog.
+
+For source-based development outside those Nx targets, run `npm run translations:aggregate` before importing the package. Locale selection preserves regional formatting, tries exact catalog matches before base-language matches, and falls back to English defaults for missing bundled messages. Caller-provided messages still override bundled messages.
+
 ## Usage
 
 If you want to translate your app import `IntlProvider` and wrap your piece of app that you want to translate, this will usually be entire application.

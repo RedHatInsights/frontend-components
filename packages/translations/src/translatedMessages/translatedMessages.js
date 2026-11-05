@@ -1,1 +1,1 @@
-export { default as translatedMessages } from '../locales/data.json';
+export { default as translatedMessages } from '../generated/data.json';
