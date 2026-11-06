@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { useState } from 'react';
 import { MenuToggle } from '@patternfly/react-core/dist/dynamic/components/MenuToggle';
 import { Select } from '@patternfly/react-core/dist/dynamic/components/Select';
@@ -5,6 +6,7 @@ import { SelectList } from '@patternfly/react-core/dist/dynamic/components/Selec
 import { SelectOption } from '@patternfly/react-core/dist/dynamic/components/Select';
 
 import { FilterItem, FilterValue, isFilterValue } from './TextFilter';
+import messages from '../messages';
 
 export interface SingleSelectFilterProps {
   /** Optional className. */
@@ -33,6 +35,8 @@ export interface SingleSelectFilterProps {
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
 const SingleSelectFilter = ({ items = [], onChange = () => undefined, isDisabled = false, ...props }: SingleSelectFilterProps) => {
+  const intl = useIntlWithFallback();
+
   const { placeholder, className, value } = props;
   const [isExpanded, setExpanded] = useState(false);
 
@@ -50,10 +54,10 @@ const SingleSelectFilter = ({ items = [], onChange = () => undefined, isDisabled
   return (
     <Select
       className={className}
-      aria-label="Select Input"
+      aria-label={intl.formatMessage(messages.singleSelectFilterSelectInput)}
       toggle={(menuRef) => (
         <MenuToggle
-          aria-label="Options menu"
+          aria-label={intl.formatMessage(messages.singleSelectFilterOptionsMenu)}
           isExpanded={isExpanded}
           onClick={() => setExpanded((prev) => !prev)}
           isDisabled={isDisabled}
@@ -69,7 +73,7 @@ const SingleSelectFilter = ({ items = [], onChange = () => undefined, isDisabled
       ouiaId={placeholder}
       selected={checkedValue}
     >
-      <SelectList aria-label="Options menu">
+      <SelectList aria-label={intl.formatMessage(messages.singleSelectFilterOptionsMenu)}>
         {items.map(({ value, isChecked, onChange, label, id, ...item }, key) => (
           <SelectOption {...item} key={id || key} value={value || '' + key}>
             {label}

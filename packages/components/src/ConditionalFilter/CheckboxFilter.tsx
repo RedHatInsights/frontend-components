@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { useState } from 'react';
 import { Badge } from '@patternfly/react-core/dist/dynamic/components/Badge';
 import { MenuToggle } from '@patternfly/react-core/dist/dynamic/components/MenuToggle';
@@ -7,6 +8,7 @@ import { SelectOption } from '@patternfly/react-core/dist/dynamic/components/Sel
 import { SelectProps } from '@patternfly/react-core/dist/dynamic/components/Select';
 
 import { FilterItem, FilterValue, isFilterValue } from './TextFilter';
+import messages from '../messages';
 
 export type CheckboxFilterValue = undefined | string | number | boolean | FilterValue;
 
@@ -35,6 +37,8 @@ export interface CheckboxFilterProps {
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
 const CheckboxFilter = ({ items = [], value = [], onChange, isDisabled = false, ...props }: CheckboxFilterProps) => {
+  const intl = useIntlWithFallback();
+
   const { placeholder, className } = props;
   const [isExpanded, setExpanded] = useState(false);
 
@@ -53,7 +57,7 @@ const CheckboxFilter = ({ items = [], value = [], onChange, isDisabled = false, 
 
   const toggle: SelectProps['toggle'] = (toggleRef) => (
     <MenuToggle
-      aria-label="Options menu"
+      aria-label={intl.formatMessage(messages.checkboxFilterOptionsMenu)}
       isDisabled={isDisabled}
       onClick={() => setExpanded((prev) => !prev)}
       ref={toggleRef}
@@ -80,7 +84,7 @@ const CheckboxFilter = ({ items = [], value = [], onChange, isDisabled = false, 
       ouiaId={placeholder}
       popperProps={{ appendTo: 'inline' }}
     >
-      <SelectList aria-label="Options menu">
+      <SelectList aria-label={intl.formatMessage(messages.checkboxFilterOptionsMenu)}>
         {items.map(({ value: optionValue, onClick, label, id, onChange: _onChange, isChecked: _isChecked, ...item }, key) => (
           <SelectOption
             hasCheckbox

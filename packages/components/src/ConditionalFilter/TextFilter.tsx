@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { FormEvent, Fragment, MouseEventHandler, ReactNode } from 'react';
 import { Icon } from '@patternfly/react-core/dist/dynamic/components/Icon';
 import { TextInput } from '@patternfly/react-core/dist/dynamic/components/TextInput';
@@ -5,6 +6,7 @@ import { TextInputProps } from '@patternfly/react-core/dist/dynamic/components/T
 import SearchIcon from '@patternfly/react-icons/dist/dynamic/icons/search-icon';
 import './conditional-filter.scss';
 import classNames from 'classnames';
+import messages from '../messages';
 
 export function isFilterValue(item: undefined | string | number | boolean | FilterValue | Record<string, any>): item is FilterValue {
   return item !== null && typeof item === 'object';
@@ -46,6 +48,7 @@ export interface TextFilterProps extends Omit<TextInputProps, 'onChange'> {
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
 const TextFilter = ({ customIcon = <SearchIcon />, isDisabled = false, className, innerRef, ...props }: TextFilterProps) => {
+  const intl = useIntlWithFallback();
   return (
     <Fragment>
       <TextInput
@@ -56,7 +59,7 @@ const TextFilter = ({ customIcon = <SearchIcon />, isDisabled = false, className
           </Icon>
         }
         isDisabled={isDisabled}
-        aria-label={props['aria-label'] || 'text input'}
+        aria-label={props['aria-label'] || intl.formatMessage(messages.textFilterInput)}
         className={classNames('ins-c-conditional-filter', className)}
         data-ouia-component-type="PF5/TextInput"
         onKeyDown={(e) => e.key === 'Enter' && props?.onSubmit?.(e)}

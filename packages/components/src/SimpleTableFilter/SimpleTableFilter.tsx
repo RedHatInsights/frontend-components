@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { useState } from 'react';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
 import { ButtonVariant } from '@patternfly/react-core/dist/dynamic/components/Button';
@@ -10,6 +11,7 @@ import { TextInputProps } from '@patternfly/react-core/dist/dynamic/components/T
 
 import SearchIcon from '@patternfly/react-icons/dist/dynamic/icons/search-icon';
 import './simple-table-filter.scss';
+import messages from '../messages';
 
 export type SimpleFilterOptionItem = {
   value: string;
@@ -35,14 +37,18 @@ export interface SimpleFilterProps extends React.DetailedHTMLProps<React.HTMLAtt
 const SimpleFilter = ({
   options,
   className,
-  placeholder = 'Search items',
-  buttonTitle = 'Filter',
+  placeholder: placeholderProp,
+  buttonTitle: buttonTitleProp,
   onButtonClick,
   onFilterChange,
   onOptionSelect,
   searchIcon = true,
   ...props
 }: SimpleFilterProps) => {
+  const intl = useIntlWithFallback();
+  const placeholder = placeholderProp === undefined ? intl.formatMessage(messages.simpleTableFilterPlaceholder) : placeholderProp;
+  const buttonTitle = buttonTitleProp === undefined ? intl.formatMessage(messages.simpleTableFilterButtonTitle) : buttonTitleProp;
+
   const [activeFilter, setActiveFilter] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<undefined | SimpleFilterOptionItem>();
@@ -96,7 +102,7 @@ const SimpleFilter = ({
             onInputChange(e, (e.target as HTMLInputElement).value);
           }
         }}
-        aria-label="simple-table-filter"
+        aria-label={intl.formatMessage(messages.simpleTableFilterSimpleTableFilter)}
         placeholder={placeholder}
         onChange={onInputChange}
         {...(!buttonTitle && searchIcon && { customIcon: <SearchIcon className="ins-c-search-icon" /> })}

@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import { Dropdown } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
 import { DropdownItem } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
 import { DropdownList } from '@patternfly/react-core/dist/dynamic/components/Dropdown';
@@ -8,6 +9,7 @@ import { Tooltip } from '@patternfly/react-core/dist/dynamic/components/Tooltip'
 import React, { useState } from 'react';
 
 import ExportIcon from '@patternfly/react-icons/dist/dynamic/icons/export-icon';
+import messages from '../messages';
 
 export interface DownloadButtonProps extends Omit<DropdownProps, 'onSelect' | 'toggle' | 'dropdownItems'> {
   /**
@@ -40,13 +42,18 @@ const DownloadButton = ({
   extraItems = [],
   onSelect = () => undefined,
   isDisabled,
-  tooltipText = 'Export data',
+  tooltipText: tooltipTextProp,
   itemTexts = {
     csv: undefined,
     json: undefined,
   },
   ...props
 }: DownloadButtonProps) => {
+  const intl = useIntlWithFallback();
+  const csvText = itemTexts.csv || intl.formatMessage(messages.downloadButtonExportCsv);
+  const jsonText = itemTexts.json || intl.formatMessage(messages.downloadButtonExportJson);
+  const tooltipText = tooltipTextProp === undefined ? intl.formatMessage(messages.downloadButtonTooltipText) : tooltipTextProp;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const internalOnSelect = () => setIsOpen((prev) => !prev);
@@ -64,7 +71,7 @@ const DownloadButton = ({
           onSelect={internalOnSelect}
           toggle={(toggleRef) => (
             <MenuToggle
-              aria-label="Export"
+              aria-label={intl.formatMessage(messages.downloadButtonExport)}
               variant="plain"
               ref={toggleRef}
               isExpanded={isOpen}
@@ -83,19 +90,19 @@ const DownloadButton = ({
               component="button"
               onClick={(event) => onSelect(event, 'csv')}
               isDisabled={isDisabled}
-              aria-label={itemTexts.csv || 'Export to CSV'}
+              aria-label={csvText}
             >
-              {itemTexts.csv || 'Export to CSV'}
+              {csvText}
             </DropdownItem>
             <DropdownItem
-              aria-label={itemTexts.json || 'Export to JSON'}
+              aria-label={jsonText}
               key="download-json"
               ouiaId="DownloadJSON"
               component="button"
               onClick={(event) => onSelect(event, 'json')}
               isDisabled={isDisabled}
             >
-              {itemTexts.json || 'Export to JSON'}
+              {jsonText}
             </DropdownItem>
             {extraItems}
           </DropdownList>

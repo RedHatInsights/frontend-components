@@ -1,14 +1,17 @@
+import { FormattedMessage } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React from 'react';
+import messages from '../messages';
 
 const DefaultErrorMessage = () => {
   const redirectLink = 'https://access.redhat.com/support';
   const statusLink = 'https://status.redhat.com';
 
   return (
-    <>
-      If the problem persists, contact <a href={redirectLink}>Red Hat Support</a> or check our <a href={statusLink}> status page</a> for known
-      outages.
-    </>
+    <FormattedMessage
+      {...messages.defaultErrorMessageSupport}
+
+      values={{ support: (chunks) => <a href={redirectLink}>{chunks}</a>, status: (chunks) => <a href={statusLink}>{chunks}</a> }}
+    />
   );
 };
 

@@ -1,8 +1,10 @@
+import { FormattedMessage, useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { SetStateAction, useEffect, useState } from 'react';
 import { constructGroups, mapGroups } from './constants';
 import { Spinner } from '@patternfly/react-core/dist/dynamic/components/Spinner';
 import './tagFilterHook.scss';
 import { AllTag, FilterHookGroupItem, GroupValue } from './constants';
+import messages from '../messages';
 
 export const tagsFilterState = { tagsFilter: {} };
 export const TAGS_FILTER = 'TAGS_FILTER';
@@ -38,9 +40,10 @@ export const useTagsFilter: UseTagsFilter = (
   onShowMoreClick,
   // @ts-ignore
   [globalState, dispatch] = [tagsFilterState],
-  itemText = 'item',
+  itemText,
   showMoreTitle,
 ) => {
+  const intl = useIntlWithFallback();
   const [state, setState] = useState<{
     allTags: AllTag[];
     loaded: boolean;
@@ -87,7 +90,7 @@ export const useTagsFilter: UseTagsFilter = (
     selected: selectedTags,
     ...(additionalTagsCount && {
       onShowMore: (...props: any[]) => onShowMoreClick && onShowMoreClick(...props),
-      showMoreTitle: showMoreTitle || `${state.additionalTagsCount} more tags available`,
+      showMoreTitle: showMoreTitle || intl.formatMessage(messages.tagFilterMoreTags, { count: state.additionalTagsCount }),
     }),
     ...(loaded && allTags.length > 0
       ? {
@@ -104,7 +107,10 @@ export const useTagsFilter: UseTagsFilter = (
                   <Spinner size="md" />{' '}
                 </span>
               ) : (
-                <div className="ins-c-tagfilter__no-tags"> No tags available </div>
+                <div className="ins-c-tagfilter__no-tags">
+                  {' '}
+                  <FormattedMessage {...messages.tagFilterHookNoTagsAvailable} />{' '}
+                </div>
               ),
               isDisabled: true,
               className: 'ins-c-tagfilter__tail',

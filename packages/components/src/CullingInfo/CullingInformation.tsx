@@ -1,4 +1,6 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React from 'react';
+
 import ExclamationCircleIcon from '@patternfly/react-icons/dist/dynamic/icons/exclamation-circle-icon';
 import ExclamationTriangleIcon from '@patternfly/react-icons/dist/dynamic/icons/exclamation-triangle-icon';
 import { Tooltip } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
@@ -28,6 +30,7 @@ const CullingInformation = ({
   render,
   ...props
 }: CullingInformation) => {
+  const intl = useIntlWithFallback();
   if (new Date(currDate).valueOf() - new Date(stale).valueOf() < 0) {
     return render
       ? render({
@@ -36,7 +39,7 @@ const CullingInformation = ({
       : children || null;
   }
 
-  const { isWarn, isError, msg }: CullingInfo = calculateTooltip(culled, staleWarning, currDate);
+  const { isWarn, isError, msg }: CullingInfo = calculateTooltip(culled, staleWarning, currDate, intl);
   if (render) {
     return (
       <span
