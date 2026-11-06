@@ -112,6 +112,7 @@
   },
   "scripts": {
     "nx": "nx",
+    "translations:extract": "npm run extract --workspace=@redhat-cloud-services/frontend-components-translations",
     "build": "nx run-many --target=build --exclude=demo --output-style=stream",
     "check-circular-imports": "nx run-many -t check-circular-imports --exclude=demo --output-style=stream",
     "lint": "nx run-many -t lint --exclude={{name}} --output-style=stream",

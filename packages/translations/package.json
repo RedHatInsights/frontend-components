@@ -9,7 +9,7 @@
     "access": "public"
   },
   "scripts": {
-    "extract": "formatjs extract -- \"src/**/*.{js,jsx}\" --out-file build/messages/src/messages.json"
+    "extract": "formatjs extract \"../../packages/*/src/**/*.{js,jsx,ts,tsx}\" --ignore \"../../packages/*/src/**/*.{test,spec,stories}.{js,jsx,ts,tsx}\" \"../../packages/*/src/**/{__tests__,__mocks__,__fixtures__,fixtures,TestingUtils}/**/*\" \"../../packages/*/src/**/*.d.ts\" \"../../packages/*/src/**/test-setup.{js,jsx,ts,tsx}\" --throws --out-file ../../i18n/translation-template.json"
   },
   "repository": {
     "type": "git",
