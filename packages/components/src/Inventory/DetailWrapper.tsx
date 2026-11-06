@@ -1,3 +1,4 @@
+import { FormattedMessage } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { type JSX, Suspense } from 'react';
 import { ScalprumComponent, ScalprumComponentProps } from '@scalprum/react-core';
 import { useStore } from 'react-redux';
@@ -7,6 +8,7 @@ import InventoryLoadError from './InventoryLoadError';
 import classNames from 'classnames';
 import WithHistory from './WithHistory';
 import { History } from 'history';
+import messages from '../messages';
 
 interface BaseDetailWrapperProps extends Record<string, unknown> {
   fallback?: React.ReactNode;
@@ -19,7 +21,7 @@ interface BaseDetailWrapperProps extends Record<string, unknown> {
 const BaseDetailWrapper = ({
   fallback = (
     <Bullseye className="pf-v6-u-p-lg">
-      <Spinner size="xl" aria-label="Loading" />
+      <FormattedMessage {...messages.detailWrapperLoading}>{(chunks) => <Spinner size="xl" aria-label={chunks.join('')} />}</FormattedMessage>
     </Bullseye>
   ),
   component = 'section',

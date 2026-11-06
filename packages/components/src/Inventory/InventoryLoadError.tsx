@@ -1,4 +1,6 @@
+import { FormattedMessage } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { useEffect } from 'react';
+import messages from '../messages';
 
 export interface InventoryLoadErrorProps {
   component?: string;
@@ -10,9 +12,15 @@ const InventoryLoadError = ({ component, ...props }: InventoryLoadErrorProps) =>
   }, []);
   return (
     <div>
-      <h1>Unable to load inventory component</h1>
-      <h2>Failed to load {component}</h2>
-      <code>More info can be found in browser console output.</code>
+      <h1>
+        <FormattedMessage {...messages.inventoryLoadErrorUnableToLoadInventoryComponent} />
+      </h1>
+      <h2>
+        <FormattedMessage {...messages.inventoryLoadErrorFailedToLoad} values={{ component }} />
+      </h2>
+      <code>
+        <FormattedMessage {...messages.inventoryLoadErrorMoreInfoCanBeFoundInBrowserConsoleOutput} />
+      </code>
     </div>
   );
 };

@@ -1,7 +1,9 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React from 'react';
 import { Badge, Button, Label, LabelGroup } from '@patternfly/react-core';
 import classNames from 'classnames';
 import './filter-chips.scss';
+import messages from '../messages';
 
 export type FilterChip = {
   id?: string;
@@ -39,10 +41,13 @@ const FilterChips = ({
   className,
   filters = [],
   onDelete = () => undefined,
-  deleteTitle = 'Clear filters',
+  deleteTitle: deleteTitleProp,
   showDeleteButton,
   onDeleteGroup,
 }: FilterChipsProps) => {
+  const intl = useIntlWithFallback();
+  const deleteTitle = deleteTitleProp === undefined ? intl.formatMessage(messages.filterChipsDeleteTitle) : deleteTitleProp;
+
   const groups: FilterChipGroup[] = filters.filter(isFilterChipGroup);
   const groupedFilters = groups.map((group, groupKey) => (
     <LabelGroup

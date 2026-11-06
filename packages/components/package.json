@@ -25,8 +25,8 @@
   "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/components#readme",
   "peerDependencies": {
     "@patternfly/react-core": "^6.7.0",
-    "@patternfly/react-icons": "^6.7.0",
     "@patternfly/react-data-view": "^6.7.0",
+    "@patternfly/react-icons": "^6.7.0",
     "@patternfly/react-table": "^6.7.0",
     "@patternfly/react-tokens": "^6.7.0",
     "@scalprum/react-core": "^0.14.1",
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@patternfly/react-component-groups": "^6.7.0",
+    "@redhat-cloud-services/frontend-components-translations": "^4.5.14",
     "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
     "@redhat-cloud-services/types": "^3.0.0",
     "classnames": "^2.5.1",

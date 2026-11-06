@@ -22,7 +22,8 @@
     },
     "test:unit": {
       "dependsOn": ["^test:unit"],
-      "cache": true
+      "cache": true,
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js", "{workspaceRoot}/config/setupTests.js"]
     },
     "test:component": {
       "dependsOn": ["^test:component"],

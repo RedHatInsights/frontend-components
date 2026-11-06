@@ -1,4 +1,6 @@
+import { IntlContext, getIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { Component } from 'react';
+
 import PropTypes from 'prop-types';
 import { sortable } from '@patternfly/react-table';
 // FIXME: Deal with table later
@@ -17,8 +19,10 @@ import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 import { calculateActiveFilters, calculateMeta, createRows } from './helpers';
 import './index.scss';
+import messages from '../messages';
 
 class RuleTable extends Component {
+  static contextType = IntlContext;
   state = {
     filterValues: {},
     expanded: [],
@@ -123,21 +127,22 @@ class RuleTable extends Component {
   };
 
   render() {
+    const intl = getIntlWithFallback(this.context);
     const {
       rules,
       filters,
       columns,
       detail,
       actions,
-      ariaLabel,
+      ariaLabel = intl.formatMessage(messages.ruleTableAriaLabel),
       fetchData,
       isLoading,
       sortBy,
       toolbarProps,
       filterValues: _filterValues,
       loadingBars,
-      emptyStateTitle,
-      emptyStateDescription,
+      emptyStateTitle = intl.formatMessage(messages.ruleTableNoResults),
+      emptyStateDescription = intl.formatMessage(messages.ruleTableNoResultsDescription),
       emptyStateIcon,
       ...props
     } = this.props;
@@ -152,6 +157,7 @@ class RuleTable extends Component {
     };
     const filterItems = Object.entries(filters).map(([key, filter]) => ({
       ...filter({
+        intl,
         onChange: (...props) => this.onFilterChange(key, ...props),
         value: filterValues[key],
         filterKey: key,
@@ -284,15 +290,12 @@ RuleTable.defaultProps = {
     data: [],
   },
   columns: [],
-  ariaLabel: 'Rules table',
   isLoading: false,
   sortBy: {},
   filters: {},
   filterValues: {},
   fetchData: () => undefined,
   loadingBars: 5,
-  emptyStateTitle: 'No results found',
-  emptyStateDescription: 'No results match the filter criteria. Remove all filters or clear all filters to show results.',
   emptyStateIcon: SearchIcon,
 };
 

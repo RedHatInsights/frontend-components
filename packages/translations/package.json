@@ -27,9 +27,6 @@
     "react-dom": "^18.3.1",
     "react-intl": "^6.8.9"
   },
-  "optionalDependencies": {
-    "@redhat-cloud-services/frontend-components-utilities": "^7.0.0"
-  },
   "devDependencies": {
     "@formatjs/cli": "^6.16.35"
   }

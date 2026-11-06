@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { useState } from 'react';
 import { MenuToggle } from '@patternfly/react-core/dist/dynamic/components/MenuToggle';
 import { Radio } from '@patternfly/react-core/dist/dynamic/components/Radio';
@@ -6,6 +7,7 @@ import { SelectList } from '@patternfly/react-core/dist/dynamic/components/Selec
 import { SelectOption } from '@patternfly/react-core/dist/dynamic/components/Select';
 
 import { FilterItem, FilterValue, isFilterValue } from './TextFilter';
+import messages from '../messages';
 
 export interface RadioFilterProps {
   /** Optional className. */
@@ -34,6 +36,8 @@ export interface RadioFilterProps {
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
 const RadioFilter = ({ items = [], onChange = () => undefined, isDisabled = false, ...props }: RadioFilterProps) => {
+  const intl = useIntlWithFallback();
+
   const { placeholder, className, value } = props;
   const [isExpanded, setExpanded] = useState(false);
 
@@ -51,10 +55,10 @@ const RadioFilter = ({ items = [], onChange = () => undefined, isDisabled = fals
   return (
     <Select
       className={className}
-      aria-label="Select Input"
+      aria-label={intl.formatMessage(messages.radioFilterSelectInput)}
       toggle={(menuRef) => (
         <MenuToggle
-          aria-label="Options menu"
+          aria-label={intl.formatMessage(messages.radioFilterOptionsMenu)}
           isExpanded={isExpanded}
           onClick={() => setExpanded((prev) => !prev)}
           isDisabled={isDisabled}
@@ -70,7 +74,7 @@ const RadioFilter = ({ items = [], onChange = () => undefined, isDisabled = fals
       ouiaId={placeholder}
       popperProps={{ appendTo: 'inline' }}
     >
-      <SelectList aria-label="Options menu">
+      <SelectList aria-label={intl.formatMessage(messages.radioFilterOptionsMenu)}>
         {items.map(({ value, isChecked, onChange, label, id, ...item }, key) => (
           <SelectOption {...item} key={id || key} value={value || '' + key}>
             <Radio

@@ -1,4 +1,6 @@
+import { FormattedMessage } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { useEffect } from 'react';
+import messages from '../messages';
 
 export interface RemediationLoadErrorProps {
   component?: string;
@@ -10,9 +12,15 @@ const RemediationLoadError = ({ component, ...props }: RemediationLoadErrorProps
   }, [component, props]);
   return (
     <div>
-      <h1>Unable to load remediations component</h1>
-      <h2>Failed to load {component}</h2>
-      <code>More info can be found in browser console output.</code>
+      <h1>
+        <FormattedMessage {...messages.remediationLoadErrorUnableToLoadRemediationsComponent} />
+      </h1>
+      <h2>
+        <FormattedMessage {...messages.remediationLoadErrorFailedToLoad} values={{ component }} />
+      </h2>
+      <code>
+        <FormattedMessage {...messages.remediationLoadErrorMoreInfoCanBeFoundInBrowserConsoleOutput} />
+      </code>
     </div>
   );
 };
