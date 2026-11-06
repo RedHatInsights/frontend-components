@@ -5,6 +5,7 @@ on:
   pull_request:
     branches:
       - master
+      - localization-runtime
     types: [opened, edited, reopened, synchronize]
 
 concurrency:
@@ -27,4 +28,10 @@ jobs:
         shell: bash
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
-        run: echo "$PR_TITLE" | npx commitlint --verbose
+        run: |
+          title="$PR_TITLE"
+          jira_prefix='^\[[A-Z][A-Z0-9]*-[0-9]+\][[:blank:]]+(.+)$'
+          while [[ "$title" =~ $jira_prefix ]]; do
+            title="${BASH_REMATCH[1]}"
+          done
+          printf '%s\n' "$title" | npx commitlint --verbose
