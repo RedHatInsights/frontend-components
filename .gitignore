@@ -38,9 +38,6 @@ packages/**/.cache
 # Ibutsu test reports
 ibutsu-report
 
-# Generated runtime catalog (rebuilt from locale files by Nx)
-/packages/translations/src/generated/
-
 # nx cache
 /.nx
 

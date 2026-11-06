@@ -5,9 +5,11 @@ This package is for setting [react-intl](https://www.npmjs.com/package/react-int
 
 ## Runtime catalogs
 
-`locales/translations.json` supplies English defaults. Delivered `locales/<locale>.json` files are aggregated automatically before this package's Nx build and unit tests. The generated `src/generated/data.json` is not committed; missing target files are allowed until delivery. Both `IntlProvider` and the `translatedMessages` export use this generated catalog.
+`IntlProvider` dynamically imports only the selected locale's catalog using the explicit registry in `src/messageCatalogs.js`, like widget-layout. `locales/translations.json` supplies English; real Phrase deliveries supply `locales/fr.json`, `ko.json`, `ja.json`, and `zh-CN.json`. Existing package assets copy individual files into both CJS and ESM builds. Compiler settings preserve native `import()` in both formats so bundlers can split locale chunks. No aggregate or generation prerequisite is needed.
 
-For source-based development outside those Nx targets, run `npm run translations:aggregate` before importing the package. Locale selection preserves regional formatting, tries exact catalog matches before base-language matches, and falls back to English defaults for missing bundled messages. Caller-provided messages still override bundled messages.
+English defaults remain visible while loading, if a delivery is absent, or if loading fails. Locale selection preserves regional formatting and tries exact catalog matches before base-language matches. Obsolete requests cannot overwrite a newly selected language. Caller-provided messages override loaded catalogs immediately and after loading.
+
+The legacy synchronous `translatedMessages/translatedMessages` deep export is removed. Use `IntlProvider` for lazy bundled catalogs, or continue passing your own flat or locale-keyed messages through its `messages` prop.
 
 ## Usage
 

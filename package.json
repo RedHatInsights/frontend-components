@@ -112,7 +112,6 @@
   },
   "scripts": {
     "nx": "nx",
-    "translations:aggregate": "node packages/translations/generate-runtime-catalog.cjs",
     "build": "nx run-many --target=build --exclude=demo --output-style=stream",
     "check-circular-imports": "nx run-many -t check-circular-imports --exclude=demo --output-style=stream",
     "lint": "nx run-many -t lint --exclude={{name}} --output-style=stream",

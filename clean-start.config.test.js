@@ -2,14 +2,11 @@ const { execFileSync } = require('node:child_process');
 
 const consumers = ['components', 'advisor-components', 'notifications', 'remediations', 'rule-components', 'utils'];
 
-// Exercise the installed TypeScript resolver and Nx task scheduler, not regexes
-// over configuration. Model CI's independent jobs: no package build artifacts.
+// Exercise the installed TypeScript resolver, not regexes over configuration.
+// Model CI's independent jobs: no package build artifacts.
 const probe = `
 const path = require('node:path');
 const ts = require('typescript');
-const { createProjectGraphAsync } = require('@nx/devkit');
-const nxRoot = path.dirname(require.resolve('nx/package.json'));
-const { createTaskGraph } = require(path.join(nxRoot, 'dist/src/tasks-runner/create-task-graph'));
 const root = process.cwd();
 const dist = path.join(root, 'dist') + path.sep;
 const host = { ...ts.sys, fileExists: file => !path.resolve(file).startsWith(dist) && ts.sys.fileExists(file) };
@@ -28,26 +25,26 @@ const modules = Object.fromEntries(${JSON.stringify(consumers)}.map(folder => {
     return resolved ? path.relative(root, resolved.resolvedFileName).replaceAll(path.sep, '/') : null;
   })];
 }));
-(async () => {
-  const project = '@redhat-cloud-services/frontend-components';
-  const generator = '@redhat-cloud-services/frontend-components-translations:generate:locales';
-  const graph = await createProjectGraphAsync();
-  const defaults = Object.fromEntries(Object.entries(require('./nx.json').targetDefaults).map(([name, config]) => [name, config.dependsOn || []]));
-  const targets = {};
-  for (const target of ['storybook', 'build-storybook', 'test:storybook', 'test:component']) {
-    const tasks = createTaskGraph(graph, defaults, [project], [target], undefined, {});
-    const pending = [...(tasks.dependencies[project + ':' + target] || [])];
-    const visited = new Set();
-    while (pending.length) {
-      const id = pending.pop();
-      if (visited.has(id)) continue;
-      visited.add(id);
-      pending.push(...(tasks.dependencies[id] || []));
-    }
-    targets[target] = visited.has(generator);
+const fs = require('node:fs');
+const loader = path.join(root, 'packages/translations/src/messageCatalogs.js');
+const nativeImports = Object.fromEntries(['cjs', 'esm'].map(format => {
+  const configFile = path.join(root, 'packages/translations', 'tsconfig.' + format + '.json');
+  const config = ts.readConfigFile(configFile, ts.sys.readFile);
+  const parsed = ts.parseJsonConfigFileContent(config.config, ts.sys, path.dirname(configFile));
+  const emitted = ts.transpileModule(fs.readFileSync(loader, 'utf8'), { fileName: loader, compilerOptions: parsed.options });
+  const source = ts.createSourceFile('messageCatalogs.js', emitted.outputText, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
+  let count = 0;
+  function visit(node) {
+    if (ts.isCallExpression(node) && node.expression.kind === ts.SyntaxKind.ImportKeyword) count++;
+    ts.forEachChild(node, visit);
   }
-  process.stdout.write(JSON.stringify({ modules, targets }), () => process.exit(0));
-})().catch(error => { console.error(error); process.exit(1); });
+  visit(source);
+  return [format, count];
+}));
+const nxRoot = path.dirname(require.resolve('nx/package.json'));
+const { getTargetInputs } = require(path.join(nxRoot, 'dist/src/hasher/task-hasher'));
+const componentInputs = getTargetInputs(require('./nx.json'), { data: require('./packages/components/project.json') }, 'test:component');
+process.stdout.write(JSON.stringify({ modules, nativeImports, componentInputs }));
 `;
 
 describe('localization consumers from a clean checkout', () => {
@@ -72,10 +69,12 @@ describe('localization consumers from a clean checkout', () => {
     expect(result.modules[folder][index]).toBe(`packages/translations/src/${file}`);
   });
 
-  it.each(['storybook', 'build-storybook', 'test:storybook', 'test:component'])(
-    '%s generates locale data before consuming provider source',
-    (target) => {
-      expect(result.targets[target]).toBe(true);
-    },
-  );
+  it.each(['cjs', 'esm'])('preserves native lazy imports in the %s build instead of synchronous require contexts', (format) => {
+    expect(result.nativeImports[format]).toBe(1);
+  });
+
+  it('hashes locale deliveries and dependency source directly without a generation task', () => {
+    expect(result.componentInputs.selfInputs).toContain('{workspaceRoot}/locales/*.json');
+    expect(result.componentInputs.dependencyInputs).toContain('{projectRoot}/**/*');
+  });
 });
