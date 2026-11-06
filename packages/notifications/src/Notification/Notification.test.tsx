@@ -2,6 +2,7 @@ import { act, render, screen } from '@testing-library/react';
 import Notification, { NotificationProps } from './Notification';
 import { AlertVariant } from '@patternfly/react-core/dist/dynamic/components/Alert';
 import userEvent from '@testing-library/user-event';
+import { IntlProvider } from 'react-intl';
 
 describe('Notification component', () => {
   let initialProps: NotificationProps;
@@ -30,6 +31,7 @@ describe('Notification component', () => {
 
   it('should render correctly with sentryId', () => {
     const { container } = render(<Notification {...initialProps} sentryId={'some-UUID'} />);
+    expect(screen.getByText('Tracking Id: some-UUID')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 
@@ -113,5 +115,21 @@ describe('Notification component', () => {
     // "unhover" is calling setTimeout twice. Introduced on @patternfly/react-core" 6.2.2, through the add animation feature: https://github.com/patternfly/patternfly-react/commit/74dd258abb9f329dc2fc3fcaaa6fc4de460fc088
     expect(timeoutSpy).toHaveBeenCalledTimes(4);
     timeoutSpy.mockRestore();
+  });
+
+  it('localizes whole identification messages without changing opaque IDs', () => {
+    render(
+      <IntlProvider
+        locale="fr"
+        messages={{
+          'notifications.notification.trackingId': '{id} [tracking]',
+          'notifications.notification.requestId': '[request] {id}',
+        }}
+      >
+        <Notification {...initialProps} sentryId="000123" requestId="000456" />
+      </IntlProvider>,
+    );
+    expect(screen.getByText('000123 [tracking]')).toBeInTheDocument();
+    expect(screen.getByText('[request] 000456')).toBeInTheDocument();
   });
 });
