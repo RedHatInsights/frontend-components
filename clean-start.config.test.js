@@ -26,13 +26,13 @@ const modules = Object.fromEntries(${JSON.stringify(consumers)}.map(folder => {
   })];
 }));
 const fs = require('node:fs');
-const loader = path.join(root, 'packages/translations/src/messageCatalogs.js');
+const loader = path.join(root, 'packages/translations/src/loadMessages.js');
 const nativeImports = Object.fromEntries(['cjs', 'esm'].map(format => {
   const configFile = path.join(root, 'packages/translations', 'tsconfig.' + format + '.json');
   const config = ts.readConfigFile(configFile, ts.sys.readFile);
   const parsed = ts.parseJsonConfigFileContent(config.config, ts.sys, path.dirname(configFile));
   const emitted = ts.transpileModule(fs.readFileSync(loader, 'utf8'), { fileName: loader, compilerOptions: parsed.options });
-  const source = ts.createSourceFile('messageCatalogs.js', emitted.outputText, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
+  const source = ts.createSourceFile('loadMessages.js', emitted.outputText, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
   let count = 0;
   function visit(node) {
     if (ts.isCallExpression(node) && node.expression.kind === ts.SyntaxKind.ImportKeyword) count++;

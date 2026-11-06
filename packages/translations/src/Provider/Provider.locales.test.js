@@ -2,9 +2,16 @@ import React from 'react';
 import { act, render, waitFor } from '@testing-library/react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import IntlProvider from './Provider';
-import { messageCatalogs } from '../messageCatalogs';
+import { loadMessages } from '../loadMessages';
 
-jest.mock('../messageCatalogs', () => ({ messageCatalogs: { en: jest.fn(), fr: jest.fn(), 'zh-CN': jest.fn() } }));
+jest.mock('../loadMessages', () => ({ loadMessages: jest.fn() }));
+
+// Stand-in for the loader contract (exact tag, then base language; English loads nothing).
+const catalogs = { fr: { 'default.save': 'Enregistrer' }, 'zh-CN': { 'default.save': '保存' } };
+const deliver = async (locale) => {
+  const [canonical] = Intl.getCanonicalLocales(locale);
+  return catalogs[canonical] ?? catalogs[canonical.split('-')[0]];
+};
 
 const CurrentLocale = () => <span>{useIntl().locale}</span>;
 const renderSave = (props = {}) =>
@@ -26,9 +33,7 @@ describe('provider locale resolution', () => {
   beforeEach(() => {
     localStorage.clear();
     jest.spyOn(navigator, 'language', 'get').mockReturnValue('en-US');
-    messageCatalogs.en.mockReset().mockResolvedValue({ default: { 'default.save': 'Save' } });
-    messageCatalogs.fr.mockReset().mockResolvedValue({ default: { 'default.save': 'Enregistrer' } });
-    messageCatalogs['zh-CN'].mockReset().mockResolvedValue({ default: { 'default.save': '保存' } });
+    loadMessages.mockReset().mockImplementation(deliver);
   });
   afterEach(async () => {
     await settle();
@@ -36,13 +41,16 @@ describe('provider locale resolution', () => {
     jest.restoreAllMocks();
   });
 
-  test.each(['zh-CN', 'zh-cn', 'zh_CN'])('loads only exact Chinese catalog for browser locale %s', async (locale) => {
+  test.each([
+    ['zh-CN', 'zh-CN'],
+    ['zh-cn', 'zh-cn'],
+    ['zh_CN', 'zh-CN'],
+  ])('loads one catalog for browser locale %s', async (locale, requested) => {
     jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale);
     const { container } = renderSave();
     await waitFor(() => expect(container.textContent).toBe('保存'));
-    expect(messageCatalogs['zh-CN']).toHaveBeenCalledTimes(1);
-    expect(messageCatalogs.en).not.toHaveBeenCalled();
-    expect(messageCatalogs.fr).not.toHaveBeenCalled();
+    expect(loadMessages).toHaveBeenCalledTimes(1);
+    expect(loadMessages).toHaveBeenCalledWith(requested);
   });
   test('uses base catalog without discarding regional formatting locale', async () => {
     jest.spyOn(navigator, 'language', 'get').mockReturnValue('fr-CA');
@@ -58,16 +66,17 @@ describe('provider locale resolution', () => {
     localStorage.setItem('rhcs-language', 'fr');
     const { container } = renderSave({ locale: 'zh-CN' });
     await waitFor(() => expect(container.textContent).toBe('保存'));
-    expect(messageCatalogs.fr).not.toHaveBeenCalled();
+    expect(loadMessages).not.toHaveBeenCalledWith('fr');
   });
   test('stored locale overrides browser', async () => {
     localStorage.setItem('rhcs-language', 'zh-CN');
     const { container } = renderSave();
     await waitFor(() => expect(container.textContent).toBe('保存'));
   });
-  test('falls back to English without requesting an unsupported locale', () => {
-    expect(renderSave({ locale: 'de' }).container.textContent).toBe('Save');
-    for (const loader of Object.values(messageCatalogs)) expect(loader).not.toHaveBeenCalled();
+  test('falls back to English for a locale without a delivery', async () => {
+    const { container } = renderSave({ locale: 'de' });
+    await settle();
+    expect(container.textContent).toBe('Save');
   });
   test.each(['en-US', 'en-GB', 'en'])('renders %s source defaults without reporting missing translations', async (locale) => {
     jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale);
@@ -84,22 +93,22 @@ describe('provider locale resolution', () => {
   });
   test('shows English immediately while selected catalog loads', async () => {
     const pending = deferred();
-    messageCatalogs.fr.mockReturnValue(pending.promise);
+    loadMessages.mockReturnValueOnce(pending.promise);
     const { container } = renderSave({ locale: 'fr' });
     expect(container.textContent).toBe('Save');
-    await act(async () => pending.resolve({ default: { 'default.save': 'Enregistrer' } }));
+    await act(async () => pending.resolve({ 'default.save': 'Enregistrer' }));
     expect(container.textContent).toBe('Enregistrer');
   });
   test('falls back to English if a delivery is absent or fails to load', async () => {
-    messageCatalogs.fr.mockRejectedValue(new Error('missing locale chunk'));
+    loadMessages.mockResolvedValueOnce(undefined);
     const { container } = renderSave({ locale: 'fr' });
     await settle();
-    expect(messageCatalogs.fr).toHaveBeenCalledTimes(1);
+    expect(loadMessages).toHaveBeenCalledTimes(1);
     expect(container.textContent).toBe('Save');
   });
   test('ignores an obsolete request after switching locales', async () => {
     const pending = deferred();
-    messageCatalogs.fr.mockReturnValue(pending.promise);
+    loadMessages.mockReturnValueOnce(pending.promise);
     const { container, rerender } = renderSave({ locale: 'fr' });
     rerender(
       <IntlProvider locale="zh-CN">
@@ -108,14 +117,14 @@ describe('provider locale resolution', () => {
       </IntlProvider>,
     );
     await waitFor(() => expect(container.textContent).toBe('保存zh-CN'));
-    await act(async () => pending.resolve({ default: { 'default.save': 'Enregistrer' } }));
+    await act(async () => pending.resolve({ 'default.save': 'Enregistrer' }));
     expect(container.textContent).toBe('保存zh-CN');
   });
   test('does not display old catalog under newly selected locale while loading', async () => {
     const { container, rerender } = renderSave({ locale: 'fr' });
     await waitFor(() => expect(container.textContent).toBe('Enregistrer'));
     const pending = deferred();
-    messageCatalogs['zh-CN'].mockReturnValue(pending.promise);
+    loadMessages.mockReturnValueOnce(pending.promise);
     rerender(
       <IntlProvider locale="zh-CN">
         <FormattedMessage id="default.save" />
@@ -123,7 +132,7 @@ describe('provider locale resolution', () => {
       </IntlProvider>,
     );
     expect(container.textContent).toBe('Savezh-CN');
-    await act(async () => pending.resolve({ default: { 'default.save': '保存' } }));
+    await act(async () => pending.resolve({ 'default.save': '保存' }));
     expect(container.textContent).toBe('保存zh-CN');
   });
   test('falls back to English for messages missing from a delivered catalog', async () => {
@@ -145,7 +154,7 @@ describe('provider locale resolution', () => {
     expect(container.textContent).toBe('0 items');
   });
   test('uses target-locale plural rules for a delivered message', async () => {
-    messageCatalogs.fr.mockResolvedValue({ default: { 'test.resultCount': '{count, plural, one {# élément} other {# éléments}}' } });
+    loadMessages.mockResolvedValueOnce({ 'test.resultCount': '{count, plural, one {# élément} other {# éléments}}' });
     const { container } = render(
       <IntlProvider locale="fr" onError={() => {}}>
         <FormattedMessage id="test.resultCount" defaultMessage="{count, plural, one {# item} other {# items}}" values={{ count: 0 }} />
@@ -163,7 +172,7 @@ describe('provider locale resolution', () => {
     const { container } = renderSave({ locale: 'fr-CA', messages });
     expect(container.textContent).toBe(expected);
     await settle();
-    expect(messageCatalogs.fr).toHaveBeenCalledTimes(1);
+    expect(loadMessages).toHaveBeenCalledTimes(1);
     expect(container.textContent).toBe(expected);
   });
 });

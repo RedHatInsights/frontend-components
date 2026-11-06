@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { IntlProvider as ReactIntlProvider } from 'react-intl';
 import { LOCALSTORAGE_KEY } from '../utils';
 import defaultMessages from '../messages';
-import { messageCatalogs } from '../messageCatalogs';
+import { loadMessages } from '../loadMessages';
 
 // Retain the original ID-only API. New library UI descriptors supply their own
 // English defaultMessage, so fallback plurals use defaultLocale, not the target locale.
@@ -29,24 +29,17 @@ const getLocaleMessages = (catalogs, locale) => {
 
 const IntlProvider = ({ locale = null, messages, ...props }) => {
   const language = (locale || localStorage.getItem(LOCALSTORAGE_KEY) || navigator.language || 'en').replace(/_/g, '-');
-  const catalogLocale = getLocaleKey(messageCatalogs, language);
   const [loaded, setLoaded] = useState({});
 
   useEffect(() => {
-    if (!catalogLocale) return;
     let cancelled = false;
-    messageCatalogs[catalogLocale]().then(
-      (module) => {
-        if (!cancelled) setLoaded({ locale: catalogLocale, messages: module.default });
-      },
-      () => {
-        if (!cancelled) setLoaded({ locale: catalogLocale });
-      },
-    );
+    loadMessages(language).then((catalog) => {
+      if (!cancelled) setLoaded({ language, messages: catalog });
+    });
     return () => {
       cancelled = true;
     };
-  }, [catalogLocale]);
+  }, [language]);
 
   return (
     <ReactIntlProvider
@@ -56,7 +49,7 @@ const IntlProvider = ({ locale = null, messages, ...props }) => {
       defaultLocale={isEnglish(language) ? language : 'en'}
       messages={{
         ...legacyEnglishMessages,
-        ...(loaded.locale === catalogLocale ? loaded.messages : undefined),
+        ...(loaded.language === language ? loaded.messages : undefined),
         ...(getLocaleMessages(messages, language) || messages),
       }}
       {...props}
