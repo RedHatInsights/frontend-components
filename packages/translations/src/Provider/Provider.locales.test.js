@@ -5,7 +5,7 @@ import IntlProvider from './Provider';
 import { translatedMessages } from '../translatedMessages/translatedMessages';
 
 jest.mock('../generated/data.json', () => ({
-  en: { 'default.save': 'Save', 'default.cancel': 'Cancel' },
+  en: { 'default.save': 'Save', 'default.cancel': 'Cancel', 'test.resultCount': '{count, plural, one {# item} other {# items}}' },
   fr: { 'default.save': 'Enregistrer' },
   'zh-CN': { 'default.save': '保存' },
 }));
@@ -67,6 +67,24 @@ describe('provider locale resolution', () => {
       </IntlProvider>,
     );
     expect(container.textContent).toBe('Cancel');
+  });
+
+  test('uses English plural rules for a library descriptor missing from the selected catalog', () => {
+    const { container } = render(
+      <IntlProvider locale="fr" onError={() => {}}>
+        <FormattedMessage id="test.resultCount" defaultMessage="{count, plural, one {# item} other {# items}}" values={{ count: 0 }} />
+      </IntlProvider>,
+    );
+    expect(container.textContent).toBe('0 items');
+  });
+
+  test('still uses target-locale plural rules for a delivered message', () => {
+    const { container } = render(
+      <IntlProvider locale="fr" messages={{ 'test.resultCount': '{count, plural, one {# élément} other {# éléments}}' }}>
+        <FormattedMessage id="test.resultCount" defaultMessage="{count, plural, one {# item} other {# items}}" values={{ count: 0 }} />
+      </IntlProvider>,
+    );
+    expect(container.textContent).toBe('0 élément');
   });
 
   test('exact caller catalog overrides bundled messages', () => {

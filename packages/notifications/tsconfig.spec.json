@@ -5,6 +5,8 @@
     "module": "commonjs",
     "types": ["jest", "node", "@testing-library/jest-dom"],
     "paths": {
+      "@redhat-cloud-services/frontend-components-translations": ["packages/translations/src/index.js"],
+      "@redhat-cloud-services/frontend-components-translations/*": ["packages/translations/src/*"],
       "@redhat-cloud-services/frontend-components-utilities": ["packages/utils/src"],
       "@redhat-cloud-services/frontend-components-utilities/*": ["packages/utils/src/*"],
       "@redhat-cloud-services/frontend-components": ["packages/components/src"],

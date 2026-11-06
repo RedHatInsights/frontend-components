@@ -4,6 +4,11 @@
   "sourceRoot": "packages/components",
   "projectType": "library",
   "tags": ["scope:public"],
+  "release": {
+    "version": {
+      "preserveMatchingDependencyRanges": ["devDependencies", "peerDependencies", "optionalDependencies"]
+    }
+  },
   "targets": {
     "build:bundles:tsc": {
       "executor": "@nx/js:tsc",
@@ -70,6 +75,7 @@
       }
     },
     "test:component": {
+      "dependsOn": ["^test:component", { "projects": ["@redhat-cloud-services/frontend-components-translations"], "target": "generate:locales" }],
       "executor": "@nx/cypress:cypress",
       "options": {
         "cypressConfig": "packages/components/cypress.config.ts",
@@ -78,6 +84,7 @@
       }
     },
     "storybook": {
+      "dependsOn": [{ "projects": ["@redhat-cloud-services/frontend-components-translations"], "target": "generate:locales" }],
       "executor": "nx:run-commands",
       "options": {
         "command": "npx storybook dev -p 6006 --config-dir packages/components/.storybook",
@@ -85,6 +92,7 @@
       }
     },
     "build-storybook": {
+      "dependsOn": [{ "projects": ["@redhat-cloud-services/frontend-components-translations"], "target": "generate:locales" }],
       "executor": "nx:run-commands",
       "options": {
         "command": "npx storybook build --config-dir packages/components/.storybook -o storybook-static",
@@ -92,6 +100,7 @@
       }
     },
     "test:storybook": {
+      "dependsOn": [{ "projects": ["@redhat-cloud-services/frontend-components-translations"], "target": "generate:locales" }],
       "executor": "nx:run-commands",
       "options": {
         "command": "npx storybook build --config-dir packages/components/.storybook -o storybook-static && npx concurrently -k -s first -n 'server,test' 'npx http-server storybook-static -p 6007 -s' 'npx wait-on http://127.0.0.1:6007 && npx test-storybook --config-dir packages/components/.storybook --url http://127.0.0.1:6007'",

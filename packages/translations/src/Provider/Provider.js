@@ -4,6 +4,11 @@ import { IntlProvider as ReactIntlProvider } from 'react-intl';
 import { LOCALSTORAGE_KEY } from '../utils';
 import translatedMessages from '../generated/data.json';
 
+// Retain the original ID-only API. New library UI descriptors supply their own
+// English defaultMessage, so fallback plurals use defaultLocale, not the target locale.
+const legacyMessageIds = new Set(['default.cancel', 'default.save', 'default.delete', 'default.remove']);
+const legacyEnglishMessages = Object.fromEntries(Object.entries(translatedMessages.en || {}).filter(([id]) => legacyMessageIds.has(id)));
+
 const getLocaleMessages = (catalogs, locale) => {
   if (!catalogs) return undefined;
   const normalizedLocale = locale.toLowerCase();
@@ -21,7 +26,7 @@ const IntlProvider = ({ locale = null, messages, ...props }) => {
     <ReactIntlProvider
       locale={language}
       messages={{
-        ...translatedMessages.en,
+        ...legacyEnglishMessages,
         ...getLocaleMessages(translatedMessages, language),
         ...(getLocaleMessages(messages, language) || messages),
       }}
