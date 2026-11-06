@@ -2,7 +2,7 @@ import type { StorybookConfig } from '@storybook/react-webpack5';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { globSync } from 'glob';
-import { readFileSync, existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(currentDir, '../../..');
@@ -33,7 +33,7 @@ function importVariants(url: string) {
 }
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(ts|tsx)', '../../notifications/src/**/*.stories.@(ts|tsx)'],
+  stories: ['../src/**/*.stories.@(ts|tsx)', '../../notifications/src/**/*.stories.@(ts|tsx)', '../../../examples/demo/src/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-docs', '@storybook/addon-a11y', '@storybook/addon-webpack5-compiler-swc'],
   framework: '@storybook/react-webpack5',
   webpackFinal: async (config) => {
