@@ -9,6 +9,8 @@ import { messageCatalogs } from '../messageCatalogs';
 // English defaultMessage, so fallback plurals use defaultLocale, not the target locale.
 const legacyEnglishMessages = Object.fromEntries(Object.values(defaultMessages).map(({ id, defaultMessage }) => [id, defaultMessage]));
 
+const isEnglish = (language) => language.split('-')[0].toLowerCase() === 'en';
+
 const getLocaleKey = (catalogs, locale) => {
   if (!catalogs) return undefined;
   const normalizedLocale = locale.toLowerCase();
@@ -49,7 +51,9 @@ const IntlProvider = ({ locale = null, messages, ...props }) => {
   return (
     <ReactIntlProvider
       locale={language}
-      defaultLocale="en"
+      // An English variant (en-US, en-GB) is the source language: rendering defaultMessage
+      // is correct, not a missing translation, so it must not raise MISSING_TRANSLATION.
+      defaultLocale={isEnglish(language) ? language : 'en'}
       messages={{
         ...legacyEnglishMessages,
         ...(loaded.locale === catalogLocale ? loaded.messages : undefined),

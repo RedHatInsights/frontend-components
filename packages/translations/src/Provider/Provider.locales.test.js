@@ -69,6 +69,19 @@ describe('provider locale resolution', () => {
     expect(renderSave({ locale: 'de' }).container.textContent).toBe('Save');
     for (const loader of Object.values(messageCatalogs)) expect(loader).not.toHaveBeenCalled();
   });
+  test.each(['en-US', 'en-GB', 'en'])('renders %s source defaults without reporting missing translations', async (locale) => {
+    jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale);
+    const onError = jest.fn();
+    const { container } = render(
+      <IntlProvider onError={onError}>
+        <FormattedMessage id="test.libraryDefault" defaultMessage="{count, plural, one {# item} other {# items}}" values={{ count: 2 }} />
+        <CurrentLocale />
+      </IntlProvider>,
+    );
+    await settle();
+    expect(container.textContent).toBe(`2 items${locale}`);
+    expect(onError).not.toHaveBeenCalled();
+  });
   test('shows English immediately while selected catalog loads', async () => {
     const pending = deferred();
     messageCatalogs.fr.mockReturnValue(pending.promise);
