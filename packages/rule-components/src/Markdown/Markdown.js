@@ -1,9 +1,11 @@
+import { FormattedMessage } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React from 'react';
 import propTypes from 'prop-types';
 
 import doT from 'dot';
 import { marked } from 'marked';
 import sanitizeHtml from 'sanitize-html';
+import messages from '../messages';
 
 marked.Renderer.prototype.link = ({ href, text }) => {
   return `<a href="${href}" rel="noopener noreferrer" target="_blank" class="ins-c-rule__link-in-description">${text}</a>`;
@@ -51,7 +53,7 @@ const Markdown = ({ template, definitions }) => {
     return (
       <React.Fragment>
         {' '}
-        Ouch. We were unable to correctly render this text, instead please enjoy the raw data.
+        <FormattedMessage {...messages.markdownOuchWeWereUnableToCorrectlyRenderThisTextInsteadPleaseEnjoy} />
         <pre>
           <code>{template}</code>
         </pre>
