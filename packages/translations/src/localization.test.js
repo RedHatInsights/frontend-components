@@ -115,10 +115,12 @@ describe('library-owned catalogs', () => {
     expect(loaded).not.toBe(pending);
   });
 
-  test('preloads html lang without rendering', () => {
+  test('preloads requested console language independently of html lang without rendering', () => {
     const lang = document.documentElement.lang;
+    const consoleLanguage = document.documentElement.getAttribute('data-console-language');
     try {
-      document.documentElement.lang = 'fr';
+      document.documentElement.lang = 'en';
+      document.documentElement.setAttribute('data-console-language', 'fr');
       jest.isolateModules(() => {
         const loader = require('./loadMessages').loadMessages;
         require('./localization');
@@ -127,6 +129,8 @@ describe('library-owned catalogs', () => {
       });
     } finally {
       document.documentElement.lang = lang;
+      if (consoleLanguage === null) document.documentElement.removeAttribute('data-console-language');
+      else document.documentElement.setAttribute('data-console-language', consoleLanguage);
     }
   });
 });

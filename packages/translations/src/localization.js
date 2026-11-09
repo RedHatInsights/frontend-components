@@ -59,11 +59,11 @@ const requestCatalog = (key) => {
   });
 };
 
-// Chrome keeps <html lang> in sync with the console language. Start loading
-// while the app bundle starts up, so the catalog has usually arrived before the
-// first library component renders instead of flashing English first.
+// Chrome exposes the requested console language separately from <html lang>,
+// which describes its rendered text (possibly still English). Preload the
+// requested catalog while the app bundle starts up.
 if (typeof document !== 'undefined') {
-  requestCatalog(catalogLocale(document.documentElement?.lang || 'en'));
+  requestCatalog(catalogLocale(document.documentElement?.dataset.consoleLanguage || 'en'));
 }
 
 // One derived intl per provider intl and catalog state, shared by all

@@ -15,7 +15,7 @@ The legacy synchronous `translatedMessages/translatedMessages` deep export is re
 
 ## How library UI is translated
 
-Library components follow the nearest react-intl provider's locale and load their own catalog. No app wiring is needed. The app's provider messages override library strings; its formats, time zone and error handling remain in control. Chrome's `<html lang>` triggers an early preload when the library module starts.
+Library components follow the nearest react-intl provider's locale and load their own catalog. No app wiring is needed. The app's provider messages override library strings; its formats, time zone and error handling remain in control. Chrome's `data-console-language` attribute on `<html>` carries the requested locale and triggers an early preload when the library module starts. This is separate from `<html lang>`, which describes Chrome's rendered text and stays English when its catalog is unavailable.
 
 ### Limitations
 
