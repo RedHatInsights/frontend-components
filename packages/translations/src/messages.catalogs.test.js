@@ -1,4 +1,6 @@
-const { execFileSync } = require('node:child_process');
+const { execFileSync, spawnSync } = require('node:child_process');
+const fs = require('node:fs');
+const os = require('node:os');
 const path = require('node:path');
 const catalog = require('../../../i18n/translation-template.json');
 
@@ -28,6 +30,7 @@ function loadSource(file) {
   compiled.paths = Module._nodeModulePaths(path.dirname(file));
   const manifest = JSON.parse(fs.readFileSync(path.resolve(path.dirname(file), '../package.json'), 'utf8'));
   compiled.require = name => {
+    if (name.startsWith('.')) return loadSource(Module.createRequire(file).resolve(name));
     const dependency = name.startsWith('@') ? name.split('/').slice(0, 2).join('/') : name.split('/')[0];
     if (!['dependencies', 'peerDependencies', 'optionalDependencies'].some(field => manifest[field]?.[dependency])) {
       throw new Error(manifest.name + ' imports undeclared runtime dependency ' + dependency);
@@ -43,6 +46,36 @@ process.stdout.write(JSON.stringify(Object.values(loadSource(path.resolve(proces
 `;
 
 describe('package message descriptors', () => {
+  const loadFixture = (helper) => {
+    const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'descriptor-loader-'));
+    try {
+      fs.mkdirSync(path.join(directory, 'src'));
+      fs.writeFileSync(path.join(directory, 'package.json'), JSON.stringify({ name: 'descriptor-fixture', dependencies: {} }));
+      fs.writeFileSync(path.join(directory, 'src/messages.js'), "export { default } from './helper';");
+      fs.writeFileSync(path.join(directory, 'src/helper.js'), helper);
+      return spawnSync(process.execPath, ['-e', load, path.join(directory, 'src/messages.js')], {
+        cwd: path.resolve(__dirname, '../../..'),
+        encoding: 'utf8',
+        timeout: 30000,
+      });
+    } finally {
+      fs.rmSync(directory, { recursive: true, force: true });
+    }
+  };
+
+  test('compiles relative source helpers without treating them as dependencies', () => {
+    const result = loadFixture("export default { greeting: { id: 'fixture.greeting', defaultMessage: 'Hello' } };");
+    expect(result.stderr).toBe('');
+    expect(result.status).toBe(0);
+    expect(JSON.parse(result.stdout)).toEqual([{ id: 'fixture.greeting', defaultMessage: 'Hello' }]);
+  });
+
+  test('still rejects undeclared external dependencies inside relative helpers', () => {
+    const result = loadFixture("import { defineMessages } from 'react-intl'; export default defineMessages({});");
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain('descriptor-fixture imports undeclared runtime dependency react-intl');
+  });
+
   test.each(packages)('%s retains exact catalog IDs and English descriptors', (folder, prefix, extension) => {
     const root = path.resolve(__dirname, '../../..');
     const descriptors = JSON.parse(
