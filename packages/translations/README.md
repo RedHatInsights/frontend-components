@@ -13,6 +13,18 @@ The loader canonicalizes the locale (`zh-cn` → `zh-CN`, malformed tags are ign
 
 The legacy synchronous `translatedMessages/translatedMessages` deep export is removed. Use `IntlProvider` for lazy bundled catalogs, or continue passing your own flat or locale-keyed messages through its `messages` prop.
 
+## How library UI is translated
+
+Library components follow the nearest react-intl provider's locale and load their own catalog. No app wiring is needed. The app's provider messages override library strings; its formats, time zone and error handling remain in control. Chrome's `<html lang>` triggers an early preload when the library module starts.
+
+### Limitations
+
+- Non-hook helpers and filter factories (for example rule-components `totalRisk(intl)`) return English until their caller re-renders after the catalog arrives.
+- On a slow network, the first render can briefly show English.
+- Failed or undelivered catalogs are not retried until reload.
+- App tests rendering library components under a non-English provider trigger an async load, which can produce `act()` warnings once catalogs ship.
+- Never reuse a message ID when its meaning or placeholders change: an app can resolve a translations version newer than its components.
+
 ## Usage
 
 If you want to translate your app import `IntlProvider` and wrap your piece of app that you want to translate, this will usually be entire application.
