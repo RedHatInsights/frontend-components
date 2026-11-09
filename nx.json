@@ -9,7 +9,8 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "cache": true
+      "cache": true,
+      "inputs": ["default", "^default", "{workspaceRoot}/.npmignore"]
     },
     "test:ct": {
       "dependsOn": ["^test:ct"],
