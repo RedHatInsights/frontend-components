@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "tmsConfig": "i18n/phrase-tms.json",
+  "checks": [],
+  "generated": [
+    {
+      "path": "i18n/translation-template.json",
+      "adapter": "formatjs-json",
+      "locale": "en",
+      "role": "source",
+      "command": "npm",
+      "args": ["run", "extract", "--workspace=@redhat-cloud-services/frontend-components-translations", "--", "--out-file", "{output}"],
+      "updateCommand": "npm run translations:extract",
+      "strictStderrWarnings": true
+    }
+  ],
+  "catalogDirectories": [{ "path": "locales" }],
+  "sourceLint": {
+    "files": ["packages/*/src/**/!(*.test|*.spec|*.stories|*.d|test-setup).{js,jsx,ts,tsx}"],
+    "catalog": "i18n/translation-template.json"
+  }
+}

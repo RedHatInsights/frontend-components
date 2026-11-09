@@ -77,7 +77,15 @@
     },
     "test:unit": {
       "dependsOn": ["^test:unit"],
-      "inputs": ["default", "{workspaceRoot}/locales/*.json"],
+      "inputs": [
+        "default",
+        "{workspaceRoot}/locales/*.json",
+        "{workspaceRoot}/packages/*/src/**/*.{js,jsx,ts,tsx}",
+        "{workspaceRoot}/i18n/*.json",
+        "{workspaceRoot}/.github/workflows/locale-validation.yml",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/config/setupTests.js"
+      ],
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {

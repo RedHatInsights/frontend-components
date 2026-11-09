@@ -194,3 +194,44 @@ describe('commitlint scope-full-name-for-versioning', () => {
     });
   });
 });
+
+describe('Phrase delivery commit conventions', () => {
+  const nxRoot = require('path').dirname(require.resolve('nx/package.json'));
+  const { parseConventionalCommitsMessage } = require(`${nxRoot}/dist/src/command-line/release/utils/git`);
+  const { determineSemverChange, SemverSpecifierType } = require(`${nxRoot}/dist/src/command-line/release/utils/semver`);
+  const { DEFAULT_CONVENTIONAL_COMMITS_CONFIG } = require(`${nxRoot}/dist/src/command-line/release/config/conventional-commits`);
+  const releaseConfig = require('./nx.json').release.conventionalCommits;
+  const project = '@redhat-cloud-services/frontend-components-translations';
+  let resolvedConfig;
+
+  beforeAll(async () => {
+    const { default: load } = await import('@commitlint/load');
+    resolvedConfig = await load({}, { cwd: __dirname });
+  });
+
+  // These subjects are the delivery protocol emitted by i18n-tooling's Phrase workflow.
+  it.each([
+    'fix: update Phrase translations for i18n/phrase-batch-fr',
+    'fix(fr): update Phrase translations for i18n/translation-template.json',
+    'fix(zh-CN): update Phrase translations for i18n/translation-template.json',
+  ])('accepts and patch-versions %s', async (message) => {
+    const result = await lint(message, resolvedConfig.rules, {
+      plugins: resolvedConfig.plugins,
+      parserOpts: resolvedConfig.parserPreset?.parserOpts,
+    });
+    expect(result.errors).toEqual([]);
+    expect(result.valid).toBe(true);
+
+    const parsed = parseConventionalCommitsMessage(message);
+    const relevantCommit = {
+      commit: { ...parsed, isBreaking: parsed.breaking },
+      isProjectScopedCommit: !parsed.scope || parsed.scope === project,
+    };
+    const changes = determineSemverChange(new Map([[project, [relevantCommit]]]), {
+      ...DEFAULT_CONVENTIONAL_COMMITS_CONFIG,
+      ...releaseConfig,
+      types: { ...DEFAULT_CONVENTIONAL_COMMITS_CONFIG.types, ...releaseConfig.types },
+    });
+    expect(SemverSpecifierType[changes.get(project)]).toBe('patch');
+  });
+});

@@ -1,0 +1,766 @@
+{
+  "advisorComponents.reportDetails.additionalInfo": {
+    "defaultMessage": "Additional info",
+    "description": "Advisor report section heading for supplementary recommendation information."
+  },
+  "advisorComponents.reportDetails.conflictingPolicy": {
+    "defaultMessage": "Conflicting policy: {policy}",
+    "description": "Compliance-conflict detail in an Advisor report. {policy} is the supplied policy name rendered as text; preserve the placeholder and do not translate the name itself."
+  },
+  "advisorComponents.reportDetails.detectedIssues": {
+    "defaultMessage": "Detected issues",
+    "description": "Advisor report section heading introducing the problems detected by a recommendation."
+  },
+  "advisorComponents.reportDetails.hideSteps": {
+    "defaultMessage": "Hide remediation steps",
+    "description": "Toggle action that hides remediation steps for an Advisor recommendation with a compliance conflict."
+  },
+  "advisorComponents.reportDetails.knowledgebaseArticle": {
+    "defaultMessage": "Knowledgebase article",
+    "description": "Fallback link label for a related Red Hat Knowledgebase article when no published article title is available."
+  },
+  "advisorComponents.reportDetails.relatedKnowledgebaseArticle": {
+    "defaultMessage": "Related Knowledgebase article",
+    "description": "Advisor report section heading introducing a related Red Hat Knowledgebase article."
+  },
+  "advisorComponents.reportDetails.showSteps": {
+    "defaultMessage": "I understand the risks, show remediation steps",
+    "description": "Acknowledgement action that reveals remediation steps despite a warning that the recommendation conflicts with a compliance policy."
+  },
+  "advisorComponents.reportDetails.sorryThereWasAnErrorRenderingTheContentCorrectly": {
+    "defaultMessage": "Sorry, there was an error rendering the content correctly.",
+    "description": "Inline error alert shown when Advisor report content cannot be rendered correctly."
+  },
+  "advisorComponents.reportDetails.stepsToResolve": {
+    "defaultMessage": "Steps to resolve",
+    "description": "Advisor report section heading introducing instructions for resolving the recommendation."
+  },
+  "advisorComponents.reportDetails.theResolutionOfThisAdvisorRecommendationConflictsWithARuleDefinedIn": {
+    "defaultMessage": "The resolution of this Advisor recommendation conflicts with a rule defined in the Compliance service. Applying this remediation may impact your compliance status.",
+    "description": "Warning body explaining that applying an Advisor remediation may violate a rule in the Compliance service."
+  },
+  "advisorComponents.reportDetails.toMaintainComplianceIgnoreOrDisableThisRecommendation": {
+    "defaultMessage": "To maintain compliance, ignore or disable this recommendation",
+    "description": "Warning heading advising the user to ignore or disable an Advisor recommendation that conflicts with compliance requirements."
+  },
+  "advisorComponents.ruleRating.thumbsDown": {
+    "defaultMessage": "thumbs-down",
+    "description": "Accessible name for the thumbs-down button that gives negative feedback on an Advisor recommendation."
+  },
+  "advisorComponents.ruleRating.thumbsUp": {
+    "defaultMessage": "thumbs-up",
+    "description": "Accessible name for the thumbs-up button that gives positive feedback on an Advisor recommendation."
+  },
+  "components.actions.kebabDropdownToggle": {
+    "defaultMessage": "kebab dropdown toggle",
+    "description": "Accessible name for the three-dot menu that opens toolbar actions."
+  },
+  "components.appInfo.loading": {
+    "defaultMessage": "Loading",
+    "description": "Accessible loading status while the remote inventory application information component loads."
+  },
+  "components.bulkSelect.selectAll": {
+    "defaultMessage": "Select all",
+    "description": "Accessible label for the bulk-selection checkbox that selects all available items."
+  },
+  "components.bulkSelect.selectedCount": {
+    "defaultMessage": "{count, number} selected",
+    "description": "Bulk-selection toggle summary. {count} is the number of selected items, formatted for the active locale."
+  },
+  "components.checkboxFilter.optionsMenu": {
+    "defaultMessage": "Options menu",
+    "description": "Accessible name for the menu of checkbox filter choices."
+  },
+  "components.conditionalFilter.conditionalFilterToggle": {
+    "defaultMessage": "Conditional filter toggle",
+    "description": "Accessible name for the toggle that opens the filter-category menu."
+  },
+  "components.conditionalFilter.conditionalFiltersList": {
+    "defaultMessage": "Conditional filters list",
+    "description": "Accessible name for the list of available filter categories."
+  },
+  "components.conditionalFilter.filterBy": {
+    "defaultMessage": "Filter by {label}",
+    "description": "Fallback filter input placeholder. {label} is the display label of the selected filter category."
+  },
+  "components.cullingInfo.removalScheduled": {
+    "defaultMessage": "System scheduled for inventory removal in {count, number} days",
+    "description": "Inventory lifecycle tooltip warning of scheduled system removal. {count} is the number of days until removal."
+  },
+  "components.dateFormat.invalidDate": {
+    "defaultMessage": "Invalid date",
+    "description": "Date display fallback when the supplied value cannot be parsed as a valid date."
+  },
+  "components.dateFormat.justNow": {
+    "defaultMessage": "Just now",
+    "description": "Relative time label for a timestamp within the most recent minute."
+  },
+  "components.defaultErrorMessage.support": {
+    "defaultMessage": "If the problem persists, contact <support>Red Hat Support</support> or check our <status> status page</status> for known outages.",
+    "description": "Generic error recovery guidance. <support> wraps the Red Hat Support link; <status> wraps the service status link. Preserve both rich-text tags."
+  },
+  "components.detailWrapper.loading": {
+    "defaultMessage": "Loading",
+    "description": "Accessible loading status while the remote inventory detail wrapper component loads."
+  },
+  "components.downloadButton.export": {
+    "defaultMessage": "Export",
+    "description": "Accessible name for the data export dropdown toggle."
+  },
+  "components.downloadButton.exportCsv": {
+    "defaultMessage": "Export to CSV",
+    "description": "Export menu action that downloads data in CSV format. CSV is a file format acronym."
+  },
+  "components.downloadButton.exportJson": {
+    "defaultMessage": "Export to JSON",
+    "description": "Export menu action that downloads data in JSON format. JSON is a file format acronym."
+  },
+  "components.downloadButton.tooltipText": {
+    "defaultMessage": "Export data",
+    "description": "Tooltip explaining that the export control downloads the displayed data."
+  },
+  "components.filterChips.deleteTitle": {
+    "defaultMessage": "Clear filters",
+    "description": "Label for removing a group of active filter chips and clearing its filters."
+  },
+  "components.groupFilter.clearInputValue": {
+    "defaultMessage": "Clear input value",
+    "description": "Accessible name for the button that clears the grouped-filter search input."
+  },
+  "components.groupFilter.groupFilter": {
+    "defaultMessage": "Group filter",
+    "description": "Accessible name for the grouped-filter control and its options list."
+  },
+  "components.groupFilter.inputWithDropdownAndClearButton": {
+    "defaultMessage": "input with dropdown and clear button",
+    "description": "Accessible name for a grouped-filter text input with a dropdown and a clear button."
+  },
+  "components.inventoryDetail.loading": {
+    "defaultMessage": "Loading",
+    "description": "Accessible loading status while the remote inventory detail component loads."
+  },
+  "components.inventoryDetailHead.loading": {
+    "defaultMessage": "Loading",
+    "description": "Accessible loading status while the remote inventory detail header component loads."
+  },
+  "components.inventoryLoadError.failedToLoad": {
+    "defaultMessage": "Failed to load {component}",
+    "description": "Inventory component loading error detail. {component} is the supplied component name, not a message ID."
+  },
+  "components.inventoryLoadError.moreInfoCanBeFoundInBrowserConsoleOutput": {
+    "defaultMessage": "More info can be found in browser console output.",
+    "description": "Troubleshooting guidance beneath an inventory loading error; browser console means the browser developer console."
+  },
+  "components.inventoryLoadError.unableToLoadInventoryComponent": {
+    "defaultMessage": "Unable to load inventory component",
+    "description": "Heading for an error state when a remote inventory component cannot load."
+  },
+  "components.inventoryTable.loading": {
+    "defaultMessage": "Loading",
+    "description": "Accessible loading status while the remote inventory table component loads."
+  },
+  "components.maintenance.maintenanceInProgress": {
+    "defaultMessage": "Maintenance in progress",
+    "description": "Heading of the empty state displayed during scheduled service maintenance."
+  },
+  "components.maintenance.moreInformation": {
+    "defaultMessage": "For more information please visit <status>status.redhat.com</status>.",
+    "description": "Maintenance status guidance. <status> wraps the link to status.redhat.com; keep the domain unchanged and preserve the tag."
+  },
+  "components.maintenance.schedule": {
+    "defaultMessage": "<lead>We are currently undergoing scheduled maintenance and will be</lead><schedule>unavailable from {utcStartTime} to {utcEndTime} UTC ({startTime}-{endTime} {timeZone}).</schedule>",
+    "description": "Scheduled outage notice. <lead> and <schedule> wrap separate styled text sections. {utcStartTime}/{utcEndTime} are formatted UTC times; {startTime}/{endTime} are local times; {timeZone} is the local zone name. Preserve tags and placeholders."
+  },
+  "components.noRegisteredSystems.bodyText": {
+    "defaultMessage": "Connect your systems to keep your Red Hat environment running efficiently, with security and compliance with various standards.",
+    "description": "Empty-state guidance encouraging users with no registered systems to connect systems for security and compliance services."
+  },
+  "components.noRegisteredSystems.buttonText": {
+    "defaultMessage": "Learn more about connecting your systems",
+    "description": "Documentation link label in the empty state for an environment with no registered systems."
+  },
+  "components.noRegisteredSystems.titleText": {
+    "defaultMessage": "Do more with your Red Hat Enterprise Linux environment",
+    "description": "Empty-state heading for an environment with no registered systems. Red Hat Enterprise Linux is a product name."
+  },
+  "components.notAuthorized.body": {
+    "defaultMessage": "Contact your organization administrator(s) for more information or visit <access>My User Access</access> to learn more about your permissions.",
+    "description": "Permission-denied guidance. <access> wraps a link to the My User Access page; preserve the rich-text tag."
+  },
+  "components.notConnected.bodyText": {
+    "defaultMessage": "To get started, activate the Insights client for this system.",
+    "description": "Empty-state instructions for a system that has not activated its Insights client."
+  },
+  "components.notConnected.buttonText": {
+    "defaultMessage": "Learn how to activate the Insights client",
+    "description": "Documentation link label explaining how to activate the Insights client on a system."
+  },
+  "components.notConnected.titleText": {
+    "defaultMessage": "This system isn’t connected to Insights yet",
+    "description": "Empty-state heading indicating that the current system is not connected to Red Hat Insights."
+  },
+  "components.openSourceBadge.aboutOpenServices": {
+    "defaultMessage": "About Open Services",
+    "description": "Accessible name for the badge that opens information about the service being open source."
+  },
+  "components.openSourceBadge.aboutOpenSource": {
+    "defaultMessage": "About open source",
+    "description": "Heading of the popover explaining the open-source status of a service."
+  },
+  "components.openSourceBadge.repositories": {
+    "defaultMessage": "Repositories",
+    "description": "Label introducing links to the source-code repositories in the open-source information popover."
+  },
+  "components.openSourceBadge.thisServiceIsOpenSourceSoAllOfItsCodeIsInspectable": {
+    "defaultMessage": "This service is open source, so all of its code is inspectable. Explore repositories to view and contribute to the source code.",
+    "description": "Open-source information popover body explaining that users can inspect and contribute to the service source code."
+  },
+  "components.primaryToolbar.collapseAll": {
+    "defaultMessage": "Collapse all",
+    "description": "Toolbar action that collapses all expandable table rows."
+  },
+  "components.primaryToolbar.expandAll": {
+    "defaultMessage": "Expand all",
+    "description": "Toolbar action that expands all expandable table rows."
+  },
+  "components.primaryToolbar.sortAscending": {
+    "defaultMessage": "Sort order ASC",
+    "description": "Ascending sort option in the toolbar sort-order menu. ASC denotes ascending order."
+  },
+  "components.primaryToolbar.sortDescending": {
+    "defaultMessage": "Sort order DESC",
+    "description": "Descending sort option in the toolbar sort-order menu. DESC denotes descending order."
+  },
+  "components.radioFilter.optionsMenu": {
+    "defaultMessage": "Options menu",
+    "description": "Accessible name for the menu of radio-button filter choices."
+  },
+  "components.radioFilter.selectInput": {
+    "defaultMessage": "Select Input",
+    "description": "Accessible name for the radio-choice filter selection control."
+  },
+  "components.reboot.text": {
+    "defaultMessage": "Reboot required",
+    "description": "Status text indicating that a system must be restarted for changes to take effect."
+  },
+  "components.severity.critical": {
+    "defaultMessage": "Critical",
+    "description": "Critical severity label used by severity indicators and security impact shields."
+  },
+  "components.severity.high": {
+    "defaultMessage": "High",
+    "description": "High severity label used by severity indicators."
+  },
+  "components.severity.important": {
+    "defaultMessage": "Important",
+    "description": "Important security severity label; a named rating distinct from Critical and Moderate."
+  },
+  "components.severity.low": {
+    "defaultMessage": "Low",
+    "description": "Low severity label used by severity indicators and security impact shields."
+  },
+  "components.severity.medium": {
+    "defaultMessage": "Medium",
+    "description": "Medium severity label used by severity indicators."
+  },
+  "components.severity.moderate": {
+    "defaultMessage": "Moderate",
+    "description": "Moderate security severity label; a named rating between Important and Low."
+  },
+  "components.severity.unknown": {
+    "defaultMessage": "Unknown",
+    "description": "Fallback severity label when a severity indicator has no recognized rating."
+  },
+  "components.shield.criticalDescription": {
+    "defaultMessage": "This rating is given to flaws that could be easily exploited by a remote unauthenticated attacker and lead to system compromise (arbitrary code execution) without requiring user interaction. These are the types of vulnerabilities that can be exploited by worms. Flaws that require an authenticated remote user, a local user, or an unlikely configuration are not classed as Critical impact.",
+    "description": "Security impact shield tooltip explaining the Critical vulnerability rating and its exploitability criteria."
+  },
+  "components.shield.importantDescription": {
+    "defaultMessage": "This rating is given to flaws that can easily compromise the confidentiality, integrity, or availability of resources. These are the types of vulnerabilities that allow local users to gain privileges, allow unauthenticated remote users to view resources that should otherwise be protected by authentication, allow authenticated remote users to execute arbitrary code, or allow remote users to cause a denial of service.",
+    "description": "Security impact shield tooltip explaining the Important vulnerability rating and consequences for confidentiality, integrity or availability."
+  },
+  "components.shield.lowDescription": {
+    "defaultMessage": "This rating is given to all other issues that have a security impact. These are the types of vulnerabilities that are believed to require unlikely circumstances to be able to be exploited, or where a successful exploit would give minimal consequences.",
+    "description": "Security impact shield tooltip explaining the Low vulnerability rating and limited exploitability or consequences."
+  },
+  "components.shield.moderateDescription": {
+    "defaultMessage": "This rating is given to flaws that may be more difficult to exploit but could still lead to some compromise of the confidentiality, integrity, or availability of resources, under certain circumstances. These are the types of vulnerabilities that could have had a Critical impact or Important impact but are less easily exploited based on a technical evaluation of the flaw, or affect unlikely configurations.",
+    "description": "Security impact shield tooltip explaining the Moderate vulnerability rating compared with Critical and Important ratings."
+  },
+  "components.shield.unknownDescription": {
+    "defaultMessage": "Red Hat Product Security has determined that this vulnerability does not impact Red Hat products.",
+    "description": "Security impact shield tooltip for the Unknown rating; current source explains that Red Hat products are not affected. Confirm the rating-to-explanation pairing during review."
+  },
+  "components.simpleTableFilter.buttonTitle": {
+    "defaultMessage": "Filter",
+    "description": "Title of the control that applies the simple table text filter."
+  },
+  "components.simpleTableFilter.placeholder": {
+    "defaultMessage": "Search items",
+    "description": "Default placeholder in the simple table filter input, inviting a search of table items."
+  },
+  "components.simpleTableFilter.simpleTableFilter": {
+    "defaultMessage": "simple-table-filter",
+    "description": "Accessible name for the simple table filtering control; this text is a user-facing label, not a technical identifier."
+  },
+  "components.singleSelectFilter.optionsMenu": {
+    "defaultMessage": "Options menu",
+    "description": "Accessible name for the menu of single-selection filter choices."
+  },
+  "components.singleSelectFilter.selectInput": {
+    "defaultMessage": "Select Input",
+    "description": "Accessible name for the single-selection filter control."
+  },
+  "components.sortBy.ascending": {
+    "defaultMessage": "Sort ascending",
+    "description": "Accessible action label for changing the table sort direction to ascending."
+  },
+  "components.sortBy.descending": {
+    "defaultMessage": "Sort descending",
+    "description": "Accessible action label for changing the table sort direction to descending."
+  },
+  "components.spinner.loadingText": {
+    "defaultMessage": "Loading...",
+    "description": "Default accessible status text for a spinner indicating that content is loading."
+  },
+  "components.tableToolbar.resultCount": {
+    "defaultMessage": "{count, plural, one {# Result} other {# Results}}",
+    "description": "Table toolbar result summary. {count} is the number of matching results and controls plural wording and the localized number."
+  },
+  "components.tableToolbar.selectedCount": {
+    "defaultMessage": "{count, number} Selected",
+    "description": "Table toolbar selection summary. {count} is the localized number of selected rows."
+  },
+  "components.tableView.actionsColumnLabel": {
+    "defaultMessage": "Actions",
+    "description": "Label for the row-actions column in a data table."
+  },
+  "components.tableView.selectColumnLabel": {
+    "defaultMessage": "Select",
+    "description": "Label for the column containing row-selection checkboxes in a data table."
+  },
+  "components.tableViewEmptyState.defaultEmptyStateErrorBody": {
+    "defaultMessage": "There was a problem loading the data. Please try again.",
+    "description": "Table loading-error empty-state body asking the user to try loading data again."
+  },
+  "components.tableViewEmptyState.defaultEmptyStateErrorRetryText": {
+    "defaultMessage": "Retry",
+    "description": "Action label for retrying a failed table data load."
+  },
+  "components.tableViewEmptyState.defaultEmptyStateErrorTitle": {
+    "defaultMessage": "Unable to load data",
+    "description": "Heading shown when table data could not be loaded."
+  },
+  "components.tableViewEmptyState.defaultEmptyStateNoDataBody": {
+    "defaultMessage": "There is no data to display.",
+    "description": "Table empty-state body used when there is no data, independently of filtering."
+  },
+  "components.tableViewEmptyState.defaultEmptyStateNoDataTitle": {
+    "defaultMessage": "No data available",
+    "description": "Table empty-state heading used when the data set is empty."
+  },
+  "components.tableViewEmptyState.defaultEmptyStateNoResultsBody": {
+    "defaultMessage": "No results match the filter criteria. Clear all filters to show results.",
+    "description": "Filtered-table empty-state guidance explaining that no rows match and suggesting clearing filters."
+  },
+  "components.tableViewEmptyState.defaultEmptyStateNoResultsClearFiltersText": {
+    "defaultMessage": "Clear all filters",
+    "description": "Action label for clearing active table filters from the no-results empty state."
+  },
+  "components.tableViewEmptyState.defaultEmptyStateNoResultsTitle": {
+    "defaultMessage": "No results found",
+    "description": "Table empty-state heading shown when filtering produces no matching results."
+  },
+  "components.tableViewEmptyState.error": {
+    "defaultMessage": "Error:",
+    "description": "Prefix introducing a supplied error message in the table loading-error state."
+  },
+  "components.tableViewEmptyState.tableViewEmptyStateActionsColumnLabel": {
+    "defaultMessage": "Actions",
+    "description": "Actions-column label retained in the table header while an empty state is displayed."
+  },
+  "components.tableViewEmptyState.tableViewEmptyStateAriaLabel": {
+    "defaultMessage": "Table",
+    "description": "Accessible name of the table structure containing an empty-state message."
+  },
+  "components.tableViewEmptyState.tableViewEmptyStateSelectColumnLabel": {
+    "defaultMessage": "Select",
+    "description": "Selection-column label retained in the table header while an empty state is displayed."
+  },
+  "components.tableViewFilters.filterBy": {
+    "defaultMessage": "Filter by {label}...",
+    "description": "Table filter input placeholder. {label} is the display name of the filter, supplied in lowercase by the caller."
+  },
+  "components.tableViewFilters.search": {
+    "defaultMessage": "Search",
+    "description": "Default label for the table text-search filter when no custom placeholder is supplied."
+  },
+  "components.tableViewToolbar.indeterminateRange": {
+    "defaultMessage": "<range>{firstIndex} - {lastIndex}</range> of <many>many</many>",
+    "description": "Pagination summary when the total number of items is unknown. {firstIndex}/{lastIndex} are visible item positions; <range> and <many> wrap styled text. Preserve tags and placeholders."
+  },
+  "components.tableWithFilter.noEntities": {
+    "defaultMessage": "No {entityName} found",
+    "description": "Tag-selection table empty-state heading. {entityName} is the supplied name of the entity type, such as tags."
+  },
+  "components.tableWithFilter.noMatches": {
+    "defaultMessage": "This filter criteria matches no {entityName}. <br></br> Try changing your filter settings.",
+    "description": "Tag-selection table filtered-empty-state body. {entityName} names the entity type; <br></br> inserts a line break. Preserve the rich-text tag."
+  },
+  "components.tableWithFilter.selectNone": {
+    "defaultMessage": "Select none (0)",
+    "description": "Bulk-selection menu action that deselects all rows; zero indicates the resulting selection count."
+  },
+  "components.tableWithFilter.selectPage": {
+    "defaultMessage": "Select page ({count, number})",
+    "description": "Bulk-selection menu action for the current page. {count} is the localized number of rows on that page."
+  },
+  "components.tableWithFilter.tags": {
+    "defaultMessage": "tags",
+    "description": "Default plural entity name for the tag-selection table, inserted into its empty-state messages."
+  },
+  "components.tagFilter.applicableToItems": {
+    "defaultMessage": "Applicable to {count, plural, one {# item} other {# items}}.",
+    "description": "Tag option count tooltip. {count} is the number of items carrying the tag and controls plural wording and the localized number."
+  },
+  "components.tagFilter.applicableToNamedItems": {
+    "defaultMessage": "Applicable to {count, number} {item}.",
+    "description": "Tag option count tooltip for a caller-named entity type. {count} is the localized quantity; {item} is the supplied entity noun with singular/plural wording already applied by code."
+  },
+  "components.tagFilter.moreTags": {
+    "defaultMessage": "{count, number} more tags available",
+    "description": "Tag filter expansion label. {count} is the number of additional tag options not currently shown."
+  },
+  "components.tagFilterHook.noTagsAvailable": {
+    "defaultMessage": "No tags available",
+    "description": "Message displayed in the tag filter when no tag choices are available."
+  },
+  "components.tagModal.all": {
+    "defaultMessage": "All {name}",
+    "description": "Tag-selection modal tab label. {name} is the supplied group or entity name following the word All."
+  },
+  "components.tagModal.applySelected": {
+    "defaultMessage": "Apply selected",
+    "description": "Primary action in the tabbed tag-selection modal, confirming the selected entries."
+  },
+  "components.tagModal.applyTags": {
+    "defaultMessage": "Apply tags",
+    "description": "Primary action in the tag-selection modal, applying the selected tags."
+  },
+  "components.tagModal.cancel": {
+    "defaultMessage": "Cancel",
+    "description": "Secondary action that closes the tag-selection modal without applying changes."
+  },
+  "components.tagModal.name": {
+    "defaultMessage": "Name",
+    "description": "Column heading for tag names in the tag-selection modal."
+  },
+  "components.tagModal.tagSource": {
+    "defaultMessage": "Tag source",
+    "description": "Column heading identifying where a tag originated in the tag-selection modal."
+  },
+  "components.tagModal.tagsFor": {
+    "defaultMessage": "Tags for {systemName}",
+    "description": "Tag-selection modal heading. {systemName} is the supplied system display name; do not translate the name itself."
+  },
+  "components.textFilter.input": {
+    "defaultMessage": "text input",
+    "description": "Default accessible name for a text-based filter input."
+  },
+  "components.truncate.truncateCollapseText": {
+    "defaultMessage": "Collapse",
+    "description": "Action that collapses expanded text back to its shortened preview."
+  },
+  "components.truncate.truncateExpandText": {
+    "defaultMessage": "Read more",
+    "description": "Action that expands a shortened text preview to show the full content."
+  },
+  "default.cancel": {
+    "defaultMessage": "Cancel",
+    "description": "Default cancel string"
+  },
+  "default.delete": {
+    "defaultMessage": "Delete",
+    "description": "Default delete string"
+  },
+  "default.remove": {
+    "defaultMessage": "Remove",
+    "description": "Default remove string"
+  },
+  "default.save": {
+    "defaultMessage": "Save",
+    "description": "Default save string"
+  },
+  "notifications.notification.closeNotification": {
+    "defaultMessage": "close-notification",
+    "description": "Accessible name for the button that dismisses a notification."
+  },
+  "notifications.notification.requestId": {
+    "defaultMessage": "Request Id: {id}",
+    "description": "Request identifier displayed in a notification for troubleshooting. {id} is an opaque supplied string; preserve it exactly, including leading zeroes."
+  },
+  "notifications.notification.trackingId": {
+    "defaultMessage": "Tracking Id: {id}",
+    "description": "Error tracking identifier displayed in a notification for support. {id} is an opaque supplied string; preserve it exactly, including leading zeroes."
+  },
+  "notifications.notificationPagination.clearAll": {
+    "defaultMessage": "Clear all",
+    "description": "Action that dismisses all notifications from the notification list."
+  },
+  "notifications.notificationPagination.items": {
+    "defaultMessage": "Notifications",
+    "description": "Plural item-type label in notification pagination controls; refers to notification messages."
+  },
+  "notifications.notificationPortal.notificationsPortal": {
+    "defaultMessage": "Notifications portal",
+    "description": "Error-boundary heading identifying the notification portal if its content fails to render."
+  },
+  "remediations.remediationLoadError.failedToLoad": {
+    "defaultMessage": "Failed to load {component}",
+    "description": "Remediations component loading error detail. {component} is the supplied component name, not a message ID."
+  },
+  "remediations.remediationLoadError.moreInfoCanBeFoundInBrowserConsoleOutput": {
+    "defaultMessage": "More info can be found in browser console output.",
+    "description": "Troubleshooting guidance beneath a remediations loading error; browser console means the browser developer console."
+  },
+  "remediations.remediationLoadError.unableToLoadRemediationsComponent": {
+    "defaultMessage": "Unable to load remediations component",
+    "description": "Heading for an error state when a remote remediations component cannot load."
+  },
+  "ruleComponents.filters.ansibleSupport.label": {
+    "defaultMessage": "Ansible support",
+    "description": "Filter-category label for whether recommendations support Ansible remediation. Ansible is a product name."
+  },
+  "ruleComponents.filters.ansibleSupport.not_supported": {
+    "defaultMessage": "No Ansible remediation support",
+    "description": "Filter option for recommendations without Ansible remediation support."
+  },
+  "ruleComponents.filters.ansibleSupport.supported": {
+    "defaultMessage": "Ansible remediation support",
+    "description": "Filter option for recommendations that support Ansible remediation."
+  },
+  "ruleComponents.filters.category.availability": {
+    "defaultMessage": "Availability",
+    "description": "Rule category filter option for issues affecting service availability."
+  },
+  "ruleComponents.filters.category.label": {
+    "defaultMessage": "Category",
+    "description": "Filter-category label for grouping rules by the kind of problem they address."
+  },
+  "ruleComponents.filters.category.performance": {
+    "defaultMessage": "Performance",
+    "description": "Rule category filter option for performance issues."
+  },
+  "ruleComponents.filters.category.security": {
+    "defaultMessage": "Security",
+    "description": "Rule category filter option for security issues."
+  },
+  "ruleComponents.filters.category.stability": {
+    "defaultMessage": "Stability",
+    "description": "Rule category filter option for system or service stability issues."
+  },
+  "ruleComponents.filters.description.input": {
+    "defaultMessage": "Description Filter Input",
+    "description": "Accessible name for the text input that filters rules by their description."
+  },
+  "ruleComponents.filters.description.label": {
+    "defaultMessage": "Description",
+    "description": "Filter-category label for searching the description text of rules."
+  },
+  "ruleComponents.filters.impact.critical": {
+    "defaultMessage": "Critical",
+    "description": "Critical impact option in the rule impact filter."
+  },
+  "ruleComponents.filters.impact.important": {
+    "defaultMessage": "Important",
+    "description": "Important impact option in the rule impact filter; a named rating between Critical and Moderate."
+  },
+  "ruleComponents.filters.impact.label": {
+    "defaultMessage": "Impact",
+    "description": "Filter-category label for the potential impact of a rule issue."
+  },
+  "ruleComponents.filters.impact.low": {
+    "defaultMessage": "Low",
+    "description": "Low impact option in the rule impact filter."
+  },
+  "ruleComponents.filters.impact.moderate": {
+    "defaultMessage": "Moderate",
+    "description": "Moderate impact option in the rule impact filter."
+  },
+  "ruleComponents.filters.incidentRules.incident": {
+    "defaultMessage": "Non-incident rules",
+    "description": "Incident-rule filter option currently displayed as Non-incident rules despite its incident key. Confirm the label-to-value mapping with the product owner before translation."
+  },
+  "ruleComponents.filters.incidentRules.label": {
+    "defaultMessage": "Incident rules",
+    "description": "Filter-category label for distinguishing incident-related and non-incident rules."
+  },
+  "ruleComponents.filters.incidentRules.non_incident": {
+    "defaultMessage": "Incident rules",
+    "description": "Incident-rule filter option currently displayed as Incident rules despite its non_incident key. Confirm the label-to-value mapping with the product owner before translation."
+  },
+  "ruleComponents.filters.likelihood.label": {
+    "defaultMessage": "Likelihood",
+    "description": "Filter-category label for the likelihood that a rule issue will occur."
+  },
+  "ruleComponents.filters.riskOfChange.high": {
+    "defaultMessage": "High",
+    "description": "High risk-of-change filter option, referring to the risk of applying a remediation rather than leaving the issue unresolved."
+  },
+  "ruleComponents.filters.riskOfChange.label": {
+    "defaultMessage": "Risk of change",
+    "description": "Filter-category label for the risk associated with applying a remediation."
+  },
+  "ruleComponents.filters.riskOfChange.low": {
+    "defaultMessage": "Low",
+    "description": "Low risk-of-change filter option, referring to the risk of applying a remediation."
+  },
+  "ruleComponents.filters.riskOfChange.moderate": {
+    "defaultMessage": "Moderate",
+    "description": "Moderate risk-of-change filter option, referring to the risk of applying a remediation."
+  },
+  "ruleComponents.filters.riskOfChange.very_low": {
+    "defaultMessage": "Very low",
+    "description": "Very low risk-of-change filter option, referring to the risk of applying a remediation."
+  },
+  "ruleComponents.filters.ruleStatus.all": {
+    "defaultMessage": "All",
+    "description": "Rule status filter option that includes both enabled and disabled rules."
+  },
+  "ruleComponents.filters.ruleStatus.disabled": {
+    "defaultMessage": "Disabled",
+    "description": "Rule status filter option showing disabled rules."
+  },
+  "ruleComponents.filters.ruleStatus.enabled": {
+    "defaultMessage": "Enabled",
+    "description": "Rule status filter option showing enabled rules."
+  },
+  "ruleComponents.filters.ruleStatus.label": {
+    "defaultMessage": "Rule status",
+    "description": "Filter-category label for whether a rule is enabled or disabled."
+  },
+  "ruleComponents.filters.severity.critical": {
+    "defaultMessage": "Critical",
+    "description": "Critical severity option used in rule severity filter choices."
+  },
+  "ruleComponents.filters.severity.important": {
+    "defaultMessage": "Important",
+    "description": "Important severity option used in rule severity filter choices; a named rating distinct from Critical and Moderate."
+  },
+  "ruleComponents.filters.severity.low": {
+    "defaultMessage": "Low",
+    "description": "Low severity option used in rule severity filter choices."
+  },
+  "ruleComponents.filters.severity.moderate": {
+    "defaultMessage": "Moderate",
+    "description": "Moderate severity option used in rule severity filter choices."
+  },
+  "ruleComponents.filters.totalRisk.label": {
+    "defaultMessage": "Total risk",
+    "description": "Filter-category label for the overall risk rating of a rule issue."
+  },
+  "ruleComponents.markdown.ouchWeWereUnableToCorrectlyRenderThisTextInsteadPleaseEnjoy": {
+    "defaultMessage": "Ouch. We were unable to correctly render this text, instead please enjoy the raw data.",
+    "description": "Markdown rendering failure notice shown before the original unformatted content, which remains available to the user."
+  },
+  "ruleComponents.reportDetails.publishedDate": {
+    "defaultMessage": "Published date: <date></date>",
+    "description": "Rule report publication date label. <date></date> inserts caller-provided date content; preserve the rich-text tag rather than supplying a date format here."
+  },
+  "ruleComponents.reportDetails.riskOfChange": {
+    "defaultMessage": "Risk of change",
+    "description": "Rule report heading for the risk of applying a remediation."
+  },
+  "ruleComponents.reportDetails.totalRisk": {
+    "defaultMessage": "Total risk",
+    "description": "Rule report heading for the overall risk of the reported issue."
+  },
+  "ruleComponents.risk.riskOfChangeDescription0": {
+    "defaultMessage": "Very Low severity desc for risk of change",
+    "description": "Tooltip for the Very Low risk-of-change rating. Source currently uses placeholder-like wording; confirm the final explanation with the product owner."
+  },
+  "ruleComponents.risk.riskOfChangeDescription1": {
+    "defaultMessage": "Low severity desc for risk of change",
+    "description": "Tooltip for the Low risk-of-change rating. Source currently uses placeholder-like wording; confirm the final explanation with the product owner."
+  },
+  "ruleComponents.risk.riskOfChangeDescription2": {
+    "defaultMessage": "Moderate severity desc for risk of change",
+    "description": "Tooltip for the Moderate risk-of-change rating. Source currently uses placeholder-like wording; confirm the final explanation with the product owner."
+  },
+  "ruleComponents.risk.riskOfChangeDescription3": {
+    "defaultMessage": "High severity desc for risk of change",
+    "description": "Tooltip for the High risk-of-change rating. Source currently uses placeholder-like wording; confirm the final explanation with the product owner."
+  },
+  "ruleComponents.risk.riskOfChangeLabel0": {
+    "defaultMessage": "Very Low",
+    "description": "Very Low rating label in the rule report risk-of-change indicator, describing the risk of applying a remediation."
+  },
+  "ruleComponents.risk.riskOfChangeLabel1": {
+    "defaultMessage": "Low",
+    "description": "Low rating label in the rule report risk-of-change indicator."
+  },
+  "ruleComponents.risk.riskOfChangeLabel2": {
+    "defaultMessage": "Moderate",
+    "description": "Moderate rating label in the rule report risk-of-change indicator."
+  },
+  "ruleComponents.risk.riskOfChangeLabel3": {
+    "defaultMessage": "High",
+    "description": "High rating label in the rule report risk-of-change indicator."
+  },
+  "ruleComponents.risk.totalRiskDescription0": {
+    "defaultMessage": "Low severity desc for total risk",
+    "description": "Tooltip for the Low total-risk rating of an issue. Source currently uses placeholder-like wording; confirm the final explanation with the product owner."
+  },
+  "ruleComponents.risk.totalRiskDescription1": {
+    "defaultMessage": "Moderate severity desc for total risk",
+    "description": "Tooltip for the Moderate total-risk rating of an issue. Source currently uses placeholder-like wording; confirm the final explanation with the product owner."
+  },
+  "ruleComponents.risk.totalRiskDescription2": {
+    "defaultMessage": "Important severity desc for total risk",
+    "description": "Tooltip for the Important total-risk rating of an issue. Source currently uses placeholder-like wording; confirm the final explanation with the product owner."
+  },
+  "ruleComponents.risk.totalRiskDescription3": {
+    "defaultMessage": "Critical severity desc for total risk",
+    "description": "Tooltip for the Critical total-risk rating of an issue. Source currently uses placeholder-like wording; confirm the final explanation with the product owner."
+  },
+  "ruleComponents.ruleFeedback.helpful": {
+    "defaultMessage": "Rule is helpful",
+    "description": "Accessible name for the thumbs-up action that marks a rule as helpful."
+  },
+  "ruleComponents.ruleFeedback.isThisHelpful": {
+    "defaultMessage": "Is this helpful?",
+    "description": "Feedback prompt asking whether the displayed rule information is helpful."
+  },
+  "ruleComponents.ruleFeedback.notHelpful": {
+    "defaultMessage": "Rule is not helpful",
+    "description": "Accessible name for the thumbs-down action that marks a rule as not helpful."
+  },
+  "ruleComponents.ruleFeedback.thanks": {
+    "defaultMessage": "Thank you for your feedback!",
+    "description": "Confirmation displayed after feedback on the usefulness of a rule is saved."
+  },
+  "ruleComponents.ruleTable.ariaLabel": {
+    "defaultMessage": "Rules table",
+    "description": "Default accessible name of the table listing rules."
+  },
+  "ruleComponents.ruleTable.noResults": {
+    "defaultMessage": "No results found",
+    "description": "Default empty-state heading when the rules table has no results to display."
+  },
+  "ruleComponents.ruleTable.noResultsDescription": {
+    "defaultMessage": "No results match the filter criteria. Remove all filters or clear all filters to show results.",
+    "description": "Default rules-table empty-state guidance suggesting that active filters be removed or cleared to show results."
+  },
+  "utils.parseCvssScore.nA": {
+    "defaultMessage": "N/A",
+    "description": "Displayed in place of an unavailable CVSS Base Score; N/A means a score is not available, not a numeric zero."
+  },
+  "utils.parseCvssScore.unavailableTooltip": {
+    "defaultMessage": "CVEs published before 2005 (approximately) did not have a CVSS Base Score.",
+    "description": "Tooltip explaining why older vulnerability records lack a CVSS Base Score. CVE and CVSS are security standard acronyms; preserve the year."
+  },
+  "utils.parseCvssScore.version2Tooltip": {
+    "defaultMessage": "Prior to 2016 (approximately), CVEs were scored with CVSS v2.",
+    "description": "Tooltip identifying a score calculated using CVSS version 2 for older vulnerability records. CVE and CVSS are security standard acronyms; preserve v2 and the year."
+  }
+}
