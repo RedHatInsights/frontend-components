@@ -4,6 +4,11 @@
   "sourceRoot": "packages/notifications",
   "projectType": "library",
   "tags": ["scope:public"],
+  "release": {
+    "version": {
+      "preserveMatchingDependencyRanges": ["devDependencies", "peerDependencies", "optionalDependencies"]
+    }
+  },
   "targets": {
     "build:bundles:tsc": {
       "executor": "@nx/js:tsc",

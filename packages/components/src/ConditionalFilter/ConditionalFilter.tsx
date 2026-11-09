@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { FormEvent, Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import t_global_breakpoint_md from '@patternfly/react-tokens/dist/js/t_global_breakpoint_md';
@@ -20,6 +21,7 @@ import CheckboxFilter, { CheckboxFilterProps } from './CheckboxFilter';
 import GroupFilter, { GroupFilterProps } from './GroupFilter';
 import './conditional-filter.scss';
 import SingleSelectFilter, { SingleSelectFilterProps } from './SingleSelectFilter';
+import messages from '../messages';
 
 export type FilterValues = TextInputProps &
   RadioFilterProps &
@@ -111,6 +113,8 @@ const ConditionalFilter = ({
   value = '',
   innerRef,
 }: ConditionalFilterProps) => {
+  const intl = useIntlWithFallback();
+
   const breakpointConstant = parseInt(t_global_breakpoint_md.value.replace('px', ''));
   const updateFilterViewport = (width: number) => width <= breakpointConstant;
   const [isOpen, setIsOpen] = useState(false);
@@ -150,24 +154,18 @@ const ConditionalFilter = ({
     : Fragment;
 
   const getActiveComponent = (activeItem: ConditionalFilterItem) => {
+    const getPlaceholder = () =>
+      placeholder || activeItem.placeholder || intl.formatMessage(messages.conditionalFilterFilterBy, { label: String(activeItem.label) });
     if (activeItem.type === 'checkbox' && identifyComponent<CheckboxFilterProps>(activeItem.type, activeItem.filterValues)) {
-      return <CheckboxFilter placeholder={placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`} {...activeItem.filterValues} />;
+      return <CheckboxFilter placeholder={getPlaceholder()} {...activeItem.filterValues} />;
     } else if (activeItem.type === 'text' && identifyComponent<TextFilterProps>(activeItem.type, activeItem.filterValues)) {
-      return <TextFilter placeholder={placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`} {...activeItem.filterValues} />;
+      return <TextFilter placeholder={getPlaceholder()} {...activeItem.filterValues} />;
     } else if (activeItem.type === 'group' && identifyComponent<GroupFilterProps>(activeItem.type, activeItem.filterValues)) {
-      return <GroupFilter placeholder={placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`} {...activeItem.filterValues} />;
+      return <GroupFilter placeholder={getPlaceholder()} {...activeItem.filterValues} />;
     } else if (activeItem.type === 'radio' && identifyComponent<RadioFilterProps>(activeItem.type, activeItem.filterValues)) {
-      return (
-        <RadioFilter
-          innerRef={innerRef}
-          placeholder={placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`}
-          {...activeItem.filterValues}
-        />
-      );
+      return <RadioFilter innerRef={innerRef} placeholder={getPlaceholder()} {...activeItem.filterValues} />;
     } else if (activeItem.type === 'singleSelect' && identifyComponent<SingleSelectFilterProps>(activeItem.type, activeItem.filterValues)) {
-      return (
-        <SingleSelectFilter placeholder={placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`} {...activeItem.filterValues} />
-      );
+      return <SingleSelectFilter placeholder={getPlaceholder()} {...activeItem.filterValues} />;
     } else if (activeItem.type === 'custom' && identifyComponent<Record<string, any>>(activeItem.type, activeItem.filterValues)) {
       const C = typeMapper.custom;
       // make sure no invalid props are passed to the Fragment element which is mapped to the custom component
@@ -227,7 +225,7 @@ const ConditionalFilter = ({
                         className={
                           hideLabel ? 'ins-c-conditional-filter__group ins-c-conditional-filter__no-label' : 'ins-c-conditional-filter__group'
                         }
-                        aria-label="Conditional filter toggle"
+                        aria-label={intl.formatMessage(messages.conditionalFilterConditionalFilterToggle)}
                         ref={toggleRef}
                         onClick={() => setIsOpen((prev) => !prev)}
                         isExpanded={isOpen}
@@ -242,7 +240,7 @@ const ConditionalFilter = ({
                       </MenuToggle>
                     )}
                   >
-                    <DropdownList aria-label="Conditional filters list">
+                    <DropdownList aria-label={intl.formatMessage(messages.conditionalFilterConditionalFiltersList)}>
                       {items.map((item, key) => (
                         <DropdownItem
                           key={item.id ? `${item.id}-dropdown` : key}

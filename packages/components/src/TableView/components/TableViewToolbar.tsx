@@ -1,3 +1,4 @@
+import { FormattedMessage } from '@redhat-cloud-services/frontend-components-translations/localization';
 /**
  * TableViewToolbar Component
  *
@@ -10,12 +11,14 @@
  *   Used for cursor-based APIs that don't return a total count.
  */
 
-import React, { Fragment, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+
 import { Pagination } from '@patternfly/react-core/dist/dynamic/components/Pagination';
 import { ToolbarGroup } from '@patternfly/react-core';
 import { BulkSelect, BulkSelectValue } from '@patternfly/react-component-groups/dist/dynamic/BulkSelect';
 import { DataViewToolbar } from '@patternfly/react-data-view/dist/dynamic/DataViewToolbar';
 import { ToolbarPosition } from '../types';
+import messages from '../../messages';
 
 export interface TableViewToolbarProps {
   /** Position - top or bottom toolbar */
@@ -131,12 +134,11 @@ export const TableViewToolbar: React.FC<TableViewToolbarProps> = ({
             {...(isIndeterminate
               ? {
                   toggleTemplate: ({ firstIndex, lastIndex }: { firstIndex?: number; lastIndex?: number }) => (
-                    <Fragment>
-                      <b>
-                        {firstIndex} - {lastIndex}
-                      </b>{' '}
-                      of <b>many</b>
-                    </Fragment>
+                    <FormattedMessage
+                      {...messages.tableViewToolbarIndeterminateRange}
+
+                      values={{ firstIndex, lastIndex, range: (chunks) => <b>{chunks}</b>, many: (chunks) => <b>{chunks}</b> }}
+                    />
                   ),
                 }
               : {})}

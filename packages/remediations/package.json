@@ -22,15 +22,16 @@
     "@patternfly/react-core": "^6.7.0",
     "@patternfly/react-icons": "^6.7.0",
     "@patternfly/react-table": "^6.7.0",
+    "@scalprum/react-core": "^0.14.1",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "@scalprum/react-core": "^0.14.1"
+    "react-dom": "^18.3.1"
   },
   "dependencies": {
     "@data-driven-forms/pf4-component-mapper": "^4.2.0",
     "@data-driven-forms/react-form-renderer": "^4.2.0",
     "@redhat-cloud-services/frontend-components": "^7.0.13",
+    "@redhat-cloud-services/frontend-components-translations": "^4.5.14",
     "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
     "urijs": "^1.19.11"
   }

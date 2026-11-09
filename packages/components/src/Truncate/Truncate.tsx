@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
@@ -6,6 +7,7 @@ import { StackItem } from '@patternfly/react-core/dist/dynamic/layouts/Stack';
 import sanitizeHtml from 'sanitize-html';
 
 import './truncate.scss';
+import messages from '../messages';
 
 const dangerousHtml = (html: string) => ({ __html: sanitizeHtml(html) });
 
@@ -28,14 +30,18 @@ export interface TruncateProps {
 const Truncate = ({
   text = '',
   length = 150,
-  expandText = 'Read more',
+  expandText: expandTextProp,
   hideExpandText = false,
   expandOnMouseOver = false,
-  collapseText = 'Collapse',
+  collapseText: collapseTextProp,
   className,
   inline,
   spaceBetween,
 }: TruncateProps) => {
+  const intl = useIntlWithFallback();
+  const expandText = expandTextProp === undefined ? intl.formatMessage(messages.truncateTruncateExpandText) : expandTextProp;
+  const collapseText = collapseTextProp === undefined ? intl.formatMessage(messages.truncateTruncateCollapseText) : collapseTextProp;
+
   const truncateClasses = classNames('ins-c-truncate', className, { [`is-inline`]: inline }, { [`is-block`]: !inline });
   const trimmedText = text.substring(0, length);
   const textOverflow = text.length > length;

@@ -11,6 +11,7 @@
     },
     "build:bundles": {
       "dependsOn": ["^build:bundles", "^build"],
+      "inputs": ["production", "{workspaceRoot}/locales/*.json"],
       "executor": "@redhat-cloud-services/frontend-components-executors:builder",
       "options": {
         "rootDir": "packages/translations/src",
@@ -75,6 +76,8 @@
       }
     },
     "test:unit": {
+      "dependsOn": ["^test:unit"],
+      "inputs": ["default", "{workspaceRoot}/locales/*.json"],
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {

@@ -46,4 +46,9 @@ describe('TableToolbar component', () => {
     const { container } = render(<TableToolbar isFooter>Footer</TableToolbar>);
     expect(container).toMatchSnapshot();
   });
+
+  it.each([0, 1, 2])('preserves provider-free English selection text for %s', (selected) => {
+    const { container } = render(<TableToolbar selected={selected} />);
+    expect(container.querySelector('.ins-c-table__toolbar-results-selected').textContent).toBe(` ${selected} Selected `);
+  });
 });

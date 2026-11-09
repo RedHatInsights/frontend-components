@@ -52,17 +52,7 @@ exports[`Maintenance component should render with default props 1`] = `
           <div
             class="pf-v6-l-stack__item"
           >
-            unavailable from 
-            10am
-             to 
-            12am
-             UTC (
-            6am
-            -
-            8am
-             
-            EST
-            ).
+            unavailable from 10am to 12am UTC (6am-8am EST).
           </div>
           <div
             class="pf-v6-l-stack__item"
@@ -184,17 +174,7 @@ exports[`Maintenance component should render with times 1`] = `
           <div
             class="pf-v6-l-stack__item"
           >
-            unavailable from 
-            10am
-             to 
-            12am
-             UTC (
-            12am
-            -
-            2am
-             
-            EST
-            ).
+            unavailable from 10am to 12am UTC (12am-2am EST).
           </div>
           <div
             class="pf-v6-l-stack__item"

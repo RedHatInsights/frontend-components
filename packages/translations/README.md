@@ -3,6 +3,28 @@
 This package is for setting [react-intl](https://www.npmjs.com/package/react-intl) with default messages translated accross the entire platform. For futher understanding how to pass messages and such follow up `react-intl` documentation.
 
 
+## Runtime catalogs
+
+English lives in one place: each message's `defaultMessage` in source. There is no English catalog, and English locales (`en`, `en-US`, `en-GB`, …) load nothing.
+
+Translations are delivered by Phrase as `locales/<locale>.json` (for example `fr.json`, `zh-CN.json`). `IntlProvider` imports the selected locale's file on demand with a single template `import()` in `src/loadMessages.js`; there is no list of supported locales, so a newly delivered file works without a code change. Package assets copy the files into both CJS and ESM builds, and compiler settings preserve native `import()` in both formats so bundlers split one chunk per file.
+
+The loader canonicalizes the locale (`zh-cn` → `zh-CN`, malformed tags are ignored) and tries the exact tag before its base language (`fr-CA` → `fr`). English defaults remain visible while loading, if a delivery is absent, or if loading fails. Obsolete requests cannot overwrite a newly selected language. Caller-provided messages override loaded catalogs immediately and after loading.
+
+The legacy synchronous `translatedMessages/translatedMessages` deep export is removed. Use `IntlProvider` for lazy bundled catalogs, or continue passing your own flat or locale-keyed messages through its `messages` prop.
+
+## How library UI is translated
+
+Library components follow the nearest react-intl provider's locale and load their own catalog. No app wiring is needed. The app's provider messages override library strings; its formats, time zone and error handling remain in control. Chrome's `data-console-language` attribute on `<html>` carries the requested locale and triggers an early preload when the library module starts. This is separate from `<html lang>`, which describes Chrome's rendered text and stays English when its catalog is unavailable.
+
+### Limitations
+
+- Non-hook helpers and filter factories (for example rule-components `totalRisk(intl)`) return English until their caller re-renders after the catalog arrives.
+- On a slow network, the first render can briefly show English.
+- Failed or undelivered catalogs are not retried until reload.
+- App tests rendering library components under a non-English provider trigger an async load, which can produce `act()` warnings once catalogs ship.
+- Never reuse a message ID when its meaning or placeholders change: an app can resolve a translations version newer than its components.
+
 ## Usage
 
 If you want to translate your app import `IntlProvider` and wrap your piece of app that you want to translate, this will usually be entire application.
@@ -57,8 +79,8 @@ These messages should be object with ids of messages, you can either pass plain 
     "en": {
         "appp.greetings": "Hello {name}"
     },
-    "cs": {
-        "app.greetings": "Vítejte {name}"
+    "fr": {
+        "app.greetings": "Bonjour {name}"
     }
 }
 ```
@@ -78,7 +100,7 @@ class App extends Component {
 
     render() {
         return (
-            <IntlProvider locale="cs">
+            <IntlProvider locale="fr">
                 <NotificationsPortal />
                 <Routes childProps={this.props} />
             </IntlProvider>
