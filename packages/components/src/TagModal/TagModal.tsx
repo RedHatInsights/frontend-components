@@ -1,4 +1,4 @@
-import { FormattedMessage, IntlContext, getIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
+import { FormattedMessage, useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { Component } from 'react';
 import './tagModal.scss';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
@@ -45,6 +45,10 @@ const calculateChecked = (rows: IRow[] = [], selected: IRow[]) =>
 
 const unique = (arr: IRow[]) => arr.filter(({ id }, index, arr) => arr.findIndex(({ id: currId }) => currId === id) === index);
 
+const WithLibraryIntl = ({ children }: { children: (intl: ReturnType<typeof useIntlWithFallback>) => React.ReactNode }) => (
+  <>{children(useIntlWithFallback())}</>
+);
+
 class TagModal extends Component<
   TagModalProps,
   {
@@ -52,9 +56,6 @@ class TagModal extends Component<
     activeTabKey?: string | number | undefined;
   }
 > {
-  static contextType = IntlContext;
-  declare context: React.ContextType<typeof IntlContext>;
-
   state = {
     selectedTab: 0,
     // @ts-ignore
@@ -97,7 +98,10 @@ class TagModal extends Component<
   );
 
   render() {
-    const intl = getIntlWithFallback(this.context);
+    return <WithLibraryIntl>{(intl) => this.renderWithIntl(intl)}</WithLibraryIntl>;
+  }
+
+  renderWithIntl(intl: ReturnType<typeof useIntlWithFallback>) {
     const {
       className,
       title,
