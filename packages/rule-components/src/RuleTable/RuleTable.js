@@ -1,4 +1,4 @@
-import { IntlContext, getIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
@@ -21,8 +21,13 @@ import { calculateActiveFilters, calculateMeta, createRows } from './helpers';
 import './index.scss';
 import messages from '../messages';
 
+const WithLibraryIntl = ({ children }) => <>{children(useIntlWithFallback())}</>;
+
+WithLibraryIntl.propTypes = {
+  children: PropTypes.func.isRequired,
+};
+
 class RuleTable extends Component {
-  static contextType = IntlContext;
   state = {
     filterValues: {},
     expanded: [],
@@ -127,7 +132,10 @@ class RuleTable extends Component {
   };
 
   render() {
-    const intl = getIntlWithFallback(this.context);
+    return <WithLibraryIntl>{(intl) => this.renderWithIntl(intl)}</WithLibraryIntl>;
+  }
+
+  renderWithIntl(intl) {
     const {
       rules,
       filters,
