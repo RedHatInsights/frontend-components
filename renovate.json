@@ -63,6 +63,12 @@
       "semanticCommitType": "fix",
       "semanticCommitScope": "deps",
       "automerge": false
+    },
+    {
+      "description": "Only ever widen @scalprum/react-core peer ranges. The preset's bump strategy rewrites a range like ^0.13.0 || ^0.14.0 || ^0.15.0 into a single ^0.x, dropping support for the older minors in a patch release. Widening appends a clause instead, so automated releases stay semver-correct; narrowing is a breaking change a human makes deliberately with a feat! commit.",
+      "matchDepNames": ["@scalprum/react-core"],
+      "matchDepTypes": ["peerDependencies"],
+      "rangeStrategy": "widen"
     }
   ]
 }
