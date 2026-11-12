@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": ".",
+    "types": ["node"],
     "plugins": []
   },
   "include": ["src/index.ts"]
