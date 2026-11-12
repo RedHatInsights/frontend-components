@@ -41,7 +41,7 @@
   "devDependencies": {
     "@project-kessel/react-kessel-access-check": "^0.5.7",
     "@types/react": "^18.3.31",
-    "glob": "10.5.0",
+    "glob": "14.0.2",
     "react-intl": "^6.8.9",
     "redux-mock-store": "^1.5.5"
   },
