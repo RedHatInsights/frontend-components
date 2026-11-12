@@ -1,3 +1,18 @@
+## 7.10.18 (2026-11-12)
+
+### 🩹 Fixes
+
+- **RHCLOUD-53258:** widen @scalprum/react-core peer range and group its Renovate updates ([#2477](https://github.com/RedHatInsights/frontend-components/pull/2477))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components-utilities to 7.5.14
+- Updated @redhat-cloud-services/types to 3.7.14
+
+### ❤️ Thank You
+
+- Charles Mulder @charlesmulder
+
 ## 7.10.17 (2026-10-23)
 
 ### 🧱 Updated Dependencies
