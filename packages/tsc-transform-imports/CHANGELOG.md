@@ -1,3 +1,13 @@
+## 1.3.15 (2026-11-12)
+
+### 🩹 Fixes
+
+- **deps-dev:** update dependency glob to v14 [security] ([#2478](https://github.com/RedHatInsights/frontend-components/pull/2478))
+
+### ❤️ Thank You
+
+- Charles Mulder @charlesmulder
+
 ## 1.3.14 (2026-11-12)
 
 This was a version bump only for @redhat-cloud-services/tsc-transform-imports to align it with other projects, there were no code changes.

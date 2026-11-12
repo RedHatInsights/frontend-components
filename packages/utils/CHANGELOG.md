@@ -1,3 +1,17 @@
+## 7.5.15 (2026-11-12)
+
+### 🩹 Fixes
+
+- **deps-dev:** update dependency glob to v14 [security] ([#2478](https://github.com/RedHatInsights/frontend-components/pull/2478))
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/types to 3.7.15
+
+### ❤️ Thank You
+
+- Charles Mulder @charlesmulder
+
 ## 7.5.14 (2026-11-12)
 
 ### 🧱 Updated Dependencies
