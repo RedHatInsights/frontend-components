@@ -46,7 +46,7 @@
     "@patternfly/react-data-view": "^6.7.0",
     "@patternfly/react-table": "^6.7.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.3",
-    "@scalprum/react-core": "^0.14.1",
+    "@scalprum/react-core": "^0.15.0",
     "@simonsmith/cypress-image-snapshot": "^9.1.0",
     "@storybook/addon-a11y": "^10.6.3",
     "@storybook/addon-docs": "^10.6.3",
