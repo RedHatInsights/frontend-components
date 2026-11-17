@@ -248,7 +248,7 @@ install, build, unit-test, component-test, lint, commitlint, check-circular-impo
 **Additional behaviors**:
 - `preserveLocalDependencyProtocols: false` -- `workspace:*` refs resolved to concrete versions during release
 - `skipLockFileUpdate: false` -- `package-lock.json` updated in the release commit
-- Bot account (NachoBot) with GPG signing handles the release commit
+- Release pushes are authenticated by a short-lived `hcc-nx-release` GitHub App installation token; the release commit and tags remain GPG-signed under the bot identity (`BOT_NAME`/`BOT_EMAIL`)
 - `npm-publish` environment provides `contents: write` + `id-token: write` permissions
 
 ### Key Config Files
