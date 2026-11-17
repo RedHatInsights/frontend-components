@@ -1,8 +1,11 @@
 name: Release job
 description: build affected packages and publish them to npm
 inputs:
-  gh_token:
-    description: 'Github token'
+  app_client_id:
+    description: 'Client ID of the hcc-nx-release GitHub App'
+    required: true
+  app_private_key:
+    description: 'Private key of the hcc-nx-release GitHub App (PEM)'
     required: true
   gh_name:
     description: 'Github name'
@@ -59,6 +62,18 @@ runs:
         # https://philna.sh/blog/2026/01/28/trusted-publishing-npm/
         NPM_CONFIG_PROVENANCE: true
       run: npx nx release --skip-publish
+    - name: Generate app installation token
+      # Minted immediately before use: installation tokens expire after 1 hour, and no
+      # token may exist while dependency and build scripts run in earlier steps.
+      # Repo-scoped by default (owner/repositories inputs unset), limited to the only
+      # permission the push needs. The action masks the token in logs and revokes it
+      # in its post step when the job ends.
+      id: app-token
+      uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+      with:
+        client-id: ${{ inputs.app_client_id }}
+        private-key: ${{ inputs.app_private_key }}
+        permission-contents: write
     - name: Push release commit and tags
       shell: bash
       # nx release creates a release commit and tags locally. Treat that commit as immutable:
@@ -68,13 +83,13 @@ runs:
       # HUSKY=0 disables pre-push hooks in CI — tests are run separately by the CI pipeline.
       # -c core.hooksPath=/dev/null hard-disables all hooks for this invocation (command-line
       # config overrides any tampered .git/config): npm ci installs husky hooks, and this is the
-      # only step that runs with the bot token in its environment.
-      # The bot token is exposed only to this step, via the push URL — never persisted in git
-      # config, so dependency and build scripts in earlier steps cannot see it.
+      # only step that runs with the installation token in its environment.
+      # The installation token is exposed only to this step, via the push URL — never persisted
+      # in git config, so dependency and build scripts in earlier steps cannot see it.
       env:
         HUSKY: '0'
-        GH_BOT_TOKEN: ${{ inputs.gh_token }}
-      run: git -c core.hooksPath=/dev/null push --atomic --follow-tags "https://x-access-token:${GH_BOT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
+        GH_APP_TOKEN: ${{ steps.app-token.outputs.token }}
+      run: git -c core.hooksPath=/dev/null push --atomic --follow-tags "https://x-access-token:${GH_APP_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
     - name: Publish to npm
       shell: bash
       # Publish only after push succeeds to prevent orphaned npm versions.
