@@ -189,18 +189,20 @@ jobs:
       cancel-in-progress: false
       queue: max
     permissions:
-      contents: read     # Git writes use the bot token in the release action, not GITHUB_TOKEN
+      contents: read     # Git writes use a GitHub App installation token minted inside the release action, not GITHUB_TOKEN
       id-token: write    # npm trusted publishing (OIDC) and provenance
     steps:
-      # No bot token and no persisted credentials: dependency and build scripts running in
-      # later steps must not see it. The push step in the release action brings its own token.
+      # No persisted credentials and no token in the environment: dependency and build
+      # scripts running in later steps must not see one. The release action mints a
+      # short-lived GitHub App installation token immediately before its push step.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
           fetch-depth: 0
       - uses: './.github/actions/release'
         with:
-          gh_token: ${{ secrets.GH_BOT_TOKEN }}
+          app_client_id: ${{ vars.NX_RELEASE_APP_CLIENT_ID }}
+          app_private_key: ${{ secrets.NX_RELEASE_APP_PRIVATE_KEY }}
           gh_name: ${{ secrets.BOT_NAME }}
           gh_email: ${{ secrets.BOT_EMAIL }}
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
