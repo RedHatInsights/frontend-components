@@ -28,8 +28,8 @@
     "@scalprum/react-core": "^0.13.0 || ^0.14.0 || ^0.15.0"
   },
   "dependencies": {
-    "@data-driven-forms/pf4-component-mapper": "^4.2.0",
-    "@data-driven-forms/react-form-renderer": "^4.2.0",
+    "@data-driven-forms/pf4-component-mapper": "^4.2.3",
+    "@data-driven-forms/react-form-renderer": "^4.2.3",
     "@redhat-cloud-services/frontend-components": "^7.0.13",
     "@redhat-cloud-services/frontend-components-utilities": "^7.0.0",
     "urijs": "^1.19.11"
