@@ -1,3 +1,13 @@
+## 4.14.8 (2026-11-18)
+
+### 🩹 Fixes
+
+- **deps:** update npm minor and patch dependencies ([#2479](https://github.com/RedHatInsights/frontend-components/pull/2479))
+
+### ❤️ Thank You
+
+- Charles Mulder @charlesmulder
+
 ## 4.14.7 (2026-11-18)
 
 This was a version bump only for @redhat-cloud-services/frontend-components-config-utilities to align it with other projects, there were no code changes.
