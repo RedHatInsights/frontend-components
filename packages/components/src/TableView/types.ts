@@ -41,6 +41,20 @@ export interface ColumnConfig {
   /** Width percentage modifier — matches PatternFly Th width prop */
   width?: BaseCellProps['width'];
   /**
+   * Header cell text-handling modifier — forwarded to the column's PatternFly `<Th>`
+   * `modifier` prop. Controls how the header label behaves when it is wider than the
+   * cell: `'wrap'` wraps onto multiple lines, `'truncate'` clips with an ellipsis,
+   * `'nowrap'` keeps it on a single line, `'breakWord'` breaks long words, and
+   * `'fitContent'` sizes the cell to its content.
+   *
+   * When omitted, the `<Th>` is rendered without a `modifier`, preserving PatternFly's
+   * default header behavior (no modifier class is applied).
+   *
+   * Typed off PatternFly's `BaseCellProps['modifier']` (same source as {@link width})
+   * so the accepted values stay in sync with the underlying `<Th>` API.
+   */
+  headerModifier?: BaseCellProps['modifier'];
+  /**
    * Column display format.
    * - `'date'`: Automatically formats the cell renderer's return value as a date.
    *   The cell renderer should return a date string (ISO 8601) or empty string.

@@ -1169,6 +1169,17 @@ const compoundColumns = ['permissions'] as const;
 />
 \`\`\`
 
+### Per-column Header Wrapping
+Set \`headerModifier\` on a column to control how its header text behaves
+(forwarded to PatternFly's \`<Th modifier>\`). Useful for long headers that
+would otherwise truncate:
+\`\`\`tsx
+columnConfig={{
+  org_admin: { label: 'Org. Administrator', headerModifier: 'wrap' },
+  description: { label: 'Description' }, // omitted -> default behavior
+}}
+\`\`\`
+
 ### Custom Empty States
 Override default empty states with custom components:
 \`\`\`tsx
@@ -1189,6 +1200,7 @@ Override default empty states with custom components:
 - **Selection**: SelectionWithBulkDelete
 - **Expansion**: CompoundExpansion, ConditionalExpansion
 - **Empty States**: CustomEmptyStateNoData, CustomEmptyStateNoResults
+- **Header Wrapping**: HeaderModifierWrapping
 - **URL Sync**: URLSynchronization
         `,
       },
@@ -2634,6 +2646,108 @@ export const CursorPaginationFilterReset: StoryObj<typeof CursorPaginatedTable> 
       await waitFor(() => {
         expect(canvas.queryByText('Administrator 1')).toBeInTheDocument();
       });
+    });
+  },
+};
+
+// =============================================================================
+// HEADER MODIFIER STORIES
+// =============================================================================
+
+// Column config exercising per-column header text-wrapping.
+// Two columns carry deliberately long headers in narrow columns so the
+// difference is obvious: `name` opts into wrapping via `headerModifier: 'wrap'`
+// (header spills onto multiple lines), while `description` leaves it unset and
+// keeps PatternFly's default behavior (single line, truncated with an ellipsis).
+const headerModifierColumnConfig: ColumnConfigMap<typeof columns> = {
+  name: { label: 'Organization Administrator With Full Account Management Privileges', headerModifier: 'wrap', width: 15 },
+  description: { label: 'Detailed Description Of The Role And Its Associated Responsibilities', width: 15 },
+  permissions: { label: 'Permissions' },
+  modified: { label: 'Last Modified' },
+};
+
+/**
+ * Display-only table demonstrating per-column header text wrapping.
+ * Uses static local data so the header cells render deterministically.
+ */
+const HeaderModifierTable: React.FC = () => {
+  const tableState = useTableState<typeof columns, MockRole>({
+    columns,
+    initialPerPage: 10,
+    getRowId: (role) => role.uuid,
+  });
+
+  return (
+    <TableView
+      columns={columns}
+      columnConfig={headerModifierColumnConfig}
+      data={allMockRoles.slice(0, 5)}
+      totalCount={5}
+      getRowId={(role) => role.uuid}
+      cellRenderers={cellRenderers}
+      ariaLabel="Header modifier table"
+      ouiaId="header-modifier-table"
+      {...tableState}
+    />
+  );
+};
+
+/**
+ * Per-column header text wrapping via `ColumnConfig.headerModifier`.
+ *
+ * By default PatternFly `<thead>` cells use `nowrap` + ellipsis, which truncates
+ * long headers. Setting `headerModifier: 'wrap'` on a column opts its header into
+ * wrapping. Columns that omit `headerModifier` are rendered with no modifier,
+ * preserving the default behavior (fully backward compatible).
+ */
+export const HeaderModifierWrapping: StoryObj<typeof HeaderModifierTable> = {
+  render: () => <HeaderModifierTable />,
+  parameters: {
+    docs: {
+      description: {
+        story: `
+## Per-column header wrapping
+
+Set \`headerModifier\` on a column in \`columnConfig\` to control how its header text
+behaves. The value is forwarded to the column's PatternFly \`<Th modifier={...}>\`:
+
+\`\`\`tsx
+columnConfig={{
+  org_admin: { label: 'Org. Administrator', headerModifier: 'wrap' },
+  manage_support_cases: { label: 'Can Manage Support Cases', headerModifier: 'wrap' },
+  description: { label: 'Description' }, // omitted -> default (no modifier)
+}}
+\`\`\`
+
+Accepted values mirror PatternFly's \`Th\` \`modifier\` prop:
+\`'wrap' | 'truncate' | 'nowrap' | 'breakWord' | 'fitContent'\`. Omitting
+\`headerModifier\` leaves the header untouched, so existing tables are unaffected.
+        `,
+      },
+    },
+  },
+  play: async ({ canvasElement, step }) => {
+    await step('Verify header modifier classes', async () => {
+      const canvas = within(canvasElement);
+
+      await waitFor(() => {
+        expect(canvas.queryByText('Administrator 1')).toBeInTheDocument();
+      });
+
+      const columnHeaders = canvas.getAllByRole('columnheader');
+      // Long header that opts into wrapping via headerModifier: 'wrap'.
+      const wrappedHeader = columnHeaders.find((h) => h.textContent?.includes('Organization Administrator'));
+      // Equally long header that omits headerModifier -> default (truncated) behavior.
+      const defaultHeader = columnHeaders.find((h) => h.textContent?.includes('Detailed Description'));
+
+      // A column configured with headerModifier: 'wrap' renders the pf-m-wrap class.
+      expect(wrappedHeader).toBeTruthy();
+      expect(wrappedHeader!.classList.contains('pf-m-wrap')).toBe(true);
+
+      // A column that omits headerModifier renders no wrap modifier class,
+      // so its (equally long) header keeps the default single-line behavior.
+      expect(defaultHeader).toBeTruthy();
+      expect(defaultHeader!.classList.contains('pf-m-wrap')).toBe(false);
     });
   },
 };
