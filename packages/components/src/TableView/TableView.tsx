@@ -314,6 +314,7 @@ export function TableView<
                   <Th
                     key={col}
                     width={config?.width}
+                    modifier={config?.headerModifier}
                     sort={
                       isSortable && onSortChange
                         ? {
