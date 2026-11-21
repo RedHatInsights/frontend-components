@@ -40,7 +40,7 @@
     "concurrently": "^7.6.0",
     "css-loader": "^5.2.7",
     "express": "^4.22.3",
-    "fork-ts-checker-webpack-plugin": "^9.1.0",
+    "fork-ts-checker-webpack-plugin": "^9.2.0",
     "git-revision-webpack-plugin": "^5.0.0",
     "glob": "^7.2.3",
     "html-replace-webpack-plugin": "^2.6.0",

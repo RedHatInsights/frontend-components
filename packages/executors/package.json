@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@nx/devkit": "23.3.1",
+    "@nx/devkit": "23.3.2",
     "fs-extra": "^11.4.1",
     "semver": "^7.8.6",
     "tslib": "^2.9.1",
