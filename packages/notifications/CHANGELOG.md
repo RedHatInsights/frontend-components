@@ -1,3 +1,9 @@
+## 6.11.24 (2026-11-23)
+
+### 🧱 Updated Dependencies
+
+- Updated @redhat-cloud-services/frontend-components to 7.11.0
+
 ## 6.11.23 (2026-11-18)
 
 ### 🧱 Updated Dependencies

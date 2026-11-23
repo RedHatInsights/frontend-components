@@ -1,3 +1,13 @@
+## 7.11.0 (2026-11-23)
+
+### 🚀 Features
+
+- **@redhat-cloud-services/frontend-components:** add headerModifier to TableView ([9b982ca5](https://github.com/RedHatInsights/frontend-components/commit/9b982ca5))
+
+### ❤️ Thank You
+
+- Cody Mitchell
+
 ## 7.10.21 (2026-11-18)
 
 ### 🩹 Fixes
