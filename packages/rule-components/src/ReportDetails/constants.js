@@ -1,24 +1,25 @@
 import { InsightsLabel } from '@redhat-cloud-services/frontend-components/InsightsLabel';
+import messages from '../messages';
 
 export const totalRiskMeta = [
   {
     label: 'Low',
-    description: 'Low severity desc for total risk',
+    description: messages.riskTotalRiskDescription0.defaultMessage,
     IconComponent: InsightsLabel,
   },
   {
     label: 'Moderate',
-    description: 'Moderate severity desc for total risk',
+    description: messages.riskTotalRiskDescription1.defaultMessage,
     IconComponent: InsightsLabel,
   },
   {
     label: 'Important',
-    description: 'Important severity desc for total risk',
+    description: messages.riskTotalRiskDescription2.defaultMessage,
     IconComponent: InsightsLabel,
   },
   {
     label: 'Critical',
-    description: 'Critical severity desc for total risk',
+    description: messages.riskTotalRiskDescription3.defaultMessage,
     IconComponent: InsightsLabel,
   },
 ];

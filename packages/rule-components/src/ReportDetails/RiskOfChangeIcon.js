@@ -1,4 +1,8 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React from 'react';
+
+import { riskOfChangeLabelFormatters } from './messages';
+import messages from '../messages';
 import PropTypes from 'prop-types';
 import { SecurityIcon } from '@patternfly/react-icons/dist/dynamic/icons/security-icon';
 
@@ -10,22 +14,22 @@ import { SecurityIcon } from '@patternfly/react-icons/dist/dynamic/icons/securit
 export const riskOfChangeMeta = [
   {
     label: 'Very Low',
-    description: 'Very Low severity desc for risk of change',
+    description: messages.riskRiskOfChangeDescription0.defaultMessage,
     IconComponent: RiskOfChangeIcon,
   },
   {
     label: 'Low',
-    description: 'Low severity desc for risk of change',
+    description: messages.riskRiskOfChangeDescription1.defaultMessage,
     IconComponent: RiskOfChangeIcon,
   },
   {
     label: 'Moderate',
-    description: 'Moderate severity desc for risk of change',
+    description: messages.riskRiskOfChangeDescription2.defaultMessage,
     IconComponent: RiskOfChangeIcon,
   },
   {
     label: 'High',
-    description: 'High severity desc for risk of change',
+    description: messages.riskRiskOfChangeDescription3.defaultMessage,
     IconComponent: RiskOfChangeIcon,
   },
 ];
@@ -41,23 +45,21 @@ export const riskOfChangeMeta = [
  * Also accepts a label which can be made invisible
  */
 function RiskOfChangeIcon({ value, ...props }) {
+  const intl = useIntlWithFallback();
   const label = riskOfChangeMeta[value - 1] && riskOfChangeMeta[value - 1].label;
   return (
     <div className={`ins-c-rule__battery battery ins-c-rule__severity-level-${value}`}>
       <i widget-type="InsightsBattery" widget-id={label} {...props}>
         <SecurityIcon className="ins-c-risk-of-change__icon" />
       </i>
-      {label && label.length > 0 && <span className="ins-c-risk-of-change__label">{label}</span>}
+      {label && label.length > 0 && <span className="ins-c-risk-of-change__label">{riskOfChangeLabelFormatters[value - 1](intl)}</span>}
     </div>
   );
 }
-
 RiskOfChangeIcon.propTypes = {
   value: PropTypes.number.isRequired,
 };
-
 RiskOfChangeIcon.defaultProps = {
   severity: 0,
 };
-
 export default RiskOfChangeIcon;
