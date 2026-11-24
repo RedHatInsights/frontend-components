@@ -5,6 +5,9 @@ on:
   pull_request:
     branches:
       - master
+      - localization-runtime
+      - localization-components
+      - localization-consumers
   push:
     branches:
       - master
