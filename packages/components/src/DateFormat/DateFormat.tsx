@@ -1,4 +1,6 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React from 'react';
+
 import { dateByType } from './helper';
 import { TooltipProps } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
 import { DateType } from './helper';
@@ -25,10 +27,11 @@ export interface DateFormatProps {
  * Relative date format adds a tooltip with a full date string.
  */
 const DateFormat = ({ date, type = 'relative', extraTitle, tooltipProps }: DateFormatProps) => {
+  const intl = useIntlWithFallback();
   const dateObj = date instanceof Date ? date : new Date(date);
   const invalid = date === undefined || date === null || dateObj.toString() === 'Invalid Date';
   const dateType = invalid ? 'invalid' : type;
-  return <React.Fragment>{dateByType(dateType, tooltipProps, extraTitle)(dateObj)}</React.Fragment>;
+  return <React.Fragment>{dateByType(dateType, tooltipProps, extraTitle, intl)(dateObj)}</React.Fragment>;
 };
 
 export default DateFormat;

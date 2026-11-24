@@ -1,10 +1,13 @@
+import { FormattedMessage } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { Fragment } from 'react';
+
 import { Toolbar } from '@patternfly/react-core/dist/dynamic/components/Toolbar';
 import { ToolbarProps } from '@patternfly/react-core/dist/dynamic/components/Toolbar';
 import { useOUIAId } from '@patternfly/react-core/dist/dynamic/helpers/OUIA/ouia';
 import classNames from 'classnames';
 
 import './TableToolbar.scss';
+import messages from '../messages';
 
 export interface TableToolbarProps extends Omit<Omit<ToolbarProps, 'selected'>, 'ref'> {
   isFooter?: boolean;
@@ -13,14 +16,6 @@ export interface TableToolbarProps extends Omit<Omit<ToolbarProps, 'selected'>, 
   selected?: number;
   ouiaId?: string;
   ouiaSafe?: boolean;
-}
-
-function generateCount(results: number) {
-  if (results > 1 || results < 1) {
-    return `${results} Results`;
-  } else {
-    return `${results} Result`;
-  }
 }
 
 const TableToolbar = ({ isFooter = false, results, className, selected, children, ouiaId, ouiaSafe = true, ...props }: TableToolbarProps) => {
@@ -35,8 +30,26 @@ const TableToolbar = ({ isFooter = false, results, className, selected, children
       </Toolbar>
       {(results != null || selected != null) && (
         <div className="ins-c-table__toolbar-results">
-          {results != null && results >= 0 && <span className="ins-c-table__toolbar-results-count"> {generateCount(results)} </span>}
-          {selected != null && selected >= 0 && <span className="ins-c-table__toolbar-results-selected"> {selected} Selected </span>}
+          {results != null && results >= 0 && (
+            <span className="ins-c-table__toolbar-results-count">
+              {' '}
+              <FormattedMessage
+                {...messages.tableToolbarResultCount}
+
+                values={{ count: results }}
+              />{' '}
+            </span>
+          )}
+          {selected != null && selected >= 0 && (
+            <span className="ins-c-table__toolbar-results-selected">
+              {' '}
+              <FormattedMessage
+                {...messages.tableToolbarSelectedCount}
+
+                values={{ count: selected }}
+              />{' '}
+            </span>
+          )}
         </div>
       )}
     </Fragment>

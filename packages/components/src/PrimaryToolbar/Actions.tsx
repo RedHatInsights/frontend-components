@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { Fragment, useState } from 'react';
 import {
   Button,
@@ -15,6 +16,7 @@ import EllipsisVIcon from '@patternfly/react-icons/dist/dynamic/icons/ellipsis-v
 
 import { DownloadButton, DownloadButtonProps } from '../DownloadButton';
 import classNames from 'classnames';
+import messages from '../messages';
 
 type ActionObject = {
   key?: string;
@@ -99,6 +101,8 @@ const Actions = ({
   dropdownProps = {} as DropdownProps,
   exportConfig,
 }: ActionsProps) => {
+  const intl = useIntlWithFallback();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = (isOpen: boolean) => setIsOpen(isOpen);
@@ -160,7 +164,7 @@ const Actions = ({
             toggle={(toggleRef) => (
               <MenuToggle
                 ref={toggleRef}
-                aria-label="kebab dropdown toggle"
+                aria-label={intl.formatMessage(messages.actionsKebabDropdownToggle)}
                 variant="plain"
                 onClick={() => setIsOpen((prev) => !prev)}
                 isExpanded={isOpen}

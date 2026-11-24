@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { Fragment, useRef, useState } from 'react';
 import classnames from 'classnames';
 import {
@@ -13,6 +14,7 @@ import {
 } from '@patternfly/react-core';
 
 import './bulk-select.scss';
+import messages from '../messages';
 
 export type BulkSelectItem = {
   key?: string | number;
@@ -52,6 +54,8 @@ const BulkSelect = ({
   ouiaSafe = true,
   ...props
 }: BulkSelectProps) => {
+  const intl = useIntlWithFallback();
+
   const [isOpen, setIsOpen] = useState(false);
   const { current: hasError } = useRef(false);
 
@@ -83,7 +87,7 @@ const BulkSelect = ({
                       <MenuToggleCheckbox
                         key={'split-checkbox-with-text'}
                         id={id ? `${id}-toggle-checkbox` : 'toggle-checkbox'}
-                        aria-label="Select all"
+                        aria-label={intl.formatMessage(messages.bulkSelectSelectAll)}
                         onChange={(checked, event) => {
                           setIsOpen(false);
                           onSelect?.(checked, event);
@@ -92,7 +96,7 @@ const BulkSelect = ({
                         isChecked={checked}
                         ouiaId={checkboxOuiaId ?? 'BulkSelectCheckbox'}
                       >
-                        {!hasError && count ? `${count} selected` : ''}
+                        {!hasError && count ? intl.formatMessage(messages.bulkSelectSelectedCount, { count }) : ''}
                       </MenuToggleCheckbox>,
                     ]
                   : []
@@ -113,7 +117,7 @@ const BulkSelect = ({
                   'ins-c-bulk-select__selected': !hasError,
                 })}
               >
-                {`${count} selected`}
+                {intl.formatMessage(messages.bulkSelectSelectedCount, { count })}
               </DropdownItem>
             )}
             {items.map((oneItem, key) => (
@@ -132,7 +136,7 @@ const BulkSelect = ({
       ) : (
         <Checkbox
           {...props}
-          aria-label="Select all"
+          aria-label={intl.formatMessage(messages.bulkSelectSelectAll)}
           className={classnames(className, 'ins-c-bulk-select')}
           id={`${id}-checkbox`}
           isChecked={checked}

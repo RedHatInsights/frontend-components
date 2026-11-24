@@ -1,3 +1,4 @@
+import { FormattedMessage, useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
 import { Popover } from '@patternfly/react-core/dist/dynamic/components/Popover';
 import { Content } from '@patternfly/react-core/dist/dynamic/components/Content';
@@ -5,6 +6,7 @@ import { Content } from '@patternfly/react-core/dist/dynamic/components/Content'
 import CodeBranchIcon from '@patternfly/react-icons/dist/dynamic/icons/code-branch-icon';
 import ExternalLinkAltIcon from '@patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon';
 import React from 'react';
+import messages from '../messages';
 
 export interface OpenSourceBadgeProps {
   /*
@@ -14,23 +16,30 @@ export interface OpenSourceBadgeProps {
 }
 
 const OpenSourceBadge = ({ repositoriesURL }: OpenSourceBadgeProps) => {
+  const intl = useIntlWithFallback();
+
   return (
     <>
       <Popover
         bodyContent={
           <Content>
             <Content component="p">
-              This service is open source, so all of its code is inspectable. Explore repositories to view and contribute to the source code.
+              <FormattedMessage {...messages.openSourceBadgeThisServiceIsOpenSourceSoAllOfItsCodeIsInspectable} />
             </Content>
             <Button component="a" target="_blank" variant="link" icon={<ExternalLinkAltIcon />} iconPosition="right" isInline href={repositoriesURL}>
-              Repositories
+              <FormattedMessage {...messages.openSourceBadgeRepositories} />
             </Button>
           </Content>
         }
         id={'open-source-badge'}
-        headerContent={'About open source'}
+        headerContent={intl.formatMessage(messages.openSourceBadgeAboutOpenSource)}
       >
-        <Button icon={<CodeBranchIcon />} variant="plain" aria-label="About Open Services" className="pf-v6-u-pl-sm open-source-badge" />
+        <Button
+          icon={<CodeBranchIcon />}
+          variant="plain"
+          aria-label={intl.formatMessage(messages.openSourceBadgeAboutOpenServices)}
+          className="pf-v6-u-pl-sm open-source-badge"
+        />
       </Popover>
     </>
   );

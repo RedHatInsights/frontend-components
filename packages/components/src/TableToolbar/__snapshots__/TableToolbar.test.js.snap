@@ -77,8 +77,8 @@ exports[`TableToolbar component should render with results and selection of 1 1`
       class="ins-c-table__toolbar-results-selected"
     >
        
-      1
-       Selected 
+      1 Selected
+       
     </span>
   </div>
 </div>
@@ -209,8 +209,8 @@ exports[`TableToolbar component should render with selection of 0 1`] = `
       class="ins-c-table__toolbar-results-selected"
     >
        
-      0
-       Selected 
+      0 Selected
+       
     </span>
   </div>
 </div>
@@ -242,8 +242,8 @@ exports[`TableToolbar component should render with selection of 1 1`] = `
       class="ins-c-table__toolbar-results-selected"
     >
        
-      1
-       Selected 
+      1 Selected
+       
     </span>
   </div>
 </div>

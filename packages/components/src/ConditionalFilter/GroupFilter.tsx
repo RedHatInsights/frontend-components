@@ -1,4 +1,6 @@
 // @ts-nocheck
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
+
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
@@ -31,6 +33,7 @@ import {
 import GroupType from './groupType';
 import './group-filter.scss';
 import { GroupItem } from './groupFilterConstants';
+import messages from '../messages';
 
 type FilterableProps = {
   /** Optional isFilterable flag. */
@@ -81,6 +84,8 @@ export type GroupFilterProps = {
  * It was not designed to be used as a standalone component, but rather within conditionalFilter.
  */
 const GroupFilter = (props: GroupFilterProps) => {
+  const intl = useIntlWithFallback();
+
   const {
     className,
     filterBy = '',
@@ -151,7 +156,13 @@ const GroupFilter = (props: GroupFilterProps) => {
   );
   const groupMenuItems = getGroupMenuItems(groups, onChange, calculateSelected(selected || {}, groups));
 
-  const renderItem = ({ groupSelectable, ...item }: GroupFilterItem, key: string | number, type?: GroupType, groupKey = '', selected) => (
+  const renderItem = (
+    { groupSelectable, ...item }: GroupFilterItem,
+    key: string | number,
+    type?: GroupType,
+    groupKey = '',
+    selected?: GroupFilterProps['selected'],
+  ) => (
     <MenuItem
       itemId={key}
       key={`${item.value}-${key}-item`}
@@ -208,7 +219,7 @@ const GroupFilter = (props: GroupFilterProps) => {
     </MenuItem>
   );
 
-  const renderItems = (items: GroupFilterItem[], type?: GroupType, groupKey = '', selected) =>
+  const renderItems = (items: GroupFilterItem[], type?: GroupType, groupKey = '', selected?: GroupFilterProps['selected']) =>
     items.map((item, key) =>
       (type || item.type) === GroupType.treeView ? (
         <div key={`${item.value}-${key}-item`} className="ins-c-tree-view">
@@ -233,7 +244,7 @@ const GroupFilter = (props: GroupFilterProps) => {
         appendTo={containerRef.current as HTMLElement}
         trigger={
           <MenuToggle
-            aria-label="Group filter"
+            aria-label={intl.formatMessage(messages.groupFilterGroupFilter)}
             innerRef={toggleRef}
             onClick={onToggleClick}
             isExpanded={isOpen}
@@ -253,7 +264,7 @@ const GroupFilter = (props: GroupFilterProps) => {
                   onChange={(_e, value) => {
                     setFilter(value);
                   }}
-                  aria-label="input with dropdown and clear button"
+                  aria-label={intl.formatMessage(messages.groupFilterInputWithDropdownAndClearButton)}
                   placeholder={placeholder}
                   value={searchString}
                   type="text"
@@ -267,7 +278,7 @@ const GroupFilter = (props: GroupFilterProps) => {
                         setFilter('');
                         setIsOpen(false);
                       }}
-                      aria-label="Clear input value"
+                      aria-label={intl.formatMessage(messages.groupFilterClearInputValue)}
                     />
                   )}
                 </TextInputGroupUtilities>
@@ -280,7 +291,7 @@ const GroupFilter = (props: GroupFilterProps) => {
         popper={
           <Menu ref={menuRef} className={classNames('ins-c-menu__scrollable', className, { 'pf-m-expanded': isOpen })}>
             <MenuContent>
-              <MenuList aria-label="Group filter">
+              <MenuList aria-label={intl.formatMessage(messages.groupFilterGroupFilter)}>
                 {menuItems.length > 0 && <MenuGroup>{renderItems(menuItems as GroupFilterItem[])}</MenuGroup>}
                 {groupMenuItems.map((group, groupKey) => (
                   <MenuGroup
