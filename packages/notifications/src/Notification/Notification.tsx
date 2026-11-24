@@ -1,3 +1,4 @@
+import { FormattedMessage, useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { useEffect, useRef } from 'react';
 import { Alert } from '@patternfly/react-core/dist/dynamic/components/Alert';
 import { AlertActionCloseButton } from '@patternfly/react-core/dist/dynamic/components/Alert';
@@ -6,6 +7,7 @@ import { Content } from '@patternfly/react-core/dist/dynamic/components/Content'
 import { ContentVariants } from '@patternfly/react-core/dist/dynamic/components/Content';
 import './notification.scss';
 import { NotificationID } from '../state';
+import messages from '../messages';
 
 export interface NotificationProps {
   /**
@@ -78,6 +80,8 @@ const Notification: React.ComponentType<NotificationProps> = ({
   id,
   ...rest
 }) => {
+  const intl = useIntlWithFallback();
+
   const dismissTimeout = useRef<any>();
 
   const handleDismiss = () => {
@@ -108,7 +112,11 @@ const Notification: React.ComponentType<NotificationProps> = ({
       id={`${id}`}
       title={typeof title === 'string' ? title.replace(/<\/?[^>]+(>|$)/g, '') : title}
       {...rest}
-      actionClose={dismissable ? <AlertActionCloseButton aria-label="close-notification" variant="plain" onClick={handleDismiss} /> : null}
+      actionClose={
+        dismissable ? (
+          <AlertActionCloseButton aria-label={intl.formatMessage(messages.notificationCloseNotification)} variant="plain" onClick={handleDismiss} />
+        ) : null
+      }
       actionLinks={actionLinks}
       onMouseEnter={clearDismissTimeout}
       onMouseLeave={setDismissTimeout}
@@ -121,12 +129,16 @@ const Notification: React.ComponentType<NotificationProps> = ({
 
       {sentryId && (
         <Content>
-          <Content component={ContentVariants.small}>Tracking Id: {sentryId}</Content>
+          <Content component={ContentVariants.small}>
+            <FormattedMessage {...messages.notificationTrackingId} values={{ id: sentryId }} />
+          </Content>
         </Content>
       )}
       {requestId && (
         <Content>
-          <Content component={ContentVariants.small}>Request Id: {requestId}</Content>
+          <Content component={ContentVariants.small}>
+            <FormattedMessage {...messages.notificationRequestId} values={{ id: requestId }} />
+          </Content>
         </Content>
       )}
     </Alert>

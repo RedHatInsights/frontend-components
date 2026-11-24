@@ -1,8 +1,10 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import { ErrorBoundary } from '@patternfly/react-component-groups/dist/dynamic/ErrorBoundary';
 
 import Portal, { PortalNotificationConfig } from '../Portal';
 import { useNotifications } from '../hooks/useNotifications';
 import { NotificationID } from '../state';
+import messages from '../messages';
 
 export interface NotificationPortalProps {
   clearNotifications?: () => void;
@@ -17,8 +19,10 @@ const NotificationPortalBase = ({ clearNotifications: propsClear, ...props }: No
 };
 
 export const NotificationPortal = ({ silent = true, ...props }: NotificationPortalProps) => {
+  const intl = useIntlWithFallback();
+
   return (
-    <ErrorBoundary headerTitle="Notifications portal" silent={silent}>
+    <ErrorBoundary headerTitle={intl.formatMessage(messages.notificationPortalNotificationsPortal)} silent={silent}>
       <NotificationPortalBase {...props} />
     </ErrorBoundary>
   );
