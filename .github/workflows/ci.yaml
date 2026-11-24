@@ -43,6 +43,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Test published translations package
+        run: npx nx run @redhat-cloud-services/frontend-components-translations:test:package
   unit-test:
     runs-on: ubuntu-24.04
     needs: [install]

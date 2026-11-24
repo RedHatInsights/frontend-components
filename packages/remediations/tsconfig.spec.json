@@ -3,7 +3,11 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "paths": {
+      "@redhat-cloud-services/frontend-components-translations": ["packages/translations/src/index.js"],
+      "@redhat-cloud-services/frontend-components-translations/*": ["packages/translations/src/*"]
+    }
   },
   "include": [
     "jest.config.ts",

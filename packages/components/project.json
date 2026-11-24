@@ -4,6 +4,11 @@
   "sourceRoot": "packages/components",
   "projectType": "library",
   "tags": ["scope:public"],
+  "release": {
+    "version": {
+      "preserveMatchingDependencyRanges": ["devDependencies", "peerDependencies", "optionalDependencies"]
+    }
+  },
   "targets": {
     "build:bundles:tsc": {
       "executor": "@nx/js:tsc",
@@ -70,6 +75,8 @@
       }
     },
     "test:component": {
+      "dependsOn": ["^test:component"],
+      "inputs": ["default", "^default", "{workspaceRoot}/locales/*.json"],
       "executor": "@nx/cypress:cypress",
       "options": {
         "cypressConfig": "packages/components/cypress.config.ts",
