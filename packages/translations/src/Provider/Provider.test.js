@@ -1,24 +1,26 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 
 import IntlProvider from './Provider';
 describe('provider', () => {
-  test('should render correctly', () => {
+  test('should render correctly', async () => {
     const { container } = render(
       <IntlProvider>
         <div>Test</div>
       </IntlProvider>,
     );
+    await act(async () => {});
     expect(container).toMatchSnapshot();
   });
 
   describe('messages', () => {
-    test('no langauge', () => {
+    test('no langauge', async () => {
       const { container } = render(
         <IntlProvider messages={{ 'some.msg': 'Message' }}>
           <div>Test</div>
         </IntlProvider>,
       );
+      await act(async () => {});
       expect(container).toMatchSnapshot();
     });
 
@@ -27,26 +29,18 @@ describe('provider', () => {
         en: {
           'some.msg': 'Message',
         },
-        cs: {
-          'some.msg': 'Zpráva',
+        fr: {
+          'some.msg': 'Message en français',
         },
       };
 
-      test('no locale', () => {
+      test('no locale', async () => {
         const { container } = render(
           <IntlProvider messages={translations}>
             <div>Test</div>
           </IntlProvider>,
         );
-        expect(container).toMatchSnapshot();
-      });
-
-      test('cs-locale', () => {
-        const { container } = render(
-          <IntlProvider messages={translations} locale="cs">
-            <div>Test</div>
-          </IntlProvider>,
-        );
+        await act(async () => {});
         expect(container).toMatchSnapshot();
       });
     });

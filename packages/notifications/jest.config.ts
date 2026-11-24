@@ -2,7 +2,7 @@ export default {
   displayName: '@redhat-cloud-services/frontend-components-notifications',
   preset: '../../jest.preset.js',
   transform: {
-    '^.+\\.tsx?$': [
+    '^.+\\.[tj]sx?$': [
       'ts-jest',
       {
         tsconfig: '<rootDir>/tsconfig.spec.json',
