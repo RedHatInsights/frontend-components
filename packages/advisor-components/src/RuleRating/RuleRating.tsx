@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import './RuleRating.scss';
 
 import React, { useCallback, useEffect, useState } from 'react';
@@ -12,6 +13,7 @@ import ThumbsUpIcon from '@patternfly/react-icons/dist/dynamic/icons/thumbs-up-i
 
 import { Rating } from '../types';
 import { RuleDetailsMessages } from '../RuleDetails/RuleDetailsMessages';
+import intlMessages from '../messages';
 
 export const DEBOUNCE_TIMEOUT = 2000;
 
@@ -23,6 +25,8 @@ interface RuleRatingProps {
 }
 
 const RuleRating = ({ messages, ruleId, ruleRating, onVoteClick }: RuleRatingProps) => {
+  const intl = useIntlWithFallback();
+
   const [rating, setRating] = useState(ruleRating);
   const [submitted, setSubmitted] = useState(false);
 
@@ -66,7 +70,7 @@ const RuleRating = ({ messages, ruleId, ruleRating, onVoteClick }: RuleRatingPro
           </Icon>
         }
         variant="plain"
-        aria-label="thumbs-up"
+        aria-label={intl.formatMessage(intlMessages.ruleRatingThumbsUp)}
         onClick={() => updateRuleRating(1)}
         ouiaId="thumbsUp"
       />
@@ -81,7 +85,7 @@ const RuleRating = ({ messages, ruleId, ruleRating, onVoteClick }: RuleRatingPro
           </Icon>
         }
         variant="plain"
-        aria-label="thumbs-down"
+        aria-label={intl.formatMessage(intlMessages.ruleRatingThumbsDown)}
         onClick={() => updateRuleRating(-1)}
         ouiaId="thumbsDown"
       />
