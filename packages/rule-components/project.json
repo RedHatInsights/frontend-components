@@ -67,6 +67,14 @@
         "lintFilePatterns": ["packages/rule-components/src/**/*", "packages/rule-components/package.json"]
       }
     },
+    "test:component": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "packages/rule-components/cypress.config.ts",
+        "testingType": "component",
+        "skipServe": true
+      }
+    },
     "test:unit": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

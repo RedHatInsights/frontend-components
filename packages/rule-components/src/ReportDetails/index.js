@@ -1,3 +1,5 @@
+import { FormattedMessage, useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
+import { riskOfChangeDescriptionFormatters, totalRiskDescriptionFormatters } from './messages';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Content } from '@patternfly/react-core/dist/dynamic/components/Content';
@@ -12,6 +14,7 @@ import { totalRiskMeta } from './constants';
 import RiskDescription from './RiskDescription';
 import { riskOfChangeMeta } from './RiskOfChangeIcon';
 import './index.scss';
+import messages from '../messages';
 
 const ReportDetails = ({
   details,
@@ -26,6 +29,7 @@ const ReportDetails = ({
   actions,
   onFeedbackChanged,
 }) => {
+  const intl = useIntlWithFallback();
   return (
     <Grid className="ins-c-rule__report-detail" hasGutter gutter="md">
       {title && actions && (
@@ -35,7 +39,15 @@ const ReportDetails = ({
               <StackItem>{title}</StackItem>
               {createdAt && (
                 <StackItem>
-                  <Content component="p">Published date: {createdAt}</Content>
+                  <Content component="p">
+                    <FormattedMessage
+                      {...messages.reportDetailsPublishedDate}
+
+                      values={{
+                        date: () => <>{createdAt}</>,
+                      }}
+                    />
+                  </Content>
                 </StackItem>
               )}
             </Stack>
@@ -62,11 +74,18 @@ const ReportDetails = ({
             <Stack>
               <StackItem>
                 <Title headingLevel="h1" className="ins-c-rule__risk-detail-title" size="md">
-                  Total risk
+                  <FormattedMessage {...messages.reportDetailsTotalRisk} />
                 </Title>
               </StackItem>
               <StackItem>
-                <RiskDescription riskValue={totalRisk} riskMeta={totalRiskMeta} showDescription={showRiskDescription} />
+                <RiskDescription
+                  riskValue={totalRisk}
+                  riskMeta={totalRiskMeta.map((meta, index) => ({
+                    ...meta,
+                    description: totalRiskDescriptionFormatters[index](intl),
+                  }))}
+                  showDescription={showRiskDescription}
+                />
               </StackItem>
             </Stack>
           </StackItem>
@@ -75,11 +94,18 @@ const ReportDetails = ({
               <Stack>
                 <StackItem>
                   <Title headingLevel="h1" className="ins-c-rule__risk-detail-title" size="md">
-                    Risk of change
+                    <FormattedMessage {...messages.reportDetailsRiskOfChange} />
                   </Title>
                 </StackItem>
                 <StackItem>
-                  <RiskDescription riskValue={riskOfChange} riskMeta={riskOfChangeMeta} showDescription={showRiskDescription} />
+                  <RiskDescription
+                    riskValue={riskOfChange}
+                    riskMeta={riskOfChangeMeta.map((meta, index) => ({
+                      ...meta,
+                      description: riskOfChangeDescriptionFormatters[index](intl),
+                    }))}
+                    showDescription={showRiskDescription}
+                  />
                 </StackItem>
               </Stack>
             </StackItem>
@@ -89,7 +115,6 @@ const ReportDetails = ({
     </Grid>
   );
 };
-
 ReportDetails.propTypes = {
   details: PropTypes.string,
   ruleId: PropTypes.string,
@@ -103,10 +128,8 @@ ReportDetails.propTypes = {
   actions: PropTypes.node,
   onFeedbackChanged: PropTypes.func,
 };
-
 ReportDetails.defaultProps = {
   showRiskDescription: true,
   userVote: 0,
 };
-
 export default ReportDetails;
