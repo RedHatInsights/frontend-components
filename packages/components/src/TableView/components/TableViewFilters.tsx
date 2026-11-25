@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 /**
  * TableViewFilters Component
  *
@@ -6,10 +7,12 @@
  */
 
 import React, { useMemo } from 'react';
+
 import DataViewFilters from '@patternfly/react-data-view/dist/cjs/DataViewFilters';
 import { DataViewTextFilter } from '@patternfly/react-data-view/dist/dynamic/DataViewTextFilter';
 import { DataViewCheckboxFilter } from '@patternfly/react-data-view/dist/dynamic/DataViewCheckboxFilter';
 import type { FilterConfig, FilterState } from '../types';
+import messages from '../../messages';
 
 export interface TableViewFiltersProps {
   /** Filter configuration */
@@ -25,20 +28,25 @@ export interface TableViewFiltersProps {
  * Normalizes 'search' → 'text' and 'select' → 'checkbox' internally.
  */
 export const TableViewFilters: React.FC<TableViewFiltersProps> = ({ filterConfig, filters, onFiltersChange }) => {
+  const intl = useIntlWithFallback();
   // Normalize filter config - reduce 4 types to 2 (text vs checkbox)
   // For 'search' type: derive label from placeholder so DataViewTextFilter gets a proper title/aria-label
   const normalizedFilterConfig = useMemo(
     () =>
       filterConfig.map((config) => {
         if (config.type === 'search') {
-          return { ...config, type: 'text' as const, label: config.placeholder ?? 'Search' };
+          return {
+            ...config,
+            type: 'text' as const,
+            label: config.placeholder ?? intl.formatMessage(messages.tableViewFiltersSearch),
+          };
         }
         if (config.type === 'select') {
           return { ...config, type: 'checkbox' as const };
         }
         return config;
       }),
-    [filterConfig],
+    [filterConfig, intl],
   );
 
   const handleFilterChange = (_event: unknown, newFilters: Partial<FilterState>) => {
@@ -71,7 +79,7 @@ export const TableViewFilters: React.FC<TableViewFiltersProps> = ({ filterConfig
               key={config.id}
               filterId={config.id}
               title={config.label}
-              placeholder={config.placeholder || `Filter by ${config.label.toLowerCase()}...`}
+              placeholder={config.placeholder || intl.formatMessage(messages.tableViewFiltersFilterBy, { label: config.label.toLowerCase() })}
               options={mappedOptions}
             />
           );

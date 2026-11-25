@@ -1,6 +1,9 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React from 'react';
+
 import { Badge } from '@patternfly/react-core/dist/dynamic/components/Badge';
 import { Tooltip } from '@patternfly/react-core/dist/dynamic/components/Tooltip';
+import messages from '../messages';
 
 export type Tag = {
   key: string;
@@ -99,7 +102,20 @@ export function mapGroups(currSelection: { [key: string]: GroupValue }, valuesKe
   }, []);
 }
 
-export function constructGroups(allTags: AllTag[], item = 'item') {
+const TagCount = ({ count, item }: { count: number; item?: string }) => {
+  const intl = useIntlWithFallback();
+  const tooltip =
+    item === undefined
+      ? intl.formatMessage(messages.tagFilterApplicableToItems, { count })
+      : intl.formatMessage(messages.tagFilterApplicableToNamedItems, { count, item: `${item}${count === 1 ? '' : 's'}` });
+  return (
+    <Tooltip position="right" enableFlip content={tooltip}>
+      <Badge isRead={count <= 0}>{intl.formatNumber(count)}</Badge>
+    </Tooltip>
+  );
+};
+
+export function constructGroups(allTags: AllTag[], item?: string) {
   return allTags.map(({ name, tags, type = 'checkbox', ...rest }) => ({
     ...rest,
     label: name,
@@ -114,11 +130,7 @@ export function constructGroups(allTags: AllTag[], item = 'item') {
             <Tooltip content={tagText}>
               <div className="ins-c-tagfilter__option-value">{tagText}</div>
             </Tooltip>
-            {count !== undefined && (
-              <Tooltip position="right" enableFlip content={`Applicable to ${count} ${item}${count === 1 ? '' : 's'}.`}>
-                <Badge isRead={count <= 0}>{count}</Badge>
-              </Tooltip>
-            )}
+            {count !== undefined && <TagCount count={count} item={item} />}
           </React.Fragment>
         ),
         meta: {

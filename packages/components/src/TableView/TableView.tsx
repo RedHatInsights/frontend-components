@@ -1,3 +1,4 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 /**
  * TableView Component
  *
@@ -9,6 +10,7 @@
  */
 
 import React, { useEffect, useMemo } from 'react';
+
 import { Table, Tbody, Th, Thead, Tr } from '@patternfly/react-table/dist/dynamic/components/Table';
 import { TableVariant } from '@patternfly/react-table';
 import { BulkSelectValue } from '@patternfly/react-component-groups/dist/dynamic/BulkSelect';
@@ -28,6 +30,7 @@ import { TableViewToolbar } from './components/TableViewToolbar';
 import { TableViewRow } from './components/TableViewRow';
 import { TableViewSkeleton } from './components/TableViewSkeleton';
 import { DefaultEmptyStateError, DefaultEmptyStateNoData, DefaultEmptyStateNoResults, TableViewEmptyState } from './components/TableViewEmptyState';
+import messages from '../messages';
 
 /**
  * TableView - Unified table component for RBAC UI
@@ -53,6 +56,7 @@ export function TableView<
   TSortable extends TColumns[number] = never,
   TCompound extends TColumns[number] = never,
 >(props: TableViewProps<TColumns, TRow, TSortable, TCompound>): React.ReactElement {
+  const intl = useIntlWithFallback();
   const {
     // Columns
     columns,
@@ -123,6 +127,8 @@ export function TableView<
     variant = 'default',
     ouiaId,
     ariaLabel,
+    selectColumnLabel = intl.formatMessage(messages.tableViewSelectColumnLabel),
+    actionsColumnLabel = intl.formatMessage(messages.tableViewActionsColumnLabel),
   } = props;
 
   // -------------------------------------------------------------------------
@@ -285,6 +291,8 @@ export function TableView<
         <TableViewEmptyState
           showHeaders
           columnLabels={columnLabels}
+          selectColumnLabel={selectColumnLabel}
+          actionsColumnLabel={actionsColumnLabel}
           hasSelection={selectable}
           hasActions={!!renderActions}
           variant={variant}
@@ -305,7 +313,7 @@ export function TableView<
         <Table aria-label={ariaLabel} variant={variant === 'compact' ? TableVariant.compact : undefined} ouiaId={ouiaId}>
           <Thead>
             <Tr>
-              {selectable && <Th screenReaderText="Select" modifier="fitContent" />}
+              {selectable && <Th screenReaderText={selectColumnLabel} modifier="fitContent" />}
               {columns.map((col, index) => {
                 const config = columnConfig[col as keyof typeof columnConfig];
                 const isSortable = sortableColumnSet.has(col);
@@ -331,7 +339,7 @@ export function TableView<
                   </Th>
                 );
               })}
-              {renderActions && <Th screenReaderText="Actions" modifier="fitContent" />}
+              {renderActions && <Th screenReaderText={actionsColumnLabel} modifier="fitContent" />}
             </Tr>
           </Thead>
 

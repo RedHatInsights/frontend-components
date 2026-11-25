@@ -1,4 +1,6 @@
+import { useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { KeyboardEvent } from 'react';
+
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
 import { ButtonProps } from '@patternfly/react-core/dist/dynamic/components/Button';
 import { Pagination } from '@patternfly/react-core/dist/dynamic/components/Pagination';
@@ -20,6 +22,7 @@ import { FilterChips, FilterChipsProps } from '../FilterChips';
 import SortBy, { SortByProps } from './SortBy';
 
 import './primary-toolbar.scss';
+import messages from '../messages';
 
 export type PrimaryToolbarExpandAllObject = {
   onClick: (event: React.MouseEvent<Element, MouseEvent>, isExpanded: boolean) => void;
@@ -75,17 +78,18 @@ const PrimaryToolbar = ({
   useMobileLayout: _useMobileLayout,
   ...props
 }: React.PropsWithChildren<PrimaryToolbarProps>) => {
+  const intl = useIntlWithFallback();
   const overflowActions = [
     ...(sortByConfig
       ? [
           {
-            label: 'Sort order ASC',
+            label: intl.formatMessage(messages.primaryToolbarSortAscending),
             props: { isDisabled: sortByConfig.direction === SortByDirection.asc },
             onClick: (e: MouseEvent | React.MouseEvent<any, MouseEvent> | KeyboardEvent<Element>) =>
               sortByConfig.onSortChange && sortByConfig.onSortChange(e, SortByDirection.asc),
           },
           {
-            label: 'Sort order DESC',
+            label: intl.formatMessage(messages.primaryToolbarSortDescending),
             props: { isDisabled: sortByConfig.direction === SortByDirection.desc },
             onClick: (e: MouseEvent | React.MouseEvent<any, MouseEvent> | KeyboardEvent<Element>) =>
               sortByConfig.onSortChange && sortByConfig.onSortChange(e, SortByDirection.desc),
@@ -109,7 +113,11 @@ const PrimaryToolbar = ({
                 icon={<ToolbarExpandIconWrapper>{expandAll.isAllExpanded ? <AngleDownIcon /> : <AngleRightIcon />}</ToolbarExpandIconWrapper>}
                 {...expandAll.buttonProps}
                 variant="plain"
-                aria-label={`${expandAll.isAllExpanded ? 'Collapse' : 'Expand'} all`}
+                aria-label={
+                  expandAll.isAllExpanded
+                    ? intl.formatMessage(messages.primaryToolbarCollapseAll)
+                    : intl.formatMessage(messages.primaryToolbarExpandAll)
+                }
                 onClick={(e) => expandAll.onClick(e, !expandAll.isAllExpanded)}
                 ouiaId="ExpandCollapseAll"
                 isDisabled={expandAll.isDisabled}

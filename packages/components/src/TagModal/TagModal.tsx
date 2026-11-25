@@ -1,3 +1,4 @@
+import { FormattedMessage, useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { Component } from 'react';
 import './tagModal.scss';
 import { Button } from '@patternfly/react-core/dist/dynamic/components/Button';
@@ -10,6 +11,7 @@ import TableWithFilter, { TableWithFilterPagination, TableWithFilterProps } from
 import { ICell, IRow } from '@patternfly/react-table';
 import { ConditionalFilterItem } from '../ConditionalFilter';
 import { BulkSelectProps } from '../BulkSelect';
+import messages from '../messages';
 
 export type OnSelectRow = (selected?: IRow[]) => void;
 export type OnUpdateData = (pagination: TableWithFilterPagination) => number | undefined;
@@ -42,6 +44,10 @@ const calculateChecked = (rows: IRow[] = [], selected: IRow[]) =>
     : rows.some(({ id }) => selected && selected.find(({ id: selectedId }) => selectedId === id)) && null;
 
 const unique = (arr: IRow[]) => arr.filter(({ id }, index, arr) => arr.findIndex(({ id: currId }) => currId === id) === index);
+
+const WithLibraryIntl = ({ children }: { children: (intl: ReturnType<typeof useIntlWithFallback>) => React.ReactNode }) => (
+  <>{children(useIntlWithFallback())}</>
+);
 
 class TagModal extends Component<
   TagModalProps,
@@ -92,6 +98,10 @@ class TagModal extends Component<
   );
 
   render() {
+    return <WithLibraryIntl>{(intl) => this.renderWithIntl(intl)}</WithLibraryIntl>;
+  }
+
+  renderWithIntl(intl: ReturnType<typeof useIntlWithFallback>) {
     const {
       className,
       title,
@@ -99,7 +109,7 @@ class TagModal extends Component<
       toggleModal = () => undefined,
       isOpen = false,
       rows = [],
-      columns = [{ title: 'Name' }, { title: 'Tag source' }],
+      columns = [{ title: intl.formatMessage(messages.tagModalName) }, { title: intl.formatMessage(messages.tagModalTagSource) }],
       pagination = { count: 10 },
       loaded = false,
       filters,
@@ -122,12 +132,20 @@ class TagModal extends Component<
         onClose={() => toggleModal(undefined, false)}
         variant="medium"
       >
-        <ModalHeader title={title || `Tags for ${systemName}`} />
+        <ModalHeader title={title || intl.formatMessage(messages.tagModalTagsFor, { systemName })} />
         <ModalBody>
           {isTabbed ? (
             <Tabs activeKey={this.state.activeTabKey} onSelect={this.handleTabClick}>
               {tabNames.map((item, key) => (
-                <Tab key={key} eventKey={key} title={<TabTitleText>All {item}</TabTitleText>}>
+                <Tab
+                  key={key}
+                  eventKey={key}
+                  title={
+                    <TabTitleText>
+                      <FormattedMessage {...messages.tagModalAll} values={{ name: item }} />
+                    </TabTitleText>
+                  }
+                >
                   {this.renderTable(
                     rows?.[key] as IRow[],
                     columns?.[key] as ICell[],
@@ -170,10 +188,10 @@ class TagModal extends Component<
                   toggleModal(e, true);
                 }}
               >
-                Apply {isTabbed ? 'selected' : 'tags'}
+                {isTabbed ? <FormattedMessage {...messages.tagModalApplySelected} /> : <FormattedMessage {...messages.tagModalApplyTags} />}
               </Button>
               <Button key="cancel" variant="link" onClick={(e) => toggleModal(e, false)}>
-                Cancel
+                <FormattedMessage {...messages.tagModalCancel} />
               </Button>
             </>
           )}

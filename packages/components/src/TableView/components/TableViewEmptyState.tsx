@@ -1,3 +1,4 @@
+import { FormattedMessage, useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 /**
  * TableViewEmptyState Components
  *
@@ -13,6 +14,7 @@ import { EmptyState, EmptyStateActions, EmptyStateBody, EmptyStateFooter } from 
 import SearchIcon from '@patternfly/react-icons/dist/js/icons/search-icon';
 import CubesIcon from '@patternfly/react-icons/dist/js/icons/cubes-icon';
 import ExclamationCircleIcon from '@patternfly/react-icons/dist/js/icons/exclamation-circle-icon';
+import messages from '../../messages';
 
 // =============================================================================
 // Default Empty State Content Components
@@ -29,14 +31,16 @@ export interface DefaultEmptyStateNoDataProps {
  * Default empty state content for when there is no data.
  * Use this inside TableViewEmptyState or standalone.
  */
-export const DefaultEmptyStateNoData: React.FC<DefaultEmptyStateNoDataProps> = ({
-  title = 'No data available',
-  body = 'There is no data to display.',
-}) => (
-  <EmptyState headingLevel="h4" icon={CubesIcon} titleText={title} variant="lg">
-    <EmptyStateBody>{body}</EmptyStateBody>
-  </EmptyState>
-);
+export const DefaultEmptyStateNoData: React.FC<DefaultEmptyStateNoDataProps> = ({ title: titleProp, body: bodyProp }) => {
+  const intl = useIntlWithFallback();
+  const title = titleProp === undefined ? intl.formatMessage(messages.tableViewEmptyStateDefaultEmptyStateNoDataTitle) : titleProp;
+  const body = bodyProp === undefined ? intl.formatMessage(messages.tableViewEmptyStateDefaultEmptyStateNoDataBody) : bodyProp;
+  return (
+    <EmptyState headingLevel="h4" icon={CubesIcon} titleText={title} variant="lg">
+      <EmptyStateBody>{body}</EmptyStateBody>
+    </EmptyState>
+  );
+};
 
 export interface DefaultEmptyStateNoResultsProps {
   /** Custom title */
@@ -54,24 +58,33 @@ export interface DefaultEmptyStateNoResultsProps {
  * Use this inside TableViewEmptyState or standalone.
  */
 export const DefaultEmptyStateNoResults: React.FC<DefaultEmptyStateNoResultsProps> = ({
-  title = 'No results found',
-  body = 'No results match the filter criteria. Clear all filters to show results.',
+  title: titleProp,
+  body: bodyProp,
   onClearFilters,
-  clearFiltersText = 'Clear all filters',
-}) => (
-  <EmptyState headingLevel="h4" icon={SearchIcon} titleText={title} variant="lg">
-    <EmptyStateBody>{body}</EmptyStateBody>
-    {onClearFilters && (
-      <EmptyStateFooter>
-        <EmptyStateActions>
-          <Button variant="link" onClick={onClearFilters}>
-            {clearFiltersText}
-          </Button>
-        </EmptyStateActions>
-      </EmptyStateFooter>
-    )}
-  </EmptyState>
-);
+  clearFiltersText: clearFiltersTextProp,
+}) => {
+  const intl = useIntlWithFallback();
+  const title = titleProp === undefined ? intl.formatMessage(messages.tableViewEmptyStateDefaultEmptyStateNoResultsTitle) : titleProp;
+  const body = bodyProp === undefined ? intl.formatMessage(messages.tableViewEmptyStateDefaultEmptyStateNoResultsBody) : bodyProp;
+  const clearFiltersText =
+    clearFiltersTextProp === undefined
+      ? intl.formatMessage(messages.tableViewEmptyStateDefaultEmptyStateNoResultsClearFiltersText)
+      : clearFiltersTextProp;
+  return (
+    <EmptyState headingLevel="h4" icon={SearchIcon} titleText={title} variant="lg">
+      <EmptyStateBody>{body}</EmptyStateBody>
+      {onClearFilters && (
+        <EmptyStateFooter>
+          <EmptyStateActions>
+            <Button variant="link" onClick={onClearFilters}>
+              {clearFiltersText}
+            </Button>
+          </EmptyStateActions>
+        </EmptyStateFooter>
+      )}
+    </EmptyState>
+  );
+};
 
 export interface DefaultEmptyStateErrorProps {
   /** Custom title */
@@ -91,33 +104,41 @@ export interface DefaultEmptyStateErrorProps {
  * Use this inside TableViewEmptyState or standalone.
  */
 export const DefaultEmptyStateError: React.FC<DefaultEmptyStateErrorProps> = ({
-  title = 'Unable to load data',
-  body = 'There was a problem loading the data. Please try again.',
+  title: titleProp,
+  body: bodyProp,
   error,
   onRetry,
-  retryText = 'Retry',
-}) => (
-  <EmptyState headingLevel="h4" icon={ExclamationCircleIcon} titleText={title} variant="lg">
-    <EmptyStateBody>
-      {body}
-      {error?.message && (
-        <>
-          <br />
-          <small>Error: {error.message}</small>
-        </>
+  retryText: retryTextProp,
+}) => {
+  const intl = useIntlWithFallback();
+  const title = titleProp === undefined ? intl.formatMessage(messages.tableViewEmptyStateDefaultEmptyStateErrorTitle) : titleProp;
+  const body = bodyProp === undefined ? intl.formatMessage(messages.tableViewEmptyStateDefaultEmptyStateErrorBody) : bodyProp;
+  const retryText = retryTextProp === undefined ? intl.formatMessage(messages.tableViewEmptyStateDefaultEmptyStateErrorRetryText) : retryTextProp;
+  return (
+    <EmptyState headingLevel="h4" icon={ExclamationCircleIcon} titleText={title} variant="lg">
+      <EmptyStateBody>
+        {body}
+        {error?.message && (
+          <>
+            <br />
+            <small>
+              <FormattedMessage {...messages.tableViewEmptyStateError} /> {error.message}
+            </small>
+          </>
+        )}
+      </EmptyStateBody>
+      {onRetry && (
+        <EmptyStateFooter>
+          <EmptyStateActions>
+            <Button variant="primary" onClick={onRetry}>
+              {retryText}
+            </Button>
+          </EmptyStateActions>
+        </EmptyStateFooter>
       )}
-    </EmptyStateBody>
-    {onRetry && (
-      <EmptyStateFooter>
-        <EmptyStateActions>
-          <Button variant="primary" onClick={onRetry}>
-            {retryText}
-          </Button>
-        </EmptyStateActions>
-      </EmptyStateFooter>
-    )}
-  </EmptyState>
-);
+    </EmptyState>
+  );
+};
 
 // =============================================================================
 // Table Wrapper Component
@@ -134,6 +155,10 @@ export interface TableViewEmptyStateProps {
   hasSelection?: boolean;
   /** Whether to show actions column */
   hasActions?: boolean;
+  /** Localized selection column header for screen readers (default: Select). */
+  selectColumnLabel?: string;
+  /** Localized actions column header for screen readers (default: Actions). */
+  actionsColumnLabel?: string;
   /** Table variant */
   variant?: 'default' | 'compact';
   /** ARIA label for the table */
@@ -171,10 +196,23 @@ export const TableViewEmptyState: React.FC<TableViewEmptyStateProps> = ({
   columnLabels = [],
   hasSelection = false,
   hasActions = false,
+  selectColumnLabel: selectColumnLabelProp,
+  actionsColumnLabel: actionsColumnLabelProp,
   variant = 'default',
-  ariaLabel = 'Table',
+  ariaLabel: ariaLabelProp,
   ouiaId,
 }) => {
+  const intl = useIntlWithFallback();
+  const selectColumnLabel =
+    selectColumnLabelProp === undefined
+      ? intl.formatMessage(messages.tableViewEmptyStateTableViewEmptyStateSelectColumnLabel)
+      : selectColumnLabelProp;
+  const actionsColumnLabel =
+    actionsColumnLabelProp === undefined
+      ? intl.formatMessage(messages.tableViewEmptyStateTableViewEmptyStateActionsColumnLabel)
+      : actionsColumnLabelProp;
+  const ariaLabel = ariaLabelProp === undefined ? intl.formatMessage(messages.tableViewEmptyStateTableViewEmptyStateAriaLabel) : ariaLabelProp;
+
   // No headers mode - just render content
   if (!showHeaders) {
     return <>{children}</>;
@@ -187,11 +225,11 @@ export const TableViewEmptyState: React.FC<TableViewEmptyStateProps> = ({
     <Table aria-label={ariaLabel} variant={variant === 'compact' ? TableVariant.compact : undefined} ouiaId={ouiaId}>
       <Thead>
         <Tr>
-          {hasSelection && <Th screenReaderText="Select" modifier="fitContent" />}
+          {hasSelection && <Th screenReaderText={selectColumnLabel} modifier="fitContent" />}
           {columnLabels.map((label, idx) => (
             <Th key={idx}>{label}</Th>
           ))}
-          {hasActions && <Th screenReaderText="Actions" modifier="fitContent" />}
+          {hasActions && <Th screenReaderText={actionsColumnLabel} modifier="fitContent" />}
         </Tr>
       </Thead>
       <Tbody>

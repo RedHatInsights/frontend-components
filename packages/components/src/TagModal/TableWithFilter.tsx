@@ -1,4 +1,6 @@
+import { FormattedMessage, useIntlWithFallback } from '@redhat-cloud-services/frontend-components-translations/localization';
 import React, { Fragment } from 'react';
+
 import { Bullseye } from '@patternfly/react-core/dist/dynamic/layouts/Bullseye';
 import { EmptyState } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
 import { EmptyStateBody } from '@patternfly/react-core/dist/dynamic/components/EmptyState';
@@ -16,6 +18,7 @@ import { BulkSelectProps } from '../BulkSelect';
 import { ConditionalFilterItem } from '../ConditionalFilter';
 import { ICell, IRow, TableVariant } from '@patternfly/react-table';
 import { SkeletonTable } from '@patternfly/react-component-groups';
+import messages from '../messages';
 
 export type TableWithFilterPagination = {
   count: number;
@@ -58,9 +61,11 @@ const TableWithFilter = ({
   systemName,
   columns = [],
   tableProps,
-  entityName = 'tags',
+  entityName: entityNameProp,
   bulkSelect,
 }: TableWithFilterProps) => {
+  const intl = useIntlWithFallback();
+  const entityName = entityNameProp === undefined ? intl.formatMessage(messages.tableWithFilterTags) : entityNameProp;
   const onRowSelect = ({ isSelected, rowId }: { isSelected?: boolean; rowId: number }) => {
     const currRow = rows?.[rowId];
     if (currRow && onSelect) {
@@ -86,13 +91,13 @@ const TableWithFilter = ({
                 checked: loaded && calculateChecked?.(rows, selected),
                 items: [
                   {
-                    title: 'Select none (0)',
+                    title: intl.formatMessage(messages.tableWithFilterSelectNone),
                     onClick: () => onSelect([]),
                   },
                   {
                     ...(loaded && rows?.length > 0
                       ? {
-                          title: `Select page (${rows.length})`,
+                          title: intl.formatMessage(messages.tableWithFilterSelectPage, { count: rows.length }),
                           onClick: () => onSelect(unique?.([...rows, ...selected])),
                         }
                       : {}),
@@ -138,9 +143,17 @@ const TableWithFilter = ({
                         title: (
                           <EmptyTable>
                             <Bullseye>
-                              <EmptyState headingLevel="h5" titleText={`No ${entityName} found`} variant={EmptyStateVariant.full}>
+                              <EmptyState
+                                headingLevel="h5"
+                                titleText={intl.formatMessage(messages.tableWithFilterNoEntities, { entityName })}
+                                variant={EmptyStateVariant.full}
+                              >
                                 <EmptyStateBody>
-                                  This filter criteria matches no {entityName}. <br /> Try changing your filter settings.
+                                  <FormattedMessage
+                                    {...messages.tableWithFilterNoMatches}
+
+                                    values={{ entityName, br: () => <br /> }}
+                                  />
                                 </EmptyStateBody>
                               </EmptyState>
                             </Bullseye>

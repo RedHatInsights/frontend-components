@@ -485,4 +485,8 @@ export interface TableViewProps<
   ouiaId?: string;
   /** Aria label for accessibility */
   ariaLabel: string;
+  /** Localized selection column header for screen readers (default: Select). */
+  selectColumnLabel?: string;
+  /** Localized actions column header for screen readers (default: Actions). */
+  actionsColumnLabel?: string;
 }
